@@ -35,37 +35,56 @@ these are added for operational or searching reasons.
 
 ### Structure of `StopPlace`
 
-| Element            | Usage | Type                                                                            | Description                                                                                                                                                                                                                                                                                                                                                                 |
-|--------------------|-------|---------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ValidBetween       | 0..*  |                                                                                 | See [Substructure](#stopplace.substructure). Validity from the StopPlace                                                                                                                                                                                                                                                                                                    |
-| alternativeTexts   | 0:*   | `AlternativText`                                                                | Abbreviation of the STOP PLACE.                                                                                                                                                                                                                                                                                                                                             |
-| keyList            | 0:*   | `KeyValue` see [Markdown Guide](https://www.markdownguide.org/extended-syntax/) | KEY LIST with the KEY VALUEs related to the STOP PLACE.<br>SKI use KeyValues:<br>one for the Didok number one for the SLOID For delivery to SKI only one Value is necessary.                                                                                                                                                                                                |
-| Extensions         | 0:1   | `ExtensionStructure`                                                            | See [Substructure](#stopplace.substructure)                                                                                                                                                                                                                                                                                                                                 |  Extensions of the STOP PLACE |
-| HafasPriority      |       | `HafasKMInfo`                                                                   
-| Name		             |       | `MultiLingualString`	                                                           | Name of TYPE OF VALUE.                                                                                                                                                                                                                                                                                                                                                      
-| ShortName          |       | `MultiLingualString`                                                            | Description of TYPE OF VALUE. Is used to transmit the abbreviation of the `StopPlace`.<br/> There is not one abbreviation for all StopPlaces                                                                                                                                                                                                                                
-| PrivateCode        | 1:1   | `PrivateCodeType`                                                               | 	Private Code of STOP PLACE. Field must be filled. In Switzerland it is the DiDok number.                                                                                                                                                                                                                                                                                   
-| Centroid           | 	0:1  | `Location`                                                                      | See [Substructure](#stopplace.substructure). Global or national location of STOP PLACE.                                                                                                                                                                                                                                                                                     
-| alternativeNames   | 0:*   | [AlternativeName](#stopplace.substructure)                                      | See [AlternativeName](#stopplace.substructure). Alternative names for SITE ELEMENT. We will also use these for synonyms. From INFO+ the synonyms are used on the StopPlace.                                                                                                                                                                                                 
-| TopographicPlaceRef	 | 0:1   | xsd:string                                       |	Reference to `TopographicPlace`. Link to TopographicPlace of type county or country 
-| Weighting	         | 0:1   | `InterchangeUseEnum`	                                                           | Default relative weighting to be used for stop place. The STOP PLACE element WEIGHTING basically accomplishes this feature but only allows the following values: noInterchange interchangeAllowed recommendedInterchange preferredInterchange. To incorporate the desired value range, we will add an EXTENSION element “HafasPriority” that contains the full information. 
-| quays 	            | 0:* | `Quay`                                                                          | See 7.4 Quay                                                                                                                                                                                                                                                                                                                                                                
+| Element            | Usage | Type                                     | Description                                                                                                                                                                                                                                                                                                                                                                 |
+|--------------------|-------|------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ValidBetween       | 0..*  |                                          | See [Substructure](#stopplace.substructure). Validity from the StopPlace                                                                                                                                                                                                                                                                                                    |
+| alternativeTexts   | 0:*   | `AlternativText`                         | Abbreviation of the STOP PLACE.                                                                                                                                                                                                                                                                                                                                             |
+| keyList            | 0:*   | [KeyValue](#keyvalue)                    | KEY LIST with the KEY VALUEs related to the STOP PLACE.<br>SKI use KeyValues:<br>one for the Didok number one for the SLOID For delivery to SKI only one Value is necessary.                                                                                                                                                                                                |
+| Extensions         | 0:1   | ExtensionStructure                       | See [Substructure](#stopplace.substructure)                                                                                                                                                                                                                                                                                                                                 |  Extensions of the STOP PLACE |
+| HafasPriority      |       | `HafasKMInfo`                            
+| Name		             |       | `MultiLingualString`	                    | Name of TYPE OF VALUE.                                                                                                                                                                                                                                                                                                                                                      
+| ShortName          |       | `MultiLingualString`                     | Description of TYPE OF VALUE. Is used to transmit the abbreviation of the `StopPlace`.<br/> There is not one abbreviation for all StopPlaces                                                                                                                                                                                                                                
+| PrivateCode        | 1:1   | `PrivateCodeType`                        | 	Private Code of STOP PLACE. Field must be filled. In Switzerland it is the DiDok number.                                                                                                                                                                                                                                                                                   
+| Centroid           | 	0:1  | [Location](#stopplace.substructure)      |Global or national location of STOP PLACE.                                                                                                                                                                                                                                                                                     
+| alternativeNames   | 0:*   | [AlternativeName](#stopplace.substructure) | Alternative names for SITE ELEMENT. We will also use these for synonyms. From INFO+ the synonyms are used on the StopPlace.                                                                                                                                                                                                 
+| TopographicPlaceRef	 | 0:1   | xsd:string                               |	Reference to `TopographicPlace`. Link to TopographicPlace of type county or country 
+| Weighting	         | 0:1   | `InterchangeUseEnum`	                    | Default relative weighting to be used for stop place. The STOP PLACE element WEIGHTING basically accomplishes this feature but only allows the following values: noInterchange interchangeAllowed recommendedInterchange preferredInterchange. To incorporate the desired value range, we will add an EXTENSION element “HafasPriority” that contains the full information. 
+| quays 	            | 0:* | [Quay](#quay)                            | See 7.4 Quay. The QUAYs contained in the STOP PLACE, that is platforms, jetties, bays, taxi ranks, and other points of physical access to VEHICLEs.                                                                                                                                                                                                                                                                                                                                                                
 
-The QUAYs contained in the STOP PLACE, that is platforms, jetties, bays, taxi ranks, and other points of physical access to VEHICLEs.
+
+#### Elements of 'StopPlace'
+
+Using definition lists...
+
+keyList
+: KEY LIST with the KEY VALUEs related to the STOP PLACE.
+: SKI use KeyValues:<br>one for the Didok number, one for the SLOID. For delivery to SKI only one Value is necessary.
+
+ShortName
+: Description of TYPE OF VALUE. Is used to transmit the abbreviation of the `StopPlace`.<br/> There is not one abbreviation for all StopPlaces.
+
+PrivateCode
+: Private Code of STOP PLACE.
+: Field must be filled. 
+: In Switzerland it is the DiDok number.
+
+
+#### ASCII hierarchy
+Alternative way to show structure (could be generated):
 ``` text
 StopPlace:
 ├─ @id [required]
 ├─ @version [required]
 ├─ ValidBetween [0:*]
-├─ alternativeTexts: [0:*] AlternativText
-├─ keyList [0:*] KeyList
-├─ Extensions [0:*] ExtensionStructure
-├─ HafasPriority [0:*] HafasKMInfo
-├─ Name [0:*] MultiLingualString
+├─ alternativeTexts: [0:*] (AlternativText)
+├─ keyList [0:*] (KeyList)
+├─ Extensions [0:*] (ExtensionStructure)
+├─ HafasPriority [0:*] (HafasKMInfo)
+├─ Name [0:*] (MultiLingualString)
 ├─ ShortName [0:*]
 ├─ PrivateCode [0:*]
 ├─ Centroid [0:*]
-├─ alternativeNames [0:*]  [AlternativeName](#stopplace.substructure)
+├─ alternativeNames [0:*] (AlternativeName)
 ├─ TopographicPlaceRef [0:1]
      ├─  @ref [required]
      └─  @version [required]
@@ -88,6 +107,7 @@ StopPlace:
 - TopographicPlaceRef [0:1]
 - Weighting [0:1]: InterchangeUseEnum
 - quays [0:*] Quay 
+
 #### XML Schema of StopPlace
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
