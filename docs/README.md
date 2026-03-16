@@ -1,4 +1,4 @@
-#The realisation guide itself
+# The realisation guide itself
 
 - Introduction
 - Basic concepts of NeTEx
@@ -9,5 +9,7 @@
 - Special use cases
   - Joining / Splitting
   - Service Attributes
+  - JourneyParts
+  - Transfers / transfer times
 - Other profiles
 - Resources and references
