@@ -7,11 +7,11 @@
 * table structure
 * initial loading from word
 
-## Markdwon
+## Markdown
 - Everytihng in the docs folder
 - Folder von inclusion stuff: docs/include
 
-### table
+### Tables
 - Tables as markdown
 
 ### XSD tables
@@ -21,6 +21,9 @@
 ### Internal diagram
 usage of mermaid instead of plantuml
 
+### Links
+
 ### Usage of drawio
 
 ## Initial loading from work
+Here we describe how we process the 2.0 word to the first version of  MD.
