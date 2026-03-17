@@ -284,6 +284,50 @@
 					</stopPlaces>
 				</SiteFrame>
 				<ServiceFrame id="ch:1:ServiceFrame:1" version="any">
+					<routes>
+						<Route id="Route:1" version="any">
+							<LineRef ref="ch:1:slnid:1024437"/>
+							<DirectionType>outbound</DirectionType>
+							<pointsInSequence>
+								<PointOnRoute id="ch:1:PointInJourneyPattern:1.1" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:7000:5:9"/>
+								</PointOnRoute>
+								<PointOnRoute id="ch:1:PointInJourneyPattern:1.2" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:7100:1:1"/>
+								</PointOnRoute>
+								<PointOnRoute id="ch:1:PointInJourneyPattern:1.3" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324"/>
+								</PointOnRoute>
+							</pointsInSequence>
+						</Route>
+						<Route id="Route:2" version="any">
+							<LineRef ref="ch:1:slnid:1024426"/>
+							<DirectionType>outbound</DirectionType>							
+							<pointsInSequence>
+								<PointOnRoute id="ch:1:PointInJourneyPattern:2.1" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324"/>
+								</PointOnRoute>
+								<PointOnRoute id="ch:1:PointInJourneyPattern:2.2" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:7478:0:852180"/>
+								</PointOnRoute>
+							</pointsInSequence>
+						</Route>
+						<Route id="Route:3" version="any">
+							<LineRef ref="ch:1:slnid:1024437"/>
+							<DirectionType>outbound</DirectionType>
+							<pointsInSequence>
+								<PointOnRoute id="ch:1:PointInJourneyPattern:3.1" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324"/>
+								</PointOnRoute>
+								<PointOnRoute id="ch:1:PointInJourneyPattern:3.2" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:7000:5:9"/>
+								</PointOnRoute>
+								<PointOnRoute id="ch:1:PointInJourneyPattern:3.3" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:1609:4:9"/>
+								</PointOnRoute>
+							</pointsInSequence>
+						</Route>
+					</routes>
 					<lines>
 						<Line id="ch:1:slnid:1024437" version="any">
 							<validityConditions>
@@ -316,6 +360,10 @@
 							<PublicCode>R11</PublicCode>
 						</Line>
 					</lines>
+					<destinationDisplays>
+						<DestinationDisplay id="ch:1:DestinationDisplay:1" version="any">
+						</DestinationDisplay>
+					</destinationDisplays>
 					<scheduledStopPoints>
 						<ScheduledStopPoint id="ch:1:sloid:7000:5:9" version="any">
 							<Name lang="de">Bern</Name>
@@ -373,19 +421,19 @@
 							<StopPlaceRef ref="ch:1:sloid:1609" version="any"/>
 							<QuayRef ref="ch:1:sloid:1609:4:9" version="any"/>
 						</PassengerStopAssignment>
-					</stopAssignments>
-			
-					<journeyPatterns>
-						
+					</stopAssignments>		
+				
+					<journeyPatterns>					
 						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:1" version="any">
 							<Name>Bern-Spiez</Name>
-							<DirectionType>outbound</DirectionType>
-							
+							<RouteRef ref="Route:1"/>
+							<DirectionType>outbound</DirectionType>				
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.1" version="any">
 								  <ScheduledStopPointRef ref="ch:1:sloid:7000:5:9"/>
 								  <ForAlighting>false</ForAlighting>
 								  <ForBoarding>true</ForBoarding>
+								  <DestinationDisplayRef ref=""/>
 								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.2" version="any">
 									<ScheduledStopPointRef ref="ch:1:sloid:7100:1:1"/>
@@ -398,9 +446,11 @@
 								    <ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
+							<ServiceJourneyPatternType>passenger</ServiceJourneyPatternType>
 						</ServiceJourneyPattern>
 						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:2" version="any">
 							<Name>Spiez-Zweisimmen</Name>
+							<RouteRef ref="Route:2"/>
 							<DirectionType>outbound</DirectionType>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:2.1" version="any">
@@ -409,19 +459,19 @@
 								    <ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:2.2" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:7478:0:852180"/>
-									<ForAlighting>true</ForAlighting>
-								    <ForBoarding>true</ForBoarding>
-								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:2.3" version="any">
 									<ScheduledStopPointRef ref="ch:1:sloid:7290:0:930269"/>
 									<ForAlighting>true</ForAlighting>
 								    <ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
+							<ServiceJourneyPatternType>passenger</ServiceJourneyPatternType>
 						</ServiceJourneyPattern>
 						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:3" version="any">
+							<validityConditions>
+								<ValidityConditionRef ref="ch:1:ValidityConditions:1"></ValidityConditionRef>
+							</validityConditions>
 							<Name>Spiez-Brig</Name>
+							<RouteRef ref="Route:3"/>
 							<DirectionType>outbound</DirectionType>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:3.1" version="any">
@@ -430,11 +480,17 @@
 								    <ForBoarding>true</ForBoarding>									
 								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:3.2" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:7478:0:852180"/>
+									<ForAlighting>true</ForAlighting>
+								    <ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:3.3" version="any">
 									<ScheduledStopPointRef ref="ch:1:sloid:1609:4:9"/>
 									<ForAlighting>true</ForAlighting>
 								    <ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
+							<ServiceJourneyPatternType>passenger</ServiceJourneyPatternType>
 						</ServiceJourneyPattern>
 					</journeyPatterns>
 				</ServiceFrame>
@@ -454,7 +510,7 @@
 							<keyList>
 								<KeyValue>
 									<Key>SJYID</Key>
-									<Value>ch:1:sjyid:100015:4179-001</Value>
+									<Value>ch:1:sjyid:100015:4175-001</Value>
 								</KeyValue>
 							</keyList>
 							<PrivateCode>ch:1:ServiceJourney:1</PrivateCode>
@@ -472,51 +528,18 @@
 							<passingTimes>
 								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:1.1" version="any">
 									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:1.1"/>
+									<DepartureTime>14:39:00</DepartureTime>
 								</TimetabledPassingTime>
 								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:1.2" version="any">
 									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:1.2"/>
+									<ArrivalTime>15:00:00</ArrivalTime>
+									<DepartureTime>15:01:00</DepartureTime>
 								</TimetabledPassingTime>								
 								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:1.3" version="any">
 									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:1.3"/>
+									<ArrivalTime>15:10:10</ArrivalTime>
 								</TimetabledPassingTime>
 							</passingTimes>
-							<calls>
-								<Call id="ch:1:ServiceJourney:1.1" version="any" order="1">
-									<ScheduledStopPointRef ref="ch:1:sloid:7000:5:9" version="any"/>
-									<Departure>
-										<Time>14:39:00</Time>
-										<ForBoarding>true</ForBoarding>
-										<IsFlexible>false</IsFlexible>
-									</Departure>
-									<RequestStop>false</RequestStop>
-									<StopUse>access</StopUse>
-								</Call>
-								<Call id="ch:1:ServiceJourney:1.2" version="any" order="2">
-									<ScheduledStopPointRef ref="ch:1:sloid:7100:1:1" version="any"/>
-									<Arrival>
-										<Time>15:00:00</Time>
-										<ForAlighting>true</ForAlighting>
-										<IsFlexible>false</IsFlexible>
-									</Arrival>
-									<Departure>
-										<Time>15:01:00</Time>
-										<ForBoarding>true</ForBoarding>
-										<IsFlexible>false</IsFlexible>
-									</Departure>
-									<RequestStop>false</RequestStop>
-									<StopUse>access</StopUse>
-								</Call>
-								<Call id="ch:1:ServiceJourney:1.3" version="any" order="2">
-									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
-									<Arrival>
-										<Time>15:10:00</Time>
-										<ForAlighting>true</ForAlighting>
-										<IsFlexible>false</IsFlexible>
-									</Arrival>
-									<RequestStop>false</RequestStop>
-									<StopUse>access</StopUse>
-								</Call>
-							</calls>
 						</ServiceJourney>
 						<ServiceJourney id="ch:1:ServiceJourney:2" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:1">
 							<validityConditions>
@@ -543,35 +566,13 @@
 							<passingTimes>
 								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:2.1" version="any">
 									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:2.1"/>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:2.2" version="any">
-									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:2.2"/>
-								</TimetabledPassingTime>								
+									<DepartureTime>15:12:00</DepartureTime>
+								</TimetabledPassingTime>							
 								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:2.3" version="any">
-									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:2.3"/>
+									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:2.2"/>
+									<ArrivalTime>15:59:00</ArrivalTime>
 								</TimetabledPassingTime>
 							</passingTimes>
-							<calls>
-								<Call id="ch:1:ServiceJourney:2.1" version="any" order="2">
-									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
-									<Departure>
-										<Time>15:12:00</Time>
-										<IsFlexible>false</IsFlexible>
-									</Departure>
-									<RequestStop>false</RequestStop>
-									<StopUse>access</StopUse>
-								</Call>
-								<Call id="ch:1:ServiceJourney:2.2" version="any" order="2">
-									<ScheduledStopPointRef ref="ch:1:sloid:7290:0:930269" version="any"/>
-									<Arrival>
-										<Time>15:59:00</Time>
-										<ForAlighting>true</ForAlighting>
-										<IsFlexible>false</IsFlexible>
-									</Arrival>
-									<RequestStop>false</RequestStop>
-									<StopUse>access</StopUse>
-								</Call>
-							</calls>
 						</ServiceJourney>
 						<ServiceJourney id="ch:1:ServiceJourney:3" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:1">
 							<validityConditions>
@@ -588,7 +589,7 @@
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:RE" version="any"/>
 							<TypeOfServiceRef ref="ch:1:TypeOfService:1" version="any"/>
 							<ServiceAlteration>planned</ServiceAlteration>
-							<DepartureTime>14:39:00</DepartureTime>
+							<DepartureTime>15:12:00</DepartureTime>
 							<OperatorRef ref="ch:1:sboid:100015" version="any"/>
 							<LineRef ref="ch:1:slnid:1024437" version="any"/>
 							<DirectionType>outbound</DirectionType>
@@ -598,55 +599,25 @@
 							<passingTimes>
 								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:3.1" version="any">
 									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:3.1"/>
-								</TimetabledPassingTime>						
+									<DepartureTime>15:12:00</DepartureTime>
+								</TimetabledPassingTime>
 								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:3.2" version="any">
 									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:3.2"/>
+									<ArrivalTime>15:24:00</ArrivalTime>
+									<DepartureTime>15:25:00</DepartureTime>
+								</TimetabledPassingTime>							
+								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:3.3" version="any">
+									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:3.3"/>
+									<ArrivalTime>16:22:00</ArrivalTime>
 								</TimetabledPassingTime>
 							</passingTimes>
-							<calls>
-								<Call id="ch:1:ServiceJourney:3.1" version="any" order="2">
-									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
-									<Departure>
-										<Time>15:12:00</Time>
-										<ForBoarding>true</ForBoarding>
-										<IsFlexible>false</IsFlexible>
-									</Departure>
-									<RequestStop>false</RequestStop>
-									<StopUse>access</StopUse>
-								</Call>
-								<Call id="ch:1:ServiceJourney:3.2" version="any" order="2">
-									<ScheduledStopPointRef ref="ch:1:sloid:7478:0:852180" version="any"/>
-									<Arrival>
-										<Time>15:24:00</Time>
-										<ForAlighting>true</ForAlighting>
-										<IsFlexible>false</IsFlexible>
-									</Arrival>
-									<Departure>
-										<Time>15:25:00</Time>
-										<ForBoarding>true</ForBoarding>
-										<IsFlexible>false</IsFlexible>
-									</Departure>
-									<RequestStop>false</RequestStop>
-									<StopUse>access</StopUse>
-								</Call>
-								<Call id="ch:1:ServiceJourney:3.3" version="any" order="2">
-									<ScheduledStopPointRef ref="ch:1:sloid:1609:4:9" version="any"/>
-									<Arrival>
-										<Time>16:22:00</Time>
-										<ForAlighting>true</ForAlighting>
-										<IsFlexible>false</IsFlexible>
-									</Arrival>
-									<RequestStop>false</RequestStop>
-									<StopUse>access</StopUse>
-								</Call>
-							</calls>
 						</ServiceJourney>
 					</vehicleJourneys>
 					<trainNumbers>
-						<TrainNumber id="ch:1:TrainNumber:4179" version="any">
+						<TrainNumber id="ch:1:TrainNumber:4175" version="any">
 							<Description lang="de">Bern - Spiez - Kandersteg - Brig (- Domodossola)</Description>
 						</TrainNumber>
-						<TrainNumber id="ch:1:TrainNumber:6831" version="any">
+						<TrainNumber id="ch:1:TrainNumber:6829" version="any">
 							<Description lang="de">Spiez - Zweisimmen</Description>
 						</TrainNumber>
 					</trainNumbers>
