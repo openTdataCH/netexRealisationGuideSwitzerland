@@ -16,7 +16,8 @@ The 1.x series of the Swiss profile were CALL based.
 ## Basic PassingTime
 
 ### Example splitting train Bern - Zweisimmen | Brig
-<Description>
+This example models the basic splitting of a train with 3 'ServiceJourney'
+
 [Link](NeTEx-Bern-Spiez-Zweisimmen-o-Brig-PassingTime.xml)
 
 ### 
