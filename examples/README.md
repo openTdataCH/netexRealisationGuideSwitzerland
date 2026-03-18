@@ -1,9 +1,8 @@
 # Examples
-This  folder contains the relevante examples for the realisation guide.
+This  folder contains the relevante examples for the realisation guide 2.0 based on NeTEX 2.0.
 
-
-## Call Based
-The 1.x series of the Swiss profile were CALL based.
+## Call Based (DEPRECIATED)
+The 1.x series of the Swiss profile were CALL based. 
 
 ### Example train Spiez - Interlaken Ost
 <Description>
@@ -20,34 +19,59 @@ This example models the basic splitting of a train with 3 'ServiceJourney'
 
 [Link](NeTEx-Bern-Spiez-Zweisimmen-o-Brig-PassingTime.xml)
 
+### Example with international connection
+
 ### Example with ServiceFacilities
 <Description>
 
 ## More complete examples
 
 ### International rail with "Durchbindung"
+<Description>
 
 
 ## Full use of SID4PT
+<Description>
 
 ### Bus
+<Description>
 
 ### Tram
+<Description>
 
 
 ## Special cases
+<Description>
+
+### Destination display in a round trip
+<Description>
+
+### Umsteigebeziehungen und Metastations
+<Description>
+
+### Postauto with Anhänger
+<Description>
+
+### Formation for trains
+<Description>
 
 ### carTransportRail
+<Description>
 
 ### Journey relationships
-
-### Frequency based traffic
+<Description>
 
 ### rail replacement
+<Description>
+
+### Frequency based traffic
+<Description>
 
 #### Draglift
+<Description>
 
 #### Cabin
+<Description>
 
 
 ## Demand Responsive Traffic (DRT)
