@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Zug 99999 von Spiez nach Interlaken Ost mit Halt in Interlaken West
+     10:35 Abfahrt Spiez Gleis 1
+     10:45 Ankunft Interlaken West Glei
+
+
+ 1 – Abfahrt 10:48
+     10:53 Ankunft in Interlaken Ost Gleis 7
+-->
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.09" xsi:schemaLocation="http://www.netex.org.uk/netex ./xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
+	<ParticipantRef>INTERMAPS</ParticipantRef>
+	<Description lang="de">NeTEx-Export INTERMAPS Version 1.0</Description>
+	<!-- Question 3: What would be a good thing to put in here? -->
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame:J26" version="any">
+			<ValidBetween>
+				<FromDate>2025-12-15T00:00:00</FromDate>
+				<ToDate>2026-12-12T23:59:59</ToDate>
+			</ValidBetween>
+			<frames>
+				<!-- Resource Frame -->
+				<ResourceFrame id="ch:1:ResourceFrame:j26" version="any">
+					<responsibilitySets>
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:BLS-bls-33" version="any">
+							<Name>BLS</Name>
+							<PrivateCode>BLS AG</PrivateCode>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:1" version="any">
+									<StakeholderRoleType>entityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="any"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:2" version="any">
+									<StakeholderRoleType>operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="any"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="any" nameOfClass="TypeOfProductCategory">
+							<Name>ProductCategories</Name>
+							<values>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:RE" version="any">
+									<Name>RegioExpress</Name>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<Operator id="ch:1:Operator:33" version="any">
+							<keyList>
+								<KeyValue>
+									<Key>GO</Key>
+									<Value>33</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SBOID</Key>
+									<Value>ch:1:sboid:100015</Value>
+								</KeyValue>
+							</keyList>
+							<PrivateCode>33</PrivateCode>
+							<Name>BLS AG</Name>
+							<ShortName>BLS</ShortName>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+				<!-- Site Frame -->
+				<SiteFrame id="ch:1:SiteFrame:j26" version="any">
+					<stopPlaces>
+						<StopPlace id="ch:1:sloid:7483" version="any">
+							<ValidBetween>
+								<FromDate>20205-12-14T00:00:00</FromDate>
+							</ValidBetween>
+							<alternativeTexts>
+								<AlternativeText attributeName="Text">
+									<Text lang="de">Spiez</Text>
+								</AlternativeText>
+							</alternativeTexts>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507483</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:7483</Value>
+								</KeyValue>
+							</keyList>
+							<Extensions>
+								<HafasPriority>
+									<Value>4</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>1</Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Bern</Name>
+							<ShortName lang="de">8507483</ShortName>
+							<PrivateCode>8507483</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>7.680103</Longitude>
+									<Latitude>46.686395</Latitude>
+									<Altitude>627</Altitude>
+								</Location>
+							</Centroid>
+							<alternativeNames>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483_4" version="any">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="de">Spiez</Name>
+								</AlternativeName>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483_5" version="any">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="it">Spiezeria</Name>
+								</AlternativeName>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483_6" version="any">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="fr">Spieze (CH)</Name>
+								</AlternativeName>
+							</alternativeNames>
+							<Weighting>preferredInterchange</Weighting>
+							<quays>
+								<Quay id="ch:1:sloid:7483:0:90840" version="any">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:7483:0:90840</Value>
+										</KeyValue>
+									</keyList>
+									<PublicCode>8</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<!-- Interlaken west -->
+						<StopPlace id="ch:1:sloid:71310" version="any">
+							<ValidBetween>
+								<FromDate>20205-12-14T00:00:00</FromDate>
+							</ValidBetween>
+							<alternativeTexts>
+								<AlternativeText attributeName="Text">
+									<Text lang="de">Interlaken West</Text>
+								</AlternativeText>
+							</alternativeTexts>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507493</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:71310</Value>
+								</KeyValue>
+							</keyList>
+							<Extensions>
+								<HafasPriority>
+									<Value>4</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>14</Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Interlaken West</Name>
+							<ShortName lang="de">8507493</ShortName>
+							<PrivateCode>8507493</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>7.851453</Longitude>
+									<Latitude>46.682627</Latitude>
+									<Altitude>563</Altitude>
+								</Location>
+							</Centroid>
+							<alternativeNames>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_4" version="any">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="de">Interlaken West</Name>
+								</AlternativeName>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_5" version="any">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="it">Interlaken West </Name>
+								</AlternativeName>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_6" version="any">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="fr">Interlaken West (CH)</Name>
+								</AlternativeName>
+							</alternativeNames>
+							<Weighting>preferredInterchange</Weighting>
+							<quays>
+								<Quay id="ch:1:sloid:71310:0:304706" version="any">
+									<PublicCode>8</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<!-- 	<Name lang="de">Interlaken Ost</Name> -->
+						<StopPlace id="ch:1:sloid:7492" version="any">
+							<ValidBetween>
+								<FromDate>20205-12-14T00:00:00</FromDate>
+							</ValidBetween>
+							<alternativeTexts>
+								<AlternativeText attributeName="Text">
+									<Text lang="de">Interlaken Ost</Text>
+								</AlternativeText>
+							</alternativeTexts>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507492</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:7492:0:470772</Value>
+								</KeyValue>
+							</keyList>
+							<Extensions>
+								<HafasPriority>
+									<Value>4</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>15</Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Interlaken Ost</Name>
+							<ShortName lang="de">8507492</ShortName>
+							<PrivateCode>8507492</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>7.869000</Longitude>
+									<Latitude>46.6904999</Latitude>
+									<Altitude>567</Altitude>
+								</Location>
+							</Centroid>
+							<alternativeNames>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492_4" version="any">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="de">Interlaken Ost</Name>
+								</AlternativeName>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492_5" version="any">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="it">Interlaken Ost</Name>
+								</AlternativeName>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492_6" version="any">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="fr">Interlaken Ost (CH)</Name>
+								</AlternativeName>
+							</alternativeNames>
+							<Weighting>preferredInterchange</Weighting>
+							<quays>
+								<Quay id="ch:1:sloid:7492:0:460848" version="any">
+									<PublicCode>8</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+					</stopPlaces>
+				</SiteFrame>
+				<!-- Service Frame -->
+				<ServiceFrame id="ch:1:ServiceFrame:j26" version="any">
+					<!--Problem 5: PassengerStopAssignment missing -->
+					<lines>
+						<Line id="ch:1:slnid:1024440" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
+							<ValidBetween>
+								<FromDate>2025-12-14T00:00:00</FromDate>
+								<ToDate>2026-12-13T23:59:59</ToDate>
+							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>SLNID</Key>
+									<Value>ch:1:slnid:1024440</Value>
+								</KeyValue>
+							</keyList>
+							<Name>BLS AG</Name>
+							<ShortName>BLS</ShortName>
+						</Line>
+					</lines>
+					<scheduledStopPoints>
+						<ScheduledStopPoint id="ch:1:sloid:7483:0:90840" version="any">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507483</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:7483:0:90840</Value>
+								</KeyValue>
+							</keyList>
+							<Name lang="de">Spiez</Name>
+							<ShortName lang="de">1</ShortName>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:7493:0:470772" version="any">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507493</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:7493:0:470772</Value>
+								</KeyValue>
+							</keyList>
+							<Name lang="de">Interlaken West</Name>
+							<ShortName lang="de">1</ShortName>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:7492:0:460848" version="any">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507492</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:7492:0:460848</Value>
+								</KeyValue>
+							</keyList>
+							<Name lang="de">Interlaken Ost</Name>
+							<ShortName lang="de">1</ShortName>
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+					<stopAssignments>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507483:1" version="any">
+							<ScheduledStopPointRef ref="ch:1:sloid:7483:0:90840" version="any"/>
+							<StopPlaceRef ref="ch:1:sloid:7483" version="any"/>
+							<QuayRef ref="ch:1:sloid:7483:0:90840" version="any"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507493:1" version="any">
+							<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="any"/>
+							<StopPlaceRef ref="ch:1:sloid:71310" version="any"/>
+							<QuayRef ref="ch:1:sloid:71310:0:304706" version="any"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507492:7" version="any">
+							<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="any"/>
+							<StopPlaceRef ref="ch:1:sloid:7492" version="any"/>
+							<QuayRef ref="ch:1:sloid:7492:0:460848" version="any"/>
+						</PassengerStopAssignment>
+					</stopAssignments>
+					<journeyPatterns>
+						<ServiceJourneyPattern id="sjp1" version="any">
+						<RouteView>
+							<LineRef ref="ch:1:slnid:1024440" version="any"/>
+						</RouteView>
+						<DirectionType>inbound</DirectionType>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="spijp1" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:90840" version="any"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp2" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="any"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp3" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="any"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+						</ServiceJourneyPattern>
+					</journeyPatterns>
+				</ServiceFrame>
+				<!-- Service Calendar Frame -->
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="any">
+					<validityConditions>
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:j26" version="any">
+							<FromDate>2025-12-14T00:00:00</FromDate>
+							<ToDate>2026-12-13T23:59:59</ToDate>
+							<ValidDayBits>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000</ValidDayBits>
+						</AvailabilityCondition>
+					</validityConditions>
+				</ServiceCalendarFrame>
+				<!-- Timetable Frame -->
+				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="any">
+					<vehicleJourneys>
+						<ServiceJourney id="ch:1:sjyid:100014:4208-003" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="any"/>
+							</validityConditions>
+							<TransportMode>rail</TransportMode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:RE" version="any"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>10:35:00</DepartureTime>
+							<DepartureDayOffset>0</DepartureDayOffset>
+							<JourneyPatternRef ref="sjp1" version="any"/>
+							<OperatorRef ref="ch:1:Operator:33" version="any"/>
+							<LineRef ref="ch:1:slnid:1024440" version="any"/>
+							<DirectionType>inbound</DirectionType>
+							<passingTimes>
+								<TimetabledPassingTime id="tpt1" version="any">
+									<PointInJourneyPatternRef ref="spijp1" version="any"/>
+									<DepartureTime>10:35:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="tpt2" version="any">
+									<PointInJourneyPatternRef ref="spijp2" version="any"/>
+									<ArrivalTime>10:45:00</ArrivalTime>
+									<DepartureTime>10:48:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="tpt3" version="any">
+									<PointInJourneyPatternRef ref="spijp3" version="any"/>
+									<ArrivalTime>10:54:00</ArrivalTime>
+								</TimetabledPassingTime>
+							</passingTimes>
+						</ServiceJourney>
+					</vehicleJourneys>
+					<trainNumbers>
+						<TrainNumber id="ch:1:TrainNumber:99999" version="any">
+							<ForAdvertisement>99999</ForAdvertisement>
+						</TrainNumber>
+					</trainNumbers>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
