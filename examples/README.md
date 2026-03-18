@@ -20,6 +20,7 @@ This example models the basic splitting of a train with 3 'ServiceJourney'
 
 [Link](NeTEx-Bern-Spiez-Zweisimmen-o-Brig-PassingTime.xml)
 
-### 
+### Example with ServiceFacilities
+<Description>
 
 
