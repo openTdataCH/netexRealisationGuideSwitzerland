@@ -2,6 +2,8 @@
 # NeTEx realisation guide Switzerlad
 We work here to create the next NeTEX realisation guide
 
+## Profile 2.0 draft
+[Start the document](docs/README.md)
 ## Folder structure
 * .github: scripts and workflows
 * docs: The profile
@@ -9,6 +11,8 @@ We work here to create the next NeTEX realisation guide
 * examples: all XML examples
 * mgmt: Handling of this repo
 * README.md: the starting file
+
+## Changelog
 
 ## Roadmap
 * 2026-4: repo ready, moved to MD
