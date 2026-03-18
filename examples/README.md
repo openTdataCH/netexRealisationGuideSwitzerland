@@ -88,3 +88,5 @@ The following examples are experimental. They are NOT to be used as of now as go
 ### Minimalistic data for import into INFO+
 We consider to use a minimalistic version for importation in INFO+. All basic data (Line, site model, operators) are already known to SKI / Atlas. So we don't need them in the import. We still want valid files.
 
+[Minimal Template Journey](Experimental_Minimal_TemplateJourney_Passingtime.xml)
+
