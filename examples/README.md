@@ -29,14 +29,14 @@ This example models the basic splitting of a train with 3 'ServiceJourney'
 ### Example of a rail jounrney with ServiceFacilities Bern | Zürich
 This example contains a rail jounrey with a variety of ServiceFacilities
 
-[link](examples/Netex_Bern_Olten_Zürich3.xml)
+[Link](examples/Netex_Bern_Olten_Zürich3.xml)
 
 ## Basic ThroughJourney
 
 ### Example of an international rail with through journey Interlanken | Basel SBB | Basel Bad | Freiburg in Breisach (D) 
 This is an example of a "ThroughJourney" or "Durchbindung" traversering two countries
 
-[link](examples/Netex_Interlaken_BS_Freiburg_Breisach_Durchbindung_V.3.xml)
+[Link](examples/Netex_Interlaken_BS_Freiburg_Breisach_Durchbindung_V.3.xml)
 
 
 
