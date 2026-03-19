@@ -8,7 +8,7 @@ The 1.x series of the Swiss profile were CALL based.
 ##Basic Rail Jounrney
 
 ### Example of a normal rail jounrey train Spiez - Interlaken Ost with various Quay combinations
-[link](
+[link](examples/Netex_Spiez_Interlaken_Ost_ Version1.2.xml)
 
 ### Example splitting train Bern - Zweisimmen | Brig
 <Description>
