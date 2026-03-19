@@ -4,8 +4,11 @@ This  folder contains the relevante examples for the realisation guide 2.0 based
 ## Call Based (DEPRECIATED)
 The 1.x series of the Swiss profile were CALL based. 
 
-### Example train Spiez - Interlaken Ost
-<Description>
+
+##Basic Rail Jounrney
+
+### Example of a normal rail jounrey train Spiez - Interlaken Ost with various Quay combinations
+[link](
 
 ### Example splitting train Bern - Zweisimmen | Brig
 <Description>
@@ -21,15 +24,23 @@ This example models the basic splitting of a train with 3 'ServiceJourney'
 
 ### Example with international connection
 
-### Example with ServiceFacilities
-<Description>
+## ServiceFacilities
 
-## More complete examples
+### Example of a rail jounrney with ServiceFacilities Bern | Zürich
+This example contains a rail jounrey with a variety of ServiceFacilities
 
-### Example of an international rail with through journey
+[link](examples/Netex_Bern_Olten_Zürich3.xml)
+
+## Basic ThroughJourney
+
+### Example of an international rail with through journey Interlanken | Basel SBB | Basel Bad | Freiburg in Breisach (D) 
 This is an example of a "ThroughJourney" or "Durchbindung" traversering two countries
 
 [link](examples/Netex_Interlaken_BS_Freiburg_Breisach_Durchbindung_V.3.xml)
+
+
+
+## More complete examples
 
 
 ## Full use of SID4PT
