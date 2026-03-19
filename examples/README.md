@@ -26,8 +26,10 @@ This example models the basic splitting of a train with 3 'ServiceJourney'
 
 ## More complete examples
 
-### International rail with "Durchbindung"
-<Description>
+### Example of an international rail with through journey
+This is an example of a "ThroughJourney" or "Durchbindung" traversering two countries
+
+[link](examples/Netex_Interlaken_BS_Freiburg_Breisach_Durchbindung_V.3.xml)
 
 
 ## Full use of SID4PT
