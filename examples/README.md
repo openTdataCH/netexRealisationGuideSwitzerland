@@ -5,7 +5,7 @@ This  folder contains the relevante examples for the realisation guide 2.0 based
 The 1.x series of the Swiss profile were CALL based. 
 
 
-##Basic Rail Jounrney
+## Basic Rail Jounrney
 
 ### Example of a normal rail jounrey train Spiez - Interlaken Ost with various Quay combinations
 [link](examples/Netex_Spiez_Interlaken_Ost_ Version1.2.xml)
