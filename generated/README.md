@@ -1,4 +1,5 @@
-# Generating NeTEx Documentation
+
+# Generating OJP Documentation
 
 This document describes the generation of documentation for the OJP XML schemas. There are two goals:
 
