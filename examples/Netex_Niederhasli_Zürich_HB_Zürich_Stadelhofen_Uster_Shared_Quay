@@ -1,1 +1,431 @@
-Netex_Niederhasli_Zürich_HB_Zürich_Stadelhofen_Uster_Shared_Quay
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Flexible Quay 
+     Fahrt von Niederhasli nach Uster via Zürich HB mit multiple flexible Quay 
+     Daten:
+Z*  19521  00011  
+8503314 Niederhasli                        00640              
+8503000 Zürich HB                   00700  00705               
+8503003 Zürich Stadelhofen          00708  00710
+8503125 Uster                       00730
+
+Assign a passenger-facing Notice (“Track 41 or 42”) to the Zürich HB for a specific ServiceJourney via 
+a NoticeAssignment (using StartPointInPatternRef/EndPointInPatternRef), while mapping a shared 
+platform Quay (“41/42”); timetable times are expressed using passing times only.
+
+Gleis 43 ch:1:sloid:3000:503:41
+Gleis 44 ch:1:sloid:3000:503:42 -->
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/u246863/OneDrive%20-%20SBB/02%20-%20Netex/GIThub/NeTEx-next/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-02-19T10:00:00Z</PublicationTimestamp>
+	<ParticipantRef>SBB</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame:J26" version="any">
+			<ValidBetween>
+				<FromDate>2025-12-14T00:00:00</FromDate>
+				<ToDate>2026-12-13T23:59:59</ToDate>
+			</ValidBetween>
+			<frames>
+				<!-- Resource Frame -->
+				<ResourceFrame id="ch:1:ResourceFrame:j26" version="any">
+					<responsibilitySets>
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:SBB" version="any">
+							<Name>SBB</Name>
+							<PrivateCode>SBB</PrivateCode>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:SBB:1" version="any">
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:11" version="any"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:SBB:2" version="any">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:11" version="any"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="any" nameOfClass="TypeOfProductCategory">
+							<Name>ProductCategories</Name>
+							<values>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:S" version="any">
+									<Name>S-Bahn</Name>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<Operator id="ch:1:Operator:11" version="any">
+							<keyList>
+								<KeyValue>
+									<Key>GO</Key>
+									<Value>11</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SBOID</Key>
+									<Value>ch:1:sboid:1100112</Value>
+								</KeyValue>
+							</keyList>
+							<PrivateCode>11</PrivateCode>
+							<Name>SBB</Name>
+							<ShortName>SBB</ShortName>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+				<!-- Site Frame -->
+				<SiteFrame id="ch:1:SiteFrame:j26" version="any">
+					<stopPlaces>
+						<!-- Niederhasli -->
+						<StopPlace id="ch:1:sloid:3314" version="any">
+							<ValidBetween>
+								<FromDate>2025-12-15T00:00:00</FromDate>
+								<ToDate>2026-12-13T23:59:59</ToDate>
+							</ValidBetween>
+							<alternativeTexts>
+								<AlternativeText attributeName="Text">
+									<Text lang="de">Niederhasli</Text>
+								</AlternativeText>
+							</alternativeTexts>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8503314</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:3314</Value>
+								</KeyValue>
+							</keyList>
+							<Name>Niederhasli</Name>
+							<ShortName lang="de">8503314</ShortName>
+							<PrivateCode>8503314</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>8.4895165</Longitude>
+									<Latitude>47.4781314</Latitude>
+									<Altitude>567</Altitude>
+								</Location>
+							</Centroid>
+							<Weighting>preferredInterchange</Weighting>
+							<!-- Quays in StopPlace ankern und werden von StopAssignments referenziert-->
+							<quays>
+								<Quay id="ch:1:sloid:3314:0:1" version="any">
+									<Name>Gleis 1</Name>
+									<PublicCode>1</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<!-- Zürich HB -->
+						<StopPlace id="ch:1:sloid:3000" version="any">
+							<ValidBetween>
+								<FromDate>2025-12-15T00:00:00</FromDate>
+								<ToDate>2026-12-13T23:59:59</ToDate>
+							</ValidBetween>
+							<alternativeTexts>
+								<AlternativeText attributeName="Text">
+									<Text lang="de">Zürich HB</Text>
+								</AlternativeText>
+							</alternativeTexts>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8503000</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:3000</Value>
+								</KeyValue>
+							</keyList>
+							<Name>Zürich HB</Name>
+							<ShortName lang="de">8503000</ShortName>
+							<PrivateCode>8503000</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>8.5402123</Longitude>
+									<Latitude>47.3781766</Latitude>
+									<Altitude>407</Altitude>
+								</Location>
+							</Centroid>
+							<Weighting>preferredInterchange</Weighting>
+							<!-- Quas in StopPlace are defined here which are referenced from StopAssignments -->
+							<quays>
+							<!-- Platform 41/42 show the Text "Gleis 41 or 42" are shown as a Notice in the TimeTableFrame -->
+								<Quay id="ch:1:sloid:3000:503:41_42" version="any">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:3000:503:41_42</Value>
+										</KeyValue>
+									</keyList>
+									<Name>Bahnsteig 41/42</Name>
+									<PublicCode>41/42</PublicCode>
+								</Quay>
+								<Quay id="ch:1:sloid:3000:503:41" version="any">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:3000:503:41</Value>
+										</KeyValue>
+									</keyList>
+									<Name>Gleis 41</Name>
+									<PublicCode>41</PublicCode>
+								</Quay>
+								<Quay id="ch:1:sloid:3000:503:42" version="any">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:3000:503:42</Value>
+										</KeyValue>
+									</keyList>
+									<Name>Gleis 42</Name>
+									<PublicCode>42</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<!-- Zürich Stadelhofen -->
+						<StopPlace id="ch:1:sloid:3003" version="any">
+							<ValidBetween>
+								<FromDate>2025-12-15T00:00:00</FromDate>
+								<ToDate>2026-12-13T23:59:59</ToDate>
+							</ValidBetween>
+							<alternativeTexts>
+								<AlternativeText attributeName="Text">
+									<Text lang="de">Zürich Stadelhofen</Text>
+								</AlternativeText>
+							</alternativeTexts>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8503003</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:3003</Value>
+								</KeyValue>
+							</keyList>
+							<Name>Zürich Stadelhofen</Name>
+							<ShortName lang="de">8503003</ShortName>
+							<PrivateCode>8503003</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>8.5484890</Longitude>
+									<Latitude>47.366609</Latitude>
+									<Altitude>409</Altitude>
+								</Location>
+							</Centroid>
+							<Weighting>preferredInterchange</Weighting>
+							<quays>
+								<Quay id="ch:1:sloid:3003:2:2" version="any">
+									<Name>Gleis 2</Name>
+									<PublicCode>2</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<!-- Uster -->
+						<StopPlace id="ch:1:sloid:3125" version="any">
+							<ValidBetween>
+								<FromDate>2025-12-15T00:00:00</FromDate>
+								<ToDate>2026-12-13T23:59:59</ToDate>
+							</ValidBetween>
+							<alternativeTexts>
+								<AlternativeText attributeName="Text">
+									<Text lang="de">Uster</Text>
+								</AlternativeText>
+							</alternativeTexts>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8503125</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:3125</Value>
+								</KeyValue>
+							</keyList>
+							<Name>Uster</Name>
+							<ShortName lang="de">8503125</ShortName>
+							<PrivateCode>8503125</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>8.717</Longitude>
+									<Latitude>47.349</Latitude>
+									<Altitude>450</Altitude>
+								</Location>
+							</Centroid>
+							<Weighting>preferredInterchange</Weighting>
+							<!-- Quays in StopPlace ankern und werden von StopAssignments referenziert-->
+							<quays>
+								<Quay id="ch:1:sloid:3125:2:2" version="any">
+									<Name>Gleis 2</Name>
+									<PublicCode>2</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+					</stopPlaces>
+				</SiteFrame>
+				<!-- Service Frame -->
+				<ServiceFrame id="ch:1:ServiceFrame:j26" version="any">
+					<lines>
+						<Line id="ch:1:slnid:1024337" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
+							<ValidBetween>
+								<FromDate>2025-12-14T00:00:00</FromDate>
+								<ToDate>2026-12-13T23:59:59</ToDate>
+							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>SLNID</Key>
+									<Value>ch:1:slnid:1024337</Value>
+								</KeyValue>
+							</keyList>
+							<Name>SBB</Name>
+							<ShortName>SBB</ShortName>
+						</Line>
+					</lines>
+					<!-- ScheduledStopPoints -->
+					<scheduledStopPoints>
+						<ScheduledStopPoint id="ch:1:ScheduledStopPointRefRef:3314" version="any">
+							<Name lang="de">Niederhasli</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:ScheduledStopPointRefRef:3000" version="any">
+							<Name lang="de">Zürich HB</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:ScheduledStopPointRefRef:3003" version="any">
+							<Name lang="de">Zürich Stadelhofen</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:ScheduledStopPointRefRef:3125" version="any">
+							<Name lang="de">Uster</Name>
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+					<!-- Stop Assignments -->
+					<stopAssignments>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:3314:1" version="any">
+							<ScheduledStopPointRef ref="ch:1:ScheduledStopPointRefRef:3314" version="any"/>
+							<StopPlaceRef ref="ch:1:sloid:3314" version="any"/>
+							<QuayRef ref="ch:1:sloid:3314:0:1" version="any"/>
+						</PassengerStopAssignment>
+						<!--  Here we attach it to the Zürich HB stop of the ServiceJourney 
+							  via a NoticeAssignment using StartPointInPatternRef/EndPointInPatternRef; the PassengerStopAssignment references 
+							  a shared Quay (PublicCode “41/42”), and the timetable uses only passingTimes (TimetabledPassingTime).    -->
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8503000:1" version="any">
+							<ScheduledStopPointRef ref="ch:1:ScheduledStopPointRefRef:3000" version="any"/>
+							<StopPlaceRef ref="ch:1:sloid:3000" version="any"/>
+							<QuayRef ref="ch:1:sloid:3000:503:41_42" version="any"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8503003:1" version="any">
+							<ScheduledStopPointRef ref="ch:1:ScheduledStopPointRefRef:3003" version="any"/>
+							<StopPlaceRef ref="ch:1:sloid:3003" version="any"/>
+							<QuayRef ref="ch:1:sloid:3003:2:2" version="any"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8503125:1" version="any">
+							<ScheduledStopPointRef ref="ch:1:ScheduledStopPointRefRef:3125" version="any"/>
+							<StopPlaceRef ref="ch:1:sloid:3125" version="any"/>
+							<QuayRef ref="ch:1:sloid:3125:2:2" version="any"/>
+						</PassengerStopAssignment>
+					</stopAssignments>
+					<!-- JourneyPattern -->
+					<journeyPatterns>
+						<JourneyPattern id="ch:1:JP:100014:4208-003A" version="any">
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1024337" version="any"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="ch:1:StopPointinServiceJourney:100014:1" version="any" order="1">
+									<ScheduledStopPointRef ref="ch:1:ScheduledStopPointRefRef:3314" version="any"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<!-- we create a Notice (“Track 41 or 42”) and attach it to the Zürich HB stop of the ServiceJourney 
+                                via a NoticeAssignment using StartPointInPatternRef/EndPointInPatternRef; the PassengerStopAssignment references a shared Quay (PublicCode “41/42”), 
+                                 and the timetable uses only passingTimes (TimetabledPassingTime)-->
+								<StopPointInJourneyPattern id="ch:1:StopPointinServiceJourney:100014:2" version="any" order="2">
+									<ScheduledStopPointRef ref="ch:1:ScheduledStopPointRefRef:3000" version="any"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:StopPointinServiceJourney:100014:3" version="any" order="3">
+									<ScheduledStopPointRef ref="ch:1:ScheduledStopPointRefRef:3003" version="any"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:StopPointinServiceJourney:100014:4" version="any" order="4">
+									<ScheduledStopPointRef ref="ch:1:ScheduledStopPointRefRef:3125" version="any"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+						</JourneyPattern>
+					</journeyPatterns>
+				</ServiceFrame>
+				<!-- Service Calendar Frame -->
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="any">
+					<validityConditions>
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:j26" version="any">
+							<FromDate>2025-12-14T00:00:00</FromDate>
+							<ToDate>2026-12-13T23:59:59</ToDate>
+							<ValidDayBits>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000</ValidDayBits>
+						</AvailabilityCondition>
+					</validityConditions>
+				</ServiceCalendarFrame>
+				<!-- Timetable Frame -->
+				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="any">
+					<vehicleJourneys>
+						<ServiceJourney id="ch:1:sjyid:100014:4208-003A" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="any"/>
+							</validityConditions>
+							<TransportMode>rail</TransportMode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:S" version="any"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<JourneyPatternRef ref="ch:1:JP:100014:4208-003A" version="any"/>
+							<OperatorRef ref="ch:1:Operator:11" version="any"/>
+							<LineRef ref="ch:1:slnid:1024337" version="any"/>
+							<DirectionType>outbound</DirectionType>
+							<passingTimes>
+								<TimetabledPassingTime id="TTPT1" version="any">
+									<PointInJourneyPatternRef ref="ch:1:StopPointinServiceJourney:100014:1" version="any"/>
+									<DepartureTime>06:40:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="TTPT2" version="any">
+									<PointInJourneyPatternRef ref="ch:1:StopPointinServiceJourney:100014:2" version="any"/>
+									<ArrivalTime>07:00:00</ArrivalTime>
+									<DepartureTime>07:05:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="TTPT3" version="any">
+									<PointInJourneyPatternRef ref="ch:1:StopPointinServiceJourney:100014:3" version="any"/>
+									<ArrivalTime>07:08:00</ArrivalTime>
+									<DepartureTime>07:10:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="TTPT4" version="any">
+									<PointInJourneyPatternRef ref="ch:1:StopPointinServiceJourney:100014:4" version="any"/>
+									<ArrivalTime>07:30:00</ArrivalTime>
+								</TimetabledPassingTime>
+							</passingTimes>
+						</ServiceJourney>
+					</vehicleJourneys>
+						<trainNumbers>
+						    <TrainNumber id="ch:1:TrainNumber:7546" version="any">
+							<ForAdvertisement>7546</ForAdvertisement>
+						</TrainNumber>
+					</trainNumbers>
+					<!-- the notices show the arrival of the train on either track 41 or track 42 -->
+					<notices>
+						<Notice id="ch:1:Notice:ZRH_HB_41_42" version="any">
+							<Text lang="de">Gleis 41 oder 42</Text>
+						</Notice>
+					</notices>
+					<noticeAssignments>
+						<NoticeAssignment id="ch:1:NoticeAssignment:ZRH_HB_41_42" version="any">
+							<NoticeRef ref="ch:1:Notice:ZRH_HB_41_42" version="any"/>
+							<ServiceJourneyRef ref="ch:1:sjyid:100014:4208-003A" version="any"/>
+							<StartPointInPatternRef ref="ch:1:StopPointinServiceJourney:100014:2" version="any"/>
+							<EndPointInPatternRef ref="ch:1:StopPointinServiceJourney:100014:2" version="any"/>
+							<Advertised>true</Advertised>
+						</NoticeAssignment>
+					</noticeAssignments>
+					<occupancies>
+						<OccupancyView id="ch:1:OccupancyView.dummy" version="any"/>
+					</occupancies>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
