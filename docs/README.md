@@ -1,6 +1,6 @@
 # Swiss profile 2.0 for NeTEx 2.0
 
-- Introduction & Roadmap
+- [Introduction & Roadmap](01_intro_roadmap.md)
 - Basic concepts of NeTEx
 - Guiding principles for the profile
 - File structure, encoding etc
