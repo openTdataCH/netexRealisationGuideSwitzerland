@@ -48,10 +48,10 @@ We have a [set of examples](../examples/README.md) that show how to create use c
 tbd
 
 ## Impressum
-Authors: tbd
-Status: tbd
-Last change: tbd
-Contact: info.fachbus@sbb.ch
+* Authors: tbd
+* Status: tbd
+* Last change: tbd
+* Contact: info.fachbus@sbb.ch
 
 ## Copyright
 The document is free. Proliferation in unchanged form is explicitly supported.
