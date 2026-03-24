@@ -38,7 +38,7 @@ This document describes the way in which the NeTEx standard is specifically appl
   - Modes
   - ServiceAttribute 
 - Other profiles
-- Resources and references
+- [Resources and references](Annex_resources_references.md)
 
 ## Impressum
 Contact: info.fachbus@sbb.ch
