@@ -41,6 +41,12 @@ This document describes the way in which the NeTEx standard is specifically appl
 - Other profiles
 - [Resources and references](Annex_resources_references.md)
 
+## Examples
+We have a [set of examples](examples/README.md) that show how to create use cases with the realisation guide.
+
+## Tools
+tbd
+
 ## Impressum
 Authors: tbd
 Status: tbd
