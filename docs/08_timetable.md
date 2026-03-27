@@ -18,7 +18,10 @@ The `TimeTableFrame` contains the following allowed elements:
 * serviceFacilitySets
 * typesOfService
 * journeyMeetings
-* interchangeRules 
+* interchangeRules
+
+* [Template](../examples/templates/TimetableFrame.xml)
+
 
 ## ServiceJourney
 
