@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron"
+            xmlns:netex="http://www.netex.org.uk/netex">
+    <sch:pattern id="StopPlace-restrictions">
+
+        <!-- Disallow Weighting -->
+        <sch:rule context="netex:StopPlace">
+            <sch:assert test="not(netex:Weighting)">
+                Weighting must not be present.
+            </sch:assert>
+        </sch:rule>
+
+        <!-- Optional: ensure JustForFun is allowed (or present) -->
+        <sch:rule context="netex:StopPlace/netex:Extensions">
+            <sch:assert test="count(netex:JustForFun) &lt;= 1">
+                At most one JustForFun element is allowed under Extensions.
+            </sch:assert>
+        </sch:rule>
+
+        <!-- AlternativeNameType.Name is already required structurally -->
+    </sch:pattern>
+</sch:schema>

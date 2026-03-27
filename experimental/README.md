@@ -1,52 +1,8 @@
 # Experimental Stuff
 
-## Pandoc
-
-We can use Pandoc for: 
-- Initial conversion of the Word document
-- Conversion of Markdown to other formats for publishing
-
-### Pandoc Installation
-Install [pandoc](https://pandoc.org/installing.html).
-
-### Word to Markdown
-
-`pandoc NeTEx.docx -t gfm -o rg2.md --extract-media=media`
-
-Options:
-- `-t gfm`: github type. See [Markdown Github Flavour Spec](https://github.github.com/gfm/).
-- `-o rg2.md` the Markdown output file
-- `extract-media=media`: extract media files to directory `media`
-
-#### Experimental Pandoc Examples
-
-| File                              | Type | Description                                                                                                              | 
-|-----------------------------------|------|--------------------------------------------------------------------------------------------------------------------------|
-| StopPlace-pandoc-gfm.md           | `gfm` | Extract from markdown created with `pandoc NeTEx.docx -t gfm -o rg2.md --extract-media=media` |
-| StopPlace-pandoc-gfm-corrected.md | `gfm` | Edited gfm example.<br/><ul><li>Tables in Markdown<li>Links to anchors                                                   |
-| StopPlace-pandoc-markdown.md      | `markdown` | Extract from markdown created with `pandoc NeTEx.docx -t markdown -o rg2.md --extract-media=media`                       |
-| StopPlace-pandoc-markdown2.md     | `markdown` |  See Markdown Method 2
-
-**Markdown Method 2**
-
-``` shell
-pandoc NeTEx.docx from=docx
---to=markdown+pipe_tables+grid_tables+multiline_tables+table_captions+definition_lists+footnotes+tex_math_dollars+smart-auto_identifiers
-  --markdown-headings=atx
-  --wrap=none
-  --eol=lf
-  --extract-media=x
-  --reference-link
-  --reference-location=document
-  --track-changes=accept
-  -o output.md
-```
-### XSD to Markdown
-
-It is relatively easy to write a script to generate a Markdown table from XSD: 
-
-`python xsd2md.py StopPlace.xsd StopPlace > StopPlace.md`
-
-According examples for `xsd2md.py`, `StopPlace.xsd` and the generated Markdown are included in this directory of the repo. 
-The content of the Documentation column is extracted from `documentation` elements inside the elements of the XSD.
-
+| Directory     | Description                                                                                       | More Info                                          |
+|---------------|---------------------------------------------------------------------------------------------------|----------------------------------------------------|
+| pandoc        | Use pandoc to convert entire Word RG document to Markdown.                                        | [./pandoc/README.md](./pandoc/README.md)           |
+| xcore-basex   | Adapted xquery scripts from OJP (xcore) capable to generate HTML docs from entire NeTEx schema.   | [./xcore-basex/README.md](./xcore-basex/README.md) |
+| schematron    | Use a schema generator to generate a profile schema from a schematron file and an orginal schema. | [./schematron/README.md](./schematron/README.md)   |
+| xsd2md        | Example python script `xsd2md.py` that generates Markdown from a schema element.                  | [./xsd2md/README.md](./xsd2md/README.md)   |
