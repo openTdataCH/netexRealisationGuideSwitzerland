@@ -8,8 +8,8 @@
 | xsd2md        | Example python script `xsd2md.py` that generates Markdown from a schema element.                  | [./xsd2md/README.md](./xsd2md/README.md)   |
 
 
-<!-- ![Diagram Image Link](./toolchain-docs.puml) -->
+<!-- ![Documentation Toolchain](./toolchain-docs.puml) -->
 
-<!-- ![Diagram Image Link](./toolchain-schema.puml) -->
+<!-- ![Schema Toolchain](./toolchain-schema.puml) -->
 
-<!-- ![Diagram Image Link](./toolchain-validation.puml) -->
+<!-- ![Validation Toolchain](./toolchain-validation.puml) -->
