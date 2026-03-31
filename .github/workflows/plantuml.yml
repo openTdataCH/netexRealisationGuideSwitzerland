@@ -1,0 +1,46 @@
+name: Embed PlantUML in Markdown
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**/*.md'
+      - '**/*.puml'
+  pull_request:
+    paths:
+      - '**/*.md'
+      - '**/*.puml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  embed-puml-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Embed PlantUML inside Markdown
+        uses: alessandro-marcantoni/puml-markdown@v0.1.1
+        # If the action supports inputs, add them under "with:" here.
+
+      # Option A: Commit back directly (avoids manual steps)
+      - name: Commit and push changes (if any)
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: embed PlantUML diagrams [skip ci]"
+          # Prevents infinite loops; the [skip ci] stops re-triggering the workflow
+          skip_dirty_check: false
+
+      # Option B (alternative): Create a PR with the generated assets instead of pushing:
+      # - name: Create Pull Request with changes
+      #   if: github.event_name == 'pull_request'
+      #   uses: peter-evans/create-pull-request@v6
+      #   with:
+      #     commit-message: "chore: embed PlantUML diagrams"
+      #     title: "Embed PlantUML diagrams"
+      #     body: "This PR contains images and Markdown updates generated from PlantUML code blocks."
