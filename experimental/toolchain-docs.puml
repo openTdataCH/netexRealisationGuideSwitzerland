@@ -1,0 +1,39 @@
+@startuml
+
+component tables_generator #ccccff
+component pandoc #ccccff
+artifact tables.md
+artifact netex_rg.doc
+artifact netex_rg.md
+artifact profile.xsd #cacaca
+
+note right of tables_generator
+Variants:
+- xcore (basex, xquery) adapted to NeTEx
+- Python script
+end note
+
+note right of pandoc
+run once
+end note
+
+note left of netex_rg.md
+- edited manually
+- main file includes multiple other files
+end note
+
+note right of tables.md
+- multiple files
+- hierarchy:
+  namespace/types/StopPlaceType.md
+  namespace/elements/StopPlace.md
+  namespace/groups/...
+end note
+
+tables_generator --> tables.md
+netex_rg.md --> tables.md : includes
+netex_rg.doc <-- pandoc : converts from
+pandoc --> netex_rg.md : converts to
+profile.xsd --> tables_generator : generates tables from
+
+@enduml

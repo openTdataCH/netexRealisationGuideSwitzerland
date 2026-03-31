@@ -1,0 +1,32 @@
+@startuml
+
+component schema_generator #ccccff
+artifact profile_spec.xml
+artifact netex.xsd
+artifact profile.xsd #cacaca
+
+note right of schema_generator
+Variants:
+- Python script
+    end note
+
+note right of profile_spec.xml
+Variants:
+- Example/Template
+- Schematron
+- XML Document
+end note
+
+note right of profile.xsd
+Schema of the profile
+end note
+
+note right of netex.xsd
+Original NeTEx Schema
+end note
+
+profile_spec.xml <-- schema_generator : applies
+schema_generator --> profile.xsd : generates
+netex.xsd <-- profile_spec.xml : refers to
+
+@enduml
