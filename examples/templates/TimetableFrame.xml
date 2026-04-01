@@ -1,20 +1,35 @@
-<TimetableFrame id="ch:1:TimetableFrame:j23" version="any">
-<vehicleJourneys>
- <!-- content of vehicleJourneys -- >
-</vehicleJourneys>
-<trainNumbers>
- <!-- content of trainNumbes -- >
-</trainNumbers>
-<serviceFacilitySets>
- <!-- content of serviceFacilitySets -- >
-</serviceFacilitySets>
-<typesOfService>
- <!-- content of TypesOfService -- >
-</typesOfService>
-<journeyMeetings>
- <!-- content of JourneyMeetings -- >
-</journeyMeetings>
-<interchangeRules>
- <!-- content of interchangeRules -- >
-</interchangeRules>
-</TimetableFrame>
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>CH:BLT</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="CH:BLT:Composite:50_110" version="any">
+			<frames>
+				<!-- ch-start: Example starts here -->
+				<TimetableFrame id="ch:1:TimetableFrame:j23" version="any">
+					<vehicleJourneys>
+						<!-- content of vehicleJourneys -->
+						<VehicleJourney id="generated" version="1">
+						</VehicleJourney>
+						<TemplateServiceJourney id="generated2" version="1">
+						</TemplateServiceJourney>
+					</vehicleJourneys>
+					<trainNumbers>
+						<!-- content of trainNumbes -->
+						<TrainNumber id="2123" version="1">
+							</TrainNumber>
+					</trainNumbers>
+					<typesOfService>
+						<TypeOfService id="ch:1:TypeOfService:1" version="any">
+							<!-- note: This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. -->
+							<Name lang="en">PublicJourney</Name>
+							<ShortName lang="en">N</ShortName>
+							<PrivateCode>1</PrivateCode>
+						</TypeOfService>
+					</typesOfService>
+				</TimetableFrame>
+				<!-- ch-stop: example stops here -->
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
