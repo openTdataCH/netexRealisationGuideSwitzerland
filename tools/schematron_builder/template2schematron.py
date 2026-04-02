@@ -10,7 +10,6 @@ Usage (non-positional arguments):
         -x XSD_FILE \
         -i INPUT_FOLDER \
         -o OUTPUT_FILE \
-        [-n DEFAULT_NAMESPACE] \
         [-v]
 
 Example:
@@ -19,7 +18,6 @@ Example:
         --xsd schema.xsd \
         --input-folder fragments \
         --output out.sch \
-        --default-namespace http://www.netex.org.uk/netex \
         --verbose
 """
 
@@ -74,7 +72,7 @@ def usage():
     print(
         "Usage: python template2schematron.py "
         "-t TEMPLATE_FILE -x XSD_FILE -i INPUT_FOLDER -o OUTPUT_FILE "
-        "[-n DEFAULT_NAMESPACE] [-v]",
+        "[-v]",
         file=sys.stderr,
     )
     sys.exit(2)
@@ -229,22 +227,17 @@ from xml.etree.ElementTree import Element as OUT_Element, SubElement as OUT_SubE
 
 SCHEMATRON_NS = "http://purl.oclc.org/dsdl/schematron"
 SCH_PREFIX = "sch"
-DOC_NS_PREFIX = "ns"  # prefix for the validated document's default namespace
 
 
 class SchematronBuilder:
-    def __init__(self, xsd_path, default_namespace):
+    def __init__(self, xsd_path):
         self.xsd_path = xsd_path
-        self.default_namespace = default_namespace
 
-        # Root with explicit prefix and queryBinding (xslt1 as requested)
-        # Also declare the target document namespace as ns:...
+        # Root with explicit prefix and queryBinding (xslt2)
         attrib = {
             f'xmlns:{SCH_PREFIX}': SCHEMATRON_NS,
-            'queryBinding': 'xslt1',
+            'queryBinding': 'xslt2',
         }
-        if self.default_namespace:
-            attrib[f'xmlns:{DOC_NS_PREFIX}'] = self.default_namespace
 
         self.schema = OUT_Element(
             f'{SCH_PREFIX}:schema',
@@ -260,19 +253,14 @@ class SchematronBuilder:
         parent.append(OUT_ET.Comment(' ' + text + ' '))
 
     def _ns_name(self, element_name):
-        """Return the element name with ns: prefix if a default namespace is defined."""
-        if not element_name or element_name == '.':
-            return element_name
-        if self.default_namespace:
-            return f'{DOC_NS_PREFIX}:{element_name}'
+        """Return the element name unchanged (no namespace prefixing)."""
         return element_name
 
     def _ns_context(self, context_xpath):
-        """Namespace-qualify context if it's an element name, keep '.' as is."""
+        """Return context unchanged, except keep '.' as-is."""
         if context_xpath == '.' or not context_xpath:
             return '.'
-        # We only expect simple element names as contexts here
-        return self._ns_name(context_xpath)
+        return context_xpath
 
     def add_rule_presence(self, context_xpath, element_name, note_text=None):
         ctx = self._ns_context(context_xpath)
@@ -283,7 +271,7 @@ class SchematronBuilder:
         OUT_SubElement(
             rule,
             f'{SCH_PREFIX}:assert',
-            attrib={'test': f'count(.//{ns_elem}) &gt; 0'}
+            attrib={'test': f'count(.//{ns_elem}) > 0'}
         ).text = f'{element_name} must be present'
         self.rules_created += 1
 
@@ -338,7 +326,7 @@ class SchematronBuilder:
         """
         Add a rule that checks that an element with the same name and @id = id_value exists.
         Example test for element_name='TypeOfProductCategory', id_value='12312':
-            count(//ns:TypeOfProductCategory[@id='12312']) > 0
+            count(//TypeOfProductCategory[@id='12312']) > 0
         """
         if not id_value:
             # No id on the element, nothing we can check
@@ -355,7 +343,7 @@ class SchematronBuilder:
         self.add_comment_to_rule(rule, full_note)
 
         ns_elem = self._ns_name(element_name)
-        test_expr = f"count(//{ns_elem}[@id='{id_value}']) &gt; 0"
+        test_expr = f"count(//{ns_elem}[@id='{id_value}']) > 0"
         OUT_SubElement(
             rule,
             f'{SCH_PREFIX}:assert',
@@ -368,9 +356,13 @@ class SchematronBuilder:
     def tostring(self):
         # Pretty-print before serializing
         indent_et(self.schema)
-        return '<?xml version="1.0" encoding="UTF-8"?>\n' + OUT_ET.tostring(
-            self.schema, encoding='unicode'
-        )
+        xml = OUT_ET.tostring(self.schema, encoding='unicode')
+
+        # Unescape '>' only inside sch:assert/@test attributes
+        # This keeps the XML valid while ensuring the operator is literal.
+        xml = re.sub(r'(test=")([^"]*)(")', lambda m: m.group(1) + m.group(2).replace('&gt;', '>') + m.group(3), xml)
+
+        return '<?xml version="1.0" encoding="UTF-8"?>\n' + xml
 
 
 def find_files_for_candidate(input_folder, candidate_filename):
@@ -619,11 +611,6 @@ def parse_args(argv):
         help='Output Schematron (.sch) file.'
     )
     parser.add_argument(
-        '-n', '--default-namespace',
-        default='http://www.netex.org.uk/netex',
-        help='Default XML namespace of the validated documents (used as ns: prefix in rules).'
-    )
-    parser.add_argument(
         '-v', '--verbose',
         action='store_true',
         help='Enable verbose logging.'
@@ -642,7 +629,6 @@ def main(argv):
     xsd_path = args.xsd
     input_folder = args.input_folder
     output_path = args.output
-    default_namespace = args.default_namespace
     VERBOSE = args.verbose
 
     if not os.path.isfile(template_path):
@@ -662,7 +648,7 @@ def main(argv):
         )
         regions = [txt]
 
-    builder = SchematronBuilder(xsd_path, default_namespace)
+    builder = SchematronBuilder(xsd_path)
 
     for region in regions:
         wrapped = wrap_fragment(region)
