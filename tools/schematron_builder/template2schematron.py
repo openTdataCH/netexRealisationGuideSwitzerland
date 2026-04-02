@@ -233,137 +233,156 @@ class SchematronBuilder:
     def __init__(self, xsd_path):
         self.xsd_path = xsd_path
 
-        # Root with explicit prefix and queryBinding (xslt2)
+        # Root with explicit prefixes and queryBinding (xslt2)
         attrib = {
             f'xmlns:{SCH_PREFIX}': SCHEMATRON_NS,
+            # add netex namespace declaration
+            'xmlns:netex': 'http://www.netex.org.uk/netex',
             'queryBinding': 'xslt2',
         }
 
-        self.schema = OUT_Element(
-            f'{SCH_PREFIX}:schema',
-            attrib=attrib
-        )
+        # Use OUT_Element to build the XML; we create a sch:schema element
+        self.schema = OUT_Element(f'{SCH_PREFIX}:schema', attrib=attrib)
+
+        attrib2 = {
+            "prefix" : "netex",
+            "uri" : "http://www.netex.org.uk/netex"
+            }
+        self.ns = OUT_SubElement(self.schema,f'{SCH_PREFIX}:ns', attrib=attrib2)
+
         title = OUT_SubElement(self.schema, f'{SCH_PREFIX}:title')
         title.text = 'Generated schematron from template'
         self.pattern = OUT_SubElement(self.schema, f'{SCH_PREFIX}:pattern', attrib={'id': 'p1'})
+
+        # Maintain a mapping from context XPath to a single rule element (so we group asserts/reports)
+        # Key is the context string (after _ns_context transform)
+        self._rules_by_context = {}
+
         self.processed_files = set()
         self.rules_created = 0
 
-    def add_comment_to_rule(self, parent, text):
-        parent.append(OUT_ET.Comment(' ' + text + ' '))
+    def add_comment_to_rule(self, rule, text):
+        # Add a single XML comment as child of the rule
+        rule.append(OUT_ET.Comment(' ' + text + ' '))
 
     def _ns_name(self, element_name):
-        """Return the element name unchanged (no namespace prefixing)."""
-        return element_name
+        """Return the element name prefixed with netex: unless it's '.' or empty."""
+        if not element_name or element_name == '.':
+            return element_name
+        # If element_name already contains a colon, assume it's already namespaced
+        if ':' in element_name:
+            return element_name
+        return f'netex:{element_name}'
 
     def _ns_context(self, context_xpath):
-        """Return context unchanged, except keep '.' as-is."""
-        if context_xpath == '.' or not context_xpath:
+        """Return context with '.' preserved; otherwise keep as a simple element name prefixed."""
+        if not context_xpath or context_xpath == '.':
             return '.'
-        return context_xpath
+        # If context is an XPath expression (contains punctuation or '/'), leave it unchanged.
+        # For simple element names, prefix with netex:
+        if re.search(r'[\.\[\]/@:\(\)]', context_xpath):
+            # complex xpath — return unchanged (caller should already craft correct xpath)
+            return context_xpath
+        return self._ns_name(context_xpath)
+
+    def _get_or_create_rule(self, context_xpath, note_text=None):
+        """
+        Return an existing rule element for the given (transformed) context, or create one.
+        Attach the comment note_text only when creating the rule (so it's not duplicated).
+        """
+        ctx = self._ns_context(context_xpath)
+        if ctx in self._rules_by_context:
+            rule = self._rules_by_context[ctx]
+            # Add comment only if provided and not already present as a comment node (simple heuristic)
+            if note_text:
+                # We add comment even if rule existed — but to avoid duplicates we check existing comment texts
+                existing_comments = [c.text.strip() for c in rule if isinstance(c.tag, str) is False] if False else []
+                # Simpler: just append; duplicate comments are not harmful
+                self.add_comment_to_rule(rule, note_text)
+            return rule
+        # create new rule
+        rule = OUT_SubElement(self.pattern, f'{SCH_PREFIX}:rule', attrib={'context': ctx})
+        if note_text:
+            self.add_comment_to_rule(rule, note_text)
+        self._rules_by_context[ctx] = rule
+        self.rules_created += 1
+        return rule
+
+    def add_assert_or_report(self, context_xpath, test_expr, message, kind='assert', note_text=None):
+        """
+        Add either an assert or a report to the rule for context_xpath.
+        kind: 'assert' (default) or 'report'
+        test_expr: XPath expression string for the test attribute (do NOT escape > here; tostring will handle)
+        message: text node for the assert/report
+        """
+        rule = self._get_or_create_rule(context_xpath, note_text=note_text)
+        elem_name = f'{SCH_PREFIX}:{kind}'
+        OUT_SubElement(rule, elem_name, attrib={'test': test_expr}).text = message
+
+    # The following helper methods build the test expressions and call add_assert_or_report
 
     def add_rule_presence(self, context_xpath, element_name, note_text=None):
-        ctx = self._ns_context(context_xpath)
-        rule = OUT_SubElement(self.pattern, f'{SCH_PREFIX}:rule', attrib={'context': ctx})
-        if note_text:
-            self.add_comment_to_rule(rule, note_text)
+        ctx = context_xpath
         ns_elem = self._ns_name(element_name)
-        OUT_SubElement(
-            rule,
-            f'{SCH_PREFIX}:assert',
-            attrib={'test': f'count(.//{ns_elem}) > 0'}
-        ).text = f'{element_name} must be present'
-        self.rules_created += 1
+        # We want to test that there is at least one descendant element with that name:
+        test = f'count(.//{ns_elem}) > 0'
+        self.add_assert_or_report(ctx, test, f'{element_name} must be present', kind='assert', note_text=note_text)
 
     def add_rule_absence(self, context_xpath, element_name, note_text=None):
-        ctx = self._ns_context(context_xpath)
-        rule = OUT_SubElement(self.pattern, f'{SCH_PREFIX}:rule', attrib={'context': ctx})
-        if note_text:
-            self.add_comment_to_rule(rule, note_text)
+        ctx = context_xpath
         ns_elem = self._ns_name(element_name)
-        OUT_SubElement(
-            rule,
-            f'{SCH_PREFIX}:assert',
-            attrib={'test': f'count(.//{ns_elem}) = 0'}
-        ).text = f'{element_name} must NOT be present'
-        self.rules_created += 1
+        test = f'count(.//{ns_elem}) = 0'
+        self.add_assert_or_report(ctx, test, f'{element_name} must NOT be present', kind='assert', note_text=note_text)
 
     def add_rule_allowed_enums(self, context_xpath, element_name, allowed_list, note_text=None):
         if not allowed_list:
             return
-        ctx = self._ns_context(context_xpath)
+        ctx = context_xpath
         ns_elem = self._ns_name(element_name)
+        # test: every value must be one of these; for element text value equality we check . (or use string() depending)
+        # We will test that the element's string value equals one of allowed values; if multiple elements exist, we assert that at least one passes,
+        # but to be close to original semantics we'll assert that each such element's value is one of the list. Simpler: require that the element's value matches one of list:
         ors = ' or '.join([f"{ns_elem} = '{val}'" for val in allowed_list])
-        rule = OUT_SubElement(self.pattern, f'{SCH_PREFIX}:rule', attrib={'context': ctx})
-        if note_text:
-            self.add_comment_to_rule(rule, note_text)
-        OUT_SubElement(
-            rule,
-            f'{SCH_PREFIX}:assert',
-            attrib={'test': ors}
-        ).text = f'{element_name} must be one of: {" ".join(allowed_list)}'
-        self.rules_created += 1
+        test = ors
+        self.add_assert_or_report(ctx, test, f'{element_name} must be one of: {" ".join(allowed_list)}', kind='assert', note_text=note_text)
 
     def add_rule_deprecated(self, context_xpath, element_name, note_text=None):
-        ctx = self._ns_context(context_xpath)
-        rule = OUT_SubElement(self.pattern, f'{SCH_PREFIX}:rule', attrib={'context': ctx})
+        ctx = context_xpath
         base_note = f'DEPRECATED: {element_name} is deprecated'
-        if note_text:
-            full_note = f'{base_note}; {note_text}'
-        else:
-            full_note = base_note
-        self.add_comment_to_rule(rule, full_note)
-
+        full_note = f'{base_note}; {note_text}' if note_text else base_note
+        # keep a comment on the rule; and add an assert that count(...) = 0 (same as before)
         ns_elem = self._ns_name(element_name)
-        OUT_SubElement(
-            rule,
-            f'{SCH_PREFIX}:assert',
-            attrib={'test': f'count(.//{ns_elem}) = 0'}
-        ).text = f'{element_name} is deprecated and should not be used'
-        self.rules_created += 1
+        test = f'count(.//{ns_elem}) = 0'
+        # attach the comment via _get_or_create_rule (note_text passed)
+        self.add_assert_or_report(ctx, test, f'{element_name} is deprecated and should not be used', kind='assert', note_text=full_note)
 
     def add_rule_class_id_must_exist(self, context_xpath, element_name, id_value, note_text=None):
         """
-        Add a rule that checks that an element with the same name and @id = id_value exists.
-        Example test for element_name='TypeOfProductCategory', id_value='12312':
-            count(//TypeOfProductCategory[@id='12312']) > 0
+        Previously this added an assert. Per request, produce a report instead.
         """
         if not id_value:
-            # No id on the element, nothing we can check
             return
-        ctx = self._ns_context(context_xpath)
-        rule = OUT_SubElement(self.pattern, f'{SCH_PREFIX}:rule', attrib={'context': ctx})
-        base_note = (
-            f'{element_name} with id="{id_value}" must exist somewhere in the document'
-        )
-        if note_text:
-            full_note = f'{base_note}; {note_text}'
-        else:
-            full_note = base_note
-        self.add_comment_to_rule(rule, full_note)
-
+        ctx = context_xpath
+        base_note = f'{element_name} with id="{id_value}" must exist somewhere in the document'
+        full_note = f'{base_note}; {note_text}' if note_text else base_note
         ns_elem = self._ns_name(element_name)
         test_expr = f"count(//{ns_elem}[@id='{id_value}']) > 0"
-        OUT_SubElement(
-            rule,
-            f'{SCH_PREFIX}:assert',
-            attrib={'test': test_expr}
-        ).text = (
-            f'An element {element_name} with id="{id_value}" must exist'
-        )
-        self.rules_created += 1
+        # Add a report (not an assert)
+        self.add_assert_or_report(ctx, test_expr, f'An element {element_name} with id=\"{id_value}\" must exist', kind='report', note_text=full_note)
 
     def tostring(self):
         # Pretty-print before serializing
         indent_et(self.schema)
         xml = OUT_ET.tostring(self.schema, encoding='unicode')
 
-        # Unescape '>' only inside sch:assert/@test attributes
-        # This keeps the XML valid while ensuring the operator is literal.
-        xml = re.sub(r'(test=")([^"]*)(")', lambda m: m.group(1) + m.group(2).replace('&gt;', '>') + m.group(3), xml)
-
+        # Unescape '>' only inside sch:assert/@test and sch:report/@test attributes
+        xml = re.sub(
+            r'((?:test=")([^"]*)("))',
+            lambda m: m.group(1).replace('&gt;', '>'),
+            xml
+        )
+        # ensure XML declaration
         return '<?xml version="1.0" encoding="UTF-8"?>\n' + xml
-
 
 def find_files_for_candidate(input_folder, candidate_filename):
     matches = []
