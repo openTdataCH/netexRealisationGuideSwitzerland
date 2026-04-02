@@ -1,0 +1,72 @@
+<!DOCTYPE div>
+<div class="sect2" id="group.netex:SiteRelationGroup">
+  <h3>174.32. The group <code>netex:SiteRelationGroup</code></h3>
+  <div class="sectionbody">
+    <table class="tableblock frame-all grid-all spread">
+      <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+      <tbody>
+        <tr>
+          <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:SiteRelationGroup</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock anno-text">Elements of a SITE specifying spatial associations.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="3" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:SiteRelationGroup" title="netex:SiteRelationGroup">netex:SiteRelationGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:ParentSiteRef</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.netex:SiteRefStructure" title="netex:SiteRefStructure">netex:SiteRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Reference to another SITE of which this SITE is deemed to be a subzone.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:adjacentSites</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:siteRefs_RelStructure" title="netex:siteRefs_RelStructure">netex:siteRefs_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Any references to another SITE of which this STOP PLACE is deemed to be a nearby but distinct.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:ContainedInPlaceRef</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.netex:TopographicPlaceRefStructure" title="netex:TopographicPlaceRefStructure">netex:TopographicPlaceRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Most specific TOPOGRAPHIC PLACE within which the SITE lies. The TOPOGRAPHIC model can be used to determine what other places this also implies.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

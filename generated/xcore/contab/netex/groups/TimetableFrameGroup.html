@@ -1,0 +1,538 @@
+<!DOCTYPE div>
+<div class="sect2" id="group.netex:TimetableFrameGroup">
+  <h3>228.3. The group <code>netex:TimetableFrameGroup</code></h3>
+  <div class="sectionbody">
+    <table class="tableblock frame-all grid-all spread">
+      <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+      <tbody>
+        <tr>
+          <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:TimetableFrameGroup</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock anno-text">Elements for a TIMETABLE FRAME.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="3" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:TimetablePropertiesGroup" title="netex:TimetablePropertiesGroup">netex:TimetablePropertiesGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:VehicleModes</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em><a shape="rect" href="#type.netex:AllPublicTransportModesListOfEnumerations" title="netex:AllPublicTransportModesListOfEnumerations">netex:AllPublicTransportModesListOfEnumerations</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">PT MODEs of VEHICLE JOURNEYs in timetable.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:HeadwayService</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Whether this is a Headway SERVICE, that is, one shown as operating at a prescribed interval rather than to a fixed timetable.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:Monitored</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Whether VEHICLE JOURNEYs of line are normally monitored. Provides a default value for the Monitored element on individual journeys of the timetable.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="9" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:TimetableDefaultsGroup" title="netex:TimetableDefaultsGroup">netex:TimetableDefaultsGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.netex:NetworkView" title="netex:NetworkView">netex:NetworkView</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-370.8" title="local-type: typedef-370.8">local-type: typedef-370.8</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Simplified view of a NETWORK.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.netex:LineView" title="netex:LineView">netex:LineView</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-370.9" title="local-type: typedef-370.9">local-type: typedef-370.9</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Simplified view of a LINE.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.netex:OperatorView" title="netex:OperatorView">netex:OperatorView</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-193.8" title="local-type: typedef-193.8">local-type: typedef-193.8</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Simplified view of OPERATOR. All data except the identifier will be derived through the relationship.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.netex:ServiceCalendarFrameRef" title="netex:ServiceCalendarFrameRef">netex:ServiceCalendarFrameRef</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-221.1" title="local-type: typedef-221.1">local-type: typedef-221.1</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Reference to a SERVICE CALENDAR FRAME.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:DefaultMode</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em><a shape="rect" href="#type.netex:AllPublicTransportModesEnumeration" title="netex:AllPublicTransportModesEnumeration">netex:AllPublicTransportModesEnumeration</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Default PT MODE to use on JOURNEYs in TIMETABLE.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.netex:JourneyAccountingRef" title="netex:JourneyAccountingRef">netex:JourneyAccountingRef</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.netex:JourneyAccountingRefStructure" title="netex:JourneyAccountingRefStructure">netex:JourneyAccountingRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Reference to a JOURNEY ACCOUNTING.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:bookingTimes</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:containedAvailabilityConditions_RelStructure" title="netex:containedAvailabilityConditions_RelStructure">netex:containedAvailabilityConditions_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">When bookings can be made for a SERVICE.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.netex:AccessibilityAssessment" title="netex:AccessibilityAssessment">netex:AccessibilityAssessment</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-352.2" title="local-type: typedef-352.2">local-type: typedef-352.2</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">The accessibility characteristics of an entity used by passengers such as a STOP PLACE, or a STOP PLACE COMPONENT. Described by ACCESSIBILITY LIMITATIONs, and/or a set of SUITABILITies.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.netex:TransportTypeRef" title="netex:TransportTypeRef">netex:TransportTypeRef</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.netex:TransportTypeRefStructure" title="netex:TransportTypeRefStructure">netex:TransportTypeRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Reference to a TRANSPORT TYPE. +v1.2.2</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="3" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:TimeDemandTypeInFrameGroup" title="netex:TimeDemandTypeInFrameGroup">netex:TimeDemandTypeInFrameGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:timeDemandTypes</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:timeDemandTypesInFrame_RelStructure" title="netex:timeDemandTypesInFrame_RelStructure">netex:timeDemandTypesInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">TIME DEMAND TYPEs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:timeDemandTypeAssignments</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:timeDemandTypeAssignmentsInFrame_RelStructure" title="netex:timeDemandTypeAssignmentsInFrame_RelStructure">netex:timeDemandTypeAssignmentsInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">TIME DEMAND TYPE ASSIGNMENTs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:timingLinkGroups</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:groupOfLinksInFrame_RelStructure" title="netex:groupOfLinksInFrame_RelStructure">netex:groupOfLinksInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">TIMING LINK GROUPs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="12" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:TimetableJourneyInFrameGroup" title="netex:TimetableJourneyInFrameGroup">netex:TimetableJourneyInFrameGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:vehicleJourneys</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:journeysInFrame_RelStructure" title="netex:journeysInFrame_RelStructure">netex:journeysInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">VEHICLE JOURNEYs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:frequencyGroups</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:frequencyGroupsInFrame_RelStructure" title="netex:frequencyGroupsInFrame_RelStructure">netex:frequencyGroupsInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">FREQUENCY GROUPs In frame. Can be used to template VEHICLE JOURNEYs.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:groupsOfServices</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:groupsOfServicesInFrame_RelStructure" title="netex:groupsOfServicesInFrame_RelStructure">netex:groupsOfServicesInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Groupings of Journeys In frame. Can be used to define inbound and outbound beds for a matrix presentation of the JORUNEYs in the TIMETABLE.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:trainNumbers</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:trainNumbersInFrame_RelStructure" title="netex:trainNumbersInFrame_RelStructure">netex:trainNumbersInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">TRAIN NUMBERs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:journeyPartCouples</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:journeyPartCouplesInFrame_RelStructure" title="netex:journeyPartCouplesInFrame_RelStructure">netex:journeyPartCouplesInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">JOURNEY COUPLINGs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:coupledJourneys</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:coupledJourneysInFrame_RelStructure" title="netex:coupledJourneysInFrame_RelStructure">netex:coupledJourneysInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">COUPLED JOURNEYs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:serviceFacilitySets</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:serviceFacilitySetsInFrame_RelStructure" title="netex:serviceFacilitySetsInFrame_RelStructure">netex:serviceFacilitySetsInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">SERVICE FACILITies in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:restrictedServiceFacilitySets</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:restrictedServiceFacilitySetsInFrame_RelStructure" title="netex:restrictedServiceFacilitySetsInFrame_RelStructure">netex:restrictedServiceFacilitySetsInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Restricted SERVICE FACILITies in frame. +v2.0</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:deckPlanAssignments</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:deckPlanAssignments_RelStructure" title="netex:deckPlanAssignments_RelStructure">netex:deckPlanAssignments_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">DECK PLAN ASSIGNMENTs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:typesOfService</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:typesOfServiceInFrame_RelStructure" title="netex:typesOfServiceInFrame_RelStructure">netex:typesOfServiceInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">TYPEs of SERVICE in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:flexibleServiceProperties</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:flexibleServicePropertiesInFrame_RelStructure" title="netex:flexibleServicePropertiesInFrame_RelStructure">netex:flexibleServicePropertiesInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">FLEXIBLE SERVICE PROPERTIES in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:vehicleJourneyStopAssignments</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:vehicleJourneyStopAssignmentsInFrame_RelStructure" title="netex:vehicleJourneyStopAssignmentsInFrame_RelStructure">netex:vehicleJourneyStopAssignmentsInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">VEHICLE JOURNEY STOP ASSIGNMENTs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="2" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:NoticesInFrameGroup" title="netex:NoticesInFrameGroup">netex:NoticesInFrameGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:notices</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:noticesInFrame_RelStructure" title="netex:noticesInFrame_RelStructure">netex:noticesInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">NOTICEs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:noticeAssignments</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:noticeAssignmentsInFrame_RelStructure" title="netex:noticeAssignmentsInFrame_RelStructure">netex:noticeAssignmentsInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">NOTICE ASSIGNMENTs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="4" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:InterchangeInFrameGroup" title="netex:InterchangeInFrameGroup">netex:InterchangeInFrameGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:journeyMeetings</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:journeyMeetingsInFrame_RelStructure" title="netex:journeyMeetingsInFrame_RelStructure">netex:journeyMeetingsInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">JOURNEY MEETINGs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:journeyInterchanges</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:journeyInterchangesInFrame_RelStructure" title="netex:journeyInterchangesInFrame_RelStructure">netex:journeyInterchangesInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">INTERCHANGES in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:defaultInterchanges</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:defaultInterchangesInFrame_RelStructure" title="netex:defaultInterchangesInFrame_RelStructure">netex:defaultInterchangesInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">DEFAULT INTERCHANGES in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:interchangeRules</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:interchangeRulesInFrame_RelStructure" title="netex:interchangeRulesInFrame_RelStructure">netex:interchangeRulesInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">INTERCHANGE RULEs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:VehicleTypeInFrameGroup" title="netex:VehicleTypeInFrameGroup">netex:VehicleTypeInFrameGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:vehicleTypes</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:vehicleTypesInFrame_RelStructure" title="netex:vehicleTypesInFrame_RelStructure">netex:vehicleTypesInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">VEHICLE TYPEs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:JourneyAccountingInFrameGroup" title="netex:JourneyAccountingInFrameGroup">netex:JourneyAccountingInFrameGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:journeyAccountings</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:journeyAccountingsInFrame_RelStructure" title="netex:journeyAccountingsInFrame_RelStructure">netex:journeyAccountingsInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Default JOURNEY ACCOUNTING values for JOURNEYs in frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:OccupancyViewInFrameGroup" title="netex:OccupancyViewInFrameGroup">netex:OccupancyViewInFrameGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:occupancies</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:OccupancyViewInFrame_RelStructure" title="netex:OccupancyViewInFrame_RelStructure">netex:OccupancyViewInFrame_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">OCCUPANCYs in frame.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

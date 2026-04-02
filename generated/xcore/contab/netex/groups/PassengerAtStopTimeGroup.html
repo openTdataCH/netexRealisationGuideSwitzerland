@@ -1,0 +1,124 @@
+<!DOCTYPE div>
+<div class="sect2" id="group.netex:PassengerAtStopTimeGroup">
+  <h3>252.2. The group <code>netex:PassengerAtStopTimeGroup</code></h3>
+  <div class="sectionbody">
+    <table class="tableblock frame-all grid-all spread">
+      <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+      <tbody>
+        <tr>
+          <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:PassengerAtStopTimeGroup</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock anno-text">PASSENGER AT STOP TIME elements.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="7" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:PassengerAtStopTimeGroup" title="netex:PassengerAtStopTimeGroup">netex:PassengerAtStopTimeGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:Description</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:MultilingualString" title="netex:MultilingualString">netex:MultilingualString</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Description of PASSENGER AT STOP TIME.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:EarliestTime</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Earliest time that passenger should be at stop for specified process, e.g. baggage check in, customs etc.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:EarliestDayOffset</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em><a shape="rect" href="#type.netex:DayOffsetType" title="netex:DayOffsetType">netex:DayOffsetType</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Number of days after the starting time of the journey if not same calendar day. Default is 0 for same day.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:LatestTime</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Latest time that passenger should be at stop for specified process.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:LatestDayOffset</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em><a shape="rect" href="#type.netex:DayOffsetType" title="netex:DayOffsetType">netex:DayOffsetType</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Number of days after the starting time of the journey.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.netex:CheckConstraintRef" title="netex:CheckConstraintRef">netex:CheckConstraintRef</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.netex:CheckConstraintRefStructure" title="netex:CheckConstraintRefStructure">netex:CheckConstraintRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Identifier of a CHECK CONSTRAINT.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:CheckConstraintProcess</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em><a shape="rect" href="#type.netex:CheckProcessTypeEnumeration" title="netex:CheckProcessTypeEnumeration">netex:CheckProcessTypeEnumeration</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Nature of process.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

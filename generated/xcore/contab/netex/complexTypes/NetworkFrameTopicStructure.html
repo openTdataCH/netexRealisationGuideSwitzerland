@@ -1,0 +1,238 @@
+<!DOCTYPE div>
+<div class="sect2" id="type.netex:NetworkFrameTopicStructure">
+  <h3>389.7. The complex type <code>netex:NetworkFrameTopicStructure</code></h3>
+  <div class="sectionbody">
+    <table class="tableblock frame-all grid-all spread">
+      <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+      <tbody>
+        <tr>
+          <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:NetworkFrameTopicStructure</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><a shape="rect" href="#type.netex:TopicStructure" title="netex:TopicStructure">netex:TopicStructure</a></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock anno-text">Type for abstract Request filter.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top announceBase">
+            <p class="tableblock">The element content starts with <b>items inherited</b> from the base type:</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="4" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:TopicGroup" title="netex:TopicGroup">netex:TopicGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:Description</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:MultilingualString" title="netex:MultilingualString">netex:MultilingualString</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Description of what filter does.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:sources</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:dataSources_RelStructure" title="netex:dataSources_RelStructure">netex:dataSources_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Data Sources to include. If more than one source is specified it is logically ORed with the others.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.netex:CodespaceRef" title="netex:CodespaceRef">netex:CodespaceRef</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.netex:CodespaceRefStructure" title="netex:CodespaceRefStructure">netex:CodespaceRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Reference to a CODESPACE.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.netex:ResponsibilityRoleAssignment" title="netex:ResponsibilityRoleAssignment">netex:ResponsibilityRoleAssignment</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-108.3" title="local-type: typedef-108.3">local-type: typedef-108.3</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top announceBase">
+            <p class="tableblock">Inherited content is followed by <b>own content</b>:</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock">The element contains <em>one</em> of the following elements (a-e)</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="5" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:TopicTemporalScopeGroup" title="netex:TopicTemporalScopeGroup">netex:TopicTemporalScopeGroup</a></td>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>a</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>netex:Current</strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em><a shape="rect" href="#type.netex:EmptyType" title="netex:EmptyType">netex:EmptyType</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Return just the latest current values from the producer at the time the response is created.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>b</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>netex:ChangedSince</strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Return the values that have changed since the specified point in time, including current and superseded values. Values that are no longer current will be flagged with the date they were superseded (using the various cleared / deleted /historic dates on different element types).</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>c</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>netex:CurrentAt</strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Return just the values that were current at the specified point in time.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>d</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>netex:HistoricBetween</strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:ClosedTimestampRangeStructure" title="netex:ClosedTimestampRangeStructure">netex:ClosedTimestampRangeStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Return all values created or updated between the specified period, including current and historic values. Values that are no longer current will be flagged with the date they were superseded.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>e</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>netex:selectionValidityConditions</strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-22.1" title="local-type: typedef-22.1">local-type: typedef-22.1</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Validity conditions to apply when selecting data. Applies to frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.netex:TypeOfFrameRef" title="netex:TypeOfFrameRef">netex:TypeOfFrameRef</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.netex:TypeOfFrameRefStructure" title="netex:TypeOfFrameRefStructure">netex:TypeOfFrameRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Reference to a TYPE OF VERSION FRAME.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock">The element contains <em>one</em> of the following elements (a-b)</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="2" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:TopicFrameScopeGroup" title="netex:TopicFrameScopeGroup">netex:TopicFrameScopeGroup</a></td>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>a</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:VersionFrameRef" title="netex:VersionFrameRef">netex:VersionFrameRef</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, at least one, part of a choice">-1:*</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.netex:VersionFrameRefStructure" title="netex:VersionFrameRefStructure">netex:VersionFrameRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Reference to a VERSION FRAME.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>b</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>netex:NetworkFilterByValue</strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:NetworkFilterByValueStructure" title="netex:NetworkFilterByValueStructure">netex:NetworkFilterByValueStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Values for selecting by value.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

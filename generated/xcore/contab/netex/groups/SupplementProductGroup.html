@@ -1,0 +1,83 @@
+<!DOCTYPE div>
+<div class="sect2" id="group.netex:SupplementProductGroup">
+  <h3>286.38. The group <code>netex:SupplementProductGroup</code></h3>
+  <div class="sectionbody">
+    <table class="tableblock frame-all grid-all spread">
+      <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+      <tbody>
+        <tr>
+          <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:SupplementProductGroup</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock anno-text">Elements for a PREASSIGNED FARE PRODUCT.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="4" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:SupplementProductGroup" title="netex:SupplementProductGroup">netex:SupplementProductGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:SupplementProductType</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em><a shape="rect" href="#type.netex:SupplementProductEnumeration" title="netex:SupplementProductEnumeration">netex:SupplementProductEnumeration</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Classification of SUPPLEMENT PRODUCT. +v1.1</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock">The element contains <em>one</em> of the following elements (a-b)</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>a</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:SupplementToFareProductRef</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single, part of a choice">-0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.netex:FareProductRefStructure" title="netex:FareProductRefStructure">netex:FareProductRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">FARE PRODUCT to which this SUPPLEMENT PRODUCT can be a a supplement.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>b</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:supplementTo</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single, part of a choice">-0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:fareProductRefs_RelStructure" title="netex:fareProductRefs_RelStructure">netex:fareProductRefs_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">FARE PRODUCTa to which this SUPPLEMENT PRODUCT can be a a supplement.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

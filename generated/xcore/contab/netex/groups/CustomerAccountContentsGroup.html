@@ -1,0 +1,114 @@
+<!DOCTYPE div>
+<div class="sect2" id="group.netex:CustomerAccountContentsGroup">
+  <h3>349.13. The group <code>netex:CustomerAccountContentsGroup</code></h3>
+  <div class="sectionbody">
+    <table class="tableblock frame-all grid-all spread">
+      <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+      <tbody>
+        <tr>
+          <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:CustomerAccountContentsGroup</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock anno-text">PropContent Elements for CUSTOMER ACCOUNT.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="6" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:CustomerAccountContentsGroup" title="netex:CustomerAccountContentsGroup">netex:CustomerAccountContentsGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:fareContracts</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:fareContracts_RelStructure" title="netex:fareContracts_RelStructure">netex:fareContracts_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">FARE CONTRACTs for CUSTOMER ACCOUNT +v1.1.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:customerAccountEntries</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:fareContractEntries_RelStructure" title="netex:fareContractEntries_RelStructure">netex:fareContractEntries_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">FARE CONTRACT ENTRIES that relate to the CUSTOMER ACCOUNT. Normally these are embedded in a FARE CONTRACT governing the account itself. For convenience they may also be referenced or embedded directly in the CUSTOMER ACCOUNT. +V2.0</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:customerPurchasePackages</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:customerPurchasePackageRefs_RelStructure" title="netex:customerPurchasePackageRefs_RelStructure">netex:customerPurchasePackageRefs_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">CUSTOMER PURCHASE PACKAGES for CUSTOMER ACCOUT.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.netex:CustomerPaymentMeansRef" title="netex:CustomerPaymentMeansRef">netex:CustomerPaymentMeansRef</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.netex:CustomerPaymentMeansRefStructure" title="netex:CustomerPaymentMeansRefStructure">netex:CustomerPaymentMeansRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Reference to a CUSTOMER PAYMENT MEANS . +v1.2.2</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:paymentMeans</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:customerPaymentMeans_RelStructure" title="netex:customerPaymentMeans_RelStructure">netex:customerPaymentMeans_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">PAYMENT MEANS for CUSTOMER ACCOUNT. +v1.2.2</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:mediumAccessDevices</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:mediumAccessDeviceRefs_RelStructure" title="netex:mediumAccessDeviceRefs_RelStructure">netex:mediumAccessDeviceRefs_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">MEDIUM APPLICATION INSTANCES for CUSTOMER ACCOUNT. +v1.2.2</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

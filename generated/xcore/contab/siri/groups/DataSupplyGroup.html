@@ -1,0 +1,72 @@
+<!DOCTYPE div>
+<div class="sect2" id="group.siri:DataSupplyGroup">
+  <h3>2.17. The group <code>siri:DataSupplyGroup</code></h3>
+  <div class="sectionbody">
+    <table class="tableblock frame-all grid-all spread">
+      <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+      <tbody>
+        <tr>
+          <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>siri:DataSupplyGroup</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock anno-text">Groups the data supply messages.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="3" class="tableblock halign-left valign-top"><a shape="rect" href="#group.siri:DataSupplyGroup" title="siri:DataSupplyGroup">siri:DataSupplyGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.siri:DataReadyNotification" title="siri:DataReadyNotification">siri:DataReadyNotification</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single">1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.siri:DataReadyRequestStructure" title="siri:DataReadyRequestStructure">siri:DataReadyRequestStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Request from Producer to Consumer to notify that data update is ready to fetch. Answered with a DataReadyResponse.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.siri:DataSupplyRequest" title="siri:DataSupplyRequest">siri:DataSupplyRequest</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single">1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.siri:DataSupplyRequestStructure" title="siri:DataSupplyRequestStructure">siri:DataSupplyRequestStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Request from Consumer to Producer to fetch update previously notified by a Data ready message. Answered with a Service Delivery.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.siri:DataReceivedAcknowledgement" title="siri:DataReceivedAcknowledgement">siri:DataReceivedAcknowledgement</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single">1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.siri:DataReceivedResponseStructure" title="siri:DataReceivedResponseStructure">siri:DataReceivedResponseStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Response from Consumer to Producer to acknowledge that data hase been received. Used as optioanl extra step if reliable delivery is needed. Answers a ServiceDelivery.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

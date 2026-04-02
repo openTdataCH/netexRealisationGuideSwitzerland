@@ -1,0 +1,186 @@
+<!DOCTYPE div>
+<div class="sect2" id="group.netex:PassengerStopAssignmentGroup">
+  <h3>221.8. The group <code>netex:PassengerStopAssignmentGroup</code></h3>
+  <div class="sectionbody">
+    <table class="tableblock frame-all grid-all spread">
+      <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+      <tbody>
+        <tr>
+          <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:PassengerStopAssignmentGroup</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock anno-text">Elements for a PASSENGER STOP ASSIGNMENT. Either StopPlace(Ref) or Quay(Ref) must at least be present. Best practice is to always have at least the StopPlace(Ref). It is also prefered that the Ref are used and the Quay/StopPlace are defined on their own in the appropriate Frame.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock">The element contains <em>none or one</em> of the following elements (a-b)</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="11" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:PassengerStopAssignmentGroup" title="netex:PassengerStopAssignmentGroup">netex:PassengerStopAssignmentGroup</a></td>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>a</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:StopPlaceRef" title="netex:StopPlaceRef">netex:StopPlaceRef</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.netex:StopPlaceRefStructure" title="netex:StopPlaceRefStructure">netex:StopPlaceRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Reference to a STOP PLACE.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>b</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:StopPlace" title="netex:StopPlace">netex:StopPlace</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-237.1" title="local-type: typedef-237.1">local-type: typedef-237.1</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Version of a named place where public transport may be accessed. May be a building complex (e.g. a station) or an on-street location. Can be a STOP PLACE, VEHICLE MEETING POINT, TAXI RANK. Note: If a master id exists for a StopPlace (must be stable and globally unique), then it is best used in the id. Optimally it would be built according IFOPT. It can also be put into one of the privateCodes in addition. If it is stored in KeyValue, then it should be documented well, so that importing systems know, which id is the relevant one.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock">The element contains <em>none or one</em> of the following elements (a-b)</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>a</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:QuayRef" title="netex:QuayRef">netex:QuayRef</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.netex:QuayRefStructure" title="netex:QuayRefStructure">netex:QuayRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Reference to a QUAY.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>b</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:Quay" title="netex:Quay">netex:Quay</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-237.3" title="local-type: typedef-237.3">local-type: typedef-237.3</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock">The element contains <em>none or one</em> of the following elements (a-b)</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>a</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:BoardingPositionRef" title="netex:BoardingPositionRef">netex:BoardingPositionRef</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.netex:BoardingPositionRefStructure" title="netex:BoardingPositionRefStructure">netex:BoardingPositionRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Reference to a BOARDING POSITION.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>b</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:BoardingPosition" title="netex:BoardingPosition">netex:BoardingPosition</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-237.6" title="local-type: typedef-237.6">local-type: typedef-237.6</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">A location within a QUAY from which passengers may directly board, or onto which passengers may directly alight from, a VEHICLE.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock">The element contains <em>none or one</em> of the following elements (a-b)</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>a</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:passengerBoardingPositionAssignments</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, multiple, part of a choice">-0:*</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-55.2" title="local-type: typedef-55.2">local-type: typedef-55.2</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Train stop assignments elements to use for which SCHEDULED STOP POINT is to be assigned. +v2.0</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>b</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:trainElements</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, multiple, part of a choice">-0:*</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:trainStopAssignments_RelStructure" title="netex:trainStopAssignments_RelStructure">netex:trainStopAssignments_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Train elements to which SCHEDULED STOP POINT is to be assigned. DEPRECATED -v2.0</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

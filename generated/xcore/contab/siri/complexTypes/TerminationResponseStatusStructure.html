@@ -1,0 +1,128 @@
+<!DOCTYPE div>
+<div class="sect2" id="type.siri:TerminationResponseStatusStructure">
+  <h3>2.53. The complex type <code>siri:TerminationResponseStatusStructure</code></h3>
+  <div class="sectionbody">
+    <table class="tableblock frame-all grid-all spread">
+      <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+      <tbody>
+        <tr>
+          <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>siri:TerminationResponseStatusStructure</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock anno-text">Type for Status of termination response.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.siri:ResponseTimestamp" title="siri:ResponseTimestamp">siri:ResponseTimestamp</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Time individual response element was created.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"><a shape="rect" href="#group.siri:ContextualisedResponseEndpointGroup" title="siri:ContextualisedResponseEndpointGroup">siri:ContextualisedResponseEndpointGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>siri:RequestMessageRef</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.siri:MessageQualifierStructure" title="siri:MessageQualifierStructure">siri:MessageQualifierStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Arbitrary unique reference to the request which gave rise to this message.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="3" class="tableblock halign-left valign-top"><a shape="rect" href="#group.siri:SubscriptionIdentifierResourcePropertyGroup" title="siri:SubscriptionIdentifierResourcePropertyGroup">siri:SubscriptionIdentifierResourcePropertyGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>siri:SubscriberRef</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.siri:ParticipantRefStructure" title="siri:ParticipantRefStructure">siri:ParticipantRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Unique identifier of Subscriber - reference to a Participant.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>siri:SubscriptionFilterRef</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.siri:SubscriptionFilterRefStructure" title="siri:SubscriptionFilterRefStructure">siri:SubscriptionFilterRefStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Unique identifier of Subscription filter to which this subscription is assigned. If there is onlya single filter, then can be omitted.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>siri:SubscriptionRef</strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single">1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>&gt;<a shape="rect" href="#type.siri:SubscriptionQualifierStructure" title="siri:SubscriptionQualifierStructure">siri:SubscriptionQualifierStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Reference to a service subscription: unique within Service and Subscriber.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.siri:Status" title="siri:Status">siri:Status</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single">1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Whether the request was processed successfully or not. Default is 'true'.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>siri:ErrorCondition</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-7.1" title="local-type: typedef-7.1">local-type: typedef-7.1</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Description of any error or warning condition.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

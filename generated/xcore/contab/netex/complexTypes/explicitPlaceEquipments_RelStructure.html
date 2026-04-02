@@ -1,0 +1,456 @@
+<!DOCTYPE div>
+<div class="sect2" id="type.netex:explicitPlaceEquipments_RelStructure">
+  <h3>147.5. The complex type <code>netex:explicitPlaceEquipments_RelStructure</code></h3>
+  <div class="sectionbody">
+    <table class="tableblock frame-all grid-all spread">
+      <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+      <tbody>
+        <tr>
+          <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:explicitPlaceEquipments_RelStructure</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><a shape="rect" href="#type.netex:containmentAggregationStructure" title="netex:containmentAggregationStructure">netex:containmentAggregationStructure</a></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock anno-text">Abstract Type for a serialisation of a NeTEx relationship.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top announceBase">
+            <p class="tableblock">The element content starts with <b>items inherited</b> from the base type:</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>@id</strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single">1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em><a shape="rect" href="#type.netex:RelationshipId" title="netex:RelationshipId">netex:RelationshipId</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Identifier of the relationship.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>@modificationSet</strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single">1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em><a shape="rect" href="#type.netex:ModificationSetEnumeration" title="netex:ModificationSetEnumeration">netex:ModificationSetEnumeration</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Whether this is a list of all (revise) or just changes.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top announceBase">
+            <p class="tableblock">Inherited content is followed by <b>own content</b>:</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock">The element contains <em>none or more</em> of the following elements (a-e)</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"></td>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>a</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>→‍<a shape="rect" href="#element.netex:OtherPlaceEquipment" title="netex:OtherPlaceEquipment">netex:OtherPlaceEquipment</a></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single, part of a choice">-0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-171.1" title="local-type: typedef-171.1">local-type: typedef-171.1</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Equipment that may be in a fixed within a SITE.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock">In case of choice 'b', the element contains <em>one</em> of the following elements (ba-bk)</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="11" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:AccessEquipmentChoice" title="netex:AccessEquipmentChoice">netex:AccessEquipmentChoice</a></td>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>ba</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:RoughSurface" title="netex:RoughSurface">netex:RoughSurface</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-382.1" title="local-type: typedef-382.1">local-type: typedef-382.1</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of PLACE EQUIPMENT for rough surfaces, giving properties of surface texture, mainly for impaired person information.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>bb</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:EntranceEquipment" title="netex:EntranceEquipment">netex:EntranceEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-382.11" title="local-type: typedef-382.11">local-type: typedef-382.11</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of PLACE ACCESS EQUIPMENT for ENTRANCEs (door, barrier, revolving door, etc.).</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>bc</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:StaircaseEquipment" title="netex:StaircaseEquipment">netex:StaircaseEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-382.5" title="local-type: typedef-382.5">local-type: typedef-382.5</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of STAIR EQUIPMENT for stair cases.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>bd</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:LiftEquipment" title="netex:LiftEquipment">netex:LiftEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-382.8" title="local-type: typedef-382.8">local-type: typedef-382.8</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of PLACE ACCESS EQUIPMENT for LIFTs (provides lift characteristics like depth, maximum load, etc.).</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>be</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:LiftCallEquipment" title="netex:LiftCallEquipment">netex:LiftCallEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-382.9" title="local-type: typedef-382.9">local-type: typedef-382.9</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of PLACE ACCESS EQUIPMENT for calling LIFTs (provides specific characteristics that may differ from floor to floor like button height, door, etc.). +v1.3.1</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>bf</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:EscalatorEquipment" title="netex:EscalatorEquipment">netex:EscalatorEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-382.4" title="local-type: typedef-382.4">local-type: typedef-382.4</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of STAIR EQUIPMENT for ESCALATORs.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>bg</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:TravelatorEquipment" title="netex:TravelatorEquipment">netex:TravelatorEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-382.7" title="local-type: typedef-382.7">local-type: typedef-382.7</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of PLACE EQUIPMENT for TRAVELATORs (provides travelator attributes like speed, etc.).</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>bh</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:RampEquipment" title="netex:RampEquipment">netex:RampEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-382.10" title="local-type: typedef-382.10">local-type: typedef-382.10</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of PLACE ACCESS EQUIPMENT for ramps (provides ramp characteristics like length, gradient, etc.).</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>bi</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:QueueingEquipment" title="netex:QueueingEquipment">netex:QueueingEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-382.12" title="local-type: typedef-382.12">local-type: typedef-382.12</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of PLACE ACCESS EQUIPMENT dedicated to queuing.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>bj</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:CrossingEquipment" title="netex:CrossingEquipment">netex:CrossingEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-382.13" title="local-type: typedef-382.13">local-type: typedef-382.13</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of PLACE ACCESS EQUIPMENT for CROSSING EQUIPMENTs (zebra, pedestrian lights, acoustic device sensors, tactile guide strips, etc.).</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>bk</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:PlaceLighting" title="netex:PlaceLighting">netex:PlaceLighting</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-382.2" title="local-type: typedef-382.2">local-type: typedef-382.2</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of PLACE EQUIPMENT for LIGHTING EQUIPMENT (e.g. lamp post).</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock">In case of choice 'c', the element contains <em>one</em> of the following elements (ca-cc)</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="3" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:SignEquipmentChoice" title="netex:SignEquipmentChoice">netex:SignEquipmentChoice</a></td>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>ca</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>netex:PlaceSign</strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:PlaceSignStructure" title="netex:PlaceSignStructure">netex:PlaceSignStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">PLACE SIGN. Sign indicating name of STOP PLACE. t.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>cb</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>netex:HeadingSign</strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:HeadingSignStructure" title="netex:HeadingSignStructure">netex:HeadingSignStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Sign identifying a direction to a PLACE.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>cc</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>netex:GeneralSign</strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:GeneralSignStructure" title="netex:GeneralSignStructure">netex:GeneralSignStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">PLACE SIGN.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock">In case of choice 'd', the element contains <em>one</em> of the following elements (da-dd)</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="4" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:PassengerEquipmentChoice" title="netex:PassengerEquipmentChoice">netex:PassengerEquipmentChoice</a></td>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>da</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:HelpPointEquipment" title="netex:HelpPointEquipment">netex:HelpPointEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-429.3" title="local-type: typedef-429.3">local-type: typedef-429.3</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of PASSENGER EQUIPMENT for HELP POINT.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>db</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:PassengerSafetyEquipment" title="netex:PassengerSafetyEquipment">netex:PassengerSafetyEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-429.2" title="local-type: typedef-429.2">local-type: typedef-429.2</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of PASSENGER EQUIPMENT for passenger safety features, e.g. panic button, SOS phone.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>dc</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:RubbishDisposalEquipment" title="netex:RubbishDisposalEquipment">netex:RubbishDisposalEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-429.5" title="local-type: typedef-429.5">local-type: typedef-429.5</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Equipment for Passengers relating to a Rubbish disposal.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>dd</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:SanitaryEquipment" title="netex:SanitaryEquipment">netex:SanitaryEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-429.1" title="local-type: typedef-429.1">local-type: typedef-429.1</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">A SANITARY FACILITY , e.g. WC, Shower, baby change.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock">In case of choice 'e', the element contains <em>one</em> of the following elements (ea-eb)</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="2" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:TicketingEquipmentChoice" title="netex:TicketingEquipmentChoice">netex:TicketingEquipmentChoice</a></td>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>ea</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:TicketingEquipment" title="netex:TicketingEquipment">netex:TicketingEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-230.1" title="local-type: typedef-230.1">local-type: typedef-230.1</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of PASSENGER EQUIPMENT for ticketing.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>eb</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:TicketValidatorEquipment" title="netex:TicketValidatorEquipment">netex:TicketValidatorEquipment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-230.2" title="local-type: typedef-230.2">local-type: typedef-230.2</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Specialisation of INSTALLED EQUIPMENT describing a ticket validator.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

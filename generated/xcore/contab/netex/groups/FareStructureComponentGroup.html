@@ -1,0 +1,101 @@
+<!DOCTYPE div>
+<div class="sect2" id="group.netex:FareStructureComponentGroup">
+  <h3>292.8. The group <code>netex:FareStructureComponentGroup</code></h3>
+  <div class="sectionbody">
+    <table class="tableblock frame-all grid-all spread">
+      <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+      <tbody>
+        <tr>
+          <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:FareStructureComponentGroup</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock anno-text">Component Elements for a FARE STRUCTURE ELEMENT.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:FareStructureComponentGroup" title="netex:FareStructureComponentGroup">netex:FareStructureComponentGroup</a></td>
+          <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code>netex:fareStructureElementsInSequence</code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><span title="optional, single">0:1</span></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:fareStructureElementsInSequence_RelStructure" title="netex:fareStructureElementsInSequence_RelStructure">netex:fareStructureElementsInSequence_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Use of FARESTRUCTURE ELEMENTs in a particular sequence.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock">The element contains <em>one</em> of the following elements (a-c)</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="1" rowspan="3" class="tableblock halign-left valign-top"><a shape="rect" href="#group.netex:OptimisedOneManyAssignmentGroup" title="netex:OptimisedOneManyAssignmentGroup">netex:OptimisedOneManyAssignmentGroup</a></td>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>a</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>netex:validityParameterAssignments</strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#type.netex:genericParameterAssignments_RelStructure" title="netex:genericParameterAssignments_RelStructure">netex:genericParameterAssignments_RelStructure</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">VALIDITY PARAMETR ASSIGNMENTss for an element.</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>b</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:GenericParameterAssignment" title="netex:GenericParameterAssignment">netex:GenericParameterAssignment</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-309.3" title="local-type: typedef-309.3">local-type: typedef-309.3</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">A VALIDITY PARAMETER ASSIGNMENT specifying practical parameters during a TRAVEL GenericATION, within a given fare structure (e.g. the origin or destination zone in a zone-counting system).</p>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>c</em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><code><strong>→‍<a shape="rect" href="#element.netex:GenericParameterAssignmentInContext" title="netex:GenericParameterAssignmentInContext">netex:GenericParameterAssignmentInContext</a></strong></code></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-309.4" title="local-type: typedef-309.4">local-type: typedef-309.4</a></em></p>
+          </td>
+          <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+            <p class="tableblock darkbrown">Optimisation: Can be used without id constraintA VALIDITY PARAMETER ASSIGNMENT specifying practical parameters during a TRAVEL GenericATION, within a given fare structure (e.g. the origin or destination zone in a zone-counting system).</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

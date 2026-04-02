@@ -26,7 +26,7 @@ fi
 
 XSD_URI=$2
 GENERATOR_DIR="xquery"
-GENERATED_DIR="../generated/xcore"
+GENERATED_DIR="../../generated/xcore"
 BASEX_JAR="/tmp/basex.jar"
 
 if [ ! -e ${BASEX_JAR} ]; then

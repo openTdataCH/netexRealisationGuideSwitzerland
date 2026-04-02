@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>NeTEx (GML)</title><meta charset="UTF-8"/><meta http-equiv="content-type" content="text/html;charset=UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="stylesheet" href="../asciidoc.css"/></head>
+  <body>
+    <div id="header">
+      <h1>NeTEx (GML)</h1>
+      <div class="toc" id="toc">
+        <div id="toctitle">Table of Contents</div>
+        <ul class="sectlevel1">
+          <li><a shape="rect" href="#schema_basicTypes">1. Schema file: basicTypes.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="#schema_basicTypes_std">1.1. Simple type definitions</a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">1.2 The complexType <code>gml:CodeListType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">1.3 The complexType <code>gml:CodeOrNilReasonListType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">1.4 The complexType <code>gml:CodeType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">1.5 The complexType <code>gml:CodeWithAuthorityType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">1.6 The complexType <code>gml:CoordinatesType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">1.7 The complexType <code>gml:MeasureListType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">1.8 The complexType <code>gml:MeasureOrNilReasonListType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">1.9 The complexType <code>gml:MeasureType</code></a></li>
+            </ul>
+          </li>
+          <li><a shape="rect" href="#schema_geometryAggregates_extract_v3_2_1">2. Schema file: geometryAggregates-extract-v3_2_1.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="gml/elements/gml.html">2.1 The toplevel element <code>gml:AbstractGeometricAggregate</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">2.2 The toplevel element <code>gml:MultiSurface</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">2.3 The toplevel element <code>gml:surfaceMembers</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">2.4 The complexType <code>gml:AbstractGeometricAggregateType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">2.5 The complexType <code>gml:MultiSurfacePropertyType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">2.6 The complexType <code>gml:MultiSurfaceType</code></a></li>
+            </ul>
+          </li>
+          <li><a shape="rect" href="#schema_geometryBasic0d1d_extract_v3_2_1">3. Schema file: geometryBasic0d1d-extract-v3_2_1.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="gml/elements/gml.html">3.1 The toplevel element <code>gml:AbstractCurve</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">3.2 The toplevel element <code>gml:AbstractGeometricPrimitive</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">3.3 The toplevel element <code>gml:AbstractGeometry</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">3.4 The toplevel element <code>gml:curveProperty</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">3.5 The toplevel element <code>gml:Envelope</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">3.6 The toplevel element <code>gml:LineString</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">3.7 The toplevel element <code>gml:Point</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">3.8 The toplevel element <code>gml:pointProperty</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">3.9 The toplevel element <code>gml:pos</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">3.10 The toplevel element <code>gml:posList</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">3.11 The toplevel element <code>gml:vector</code></a></li>
+              <li><a shape="rect" href="gml/groups/gml.html">3.12 The  <code>gml:geometricPositionGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="gml/groups/gml.html">3.13 The  <code>gml:geometricPositionListGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.14 The complexType <code>gml:AbstractCurveType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.15 The complexType <code>gml:AbstractGeometricPrimitiveType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.16 The complexType <code>gml:AbstractGeometryType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.17 The complexType <code>gml:CurveArrayPropertyType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.18 The complexType <code>gml:CurvePropertyType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.19 The complexType <code>gml:DirectPositionListType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.20 The complexType <code>gml:DirectPositionType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.21 The complexType <code>gml:EnvelopeType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.22 The complexType <code>gml:GeometricPrimitivePropertyType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.23 The complexType <code>gml:GeometryArrayPropertyType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.24 The complexType <code>gml:GeometryPropertyType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.25 The complexType <code>gml:LineStringType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.26 The complexType <code>gml:PointArrayPropertyType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.27 The complexType <code>gml:PointPropertyType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.28 The complexType <code>gml:PointType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">3.29 The complexType <code>gml:VectorType</code></a></li>
+            </ul>
+          </li>
+          <li><a shape="rect" href="#schema_geometryPrimitives_extract_v3_2_1">4. Schema file: geometryPrimitives-extract-v3_2_1.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="gml/elements/gml.html">4.1 The toplevel element <code>gml:surfaceMember</code></a></li>
+            </ul>
+          </li>
+          <li><a shape="rect" href="#schema_gmlBase_extract_v3_2_1">5. Schema file: gmlBase-extract-v3_2_1.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="#schema_gmlBase_extract_v3_2_1_std">5.1. Simple type definitions</a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.2 The toplevel element <code>gml:abstractAssociationRole</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.3 The toplevel element <code>gml:AbstractGML</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.4 The toplevel element <code>gml:abstractInlineProperty</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.5 The toplevel element <code>gml:AbstractObject</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.6 The toplevel element <code>gml:abstractReference</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.7 The toplevel element <code>gml:abstractStrictAssociationRole</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.8 The toplevel element <code>gml:associationName</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.9 The toplevel element <code>gml:defaultCodeSpace</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.10 The toplevel element <code>gml:descriptionReference</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.11 The toplevel element <code>gml:gmlProfileSchema</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.12 The toplevel element <code>gml:identifier</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.13 The toplevel element <code>gml:name</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.14 The toplevel element <code>gml:reversePropertyName</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">5.15 The toplevel element <code>gml:targetElement</code></a></li>
+              <li><a shape="rect" href="gml/groups/gml.html">5.16 The  <code>gml:StandardObjectProperties</code>group
+                            </a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">5.17 The complexType <code>gml:AbstractGMLType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">5.18 The complexType <code>gml:AbstractMemberType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">5.19 The complexType <code>gml:AbstractMetadataPropertyType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">5.20 The complexType <code>gml:AssociationRoleType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">5.21 The complexType <code>gml:InlinePropertyType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">5.22 The complexType <code>gml:ReferenceType</code></a></li>
+            </ul>
+          </li>
+          <li><a shape="rect" href="#schema_gmlBasic2d_extract_v3_2_1_">6. Schema file: gmlBasic2d-extract-v3_2_1-.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="gml/elements/gml.html">6.1 The toplevel element <code>gml:AbstractRing</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">6.2 The toplevel element <code>gml:AbstractSurface</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">6.3 The toplevel element <code>gml:exterior</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">6.4 The toplevel element <code>gml:interior</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">6.5 The toplevel element <code>gml:LinearRing</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">6.6 The toplevel element <code>gml:Polygon</code></a></li>
+              <li><a shape="rect" href="gml/elements/gml.html">6.7 The toplevel element <code>gml:surfaceProperty</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">6.8 The complexType <code>gml:AbstractRingPropertyType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">6.9 The complexType <code>gml:AbstractRingType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">6.10 The complexType <code>gml:AbstractSurfaceType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">6.11 The complexType <code>gml:LinearRingPropertyType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">6.12 The complexType <code>gml:LinearRingType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">6.13 The complexType <code>gml:PolygonType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">6.14 The complexType <code>gml:SurfaceArrayPropertyType</code></a></li>
+              <li><a shape="rect" href="gml/complexTypes/gml.html">6.15 The complexType <code>gml:SurfacePropertyType</code></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="content">
+      <div class="sect1" id="schema_basicTypes">
+        <h2>1. See ISO/DIS 19136 8.2.
+W3C XML Schema provides a set of built-in "simple" types which define methods for representing values as literals without internal markup.  These are described in W3C XML Schema Part 2:2001.  Because GML is an XML encoding in which instances are described using XML Schema, these simple types shall be used as far as possible and practical for the representation of data types.  W3C XML Schema also provides methods for defining 
+-	new simple types by restriction and combination of the built-in types, and 
+-	complex types, with simple content, but which also have XML attributes.  
+In many places where a suitable built-in simple type is not available, simple content types derived using the XML Schema mechanisms are used for the representation of data types in GML.  
+A set of these simple content types that are required by several GML components are defined in the basicTypes schema, as well as some elements based on them. These are primarily based around components needed to record amounts, counts, flags and terms, together with support for exceptions or null values.
+
+GML is an OGC Standard.
+Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+		</h2>
+        <div class="simple-type-definitions" id="schema_basicTypes_std">
+          <h3>1.1. Simple type definitions</h3>
+          <div class="sectionbody">
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup span="1">
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:44%"/>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_gml__NCNameList" class="tableblock"><strong><code>NCNameList</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">List(xs:NCName)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A type for a list of values of the respective simple type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_gml__NameList" class="tableblock"><strong><code>NameList</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">List(xs:Name)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A type for a list of values of the respective simple type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__NameOrNilReason" class="tableblock"><strong><code>NameOrNilReason</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Extension to the respective XML Schema built-in simple type to allow a choice of either a value of the built-in simple type or a reason for a nil value.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">inapplicable</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">missing</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">template</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">unknown</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">withheld</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__NameOrNilReason" class="tableblock"><strong><code>NameOrNilReason</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Extension to the respective XML Schema built-in simple type to allow a choice of either a value of the built-in simple type or a reason for a nil value.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">inapplicable</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">missing</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">template</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">unknown</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">withheld</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__NameOrNilReasonList" class="tableblock"><strong><code>NameOrNilReasonList</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A type for a list of values of the respective simple type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">inapplicable</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">missing</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">template</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">unknown</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">withheld</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__NilReasonEnumeration" class="tableblock"><strong><code>NilReasonEnumeration</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">-</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">inapplicable</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">missing</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">template</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">unknown</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">withheld</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__NilReasonType" class="tableblock"><strong><code>NilReasonType</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">gml:NilReasonType defines a content model that allows recording of an explanation for a void value or other exception. gml:NilReasonType is a union of the following enumerated values: - inapplicable there is no value - missing the correct value is not readily available to the sender of this data. Furthermore, a correct value may not exist - template the value will be available later - unknown the correct value is not known to, and not computable by, the sender of this data. However, a correct value probably exists - withheld the value is not divulged - other:text other brief explanation, where text is a string of two or more characters with no included spaces and - anyURI which should refer to a resource which describes the reason for the exception A particular community may choose to assign more detailed semantics to the standard values provided. Alternatively, the URI method enables a specific or more complete explanation for the absence of a value to be provided elsewhere and indicated by-reference in an instance document. gml:NilReasonType is used as a member of a union in a number of simple content types where it is necessary to permit a value from the NilReasonType union as an alternative to the primary type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">inapplicable</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">missing</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">template</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">unknown</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">withheld</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_gml__QNameList" class="tableblock"><strong><code>QNameList</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">List(xs:QName)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A type for a list of values of the respective simple type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__SignType" class="tableblock"><strong><code>SignType</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">gml:SignType is a convenience type with values "+" (plus) and "-" (minus).</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">-</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">+</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_gml__UomIdentifier" class="tableblock"><strong><code>UomIdentifier</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">Union({xs:string: pattern=#[^: \n\r\t]+#}, {xs:anyURI: pattern=#([a-zA-Z][a-zA-Z0-9\-\+\.]*:|\.\./|\./|#).*#})</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">The simple type gml:Uomidentifier defines the syntax and value space of the unit of measure identifier.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_gml__UomSymbol" class="tableblock"><strong><code>UomSymbol</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:string: pattern=#[^: \n\r\t]+#</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">This type specifies a character string of length at least one, and restricted such that it must not contain any of the following characters: ":" (colon), " " (space), (newline), (carriage return), (tab). This allows values corresponding to familiar abbreviations, such as "kg", "m/s", etc. It is recommended that the symbol be an identifier for a unit of measure as specified in the "Unified Code of Units of Measure" (UCUM) (http://aurora.regenstrief.org/UCUM). This provides a set of symbols and a grammar for constructing identifiers for units of measure that are unique, and may be easily entered with a keyboard supporting the limited character set known as 7-bit ASCII. ISO 2955 formerly provided a specification with this scope, but was withdrawn in 2001. UCUM largely follows ISO 2955 with modifications to remove ambiguities and other problems.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_gml__UomURI" class="tableblock"><strong><code>UomURI</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:anyURI: pattern=#([a-zA-Z][a-zA-Z0-9\-\+\.]*:|\.\./|\./|#).*#</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">This type specifies a URI, restricted such that it must start with one of the following sequences: "#", "./", "../", or a string of characters followed by a ":". These patterns ensure that the most common URI forms are supported, including absolute and relative URIs and URIs that are simple fragment identifiers, but prohibits certain forms of relative URI that could be mistaken for unit of measure symbol . NOTE It is possible to re-write such a relative URI to conform to the restriction (e.g. "./m/s"). In an instance document, on elements of type gml:MeasureType the mandatory uom attribute shall carry a value corresponding to either - a conventional unit of measure symbol, - a link to a definition of a unit of measure that does not have a conventional symbol, or when it is desired to indicate a precise or variant definition.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_gml__booleanList" class="tableblock"><strong><code>booleanList</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">List(xs:boolean)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A type for a list of values of the respective simple type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__booleanOrNilReason" class="tableblock"><strong><code>booleanOrNilReason</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Extension to the respective XML Schema built-in simple type to allow a choice of either a value of the built-in simple type or a reason for a nil value.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">inapplicable</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">missing</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">template</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">unknown</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">withheld</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__booleanOrNilReasonList" class="tableblock"><strong><code>booleanOrNilReasonList</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A type for a list of values of the respective simple type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">inapplicable</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">missing</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">template</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">unknown</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">withheld</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_gml__doubleList" class="tableblock"><strong><code>doubleList</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">List(xs:double)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A type for a list of values of the respective simple type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__doubleOrNilReason" class="tableblock"><strong><code>doubleOrNilReason</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Extension to the respective XML Schema built-in simple type to allow a choice of either a value of the built-in simple type or a reason for a nil value.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">inapplicable</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">missing</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">template</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">unknown</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">withheld</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__doubleOrNilReasonList" class="tableblock"><strong><code>doubleOrNilReasonList</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A type for a list of values of the respective simple type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">inapplicable</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">missing</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">template</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">unknown</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">withheld</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_gml__integerList" class="tableblock"><strong><code>integerList</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">List(xs:integer)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A type for a list of values of the respective simple type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__integerOrNilReason" class="tableblock"><strong><code>integerOrNilReason</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Extension to the respective XML Schema built-in simple type to allow a choice of either a value of the built-in simple type or a reason for a nil value.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">inapplicable</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">missing</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">template</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">unknown</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">withheld</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__integerOrNilReasonList" class="tableblock"><strong><code>integerOrNilReasonList</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A type for a list of values of the respective simple type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">inapplicable</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">missing</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">template</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">unknown</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">withheld</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__stringOrNilReason" class="tableblock"><strong><code>stringOrNilReason</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Extension to the respective XML Schema built-in simple type to allow a choice of either a value of the built-in simple type or a reason for a nil value.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">inapplicable</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">missing</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">template</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">unknown</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">withheld</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div><a href="gml/complexTypes/CodeListType.html">
+          <h3>complexType CodeListType</h3>
+        </a><a href="gml/complexTypes/CodeOrNilReasonListType.html">
+          <h3>complexType CodeOrNilReasonListType</h3>
+        </a><a href="gml/complexTypes/CodeType.html">
+          <h3>complexType CodeType</h3>
+        </a><a href="gml/complexTypes/CodeWithAuthorityType.html">
+          <h3>complexType CodeWithAuthorityType</h3>
+        </a><a href="gml/complexTypes/CoordinatesType.html">
+          <h3>complexType CoordinatesType</h3>
+        </a><a href="gml/complexTypes/MeasureListType.html">
+          <h3>complexType MeasureListType</h3>
+        </a><a href="gml/complexTypes/MeasureOrNilReasonListType.html">
+          <h3>complexType MeasureOrNilReasonListType</h3>
+        </a><a href="gml/complexTypes/MeasureType.html">
+          <h3>complexType MeasureType</h3>
+        </a></div>
+      <div class="sect1" id="schema_geometryAggregates_extract_v3_2_1">
+        <h2>2. See ISO/DIS 19136 12.3.
+Geometric aggregates (i.e. instances of a subtype of gml:AbstractGeometricAggregateType) are arbitrary aggregations of geometry elements. They are not assumed to have any additional internal structure and are used to "collect" pieces of geometry of a specified type. Application schemas may use aggregates for features that use multiple geometric objects in their representations.
+
+GML is an OGC Standard.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
+To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+		</h2><a href="gml/elements/AbstractGeometricAggregate.html">
+          <h3>element AbstractGeometricAggregate</h3>
+        </a><a href="gml/elements/MultiSurface.html">
+          <h3>element MultiSurface</h3>
+        </a><a href="gml/elements/surfaceMembers.html">
+          <h3>element surfaceMembers</h3>
+        </a><a href="gml/complexTypes/AbstractGeometricAggregateType.html">
+          <h3>complexType AbstractGeometricAggregateType</h3>
+        </a><a href="gml/complexTypes/MultiSurfacePropertyType.html">
+          <h3>complexType MultiSurfacePropertyType</h3>
+        </a><a href="gml/complexTypes/MultiSurfaceType.html">
+          <h3>complexType MultiSurfaceType</h3>
+        </a></div>
+      <div class="sect1" id="schema_geometryBasic0d1d_extract_v3_2_1">
+        <h2>3. See ISO/DIS 19136 Clause 10.
+Any geometry element that inherits the semantics of AbstractGeometryType may be viewed as a set of direct positions. 
+All of the classes derived from AbstractGeometryType inherit an optional association to a coordinate reference system. All direct positions shall directly or indirectly be associated with a coordinate reference system. When geometry elements are aggregated in another geometry element (such as a MultiGeometry or GeometricComplex), which already has a coordinate reference system specified, then these elements are assumed to be in that same coordinate reference system unless otherwise specified.
+The geometry model distinguishes geometric primitives, aggregates and complexes. 
+Geometric primitives, i.e. instances of a subtype of AbstractGeometricPrimitiveType, will be open, that is, they will not contain their boundary points; curves will not contain their end points, surfaces will not contain their boundary curves, and solids will not contain their bounding surfaces.
+
+GML is an OGC Standard.
+Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+		</h2><a href="gml/elements/AbstractCurve.html">
+          <h3>element AbstractCurve</h3>
+        </a><a href="gml/elements/AbstractGeometricPrimitive.html">
+          <h3>element AbstractGeometricPrimitive</h3>
+        </a><a href="gml/elements/AbstractGeometry.html">
+          <h3>element AbstractGeometry</h3>
+        </a><a href="gml/elements/curveProperty.html">
+          <h3>element curveProperty</h3>
+        </a><a href="gml/elements/Envelope.html">
+          <h3>element Envelope</h3>
+        </a><a href="gml/elements/LineString.html">
+          <h3>element LineString</h3>
+        </a><a href="gml/elements/Point.html">
+          <h3>element Point</h3>
+        </a><a href="gml/elements/pointProperty.html">
+          <h3>element pointProperty</h3>
+        </a><a href="gml/elements/pos.html">
+          <h3>element pos</h3>
+        </a><a href="gml/elements/posList.html">
+          <h3>element posList</h3>
+        </a><a href="gml/elements/vector.html">
+          <h3>element vector</h3>
+        </a><a href="gml/groups/geometricPositionGroup.html">
+          <h3>group geometricPositionGroup</h3>
+        </a><a href="gml/groups/geometricPositionListGroup.html">
+          <h3>group geometricPositionListGroup</h3>
+        </a><a href="gml/complexTypes/AbstractCurveType.html">
+          <h3>complexType AbstractCurveType</h3>
+        </a><a href="gml/complexTypes/AbstractGeometricPrimitiveType.html">
+          <h3>complexType AbstractGeometricPrimitiveType</h3>
+        </a><a href="gml/complexTypes/AbstractGeometryType.html">
+          <h3>complexType AbstractGeometryType</h3>
+        </a><a href="gml/complexTypes/CurveArrayPropertyType.html">
+          <h3>complexType CurveArrayPropertyType</h3>
+        </a><a href="gml/complexTypes/CurvePropertyType.html">
+          <h3>complexType CurvePropertyType</h3>
+        </a><a href="gml/complexTypes/DirectPositionListType.html">
+          <h3>complexType DirectPositionListType</h3>
+        </a><a href="gml/complexTypes/DirectPositionType.html">
+          <h3>complexType DirectPositionType</h3>
+        </a><a href="gml/complexTypes/EnvelopeType.html">
+          <h3>complexType EnvelopeType</h3>
+        </a><a href="gml/complexTypes/GeometricPrimitivePropertyType.html">
+          <h3>complexType GeometricPrimitivePropertyType</h3>
+        </a><a href="gml/complexTypes/GeometryArrayPropertyType.html">
+          <h3>complexType GeometryArrayPropertyType</h3>
+        </a><a href="gml/complexTypes/GeometryPropertyType.html">
+          <h3>complexType GeometryPropertyType</h3>
+        </a><a href="gml/complexTypes/LineStringType.html">
+          <h3>complexType LineStringType</h3>
+        </a><a href="gml/complexTypes/PointArrayPropertyType.html">
+          <h3>complexType PointArrayPropertyType</h3>
+        </a><a href="gml/complexTypes/PointPropertyType.html">
+          <h3>complexType PointPropertyType</h3>
+        </a><a href="gml/complexTypes/PointType.html">
+          <h3>complexType PointType</h3>
+        </a><a href="gml/complexTypes/VectorType.html">
+          <h3>complexType VectorType</h3>
+        </a></div>
+      <div class="sect1" id="schema_geometryPrimitives_extract_v3_2_1">
+        <h2>4. See ISO/DIS 19136 Clause 11.
+Beside the "simple" geometric primitives specified in the previous Clause, this Clause specifies additional primitives to describe real world situations which require a more expressive geometry model.
+
+GML is an OGC Standard.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
+To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+		</h2><a href="gml/elements/surfaceMember.html">
+          <h3>element surfaceMember</h3>
+        </a></div>
+      <div class="sect1" id="schema_gmlBase_extract_v3_2_1">
+        <h2>5. See ISO/DIS 19136 7.2.
+The gmlBase schema components establish the GML model and syntax, in particular
+-	a root XML type from which XML types for all GML objects should be derived,
+-	a pattern and components for GML properties,
+-	patterns for collections and arrays, and components for generic collections and arrays,
+-	components for associating metadata with GML objects,
+-	components for constructing definitions and dictionaries.
+
+GML is an OGC Standard.
+Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+		</h2>
+        <div class="simple-type-definitions" id="schema_gmlBase_extract_v3_2_1_std">
+          <h3>5.1. Simple type definitions</h3>
+          <div class="sectionbody">
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup span="1">
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:44%"/>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_gml__AggregationType" class="tableblock"><strong><code>AggregationType</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">-</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">set</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">bag</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">sequence</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">array</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">record</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">table</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div><a href="gml/elements/abstractAssociationRole.html">
+          <h3>element abstractAssociationRole</h3>
+        </a><a href="gml/elements/AbstractGML.html">
+          <h3>element AbstractGML</h3>
+        </a><a href="gml/elements/abstractInlineProperty.html">
+          <h3>element abstractInlineProperty</h3>
+        </a><a href="gml/elements/AbstractObject.html">
+          <h3>element AbstractObject</h3>
+        </a><a href="gml/elements/abstractReference.html">
+          <h3>element abstractReference</h3>
+        </a><a href="gml/elements/abstractStrictAssociationRole.html">
+          <h3>element abstractStrictAssociationRole</h3>
+        </a><a href="gml/elements/associationName.html">
+          <h3>element associationName</h3>
+        </a><a href="gml/elements/defaultCodeSpace.html">
+          <h3>element defaultCodeSpace</h3>
+        </a><a href="gml/elements/descriptionReference.html">
+          <h3>element descriptionReference</h3>
+        </a><a href="gml/elements/gmlProfileSchema.html">
+          <h3>element gmlProfileSchema</h3>
+        </a><a href="gml/elements/identifier.html">
+          <h3>element identifier</h3>
+        </a><a href="gml/elements/name.html">
+          <h3>element name</h3>
+        </a><a href="gml/elements/reversePropertyName.html">
+          <h3>element reversePropertyName</h3>
+        </a><a href="gml/elements/targetElement.html">
+          <h3>element targetElement</h3>
+        </a><a href="gml/groups/StandardObjectProperties.html">
+          <h3>group StandardObjectProperties</h3>
+        </a><a href="gml/complexTypes/AbstractGMLType.html">
+          <h3>complexType AbstractGMLType</h3>
+        </a><a href="gml/complexTypes/AbstractMemberType.html">
+          <h3>complexType AbstractMemberType</h3>
+        </a><a href="gml/complexTypes/AbstractMetadataPropertyType.html">
+          <h3>complexType AbstractMetadataPropertyType</h3>
+        </a><a href="gml/complexTypes/AssociationRoleType.html">
+          <h3>complexType AssociationRoleType</h3>
+        </a><a href="gml/complexTypes/InlinePropertyType.html">
+          <h3>complexType InlinePropertyType</h3>
+        </a><a href="gml/complexTypes/ReferenceType.html">
+          <h3>complexType ReferenceType</h3>
+        </a></div>
+      <div class="sect1" id="schema_gmlBasic2d_extract_v3_2_1_">
+        <h2>6. See ISO/DIS 19136 Clause 10.
+			
+			GML is an OGC Standard.
+			Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
+		</h2><a href="gml/elements/AbstractRing.html">
+          <h3>element AbstractRing</h3>
+        </a><a href="gml/elements/AbstractSurface.html">
+          <h3>element AbstractSurface</h3>
+        </a><a href="gml/elements/exterior.html">
+          <h3>element exterior</h3>
+        </a><a href="gml/elements/interior.html">
+          <h3>element interior</h3>
+        </a><a href="gml/elements/LinearRing.html">
+          <h3>element LinearRing</h3>
+        </a><a href="gml/elements/Polygon.html">
+          <h3>element Polygon</h3>
+        </a><a href="gml/elements/surfaceProperty.html">
+          <h3>element surfaceProperty</h3>
+        </a><a href="gml/complexTypes/AbstractRingPropertyType.html">
+          <h3>complexType AbstractRingPropertyType</h3>
+        </a><a href="gml/complexTypes/AbstractRingType.html">
+          <h3>complexType AbstractRingType</h3>
+        </a><a href="gml/complexTypes/AbstractSurfaceType.html">
+          <h3>complexType AbstractSurfaceType</h3>
+        </a><a href="gml/complexTypes/LinearRingPropertyType.html">
+          <h3>complexType LinearRingPropertyType</h3>
+        </a><a href="gml/complexTypes/LinearRingType.html">
+          <h3>complexType LinearRingType</h3>
+        </a><a href="gml/complexTypes/PolygonType.html">
+          <h3>complexType PolygonType</h3>
+        </a><a href="gml/complexTypes/SurfaceArrayPropertyType.html">
+          <h3>complexType SurfaceArrayPropertyType</h3>
+        </a><a href="gml/complexTypes/SurfacePropertyType.html">
+          <h3>complexType SurfacePropertyType</h3>
+        </a></div>
+    </div><script type="text/javascript" src="../footer.js"></script></body>
+</html>
