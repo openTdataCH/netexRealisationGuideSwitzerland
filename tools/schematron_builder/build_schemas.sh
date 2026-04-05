@@ -1,0 +1,2 @@
+python.exe tools/schematron_builder/template2schematron.py -i templates -o generated/schematrons/ch-profile_export_timetable_file.sch -x xsd/xsd/NeTEx_publication.xsd -t templates/ch-profile_export-timetable_file.xml
+python.exe tools/schematron_builder/template2schematron.py -i templates -o generated/schematrons/ch-profile_export_resource_file.sch -x xsd/xsd/NeTEx_publication.xsd -t templates/ch-profile_export_resource_file.xml
