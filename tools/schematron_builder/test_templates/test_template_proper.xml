@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Test Template for Swiss NeTEX Profile - Proper Structure
+    This template demonstrates all supported ch-comment annotations in a format
+    that works with the schematron builder (requires PublicationDelivery root)
+-->
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <!-- ch-start: Test template demonstrating all annotations -->
+    
+    <!-- TestElement with all annotation examples -->
+    <dataObjects>
+        <TestElement id="ch:test:TestElement:1" version="1">
+            
+            <!-- Element with mandatory usage -->
+            <MandatoryElement>
+                <!-- ch-usage: mandatory -->
+                <!-- ch-note: This element is required in the Swiss profile -->
+                Required content
+            </MandatoryElement>
+            
+            <!-- Element with forbidden usage -->
+            <ForbiddenElement>
+                <!-- ch-usage: forbidden -->
+                <!-- ch-note: This element should not be used in the Swiss profile -->
+                Forbidden content
+            </ForbiddenElement>
+            
+            <!-- Element with optional usage -->
+            <OptionalElement>
+                <!-- ch-usage: optional -->
+                <!-- ch-note: This element is optional in the Swiss profile -->
+                Optional content
+            </OptionalElement>
+            
+            <!-- Element with ignored usage -->
+            <IgnoredElement>
+                <!-- ch-usage: ignored -->
+                <!-- ch-note: This element is ignored in the Swiss profile -->
+                Ignored content
+            </IgnoredElement>
+            
+            <!-- Element with expected usage -->
+            <ExpectedElement>
+                <!-- ch-usage: expected -->
+                <!-- ch-note: This element is expected but not required in the Swiss profile -->
+                Expected content
+            </ExpectedElement>
+            
+            <!-- Element with deprecated flag -->
+            <DeprecatedElement>
+                <!-- ch-usage: optional -->
+                <!-- ch-deprecated -->
+                <!-- ch-note: This element is deprecated and should not be used in new implementations -->
+                Deprecated content
+            </DeprecatedElement>
+            
+            <!-- Element with referenced annotation -->
+            <ReferencedElement>
+                <!-- ch-usage: mandatory -->
+                <!-- ch-referenced -->
+                <!-- ch-note: This element references another template file -->
+                Referenced content
+            </ReferencedElement>
+            
+            <!-- Element with specific referenced file -->
+            <SpecificReferencedElement>
+                <!-- ch-usage: mandatory -->
+                <!-- ch-referenced: test_template.xml -->
+                <!-- ch-note: This element references a specific template file -->
+                Specific referenced content
+            </SpecificReferencedElement>
+            
+            <!-- Element with allowed enumerations -->
+            <EnumElement>
+                <!-- ch-usage: mandatory -->
+                <!-- ch-allowed-enums: value1 value2 value3 -->
+                <!-- ch-note: This element can only have specific enumeration values -->
+                value1
+            </EnumElement>
+            
+            <!-- Element with class-id-must-exist -->
+            <ElementWithRef id="ch:test:ElementWithRef:1">
+                <!-- ch-usage: mandatory -->
+                <!-- ch-class-id-must-exist -->
+                <!-- ch-note: This element requires that the referenced ID exists in the document -->
+                Content with reference requirement
+            </ElementWithRef>
+            
+            <!-- Element with both note and notice -->
+            <ElementWithBoth>
+                <!-- ch-usage: mandatory -->
+                <!-- ch-note: This is a note about the element -->
+                <!-- ch-notice: This is a notice about the element -->
+                Content with both note and notice
+            </ElementWithBoth>
+            
+            <!-- Element with attribute control -->
+            <ElementWithAttrs id="ch:test:ElementWithAttrs:1" version="1" customAttr="value">
+                <!-- ch-usage: mandatory -->
+                <!-- ch-attrs: id version customAttr -->
+                <!-- ch-note: This element specifies which attributes are allowed -->
+                Content with controlled attributes
+            </ElementWithAttrs>
+            
+        </TestElement>
+    </dataObjects>
+    
+    <!-- ch-stop: Test template demonstrating all annotations -->
+</PublicationDelivery>
