@@ -13,3 +13,10 @@ NeTEx is organised in frames. The basic structure of those frames is introduced 
 * VehicleScheduleFrame: NOT TO BE USED	VEHICLE SCHEDULEs: BLOCKs and BLOCK PARTs
 * DriverScheduleFrame: NOT TO BE USED	DRIVER SCHEDULESs: DuTies and DUTY plans.
 * FareFrame: NOT TO BE USED	Fare related elements: TARIFF STRUCTUREs, FARE PRODUCTs, FARE PRICEs, etc.
+
+
+# The main structure and the needed schemas
+TBD: 4.1
+
+# The CompositeFrame
+Tbd : 3.13
