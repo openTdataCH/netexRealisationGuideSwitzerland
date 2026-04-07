@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery
+  xmlns="http://www.netex.org.uk/netex"
+  xmlns:gml="http://www.opengis.net/gml/3.2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:siri="http://www.siri.org.uk/siri"
+  xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/NeTEx-2.0/schema/xsd/NeTEx_publication.xsd"
+  version="1.10">
+    <PublicationTimestamp>2026-04-07T12:00:00+01:00</PublicationTimestamp>
+    <ParticipantRef>SKI-TEST</ParticipantRef>
+    <dataObjects>
+        <CompositeFrame id="ch:1:CompositeFrame:j26" version="any">
+            <ValidBetween>
+                <FromDate>2025-12-14T00:00:00</FromDate>
+                <ToDate>2026-12-12T23:59:59</ToDate>
+            </ValidBetween>
+            <FrameDefaults>
+                <DefaultLocale>
+                    <TimeZoneOffset>1</TimeZoneOffset>
+                    <SummerTimeZoneOffset>2</SummerTimeZoneOffset>
+                    <DefaultLanguage>de</DefaultLanguage>
+                </DefaultLocale>
+            </FrameDefaults>
+            <frames>
+                <ResourceFrame id="ch:1:ResourceFrame:j26" version="any">
+                    <responsibilitySets>
+                        <ResponsibilitySet id="ch:1:ResponsibilitySet:TPN_738_TPN" version="any">
+                            <Name lang="de">Transports Publics de la Région Nyonnaise</Name>
+                            <PrivateCode>TPN</PrivateCode>
+                            <roles>
+                                <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:TPN_738_TPN:1" version="any">
+                                    <StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+                                    <ResponsibleOrganisationRef ref="ch:1:Operator:738" version="any"/>
+                                </ResponsibilityRoleAssignment>
+                                <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:TPN_738_TPN:2" version="any">
+                                    <StakeholderRoleType>Operation</StakeholderRoleType>
+                                    <ResponsibleOrganisationRef ref="ch:1:Operator:738" version="any"/>
+                                </ResponsibilityRoleAssignment>
+                            </roles>
+                        </ResponsibilitySet>
+                    </responsibilitySets>
+                    <typesOfValue>
+                        <ValueSet id="ch:1:ValueSet:notices" version="any" nameOfClass="TypeOfNotice">
+                            <values>
+                                <TypeOfNotice id="ch:1:TypeOfNotice:10" version="any">
+                                    <Name>Angebot</Name>
+                                    <PrivateCode>10</PrivateCode>
+                                </TypeOfNotice>
+                            </values>
+                        </ValueSet>
+                        <ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="any" nameOfClass="TypeOfProductCategory">
+                            <Name>ProductCategories</Name>
+                            <values>
+                                <TypeOfProductCategory id="ch:1:TypeOfProductCategory:B" version="any">
+                                    <alternativeTexts>
+                                        <AlternativeText attributeName="Name">
+                                            <Text lang="fr">Bus</Text>
+                                        </AlternativeText>
+                                        <AlternativeText attributeName="Name">
+                                            <Text lang="it">Bus</Text>
+                                        </AlternativeText>
+                                        <AlternativeText attributeName="Name">
+                                            <Text lang="en">Bus</Text>
+                                        </AlternativeText>
+                                    </alternativeTexts>
+                                    <Name lang="de">Bus</Name>
+                                    <ShortName lang="de">B</ShortName>
+                                </TypeOfProductCategory>
+                            </values>
+                        </ValueSet>
+                    </typesOfValue>
+                    <organisations>
+                        <Operator id="ch:1:Operator:738" version="any">
+                            <keyList>
+                                <KeyValue>
+                                    <Key>DIDOK</Key>
+                                    <Value>738</Value>
+                                </KeyValue>
+                                <KeyValue>
+                                    <Key>SBOID</Key>
+                                    <Value>ch:1:sboid:100540</Value>
+                                </KeyValue>
+                            </keyList>
+                            <PrivateCode>738</PrivateCode>
+                            <Name lang="de">Transports Publics de la Région Nyonnaise</Name>
+                            <ShortName>TPN</ShortName>
+                        </Operator>
+                    </organisations>
+                    <vehicleTypes>
+                        <VehicleType id="ch:1:VehicleType:NF" version="any">
+                            <ShortName lang="de">Niederflur</ShortName>
+                            <LowFloor>false</LowFloor>
+                            <HasLiftOrRamp>true</HasLiftOrRamp>
+                            <HasHoist>false</HasHoist>
+                        </VehicleType>
+                    </vehicleTypes>
+                </ResourceFrame>
+                <SiteFrame id="ch:1:SiteFrame:j26" version="any">
+                    <topographicPlaces>
+                        <TopographicPlace id="ch:1:TopographicPlace:CH" version="any">
+                            <Descriptor>
+                                <Name lang="de">Schweiz</Name>
+                                <ShortName>CH</ShortName>
+                            </Descriptor>
+                            <TopographicPlaceType>country</TopographicPlaceType>
+                        </TopographicPlace>
+                        <TopographicPlace id="ch:1:TopographicPlace:CH-VD" version="any">
+                            <Descriptor>
+                                <Name lang="fr">Vaud</Name>
+                                <ShortName>VD</ShortName>
+                            </Descriptor>
+                            <TopographicPlaceType>county</TopographicPlaceType>
+                            <ParentTopographicPlaceRef ref="ch:1:TopographicPlace:CH" version="any"/>
+                        </TopographicPlace>
+                    </topographicPlaces>
+                    <stopPlaces>
+                        <StopPlace id="ch:1:StopPlace:8595598" version="any">
+                            <keyList>
+                                <KeyValue>
+                                    <Key>DIDOK</Key>
+                                    <Value>8595598</Value>
+                                </KeyValue>
+                                <KeyValue>
+                                    <Key>SLOID</Key>
+                                    <Value>ch:1:sloid:95598</Value>
+                                </KeyValue>
+                            </keyList>
+                            <Name lang="de">Nyon, Petite Prairie</Name>
+                            <ShortName lang="de">8595598</ShortName>
+                            <PrivateCode>8595598</PrivateCode>
+                            <Centroid>
+                                <Location>
+                                    <Longitude>6.22168042329</Longitude>
+                                    <Latitude>46.39078452299</Latitude>
+                                </Location>
+                            </Centroid>
+                            <TopographicPlaceRef ref="ch:1:TopographicPlace:CH-VD" version="any"/>
+                            <Weighting>interchangeAllowed</Weighting>
+                            <quays>
+                                <Quay id="ch:1:Quay:8595598-2" version="any">
+                                    <keyList>
+                                        <KeyValue>
+                                            <Key>SLOID</Key>
+                                            <Value>ch:1:sloid:95598:0:2</Value>
+                                        </KeyValue>
+                                    </keyList>
+                                    <Centroid>
+                                        <Location>
+                                            <Longitude>6.22166055023</Longitude>
+                                            <Latitude>46.39079163351</Latitude>
+                                        </Location>
+                                    </Centroid>
+                                    <PublicCode>B</PublicCode>
+                                </Quay>
+                            </quays>
+                        </StopPlace>
+                        <StopPlace id="ch:1:StopPlace:8570000" version="any">
+                            <keyList>
+                                <KeyValue>
+                                    <Key>DIDOK</Key>
+                                    <Value>8570000</Value>
+                                </KeyValue>
+                                <KeyValue>
+                                    <Key>SLOID</Key>
+                                    <Value>ch:1:sloid:70000</Value>
+                                </KeyValue>
+                            </keyList>
+                            <Name lang="de">Nyon, gare</Name>
+                            <ShortName lang="de">8570000</ShortName>
+                            <PrivateCode>8570000</PrivateCode>
+                            <Centroid>
+                                <Location>
+                                    <Longitude>6.23632549288</Longitude>
+                                    <Latitude>46.3843742645</Latitude>
+                                </Location>
+                            </Centroid>
+                            <TopographicPlaceRef ref="ch:1:TopographicPlace:CH-VD" version="any"/>
+                            <Weighting>preferredInterchange</Weighting>
+                            <quays>
+                                <Quay id="ch:1:Quay:8570000-2" version="any">
+                                    <keyList>
+                                        <KeyValue>
+                                            <Key>SLOID</Key>
+                                            <Value>ch:1:sloid:70000:0:709805</Value>
+                                        </KeyValue>
+                                    </keyList>
+                                    <Centroid>
+                                        <Location>
+                                            <Longitude>6.2353067372</Longitude>
+                                            <Latitude>46.3835592405</Latitude>
+                                        </Location>
+                                    </Centroid>
+                                    <PublicCode>B</PublicCode>
+                                </Quay>
+                                <Quay id="ch:1:Quay:8570000-3" version="any">
+                                    <keyList>
+                                        <KeyValue>
+                                            <Key>SLOID</Key>
+                                            <Value>ch:1:sloid:70000:0:602</Value>
+                                        </KeyValue>
+                                    </keyList>
+                                    <Centroid>
+                                        <Location>
+                                            <Longitude>6.2354975938</Longitude>
+                                            <Latitude>46.38357555174</Latitude>
+                                        </Location>
+                                    </Centroid>
+                                    <PublicCode>C</PublicCode>
+                                </Quay>
+                            </quays>
+                        </StopPlace>
+                        <StopPlace id="ch:1:StopPlace:8588660" version="any">
+                            <keyList>
+                                <KeyValue>
+                                    <Key>DIDOK</Key>
+                                    <Value>8588660</Value>
+                                </KeyValue>
+                                <KeyValue>
+                                    <Key>SLOID</Key>
+                                    <Value>ch:1:sloid:88660</Value>
+                                </KeyValue>
+                            </keyList>
+                            <Name lang="de">Nyon, Colovray</Name>
+                            <ShortName lang="de">8588660</ShortName>
+                            <PrivateCode>8588660</PrivateCode>
+                            <Centroid>
+                                <Location>
+                                    <Longitude>6.22788691756</Longitude>
+                                    <Latitude>46.3700682092</Latitude>
+                                </Location>
+                            </Centroid>
+                            <TopographicPlaceRef ref="ch:1:TopographicPlace:CH-VD" version="any"/>
+                            <Weighting>interchangeAllowed</Weighting>
+                            <quays>
+                                <Quay id="ch:1:Quay:8588660-3" version="any">
+                                    <keyList>
+                                        <KeyValue>
+                                            <Key>SLOID</Key>
+                                            <Value>ch:1:sloid:88660:0:3</Value>
+                                        </KeyValue>
+                                    </keyList>
+                                    <Centroid>
+                                        <Location>
+                                            <Longitude>6.22707595698</Longitude>
+                                            <Latitude>46.36987109874</Latitude>
+                                        </Location>
+                                    </Centroid>
+                                    <PublicCode>A</PublicCode>
+                                </Quay>
+                            </quays>
+                        </StopPlace>
+                    </stopPlaces>
+                </SiteFrame>
+                <ServiceFrame id="ch:1:ServiceFrame:j26" version="any">
+                    <directions>
+                        <Direction id="ch:1:Direction:H" version="any">
+                            <DirectionType>outbound</DirectionType>
+                        </Direction>
+                        <Direction id="ch:1:Direction:R" version="any">
+                            <DirectionType>inbound</DirectionType>
+                        </Direction>
+                    </directions>
+                    <lines>
+                        <Line id="ch:1:Line:738.B.803" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:TPN_738_TPN">
+                            <Name lang="de">803</Name>
+                            <ShortName lang="de">803</ShortName>
+                            <TransportMode>bus</TransportMode>
+                            <TransportSubmode>
+                                <BusSubmode>localBus</BusSubmode>
+                            </TransportSubmode>
+                            <PublicCode>803</PublicCode>
+                            <OperatorRef ref="ch:1:Operator:738" version="any"/>
+                        </Line>
+                    </lines>
+                    <destinationDisplays>
+                        <DestinationDisplay id="ch:1:DestinationDisplay:8588660" version="any">
+                            <Name lang="de">Nyon, Colovray</Name>
+                        </DestinationDisplay>
+                        <DestinationDisplay id="ch:1:DestinationDisplay:8595598" version="any">
+                            <Name lang="de">Nyon, Petite Prairie</Name>
+                        </DestinationDisplay>
+                    </destinationDisplays>
+                    <scheduledStopPoints>
+                        <ScheduledStopPoint id="ch:1:ScheduledStopPoint:8595598-2" version="any">
+                            <keyList>
+                                <KeyValue>
+                                    <Key>DIDOK</Key>
+                                    <Value>8595598</Value>
+                                </KeyValue>
+                            </keyList>
+                            <Name lang="de">Nyon, Petite Prairie</Name>
+                        </ScheduledStopPoint>
+                        <ScheduledStopPoint id="ch:1:ScheduledStopPoint:8570000-2" version="any">
+                            <keyList>
+                                <KeyValue>
+                                    <Key>DIDOK</Key>
+                                    <Value>8570000</Value>
+                                </KeyValue>
+                            </keyList>
+                            <Name lang="de">Nyon, gare</Name>
+                        </ScheduledStopPoint>
+                        <ScheduledStopPoint id="ch:1:ScheduledStopPoint:8570000-3" version="any">
+                            <keyList>
+                                <KeyValue>
+                                    <Key>DIDOK</Key>
+                                    <Value>8570000</Value>
+                                </KeyValue>
+                            </keyList>
+                            <Name lang="de">Nyon, gare</Name>
+                        </ScheduledStopPoint>
+                        <ScheduledStopPoint id="ch:1:ScheduledStopPoint:8588660-3" version="any">
+                            <keyList>
+                                <KeyValue>
+                                    <Key>DIDOK</Key>
+                                    <Value>8588660</Value>
+                                </KeyValue>
+                            </keyList>
+                            <Name lang="de">Nyon, Colovray</Name>
+                        </ScheduledStopPoint>
+                    </scheduledStopPoints>
+                    <stopAssignments>
+                        <PassengerStopAssignment id="ch:1:PassengerStopAssignment:8595598-2" version="any" order="1">
+                            <ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:8595598-2" version="any"/>
+                            <StopPlaceRef ref="ch:1:StopPlace:8595598" version="any"/>
+                            <QuayRef ref="ch:1:Quay:8595598-2" version="any"/>
+                        </PassengerStopAssignment>
+                        <PassengerStopAssignment id="ch:1:PassengerStopAssignment:8570000-2" version="any" order="2">
+                            <ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:8570000-2" version="any"/>
+                            <StopPlaceRef ref="ch:1:StopPlace:8570000" version="any"/>
+                            <QuayRef ref="ch:1:Quay:8570000-2" version="any"/>
+                        </PassengerStopAssignment>
+                        <PassengerStopAssignment id="ch:1:PassengerStopAssignment:8570000-3" version="any" order="3">
+                            <ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:8570000-3" version="any"/>
+                            <StopPlaceRef ref="ch:1:StopPlace:8570000" version="any"/>
+                            <QuayRef ref="ch:1:Quay:8570000-3" version="any"/>
+                        </PassengerStopAssignment>
+                        <PassengerStopAssignment id="ch:1:PassengerStopAssignment:8588660-3" version="any" order="4">
+                            <ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:8588660-3" version="any"/>
+                            <StopPlaceRef ref="ch:1:StopPlace:8588660" version="any"/>
+                            <QuayRef ref="ch:1:Quay:8588660-3" version="any"/>
+                        </PassengerStopAssignment>
+                    </stopAssignments>
+                    <journeyPatterns>
+                        <JourneyPattern id="ch:1:JourneyPattern:738.B.803-1" version="any">
+                            <pointsInSequence>
+                                <StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:738.B.803-1-1" version="any" order="1">
+                                    <ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:8588660-3" version="any"/>
+                                    <DestinationDisplayRef ref="ch:1:DestinationDisplay:8595598" version="any"/>
+                                    <RequestStop>false</RequestStop>
+                                    <StopUse>access</StopUse>
+                                </StopPointInJourneyPattern>
+                                <StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:738.B.803-1-2" version="any" order="2">
+                                    <ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:8570000-2" version="any"/>
+                                    <RequestStop>false</RequestStop>
+                                    <StopUse>access</StopUse>
+                                </StopPointInJourneyPattern>
+                                <StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:738.B.803-1-3" version="any" order="3">
+                                    <ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:8595598-2" version="any"/>
+                                    <RequestStop>false</RequestStop>
+                                    <StopUse>access</StopUse>
+                                </StopPointInJourneyPattern>
+                            </pointsInSequence>
+                        </JourneyPattern>
+                        <JourneyPattern id="ch:1:JourneyPattern:738.B.803-2" version="any">
+                            <pointsInSequence>
+                                <StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:738.B.803-2-1" version="any" order="1">
+                                    <ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:8595598-2" version="any"/>
+                                    <DestinationDisplayRef ref="ch:1:DestinationDisplay:8595598" version="any"/>
+                                    <RequestStop>false</RequestStop>
+                                    <StopUse>access</StopUse>
+                                </StopPointInJourneyPattern>
+                                <StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:738.B.803-2-2" version="any" order="2">
+                                    <ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:8570000-3" version="any"/>
+                                    <RequestStop>false</RequestStop>
+                                    <StopUse>access</StopUse>
+                                </StopPointInJourneyPattern>
+                                <StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:738.B.803-2-3" version="any" order="3">
+                                    <ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:8588660-3" version="any"/>
+                                    <RequestStop>false</RequestStop>
+                                    <StopUse>access</StopUse>
+                                </StopPointInJourneyPattern>
+                            </pointsInSequence>
+                        </JourneyPattern>
+                    </journeyPatterns>
+                </ServiceFrame>
+                <ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="any">
+                    <validityConditions>
+                        <AvailabilityCondition id="ch:1:AvailabilityCondition:15" version="any">
+                            <FromDate>2025-12-14T00:00:00</FromDate>
+                            <ToDate>2026-12-12T23:59:59</ToDate>
+                            <ValidDayBits>0111110011100001110000111110011111001111100111110011111001111100111110011111001111100111110011111001111100111100001111001111100111110011111001111100111010011111000111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110</ValidDayBits>
+                        </AvailabilityCondition>
+                        <AvailabilityCondition id="ch:1:AvailabilityCondition:16" version="any">
+                            <FromDate>2025-12-14T00:00:00</FromDate>
+                            <ToDate>2026-12-12T23:59:59</ToDate>
+                            <ValidDayBits>0111111011100101110010111111011111101111110111111011111101111110111111011111101111110111111011111101111110111101001111101111110111111011111101111110111011011111100111110111111011111101111110111111011111101111110111111011111101111100111111011111101111110111111011111101111110111111011111101111110111111011111101111110111111011111101111110111111011111101111110111111</ValidDayBits>
+                        </AvailabilityCondition>
+                        <AvailabilityCondition id="ch:1:AvailabilityCondition:17" version="any">
+                            <FromDate>2025-12-14T00:00:00</FromDate>
+                            <ToDate>2026-12-12T23:59:59</ToDate>
+                            <ValidDayBits>1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</ValidDayBits>
+                        </AvailabilityCondition>
+                    </validityConditions>
+                    <ServiceCalendar id="ch:1:ServiceCalendar:j26" version="any">
+                        <Name>Horaire 2026</Name>
+                        <FromDate>2025-12-14</FromDate>
+                        <ToDate>2026-12-12</ToDate>
+                    </ServiceCalendar>
+                    <dayTypes>
+                        <DayType id="ch:1:DayType:Weihnachten" version="any">
+                            <alternativeTexts>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="fr">Noël</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="it">Natale</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="en">Christmas</Text>
+                                </AlternativeText>
+                            </alternativeTexts>
+                            <Name>Weihnachten</Name>
+                            <properties>
+                                <PropertyOfDay>
+                                    <HolidayTypes>NationalHoliday</HolidayTypes>
+                                </PropertyOfDay>
+                            </properties>
+                        </DayType>
+                        <DayType id="ch:1:DayType:Stephanstag" version="any">
+                            <alternativeTexts>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="fr">Saint-Étienne</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="it">Santo Stefano</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="en">Saint Stephen's Day</Text>
+                                </AlternativeText>
+                            </alternativeTexts>
+                            <Name>Stephanstag</Name>
+                            <properties>
+                                <PropertyOfDay>
+                                    <HolidayTypes>NationalHoliday</HolidayTypes>
+                                </PropertyOfDay>
+                            </properties>
+                        </DayType>
+                        <DayType id="ch:1:DayType:Neujahr" version="any">
+                            <alternativeTexts>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="fr">Nouvel An</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="it">Capodanno</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="en">New Year</Text>
+                                </AlternativeText>
+                            </alternativeTexts>
+                            <Name>Neujahr</Name>
+                            <properties>
+                                <PropertyOfDay>
+                                    <HolidayTypes>NationalHoliday</HolidayTypes>
+                                </PropertyOfDay>
+                            </properties>
+                        </DayType>
+                        <DayType id="ch:1:DayType:Berchtoldstag" version="any">
+                            <alternativeTexts>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="fr">Saint-Berthold</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="it">Berchtoldstag</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="en">Berchtold's Day</Text>
+                                </AlternativeText>
+                            </alternativeTexts>
+                            <Name>Berchtoldstag</Name>
+                            <properties>
+                                <PropertyOfDay>
+                                    <HolidayTypes>NationalHoliday</HolidayTypes>
+                                </PropertyOfDay>
+                            </properties>
+                        </DayType>
+                        <DayType id="ch:1:DayType:Karfreitag" version="any">
+                            <alternativeTexts>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="fr">Vendredi Saint</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="it">Venerdì Santo</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="en">Good Friday</Text>
+                                </AlternativeText>
+                            </alternativeTexts>
+                            <Name>Karfreitag</Name>
+                            <properties>
+                                <PropertyOfDay>
+                                    <HolidayTypes>NationalHoliday</HolidayTypes>
+                                </PropertyOfDay>
+                            </properties>
+                        </DayType>
+                        <DayType id="ch:1:DayType:Ostermontag" version="any">
+                            <alternativeTexts>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="fr">Lundi de Pâques</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="it">Lunedì dell'Angelo</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="en">Easter Monday</Text>
+                                </AlternativeText>
+                            </alternativeTexts>
+                            <Name>Ostermontag</Name>
+                            <properties>
+                                <PropertyOfDay>
+                                    <HolidayTypes>NationalHoliday</HolidayTypes>
+                                </PropertyOfDay>
+                            </properties>
+                        </DayType>
+                        <DayType id="ch:1:DayType:ChristiHimmelfahrt" version="any">
+                            <alternativeTexts>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="fr">Ascension</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="it">Ascensione</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="en">Ascension</Text>
+                                </AlternativeText>
+                            </alternativeTexts>
+                            <Name>Christi Himmelfahrt</Name>
+                            <properties>
+                                <PropertyOfDay>
+                                    <HolidayTypes>NationalHoliday</HolidayTypes>
+                                </PropertyOfDay>
+                            </properties>
+                        </DayType>
+                        <DayType id="ch:1:DayType:Pfingstmontag" version="any">
+                            <alternativeTexts>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="fr">Lundi de Pentecôte</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="it">Lunedì di Pentecoste</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="en">Whit Monday</Text>
+                                </AlternativeText>
+                            </alternativeTexts>
+                            <Name>Pfingstmontag</Name>
+                            <properties>
+                                <PropertyOfDay>
+                                    <HolidayTypes>NationalHoliday</HolidayTypes>
+                                </PropertyOfDay>
+                            </properties>
+                        </DayType>
+                        <DayType id="ch:1:DayType:Bundesfeier" version="any">
+                            <alternativeTexts>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="fr">Fête Nationale</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="it">Festa Nazionale</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Name">
+                                    <Text lang="en">National Day</Text>
+                                </AlternativeText>
+                            </alternativeTexts>
+                            <Name>Bundesfeier</Name>
+                            <properties>
+                                <PropertyOfDay>
+                                    <HolidayTypes>NationalHoliday</HolidayTypes>
+                                </PropertyOfDay>
+                            </properties>
+                        </DayType>
+                    </dayTypes>
+                    <dayTypeAssignments>
+                        <DayTypeAssignment id="ch:1:DayTypeAssignment:Weihnachten" version="any" order="1">
+                            <Date>2025-12-25</Date>
+                            <DayTypeRef ref="ch:1:DayType:Weihnachten"></DayTypeRef>
+                        </DayTypeAssignment>
+                        <DayTypeAssignment id="ch:1:DayTypeAssignment:Stephanstag" version="any" order="2">
+                            <Date>2025-12-26</Date>
+                            <DayTypeRef ref="ch:1:DayType:Stephanstag"></DayTypeRef>
+                        </DayTypeAssignment>
+                        <DayTypeAssignment id="ch:1:DayTypeAssignment:Neujahr" version="any" order="3">
+                            <Date>2026-01-01</Date>
+                            <DayTypeRef ref="ch:1:DayType:Neujahr"></DayTypeRef>
+                        </DayTypeAssignment>
+                        <DayTypeAssignment id="ch:1:DayTypeAssignment:Berchtoldstag" version="any" order="4">
+                            <Date>2026-01-02</Date>
+                            <DayTypeRef ref="ch:1:DayType:Berchtoldstag"></DayTypeRef>
+                        </DayTypeAssignment>
+                        <DayTypeAssignment id="ch:1:DayTypeAssignment:Karfreitag" version="any" order="5">
+                            <Date>2026-04-03</Date>
+                            <DayTypeRef ref="ch:1:DayType:Karfreitag"></DayTypeRef>
+                        </DayTypeAssignment>
+                        <DayTypeAssignment id="ch:1:DayTypeAssignment:Ostermontag" version="any" order="6">
+                            <Date>2026-04-06</Date>
+                            <DayTypeRef ref="ch:1:DayType:Ostermontag"></DayTypeRef>
+                        </DayTypeAssignment>
+                        <DayTypeAssignment id="ch:1:DayTypeAssignment:ChristiHimmelfahrt" version="any" order="7">
+                            <Date>2026-05-14</Date>
+                            <DayTypeRef ref="ch:1:DayType:ChristiHimmelfahrt"></DayTypeRef>
+                        </DayTypeAssignment>
+                        <DayTypeAssignment id="ch:1:DayTypeAssignment:Pfingstmontag" version="any" order="8">
+                            <Date>2026-05-25</Date>
+                            <DayTypeRef ref="ch:1:DayType:Pfingstmontag"></DayTypeRef>
+                        </DayTypeAssignment>
+                        <DayTypeAssignment id="ch:1:DayTypeAssignment:Bundesfeier" version="any" order="9">
+                            <Date>2026-08-01</Date>
+                            <DayTypeRef ref="ch:1:DayType:Bundesfeier"></DayTypeRef>
+                        </DayTypeAssignment>
+                    </dayTypeAssignments>
+                </ServiceCalendarFrame>
+                <TimetableFrame id="ch:1:TimetableFrame:j26" version="any">
+                    <vehicleJourneys>
+                        <ServiceJourney id="ch:1:ServiceJourney:ch:1:sjyid:100540:plan:64400bea-e375-43df-96ae-41b5cdd0f97c.j26" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:TPN_738_TPN">
+                            <validityConditions>
+                                <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:15" version="any"/>
+                            </validityConditions>
+                            <keyList>
+                                <KeyValue>
+                                    <Key>SJYID</Key>
+                                    <Value>ch:1:sjyid:100540:plan:64400bea-e375-43df-96ae-41b5cdd0f97c</Value>
+                                </KeyValue>
+                            </keyList>
+                            <Extensions>
+                                <facilities>
+                                    <Facility id="ch:1:Facility:NF" version="any">
+                                        <validityConditions>
+                                            <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:15" version="any"/>
+                                        </validityConditions>
+                                        <ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A__NF" version="any"/>
+                                    </Facility>
+                                </facilities>
+                            </Extensions>
+                            <PrivateCode>3001</PrivateCode>
+                            <TransportMode>bus</TransportMode>
+                            <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="any"/>
+                            <TypeOfServiceRef ref="ch:1:TypeOfService:1" version="any"/>
+                            <ServiceAlteration>planned</ServiceAlteration>
+                            <DepartureTime>05:58:00</DepartureTime>
+                            <JourneyPatternRef ref="ch:1:JourneyPattern:738.B.803-1" version="any"/>
+                            <VehicleTypeRef ref="ch:1:VehicleType:NF" version="any"/>
+                            <OperatorRef ref="ch:1:Operator:738" version="any"/>
+                            <LineRef ref="ch:1:Line:738.B.803" version="any"/>
+                            <DirectionType>outbound</DirectionType>
+                            <trainNumbers>
+                                <TrainNumberRef ref="ch:1:TrainNumber:3001" version="any"/>
+                            </trainNumbers>
+                            <passingTimes>
+                                <TimetabledPassingTime id="ch:1:TimetabledPassingTime:ch:1:sjyid:100540:plan:64400bea-e375-43df-96ae-41b5cdd0f97c.j26-1" version="any">
+                                    <StopPointInJourneyPatternRef ref="ch:1:StopPointInJourneyPattern:738.B.803-1-1" version="any"/>
+                                    <DepartureTime>05:58:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime id="ch:1:TimetabledPassingTime:ch:1:sjyid:100540:plan:64400bea-e375-43df-96ae-41b5cdd0f97c.j26-2" version="any">
+                                    <StopPointInJourneyPatternRef ref="ch:1:StopPointInJourneyPattern:738.B.803-1-2" version="any"/>
+                                    <ArrivalTime>06:05:00</ArrivalTime>
+                                    <DepartureTime>06:05:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime id="ch:1:TimetabledPassingTime:ch:1:sjyid:100540:plan:64400bea-e375-43df-96ae-41b5cdd0f97c.j26-3" version="any">
+                                    <StopPointInJourneyPatternRef ref="ch:1:StopPointInJourneyPattern:738.B.803-1-3" version="any"/>
+                                    <ArrivalTime>06:11:00</ArrivalTime>
+                                </TimetabledPassingTime>
+                            </passingTimes>
+                        </ServiceJourney>
+                        <ServiceJourney id="ch:1:ServiceJourney:ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27.j26" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:TPN_738_TPN">
+                            <validityConditions>
+                                <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:15" version="any"/>
+                            </validityConditions>
+                            <keyList>
+                                <KeyValue>
+                                    <Key>SJYID</Key>
+                                    <Value>ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27</Value>
+                                </KeyValue>
+                            </keyList>
+                            <Extensions>
+                                <facilities>
+                                    <Facility id="ch:1:Facility:NF" version="any">
+                                        <validityConditions>
+                                            <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:15" version="any"/>
+                                        </validityConditions>
+                                        <ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A__NF" version="any"/>
+                                    </Facility>
+                                </facilities>
+                            </Extensions>
+                            <PrivateCode>3000</PrivateCode>
+                            <TransportMode>bus</TransportMode>
+                            <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="any"/>
+                            <TypeOfServiceRef ref="ch:1:TypeOfService:1" version="any"/>
+                            <ServiceAlteration>planned</ServiceAlteration>
+                            <DepartureTime>06:01:00</DepartureTime>
+                            <JourneyPatternRef ref="ch:1:JourneyPattern:738.B.803-2" version="any"/>
+                            <VehicleTypeRef ref="ch:1:VehicleType:NF" version="any"/>
+                            <OperatorRef ref="ch:1:Operator:738" version="any"/>
+                            <LineRef ref="ch:1:Line:738.B.803" version="any"/>
+                            <DirectionType>inbound</DirectionType>
+                            <trainNumbers>
+                                <TrainNumberRef ref="ch:1:TrainNumber:3000" version="any"/>
+                            </trainNumbers>
+                            <passingTimes>
+                                <TimetabledPassingTime id="ch:1:TimetabledPassingTime:ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27.j26-1" version="any">
+                                    <StopPointInJourneyPatternRef ref="ch:1:StopPointInJourneyPattern:738.B.803-2-1" version="any"/>
+                                    <DepartureTime>06:01:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime id="ch:1:TimetabledPassingTime:ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27.j26-2" version="any">
+                                    <StopPointInJourneyPatternRef ref="ch:1:StopPointInJourneyPattern:738.B.803-2-2" version="any"/>
+                                    <ArrivalTime>06:09:00</ArrivalTime>
+                                    <DepartureTime>06:09:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime id="ch:1:TimetabledPassingTime:ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27.j26-3" version="any">
+                                    <StopPointInJourneyPatternRef ref="ch:1:StopPointInJourneyPattern:738.B.803-2-3" version="any"/>
+                                    <ArrivalTime>06:16:00</ArrivalTime>
+                                </TimetabledPassingTime>
+                            </passingTimes>
+                        </ServiceJourney>
+                    </vehicleJourneys>
+                    <trainNumbers>
+                        <TrainNumber id="ch:1:TrainNumber:3000" version="any">
+                            <ForAdvertisement>3000</ForAdvertisement>
+                        </TrainNumber>
+                        <TrainNumber id="ch:1:TrainNumber:3001" version="any">
+                            <ForAdvertisement>3001</ForAdvertisement>
+                        </TrainNumber>
+                    </trainNumbers>
+                    <serviceFacilitySets>
+                        <ServiceFacilitySet id="ch:1:ServiceFacilitySet:A__NF" version="any">
+                            <alternativeTexts>
+                                <AlternativeText attributeName="Description">
+                                    <Text lang="fr">Accès à plancher surbaissé</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Description">
+                                    <Text lang="it">Accesso a pianale ribassato</Text>
+                                </AlternativeText>
+                                <AlternativeText attributeName="Description">
+                                    <Text lang="en">Low-floor access</Text>
+                                </AlternativeText>
+                            </alternativeTexts>
+                            <Extensions>
+                                <Priority>2</Priority>
+                                <Condition>4</Condition>
+                            </Extensions>
+                            <Description lang="de">Niederflureinstieg</Description>
+                            <MobilityFacilityList>lowFloor</MobilityFacilityList>
+                        </ServiceFacilitySet>
+                    </serviceFacilitySets>
+                    <typesOfService>
+                        <TypeOfService id="ch:1:TypeOfService:1" version="any">
+                            <Name lang="en">PublicJourney</Name>
+                            <ShortName lang="en">N</ShortName>
+                            <PrivateCode>1</PrivateCode>
+                        </TypeOfService>
+                    </typesOfService>
+                </TimetableFrame>
+            </frames>
+        </CompositeFrame>
+    </dataObjects>
+</PublicationDelivery>
