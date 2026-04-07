@@ -1,203 +1,285 @@
+# Swiss NeTEX Profile Templates
 
-# Building the profile checker and most documentation tables from templates
-First thoughts based on the idea that XML examples could be used as a scaffold for a 
-documentation of the profile:
-* **Principle:** An XML example/template is annotated with comments that contain all necessary information allowing (a) to derive the Swiss profile from the NeTEx schema, and (b) to provide useful profile-specific documentation.
-* **Machinery:** Software made by SBB and by Hans-Jürgen Rennau is likely capable of generating documentation tables for each XML example/template, as well a a complete xsd for the Swiss profile. 
+This folder contains XML templates used to generate documentation, schematron validation files, and examples for the Swiss NeTEX profile.
 
+## Overview
 
-**Advantages:**
-- Profile specification attached to XML example/template is quite easily readable and maintainable.
-- Minimal effort when NeTEx changes
-- XML examples/templates can be copy-pasted by users and the comments help understanding and adhering to the profile.
+The templates use special comment annotations to define the Swiss profile requirements. These annotations are processed by various tools to generate:
 
-## Processes
+1. **Markdown documentation tables** (via `md_builder.py`)
+2. **Schematron validation files** (via `template2schematron.py`)
+3. **Example XML files** (directly usable templates)
 
-The templates are used in three ways:
-- generate example xml files with elements to be used directly
-- markdown tables for documentation
-- schematron files
+## Template Structure
 
-### Possible markdown result: StopPlace
-The following shows the idea of and output table we want to have:
+Each template is a valid NeTEX XML file with special comment annotations that define profile-specific requirements.
 
-| Sub   | Element             | Usage     | Card | Type                     | Description                                                                                                                           | Note                                                                                                                                                                                                                                                                                                                                                                        |
-| ----- | ------------------- | --------- |------| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <<    | ValidBetween        | mandatory | 1..1 | ValidBetweenType         | Validity of the StopPlace                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                             |
-|       | alternativeTexts    | mandatory | 0..1 | AlternativeTextType[]    | Alternative texts for the StopPlace                                                                                                   | Abbreviation of the STOP PLACE.                                                                                                                                                                                                                                                                                                                                             |
-| >>    | AlternativeText     | mandatory | 1..* | AlternativeTextType      | ALTERNATIVE TEXTs associated with ENTITY.                                                                                             | Variant for de is always required. Further languages fr, it, en only necessary if different from de.                                                                                                                                                                                                                                                                        |
-| >>>>  | Text                | mandatory | 1..1 | MultilingualString       | Variant of the text in the specified language.                                                                                        | Name of the StopPlace in a defined language                                                                                                                                                                                                                                                                                                                                 |
-| <<    | keyList             | mandatory | 0..1 | KeyListType              |                                                                                                                                       | KEY LIST with the KEY VALUEs related to the STOP PLACE. SKI use KeyValues: one for the Didok number one for the SLOID For delivery to SKI only one Value is necessary.                                                                                                                                                                                                      |
-|       | Extensions          | mandatory | 1..1 | ExtensionsType           | See description of extensions                                                                                                         |                                                                                                                                                                                                                                                                                                                                                                             |
-| >>    | HafasPriority       | mandatory | 1..1 | ValueType                |                                                                                                                                       |                                                                                                                                                                                                                                                                                                                                                                             |
-| >>>>  | Value               | mandatory | 1..1 | xsd:nonNegativeInteger   |                                                                                                                                       |                                                                                                                                                                                                                                                                                                                                                                             |
-| >>    | HafasKMInfo         | expected  | 0..1 | ValueType                |                                                                                                                                       |                                                                                                                                                                                                                                                                                                                                                                             |
-| >>>>  | Value               | mandatory | 1..1 | xsd:nonNegativeInteger   |                                                                                                                                       |                                                                                                                                                                                                                                                                                                                                                                             |
-|       | Name                | mandatory | 1..1 | MultilingualString       | The name of the StopPlace                                                                                                             |                                                                                                                                                                                                                                                                                                                                                                             |
-|       | ShortName           | expected  | 0..1 | MultilingualString       | Description of TYPE OF VALUE.                                                                                                         | Is used to transmit the abbreviation of the StopPlace. There is not one abbreviation for all StopPlaces                                                                                                                                                                                                                                                                     |
-|       | PrivateCode         | mandatory | 1..1 | xsd:string               | Private Code of STOP PLACE.                                                                                                           | Field **must be filled**. In Switzerland it is the **DiDok** number.                                                                                                                                                                                                                                                                                                        |
-| <<    | Centroid            | expected  | 0..1 | CentroidType             | Global or national location of STOP PLACE.                                                                                            |                                                                                                                                                                                                                                                                                                                                                                             |
-|       | alternativeNames    | expected  | 0..1 | AlternativeNameType[]    | Alternative names for SITE ELEMENT.                                                                                                   | We will also use these for synonyms. From INFO+ the synonyms are used on the StopPlace.                                                                                                                                                                                                                                                                                     |
-| >> << | AlternativeName     | expected  | 0..* | AlternativNameType       |                                                                                                                                       | **Use NameType alias, TypeOfName official.**                                                                                                                                                                                                                                                                                                                                |
-|       | TopographicPlaceRef | expected  | 0..1 | TopographicPlaceRefType  | Reference to TopographicPlace. Link to TopographicPlace of type county or country                                                     |                                                                                                                                                                                                                                                                                                                                                                             |
-|       | Weighting           | optional  | 0..1 | InterchangeWeightingEnum | STOP PLACEs can be classified for their relative desirability (weighting) as an interchange.                                          | Default relative weighting to be used for stop place. The STOP PLACE element WEIGHTING basically accomplishes this feature but only allows the following values: noInterchange interchangeAllowed recommendedInterchange preferredInterchange. To incorporate the desired value range, we will add an EXTENSION element “HafasPriority” that contains the full information. |
-|       | quays               | expected  | 0..1 | QuayType[]               | The QUAYs contained in the STOP PLACE, that is platforms, jetties, bays, taxi ranks, and other points of physical access to VEHICLEs. |                                                                                                                                                                                                                                                                                                                                                                             |
-| >> << | Quay                | expected  | 0..* | QuayType                 |                                                                                                                                       |                                                                                                                                                                                                                                                                                                                                                                             |
+### Basic Structure
 
-### Legend
-* Sub:
-  * Identiation rule "<<" mean referenced, ">>" indentation
-  * source: Template
-* Element:
-  * The relevant XML element
-  * source: Template
-* Usage:
-  * How the Swiss profile will use it: mandatory | forbidden
-  * source: Template
-* Card:
-  * Cardinality of the element in NeTEx
-  * source: XSD
-* Type:
-  * the type of the element
-  * source: XSD
-* Description:
-  * The original description from the XSD.
-  * source: XSD
-* Notes:
-  * Notes from the Swiss profile
-  * source: Template
-
-## Templates are valid NeTEx XML file
-Each template is a valid XML file itself. So one can also study them directly.
-Everything is done with annotations in comments below/within the elements.
-
-e.g.
-```commandline
-<ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
-	<!-- ch-note: Each combination of Authority and Operator needs a ResponsibilitySet. -->
-	<!-- ch-usage: mandatory -->
-	<!-- ch-referenced -->
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<RootElement xmlns="http://www.netex.org.uk/netex">
+    <!-- ch-start: Description of this section -->
+    <ChildElement>
+        <!-- ch-usage: mandatory|forbidden|optional|ignored|expected -->
+        <!-- ch-note: Description of the element -->
+        <!-- ch-notice: Additional information -->
+        <!-- Other annotations... -->
+        Content
+    </ChildElement>
+    <!-- ch-stop: Description of this section -->
+</RootElement>
 ```
-We have two snippets that say where the relevant part of the template start (the part that defines the thing we want to process afterwards):
-* `<!-- ch-start: Example starts here -->`
-* `<!-- ch-stop: Example stops here -->`
 
-For the top level templates only the first line `<?xml version="1.0" encoding="UTF-8"?>
-` is not in scope.
-For the others it is the element that needs to be processed (e.g. `StopPlace` in `StopPlace.xml`).
+## Annotation Reference
 
-It is also shown that multiple annotations can be used for one element.
+### Region Markers
 
-## Annotations in the templates and what they do achieve
+- `<!-- ch-start: description -->`: Marks the beginning of a processing region
+- `<!-- ch-stop: description -->`: Marks the end of a processing region
 
-The document https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/mgmt/Changes_in_profile.md describes the changes we might want to apply to the standard NeTEx schema in order to obtain the profile. 
-Here we describe, what we realised so far and what is planned.
+### Documentation Annotations
 
-Important behaviour for the markdown: 
-**Only elements having one of the `<!-- ch-<annotation> -->` will be shown in the tables.**
+- `<!-- ch-note: text -->`: Adds descriptive notes (appears in documentation and schematron comments)
+- `<!-- ch-notice: text -->`: Adds additional information (treated like ch-note)
 
+### Usage Control Annotations
 
-### Add description
-The profile wants to add a more specialised description. Below the begin tag of the element there a comment is added:
-`<!-- ch-note: <Text> -->` and `<!-- ch-notice: <Text> -->`
+- `<!-- ch-usage: mandatory -->`: Element must be present in valid documents
+- `<!-- ch-usage: forbidden -->`: Element must not be present in valid documents
+- `<!-- ch-usage: optional -->`: Element is optional
+- `<!-- ch-usage: ignored -->`: Element is ignored (not processed)
+- `<!-- ch-usage: expected -->`: Element is expected but not strictly required
 
-Output:
-* schematron: In the schematron this will result in a comment. 
-* markdown: This will be used in the note part of the table.
-* xml: This will remain as a comment without the the starting **Swiss profile**.
+### Advanced Annotations
 
-### Change usage
-The profile wants to make elements mandatory ord forbidden.  
-`<!-- ch-usage: <mandatory|forbidden|optional|ignored|expected> -->`
+- `<!-- ch-referenced -->`: References another template with the same name
+- `<!-- ch-referenced: filename.xml -->`: References a specific template file
+- `<!-- ch-allowed-enums: value1 value2 value3 -->`: Restricts element to specific enumeration values
+- `<!-- ch-deprecated -->`: Marks element as deprecated
+- `<!-- ch-class-id-must-exist -->`: Requires that referenced element with ID exists in document
+- `<!-- ch-attrs: attr1 attr2 attr3 -->`: Specifies which attributes are allowed
 
-Output:
-* schematron: forbidden and mandatory result in rules.
-* markdown: will be used for the usage column.
-* xml: `forbidden` and `ignored` are removed
+## Template Types
 
+### Top-Level Templates
 
-### Restricted choice
-In some cases only a subset of choices is allowed.
-If only one choice is allowed - simple: the template XML shows only the allowed variant. 
-If multiple choices are allowed - the template XML could be extended with additonal variants (thereby violating the xsd) and marking all elements affected by the choices.
+These are the main entry points for processing different aspects of the Swiss profile:
 
-**Note: We did not implement this. In many cases having forbidden/mandatory is enough.**
+- `ch-profile_export-timetable_file.xml`: Timetable data export profile
+- `ch-profile_export_resource_file.xml`: Resource data export profile
+- `ch-profile_import-*.xml`: Import profiles (various types)
+- `ch-profile_psa_file.xml`: Passenger Stop Assignments
+- `ch-profile_interactions_file.xml`: Journey Meetings and Interchange Rules
 
-### Deprecated
-Perhaps some elements are still used, but will be deprecated. This is marked with this flag:
-`<!-- ch-deprecated -->`
+### Component Templates
 
-* schematron: warning (report) is produced.
-* markdown: tbd
-* xml: not used anymore.
+These are referenced by top-level templates and define specific elements:
 
-### Restrict an enumeration in a given element
-We might want to restrict some enumerations and allow only some variants.
-Certainly a notice can be made.
+- `Operator.xml`, `ResponsibilitySet.xml`, `SiteFacilitySet.xml`, etc.
+- Type definitions like `TypeOfNotice.xml`, `TypeOfProductCategory.xml`
+- Complex elements that are reused across multiple contexts
 
-The improved element needs testing, when we see a first example:
+## Creating New Templates
 
-**NOTE: TBD **
+### Best Practices
 
-### Restrict strings, integers etc
-We won't do this currently.
-e.g. only values between-5 and 5.
+1. **Start with valid NeTEX XML**: Ensure your template is valid according to the NeTEX schema
+2. **Use clear region markers**: Mark processing regions with `ch-start` and `ch-stop`
+3. **Document thoroughly**: Use `ch-note` to explain profile decisions
+4. **Be consistent**: Apply usage annotations consistently across similar elements
+5. **Modular design**: Break complex structures into separate templates using `ch-referenced`
+6. **Test thoroughly**: Validate generated output with real data
 
-### Restrict the allowed types in a container
-Certainly a notice helps.
-With `ch-usage: forbidden` and `ch-usage: mandatory` this can be modeled.
-We will often simplify containers to make the processing easier.
+### Example: Simple Template
 
-e.g. no `QuayRef` in quays only `Quay`
-
-### Extension in extension point
-Extensions are explicit in the template XML, must be marked with `ch-usage` when thea are to be used.
-
-
-### Restrict to a subset of substitutionGroup
-Restrictions on elements that are inherited or part of a subgroup is straightforward since they appear explicitely in the template XML and can be marked as necessary. 
-This is also done with `ch-usage`.
-
-### Attribute handling
-In the NeTEx specification and most profiles a lot is said about attributes too.
-For NeTEx 2.0 `id` and `version` are now mandatory, `order' is no longer important.
-
-We will use `responsibilitySetRef` in many cases and want it there. For this we needed a new annotation.
-
-**NOTE: We use `versionRef` sometimes in the template. This allows us to minimize the templates. `versionRef` blocks the XSD validation of the ref-id relationship.
-`versionRef` is intended to be used, when the reference is not in the same file.
-In all the output form the template processing the `versionRef` is replaced with `version`. 
-We will rather have some files that don't validate (`PassengerStopAssinments`, `JourneyMeeting`, `InterchangeRule` etc), than to deal with `versionRef` in our profile. So that's the only part where the templates cannot be taken litterally.**
-
-We have not yet implemented the annotation for the attributes, but it will look like this:
-
-```commandline
-<!-- ch-attrs: id version responsibilitySetRef -->
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SimpleElement xmlns="http://www.netex.org.uk/netex" id="ch:example:Simple:1" version="1">
+    <!-- ch-start: Simple element example -->
+    
+    <!-- Mandatory child element -->
+    <RequiredChild>
+        <!-- ch-usage: mandatory -->
+        <!-- ch-note: This child element is required -->
+        Required content
+    </RequiredChild>
+    
+    <!-- Optional child element -->
+    <OptionalChild>
+        <!-- ch-usage: optional -->
+        <!-- ch-note: This child element is optional -->
+        Optional content
+    </OptionalChild>
+    
+    <!-- Forbidden element (should not appear in valid documents) -->
+    <ForbiddenChild>
+        <!-- ch-usage: forbidden -->
+        <!-- ch-note: This element should not be used -->
+        Forbidden content
+    </ForbiddenChild>
+    
+    <!-- ch-stop: Simple element example -->
+</SimpleElement>
 ```
-If nothing is mentioned, it is only id and version that we want to see.
 
-Other attributes will be ignored by our profile.
+## Processing Templates
 
-### Referencing
-When we use `<!-- ch-referenced -->` we express that there is a template with the same name as the element (e.g. `StopPlace` --> `StopPlace.xml`).
-In some cases two different types of StopPlace may be needed (e.g. the full version for the site model and the minimal version of the importation from a operator)
+### Generating Schematron Files
 
-Then `<!-- ch-referenced: <alternativefilename> -->` can be used. 
+```bash
+# Process a single template
+python tools/schematron_builder/template2schematron.py \
+    -t templates/template_name.xml \
+    -x xsd/xsd/NeTEx_publication.xsd \
+    -i templates \
+    -o generated/schematrons/output.sch \
+    -v
 
-The full version should always be in the "normal" version (here `StopPlace.xml` should contain the full StopPlace as needed for the site model).
+# Process all templates
+./tools/schematron_builder/build_schemas.sh
+```
 
-With referencing we will do a lot of reuse of elements. So design them carefully.
+### Generating Markdown Documentation
 
-## Top-level templates
-We have in this profile different files. Which then use different schematrons for the different files.
+```bash
+# Generate markdown tables from templates
+python tools/md_builder/md_builder.py \
+    -i templates \
+    -o generated/markdown \
+    -x xsd/xsd/NeTEx_publication.xsd
+```
 
-* ch-profile_import:
-* ch-simplified_import: later
-* ch-profile_resource_file.xml:
-* ch-profile_site_file.xml:
-* ch-profile_service_file.xml:
-* ch-profile_timetable_file.xml:
-* ch-profile_psa_file.xml: All PassengerStopAssignments: won't validate
-* ch-profile_interactions_file.xml: JourneyMeetings, InterchangeRules: won't validate
+## Validation
 
-## 
+### Validating Templates
+
+Templates should be valid NeTEX XML files. You can validate them using:
+
+```bash
+# Validate against NeTEX schema
+xmllint --schema xsd/xsd/NeTEx_publication.xsd --noout templates/template_name.xml
+
+# Validate generated schematron output
+python tools/check_schematron/check_schematron.py \
+    -i test_data.xml \
+    -s generated/schematrons/output.sch
+```
+
+## Template Maintenance
+
+### Adding New Elements
+
+When adding new elements to the profile:
+
+1. **Identify the appropriate template**: Find where the element should be defined
+2. **Add the element with annotations**: Include usage, notes, and other relevant annotations
+3. **Update references**: If the element is referenced elsewhere, update those templates
+4. **Test the changes**: Generate output and validate with test data
+
+### Deprecating Elements
+
+To deprecate an element:
+
+1. **Add deprecated annotation**: `<!-- ch-deprecated -->`
+2. **Update usage if needed**: Often set to `optional` if not already
+3. **Add deprecation note**: Explain when and why it was deprecated
+4. **Document alternatives**: If available, mention replacement elements
+
+```xml
+<DeprecatedElement>
+    <!-- ch-usage: optional -->
+    <!-- ch-deprecated -->
+    <!-- ch-note: Deprecated since v2.1, use NewElement instead -->
+    Content
+</DeprecatedElement>
+```
+
+## Common Patterns
+
+### Mandatory Elements with Specific Content
+
+```xml
+<ElementWithSpecificContent>
+    <!-- ch-usage: mandatory -->
+    <!-- ch-allowed-enums: value1 value2 value3 -->
+    <!-- ch-note: Must be one of the allowed values -->
+    value1
+</ElementWithSpecificContent>
+```
+
+### Referenced Elements
+
+```xml
+<ComplexElement>
+    <!-- ch-usage: mandatory -->
+    <!-- ch-referenced -->
+    <!-- ch-note: See ComplexElement.xml for full definition -->
+    <SimpleChild>content</SimpleChild>
+</ComplexElement>
+```
+
+### Elements with Attribute Control
+
+```xml
+<ElementWithAttributes id="required-id" version="1" optionalAttr="value">
+    <!-- ch-usage: mandatory -->
+    <!-- ch-attrs: id version optionalAttr -->
+    <!-- ch-note: Only specified attributes are allowed -->
+    Content
+</ElementWithAttributes>
+```
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Template not found**: Ensure the template exists in the templates folder
+2. **Invalid XML**: Validate your template against the NeTEX schema
+3. **Missing annotations**: All processed elements need usage annotations
+4. **Circular references**: Avoid templates that reference each other circularly
+5. **Namespace issues**: Ensure proper namespace declarations
+
+### Debugging Tips
+
+- Use `-v` flag for verbose output
+- Check the generated schematron/markdown files
+- Validate intermediate XML files
+- Test with small, simple templates first
+
+## Test Templates
+
+Comprehensive test templates demonstrating all annotations have been moved to the schematron_builder tool:
+- [`../tools/schematron_builder/test_templates/`](../tools/schematron_builder/test_templates/)
+
+These templates show examples of all supported comment annotations and provide a complete testing framework. See the [test documentation](../tools/schematron_builder/test_templates/README.md) for details.
+
+## Related Tools
+
+- **Schematron Builder**: [`../tools/schematron_builder/README.md`](../tools/schematron_builder/README.md)
+- **Markdown Builder**: [`../tools/md_builder/README.md`](../tools/md_builder/README.md)
+- **Schematron Validator**: [`../tools/check_schematron/README.md`](../tools/check_schematron/README.md)
+
+## Profile Evolution
+
+The Swiss NeTEX profile evolves over time. When making changes:
+
+1. **Document changes**: Update the change log
+2. **Maintain backward compatibility**: Where possible
+3. **Deprecate, don't delete**: Mark old elements as deprecated rather than removing them
+4. **Version templates**: Include version information in templates
+5. **Test thoroughly**: Validate changes with existing data
+
+## Contributing
+
+When contributing new templates or modifications:
+
+1. **Follow existing patterns**: Use the same style and conventions
+2. **Document thoroughly**: Add comprehensive notes and explanations
+3. **Test your changes**: Generate and validate output
+4. **Update documentation**: Keep README files current
+5. **Add examples**: Include sample data where helpful
+
+## License
+
+The templates and associated tools are licensed under the same terms as the main project. See the project's LICENSE file for details.

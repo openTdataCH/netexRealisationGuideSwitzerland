@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ch-start: Test frame content with all annotations -->
+<TestFrame xmlns="http://www.netex.org.uk/netex">
+    
+    <!-- Element with mandatory usage -->
+    <MandatoryElement>
+        <!-- ch-usage: mandatory -->
+        <!-- ch-note: This element is required in the Swiss profile -->
+        Required content
+    </MandatoryElement>
+    
+    <!-- Element with forbidden usage -->
+    <ForbiddenElement>
+        <!-- ch-usage: forbidden -->
+        <!-- ch-note: This element should not be used in the Swiss profile -->
+        Forbidden content
+    </ForbiddenElement>
+    
+    <!-- Element with optional usage -->
+    <OptionalElement>
+        <!-- ch-usage: optional -->
+        <!-- ch-note: This element is optional in the Swiss profile -->
+        Optional content
+    </OptionalElement>
+    
+    <!-- Element with deprecated flag -->
+    <DeprecatedElement>
+        <!-- ch-usage: optional -->
+        <!-- ch-deprecated -->
+        <!-- ch-note: This element is deprecated -->
+        Deprecated content
+    </DeprecatedElement>
+    
+    <!-- Element with allowed enumerations -->
+    <EnumElement>
+        <!-- ch-usage: mandatory -->
+        <!-- ch-allowed-enums: value1 value2 value3 -->
+        <!-- ch-note: Only specific values allowed -->
+        value1
+    </EnumElement>
+    
+    <!-- Element with both note and notice -->
+    <ElementWithBoth>
+        <!-- ch-usage: mandatory -->
+        <!-- ch-note: This is a note -->
+        <!-- ch-notice: This is a notice -->
+        Content with both
+    </ElementWithBoth>
+    
+</TestFrame>
+<!-- ch-stop: Test frame content with all annotations -->
