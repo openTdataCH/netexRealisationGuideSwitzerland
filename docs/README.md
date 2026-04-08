@@ -71,4 +71,5 @@ Testing stuff:
 
 ## Copyright
 The document is free. Proliferation in unchanged form is explicitly supported.
+All toolings are - when nothing else is mentioned - available as AGPL 3.0.
 
