@@ -56,8 +56,8 @@ The tool recognizes the following comment tags in XML templates:
 - `<!-- ch-usage: mandatory|forbidden|optional|ignored|expected -->`: Specifies usage requirement
 - `<!-- ch-note: ... -->`: Adds a note/description for the element
 - `<!-- ch-notice: ... -->`: Adds a notice for the element
-- `<!-- ch-referenced -->`: Marks element as referenced (creates link to element.md)
-- `<!-- ch-referenced: <name> -->`: Marks element as referenced with custom filename
+- `<!-- ch-see -->`: Marks element as referenced (creates link to element.md)
+- `<!-- ch-see: <name> -->`: Marks element as referenced with custom filename
 
 ## Output Format
 

@@ -64,11 +64,9 @@ except ImportError:
 START_MARKER = "ch-start"
 END_MARKER = "ch-stop"
 RE_NOTE = re.compile(r'\bch-note\s*:\s*(.*)', re.IGNORECASE)
-RE_NOTICE = re.compile(r'\bch-notice\s*:\s*(.*)', re.IGNORECASE)  # treated like ch-note
 RE_USAGE = re.compile(r'\bch-usage\s*:\s*(\w+)', re.IGNORECASE)
-RE_REFERENCED = re.compile(r'\bch-referenced\b', re.IGNORECASE)
-RE_REFERENCED_ALT = re.compile(r'\breferenced\b', re.IGNORECASE)
-RE_REFERENCED_WITH_ARGS = re.compile(r'\bch-referenced\s*:\s*(.+)', re.IGNORECASE)
+RE_SEE = re.compile(r'\bch-see\b', re.IGNORECASE)
+RE_SEE_WITH_ARGS = re.compile(r'\bch-see\s*:\s*(.+)', re.IGNORECASE)
 RE_ALLOWED_ENUMS = re.compile(r'\bch-allowed-enums\s*:\s*(.+)', re.IGNORECASE)
 RE_DEPRECATED = re.compile(r'\bch-deprecated\b', re.IGNORECASE)
 RE_CLASS_ID_MUST_EXIST = re.compile(r'\bch-class-id-must-exist\b', re.IGNORECASE)
@@ -76,9 +74,8 @@ RE_CLASS_ID_MUST_EXIST = re.compile(r'\bch-class-id-must-exist\b', re.IGNORECASE
 # Known ch-commands (for warning on unknown ones)
 KNOWN_CH_COMMANDS = {
     'ch-note',
-    'ch-notice',
     'ch-usage',
-    'ch-referenced',
+    'ch-see',
     'ch-allowed-enums',
     'ch-deprecated',
     'ch-class-id-must-exist',
@@ -180,20 +177,18 @@ def parse_usage_and_notes_from_comments(comment_text):
     """Parse ch-commands from comment text and return structured data."""
     # ch-note
     notes = RE_NOTE.findall(comment_text) or []
-    # ch-notice treated like ch-note
-    notices = RE_NOTICE.findall(comment_text) or []
-    all_notes = notes + notices
+    all_notes = notes
 
     usages = RE_USAGE.findall(comment_text)
 
-    referenced_names = []
-    args_match = RE_REFERENCED_WITH_ARGS.search(comment_text)
+    see_names = []
+    args_match = RE_SEE_WITH_ARGS.search(comment_text)
     if args_match:
         vals = args_match.group(1).strip()
-        referenced_names = [v for v in re.split(r'\s+', vals) if v != '']
+        see_names = [v for v in re.split(r'\s+', vals) if v != '']
     else:
-        if RE_REFERENCED.search(comment_text) or RE_REFERENCED_ALT.search(comment_text):
-            referenced_names = ['__DEFAULT__']
+        if RE_SEE.search(comment_text):
+            see_names = ['__DEFAULT__']
 
     allowed_match = RE_ALLOWED_ENUMS.search(comment_text)
     allowed = []

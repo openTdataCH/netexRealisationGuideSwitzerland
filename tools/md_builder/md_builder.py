@@ -326,27 +326,27 @@ def parse_template_file(file_path, xsd_type_info):
         
         for i, comment in enumerate(comments):
             text = comment.text.strip() if comment.text else ''
-            if 'ch-start:' in text:
+            if 'ch-start' in text or 'ch-start'== text:
                 start_idx = i
-            elif 'ch-stop:' in text:
+            elif 'ch-stop' in text or 'ch-stop'== text:
                 stop_idx = i
                 break
         
         # If no ch-start/ch-stop found, check if this is a ch-profile template
         # ch-profile templates may have comments at root level
         # Check if this is a ch-profile template
-        # ch-profile templates have ch-start/ch-stop at root level and contain ch-referenced elements
-        has_ch_referenced = any('ch-referenced' in (comment.text.strip() if comment.text else '') 
+        # ch-profile templates have ch-start/ch-stop at root level and contain ch-see elements
+        has_ch_see = any('ch-see' in (comment.text.strip() if comment.text else '') 
                                for comment in comments)
         
-        if has_ch_referenced and start_idx is not None and stop_idx is not None:
+        if has_ch_see and start_idx is not None and stop_idx is not None:
             # This is a ch-profile template with root-level markers
             # For ch-profile templates, we want to process the entire document structure
-            # but only include elements that have ch-referenced comments
+            # but only include elements that have ch-see comments
             start_idx = None  # Force the ch-profile processing path
         
         if start_idx is None or stop_idx is None:
-            if has_ch_referenced:
+            if has_ch_see:
                 # This is a ch-profile template, process the whole document
                 pass  # Continue processing
             else:
@@ -378,16 +378,31 @@ def parse_template_file(file_path, xsd_type_info):
             # Try to find the most specific element between the markers
             # Look for the first element after the start comment
             found_specific_element = False
-            for node in list(common_ancestor):
-                if isinstance(node, etree._Comment):
-                    continue
-                if hasattr(node, 'tag'):
-                    # Check if this node is between our start and stop comments
-                    node_idx = list(common_ancestor).index(node)
-                    if node_idx > start_idx and node_idx < stop_idx:
-                        common_ancestor = node
+            
+            # First, check if the start comment's next sibling is an element (common case)
+            next_sibling = start_comment.getnext()
+            if next_sibling is not None and hasattr(next_sibling, 'tag'):
+                # Check if this element comes before the stop comment
+                current = next_sibling
+                while current is not None and current != stop_comment:
+                    if hasattr(current, 'tag'):
+                        common_ancestor = current
                         found_specific_element = True
                         break
+                    current = current.getnext()
+            
+            # If not found, try the original approach
+            if not found_specific_element:
+                for node in list(common_ancestor):
+                    if isinstance(node, etree._Comment):
+                        continue
+                    if hasattr(node, 'tag'):
+                        # Check if this node is the first element after the start comment
+                        prev_node = node.getprevious()
+                        if prev_node is not None and prev_node == start_comment:
+                            common_ancestor = node
+                            found_specific_element = True
+                            break
             
             # Debug output (commented out by default)
             # if found_specific_element:
@@ -419,9 +434,8 @@ def parse_template_file(file_path, xsd_type_info):
             # Get comments for this element
             usage = 'ignored'
             note = ''
-            notice = ''
             is_referenced = False
-            referenced_name = None
+            see_reference = None
             
             # Get comments that are direct children of this element (before any child elements)
             # These are the comments that describe the element itself
@@ -436,13 +450,11 @@ def parse_template_file(file_path, xsd_type_info):
                         usage = comment_text.replace('ch-usage:', '').strip()
                     elif comment_text.startswith('ch-note:'):
                         note = comment_text.replace('ch-note:', '').strip()
-                    elif comment_text.startswith('ch-notice:'):
-                        notice = comment_text.replace('ch-notice:', '').strip()
-                    elif comment_text == 'ch-referenced':
+                    elif comment_text == 'ch-see':
                         is_referenced = True
-                    elif comment_text.startswith('ch-referenced:'):
+                    elif comment_text.startswith('ch-see:'):
                         is_referenced = True
-                        referenced_name = comment_text.replace('ch-referenced:', '').strip()
+                        see_reference = comment_text.replace('ch-see:', '').strip()
                     elif comment_text == 'ch-deprecated':
                         is_deprecated = True
                     elif comment_text.startswith('ch-attrs:'):
@@ -468,8 +480,8 @@ def parse_template_file(file_path, xsd_type_info):
                 if is_referenced:
                     sub_markers = 'ln' + sub_markers
             
-            # Combine note and notice
-            description = note or notice
+            # Use note for description
+            description = note
             
             # Add deprecated notice if needed
             if is_deprecated:
@@ -477,6 +489,15 @@ def parse_template_file(file_path, xsd_type_info):
                     description += ' NOTE: DEPRECATED'
                 else:
                     description = 'NOTE: DEPRECATED'
+            
+            # Skip forbidden and ignored elements from the output
+            if usage.lower() in ['forbidden', 'ignored']:
+                # Process children anyway in case they have different usage
+                if not is_referenced:
+                    for child in element:
+                        if isinstance(child, etree._Element) and not isinstance(child, etree._Comment):
+                            process_element(child, level + 1)
+                return
             
             elements_data.append({
                 'sub': sub_markers,
@@ -486,7 +507,7 @@ def parse_template_file(file_path, xsd_type_info):
                 'type': xsd_type,
                 'description': description,
                 'is_referenced': is_referenced,
-                'referenced_name': referenced_name or elem_name,
+                'referenced_name': see_reference or elem_name,
                 'level': level,
                 'attributes': attrs_list,
                 'is_deprecated': is_deprecated
@@ -503,12 +524,9 @@ def parse_template_file(file_path, xsd_type_info):
         # Start processing from the common ancestor
         if start_idx is not None and stop_idx is not None:
             # Normal processing with ch-start/ch-stop markers
-            for element in common_ancestor.iter():
-                # Skip comments and process only elements
-                if hasattr(element, 'tag') and not isinstance(element, etree._Comment):
-                    if element == start_comment.getparent():
-                        process_element(element)
-                        break
+            # Process the common ancestor element itself
+            if hasattr(common_ancestor, 'tag') and not isinstance(common_ancestor, etree._Comment):
+                process_element(common_ancestor)
         else:
             # ch-profile template processing - process the root element
             process_element(root)
@@ -593,8 +611,8 @@ def generate_markdown_table(data, filename, xsd_type_info):
             link_name = item['referenced_name']
             element = f"[{element}]({link_name}.md)"
         
-        # Use description for XSD/type info, note for ch-note/ch-notice content only
-        display_note = note if note and ('ch-note:' in note or 'ch-notice:' in note) else ''
+        # Use description for XSD/type info, note for ch-note content only
+        display_note = note if note and 'ch-note:' in note else ''
         markdown += f"| {sub} | {element} | {usage} | {card} | {xsd_type} | {description} | {display_note} |\n"
     
     # Process attributes
@@ -646,8 +664,8 @@ def generate_markdown_table(data, filename, xsd_type_info):
             link_name = item['referenced_name']
             element = f"[{element}]({link_name}.md)"
         
-        # Use description for XSD/type info, note for ch-note/ch-notice content only
-        display_note = note if note and ('ch-note:' in note or 'ch-notice:' in note) else ''
+        # Use description for XSD/type info, note for ch-note content only
+        display_note = note if note and 'ch-note:' in note else ''
         markdown += f"| {sub} | {element} | {usage} | {card} | {xsd_type} | {description} | {display_note} |\n"
         
         # Add attributes if present

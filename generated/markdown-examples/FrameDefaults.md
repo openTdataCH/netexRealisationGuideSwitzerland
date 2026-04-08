@@ -2,11 +2,8 @@
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | CompositeFrame | ignored | 1..1 | unknown |  |  |
-| + | FrameDefaults | ignored | 1..1 | unknown |  |  |
-| + | frames | ignored | 1..1 | unknown |  |  |
-| ++ | DefaultLocale | ignored | 1..1 | unknown |  |  |
-| ++ | ResourceFrame | ignored | 1..1 | unknown |  |  |
-| +++ | DefaultLanguage | ignored | 1..1 | unknown |  |  |
-| +++ | SummerTimeZoneOffset | ignored | 1..1 | unknown |  |  |
-| +++ | TimeZoneOffset | ignored | 1..1 | unknown |  |  |
+|  | FrameDefaults | expected | 1..1 | unknown |  |  |
+| + | DefaultLocale | mandatory | 1..1 | unknown | The default locale is German (de) for SBB and Swiss public transport. |  |
+| ++ | DefaultLanguage | mandatory | 1..1 | unknown | Is always set to “de” for SKI and Swiss public transport. |  |
+| ++ | SummerTimeZoneOffset | mandatory | 1..1 | unknown | We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+2) and SummerTimeZoneOffset (+1) |  |
+| ++ | TimeZoneOffset | mandatory | 1..1 | unknown | We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+2) and SummerTimeZoneOffset (+1) |  |

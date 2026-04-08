@@ -48,10 +48,10 @@ def remove_ch_annotations(text):
     for line in lines:
         stripped = line.strip()
         
-        # Keep ch-note and ch-notice content (remove the prefix)
-        if stripped.startswith('<!-- ch-note:') or stripped.startswith('<!-- ch-notice:'):
+        # Keep ch-note content (remove the prefix)
+        if stripped.startswith('<!-- ch-note:'):
             # Extract the content after the prefix
-            content = re.sub(r'<!--\s*(ch-note|ch-notice):\s*', '<!-- ', stripped)
+            content = re.sub(r'<!--\s*ch-note:\s*', '<!-- ', stripped)
             # Remove trailing --> and add it back
             content = re.sub(r'\s*-->$', ' -->', content)
             cleaned_lines.append(content)
@@ -150,12 +150,12 @@ def process_element_with_cleanup(element, parent_excluded=False):
     # Process children
     for child in element:
         if isinstance(child, etree._Comment):
-            # Handle comments - keep only ch-note/ch-notice content
+            # Handle comments - keep only ch-note content
             if child.text:
                 comment_text = child.text.strip()
-                if comment_text.startswith('ch-note:') or comment_text.startswith('ch-notice:'):
+                if comment_text.startswith('ch-note:'):
                     # Convert to regular comment
-                    content = re.sub(r'ch-(note|notice):\s*', '', comment_text)
+                    content = re.sub(r'ch-note:\s*', '', comment_text)
                     new_comment = etree.Comment(f' {content} ')
                     new_element.append(new_comment)
             continue
@@ -186,39 +186,65 @@ def extract_snippet_from_template(file_path):
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # Find ch-start and ch-stop markers
-        start_marker = '<!-- ch-start:'
-        end_marker = '<!-- ch-stop:'
+        # Find ch-start and ch-stop markers (both old and new formats)
+        start_marker_old = '<!-- ch-start:'
+        start_marker_new = '<!-- ch-start -->'
+        end_marker_old = '<!-- ch-stop:'
+        end_marker_new = '<!-- ch-stop -->'
         
-        start_idx = content.find(start_marker)
-        end_idx = content.find(end_marker)
+        start_idx = content.find(start_marker_old)
+        if start_idx == -1:
+            start_idx = content.find(start_marker_new)
+            
+        end_idx = content.find(end_marker_old)
+        if end_idx == -1:
+            end_idx = content.find(end_marker_new)
         
         if start_idx == -1 or end_idx == -1:
             print(f"Warning: No ch-start or ch-stop found in {file_path}")
             return None
         
         # Extract the region between markers (including the markers)
-        snippet_content = content[start_idx:end_idx + len(end_marker)]
+        # Determine which marker format was found
+        if end_idx != -1:
+            if content.find(end_marker_old, end_idx) == end_idx:
+                snippet_content = content[start_idx:end_idx + len(end_marker_old)]
+            else:
+                snippet_content = content[start_idx:end_idx + len(end_marker_new)]
+        else:
+            snippet_content = ""
         
         # Find the end of the ch-stop comment
         stop_comment_end = content.find('-->', end_idx)
         if stop_comment_end != -1:
             snippet_content = content[start_idx:stop_comment_end + 3]  # Include -->
         
-        # Remove ch-start and ch-stop comments to avoid parsing issues
+        # Remove ch-start and ch-stop comments to avoid parsing issues (both formats)
         snippet_content = re.sub(r'<!-- ch-start:[^>]*-->', '', snippet_content)
+        snippet_content = re.sub(r'<!-- ch-start -->', '', snippet_content)
         snippet_content = re.sub(r'<!-- ch-stop:[^>]*-->', '', snippet_content)
+        snippet_content = re.sub(r'<!-- ch-stop -->', '', snippet_content)
         snippet_content = snippet_content.strip()
         
-        # Remove ch-start and ch-stop comments
-        snippet_content = re.sub(r'<!-- ch-start:[^>]*-->', '', snippet_content)
-        snippet_content = re.sub(r'<!-- ch-stop:[^>]*-->', '', snippet_content)
-        snippet_content = snippet_content.strip()
-        
-        # Parse the XML
+        # Parse the XML while preserving namespace information
         try:
-            # Wrap in a root element for parsing
-            wrapped = f'<__root__>{snippet_content}</__root__>'
+            # Extract namespace information from the original snippet
+            # Look for xmlns in the snippet content itself
+            ns_match = re.search(r'<([^>]+)\s+xmlns="([^"]+)"', snippet_content)
+            default_ns = None
+            if ns_match:
+                default_ns = ns_match.group(2)
+            else:
+                # If not found in snippet, look in the full template content
+                full_ns_match = re.search(r'<([^>]+)\s+xmlns="([^"]+)"', content)
+                if full_ns_match:
+                    default_ns = full_ns_match.group(2)
+            
+            # Wrap in a root element with the same namespace for parsing
+            if default_ns:
+                wrapped = f'<__root__ xmlns="{default_ns}">{snippet_content}</__root__>'
+            else:
+                wrapped = f'<__root__>{snippet_content}</__root__>'
             root = etree.fromstring(wrapped.encode('utf-8'))
             
             # Find the actual content (first element child)
@@ -241,6 +267,25 @@ def extract_snippet_from_template(file_path):
             
             # Convert back to XML string
             xml_string = etree.tostring(processed_root, encoding='unicode', pretty_print=True)
+            
+            # Fix namespace prefixes to make the default namespace truly default
+            if default_ns:
+                # Replace ns0: prefixes with no prefix and add xmlns declaration
+                xml_string = xml_string.replace(f'ns0:', '')
+                xml_string = xml_string.replace(f'xmlns:ns0="{default_ns}"', f'xmlns="{default_ns}"')
+                
+                # If xmlns declaration is missing, add it to the root element
+                if 'xmlns="' not in xml_string:
+                    # Find the root element opening tag
+                    root_tag_match = re.match(r'<([^>\s]+)(\s+[^>]*)?>', xml_string.strip())
+                    if root_tag_match:
+                        tag_name = root_tag_match.group(1)
+                        tag_attrs = root_tag_match.group(2) if root_tag_match.group(2) else ''
+                        if tag_attrs:
+                            new_tag = f'<{tag_name} xmlns="{default_ns}" {tag_attrs.strip()}'
+                        else:
+                            new_tag = f'<{tag_name} xmlns="{default_ns}"'
+                        xml_string = xml_string.replace(f'<{tag_name}{tag_attrs}>', new_tag + '>')
             
             return xml_string
             

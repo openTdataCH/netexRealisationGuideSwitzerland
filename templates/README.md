@@ -23,7 +23,6 @@ Each template is a valid NeTEx XML file with special comment annotations that de
     <ChildElement>
         <!-- ch-usage: mandatory|forbidden|optional|ignored|expected -->
         <!-- ch-note: Description of the element -->
-        <!-- ch-notice: Additional information -->
         <!-- Other annotations... -->
         Content
     </ChildElement>
@@ -35,15 +34,13 @@ Each template is a valid NeTEx XML file with special comment annotations that de
 
 ### Region Markers
 
-- `<!-- ch-start: description -->`: Marks the beginning of a processing region
-- `<!-- ch-stop: description -->`: Marks the end of a processing region
-> **TODO** Is ch-stop needed or useful? What is the description for?
+- `<!-- ch-start -->`: Marks the beginning of a processing region
+- `<!-- ch-stop -->`: Marks the end of a processing region
+> **TODO** Is ch-stop needed or useful?
 
 ### Documentation Annotations
 
 - `<!-- ch-note: text -->`: Adds descriptive notes (appears in documentation and schematron comments)
-- `<!-- ch-notice: text -->`: Adds additional information (treated like ch-note)
-> **TODO** ch-notice should disappear.
 
 ### Usage Control Annotations
 
@@ -71,17 +68,15 @@ Each template is a valid NeTEx XML file with special comment annotations that de
 
 ### Advanced Annotations
 
-- `<!-- ch-referenced -->`: References another template with the same name
-- `<!-- ch-referenced: filename.xml -->`: References a specific template file
+- `<!-- ch-see -->`: References another template with the same name
+- `<!-- ch-see: filename.xml -->`: References a specific template file
 - `<!-- ch-allowed-enums: value1 value2 value3 -->`: Restricts element to specific enumeration values
 - `<!-- ch-deprecated -->`: Marks element as deprecated
 - `<!-- ch-class-id-must-exist -->`: Requires that referenced element with ID exists in document
 - `<!-- ch-attrs: attr1 attr2 attr3 -->`: Specifies which attributes are allowed
 > **TODO** Attributes that are allowed or that are mandatory?
 
-> **TODO** I (trurlurl) find ch-referenced difficult to interpret; easier would be ch-see-template, ch-externally-defined, or ch-external
 
-> **TODO** I would prefer all keywords always ending with a colon
 
 
 ## Attribute Handling
@@ -123,7 +118,7 @@ These are referenced by top-level templates and define specific elements:
 2. **Use clear region markers**: Mark processing regions with `ch-start` and `ch-stop`
 3. **Document thoroughly**: Use `ch-note` to explain profile decisions
 4. **Be consistent**: Apply usage annotations consistently across similar elements
-5. **Modular design**: Break complex structures into separate templates using `ch-referenced`
+5. **Modular design**: Break complex structures into separate templates using `ch-see`
 6. **Test thoroughly**: Validate generated output with real data
 
 ### Example: Simple Template
@@ -131,7 +126,7 @@ These are referenced by top-level templates and define specific elements:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <SimpleElement xmlns="http://www.netex.org.uk/netex" id="ch:example:Simple:1" version="1">
-    <!-- ch-start: Simple element example -->
+    <!-- ch-start -->
     
     <!-- Mandatory child element -->
     <RequiredChild>
@@ -154,7 +149,7 @@ These are referenced by top-level templates and define specific elements:
         Forbidden content
     </ForbiddenChild>
     
-    <!-- ch-stop: Simple element example -->
+    <!-- ch-stop -->
 </SimpleElement>
 ```
 
@@ -248,7 +243,7 @@ To deprecate an element:
 ```xml
 <ComplexElement>
     <!-- ch-usage: mandatory -->
-    <!-- ch-referenced -->
+    <!-- ch-see -->
     <!-- ch-note: See ComplexElement.xml for full definition -->
     <SimpleChild>content</SimpleChild>
 </ComplexElement>

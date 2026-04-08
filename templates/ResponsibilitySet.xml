@@ -6,15 +6,16 @@
 		<CompositeFrame id="ch:1:CompositeFrame" version="any">
 			<frames>
 				<ResourceFrame id="ch:1:ResourceFrame" version="any">
-					<organisations>
-						<!-- ch-start -->
-						<Operator id="sboid" version="1">
-							<!-- ch-note: We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
-							<!-- ch-usage: mandatory -->
-						</Operator>
-										<!-- ch-stop -->
+					<responsibilitySets>
+										<!-- ch-start -->
 
-					</organisations>
+						<ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
+							<!-- ch-note: Each combination of Authority and Operator needs a ResponsibilitySet. -->
+							<!-- ch-usage: mandatory -->
+							<!-- ch-see -->
+						</ResponsibilitySet>
+																<!-- ch-stop -->
+					</responsibilitySets>
 
 				</ResourceFrame>
 			</frames>

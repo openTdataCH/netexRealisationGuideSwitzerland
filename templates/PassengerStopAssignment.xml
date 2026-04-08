@@ -7,8 +7,9 @@
 			<frames>
 				<ServiceFrame id="ch:1:ServiceFrame:j26" version="any">
 					<stopAssignments>
-						<!-- ch-start: Example starts here -->
+						<!-- ch-start -->
 						<PassengerStopAssignment id="generated-85003000-12" version="1">
+							<!-- ch-usage: mandatory -->
 							<ScheduledStopPointRef ref="ch:1:sloid:3000:503:12" versionRef="1">
 								<!-- ch-usage: mandatory -->
 							</ScheduledStopPointRef>
@@ -17,9 +18,10 @@
 							</StopPlaceRef>
 							<QuayRef ref="ch:1:sloid:3000:503:12" versionRef="1">
 								<!-- ch-note: Not having the track may be problematic, but it can happen -->
+								<!-- ch-usage: expected -->
 							</QuayRef>
 						</PassengerStopAssignment>
-						<!-- ch-stop: example stops here -->
+						<!-- ch-stop -->
 					</stopAssignments>
 				</ServiceFrame>
 			</frames>
