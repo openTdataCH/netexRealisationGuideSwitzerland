@@ -10,6 +10,7 @@
 					<!-- ch-usage: mandatory -->
 					<responsibilitySets>
 						<!-- ch-usage: mandatory -->
+						<!-- ch-note: RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
 						<ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
 							<!-- ch-note: Each combination of Authority and Operator needs a ResponsibilitySet. -->
 							<!-- ch-usage: mandatory -->
@@ -18,6 +19,7 @@
 					</responsibilitySets>
 					<typesOfValue>
 						<!-- ch-usage: mandatory -->
+						<!-- ch-note: Sets of TYPE OF VALUE con-tained in the RESOURCE FRAME. -->
 						<ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
 							<values>
 								<TypeOfNotice id="ch:1:TypeOfNotice:11" version="1">
@@ -74,7 +76,7 @@
 						</ValueSet>
 					</typesOfValue>
 					<organisations>
-						<!-- ch-note: We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD-->
+						<!-- ch-note: ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD-->
 						<!-- ch-usage: mandatory -->
 						<Operator id="sboid" version="1">
 							<!-- ch-note: We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
