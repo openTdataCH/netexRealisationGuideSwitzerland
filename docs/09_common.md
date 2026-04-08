@@ -221,3 +221,53 @@ tbd: OrganisationPart needs to be studied! 6.4.1
 
 - [Swiss profile tables](../generated/markdown-examples/Operator.md)
 - [XML Snippet](../generated/xml-snippets/Operator.xml)
+
+## ServiceFacilitySet
+From the original NeTEx definition:
+"Set of ServiceFacilitySet objects available for a ServiceJourney. The set may be available only for a specific VEHICLE TYPE within the SERVICE (e.g. carriage equipped with low floor). Ser-viceFacilitySets are listed in the TimetableFrame (between trainNumbers and notices). They are referenced in the facilities object of a ServiceJourney. In the following table are listed only the elements we currently use in the example. "
+The assignment of facilities to ServiceJourney or JourneyPart is made by using FacilitySet elements.
+SKI uses the following groups to classify facilities:
+-	Accommodation facility
+-	Catering facility
+-	Fare classes
+-	Group booking facility
+-	Luggage carriage facility
+-	Mobility facility
+-	Nuisance facility
+-	Passenger communications facility
+-	Service reservation facility
+-	Ticketing facility
+-	Uic train rate
+
+If necessary, this list can be revised. In case of additions, this can be done, as long as the desired category is defined in the NeTEx specifications. 
+
+This means that a given Facility (e.g. restaurant or diaper changing table) is shown in the ap-propriate sub category MealFacilityList or FamilyFacilityList and a passenger information sys-tem can show these categories in a reasonable order. The categories themselves are from type "xsd:list“, meaning that the values of a cateogry are a separated list of elements. 
+
+tbd 10.13.2ff
+
+```
+<ServiceFacilitySet id="ch:1:ServiceFacilitySet:A___2" version="any">
+  <alternativeTexts>
+    <AlternativeText attributeName="Description">
+      <Text lang="en">2nd class only</Text>
+    </AlternativeText>
+    <AlternativeText attributeName="Description">
+      <Text lang="fr">Seulement 2e classe</Text>
+    </AlternativeText>
+    <AlternativeText attributeName="Description">
+      <Text lang="it">Solo 2a classe</Text>
+    </AlternativeText>
+  </alternativeTexts>
+  <Extensions>
+    <Priority>1</Priority>
+    <Condition>4</Condition>
+  </Extensions>
+  <Description lang="de">Nur 2. Klasse</Description>
+  <FareClasses>secondClass</FareClasses>
+</ServiceFacilitySet>
+
+```
+tbd a lot more detail needed. But probably in uc
+
+## SiteFacilitySet
+tbd not decribed in RG 1.01. What do we do
