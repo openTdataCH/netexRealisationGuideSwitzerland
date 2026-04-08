@@ -1,4 +1,4 @@
-# Swiss NeTEX Profile Templates
+# Swiss NeTEx Profile Templates
 
 This folder contains XML templates used to generate documentation, schematron validation files, and examples for the Swiss NeTEX profile.
 
@@ -12,7 +12,7 @@ The templates use special comment annotations to define the Swiss profile requir
 
 ## Template Structure
 
-Each template is a valid NeTEX XML file with special comment annotations that define profile-specific requirements.
+Each template is a valid NeTEx XML file with special comment annotations that define profile-specific requirements.
 
 ### Basic Structure
 
@@ -37,11 +37,13 @@ Each template is a valid NeTEX XML file with special comment annotations that de
 
 - `<!-- ch-start: description -->`: Marks the beginning of a processing region
 - `<!-- ch-stop: description -->`: Marks the end of a processing region
+> **TODO** Is ch-stop needed or useful? What is the description for?
 
 ### Documentation Annotations
 
 - `<!-- ch-note: text -->`: Adds descriptive notes (appears in documentation and schematron comments)
 - `<!-- ch-notice: text -->`: Adds additional information (treated like ch-note)
+> **TODO** ch-notice should disappear.
 
 ### Usage Control Annotations
 
@@ -50,6 +52,22 @@ Each template is a valid NeTEX XML file with special comment annotations that de
 - `<!-- ch-usage: optional -->`: Element is optional
 - `<!-- ch-usage: ignored -->`: Element is ignored (not processed)
 - `<!-- ch-usage: expected -->`: Element is expected but not strictly required
+> **TODO** For ch-usage: Would it make sense to add. ", the data producer should be able to provide a justification if missing." ? Or would that be inappropriate?
+
+> **TODO** For ch-ignored:
+> What happens with ignored or if ch-usage unspecified?
+>
+> Cases:
+> - (A) ch-usage: ignored
+> - (B) ch-usage unspecified, but element is part of template
+> - (C) element is not part of template (only in xsd)
+> 
+> Proposal:
+> - (A) - ignored by Schematron, appears in table to explicitely show that the element will be ignored
+> - (B)- ignored by Schematron, not figuring in table
+> - (C) - ignored by Schematron, not figuring in table
+>   
+>  What do others think?
 
 ### Advanced Annotations
 
@@ -59,6 +77,12 @@ Each template is a valid NeTEX XML file with special comment annotations that de
 - `<!-- ch-deprecated -->`: Marks element as deprecated
 - `<!-- ch-class-id-must-exist -->`: Requires that referenced element with ID exists in document
 - `<!-- ch-attrs: attr1 attr2 attr3 -->`: Specifies which attributes are allowed
+> **TODO** Attributes that are allowed or that are mandatory?
+
+> **TODO** I (trurlurl) find ch-referenced difficult to interpret; easier would be ch-see-template, ch-externally-defined, or ch-external
+
+> **TODO** I would prefer all keywords always ending with a colon
+
 
 ## Attribute Handling
 
@@ -95,7 +119,7 @@ These are referenced by top-level templates and define specific elements:
 
 ### Best Practices
 
-1. **Start with valid NeTEX XML**: Ensure your template is valid according to the NeTEX schema
+1. **Start with valid NeTEx XML**: Ensure your template is valid according to the NeTEX schema
 2. **Use clear region markers**: Mark processing regions with `ch-start` and `ch-stop`
 3. **Document thoroughly**: Use `ch-note` to explain profile decisions
 4. **Be consistent**: Apply usage annotations consistently across similar elements
@@ -165,10 +189,10 @@ python tools/md_builder/md_builder.py \
 
 ### Validating Templates
 
-Templates should be valid NeTEX XML files. You can validate them using:
+Templates should be valid NeTEx XML files. You can validate them using:
 
 ```bash
-# Validate against NeTEX schema
+# Validate against NeTEx schema
 xmllint --schema xsd/xsd/NeTEx_publication.xsd --noout templates/template_name.xml
 
 # Validate generated schematron output
@@ -273,7 +297,7 @@ These templates show examples of all supported comment annotations and provide a
 
 ## Profile Evolution
 
-The Swiss NeTEX profile evolves over time. When making changes:
+The Swiss NeTEx profile evolves over time. When making changes:
 
 1. **Document changes**: Update the change log
 2. **Maintain backward compatibility**: Where possible
