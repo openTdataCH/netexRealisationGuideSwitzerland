@@ -19,4 +19,4 @@ NeTEx is organised in frames. The basic structure of those frames is introduced 
 TBD: 4.1
 
 # The CompositeFrame
-Tbd : 3.13
+Tbd : 4.1.3
