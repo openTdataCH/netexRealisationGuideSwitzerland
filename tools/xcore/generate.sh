@@ -9,7 +9,8 @@ set -e
 
 usage() {
   echo "Usage: $(basename "$0") <path-to-custom-file> <path-to-xsd>"
-  echo "Example: $(basename "$0") custom.xml ../../xsd/xsd/NeTEx_publication.xsd"
+  echo "Example (Test): $(basename "$0") custom_test.xml ../../experimental/StopPlace.xsd"
+  echo "Example (Full NeTEx): $(basename "$0") custom.xml ../../xsd/xsd/NeTEx_publication.xsd"
 }
 
 # Print usage if no arguments or if -h/--help is requested

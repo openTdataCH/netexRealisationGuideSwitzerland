@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom>
+	<!-- Title appearing on the entry page -->
+	<systemTitle>StopPlace Documentation Example</systemTitle>
+	<!-- Standardized namespace bindings -->
+	<namespaces>
+		<namespace prefix="test" uri="https://opentransportdata.swiss/test"/>
+	</namespaces>
+	<!-- Report type specific rules -->
+	<reportTypes/>
+	<domains>
+
+		<domain name="test">
+			<content>
+				<targetNamespace>https://opentransportdata.swiss/test</targetNamespace>
+				<files dir="../../experimental" name="StopPlace.xsd" deep="true"/>
+			</content>
+			<processing>
+				<title>NeTEx</title>
+				<reportFileBaseName>test</reportFileBaseName>
+				<reportTypes>
+					<reportType name="contab">
+						<!-- XSD titles -->
+						<xsdTitle pref1="singleSentenceAnno" pref2="fileName"/>
+
+					</reportType>
+				</reportTypes>
+			</processing>
+		</domain>
+	</domains>
+</custom>
