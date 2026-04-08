@@ -41,6 +41,9 @@ This document describes the way in which the NeTEx standard is specifically appl
   - Modes
   - ServiceAttribute 
 - Other profiles
+  - Migration from RG 1.01 to RG 2.0 in Switzerland
+  - Differences between Swiss profile and EPIP/EPIAP and how they could be amended
+  - Differences to the French profile 
 - [Resources and references](Annex_resources_references.md)
 
 ## Examples
