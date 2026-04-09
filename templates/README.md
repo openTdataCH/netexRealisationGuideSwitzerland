@@ -48,7 +48,7 @@ Each template is a valid NeTEx XML file with special comment annotations that de
 - `<!-- ch-usage: forbidden -->`: Element must not be present in valid documents
 - `<!-- ch-usage: expected -->`: Element is expected but not strictly required (i.e, element should be included - unless there are good reasons or justifications not to do so in that particular situation) 
 - `<!-- ch-usage: optional -->`: Element is optional
-- `<!-- ch-usage: deprecated -->`: Element is deprecated (technically, the element is optional but will become forbidden or ignored in a furthcoming release)
+- `<!-- ch-usage: deprecated -->`: Element is deprecated (technically, the element is optional but will become forbidden or ignored in a forthcoming release)
 - `<!-- ch-usage: ignored -->`: Element is ignored (not processed) and does not appear in the documentation
 - `ch-usage` tag not used: Similar to ignored, but element remains visible in XML code template
 
