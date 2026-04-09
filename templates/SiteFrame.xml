@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Template</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="any">
+			<FrameDefaults/>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame" version="any"/>
+                <!-- ch-start -->
+				<SiteFrame id="ch:1:SiteFrame" version="any">
+					<!-- ch-usage: expected -->
+					<topographicPlaces>
+						<!-- ch-see -->
+						<TopographicPlace id="ch:1:TopoGraphicPlace:CH-BE" version="any">
+							<Descriptor>
+								<Name>Bern</Name>
+								<ShortName>BE</ShortName>
+							</Descriptor>
+							<TopographicPlaceType>county</TopographicPlaceType>
+						</TopographicPlace>
+					</topographicPlaces>
+					<!-- ch-usage: forbidden -->
+					<addresses>
+						<PostalAddress id="address1" version="any"/>
+					</addresses>
+					<!-- ch-usage: forbidden -->
+					<accesses>
+						<Access id="access1" version="any">
+							<From/>
+							<To/>
+						</Access>
+					</accesses>
+					<!-- ch-usage: expected -->
+					<stopPlaces>
+						<StopPlace id="ch:1:sloid:7000" version="any">
+							<!-- ch-see -->
+						</StopPlace>
+					</stopPlaces>
+					<!-- ch-usage: forbidden -->
+					<flexibleStopPlaces>
+						<FlexibleStopPlace id="flexibleStopPlace1" version="any"></FlexibleStopPlace>
+					</flexibleStopPlaces>
+				</SiteFrame>
+                <!-- ch-stop -->
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
