@@ -1,6 +1,6 @@
 # Swiss NeTEx Profile Templates
 
-This folder contains XML templates used to generate documentation, schematron validation files, and examples for the Swiss NeTEX profile.
+This folder contains XML templates used to generate documentation, schematron validation files, and examples for the Swiss NeTEx profile.
 
 ## Overview
 
@@ -19,14 +19,15 @@ Each template is a valid NeTEx XML file with special comment annotations that de
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <RootElement xmlns="http://www.netex.org.uk/netex">
-    <!-- ch-start: Description of this section -->
+    <!-- ch-start -->
+    <!-- ch-note: Description of the template -->
     <ChildElement>
         <!-- ch-usage: mandatory|forbidden|optional|ignored|expected -->
-        <!-- ch-note: Description of the element -->
+        <!-- ch-note: Profile-specific notes about the element -->
         <!-- Other annotations... -->
         Content
     </ChildElement>
-    <!-- ch-stop: Description of this section -->
+    <!-- ch-stop -->
 </RootElement>
 ```
 
@@ -36,7 +37,6 @@ Each template is a valid NeTEx XML file with special comment annotations that de
 
 - `<!-- ch-start -->`: Marks the beginning of a processing region
 - `<!-- ch-stop -->`: Marks the end of a processing region
-> **TODO** Is ch-stop needed or useful?
 
 ### Documentation Annotations
 
@@ -46,25 +46,11 @@ Each template is a valid NeTEx XML file with special comment annotations that de
 
 - `<!-- ch-usage: mandatory -->`: Element must be present in valid documents
 - `<!-- ch-usage: forbidden -->`: Element must not be present in valid documents
+- `<!-- ch-usage: expected -->`: Element is expected but not strictly required (i.e, element should be included - unless there are good reasons or justifications not to do so in that particular situation) 
 - `<!-- ch-usage: optional -->`: Element is optional
-- `<!-- ch-usage: ignored -->`: Element is ignored (not processed)
-- `<!-- ch-usage: expected -->`: Element is expected but not strictly required
-> **TODO** For ch-usage: Would it make sense to add. ", the data producer should be able to provide a justification if missing." ? Or would that be inappropriate?
-
-> **TODO** For ch-ignored:
-> What happens with ignored or if ch-usage unspecified?
->
-> Cases:
-> - (A) ch-usage: ignored
-> - (B) ch-usage unspecified, but element is part of template
-> - (C) element is not part of template (only in xsd)
-> 
-> Proposal:
-> - (A) - ignored by Schematron, appears in table to explicitely show that the element will be ignored
-> - (B)- ignored by Schematron, not figuring in table
-> - (C) - ignored by Schematron, not figuring in table
->   
->  What do others think?
+- `<!-- ch-usage: deprecated -->`: Element is deprecated (technically, the element is optional but will become forbidden or ignored in a forthcoming release)
+- `<!-- ch-usage: ignored -->`: Element is ignored (not processed) and does not appear in the documentation
+- `ch-usage` tag not used: Similar to ignored, but element remains visible in XML code template
 
 ### Advanced Annotations
 
@@ -73,9 +59,7 @@ Each template is a valid NeTEx XML file with special comment annotations that de
 - `<!-- ch-allowed-enums: value1 value2 value3 -->`: Restricts element to specific enumeration values
 - `<!-- ch-deprecated -->`: Marks element as deprecated
 - `<!-- ch-class-id-must-exist -->`: Requires that referenced element with ID exists in document
-- `<!-- ch-attrs: attr1 attr2 attr3 -->`: Specifies which attributes are allowed
-> **TODO** Attributes that are allowed or that are mandatory?
-
+- `<!-- ch-attrs: attr1 attr2 attr3 -->`: Specifies which attributes are mandatory
 
 
 
