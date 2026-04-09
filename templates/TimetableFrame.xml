@@ -7,30 +7,60 @@
 			<frames>
 				<!-- ch-start -->
 				<TimetableFrame id="ch:1:TimetableFrame:j23" version="any">
+					<!-- ch-attrs: id version/versionRef -->
 					<vehicleJourneys>
-						<!-- content of vehicleJourneys -->
+						<!-- ch-usage: expected -->
+						<!-- ch-note: Contains the ServiceJourneys and TemplateServiceJourneys. -->
 						<VehicleJourney id="generatedOrsjyid" version="1">
+							<!-- ch-usage: expected -->
 							<!-- ch-see -->
 						</VehicleJourney>
 						<TemplateServiceJourney id="generatedOrsjyid1" version="1">
+							<!-- ch-usage: expected -->
 							<!-- ch-see -->
 						</TemplateServiceJourney>
 						<TemplateServiceJourney id="generated2" version="1">
 						</TemplateServiceJourney>
 					</vehicleJourneys>
 					<trainNumbers>
+						<!-- ch-usage: expected -->
 						<TrainNumber id="2123" version="1">
+							<!-- ch-usage: expected -->
 							<!-- ch-see -->
 						</TrainNumber>
 					</trainNumbers>
+					<serviceFacilitySets>
+						<!-- ch-usage: optional -->
+						<ServiceFacilitySet id="86558" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-see -->
+						</ServiceFacilitySet>
+					</serviceFacilitySets>
 					<typesOfService>
-						<TypeOfService id="ch:1:TypeOfService:1" version="any">
+						<!-- ch-usage: expected -->
+						<TypeOfService id="ch:1:TypeOfService:1" version="1">
+							<!-- ch-usage: expected -->
 							<!-- ch-note: This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. -->
 							<Name lang="en">PublicJourney</Name>
-							<ShortName lang="en">N</ShortName>
+								<!-- ch-usage: expected -->
+							<ShortName lang="en">PJ</ShortName>
+								<!-- ch-usage: optional -->
 							<PrivateCode>1</PrivateCode>
+								<!-- ch-usage: optional -->
 						</TypeOfService>
 					</typesOfService>
+					<JourneyMeeting id="ch:1:JourneyMeeting:1" version="any">
+						<!-- ch-usage: optional -->
+						<!-- ch-note: Check latest policy - InterchangeRule may be the preferred alternative. -->
+						<!-- ch-see -->
+					</JourneyMeeting>
+					<interchangeRules>
+						<!-- ch-usage: expected -->
+						<InterchangeRule id="ch:1:InterchangeRule:1" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-see -->
+						</InterchangeRule>
+					</interchangeRules>
 				</TimetableFrame>
 				<!-- ch-stop -->
 			</frames>
