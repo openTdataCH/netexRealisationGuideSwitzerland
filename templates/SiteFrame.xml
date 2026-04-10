@@ -7,14 +7,15 @@
 			<FrameDefaults/>
 			<frames>
 				<ResourceFrame id="ch:1:ResourceFrame" version="any"/>
-
 				<!-- ch-start -->
 				<SiteFrame id="ch:1:SiteFrame" version="any">
-
 					<!-- ch-usage: expected -->
+					<!-- ch-note: **TODO** most documenation from the RG is missing here. Pls note that with expection from ch-start and ch-stop. All other annotations are to be put within the element -->
 					<topographicPlaces>
-						<!-- ch-see -->
+						<!-- ch-usage: optional -->
 						<TopographicPlace id="ch:1:TopoGraphicPlace:CH-BE" version="any">
+							<!-- ch-usage: expected -->
+							<!-- ch-see -->
 							<Descriptor>
 								<Name>Bern</Name>
 								<ShortName>BE</ShortName>
@@ -22,48 +23,55 @@
 							<TopographicPlaceType>county</TopographicPlaceType>
 						</TopographicPlace>
 					</topographicPlaces>
-
-					<!-- ch-usage: forbidden -->
 					<addresses>
+						<!-- ch-usage: forbidden -->
 						<PostalAddress id="address1" version="any"/>
 					</addresses>
-
-					<!-- ch-usage: forbidden -->
 					<accesses>
+						<!-- ch-usage: forbidden -->
 						<Access id="access1" version="any">
 							<From/>
 							<To/>
 						</Access>
 					</accesses>
-
-					<!-- ch-usage: expected -->
 					<stopPlaces>
+						<!-- ch-usage: mandatory -->
 						<StopPlace id="ch:1:sloid:7000" version="any">
+							<!-- ch-usage: mandatory -->
 							<!-- ch-see -->
 						</StopPlace>
 					</stopPlaces>
-
-					<!-- ch-usage: forbidden -->
 					<flexibleStopPlaces>
+						<!-- ch-usage: forbidden -->
 						<FlexibleStopPlace id="flexibleStopPlace1" version="any">
 						</FlexibleStopPlace>
 					</flexibleStopPlaces>
-
-					<!-- ch-usage: forbidden -->
-					<navigationPaths/>
-
-					<!-- ch-usage: forbidden -->
-					<pointOfInterestClassifications/>
-
-					<!-- ch-usage: forbidden -->
-					<pointOfInterestClassificationHierarchies/>
-
-					<!-- ch-usage: forbidden -->
-					<tariffZones/>
-
+					<navigationPaths>
+						<!-- ch-usage: forbidden -->
+						<SiteNavigationPath id="notUsed" version="1"/>
+					</navigationPaths>
+					<pointOfInterestClassifications>
+						<!-- ch-usage: forbidden -->
+						<PointOfInterestClassification id="notUsed" version="1"/>
+					</pointOfInterestClassifications>
+					<pointOfInterestClassificationHierarchies>
+						<!-- ch-usage: forbidden -->
+						<PointOfInterestClassificationHierarchy id="notUsed" version="1"/>
+					</pointOfInterestClassificationHierarchies>
+					<tariffZones>
+						<!-- ch-usage: forbidden -->
+						<TariffZone id="notUsed" version="1"/>
+					</tariffZones>
+					<siteFacilitySets>
+						<!-- ch-usage: optional -->
+						<!-- ch-note: We expect the SiteFacilitySet in the ResourceFrame -->
+						<SiteFacilitySet id="generated" version="1">
+							<!-- ch-usage: optional -->
+							<!-- ch-see -->
+						</SiteFacilitySet>
+					</siteFacilitySets>
 				</SiteFrame>
-                <!-- ch-stop -->
-
+				<!-- ch-stop -->
 			</frames>
 		</CompositeFrame>
 	</dataObjects>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Template</ParticipantRef>
 	<dataObjects>
@@ -9,47 +9,52 @@
 				<ResourceFrame id="ch:1:ResourceFrame" version="any"/>
 				<SiteFrame id="ch:1:SiteFrame" version="any">
 					<stopPlaces>
-                        <!-- ch-start -->
+						<!-- ch-start -->
 						<StopPlace id="ch:1:sloid:7000" version="any">
-
 							<!-- ch-usage: mandatory -->
+							<!-- ch-note: **todo** all texts are missing in this file yet -->
 							<keyList>
+								<!-- ch-usage: mandatory -->
 								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>7000</Value>
+									<!-- ch-usage: mandatory -->
+									<Key><!-- ch-usage: mandatory -->DIDOK</Key>
+									<Value><!-- ch-usage: mandatory -->7000</Value>
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
 									<Value>ch:1:sloid:7000</Value>
 								</KeyValue>
 							</keyList>
-
-							<Name>Bern</Name>
-							<PrivateCode>7000</PrivateCode>
-
+							<Name><!-- ch-usage: mandatory -->Bern</Name>
+							<PrivateCode><!-- ch-usage: mandatory -->7000</PrivateCode>
 							<Centroid>
+								<!-- ch-usage: mandatory -->
 								<Location>
-									<Longitude>7.43913088992</Longitude>
-									<Latitude>46.94883228914</Latitude>
-									<Altitude>540.2</Altitude>
+									<!-- ch-usage: mandatory -->
+									<Longitude><!-- ch-usage: mandatory -->7.43913088992</Longitude>
+									<Latitude><!-- ch-usage: mandatory -->46.94883228914</Latitude>
+									<Altitude><!-- ch-usage: mandatory -->540.2</Altitude>
 								</Location>
 							</Centroid>
-
-							<!-- ch:usage: forbidden -->
-							<Url/>
-
+							<Url>
+								<!-- ch:usage: forbidden -->
+							</Url>
 							<alternativeNames>
+								<!-- ch-usage: optional -->
 								<AlternativeName id="ch:1:sloid:7000:it">
+									<!-- ch-see -->
 									<Name lang="it">Berna</Name>
 								</AlternativeName>
 							</alternativeNames>
-							<StopPlaceType>railStation</StopPlaceType>
+							<StopPlaceType><!-- ch-usage: optional -->railStation</StopPlaceType>
 							<quays>
-								<!-- ch-see -->
-								<Quay id="ch:1:sloid:7000:5:9" version="any"/>
+								<!-- ch-usage: expected -->
+								<Quay id="ch:1:sloid:7000:5:9" version="any">
+									<!-- ch-see -->
+								</Quay>
 							</quays>
 						</StopPlace>
-                        <!-- ch-stop -->
+						<!-- ch-stop -->
 					</stopPlaces>
 				</SiteFrame>
 			</frames>
