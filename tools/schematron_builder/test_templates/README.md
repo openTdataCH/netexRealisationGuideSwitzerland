@@ -86,8 +86,8 @@ The test templates demonstrate all supported ch-comment annotations:
 - `<!-- ch-usage: expected -->`
 
 ### Advanced Features
-- `<!-- ch-referenced -->`
-- `<!-- ch-referenced: filename.xml -->`
+- `<!-- ch-see -->`
+- `<!-- ch-see: filename.xml -->`
 - `<!-- ch-allowed-enums: value1 value2 value3 -->`
 - `<!-- ch-deprecated -->`
 - `<!-- ch-class-id-must-exist -->`
@@ -113,7 +113,7 @@ The test templates cover:
 ✅ **Region markers**: ch-start and ch-stop annotations
 ✅ **Documentation**: ch-note and ch-notice annotations
 ✅ **Usage control**: All usage variants (mandatory, forbidden, optional, ignored, expected)
-✅ **Referenced templates**: ch-referenced with and without specific filenames
+✅ **Referenced templates**: ch-see with and without specific filenames
 ✅ **Enumerations**: ch-allowed-enums with multiple values
 ✅ **Deprecation**: ch-deprecated annotation
 ✅ **Cross-references**: ch-class-id-must-exist (when ID is present)

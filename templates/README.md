@@ -1,6 +1,6 @@
-# Swiss NeTEX Profile Templates
+# Swiss NeTEx Profile Templates
 
-This folder contains XML templates used to generate documentation, schematron validation files, and examples for the Swiss NeTEX profile.
+This folder contains XML templates used to generate documentation, schematron validation files, and examples for the Swiss NeTEx profile.
 
 ## Overview
 
@@ -12,22 +12,22 @@ The templates use special comment annotations to define the Swiss profile requir
 
 ## Template Structure
 
-Each template is a valid NeTEX XML file with special comment annotations that define profile-specific requirements.
+Each template is a valid NeTEx XML file with special comment annotations that define profile-specific requirements.
 
 ### Basic Structure
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <RootElement xmlns="http://www.netex.org.uk/netex">
-    <!-- ch-start: Description of this section -->
+    <!-- ch-start -->
+    <!-- ch-note: Description of the template -->
     <ChildElement>
         <!-- ch-usage: mandatory|forbidden|optional|ignored|expected -->
-        <!-- ch-note: Description of the element -->
-        <!-- ch-notice: Additional information -->
+        <!-- ch-note: Profile-specific notes about the element -->
         <!-- Other annotations... -->
         Content
     </ChildElement>
-    <!-- ch-stop: Description of this section -->
+    <!-- ch-stop -->
 </RootElement>
 ```
 
@@ -35,30 +35,44 @@ Each template is a valid NeTEX XML file with special comment annotations that de
 
 ### Region Markers
 
-- `<!-- ch-start: description -->`: Marks the beginning of a processing region
-- `<!-- ch-stop: description -->`: Marks the end of a processing region
+- `<!-- ch-start -->`: Marks the beginning of a processing region
+- `<!-- ch-stop -->`: Marks the end of a processing region
 
 ### Documentation Annotations
 
 - `<!-- ch-note: text -->`: Adds descriptive notes (appears in documentation and schematron comments)
-- `<!-- ch-notice: text -->`: Adds additional information (treated like ch-note)
 
 ### Usage Control Annotations
 
 - `<!-- ch-usage: mandatory -->`: Element must be present in valid documents
 - `<!-- ch-usage: forbidden -->`: Element must not be present in valid documents
+- `<!-- ch-usage: expected -->`: Element is expected but not strictly required (i.e, element should be included - unless there are good reasons or justifications not to do so in that particular situation) 
 - `<!-- ch-usage: optional -->`: Element is optional
-- `<!-- ch-usage: ignored -->`: Element is ignored (not processed)
-- `<!-- ch-usage: expected -->`: Element is expected but not strictly required
+- `<!-- ch-usage: deprecated -->`: Element is deprecated (technically, the element is optional but will become forbidden or ignored in a forthcoming release)
+- `<!-- ch-usage: ignored -->`: Element is ignored (not processed) and does not appear in the documentation
+- `ch-usage` tag not used: Similar to ignored, but element remains visible in XML code template
 
 ### Advanced Annotations
 
-- `<!-- ch-referenced -->`: References another template with the same name
-- `<!-- ch-referenced: filename.xml -->`: References a specific template file
+- `<!-- ch-see -->`: References another template with the same name
+- `<!-- ch-see: filename.xml -->`: References a specific template file
 - `<!-- ch-allowed-enums: value1 value2 value3 -->`: Restricts element to specific enumeration values
 - `<!-- ch-deprecated -->`: Marks element as deprecated
 - `<!-- ch-class-id-must-exist -->`: Requires that referenced element with ID exists in document
-- `<!-- ch-attrs: attr1 attr2 attr3 -->`: Specifies which attributes are allowed
+- `<!-- ch-attrs: attr1 attr2 attr3 -->`: Specifies which attributes are mandatory
+
+
+
+## Attribute Handling
+
+### versionRef vs version
+
+In NeTEX, reference elements often use `versionRef` instead of `version` attributes. The documentation and example generation tools automatically convert these:
+
+- **Input**: `<ElementRef versionRef="1">`
+- **Output**: `<ElementRef version="1">`
+
+This conversion happens in both the markdown documentation and XML snippet generation tools.
 
 ## Template Types
 
@@ -84,11 +98,11 @@ These are referenced by top-level templates and define specific elements:
 
 ### Best Practices
 
-1. **Start with valid NeTEX XML**: Ensure your template is valid according to the NeTEX schema
+1. **Start with valid NeTEx XML**: Ensure your template is valid according to the NeTEX schema
 2. **Use clear region markers**: Mark processing regions with `ch-start` and `ch-stop`
 3. **Document thoroughly**: Use `ch-note` to explain profile decisions
 4. **Be consistent**: Apply usage annotations consistently across similar elements
-5. **Modular design**: Break complex structures into separate templates using `ch-referenced`
+5. **Modular design**: Break complex structures into separate templates using `ch-see`
 6. **Test thoroughly**: Validate generated output with real data
 
 ### Example: Simple Template
@@ -96,7 +110,7 @@ These are referenced by top-level templates and define specific elements:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <SimpleElement xmlns="http://www.netex.org.uk/netex" id="ch:example:Simple:1" version="1">
-    <!-- ch-start: Simple element example -->
+    <!-- ch-start -->
     
     <!-- Mandatory child element -->
     <RequiredChild>
@@ -119,7 +133,7 @@ These are referenced by top-level templates and define specific elements:
         Forbidden content
     </ForbiddenChild>
     
-    <!-- ch-stop: Simple element example -->
+    <!-- ch-stop -->
 </SimpleElement>
 ```
 
@@ -154,10 +168,10 @@ python tools/md_builder/md_builder.py \
 
 ### Validating Templates
 
-Templates should be valid NeTEX XML files. You can validate them using:
+Templates should be valid NeTEx XML files. You can validate them using:
 
 ```bash
-# Validate against NeTEX schema
+# Validate against NeTEx schema
 xmllint --schema xsd/xsd/NeTEx_publication.xsd --noout templates/template_name.xml
 
 # Validate generated schematron output
@@ -213,7 +227,7 @@ To deprecate an element:
 ```xml
 <ComplexElement>
     <!-- ch-usage: mandatory -->
-    <!-- ch-referenced -->
+    <!-- ch-see -->
     <!-- ch-note: See ComplexElement.xml for full definition -->
     <SimpleChild>content</SimpleChild>
 </ComplexElement>
@@ -262,7 +276,7 @@ These templates show examples of all supported comment annotations and provide a
 
 ## Profile Evolution
 
-The Swiss NeTEX profile evolves over time. When making changes:
+The Swiss NeTEx profile evolves over time. When making changes:
 
 1. **Document changes**: Update the change log
 2. **Maintain backward compatibility**: Where possible

@@ -13,14 +13,14 @@ It can be run with the `generate.sh` script - all output is written to a `genera
 
 A small example I use for testing...
 ``` shell
-./generate.sh ./stop_place_custom.xml ../StopPlace.xsd      
+./generate.sh custom_test.xml ../../experimental/StopPlace.xsd      
 ```
 ### The Big NeTEx
 
-This needs some time...
+Generating the reports for the full NeTEx XSD may need many hours and some resouces ...
 
 ``` shell
-./generate.sh ./netex_custom.xml ../../xsd/xsd/NeTEx_publication.xsd
+./generate.sh ./custom.xml ../../xsd/xsd/NeTEx_publication.xsd
 ```
 
 ## Customization Files

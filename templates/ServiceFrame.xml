@@ -5,7 +5,7 @@
 	<dataObjects>
 		<CompositeFrame id="CH:BLT:Composite:50_110" version="any">
 			<frames>
-				<!-- ch-start: Example starts here -->
+				<!-- ch-start -->
 				<ServiceFrame id="ch:1:ServiceFrame:j23" version="any">
 					<!-- ch-note: A minimal ServiceFrame must be present in all timetable files. TODO: analyse which part is in the general one.-->
 					<!-- ch-note: TODO how would we describe additional id and which ones are mandatory?-->
@@ -20,7 +20,7 @@
 						<!-- ch-note: Only Line is used and not FlexibleLine -->
 						<!-- ch-usage: mandatory -->
 						<Line id="use swiss line id where possible" version="1" responsibilitySetRef="dsa">
-							<!-- ch-referenced -->
+							<!-- ch-see -->
 							<!-- ch-usage: mandatory -->
 							<Name>Name is needed</Name>
 						</Line>
@@ -38,16 +38,16 @@
 						</GroupOfLines>
 					</groupsOfLines>
 					<destinationDisplays>
-						<!-- ch-notice: We only allow fully formed content of destinationDisplays -->
+						<!-- ch-note: We only allow fully formed content of destinationDisplays -->
 						<DestinationDisplay id="generated-id" version="1">
-							<!-- ch-notice: We only allow fully formed content of destinationDisplays -->
-							<!-- ch-referenced -->
+							<!-- ch-note: We only allow fully formed content of destinationDisplays -->
+							<!-- ch-see -->
 						</DestinationDisplay>
 					</destinationDisplays>
 					<scheduledStopPoints>
-						<!-- ch-notice: Swiss ScheduledStopPoint are using the sloid in the id, when possible.-->
+						<!-- ch-note: Swiss ScheduledStopPoint are using the sloid in the id, when possible.-->
 						<ScheduledStopPoint id="sloid_where_possible" version="1">
-							<!-- ch-notice: TODO full or not -->
+							<!-- ch-note: TODO full or not -->
 							<!-- referenced -->
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
@@ -58,33 +58,33 @@
 							<To/>
 						</Access>
 						<SiteConnection id="generated" version="1">
-							<!-- ch-notice: SiteConnection are used only in the main file and not in timetable files.-->
-							<!-- ch-referenced -->
+							<!-- ch-note: SiteConnection are used only in the main file and not in timetable files.-->
+							<!-- ch-see -->
 						</SiteConnection>
 						<Connection id="generated" version="1">
-							<!-- ch-notice: Connection is used only used in the site file -->
-							<!-- ch-referenced -->
+							<!-- ch-note: Connection is used only used in the site file -->
+							<!-- ch-see -->
 						</Connection>
 						<DefaultConnection id="generated" version="1">
-							<!-- ch-notice: DefaultConnection is only used in the site file -->
-							<!-- ch-referenced -->
+							<!-- ch-note: DefaultConnection is only used in the site file -->
+							<!-- ch-see -->
 						</DefaultConnection>
 					</connections>
 					<stopAssignments>
 						<PassengerStopAssignment id="generated" version="1">
-							<!-- ch-notice: are only ued in a special PSA file in the export. -->
-							<!-- ch-referenced -->
+							<!-- ch-note: are only ued in a special PSA file in the export. -->
+							<!-- ch-see -->
 						</PassengerStopAssignment>
 					</stopAssignments>
 					<notices>
-						<!-- ch-notice: notices may be present or not -->
+						<!-- ch-note: notices may be present or not -->
 						<Notice id="generated" version="1">
-							<!-- ch-notice: if notices are present, one Notice must be. -->
-							<!-- ch-referenced -->
+							<!-- ch-note: if notices are present, one Notice must be. -->
+							<!-- ch-see -->
 						</Notice>
 					</notices>
 				</ServiceFrame>
-				<!-- ch-stop: example stops here -->
+				<!-- ch-stop -->
 			</frames>
 		</CompositeFrame>
 	</dataObjects>

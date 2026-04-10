@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResourceFrame xmlns="http://www.netex.org.uk/netex" id="ch:1:ResourceFrame" version="any">
+  <responsibilitySets>
+    <ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
+      <!-- Each combination of Authority and Operator needs a ResponsibilitySet. -->
+    </ResponsibilitySet>
+  </responsibilitySets>
+  <typesOfValue>
+    <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
+      <values>
+        <TypeOfNotice id="ch:1:TypeOfNotice:11" version="1">
+          <Name>Region</Name>
+          <PrivateCode>11</PrivateCode>
+        </TypeOfNotice>
+        <TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
+          <Name>Allgemeiner Hinweis</Name>
+          <PrivateCode>1</PrivateCode>
+        </TypeOfNotice>
+        <TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
+          <Name>Angebot</Name>
+          <PrivateCode>10</PrivateCode>
+        </TypeOfNotice>
+        <TypeOfNotice id="ch:1:TypeOfNotice:3" version="1">
+          <Name>Gleis-Angabe</Name>
+          <PrivateCode>3</PrivateCode>
+        </TypeOfNotice>
+        <TypeOfNotice id="ch:1:TypeOfNotice:2" version="1">
+          <Name>Zugname</Name>
+          <PrivateCode>2</PrivateCode>
+        </TypeOfNotice>
+      </values>
+    </ValueSet>
+    <ValueSet id="ch:1:ValueSet:TypesOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+      <values>
+        <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
+          <alternativeTexts>
+            <AlternativeText attributeName="Name">
+              <Text lang="it">Train Express Regional</Text>
+            </AlternativeText>
+            <AlternativeText attributeName="Name">
+              <Text lang="en">Train Express Regional</Text>
+            </AlternativeText>
+            <AlternativeText attributeName="Name">
+              <Text lang="fr">Train Express Regional</Text>
+            </AlternativeText>
+          </alternativeTexts>
+          <Name lang="de">TER</Name>
+          <ShortName>TER</ShortName>
+        </TypeOfProductCategory>
+      </values>
+    </ValueSet>
+  </typesOfValue>
+  <organisations>
+    <!-- We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD -->
+    <Operator id="sboid" version="1">
+      <!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
+    </Operator>
+  </organisations>
+  <siteFacilitySets>
+    <!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. -->
+    <SiteFacilitySet id="generated" version="1"/>
+  </siteFacilitySets>
+  <serviceFacilitySets>
+    <!-- Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. -->
+    <ServiceFacilitySet id="generated" version="1"/>
+  </serviceFacilitySets>
+</ResourceFrame>

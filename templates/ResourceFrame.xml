@@ -5,22 +5,23 @@
 	<dataObjects>
 		<CompositeFrame id="ch:1:CompositeFrame" version="any">
 			<frames>
-				<!-- ch-start: Example starts here -->
+				<!-- ch-start -->
 				<ResourceFrame id="ch:1:ResourceFrame" version="any">
+					<!-- ch-usage: mandatory -->
 					<responsibilitySets>
 						<!-- ch-usage: mandatory -->
+						<!-- ch-note: RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
 						<ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
 							<!-- ch-note: Each combination of Authority and Operator needs a ResponsibilitySet. -->
 							<!-- ch-usage: mandatory -->
-							<!-- ch-referenced -->
+							<!-- ch-see -->
 						</ResponsibilitySet>
 					</responsibilitySets>
 					<typesOfValue>
 						<!-- ch-usage: mandatory -->
+						<!-- ch-note: Sets of TYPE OF VALUE con-tained in the RESOURCE FRAME. -->
 						<ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
-							<!-- ch-usage: mandatory -->
 							<values>
-								<!-- ch-usage: mandatory -->
 								<TypeOfNotice id="ch:1:TypeOfNotice:11" version="1">
 									<!-- ch-class-id-must-exist -->
 									<Name>Region</Name>
@@ -49,13 +50,17 @@
 							</values>
 						</ValueSet>
 						<ValueSet id="ch:1:ValueSet:TypesOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+							<!-- ch-usage: mandatory -->
 							<values>
+								<!-- ch-usage: mandatory -->
 								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
 									<!-- ch-usage: mandatory -->
-									<!-- ch-referenced -->
+									<!-- ch-see -->
 									<alternativeTexts>
+										<!-- ch-usage: mandatory -->
 										<AlternativeText attributeName="Name">
-											<Text lang="it">Train Express Regional</Text>
+											<!-- ch-usage: mandatory -->
+											<Text lang="it"><!-- ch-usage: mandatory -->Train Express Regional</Text>
 										</AlternativeText>
 										<AlternativeText attributeName="Name">
 											<Text lang="en">Train Express Regional</Text>
@@ -71,24 +76,31 @@
 						</ValueSet>
 					</typesOfValue>
 					<organisations>
+						<!-- ch-note: ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD-->
+						<!-- ch-usage: mandatory -->
 						<Operator id="sboid" version="1">
-							<!-- ch-notice: We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
-							<!-- ch-referenced -->
+							<!-- ch-note: We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
+							<!-- ch-see -->
 							<!-- ch-usage: mandatory -->
 						</Operator>
 					</organisations>
 					<siteFacilitySets>
+						<!-- ch-note: Depending on the export/import part, there will be SiteFacilitySets to be included or not. -->
+						<!-- ch-usage: optional -->
 						<SiteFacilitySet id="generated" version="1">
-							<!-- ch-referenced -->
+							<!-- ch-usage: optional -->
+							<!-- ch-see -->
 						</SiteFacilitySet>
 					</siteFacilitySets>
 					<serviceFacilitySets>
+						<!-- ch-note: Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. -->
 						<ServiceFacilitySet id="generated" version="1">
-							<!-- ch-referenced -->
+							<!-- ch-usage: optional -->
+							<!-- ch-see -->
 						</ServiceFacilitySet>
 					</serviceFacilitySets>
 				</ResourceFrame>
-				<!-- ch-stop: example stops here -->
+				<!-- ch-stop -->
 			</frames>
 		</CompositeFrame>
 	</dataObjects>

@@ -14,6 +14,9 @@ The `template2schematron.py` script processes XML templates containing special c
 - **Modular Design**: Supports referenced templates for code reuse
 - **Comprehensive Validation**: Generates rules for presence, absence, enumerations, and more
 
+## Supported functionality
+For details on the functionality read [the documentation in the templates folder](../../templates/README.md).
+f
 ## Installation
 
 Requires Python 3.6+ and lxml:
@@ -94,8 +97,8 @@ The script recognizes the following comment annotations in templates:
 
 ### Advanced Features
 
-- `<!-- ch-referenced -->`: References another template file with same name
-- `<!-- ch-referenced: filename.xml -->`: References specific template file
+- `<!-- ch-see -->`: References another template file with same name
+- `<!-- ch-see: filename.xml -->`: References specific template file
 - `<!-- ch-allowed-enums: value1 value2 value3 -->`: Restricts element to allowed values
 - `<!-- ch-deprecated -->`: Marks element as deprecated
 - `<!-- ch-class-id-must-exist -->`: Requires referenced element with ID to exist
@@ -156,7 +159,7 @@ The script generates Schematron files with:
 
 ## Best Practices
 
-1. **Modular Design**: Use `<!-- ch-referenced -->` to break complex templates into smaller files
+1. **Modular Design**: Use `<!-- ch-see -->` to break complex templates into smaller files
 2. **Clear Documentation**: Use `<!-- ch-note -->` to explain profile decisions
 3. **Consistent Usage**: Apply `<!-- ch-usage -->` consistently across similar elements
 4. **Validation**: Test generated schematron files with real data
