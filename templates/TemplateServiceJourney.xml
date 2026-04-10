@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
-	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<PublicationTimestamp>2026-04-10T12:00:00</PublicationTimestamp>
 	<ParticipantRef>CH:BLT</ParticipantRef>
 	<dataObjects>
 		<CompositeFrame id="CH:BLT:Composite:50_110" version="any">
@@ -8,7 +8,7 @@
 				<TimetableFrame id="ch:1:TimetableFrame:j23" version="any">
 					<vehicleJourneys>
 						<!-- ch-start -->
-						<ServiceJourney id="generated" version="1">
+						<TemplateServiceJourney id="generated" version="1">
 							<!-- ch-note: ServiceJourney is used for common Journeys. -->
 							<!-- ch-attrs: id version -->
 							<validityConditions>
@@ -53,7 +53,7 @@
 							</Extensions>
 							<PrivateCode>
 								<!-- ch-usage: optional -->
-								<!-- ch-note: Private code of SERVICE JOURNEY. -->
+								<!-- ch-note: Private code of the repeating SERVICE JOURNEY. -->
 								1
 							</PrivateCode>
 							<TransportMode>
@@ -88,11 +88,13 @@
 								planned
 							</ServiceAlteration>
 							<DepartureTime>
-								<!-- ch-usage: expected -->
+								<!-- ch-usage: optional -->
+                <!-- ch-note: TODO - does this make sense given that repeated journeys are described ? -->
 								06:21:00
 							</DepartureTime>
-							<DepartureTimeOffset>
+              <DepartureTimeOffset>
 								<!-- ch-usage: optional -->
+                <!-- ch-note: TODO - same question as above -->
 								0
 							</DepartureTimeOffset>
 							<LineRef ref="ch:2:Line:11.IR.90" versionRef="any">
@@ -110,6 +112,10 @@
 									<!-- ch-usage: mandatory -->
 								</TrainNumberRef>
 							</trainNumbers>
+							<Destination>
+								<!-- ch-usage: expected -->
+								<PointRef version="1" ref="ch:1:Point:12345"/>
+							</Destination>
 							<passingTimes>
 								<!-- ch-usage: expected -->
 								<TimetabledPassingTime id="generated" version="1">
@@ -121,7 +127,44 @@
 							<calls>
 								<!-- ch-usage: forbidden -->
 							</calls>
-						</ServiceJourney>
+              				<TemplateVehicleJourneyType>
+                				<!-- ch-usage: expected -->
+                				<!-- ch-allowed-enums: rhythmic headway -->
+             				</TemplateVehicleJourneyType>
+							<frequencyGroups>
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: We strictly map one JOURNEY FREQUENCY per SERVICE JOURNEY. -->
+								<RhythmicalJourneyGroup version="any" id="ch:1:RhythmicalJourneyGroup:0253">
+									<!-- ch-usage: expected -->
+									<Name>Regular Interval service between 10am and 17:00 pm<!-- ch-usage: optional --><!-- ch-note: TODO - wanted? more advice on how to handle language? --></Name>
+									<Description>At 20 &amp; 45 Minutes past the hour<!-- ch-usage: optional --></Description>
+									<FirstDepartureTime>10:00:00<!-- ch-usage: mandatory --></FirstDepartureTime>
+									<FirstDayOffset>0<!-- ch-usage: optional --></FirstDayOffset>
+									<LastDepartureTime>17:00:00<!-- ch-usage: mandatory --></LastDepartureTime>
+									<LastDayOffset>0<!-- ch-usage: optional --></LastDayOffset>
+									<timebands>
+										<!-- ch-usage: optional -->
+										<TimebandRef version="any" ref="hde:TM_20"/>
+									</timebands>
+								</RhythmicalJourneyGroup>
+								<HeadwayJourneyGroup version="any" id="ch:1:HeadwayJourneyGroup:432">
+									<!-- ch-usage: optional -->
+									<Name>Regular Interval service between 12am and 18:00 pm<!-- ch-usage: optional --></Name>
+									<Description>About every 20 minutes<!-- ch-usage: optional --></Description>
+									<FirstDepartureTime>12:00:00<!-- ch-usage: mandatory --></FirstDepartureTime>
+									<FirstDayOffset>0<!-- ch-usage: optional --></FirstDayOffset>
+									<LastDepartureTime>18:00:00<!-- ch-usage: mandatory --></LastDepartureTime>
+									<LastDayOffset>0<!-- ch-usage: optional --></LastDayOffset>
+									<ScheduledHeadwayInterval>PT20M<!-- ch-usage: mandatory --></ScheduledHeadwayInterval>
+									<HeadwayDisplay>
+										<!-- ch-usage: optional -->
+										<!-- ch-allowed-enums: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes -->
+										<!-- ch-note: Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly.-->
+										DisplayInsteadOfPassingTimes
+									</HeadwayDisplay>
+								</HeadwayJourneyGroup>
+							</frequencyGroups>
+						</TemplateServiceJourney>
 						<!-- ch-stop -->
 					</vehicleJourneys>
 				</TimetableFrame>

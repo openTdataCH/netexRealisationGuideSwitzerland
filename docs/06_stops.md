@@ -13,7 +13,6 @@ The SITE FRAME comprises among other classes:
  
 See the following class diagram for the most important objects of the SITE FRAME and their relationships to the other frames. 
 
-[//]: # (TODO: Add the Diagram here)
 ![Site Model Class Diagram](./media/SiteModel.png)
 
 [//]: # (TODO: Add Site Frame links)
@@ -50,7 +49,7 @@ There will be meta-stations added with their own code. In some cases these are a
 > The **Centroid** always contains a location:
 > - The main coordinates are given as WSG84.
 > - The Swiss coordinates are added as well, when available (see below) 
-> - INFO+ will not use the data from the import. Always the DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places. 
+> - INFO+ will not use the data from the import. Always the DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places.
 
 # Quay
 
