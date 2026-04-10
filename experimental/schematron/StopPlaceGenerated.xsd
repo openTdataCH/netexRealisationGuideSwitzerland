@@ -1,0 +1,192 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.netex.org.uk/netex" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  
+  <xs:complexType name="LocalisedStringType">
+    <xs:simpleContent>
+      <xs:extension base="xsd:string">
+        <xs:attribute name="lang" type="xsd:language" use="optional" />
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  
+  <xs:complexType name="ValidBetweenType">
+    <xs:sequence>
+      <xs:element name="FromDate" type="xsd:dateTime" />
+      <xs:element name="ToDate" type="xsd:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+
+  
+  <xs:complexType name="AlternativeTextType">
+    <xs:sequence>
+      <xs:element name="Text" type="LocalisedStringType" />
+    </xs:sequence>
+    <xs:attribute name="attributeName" type="xsd:string" use="required" />
+  </xs:complexType>
+
+  
+  <xs:complexType name="KeyValueType">
+    <xs:sequence>
+      <xs:element name="Key" type="xsd:string" />
+      <xs:element name="Value" type="xsd:string" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="KeyListType">
+    <xs:sequence>
+      <xs:element name="KeyValue" type="KeyValueType" minOccurs="1" maxOccurs="unbounded" />
+    </xs:sequence>
+  </xs:complexType>
+
+  
+  <xs:complexType name="ExtensionsType">
+    <xs:sequence>
+      <xs:element name="HafasPriority" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Value" type="xsd:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HafasKMInfo" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Value" type="xsd:decimal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    <xs:element name="JustForFun" minOccurs="0" type="xs:string" /></xs:sequence>
+  </xs:complexType>
+
+  
+  <xs:complexType name="CentroidType">
+    <xs:sequence>
+      <xs:element name="Location">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Longitude" type="xsd:decimal" />
+            <xs:element name="Latitude" type="xsd:decimal" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  
+  <xs:complexType name="AlternativeNameType">
+    <xs:sequence>
+      <xs:element name="NameType" type="xsd:string" />
+      <xs:element name="TypeOfName" type="xsd:string" />
+      <xs:element name="Name" type="LocalisedStringType" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xsd:string" use="required" />
+    <xs:attribute name="version" type="xsd:string" use="required" />
+  </xs:complexType>
+
+  
+  <xs:complexType name="TopographicPlaceRefType">
+    <xs:attribute name="ref" type="xsd:string" use="required" />
+    <xs:attribute name="version" type="xsd:string" use="optional" />
+  </xs:complexType>
+
+  
+  <xs:complexType name="QuayType">
+    <xs:annotation>
+      <xs:appinfo>Element description</xs:appinfo>
+      <xs:documentation xml:lang="en">The QUAYs contained in the STOP PLACE, that is platforms, jetties, bays, taxi ranks, and other points of physical access to VEHICLEs.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="PublicCode" type="xsd:string" />
+      <xs:element name="keyList" type="KeyListType" minOccurs="0" />
+    </xs:sequence>
+    <xs:attribute name="id" type="xsd:string" use="required" />
+    <xs:attribute name="version" type="xsd:string" use="required" />
+  </xs:complexType>
+
+  
+  <xs:complexType name="StopPlaceType">
+    <xs:sequence>
+      <xs:element name="ValidBetween" type="ValidBetweenType">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Validity of the StopPlace</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alternativeTexts" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Alternative texts for the StopPlace</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AlternativeText" type="AlternativeTextType" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="keyList" type="KeyListType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">KEY LIST with the KEY VALUEs related to the STOP PLACE. SKI use KeyValues: one for the Didok number one for the SLOID For delivery to SKI only one Value is necessary.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Extensions" type="ExtensionsType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">See description of extensions</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Name" type="xsd:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The name of the StopPlace</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ShortName" type="LocalisedStringType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Description of TYPE OF VALUE. Is used to transmit the abbreviation of the StopPlace. There is not one abbreviation for all StopPlaces</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PrivateCode" type="xsd:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Private Code of STOP PLACE. Field must be filled. In Switzerland it is the DiDok number.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Centroid" type="CentroidType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Global or national location of STOP PLACE.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="alternativeNames" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Alternative names for SITE ELEMENT. We will also use these for synonyms. From INFO+ the synonyms are used on the StopPlace.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AlternativeName" type="AlternativeNameType" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TopographicPlaceRef" type="TopographicPlaceRefType" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Reference to TopographicPlace. Link to TopographicPlace of type county or country</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Weighting" type="xsd:string" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">Default relative weighting to be used for stop place. The STOP PLACE element WEIGHTING basically accomplishes this feature but only allows the following values: noInterchange interchangeAllowed recommendedInterchange preferredInterchange. To incorporate the desired value range, we will add an EXTENSION element “HafasPriority” that contains the full information.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="quays" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">The QUAYs contained in the STOP PLACE, that is platforms, jetties, bays, taxi ranks, and other points of physical access to VEHICLEs.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Quay" type="QuayType" minOccurs="0" maxOccurs="unbounded" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="id" type="xsd:string" use="required" />
+    <xs:attribute name="version" type="xsd:string" use="required" />
+  </xs:complexType>
+  <xs:element name="StopPlace" type="StopPlaceType" />
+
+</xs:schema>

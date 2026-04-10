@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame" version="1">
+					<typesOfValue>
+						<ValueSet id="ch:1:ValueSet:notices" version="1">
+							<values>
+								<TypeOfNotice id="ch:1:TypeOfNotice:3" version="1">
+									<Name>Gleis-Angabe</Name>
+									<PrivateCode>3</PrivateCode>
+								</TypeOfNotice>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+				</ResourceFrame>
+				<ServiceFrame id="ch:1:ServiceFrame" version="1">
+					<notices>
+						<Notice id="ch:1:Notice:Hin-1229900" version="1">
+							<alternativeTexts>
+								<!-- ch-start -->
+								<AlternativeText id="ch:1:AlternativeText:Notice-Hin_1229900-fr" version="1" attributeName="Text" useForLanguage="fr">
+									<!-- ch-usage: mandatory -->
+									<!-- ch-note: -->
+									<!-- ch-attrs: id version attributeName useForLanguage -->
+									<Text><!-- ch-usage: mandatory -->Départ de la voie 2.</Text>
+								</AlternativeText>
+								<!-- ch-stop -->
+								<AlternativeText id="ch:1:AlternativeText:Notice-Hin_1229900-it" version="1" attributeName="Text" useForLanguage="it">
+									<Text>Partenza dal binario 2.</Text>
+								</AlternativeText>
+								<AlternativeText id="ch:1:AlternativeText:Notice-Hin_1229900-en" version="1" attributeName="Text" useForLanguage="en">
+									<Text>Departure on platform 2.</Text>
+								</AlternativeText>
+							</alternativeTexts>
+							<Text lang="de">Abfahrt auf Gleis 2.</Text>
+							<TypeOfNoticeRef ref="ch:1:TypeOfNotice:3" version="1"/>
+						</Notice>
+					</notices>
+				</ServiceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

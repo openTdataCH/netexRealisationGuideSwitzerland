@@ -1,0 +1,28 @@
+name: Embed PlantUML in Markdown
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**/*.md'
+      - '**/*.puml'
+  pull_request:
+    paths:
+      - '**/*.md'
+      - '**/*.puml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  embed-puml-markdown:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Embed PlantUML inside Markdown
+        uses: alessandro-marcantoni/puml-markdown@v0.1.1

@@ -1,0 +1,90 @@
+<!-- Interlaken west -->
+<!-- TEMPLATE: StopPlace -->
+<StopPlace id="ch:1:sloid:71310" version="any">
+	<!-- Usage: mandatory -->
+	<ValidBetween>
+		<FromDate>20205-12-14T00:00:00</FromDate>
+	</ValidBetween>
+	<!-- Note: Abbreviation of the STOP PLACE. -->
+	<!-- Usage: mandatory -->
+	<alternativeTexts>
+		<!-- Note: Variant for de is always required. Further languages fr, it, en only necessary if different from de. -->
+		<!-- Usage: mandatory -->
+		<AlternativeText attributeName="Text">
+			<!-- Usage: mandatory -->
+			<Text lang="de">Interlaken West</Text>
+		</AlternativeText>
+	</alternativeTexts>
+	<!-- Note: KEY LIST with the KEY VALUEs related to the STOP PLACE. SKI use KeyValues: one for the Didok number one for the SLOID For delivery to SKI only one Value is necessary. -->
+	<!-- Usage: mandatory -->
+	<keyList>
+		<!-- Usage: mandatory -->
+		<KeyValue>
+			<Key>DIDOK</Key>
+			<Value>8507493</Value>
+		</KeyValue>
+		<KeyValue>
+			<Key>SLOID</Key>
+			<Value>ch:1:sloid:71310</Value>
+		</KeyValue>
+	</keyList>
+	<!-- Usage: mandatory -->
+	<Extensions>
+		<!-- Usage: mandatory -->
+		<HafasPriority>
+			<!-- Usage: mandatory -->
+			<Value>4</Value>
+		</HafasPriority>
+		<!-- Usage: expected -->
+		<HafasKMInfo>
+			<!-- Usage: mandatory -->
+			<Value>14</Value>
+		</HafasKMInfo>
+	</Extensions>
+	<!-- Usage: mandatory -->
+	<Name>Interlaken West</Name>
+	<!-- Note: Is used to transmit the abbreviation of the StopPlace. There is not one abbreviation for all StopPlaces-->
+	<!-- Usage: expected -->
+	<ShortName lang="de">8507493</ShortName>
+	<!-- Note: Field **must be filled**. In Switzerland it is the **DiDok** number. -->
+	<!-- Usage: mandatory -->
+	<PrivateCode>8507493</PrivateCode>
+	<Centroid>
+		<Location>
+			<Longitude>7.851453</Longitude>
+			<Latitude>46.682627</Latitude>
+			<Altitude>563</Altitude>
+		</Location>
+	</Centroid>
+	<!-- Note: We will also use these for synonyms. From INFO+ the synonyms are used on the StopPlace.-->
+	<!-- Usage: expected -->
+	<alternativeNames>
+		<!-- Note: **Use NameType alias, TypeOfName official.** -->
+		<!-- Usage: expected -->
+		<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_4" version="any">
+			<NameType>alias</NameType>
+			<TypeOfName>offical</TypeOfName>
+			<Name lang="de">Interlaken West</Name>
+		</AlternativeName>
+		<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_5" version="any">
+			<NameType>alias</NameType>
+			<TypeOfName>offical</TypeOfName>
+			<Name lang="it">Interlaken West </Name>
+		</AlternativeName>
+		<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_6" version="any">
+			<NameType>alias</NameType>
+			<TypeOfName>offical</TypeOfName>
+			<Name lang="fr">Interlaken West (CH)</Name>
+		</AlternativeName>
+	</alternativeNames>
+	<!-- Note: Default relative weighting to be used for stop place. The STOP PLACE element WEIGHTING basically accomplishes this feature but only allows the following values: noInterchange interchangeAllowed recommendedInterchange preferredInterchange. To incorporate the desired value range, we will add an EXTENSION element “HafasPriority” that contains the full information.-->
+	<!-- Usage: optional -->
+	<Weighting>preferredInterchange</Weighting>
+	<!-- Usage: expected -->
+	<quays>
+		<!-- Usage: expected -->
+		<Quay id="ch:1:sloid:71310:0:304706" version="any">
+			<PublicCode>8</PublicCode>
+		</Quay>
+	</quays>
+</StopPlace>

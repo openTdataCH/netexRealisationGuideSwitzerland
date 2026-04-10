@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>CH:BLT</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="CH:BLT:Composite:50_110" version="any">
+			<frames>
+				<!-- ch-start -->
+				<ServiceFrame id="ch:1:ServiceFrame:j23" version="any">
+					<!-- ch-note: A minimal ServiceFrame must be present in all timetable files. TODO: analyse which part is in the general one.-->
+					<!-- ch-note: TODO how would we describe additional id and which ones are mandatory?-->
+					<directions>
+						<!-- ch-note: We don't use directions, but only direction type -->
+						<!-- ch-usage: forbidden -->
+						<Direction id="notUsed" version="none">
+							<!-- ch-usage: forbidden -->
+						</Direction>
+					</directions>
+					<lines>
+						<!-- ch-note: Only Line is used and not FlexibleLine -->
+						<!-- ch-usage: mandatory -->
+						<Line id="use swiss line id where possible" version="1" responsibilitySetRef="dsa">
+							<!-- ch-see -->
+							<!-- ch-usage: mandatory -->
+							<Name>Name is needed</Name>
+						</Line>
+						<FlexibleLine id="notUsed" version="none">
+							<!--ch-note: We work with Line only. -->
+							<!--ch-usage: forbidden-->
+							<Name>NotUsed</Name>
+						</FlexibleLine>
+					</lines>
+					<groupsOfLines>
+						<!-- ch-usage: forbidden-->
+						<GroupOfLines id="notUsed" version="none">
+							<!-- ch-usage: forbidden -->
+							<Name>NotUsed</Name>
+						</GroupOfLines>
+					</groupsOfLines>
+					<destinationDisplays>
+						<!-- ch-note: We only allow fully formed content of destinationDisplays -->
+						<DestinationDisplay id="generated-id" version="1">
+							<!-- ch-note: We only allow fully formed content of destinationDisplays -->
+							<!-- ch-see -->
+						</DestinationDisplay>
+					</destinationDisplays>
+					<scheduledStopPoints>
+						<!-- ch-note: Swiss ScheduledStopPoint are using the sloid in the id, when possible.-->
+						<ScheduledStopPoint id="sloid_where_possible" version="1">
+							<!-- ch-note: TODO full or not -->
+							<!-- referenced -->
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+					<connections>
+						<Access id="notUsed" version="none">
+							<!-- ch-usage: forbidden -->
+							<From/>
+							<To/>
+						</Access>
+						<SiteConnection id="generated" version="1">
+							<!-- ch-note: SiteConnection are used only in the main file and not in timetable files.-->
+							<!-- ch-see -->
+						</SiteConnection>
+						<Connection id="generated" version="1">
+							<!-- ch-note: Connection is used only used in the site file -->
+							<!-- ch-see -->
+						</Connection>
+						<DefaultConnection id="generated" version="1">
+							<!-- ch-note: DefaultConnection is only used in the site file -->
+							<!-- ch-see -->
+						</DefaultConnection>
+					</connections>
+					<stopAssignments>
+						<PassengerStopAssignment id="generated" version="1">
+							<!-- ch-note: are only ued in a special PSA file in the export. -->
+							<!-- ch-see -->
+						</PassengerStopAssignment>
+					</stopAssignments>
+					<notices>
+						<!-- ch-note: notices may be present or not -->
+						<Notice id="generated" version="1">
+							<!-- ch-note: if notices are present, one Notice must be. -->
+							<!-- ch-see -->
+						</Notice>
+					</notices>
+				</ServiceFrame>
+				<!-- ch-stop -->
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

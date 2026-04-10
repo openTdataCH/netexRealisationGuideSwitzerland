@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Reduced passing time without elements that are defined in ATLAS. Sometimes a stub is needed. -->
+<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" version="1.09" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
+	<ParticipantRef>INTERMAPS</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame:intermaps" version="any">
+			<ValidBetween>
+				<FromDate>2024-12-15T00:00:00</FromDate>
+				<ToDate>2025-12-14T23:59:59</ToDate>
+			</ValidBetween>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame:1" version="any">
+					<typesOfValue>
+						<!-- only the values that are really used are defined -->
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="any" nameOfClass="TypeOfProductCategory">
+							<Name>ProductCategories</Name>
+							<values>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:GB" version="any">
+									<Name lang="de">Gondelbahn</Name>
+									<ShortName lang="de">GB</ShortName>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<!-- The Operator needs to be defined, but can be "empty".-->
+						<Operator id="ch:1:sboid:101105" version="any"/>
+					</organisations>
+				</ResourceFrame>
+				<SiteFrame id="ch:1:SiteFrame:1" version="any">
+					<!-- The site model is not filled in. This is done from ATLAS data -->
+				</SiteFrame>
+				<ServiceFrame id="ch:1:ServiceFrame:ts3" version="any">
+					<lines>
+						<!-- Line must be defined but is a stub -->
+						<Line id="ch:1:slnid:1025133" version="any">
+							<Name>Niederschlacht - Hüttenberg</Name>
+						</Line>
+					</lines>
+					<scheduledStopPoints>
+						<ScheduledStopPoint id="ch:1:sloid:30524:0:701284" version="any">
+							<Name lang="de">Braunwald</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:3645:0:164477" version="any">
+							<Name lang="de">Hüttenberg</Name>
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+					<!-- PassengerStopAssignments are omitted. They can be crated from the id or key/value of the ScheduledStopPoints, when those are sloid -->
+					<journeyPatterns>
+						<ServiceJourneyPattern id="ch:1:JourneyPattern_inbound:923:E51FC999BA1FB3F07248E5DA13878D11C68978B7" version="any">
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1025133" version="any"/>
+							</RouteView>
+							<DirectionType>inbound</DirectionType>
+							<pointsInSequence>
+								<PointInJourneyPattern id="ch:1:TemplateServiceJourney_inbound_1:923:E51FC999BA1FB3F07248E5DA13878D11C68978B7_1" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:30524:0:701284" version="any"/>
+								</PointInJourneyPattern>
+								<PointInJourneyPattern id="ch:1:TemplateServiceJourney_inbound_2:923:E51FC999BA1FB3F07248E5DA13878D11C68978B7_2" version="any">
+									<ScheduledStopPointRef ref="ch:1:sloid:3645:0:164477" version="any"/>
+								</PointInJourneyPattern>
+							</pointsInSequence>
+						</ServiceJourneyPattern>
+					</journeyPatterns>
+				</ServiceFrame>
+				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="any">
+					<contentValidityConditions>
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:923:E51FC999BA1FB3F07248E5DA13878D11C68978B7" version="any">
+							<ValidDayBits>00000000000000000000000000000001110000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</ValidDayBits>
+						</AvailabilityCondition>
+					</contentValidityConditions>
+					<vehicleJourneys>
+						<TemplateServiceJourney id="ch:1:TemplateServiceJourney_inbound:923:E51FC999BA1FB3F07248E5DA13878D11C68978B7" version="any">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:923:E51FC999BA1FB3F07248E5DA13878D11C68978B7" version="any"/>
+							</validityConditions>
+							<PrivateCode>ch:1:TemplateServiceJourney_inbound:923:E51FC999BA1FB3F07248E5DA13878D11C68978B7</PrivateCode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:GB" version="any"/>
+							<JourneyPatternRef ref="ch:1:JourneyPattern_inbound:923:E51FC999BA1FB3F07248E5DA13878D11C68978B7" version="any"/>
+							<OperatorRef ref="ch:1:sboid:101105" version="any"/>
+							<LineRef ref="ch:1:slnid:1025133" version="any"/>
+							<DirectionType>inbound</DirectionType>
+							<passingTimes>
+								<TimetabledPassingTime id="ch:1:TemplateServiceJourney_PT_inbound:923:E51FC999BA1FB3F07248E5DA13878D11C68978B7" version="any">
+									<PointInJourneyPatternRef ref="ch:1:TemplateServiceJourney_inbound_1:923:E51FC999BA1FB3F07248E5DA13878D11C68978B7_1" version="any"/>
+									<DepartureTime>08:30:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="ch:1:TemplateServiceJourney_inbound_2:923:E51FC999BA1FB3F07248E5DA13878D11C68978B7" version="any">
+									<PointInJourneyPatternRef ref="ch:1:TemplateServiceJourney_inbound_2:923:E51FC999BA1FB3F07248E5DA13878D11C68978B7_2" version="any"/>
+									<ArrivalTime>08:35:00</ArrivalTime>
+								</TimetabledPassingTime>
+							</passingTimes>
+							<frequencyGroups>
+								<HeadwayJourneyGroup id="ch:1:HeadwayJourneyGroup_inbound:923:E51FC999BA1FB3F07248E5DA13878D11C68978B7" version="any">
+									<FirstDepartureTime>08:30:00</FirstDepartureTime>
+									<LastDepartureTime>16:30:00</LastDepartureTime>
+									<ScheduledHeadwayInterval>PT15M</ScheduledHeadwayInterval>
+								</HeadwayJourneyGroup>
+							</frequencyGroups>
+						</TemplateServiceJourney>
+					</vehicleJourneys>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

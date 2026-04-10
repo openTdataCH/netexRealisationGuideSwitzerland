@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema
+    xmlns="http://www.netex.org.uk/netex"
+    xmlns:netex="http://www.netex.org.uk/netex"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://www.netex.org.uk/netex"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified">
+
+  <!-- Redefine the original schema, deriving new versions of selected types -->
+  <xsd:redefine schemaLocation="../StopPlace.xsd">
+
+    <!-- 1) Add a third element JustForFun to ExtensionsType (by extension) -->
+    <xsd:complexType name="ExtensionsType">
+      <xsd:complexContent>
+        <xsd:extension base="netex:ExtensionsType">
+          <xsd:sequence>
+            <xsd:element name="JustForFun" minOccurs="0">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Value" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:extension>
+      </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- 2) Ensure AlternativeNameType.Name is required (already is; restated explicitly) -->
+    <xsd:complexType name="AlternativeNameType">
+      <xsd:complexContent>
+        <xsd:restriction base="netex:AlternativeNameType">
+          <xsd:sequence>
+            <xsd:element name="NameType" type="xsd:string"/>
+            <xsd:element name="TypeOfName" type="xsd:string"/>
+            <xsd:element name="Name" type="netex:LocalisedStringType" minOccurs="1" maxOccurs="1"/>
+          </xsd:sequence>
+          <xsd:attribute name="id" type="xsd:string" use="required"/>
+          <xsd:attribute name="version" type="xsd:string" use="required"/>
+        </xsd:restriction>
+      </xsd:complexContent>
+    </xsd:complexType>
+
+    <!-- 3) Restrict StopPlaceType to disallow Weighting by omitting it -->
+    <xsd:complexType name="StopPlaceType">
+      <xsd:complexContent>
+        <xsd:restriction base="netex:StopPlaceType">
+          <xsd:sequence>
+            <xsd:element name="ValidBetween" type="netex:ValidBetweenType"/>
+            <xsd:element name="alternativeTexts" minOccurs="0">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="AlternativeText" type="netex:AlternativeTextType" minOccurs="0" maxOccurs="unbounded"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="keyList" type="netex:KeyListType" minOccurs="0"/>
+            <!-- Uses the redefined ExtensionsType (now includes JustForFun) -->
+            <xsd:element name="Extensions" type="netex:ExtensionsType" minOccurs="0"/>
+            <xsd:element name="Name" type="xsd:string"/>
+            <xsd:element name="ShortName" type="netex:LocalisedStringType" minOccurs="0"/>
+            <xsd:element name="PrivateCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Centroid" type="netex:CentroidType" minOccurs="0"/>
+            <xsd:element name="alternativeNames" minOccurs="0">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="AlternativeName" type="netex:AlternativeNameType" minOccurs="0" maxOccurs="unbounded"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="TopographicPlaceRef" type="netex:TopographicPlaceRefType" minOccurs="0"/>
+            <!-- Weighting is intentionally omitted to disallow it -->
+            <xsd:element name="quays" minOccurs="0">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="Quay" type="netex:QuayType" minOccurs="0" maxOccurs="unbounded"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+          <xsd:attribute name="id" type="xsd:string" use="required"/>
+          <xsd:attribute name="version" type="xsd:string" use="required"/>
+        </xsd:restriction>
+      </xsd:complexContent>
+    </xsd:complexType>
+
+  </xsd:redefine>
+</xsd:schema>

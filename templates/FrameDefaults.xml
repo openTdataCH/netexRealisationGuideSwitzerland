@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="any">
+			<!-- ch-start -->
+			<FrameDefaults>
+				<!-- ch-usage: expected -->
+				<DefaultLocale>
+					<!-- ch-note: The default locale is German (de) for SBB and Swiss public transport. -->
+					<!-- ch-usage: mandatory -->
+					<TimeZoneOffset><!-- ch-usage: mandatory --><!-- ch-note: We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+2) and SummerTimeZoneOffset (+1) -->1</TimeZoneOffset>
+					<SummerTimeZoneOffset><!-- ch-usage: mandatory --><!-- ch-note: We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+2) and SummerTimeZoneOffset (+1)-->2</SummerTimeZoneOffset>
+					<DefaultLanguage><!-- ch-usage: mandatory --><!-- ch-note: Is always set to “de” for SKI and Swiss public transport.-->de</DefaultLanguage>
+				</DefaultLocale>
+			</FrameDefaults>
+			<!-- ch-stop -->
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame" version="any">
+				</ResourceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

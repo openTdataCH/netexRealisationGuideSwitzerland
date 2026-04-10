@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>NeTEx (SIRI)</title><meta charset="UTF-8"/><meta http-equiv="content-type" content="text/html;charset=UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="stylesheet" href="../asciidoc.css"/></head>
+  <body>
+    <div id="header">
+      <h1>NeTEx (SIRI)</h1>
+      <div class="toc" id="toc">
+        <div id="toctitle">Table of Contents</div>
+        <ul class="sectlevel1">
+          <li><a shape="rect" href="#schema_siri_base_v2_0">1. Schema file: siri_base-v2.0.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="siri/elements/siri.html">1.1 The toplevel element <code>siri:CapabilitiesRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">1.2 The toplevel element <code>siri:CapabilitiesResponse</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">1.3 The toplevel element <code>siri:ServiceDelivery</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">1.4 The toplevel element <code>siri:ServiceRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">1.5 The toplevel element <code>siri:SubscriptionRequest</code></a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">1.6 The  <code>siri:DeliveryResponseGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">1.7 The  <code>siri:DiscoveryRequestGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">1.8 The  <code>siri:DiscoveryResponseGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">1.9 The  <code>siri:RequestGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">1.10 The  <code>siri:ResponseGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">1.11 The  <code>siri:ServiceDeliveryBodyGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">1.12 The  <code>siri:ServiceRequestGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">1.13 The  <code>siri:ServiceResponseGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">1.14 The complexType <code>siri:CapabilitiesRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">1.15 The complexType <code>siri:CapabilitiesResponseStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">1.16 The complexType <code>siri:ServiceDeliveryBodyStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">1.17 The complexType <code>siri:ServiceDeliveryStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">1.18 The complexType <code>siri:ServiceRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">1.19 The complexType <code>siri:SiriSchema</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">1.20 The complexType <code>siri:SubscriptionRequestStructure</code></a></li>
+            </ul>
+          </li>
+          <li><a shape="rect" href="#schema_siri_common_services_v2_0">2. Schema file: siri_common_services-v2.0.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="#schema_siri_common_services_v2_0_std">2.1. Simple type definitions</a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">2.2 The toplevel element <code>siri:CheckStatusRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">2.3 The toplevel element <code>siri:CheckStatusResponse</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">2.4 The toplevel element <code>siri:DataReadyAcknowledgement</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">2.5 The toplevel element <code>siri:DataReadyNotification</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">2.6 The toplevel element <code>siri:DataReceivedAcknowledgement</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">2.7 The toplevel element <code>siri:DataSupplyRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">2.8 The toplevel element <code>siri:HeartbeatNotification</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">2.9 The toplevel element <code>siri:ResponseStatus</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">2.10 The toplevel element <code>siri:SubscriptionResponse</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">2.11 The toplevel element <code>siri:SubscriptionTerminatedNotification</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">2.12 The toplevel element <code>siri:TerminateSubscriptionRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">2.13 The toplevel element <code>siri:TerminateSubscriptionResponse</code></a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.14 The  <code>siri:CheckStatusPayloadGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.15 The  <code>siri:ClientEndpointAddressGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.16 The  <code>siri:DataReceivedPayloadGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.17 The  <code>siri:DataSupplyGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.18 The  <code>siri:DataSupplyTopicGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.19 The  <code>siri:DeliveryContextGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.20 The  <code>siri:DeliveryEndpointGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.21 The  <code>siri:DeliveryRequestGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.22 The  <code>siri:PredictionMethodGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.23 The  <code>siri:ReferenceContextGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.24 The  <code>siri:ResourceContextGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.25 The  <code>siri:ServiceEndpointAddressGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.26 The  <code>siri:SiriCommonIndexGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.27 The  <code>siri:StatusRequestGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.28 The  <code>siri:StatusResponseGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.29 The  <code>siri:SubscriptionManagementGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.30 The  <code>siri:SubscriptionResponsePayloadGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.31 The  <code>siri:TemporalContextGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.32 The  <code>siri:TerminateSubscriptionTopicGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">2.33 The  <code>siri:TerminationStatusGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.34 The complexType <code>siri:CheckStatusRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.35 The complexType <code>siri:CheckStatusResponseBodyStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.36 The complexType <code>siri:CheckStatusResponseStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.37 The complexType <code>siri:ContextualisedRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.38 The complexType <code>siri:DataNameSpacesStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.39 The complexType <code>siri:DataReadyRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.40 The complexType <code>siri:DataReadyResponseStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.41 The complexType <code>siri:DataReceivedResponseStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.42 The complexType <code>siri:DataSupplyRequestBodyStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.43 The complexType <code>siri:DataSupplyRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.44 The complexType <code>siri:HeartbeatNotificationStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.45 The complexType <code>siri:ServiceRequestContextStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.46 The complexType <code>siri:StatusResponseStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.47 The complexType <code>siri:SubscriptionResponseBodyStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.48 The complexType <code>siri:SubscriptionResponseStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.49 The complexType <code>siri:SubscriptionTerminatedNotificationStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.50 The complexType <code>siri:TerminateSubscriptionRequestBodyStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.51 The complexType <code>siri:TerminateSubscriptionRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.52 The complexType <code>siri:TerminateSubscriptionResponseStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">2.53 The complexType <code>siri:TerminationResponseStatusStructure</code></a></li>
+            </ul>
+          </li>
+          <li><a shape="rect" href="#schema_siri_request_errorConditions_v2_0">3. Schema file: siri_request_errorConditions-v2.0.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="siri/elements/siri.html">3.1 The toplevel element <code>siri:AccessNotAllowedError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.2 The toplevel element <code>siri:AllowedResourceUsageExceededError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.3 The toplevel element <code>siri:BeyondDataHorizon</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.4 The toplevel element <code>siri:CapabilityNotSupportedError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.5 The toplevel element <code>siri:EndpointDeniedAccessError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.6 The toplevel element <code>siri:EndpointNotAvailableAccessError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.7 The toplevel element <code>siri:ErrorCode</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.8 The toplevel element <code>siri:ErrorCondition</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.9 The toplevel element <code>siri:ErrorConditionElement</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.10 The toplevel element <code>siri:InvalidDataReferencesError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.11 The toplevel element <code>siri:NoInfoForTopicError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.12 The toplevel element <code>siri:OtherError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.13 The toplevel element <code>siri:ParametersIgnoredError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.14 The toplevel element <code>siri:ServiceDeliveryErrorConditionElement</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.15 The toplevel element <code>siri:ServiceNotAvailableError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.16 The toplevel element <code>siri:UnapprovedKeyAccessError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.17 The toplevel element <code>siri:UnknownEndpointError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.18 The toplevel element <code>siri:UnknownExtensionsError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.19 The toplevel element <code>siri:UnknownParticipantError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.20 The toplevel element <code>siri:UnknownSubscriberError</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">3.21 The toplevel element <code>siri:UnknownSubscriptionError</code></a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">3.22 The  <code>siri:ApplicationErrorGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">3.23 The  <code>siri:DistributionErrorGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">3.24 The  <code>siri:ServiceRequestErrorGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">3.25 The  <code>siri:SuccessInfoGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.26 The complexType <code>siri:AccessNotAllowedErrorStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.27 The complexType <code>siri:AllowedResourceUsageExceededErrorStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.28 The complexType <code>siri:BeyondDataHorizonErrorStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.29 The complexType <code>siri:CapabilityNotSupportedErrorStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.30 The complexType <code>siri:EndpointDeniedAccessStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.31 The complexType <code>siri:EndpointNotAvailableAccessStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.32 The complexType <code>siri:ErrorCodeStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.33 The complexType <code>siri:ErrorConditionElementStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.34 The complexType <code>siri:ErrorConditionStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.35 The complexType <code>siri:ErrorDescriptionStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.36 The complexType <code>siri:InvalidDataReferencesErrorStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.37 The complexType <code>siri:NoInfoForTopicErrorStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.38 The complexType <code>siri:OtherErrorStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.39 The complexType <code>siri:ParametersIgnoredErrorStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.40 The complexType <code>siri:ServiceDeliveryErrorConditionStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.41 The complexType <code>siri:ServiceNotAvailableErrorStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.42 The complexType <code>siri:UnapprovedKeyAccessStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.43 The complexType <code>siri:UnknownEndpointErrorStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.44 The complexType <code>siri:UnknownExtensionsErrorStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.45 The complexType <code>siri:UnknownParticipantErrorStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.46 The complexType <code>siri:UnknownSubscriberErrorStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">3.47 The complexType <code>siri:UnknownSubscriptionErrorStructure</code></a></li>
+            </ul>
+          </li>
+          <li><a shape="rect" href="#schema_siri_request_support_v2_0">4. Schema file: siri_request_support-v2.0.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="#schema_siri_request_support_v2_0_std">4.1. Simple type definitions</a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">4.2 The toplevel element <code>siri:IncludeTranslations</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">4.3 The toplevel element <code>siri:RequestorRef</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">4.4 The toplevel element <code>siri:RequestTimestamp</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">4.5 The toplevel element <code>siri:ResponseTimestamp</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">4.6 The complexType <code>siri:CapabilityRefStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">4.7 The complexType <code>siri:ItemRefStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">4.8 The complexType <code>siri:MessageQualifierStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">4.9 The complexType <code>siri:MessageRefStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">4.10 The complexType <code>siri:SubscriptionFilterRefStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">4.11 The complexType <code>siri:SubscriptionFilterStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">4.12 The complexType <code>siri:SubscriptionQualifierStructure</code></a></li>
+            </ul>
+          </li>
+          <li><a shape="rect" href="#schema_siri_requests_v2_0">5. Schema file: siri_requests-v2.0.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="siri/elements/siri.html">5.1 The toplevel element <code>siri:AbstractDiscoveryDelivery</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.2 The toplevel element <code>siri:AbstractDiscoveryRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.3 The toplevel element <code>siri:AbstractFunctionalServiceCapabilitiesRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.4 The toplevel element <code>siri:AbstractFunctionalServiceCapabilitiesResponse</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.5 The toplevel element <code>siri:AbstractFunctionalServiceDelivery</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.6 The toplevel element <code>siri:AbstractFunctionalServiceRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.7 The toplevel element <code>siri:AbstractFunctionalServiceSubscriptionRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.8 The toplevel element <code>siri:AbstractRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.9 The toplevel element <code>siri:AbstractResponse</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.10 The toplevel element <code>siri:AbstractServiceRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.11 The toplevel element <code>siri:AbstractTrackedRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.12 The toplevel element <code>siri:AuthenticatedRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.13 The toplevel element <code>siri:ProducerRequest</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.14 The toplevel element <code>siri:ProducerResponse</code></a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">5.15 The toplevel element <code>siri:Status</code></a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.16 The  <code>siri:AuthenticatedRequestGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.17 The  <code>siri:CapabilityStatusGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.18 The  <code>siri:ConsumerRequestEndpointGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.19 The  <code>siri:ConsumerResponseEndpointGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.20 The  <code>siri:ContextualisedRequestEndpointGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.21 The  <code>siri:ContextualisedResponseEndpointGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.22 The  <code>siri:DelegatorEndpointGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.23 The  <code>siri:DeliveryDefaultGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.24 The  <code>siri:DeliveryStatusGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.25 The  <code>siri:OptionalSubscriberEndpointGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.26 The  <code>siri:ProducerRequestEndpointGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.27 The  <code>siri:ProducerResponseEndpointGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.28 The  <code>siri:RequestorEndpointGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.29 The  <code>siri:ResponseEndpointGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.30 The  <code>siri:ServiceDeliveryRequestStatusGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.31 The  <code>siri:SubscriberEndpointGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.32 The  <code>siri:SubscriptionIdentifierResourcePropertyGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">5.33 The  <code>siri:SubscriptionIdentityGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.34 The complexType <code>siri:AbstractCapabilitiesStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.35 The complexType <code>siri:AbstractDiscoveryDeliveryStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.36 The complexType <code>siri:AbstractDiscoveryRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.37 The complexType <code>siri:AbstractFunctionalServiceRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.38 The complexType <code>siri:AbstractIdentifiedItemStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.39 The complexType <code>siri:AbstractItemStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.40 The complexType <code>siri:AbstractNotificationStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.41 The complexType <code>siri:AbstractReferencingItemStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.42 The complexType <code>siri:AbstractRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.43 The complexType <code>siri:AbstractRequiredIdentifiedItemStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.44 The complexType <code>siri:AbstractRequiredReferencingItemStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.45 The complexType <code>siri:AbstractServiceCapabilitiesResponseStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.46 The complexType <code>siri:AbstractServiceDeliveryStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.47 The complexType <code>siri:AbstractServiceRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.48 The complexType <code>siri:AbstractSubscriptionRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.49 The complexType <code>siri:AbstractSubscriptionStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.50 The complexType <code>siri:AuthenticatedRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.51 The complexType <code>siri:CapabilityGeneralInteractionStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.52 The complexType <code>siri:CapabilityRequestPolicyStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.53 The complexType <code>siri:CapabilitySubscriptionPolicyStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.54 The complexType <code>siri:ConsumerRequestEndpointStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.55 The complexType <code>siri:ConsumerResponseEndpointStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.56 The complexType <code>siri:ProducerRequestEndpointStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.57 The complexType <code>siri:ProducerResponseEndpointStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.58 The complexType <code>siri:ProducerResponseStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.59 The complexType <code>siri:RequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.60 The complexType <code>siri:ResponseEndpointStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.61 The complexType <code>siri:ResponseStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.62 The complexType <code>siri:ServiceCapabilitiesRequestStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.63 The complexType <code>siri:SubscriptionContextStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">5.64 The complexType <code>siri:TransportDescriptionStructure</code></a></li>
+            </ul>
+          </li>
+          <li><a shape="rect" href="#schema_siri_location_v2_0">6. Schema file: siri_location-v2.0.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="#schema_siri_location_v2_0_std">6.1. Simple type definitions</a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">6.2 The toplevel element <code>siri:SrsName</code></a></li>
+              <li><a shape="rect" href="siri/groups/siri.html">6.3 The  <code>siri:WgsGroup</code>group
+                            </a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">6.4 The complexType <code>siri:BoundingBoxStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">6.5 The complexType <code>siri:CoordinatesStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">6.6 The complexType <code>siri:LineShapeStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">6.7 The complexType <code>siri:LocationStructure</code></a></li>
+            </ul>
+          </li>
+          <li><a shape="rect" href="#schema_siri_participant_v2_0">7. Schema file: siri_participant-v2.0.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="#schema_siri_participant_v2_0_std">7.1. Simple type definitions</a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">7.2 The complexType <code>siri:ParticipantRefStructure</code></a></li>
+            </ul>
+          </li>
+          <li><a shape="rect" href="#schema_siri_types_v2_0">8. Schema file: siri_types-v2.0.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="#schema_siri_types_v2_0_std">8.1. Simple type definitions</a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">8.2 The complexType <code>siri:NaturalLanguagePlaceNameStructure</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">8.3 The complexType <code>siri:NaturalLanguageStringStructure</code></a></li>
+            </ul>
+          </li>
+          <li><a shape="rect" href="#schema_siri_utility_v1_1">9. Schema file: siri_utility-v1.1.xsd</a><ul class="sectlevel2">
+              <li><a shape="rect" href="#schema_siri_utility_v1_1_std">9.1. Simple type definitions</a></li>
+              <li><a shape="rect" href="siri/elements/siri.html">9.2 The toplevel element <code>siri:Extensions</code></a></li>
+              <li><a shape="rect" href="siri/complexTypes/siri.html">9.3 The complexType <code>siri:ExtensionsStructure</code></a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="content">
+      <div class="sect1" id="schema_siri_base_v2_0">
+        <h2>1. SIRI Common Request Fra,mework</h2><a href="siri/elements/CapabilitiesRequest.html">
+          <h3>element CapabilitiesRequest</h3>
+        </a><a href="siri/elements/CapabilitiesResponse.html">
+          <h3>element CapabilitiesResponse</h3>
+        </a><a href="siri/elements/ServiceDelivery.html">
+          <h3>element ServiceDelivery</h3>
+        </a><a href="siri/elements/ServiceRequest.html">
+          <h3>element ServiceRequest</h3>
+        </a><a href="siri/elements/SubscriptionRequest.html">
+          <h3>element SubscriptionRequest</h3>
+        </a><a href="siri/groups/DeliveryResponseGroup.html">
+          <h3>group DeliveryResponseGroup</h3>
+        </a><a href="siri/groups/DiscoveryRequestGroup.html">
+          <h3>group DiscoveryRequestGroup</h3>
+        </a><a href="siri/groups/DiscoveryResponseGroup.html">
+          <h3>group DiscoveryResponseGroup</h3>
+        </a><a href="siri/groups/RequestGroup.html">
+          <h3>group RequestGroup</h3>
+        </a><a href="siri/groups/ResponseGroup.html">
+          <h3>group ResponseGroup</h3>
+        </a><a href="siri/groups/ServiceDeliveryBodyGroup.html">
+          <h3>group ServiceDeliveryBodyGroup</h3>
+        </a><a href="siri/groups/ServiceRequestGroup.html">
+          <h3>group ServiceRequestGroup</h3>
+        </a><a href="siri/groups/ServiceResponseGroup.html">
+          <h3>group ServiceResponseGroup</h3>
+        </a><a href="siri/complexTypes/CapabilitiesRequestStructure.html">
+          <h3>complexType CapabilitiesRequestStructure</h3>
+        </a><a href="siri/complexTypes/CapabilitiesResponseStructure.html">
+          <h3>complexType CapabilitiesResponseStructure</h3>
+        </a><a href="siri/complexTypes/ServiceDeliveryBodyStructure.html">
+          <h3>complexType ServiceDeliveryBodyStructure</h3>
+        </a><a href="siri/complexTypes/ServiceDeliveryStructure.html">
+          <h3>complexType ServiceDeliveryStructure</h3>
+        </a><a href="siri/complexTypes/ServiceRequestStructure.html">
+          <h3>complexType ServiceRequestStructure</h3>
+        </a><a href="siri/complexTypes/SiriSchema.html">
+          <h3>complexType SiriSchema</h3>
+        </a><a href="siri/complexTypes/SubscriptionRequestStructure.html">
+          <h3>complexType SubscriptionRequestStructure</h3>
+        </a><a href="siri/complexTypes/.html">
+          <h3>complexType </h3>
+        </a><a href="siri/complexTypes/.html">
+          <h3>complexType </h3>
+        </a><a href="siri/complexTypes/.html">
+          <h3>complexType </h3>
+        </a><a href="siri/complexTypes/.html">
+          <h3>complexType </h3>
+        </a></div>
+      <div class="sect1" id="schema_siri_common_services_v2_0">
+        <h2>2. SIRI Framework - Common Requests.</h2>
+        <div class="simple-type-definitions" id="schema_siri_common_services_v2_0_std">
+          <h3>2.1. Simple type definitions</h3>
+          <div class="sectionbody">
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup span="1">
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:44%"/>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_siri__DeliveryMethodEnumeration" class="tableblock"><strong><code>DeliveryMethodEnumeration</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Delivery Method: Fetched or Direct Delivery.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">direct</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">fetched</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_siri__PredictorsEnumeration" class="tableblock"><strong><code>PredictorsEnumeration</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Allowed values for predictors.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">avmsOnly</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">anyone</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div><a href="siri/elements/CheckStatusRequest.html">
+          <h3>element CheckStatusRequest</h3>
+        </a><a href="siri/elements/CheckStatusResponse.html">
+          <h3>element CheckStatusResponse</h3>
+        </a><a href="siri/elements/DataReadyAcknowledgement.html">
+          <h3>element DataReadyAcknowledgement</h3>
+        </a><a href="siri/elements/DataReadyNotification.html">
+          <h3>element DataReadyNotification</h3>
+        </a><a href="siri/elements/DataReceivedAcknowledgement.html">
+          <h3>element DataReceivedAcknowledgement</h3>
+        </a><a href="siri/elements/DataSupplyRequest.html">
+          <h3>element DataSupplyRequest</h3>
+        </a><a href="siri/elements/HeartbeatNotification.html">
+          <h3>element HeartbeatNotification</h3>
+        </a><a href="siri/elements/ResponseStatus.html">
+          <h3>element ResponseStatus</h3>
+        </a><a href="siri/elements/SubscriptionResponse.html">
+          <h3>element SubscriptionResponse</h3>
+        </a><a href="siri/elements/SubscriptionTerminatedNotification.html">
+          <h3>element SubscriptionTerminatedNotification</h3>
+        </a><a href="siri/elements/TerminateSubscriptionRequest.html">
+          <h3>element TerminateSubscriptionRequest</h3>
+        </a><a href="siri/elements/TerminateSubscriptionResponse.html">
+          <h3>element TerminateSubscriptionResponse</h3>
+        </a><a href="siri/groups/CheckStatusPayloadGroup.html">
+          <h3>group CheckStatusPayloadGroup</h3>
+        </a><a href="siri/groups/ClientEndpointAddressGroup.html">
+          <h3>group ClientEndpointAddressGroup</h3>
+        </a><a href="siri/groups/DataReceivedPayloadGroup.html">
+          <h3>group DataReceivedPayloadGroup</h3>
+        </a><a href="siri/groups/DataSupplyGroup.html">
+          <h3>group DataSupplyGroup</h3>
+        </a><a href="siri/groups/DataSupplyTopicGroup.html">
+          <h3>group DataSupplyTopicGroup</h3>
+        </a><a href="siri/groups/DeliveryContextGroup.html">
+          <h3>group DeliveryContextGroup</h3>
+        </a><a href="siri/groups/DeliveryEndpointGroup.html">
+          <h3>group DeliveryEndpointGroup</h3>
+        </a><a href="siri/groups/DeliveryRequestGroup.html">
+          <h3>group DeliveryRequestGroup</h3>
+        </a><a href="siri/groups/PredictionMethodGroup.html">
+          <h3>group PredictionMethodGroup</h3>
+        </a><a href="siri/groups/ReferenceContextGroup.html">
+          <h3>group ReferenceContextGroup</h3>
+        </a><a href="siri/groups/ResourceContextGroup.html">
+          <h3>group ResourceContextGroup</h3>
+        </a><a href="siri/groups/ServiceEndpointAddressGroup.html">
+          <h3>group ServiceEndpointAddressGroup</h3>
+        </a><a href="siri/groups/SiriCommonIndexGroup.html">
+          <h3>group SiriCommonIndexGroup</h3>
+        </a><a href="siri/groups/StatusRequestGroup.html">
+          <h3>group StatusRequestGroup</h3>
+        </a><a href="siri/groups/StatusResponseGroup.html">
+          <h3>group StatusResponseGroup</h3>
+        </a><a href="siri/groups/SubscriptionManagementGroup.html">
+          <h3>group SubscriptionManagementGroup</h3>
+        </a><a href="siri/groups/SubscriptionResponsePayloadGroup.html">
+          <h3>group SubscriptionResponsePayloadGroup</h3>
+        </a><a href="siri/groups/TemporalContextGroup.html">
+          <h3>group TemporalContextGroup</h3>
+        </a><a href="siri/groups/TerminateSubscriptionTopicGroup.html">
+          <h3>group TerminateSubscriptionTopicGroup</h3>
+        </a><a href="siri/groups/TerminationStatusGroup.html">
+          <h3>group TerminationStatusGroup</h3>
+        </a><a href="siri/complexTypes/CheckStatusRequestStructure.html">
+          <h3>complexType CheckStatusRequestStructure</h3>
+        </a><a href="siri/complexTypes/CheckStatusResponseBodyStructure.html">
+          <h3>complexType CheckStatusResponseBodyStructure</h3>
+        </a><a href="siri/complexTypes/CheckStatusResponseStructure.html">
+          <h3>complexType CheckStatusResponseStructure</h3>
+        </a><a href="siri/complexTypes/ContextualisedRequestStructure.html">
+          <h3>complexType ContextualisedRequestStructure</h3>
+        </a><a href="siri/complexTypes/DataNameSpacesStructure.html">
+          <h3>complexType DataNameSpacesStructure</h3>
+        </a><a href="siri/complexTypes/DataReadyRequestStructure.html">
+          <h3>complexType DataReadyRequestStructure</h3>
+        </a><a href="siri/complexTypes/DataReadyResponseStructure.html">
+          <h3>complexType DataReadyResponseStructure</h3>
+        </a><a href="siri/complexTypes/DataReceivedResponseStructure.html">
+          <h3>complexType DataReceivedResponseStructure</h3>
+        </a><a href="siri/complexTypes/DataSupplyRequestBodyStructure.html">
+          <h3>complexType DataSupplyRequestBodyStructure</h3>
+        </a><a href="siri/complexTypes/DataSupplyRequestStructure.html">
+          <h3>complexType DataSupplyRequestStructure</h3>
+        </a><a href="siri/complexTypes/HeartbeatNotificationStructure.html">
+          <h3>complexType HeartbeatNotificationStructure</h3>
+        </a><a href="siri/complexTypes/ServiceRequestContextStructure.html">
+          <h3>complexType ServiceRequestContextStructure</h3>
+        </a><a href="siri/complexTypes/StatusResponseStructure.html">
+          <h3>complexType StatusResponseStructure</h3>
+        </a><a href="siri/complexTypes/SubscriptionResponseBodyStructure.html">
+          <h3>complexType SubscriptionResponseBodyStructure</h3>
+        </a><a href="siri/complexTypes/SubscriptionResponseStructure.html">
+          <h3>complexType SubscriptionResponseStructure</h3>
+        </a><a href="siri/complexTypes/SubscriptionTerminatedNotificationStructure.html">
+          <h3>complexType SubscriptionTerminatedNotificationStructure</h3>
+        </a><a href="siri/complexTypes/TerminateSubscriptionRequestBodyStructure.html">
+          <h3>complexType TerminateSubscriptionRequestBodyStructure</h3>
+        </a><a href="siri/complexTypes/TerminateSubscriptionRequestStructure.html">
+          <h3>complexType TerminateSubscriptionRequestStructure</h3>
+        </a><a href="siri/complexTypes/TerminateSubscriptionResponseStructure.html">
+          <h3>complexType TerminateSubscriptionResponseStructure</h3>
+        </a><a href="siri/complexTypes/TerminationResponseStatusStructure.html">
+          <h3>complexType TerminationResponseStatusStructure</h3>
+        </a><a href="siri/complexTypes/.html">
+          <h3>complexType </h3>
+        </a><a href="siri/complexTypes/.html">
+          <h3>complexType </h3>
+        </a><a href="siri/complexTypes/.html">
+          <h3>complexType </h3>
+        </a><a href="siri/complexTypes/.html">
+          <h3>complexType </h3>
+        </a></div>
+      <div class="sect1" id="schema_siri_request_errorConditions_v2_0">
+        <h2>3. SIRI Framework Error COnditions.</h2><a href="siri/elements/AccessNotAllowedError.html">
+          <h3>element AccessNotAllowedError</h3>
+        </a><a href="siri/elements/AllowedResourceUsageExceededError.html">
+          <h3>element AllowedResourceUsageExceededError</h3>
+        </a><a href="siri/elements/BeyondDataHorizon.html">
+          <h3>element BeyondDataHorizon</h3>
+        </a><a href="siri/elements/CapabilityNotSupportedError.html">
+          <h3>element CapabilityNotSupportedError</h3>
+        </a><a href="siri/elements/EndpointDeniedAccessError.html">
+          <h3>element EndpointDeniedAccessError</h3>
+        </a><a href="siri/elements/EndpointNotAvailableAccessError.html">
+          <h3>element EndpointNotAvailableAccessError</h3>
+        </a><a href="siri/elements/ErrorCode.html">
+          <h3>element ErrorCode</h3>
+        </a><a href="siri/elements/ErrorCondition.html">
+          <h3>element ErrorCondition</h3>
+        </a><a href="siri/elements/ErrorConditionElement.html">
+          <h3>element ErrorConditionElement</h3>
+        </a><a href="siri/elements/InvalidDataReferencesError.html">
+          <h3>element InvalidDataReferencesError</h3>
+        </a><a href="siri/elements/NoInfoForTopicError.html">
+          <h3>element NoInfoForTopicError</h3>
+        </a><a href="siri/elements/OtherError.html">
+          <h3>element OtherError</h3>
+        </a><a href="siri/elements/ParametersIgnoredError.html">
+          <h3>element ParametersIgnoredError</h3>
+        </a><a href="siri/elements/ServiceDeliveryErrorConditionElement.html">
+          <h3>element ServiceDeliveryErrorConditionElement</h3>
+        </a><a href="siri/elements/ServiceNotAvailableError.html">
+          <h3>element ServiceNotAvailableError</h3>
+        </a><a href="siri/elements/UnapprovedKeyAccessError.html">
+          <h3>element UnapprovedKeyAccessError</h3>
+        </a><a href="siri/elements/UnknownEndpointError.html">
+          <h3>element UnknownEndpointError</h3>
+        </a><a href="siri/elements/UnknownExtensionsError.html">
+          <h3>element UnknownExtensionsError</h3>
+        </a><a href="siri/elements/UnknownParticipantError.html">
+          <h3>element UnknownParticipantError</h3>
+        </a><a href="siri/elements/UnknownSubscriberError.html">
+          <h3>element UnknownSubscriberError</h3>
+        </a><a href="siri/elements/UnknownSubscriptionError.html">
+          <h3>element UnknownSubscriptionError</h3>
+        </a><a href="siri/groups/ApplicationErrorGroup.html">
+          <h3>group ApplicationErrorGroup</h3>
+        </a><a href="siri/groups/DistributionErrorGroup.html">
+          <h3>group DistributionErrorGroup</h3>
+        </a><a href="siri/groups/ServiceRequestErrorGroup.html">
+          <h3>group ServiceRequestErrorGroup</h3>
+        </a><a href="siri/groups/SuccessInfoGroup.html">
+          <h3>group SuccessInfoGroup</h3>
+        </a><a href="siri/complexTypes/AccessNotAllowedErrorStructure.html">
+          <h3>complexType AccessNotAllowedErrorStructure</h3>
+        </a><a href="siri/complexTypes/AllowedResourceUsageExceededErrorStructure.html">
+          <h3>complexType AllowedResourceUsageExceededErrorStructure</h3>
+        </a><a href="siri/complexTypes/BeyondDataHorizonErrorStructure.html">
+          <h3>complexType BeyondDataHorizonErrorStructure</h3>
+        </a><a href="siri/complexTypes/CapabilityNotSupportedErrorStructure.html">
+          <h3>complexType CapabilityNotSupportedErrorStructure</h3>
+        </a><a href="siri/complexTypes/EndpointDeniedAccessStructure.html">
+          <h3>complexType EndpointDeniedAccessStructure</h3>
+        </a><a href="siri/complexTypes/EndpointNotAvailableAccessStructure.html">
+          <h3>complexType EndpointNotAvailableAccessStructure</h3>
+        </a><a href="siri/complexTypes/ErrorCodeStructure.html">
+          <h3>complexType ErrorCodeStructure</h3>
+        </a><a href="siri/complexTypes/ErrorConditionElementStructure.html">
+          <h3>complexType ErrorConditionElementStructure</h3>
+        </a><a href="siri/complexTypes/ErrorConditionStructure.html">
+          <h3>complexType ErrorConditionStructure</h3>
+        </a><a href="siri/complexTypes/ErrorDescriptionStructure.html">
+          <h3>complexType ErrorDescriptionStructure</h3>
+        </a><a href="siri/complexTypes/InvalidDataReferencesErrorStructure.html">
+          <h3>complexType InvalidDataReferencesErrorStructure</h3>
+        </a><a href="siri/complexTypes/NoInfoForTopicErrorStructure.html">
+          <h3>complexType NoInfoForTopicErrorStructure</h3>
+        </a><a href="siri/complexTypes/OtherErrorStructure.html">
+          <h3>complexType OtherErrorStructure</h3>
+        </a><a href="siri/complexTypes/ParametersIgnoredErrorStructure.html">
+          <h3>complexType ParametersIgnoredErrorStructure</h3>
+        </a><a href="siri/complexTypes/ServiceDeliveryErrorConditionStructure.html">
+          <h3>complexType ServiceDeliveryErrorConditionStructure</h3>
+        </a><a href="siri/complexTypes/ServiceNotAvailableErrorStructure.html">
+          <h3>complexType ServiceNotAvailableErrorStructure</h3>
+        </a><a href="siri/complexTypes/UnapprovedKeyAccessStructure.html">
+          <h3>complexType UnapprovedKeyAccessStructure</h3>
+        </a><a href="siri/complexTypes/UnknownEndpointErrorStructure.html">
+          <h3>complexType UnknownEndpointErrorStructure</h3>
+        </a><a href="siri/complexTypes/UnknownExtensionsErrorStructure.html">
+          <h3>complexType UnknownExtensionsErrorStructure</h3>
+        </a><a href="siri/complexTypes/UnknownParticipantErrorStructure.html">
+          <h3>complexType UnknownParticipantErrorStructure</h3>
+        </a><a href="siri/complexTypes/UnknownSubscriberErrorStructure.html">
+          <h3>complexType UnknownSubscriberErrorStructure</h3>
+        </a><a href="siri/complexTypes/UnknownSubscriptionErrorStructure.html">
+          <h3>complexType UnknownSubscriptionErrorStructure</h3>
+        </a></div>
+      <div class="sect1" id="schema_siri_request_support_v2_0">
+        <h2>4. SIRI Common Framework basic identifier types.</h2>
+        <div class="simple-type-definitions" id="schema_siri_request_support_v2_0_std">
+          <h3>4.1. Simple type definitions</h3>
+          <div class="sectionbody">
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup span="1">
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:44%"/>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__CapabilityCodeType" class="tableblock"><strong><code>CapabilityCodeType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:NMTOKEN: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Type for capability code.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_siri__CommunicationsTransportMethodEnumeration" class="tableblock"><strong><code>CommunicationsTransportMethodEnumeration</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Enumeration of communications transport method usage.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">httpPost</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">other</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">wsdlSoap</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">wsdlSoapDocumentLiteral</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">httpUrlJSON</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">httpUrlProtoBuffers</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="2" class="tableblock halign-left valign-top">
+                    <p id="type_siri__CompressionMethodEnumeration" class="tableblock"><strong><code>CompressionMethodEnumeration</code></strong></p>
+                  </td>
+                  <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Enumeration of compression usage.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <table class="tableblock frame-all grid-all spread">
+                      <colgroup span="1">
+                        <col span="1" style="width:28%"/>
+                        <col span="1" style="width:72%"/>
+                      </colgroup>
+                      <tbody>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">gzip</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">none</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock">other</p>
+                          </td>
+                          <td class="tableblock halign-left valign-top">
+                            <p class="tableblock anno-text">-</p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__EndpointAddress" class="tableblock"><strong><code>EndpointAddress</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:anyURI: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Type for a endpoint.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__ItemIdentifierType" class="tableblock"><strong><code>ItemIdentifierType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:NMTOKEN: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Type for identifier of an Item. A transient reference for efficient handling of events.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div><a href="siri/elements/IncludeTranslations.html">
+          <h3>element IncludeTranslations</h3>
+        </a><a href="siri/elements/RequestorRef.html">
+          <h3>element RequestorRef</h3>
+        </a><a href="siri/elements/RequestTimestamp.html">
+          <h3>element RequestTimestamp</h3>
+        </a><a href="siri/elements/ResponseTimestamp.html">
+          <h3>element ResponseTimestamp</h3>
+        </a><a href="siri/complexTypes/CapabilityRefStructure.html">
+          <h3>complexType CapabilityRefStructure</h3>
+        </a><a href="siri/complexTypes/ItemRefStructure.html">
+          <h3>complexType ItemRefStructure</h3>
+        </a><a href="siri/complexTypes/MessageQualifierStructure.html">
+          <h3>complexType MessageQualifierStructure</h3>
+        </a><a href="siri/complexTypes/MessageRefStructure.html">
+          <h3>complexType MessageRefStructure</h3>
+        </a><a href="siri/complexTypes/SubscriptionFilterRefStructure.html">
+          <h3>complexType SubscriptionFilterRefStructure</h3>
+        </a><a href="siri/complexTypes/SubscriptionFilterStructure.html">
+          <h3>complexType SubscriptionFilterStructure</h3>
+        </a><a href="siri/complexTypes/SubscriptionQualifierStructure.html">
+          <h3>complexType SubscriptionQualifierStructure</h3>
+        </a></div>
+      <div class="sect1" id="schema_siri_requests_v2_0">
+        <h2>5. SIRI Common Request Framework.</h2><a href="siri/elements/AbstractDiscoveryDelivery.html">
+          <h3>element AbstractDiscoveryDelivery</h3>
+        </a><a href="siri/elements/AbstractDiscoveryRequest.html">
+          <h3>element AbstractDiscoveryRequest</h3>
+        </a><a href="siri/elements/AbstractFunctionalServiceCapabilitiesRequest.html">
+          <h3>element AbstractFunctionalServiceCapabilitiesRequest</h3>
+        </a><a href="siri/elements/AbstractFunctionalServiceCapabilitiesResponse.html">
+          <h3>element AbstractFunctionalServiceCapabilitiesResponse</h3>
+        </a><a href="siri/elements/AbstractFunctionalServiceDelivery.html">
+          <h3>element AbstractFunctionalServiceDelivery</h3>
+        </a><a href="siri/elements/AbstractFunctionalServiceRequest.html">
+          <h3>element AbstractFunctionalServiceRequest</h3>
+        </a><a href="siri/elements/AbstractFunctionalServiceSubscriptionRequest.html">
+          <h3>element AbstractFunctionalServiceSubscriptionRequest</h3>
+        </a><a href="siri/elements/AbstractRequest.html">
+          <h3>element AbstractRequest</h3>
+        </a><a href="siri/elements/AbstractResponse.html">
+          <h3>element AbstractResponse</h3>
+        </a><a href="siri/elements/AbstractServiceRequest.html">
+          <h3>element AbstractServiceRequest</h3>
+        </a><a href="siri/elements/AbstractTrackedRequest.html">
+          <h3>element AbstractTrackedRequest</h3>
+        </a><a href="siri/elements/AuthenticatedRequest.html">
+          <h3>element AuthenticatedRequest</h3>
+        </a><a href="siri/elements/ProducerRequest.html">
+          <h3>element ProducerRequest</h3>
+        </a><a href="siri/elements/ProducerResponse.html">
+          <h3>element ProducerResponse</h3>
+        </a><a href="siri/elements/Status.html">
+          <h3>element Status</h3>
+        </a><a href="siri/groups/AuthenticatedRequestGroup.html">
+          <h3>group AuthenticatedRequestGroup</h3>
+        </a><a href="siri/groups/CapabilityStatusGroup.html">
+          <h3>group CapabilityStatusGroup</h3>
+        </a><a href="siri/groups/ConsumerRequestEndpointGroup.html">
+          <h3>group ConsumerRequestEndpointGroup</h3>
+        </a><a href="siri/groups/ConsumerResponseEndpointGroup.html">
+          <h3>group ConsumerResponseEndpointGroup</h3>
+        </a><a href="siri/groups/ContextualisedRequestEndpointGroup.html">
+          <h3>group ContextualisedRequestEndpointGroup</h3>
+        </a><a href="siri/groups/ContextualisedResponseEndpointGroup.html">
+          <h3>group ContextualisedResponseEndpointGroup</h3>
+        </a><a href="siri/groups/DelegatorEndpointGroup.html">
+          <h3>group DelegatorEndpointGroup</h3>
+        </a><a href="siri/groups/DeliveryDefaultGroup.html">
+          <h3>group DeliveryDefaultGroup</h3>
+        </a><a href="siri/groups/DeliveryStatusGroup.html">
+          <h3>group DeliveryStatusGroup</h3>
+        </a><a href="siri/groups/OptionalSubscriberEndpointGroup.html">
+          <h3>group OptionalSubscriberEndpointGroup</h3>
+        </a><a href="siri/groups/ProducerRequestEndpointGroup.html">
+          <h3>group ProducerRequestEndpointGroup</h3>
+        </a><a href="siri/groups/ProducerResponseEndpointGroup.html">
+          <h3>group ProducerResponseEndpointGroup</h3>
+        </a><a href="siri/groups/RequestorEndpointGroup.html">
+          <h3>group RequestorEndpointGroup</h3>
+        </a><a href="siri/groups/ResponseEndpointGroup.html">
+          <h3>group ResponseEndpointGroup</h3>
+        </a><a href="siri/groups/ServiceDeliveryRequestStatusGroup.html">
+          <h3>group ServiceDeliveryRequestStatusGroup</h3>
+        </a><a href="siri/groups/SubscriberEndpointGroup.html">
+          <h3>group SubscriberEndpointGroup</h3>
+        </a><a href="siri/groups/SubscriptionIdentifierResourcePropertyGroup.html">
+          <h3>group SubscriptionIdentifierResourcePropertyGroup</h3>
+        </a><a href="siri/groups/SubscriptionIdentityGroup.html">
+          <h3>group SubscriptionIdentityGroup</h3>
+        </a><a href="siri/complexTypes/AbstractCapabilitiesStructure.html">
+          <h3>complexType AbstractCapabilitiesStructure</h3>
+        </a><a href="siri/complexTypes/AbstractDiscoveryDeliveryStructure.html">
+          <h3>complexType AbstractDiscoveryDeliveryStructure</h3>
+        </a><a href="siri/complexTypes/AbstractDiscoveryRequestStructure.html">
+          <h3>complexType AbstractDiscoveryRequestStructure</h3>
+        </a><a href="siri/complexTypes/AbstractFunctionalServiceRequestStructure.html">
+          <h3>complexType AbstractFunctionalServiceRequestStructure</h3>
+        </a><a href="siri/complexTypes/AbstractIdentifiedItemStructure.html">
+          <h3>complexType AbstractIdentifiedItemStructure</h3>
+        </a><a href="siri/complexTypes/AbstractItemStructure.html">
+          <h3>complexType AbstractItemStructure</h3>
+        </a><a href="siri/complexTypes/AbstractNotificationStructure.html">
+          <h3>complexType AbstractNotificationStructure</h3>
+        </a><a href="siri/complexTypes/AbstractReferencingItemStructure.html">
+          <h3>complexType AbstractReferencingItemStructure</h3>
+        </a><a href="siri/complexTypes/AbstractRequestStructure.html">
+          <h3>complexType AbstractRequestStructure</h3>
+        </a><a href="siri/complexTypes/AbstractRequiredIdentifiedItemStructure.html">
+          <h3>complexType AbstractRequiredIdentifiedItemStructure</h3>
+        </a><a href="siri/complexTypes/AbstractRequiredReferencingItemStructure.html">
+          <h3>complexType AbstractRequiredReferencingItemStructure</h3>
+        </a><a href="siri/complexTypes/AbstractServiceCapabilitiesResponseStructure.html">
+          <h3>complexType AbstractServiceCapabilitiesResponseStructure</h3>
+        </a><a href="siri/complexTypes/AbstractServiceDeliveryStructure.html">
+          <h3>complexType AbstractServiceDeliveryStructure</h3>
+        </a><a href="siri/complexTypes/AbstractServiceRequestStructure.html">
+          <h3>complexType AbstractServiceRequestStructure</h3>
+        </a><a href="siri/complexTypes/AbstractSubscriptionRequestStructure.html">
+          <h3>complexType AbstractSubscriptionRequestStructure</h3>
+        </a><a href="siri/complexTypes/AbstractSubscriptionStructure.html">
+          <h3>complexType AbstractSubscriptionStructure</h3>
+        </a><a href="siri/complexTypes/AuthenticatedRequestStructure.html">
+          <h3>complexType AuthenticatedRequestStructure</h3>
+        </a><a href="siri/complexTypes/CapabilityGeneralInteractionStructure.html">
+          <h3>complexType CapabilityGeneralInteractionStructure</h3>
+        </a><a href="siri/complexTypes/CapabilityRequestPolicyStructure.html">
+          <h3>complexType CapabilityRequestPolicyStructure</h3>
+        </a><a href="siri/complexTypes/CapabilitySubscriptionPolicyStructure.html">
+          <h3>complexType CapabilitySubscriptionPolicyStructure</h3>
+        </a><a href="siri/complexTypes/ConsumerRequestEndpointStructure.html">
+          <h3>complexType ConsumerRequestEndpointStructure</h3>
+        </a><a href="siri/complexTypes/ConsumerResponseEndpointStructure.html">
+          <h3>complexType ConsumerResponseEndpointStructure</h3>
+        </a><a href="siri/complexTypes/ProducerRequestEndpointStructure.html">
+          <h3>complexType ProducerRequestEndpointStructure</h3>
+        </a><a href="siri/complexTypes/ProducerResponseEndpointStructure.html">
+          <h3>complexType ProducerResponseEndpointStructure</h3>
+        </a><a href="siri/complexTypes/ProducerResponseStructure.html">
+          <h3>complexType ProducerResponseStructure</h3>
+        </a><a href="siri/complexTypes/RequestStructure.html">
+          <h3>complexType RequestStructure</h3>
+        </a><a href="siri/complexTypes/ResponseEndpointStructure.html">
+          <h3>complexType ResponseEndpointStructure</h3>
+        </a><a href="siri/complexTypes/ResponseStructure.html">
+          <h3>complexType ResponseStructure</h3>
+        </a><a href="siri/complexTypes/ServiceCapabilitiesRequestStructure.html">
+          <h3>complexType ServiceCapabilitiesRequestStructure</h3>
+        </a><a href="siri/complexTypes/SubscriptionContextStructure.html">
+          <h3>complexType SubscriptionContextStructure</h3>
+        </a><a href="siri/complexTypes/TransportDescriptionStructure.html">
+          <h3>complexType TransportDescriptionStructure</h3>
+        </a><a href="siri/complexTypes/.html">
+          <h3>complexType </h3>
+        </a><a href="siri/complexTypes/.html">
+          <h3>complexType </h3>
+        </a><a href="siri/complexTypes/.html">
+          <h3>complexType </h3>
+        </a></div>
+      <div class="sect1" id="schema_siri_location_v2_0">
+        <h2>6. SIRI Framewrok Location Types.</h2>
+        <div class="simple-type-definitions" id="schema_siri_location_v2_0_std">
+          <h3>6.1. Simple type definitions</h3>
+          <div class="sectionbody">
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup span="1">
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:44%"/>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__AbsoluteBearingType" class="tableblock"><strong><code>AbsoluteBearingType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:float: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Type for absolute bearing.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__AltitudeType" class="tableblock"><strong><code>AltitudeType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:decimal: range=[-1000,5000]</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Altitude metres from sea level.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__DistanceType" class="tableblock"><strong><code>DistanceType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:nonNegativeInteger: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Distance (metres) as defined by http://www.ordnancesurvey.co.uk/xml/resource/units.xml#metres. ALternative units may be specifed by context.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__LatitudeType" class="tableblock"><strong><code>LatitudeType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:decimal: range=[-90,90]</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Latitude from equator.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__LongitudeType" class="tableblock"><strong><code>LongitudeType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:decimal: range=[-180,180]</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Longitude from Greenwich.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__SrsNameType" class="tableblock"><strong><code>SrsNameType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:string: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Type for coordinate reference system.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__VelocityType" class="tableblock"><strong><code>VelocityType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:nonNegativeInteger: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Distance (metres per second) ALternative unist may be specifed by context.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div><a href="siri/elements/SrsName.html">
+          <h3>element SrsName</h3>
+        </a><a href="siri/groups/WgsGroup.html">
+          <h3>group WgsGroup</h3>
+        </a><a href="siri/complexTypes/BoundingBoxStructure.html">
+          <h3>complexType BoundingBoxStructure</h3>
+        </a><a href="siri/complexTypes/CoordinatesStructure.html">
+          <h3>complexType CoordinatesStructure</h3>
+        </a><a href="siri/complexTypes/LineShapeStructure.html">
+          <h3>complexType LineShapeStructure</h3>
+        </a><a href="siri/complexTypes/LocationStructure.html">
+          <h3>complexType LocationStructure</h3>
+        </a></div>
+      <div class="sect1" id="schema_siri_participant_v2_0">
+        <h2>7. SIRI Framework Participant Types.</h2>
+        <div class="simple-type-definitions" id="schema_siri_participant_v2_0_std">
+          <h3>7.1. Simple type definitions</h3>
+          <div class="sectionbody">
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup span="1">
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:44%"/>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__ParticipantCodeType" class="tableblock"><strong><code>ParticipantCodeType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:NMTOKEN: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Type for Unique identifier of participant.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div><a href="siri/complexTypes/ParticipantRefStructure.html">
+          <h3>complexType ParticipantRefStructure</h3>
+        </a></div>
+      <div class="sect1" id="schema_siri_types_v2_0">
+        <h2>8. SIRI Framework Base Types.</h2>
+        <div class="simple-type-definitions" id="schema_siri_types_v2_0_std">
+          <h3>8.1. Simple type definitions</h3>
+          <div class="sectionbody">
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup span="1">
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:44%"/>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__DurationType" class="tableblock"><strong><code>DurationType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:duration: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Limited version of duration that allows for precise time arithmetic. Only Month, Day, Hour, Minute Second terms should be used. Milliseconds should not be used. Year should not be used. Negative values allowed. e.g. PT1004199059S", "PT130S", "PT2M10S", "P1DT2S", "-P1DT2S".</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__EmailAddressType" class="tableblock"><strong><code>EmailAddressType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:string: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Email address type.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__IdType" class="tableblock"><strong><code>IdType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:NMTOKEN: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Id type for document references.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__PhoneType" class="tableblock"><strong><code>PhoneType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:string: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">International phonenumber +41675601 etc.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__PopulatedPlaceNameType" class="tableblock"><strong><code>PopulatedPlaceNameType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:string: minLen=1; pattern=#[^,\[\]\{\}\?$%\^=@#;:]+#</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A name that requires at least one character of text and forbids certain reserved characters.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__PopulatedStringType" class="tableblock"><strong><code>PopulatedStringType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:string: minLen=1</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A restriction of W3C XML Schema's string that requires at least one character of text.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__PositiveDurationType" class="tableblock"><strong><code>PositiveDurationType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:duration: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">Limited version of duration. Must be positive.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__VersionString" class="tableblock"><strong><code>VersionString</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:NMTOKEN: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A string indicating the versioin of a SIRI data structure.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div><a href="siri/complexTypes/NaturalLanguagePlaceNameStructure.html">
+          <h3>complexType NaturalLanguagePlaceNameStructure</h3>
+        </a><a href="siri/complexTypes/NaturalLanguageStringStructure.html">
+          <h3>complexType NaturalLanguageStringStructure</h3>
+        </a></div>
+      <div class="sect1" id="schema_siri_utility_v1_1">
+        <h2>9. SIRI Framework Utility Types.</h2>
+        <div class="simple-type-definitions" id="schema_siri_utility_v1_1_std">
+          <h3>9.1. Simple type definitions</h3>
+          <div class="sectionbody">
+            <table class="tableblock frame-all grid-all spread">
+              <colgroup span="1">
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:28%"/>
+                <col span="1" style="width:44%"/>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p id="type_siri__EmptyType" class="tableblock"><strong><code>EmptyType</code></strong></p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock">xs:string: (empty restriction)</p>
+                  </td>
+                  <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                    <p class="tableblock anno-text">A type with no allowed content, used when simply the presence of an element is significant.</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div><a href="siri/elements/Extensions.html">
+          <h3>element Extensions</h3>
+        </a><a href="siri/complexTypes/ExtensionsStructure.html">
+          <h3>complexType ExtensionsStructure</h3>
+        </a></div>
+    </div><script type="text/javascript" src="../footer.js"></script></body>
+</html>

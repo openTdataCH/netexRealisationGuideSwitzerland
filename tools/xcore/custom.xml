@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom>
+	<!-- Title appearing on the entry page -->
+	<systemTitle>Full NeTEx Documentation Example</systemTitle>
+	<!-- Standardized namespace bindings -->
+	<namespaces>
+		<namespace prefix="netex" uri="http://www.netex.org.uk/netex"/>
+		<namespace prefix="siri" uri="http://www.siri.org.uk/siri"/>
+		<namespace prefix="gml" uri="http://www.opengis.net/gml/3.2"/>
+	</namespaces>
+	<!-- Report type specific rules -->
+	<reportTypes/>
+	<domains>
+
+		<domain name="siri">
+			<content>
+				<targetNamespace>http://www.siri.org.uk/siri</targetNamespace>
+			</content>
+			<processing>
+				<title>NeTEx (SIRI)</title>
+				<reportFileBaseName>siri</reportFileBaseName>
+				<reportTypes/>
+			</processing>
+		</domain>
+
+		<domain name="opengis">
+			<content>
+				<targetNamespace>http://www.opengis.net/gml/3.2</targetNamespace>
+			</content>
+			<processing>
+				<title>NeTEx (GML)</title>
+				<titleEnumDict>OJP Enumeration Dictionary - OJP</titleEnumDict>
+				<reportFileBaseName>gml</reportFileBaseName>
+				<reportTypes/>
+			</processing>
+		</domain>
+
+		<domain name="netex">
+			<content>
+				<targetNamespace>http://www.netex.org.uk/netex</targetNamespace>
+				<files dir="../../xsd/xsd" name="NeTEx_publication.xsd" deep="true"/>
+			</content>
+			<processing>
+				<title>NeTEx</title>
+				<reportFileBaseName>netex</reportFileBaseName>
+				<reportTypes>
+					<reportType name="contab">
+						<!-- XSD titles -->
+						<xsdTitle pref1="singleSentenceAnno" pref2="fileName"/>
+
+						<!--
+						<nameEdit>
+							<comp removePrefix="netex" use="main" kind="element"/>
+							<comp removePrefix="netex" use="main" kind="complexType"/>
+							<comp removePrefix="netex" use="main" kind="group"/>
+							<comp removePrefix="netex" use="main" kind="simpleType"/>
+							<comp removePrefix="netex" use="sub" kind="element"/>
+							<comp removePrefix="netex" use="sub" kind="group" replace="Group$" with=""/>
+							<comp removePrefix="netex" use="sub" kind="complexType" replace="Structure$" with=""/>
+						</nameEdit>
+						-->
+
+					</reportType>
+				</reportTypes>
+			</processing>
+		</domain>
+	</domains>
+</custom>

@@ -1,0 +1,36 @@
+@startuml
+
+component validator #ccccff
+artifact profile.sch
+artifact skeleton_stylesheet
+artifact example.xml
+artifact example_report.svrl
+artifact profile.xsd #cacaca
+
+note right of profile.sch
+Schematron rules
+to be applied
+end note
+
+note right of example.xml
+NeTEx example document
+to be validated
+end note
+
+note right of validator
+Variants:
+- XSLT processor (Saxon)
+- Python code using lxml
+end note
+
+note left of example_report.svrl
+Report shows validation results
+end note
+
+example.xml <-- validator : validates
+skeleton_stylesheet <-- validator : uses
+profile.sch <-- validator : compiles, applies rules of
+validator --> example_report.svrl : creates
+validator ..> profile.xsd : validates against
+
+@enduml

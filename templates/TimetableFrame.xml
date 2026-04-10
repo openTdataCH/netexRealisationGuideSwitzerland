@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>CH:BLT</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="CH:BLT:Composite:50_110" version="any">
+			<frames>
+				<!-- ch-start -->
+				<TimetableFrame id="ch:1:TimetableFrame:j23" version="any">
+					<!-- ch-attrs: id version/versionRef -->
+					<vehicleJourneys>
+						<!-- ch-usage: expected -->
+						<!-- ch-note: Contains the ServiceJourneys and TemplateServiceJourneys. -->
+						<ServiceJourney id="generatedOrsjyid" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-note: ServiceJourney is used for common Journeys. -->
+							<!-- ch-see -->
+						</ServiceJourney>
+						<TemplateServiceJourney id="generatedOrsjyid1" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-note: TemplateServiceJourney is only to be used if a line is serviced at a certain frequency. -->
+							<!-- ch-see -->
+						</TemplateServiceJourney>
+						<TemplateServiceJourney id="generated2" version="1">
+						</TemplateServiceJourney>
+					</vehicleJourneys>
+					<trainNumbers>
+						<!-- ch-usage: expected -->
+						<TrainNumber id="2123" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-see -->
+						</TrainNumber>
+					</trainNumbers>
+					<serviceFacilitySets>
+						<!-- ch-usage: optional -->
+						<ServiceFacilitySet id="86558" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-see -->
+						</ServiceFacilitySet>
+					</serviceFacilitySets>
+					<typesOfService>
+						<!-- ch-usage: expected -->
+						<TypeOfService id="ch:1:TypeOfService:1" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-note: This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. -->
+							<Name lang="en">PublicJourney</Name>
+								<!-- ch-usage: expected -->
+							<ShortName lang="en">PJ</ShortName>
+								<!-- ch-usage: optional -->
+							<PrivateCode>1</PrivateCode>
+								<!-- ch-usage: optional -->
+						</TypeOfService>
+					</typesOfService>
+					<JourneyMeeting id="ch:1:JourneyMeeting:1" version="any">
+						<!-- ch-usage: optional -->
+						<!-- ch-note: Check latest policy - InterchangeRule may be the preferred alternative. -->
+						<!-- ch-see -->
+					</JourneyMeeting>
+					<interchangeRules>
+						<!-- ch-usage: expected -->
+						<InterchangeRule id="ch:1:InterchangeRule:1" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-see -->
+						</InterchangeRule>
+					</interchangeRules>
+				</TimetableFrame>
+				<!-- ch-stop -->
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
