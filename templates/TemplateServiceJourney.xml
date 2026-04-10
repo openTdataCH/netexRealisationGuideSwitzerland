@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-04-10T12:00:00</PublicationTimestamp>
+	<ParticipantRef>CH:BLT</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="CH:BLT:Composite:50_110" version="any">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame:j23" version="any">
+					<vehicleJourneys>
+						<!-- ch-start -->
+						<TemplateServiceJourney id="generated" version="1">
+							<!-- ch-note: ServiceJourney is used for common Journeys. -->
+							<!-- ch-attrs: id version -->
+							<validityConditions>
+								<!-- ch-usage: expected -->
+								<!-- ch-note: A specific type of VALIDITY CONDITION used to specify a set of temporal conditions that can be associated with the SERVICE JOURNEY, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+								<AvailabilityCondition id="gernerated" version="1">
+									<!-- ch-usage: expected -->
+									<FromDate><!-- ch-usage: mandatory-->2026-02-15T00:00:00Z</FromDate>
+									<ToDate><!-- ch-usage: mandatory-->2026-06-15T00:00:00Z</ToDate>
+									<ValidDayBits><!-- ch-usage: mandatory-->01010231</ValidDayBits>
+									<timebands>
+										<Timeband id="generated" version="1">
+											<!-- ch-usage: optional -->
+											<!-- ch-see -->
+										</Timeband>
+									</timebands>
+								</AvailabilityCondition>
+							</validityConditions>
+							<keyList>
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: KEY LIST with the KEY VALUEs beloning to the SERVICE JOURNEY. Will contain the SJYID. -->
+								<KeyValue>
+									<!-- ch-usage: mandatory -->
+									<Key><!-- ch-usage: mandatory -->SJYID</Key>
+									<Value><!-- ch-usage: mandatory -->ch:1:sjyid:100001:71707-003</Value>
+								</KeyValue>
+							</keyList>
+							<Extensions>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Used to indicate Facility changes. -->
+								<facilities>
+									<!-- ch-usage: optional -->
+									<Facility id="ch:1:facility:f1" version="any" order="1">
+										<!-- ch-usage: optional -->
+										<!-- ch-see -->
+										<validityConditions>
+											<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" versionRef="any"/>
+										</validityConditions>
+										<ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A___1" versionRef="any"/>
+									</Facility>
+								</facilities>
+							</Extensions>
+							<PrivateCode>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Private code of SERVICE JOURNEY. -->
+								1
+							</PrivateCode>
+							<TransportMode>
+								<!-- ch-usage: optional -->
+								rail
+							</TransportMode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="any"<!-- ch-usage: optional -->/>
+							<TypeOfServiceRef ref="ch:1:TypeOfService:1" versionRef="any"<!-- ch-usage: optional -->/>
+							<noticeAssignments>
+								<!-- ch-usage: optional -->
+								<NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="any">
+									<!-- ch-usage: optional -->
+									<!-- ch-see -->
+									<validityConditions>
+										<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" versionRef="any"/>
+									</validityConditions>
+									<NoticeRef ref="ch:1:Notice:A___1" versionRef="any"/>
+								</NoticeAssignment>
+							</noticeAssignments>
+							<occupancies>
+								<!-- ch-usage: optional --> 
+								<!-- ch-note: TODO - do we want that, new feature V2.0 ? -->
+								<OccupancyView>
+									<!-- ch-usage: optional>
+									<!-- ch-see -->
+								</OccupancyView>
+							</occupancies>
+							<ServiceAlteration>
+								<!-- ch-usage: optional -->
+								<!-- ch-allowed-enums: planned -->
+								<!-- ch-note: Only the value planned is allowed. -->
+								planned
+							</ServiceAlteration>
+							<DepartureTime>
+								<!-- ch-usage: optional -->
+                <!-- ch-note: TODO - does this make sense given that repeated journeys are described ? -->
+								06:21:00
+							</DepartureTime>
+              <DepartureTimeOffset>
+								<!-- ch-usage: optional -->
+                <!-- ch-note: TODO - same question as above -->
+								0
+							</DepartureTimeOffset>
+							<LineRef ref="ch:2:Line:11.IR.90" versionRef="any">
+								<!--ch-usage: mandatory -->
+							</LineRef>
+							<DirectionType>
+								<!-- ch-usage: optional -->
+								<!-- ch-allowed-enums: inbound outbound -->
+								<!-- Allowed are: inbound, outbound -->
+								inbound
+							</DirectionType>
+							<trainNumbers>
+								<!-- ch-usage: mandatory -->
+								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1">
+									<!-- ch-usage: mandatory -->
+								</TrainNumberRef>
+							</trainNumbers>
+							<passingTimes>
+								<!-- ch-usage: expected -->
+								<TimetabledPassingTime id="generated" version="1">
+									<!-- ch-usage: expected -->
+									<!-- ch-see -->
+									<PointInJourneyPatternRef ref="generated" versionRef="1"/>
+								</TimetabledPassingTime>
+							</passingTimes>
+							<calls>
+								<!-- ch-usage: forbidden -->
+							</calls>
+              <TemplateVehicleJourneyType>
+                <!-- ch-usage: expected -->
+                <!-- ch-allowed-enums: rhythmic headway -->
+              </TemplateVehicleJourneyType>
+						</TemplateServiceJourney>
+						<!-- ch-stop -->
+					</vehicleJourneys>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
