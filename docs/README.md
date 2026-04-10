@@ -27,14 +27,14 @@ This document describes the way in which the NeTEx standard is specifically appl
 - [File structure, encoding etc](04_files.md)
 - [Frames used in the profile](05_frames.md)
 - [Site model](06_stops.md)
-- Services
+- [Service](07_service.md)
 - [Timetables](08_timetable.md)
 - [Common elements](09_common.md)
 - Special use cases
   - Joining / Splitting und "Durchbindung"
   - ServiceFacilities
   - JourneyParts
-  - Transfers / transfer times
+  - [Transfers / transfer times](uc_transfers.md)
   - [Journeys passing midnight](uc_midnight_passing.md)
   - Modes  and the ["KI Branchenstandard"](https://www.oev-info.ch/de/branchenstandard/branchenstandard-kundeninformation-bs-ki/branchenstandard-kundeninformation-bs-ki)
 - Mapping tables
