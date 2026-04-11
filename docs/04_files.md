@@ -8,8 +8,14 @@ tbd 2.7.1
 tbd 2.7.1
 
 # Zip structure
-The zip file shall contain the following files (with allowed content and explanations). The order of the files in the zip shall be as defined here.
+We propose different structures:
+1. a simple import format that delivers for a line or an operator only the information not already present in ATLAS (basically line, operator or network based)
+2. the standardised export format (the whole network with files for minimised export of lines)
+3. we will add a base data export for Atlas data (which is derived from 2).
 
+Network for us is always the whole network as defined by the public transport in Switzerland.
+
+The zip file shall contain the following files (with allowed content and explanations). The order of the files in the zip shall be as defined here.
 * resources.xml: contain ResourceFrame.xml (must be valid)
 * sites.xml: contain SiteFrame, StopPlace, Quay (must be valid)
 * services.xml: contain ServiceFrame, Line, (Direction), Organisation (must be valid)
