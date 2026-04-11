@@ -131,6 +131,9 @@
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:alternativeNames/netex:AlternativeName">
       <sch:assert test="count(netex:Name) > 0">Name must be present</sch:assert>
       </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:alternativeNames/netex:AlternativeName/netex:Name">
+      <sch:assert test="count(@lang) > 0">Attribute "lang" must be present on Name</sch:assert>
+      </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:quays/netex:Quay">
       <sch:assert test="count(netex:keyList) > 0">keyList must be present</sch:assert>
       <sch:assert test="count(netex:Centroid) > 0">Centroid must be present</sch:assert>

@@ -58,14 +58,13 @@ def test_simple_snippet_extraction():
     with tempfile.NamedTemporaryFile(mode='w', suffix='.xml', delete=False) as f:
         f.write("""<?xml version="1.0" encoding="UTF-8"?>
 <Root>
-    <!-- ch-start: Test snippet -->
+    <!-- ch-root -->
     <TestElement id="test">
         <!-- ch-note: Important note -->
         <Child>Value</Child>
         <!-- usage: forbidden -->
         <ForbiddenChild>Should be excluded</ForbiddenChild>
     </TestElement>
-    <!-- ch-stop: test ends -->
 </Root>""")
         temp_file = f.name
     
@@ -128,9 +127,8 @@ def test_malformed_xml():
     with tempfile.NamedTemporaryFile(mode='w', suffix='.xml', delete=False) as f:
         f.write("""<?xml version="1.0" encoding="UTF-8"?>
 <Root>
-    <!-- ch-start: Malformed test -->
+    <!-- ch-root -->
     <Element>Unclosed element
-    <!-- ch-stop: malformed ends -->
 </Root>""")
         temp_file = f.name
     

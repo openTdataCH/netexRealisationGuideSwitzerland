@@ -69,6 +69,7 @@ RE_SEE_WITH_ARGS = re.compile(r'\bch-see\s*:\s*(.+)', re.IGNORECASE)
 RE_ALLOWED_ENUMS = re.compile(r'\bch-allowed-enums\s*:\s*(.+)', re.IGNORECASE)
 RE_DEPRECATED = re.compile(r'\bch-deprecated\b', re.IGNORECASE)
 RE_CLASS_ID_MUST_EXIST = re.compile(r'\bch-class-id-must-exist\b', re.IGNORECASE)
+RE_ATTRS = re.compile(r'\bch-attrs\s*[:\s]+(.+)', re.IGNORECASE)
 
 # Known ch-commands (for warning on unknown ones)
 KNOWN_CH_COMMANDS = {
@@ -79,6 +80,7 @@ KNOWN_CH_COMMANDS = {
     'ch-deprecated',
     'ch-class-id-must-exist',
     'ch-root',
+    'ch-attrs',
 }
 RE_CH_COMMAND = re.compile(r'\b(ch-[a-zA-Z0-9_-]+)', re.IGNORECASE)
 
@@ -269,6 +271,15 @@ def parse_usage_and_notes_from_comments(comment_text):
 
     deprecated = bool(RE_DEPRECATED.search(comment_text))
     class_id_must_exist = bool(RE_CLASS_ID_MUST_EXIST.search(comment_text))
+    
+    # Parse ch-attrs command
+    attrs_match = RE_ATTRS.search(comment_text)
+    required_attrs = []
+    if attrs_match:
+        vals = attrs_match.group(1).strip()
+        # Clean up the value by removing any trailing comment markers
+        vals = vals.replace('-->', '').strip()
+        required_attrs = [v for v in re.split(r'\s+', vals) if v != '']
 
     return {
         'notes': [n.strip() for n in all_notes] if all_notes else [],
@@ -277,6 +288,7 @@ def parse_usage_and_notes_from_comments(comment_text):
         'allowed_enums': allowed,
         'deprecated': deprecated,
         'class_id_must_exist': class_id_must_exist,
+        'required_attrs': required_attrs,
     }
 
 
@@ -461,6 +473,21 @@ class SchematronBuilder:
         test_expr = f"count(//{ns_elem}[@id='{id_value}']) > 0"
         self.add_assert_or_report(context_xpath, test_expr, f'An element {element_name} with id="{id_value}" must exist', kind='report', note_text=full_note)
 
+    def add_rule_required_attrs(self, context_xpath, element_name, required_attrs, note_text=None):
+        """
+        Add rules requiring specified attributes to be present on an element.
+        """
+        if not required_attrs:
+            return
+        
+        # For each required attribute, create a rule that checks its presence
+        for attr_name in required_attrs:
+            if attr_name:
+                # Create XPath test: count(@attr_name) > 0
+                test = f'count(@{attr_name}) > 0'
+                message = f'Attribute "{attr_name}" must be present on {element_name}'
+                self.add_assert_or_report(context_xpath, test, message, kind='assert', note_text=note_text)
+
     def tostring(self):
         """Serialize schematron to XML string with proper formatting."""
         # Pretty-print before serializing
@@ -512,6 +539,7 @@ def _process_fragment_root(rootfrag, builder, base_context_path, parent_context_
             allowed_enums = parsed['allowed_enums']
             deprecated = parsed['deprecated']
             class_id_must_exist = parsed['class_id_must_exist']
+            required_attrs = parsed['required_attrs']
 
             note_text = '; '.join(notes) if notes else None
 
@@ -525,6 +553,9 @@ def _process_fragment_root(rootfrag, builder, base_context_path, parent_context_
             # Allowed enums at the element itself (value check at element context)
             if allowed_enums:
                 builder.add_rule_allowed_enums(base_context_path, '.', allowed_enums, note_text=note_text)
+            # Handle required attributes for this element
+            if required_attrs:
+                builder.add_rule_required_attrs(base_context_path, element_local_name, required_attrs, note_text=note_text)
             # class-id-must-exist at fragment top-level: we don't have the id value here; skip
 
             # referenced_names at fragment top-level: rare; if provided, treat as further inclusions under element context
@@ -634,6 +665,7 @@ def process_element_tree(elem, builder, parent_context_path='', input_folder='.'
         allowed_enums = parsed['allowed_enums']
         deprecated = parsed['deprecated']
         class_id_must_exist = parsed['class_id_must_exist']
+        required_attrs = parsed['required_attrs']
 
         note_text = '; '.join(notes) if notes else None
 
@@ -661,6 +693,15 @@ def process_element_tree(elem, builder, parent_context_path='', input_folder='.'
                 elem_abs_path,
                 tag_local,
                 id_value,
+                note_text=note_text
+            )
+
+        # Handle required attributes for this element
+        if required_attrs:
+            builder.add_rule_required_attrs(
+                elem_abs_path,
+                tag_local,
+                required_attrs,
                 note_text=note_text
             )
 
@@ -812,41 +853,50 @@ def main(argv):
     builder = SchematronBuilder(xsd_path)
 
     for region in regions:
-        wrapped = wrap_fragment(region)
-        try:
-            root = ET.fromstring(wrapped.encode('utf-8'))
-        except Exception as e:
-            print(f'Error parsing extracted region: {e}', file=sys.stderr)
-            continue
-
-        # Start traversal from the specified root element
-        root_element_found = False
-        for node in list(root):
-            if isinstance(node, ET._Comment):
-                # We ignore top-level comments for schematron generation in this absolute-path mode
-                ctext = (node.text or '').strip()
-                warn_on_unknown_ch_commands(ctext, location_desc="top-level template region")
-                # No top-level asserts created (no '.' contexts).
+        # Check if the region is already a complete XML element (starts with < and not <?xml)
+        region_stripped = region.strip()
+        is_complete_element = region_stripped.startswith('<') and not region_stripped.startswith('<?xml')
+        
+        if is_complete_element:
+            # Region is already a complete XML element, parse it directly
+            try:
+                root = ET.fromstring(region.encode('utf-8'))
+            except Exception as e:
+                print(f'Error parsing extracted region: {e}', file=sys.stderr)
                 continue
-            else:
-                node_local = local_name(node.tag)
-                if node_local == root_element:
-                    # Start absolute path at the specified root element (no parent)
-                    process_element_tree(
-                        node,
-                        builder,
-                        parent_context_path='',
-                        input_folder=input_folder,
-                        is_ref_root=False
-                    )
-                    root_element_found = True
-                else:
-                    # Skip non-root elements to enforce a single absolute root
-                    if VERBOSE:
-                        print(f"Skipping top-level element '{node_local}' (only {root_element} is used as absolute root).")
+        else:
+            # Region is a fragment, wrap it with root element
+            wrapped = wrap_fragment(region)
+            try:
+                root = ET.fromstring(wrapped.encode('utf-8'))
+            except Exception as e:
+                print(f'Error parsing extracted region: {e}', file=sys.stderr)
+                continue
 
-        if not root_element_found:
-            print(f"Warning: Root element '{root_element}' not found in template. No rules generated.", file=sys.stderr)
+        # Check if the root element itself is the one we're looking for
+        # (this happens when extract_regions returns a complete element that matches root_element)
+        root_local = local_name(root.tag)
+        if root_local == root_element:
+            # Process the root element directly
+            process_element_tree(
+                root,
+                builder,
+                parent_context_path='',
+                input_folder=input_folder,
+                is_ref_root=False
+            )
+            root_element_found = True
+        else:
+            # The region contains an element with ch-root marker that is not the expected root element
+            # This is valid - process the element that was extracted (which contains the ch-root marker)
+            process_element_tree(
+                root,
+                builder,
+                parent_context_path='',
+                input_folder=input_folder,
+                is_ref_root=False
+            )
+            root_element_found = True
 
     out = builder.tostring()
     write_file(output_path, out)

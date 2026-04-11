@@ -111,6 +111,10 @@
       <sch:assert test="count(netex:AlternativeText) > 0">AlternativeText must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:notices/netex:Notice/netex:alternativeTexts/netex:AlternativeText">
+      <sch:assert test="count(@id) > 0">Attribute "id" must be present on AlternativeText</sch:assert>
+      <sch:assert test="count(@version) > 0">Attribute "version" must be present on AlternativeText</sch:assert>
+      <sch:assert test="count(@attributeName) > 0">Attribute "attributeName" must be present on AlternativeText</sch:assert>
+      <sch:assert test="count(@useForLanguage) > 0">Attribute "useForLanguage" must be present on AlternativeText</sch:assert>
       <sch:assert test="count(netex:Text) > 0">Text must be present</sch:assert>
       <sch:assert test="count(netex:Text) > 0">Text must be present</sch:assert>
       </sch:rule>
@@ -118,7 +122,16 @@
       <sch:assert test="count(netex:Text) > 0">Text must be present</sch:assert>
       <sch:assert test="count(netex:TypeOfNoticeRef) > 0">TypeOfNoticeRef must be present</sch:assert>
       </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:notices/netex:Notice/netex:Text">
+      <sch:assert test="count(@lang) > 0">Attribute "lang" must be present on Text</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame">
+      <sch:assert test="count(@id) > 0">Attribute "id" must be present on TimetableFrame</sch:assert>
+      <sch:assert test="count(@version/versionRef) > 0">Attribute "version/versionRef" must be present on TimetableFrame</sch:assert>
+      </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:vehicleJourneys/netex:ServiceJourney">
+      <sch:assert test="count(@id) > 0">Attribute "id" must be present on ServiceJourney</sch:assert>
+      <sch:assert test="count(@version) > 0">Attribute "version" must be present on ServiceJourney</sch:assert>
       <sch:assert test="count(netex:keyList) > 0">keyList must be present</sch:assert>
       <sch:assert test="count(netex:LineRef) > 0">LineRef must be present</sch:assert>
       <sch:assert test="count(netex:trainNumbers) > 0">trainNumbers must be present</sch:assert>
@@ -141,8 +154,57 @@
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:vehicleJourneys/netex:ServiceJourney/netex:trainNumbers">
       <sch:assert test="count(netex:TrainNumberRef) > 0">TrainNumberRef must be present</sch:assert>
       </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:vehicleJourneys/netex:TemplateServiceJourney">
+      <sch:assert test="count(@id) > 0">Attribute "id" must be present on TemplateServiceJourney</sch:assert>
+      <sch:assert test="count(@version) > 0">Attribute "version" must be present on TemplateServiceJourney</sch:assert>
+      <sch:assert test="count(netex:keyList) > 0">keyList must be present</sch:assert>
+      <sch:assert test="count(netex:LineRef) > 0">LineRef must be present</sch:assert>
+      <sch:assert test="count(netex:trainNumbers) > 0">trainNumbers must be present</sch:assert>
+      <sch:assert test="count(netex:calls) = 0">calls must NOT be present</sch:assert>
+      <sch:assert test="count(netex:frequencyGroups) > 0">frequencyGroups must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:vehicleJourneys/netex:TemplateServiceJourney/netex:validityConditions/netex:AvailabilityCondition">
+      <sch:assert test="count(netex:FromDate) > 0">FromDate must be present</sch:assert>
+      <sch:assert test="count(netex:ToDate) > 0">ToDate must be present</sch:assert>
+      <sch:assert test="count(netex:ValidDayBits) > 0">ValidDayBits must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:vehicleJourneys/netex:TemplateServiceJourney/netex:keyList">
+      <sch:assert test="count(netex:KeyValue) > 0">KeyValue must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:vehicleJourneys/netex:TemplateServiceJourney/netex:keyList/netex:KeyValue">
+      <sch:assert test="count(netex:Key) > 0">Key must be present</sch:assert>
+      <sch:assert test="count(netex:Value) > 0">Value must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:vehicleJourneys/netex:TemplateServiceJourney/netex:ServiceAlteration">
+      <sch:assert test="(. = 'planned')">Value must be one of: planned</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:vehicleJourneys/netex:TemplateServiceJourney/netex:DirectionType">
+      <sch:assert test="(. = 'inbound' or . = 'outbound')">Value must be one of: inbound outbound</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:vehicleJourneys/netex:TemplateServiceJourney/netex:trainNumbers">
+      <sch:assert test="count(netex:TrainNumberRef) > 0">TrainNumberRef must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:vehicleJourneys/netex:TemplateServiceJourney/netex:TemplateVehicleJourneyType">
+      <sch:assert test="(. = 'rhythmic' or . = 'headway')">Value must be one of: rhythmic headway</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:vehicleJourneys/netex:TemplateServiceJourney/netex:frequencyGroups/netex:RhythmicalJourneyGroup">
+      <sch:assert test="count(netex:FirstDepartureTime) > 0">FirstDepartureTime must be present</sch:assert>
+      <sch:assert test="count(netex:LastDepartureTime) > 0">LastDepartureTime must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:vehicleJourneys/netex:TemplateServiceJourney/netex:frequencyGroups/netex:HeadwayJourneyGroup">
+      <sch:assert test="count(netex:FirstDepartureTime) > 0">FirstDepartureTime must be present</sch:assert>
+      <sch:assert test="count(netex:LastDepartureTime) > 0">LastDepartureTime must be present</sch:assert>
+      <sch:assert test="count(netex:ScheduledHeadwayInterval) > 0">ScheduledHeadwayInterval must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:vehicleJourneys/netex:TemplateServiceJourney/netex:frequencyGroups/netex:HeadwayJourneyGroup/netex:HeadwayDisplay">
+      <sch:assert test="(. = 'displayPassingTimesOnly' or . = 'displayInsteadOfPassingTimes' or . = 'displayAsWellAsPassingTimes')">Value must be one of: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes</sch:assert>
+      </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:trainNumbers">
       <sch:assert test="count(netex:TrainNumber) > 0">TrainNumber must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:typesOfService/netex:TypeOfService">
+      <!-- TypeOfService with id="ch:1:TypeOfService:1" must exist somewhere in the document -->
+      <sch:report test="count(//netex:TypeOfService[@id='ch:1:TypeOfService:1']) > 0">An element TypeOfService with id="ch:1:TypeOfService:1" must exist</sch:report>
       </sch:rule>
     </sch:pattern>
   </sch:schema>

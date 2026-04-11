@@ -74,7 +74,7 @@ python ../../check_schematron/check_schematron.py \
 The test templates demonstrate all supported ch-comment annotations:
 
 ### Basic Annotations
-- `<!-- ch-start: description -->` / `<!-- ch-stop: description -->`
+- `<!-- ch-root -->`
 - `<!-- ch-note: text -->`
 - `<!-- ch-notice: text -->`
 

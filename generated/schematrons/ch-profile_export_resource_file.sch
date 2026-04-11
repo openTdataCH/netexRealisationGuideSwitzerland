@@ -97,12 +97,19 @@
       <sch:assert test="count(netex:AlternativeText) > 0">AlternativeText must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:notices/netex:Notice/netex:alternativeTexts/netex:AlternativeText">
+      <sch:assert test="count(@id) > 0">Attribute "id" must be present on AlternativeText</sch:assert>
+      <sch:assert test="count(@version) > 0">Attribute "version" must be present on AlternativeText</sch:assert>
+      <sch:assert test="count(@attributeName) > 0">Attribute "attributeName" must be present on AlternativeText</sch:assert>
+      <sch:assert test="count(@useForLanguage) > 0">Attribute "useForLanguage" must be present on AlternativeText</sch:assert>
       <sch:assert test="count(netex:Text) > 0">Text must be present</sch:assert>
       <sch:assert test="count(netex:Text) > 0">Text must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:notices/netex:Notice">
       <sch:assert test="count(netex:Text) > 0">Text must be present</sch:assert>
       <sch:assert test="count(netex:TypeOfNoticeRef) > 0">TypeOfNoticeRef must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:notices/netex:Notice/netex:Text">
+      <sch:assert test="count(@lang) > 0">Attribute "lang" must be present on Text</sch:assert>
       </sch:rule>
     </sch:pattern>
   </sch:schema>
