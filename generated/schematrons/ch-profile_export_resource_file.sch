@@ -4,19 +4,16 @@
   <sch:pattern id="p1">
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames">
       <sch:assert test="count(netex:ResourceFrame) > 0">ResourceFrame must be present</sch:assert>
+      <sch:assert test="count(netex:ResourceFrame) > 0">ResourceFrame must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame">
       <sch:assert test="count(netex:responsibilitySets) > 0">responsibilitySets must be present</sch:assert>
       <sch:assert test="count(netex:typesOfValue) > 0">typesOfValue must be present</sch:assert>
+      <sch:assert test="count(netex:organisations) > 0">organisations must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:responsibilitySets">
       <sch:assert test="count(netex:ResponsibilitySet) > 0">ResponsibilitySet must be present</sch:assert>
-      </sch:rule>
-    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:typesOfValue">
-      <sch:assert test="count(netex:ValueSet) > 0">ValueSet must be present</sch:assert>
-      </sch:rule>
-    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:typesOfValue/netex:ValueSet">
-      <sch:assert test="count(netex:values) > 0">values must be present</sch:assert>
+      <sch:assert test="count(netex:ResponsibilitySet) > 0">ResponsibilitySet must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:typesOfValue/netex:ValueSet/netex:values/netex:TypeOfNotice">
       <!-- TypeOfNotice with id="ch:1:TypeOfNotice:11" must exist somewhere in the document -->
@@ -30,6 +27,12 @@
       <!-- TypeOfNotice with id="ch:1:TypeOfNotice:2" must exist somewhere in the document -->
       <sch:report test="count(//netex:TypeOfNotice[@id='ch:1:TypeOfNotice:2']) > 0">An element TypeOfNotice with id="ch:1:TypeOfNotice:2" must exist</sch:report>
       </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:typesOfValue">
+      <sch:assert test="count(netex:ValueSet) > 0">ValueSet must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:typesOfValue/netex:ValueSet">
+      <sch:assert test="count(netex:values) > 0">values must be present</sch:assert>
+      </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:typesOfValue/netex:ValueSet/netex:values">
       <sch:assert test="count(netex:TypeOfProductCategory) > 0">TypeOfProductCategory must be present</sch:assert>
       <sch:assert test="count(netex:TypeOfProductCategory) > 0">TypeOfProductCategory must be present</sch:assert>
@@ -38,20 +41,28 @@
       <sch:assert test="count(netex:alternativeTexts) > 0">alternativeTexts must be present</sch:assert>
       <sch:assert test="count(netex:Name) > 0">Name must be present</sch:assert>
       <sch:assert test="count(netex:ShortName) > 0">ShortName must be present</sch:assert>
+      <sch:assert test="count(netex:alternativeTexts) > 0">alternativeTexts must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:typesOfValue/netex:ValueSet/netex:values/netex:TypeOfProductCategory/netex:alternativeTexts">
       <sch:assert test="count(netex:AlternativeText) > 0">AlternativeText must be present</sch:assert>
       <sch:assert test="count(netex:AlternativeText) > 0">AlternativeText must be present</sch:assert>
+      <sch:assert test="count(netex:AlternativeText) > 0">AlternativeText must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:typesOfValue/netex:ValueSet/netex:values/netex:TypeOfProductCategory/netex:alternativeTexts/netex:AlternativeText">
+      <sch:assert test="count(netex:Text) > 0">Text must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:organisations">
       <sch:assert test="count(netex:Operator) > 0">Operator must be present</sch:assert>
       <sch:assert test="count(netex:Operator) > 0">Operator must be present</sch:assert>
       </sch:rule>
-    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:organisations/netex:Operator">
-      <sch:assert test="count(netex:keyList) > 0">keyList must be present</sch:assert>
-      <sch:assert test="count(netex:PrivateCode) > 0">PrivateCode must be present</sch:assert>
-      <sch:assert test="count(netex:Name) > 0">Name must be present</sch:assert>
-      <sch:assert test="count(netex:ShortName) > 0">ShortName must be present</sch:assert>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:siteFacilitySets">
+      <sch:assert test="count(netex:SiteFacilitySet) > 0">SiteFacilitySet must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:siteFacilitySets/netex:SiteFacilitySet/netex:validityConditions">
+      <sch:assert test="count(netex:AvailabilityCondition) > 0">AvailabilityCondition must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:serviceFacilitySets/netex:ServiceFacilitySet">
+      <sch:assert test="count(netex:accommodations) = 0">accommodations must NOT be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame">
       <sch:assert test="count(netex:directions) = 0">directions must NOT be present</sch:assert>
@@ -71,9 +82,27 @@
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:connections">
       <sch:assert test="count(netex:Access) = 0">Access must NOT be present</sch:assert>
       </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:stopAssignments">
+      <sch:assert test="count(netex:PassengerStopAssignment) > 0">PassengerStopAssignment must be present</sch:assert>
+      </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:stopAssignments/netex:PassengerStopAssignment">
       <sch:assert test="count(netex:ScheduledStopPointRef) > 0">ScheduledStopPointRef must be present</sch:assert>
       <sch:assert test="count(netex:StopPlaceRef) > 0">StopPlaceRef must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:notices">
+      <sch:assert test="count(netex:Notice) > 0">Notice must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:notices/netex:Notice/netex:alternativeTexts">
+      <sch:assert test="count(netex:AlternativeText) > 0">AlternativeText must be present</sch:assert>
+      <sch:assert test="count(netex:AlternativeText) > 0">AlternativeText must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:notices/netex:Notice/netex:alternativeTexts/netex:AlternativeText">
+      <sch:assert test="count(netex:Text) > 0">Text must be present</sch:assert>
+      <sch:assert test="count(netex:Text) > 0">Text must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:notices/netex:Notice">
+      <sch:assert test="count(netex:Text) > 0">Text must be present</sch:assert>
+      <sch:assert test="count(netex:TypeOfNoticeRef) > 0">TypeOfNoticeRef must be present</sch:assert>
       </sch:rule>
     </sch:pattern>
   </sch:schema>

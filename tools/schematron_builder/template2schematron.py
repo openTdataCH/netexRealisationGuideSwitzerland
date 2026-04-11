@@ -135,21 +135,95 @@ def indent_et(elem, level=0):
 
 
 def extract_regions(text, root_marker=ROOT_MARKER):
-    """Extract regions containing root markers."""
-    lines = text.splitlines(keepends=True)
-    results, collecting, buf = [], False, []
-    for line in lines:
-        if root_marker in line:
-            if collecting:
-                # End of current region
+    """Extract regions containing root markers.
+    
+    New behavior: For each element containing a <!-- ch-root --> marker,
+    extract that element and all its children as a separate region.
+    """
+    results = []
+    
+    try:
+        # Parse the XML to find elements with root markers
+        # Use temporary file to avoid issues with encoding declarations
+        import tempfile
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.xml', delete=False, encoding='utf-8') as f:
+            f.write(text)
+            temp_file = f.name
+        
+        doc = ET.parse(temp_file)
+        root = doc.getroot()
+        
+        # Clean up temporary file
+        import os
+        try:
+            os.unlink(temp_file)
+        except:
+            pass
+        
+        # Function to find elements with root marker in their direct child comments
+        def find_elements_with_root_marker(element):
+            elements_with_marker = []
+            
+            # Check direct child comments of this element
+            has_root_marker = False
+            for child in list(element):
+                if isinstance(child, ET._Comment):
+                    if root_marker in (child.text or ''):
+                        has_root_marker = True
+                        break
+            
+            if has_root_marker:
+                # This element contains a root marker - include the element itself
+                elements_with_marker.append(element)
+            
+            # Recurse into child elements to find nested markers
+            for child in element:
+                if not isinstance(child, ET._Comment):
+                    elements_with_marker.extend(find_elements_with_root_marker(child))
+            
+            return elements_with_marker
+        
+        # Find all elements with root markers
+        elements_with_markers = find_elements_with_root_marker(root)
+        
+        # Extract each element and its children as a region
+        for elem in elements_with_markers:
+            # Serialize the element and its children
+            region = ET.tostring(elem, encoding='unicode')
+            results.append(region)
+        
+        # If no elements with markers found, fall back to old behavior for compatibility
+        if not results:
+            lines = text.splitlines(keepends=True)
+            collecting, buf = False, []
+            for line in lines:
+                if root_marker in line:
+                    if collecting:
+                        results.append(''.join(buf))
+                        buf = []
+                    collecting = True
+                    buf.append(line)
+                elif collecting:
+                    buf.append(line)
+            if collecting and buf:
                 results.append(''.join(buf))
-                buf = []
-            collecting = True
-            buf.append(line)
-        elif collecting:
-            buf.append(line)
-    if collecting and buf:
-        results.append(''.join(buf))
+                
+    except Exception as e:
+        # If XML parsing fails, fall back to old line-based behavior
+        lines = text.splitlines(keepends=True)
+        collecting, buf = False, []
+        for line in lines:
+            if root_marker in line:
+                if collecting:
+                    results.append(''.join(buf))
+                    buf = []
+                collecting = True
+                buf.append(line)
+            elif collecting:
+                buf.append(line)
+        if collecting and buf:
+            results.append(''.join(buf))
+    
     return results
 
 
@@ -199,7 +273,7 @@ def parse_usage_and_notes_from_comments(comment_text):
     return {
         'notes': [n.strip() for n in all_notes] if all_notes else [],
         'usages': [u.strip().lower() for u in usages] if usages else [],
-        'referenced_names': referenced_names,
+        'referenced_names': see_names,
         'allowed_enums': allowed,
         'deprecated': deprecated,
         'class_id_must_exist': class_id_must_exist,
