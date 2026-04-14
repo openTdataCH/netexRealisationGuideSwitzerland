@@ -136,7 +136,8 @@ declare function hl:contabReport_domain(
                 let $compKind := $comp/local-name(.)
                 let $compPathPart := "/" || $compKind || "s/"
                 let $complexTypePath := dm:getReportPartPath('contab', $compPathPart, $compName, $domain , $options)
-                let $written := u:writeXhtmlDoc($complexTypePath, $table)
+                let $tableHtml := hl:create_html($head, $table)
+                let $written := u:writeXhtmlDoc($complexTypePath, $tableHtml)
                 let $domainName := $domain/processing/reportFileBaseName
                 (: TODO refactor to function compHref :)
                 let $compHref := $domainName || $compPathPart || $compName || '.html'
@@ -157,27 +158,44 @@ declare function hl:contabReport_domain(
             }</div>
             
     let $title := ($domain/processing/title/<h1>{node()}</h1>, <h1>API Content</h1>)[1]
-    let $htmlReport :=
-        <html lang="en" xml:lang="en">{        
-            $head,
-            <body>{
-                <div id="header">{
-                    $title,
-                    $toc                      
-                }</div>,
-                <div id="content">{
-                    $xsdDivs
-                }</div>,
-                <script type="text/javascript" src="../footer.js"></script>
-           }</body>
-       }</html>
-       ! hu:finalizeHtmlReport(., $options)
-       ! u:prettyNode(.)       
+    let $htmlReport := hl:create_html_with_toc($head, $xsdDivs, $title, $toc)
+    | hu:finalizeHtmlReport(., $options)
+    | u:prettyNode(.)
     let $_WRITE :=
         let $reportPath := dm:getReportPath('contab', $domain, $options)
         where ($reportPath)
         return u:writeXhtmlDoc($reportPath, $htmlReport)
     return $htmlReport       
+};
+
+declare function hl:create_html($head as element(), $content as element()) as element() {
+      <html lang="en" xml:lang="en"> {
+            $head,
+            <body>{
+                <div id="header">{
+                }</div>,
+                <div id="content">{
+                    $content
+                }</div>,
+                <script type="text/javascript" src="../footer.js"></script>
+           }</body>
+      }</html>
+};
+
+declare function hl:create_html_with_toc($head as element(), $content as element(), $title as element(), $toc as element()) as element() {
+      <html lang="en" xml:lang="en"> {
+            $head,
+            <body>{
+                <div id="header">{
+                    $title,
+                    $toc
+                }</div>,
+                <div id="content">{
+                    $content
+                }</div>,
+                <script type="text/javascript" src="../footer.js"></script>
+           }</body>
+      }</html>
 };
 
 (: NeTEx: Removes the namespace prefix:)
@@ -277,7 +295,7 @@ declare function hl:contabReport_head(
     <meta charset="UTF-8"/>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="../asciidoc.css"/>
+    <link rel="stylesheet" href="../../../asciidoc.css"/>
   </head>
 };
 
