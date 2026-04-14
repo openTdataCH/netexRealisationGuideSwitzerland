@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>CH:BLT</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="CH:BLT:Composite:50_110" version="1">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame:j23" version="1">
+					<typesOfService>
+					</typesOfService>
+					<journeyMeetings>
+						<JourneyMeeting id="ch:1:JourneyMeeting:96884-PAG-25-1-63480_96884-PAG-5-1-64320_68918933_68918913_64320_64320" version="1"><!-- ch-root -->
+							<!-- ch-attrs: id version -->
+							<!-- ch-note: Check latest policy - InterchangeRule may be the preferred alternative. **TODO**-->
+  							<validityConditions> 
+								<!-- ch-usage: expected -->
+    							<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1mh00" version="1" <!-- ch-usage: expected -->/> 
+  							</validityConditions> 
+  							<AtStopPointRef ref="ch:1:ScheduledStopPoint:8583440-0-Gen" version="1" <!-- ch-usage: mandatory -->/> 
+  							<FromJourneyRef ref="ch:1:ServiceJourney:801-54147-1-1_96884_.j23_25" version="1" <!-- ch-usage: mandatory -->/> 
+  							<ToJourneyRef ref="ch:1:ServiceJourney:801-54150-1-1_96884_.j23_5" version="1" <!-- ch-usage: mandatory -->/> 
+ 							<EarliestTime>17:52:00<!-- ch-usage: optional --></EarliestTime> 
+  							<LatestTime>17:52:00<!-- ch-usage: optional --></LatestTime> 
+							<Reason>
+								<!-- ch-usage: optional -->
+								<!-- ch-allowed-enums: joining splitting tariffSection serviceFacility -->
+								joining
+							</Reason>
+						</JourneyMeeting>
+					</journeyMeetings>
+					<interchangeRules>
+					</interchangeRules>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
