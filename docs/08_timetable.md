@@ -9,21 +9,30 @@ Bob --> Alice: Another authentication Response
 ```
 
 ## TimetableFrame
+
+A set of timetable data (VEHICLE JOURNEYs, etc.) to which the same VALIDITY CONDITIONs have been assigned. 
+A TIMETABLE FRAME holds a coherent set of timetable related elements for data exchange. 
+The primary component exchanged by a TIMETABLE FRAME in NeTEx / Transmodel terms is the VEHICLE JOURNEY. The Swiss profile only uses the more specific SERVICE JOURNEY (which describes an individual journey) and the TEMPLATE SERVICE JOURNEY (which describes a set of journeys repeating at a certain frequency). 
+
+
 The `TimeTableFrame` contains the following allowed elements:
-* vehicleJourneys:
-  * the actual journeys. We only use journeys that are available for passenger 
-  * only ServiceJourney and TemplateServiceJourney are allowed. TemplateServiceJourney is only used together with frequency traffic   
-* trainNumber:
-  * Each journey is mapped to a train number.
-* serviceFacilitySets
-* typesOfService
-* journeyMeetings
-* interchangeRules
+* `ServiceJourney` and `TemplateServiceJourney`
+  * `TemplateServiceJourney` is only used for frequency traffic
+  * We only model journeys that are available for passenger  
+* `TrainNumber`
+  * Each (TEMPLATE) SERVICE JOURNEY is mapped one-to-one to exactly one TRAIN NUMBER
+* `PassingTime`s describe the times of vehicles at points in their journey
+* `InterchangeRule`s describe interchanges between journeys
+* `JourneyMeeting`s and `JourneyPart`s describe multipart journeys which join and split **TODO**
+* `ServiceFacilitySet`s describe the various services and facilities offered by the vehicles of a journey
+
 
 * [Template](../examples/templates/TimetableFrame.xml)
 
 
 ## ServiceJourney
+
+A SERVICE JOURNEY is a VEHICLE JOURNEY on which passengers will be allowed to board or alight from vehicles at stops. It describes the service between an origin and a destination, as advertised to the public.
 
 * The table defining the full element can be found here:
 * The template of a ServiceJourney can be found here:
@@ -49,7 +58,8 @@ The following restrictions occur:
 * calls are not to be used.
 
 ## TemplateServiceJourney
-tbd
+
+A TEMPLATE SERVICE JOURNEY is a (repeating) VEHICLE JOURNEY on which passengers will be allowed to board or alight from vehicles at stops. It describes the service between an origin and a destination, as advertised to the public. Only to be used if a frequency has been specified for the JOURNEY. 
 
 ## PassingTime
 tbd
