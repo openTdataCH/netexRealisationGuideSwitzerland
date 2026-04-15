@@ -2,6 +2,7 @@
 import argparse
 import os
 import sys
+import logging
 from typing import List, Optional, Tuple, Any
 
 import xmlschema
@@ -9,6 +10,8 @@ from xmlschema import XsdElement, XsdType, XMLSchema10, XsdComponent
 from xmlschema.validators import XsdGroup, XsdComplexType
 
 XS_NS = "http://www.w3.org/2001/XMLSchema"
+
+logger = logging.getLogger(__name__)
 
 def local_name_from_qname(qname: Optional[str]) -> str:
     if not qname:
@@ -159,7 +162,7 @@ def build_linked_type_name(xsd_type: Optional[XsdType], max_occurs) -> str:
     tpath = build_type_path(xsd_type, tname)
     if isinstance(max_occurs, str) and max_occurs.lower() == "unbounded":
         tname = f"{tname}[]"
-    if int(max_occurs) > 1:
+    if max_occurs and int(max_occurs) > 1:
         tname = f"{tname}[]"
     if tpath:
         return f"[{tname}]({tpath})"
@@ -319,9 +322,11 @@ def main():
     except Exception as e:
         print(f"Failed to load XSD schema: {e}", file=sys.stderr)
         sys.exit(2)
+    logger.info("Read XSD Schema from %s", xsd_path)
 
     out_dir = args.output
     write_md_of_elements(out_dir, schema)
+
     write_md_of_complexTypes(out_dir, schema)
     write_md_of_groups(out_dir, schema)
 
@@ -350,13 +355,15 @@ def write_md_of_nodes(out_dir: str, nodes_name: str, node_type: type, schema: XM
 
 def write_md_of_elements(out_dir: str, schema: XMLSchema10):
     write_md_of_nodes(out_dir, "elements", XsdElement, schema)
+    logger.info("Markdown of elements written to %s", out_dir)
 
 def write_md_of_complexTypes(out_dir, schema: XMLSchema10):
     write_md_of_nodes(out_dir, "types", XsdComplexType, schema)
+    logger.info("Markdown of types written to  %s", out_dir)
 
 def write_md_of_groups(out_dir, schema: XMLSchema10):
     write_md_of_nodes(out_dir, "groups", XsdGroup, schema)
-
+    logger.info("Markdown of groups written to  %s", out_dir)
 
 if __name__ == "__main__":
     main()
