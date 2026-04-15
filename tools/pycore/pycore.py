@@ -2,7 +2,7 @@
 import argparse
 import os
 import sys
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, Any
 
 import xmlschema
 from xmlschema import XsdElement, XsdType, XMLSchema10, XsdComponent
@@ -106,7 +106,7 @@ def is_builtin_type(xsd_type: XsdType) -> bool:
     return ns == XS_NS
 
 
-def display_type_name(xsd_type: Optional[XsdType]) -> str:
+def retrieve_type_name(xsd_type: Optional[XsdType]) -> str:
     if xsd_type is None:
         return "anyType"
     # xmlschema XsdType usually has .name (local) and .qname
@@ -125,6 +125,15 @@ def display_type_name(xsd_type: Optional[XsdType]) -> str:
         return local_name_from_qname(qname)
     return "anonymousType"
 
+def build_type_path(xsd_type: Optional[XsdType], name: str) -> str | None:
+    if xsd_type is None:
+        return None
+    # xmlschema XsdType usually has .name (local) and .qname
+    if is_builtin_type(xsd_type):
+        return None  # e.g., string, int, date
+    if name:
+        return f"../types/{name}.md"  # named complex/simple type
+    return None
 
 def format_usage(min_occurs: Optional[int], max_occurs) -> str:
     def as_int(value, default):
@@ -145,15 +154,15 @@ def format_usage(min_occurs: Optional[int], max_occurs) -> str:
     return f"{mino}..{maxo}"
 
 
-def type_name_with_array_suffix(xsd_type: Optional[XsdType], max_occurs) -> str:
-    tname = display_type_name(xsd_type)
+def build_linked_type_name(xsd_type: Optional[XsdType], max_occurs) -> str:
+    tname = retrieve_type_name(xsd_type)
+    tpath = build_type_path(xsd_type, tname)
     if isinstance(max_occurs, str) and max_occurs.lower() == "unbounded":
-        return f"{tname}[]"
-    try:
-        if int(max_occurs) > 1:
-            return f"{tname}[]"
-    except Exception:
-        pass
+        tname = f"{tname}[]"
+    if int(max_occurs) > 1:
+        tname = f"{tname}[]"
+    if tpath:
+        return f"[{tname}]({tpath})"
     return tname
 
 def collect_child_elements_from_element(node: XsdElement) -> List[Tuple[str, str, str, str]]:
@@ -181,7 +190,7 @@ def collect_child_elements_from_element(node: XsdElement) -> List[Tuple[str, str
             continue
         name = get_component_local_name(el)
         usage = format_usage(getattr(el, "min_occurs", 1), getattr(el, "max_occurs", 1))
-        type_name = type_name_with_array_suffix(getattr(el, "type", None), getattr(el, "max_occurs", 1))
+        type_name = build_linked_type_name(getattr(el, "type", None), getattr(el, "max_occurs", 1))
         desc = get_best_documentation_for_element(el)
         rows.append((name, usage, type_name, desc))
     return rows
@@ -211,7 +220,7 @@ def collect_child_elements_from_complex_type(node: XsdComplexType) -> List[Tuple
             continue
         name = get_component_local_name(el)
         usage = format_usage(getattr(el, "min_occurs", 1), getattr(el, "max_occurs", 1))
-        type_name = type_name_with_array_suffix(getattr(el, "type", None), getattr(el, "max_occurs", 1))
+        type_name = build_linked_type_name(getattr(el, "type", None), getattr(el, "max_occurs", 1))
         desc = get_best_documentation_for_element(el)
         rows.append((name, usage, type_name, desc))
     return rows
@@ -227,7 +236,7 @@ def collect_child_elements_from_group(node: XsdGroup) -> List[Tuple[str, str, st
             continue
         name = get_component_local_name(el)
         usage = format_usage(getattr(el, "min_occurs", 1), getattr(el, "max_occurs", 1))
-        type_name = type_name_with_array_suffix(getattr(el, "type", None), getattr(el, "max_occurs", 1))
+        type_name = build_linked_type_name(getattr(el, "type", None), getattr(el, "max_occurs", 1))
         desc = get_best_documentation_for_element(el)
         rows.append((name, usage, type_name, desc))
     return rows
