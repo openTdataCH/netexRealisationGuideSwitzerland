@@ -27,14 +27,12 @@ The `TimeTableFrame` contains the following allowed elements:
 * `ServiceFacilitySet`s describe the various services and facilities offered by the vehicles of a journey
 
 
-* [Template](../examples/templates/TimetableFrame.xml)
-
 [//]: # (TODO: Add TimetableFrame links)
 - [General NeTEx definition ](generated/xcore/TimetableFram.html)
 - [Swiss profile NeTEx definition](generated/markdown-examples/TimetableFrame.md)
 - [Example snippet](generated/xml-snippets/TimetableFrame.xml)
 
-
+> [Template](../templates/TimetableFrame.xml)
 
 ## ServiceJourney
 
@@ -45,10 +43,7 @@ A SERVICE JOURNEY is a VEHICLE JOURNEY on which passengers will be allowed to bo
 - [Swiss profile NeTEx definition](generated/markdown-examples/ServiceJourney.md)
 - [Example snippet](generated/xml-snippets/ServiceJourney.xml)
 
-
-* The table defining the full element can be found here:
-* The template of a ServiceJourney can be found here:
-* The template of a TemplateServiceJourney can be found here:
+> [Template](../templates/ServiceJourney.xml)
 
 The following restrictions occur:
 * The attributs id, version and responsibilitySetRef must be set.
