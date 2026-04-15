@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 import argparse
 import os
-import re
 import sys
-from argparse import Namespace
 from typing import List, Optional, Tuple
 
 import xmlschema
