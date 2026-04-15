@@ -101,7 +101,6 @@ def get_best_documentation_for_component(component) -> str:
 
     return ""
 
-
 def is_builtin_type(xsd_type: XsdType) -> bool:
     ns = getattr(xsd_type, "target_namespace", None)
     return ns == XS_NS
@@ -111,7 +110,7 @@ def display_type_name(xsd_type: Optional[XsdType]) -> str:
     if xsd_type is None:
         return "anyType"
     # xmlschema XsdType usually has .name (local) and .qname
-    name = getattr(xsd_type, "name", None)  # local name, if named
+    name = getattr(xsd_type, "local_name", None)  # local name, if named
     if is_builtin_type(xsd_type) and name:
         return name  # e.g., string, int, date
     if name:
@@ -146,7 +145,7 @@ def format_usage(min_occurs: Optional[int], max_occurs) -> str:
     return f"{mino}..{maxo}"
 
 
-def type_with_array_suffix(xsd_type: Optional[XsdType], max_occurs) -> str:
+def type_name_with_array_suffix(xsd_type: Optional[XsdType], max_occurs) -> str:
     tname = display_type_name(xsd_type)
     if isinstance(max_occurs, str) and max_occurs.lower() == "unbounded":
         return f"{tname}[]"
@@ -182,9 +181,9 @@ def collect_child_elements_from_element(node: XsdElement) -> List[Tuple[str, str
             continue
         name = get_component_local_name(el)
         usage = format_usage(getattr(el, "min_occurs", 1), getattr(el, "max_occurs", 1))
-        typ = type_with_array_suffix(getattr(el, "type", None), getattr(el, "max_occurs", 1))
+        type_name = type_name_with_array_suffix(getattr(el, "type", None), getattr(el, "max_occurs", 1))
         desc = get_best_documentation_for_element(el)
-        rows.append((name, usage, typ, desc))
+        rows.append((name, usage, type_name, desc))
     return rows
 
 def collect_child_elements_from_complex_type(node: XsdComplexType) -> List[Tuple[str, str, str, str]]:
@@ -212,9 +211,9 @@ def collect_child_elements_from_complex_type(node: XsdComplexType) -> List[Tuple
             continue
         name = get_component_local_name(el)
         usage = format_usage(getattr(el, "min_occurs", 1), getattr(el, "max_occurs", 1))
-        typ = type_with_array_suffix(getattr(el, "type", None), getattr(el, "max_occurs", 1))
+        type_name = type_name_with_array_suffix(getattr(el, "type", None), getattr(el, "max_occurs", 1))
         desc = get_best_documentation_for_element(el)
-        rows.append((name, usage, typ, desc))
+        rows.append((name, usage, type_name, desc))
     return rows
 
 
@@ -228,9 +227,9 @@ def collect_child_elements_from_group(node: XsdGroup) -> List[Tuple[str, str, st
             continue
         name = get_component_local_name(el)
         usage = format_usage(getattr(el, "min_occurs", 1), getattr(el, "max_occurs", 1))
-        typ = type_with_array_suffix(getattr(el, "type", None), getattr(el, "max_occurs", 1))
+        type_name = type_name_with_array_suffix(getattr(el, "type", None), getattr(el, "max_occurs", 1))
         desc = get_best_documentation_for_element(el)
-        rows.append((name, usage, typ, desc))
+        rows.append((name, usage, type_name, desc))
     return rows
 
 
@@ -239,10 +238,10 @@ def render_md_table(rows: List[Tuple[str, str, str, str]]) -> str:
     if not rows:
         return header + "\n"
     lines = [header]
-    for name, usage, typ, desc in rows:
+    for name, usage, type_name, desc in rows:
         # Escape pipes in description
         safe_desc = desc.replace("|", "\\|")
-        lines.append(f"| {name} | {usage} | {typ} | {safe_desc} |")
+        lines.append(f"| {name} | {usage} | {type_name} | {safe_desc} |")
     return "\n".join(lines) + "\n"
 
 
