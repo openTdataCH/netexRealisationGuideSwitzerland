@@ -29,10 +29,22 @@ The `TimeTableFrame` contains the following allowed elements:
 
 * [Template](../examples/templates/TimetableFrame.xml)
 
+[//]: # (TODO: Add TimetableFrame links)
+- [General NeTEx definition ](generated/xcore/TimetableFram.html)
+- [Swiss profile NeTEx definition](generated/markdown-examples/TimetableFrame.md)
+- [Example snippet](generated/xml-snippets/TimetableFrame.xml)
+
+
 
 ## ServiceJourney
 
 A SERVICE JOURNEY is a VEHICLE JOURNEY on which passengers will be allowed to board or alight from vehicles at stops. It describes the service between an origin and a destination, as advertised to the public.
+
+[//]: # (TODO: Add ServiceJourney links)
+- [General NeTEx definition ](generated/xcore/ServiceJourney.html)
+- [Swiss profile NeTEx definition](generated/markdown-examples/ServiceJourney.md)
+- [Example snippet](generated/xml-snippets/ServiceJourney.xml)
+
 
 * The table defining the full element can be found here:
 * The template of a ServiceJourney can be found here:
@@ -60,6 +72,14 @@ The following restrictions occur:
 ## TemplateServiceJourney
 
 A TEMPLATE SERVICE JOURNEY is a (repeating) VEHICLE JOURNEY on which passengers will be allowed to board or alight from vehicles at stops. It describes the service between an origin and a destination, as advertised to the public. Only to be used if a frequency has been specified for the JOURNEY. 
+
+[//]: # (TODO: Add TemplateServiceJourney links)
+- [General NeTEx definition ](generated/xcore/TemplateServiceJourney.html)
+- [Swiss profile NeTEx definition](generated/markdown-examples/TemplateServiceJourney.md)
+- [Example snippet](generated/xml-snippets/TemplateServiceJourney.xml)
+
+
+
 
 ## PassingTime
 tbd
