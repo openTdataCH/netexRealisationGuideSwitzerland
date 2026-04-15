@@ -3,37 +3,14 @@ import argparse
 import os
 import re
 import sys
+from argparse import Namespace
 from typing import List, Optional, Tuple
 
-try:
-    import xmlschema
-    from xmlschema.validators import XsdElement, XsdGroup, XsdComplexType, XsdType
-except ImportError:
-    print("Missing dependency: xmlschema. Install with: pip install xmlschema", file=sys.stderr)
-    sys.exit(1)
+import xmlschema
+from xmlschema import XsdElement, XsdType, XMLSchema10, XsdComponent
+from xmlschema.validators import XsdGroup, XsdComplexType
 
 XS_NS = "http://www.w3.org/2001/XMLSchema"
-
-
-
-
-
-def ensure_dir(path: str):
-    os.makedirs(path, exist_ok=True)
-    return path
-
-
-def sanitize_namespace(ns: Optional[str]) -> str:
-    if not ns:
-        return "no_namespace"
-    # Remove scheme to keep names shorter but predictable
-    ns_no_scheme = re.sub(r"^[a-z]+://", "", ns)
-    # Replace path separators and unsafe chars with underscores
-    safe = re.sub(r"[^A-Za-z0-9._-]+", "_", ns_no_scheme.strip("/"))
-    # Collapse multiple underscores
-    safe = re.sub(r"_+", "_", safe)
-    return safe or "namespace"
-
 
 def local_name_from_qname(qname: Optional[str]) -> str:
     if not qname:
@@ -59,6 +36,8 @@ def get_component_local_name(component) -> str:
     name = getattr(component, "name", None) or getattr(component, "qname", None)
     return local_name_from_qname(name)
 
+def get_namespace_prefix(name: str) -> str:
+    return name.split(":",1)[0]
 
 def read_documentation_from_elem(elem) -> str:
     """
@@ -180,8 +159,7 @@ def type_with_array_suffix(xsd_type: Optional[XsdType], max_occurs) -> str:
         pass
     return tname
 
-
-def collect_child_elements_from_complex_type(xsd_complex_type: XsdComplexType) -> List[Tuple[str, str, str, str]]:
+def collect_child_elements_from_element(node: XsdElement) -> List[Tuple[str, str, str, str]]:
     """
     Returns rows for table:
     - Element (local name)
@@ -191,7 +169,7 @@ def collect_child_elements_from_complex_type(xsd_complex_type: XsdComplexType) -
     We use deep iteration over content model to include nested groups/choices.
     """
     rows = []
-    content = getattr(xsd_complex_type, "content_type", None)
+    content = getattr(node, "content_type", None)
     if content is None:
         return rows
 
@@ -211,10 +189,40 @@ def collect_child_elements_from_complex_type(xsd_complex_type: XsdComplexType) -
         rows.append((name, usage, typ, desc))
     return rows
 
-
-def collect_child_elements_from_group(xsd_group: XsdGroup) -> List[Tuple[str, str, str, str]]:
+def collect_child_elements_from_complex_type(node: XsdComplexType) -> List[Tuple[str, str, str, str]]:
+    """
+    Returns rows for table:
+    - Element (local name)
+    - Usage (min..max)
+    - Type (with [] suffix if max > 1)
+    - Description (documentation)
+    We use deep iteration over content model to include nested groups/choices.
+    """
     rows = []
-    iter_elems = getattr(xsd_group, "iter_elements", None)
+    content = getattr(node, "content", None)
+    if content is None:
+        return rows
+
+    # xmlschema's content_type for complex types often supports iter_elements()
+    elements = getattr(content, "elements", None)
+    if elements is None:
+        return rows
+
+    # We keep a sequence; duplicates may appear if the model repeats; it's usually fine
+    for el in elements:
+        if not isinstance(el, XsdElement):
+            continue
+        name = get_component_local_name(el)
+        usage = format_usage(getattr(el, "min_occurs", 1), getattr(el, "max_occurs", 1))
+        typ = type_with_array_suffix(getattr(el, "type", None), getattr(el, "max_occurs", 1))
+        desc = get_best_documentation_for_element(el)
+        rows.append((name, usage, typ, desc))
+    return rows
+
+
+def collect_child_elements_from_group(node: XsdGroup) -> List[Tuple[str, str, str, str]]:
+    rows = []
+    iter_elems = getattr(node, "iter_elements", None)
     if iter_elems is None:
         return rows
     for el in iter_elems():
@@ -240,18 +248,24 @@ def render_md_table(rows: List[Tuple[str, str, str, str]]) -> str:
     return "\n".join(lines) + "\n"
 
 
-def generate_markdown_for_element(el: XsdElement) -> str:
-    name = get_component_local_name(el)
-    top_desc = get_best_documentation_for_component(el)
+def generate_markdown_for_node(node: XsdComponent) -> str:
+    name = get_component_local_name(node)
+    top_desc = get_best_documentation_for_component(node)
     # Determine element's type and collect its child elements if complex
-    el_type = getattr(el, "type", None)
+    el_type = getattr(node, "type", None)
     rows = []
-    if isinstance(el_type, XsdComplexType):
+    if isinstance(el_type, XsdElement):
+        rows = collect_child_elements_from_element(el_type)
+    elif isinstance(el_type, XsdComplexType):
         rows = collect_child_elements_from_complex_type(el_type)
+    elif isinstance(el_type, XsdGroup):
+        rows = collect_child_elements_from_group(el_type)
+
     # Heading
-    parts = [f"### Element {name}"]
+    parts = [f"### {name}"]
     if top_desc:
         parts.append(top_desc.strip())
+
     parts.append(render_md_table(rows))
     # Optionally: include attributes table (commented out)
     # attrs_rows = []
@@ -263,29 +277,6 @@ def generate_markdown_for_element(el: XsdElement) -> str:
     #     parts.append("#### Attributes\n")
     #     parts.append(render_attrs_table(attrs_rows))
     return "\n\n".join(parts).strip() + "\n"
-
-
-def generate_markdown_for_complex_type(ct: XsdComplexType) -> str:
-    name = get_component_local_name(ct)
-    top_desc = get_best_documentation_for_component(ct)
-    rows = collect_child_elements_from_complex_type(ct)
-    parts = [f"### ComplexType {name}"]
-    if top_desc:
-        parts.append(top_desc.strip())
-    parts.append(render_md_table(rows))
-    return "\n\n".join(parts).strip() + "\n"
-
-
-def generate_markdown_for_group(gr: XsdGroup) -> str:
-    name = get_component_local_name(gr)
-    top_desc = get_best_documentation_for_component(gr)
-    rows = collect_child_elements_from_group(gr)
-    parts = [f"### Group {name}"]
-    if top_desc:
-        parts.append(top_desc.strip())
-    parts.append(render_md_table(rows))
-    return "\n\n".join(parts).strip() + "\n"
-
 
 def write_file(path: str, content: str):
     with open(path, "w", encoding="utf-8") as f:
@@ -304,10 +295,17 @@ def parse_args():
     )
     return parser.parse_args()
 
+ # def get_ns_dir(ns: Optional[str]) -> str:
+ #    if ns not in ns_dirs:
+ #            safe = sanitize_namespace(ns)
+ #            ns_dirs[ns] = safe
+ #            ensure_dir(os.path.join(out_root, safe))
+ #        return os.path.join(out_root, ns_dirs[ns])
+
 def main():
     args = parse_args()
     xsd_path = args.xsd
-    out_root = ensure_dir(args.output)
+
 
     # Load schema (resolves includes/imports)
     try:
@@ -316,95 +314,42 @@ def main():
         print(f"Failed to load XSD schema: {e}", file=sys.stderr)
         sys.exit(2)
 
-    # Prepare namespace mapping file
-    ns_dirs = {}  # ns -> dir name
-    ns_map_path = os.path.join(out_root, "namespaces.txt")
+    out_dir = args.output
+    write_md_of_elements(out_dir, schema)
+    write_md_of_complexTypes(out_dir, schema)
+    write_md_of_groups(out_dir, schema)
 
-    def get_ns_dir(ns: Optional[str]) -> str:
-        if ns not in ns_dirs:
-            safe = sanitize_namespace(ns)
-            ns_dirs[ns] = safe
-            ensure_dir(os.path.join(out_root, safe))
-        return os.path.join(out_root, ns_dirs[ns])
+    print(f"Documentation generated under: {out_dir}")
 
+def write_md_of_nodes(out_dir: str, nodes_name: str, node_type: type, schema: XMLSchema10):
     # Collect and write Elements
-    # xmlschema 2.x: schema.maps.elements is a dict of QName -> XsdElement
-    elements_map = getattr(schema, "elements", None)
-    if elements_map is None:
-        elements_map = getattr(schema, "maps", None)
-        if elements_map is not None:
-            elements_map = getattr(elements_map, "elements", {})
+    nodes_map = getattr(schema, nodes_name, None)
     # Normalize to dict-like
-    if hasattr(elements_map, "items"):
-        elements_items = elements_map.items()
+    if hasattr(nodes_map, "items"):
+        items = nodes_map.items()
     else:
-        elements_items = []
+        items = []
 
-    for _qname, el in elements_items:
-        if not isinstance(el, XsdElement):
+    for _qname, node in items:
+        if not isinstance(node, node_type):
             continue
-        ns = get_component_namespace(el)
-        ns_dir = get_ns_dir(ns)
-        elements_dir = ensure_dir(os.path.join(ns_dir, "elements"))
-        name = get_component_local_name(el)
-        md = generate_markdown_for_element(el)
-        write_file(os.path.join(elements_dir, f"{name}.md"), md)
-
-    # Collect and write ComplexTypes (named only)
-    types_map = getattr(schema, "types", None)
-    if types_map is None:
-        types_map = getattr(getattr(schema, "maps", None), "types", {})
-    if hasattr(types_map, "items"):
-        types_items = types_map.items()
-    else:
-        types_items = []
-
-    for _qname, t in types_items:
-        if not isinstance(t, XsdComplexType):
+        if not getattr(node, "name", None):
             continue
-        # Only named complex types
-        if not getattr(t, "name", None):
-            continue
-        ns = get_component_namespace(t)
-        ns_dir = get_ns_dir(ns)
-        cts_dir = ensure_dir(os.path.join(ns_dir, "complexTypes"))
-        name = get_component_local_name(t)
-        md = generate_markdown_for_complex_type(t)
-        write_file(os.path.join(cts_dir, f"{name}.md"), md)
+        md = generate_markdown_for_node(node)
+        ns_prefix = get_namespace_prefix(node.prefixed_name)
+        nodes_path = os.path.join(out_dir, ns_prefix, nodes_name)
+        os.makedirs(nodes_path, exist_ok=True)
+        name = get_component_local_name(node)
+        write_file(os.path.join(nodes_path, f"{name}.md"), md)
 
-    # Collect and write Groups (named only)
-    groups_map = getattr(schema, "groups", None)
-    if groups_map is None:
-        groups_map = getattr(getattr(schema, "maps", None), "groups", {})
-    if hasattr(groups_map, "items"):
-        groups_items = groups_map.items()
-    else:
-        groups_items = []
+def write_md_of_elements(out_dir: str, schema: XMLSchema10):
+    write_md_of_nodes(out_dir, "elements", XsdElement, schema)
 
-    for _qname, gr in groups_items:
-        if not isinstance(gr, XsdGroup):
-            continue
-        if not getattr(gr, "name", None):
-            continue
-        ns = get_component_namespace(gr)
-        ns_dir = get_ns_dir(ns)
-        groups_dir = ensure_dir(os.path.join(ns_dir, "groups"))
-        name = get_component_local_name(gr)
-        md = generate_markdown_for_group(gr)
-        write_file(os.path.join(groups_dir, f"{name}.md"), md)
+def write_md_of_complexTypes(out_dir, schema: XMLSchema10):
+    write_md_of_nodes(out_dir, "types", XsdComplexType, schema)
 
-    # Write namespace mapping file
-    if ns_dirs:
-        lines = []
-        for ns, safe in ns_dirs.items():
-            lines.append(f"{safe}\t{ns or '(no namespace)'}")
-        write_file(ns_map_path, "\n".join(lines) + "\n")
-
-    print(f"Documentation generated under: {out_root}")
-    if ns_dirs:
-        print("Namespaces:")
-        for ns, safe in ns_dirs.items():
-            print(f"  {safe} -> {ns or '(no namespace)'}")
+def write_md_of_groups(out_dir, schema: XMLSchema10):
+    write_md_of_nodes(out_dir, "groups", XsdGroup, schema)
 
 
 if __name__ == "__main__":
