@@ -114,7 +114,7 @@ For more Detail see 11 Appendix
 - [General NeTEx definition](../generated/xcore/SiteConnection.html)
 
 
-# Notice
+## Notice
 (NeTEx-1, 7.7.18.4.1)
 The NOTICE Model defines reusable text note elements that may be attached to timetables as footnotes, used as announcements, etc. NOTICES are associated with other entities using a NOTICE ASSIGNMENT. NOTICES may be classified with a TYPE OF NOTICE.
 
