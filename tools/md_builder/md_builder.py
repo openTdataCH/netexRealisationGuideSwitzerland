@@ -27,15 +27,72 @@ def load_xsd_type_info(xsd_path):
     try:
         # Ensure the path is absolute
         xsd_path = os.path.abspath(xsd_path)
+        xsd_dir = os.path.dirname(xsd_path)
         print(f"Loading XSD from: {xsd_path}")
         print(f"XSD exists: {os.path.exists(xsd_path)}")
+        
+        # Process the main XSD file and all its imports/includes
+        return _process_xsd_file(xsd_path, xsd_dir)
+    except Exception as e:
+        print(f"Error loading XSD: {e}")
+        return {}
+
+
+def _process_xsd_file(xsd_path, base_dir, processed_files=None):
+    """Process an XSD file and all its imports/includes recursively"""
+    if processed_files is None:
+        processed_files = set()
+    
+    # Avoid circular processing
+    if xsd_path in processed_files:
+        return {}
+    processed_files.add(xsd_path)
+    
+    type_info = {}
+    
+    try:
         xsd_doc = etree.parse(xsd_path)
         xsd_root = xsd_doc.getroot()
         
-        # Namespaces
-        ns = {'xs': 'http://www.w3.org/2001/XMLSchema'}
+        # Get the target namespace from the schema element
+        target_namespace = xsd_root.get('targetNamespace')
+        if not target_namespace:
+            # If no target namespace, use the default namespace
+            target_namespace = xsd_root.nsmap.get(None, '')
         
-        type_info = {}
+        # Namespaces - use the actual target namespace of this file
+        ns = {'': target_namespace,
+              'xs': 'http://www.w3.org/2001/XMLSchema'
+              }
+        
+        print(f"Processing XSD with namespace: {target_namespace}")
+        
+        # Process imports first (they may define types needed by this file)
+        current_dir = os.path.dirname(xsd_path)
+        for import_elem in xsd_root.findall('xs:import', namespaces={'xs': 'http://www.w3.org/2001/XMLSchema'}):
+            schema_location = import_elem.get('schemaLocation')
+            if schema_location:
+                # Resolve relative paths relative to the current file's directory
+                import_path = os.path.normpath(os.path.join(current_dir, schema_location))
+                if os.path.exists(import_path):
+                    print(f"Processing import: {import_path}")
+                    imported_types = _process_xsd_file(import_path, base_dir, processed_files)
+                    type_info.update(imported_types)
+                else:
+                    print(f"Import not found: {import_path}")
+        
+        # Process includes
+        for include_elem in xsd_root.findall('xs:include', namespaces={'xs': 'http://www.w3.org/2001/XMLSchema'}):
+            schema_location = include_elem.get('schemaLocation')
+            if schema_location:
+                # Resolve relative paths relative to the current file's directory
+                include_path = os.path.normpath(os.path.join(current_dir, schema_location))
+                if os.path.exists(include_path):
+                    print(f"Processing include: {include_path}")
+                    included_types = _process_xsd_file(include_path, base_dir, processed_files)
+                    type_info.update(included_types)
+                else:
+                    print(f"Include not found: {include_path}")
         
         # Extract complex types
         for complex_type in xsd_root.findall('.//xs:complexType', namespaces=ns):
@@ -111,6 +168,9 @@ def load_xsd_type_info(xsd_path):
                 }
         
         return type_info
+    except Exception as e:
+        print(f"Error processing {xsd_path}: {e}")
+        return {}
     
     except Exception as e:
         print(f"Error loading XSD: {e}")
@@ -413,8 +473,6 @@ def parse_template_file(file_path, xsd_type_info):
             sub_markers = ''
             if level > 0:
                 sub_markers = '+' * level
-                if is_referenced:
-                    sub_markers = 'ln' + sub_markers
             
             # Keep note separate from description
             # description = note  # REMOVED: This was incorrectly using note as description
@@ -422,11 +480,11 @@ def parse_template_file(file_path, xsd_type_info):
             
             # Add deprecated notice if needed
             if is_deprecated:
-                if description:
-                    description += ' NOTE: DEPRECATED'
+                if note:
+                    note += ' NOTE: DEPRECATED'
                 else:
-                    description = 'NOTE: DEPRECATED'
-            
+                    note = 'NOTE: DEPRECATED'
+
             # Skip forbidden and ignored elements from the output
             if usage.lower() in ['forbidden', 'ignored']:
                 # Process children anyway in case they have different usage
@@ -504,7 +562,7 @@ def generate_markdown_table(data, filename, xsd_type_info):
         card = item['card']
         xsd_type = item['type']
         description = item['description']
-        note = item['description']
+        note = item.get('note', '')
         
         # Get XSD info for the element
         xsd_info = xsd_type_info.get(element, {})
@@ -556,7 +614,7 @@ def generate_markdown_table(data, filename, xsd_type_info):
         card = item['card']
         xsd_type = item['type']
         description = item['description']
-        note = item['description']
+        note = item.get('note', '')
         
         markdown += f"| {sub} | {element} | {usage} | {card} | {xsd_type} | {description} | {note} |\n"
     
@@ -568,7 +626,7 @@ def generate_markdown_table(data, filename, xsd_type_info):
         card = item['card']
         xsd_type = item['type']
         description = item['description']
-        note = item['description']
+        note = item.get('note', '')
         
         # Get XSD info for the element
         xsd_info = xsd_type_info.get(element, {})
@@ -577,7 +635,7 @@ def generate_markdown_table(data, filename, xsd_type_info):
             xsd_description = xsd_info.get('description', '')
             if xsd_description and not description:
                 description = xsd_description
-                note = xsd_description
+                # Don't overwrite note with XSD description - keep the ch-note content
             
             # Use XSD cardinality if available
             if 'min_occurs' in xsd_info and 'max_occurs' in xsd_info:
@@ -598,7 +656,7 @@ def generate_markdown_table(data, filename, xsd_type_info):
             element = f"[{element}]({link_name}.md)"
         
         # Use description for XSD/type info, note for ch-note content only
-        display_note = note if note and 'ch-note:' in note else ''
+        display_note = note if note else ''
         markdown += f"| {sub} | {element} | {usage} | {card} | {xsd_type} | {description} | {display_note} |\n"
         
         # Add attributes if present
@@ -614,14 +672,14 @@ def generate_markdown_table(data, filename, xsd_type_info):
     return markdown
 
 
-def check_referenced_files_exist(data, output_dir):
+def check_referenced_files_exist(data, template_dir):
     """Check if all referenced files exist and warn if not"""
     missing_files = []
     
     for item in data:
         if item['is_referenced'] and item['referenced_name']:
-            ref_file = f"{item['referenced_name']}.md"
-            ref_path = os.path.join(output_dir, ref_file)
+            ref_file = f"{item['referenced_name']}.xml"
+            ref_path = os.path.join(template_dir, ref_file)
             if not os.path.exists(ref_path):
                 missing_files.append(ref_file)
     
@@ -689,7 +747,7 @@ def main():
         
         if data:
             # Check for missing referenced files
-            check_referenced_files_exist(data, args.output)
+            check_referenced_files_exist(data, args.input)
             
             # Generate markdown filename (remove .xml, add .md)
             md_filename = os.path.splitext(xml_file)[0] + '.md'

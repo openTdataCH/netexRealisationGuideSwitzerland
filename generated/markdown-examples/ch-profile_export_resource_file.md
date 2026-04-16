@@ -2,4 +2,4 @@
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-| ln++++ | [ResourceFrame](ResourceFrame.md) | mandatory | 1..1 | unknown |  |  |
+| ++++ | [ResourceFrame](ResourceFrame.md) | mandatory | 1..1 | None | A coherent set of reference values for TYPE OF VALUEs , ORGANISATIONs, VEHICLE TYPEs etc that have a common validity, as specified by a set of frame VALIDITY CONDITIONs. Used to define common resources that will be referenced by other types of FRAME. |  |
