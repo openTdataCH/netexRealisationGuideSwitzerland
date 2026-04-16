@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
-	<ParticipantRef>CH:BLT</ParticipantRef>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="CH:BLT:Composite:50_110" version="1">
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
 			<frames>
-				<TimetableFrame id="ch:1:TimetableFrame:j23" version="1">
+				<TimetableFrame id="ch:1:TimetableFrame" version="1">
 					<vehicleJourneys>
 						<ServiceJourney id="generated" version="1">
 							<keyList>
@@ -16,28 +16,25 @@
 							</keyList>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1"/>
 							<noticeAssignments>
-								<NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1"><!-- ch-root -->
+								<NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
+									<!-- ch-root -->
 									<!-- ch-attrs: id version -->
 									<!-- ch-note: Attribute `id` must be unique. -->
 									<validityConditions>
 										<!-- ch-usage: optional -->
-										<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" versionRef="1"
+										<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" versionRef="1">
 											<!-- ch-usage: optional -->
 										</AvailabilityConditionRef>
 									</validityConditions>
-									<NoticeRef ref="ch:1:Notice:Hin-1229900" version="1">
+									<NoticeRef ref="ch:1:Notice:Hin-1229900" versionRef="1">
 										<!-- ch-usage: expected -->
 									</NoticeRef>
 								</NoticeAssignment>
 							</noticeAssignments>
-							<DepartureTime>
-								06:21:00
-							</DepartureTime>
-							<LineRef ref="ch:2:Line:11.IR.90" versionRef="any">
-							</LineRef>
+							<DepartureTime>06:21:00</DepartureTime>
+							<LineRef ref="ch:2:Line:11.IR.90" versionRef="any"/>
 							<trainNumbers>
-								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1">
-								</TrainNumberRef>
+								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1"/>
 							</trainNumbers>
 							<passingTimes>
 								<TimetabledPassingTime id="generated" version="1">

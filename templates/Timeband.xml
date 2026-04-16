@@ -1,44 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-04-10T12:00:00</PublicationTimestamp>
-	<ParticipantRef>CH:BLT</ParticipantRef>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="CH:BLT:Composite:50_110" version="1">
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
 			<frames>
-				<ServiceFrame id="ch:1:ServiceFrame:j23" version="1">
-				<Name>My ServiceFrame</Name>
-				  <frameValidityConditions>
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame" version="1">
+				  <validityConditions>
 					<AvailabilityCondition id="generated" version="1">
 					  <Description>Not used</Description>
-					  <FromDate>2026-05-17T00:00:00Z
-					  </FromDate>
-					  <ToDate>2026-05-17T00:00:00Z
-					  </ToDate>
-					  <IsAvailable>
-						true
-					  </IsAvailable>
-					  <ValidDayBits>
-						01010231
-					  </ValidDayBits>
+					  <FromDate>2026-05-17T00:00:00Z</FromDate>
+					  <ToDate>2026-05-17T00:00:00Z</ToDate>
+					  <IsAvailable>true</IsAvailable>
+					  <ValidDayBits>10101111</ValidDayBits>
 					  <timebands>
-						<Timeband id="ch:1:Timeband:4937" version="1"> 
-						  <!-- ch-root -->
-						  <!-- ch-attrs: id version -->
-						  <StartTime>
-							<!-- ch-usage: mandatory -->
-							<!-- ch-note: Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used. -->
-							"06:00:00"
-						  </StartTime> 
-						  <EndTime>
-							<!-- ch-usage: mandatory -->
-							<!-- ch-note: Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used. -->
-							"06:01:00"
-						  </EndTime>
-						</Timeband> 
+						<Timeband id="ch:1:Timeband:4937" version="1">
+							<!-- ch-root -->
+							<!-- ch-attrs: id version -->
+							<StartTime><!-- ch-usage: mandatory --><!-- ch-note: Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used. -->06:00:00</StartTime>
+							<EndTime><!-- ch-usage: mandatory --><!-- ch-note: Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used. -->06:01:00</EndTime>
+						</Timeband>
 					  </timebands>
 					</AvailabilityCondition>
-				  </frameValidityConditions>
-				</ServiceFrame>
+				  </validityConditions>
+				</ServiceCalendarFrame>
 			</frames>
 		</CompositeFrame>
 	</dataObjects>

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
-	<ParticipantRef>CH:BLT</ParticipantRef>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="CH:BLT:Composite:50_110" version="1">
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
 			<frames>
-				<TimetableFrame id="ch:1:TimetableFrame:j23" version="1">
+				<TimetableFrame id="ch:1:TimetableFrame" version="1">
 					<vehicleJourneys>
-						<ServiceJourney id="generated" version="1"><!-- ch-root -->
+						<ServiceJourney id="generated" version="1">
+							<!-- ch-root -->
 							<!-- ch-note: ServiceJourney is used for common SERVICE JOURNEYs. -->
 							<!-- ch-attrs: id version responsibilitySetRef-->
 							<validityConditions>
@@ -34,10 +35,11 @@
 								  </IsAvailable>
 								  <ValidDayBits>
 									<!-- ch-usage: mandatory-->
-									01010231
+									01010111
 								  </ValidDayBits>
 									<timebands>
 										<!-- ch-usage: ignored-->
+										<TimebandRef ref="generated" versionRef="1"/>
 									</timebands>
 								</AvailabilityCondition>
 							</validityConditions>
@@ -60,9 +62,13 @@
 										<!-- ch-usage: optional -->
 										<validityConditions>
 											<!-- ch-usage: optional -->
-											<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" versionRef="1"<!-- ch-usage: optional -->/>
+											<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" versionRef="1">
+<!-- ch-usage: optional -->
+											</AvailabilityConditionRef>
 										</validityConditions>
-										<ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A___1" versionRef="1"<!-- ch-usage: mandatory -->/>
+										<ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A___1" versionRef="1">
+<!-- ch-usage: mandatory -->										
+										</ServiceFacilitySetRef>
 									</Facility>
 								</facilities>
 							</Extensions>
@@ -111,14 +117,14 @@
 								<!-- ch-usage: expected -->
 								06:21:00
 							</DepartureTime>
-							<DepartureTimeOffset>
+							<DepartureDayOffset>
 								<!-- ch-usage: optional -->
 								0
-							</DepartureTimeOffset>
+							</DepartureDayOffset>
 							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1">
 								<!--ch-usage: mandatory -->
 							</LineRef>
-							<DirectionType><!-- ch-usage: optional --><!-- ch-allowed-enums: inbound outbound --><!-- ch-note: Allowed are: inbound, outbound --></DirectionType>
+							<DirectionType><!-- ch-usage: mandatory --><!-- ch-allowed-enums: inbound outbound --><!-- ch-note: Allowed are: inbound, outbound -->outbound</DirectionType>
 							<trainNumbers>
 								<!-- ch-usage: mandatory -->
 								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1">

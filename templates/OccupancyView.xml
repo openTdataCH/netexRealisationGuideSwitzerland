@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
-	<ParticipantRef>CH:BLT</ParticipantRef>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="CH:BLT:Composite:50_110" version="1">
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
 			<frames>
-				<TimetableFrame id="ch:1:TimetableFrame:j23" version="1">
+				<TimetableFrame id="ch:1:TimetableFrame" version="1">
 					<vehicleJourneys>
 						<ServiceJourney id="generated" version="1">
 							<keyList>
@@ -15,9 +15,7 @@
 								</KeyValue>
 							</keyList>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1"/>
-							<DepartureTime>
-								06:21:00
-							</DepartureTime>
+							<DepartureTime>06:21:00</DepartureTime>
 							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1"/>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1">
@@ -27,61 +25,32 @@
 								<TimetabledPassingTime id="generated" version="1">
 									<PointInJourneyPatternRef ref="generated" versionRef="1">
 									</PointInJourneyPatternRef>
-									<DepartureTime>
-										08:45:00
-									</DepartureTime>
+									<DepartureTime>08:45:00</DepartureTime>
 									<occupancies>
-										<OccupancyView><!-- ch-root -->
+										<OccupancyView id="generated" version="1">
+											<!-- ch-root -->
 											<!-- ch-attrs: id version -->
+											<dayTypeRefs>
+												<!-- ch-usage: optional -->
+												<DayTypeRef ref="generated" versionRef="1">
+													<!-- ch-usage: optional -->
+													<!-- ch-note: **TODO** Profile should be clear about DayType vs. DayTypeRef usage -->
+												</DayTypeRef>
+											</dayTypeRefs>
 											<dayTypes>
 												<!-- ch-usage: expected -->
 												<!-- ch-note: **TODO** Superfluous? DAY TYPEs should be the same as for the VEHICLE JOURNEY. -->
-												<DayType>
-													<!-- ch-usage: expected -->	
+												<DayType id="generated" version="1">
+													<!-- ch-usage: expected -->
 													<!-- ch-see -->
 												</DayType>
 											</dayTypes>
-											<dayTypeRefs>
-												<!-- ch-usage: optional -->
-												<DayTypeRef>
-													<!-- ch-usage: optional -->
-													<!-- ch-note: **TODO** Profile should be clear about DayType vs. DayTypeRef usage -->
-													<DayTypeRef version="1" ref="hde:DT_01MTWTFSS"/>
-												</DayTypeRef>
-											</dayTypeRefs>
-											<Label lang="de">
-												<!-- ch-usage: mandatory -->
-												1. Klasse / 1ère classe / 1a classe
-											</Label>
-											<Description lang="de">
-												<!-- ch-usage: optional -->
-												<!-- ch-note: **TODO** Note about managing of AlternativeTexts ? -->
-												Erwartete Belegung 1. Klasse
-											</Description>
-											<TrainRef>
-												<!-- ch-usage: optional -->
-												<!-- ch-note: **TODO** ?? -->
-											</TrainRef>
-											<FareClass>
-												<!-- ch-usage: expected -->
-												<!-- ch-allowed-enums: firstClass secondClass unknown -->
-												firstClass
-											</FareClass>
-											<OccupancyLevel>
-												<!-- ch-usage: expected -->
-												<!-- ch-allowed-enums: unknown empty manySeatsAvailable fewSeatsAvailable standingRoomOnly crushedStandingRoomOnly full notAcceptingPassengers undefined -->
-												<!-- ch-note: Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable -->
-												manySeatsAvailable
-											</OccupancyLevel>
+											<FareClass><!-- ch-usage: expected --><!-- ch-allowed-enums: firstClass secondClass unknown -->firstClass</FareClass>
+											<OccupancyLevel><!-- ch-usage: expected --><!-- ch-allowed-enums: unknown empty manySeatsAvailable fewSeatsAvailable standingRoomOnly crushedStandingRoomOnly full notAcceptingPassengers undefined --><!-- ch-note: Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable -->seatsAvailable</OccupancyLevel>
 											<GroupReservation>
 												<!-- ch-usage: optional -->
-												<NameOfGroup lang="fr" Gymnase français de Bienne>
-													<!-- ch-usage: expected -->
-												</NameOfGroup>
-												<NumberOfReservedSeats>
-													<!-- ch-usage: expected -->
-													21
-												</NumberOfReservedSeats>
+												<NameOfGroup lang="fr"><!-- ch-usage: expected -->Gymnase français de Bienne></NameOfGroup>
+												<NumberOfReservedSeats><!-- ch-usage: expected -->21</NumberOfReservedSeats>
 											</GroupReservation>
 										</OccupancyView>
 									</occupancies>
