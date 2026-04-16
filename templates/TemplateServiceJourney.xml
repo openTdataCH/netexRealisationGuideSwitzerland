@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-04-10T12:00:00</PublicationTimestamp>
 	<ParticipantRef>CH:BLT</ParticipantRef>
 	<dataObjects>
@@ -7,7 +7,8 @@
 			<frames>
 				<TimetableFrame id="ch:1:TimetableFrame:j23" version="1">
 					<vehicleJourneys>
-						<TemplateServiceJourney id="generated" version="1"><!-- ch-root -->
+						<TemplateServiceJourney id="generated" version="1">
+							<!-- ch-root -->
 							<!-- ch-note: TemplateServiceJourney is used for repeating SERVICE JOURNEYs. -->
 							<!-- ch-attrs: id version responsibilitySetRef -->
 							<validityConditions>
@@ -45,23 +46,24 @@
 										<!-- ch-usage: optional -->
 										<validityConditions>
 											<!-- ch-usage: optional -->
-											<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" versionRef="1"<!-- ch-usage: optional -->/>
+											<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" versionRef="1">
+												<!-- ch-usage: optional -->
+											</AvailabilityConditionRef>
 										</validityConditions>
-										<ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A___1" versionRef="1"<!-- ch-usage: mandatory -->/>
+										<ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A___1" versionRef="1">
+											<!-- ch-usage: mandatory -->
+										</ServiceFacilitySetRef>
 									</Facility>
 								</facilities>
 							</Extensions>
-							<PrivateCode>
+							<PrivateCode><!-- ch-usage: optional --><!-- ch-note: Private code of the repeating SERVICE JOURNEY. -->1</PrivateCode>
+							<TransportMode><!-- ch-usage: optional -->rail</TransportMode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1">
+								<!-- ch-usage: expected -->
+							</TypeOfProductCategoryRef>
+							<TypeOfServiceRef ref="ch:1:TypeOfService:1" versionRef="1">
 								<!-- ch-usage: optional -->
-								<!-- ch-note: Private code of the repeating SERVICE JOURNEY. -->
-								1
-							</PrivateCode>
-							<TransportMode>
-								<!-- ch-usage: optional -->
-								rail
-							</TransportMode>
-							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1"><!-- ch-usage: expected --></TypeOfProductCategoryRef>
-							<TypeOfServiceRef ref="ch:1:TypeOfService:1" versionRef="1"><!-- ch-usage: optional --></TypeOfServiceRef>
+							</TypeOfServiceRef>
 							<noticeAssignments>
 								<!-- ch-usage: optional -->
 								<!-- ch-note: The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. -->
@@ -75,7 +77,7 @@
 								</NoticeAssignment>
 							</noticeAssignments>
 							<occupancies>
-								<!-- ch-usage: optional --> 
+								<!-- ch-usage: optional -->
 								<OccupancyView id="generated" version="1">
 									<!-- ch-usage: optional -->
 									<!-- ch-see -->
@@ -92,20 +94,15 @@
                 				<!-- ch-note: **TODO** - does this make sense given that repeated journeys are described ? -->
 								06:21:00
 							</DepartureTime>
-              				<DepartureTimeOffset>
+              				<DepartureDayOffset>
 								<!-- ch-usage: optional -->
                 				<!-- ch-note: **TODO** - same question as above -->
 								0
-							</DepartureTimeOffset>
+							</DepartureDayOffset>
 							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1">
 								<!--ch-usage: mandatory -->
 							</LineRef>
-							<DirectionType>
-								<!-- ch-usage: optional -->
-								<!-- ch-allowed-enums: inbound outbound -->
-								<!-- ch-note: Allowed are: inbound, outbound -->
-								inbound
-							</DirectionType>
+							<DirectionType><!-- ch-usage: optional --><!-- ch-allowed-enums: inbound outbound --><!-- ch-note: Allowed are: inbound, outbound -->inbound</DirectionType>
 							<trainNumbers>
 								<!-- ch-usage: mandatory -->
 								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1">
@@ -114,7 +111,10 @@
 							</trainNumbers>
 							<Destination>
 								<!-- ch-usage: expected -->
-								<PointRef version="1" ref="ch:1:Point:12345"/>
+								<!-- ch-see -->
+								<!-- ch-note: **TODO** needs to be created as well -->
+								
+								<ScheduledStopPointRef versionRef="1" ref="ch:1:sloid:3412"/>
 							</Destination>
 							<passingTimes>
 								<!-- ch-usage: expected -->
@@ -133,10 +133,7 @@
 									<ScheduledStopPointRef ref="notused2" versionRef="1"/>
 								</Call>
 							</calls>
-              				<TemplateVehicleJourneyType>
-                				<!-- ch-usage: expected -->
-                				<!-- ch-allowed-enums: rhythmic headway -->
-             				</TemplateVehicleJourneyType>
+							<TemplateVehicleJourneyType><!-- ch-usage: expected --><!-- ch-allowed-enums: rhythmic headway -->headway</TemplateVehicleJourneyType>
 							<frequencyGroups>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: We strictly map one JOURNEY FREQUENCY per SERVICE JOURNEY. -->
@@ -150,24 +147,19 @@
 									<LastDayOffset>0<!-- ch-usage: optional --></LastDayOffset>
 									<timebands>
 										<!-- ch-usage: optional -->
-										<TimebandRef version="1" ref="hde:TM_20"/>
+										<TimebandRef versionRef="1" ref="hde:TM_20"/>
 									</timebands>
 								</RhythmicalJourneyGroup>
 								<HeadwayJourneyGroup version="1" id="ch:1:HeadwayJourneyGroup:432">
 									<!-- ch-usage: optional -->
-									<Name>Regular Interval service between 12am and 18:00 pm<!-- ch-usage: optional --></Name>
-									<Description>About every 20 minutes<!-- ch-usage: optional --></Description>
-									<FirstDepartureTime>12:00:00<!-- ch-usage: mandatory --></FirstDepartureTime>
-									<FirstDayOffset>0<!-- ch-usage: optional --></FirstDayOffset>
-									<LastDepartureTime>18:00:00<!-- ch-usage: mandatory --></LastDepartureTime>
-									<LastDayOffset>0<!-- ch-usage: optional --></LastDayOffset>
-									<ScheduledHeadwayInterval>PT20M<!-- ch-usage: mandatory --></ScheduledHeadwayInterval>
-									<HeadwayDisplay>
-										<!-- ch-usage: optional -->
-										<!-- ch-allowed-enums: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes -->
-										<!-- ch-note: Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly.-->
-										DisplayInsteadOfPassingTimes
-									</HeadwayDisplay>
+									<Name><!-- ch-usage: optional -->Regular Interval service between 12am and 18:00 pm</Name>
+									<Description><!-- ch-usage: optional -->About every 20 minutes</Description>
+									<FirstDepartureTime><!-- ch-usage: mandatory -->12:00:00</FirstDepartureTime>
+									<FirstDayOffset><!-- ch-usage: optional -->0</FirstDayOffset>
+									<LastDepartureTime><!-- ch-usage: mandatory -->18:00:00</LastDepartureTime>
+									<LastDayOffset><!-- ch-usage: optional -->0</LastDayOffset>
+									<ScheduledHeadwayInterval><!-- ch-usage: mandatory -->PT20M</ScheduledHeadwayInterval>
+									<HeadwayDisplay><!-- ch-usage: optional --><!-- ch-allowed-enums: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes --><!-- ch-note: Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly.-->DisplayInsteadOfPassingTimes</HeadwayDisplay>
 								</HeadwayJourneyGroup>
 							</frequencyGroups>
 						</TemplateServiceJourney>

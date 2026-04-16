@@ -1,48 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
-<PublicationTimestamp>2026-04-10T12:00:00</PublicationTimestamp>
-<ParticipantRef>CH:BLT</ParticipantRef>
-<dataObjects>
-	<CompositeFrame id="CH:BLT:Composite:50_110" version="1">
-		<frames>
-			<ServiceFrame id="ch:1:ServiceFrame:j23" version="1">
-				<Name>My ServiceFrame</Name>
-				<frameValidityConditions>
-					<AvailabilityCondition id="generated" version="1">
-					  <!-- ch-root -->
-					  <!-- ch-attrs: id version -->
-					  <Description>No bla bla<!-- ch-usage: ignored --></Description>
-					  <FromDate>
-						<!-- ch-usage: optional -->
-						<!-- ch-note: Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.  -->
-						2026-05-17T00:00:00Z
-					  </FromDate>
-					  <ToDate>
-						<!-- ch-usage: optional -->
-						<!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
-						2026-05-17T00:00:00Z
-					  </ToDate>
-					  <IsAvailable>
-						<!-- ch-usage: mandatory -->
-						<!-- ch-note: mandatory by NeTEx **TODO** really? -->
-						true
-					  </IsAvailable>
-					  <ValidDayBits>
-						<!-- ch-usage: mandatory-->
-						01010231
-					  </ValidDayBits>
-					  <timebands>
-						<!-- ch-usage: optional -->
-						<Timeband id="ch:1:Timeband:4937" version="1"> 
-						  <!-- ch-usage: optional -->
-						  <!-- ch-see -->
-						  <StartTime>**06:00:00**</StartTime> 
-						  <EndTime>**06:01:00**</EndTime>
-						</Timeband> 
-					  </timebands>
-					</AvailabilityCondition>
-				</frameValidityConditions>
-				</ServiceFrame>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-04-10T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame" version="1">
+					
+					<validityConditions>
+						<AvailabilityCondition id="generated" version="1">
+							<!-- ch-root -->
+							<!-- ch-attrs: id version -->
+							<Description><!-- ch-usage: ignored -->Not used</Description>
+							<FromDate><!-- ch-usage: optional --><!-- ch-note: Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.  -->2026-05-17T00:00:00Z</FromDate>
+							<ToDate><!-- ch-usage: optional --><!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->2026-05-17T00:00:00Z</ToDate>
+							<IsAvailable><!-- ch-usage: mandatory --><!-- ch-note: madatory by NeTEx **TODO** really? -->true</IsAvailable>
+							<ValidDayBits><!-- ch-usage: mandatory-->01010010111</ValidDayBits>
+							<timebands>
+								<!-- ch-usage: optional -->
+								<Timeband id="ch:1:Timeband:4937" version="1">
+									<!-- ch-usage: optional -->
+									<!-- ch-see -->
+									<StartTime>06:00:00</StartTime>
+									<EndTime>06:01:00</EndTime>
+								</Timeband>
+						  </timebands>
+						</AvailabilityCondition>
+					</validityConditions>
+				</ServiceCalendarFrame>
 			</frames>
 		</CompositeFrame>
 	</dataObjects>
