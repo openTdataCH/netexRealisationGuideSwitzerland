@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TemplateServiceJourney  id="generated" version="1">
+  <!-- TemplateServiceJourney is used for repeating SERVICE JOURNEYs. -->
+  <validityConditions>
+    <!-- A specific type of VALIDITY CONDITION used to specify a set of temporal conditions that can be associated with the SERVICE JOURNEY, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+    <AvailabilityCondition id="generated" version="1">
+      <!-- **TODO** Expand the element, see ServiceJourney: more spacific requirements than standard AvailabilityCondition. -->
+      <FromDate>2026-02-15T00:00:00Z</FromDate>
+      <ToDate>2026-06-15T00:00:00Z</ToDate>
+      <IsAvailable>true</IsAvailable>
+      <ValidDayBits>01010231</ValidDayBits>
+    </AvailabilityCondition>
+  </validityConditions>
+  <keyList>
+    <!-- KEY LIST with the KEY VALUEs belonging to the repeating SERVICE JOURNEYs. Will contain the SJYID. -->
+    <KeyValue>
+      <!-- A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. -->
+      <Key>SJYID</Key>
+      <Value>ch:1:sjyid:100001:71707-003</Value>
+    </KeyValue>
+  </keyList>
+  <Extensions>
+    <!-- Used to indicate Facility changes. -->
+    <facilities>
+      <Facility id="ch:1:facility:f1" version="1" order="1">
+        <validityConditions>
+          <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
+        </validityConditions>
+        <ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A___1" version="1"/>
+      </Facility>
+    </facilities>
+  </Extensions>
+  <PrivateCode>1</PrivateCode>
+  <!-- Private code of the repeating SERVICE JOURNEY. -->
+  <TransportMode>rail</TransportMode>
+  <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1"/>
+  <TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
+  <noticeAssignments>
+    <!-- The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. -->
+    <NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
+      <validityConditions>
+        <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
+      </validityConditions>
+      <NoticeRef ref="ch:1:Notice:A___1" version="1"/>
+    </NoticeAssignment>
+  </noticeAssignments>
+  <occupancies>
+    <OccupancyView id="generated" version="1"/>
+  </occupancies>
+  <ServiceAlteration>planned</ServiceAlteration>
+  <!-- Only the value planned is allowed. -->
+  <DepartureTime>06:21:00</DepartureTime>
+  <!-- **TODO** - does this make sense given that repeated journeys are described ? -->
+  <DepartureDayOffset>0</DepartureDayOffset>
+  <!-- **TODO** - same question as above -->
+  <LineRef ref="ch:2:Line:11.IR.90" version="1"/>
+  <DirectionType>inbound</DirectionType>
+  <!-- Allowed are: inbound, outbound -->
+  <trainNumbers>
+    <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
+  </trainNumbers>
+  <Destination>
+    <!-- **TODO** needs to be created as well -->
+    <ScheduledStopPointRef ref="ch:1:sloid:3412" version="1"/>
+  </Destination>
+  <passingTimes>
+    <TimetabledPassingTime id="generated" version="1">
+      <PointInJourneyPatternRef ref="generated" version="1"/>
+    </TimetabledPassingTime>
+  </passingTimes>
+  <TemplateVehicleJourneyType>headway</TemplateVehicleJourneyType>
+  <frequencyGroups>
+    <!-- We strictly map one JOURNEY FREQUENCY per SERVICE JOURNEY. -->
+    <RhythmicalJourneyGroup version="1" id="ch:1:RhythmicalJourneyGroup:0253">
+      <Name>Regular Interval service between 10am and 17:00 pm</Name>
+      <!-- **TODO** - wanted? more advice on how to handle language? -->
+      <Description>At 20 &amp; 45 Minutes past the hour</Description>
+      <FirstDepartureTime>10:00:00</FirstDepartureTime>
+      <FirstDayOffset>0</FirstDayOffset>
+      <LastDepartureTime>17:00:00</LastDepartureTime>
+      <LastDayOffset>0</LastDayOffset>
+      <timebands>
+        <TimebandRef ref="hde:TM_20" version="1"/>
+      </timebands>
+    </RhythmicalJourneyGroup>
+    <HeadwayJourneyGroup version="1" id="ch:1:HeadwayJourneyGroup:432">
+      <Name>Regular Interval service between 12am and 18:00 pm</Name>
+      <Description>About every 20 minutes</Description>
+      <FirstDepartureTime>12:00:00</FirstDepartureTime>
+      <FirstDayOffset>0</FirstDayOffset>
+      <LastDepartureTime>18:00:00</LastDepartureTime>
+      <LastDayOffset>0</LastDayOffset>
+      <ScheduledHeadwayInterval>PT20M</ScheduledHeadwayInterval>
+      <HeadwayDisplay>DisplayInsteadOfPassingTimes</HeadwayDisplay>
+      <!-- Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly. -->
+    </HeadwayJourneyGroup>
+  </frequencyGroups>
+</TemplateServiceJourney>

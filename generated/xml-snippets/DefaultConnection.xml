@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DefaultConnection  id="11-11" version="1">
+  <!-- Be aware only some combinations areallowed  mode - mode, operator/type of product category - operator/type of  product category. -->
+  <Extensions>
+    <!-- When also ProductCategory is relevant, then this extension must be used -->
+    <FromProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1">
+      <!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
+    </FromProductCategoryRef>
+    <ToProductCategoryRef ref="ch:1:TypeOfProductCategory:TE2" version="1">
+      <!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
+    </ToProductCategoryRef>
+  </Extensions>
+  <TransferDuration>
+    <!-- We use WalkTransferDuration sometimes. need to clarify **TODO** -->
+    <DefaultDuration>PT2M</DefaultDuration>
+  </TransferDuration>
+  <BothWays>false</BothWays>
+  <!-- **TODO** to use or not -->
+  <From>
+    <TransportMode>all</TransportMode>
+    <OperatorView>
+      <OperatorRef ref="ch:1:Operator:11" version="1"/>
+    </OperatorView>
+  </From>
+  <To>
+    <TransportMode>all</TransportMode>
+    <OperatorView>
+      <OperatorRef ref="ch:1:Operator:11" version="1"/>
+    </OperatorView>
+  </To>
+  <StopPlaceRef ref="ch:1:sloid:19231" version="1">
+    <!-- Is a sloid usually. Not set, means whole network. -->
+  </StopPlaceRef>
+</DefaultConnection>

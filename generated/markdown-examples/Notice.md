@@ -2,9 +2,9 @@
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | Notice | expected | 1..1 | None | A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media. |  |
+|  | Notice | expected | 1..1 | unknown | A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media. |  |
 | + | alternativeTexts | expected | 0..1 | alternativeTexts_RelStructure | Additional Translations of text elements. |  |
-| ++ | [AlternativeText](AlternativeText.md) | expected | 1..1 | None | Alternative Text. +v1.1 |  |
+| ++ | [AlternativeText](AlternativeText.md) | expected | 1..1 | unknown | Alternative Text. +v1.1 |  |
 | + | Text | expected | 0..1 | MultilingualString | Text content of NOTICe. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | + | PublicCode | mandatory | 0..1 | PublicCodeStructure | Public code for JOURNEY. | The public code is transmitted when it is to be published and when it is the type of notice 10 |

@@ -604,7 +604,9 @@ def generate_markdown_table(data, filename, xsd_type_info):
         
         # Use the note from the data structure (which contains ch-note content)
         display_note = item.get('note', '')
-        markdown += f"| {sub} | {element} | {usage} | {card} | {xsd_type} | {description} | {display_note} |\n"
+        # Ensure xsd_type is never None
+        display_type = xsd_type if xsd_type and xsd_type != 'None' else 'unknown'
+        markdown += f"| {sub} | {element} | {usage} | {card} | {display_type} | {description} | {display_note} |\n"
     
     # Process attributes
     for item in attributes:
@@ -615,8 +617,10 @@ def generate_markdown_table(data, filename, xsd_type_info):
         xsd_type = item['type']
         description = item['description']
         note = item.get('note', '')
+        # Ensure xsd_type is never None for attributes
+        display_type = xsd_type if xsd_type and xsd_type != 'None' else 'unknown'
         
-        markdown += f"| {sub} | {element} | {usage} | {card} | {xsd_type} | {description} | {note} |\n"
+        markdown += f"| {sub} | {element} | {usage} | {card} | {display_type} | {description} | {note} |\n"
     
     # Process child elements
     for item in child_elements:
@@ -657,7 +661,9 @@ def generate_markdown_table(data, filename, xsd_type_info):
         
         # Use description for XSD/type info, note for ch-note content only
         display_note = note if note else ''
-        markdown += f"| {sub} | {element} | {usage} | {card} | {xsd_type} | {description} | {display_note} |\n"
+        # Ensure xsd_type is never None for child elements
+        display_type = xsd_type if xsd_type and xsd_type != 'None' else 'unknown'
+        markdown += f"| {sub} | {element} | {usage} | {card} | {display_type} | {description} | {display_note} |\n"
         
         # Add attributes if present
         if item['attributes']:

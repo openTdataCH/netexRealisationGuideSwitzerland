@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InterchangeRule  id="generated" version="1">
+  <!-- transfer times between ServiceJourneys (UMSTEIGZ) -->
+  <validityConditions>
+    <AvailabilityConditionRef ref="" version=""/>
+  </validityConditions>
+  <StaySeated>false</StaySeated>
+  <!-- **TODO** -->
+  <Planned>true</Planned>
+  <Guaranteed>false</Guaranteed>
+  <!-- **TODO** -->
+  <MinimumTransferTime>PT1M</MinimumTransferTime>
+  <MaximumTransferTime>PT2M</MaximumTransferTime>
+  <timings>
+    <InterchangeRuleTiming id="generated" version="1">
+      <TimebandRef ref="todo" version="1"/>
+    </InterchangeRuleTiming>
+  </timings>
+  <FeederFilter>
+    <StopPlaceRef ref="todo" version="1"/>
+    <LineInDirectionRef>
+      <LineRef ref="todo" version="1"/>
+      <DirectionRef ref="todo" version="1">
+        <!-- **TODO** or can we omit it? -->
+      </DirectionRef>
+    </LineInDirectionRef>
+    <AdjacentStopPointRef ref="todo" version="1"/>
+    <ServiceJourneyRef ref="todo" version="1"/>
+  </FeederFilter>
+  <DistributorFilter>
+    <StopPlaceRef ref="todo2" version="1"/>
+    <LineInDirectionRef>
+      <LineRef ref="todo2" version="1"/>
+      <DirectionRef ref="todo2" version="1"/>
+    </LineInDirectionRef>
+    <AdjacentStopPointRef ref="todo2" version="1"/>
+    <ServiceJourneyRef ref="todo2" version="1"/>
+  </DistributorFilter>
+</InterchangeRule>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Line  id="use swiss line id where possible" version="1" responsibilitySetRef="dsa">
+  <!-- We have a duplication with responsibilitySet and OperatorRef. With AuthorityRef we currently have a problem, because we can't use the same organisation **TODO** -->
+  <ValidBetween>
+    <!-- Usually set to the whole timetable year -->
+    <FromDate>2022-12-11T00:00:00</FromDate>
+    <ToDate>2023-12-09T23:59:59</ToDate>
+  </ValidBetween>
+  <keyList>
+    <KeyValue>
+      <!-- The SLNID is mandatory, when it exists -->
+      <Key>SLNID</Key>
+      <Value>ch:1:slnid:102846</Value>
+    </KeyValue>
+  </keyList>
+  <Name>3</Name>
+  <!-- contains attribute D T from HRDF. Is not translated on purpose. -->
+  <ShortName>3</ShortName>
+  <!-- contains the LinieKurzName (attribut N T in HRDF) -->
+  <TransportMode>rail</TransportMode>
+  <TransportSubmode>
+    <RailSubmode>suburbanRailway</RailSubmode>
+  </TransportSubmode>
+  <PublicCode>3</PublicCode>
+  <!-- Contains LinieLangName (attribute LT from HRDF) -->
+  <AuthorityRef ref="ch:1:Operator:11" version="1">
+    <!-- Contains the AUTHORITY OF the LINE. -->
+  </AuthorityRef>
+  <OperatorRef ref="ch:1:Operator:11" version="1">
+    <!-- The operator is the transport organisation that really will do the operation. If different from AuthorityRef -->
+  </OperatorRef>
+  <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:TER" version="1">
+    <!-- **TODO** needs tobe clarified from BS KI -->
+  </TypeOfProductCategoryRef>
+</Line>

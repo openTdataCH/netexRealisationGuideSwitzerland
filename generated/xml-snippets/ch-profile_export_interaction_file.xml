@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
   <PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
-  <ParticipantRef>CH:BLT</ParticipantRef>
+  <ParticipantRef>SKI-Template</ParticipantRef>
   <dataObjects>
-    <CompositeFrame id="CH:BLT:Composite:50_110" version="any">
+    <CompositeFrame id="ch:1:CompositeFrmae" version="1">
       <frames>
-        <TimetableFrame id="ch:1:TimetableFrame:j23" version="any">
-          <journeyMeetings>
-            <JourneyMeeting id="generated" version="1">
-              <FromJourneyRef ref="sjyid" version="referenced"/>
-              <ToJourneyRef ref="sjyid1" version="referenced"/>
-            </JourneyMeeting>
-          </journeyMeetings>
+        <TimetableFrame id="ch:1:TimetableFrame" version="1">
           <interchangeRules>
-            <InterchangeRule id="generated" version="1"/>
+            <InterchangeRule id="generated2" version="1"/>
+            <InterchangeRule id="generated" version="1">
+              <!-- transfer times between ServiceJourneys (UMSTEIGZ) -->
+            </InterchangeRule>
           </interchangeRules>
         </TimetableFrame>
       </frames>

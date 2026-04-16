@@ -7,4 +7,4 @@
 | + | IsAvailable | mandatory | 0..1 | xsd:boolean | Whether condition makes resource available or not available. Default is available. | madatory by NeTEx **TODO** really? |
 | + | ValidDayBits | mandatory | 0..1 | xsd:normalizedString | For UIC style encoding of day types String of bits, one for each day in period: whether valid or not valid on the day. Normally there will be a bit for every day between start and end date. If bit is missing, assume available. |  |
 | + | timebands | optional | 0..1 | timebandRefs_RelStructure | TIMEBANDS associated with JOURNEY FREQUENCY GROUP. |  |
-| ++ | [Timeband](Timeband.md) | optional | 1..1 | None | A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category. |  |
+| ++ | [Timeband](Timeband.md) | optional | 1..1 | unknown | A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category. |  |

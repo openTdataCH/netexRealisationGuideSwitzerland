@@ -2,7 +2,7 @@
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | StopPlace | mandatory | 1..1 | None | Version of a named place where public transport may be accessed. May be a building complex (e.g. a station) or an on-street location. Can be a STOP PLACE, VEHICLE MEETING POINT, TAXI RANK. Note: If a master id exists for a StopPlace (must be stable and globally unique), then it is best used in the id. Optimally it would be built according IFOPT. It can also be put into one of the privateCodes in addition. If it is stored in KeyValue, then it should be documented well, so that importing systems know, which id is the relevant one. | **todo** all texts are missing in this file yet |
+|  | StopPlace | mandatory | 1..1 | unknown | Version of a named place where public transport may be accessed. May be a building complex (e.g. a station) or an on-street location. Can be a STOP PLACE, VEHICLE MEETING POINT, TAXI RANK. Note: If a master id exists for a StopPlace (must be stable and globally unique), then it is best used in the id. Optimally it would be built according IFOPT. It can also be put into one of the privateCodes in addition. If it is stored in KeyValue, then it should be documented well, so that importing systems know, which id is the relevant one. | **todo** all texts are missing in this file yet |
 | + | keyList | mandatory | 1..1 | KeyListStructure | A list of alternative Key values for an element. |  |
 | ++ | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. |  |
 | +++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |

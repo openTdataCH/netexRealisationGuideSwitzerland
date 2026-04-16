@@ -198,8 +198,60 @@ def process_element_with_cleanup(element, parent_excluded=False):
     # Preserve the element's own tail text (text after the element's closing tag)
     if hasattr(element, 'tail') and element.tail and element.tail.strip():
         new_element.tail = element.tail.strip()
-    
+
     return new_element
+
+def customize_xml_serialization(element, default_ns=None):
+    """Custom XML serialization that handles ch-note comments appropriately"""
+    # First get the standard pretty-printed XML
+    xml_string = etree.tostring(element, encoding='unicode', pretty_print=True)
+    
+    # Remove namespace declarations
+    if default_ns:
+        xml_string = xml_string.replace(f'ns0:', '')
+        xml_string = xml_string.replace(f'xmlns:ns0="{default_ns}"', '')
+        xml_string = xml_string.replace(f'xmlns="{default_ns}"', '')
+    
+    # Post-process to move inline comments to separate lines for simple elements
+    lines = xml_string.split('\n')
+    processed_lines = []
+    
+    for line in lines:
+        # Check if this line has an inline comment in a simple element
+        # Pattern: <Element>content<!-- comment --></Element>
+        if '<!--' in line and '-->' in line and '<' in line and '>' in line:
+            # Try to match the pattern
+            pattern = r'^(\s*)<([^>\s]+)([^>]*)>([^<]*)<!--\s*(.*?)\s*-->([^<]*)</\2>\s*$'
+            match = re.match(pattern, line)
+            
+            if match:
+                indent = match.group(1)
+                element_name = match.group(2)
+                element_attrs = match.group(3)
+                text_content = match.group(4).strip()
+                comment_content = match.group(5).strip()
+                trailing = match.group(6).strip()
+                
+                # Reconstruct the element without inline comment
+                if text_content or trailing:
+                    element_content = text_content
+                    if trailing:
+                        element_content += ' ' + trailing
+                    element_line = f'{indent}<{element_name}{element_attrs}>{element_content}</{element_name}>'
+                else:
+                    element_line = f'{indent}<{element_name}{element_attrs}/>'
+                
+                # Add comment on separate line
+                comment_line = f'{indent}<!-- {comment_content} -->'
+                
+                # Add both lines
+                processed_lines.append(element_line)
+                processed_lines.append(comment_line)
+                continue
+        
+        processed_lines.append(line)
+    
+    return '\n'.join(processed_lines)
 
 def extract_snippet_from_template(file_path):
     """Extract snippet from a template file using ch-root marker"""
@@ -310,24 +362,9 @@ def extract_snippet_from_template(file_path):
             # Convert back to XML string
             xml_string = etree.tostring(processed_root, encoding='unicode', pretty_print=True)
             
-            # Fix namespace prefixes to make the default namespace truly default
-            if default_ns:
-                # Replace ns0: prefixes with no prefix and add xmlns declaration
-                xml_string = xml_string.replace(f'ns0:', '')
-                xml_string = xml_string.replace(f'xmlns:ns0="{default_ns}"', f'xmlns="{default_ns}"')
-                
-                # If xmlns declaration is missing, add it to the root element
-                if 'xmlns="' not in xml_string:
-                    # Find the root element opening tag
-                    root_tag_match = re.match(r'<([^>\s]+)(\s+[^>]*)?>', xml_string.strip())
-                    if root_tag_match:
-                        tag_name = root_tag_match.group(1)
-                        tag_attrs = root_tag_match.group(2) if root_tag_match.group(2) else ''
-                        if tag_attrs:
-                            new_tag = f'<{tag_name} xmlns="{default_ns}" {tag_attrs.strip()}'
-                        else:
-                            new_tag = f'<{tag_name} xmlns="{default_ns}"'
-                        xml_string = xml_string.replace(f'<{tag_name}{tag_attrs}>', new_tag + '>')
+
+            # Custom XML serialization to handle ch-note placement correctly
+            xml_string = customize_xml_serialization(processed_root, default_ns)
             
             return xml_string
             

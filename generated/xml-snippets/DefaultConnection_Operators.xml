@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DefaultConnection  id="11-11" version="1">
+  <!-- Connection between two operators on the whole network or on a defined STOP PLACE. -->
+  <Extensions>
+    <!-- When also ProductCategory is relevant, then this extension must be used -->
+    <FromProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1"/>
+    <ToProductCategoryRef ref="ch:1:TypeOfProductCategory:TE2" version="1"/>
+  </Extensions>
+  <TransferDuration>
+    <DefaultDuration>PT2M</DefaultDuration>
+  </TransferDuration>
+  <From>
+    <OperatorView>
+      <OperatorRef ref="ch:1:Operator:11" version="1"/>
+    </OperatorView>
+  </From>
+  <To>
+    <OperatorView>
+      <OperatorRef ref="ch:1:Operator:11" version="1"/>
+    </OperatorView>
+  </To>
+  <StopPlaceRef ref="ch:1:sloid:19231" version="1">
+    <!-- Is a sloid usually. Not set, means whole network. -->
+  </StopPlaceRef>
+</DefaultConnection>
