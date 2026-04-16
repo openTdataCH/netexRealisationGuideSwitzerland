@@ -60,9 +60,38 @@ A SERVICE JOURNEY is a VEHICLE JOURNEY on which passengers will be allowed to bo
 * passingTimes: ddd
 * DONE: calls are not to be used.
 
+## ServiceJourney (alternative to previous section)
+
+### 1. Purpose
+
+A **ServiceJourney** represents a planned trip in the timetable operating on a recurring schedule. It defines the stop sequence via reference to a JourneyPattern, includes scheduled passing times, and specifies operational details such as operator and days of operation. Unlike DatedServiceJourney, which represents a concrete instance on a specific date, ServiceJourney is the reusable template used across multiple dates via DayType definitions
+
+### 2. Table
+
+[//]: # (TODO: Add ServiceJourney links)
+- [General NeTEx definition ](generated/xcore/ServiceJourney.html)
+- [Swiss profile NeTEx definition](generated/markdown-examples/ServiceJourney.md)
+
+> [Template](../templates/ServiceJourney.xml)
+
+### 3. Example
+
+[//]: # (TODO: Add ServiceJourney links)
+- [Example snippet](generated/xml-snippets/ServiceJourney.xml)
+
+
+### 4. Usage Notes / Pitfalls
+
+- **Template vs. Instance:** ServiceJourney is the template; DatedServiceJourney represents concrete daily instances.
+- **Consistency:** A ServiceJourney must reference exactly one JourneyPattern. The pattern's stop sequence is authoritative.
+- **Stop Times:** Each stop in the referenced JourneyPattern must have exactly one TimetabledPassingTime entry with ArrivalTime and/or DepartureTime.
+- **Day Governance:** DayType references control on which days the journey operates; per-date deviations belong to DatedServiceJourney.
+- **Validation:** Ensure journeyPatternRef, lineRef, and operatorRef are consistent and reference existing objects.
+
+
 ## TemplateServiceJourney
 
-A TEMPLATE SERVICE JOURNEY is a (repeating) VEHICLE JOURNEY on which passengers will be allowed to board or alight from vehicles at stops. It describes the service between an origin and a destination, as advertised to the public. Only to be used if a frequency has been specified for the JOURNEY. 
+A TEMPLATE SERVICE JOURNEY is a VEHICLE JOURNEY on which passengers will be allowed to board or alight from vehicles at stops and that reapeats with a certain frequency. It describes the service between an origin and a destination, as advertised to the public. Only to be used if a frequency has been specified for the JOURNEY. 
 
 [//]: # (TODO: Add TemplateServiceJourney links)
 - [General NeTEx definition ](generated/xcore/TemplateServiceJourney.html)
