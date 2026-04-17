@@ -19,17 +19,17 @@ The name of each XML file is composed of the following information:
 
 The name of each XML file is composed of the following information:
 
-| IT-Environement|	DEV,TEST,INT,PROD	||
-| Format and content of the file |	NETEX_TT |	(Describe the format (NETEX) und the content (TimeTable)) 
-| Version|	|	Number of the version of the NeTEx .xsd schema|
-|Country	|CHE|ISO code of the country in which the file was produced|
-|Provider	|SKI	|Name of the provider|
-|Time period	 ||	Time period of he data |
-|Name of Export	|oev-schweiz	|Defines the scope of the timetable data|
-|Frame||	Name des Frame|
-||Number||		Number of the file of a specific frame|
-|Total	||	Number of files of the identical frame|
-|Date and Time||		Datum und Zeit der Produktion des Files Format : YYYYMMDDHHMM|
+| IT-Environement|	DEV,TEST,INT,PROD	| |
+| Format and content of the file |	NETEX_TT |	(Describe the format (NETEX) und the content (TimeTable)) |
+| Version |	|	Number of the version of the NeTEx .xsd schema |
+| Country	|CHE|ISO code of the country in which the file was produced |
+| Provider	|SKI	|Name of the provider|
+| Time period	 ||	Time|period of he data |
+| Name of Export	|oev-schweiz	|Defines the scope of the timetable data |
+| Frame | |	Name des Frame |
+| Number | |		Number of the file of a specific frame |
+| Total	| |	Number of files of the identical frame |
+| Date and Time | |		Datum und Zeit der Produktion des Files Format : YYYYMMDDHHMM |
 
 Example: 
 -	test_NETEX_TT_1.10_CHE_SKI_2023_OEV-SCHWEIZ_COMMON_1_1_202301250401.xml
@@ -37,16 +37,16 @@ Example:
 
 All Files are embedded in a zip-File. The name of the zip-file is composed of the following in-formation:
 
- | IT-Environement	 | DEV,TEST,INT	 | In the production environment, the prefix PROD is not written in the name | 
- | Format and content of the file	 | ojp-nap:NETEX_TT	 | Describe the format (NETEX) und the content (TimeTable)  | 
-  | Version |  | 		Number of the version of the NeTEx .xsd schema | 
- | Country	 | CHE	 | ISO code of the country in which the file was produced | 
- | Provider	 | SKI	 | Name of the provider | 
- | Time period	 |  |  	Time period of he data  | 
- | Name of Export	 | oev-schweiz	 | Defines the scope of the timetable data | 
- | Number |  | 		Number of the file of a specific frame | 
- | Total	 |  | 	Number of files of the identical frame | 
- | Date and Time	 |  | 	Datum und Zeit der Produktion des Files Format : YYYYMMDDHHMM | 
+| IT-Environement	 | DEV,TEST,INT	 | In the production environment, the prefix PROD is not written in the name | 
+| Format and content of the file	 | ojp-nap:NETEX_TT	 | Describe the format (NETEX) und the content (TimeTable)  | 
+| Version |  | 		Number of the version of the NeTEx .xsd schema | 
+| Country	 | CHE	 | ISO code of the country in which the file was produced | 
+| Provider	 | SKI	 | Name of the provider | 
+| Time period	 |  |  	Time period of he data  | 
+| Name of Export	 | oev-schweiz	 | Defines the scope of the timetable data | 
+| Number |  | 		Number of the file of a specific frame | 
+| Total	 |  | 	Number of files of the identical frame | 
+| Date and Time	 |  | 	Datum und Zeit der Produktion des Files Format : YYYYMMDDHHMM | 
 
 Example : 
 •	test_ojp-nap_netex_tt_1.10_che_ski_2023_oev-schweiz__1_1_202302010402.zip
