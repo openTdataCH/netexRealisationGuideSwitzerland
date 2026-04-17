@@ -31,4 +31,12 @@ In some cases there are references to the HRDF format currently used in the data
 
 # Roadmap
 
-tbd
+| Date | Milestone|
+|--|--|
+|2026-07 |First draft for discussion of RG 2.0 (0.7 level)|
+|2026-09 |Review 1 done (0.8 level) |
+|2026-12|RG 2.0 ready (1.0 level |
+|tbd |RG 2.0 based NeTEx output |
+|tbd| Input accepted in version 2.0 format by SKI|
+
+**TODO** Needs to be updated.
