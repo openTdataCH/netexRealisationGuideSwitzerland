@@ -32,4 +32,4 @@ The data provider is responsible for the timely delivery of the complete timetab
 ### SKI side
 The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality. Complete means all timetable data in the responsibility of the provider for the whole timetable period.
 
-tbd
+**TODO**  More guiding principles?
