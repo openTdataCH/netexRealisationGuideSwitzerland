@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
-	<ParticipantRef>CH:BLT</ParticipantRef>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="CH:BLT:Composite:50_110" version="1">
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
 			<frames>
-				<TimetableFrame id="ch:1:TimetableFrame:j23" version="1">
-					<vehicleJourneys>
-					</vehicleJourneys>
+				<TimetableFrame id="ch:1:TimetableFrame" version="1">
 					<trainNumbers>
-						<TrainNumber id="71707" version="1"><!-- ch-root -->
+						<TrainNumber id="71707" version="1">
+							<!-- ch-root -->
 							<!-- ch-attrs: id version -->
-							<!-- ch-note: The TRAIN NUMBERs are currently a maximum of 6 digits long. TRAIN NUMBERs for advertisment und production are identical. **TODO**: Is this ture, i.e. is the id supposed to be a pure number and not something like ch:1:TrainNumber:71707 ? -->		
-							<ForAdvertisment>
+							<!-- ch-note: The TRAIN NUMBERs are currently a maximum of 6 digits long. TRAIN NUMBERs for advertisment und production are identical. **TODO**: Is this ture, i.e. is the id supposed to be a pure number and not something like ch:1:TrainNumber:71707 ? -->
+							<Description>
+								<!-- ch-usage: optional -->
+								Information about the train
+							</Description>
+							<ForAdvertisement>
 								<!-- ch-usage: optional -->
 								<!-- ch-note: TRAIN NUMBER to use for advertisement to public. Use iff different from ID.  -->
-							</ForAdvertisment>
+								12311A
+							</ForAdvertisement>
 							<ForProduction>
 								<!-- ch-usage: optional -->
 								<!-- ch-note: TRAIN NUMBER to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID. -->
+								12311A
 							</ForProduction>
-							<Description>
-								<!-- ch-usage: optional -->
-							</Description>
 						</TrainNumber>
 					</trainNumbers>
-					<serviceFacilitySets>
-					</serviceFacilitySets>
 				</TimetableFrame>
 			</frames>
 		</CompositeFrame>

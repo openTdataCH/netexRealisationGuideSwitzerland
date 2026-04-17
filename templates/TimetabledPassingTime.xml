@@ -24,56 +24,37 @@
 								</TrainNumberRef>
 							</trainNumbers>
 							<passingTimes>
-								<TimetabledPassingTime id="generated" version="1"><!-- ch-root -->
+								<TimetabledPassingTime id="generated" version="1">
+									<!-- ch-root -->
 									<!-- ch-attrs: id version -->
 									<!-- ch-note: Long-term planned time data concerning public transport vehicles passing a particular POINT IN JOURNEY PATTERN on a specified VEHICLE JOURNEY for a certain DAY TYPE. -->
-									<PointInJourneyPatternRef ref="generated" versionRef="1">
-										<!-- ch-usage: mandatory -->
-									</PointInJourneyPatternRef>
-									<AlightAndReboard>
-										<!-- ch-usage: optional -->
-									</AlightAndReboard>
-									<ArrivalTime>
-										<!-- ch-usage: expected -->
-										<!-- ch-note: Not used if departure only. -->
-									</ArrivalTime>
-									<ArrivalDateOffset>
-										<!-- ch-usage: optional -->
-									</ArrivalDateOffset>
-									<DepartureTime>
-										<!-- ch-usage: expected -->
-										<!-- ch-note: Not used if arrival only. -->
-									</DepartureTime>
-									<DepartureDateOffset>
-										<!-- ch-usage: optional -->
-									</DepartureDateOffset>
-									<WaitingTime>
-										<!-- ch-usage: optional -->
-									</WaitingTime>
-									<LatestArrivalTime>
-										<!-- ch-usage: optional -->
-									</LatestArrivalTime>
-									<LatestArrivalDayOffset>
-										<!-- ch-usage: optional -->
-									</LatestArrivalDayOffset>
-									<EarliestDepartureTime>
-										<!-- ch-usage: optional -->
-									</EarliestDepartureTime>
-									<EarliestDepartureDayOffset>
-										<!-- ch-usage: optional -->
-									</EarliestDepartureDayOffset>
-									<CheckConstraint>
-										<!-- ch-usage: optional -->
-										<!-- ch-note: **TODO - Planned for V2.1** Allows for specifying delays due to longer boarding times. -->
-									</CheckConstraint>
-									<IsFlexible>
+									<Extensions>
+										<CheckConstraint id="generated" version="1">
+											<!-- ch-usage: optional -->
+											<!-- ch-note: **TODO - Planned for V2.1** Allows for specifying delays due to longer boarding times. -->
+										</CheckConstraint>
+										<IsFlexible>
 										<!-- ch-usage: optional -->
 										<!-- ch-note: **TODO - Planned for V2.1** Stop is only served upon prior request (e.g., booking by phone). -->
 										false
 									</IsFlexible>
+									</Extensions>
+									<AlightAndReboard><!-- ch-usage: optional -->false</AlightAndReboard>
+									<StopPointInJourneyPatternRef ref="generated" versionRef="1">
+										<!-- ch-usage: mandatory -->
+									</StopPointInJourneyPatternRef>
+									<ArrivalTime><!-- ch-usage: expected --><!-- ch-note: Not used if departure only. -->08:00:00</ArrivalTime>
+									<ArrivalDayOffset><!-- ch-usage: optional -->0</ArrivalDayOffset>
+									<DepartureTime><!-- ch-usage: expected --><!-- ch-note: Not used if arrival only. -->08:01:00</DepartureTime>
+									<DepartureDayOffset><!-- ch-usage: optional -->0</DepartureDayOffset>
+									<WaitingTime><!-- ch-usage: optional -->PT1M</WaitingTime>
+									<LatestArrivalTime><!-- ch-usage: optional -->08:05:00</LatestArrivalTime>
+									<LatestArrivalDayOffset><!-- ch-usage: optional -->0</LatestArrivalDayOffset>
+									<EarliestDepartureTime><!-- ch-usage: optional -->07:58:00</EarliestDepartureTime>
+									<EarliestDepartureDayOffset><!-- ch-usage: optional -->0</EarliestDepartureDayOffset>
 									<occupancies>
 										<!-- ch-usage: optional -->
-										<OccupancyView>
+										<OccupancyView id="generated" version="1">
 											<!-- ch-usage: optional -->
 											<!-- ch-see -->
 										</OccupancyView>
