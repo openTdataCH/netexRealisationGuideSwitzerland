@@ -203,7 +203,16 @@ tbd
 An INTERCHANGE RULE defines the possibility of interchanging between two SERVICE JOURNEYs at the same or different SCHEDULED STOP POINTs — where at least one journey is specified indirectly via DIRECTION, LINE or VEHICLE JOURNEY, rather than as an explicit journey pair.
 The rule specifies criteria (e.g. MODE, LINE, DIRECTION) that a candidate feeder or distributor SERVICE JOURNEY must fulfil. The SCHEDULED STOP POINT is defined separately for the feeder and distributor side.
 
-[Swiss profile NeTEx definition](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/3825500c6a13a9a2cc1e89f3f6993acf881a3507/generated/markdown-examples/InterchangeRule_UMTEIGZ.md)
+- [General NeTEx definition ](generated/xcore/InterchangeRule.html)
+- [Swiss profile NeTEx definition](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/3825500c6a13a9a2cc1e89f3f6993acf881a3507/generated/markdown-examples/InterchangeRule_UMTEIGZ.md)
+- [Example snippet](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/c543acb1750e60bb369f53e3cbd10e1fac884ab0/generated/xml-snippets/InterchangeRule_UMTEIGZ.xml)
+
+## InterchangeRuleParameter
+(NeTEx-2, 7.2.8.3.2) 
+Type for INTERCHANGE RULE PARAMETER of the InterchangeRuleFilteringGroup. 
+- [General NeTEx definition ](generated/xcore/InterchangeRule.html)
+- [Swiss profile NeTEx definition](todo)
+- [Example snippet](todo)
 
 
 
