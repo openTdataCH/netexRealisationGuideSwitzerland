@@ -210,10 +210,15 @@ The rule specifies criteria (e.g. MODE, LINE, DIRECTION) that a candidate feeder
 ## InterchangeRuleParameter
 (NeTEx-2, 7.2.8.3.2) 
 Type for INTERCHANGE RULE PARAMETER of the InterchangeRuleFilteringGroup. 
-- [General NeTEx definition ](generated/xcore/InterchangeRule.html)
+- [General NeTEx definition ](generated/xcore/InterchangeRuleParameter.html)
 - [Swiss profile NeTEx definition](todo)
 - [Example snippet](todo)
 
-
+## InterchangeRuleTiming
+(NeTEx-2, 7.2.8.3.3) 
+Conditions for considering JOURNEYs to meet or not to meet, specified indirectly: by a particular MODE, DIRECTION or LINE. Such conditions may alternatively be specified directly, indicating the corresponding services. In this case they are either a SERVICE JOURNEY PATTERN INTERCHANGE or a SERVICE JOURNEY INTERCHANGE. 
+- [General NeTEx definition ](generated/xcore/InterchangeRuleTiming.html)
+- [Swiss profile NeTEx definition](todo)
+- [Example snippet](todo)
 
 
