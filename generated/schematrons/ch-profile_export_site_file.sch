@@ -73,6 +73,18 @@
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:siteFacilitySets/netex:SiteFacilitySet/netex:validityConditions">
       <sch:assert test="count(netex:AvailabilityCondition) > 0">AvailabilityCondition must be present</sch:assert>
       </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:siteFacilitySets/netex:SiteFacilitySet/netex:validityConditions/netex:AvailabilityCondition">
+      <sch:assert test="count(@id) > 0">Attribute "id" must be present on AvailabilityCondition</sch:assert>
+      <sch:assert test="count(@version) > 0">Attribute "version" must be present on AvailabilityCondition</sch:assert>
+      <sch:assert test="count(netex:IsAvailable) > 0">IsAvailable must be present</sch:assert>
+      <sch:assert test="count(netex:ValidDayBits) > 0">ValidDayBits must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:siteFacilitySets/netex:SiteFacilitySet/netex:validityConditions/netex:AvailabilityCondition/netex:timebands/netex:Timeband">
+      <sch:assert test="count(@id) > 0">Attribute "id" must be present on Timeband</sch:assert>
+      <sch:assert test="count(@version) > 0">Attribute "version" must be present on Timeband</sch:assert>
+      <sch:assert test="count(netex:StartTime) > 0">StartTime must be present</sch:assert>
+      <sch:assert test="count(netex:EndTime) > 0">EndTime must be present</sch:assert>
+      </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:serviceFacilitySets/netex:ServiceFacilitySet">
       <sch:assert test="count(netex:accommodations) = 0">accommodations must NOT be present</sch:assert>
       </sch:rule>

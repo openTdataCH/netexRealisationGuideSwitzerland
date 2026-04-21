@@ -25,6 +25,7 @@
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:stopAssignments/netex:PassengerStopAssignment">
       <sch:assert test="count(netex:ScheduledStopPointRef) > 0">ScheduledStopPointRef must be present</sch:assert>
       <sch:assert test="count(netex:StopPlaceRef) > 0">StopPlaceRef must be present</sch:assert>
+      <sch:assert test="count(netex:BoardingPositionRef) = 0">BoardingPositionRef must NOT be present</sch:assert>
       </sch:rule>
     </sch:pattern>
   </sch:schema>

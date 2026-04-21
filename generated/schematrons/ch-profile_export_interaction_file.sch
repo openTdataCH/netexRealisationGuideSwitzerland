@@ -20,6 +20,16 @@
       <sch:assert test="count(netex:journeyMeetings) = 0">journeyMeetings must NOT be present</sch:assert>
       <sch:assert test="count(netex:interchangeRules) > 0">interchangeRules must be present</sch:assert>
       </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:journeyMeetings/netex:JourneyMeeting">
+      <sch:assert test="count(@id) > 0">Attribute "id" must be present on JourneyMeeting</sch:assert>
+      <sch:assert test="count(@version) > 0">Attribute "version" must be present on JourneyMeeting</sch:assert>
+      <sch:assert test="count(netex:AtStopPointRef) > 0">AtStopPointRef must be present</sch:assert>
+      <sch:assert test="count(netex:FromJourneyRef) > 0">FromJourneyRef must be present</sch:assert>
+      <sch:assert test="count(netex:ToJourneyRef) > 0">ToJourneyRef must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:journeyMeetings/netex:JourneyMeeting/netex:Reason">
+      <sch:assert test="(. = 'joining' or . = 'splitting' or . = 'tariffSection' or . = 'serviceFacility')">Value must be one of: joining splitting tariffSection serviceFacility</sch:assert>
+      </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:interchangeRules">
       <sch:assert test="count(netex:InterchangeRule) > 0">InterchangeRule must be present</sch:assert>
       </sch:rule>
