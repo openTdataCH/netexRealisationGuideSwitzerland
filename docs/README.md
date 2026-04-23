@@ -13,9 +13,9 @@ The realisation specifications mainly concern:
 •	intentional deviations from the official standard within public transport in Switzerland.
 
 ## Supported NeTEx version
-This profile is based on NeTEx 2.0 xxxlink tbd.
+This profile is based on NeTEx 2.0 xxxlink **TODO**.
 
-The relevant specification documents are xxxtbd
+The relevant specification documents are **TODO**
 
 ## Binding nature
 This document describes the way in which the NeTEx standard is specifically applied and interpreted in Switzerland. It forms the basis for agreements concerning the connection between the individual public transport partners for exchanging timetables. 
@@ -27,51 +27,39 @@ This document describes the way in which the NeTEx standard is specifically appl
 - [File structure, encoding etc](04_files.md)
 - [Frames used in the profile](05_frames.md)
 - [Site model](06_stops.md)
-- [Service](07_service.md)
-- [Timetables](08_timetable.md)
-- [Common elements](09_common.md)
-- Special use cases
-  - Joining / Splitting und "Durchbindung"
-  - ServiceFacilities
-  - JourneyParts
-  - [Transfers / transfer times](uc_transfers.md)
-  - [Journeys passing midnight](uc_midnight_passing.md)
+- [Service model](07_service.md)
+- [Service Calendar model](07_service.md)
+- [Timetables](09_timetable.md)
+- [Common elements](10_common.md)
+- Special use cases:
+  - ["Durchbindung"](uc01_durchbindung.md)
+  - [Joining / splitting](uc02_joining_splitting.md)
+  - [Transfers](uc03_transfers.md)
+  - [Service facilities](uc04_service_facilities.md)
+  - [Usage of JourneyParts](uc05_journey_parts.md)
+  - **TODO**
+  - [Direct carriages ("Kurswagen")](uc08_kurswagen.md)
+  - [Accessibility](uc09_accessibility.md)
+  - [Journeys passing midnight](uc10_midnight_passing.md)
   - Modes  and the ["KI Branchenstandard"](https://www.oev-info.ch/de/branchenstandard/branchenstandard-kundeninformation-bs-ki/branchenstandard-kundeninformation-bs-ki)
 - Mapping tables
   - Modes
   - ServiceAttribute 
-- Other profiles
-  - Differences between Swiss profile and EPIP/EPIAP and how they could be amended
-  - Differences to the French profile 
-- [Resources and references](Annex_resources_references.md)
-- Glossary **TODO** we take it from the Slowenian profile
-- Changelog and migration from Swiss profile 1.0 to 2.0
+- Annexes:
+  - [Resources and references](A1_annex_resources_references.md)
+  - [Differences between Swiss profile and EPIP/EPIAP and how they could be amended](A2_annex_comparison_EPIP_EPIAP.md)
+  - [Differences to the French and nordic profile](A3_annex_comparison_France_Norway.md)
+  - [Glossary](A4_annex_glossary)
+  - [Changelog andmigration from Swiss profile 1.0 to 2.0)](A5_changelog_migration.md)
 
 
 ## Examples
 We have a [set of examples](../examples/README.md) that show how to create use cases with the realisation guide.
 
-## Tools
-The basics:
-- [How to use and build the templates?](../templates/README.md)
-
-Building stuff:
-- [Building markdown tables for the documentation of the Swiss profile](../tools/md_builder/README.md)
-- [Building XML snippets as example for individual sections in the Swiss profile](..tools/xml_snippet/README.md)
-- [Building schematron files for each input/output XML file in the Swiss profile](../tools/schematron_builder/README.md)
-- We will do an xcore implementation that produces a HTML of the original NeTEx XSD tables into single files to be linked into the md, too.
-
-
-We may in future also update the way we have things done here in the docs folder: We may use it to create a series of md files, where the tables and examples are included in the md files.
-
-Testing stuff:
-- [Checking XML files with schematron](../tools/check_schematron/README.md)
-- The XSD validation is to be done in a separate step.
-
 ## Impressum
-* Authors: tbd
-* Status: tbd
-* Last change: tbd
+* Authors: **TODO**
+* Status: Draft
+* Last change: **TODO**
 * Contact: info.fachbus@sbb.ch
 
 ## Copyright
