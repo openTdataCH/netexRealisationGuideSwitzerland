@@ -10,3 +10,5 @@
 | METABHF  | SiteConnection    | **SiteConnection**                                                                                           | Umsteigezeit zwischen Haltestellen         |
 | UMSTEIGV | DefaultConnection | **DefaultConnection**                                                                                        | Verwaltungsbezoge Umsteigezeit             |
 | DURCHBI  | JourneyMeeting    | **ServiceJourneyInterchange**<br>Alternativ für Flügelzug, Vereinigung: <br>JourneyParts, JourneyPartsCouple<br> | Durchbindung, Flügelzug, Vereinigung       |
+
+**TODO**

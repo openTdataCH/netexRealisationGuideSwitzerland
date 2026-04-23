@@ -1,7 +1,7 @@
 # Annex: Ressources
 
 # Annex: References
-
+**TODO**
 ## Referenced standards
 - NeTEx-1:	DIN CEN TS16614-1 (2014). Public transport – Network and Timetable Exchange (NeTEx) – Part 1: Public transport network topology exchange format; English version EN 16614-1:2014
 - NeTEx-2:	DIN CEN TS16614-2 (2014). Public transport – Network and Timetable Exchange (NeTEx) –Part 2: Public transport scheduled timetables exchange format; English version CEN/TS 16614-2:2014
