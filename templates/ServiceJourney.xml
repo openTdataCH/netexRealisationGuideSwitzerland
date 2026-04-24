@@ -19,13 +19,13 @@
 									<!-- ch-note: Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
 									<!-- ch-see -->
 									<FromDate><!-- ch-usage: mandatory --><!-- ch-note: Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.  -->2026-05-17T00:00:00Z</FromDate>
-								  <ToDate><!-- ch-usage: mandatory --><!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->2026-05-17T00:00:00Z</ToDate>
-								  <IsAvailable>
+									<ToDate><!-- ch-usage: mandatory --><!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->2026-05-17T00:00:00Z</ToDate>
+									<IsAvailable>
 									<!-- ch-usage: mandatory -->
 									<!-- ch-note: mandatory by NeTEx **TODO** really? -->
 									true
 								  </IsAvailable>
-								  <ValidDayBits>
+									<ValidDayBits>
 									<!-- ch-usage: mandatory-->
 									01010111
 								  </ValidDayBits>
@@ -49,19 +49,17 @@
 								<!-- ch-usage: optional -->
 								<!-- ch-note: Used to indicate Facility changes. -->
 								<facilities>
-							
 									<!-- ch-usage: optional -->
-									
 									<Facility id="ch:1:facility:f1" version="1">
 										<!-- ch-usage: optional -->
 										<validityConditions>
 											<!-- ch-usage: optional -->
 											<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" versionRef="1">
-<!-- ch-usage: optional -->
+												<!-- ch-usage: optional -->
 											</AvailabilityConditionRef>
 										</validityConditions>
 										<ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A___1" versionRef="1">
-<!-- ch-usage: mandatory -->										
+											<!-- ch-usage: mandatory -->
 										</ServiceFacilitySetRef>
 									</Facility>
 								</facilities>
