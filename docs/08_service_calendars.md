@@ -71,7 +71,8 @@ Currently used for InterchangeRuleTimings, later also used for the opening hours
 This assignment overrides the DAY TYPE which was generally chosen for this OPERATING DAY in the overall DAY TYPE assignment plan..
 Designation of one day or group of days
 
-**NOT USED currently **
+We also use DayTypeAssignment currently only for the national holidays.
+
 - [Swiss profile NeTEx definition](../generated/markdown-examples/DayTypeAssignmen.md)
 - [Example snippet](../generated/xml-snippets/DayTypeAssignmen.xml)
 - [General NeTEx definition](../generated/xcore/DayTypeAssignmen.html)
