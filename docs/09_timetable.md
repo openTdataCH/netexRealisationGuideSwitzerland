@@ -1,7 +1,7 @@
 # Timetables
 
 
-
+![Timetable model](media/TimetableModel.png)
 
 ## TimetableFrame
 
@@ -24,9 +24,10 @@ The `TimetableFrame` contains the following allowed elements:
 
 
 [//]: # (TODO: Add TimetableFrame links)
-- [General NeTEx definition ](generated/xcore/TimetableFrame.html)
 - [Swiss profile NeTEx definition](generated/markdown-examples/TimetableFrame.md)
 - [Example snippet](generated/xml-snippets/TimetableFrame.xml)
+- [General NeTEx definition ](generated/xcore/TimetableFrame.html)
+
 
 > [Template](../templates/TimetableFrame.xml)
 
