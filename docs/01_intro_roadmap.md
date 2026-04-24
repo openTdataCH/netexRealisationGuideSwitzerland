@@ -3,27 +3,27 @@ The task performed by the NeTEx interface in Switzerland is the transmission of 
 This document sets out the Swiss-wide standard for the implementation of the NeTEx inter-face and of individual data structures with regard to the mutual exchange of timetable infor-mation for modes of transport ( train, bus, … ) between public transport companies. This in-formation is then made available on the OpenData platform.
 
 The document specifically describes:
-•	which data may be exchanged between public transport partners
-•	which NeTEx elements are supported within public transport in Switzerland
-•	explicit deviations from the corresponding NeTEx
-•	the format of individual data elements
-•	the data flows in terms of content and time
-•	what agreements are necessary with respect to metadata
-•	what needs to be taken into account when operating the interface
-•	how data is to be interpreted
+-	which data may be exchanged between public transport partners
+-	which NeTEx elements are supported within public transport in Switzerland
+-	explicit deviations from the corresponding NeTEx
+-	the format of individual data elements
+-	the data flows in terms of content and time
+-	what agreements are necessary with respect to metadata
+-	what needs to be taken into account when operating the interface
+-	how data is to be interpreted
 
 
 # How to use the document
 This document shows all elements of the norm that are deemed necessary for data exchange for public transport timetables in Switzerland. Each description is based on the text in the standard. However, we tried to enrich the information to simplify implementation. We use fol-lowing sections:
-•	Business Requirements: Telling the business story of the element and how it is used in public transportation in Switzerland
-•	Structure: Contains the detailed physical structure of the element with examples and more information about the business level 
-•	Example: A detailed XML example
+-	Business Requirements: Telling the business story of the element and how it is used in public transportation in Switzerland
+-	Structure: Contains the detailed physical structure of the element with examples and more information about the business level 
+-	Example: A detailed XML example
 
 The tables in the structure section are based on the original XSD schema documentation and/or descriptions from the standard (whenever the XSD documentation is insufficient), but also adapted to the needs of public transport in Switzerland. In some cases the cardinality may change and fields may become mandatory or optional. An additional row is introduced for the specification of such business requirements. Elements that are not used/important, are not shown.
 
 Additionally we use the following information in the business requirement row (following each elment description):
-•	NOT TO BE USED: This element or field is not used in Switzerland. When the data is present, the file will be rejected during import. This element is not ignored, but rejected.
-•	IGNORED AT IMPORT: This element or field may be provided, but it will not be loaded and removed from the data.
+-	NOT TO BE USED: This element or field is not used in Switzerland. When the data is present, the file will be rejected during import. This element is not ignored, but rejected.
+-	IGNORED AT IMPORT: This element or field may be provided, but it will not be loaded and removed from the data.
 
 The business requirement row also specifies value transformations and mapping tables in some cases. Only the provided functions and values are to be used, no deviations are al-lowed.
 
