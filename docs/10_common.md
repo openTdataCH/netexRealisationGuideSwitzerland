@@ -1,15 +1,15 @@
-# Common elements
+# Common Elements
 
-## id/versions and other attributes
+## id/version and other Attributs
 
-* `version` is generelly always set to `"1"`
+* `version` is generally always set to `"1"`
 * We use `responsibilitySetRef` in the following elements xxx
 * We use `nameOfClass` in the XXXRef elements.
 
 All other defined attributes like `created`, `changed`, `modification` are not used. If we need one we will inform about it in the table associated with the element.
 
 ## MultilingualString
-NeTEx uses the type “MultilingualString” for descriptive text elements (e.g. Notice text, Name, ShortName etc.).
+NeTEx uses the type `MultilingualString` for descriptive text elements (e.g. Notice text, Name, ShortName etc.).
 However, only one language can be set for a given element (`<MultilingualString lang=”xx”>`). 
 Additional languages are introduced through the `AlternativeName` and `AlternativeText` object described in tbd and tbd.
 
@@ -18,18 +18,18 @@ For the organisations e.g. there are all languages present.
 The StopPlace names in Switzerland are langugage-independent. 
 
 ## IDs
-It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available. For readability and easy refer-encing, we will use the following principles:
+It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available. For readability and easy referencing, we will use the following principles:
 -	We will use attributes to build the technical IDs.
 -	The class of the object is the beginning of the technical ID in general.
--	Where there is a compelling need for global stability, the ID will be a global ID. This in-formation will be also transmitted separately in a KeyList. 
+-	Where there is a compelling need for global stability, the ID will be a global ID. This information will be also transmitted separately in a `KeyList`. 
 
-ID must be globally unique during importation. 
-IDs may also be partially or completely artificially generated. The persistence of ID between exports is then usually not guaranteed. Important business level keys are stored in ele-ments not in IDs (PublicKey, PrivateKey, KeyList). They must be communicated as attrib-ute in the elements.
+IDs must be globally unique during importation. 
+IDs may also be partially or completely artificially generated. The persistence of ID between exports is then usually not guaranteed. Important business level keys are stored in elements not in IDs (PublicKey, PrivateKey, KeyList). They must be communicated as attribute in the elements.
 
 tbd: Must be revisited and updated.
 
-## Time formatting and journey after midnight
-The time format consists only of the hour, minutes (and seconds) of a 24 hour clock, e.g. '23:55:00'. Times that pass midnight of the current OperatingDay are marked with a DayOffset element. If a ServiceJourney (in a particular Call) runs over midnight, then DayOffset must be set to '1'.
+## Time Formatting and Journey after Midnight
+The time format consists only of the hour, minutes (and seconds) of a 24 hour clock, e.g. `23:55:00`. Times that pass midnight of the current OperatingDay are marked with a DayOffset element. If a ServiceJourney (in a particular Call) runs over midnight, then DayOffset must be set to `1`.
 
 ## FrameDefaults
 With the FrameDefaults we set some basic parameters. When they are not set, we still assume the values that we present in the XML snippet.
@@ -38,16 +38,16 @@ With the FrameDefaults we set some basic parameters. When they are not set, we s
 - [Original NeTEx table](tbd)
 
 ## AlternativeName
-Original NeTEx definition: "The ALTERNATIVE NAME Model defines reusable texts For example we use it to distinguish between two places with the same name in different countries. It complements the ALTERNA-TIVE TEXT entity which is used to provide translations for individual text attribues of elements.".
+Original NeTEx definition: "The ALTERNATIVE NAME Model defines reusable texts. For example, we use it to distinguish between two places with the same name in different countries. It complements the ALTERNATIVE TEXT entity, which is used to provide translations for individual text attribues of elements.".
 
-As a general rule: further names (alias) of a StopPlace or Organisation are modelled with Al-ternativeNames, whereas direct translations of content (for example of Notice Texts) are modelled with AlternativeTexts.
-For names of ORGANISATIONs and STOP PLACEs etc., we use ALTERNATIVE NAME. For text translations, however, [ALTERNATIVE TEXT](#AlternativeText) is used.
+As a general rule: further names (alias) of a StopPlace or Organisation are modelled with AlternativeNames, whereas direct translations of content (for example of Notice texts) are modelled with AlternativeText.
+For names of ORGANISATIONs and STOP PLACEs etc., we use AlternativeName. For text translations, however, [AlternativeText](#AlternativeText) is used.
 
 We only allow the following values for `NameType`: 
 - `alias`
 - `translation`
 
-```
+``` xml 
 <alternativeNames>
   <AlternativeName id="ch:1:AlternativeName:StopPlace:8500010_5" ver-sion="any">
     <NameType>alias</NameType>
