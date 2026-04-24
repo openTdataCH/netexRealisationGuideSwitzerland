@@ -81,7 +81,9 @@ correctly..
 (prCEN TS 16614-PI Profile FV (E)-v7_v3, section 6.2.6) 
 A TOPOGRAPHIC PLACE is a geographical settlement which provides topographical context when searching for or presenting travel information, for example as the origin or destination of a trip.  
 
-**TODO** we need the links of a TopoGraphicPlace and the template.
+- [Swiss profile NeTEx definition](../generated/markdown-examples/TopographicPlace.md)
+- [Example snippet](../generated/xml-snippets/TopographicPlace.xml)
+- [General NeTEx definition ](../generated/xcore/TopographicPlace.html)
 
 ## Business Requirements
 
