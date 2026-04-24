@@ -189,7 +189,21 @@ Set of FACILITies available for a SERVICE JOURNEY or a JOURNEY PART. The set may
 > [Template](../templates/ServiceFacilitySet.xml)
 
 ## JourneyMeeting
-tbd
+**todo** we will have to check if we continue to use it
+
+(NeTEx-2, 7.2.7.3.5)
+A JOURNEY MEETING describes the possibility to plan the schedules according to various interchange possibilities:
+•	Interchange with another service, of which only the arrival or departure time is known.
+•	More generally, service scheduled according to the time fixed for an external event, which will feed, or be fed by, this service.
+•	Organisation of a meeting (hub) between several services, during a defined time band; this is a simplified specification of several interchanges. If needed this could be de-scribed in detail using several INTERCHANGE RULEs or SERVICE JOURNEY IN-TERCHANGEs.
+•	Specification of a rendez-vous (time and place) for any journey that can meet the ap-pointment.
+
+A JOURNEY MEETING may be related to one or several SERVICE JOURNEYs, which are planned according to this JOURNEY MEETING. It may be timed by an earliest time (e.g. the arrival time of a feeder line, plus the duration of a possible transfer) or by a latest time (e.g. the opening hour of the school served by the journey), or both (e.g. the time band of a hub).
+
+A JOURNEY MEETING is located at one or several STOP POINTs, which shall be also clas-sified as TIMING POINTs. It is planned in principle for VEHICLE JOURNEYs specified for the same DAY TYPE. The timing reference of these VEHICLE JOURNEYs will probably be chosen according to the JOURNEY MEETING specified.
+
+In NeTEx consequences of any DEFAULT INTERCHANGE or JOURNEY MEETING used in the planning phase that needs to be exchanged should be expressed as the resulting SERVICE JOURNEY timings, INTERCHANGE RULEs and/or SERVICE JOURNEY INTERCHANGEs.
+InterchangeRules are used to connect different ServiceJourney
 
 [//]: # (TODO: Add JourneyMeeting links)
 - [General NeTEx definition ](generated/xcore/JourneyMeeting.html)
