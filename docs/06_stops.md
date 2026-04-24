@@ -15,10 +15,9 @@ See the following class diagram for the most important objects of the SITE FRAME
 
 ![Site Model Class Diagram](./media/SiteModel.png)
 
-[//]: # (TODO: Add Site Frame links)
-- [General NeTEx definition ](generated/xcore/StopPlace.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/StopPlace.md)
-- [Example snippet](generated/xml-snippets/StopPlace.xml)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/StopPlace.md)
+- [Example snippet](../generated/xml-snippets/StopPlace.xml)
+- [General NeTEx definition ](../generated/xcore/StopPlace.html)
 
 # StopPlace
 
@@ -41,10 +40,9 @@ It is important to notice that the main connection between Didok codes and the N
  
 There will be meta-stations added with their own code. In some cases these are added for operational or searching reasons. 
 
-[//]: # (TODO: Add StopPlace links)
-- [General NeTEx definition ](generated/xcore/StopPlace.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/StopPlace.md)
-- [Example snippet](generated/xml-snippets/StopPlace.xml)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/StopPlace.md)
+- [Example snippet](../generated/xml-snippets/StopPlace.xml)
+- [General NeTEx definition ](../generated/xcore/StopPlace.html)
 
 > The **Centroid** always contains a location:
 > - The main coordinates are given as WSG84.
@@ -74,15 +72,16 @@ QUAYs are mapped with the following resolution:
 In future the modelling of the Quays might adhere to EPIAP (NeTEx part 6) more to make sure that accessibility features can be modelled 
 correctly.. 
 
-[//]: # (TODO: Add Quay links)
-- [General NeTEx definition ](generated/xcore/Quay.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/Quay.md)
-- [Example snippet](generated/xml-snippets/Quay.xml)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/Quay.md)
+- [Example snippet](../generated/xml-snippets/Quay.xml)
+- [General NeTEx definition ](../generated/xcore/Quay.html)
 
 # TopographicPlace
 
 (prCEN TS 16614-PI Profile FV (E)-v7_v3, section 6.2.6) 
 A TOPOGRAPHIC PLACE is a geographical settlement which provides topographical context when searching for or presenting travel information, for example as the origin or destination of a trip.  
+
+**TODO** we need the links of a TopoGraphicPlace and the template.
 
 ## Business Requirements
 
