@@ -25,7 +25,7 @@ The relevant reference data is:
 -	Facilities
 
 ## Timeliness
-
+**TODO**
 ### Data supplier side
 The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality. Complete means all timetable data in the responsibility of the provider for the whole timetable period.
 
@@ -33,3 +33,7 @@ The data provider is responsible for the timely delivery of the complete timetab
 The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality. Complete means all timetable data in the responsibility of the provider for the whole timetable period.
 
 **TODO**  More guiding principles?
+
+## Limits to scope
+This realisation specification for public transport in Switzerland (NeTEx) is an addition to the official NeTEx standard. It contains the scope of NeTEx possibilities supported by SKI.
+Beside this document there will be an agreement with each partner about more technical and operational details of the delivery. In general there are no differences in the implementation to this reference document. Any necessary technical changes need to be discussed with SKI.
