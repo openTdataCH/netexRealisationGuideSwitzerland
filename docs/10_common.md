@@ -1,60 +1,78 @@
-# Common elements
+# Common Elements
 
-## id/versions and other attributes
+## Rules for common Attributes
 
-* `version` is generelly always set to `"1"`
-* We use `responsibilitySetRef` in the following elements xxx
-* We use `nameOfClass` in the XXXRef elements.
+The following rules apply to common attributes:
 
-All other defined attributes like `created`, `changed`, `modification` are not used. If we need one we will inform about it in the table associated with the element.
+| Attribute     | Rule                                                  |
+|---------------|-------------------------------------------------------|
+| `id`          | See description regarding [technical IDs](#ids) below |
+| `version`     | is always set to `"1"`                                |
+| `responsibilitySetRef`     | We use `responsibilitySetRef` in the following elements xxx |
+| `nameOfClass` | We use `nameOfClass` in the XXXRef elements.          |
 
-## MultilingualString
-NeTEx uses the type “MultilingualString” for descriptive text elements (e.g. Notice text, Name, ShortName etc.).
-However, only one language can be set for a given element (`<MultilingualString lang=”xx”>`). 
-Additional languages are introduced through the `AlternativeName` and `AlternativeText` object described in tbd and tbd.
+### IDs
+IDs must be globally unique during importation. 
+They may also be partially or completely artificially generated. The persistence of these IDs between exports is then 
+usually not guaranteed. 
+Important business level keys are stored in elements (`PublicKey`, `PrivateKey`, `KeyList`), not in IDs.
 
-For the organisations e.g. there are all languages present.
+It is important to note that internal or artificially generated IDs should not be used to extract content whenever 
+business keys and attributes are available. 
 
-The StopPlace names in Switzerland are langugage-independent. 
-
-## IDs
-It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available. For readability and easy refer-encing, we will use the following principles:
--	We will use attributes to build the technical IDs.
--	The class of the object is the beginning of the technical ID in general.
--	Where there is a compelling need for global stability, the ID will be a global ID. This in-formation will be also transmitted separately in a KeyList. 
-
-ID must be globally unique during importation. 
-IDs may also be partially or completely artificially generated. The persistence of ID between exports is then usually not guaranteed. Important business level keys are stored in ele-ments not in IDs (PublicKey, PrivateKey, KeyList). They must be communicated as attrib-ute in the elements.
+For readability and easy referencing, we will use the following principles:
+-	We use the class of the object to prefix the technical ID like `ch:1:Operator:11` for the ID of an `Operator` element.
+-   We use appropriate business values to build technical IDs where available, e.g. `ch:1:TypeOfProductCategory:TER`, 
+where the value of `ShortName` of the `TypeOfProductCategory` is used to build the technical ID.
+-	Where there is a compelling need for global stability, the ID will be a global ID. 
+This information will be also transmitted separately in a `KeyList`. 
 
 tbd: Must be revisited and updated.
 
-## Time formatting and journey after midnight
-The time format consists only of the hour, minutes (and seconds) of a 24 hour clock, e.g. '23:55:00'. Times that pass midnight of the current OperatingDay are marked with a DayOffset element. If a ServiceJourney (in a particular Call) runs over midnight, then DayOffset must be set to '1'.
+All other defined attributes like `created`, `changed`, `modification` are not used. If we need one, we will inform about it in the table associated with the element.
+
+## MultilingualString
+NeTEx uses the type `MultilingualString` for descriptive text elements (e.g. `Notice` text, `Name`, `ShortName` etc.).
+However, only one language can be set for a given element (e.g. `<MultilingualString lang=”fr”>`). 
+Additional languages are introduced through the [AlternativeName](#alternativename) and [AlternativeText](#alternativetext) element described below.
+
+For [Organisations](#organisation--operator--authority) e.g. there are all languages present.
+
+The `StopPlace` names in Switzerland are language-independent.
+
+## Time Formatting and Journey after Midnight
+The time format consists only of the hours, minutes (and seconds) of a 24 hour clock, e.g. `23:55:00`. 
+Times that pass midnight of the current `OperatingDay` are marked with a `DayOffset` element. 
+If a `ServiceJourney` (in a particular `Call`) runs over midnight, then `DayOffset` must be set to `1`.
 
 ## FrameDefaults
-With the FrameDefaults we set some basic parameters. When they are not set, we still assume the values that we present in the XML snippet.
+With the FrameDefaults we set some basic parameters. When they are not set, we still assume the values that we present 
+in the XML snippet.
 - [Swiss profile tables](../generated/markdown-examples/FrameDefaults.md)
 - [XML Snippet](../generated/xml-snippets/FrameDefaults.xml)
 - [Original NeTEx table](tbd)
 
 ## AlternativeName
-Original NeTEx definition: "The ALTERNATIVE NAME Model defines reusable texts For example we use it to distinguish between two places with the same name in different countries. It complements the ALTERNA-TIVE TEXT entity which is used to provide translations for individual text attribues of elements.".
+> **Original NeTEx Definition:**<br/>
+> "The ALTERNATIVE NAME Model defines reusable texts. For example, we use it to distinguish between two places with the same name in different countries. It complements the ALTERNATIVE TEXT entity, which is used to provide translations for individual text attribues of elements.".
 
-As a general rule: further names (alias) of a StopPlace or Organisation are modelled with Al-ternativeNames, whereas direct translations of content (for example of Notice Texts) are modelled with AlternativeTexts.
-For names of ORGANISATIONs and STOP PLACEs etc., we use ALTERNATIVE NAME. For text translations, however, [ALTERNATIVE TEXT](#AlternativeText) is used.
+As a general rule: further names (aliases) of `StopPlace` or `Organisation` elements are modelled with `AlternativeName`, 
+whereas direct translations of content (for example of `Notice` texts) are modelled with AlternativeText.
+For names of `Organisation` and `StopPlace` elements etc., we use `AlternativeName`. 
+For text translations, however, [AlternativeText](#AlternativeText) is used.
 
 We only allow the following values for `NameType`: 
 - `alias`
 - `translation`
 
-```
+``` xml 
 <alternativeNames>
-  <AlternativeName id="ch:1:AlternativeName:StopPlace:8500010_5" ver-sion="any">
+  <AlternativeName id="ch:1:AlternativeName:StopPlace:8500010_5" version="any">
     <NameType>alias</NameType>
     <TypeOfName>offical</TypeOfName>
     <Name lang="de">Basilea FFS</Name>
   </AlternativeName>
-  <AlternativeName id="ch:1:AlternativeName:StopPlace:8500010_8" ver-sion="any">
+  <AlternativeName id="ch:1:AlternativeName:StopPlace:8500010_8" version="any">
     <NameType>alias</NameType>
     <TypeOfName>offical</TypeOfName>
     <Name lang="de">Bale</Name>
@@ -66,13 +84,25 @@ We only allow the following values for `NameType`:
 - [XML Snippet](generated/xml-snippets/AlternativeName.xml)
 
 ## AlternativeText
-Original definition: "It is sometime necessary to provide seval variants of a single text, in particular if the infor-mation is required in several national languages. The AlternativeText element is a generic way of providing such variants for any text attribute of a DataManagedObject. It can be seen as a complement to the AlternativeName mechanism, and can be used to provide an alias for any description or text attribute.
+> **Original NeTEx Definition:** <br>
+> It is sometime necessary to provide seval variants of a single text, in particular if the infor-mation is required in several national languages. 
+> The AlternativeText element is a generic way of providing such variants for any text attribute of a DataManagedObject. 
+> It can be seen as a complement to the AlternativeName mechanism, and can be used to provide an alias for any description or text attribute.
 
-The AlternativeText is part of a DataManagedObject and references the name of the attribute in the NeTEx Metamodel) for which it is providing an alternative. It contains the alternative text as an attribute of type MultilingualString which indicates the language. In addition the text may have a ‘Use for’ language attribute to indicate a second language for which it may be used as an acceptable presentation if there is no native language alternative; normally this will be the same as the language of the string, but might be different."
+[comment US: term attribute is confusing. Text is in an element]: # 
+The `AlternativeText` is part of a `DataManagedObject` and references the name of the attribute (in terms of the NeTEx 
+Metamodel), for which it provides an alternative. 
+It contains the alternative text as an attribute of type `MultilingualString` which indicates the language. 
 
-As a general rule: further names (alias) of a StopPlace or Organisation are modelled with [AlternativeNames](#AlternativeName), whereas direct translations of content (for example of Notice Texts) are modelled with AlternativeTexts.
+In addition, the `AlternativeText` element may have a `useForLanguage` attribute to indicate a second language for which it may be used as 
+an acceptable presentation, if there is no native language alternative; normally this will be the same as the language 
+of the string, but might be different.
+
+As a general rule: further names (aliases) of a `StopPlace` or `Organisation` are modelled with [AlternativeNames](#AlternativeName), whereas 
+direct translations of content (for example of `Notice` texts) are modelled with `AlternativeTexts`.
 tbd 5.2
-```
+
+``` xml
 <notices>
     <Notice id=”ch:1:Notice:Hin-1229900” version=”any”>
       <alternativeTexts>
@@ -92,11 +122,10 @@ tbd 5.2
 </notices>
 ```
 
-```
+``` xml
 <AlternativeText attributeName="Name">
   <Text lang="it">Train Express Regional</Text>
 </AlternativeText>
-
 ```
 
 - [Swiss profile tables](../generated/markdown-examples/AlternativeText.md)
@@ -127,7 +156,7 @@ These 2 roles are represented in the ResponsibilitySet element.
 - [Swiss profile tables](../generated/markdown-examples/ResponsibilitySet.md)
 - [XML Snippet](../generated/xml-snippets/ResponsibilitySet.xml)
 
-```
+``` xml
 <responsibilitySets>
     <ResponsibilitySet id="ch:1:ResponsibilitySet:33_801-5678" version="any">
         <!-- For Journey from BLS with replacement Journey by PAG -->
@@ -179,7 +208,7 @@ TypeOfNotice is used within a [Notice](#Notice) to give information, what it is 
 |10|Angebot|Most of the ServiceFacilitySet are also transmitted as Notice. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to ServiceFacilitySets. To deliver those special cases as Notices we need an additional TypeOfNotice.|
 |11|Region|Postauto is divided into several regions.|
 
-```
+``` xml
 <ValueSet id="ch:1:ValueSet:notices" version="any" nameOfClass="TypeOfNotice">
   <values>
     <TypeOfNotice id="ch:1:TypeOfNotice:11" version="any">
@@ -208,7 +237,8 @@ TypeOfNotice is used within a [Notice](#Notice) to give information, what it is 
 ### TypeOfProductCategory
 For the ServiceJourneys exclusively provided in Switzerland, only the ProductCategories de-fined in the document "06 Harmonisierung Verkehrsmittel" (see https://www.allianceswisspass.ch/de/tarife-vorschriften/uebersicht/V580/Produkte-der-V580-FIScommun-1) may be referenced. 
 For ServiceJourneys provided in other countries or partially in Switzerland, there are no re-strictions, provided that the category does not overlap with the ProductCategories defined for Switzerland.
-```
+
+``` xml
 <ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="any" nameOfClass="TypeOfProductCategory">
   <Name>ProductCategories</Name>
   <values>
@@ -247,7 +277,8 @@ TypeOfService indicates the purpose of a ServiceJourney, for example, whether if
 Actually there is only one allowed value that we use in the Swiss profile: Only the PublicJourney are to be exchanged.
 
 So, this is what needs to be in the TimetableFrame:
-```
+
+``` xml
 <typesOfService>
     <TypeOfService id="ch:1:TypeOfService:1" version="any">
         <Name lang="en">PublicJourney</Name>
@@ -298,7 +329,7 @@ This means that a given Facility (e.g. restaurant or diaper changing table) is s
 
 tbd 10.13.2ff
 
-```
+``` xml
 <ServiceFacilitySet id="ch:1:ServiceFacilitySet:A___2" version="any">
   <alternativeTexts>
     <AlternativeText attributeName="Description">
