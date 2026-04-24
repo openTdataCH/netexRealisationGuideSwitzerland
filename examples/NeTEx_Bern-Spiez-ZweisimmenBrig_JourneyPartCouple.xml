@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ResourceFrame version="1" id="ch:1:ResourceFrame:BernSpiez01" xmlns="http://www.netex.org.uk/netex">
+					<typesOfValue>
+						<PurposeOfJourneyPartition version="1" id="ch:1:PurposeOfJourneyPartition:coupling">
+							<Name>coupling</Name>
+							<Description>Flügelung / Vereinigung</Description>
+						</PurposeOfJourneyPartition>
+					</typesOfValue>
+				</ResourceFrame>
+				<TimetableFrame version="1" id="ch:1:TimetableFrame:BernSpiez01" xmlns="http://www.netex.org.uk/netex">
+					<!-- Zugnummern ForAdvertisement: Für Fahrgastinformation ForProduction: Betriebliche Zugnummer -->
+					<vehicleJourneys>
+						<!-- beide Fahrten als durchgehende Fahrten modelliert -->
+						<ServiceJourney version="1" id="ch:1:ServiceJourney:BernZweisimmen">
+							<Name>R11 6823 Bern - Zweisimmen</Name>
+							<parts>
+								<JourneyPart version="1" id="ch:1:JourneyPart:BernSpiez_Fluegel">
+									<Description>Flügelteil Bern-Spiez</Description>
+									<TrainNumberRef ref="ch:1:TrainNumber:4171" version="1"/>
+									<FromStopPointRef ref="ch:1:ScheduledStopPoint:Bern" version="1"/>
+									<ToStopPointRef ref="ch:1:ScheduledStopPoint:Spiez" version="1"/>
+									<StartTime>08:00:00</StartTime>
+									<EndTime>08:20:00</EndTime>
+									<PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:coupling" version="1"/>
+									<journeyPartPositions>
+										<JourneyPartPosition version="1" id="ch:1:JourneyPartPosition:BernSpiezFluegel:at-Bern">
+											<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:Bern" version="1"/>
+											<PositionInTrain>2</PositionInTrain>
+										</JourneyPartPosition>
+									</journeyPartPositions>
+								</JourneyPart>
+								<JourneyPart version="1" id="ch:1:JourneyPart:SpiezZweisimmen">
+									<Description>Flügel Zweisimmen</Description>
+									<TrainNumberRef ref="ch:1:TrainNumber:6823" version="1"/>
+									<FromStopPointRef ref="ch:1:ScheduledStopPoint:Spiez" version="1"/>
+									<ToStopPointRef ref="ch:1:ScheduledStopPoint:Zweisimmen" version="1"/>
+									<StartTime>08:22:00</StartTime>
+									<EndTime>09:34:00</EndTime>
+									<!-- ab hier nur noch ein Zugteil - <journeyPartPositions> könnte man auch weglassen -->
+									<journeyPartPositions>
+										<JourneyPartPosition version="1" id="ch:1:JourneyPartPosition:SpiezZweisimmen:at-Spiez">
+											<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:Spiez" version=""/>
+											<PositionInTrain>1</PositionInTrain>
+										</JourneyPartPosition>
+									</journeyPartPositions>
+								</JourneyPart>
+							</parts>
+						</ServiceJourney>
+						<ServiceJourney version="1" id="ch:1:ServiceJourney:BernBrig">
+							<Name>RE1 4171/4271 Bern - Brig</Name>
+							<parts>
+								<JourneyPart version="1" id="ch:1:JourneyPart:BernSpiez">
+									<Description>Stammzug Bern-Spiez</Description>
+									<TrainNumberRef ref="ch:1:TrainNumber:4171" version="1" />
+									<FromStopPointRef ref="ch:1:ScheduledStopPoint:Bern" version="1"/>
+									<ToStopPointRef ref="ch:1:ScheduledStopPoint:Spiez" version="1"/>
+									<StartTime>08:00:00</StartTime>
+									<EndTime>08:20:00</EndTime>
+									<PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:coupling" version="1"/>
+									<journeyPartPositions>
+										<JourneyPartPosition version="1" id="ch:1:JourneyPartPosition:BernSpiez:at-Bern">
+											<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:Bern" version="1"/>
+											<PositionInTrain>1</PositionInTrain>
+										</JourneyPartPosition>
+									</journeyPartPositions>
+								</JourneyPart>
+								<JourneyPartRef ref="ch:1:JourneyPart:SpiezBrig"/>
+								<JourneyPart version="1" id="ch:1:JourneyPart:SpiezBrig">
+									<Description>Flügel Brig</Description>
+									<TrainNumberRef ref="ch:1:TrainNumber:4271" version="1"/>
+									<FromStopPointRef ref="ch:1:ScheduledStopPoint:Spiez" version="1"/>
+									<ToStopPointRef ref="ch:1:ScheduledStopPoint:Brig" version="1"/>
+									<StartTime>08:23:00</StartTime>
+									<EndTime>09:54:00</EndTime>
+									<!-- ab hier nur noch ein Zugteil - <journeyPartPositions> könnte man auch weglassen -->
+									<journeyPartPositions>
+										<JourneyPartPosition version="1" id="ch:1:JourneyPartPosition:SpiezBrig:at-Spiez">
+											<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:Spiez" version="1"/>
+											<PositionInTrain>1</PositionInTrain>
+										</JourneyPartPosition>
+									</journeyPartPositions>
+								</JourneyPart>
+							</parts>
+						</ServiceJourney>
+					</vehicleJourneys>
+					<trainNumbers>
+						<TrainNumber version="1" id="ch:1:TrainNumber:4171">
+							<Description>RE1 4171 Bern - Spiez (Stammfahrt, Flügelung in Spiez)</Description>
+							<ForAdvertisement>4171</ForAdvertisement>
+							<!-- die betriebliche Zugnummer kann auf der gemeinsam genutzten Strecke abweichen -->
+							<ForProduction>6823</ForProduction>
+						</TrainNumber>
+						<TrainNumber version="1" id="ch:1:TrainNumber:4271">
+							<Description>RE1 4271 Spiez - Brig (Flügel via Lötschberg)</Description>
+							<ForAdvertisement>4271</ForAdvertisement>
+							<ForProduction>4271</ForProduction>
+						</TrainNumber>
+						<TrainNumber version="1" id="ch:1:TrainNumber:6823">
+							<Description>R11 6823 Spiez - Zweisimmen (Flügel via Simmental)</Description>
+							<ForAdvertisement>6823</ForAdvertisement>
+							<ForProduction>6823</ForProduction>
+						</TrainNumber>
+					</trainNumbers>
+					<journeyPartCouples>
+						<JourneyPartCouple version="1" id="ch:1:JourneyPartCouple:BernSpiez">
+							<Description>Gekoppelte Fahrt Bern-Spiez (RE1 4171 + R11 6823)</Description>
+							<StartTime>08:00:00</StartTime>
+							<EndTime>08:20:00</EndTime>
+							<FromStopPointRef ref="ch:1:ScheduledStopPoint:Bern"/>
+							<ToStopPointRef ref="ch:1:ScheduledStopPoint:Spiez"/>
+							<MainPartRef ref="ch:1:JourneyPart:BernSpiez"/>
+							<journeyParts>
+								<JourneyPartRef ref="ch:1:JourneyPart:BernSpiez"/>
+								<JourneyPartRef ref="ch:1:JourneyPart:BernSpiez_Fluegel"/>
+							</journeyParts>
+						</JourneyPartCouple>
+					</journeyPartCouples>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

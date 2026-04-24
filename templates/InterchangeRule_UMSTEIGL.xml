@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Template</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrmae" version="1">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame" version="1">
+					<interchangeRules>
+						<InterchangeRule id="ch:1:InterchangeRule:1696906_TA_0_86400" version="1">
+							<!-- ch-root -->
+							<!-- ch-usage: mandatory -->
+							<!-- ch-note: transfer times between Line/Directions at a given stop (UMSTEIGL) -->
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:TA" versionRef="1">
+									<!-- ch-usage: expected -->
+								</AvailabilityConditionRef>
+							</validityConditions>
+							<StaySeated><!-- ch-usage: mandatory -->false</StaySeated>
+							<Planned><!-- ch-usage: mandatory -->true</Planned>
+							<Guaranteed><!-- ch-usage: mandatory -->false</Guaranteed>
+							<MinimumTransferTime><!-- ch-usage: expected -->PT2M</MinimumTransferTime>
+							<MaximumTransferTime><!-- ch-usage: expected -->PT2M</MaximumTransferTime>
+							<timings>
+								<!-- ch-usage: optional -->
+								<InterchangeRuleTiming id="ch:1:InterchangeRuleTiming:1696906:0:86400" version="1">
+									<!-- ch-usage: optional -->
+									<TimebandRef ref="ch:1:Timeband:0:0" versionRef="1">
+										<!-- ch-usage: optional -->
+									</TimebandRef>
+								</InterchangeRuleTiming>
+							</timings>
+							<FeederFilter>
+								<!-- ch-usage: mandatory -->
+								<StopPlaceRef ref="ch:generated:StopPlace:8507483" versionRef="1">
+									<!-- ch-usage: mandatory -->
+								</StopPlaceRef>
+								<LineInDirectionRef>
+									<!-- ch-usage: mandatory -->
+									<LineRef ref="ch:generated:Line:33.PE.GPX" versionRef="1">
+										<!-- ch-usage: mandatory -->
+									</LineRef>
+								</LineInDirectionRef>
+								<AdjacentStopPlaceRef ref="ch:generated:StopPlace:8507493" versionRef="1">
+									<!-- ch-usage: optional -->
+								</AdjacentStopPlaceRef>
+							</FeederFilter>
+							<DistributorFilter>
+								<!-- ch-usage: mandatory -->
+								<StopPlaceRef ref="ch:generated:StopPlace:8507483" versionRef="1">
+									<!-- ch-usage: mandatory -->
+								</StopPlaceRef>
+								<LineInDirectionRef>
+									<!-- ch-usage: mandatory -->
+									<LineRef ref="ch:generated:Line:11.IC.IC81" versionRef="1">
+										<!-- ch-usage: mandatory -->
+									</LineRef>
+									<DirectionRef ref="ch:1:Direction:R" versionRef="1">
+										<!-- ch-usage: optional-->
+									</DirectionRef>
+								</LineInDirectionRef>
+								<AdjacentStopPlaceRef ref="ch:generated:StopPlace:8507493" versionRef="1">
+									<!-- ch-usage: optional -->
+								</AdjacentStopPlaceRef>
+							</DistributorFilter>
+						</InterchangeRule>
+						<InterchangeRule id="ch:1:InterchangeRule:1692675_80600_18840_18960" version="1">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:80600" versionRef="1"/>
+							</validityConditions>
+							<StaySeated>false</StaySeated>
+							<Planned>true</Planned>
+							<Guaranteed>false</Guaranteed>
+							<MinimumTransferTime>PT1M</MinimumTransferTime>
+							<MaximumTransferTime>PT2M</MaximumTransferTime>
+							<timings>
+								<InterchangeRuleTiming id="ch:1:InterchangeRuleTiming:1692675:18840:18960" version="1">
+									<TimebandRef ref="ch:1:Timeband:18840:18960" versionRef="1"/>
+								</InterchangeRuleTiming>
+							</timings>
+							<FeederFilter>
+								<StopPlaceRef ref="ch:generated:StopPlace:8506131" versionRef="1"/>
+								<LineInDirectionRef>
+									<LineRef ref="ch:generated:Line:65.S.S1" versionRef="1"/>
+									<DirectionRef ref="ch:1:Direction:R" versionRef="1"/>
+								</LineInDirectionRef>
+								<AdjacentStopPlaceRef ref="ch:generated:StopPlace:8506128" versionRef="1"/>
+								<ServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:11111-001_91001C.j26_1012" versionRef="1"/>
+							</FeederFilter>
+							<DistributorFilter>
+								<StopPlaceRef ref="ch:generated:StopPlace:8506131" versionRef="1"/>
+								<LineInDirectionRef>
+									<LineRef ref="ch:generated:Line:11.IR.IR75" versionRef="1"/>
+									<DirectionRef ref="ch:1:Direction:R" versionRef="1"/>
+								</LineInDirectionRef>
+								<AdjacentStopPlaceRef ref="ch:generated:StopPlace:8506105" versionRef="1"/>
+								<ServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100001:2106-001_91075_.j26_802" versionRef="1"/>
+							</DistributorFilter>
+						</InterchangeRule>
+					</interchangeRules>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

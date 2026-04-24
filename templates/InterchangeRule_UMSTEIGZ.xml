@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Template</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrmae" version="1">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame" version="1">
+					<interchangeRules>
+						<InterchangeRule id="ch:1:InterchangeRule:1692675_80600_18840_18960" version="1">
+							<!-- ch-root -->
+							<!-- ch-usage: mandatory -->
+							<!-- ch-note: transfer times between ServiceJourneys (UMSTEIGZ) -->
+							<validityConditions>
+								<!-- ch-usage: expected -->
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:80600" versionRef="1">
+									<!-- ch-usage: expected -->
+								</AvailabilityConditionRef>
+							</validityConditions>
+							<StaySeated><!-- ch-usage: mandatory -->false</StaySeated>
+							<Planned><!-- ch-usage: mandatory -->true</Planned>
+							<Guaranteed><!-- ch-usage: optional -->false</Guaranteed>
+							<MinimumTransferTime><!-- ch-usage: expected -->PT1M</MinimumTransferTime>
+							<MaximumTransferTime><!-- ch-usage: expected -->PT2M</MaximumTransferTime>
+							<timings>
+								<!-- ch-usage: expected -->
+								<InterchangeRuleTiming id="ch:1:InterchangeRuleTiming:1692675:18840:18960" version="1">
+									<!-- ch-usage: expected -->
+									<!-- ch-see -->
+									<TimebandRef ref="ch:1:Timeband:18840:18960" versionRef="1"/>
+								</InterchangeRuleTiming>
+							</timings>
+							<FeederFilter>
+								<!-- ch-usage: mandatory -->
+								<StopPlaceRef ref="ch:2:StopPlace:8506131" versionRef="any">
+									<!-- ch-usage: mandatory -->
+								</StopPlaceRef>
+								<LineInDirectionRef>
+									<!-- ch-usage: mandatory -->
+									<LineRef ref="ch:2:Line:65.S.S1" versionRef="any">
+										<!-- ch-usage: mandatory -->
+									</LineRef>
+									<DirectionRef ref="ch:1:Direction:R" versionRef="any">
+										<!-- ch-usage: expected -->
+									</DirectionRef>
+								</LineInDirectionRef>
+								<AdjacentStopPlaceRef ref="ch:2:StopPlace:8506128" versionRef="1">
+									<!-- ch-usage: expected -->
+								</AdjacentStopPlaceRef>
+								<ServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:11111-001_91001C.j26_1012" versionRef="1">
+									<!-- ch-usage: mandatory -->
+								</ServiceJourneyRef>
+							</FeederFilter>
+							<DistributorFilter>
+								<StopPlaceRef ref="ch:2:StopPlace:8506131" versionRef="any">
+									<!-- ch-usage: mandatory -->
+								</StopPlaceRef>
+								<LineInDirectionRef>
+									<!-- ch-usage: expected -->
+									<LineRef ref="ch:2:Line:11.IR.IR75" versionRef="any">
+										<!-- ch-usage: mandatory -->
+									</LineRef>
+									<DirectionRef ref="ch:1:Direction:R" versionRef="any">
+										<!-- ch-usage: mandatory -->
+									</DirectionRef>
+								</LineInDirectionRef>
+								<AdjacentStopPlaceRef ref="ch:2:StopPlace:8506105" versionRef="1">
+									<!-- ch-usage: expected -->
+								</AdjacentStopPlaceRef>
+								<ServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100001:2106-001_91075_.j26_802" versionRef="1">
+									<!-- ch-usage: mandatory -->
+								</ServiceJourneyRef>
+							</DistributorFilter>
+						</InterchangeRule>
+					</interchangeRules>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

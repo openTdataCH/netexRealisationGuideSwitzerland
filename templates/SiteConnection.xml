@@ -7,25 +7,27 @@
 			<frames>
 				<ServiceFrame id="ch:1:ServiceFrame" version="1">
 					<connections>
-						<SiteConnection id="generated" version="1">
+						<SiteConnection id="ch:1:SiteConnection:8506302-8589913" version="1">
 							<!-- ch-note: SiteConnection are used only in the main file and not in timetable files.-->
 							<!-- ch-usage: expected -->
 							<!-- ch-root-->
 							<WalkTransferDuration>
 								<!-- ch-usage: mandatory -->
-								<DefaultDuration><!-- ch-usage: mandatory -->PT5M</DefaultDuration>
+								<DefaultDuration><!-- ch-usage: mandatory -->PT13M</DefaultDuration>
 							</WalkTransferDuration>
-							<BothWays><!-- ch-usage: optional -->false</BothWays>
+							<BothWays><!-- ch-usage: mandatory -->false</BothWays>
 							<From>
 								<!-- ch-usage: mandatory -->
-								<StopPlaceRef ref="ch:1:sloid:1231" versionRef="1">
+								<!-- ch-note: Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. -->
+								<StopPlaceRef ref="ch:2:StopPlace:8506302" versionRef="1">
 									<!-- ch-usage: mandatory -->
 								</StopPlaceRef>
 							</From>
 							<To>
 								<!-- ch-usage: mandatory -->
-								<StopPlaceRef ref="ch:1:sloid:1232" versionRef="1">
-									<!-- ch-usage: mandatroy -->
+								<!-- ch-note: Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. -->
+								<StopPlaceRef ref="ch:2:StopPlace:8589913" versionRef="1">
+									<!-- ch-usage: mandatory -->
 								</StopPlaceRef>
 							</To>
 						</SiteConnection>
