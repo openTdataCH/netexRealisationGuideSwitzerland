@@ -175,9 +175,9 @@ TypeOfNotice is used within a [Notice](#Notice) to give information, what it is 
 |--|--|--|
 |1|Allgemeiner Hinweis|General information text|
 |2|Zugname|Name|Name of the train. Is not used, as this is stored in ServiceJourneyName |
-|3|Gleis-Angabe|Quay and Quay section information. Will be put into Quay|
+|3|Gleis-Angabe|Quay and Quay section information. Is no longer used. Is put into Quay.|
 |10|Angebot|Most of the ServiceFacilitySet are also transmitted as Notice. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to ServiceFacilitySets. To deliver those special cases as Notices we need an additional TypeOfNotice.|
-|11|Region|Postauto is divided into several regions.|
+|11|Region|Postauto is divided into several regions. Will be omitted. If anything this will be done with different constructs. **TODO**|
 
 ```
 <ValueSet id="ch:1:ValueSet:notices" version="any" nameOfClass="TypeOfNotice">
