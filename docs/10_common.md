@@ -264,14 +264,14 @@ The Organisations are identified by their GO-number in Switzerland (see the http
 
 The list contains all transport enterprises for which timetable information is delivered. 
 The Operators are identified by their GO-number in Switzerland. The TU-Code is to be used for operators of other countries. 
-The PAG company (GO = 801) is organised in different parts for managing and identifying journeys.  These parts are represented by the OrganisationPart and TransportAdministrative-Zone elements.
+The PAG company (GO = 801) is organised in different parts for managing and identifying journeys.  These parts are represented by the OrganisationPart and TransportAdministrative-Zone elements. **TODO**
 To be noted:  From 2024, organisations will also be identified by SBOIDs.
 The operators must be set. 
 
 The sboid and GO number will always be mainly stored in the KeyList.
+**TODO**: OrganisationPart needs to be studied! 6.4.1
 
-tbd: OrganisationPart needs to be studied! 6.4.1
-
+`OperatorRef` on a `Line` is always the "Konzessionär". If a different `Operator` is running a given `ServiceJourney`, then this is reflected in the `ServiceJourney` having a different `OperatorRef`.
 - [Swiss profile tables](../generated/markdown-examples/Operator.md)
 - [XML Snippet](../generated/xml-snippets/Operator.xml)
 
