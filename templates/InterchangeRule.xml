@@ -26,7 +26,7 @@
 								<InterchangeRuleTiming id="ch:1:InterchangeRuleTiming:1696906:0:86400" version="1">
 									<!-- ch-usage: optional -->
 									<TimebandRef ref="ch:1:Timeband:0:0" versionRef="1">
-										<!-- ch-usage: optional -->
+										<!-- ch-usage: mandatory -->
 									</TimebandRef>
 								</InterchangeRuleTiming>
 							</timings>
@@ -36,17 +36,20 @@
 									<!-- ch-usage: mandatory -->
 								</StopPlaceRef>
 								<LineInDirectionRef>
-									<!-- ch-usage: mandatory -->
+									<!-- ch-usage: expected -->
 									<LineRef ref="ch:generated:Line:33.PE.GPX" versionRef="1">
 										<!-- ch-usage: mandatory -->
 									</LineRef>
-																		<DirectionRef ref="ch:1:Direction:R" versionRef="1">
+									<DirectionRef ref="ch:1:Direction:R" versionRef="1">
 										<!-- ch-usage: optional-->
 									</DirectionRef>
 								</LineInDirectionRef>
 								<AdjacentStopPlaceRef ref="ch:generated:StopPlace:8507493" versionRef="1">
 									<!-- ch-usage: optional -->
 								</AdjacentStopPlaceRef>
+								<ServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:11111-001_91001C.j26_1012" versionRef="1">
+									<!-- ch-usage: optional -->
+								</ServiceJourneyRef>
 							</FeederFilter>
 							<DistributorFilter>
 								<!-- ch-usage: mandatory -->
@@ -54,7 +57,7 @@
 									<!-- ch-usage: mandatory -->
 								</StopPlaceRef>
 								<LineInDirectionRef>
-									<!-- ch-usage: mandatory -->
+									<!-- ch-usage: optional -->
 									<LineRef ref="ch:generated:Line:11.IC.IC81" versionRef="1">
 										<!-- ch-usage: mandatory -->
 									</LineRef>
@@ -65,6 +68,9 @@
 								<AdjacentStopPlaceRef ref="ch:generated:StopPlace:8507493" versionRef="1">
 									<!-- ch-usage: optional -->
 								</AdjacentStopPlaceRef>
+								<ServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100001:2106-001_91075_.j26_802" versionRef="1">
+									<!-- ch-usage: optional -->
+								</ServiceJourneyRef>
 							</DistributorFilter>
 						</InterchangeRule>
 						<InterchangeRule id="ch:1:InterchangeRule:1692675_80600_18840_18960" version="1">
