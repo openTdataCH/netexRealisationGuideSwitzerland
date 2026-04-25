@@ -88,7 +88,7 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
                 # Resolve relative paths relative to the current file's directory
                 include_path = os.path.normpath(os.path.join(current_dir, schema_location))
                 if os.path.exists(include_path):
-                    print(f"Processing include: {include_path}")
+                    print(f": {include_path}")
                     included_types = _process_xsd_file(include_path, base_dir, processed_files)
                     type_info.update(included_types)
                 else:
