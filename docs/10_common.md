@@ -11,7 +11,7 @@ All other defined attributes like `created`, `changed`, `modification` are not u
 ## MultilingualString
 NeTEx uses the type “MultilingualString” for descriptive text elements (e.g. Notice text, Name, ShortName etc.).
 However, only one language can be set for a given element (`<MultilingualString lang=”xx”>`). 
-Additional languages are introduced through the `AlternativeName` and `AlternativeText` object described in tbd and tbd.
+Additional languages are introduced through the `AlternativeName` and `AlternativeText` object described in **TODO**and tbd.
 
 For the organisations e.g. there are all languages present.
 
@@ -71,7 +71,7 @@ Original definition: "It is sometime necessary to provide seval variants of a si
 The AlternativeText is part of a DataManagedObject and references the name of the attribute in the NeTEx Metamodel) for which it is providing an alternative. It contains the alternative text as an attribute of type MultilingualString which indicates the language. In addition the text may have a ‘Use for’ language attribute to indicate a second language for which it may be used as an acceptable presentation if there is no native language alternative; normally this will be the same as the language of the string, but might be different."
 
 As a general rule: further names (alias) of a StopPlace or Organisation are modelled with [AlternativeNames](#AlternativeName), whereas direct translations of content (for example of Notice Texts) are modelled with AlternativeTexts.
-tbd 5.2
+**TODO**5.2
 ```
 <notices>
     <Notice id=”ch:1:Notice:Hin-1229900” version=”any”>
@@ -106,7 +106,7 @@ tbd 5.2
 The RESOURCE FRAME is a coherent set of resource data to which the same VALIDITY CONDITIONs have been assigned. Used to define common resources that will be referenced by other types of FRAME.
 See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
 <img width="615" height="435" alt="ResourceFrame_structure" src="https://github.com/user-attachments/assets/219600b4-5e5b-47ab-99a6-89b95784b266" />
-tbd image to be moved to docs/include subfolder.
+**TODO**image to be moved to docs/include subfolder.
 
 - [Swiss profile tables](../generated/markdown-examples/ResourceFrame.md)
 - [XML Snippet](../generated/xml-snippets/ResourceFrame.xml)
@@ -147,8 +147,8 @@ These 2 roles are represented in the ResponsibilitySet element.
     </ResponsibilitySet>
 </responsibilitySets>
 ```
-tbd to be checked with.
-tbd 6.5.3 Postauto needs to be checked
+**TODO**to be checked with.
+**TODO**6.5.3 Postauto needs to be checked
 
 Only the values defined below are allowed in Switzerland for `StakeholderRoleType` in `ResponsbilityRoleAssignment`:
 -	`Operation`
@@ -156,7 +156,7 @@ Only the values defined below are allowed in Switzerland for `StakeholderRoleTyp
 -	`FareManagement`
 -	`Planning`
 and `FareManagement` and `Planning` are currently not used. Not all roles must be filled.
-tbd put this into template as well as a check for enums.
+**TODO**put this into template as well as a check for enums.
 
 
 ## TypeOfValue / ValueSets
@@ -233,7 +233,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 
 ### TypeOfService
 The container for typesOfService is in TimetableFrame. But it is rather general, so we describe it here.
-tbd link
+**TODO**link
 
 TypeOfService indicates the purpose of a ServiceJourney, for example, whether if it is a passenger transport or a garage run-in. The following types are currently used:
 
@@ -296,7 +296,7 @@ If necessary, this list can be revised. In case of additions, this can be done, 
 
 This means that a given Facility (e.g. restaurant or diaper changing table) is shown in the ap-propriate sub category MealFacilityList or FamilyFacilityList and a passenger information sys-tem can show these categories in a reasonable order. The categories themselves are from type "xsd:list“, meaning that the values of a cateogry are a separated list of elements. 
 
-tbd 10.13.2ff
+**TODO**10.13.2ff
 
 ```
 <ServiceFacilitySet id="ch:1:ServiceFacilitySet:A___2" version="any">
@@ -320,7 +320,7 @@ tbd 10.13.2ff
 </ServiceFacilitySet>
 
 ```
-tbd a lot more detail needed. But probably in uc
+**TODO**a lot more detail needed. But probably in uc
 
 ## SiteFacilitySet
-tbd not decribed in RG 1.01. What do we do
+**TODO**not decribed in RG 1.01. What do we do
