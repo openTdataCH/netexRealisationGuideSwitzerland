@@ -62,8 +62,8 @@ We only allow the following values for `NameType`:
 <alternativeNames>
 ```
 
-- [Swiss profile tables](generated/markdown-examples/AlternativeName.md)
-- [XML Snippet](generated/xml-snippets/AlternativeName.xml)
+- [Swiss profile tables](../generated/markdown-examples/AlternativeName.md)
+- [XML Snippet](../generated/xml-snippets/AlternativeName.xml)
 
 ## AlternativeText
 Original definition: "It is sometime necessary to provide seval variants of a single text, in particular if the infor-mation is required in several national languages. The AlternativeText element is a generic way of providing such variants for any text attribute of a DataManagedObject. It can be seen as a complement to the AlternativeName mechanism, and can be used to provide an alias for any description or text attribute.
