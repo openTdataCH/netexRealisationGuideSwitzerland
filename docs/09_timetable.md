@@ -91,7 +91,7 @@ TODO INSERT [Swiss profile NeTEx definition](generated/markdown-examples/Templat
 ### 3. Example
 
 TODO INSERT [Example snippet](generated/xml-snippets/TemplateServiceJourney.xml)
-
+> *→ [General NeTEx definition ](generated/xcore/TemplateServiceJourney.html)*
 ## OccupancyView
 
 ### 1. Purpose
