@@ -163,7 +163,6 @@ An ***InterchangeRule*** defines the possibility of interchanging between two *S
 
 ### 2. Table
 
-> *→ [General NeTEx definition ](generated/xcore/InterchangeRule.html)*
 
 TODO INSERT [Swiss profile NeTEx definition](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/3825500c6a13a9a2cc1e89f3f6993acf881a3507/generated/markdown-examples/InterchangeRule_UMTEIGZ.md)
 
