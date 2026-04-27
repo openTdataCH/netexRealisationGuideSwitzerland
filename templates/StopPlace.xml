@@ -9,11 +9,29 @@
 				<ResourceFrame id="ch:1:ResourceFrame" version="any"/>
 				<SiteFrame id="ch:1:SiteFrame" version="any">
 					<stopPlaces>
-												<StopPlace id="ch:1:sloid:7000" version="any"><!-- ch-root -->
+						<StopPlace id="ch:1:sloid:7000" version="1">
+							<ValidBetween>
+								<FromDate>2026-01-01T00:00:00</FromDate>
+								<ToDate>2026-12-31T00:00:00</ToDate>
+							</ValidBetween>
+							<alternativeTexts>
+								<AlternativeText id="ch:1:sloid:7000:AlternativeText">
+									<!-- ch-note: Abbreviation of the STOP PLACE. -->
+									<!-- ch-see -->
+									<Text>CHR</Text>
+								</AlternativeText>
+							</alternativeTexts>
+							<!-- ch-root -->
 							<!-- ch-usage: mandatory -->
 							<!-- ch-note: **todo** all texts are missing in this file yet -->
 							<keyList>
 								<!-- ch-usage: mandatory -->
+								<!-- ch-note: KEY LIST with the KEY VALUEs related to the STOP PLACE.\
+								SKI use KeyValues:\
+								one for the Didok number\
+								one for the SLOID\
+								For delivery to SKI only one Value is necessary.
+								-->
 								<KeyValue>
 									<!-- ch-usage: mandatory -->
 									<Key><!-- ch-usage: mandatory -->DIDOK</Key>
@@ -24,34 +42,73 @@
 									<Value>ch:1:sloid:7000</Value>
 								</KeyValue>
 							</keyList>
+							<Extensions>
+								<!-- ch-note: Extensions of the STOP PLACE.\
+								- HafasPriority\
+								- HafasKMInfo
+								-->
+								<HafasPriority>
+									<!-- ch-note: Interchange Priority, when several alternative interchange possibilities exist. -->
+            						<Value>4</Value>
+        						</HafasPriority>
+								<HafasKMInfo>
+									<!-- ch-note: Value for Interchange points. -->
+            						<Value>1000</Value>
+        						</HafasKMInfo>
+							</Extensions>
 							<Name><!-- ch-usage: mandatory -->Bern</Name>
-							<PrivateCode><!-- ch-usage: mandatory -->7000</PrivateCode>
-							<Centroid>
+							<ShortName><!-- ch-note: Used to transmit the abbreviation of the StopPlace. There is not one abbreviation for all StopPlaces-->BE</ShortName>
+							<PrivateCode>
 								<!-- ch-usage: mandatory -->
+								<!-- ch-note: In Switzerland to be filled with the **DiDok** number. -->
+								7000</PrivateCode>
+							<Centroid>
+								<Name><!-- ch-usage: optional --></Name>
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: Global or national location of STOP PLACE.-->
 								<Location>
 									<!-- ch-usage: mandatory -->
+									<!-- ch-note: Note concerning coordinates:
+- The main coordinates are given as **WSG84**.
+- The Swiss coordinates are added as well, when available
+- INFO+ will not use the data from the import. Always the DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places.
+									-->
 									<Longitude><!-- ch-usage: mandatory -->7.43913088992</Longitude>
 									<Latitude><!-- ch-usage: mandatory -->46.94883228914</Latitude>
-									<Altitude><!-- ch-usage: mandatory -->540.2</Altitude>
+									<Altitude><!-- ch-usage: optional -->540.2</Altitude>
 								</Location>
 							</Centroid>
 							<Url>
-								<!-- ch:usage: forbidden -->
+								<!-- ch-usage: forbidden -->
 							</Url>
 							<alternativeNames>
 								<!-- ch-usage: optional -->
-								<AlternativeName id="ch:1:sloid:7000:it">
+								<!-- ch-note: Alternative names for SITE ELEMENT.\
+								We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place.
+								-->
+								<AlternativeName id="ch:1:AlternativeName:" version="1">
 									<!-- ch-see -->
 									<Name lang="it">Berna</Name>
 								</AlternativeName>
 							</alternativeNames>
+
 							<StopPlaceType><!-- ch-usage: optional -->railStation</StopPlaceType>
 							<quays>
 								<!-- ch-usage: expected -->
-								<Quay id="ch:1:sloid:7000:5:9" version="any">
+								<!-- ch-note: The QUAYs contained in the STOP PLACE, that is platforms, jetties, bays, taxi ranks, and other points of physical access to VEHICLEs. -->
+								<Quay id="ch:1:sloid:7000:5:9" version="1">
 									<!-- ch-see -->
 								</Quay>
 							</quays>
+							<Weighting><!-- ch-note: Default relative weighting to be used for stop place.\
+The STOP PLACE element WEIGHTING basically accomplishes this feature but only allows the following values:
+- noInterchange
+- interchangeAllowed
+- recommendedInterchange
+- preferredInterchange
+To incorporate the desired value range, we will add an EXTENSION element `HafasPriority` that contains the full information.
+-->
+								preferredInterchange</Weighting>
 						</StopPlace>
 					</stopPlaces>
 				</SiteFrame>
