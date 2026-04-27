@@ -82,7 +82,6 @@ A ***TemplateServiceJourney*** represents a sequence of planned trips. It is sim
 ### 2. Table
 
 [//]: # (TODO: Add TemplateServiceJourney links)
-> *→ [General NeTEx definition ](generated/xcore/TemplateServiceJourney.html)*
 
 TODO INSERT [Swiss profile NeTEx definition](generated/markdown-examples/TemplateServiceJourney.md)
 
