@@ -21,13 +21,13 @@ It is important to note that internal or artificially generated IDs should not b
 business keys and attributes are available. 
 
 For readability and easy referencing, we will use the following principles:
--	We use the class of the object to prefix the technical ID like `ch:1:Operator:11` for the ID of an `Operator` element.
--   We use appropriate business values to build technical IDs where available, e.g. `ch:1:TypeOfProductCategory:TER`, 
-where the value of `ShortName` of the `TypeOfProductCategory` is used to build the technical ID.
+-	We use the class of the object to prefix the technical ID like `ch:1:TypeOfNotice:3"` for a `TypeOfNotice` element.
+-   We use appropriate business values to build technical IDs where available, e.g. `ch:1:TypeOfProductCategory:TER` 
+where the value of `ShortName` of the `TypeOfProductCategory` is used to build the ID, or `ch:1:Operator:11`.
 -	Where there is a compelling need for global stability, the ID will be a global ID. 
 This information will be also transmitted separately in a `KeyList`. 
 
-tbd: Must be revisited and updated.
+<!-- tbd: Must be revisited and updated. -->
 
 All other defined attributes like `created`, `changed`, `modification` are not used. If we need one, we will inform about it in the table associated with the element.
 
@@ -53,8 +53,8 @@ in the XML snippet.
 - [Original NeTEx table](tbd)
 
 ## AlternativeName
-> **Original NeTEx Definition:**<br/>
-> "The ALTERNATIVE NAME Model defines reusable texts. For example, we use it to distinguish between two places with the same name in different countries. It complements the ALTERNATIVE TEXT entity, which is used to provide translations for individual text attribues of elements.".
+> **Original NeTEx Definition:**\
+> The ALTERNATIVE NAME Model defines reusable texts. For example, we use it to distinguish between two places with the same name in different countries. It complements the ALTERNATIVE TEXT entity, which is used to provide translations for individual text attribues of elements.
 
 As a general rule: further names (aliases) of `StopPlace` or `Organisation` elements are modelled with `AlternativeName`, 
 whereas direct translations of content (for example of `Notice` texts) are modelled with AlternativeText.
@@ -67,12 +67,12 @@ We only allow the following values for `NameType`:
 
 ``` xml 
 <alternativeNames>
-  <AlternativeName id="ch:1:AlternativeName:StopPlace:8500010_5" version="any">
+  <AlternativeName id="ch:1:AlternativeName:StopPlace:8500010_5" version="1">
     <NameType>alias</NameType>
     <TypeOfName>offical</TypeOfName>
     <Name lang="de">Basilea FFS</Name>
   </AlternativeName>
-  <AlternativeName id="ch:1:AlternativeName:StopPlace:8500010_8" version="any">
+  <AlternativeName id="ch:1:AlternativeName:StopPlace:8500010_8" version="1">
     <NameType>alias</NameType>
     <TypeOfName>offical</TypeOfName>
     <Name lang="de">Bale</Name>
@@ -89,7 +89,7 @@ We only allow the following values for `NameType`:
 > The AlternativeText element is a generic way of providing such variants for any text attribute of a DataManagedObject. 
 > It can be seen as a complement to the AlternativeName mechanism, and can be used to provide an alias for any description or text attribute.
 
-[comment US: term attribute is confusing. Text is in an element]: # 
+<!-- comment US: term attribute is confusing. Text is in an element. -->
 The `AlternativeText` is part of a `DataManagedObject` and references the name of the attribute (in terms of the NeTEx 
 Metamodel), for which it provides an alternative. 
 It contains the alternative text as an attribute of type `MultilingualString` which indicates the language. 
@@ -100,24 +100,25 @@ of the string, but might be different.
 
 As a general rule: further names (aliases) of a `StopPlace` or `Organisation` are modelled with [AlternativeNames](#AlternativeName), whereas 
 direct translations of content (for example of `Notice` texts) are modelled with `AlternativeTexts`.
-tbd 5.2
+
+<!-- tbd 5.2 -->
 
 ``` xml
 <notices>
-    <Notice id=”ch:1:Notice:Hin-1229900” version=”any”>
+    <Notice id=”ch:1:Notice:Hin-1229900” version=”1”>
       <alternativeTexts>
-        <AlternativeText id=”ch:1:AlternativeText:Notice-Hin_1229900-fr” version=”any” attributeName=”Text” useForLanguage=”fr”>
+        <AlternativeText id=”ch:1:AlternativeText:Notice-Hin_1229900-fr” version=”1” attributeName=”Text” useForLanguage=”fr”>
           <Text>Départ de la voie 2.</Text>
         </AlternativeText>
-        <AlternativeText id=”ch:1:AlternativeText:Notice-Hin_1229900-it” version=”any” attributeName=”Text” useForLanguage=”it”>
+        <AlternativeText id=”ch:1:AlternativeText:Notice-Hin_1229900-it” version=”1” attributeName=”Text” useForLanguage=”it”>
           <Text>Partenza dal binario 2.</Text>
         </AlternativeText>
-        <AlternativeText id=”ch:1:AlternativeText:Notice-Hin_1229900-en” version=”any” attributeName=”Text” useForLanguage=”en”>
+        <AlternativeText id=”ch:1:AlternativeText:Notice-Hin_1229900-en” version=”1” attributeName=”Text” useForLanguage=”en”>
           <Text>Departure on platform 2.</Text>
         </AlternativeText>
       </alternativeTexts>
       <Text lang="de">Abfahrt auf Gleis 2.</Text>
-      <TypeOfNoticeRef ref="ch:1:TypeOfNotice:3" version="any" />
+      <TypeOfNoticeRef ref="ch:1:TypeOfNotice:3" version="1" />
     </Notice>
 </notices>
 ```
@@ -133,44 +134,50 @@ tbd 5.2
 
 # ResourceFrame
 The RESOURCE FRAME is a coherent set of resource data to which the same VALIDITY CONDITIONs have been assigned. Used to define common resources that will be referenced by other types of FRAME.
+
 See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
-<img width="615" height="435" alt="ResourceFrame_structure" src="https://github.com/user-attachments/assets/219600b4-5e5b-47ab-99a6-89b95784b266" />
-tbd image to be moved to docs/include subfolder.
+![ResourceFrame](./media/ResourceFrame.png)
 
 - [Swiss profile tables](../generated/markdown-examples/ResourceFrame.md)
 - [XML Snippet](../generated/xml-snippets/ResourceFrame.xml)
 
-
 ## ResponsibilitySet
-We use this model to  describe the different roles of the participating companies. For the most part, the company code is used to fully identify the services provided. For the PAG company (801), the attribute ResponsibleArea(Ref) must also be taken into account.
+[comment US: Why is there an exceptoin for the PAG company?]: # 
+We use this model to  describe the different roles of the participating companies. For the most part, the company code is used to fully identify the services provided. 
+For the PAG company (801), the attribute `ResponsibleArea(Ref)` must also be taken into account.
+
+Services (e.g. replacement services) can be associated with different roles. These roles can be defined inside the `ResponsibilitySet` element.
+
+| Role | value of `StakeholderRoleType` | Description                                                         |
+| --- | --- |---------------------------------------------------------------------|
+| Concession Company |`EntityLegalOwnership` | Role of the company holding the concession for the original service |
+| Operator | `Operation` | role of the company responsible for providing the transport service |
 
 
-For some replacement services, the public transport sector has decided that the different roles of the companies should be represented when defining the services:
-- the role of the company holding the concession for the original service
-- the role of the company responsible for providing the transport service
 
-These 2 roles are represented in the ResponsibilitySet element. 
-- the role of the concession company is represented by the EntityLegalOwnership value of the StakeholderRoleType attribute
-- the role of the company responsible for carrying out the transport is represented by the Op-eration value of the StakeholderRoleType attribute.
+
+<!-- comment US: in terms of XML StakeholderRoleType is an element, not an attribute.-->
+- the role of the concession company is represented by the `EntityLegalOwnership` value of the `StakeholderRoleType` element
+- the role of the company responsible for carrying out the transport is represented by the Operation value of the `StakeholderRoleType` element.
 
 - [Swiss profile tables](../generated/markdown-examples/ResponsibilitySet.md)
 - [XML Snippet](../generated/xml-snippets/ResponsibilitySet.xml)
 
 ``` xml
 <responsibilitySets>
-    <ResponsibilitySet id="ch:1:ResponsibilitySet:33_801-5678" version="any">
+    <ResponsibilitySet id="ch:1:ResponsibilitySet:33_801-5678" version="1">
         <!-- For Journey from BLS with replacement Journey by PAG -->
         <Name lang="de">BLS AG (bls)</Name>
         <PrivateCode>BLS</PrivateCode>
         <roles>
-            <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:33_801-5678:1" version="any">
-                <StakeholderRole-Type>EntityLegalOwnership</StakeholderRoleType>
-                <ResponsibleOrganisationRef ref="ch:1:Operator:33" ver-sion="any"/>
+            <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:33_801-5678:1" version="1">
+                <StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+                <ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
             </ResponsibilityRoleAssignment>
-            <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:33_801-5678:2" version="any">
+            <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:33_801-5678:2" version="1">
                 <StakeholderRoleType>Operation</StakeholderRoleType>
-                <ResponsibleOrganisationRef ref="ch:1:Operator:801" ver-sion="any"/>
-                <ResponsibleAreaRef ref="ch:1:TransportAdministrativeZone:801-5678" version="any"/>
+                <ResponsibleOrganisationRef ref="ch:1:Operator:801" version="1"/>
+                <ResponsibleAreaRef ref="ch:1:TransportAdministrativeZone:801-5678" version="1"/>
             </ResponsibilityRoleAssignment>
         </roles>
     </ResponsibilitySet>
@@ -209,25 +216,25 @@ TypeOfNotice is used within a [Notice](#Notice) to give information, what it is 
 |11|Region|Postauto is divided into several regions.|
 
 ``` xml
-<ValueSet id="ch:1:ValueSet:notices" version="any" nameOfClass="TypeOfNotice">
+<ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
   <values>
-    <TypeOfNotice id="ch:1:TypeOfNotice:11" version="any">
+    <TypeOfNotice id="ch:1:TypeOfNotice:11" version="1">
       <Name>Region</Name>
       <PrivateCode>11</PrivateCode>
     </TypeOfNotice>
-    <TypeOfNotice id="ch:1:TypeOfNotice:1" version="any">
+    <TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
       <Name>Allgemeiner Hinweis</Name>
       <PrivateCode>1</PrivateCode>
     </TypeOfNotice>
-    <TypeOfNotice id="ch:1:TypeOfNotice:10" version="any">
+    <TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
       <Name>Angebot</Name>
       <PrivateCode>10</PrivateCode>
     </TypeOfNotice>
-    <TypeOfNotice id="ch:1:TypeOfNotice:3" version="any">
+    <TypeOfNotice id="ch:1:TypeOfNotice:3" version="1">
       <Name>Gleis-Angabe</Name>
       <PrivateCode>3</PrivateCode>
     </TypeOfNotice>
-    <TypeOfNotice id="ch:1:TypeOfNotice:2" version="any">
+    <TypeOfNotice id="ch:1:TypeOfNotice:2" version="1">
       <Name>Zugname</Name>
       <PrivateCode>2</PrivateCode>
     </TypeOfNotice>
@@ -239,10 +246,10 @@ For the ServiceJourneys exclusively provided in Switzerland, only the ProductCat
 For ServiceJourneys provided in other countries or partially in Switzerland, there are no re-strictions, provided that the category does not overlap with the ProductCategories defined for Switzerland.
 
 ``` xml
-<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="any" nameOfClass="TypeOfProductCategory">
+<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
   <Name>ProductCategories</Name>
   <values>
-    <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" ver-sion="any">
+    <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
       <alternativeTexts>
         <AlternativeText attributeName="Name">
           <Text lang="it">Train Express Regional</Text>
@@ -267,12 +274,12 @@ tbd link
 
 TypeOfService indicates the purpose of a ServiceJourney, for example, whether if it is a passenger transport or a garage run-in. The following types are currently used:
 
-|TypeOfService	|Description|
-|--|--|
-|PublicJourney	|A public passenger transport|
-|GarageRunOut	|A garage run-out|
-|GarageRunIn	|A garage run-in|
-|ThroughCoach|	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling.|
+| TypeOfService	  | Description                                                                                                                                               |
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| PublicJourney	  | A public passenger transport                                                                                                                              |
+| GarageRunOut	   | A garage run-out                                                                                                                                          |
+| GarageRunIn	    | A garage run-in                                                                                                                                           |
+| ThroughCoach    | 	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling. |
 
 Actually there is only one allowed value that we use in the Swiss profile: Only the PublicJourney are to be exchanged.
 
@@ -280,7 +287,7 @@ So, this is what needs to be in the TimetableFrame:
 
 ``` xml
 <typesOfService>
-    <TypeOfService id="ch:1:TypeOfService:1" version="any">
+    <TypeOfService id="ch:1:TypeOfService:1" version="1">
         <Name lang="en">PublicJourney</Name>
         <ShortName lang="en">N</ShortName>
         <PrivateCode>1</PrivateCode>
@@ -330,7 +337,7 @@ This means that a given Facility (e.g. restaurant or diaper changing table) is s
 tbd 10.13.2ff
 
 ``` xml
-<ServiceFacilitySet id="ch:1:ServiceFacilitySet:A___2" version="any">
+<ServiceFacilitySet id="ch:1:ServiceFacilitySet:A___2" version="1">
   <alternativeTexts>
     <AlternativeText attributeName="Description">
       <Text lang="en">2nd class only</Text>
