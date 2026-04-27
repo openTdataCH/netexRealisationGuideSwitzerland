@@ -10,6 +10,8 @@
 				<SiteFrame id="ch:1:SiteFrame" version="any">
 					<stopPlaces>
 						<StopPlace id="ch:1:sloid:7000" version="1">
+							<!-- ch-root -->
+							<!-- ch-usage: mandatory -->
 							<ValidBetween>
 								<FromDate>2026-01-01T00:00:00</FromDate>
 								<ToDate>2026-12-31T00:00:00</ToDate>
@@ -21,15 +23,12 @@
 									<Text>CHR</Text>
 								</AlternativeText>
 							</alternativeTexts>
-							<!-- ch-root -->
-							<!-- ch-usage: mandatory -->
-							<!-- ch-note: **todo** all texts are missing in this file yet -->
 							<keyList>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: KEY LIST with the KEY VALUEs related to the STOP PLACE.\
 								SKI use KeyValues:\
-								one for the Didok number\
-								one for the SLOID\
+								- one for the Didok number
+								- one for the SLOID
 								For delivery to SKI only one Value is necessary.
 								-->
 								<KeyValue>
@@ -43,8 +42,8 @@
 								</KeyValue>
 							</keyList>
 							<Extensions>
-								<!-- ch-note: Extensions of the STOP PLACE.\
-								- HafasPriority\
+								<!-- ch-note: Extensions of the STOP PLACE:
+								- HafasPriority
 								- HafasKMInfo
 								-->
 								<HafasPriority>
@@ -63,9 +62,9 @@
 								<!-- ch-note: In Switzerland to be filled with the **DiDok** number. -->
 								7000</PrivateCode>
 							<Centroid>
-								<Name><!-- ch-usage: optional --></Name>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: Global or national location of STOP PLACE.-->
+								<Name><!-- ch-usage: optional --></Name>
 								<Location>
 									<!-- ch-usage: mandatory -->
 									<!-- ch-note: Note concerning coordinates:
@@ -100,15 +99,15 @@
 									<!-- ch-see -->
 								</Quay>
 							</quays>
-							<Weighting><!-- ch-note: Default relative weighting to be used for stop place.\
+
+							<Weighting><!-- ch-note: TODO fix validation issue with Weighting element. --><!-- ch-note: Default relative weighting to be used for stop place.\
 The STOP PLACE element WEIGHTING basically accomplishes this feature but only allows the following values:
 - noInterchange
 - interchangeAllowed
 - recommendedInterchange
 - preferredInterchange
 To incorporate the desired value range, we will add an EXTENSION element `HafasPriority` that contains the full information.
--->
-								preferredInterchange</Weighting>
+-->preferredInterchange</Weighting>
 						</StopPlace>
 					</stopPlaces>
 				</SiteFrame>

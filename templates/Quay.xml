@@ -1,41 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
-	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
-	<ParticipantRef>SKI-Template</ParticipantRef>
-	<dataObjects>
-		<CompositeFrame id="ch:1:CompositeFrame" version="any">
-			<FrameDefaults/>
-			<frames>
-				<ResourceFrame id="ch:1:ResourceFrame" version="any"/>
-				<SiteFrame id="ch:1:SiteFrame" version="any">
-					<stopPlaces>
-						<StopPlace id="ch:1:sloid:7000" version="any">
-							<quays>
-																<Quay id="ch:1:sloid:7000:5:9" version="any">
-																	<!-- ch-root -->
-									<keyList>
-										<!-- ch-usage: mandatory -->
-										<KeyValue>
-											<!-- ch-usage: mandatory -->
-											<Key><!-- ch-usage: mandatory -->SLOID</Key>
-											<Value><!-- ch-usage: mandatory -->ch:1:sloid:7000:5:9</Value>
-										</KeyValue>
-									</keyList>
-									<Centroid>
-										<!-- ch-usage: mandatory -->
-										<Location>
-											<!-- ch-usage: mandatory -->
-											<Longitude><!-- ch-usage: mandatory -->7.43913088992</Longitude>
-											<Latitude><!-- ch-usage: mandatory -->46.94883228914</Latitude>
-											<Altitude><!-- ch-usage: mandatory -->540.2</Altitude>
-										</Location>
-									</Centroid>
-								</Quay>
-							</quays>
-						</StopPlace>
-					</stopPlaces>
-				</SiteFrame>
-			</frames>
-		</CompositeFrame>
-	</dataObjects>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+    <PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+    <ParticipantRef>SKI-Template</ParticipantRef>
+    <dataObjects>
+        <CompositeFrame id="ch:1:CompositeFrame" version="any">
+            <FrameDefaults/>
+            <frames>
+                <ResourceFrame id="ch:1:ResourceFrame" version="any"/>
+                <SiteFrame id="ch:1:SiteFrame" version="any">
+                    <stopPlaces>
+                        <StopPlace id="ch:1:sloid:7000" version="any">
+                            <quays>
+                                <Quay id="ch:1:sloid:7000:5:9" version="any">
+                                    <!-- ch-root -->
+                                    <keyList>
+                                        <!-- ch-usage: mandatory -->
+                                        <!-- ch-note: KEY LIST with the KEY VALUEs related to the QUAY.\
+                                        SKI use KeyValues: for the SLOID.\
+                                        For delivery to SKI only if available.
+                                        -->
+                                        <KeyValue>
+                                            <!-- ch-usage: mandatory -->
+                                            <Key><!-- ch-usage: mandatory -->SLOID</Key>
+                                            <Value><!-- ch-usage: mandatory -->ch:1:sloid:7000:5:9</Value>
+                                        </KeyValue>
+                                    </keyList>
+                                    <Centroid>
+                                        <!-- ch-usage: mandatory -->
+                                        <!-- ch-note: Location of POINT of QUAY. -->
+                                        <Location>
+                                            <!-- ch-usage: mandatory -->
+                                            <Longitude><!-- ch-usage: mandatory -->7.43913088992</Longitude>
+                                            <Latitude><!-- ch-usage: mandatory -->46.94883228914</Latitude>
+                                            <Altitude><!-- ch-usage: mandatory -->540.2</Altitude>
+                                        </Location>
+                                    </Centroid>
+                                    <PublicCode><!-- ch-note: Code use to identify QUAY to the public. -->9</PublicCode>
+                                    <!-- ch-note TODO: try to fix SiteRef - skipped due to validity issue. -->
+                                    <!--
+                                    <SiteRef ref="ch:1:sloid:7000">
+                                        ch-note: Can reference the parent Quay or StopPlace.
+                                    SiteRef
+                                    -->
+                                </Quay>
+                            </quays>
+                        </StopPlace>
+                    </stopPlaces>
+                </SiteFrame>
+            </frames>
+        </CompositeFrame>
+    </dataObjects>
 </PublicationDelivery>
