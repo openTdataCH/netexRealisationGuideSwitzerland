@@ -1,158 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
-	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
-	<ParticipantRef>SKI-Template</ParticipantRef>
-	<dataObjects>
-		<CompositeFrame id="ch:1:CompositeFrame" version="1">
-			<FrameDefaults/>
-			<frames>
-				<ResourceFrame id="ch:1:ResourceFrame" version="1"/>
-				<SiteFrame id="ch:1:SiteFrame" version="1">
-					<stopPlaces>
-						<StopPlace id="ch:1:sloid:7000" version="1">
-							<!-- ch-root -->
-							<!-- ch-usage: mandatory -->
-						    <!-- ch-attrs: id version -->
-						    <!-- ch-note: Structure of the id, example: "ch:2:StopPlace:8503000" -->
-							<ValidBetween>
-								<FromDate>2026-01-01T00:00:00</FromDate>
-								<ToDate>2026-12-31T00:00:00</ToDate>
-							</ValidBetween>
-							<alternativeTexts>
-								<AlternativeText id="ch:1:sloid:7000:AlternativeText">
-									<!-- ch-note: Abbreviation of the STOP PLACE. -->
-									<!-- ch-see -->
-									<Text>CHR</Text>
-								</AlternativeText>
-							</alternativeTexts>
-							<keyList>
-								<!-- ch-usage: mandatory -->
-								<!-- ch-note: KEY LIST with the KEY VALUEs related to the STOP PLACE.\
-								SKI use KeyValues:\
-								- one for the Didok number
-								- one for the SLOID
-								For delivery to SKI only one Value is necessary.
-								-->
-								<KeyValue>
-									<!-- ch-usage: mandatory -->
-									<Key>
-										<!-- ch-usage: mandatory -->
-										<!-- ch-note: DIDOK number has to be provided -->
-										DIDOK
-									</Key>
-									<Value>
-										<!-- ch-usage: mandatory -->
-										7000
-									</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>
-										<!-- ch-usage: mandatory -->
-										<!-- ch-note: SLOID has to be provided **TODO** really mandatory, stations outside CH?-->
-										SLOID
-									</Key>
-									<Value>
-										<!-- ch-usage: mandatory -->
-										ch:1:sloid:7000
-									</Value>
-								</KeyValue>
-							</keyList
-							<Extensions>
-								<!-- ch-usage: optional -->
-								<!-- ch-note: Extensions of the STOP PLACE:
-								- HafasPriority
-								- HafasKMInfo
-								-->
-								<HafasPriority>
-									<!-- ch-usage: optional -->
-									<!-- ch-note: (**TODO** Replace by Weighting ?) Interchange Priority, when several alternative interchange possibilities exist. -->
-            						<Value>
-										<!-- ch-usage: mandatory -->
-										<!-- ch-note: **TODO** Allowed values... -->
-										4
-									</Value>
-        						</HafasPriority>
-								<HafasKMInfo>
-									<!-- ch-usage: optional -->
-									<!-- ch-note: **TODO** ...Value for Interchange points. -->
-            						<Value>
-										<!-- ch-usage: mandatory -->
-										<!-- ch-note: km -->
-										1000
-									</Value>
-        						</HafasKMInfo>
-							</Extensions>
-							<Name><!-- ch-usage: mandatory -->Bern</Name>
-							<ShortName><!-- ch-note: Used to transmit the abbreviation of the StopPlace. There is not one abbreviation for all StopPlaces-->BE</ShortName>
-							<privateCodes>
-								<!-- ch-usage: mandatory -->
-								<PrivateCode>
-									<!-- ch-usage: mandatory -->
-									<!-- ch-note: In Switzerland to be filled with the DiDok number. Replaces single PublicCode from NeTEx 1.0 -->
-									7000
-								</PrivateCode>
-							</privateCodes>
-							<PrivateCode>
-								<!-- ch-usage: forbidden -->
-								<!-- ch-note: Replaced by PublicCode nested within publicCodes, see above. -->
-							</PrivateCode>
-							<Centroid>
-								<!-- ch-usage: mandatory -->
-								<!-- ch-note: Global or national location of STOP PLACE.-->
-								<Name><!-- ch-usage: optional --></Name>
-								<Location>
-									<!-- ch-usage: mandatory -->
-									<!-- ch-note: Note concerning coordinates:
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+    <PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+    <ParticipantRef>SKI-Template</ParticipantRef>
+    <dataObjects>
+        <CompositeFrame id="ch:1:CompositeFrame" version="1">
+            <FrameDefaults/>
+            <frames>
+                <ResourceFrame id="ch:1:ResourceFrame" version="1"/>
+                <SiteFrame id="ch:1:SiteFrame" version="1">
+                    <stopPlaces>
+                        <StopPlace id="ch:1:sloid:7000" version="1">
+                            <!-- ch-root -->
+                            <!-- ch-usage: mandatory -->
+                            <!-- ch-attrs: id version -->
+                            <!-- ch-note: Structure of the id, example: "ch:2:StopPlace:8503000" -->
+                            <ValidBetween>
+                                <FromDate>2026-01-01T00:00:00</FromDate>
+                                <ToDate>2026-12-31T00:00:00</ToDate>
+                            </ValidBetween>
+                            <alternativeTexts>
+                                <AlternativeText id="ch:1:sloid:7000:AlternativeText">
+                                    <!-- ch-note: Abbreviation of the STOP PLACE. -->
+                                    <!-- ch-see -->
+                                    <Text>CHR</Text>
+                                </AlternativeText>
+                            </alternativeTexts>
+                            <keyList>
+                                <!-- ch-usage: mandatory -->
+                                <!-- ch-note: KEY LIST with the KEY VALUEs related to the STOP PLACE.\
+                                SKI use KeyValues:\
+                                - one for the Didok number
+                                - one for the SLOID
+                                For delivery to SKI only one Value is necessary.
+                                -->
+                                <KeyValue>
+                                    <!-- ch-usage: mandatory -->
+                                    <Key>
+                                        <!-- ch-usage: mandatory -->
+                                        <!-- ch-note: DIDOK number has to be provided -->
+                                        DIDOK
+                                    </Key>
+                                    <Value>
+                                        <!-- ch-usage: mandatory -->
+                                        7000
+                                    </Value>
+                                </KeyValue>
+                                <KeyValue>
+                                    <Key>
+                                        <!-- ch-usage: mandatory -->
+                                        <!-- ch-note: SLOID has to be provided **TODO** really mandatory, stations outside CH?-->
+                                        SLOID
+                                    </Key>
+                                    <Value>
+                                        <!-- ch-usage: mandatory -->
+                                        ch:1:sloid:7000
+                                    </Value>
+                                </KeyValue>
+                            </keyList>
+                            <Extensions>
+                                <!-- ch-usage: optional -->
+                                <!-- ch-note: Extensions of the STOP PLACE:
+                                - HafasPriority
+                                - HafasKMInfo
+                                -->
+                                <HafasPriority>
+                                    <!-- ch-usage: optional -->
+                                    <!-- ch-note: (**TODO** Replace by Weighting ?) Interchange Priority, when several alternative interchange possibilities exist. -->
+                                    <Value>
+                                        <!-- ch-usage: mandatory -->
+                                        <!-- ch-note: **TODO** Allowed values... -->
+                                        4
+                                    </Value>
+                                </HafasPriority>
+                                <HafasKMInfo>
+                                    <!-- ch-usage: optional -->
+                                    <!-- ch-note: **TODO** ...Value for Interchange points. -->
+                                    <Value>
+                                        <!-- ch-usage: mandatory -->
+                                        <!-- ch-note: km -->
+                                        1000
+                                    </Value>
+                                </HafasKMInfo>
+                            </Extensions>
+                            <Name><!-- ch-usage: mandatory -->Bern</Name>
+                            <ShortName><!-- ch-note: Used to transmit the abbreviation of the StopPlace. There is not one abbreviation for all StopPlaces-->
+                                BE
+                            </ShortName>
+                            <privateCodes>
+                                <!-- ch-usage: mandatory -->
+                                <PrivateCode>
+                                    <!-- ch-usage: mandatory -->
+                                    <!-- ch-note: In Switzerland to be filled with the DiDok number. Replaces single PublicCode from NeTEx 1.0 -->
+                                    7000
+                                </PrivateCode>
+                            </privateCodes>
+                            <PrivateCode>
+                                <!-- ch-usage: forbidden -->
+                                <!-- ch-note: Replaced by PublicCode nested within publicCodes, see above. -->
+                            </PrivateCode>
+                            <Centroid>
+                                <!-- ch-usage: mandatory -->
+                                <!-- ch-note: Global or national location of STOP PLACE.-->
+                                <Name><!-- ch-usage: optional --></Name>
+                                <Location>
+                                    <!-- ch-usage: mandatory -->
+                                    <!-- ch-note: Note concerning coordinates:
 - The main coordinates are given as **WSG84**.
 - The Swiss coordinates are added as well, when available
 - INFO+ will not use the data from the import. Always the DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places.
-									-->
-									<Longitude><!-- ch-usage: mandatory -->7.43913088992</Longitude>
-									<Latitude><!-- ch-usage: mandatory -->46.94883228914</Latitude>
-									<Altitude><!-- ch-usage: optional -->540.2</Altitude>
-								</Location>
-							</Centroid>
-							<Url>
-								<!-- ch-usage: forbidden -->
-							</Url>
-							<ShortName>
-								<!-- ch-usage: optional -->
-								<!-- ch-note: Used for the abbreviation of the name if an abbreviation exists / is necessary -->
-							<alternativeNames>
-								<!-- ch-usage: optional -->
-								<!-- ch-note: **TODO** Alternative names for SITE ELEMENT.\
-								We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place.
-								-->
-								<AlternativeName id="ch:1:sloid:7000:it" version="1">
-									<!-- ch-see -->
-									<Name lang="it">Berna</Name>
-								</AlternativeName>
-							</alternativeNames>
-							<StopPlaceType>
-								<!-- ch-usage: optional -->
-								railStation
-							</StopPlaceType>
-							<quays>
-								<!-- ch-usage: expected -->
-								<!-- ch-note: The QUAYs contained in the STOP PLACE, that is platforms, jetties, bays, taxi ranks, and other points of physical access to VEHICLEs. -->
-								<Quay id="ch:1:sloid:7000:5:9" version="1">
-									<!-- ch-usage: expected -->
-									<!-- ch-see -->
-								</Quay>
-							</quays>
+                                    -->
+                                    <Longitude><!-- ch-usage: mandatory -->7.43913088992</Longitude>
+                                    <Latitude><!-- ch-usage: mandatory -->46.94883228914</Latitude>
+                                    <Altitude><!-- ch-usage: optional -->540.2</Altitude>
+                                </Location>
+                            </Centroid>
+                            <Url>
+                                <!-- ch-usage: forbidden -->
+                            </Url>
+                            <ShortName>
+                            <!-- ch-usage: optional -->
+                            <!-- ch-note: Used for the abbreviation of the name if an abbreviation exists / is necessary -->
+                            <alternativeNames>
+                                <!-- ch-usage: optional -->
+                                <!-- ch-note: **TODO** Alternative names for SITE ELEMENT.\
+                                We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place.
+                                -->
+                                <AlternativeName id="ch:1:sloid:7000:it" version="1">
+                                    <!-- ch-see -->
+                                    <Name lang="it">Berna</Name>
+                                </AlternativeName>
+                            </alternativeNames>
+                            <StopPlaceType>
+                                <!-- ch-usage: optional -->
+                                railStation
+                            </StopPlaceType>
+                            <quays>
+                                <!-- ch-usage: expected -->
+                                <!-- ch-note: The QUAYs contained in the STOP PLACE, that is platforms, jetties, bays, taxi ranks, and other points of physical access to VEHICLEs. -->
+                                <Quay id="ch:1:sloid:7000:5:9" version="1">
+                                    <!-- ch-usage: expected -->
+                                    <!-- ch-see -->
+                                </Quay>
+                            </quays>
 
-							<Weighting><!-- ch-note: TODO fix validation issue with Weighting element. --><!-- ch-note: Default relative weighting to be used for stop place.\
+                            <Weighting><!-- ch-note: TODO fix validation issue with Weighting element. --><!-- ch-note: Default relative weighting to be used for stop place.\
 The STOP PLACE element WEIGHTING basically accomplishes this feature but only allows the following values:
 - noInterchange
 - interchangeAllowed
 - recommendedInterchange
 - preferredInterchange
 To incorporate the desired value range, we will add an EXTENSION element `HafasPriority` that contains the full information.
--->preferredInterchange</Weighting>
-						</StopPlace>
-					</stopPlaces>
-				</SiteFrame>
-			</frames>
-		</CompositeFrame>
-	</dataObjects>
+-->preferredInterchange
+                            </Weighting>
+                        </StopPlace>
+                    </stopPlaces>
+                </SiteFrame>
+            </frames>
+        </CompositeFrame>
+    </dataObjects>
 </PublicationDelivery>
