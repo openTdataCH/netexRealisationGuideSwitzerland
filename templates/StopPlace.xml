@@ -3,29 +3,76 @@
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Template</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="ch:1:CompositeFrame" version="any">
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
 			<FrameDefaults/>
 			<frames>
-				<ResourceFrame id="ch:1:ResourceFrame" version="any"/>
-				<SiteFrame id="ch:1:SiteFrame" version="any">
+				<ResourceFrame id="ch:1:ResourceFrame" version="1"/>
+				<SiteFrame id="ch:1:SiteFrame" version="1">
 					<stopPlaces>
-												<StopPlace id="ch:1:sloid:7000" version="any"><!-- ch-root -->
+						<StopPlace id="ch:1:StopPlace:8507000" version="1">
+							<!-- ch-root -->
 							<!-- ch-usage: mandatory -->
-							<!-- ch-note: **todo** all texts are missing in this file yet -->
+							<!-- ch-attrs: id version -->
+							<!-- ch-note: Structure of the id, example: "ch:2:StopPlace:8503000" -->
 							<keyList>
 								<!-- ch-usage: mandatory -->
 								<KeyValue>
 									<!-- ch-usage: mandatory -->
-									<Key><!-- ch-usage: mandatory -->DIDOK</Key>
-									<Value><!-- ch-usage: mandatory -->7000</Value>
+									<Key>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: DIDOK number has to be provided -->
+										DIDOK
+									</Key>
+									<Value>
+										<!-- ch-usage: mandatory -->
+										7000
+									</Value>
 								</KeyValue>
 								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7000</Value>
+									<Key>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: SLOID has to be provided **TODO** really mandatory, stations outside CH?-->
+										SLOID
+									</Key>
+									<Value>
+										<!-- ch-usage: mandatory -->
+										ch:1:sloid:7000
+									</Value>
 								</KeyValue>
 							</keyList>
-							<Name><!-- ch-usage: mandatory -->Bern</Name>
-							<PrivateCode><!-- ch-usage: mandatory -->7000</PrivateCode>
+							<privateCodes>
+								<!-- ch-usage: mandatory -->
+								<PrivateCode>
+									<!-- ch-usage: mandatory -->
+									<!-- ch-note: Replaces single PublicCode from NeTEx 1.0 -->
+									7000
+								</PrivateCode>					
+							<Name>
+								<!-- ch-usage: mandatory -->
+								Bern
+							</Name>
+							<PrivateCode>
+								<!-- ch-usage: forbidden -->
+								<!-- ch-note: Replaced by PublicCode nested within publicCodes, see above -->
+							</PrivateCode>
+							<Extensions>
+								<!-- ch-usage: optional -->
+								<HafasPriority>
+									<!-- ch-usage: optional -->
+									<!-- ch-note: (**TODO** Replace by Weighting ?) Interchange priority if multiple interchange possibilities exist -->
+									<Value>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: **TODO** Allowed values... -->
+									</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<!-- ch-usage: optional -->
+									<!-- ch-note: **TODO** ...Value for Interchange points -->
+									<Value>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: km -->
+									</Value>
+								</HafasKMInfo>
 							<Centroid>
 								<!-- ch-usage: mandatory -->
 								<Location>
@@ -38,17 +85,25 @@
 							<Url>
 								<!-- ch:usage: forbidden -->
 							</Url>
+							<ShortName>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Used for the abbreviation of the name if an abbreviation exists / is necessary -->
 							<alternativeNames>
 								<!-- ch-usage: optional -->
+								<!-- ch-note: **TODO** We will also use these for synonyms. From INFO+ the synonyms are used on the StopPlace. -->
 								<AlternativeName id="ch:1:sloid:7000:it">
 									<!-- ch-see -->
 									<Name lang="it">Berna</Name>
 								</AlternativeName>
 							</alternativeNames>
-							<StopPlaceType><!-- ch-usage: optional -->railStation</StopPlaceType>
+							<StopPlaceType>
+								<!-- ch-usage: optional -->
+								railStation
+							</StopPlaceType>
 							<quays>
 								<!-- ch-usage: expected -->
 								<Quay id="ch:1:sloid:7000:5:9" version="any">
+									<!-- ch-usage: expected -->
 									<!-- ch-see -->
 								</Quay>
 							</quays>
