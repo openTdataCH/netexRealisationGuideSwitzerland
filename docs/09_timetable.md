@@ -35,7 +35,7 @@ TODO INSERT: [Swiss profile NeTEx definition](generated/markdown-examples/Timeta
 
 ### 4. Example
 TODO INSERT: [Example snippet](generated/xml-snippets/TimetableFrame.xml)
-
+> *→ [Template](../templates/TimetableFrame.xml)*
 
 ### 5. Frame Relationships
 
