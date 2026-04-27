@@ -53,7 +53,6 @@ A **ServiceJourney** represents a planned trip in the timetable operating on a r
 
 ### 2. Table
 
-> *→ [General NeTEx definition ](generated/xcore/ServiceJourney.html)*
 
 TODO INSERT [Swiss profile NeTEx definition](generated/markdown-examples/ServiceJourney.md)
 
