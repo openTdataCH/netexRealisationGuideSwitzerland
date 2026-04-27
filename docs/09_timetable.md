@@ -61,6 +61,7 @@ TODO INSERT [Swiss profile NeTEx definition](generated/markdown-examples/Service
 ### 3. Example
 
 TODO INSERT[Example snippet](generated/xml-snippets/ServiceJourney.xml)
+> *→ [General NeTEx definition ](generated/xcore/ServiceJourney.html)*
 
 
 ### 4. Usage Notes
