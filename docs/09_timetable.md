@@ -139,7 +139,6 @@ Long-term planned time data concerning public transport vehicles passing a parti
 
 ### 2. Table
 
-> *→ [General NeTEx definition ](generated/xcore/TimetabledPassingTime.html)*
 
  TODO INSERT [Swiss profile NeTEx definition](generated/markdown-examples/TimetabledPassingTime.md)
 
