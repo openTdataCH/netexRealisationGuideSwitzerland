@@ -100,7 +100,6 @@ TODO INSERT [Example snippet](generated/xml-snippets/TemplateServiceJourney.xml)
 
 ### 2. Table
 
-> *→ [General NeTEx definition ](generated/xcore/OccupancyView.html)*
 
 TODO INSERT [Swiss profile NeTEx definition](generated/markdown-examples/OccupancyView.md)
 
