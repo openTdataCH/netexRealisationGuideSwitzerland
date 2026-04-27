@@ -147,7 +147,7 @@ Long-term planned time data concerning public transport vehicles passing a parti
 ### 3. Example
 
 [Example snippet](generated/xml-snippets/TimetabledPassingTime.xml)
-
+> *→ [General NeTEx definition ](generated/xcore/TimetabledPassingTime.html)*
 
 ### 4. Usage Notes
 
