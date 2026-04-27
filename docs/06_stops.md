@@ -114,6 +114,16 @@ QUAYs are mapped with the following resolution:
 In future the modelling of the Quays might adhere to EPIAP (NeTEx part 6) more to make sure that accessibility features can be modelled 
 correctly.. 
 
+- If the SLOID for platforms is not unique, it will be formed according to the schema:
+{StopPlace SLOID}_gen:{Quay SLOID}_pf:{Platform Code*}.
+- If no platform SLOID is available {StopPlace SLOID}_gen:missingSLOID_pf:{Platform Code*} will be used instead.
+👉 Please note: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.
+
+In the table below you will find an overview of the possible cases:
+	
+<img width="925" height="206" alt="SLOID_V1_EN" src="https://github.com/user-attachments/assets/45c5354d-be03-4d88-8b04-b3793e5568ba" />
+
+
 ## TopographicPlace
 > *→ [Glossary definition](A4_annex_glossary.md#TopographicPlace)*
 
