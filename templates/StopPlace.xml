@@ -58,6 +58,14 @@
                                     </Value>
                                 </KeyValue>
                             </keyList>
+                            <privateCodes>
+                                <!-- ch-usage: mandatory -->
+                                <PrivateCode>
+                                    <!-- ch-usage: mandatory -->
+                                    <!-- ch-note: In Switzerland to be filled with the DiDok number. Replaces single PublicCode from NeTEx 1.0 -->
+                                    7000
+                                </PrivateCode>
+                            </privateCodes>
                             <Extensions>
                                 <!-- ch-usage: optional -->
                                 <!-- ch-note: Extensions of the STOP PLACE:
@@ -87,14 +95,6 @@
                             <ShortName><!-- ch-note: Used to transmit the abbreviation of the StopPlace. There is not one abbreviation for all StopPlaces-->
                                 BE
                             </ShortName>
-                            <privateCodes>
-                                <!-- ch-usage: mandatory -->
-                                <PrivateCode>
-                                    <!-- ch-usage: mandatory -->
-                                    <!-- ch-note: In Switzerland to be filled with the DiDok number. Replaces single PublicCode from NeTEx 1.0 -->
-                                    7000
-                                </PrivateCode>
-                            </privateCodes>
                             <PrivateCode>
                                 <!-- ch-usage: forbidden -->
                                 <!-- ch-note: Replaced by PublicCode nested within publicCodes, see above. -->
@@ -130,10 +130,15 @@
                                     <Name lang="it">Berna</Name>
                                 </AlternativeName>
                             </alternativeNames>
-                            <StopPlaceType>
-                                <!-- ch-usage: optional -->
-                                railStation
-                            </StopPlaceType>
+                            <StopPlaceType><!-- ch-usage: optional -->railStation</StopPlaceType>
+                            <Weighting><!-- ch-note: TODO fix validation issue with Weighting element. --><!-- ch-note: Default relative weighting to be used for stop place.\
+The STOP PLACE element WEIGHTING basically accomplishes this feature but only allows the following values:
+- noInterchange
+- interchangeAllowed
+- recommendedInterchange
+- preferredInterchange
+To incorporate the desired value range, we will add an EXTENSION element `HafasPriority` that contains the full information.
+-->preferredInterchange</Weighting>
                             <quays>
                                 <!-- ch-usage: expected -->
                                 <!-- ch-note: The QUAYs contained in the STOP PLACE, that is platforms, jetties, bays, taxi ranks, and other points of physical access to VEHICLEs. -->
@@ -142,16 +147,6 @@
                                     <!-- ch-see -->
                                 </Quay>
                             </quays>
-
-                            <Weighting><!-- ch-note: TODO fix validation issue with Weighting element. --><!-- ch-note: Default relative weighting to be used for stop place.\
-The STOP PLACE element WEIGHTING basically accomplishes this feature but only allows the following values:
-- noInterchange
-- interchangeAllowed
-- recommendedInterchange
-- preferredInterchange
-To incorporate the desired value range, we will add an EXTENSION element `HafasPriority` that contains the full information.
--->preferredInterchange
-                            </Weighting>
                         </StopPlace>
                     </stopPlaces>
                 </SiteFrame>
