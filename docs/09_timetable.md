@@ -108,7 +108,7 @@ TODO INSERT [Swiss profile NeTEx definition](generated/markdown-examples/Occupan
 ### 3. Example
 
 - [Example snippet](generated/xml-snippets/OccupancyView.xml)
-
+> *→ [General NeTEx definition ](generated/xcore/OccupancyView.html)*
 
 
 
