@@ -120,7 +120,6 @@ Codes assigned to particular journeys (*ServiceJourney*, *TemplateServiceJourney
 
 ### 2. Table
 
-> *→ [General NeTEx definition ](generated/xcore/TrainNumber.html)*
 
 TODO INSERT [Swiss profile NeTEx definition](generated/markdown-examples/TrainNumber.md)
 
