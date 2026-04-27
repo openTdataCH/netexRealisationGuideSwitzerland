@@ -172,6 +172,7 @@ TODO INSERT [Swiss profile NeTEx definition](https://github.com/openTdataCH/nete
 ### 3. Example
 
 [Example snippet](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/c543acb1750e60bb369f53e3cbd10e1fac884ab0/generated/xml-snippets/InterchangeRule_UMTEIGZ.xml)
+> *→ [General NeTEx definition ](generated/xcore/InterchangeRule.html)*
 
 ### 4. Usage Notes
 
