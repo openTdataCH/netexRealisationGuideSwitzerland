@@ -128,7 +128,7 @@ TODO INSERT [Swiss profile NeTEx definition](generated/markdown-examples/TrainNu
  ### 3. Example
  
  TODO INSERT [Example snippet](generated/xml-snippets/TrainNumber.xml)
-
+> *→ [General NeTEx definition ](generated/xcore/TrainNumber.html)*
 
 
 ## TimetabledPassingTime
