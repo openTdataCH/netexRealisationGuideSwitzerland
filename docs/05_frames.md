@@ -1,6 +1,6 @@
 # The NeTEx Structure
 
-> [!WARNING]\
+> [!CAUTION]\
 > **TODO** 4.1
 
 ## PublicationDelivery
@@ -49,7 +49,7 @@ NeTEx is divided into [frames](#frames), containers for elements of a specific d
 
 We use the following frames in Switzerland:
 
-> [!WARNING]\
+> [!CAUTION]\
 > **TODO** Make sure that hyperlinks work when single page is generated from markdown files.\
 > **COMMENT** Links cannot not work in this source document. I assume that anchors will be available and hyperlinks will work as soon as the final document is put together.
 
