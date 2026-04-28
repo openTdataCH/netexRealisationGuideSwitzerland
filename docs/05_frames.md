@@ -8,7 +8,7 @@
 `PublicationDelivery` is the root element of NeTEx XML.
 
 (NeTEX-1, p. 220)
-NeTEx is divided into [frames](#frames), containers for other elements of a certain domain. The frames are described below.
+NeTEx is divided into [frames](#frames), containers for elements of a specific domain. These frames are introduced below.
 
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -71,7 +71,7 @@ We use the following frames in Switzerland:
 
 ### CompositeFrame
 
-The `CompositeFrame` is the container for the `FrameDefaults` and all other frames, like `ResourceFrame`, `SiteFrame`, `ServiceFrame`, `ServiceCalendarFrame` and `TimeTableFrame`, 
+The `CompositeFrame` is the container for the `FrameDefaults` and the other frames like `ResourceFrame`, `SiteFrame`, `ServiceFrame`, `ServiceCalendarFrame` and `TimeTableFrame`, 
 appearing in this order.
 
 - [Swiss profile tables](../generated/markdown-examples/CompositeFrame.md)
