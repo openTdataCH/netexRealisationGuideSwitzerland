@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ServiceFrame id="ch:1:ServiceFrame" version="1">
+					<connections>
+						<DefaultConnection id="11-11" version="1">
+							<Extensions>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: When also ProductCategory is relevant, then this extension must be used -->
+								<FromProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1">
+									<!-- ch-usage: mandatory -->
+									<!-- ch-note: Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
+								</FromProductCategoryRef>
+								<ToProductCategoryRef ref="ch:1:TypeOfProductCategory:TE2" version="1">
+									<!-- ch-usage: mandatory -->
+									<!-- ch-note: Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
+								</ToProductCategoryRef>
+							</Extensions>
+							<TransferDuration>
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: We use WalkTransferDuration sometimes. need to clarify **TODO** -->
+								<DefaultDuration><!-- ch-usage: mandatory -->PT2M</DefaultDuration>
+							</TransferDuration>
+							<BothWays><!-- ch-usage: optional--><!-- ch-note: **TODO** to use or not -->false</BothWays>
+							<From>
+								<!-- ch-usage: mandatory -->
+								<TransportMode><!-- ch-usage: optional -->all</TransportMode>
+								<OperatorView>
+									<!-- ch-usage: optional-->
+									<OperatorRef ref="ch:1:Operator:11" versionRef="1">
+										<!-- ch-usage: mandatory -->
+									</OperatorRef>
+								</OperatorView>
+							</From>
+							<To>
+								<!-- ch-usage: mandatory -->
+								<TransportMode><!-- ch-usage: optional -->all</TransportMode>
+								<OperatorView>
+									<!-- ch-usage: optional -->
+									<OperatorRef ref="ch:1:Operator:11" versionRef="1">
+										<!-- ch-usage: mandatory -->
+									</OperatorRef>
+								</OperatorView>
+							</To>
+							<StopPlaceRef ref="ch:1:sloid:19231" versionRef="1">
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Is a sloid usually. Not set, means whole network. -->
+							</StopPlaceRef>
+						</DefaultConnection>
+					</connections>
+				</ServiceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

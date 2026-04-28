@@ -89,17 +89,12 @@ DefaultConnections are used to transmit the ConnectionTimes for the following co
 -	in a defined StopPlace, 2 Operators and 2 ProductCategories
 For more Detail see 11 Appendix **TODO**
 
-**TODO**: Needs to be updated by Adrian. !! Here we will have variants of templates that we need to use!
+For the details of Connections see [here](uc03_transfer.md).
 
 - [Swiss profile NeTEx definition](../generated/markdown-examples/DefaultConnection.md)
 - [Example snippet](../generated/xml-snippets/DefaultConnection.xml)
 - [General NeTEx definition](../generated/xcore/DefaultConnection.html)
 
-The following variants exist:
-
-- [Swiss profile NeTEx definition](../generated/markdown-examples/DefaultConnection_Modes.md)
-
-- - [Swiss profile NeTEx definition](../generated/markdown-examples/DefaultConnection_Operators.md)
 
 
 ## SiteConnection

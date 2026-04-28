@@ -27,14 +27,16 @@ where the value of `ShortName` of the `TypeOfProductCategory` is used to build t
 -	Where there is a compelling need for global stability, the ID will be a global ID. 
 This information will be also transmitted separately in a `KeyList`. 
 
-<!-- tbd: Must be revisited and updated. -->
+> [!CAUTION] 
+> **TODO** Must be revisited and updated.
 
 All other defined attributes like `created`, `changed`, `modification` are not used. If we need one, we will inform about it in the table associated with the element.
 
 ## MultilingualString
+
 NeTEx uses the type `MultilingualString` for descriptive text elements (e.g. `Notice` text, `Name`, `ShortName` etc.).
 However, only one language can be set for a given element (e.g. `<MultilingualString lang=”fr”>`). 
-Additional languages are introduced through the [AlternativeName](#alternativename) and [AlternativeText](#alternativetext) element described below.
+Additional languages are introduced through the [AlternativeName](#alternativename) and [AlternativeText](#alternativetext) element.
 
 For [Organisations](#organisation--operator--authority) e.g. there are all languages present.
 
@@ -80,8 +82,8 @@ We only allow the following values for `NameType`:
 <alternativeNames>
 ```
 
-- [Swiss profile tables](generated/markdown-examples/AlternativeName.md)
-- [XML Snippet](generated/xml-snippets/AlternativeName.xml)
+- [Swiss profile tables](../generated/markdown-examples/AlternativeName.md)
+- [XML Snippet](../generated/xml-snippets/AlternativeName.xml)
 
 ## AlternativeText
 > **Original NeTEx Definition:** <br>
@@ -89,7 +91,9 @@ We only allow the following values for `NameType`:
 > The AlternativeText element is a generic way of providing such variants for any text attribute of a DataManagedObject. 
 > It can be seen as a complement to the AlternativeName mechanism, and can be used to provide an alias for any description or text attribute.
 
-<!-- comment US: term attribute is confusing. Text is in an element. -->
+> [!CAUTION] 
+> US: term attribute is confusing. Text is in an element.
+
 The `AlternativeText` is part of a `DataManagedObject` and references the name of the attribute (in terms of the NeTEx 
 Metamodel), for which it provides an alternative. 
 It contains the alternative text as an attribute of type `MultilingualString` which indicates the language. 
@@ -101,9 +105,9 @@ of the string, but might be different.
 As a general rule: further names (aliases) of a `StopPlace` or `Organisation` are modelled with [AlternativeNames](#AlternativeName), whereas 
 direct translations of content (for example of `Notice` texts) are modelled with `AlternativeTexts`.
 
-<!-- tbd 5.2 -->
+> [!CAUTION] 
+> **TODO** 5.2
 
-``` xml
 <notices>
     <Notice id=”ch:1:Notice:Hin-1229900” version=”1”>
       <alternativeTexts>
@@ -136,13 +140,17 @@ direct translations of content (for example of `Notice` texts) are modelled with
 The RESOURCE FRAME is a coherent set of resource data to which the same VALIDITY CONDITIONs have been assigned. Used to define common resources that will be referenced by other types of FRAME.
 
 See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
+
 ![ResourceFrame](./media/ResourceFrame.png)
 
 - [Swiss profile tables](../generated/markdown-examples/ResourceFrame.md)
 - [XML Snippet](../generated/xml-snippets/ResourceFrame.xml)
 
 ## ResponsibilitySet
-[comment US: Why is there an exceptoin for the PAG company?]: # 
+
+> [!CAUTION] 
+> US: Why is there an exceptoin for the PAG company?
+
 We use this model to  describe the different roles of the participating companies. For the most part, the company code is used to fully identify the services provided. 
 For the PAG company (801), the attribute `ResponsibleArea(Ref)` must also be taken into account.
 
@@ -153,10 +161,9 @@ Services (e.g. replacement services) can be associated with different roles. The
 | Concession Company |`EntityLegalOwnership` | Role of the company holding the concession for the original service |
 | Operator | `Operation` | role of the company responsible for providing the transport service |
 
+> [!CAUTION] 
+> US: in terms of XML StakeholderRoleType is an element, not an attribute.
 
-
-
-<!-- comment US: in terms of XML StakeholderRoleType is an element, not an attribute.-->
 - the role of the concession company is represented by the `EntityLegalOwnership` value of the `StakeholderRoleType` element
 - the role of the company responsible for carrying out the transport is represented by the Operation value of the `StakeholderRoleType` element.
 
@@ -183,8 +190,9 @@ Services (e.g. replacement services) can be associated with different roles. The
     </ResponsibilitySet>
 </responsibilitySets>
 ```
-tbd to be checked with.
-tbd 6.5.3 Postauto needs to be checked
+> [!CAUTION] 
+> **TODO** to be checked with ...
+> **TODO** 6.5.3 Postauto needs to be checked
 
 Only the values defined below are allowed in Switzerland for `StakeholderRoleType` in `ResponsbilityRoleAssignment`:
 -	`Operation`
@@ -192,8 +200,9 @@ Only the values defined below are allowed in Switzerland for `StakeholderRoleTyp
 -	`FareManagement`
 -	`Planning`
 and `FareManagement` and `Planning` are currently not used. Not all roles must be filled.
-tbd put this into template as well as a check for enums.
 
+> [!CAUTION] 
+> **TODO** put this into template as well as a check for enums.
 
 ## TypeOfValue / ValueSets
 The ResourceFrame contains all the `ValueSets` and `TypeOfValues`. That are used for classifi-cation of NeTEx entities like Notice, ProductCategory etc.
@@ -211,9 +220,9 @@ TypeOfNotice is used within a [Notice](#Notice) to give information, what it is 
 |--|--|--|
 |1|Allgemeiner Hinweis|General information text|
 |2|Zugname|Name|Name of the train. Is not used, as this is stored in ServiceJourneyName |
-|3|Gleis-Angabe|Quay and Quay section information. Will be put into Quay|
+|3|Gleis-Angabe|Quay and Quay section information. Is no longer used. Is put into Quay.|
 |10|Angebot|Most of the ServiceFacilitySet are also transmitted as Notice. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to ServiceFacilitySets. To deliver those special cases as Notices we need an additional TypeOfNotice.|
-|11|Region|Postauto is divided into several regions.|
+|11|Region|Postauto is divided into several regions. Will be omitted. If anything this will be done with different constructs. **TODO**|
 
 ``` xml
 <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
@@ -270,7 +279,9 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 
 ### TypeOfService
 The container for typesOfService is in TimetableFrame. But it is rather general, so we describe it here.
-tbd link
+
+> [!CAUTION] 
+> **TODO** link
 
 TypeOfService indicates the purpose of a ServiceJourney, for example, whether if it is a passenger transport or a garage run-in. The following types are currently used:
 
@@ -294,7 +305,8 @@ So, this is what needs to be in the TimetableFrame:
     </TypeOfService>
 </typesOfService>
 ```
-tbd
+> [!CAUTION] 
+> **TODO** tbd
 
 ## Organisation / Operator / Authority
 The ORGANISATION is a need to describe a concrete organisation like operator.
@@ -302,14 +314,16 @@ The Organisations are identified by their GO-number in Switzerland (see the http
 
 The list contains all transport enterprises for which timetable information is delivered. 
 The Operators are identified by their GO-number in Switzerland. The TU-Code is to be used for operators of other countries. 
-The PAG company (GO = 801) is organised in different parts for managing and identifying journeys.  These parts are represented by the OrganisationPart and TransportAdministrative-Zone elements.
+The PAG company (GO = 801) is organised in different parts for managing and identifying journeys.  These parts are represented by the OrganisationPart and TransportAdministrative-Zone elements. **TODO**
 To be noted:  From 2024, organisations will also be identified by SBOIDs.
 The operators must be set. 
 
 The sboid and GO number will always be mainly stored in the KeyList.
 
-tbd: OrganisationPart needs to be studied! 6.4.1
+> [!CAUTION] 
+> **TODO**: OrganisationPart needs to be studied! 6.4.1
 
+`OperatorRef` on a `Line` is always the "Konzessionär". If a different `Operator` is running a given `ServiceJourney`, then this is reflected in the `ServiceJourney` having a different `OperatorRef`.
 - [Swiss profile tables](../generated/markdown-examples/Operator.md)
 - [XML Snippet](../generated/xml-snippets/Operator.xml)
 
@@ -334,7 +348,8 @@ If necessary, this list can be revised. In case of additions, this can be done, 
 
 This means that a given Facility (e.g. restaurant or diaper changing table) is shown in the ap-propriate sub category MealFacilityList or FamilyFacilityList and a passenger information sys-tem can show these categories in a reasonable order. The categories themselves are from type "xsd:list“, meaning that the values of a cateogry are a separated list of elements. 
 
-tbd 10.13.2ff
+> [!CAUTION] 
+> **TODO** 10.13.2ff
 
 ``` xml
 <ServiceFacilitySet id="ch:1:ServiceFacilitySet:A___2" version="1">
@@ -358,7 +373,10 @@ tbd 10.13.2ff
 </ServiceFacilitySet>
 
 ```
-tbd a lot more detail needed. But probably in uc
+> [!CAUTION] 
+> **TODO** a lot more detail needed. But probably in uc
 
 ## SiteFacilitySet
-tbd not decribed in RG 1.01. What do we do
+
+> [!CAUTION] 
+> **TODO** not decribed in RG 1.01. What do we do

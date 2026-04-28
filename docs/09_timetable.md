@@ -1,7 +1,7 @@
 # Timetables
 
 
-
+![Timetable model](media/TimetableModel.png)
 
 ## TimetableFrame
 
@@ -24,9 +24,10 @@ The `TimetableFrame` contains the following allowed elements:
 
 
 [//]: # (TODO: Add TimetableFrame links)
-- [General NeTEx definition ](generated/xcore/TimetableFrame.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/TimetableFrame.md)
-- [Example snippet](generated/xml-snippets/TimetableFrame.xml)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/TimetableFrame.md)
+- [Example snippet](../generated/xml-snippets/TimetableFrame.xml)
+- [General NeTEx definition ](../generated/xcore/TimetableFrame.html)
+
 
 > [Template](../templates/TimetableFrame.xml)
 
@@ -35,9 +36,9 @@ The `TimetableFrame` contains the following allowed elements:
 A SERVICE JOURNEY is a VEHICLE JOURNEY on which passengers will be allowed to board or alight from vehicles at stops. It describes the service between an origin and a destination, as advertised to the public.
 
 [//]: # (TODO: Add ServiceJourney links)
-- [General NeTEx definition ](generated/xcore/ServiceJourney.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/ServiceJourney.md)
-- [Example snippet](generated/xml-snippets/ServiceJourney.xml)
+- [General NeTEx definition ](../generated/xcore/ServiceJourney.html)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourney.md)
+- [Example snippet](../generated/xml-snippets/ServiceJourney.xml)
 
 > [Template](../templates/ServiceJourney.xml)
 
@@ -69,15 +70,16 @@ A **ServiceJourney** represents a planned trip in the timetable operating on a r
 ### 2. Table
 
 [//]: # (TODO: Add ServiceJourney links)
-- [General NeTEx definition ](generated/xcore/ServiceJourney.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/ServiceJourney.md)
+
+- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourney.md)
+- [General NeTEx definition ](../generated/xcore/ServiceJourney.html)
 
 > [Template](../templates/ServiceJourney.xml)
 
 ### 3. Example
 
 [//]: # (TODO: Add ServiceJourney links)
-- [Example snippet](generated/xml-snippets/ServiceJourney.xml)
+- [Example snippet](../generated/xml-snippets/ServiceJourney.xml)
 
 
 ### 4. Usage Notes / Pitfalls
@@ -94,9 +96,10 @@ A **ServiceJourney** represents a planned trip in the timetable operating on a r
 A TEMPLATE SERVICE JOURNEY is a VEHICLE JOURNEY on which passengers will be allowed to board or alight from vehicles at stops and that reapeats with a certain frequency. It describes the service between an origin and a destination, as advertised to the public. Only to be used if a frequency has been specified for the JOURNEY. 
 
 [//]: # (TODO: Add TemplateServiceJourney links)
-- [General NeTEx definition ](generated/xcore/TemplateServiceJourney.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/TemplateServiceJourney.md)
-- [Example snippet](generated/xml-snippets/TemplateServiceJourney.xml)
+
+- [Swiss profile NeTEx definition](../generated/markdown-examples/TemplateServiceJourney.md)
+- [Example snippet](../generated/xml-snippets/TemplateServiceJourney.xml)
+- [General NeTEx definition ](../generated/xcore/TemplateServiceJourney.html)
 
 > [Template](../templates/TemplateServiceJourney.xml)
 
@@ -107,9 +110,10 @@ A TEMPLATE SERVICE JOURNEY is a VEHICLE JOURNEY on which passengers will be allo
 A specific type of VALIDITY CONDITION used to specify a set of temporal conditions that can be associated with an ENTITY, for example that a STOP PLACE is open on a particular DAY TYPE.
 
 [//]: # (TODO: Add AvailabilityCondition links)
-- [General NeTEx definition ](generated/xcore/AvailabilityCondition.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/AvailabilityCondition.md)
-- [Example snippet](generated/xml-snippets/AvailabilityCondition.xml)
+
+- [Swiss profile NeTEx definition](../generated/markdown-examples/AvailabilityCondition.md)
+- [Example snippet](../generated/xml-snippets/AvailabilityCondition.xml)
+- [General NeTEx definition ](../generated/xcore/AvailabilityCondition.html)
 
 > [Template](../templates/AvailabilityCondition.xml)
 
@@ -119,9 +123,10 @@ A specific type of VALIDITY CONDITION used to specify a set of temporal conditio
 
 
 [//]: # (TODO: Add Timeband links)
-- [General NeTEx definition ](generated/xcore/Timeband.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/Timeband.md)
-- [Example snippet](generated/xml-snippets/Timeband.xml)
+
+- [Swiss profile NeTEx definition](../generated/markdown-examples/Timeband.md)
+- [Example snippet](../generated/xml-snippets/Timeband.xml)
+- [General NeTEx definition ](../generated/xcore/Timeband.html)
 
 > [Template](../templates/Timeband.xml)
 
@@ -132,9 +137,10 @@ A specific type of VALIDITY CONDITION used to specify a set of temporal conditio
 The assignment of a NOTICE to any model element. Can be used in particular to show an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.
 
 [//]: # (TODO: Add NoticeAssignment links)
-- [General NeTEx definition ](generated/xcore/NoticeAssignment.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/NoticeAssignment.md)
-- [Example snippet](generated/xml-snippets/NoticeAssignment.xml)
+
+- [Swiss profile NeTEx definition](../generated/markdown-examples/NoticeAssignment.md)
+- [Example snippet](../generated/xml-snippets/NoticeAssignment.xml)
+- [General NeTEx definition ](../generated/xcore/NoticeAssignment.html)
 
 > [Template](../templates/NoticeAssignment.xml)
 
@@ -144,9 +150,10 @@ The assignment of a NOTICE to any model element. Can be used in particular to sh
 The OccupancyView element can be used on the JOURNEY, JOURNEY PART, and TIMETABLED PASSING TIME elements. Used for predicted and planned occupancies of vehicles.
 
 [//]: # (TODO: Add OccupancyView links)
-- [General NeTEx definition ](generated/xcore/OccupancyView.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/OccupancyView.md)
-- [Example snippet](generated/xml-snippets/OccupancyView.xml)
+
+- [Swiss profile NeTEx definition](../generated/markdown-examples/OccupancyView.md)
+- [Example snippet](../generated/xml-snippets/OccupancyView.xml)
+- [General NeTEx definition ](../generated/xcore/OccupancyView.html)
 
 > [Template](../templates/OccupancyView.xml)
 
@@ -157,9 +164,10 @@ The OccupancyView element can be used on the JOURNEY, JOURNEY PART, and TIMETABL
 Codes assigned to particular VEHICLE JOURNEYs when operated by TRAINs or COMPOUND TRAINs. ServiceJourneys can in principle have multiple different TrainNumbers whereas a JourneyPart can only reference a single one.
 
 [//]: # (TODO: Add TrainNumber links)
-- [General NeTEx definition ](generated/xcore/TrainNumber.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/TrainNumber.md)
-- [Example snippet](generated/xml-snippets/TrainNumber.xml)
+
+- [Swiss profile NeTEx definition](../generated/markdown-examples/TrainNumber.md)
+- [Example snippet](../generated/xml-snippets/TrainNumber.xml)
+- [General NeTEx definition ](../generated/xcore/TrainNumber.html)
 
 > [Template](../templates/TrainNumber.xml)
 
@@ -170,9 +178,10 @@ Codes assigned to particular VEHICLE JOURNEYs when operated by TRAINs or COMPOUN
 Long-term planned time data concerning public transport vehicles passing a particular POINT IN JOURNEY PATTERN on a specified VEHICLE JOURNEY for a certain DAY TYPE. Note that for Journeys lasting more than one day, DayOffset is available. If DepartureTime is not on the same day as ArrivalTime this information will be provided using WaitingTime.
 
 [//]: # (TODO: Add TimetabledPassingTime links)
-- [General NeTEx definition ](generated/xcore/TimetabledPassingTime.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/TimetabledPassingTime.md)
-- [Example snippet](generated/xml-snippets/TimetabledPassingTime.xml)
+
+- [Swiss profile NeTEx definition](../generated/markdown-examples/TimetabledPassingTime.md)
+- [Example snippet](../generated/xml-snippets/TimetabledPassingTime.xml)
+- [General NeTEx definition ](../generated/xcore/TimetabledPassingTime.html)
 
 > [Template](../templates/TimetabledPassingTime.xml)
 
@@ -181,20 +190,36 @@ Long-term planned time data concerning public transport vehicles passing a parti
 Set of FACILITies available for a SERVICE JOURNEY or a JOURNEY PART. The set may be available only for a specific VEHICLE TYPE within the SERVICE (e.g. carriage equipped with low floor). 
 
 [//]: # (TODO: Add ServiceFacilitySet links)
-- [General NeTEx definition ](generated/xcore/ServiceFacilitySet.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/ServiceFacilitySet.md)
-- [Example snippet](generated/xml-snippets/ServiceFacilitySet.xml)
+
+- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFacilitySet.md)
+- [Example snippet](../generated/xml-snippets/ServiceFacilitySet.xml)
+- [General NeTEx definition ](../generated/xcore/ServiceFacilitySet.html)
 
 > [Template](../templates/ServiceFacilitySet.xml)
 
 ## JourneyMeeting
-tbd
+**todo** we will have to check if we continue to use it
+
+(NeTEx-2, 7.2.7.3.5)
+A JOURNEY MEETING describes the possibility to plan the schedules according to various interchange possibilities:
+•	Interchange with another service, of which only the arrival or departure time is known.
+•	More generally, service scheduled according to the time fixed for an external event, which will feed, or be fed by, this service.
+•	Organisation of a meeting (hub) between several services, during a defined time band; this is a simplified specification of several interchanges. If needed this could be de-scribed in detail using several INTERCHANGE RULEs or SERVICE JOURNEY IN-TERCHANGEs.
+•	Specification of a rendez-vous (time and place) for any journey that can meet the ap-pointment.
+
+A JOURNEY MEETING may be related to one or several SERVICE JOURNEYs, which are planned according to this JOURNEY MEETING. It may be timed by an earliest time (e.g. the arrival time of a feeder line, plus the duration of a possible transfer) or by a latest time (e.g. the opening hour of the school served by the journey), or both (e.g. the time band of a hub).
+
+A JOURNEY MEETING is located at one or several STOP POINTs, which shall be also clas-sified as TIMING POINTs. It is planned in principle for VEHICLE JOURNEYs specified for the same DAY TYPE. The timing reference of these VEHICLE JOURNEYs will probably be chosen according to the JOURNEY MEETING specified.
+
+In NeTEx consequences of any DEFAULT INTERCHANGE or JOURNEY MEETING used in the planning phase that needs to be exchanged should be expressed as the resulting SERVICE JOURNEY timings, INTERCHANGE RULEs and/or SERVICE JOURNEY INTERCHANGEs.
+InterchangeRules are used to connect different ServiceJourney
 
 [//]: # (TODO: Add JourneyMeeting links)
-- [General NeTEx definition ](generated/xcore/JourneyMeeting.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/JourneyMeeting.md)
-- [Example snippet](generated/xml-snippets/JourneyMeeting.xml)
 
+- [Swiss profile NeTEx definition](../generated/markdown-examples/JourneyMeeting.md)
+- [Example snippet](../generated/xml-snippets/JourneyMeeting.xml)
+- [General NeTEx definition ](../generated/xcore/JourneyMeeting.html)
+- 
 > [Template](../templates/JourneyMeeting.xml)
 
 
@@ -203,22 +228,23 @@ tbd
 An INTERCHANGE RULE defines the possibility of interchanging between two SERVICE JOURNEYs at the same or different SCHEDULED STOP POINTs — where at least one journey is specified indirectly via DIRECTION, LINE or VEHICLE JOURNEY, rather than as an explicit journey pair.
 The rule specifies criteria (e.g. MODE, LINE, DIRECTION) that a candidate feeder or distributor SERVICE JOURNEY must fulfil. The SCHEDULED STOP POINT is defined separately for the feeder and distributor side.
 
-- [General NeTEx definition ](generated/xcore/InterchangeRule.html)
+
 - [Swiss profile NeTEx definition](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/3825500c6a13a9a2cc1e89f3f6993acf881a3507/generated/markdown-examples/InterchangeRule_UMTEIGZ.md)
 - [Example snippet](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/c543acb1750e60bb369f53e3cbd10e1fac884ab0/generated/xml-snippets/InterchangeRule_UMTEIGZ.xml)
-
+- [General NeTEx definition ](../generated/xcore/InterchangeRule.html)
 ## InterchangeRuleParameter
 (NeTEx-2, 7.2.8.3.2) 
 Type for INTERCHANGE RULE PARAMETER of the InterchangeRuleFilteringGroup. 
-- [General NeTEx definition ](generated/xcore/InterchangeRuleParameter.html)
+
 - [Swiss profile NeTEx definition](todo)
 - [Example snippet](todo)
-
+- [General NeTEx definition ](../generated/xcore/InterchangeRuleParameter.html)
 ## InterchangeRuleTiming
 (NeTEx-2, 7.2.8.3.3) 
 Conditions for considering JOURNEYs to meet or not to meet, specified indirectly: by a particular MODE, DIRECTION or LINE. Such conditions may alternatively be specified directly, indicating the corresponding services. In this case they are either a SERVICE JOURNEY PATTERN INTERCHANGE or a SERVICE JOURNEY INTERCHANGE. 
-- [General NeTEx definition ](generated/xcore/InterchangeRuleTiming.html)
+
 - [Swiss profile NeTEx definition](todo)
 - [Example snippet](todo)
+- - [General NeTEx definition ](../generated/xcore/InterchangeRuleTiming.html)
 
 
