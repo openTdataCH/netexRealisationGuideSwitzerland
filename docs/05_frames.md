@@ -1,22 +1,35 @@
-# The frames used
+# The Frames
 
 (NeTEX-1, p. 220)
-NeTEx is organised in frames. The basic structure of those frames is introduced in this section.
-* CompositeFrame:	Frame to group other VERSION FRAMEs
-* GeneralFrame: NOT TO BE USED	Any ENTITY or ENTITY IN VERSION
-* ResourceFrame: 	General purpose components such as ORGANISATIONSs VEHICLE TYPEs and code values. VEHICLE TYPE is not used.
-* InfrastructureFrame: NOT TO BE USED	INFRASTRUCTURE POINTs, LINKs, & RE-STRICTIONs
-* SiteFrame:	SITEs, STOP PLACEs. POINTS OF INTEREST and other fixed objects.
-* [ServiceFrame](06_stops.md):	Network description elements such as LINEs, ROUTEs, etc. Tactical Planning elements such as SCHED-ULED STOP POINTs, JOURNEY PATTTERNs, etc. pattern.
-* ServiceCalendarFrame_	SKI uses principaly AvailibilyConditions
-* TimetableFrame:	Timetable elements: SERVICE JOURNEYs with timings.
-* VehicleScheduleFrame: NOT TO BE USED	VEHICLE SCHEDULEs: BLOCKs and BLOCK PARTs
-* DriverScheduleFrame: NOT TO BE USED	DRIVER SCHEDULESs: DuTies and DUTY plans.
-* FareFrame: NOT TO BE USED	Fare related elements: TARIFF STRUCTUREs, FARE PRODUCTs, FARE PRICEs, etc.
+NeTEx is divided into frames. In this section we describe the frames we use in Switzerland, and which frames are not to be used.
 
+> [!WARNING]\
+> **TODO** Make sure that hyperlinks work when single page is generated from markdown files.\
+> **COMMENT** Links cannot not work in this source document. I assume that anchors will be available and hyperlinks will work as soon as the final document is put together.
 
-# The main structure and the needed schemas
+## Frames used in Switzerland
+
+We use the following frames in Switzerland:
+
+| Frame                                         | Description                                                                                                                                          |
+|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [CompositeFrame](#CompositeFrame)             | Frame to group other VERSION FRAMEs                                                                                                                  |
+| [ResourceFrame](#ResourceFrame)               | General purpose components such as ORGANISATIONSs VEHICLE TYPEs and code values. VEHICLE TYPE is not used.                                           |
+| [SiteFrame](#SiteFrame)                       | SITEs, STOP PLACEs. POINTS OF INTEREST and other fixed objects.                                                                                      |
+| [ServiceFrame](#ServiceFrame)                 | Network description elements such as LINEs, ROUTEs, etc., Tactical Planning elements such as SCHEDULED STOP POINTs, JOURNEY PATTTERNs, etc. pattern. |
+| [ServiceCalendarFrame](#ServiceCalendarFrame) | SKI uses principaly `AvailabilyConditions`                                                                                                             |
+| [TimetableFrame](#TimeTableFrame)             | Timetable elements: SERVICE JOURNEYs with timings.                                                                                                   |
+
+The following frames are **not to be used**:
+
+- GeneralFrame
+- InfrastructureFrame
+- VehicleScheduleFrame
+- DriverScheduleFrame
+- FareFrame
+
+# The main Structure and the needed Schemas
 TBD: 4.1
 
 # CompositeFrame
-**TODO**: 4.1.3
+*![](../10_common.md)
