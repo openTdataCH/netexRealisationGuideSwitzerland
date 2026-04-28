@@ -149,23 +149,17 @@ See the following class diagram for the most important objects of the RESOURCE F
 ## ResponsibilitySet
 
 > [!CAUTION] 
-> US: Why is there an exceptoin for the PAG company?
+> US: Why is there an exception for the PAG? Is it still needed?
 
 We use this model to  describe the different roles of the participating companies. For the most part, the company code is used to fully identify the services provided. 
 For the PAG company (801), the attribute `ResponsibleArea(Ref)` must also be taken into account.
 
 Services (e.g. replacement services) can be associated with different roles. These roles can be defined inside the `ResponsibilitySet` element.
 
-| Role | value of `StakeholderRoleType` | Description                                                         |
-| --- | --- |---------------------------------------------------------------------|
-| Concession Company |`EntityLegalOwnership` | Role of the company holding the concession for the original service |
-| Operator | `Operation` | role of the company responsible for providing the transport service |
-
-> [!CAUTION] 
-> US: in terms of XML StakeholderRoleType is an element, not an attribute.
-
-- the role of the concession company is represented by the `EntityLegalOwnership` value of the `StakeholderRoleType` element
-- the role of the company responsible for carrying out the transport is represented by the Operation value of the `StakeholderRoleType` element.
+| value of `StakeholderRoleType` | Description                                                                      |
+| ----- |----------------------------------------------------------------------------------|
+| `EntityLegalOwnership` | Role of the **conession company** holding the concession for the original service |
+| `Operation` | role of the **operator company** responsible for providing the transport service  |
 
 - [Swiss profile tables](../generated/markdown-examples/ResponsibilitySet.md)
 - [XML Snippet](../generated/xml-snippets/ResponsibilitySet.xml)
@@ -191,7 +185,7 @@ Services (e.g. replacement services) can be associated with different roles. The
 </responsibilitySets>
 ```
 > [!CAUTION] 
-> **TODO** to be checked with ...
+> **TODO** to be checked with ...\
 > **TODO** 6.5.3 Postauto needs to be checked
 
 Only the values defined below are allowed in Switzerland for `StakeholderRoleType` in `ResponsbilityRoleAssignment`:
@@ -199,30 +193,37 @@ Only the values defined below are allowed in Switzerland for `StakeholderRoleTyp
 -	`EntityLegalOwnership`
 -	`FareManagement`
 -	`Planning`
-and `FareManagement` and `Planning` are currently not used. Not all roles must be filled.
+
+`FareManagement` and `Planning` are currently not used. Not all roles must be filled.
 
 > [!CAUTION] 
 > **TODO** put this into template as well as a check for enums.
 
 ## TypeOfValue / ValueSets
-The ResourceFrame contains all the `ValueSets` and `TypeOfValues`. That are used for classifi-cation of NeTEx entities like Notice, ProductCategory etc.
-It is preferred that the TypeOfValue are copied from the SKI files and no individual TypeOfValue are created.
+The ResourceFrame contains all the `ValueSets` and `TypeOfValues`. These are used for classification of NeTEx entities like `Notice`, `ProductCategory` etc.
+It is preferred that the `TypeOfValue` are copied from the SKI files and no individual `TypeOfValue` are created.
 
-TypeOfValue’s are stored in ValueSets as part of the ResourceFrame. We use TypeOfValue references in various Frames in objects including:
--	Notice: references TypeOfNotice
--	ServiceJourney: references TypeOfProductCategory
-- tbd
+> [!CAUTION] 
+> **TODO** add more examples for TypeOfValue usage
+
+`TypeOfValue` elements are stored in `ValueSets` as part of the ResourceFrame. We use TypeOfValue references in various Frames in objects including:
+-	`Notice`: references `TypeOfNotice`
+-	`ServiceJourney`: references `TypeOfProductCategory`
 
 ### TypeOfNotice
-TypeOfNotice is used within a [Notice](#Notice) to give information, what it is about.  
+`TypeOfNotice` is used within a [Notice](#Notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
 
-| Value | Name | Description |
-|--|--|--|
-|1|Allgemeiner Hinweis|General information text|
-|2|Zugname|Name|Name of the train. Is not used, as this is stored in ServiceJourneyName |
-|3|Gleis-Angabe|Quay and Quay section information. Is no longer used. Is put into Quay.|
-|10|Angebot|Most of the ServiceFacilitySet are also transmitted as Notice. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to ServiceFacilitySets. To deliver those special cases as Notices we need an additional TypeOfNotice.|
-|11|Region|Postauto is divided into several regions. Will be omitted. If anything this will be done with different constructs. **TODO**|
+> [!CAUTION]
+> **TODO** Rework table and example xml\
+> **COMMENT** US: remove things that are no longer used, e.g. values 2, 3?
+
+| PrivateCode | Name               | Description                                                                                                                                                                                                                                                    |
+|-------------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1           | Allgemeiner Hinweis | General information text                                                                                                                                                                                                                                       |
+| 2           | ~~Zugname~~            | Name of the train. Is not used, as this is stored in ServiceJourneyName.                                                                                                                                                                                       |
+| 3           | ~~Gleis-Angabe~~   | Quay and Quay section information. Is no longer used. Is put into Quay.                                                                                                                                                                                        |
+| 10          | Angebot            | Most of the `ServiceFacilitySet` are also transmitted as `Notice`. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to `ServiceFacilitySets`. This `TypeOfNotice` is used to deliver those special cases as Notices. |
+| 11          | ~~Region~~             | Postauto is divided into several regions. Will be omitted. If anything this will be done with different constructs.                                                                                                                                            |
 
 ``` xml
 <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
@@ -251,8 +252,8 @@ TypeOfNotice is used within a [Notice](#Notice) to give information, what it is 
 </ValueSet>
 ```
 ### TypeOfProductCategory
-For the ServiceJourneys exclusively provided in Switzerland, only the ProductCategories de-fined in the document "06 Harmonisierung Verkehrsmittel" (see https://www.allianceswisspass.ch/de/tarife-vorschriften/uebersicht/V580/Produkte-der-V580-FIScommun-1) may be referenced. 
-For ServiceJourneys provided in other countries or partially in Switzerland, there are no re-strictions, provided that the category does not overlap with the ProductCategories defined for Switzerland.
+For the ServiceJourneys exclusively provided in Switzerland, only the ProductCategories defined in the document [06 Harmonisierung Verkehrsmittel](https://www.allianceswisspass.ch/de/tarife-vorschriften/uebersicht/V580/Produkte-der-V580-FIScommun-1) may be referenced. 
+For ServiceJourneys provided in other countries or partially in Switzerland, there are no restrictions, provided that the category does not overlap with the ProductCategories defined for Switzerland.
 
 ``` xml
 <ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
@@ -278,21 +279,22 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 ```
 
 ### TypeOfService
-The container for typesOfService is in TimetableFrame. But it is rather general, so we describe it here.
+The container for `typesOfService` is in TimetableFrame. But it is rather general, so we describe it here.
 
 > [!CAUTION] 
-> **TODO** link
+> **TODO** link?\
+> **TODO** remove table as it shows TypeOfServices not used in Switzerland?
 
-TypeOfService indicates the purpose of a ServiceJourney, for example, whether if it is a passenger transport or a garage run-in. The following types are currently used:
+`TypeOfService` indicates the purpose of a `ServiceJourney`, for example, whether if it is a passenger transport or a garage run-in. The following types are currently used:
 
-| TypeOfService	  | Description                                                                                                                                               |
-|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PublicJourney	  | A public passenger transport                                                                                                                              |
-| GarageRunOut	   | A garage run-out                                                                                                                                          |
-| GarageRunIn	    | A garage run-in                                                                                                                                           |
-| ThroughCoach    | 	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling. |
+| Name	          | Description                                                                                                                                               |
+|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| PublicJourney	 | A public passenger transport                                                                                                                              |
+| ~~GarageRunOut~~	  | A garage run-out                                                                                                                                          |
+| ~~GarageRunIn~~	   | A garage run-in                                                                                                                                           |
+| ~~ThroughCoach~~   | 	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling. |
 
-Actually there is only one allowed value that we use in the Swiss profile: Only the PublicJourney are to be exchanged.
+Actually there is only one allowed value that we use in the Swiss profile: Only the `PublicJourney` are to be exchanged.
 
 So, this is what needs to be in the TimetableFrame:
 
@@ -305,33 +307,48 @@ So, this is what needs to be in the TimetableFrame:
     </TypeOfService>
 </typesOfService>
 ```
-> [!CAUTION] 
-> **TODO** tbd
 
 ## Organisation / Operator / Authority
 The ORGANISATION is a need to describe a concrete organisation like operator.
-The Organisations are identified by their GO-number in Switzerland (see the https://opentransportdata.swiss/de/dataset/didok/resource/d66259a0-a77c-4aee-b7bd-e4fba99dcbb1). The TU-Code is to be used for operators of other countries. To be noted:  From 2024, organisations will also be identified by SBOIDs. For more infor-mations, see document https://transportdatamanagement.ch/content/uploads/2021/05/SwissBusinessOrganisationID_DE_1_2.pdf
+The Organisations are identified by their [GO-number](https://opentransportdata.swiss/de/dataset/didok/resource/d66259a0-a77c-4aee-b7bd-e4fba99dcbb1) 
+in Switzerland. The TU-Code is to be used for operators of other countries. 
+
+> [!NOTE] From 2024, organisations will also be identified 
+> by [SBOIDs](https://transportdatamanagement.ch/content/uploads/2021/05/SwissBusinessOrganisationID_DE_1_2.pdf).
 
 The list contains all transport enterprises for which timetable information is delivered. 
 The Operators are identified by their GO-number in Switzerland. The TU-Code is to be used for operators of other countries. 
-The PAG company (GO = 801) is organised in different parts for managing and identifying journeys.  These parts are represented by the OrganisationPart and TransportAdministrative-Zone elements. **TODO**
-To be noted:  From 2024, organisations will also be identified by SBOIDs.
-The operators must be set. 
 
-The sboid and GO number will always be mainly stored in the KeyList.
+>The **PAG company** (GO = 801) is organised in different parts for managing and identifying journeys. 
+>These parts are represented by the `OrganisationPart` and `TransportAdministrativeZone` elements. 
 
 > [!CAUTION] 
-> **TODO**: OrganisationPart needs to be studied! 6.4.1
+> **COMMENT** US: I would remove this sentence as it should be obvious from tables.
 
-`OperatorRef` on a `Line` is always the "Konzessionär". If a different `Operator` is running a given `ServiceJourney`, then this is reflected in the `ServiceJourney` having a different `OperatorRef`.
+~~The operators must be set.~~ 
+
+The SBOID and GO number will always be mainly stored in the `KeyList`.
+
+> [!CAUTION] 
+> **TODO**: `OrganisationPart` needs to be studied! 6.4.1
+
+`OperatorRef` on a `Line` is always the "Konzessionär". 
+If a different `Operator` is running a given `ServiceJourney`, then this is reflected in the `ServiceJourney` having 
+a different `OperatorRef`.
 - [Swiss profile tables](../generated/markdown-examples/Operator.md)
 - [XML Snippet](../generated/xml-snippets/Operator.xml)
 
 ## ServiceFacilitySet
-From the original NeTEx definition:
-"Set of ServiceFacilitySet objects available for a ServiceJourney. The set may be available only for a specific VEHICLE TYPE within the SERVICE (e.g. carriage equipped with low floor). Ser-viceFacilitySets are listed in the TimetableFrame (between trainNumbers and notices). They are referenced in the facilities object of a ServiceJourney. In the following table are listed only the elements we currently use in the example. "
-The assignment of facilities to ServiceJourney or JourneyPart is made by using FacilitySet elements.
-SKI uses the following groups to classify facilities:
+
+>**Original NeTEx definition:**\
+>Set of `ServiceFacilitySet` objects available for a `ServiceJourney`. 
+>The set may be available only for a specific VEHICLE TYPE within the SERVICE (e.g. carriage equipped with low floor). 
+>`ServiceFacilitySets` are listed in the `TimetableFrame` (between trainNumbers and notices). 
+>They are referenced in the facilities object of a `ServiceJourney`.
+
+The assignment of `facilities` to `ServiceJourney` or `JourneyPart` is made by using `FacilitySet` elements.
+
+SKI uses the following groups to classify `facilities`:
 -	Accommodation facility
 -	Catering facility
 -	Fare classes
@@ -346,7 +363,10 @@ SKI uses the following groups to classify facilities:
 
 If necessary, this list can be revised. In case of additions, this can be done, as long as the desired category is defined in the NeTEx specifications. 
 
-This means that a given Facility (e.g. restaurant or diaper changing table) is shown in the ap-propriate sub category MealFacilityList or FamilyFacilityList and a passenger information sys-tem can show these categories in a reasonable order. The categories themselves are from type "xsd:list“, meaning that the values of a cateogry are a separated list of elements. 
+This means that a given Facility (e.g. restaurant or diaper changing table) is shown in the appropriate 
+subcategory `MealFacilityList` or `FamilyFacilityList`, and a passenger information system can show these categories in 
+a reasonable order. The categories themselves are from type `xsd:list`, meaning that the values of a category are a 
+separated list of elements. 
 
 > [!CAUTION] 
 > **TODO** 10.13.2ff
@@ -371,7 +391,6 @@ This means that a given Facility (e.g. restaurant or diaper changing table) is s
   <Description lang="de">Nur 2. Klasse</Description>
   <FareClasses>secondClass</FareClasses>
 </ServiceFacilitySet>
-
 ```
 > [!CAUTION] 
 > **TODO** a lot more detail needed. But probably in uc
