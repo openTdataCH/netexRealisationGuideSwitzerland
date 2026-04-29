@@ -150,6 +150,11 @@ Long-term planned time data concerning public transport vehicles passing a parti
 
 - Note that for journeys lasting more than one day, `DayOffset` is available.
 - If `DepartureTime` is not on the same day as `ArrivalTime` this information will be provided using `WaitingTime`.
+- We use sjyid whenever possible as the attribute. However, there are different types of `ServiceJourney`s that don't have one:
+  - foreign `ServiceJourney`s
+  - **TODO** which other cases
+- We store the sjyid in different places `id`, `privateCodes/PrivateCode`, `KeyList`. This allows different importing systems to find the sjyid.
+
 
 
 ## HeadwayGroup
@@ -171,6 +176,7 @@ Already defined in `TemplateServiceJourney.`
 Already defined in `TemplateServiceJourney.`
 
 ### Usage NOtes
+- For sjyid see information about [frequencies](uc14_frequencies.md
 - HeadwayUseEnum: How headway is to be displayed to passengers. Allowed values:
   - `displayInsteadOfPassingTimes`
   -	`displayAsWellAsPassingTimes`

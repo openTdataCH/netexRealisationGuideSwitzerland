@@ -10,7 +10,7 @@ The Service Frame model comprises among others:
 
 Other important classes of the SERVICE FRAME include:
 -	PASSENGER STOP ASSIGNMENTs and TRAIN STOP ASSIGNMENTs which model the relationship between stops in the timetable and the physical platforms of an actual station or other stop.
--	CONNECTIONs as the topological model of INTERCHANGES. They model the possi-bility of a transfer between two SCHEDULED STOP POINTs.
+-	CONNECTIONs as the topological model of INTERCHANGES. They model the possibility of a transfer between two SCHEDULED STOP POINTs.
 -	NOTICEs which are then assigned to JOURNEYs and CALLs of the TIMETABLE FRAME through NOTICE ASSIGNMENTs. They model the association of footnotes and passenger information content such as stop announcements and the network.
 
 See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
@@ -29,16 +29,32 @@ See the following class diagram for the most important objects of the RESOURCE F
 
 
 ## Line 
+
+### Purpose
 Transmodel defines a LINE as a grouping of ROUTEs that is generally known to the public by a similar name or number. These ROUTEs are usually very similar to each other from the top-ological point of view.
-Each LINE has a unique number  PrivateCode, a ShortName and a Name.  Passengers rec-ognise a LINE by its published “PublicCode”. The transport mode is specified in  “TransportMode”, e.g  metro, tram, bus etc.. 
+Each LINE has a unique number  PrivateCode, a ShortName and a Name.  Passengers rec-ognise a LINE by its published “PublicCode”. The transport mode is specified in  “TransportMode”, e.g.  metro, tram, bus etc. 
 The assignement of a LINE to an ORGANISATION is done by the element OperatorRef and to the operationalContext with OperationalContextRef.
 Note that there exist journeys in Switzerland and neighbouring countries that are not associat-ed with a Line. In NeTEx, however, the ServiceJourneys corresponding to such journeys must still reference something in LineRef. To ensure this, we introduce a placeholder Line called "NoLine" for each Operator that has journeys without a Line. 
 For more information about SwissLineID: see https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf
-Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise the relevant operator must at least be set on the ServiceJourney.
+Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise, the relevant operator must at least be set on the ServiceJourney.
 
+### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/Line.md)
+
+*-> [General NeTEx definition](../generated/xcore/ServiceFrame.html)*
+### Example
+
 - [Example snippet](../generated/xml-snippets/Line.xml)
-- [General NeTEx definition](../generated/xcore/ServiceFrame.html)
+
+*->[Template](../generated/xcore/Line.xml)*
+
+### Usage Notes
+- slnid will be integrated whereevery possible. We currently think that - where it exists - it has the necessary properties to be used in the `id`-attribute.
+- For foreign lines and id might need to be generated.
+- We store the slnid whenever possible in `id`, `privateCodes/PrivateCode` and `KeyList`.
+- **TODO** link to migration concept slnid
+- **TODO** handling of mixed lines
+- 
 
 ## DestinationDisplay
 (NeTEx-1, 8.4.5.8.4)
@@ -71,7 +87,7 @@ PassengerStopAssignments bring the SiteModel and the ServiceModel in alignment. 
 -	A ScheduledStopPoint in a Call is linked to a StopPlace for arrival and departure.
 -	A ScheduledStopPoint in a Call is linked to a Quay for arrival and departure.
 
-Suppose a vehicle arrives on QUAY 2A and departs on QUAY 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS.
+Suppose a vehicle arrives at QUAY 2A and departs on QUAY 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS.
 
 - [Swiss profile NeTEx definition](../generated/markdown-examples/PassengerStopAssignment.md)
 - [Example snippet](../generated/xml-snippets/PassengerStopAssignment.xml)
