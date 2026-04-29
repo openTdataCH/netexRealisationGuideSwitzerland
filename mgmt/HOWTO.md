@@ -19,7 +19,7 @@ git submodule update
 
 ## Markdown
 - Everything in the docs folder
-- Folder von inclusion stuff: docs/media
+- Folder for resources to include: docs/media
 - https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 
 ### General rules
