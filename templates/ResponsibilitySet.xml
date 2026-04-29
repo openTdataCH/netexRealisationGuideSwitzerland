@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="ch:1:CompositeFrame" version="any">
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
 			<frames>
-				<ResourceFrame id="ch:1:ResourceFrame" version="any">
+				<ResourceFrame id="ch:1:ResourceFrame" version="1">
 					<responsibilitySets>
-																<ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1"><!-- ch-root -->
-							<!-- ch-note: Each combination of Authority and Operator needs a ResponsibilitySet. -->
+						<ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
+							<!-- ch-root -->
+							<!-- ch-note: Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line.-->
 							<!-- ch-usage: mandatory -->
-							<!-- ch-see -->
+							<Name lang="de"><!-- ch-usage: mandatory -->Basler Verkehrsbetriebe</Name>
+							<PrivateCode><!-- ch-usage: expected -->BVB</PrivateCode>
+							<roles>
+								<!-- ch-usage: mandatory -->
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:1" version="1">
+									<!-- ch-usage: mandatory -->
+									<StakeholderRoleType><!-- ch-usage: mandatory --><!-- ch-note: EntityLegalOwnership must be defined once. **TODO** we can't express this for the schematron currently. -->EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100622" versionRef="1">
+										<!-- ch-usage: mandatory -->
+									</ResponsibleOrganisationRef>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:2" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100622" versionRef="1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
 						</ResponsibilitySet>
 					</responsibilitySets>
-
 				</ResourceFrame>
 			</frames>
 		</CompositeFrame>

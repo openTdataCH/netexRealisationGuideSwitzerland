@@ -1,20 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="ch:1:CompositeFrame" version="any">
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
 			<frames>
-				<ResourceFrame id="ch:1:ResourceFrame" version="any">
+				<ResourceFrame id="ch:1:ResourceFrame" version="1">
 					<organisations>
-												<Operator id="sboid" version="1">
-													<!-- ch-root -->
+						<Operator id="ch:1:sboid:100602" version="1">
+							<!-- ch-root -->
 							<!-- ch-note: We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
 							<!-- ch-usage: mandatory -->
+							<keyList>
+								<!-- ch-usage: expected -->
+								<KeyValue>
+									<!-- ch-usage: expected -->
+									<Key>GO</Key>
+									<Value>801</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key><!-- ch-usage: expected -->SBOID</Key>
+									<Value><!-- ch-usage: expected -->ch:1:sboid:100602</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<!-- ch-usage: expected -->
+								<PrivateCode type="GO"><!-- ch-usage: expected -->801</PrivateCode>
+								<PrivateCode type="sboid">ch:1:sboid:100602</PrivateCode>
+							</privateCodes>
+							<PrivateCode><!-- ch-usage: expected -->801</PrivateCode>
+							<Name><!-- ch-usage: expected -->PostAuto AG</Name>
+							<ShortName><!-- ch-usage: expected --><!-- ch-note: there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. -->PAG</ShortName>
+							<parts>
+								<!-- ch-usage: optional -->
+								<OrganisationPart id="ch:1:OrganisationPart:801-1234" version="1">
+									<!-- ch-usage: optional -->
+									<!-- ch-note: We want to get rid of the OrganisationPart. **todo** -->
+									<administrativeZones>
+										<!-- ch-usage: optional -->
+										<TransportAdministrativeZone id="ch:1:TransportAdministrativeZone:801-1234" version="1">
+											<!-- ch-usage: optional -->
+											<PrivateCode><!-- ch-usage: optional -->1234</PrivateCode>
+										</TransportAdministrativeZone>
+									</administrativeZones>
+								</OrganisationPart>
+								<OrganisationPart id="ch:1:OrganisationPart:801-5678" version="1">
+									<administrativeZones>
+										<TransportAdministrativeZone id="ch:1:TransportAdministrativeZone:801-5678" version="1">
+											<PrivateCode>5678</PrivateCode>
+										</TransportAdministrativeZone>
+									</administrativeZones>
+								</OrganisationPart>
+							</parts>
 						</Operator>
-
+						<Operator id="ch:1:sboid:100001" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>GO</Key>
+									<Value>11</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SBOID</Key>
+									<Value>ch:1:sboid:100001</Value>
+								</KeyValue>
+							</keyList>
+							<PrivateCode>11</PrivateCode>
+							<Name>Schweizerische Bundesbahnen SBB</Name>
+							<ShortName>SBB</ShortName>
+						</Operator>
 					</organisations>
-
 				</ResourceFrame>
 			</frames>
 		</CompositeFrame>
