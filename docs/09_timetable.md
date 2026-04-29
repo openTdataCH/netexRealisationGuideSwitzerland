@@ -151,6 +151,32 @@ Long-term planned time data concerning public transport vehicles passing a parti
 - If `DepartureTime` is not on the same day as `ArrivalTime` this information will be provided using `WaitingTime`.
 
 
+## HeadwayGroup
+> **TODO**
+
+### Purpose
+(NeTEx-2, 7.2.6.5.2)
+
+A group of VEHICLE JOURNEYs following the same JOURNEY PATTERN and having the same headway.interval between a specified start and end time (for example, ‘every 10 minutes’). This is especially useful.for presenting passenger information.
+
+JOURNEY FREQUENCY GROUP is not used directly. Instead we use the HEADWAY JOURNEY GROUP which inherits from JOURNEY FREQUENCY GROUP.
+
+A ServiceJourney which is serviced at a given frequency is defined as a TemplateServ-iceJourney (see example below). Such a TemplateServiceJourney has the same elements as a regular ServiceJourney, but also defines a single HeadwayJourneyGroups. This Group holds all the frequency-based information of the journey, as for example when the Calls of the journey are serviced the first/last time and in what interval (or with what frequency respective-ly). 
+
+### Table
+Already defined in `TemplateServiceJourney.`
+
+### Example
+Already defined in `TemplateServiceJourney.`
+
+### Usage NOtes
+- HeadwayUseEnum: How headway is to be displayed to passengers. Allowed values:
+  - `displayInsteadOfPassingTimes`
+  -	`displayAsWellAsPassingTimes`
+  -	`displayPassingTimesOnly`
+- We only export `displayPassingTimesOnly`.
+
+
 ## InterchangeRule
 
 ### Purpose
