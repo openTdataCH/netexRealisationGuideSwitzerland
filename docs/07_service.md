@@ -89,7 +89,7 @@ DefaultConnections are used to transmit the ConnectionTimes for the following co
 -	in a defined StopPlace, 2 Operators and 2 ProductCategories
 For more Detail see 11 Appendix **TODO**
 
-For the details of Connections see [here](uc03_transfer.md).
+For the details of Connections see [here](uc03_transfers.md).
 
 - [Swiss profile NeTEx definition](../generated/markdown-examples/DefaultConnection.md)
 - [Example snippet](../generated/xml-snippets/DefaultConnection.xml)

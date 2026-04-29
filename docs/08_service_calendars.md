@@ -73,6 +73,6 @@ Designation of one day or group of days
 
 We also use DayTypeAssignment currently only for the national holidays.
 
-- [Swiss profile NeTEx definition](../generated/markdown-examples/DayTypeAssignmen.md)
-- [Example snippet](../generated/xml-snippets/DayTypeAssignmen.xml)
-- [General NeTEx definition](../generated/xcore/DayTypeAssignmen.html)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/DayTypeAssignment.md)
+- [Example snippet](../generated/xml-snippets/DayTypeAssignment.xml)
+- [General NeTEx definition](../generated/xcore/DayTypeAssignment.html)

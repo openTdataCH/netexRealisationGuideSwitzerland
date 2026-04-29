@@ -23,14 +23,14 @@ A ***SiteFrame*** contains the physical infrastructure model for public transpor
 
 ### 3. Table (TODO)
 
-> *→ [General NeTEx definition ](generated/xcore/SiteFrame.html)*
+> *→ [General NeTEx definition ](../generated/xcore/SiteFrame.html)*
 
-TODO INSERT: [Swiss profile NeTEx definition](generated/markdown-examples/SiteFrame.md)
+TODO INSERT: [Swiss profile NeTEx definition](../generated/markdown-examples/SiteFrame.md)
 
 > *→ [Template](../templates/SiteFrame.xml)*
 
 ### 4. Example
-TODO INSERT: [Example snippet](generated/xml-snippets/SiteFrame.xml)
+TODO INSERT: [Example snippet](../generated/xml-snippets/SiteFrame.xml)
 
 
 ### 5. Frame Relationships
@@ -47,14 +47,14 @@ Note that a *StopPlace* is a distinct concept from the representation of the sto
 
 ### 2. Table (TODO)
 
-> *→ [General NeTEx definition ](generated/xcore/StopPlace.html)*
+> *→ [General NeTEx definition ](../generated/xcore/StopPlace.html)*
 
-TODO INSERT: [Swiss profile NeTEx definition](generated/markdown-examples/StopPlace.md)
+TODO INSERT: [Swiss profile NeTEx definition](../generated/markdown-examples/StopPlace.md)
 
 > *→ [Template](../templates/StopPlace.xml)*
 
 ### 3. Example
-TODO INSERT: [Example snippet](generated/xml-snippets/StopPlace.xml)
+TODO INSERT: [Example snippet](../generated/xml-snippets/StopPlace.xml)
 
 
 ### 4. Usage Notes (TODO)
@@ -81,14 +81,14 @@ A specific boarding or alighting position (platform, stand, bay) within a *StopP
 
 ### 2. Table (TODO)
 
-> *→ [General NeTEx definition ](generated/xcore/StopPlace.html)*
+> *→ [General NeTEx definition ](../generated/xcore/StopPlace.html)*
 
-TODO INSERT: [Swiss profile NeTEx definition](generated/markdown-examples/StopPlace.md)
+TODO INSERT: [Swiss profile NeTEx definition](../generated/markdown-examples/StopPlace.md)
 
 > *→ [Template](../templates/StopPlace.xml)*
 
 ### 3. Example
-TODO INSERT: [Example snippet](generated/xml-snippets/StopPlace.xml)
+TODO INSERT: [Example snippet](../generated/xml-snippets/StopPlace.xml)
 
 
 
@@ -134,14 +134,14 @@ A named geographic area such as a city, municipality, county, or region - used t
 
 ### 2. Table (TODO)
 
-> *→ [General NeTEx definition ](generated/xcore/TopographicPlace.html)*
+> *→ [General NeTEx definition ](../generated/xcore/TopographicPlace.html)*
 
-TODO INSERT: [Swiss profile NeTEx definition](generated/markdown-examples/TopographicPlace.md)
+TODO INSERT: [Swiss profile NeTEx definition](../generated/markdown-examples/TopographicPlace.md)
 
 > *→ [Template](../templates/TopographicPlace.xml)*
 
 ### 3. Example
-TODO INSERT: [Example snippet](generated/xml-snippets/TopographicPlace.xml)
+TODO INSERT: [Example snippet](../generated/xml-snippets/TopographicPlace.xml)
 
 ### 4. Usage Notes (TODO)
 
