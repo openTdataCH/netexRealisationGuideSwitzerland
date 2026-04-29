@@ -116,3 +116,10 @@ The NOTICE Model defines reusable text note elements that may be attached to tim
 - [Swiss profile NeTEx definition](../generated/markdown-examples/Notice.md)
 - [Example snippet](../generated/xml-snippets/Notice.xml)
 - [General NeTEx definition](../generated/xcore/Notice.html)
+
+
+## NoticeAssignment
+> **TODO **
+- [Swiss profile NeTEx definition](../generated/markdown-examples/NoticeAssignment.md)
+- [Example snippet](../generated/xml-snippets/NoticeAssignment.xml)
+- [General NeTEx definition](../generated/xcore/NoticeAssignment.html)
