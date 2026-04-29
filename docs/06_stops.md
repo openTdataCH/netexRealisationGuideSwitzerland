@@ -7,57 +7,59 @@
 
 ## SiteFrame 
 
-> *→ [Glossary definition](A4_annex_glossary.md#siteframe)*
+*→ [Glossary definition](A4_annex_glossary.md#siteframe)*
 
-### 1. Purpose
+### urpose
 
-A ***SiteFrame*** contains the physical infrastructure model for public transport — *StopPlace*s, *Quay*s, and topographic context. It defines the spatial elements that passengers interact with and that other frames reference for stop assignments.
+A `SiteFrame` contains the physical infrastructure model for public transport — `StopPlace`s, `Quay`s, and topographic context. It defines the spatial elements that passengers interact with and that other frames reference for stop assignments.
 
 
-### 2. Contained Elements
+### Contained Elements
 
-- ***StopPlace***s – stations and stops 
-  - ***Quay***s - platforms where passengers can board a vehicle
-- ***TopographicPlace***s - points of interest, geographical and administrative area context for stops
+- `StopPlace`s – stations and stops 
+  - `Quay`s - platforms where passengers can board a vehicle
+- `TopographicPlace`s - points of interest, geographical and administrative area context for stops
 - Not currently modelled: entrances, levels, equipments, paths, accessibility properties
 
-### 3. Table (TODO)
+### Table
 
-> *→ [General NeTEx definition ](../generated/xcore/SiteFrame.html)*
+[Swiss profile NeTEx definition](../generated/markdown-examples/SiteFrame.md)
 
-TODO INSERT: [Swiss profile NeTEx definition](../generated/markdown-examples/SiteFrame.md)
-
-> *→ [Template](../templates/SiteFrame.xml)*
-
-### 4. Example
-TODO INSERT: [Example snippet](../generated/xml-snippets/SiteFrame.xml)
+*→ [General NeTEx definition ](../generated/xcore/SiteFrame.html)*
 
 
-### 5. Frame Relationships
-***SiteFrame*** is independent of other frames but provides the physical stop infrastructure that ***ServiceFrame*** references through *PassengerStopAssignments*. ***TimetableFrame*** indirectly depends on ***SiteFrame*** through the *JourneyPattern* stop sequence. ***SiteFrame*** is typically wrapped in a *CompositeFrame* within a *PublicationDelivery*.
+*→ [Template](../templates/SiteFrame.xml)*
+
+### Example
+[Example snippet](../generated/xml-snippets/SiteFrame.xml)
+
+
+### Frame Relationships
+`SiteFrame` is independent of other frames but provides the physical stop infrastructure that `ServiceFrame` references through `PassengerStopAssignments`. `TimetableFrame` indirectly depends on `SiteFrame` through the *JourneyPattern* stop sequence. `SiteFrame` is typically wrapped in a `CompositeFrame` within a `PublicationDelivery`.
 
 ## StopPlace
-> *→ [Glossary definition](A4_annex_glossary.md#StopPlace)*
+*→ [Glossary definition](A4_annex_glossary.md#StopPlace)*
 
-### 1. Purpose
+### Purpose
 
-A named physical or virtual location where passengers can board or alight from public transport, containing one or more *Quays*.
-Note that a *StopPlace* is a distinct concept from the representation of the stop in a timetable – the *ScheduledStopPoint*. The two can be connected using a *StopPointAssignment*. 
+A named physical or virtual location where passengers can board or alight from public transport, containing one or more `Quays`.
+Note that a `StopPlace` is a distinct concept from the representation of the stop in a timetable – the `ScheduledStopPoint`. The two can be connected using a *StopPointAssignment*. 
 
 
-### 2. Table (TODO)
+### Table
 
 > *→ [General NeTEx definition ](../generated/xcore/StopPlace.html)*
 
-TODO INSERT: [Swiss profile NeTEx definition](../generated/markdown-examples/StopPlace.md)
+[Swiss profile NeTEx definition](../generated/markdown-examples/StopPlace.md)
 
 > *→ [Template](../templates/StopPlace.xml)*
 
-### 3. Example
-TODO INSERT: [Example snippet](../generated/xml-snippets/StopPlace.xml)
+### Example
+
+[Example snippet](../generated/xml-snippets/StopPlace.xml)
 
 
-### 4. Usage Notes (TODO)
+### Usage Notes
 
 In Switzerland all these StopPlace codes are defined in Didok by order of the Department of Transport (BAV). If the BAV will regulate also “Haltepunkte” and “Haltekante” then also the Quays will be regulated. Foreign StopPlaces may be mapped to Swiss Didok codes. 
  
@@ -66,45 +68,41 @@ It is important to notice that the main connection between Didok codes and the N
 There will be meta-stations added with their own code. In some cases these are added for operational or searching reasons. 
 
 
-> The **Centroid** always contains a location:
+> The `Centroid` always contains a location:
 > - The main coordinates are given as WSG84.
 > - The Swiss coordinates are added as well, when available (see below) 
 > - INFO+ will not use the data from the import. Always the DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places.
 
 ## Quay
 
-> *→ [Glossary definition](A4_annex_glossary.md#Quay)*
+*→ [Glossary definition](A4_annex_glossary.md#Quay)*
 
-### 1. Purpose
+### Purpose
 A specific boarding or alighting position (platform, stand, bay) within a *StopPlace* where passengers physically meet vehicles. 
 
 
-### 2. Table (TODO)
+### Table
 
-> *→ [General NeTEx definition ](../generated/xcore/StopPlace.html)*
+[Swiss profile NeTEx definition](../generated/markdown-examples/StopPlace.md)
 
-TODO INSERT: [Swiss profile NeTEx definition](../generated/markdown-examples/StopPlace.md)
+*→ [General NeTEx definition ](../generated/xcore/StopPlace.html)*
 
-> *→ [Template](../templates/StopPlace.xml)*
+### Example
+[Example snippet](../generated/xml-snippets/StopPlace.xml)
 
-### 3. Example
-TODO INSERT: [Example snippet](../generated/xml-snippets/StopPlace.xml)
+*→ [Template](../templates/StopPlace.xml)*
 
-
-
-### 4. Usage Notes (TODO)
+### Usage Notes
 
 A QUAY may serve one or more VEHICLE STOPPING PLACEs and be associated with one or more STOP POINTs.  
  
 A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.  
 
-Further more: 
+Furthermore: 
 - A nested QUAY is always physically contiguous with its parent and so has the same accessibility characteristics 
 as it parents. 
 - Nested QUAYs should not be used to mark individual positions on a platform – BOARDING POSITIONs service this function. 
 - Nested QUAYs and ACCESS PLACES must always be on the same LEVEL as their parent
-
-#### Business Requirements   
 
 QUAYs are mapped with the following resolution: 
 - No hierarchy between the different definitions of quays is foreseen at the moment 
@@ -117,7 +115,8 @@ correctly..
 - If the SLOID for platforms is not unique, it will be formed according to the schema:
 {StopPlace SLOID}_gen:{Quay SLOID}_pf:{Platform Code*}.
 - If no platform SLOID is available {StopPlace SLOID}_gen:missingSLOID_pf:{Platform Code*} will be used instead.
-👉 Please note: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.
+
+- 👉 Please note: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.
 
 In the table below you will find an overview of the possible cases:
 	
@@ -125,28 +124,25 @@ In the table below you will find an overview of the possible cases:
 
 
 ## TopographicPlace
-> *→ [Glossary definition](A4_annex_glossary.md#TopographicPlace)*
+*→ [Glossary definition](A4_annex_glossary.md#TopographicPlace)*
 
-### 1. Purpose
-A named geographic area such as a city, municipality, county, or region - used to provide spatial context for *StopPlaces*, for example when interactively searching for the origin or destination of a trip.
+### Purpose
+A named geographic area such as a city, municipality, county, or region - used to provide spatial context for `StopPlaces`, for example when interactively searching for the origin or destination of a trip.
 
 
+### Table
 
-### 2. Table (TODO)
+[Swiss profile NeTEx definition](../generated/markdown-examples/TopographicPlace.md)
 
-> *→ [General NeTEx definition ](../generated/xcore/TopographicPlace.html)*
+*→ [General NeTEx definition ](../generated/xcore/TopographicPlace.html)*
 
-TODO INSERT: [Swiss profile NeTEx definition](../generated/markdown-examples/TopographicPlace.md)
 
-> *→ [Template](../templates/TopographicPlace.xml)*
+### Example
+[Example snippet](../generated/xml-snippets/TopographicPlace.xml)
 
-### 3. Example
-TODO INSERT: [Example snippet](../generated/xml-snippets/TopographicPlace.xml)
+*→ [Template](../templates/TopographicPlace.xml)*
 
-### 4. Usage Notes (TODO)
-
-#### Business Requirements
-
+### Usage Notes
 The TopograficPlace represent the cantons and communes in Switzerland. The value will be set to the cantons for stops. 
 
 [//]: # (TODO: Comment to Centroid is repeated.)
