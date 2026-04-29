@@ -17,25 +17,25 @@ The following table shows how we will map HRDF tables into NeTEX.
 
 **TODO** details from  Powerpoint to be included
 ## General transfer time between modes
-- [Example](../generated/xml-snippet/DefaultConnection_Modes.xml)
+- [Example](../generated/xml-snippets/DefaultConnection_Modes.xml)
 
 
 ## Transfer times at a given StopPlace
 **TODO** details from  Powerpoint to be included
 
-- [Example](../generated/xml-snippet/DefaultConnection_UMSTEIGB.xml)
+- [Example](../generated/xml-snippets/DefaultConnection_UMSTEIGB.xml)
 
 
 ## Operator related transfer times
 **TODO** details from  Powerpoint to be included
 
-- [Example](../generated/xml-snippet/DefaultConnection_UMSTEIGV.xml)
+- [Example](../generated/xml-snippets/DefaultConnection_UMSTEIGV.xml)
 
 
 ## Line and Direction-oriented transfer times
 **TODO** details from  Powerpoint to be included
 
-- [Example](../generated/xml-snippet/InterchangeRule_UMSTEIGL.xml)
+- [Example](../generated/xml-snippets/InterchangeRule_UMSTEIGL.xml)
 
 
 ## ServiceJourney related transfer times
@@ -51,7 +51,7 @@ The following situations exist:
 The differences between the various situations are to be differentiated with the value in some attributes.
 **TODO** copy stuff from 10.2
 
-- [Example](../generated/xml-snippet/InterchangeRule_UMSTEIGZ.xml)
+- [Example](../generated/xml-snippets/InterchangeRule_UMSTEIGZ.xml)
 
 
 ## Transfer times between StopPlaces
@@ -59,4 +59,4 @@ The differences between the various situations are to be differentiated with the
 
 The differences between the various situations are to be differentiated with the value in some attributes.
 
-- [Example](../generated/xml-snippet/SiteConnection.xml)
+- [Example](../generated/xml-snippets/SiteConnection.xml)
