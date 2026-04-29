@@ -21,6 +21,7 @@ git submodule update
 - Everything in the docs folder
 - Folder for resources to include: docs/media
 - https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+- Example file: [TimetableFrame doc](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/docs/09_timetable.md)
 
 ### General rules
 - Comments start with > best do it this way:
@@ -29,14 +30,15 @@ git submodule update
   > **TODO** Must be revisited and updated.
   ```
 - Things to do are always marked with **TODO** in templates and docs
-- We don' use numberings in docs
-- Glossary references are used at the top with a *→ into the annex with a # if possible.
+- We don't use numberings in docs
+- Glossary references are used at the top of an element section with a *→ into the annex with a # if possible.
    - Example:`*→ [Glossary definition](A4_annex_glossary.md#timetableframe)*` Result: *→ [Glossary definition](A4_annex_glossary.md#timetableframe)*
-- Elements from NeTEx are shown as code (except in the headings). Plurals are done like this `ServiceJourney`s.
+- Element names from NeTEx are shown as `code` (except in the headings). Plurals are done like this `ServiceJourney`s.
+- A table of contents at the top of each file lists the elements used.
 
   
 ### Headings
-The TimetableFrame doc shows the structure. There is one for Frames and one for elements.
+There is a defined structure to describe elements and frames (examples in [TimetableFrame doc](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/docs/09_timetable.md)). There is a structure for frames and one for elements.
 
  Frames
 - Purpose
