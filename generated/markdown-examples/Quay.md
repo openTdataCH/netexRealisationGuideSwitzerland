@@ -2,11 +2,13 @@
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-| + | keyList | mandatory | 1..1 | KeyListStructure | A list of alternative Key values for an element. |  |
+| + | keyList | mandatory | 1..1 | KeyListStructure | A list of alternative Key values for an element. | KEY LIST with the KEY VALUEs related to the QUAY.\
+                                        SKI use KeyValues: for the SLOID.\
+                                        For delivery to SKI only if available. |
 | ++ | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. |  |
 | +++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
 | +++ | Value | mandatory | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
-| + | Centroid | mandatory | 0..1 | SimplePoint_VersionStructure | Centre Coordinates of GROUP of STOP PLACEs. |  |
+| + | Centroid | mandatory | 0..1 | SimplePoint_VersionStructure | Centre Coordinates of GROUP of STOP PLACEs. | Location of POINT of QUAY. |
 | ++ | Location | mandatory | 0..1 | LocationStructure | Absolute location of EQUIPMENT. |  |
 | +++ | Longitude | mandatory | 1..1 | LongitudeType | Longitude from Greenwich Meridian. -180 (East) to +180 (West). |  |
 | +++ | Latitude | mandatory | 1..1 | LatitudeType | Latitude from equator. -90 (South) to +90 (North). |  |

@@ -32,6 +32,29 @@
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:interchangeRules">
       <sch:assert test="count(netex:InterchangeRule) > 0">InterchangeRule must be present</sch:assert>
+      <sch:assert test="count(netex:InterchangeRule) > 0">InterchangeRule must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:interchangeRules/netex:InterchangeRule">
+      <sch:assert test="count(netex:StaySeated) > 0">StaySeated must be present</sch:assert>
+      <sch:assert test="count(netex:Planned) > 0">Planned must be present</sch:assert>
+      <sch:assert test="count(netex:Guaranteed) > 0">Guaranteed must be present</sch:assert>
+      <sch:assert test="count(netex:FeederFilter) > 0">FeederFilter must be present</sch:assert>
+      <sch:assert test="count(netex:DistributorFilter) > 0">DistributorFilter must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:interchangeRules/netex:InterchangeRule/netex:timings/netex:InterchangeRuleTiming">
+      <sch:assert test="count(netex:TimebandRef) > 0">TimebandRef must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:interchangeRules/netex:InterchangeRule/netex:FeederFilter">
+      <sch:assert test="count(netex:StopPlaceRef) > 0">StopPlaceRef must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:interchangeRules/netex:InterchangeRule/netex:FeederFilter/netex:LineInDirectionRef">
+      <sch:assert test="count(netex:LineRef) > 0">LineRef must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:interchangeRules/netex:InterchangeRule/netex:DistributorFilter">
+      <sch:assert test="count(netex:StopPlaceRef) > 0">StopPlaceRef must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:TimetableFrame/netex:interchangeRules/netex:InterchangeRule/netex:DistributorFilter/netex:LineInDirectionRef">
+      <sch:assert test="count(netex:LineRef) > 0">LineRef must be present</sch:assert>
       </sch:rule>
     </sch:pattern>
   </sch:schema>

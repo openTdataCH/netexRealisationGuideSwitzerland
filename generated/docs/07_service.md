@@ -27,7 +27,6 @@ See the following class diagram for the most important objects of the RESOURCE F
 | ++ | [DestinationDisplay](DestinationDisplay.md) | expected | 1..1 | unknown | An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations. | We only allow fully formed content of destinationDisplays |
 | + | scheduledStopPoints | mandatory | 0..1 | scheduledStopPointsInFrame_RelStructure | SCHEDULED STOP POINTs in frame. | Swiss ScheduledStopPoint are using the sloid in the id, when possible. |
 | ++ | [SiteConnection](SiteConnection.md) | expected | 1..1 | unknown | The physical (spatial) possibility to connect from one point to another in a SITE. | SiteConnection are used only in the main file and not in timetable files. |
-| ++ | [Connection](Connection.md) | expected | 1..1 | unknown | The physical (spatial) possibility for a passenger to change from one public transport vehicle to another to continue the trip. Different times may be necessary to cover this link, depending on the kind of passenger. | Connection is used only used in the site file |
 | ++ | [DefaultConnection](DefaultConnection.md) | expected | 1..1 | unknown | Specifies the default transfer times to transfer between MODEs and / or OPERATORs within a region. | DefaultConnection is only used in the site file |
 | + | stopAssignments | expected | 0..1 | stopAssignmentsInFrame_RelStructure | STOP ASSIGNMENTs in frame. |  |
 | ++ | [PassengerStopAssignment](PassengerStopAssignment.md) | expected | 1..1 | unknown | The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION. | are only used in a special PSA file in the export. |
@@ -70,9 +69,6 @@ See the following class diagram for the most important objects of the RESOURCE F
     <SiteConnection id="generated" version="1">
       <!-- SiteConnection are used only in the main file and not in timetable files. -->
     </SiteConnection>
-    <Connection id="generated" version="1">
-      <!-- Connection is used only used in the site file -->
-    </Connection>
     <DefaultConnection id="generated" version="1">
       <!-- DefaultConnection is only used in the site file -->
     </DefaultConnection>
@@ -310,7 +306,7 @@ DefaultConnections are used to transmit the ConnectionTimes for the following co
 -	in a defined StopPlace, 2 Operators and 2 ProductCategories
 For more Detail see 11 Appendix **TODO**
 
-For the details of Connections see [here](uc03_transfer.md).
+For the details of Connections see [here](uc03_transfers.md).
 
 
 
@@ -390,10 +386,10 @@ For more Detail see 11 Appendix
 |  | SiteConnection | expected | 1..1 | unknown | The physical (spatial) possibility to connect from one point to another in a SITE. | SiteConnection are used only in the main file and not in timetable files. |
 | + | WalkTransferDuration | mandatory | 0..1 | TransferDurationStructure | Timings for walking over TRANSFER if different from the JOURNEY PATTERN transfer duration, |  |
 | ++ | DefaultDuration | mandatory | 0..1 | xsd:duration | Default time needed for a traveller to make a TRANSFER. |  |
-| + | BothWays | optional | 0..1 | xsd:boolean | Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER. |  |
-| + | From | mandatory | 0..1 | ConnectionEndStructure | Origin end of CONNECTION. |  |
+| + | BothWays | mandatory | 0..1 | xsd:boolean | Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER. |  |
+| + | From | mandatory | 0..1 | ConnectionEndStructure | Origin end of CONNECTION. | Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. |
 | ++ | StopPlaceRef | mandatory | 0..1 | StopPlaceRefStructure | System identifier of a STOP PLACE. May be omitted if given by context. |  |
-| + | To | mandatory | 0..1 | ConnectionEndStructure | Destination end of CONNECTION. |  |
+| + | To | mandatory | 0..1 | ConnectionEndStructure | Destination end of CONNECTION. | Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. |
 
 
 
@@ -457,3 +453,32 @@ The NOTICE Model defines reusable text note elements that may be attached to tim
 
 
 - [General NeTEx definition](../generated/xcore/Notice.html)
+
+
+## NoticeAssignment
+> **TODO **
+
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+| + | validityConditions | optional | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. |  |
+| ++ | AvailabilityConditionRef | optional | 1..1 | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. |  |
+| + | NoticeRef | expected | 1..1 | NoticeRefStructure | Reference to a NOTICE i.e. footnote, note, announcement or other informational text element. |  |
+
+
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<NoticeAssignment  id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
+  <!-- Attribute `id` must be unique. -->
+  <validityConditions>
+    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
+  </validityConditions>
+  <NoticeRef ref="ch:1:Notice:Hin-1229900" version="1"/>
+</NoticeAssignment>
+
+```
+
+
+- [General NeTEx definition](../generated/xcore/NoticeAssignment.html)

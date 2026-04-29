@@ -28,5 +28,6 @@ See ERA B.4 7037 Characteristic description code. | **TODO** I am not sure if it
 | + | DirectionType | mandatory | 0..1 | RelativeDirectionEnumeration | For fares for DISTANCE MATRIXE LEMENTs, DIRECTION in which price applies. | Allowed are: inbound, outbound |
 | + | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure | TRAIN NUMBERs in frame. |  |
 | ++ | TrainNumberRef | mandatory | 1..1 | TrainNumberRefStructure | Reference to a TRAIN NUMBER. |  |
+| + | [Destination](Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure | Destination of Travel. Note that for a point-to-point TARIFF the origin is assigned with a DISTANCE MATRIX ELEMENT. | **TODO** needs to be created as well |
 | + | passingTimes | mandatory | 0..1 | timetabledPassingTimes_RelStructure | PASSING TIMEs for VEHICLE JOURNEY. |  |
 | ++ | [TimetabledPassingTime](TimetabledPassingTime.md) | expected | 1..1 | unknown | TIMETABLED PASSING TIME at TIMING POINT. |  |

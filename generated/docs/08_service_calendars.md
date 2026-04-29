@@ -10,12 +10,37 @@ Note that VALIDITY CONDITIONs could be combined and ANDed (all the conditions mu
 
 
 
-- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceCalendarFrame.md)
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | ServiceCalendarFrame | expected | 1..1 | unknown | A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES. | A minimal ServiceCalendarFrame must be present in all timetable files. |
+| + | validityConditions | mandatory | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. |  |
+| ++ | [AvailabilityCondition](AvailabilityCondition.md) | mandatory | 1..1 | unknown | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. |  |
+| + | [ServiceCalendar](ServiceCalendar.md) | expected | 1..1 | unknown | A SERVICE CALENDAR. A collection of DAY TYPE ASSIGNMENTs. |  |
+| + | dayTypes | optional | 0..1 | unknown | DAY TYPEs for BLOCK. |  |
+| ++ | [DayType](DayType.md) | optional | 1..1 | unknown | A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays. |  |
+| + | timebands | expected | 0..1 | timebandRefs_RelStructure | TIMEBANDS associated with JOURNEY FREQUENCY GROUP. |  |
+| ++ | Timeband | expected | 1..1 | unknown | A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category. |  |
 
 
 
 
-- [Example snippet](../generated/xml-snippets/ServiceCalendarFrame.xml)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ServiceCalendarFrame  id="ch:1:ServiceCalendarFrame" version="1">
+  <!-- A minimal ServiceCalendarFrame must be present in all timetable files. -->
+  <validityConditions>
+    <AvailabilityCondition id="ch:1:AvailabilityCondition:b7" version="1"/>
+  </validityConditions>
+  <ServiceCalendar id="ch:1:ServiceCalendar:j23" version="1"/>
+  <dayTypes>
+    <DayType id="ch:1:DayType:ycy10_1" version="1"/>
+  </dayTypes>
+  <timebands>
+    <Timeband id="ch:1:Timeband:1140:1260" version="1"/>
+  </timebands>
+</ServiceCalendarFrame>
+
+```
 
 
 - [General NeTEx definition](../generated/xcore/ServiceCalendarFrame.html)
@@ -50,10 +75,10 @@ Hint: The frames TimetableFrame, ServiceFrame and ServiceCalendarFrame and their
 |-----|---------|-------|------|------|-------------|------|
 | + | FromDate | optional | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. | Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. |
 | + | ToDate | optional | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. | Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. |
-| + | IsAvailable | mandatory | 0..1 | xsd:boolean | Whether condition makes resource available or not available. Default is available. | madatory by NeTEx **TODO** really? |
 | + | ValidDayBits | mandatory | 0..1 | xsd:normalizedString | For UIC style encoding of day types String of bits, one for each day in period: whether valid or not valid on the day. Normally there will be a bit for every day between start and end date. If bit is missing, assume available. |  |
-| + | timebands | optional | 0..1 | timebandRefs_RelStructure | TIMEBANDS associated with JOURNEY FREQUENCY GROUP. |  |
+| + | timebands | optional | 0..1 | timebandRefs_RelStructure | TIMEBANDS associated with JOURNEY FREQUENCY GROUP. | Can also be referenced |
 | ++ | [Timeband](Timeband.md) | optional | 1..1 | unknown | A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category. |  |
+| ++ | TimebandRef | optional | 1..1 | TimebandRefStructure | Reference to a TIME BAND. |  |
 
 
 
@@ -65,14 +90,14 @@ Hint: The frames TimetableFrame, ServiceFrame and ServiceCalendarFrame and their
   <!-- Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
   <ToDate>2026-05-17T00:00:00Z</ToDate>
   <!-- Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
-  <IsAvailable>true</IsAvailable>
-  <!-- madatory by NeTEx **TODO** really? -->
   <ValidDayBits>01010010111</ValidDayBits>
   <timebands>
+    <!-- Can also be referenced -->
     <Timeband id="ch:1:Timeband:4937" version="1">
       <StartTime>06:00:00</StartTime>
       <EndTime>06:01:00</EndTime>
     </Timeband>
+    <TimebandRef ref="ch:1:Timeband:4937-2" version="1"/>
   </timebands>
 </AvailabilityCondition>
 
@@ -87,12 +112,28 @@ The transport offering of a public transport company is tailored to accommodate 
 
 
 
-- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceCalendar.md)
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | ServiceCalendar | expected | 1..1 | unknown | A SERVICE CALENDAR. A collection of DAY TYPE ASSIGNMENTs. |  |
+| + | Name | mandatory | 0..1 | MultilingualString | Name of Traveller | timetable year |
+| + | FromDate | mandatory | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. | Beginning of timetable year |
+| + | ToDate | mandatory | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. | End of timetable year |
 
 
 
 
-- [Example snippet](../generated/xml-snippets/ServiceCalendar.xml)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ServiceCalendar  id="ch:1:ServiceCalendar:j23" version="1">
+  <Name>Fahrplan 2018</Name>
+  <!-- timetable year -->
+  <FromDate>2017-12-10</FromDate>
+  <!-- Beginning of timetable year -->
+  <ToDate>2018-12-08</ToDate>
+  <!-- End of timetable year -->
+</ServiceCalendar>
+
+```
 
 
 - [General NeTEx definition](../generated/xcore/ServiceCalendar.html)
@@ -104,12 +145,47 @@ The day type is used to describe the validity of the holidays in Switzerland. Ea
 
 
 
-- [Swiss profile NeTEx definition](../generated/markdown-examples/DayType.md)
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | DayType | optional | 1..1 | unknown | A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays. | In Switzerland only used for holidays and the like |
+| + | alternativeTexts | expected | 0..1 | alternativeTexts_RelStructure | Additional Translations of text elements. |  |
+| ++ | AlternativeText | mandatory | 1..1 | unknown | Alternative Text. +v1.1 |  |
+| +++ | Text | mandatory | 0..1 | MultilingualString | Text content of NOTICe. |  |
+| + | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
+| + | properties | expected | 0..1 | propertiesOfDay_RelStructure | Properties of the DAY TYPE. |  |
+| ++ | PropertyOfDay | mandatory | 1..1 | unknown | A property which a day may possess, such as school holiday, weekday, summer, winter etc. | Holidays only |
+| +++ | HolidayTypes | expected | 0..1 | HolidayTypesListOfEnumerations | Type of holiday. Default is Any day. |  |
+| +++ | DayEvent | optional | 0..1 | DayEventEnumeration | Events happening on day. |  |
 
 
 
 
-- [Example snippet](../generated/xml-snippets/DayType.xml)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<DayType  id="ch:1:DayType:Bundesfeier" version="1">
+  <!-- In Switzerland only used for holidays and the like -->
+  <alternativeTexts>
+    <AlternativeText attributeName="Name">
+      <Text lang="it">Festa nazionale</Text>
+    </AlternativeText>
+    <AlternativeText attributeName="Name">
+      <Text lang="en">National Day</Text>
+    </AlternativeText>
+    <AlternativeText attributeName="Name">
+      <Text lang="fr">Fête nationale</Text>
+    </AlternativeText>
+  </alternativeTexts>
+  <Name>Bundesfeier</Name>
+  <properties>
+    <PropertyOfDay>
+      <!-- Holidays only -->
+      <HolidayTypes>NationalHoliday</HolidayTypes>
+      <DayEvent>normalDay</DayEvent>
+    </PropertyOfDay>
+  </properties>
+</DayType>
+
+```
 
 
 - [General NeTEx definition](../generated/xcore/DayType.html)
@@ -121,12 +197,47 @@ Currently used for InterchangeRuleTimings, later also used for the opening hours
 
 
 
-- [Swiss profile NeTEx definition](../generated/markdown-examples/DayType.md)
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | DayType | optional | 1..1 | unknown | A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays. | In Switzerland only used for holidays and the like |
+| + | alternativeTexts | expected | 0..1 | alternativeTexts_RelStructure | Additional Translations of text elements. |  |
+| ++ | AlternativeText | mandatory | 1..1 | unknown | Alternative Text. +v1.1 |  |
+| +++ | Text | mandatory | 0..1 | MultilingualString | Text content of NOTICe. |  |
+| + | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
+| + | properties | expected | 0..1 | propertiesOfDay_RelStructure | Properties of the DAY TYPE. |  |
+| ++ | PropertyOfDay | mandatory | 1..1 | unknown | A property which a day may possess, such as school holiday, weekday, summer, winter etc. | Holidays only |
+| +++ | HolidayTypes | expected | 0..1 | HolidayTypesListOfEnumerations | Type of holiday. Default is Any day. |  |
+| +++ | DayEvent | optional | 0..1 | DayEventEnumeration | Events happening on day. |  |
 
 
 
 
-- [Example snippet](../generated/xml-snippets/DayType.xml)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<DayType  id="ch:1:DayType:Bundesfeier" version="1">
+  <!-- In Switzerland only used for holidays and the like -->
+  <alternativeTexts>
+    <AlternativeText attributeName="Name">
+      <Text lang="it">Festa nazionale</Text>
+    </AlternativeText>
+    <AlternativeText attributeName="Name">
+      <Text lang="en">National Day</Text>
+    </AlternativeText>
+    <AlternativeText attributeName="Name">
+      <Text lang="fr">Fête nationale</Text>
+    </AlternativeText>
+  </alternativeTexts>
+  <Name>Bundesfeier</Name>
+  <properties>
+    <PropertyOfDay>
+      <!-- Holidays only -->
+      <HolidayTypes>NationalHoliday</HolidayTypes>
+      <DayEvent>normalDay</DayEvent>
+    </PropertyOfDay>
+  </properties>
+</DayType>
+
+```
 
 
 - [General NeTEx definition](../generated/xcore/DayType.html)
@@ -140,12 +251,24 @@ We also use DayTypeAssignment currently only for the national holidays.
 
 
 
-- [Swiss profile NeTEx definition](../generated/markdown-examples/DayTypeAssignmen.md)
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | DayTypeAssignment | expected | 1..1 | unknown | Associates a DAY TYPE with an OPERATING DAY within a specific Calendar. A specification of a particular DAY TYPE which will be valid during a TIME BAND on an OPERATING DAY. | We currently use DayType to store the national holidays. |
+| + | Date | mandatory | 0..1 | xsd:date | Date of the review |  |
+| + | DayTypeRef | mandatory | 1..* | DayTypeRefStructure | The DAY TYPE of all the services in this group. |  |
 
 
 
 
-- [Example snippet](../generated/xml-snippets/DayTypeAssignmen.xml)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<DayTypeAssignment  id="BundesfeierAssignment" version="1">
+  <!-- We currently use DayType to store the national holidays. -->
+  <Date>2023-08-01</Date>
+  <DayTypeRef ref="ch:1:DayType:Bundesfeier" version="1"/>
+</DayTypeAssignment>
+
+```
 
 
-- [General NeTEx definition](../generated/xcore/DayTypeAssignmen.html)
+- [General NeTEx definition](../generated/xcore/DayTypeAssignment.html)

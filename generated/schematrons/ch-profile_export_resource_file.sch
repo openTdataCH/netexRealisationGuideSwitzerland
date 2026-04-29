@@ -64,7 +64,6 @@
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:siteFacilitySets/netex:SiteFacilitySet/netex:validityConditions/netex:AvailabilityCondition">
       <sch:assert test="count(@id) > 0">Attribute "id" must be present on AvailabilityCondition</sch:assert>
       <sch:assert test="count(@version) > 0">Attribute "version" must be present on AvailabilityCondition</sch:assert>
-      <sch:assert test="count(netex:IsAvailable) > 0">IsAvailable must be present</sch:assert>
       <sch:assert test="count(netex:ValidDayBits) > 0">ValidDayBits must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:siteFacilitySets/netex:SiteFacilitySet/netex:validityConditions/netex:AvailabilityCondition/netex:timebands/netex:Timeband">
@@ -72,6 +71,9 @@
       <sch:assert test="count(@version) > 0">Attribute "version" must be present on Timeband</sch:assert>
       <sch:assert test="count(netex:StartTime) > 0">StartTime must be present</sch:assert>
       <sch:assert test="count(netex:EndTime) > 0">EndTime must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:siteFacilitySets/netex:SiteFacilitySet/netex:validityConditions/netex:AvailabilityCondition/netex:timebands">
+      <sch:assert test="count(netex:Timeband) > 0">Timeband must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:serviceFacilitySets/netex:ServiceFacilitySet">
       <sch:assert test="count(netex:accommodations) = 0">accommodations must NOT be present</sch:assert>
@@ -129,6 +131,7 @@
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:connections/netex:SiteConnection">
       <sch:assert test="count(netex:WalkTransferDuration) > 0">WalkTransferDuration must be present</sch:assert>
+      <sch:assert test="count(netex:BothWays) > 0">BothWays must be present</sch:assert>
       <sch:assert test="count(netex:From) > 0">From must be present</sch:assert>
       <sch:assert test="count(netex:To) > 0">To must be present</sch:assert>
       </sch:rule>
@@ -136,6 +139,9 @@
       <sch:assert test="count(netex:DefaultDuration) > 0">DefaultDuration must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:connections/netex:SiteConnection/netex:From">
+      <sch:assert test="count(netex:StopPlaceRef) > 0">StopPlaceRef must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:connections/netex:SiteConnection/netex:To">
       <sch:assert test="count(netex:StopPlaceRef) > 0">StopPlaceRef must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:connections/netex:DefaultConnection/netex:Extensions">
@@ -181,6 +187,38 @@
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame/netex:notices/netex:Notice/netex:Text">
       <sch:assert test="count(@lang) > 0">Attribute "lang" must be present on Text</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceCalendarFrame">
+      <sch:assert test="count(netex:validityConditions) > 0">validityConditions must be present</sch:assert>
+      <sch:assert test="count(netex:dayTypeAssignments) = 0">dayTypeAssignments must NOT be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceCalendarFrame/netex:validityConditions">
+      <sch:assert test="count(netex:AvailabilityCondition) > 0">AvailabilityCondition must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceCalendarFrame/netex:ServiceCalendar">
+      <sch:assert test="count(netex:Name) > 0">Name must be present</sch:assert>
+      <sch:assert test="count(netex:FromDate) > 0">FromDate must be present</sch:assert>
+      <sch:assert test="count(netex:ToDate) > 0">ToDate must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceCalendarFrame/netex:dayTypes/netex:DayType/netex:alternativeTexts">
+      <sch:assert test="count(netex:AlternativeText) > 0">AlternativeText must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceCalendarFrame/netex:dayTypes/netex:DayType/netex:alternativeTexts/netex:AlternativeText">
+      <sch:assert test="count(netex:Text) > 0">Text must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceCalendarFrame/netex:dayTypes/netex:DayType/netex:alternativeTexts/netex:AlternativeText/netex:Text">
+      <sch:assert test="count(@lang) > 0">Attribute "lang" must be present on Text</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceCalendarFrame/netex:dayTypes/netex:DayType">
+      <sch:assert test="count(netex:Name) > 0">Name must be present</sch:assert>
+      <sch:assert test="count(netex:timebands) = 0">timebands must NOT be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceCalendarFrame/netex:dayTypes/netex:DayType/netex:properties">
+      <sch:assert test="count(netex:PropertyOfDay) > 0">PropertyOfDay must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceCalendarFrame/netex:dayTypes/netex:DayType/netex:properties/netex:PropertyOfDay">
+      <sch:assert test="count(netex:Seasons) = 0">Seasons must NOT be present</sch:assert>
+      <sch:assert test="count(netex:Crowding) = 0">Crowding must NOT be present</sch:assert>
       </sch:rule>
     </sch:pattern>
   </sch:schema>
