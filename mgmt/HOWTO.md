@@ -30,7 +30,8 @@ git submodule update
   ```
 - Things to do are always marked with **TODO** in templates and docs
 - We don' use numberings in docs
-- Glossary references are used at the top with a *→ into the annex with a # if possible.  **TODO* André pls add an example here.
+- Glossary references are used at the top with a *→ into the annex with a # if possible.
+   - Example:`*→ [Glossary definition](A4_annex_glossary.md#timetableframe)*` Result: *→ [Glossary definition](A4_annex_glossary.md#timetableframe)*
 - Elements from NeTEx are shown as code (except in the headings). Plurals are done like this `ServiceJourney`s.
 
   
