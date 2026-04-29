@@ -9,12 +9,16 @@ In this chapter:
 - [InterchangeRule](09_timetable.md#InterchangeRule)
 - [InterchangeRuleParameter](09_timetable.md#InterchangeRuleParameter)
 - [InterchangeRuleTiming](09_timetable.md#InterchangeRuleTiming)
-  
-In COMMON:
-- [AvailabilityCondition](10_common.md#AvailabilityCondition)
-- [Timeband](10_common.md#Timeband)
-- [NoticeAssignment](10_common.md#NoticeAssignment)
+
+In Service: 
+- [NoticeAssignment](07_service.md#NoticeAssignment)
 - [ServiceFacilitySet](10_common.md#ServiceFacilitySet)
+
+In ServiceCalender:
+- [AvailabilityCondition](08_service_calendars.md#AvailabilityCondition)
+- [Timeband](08_service_calendars.md#Timeband)
+
+
 
 ## TimetableFrame
 *→ [Glossary definition](A4_annex_glossary.md#timetableframe)*
