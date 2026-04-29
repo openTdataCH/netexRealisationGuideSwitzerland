@@ -1,10 +1,23 @@
 # Timetables
-
-
-![Timetable model](media/TimetableModel.png)
+In this chapter:
+- [TimetableFrame](09_timetable.md#TimetableFrame)
+- [ServiceJourney](09_timetable.md#ServiceJourney)
+- [TemplateServiceJourney](09_timetable.md#TemplateServiceJourney)
+- [OccupancyView](09_timetable.md#OccupancyView)
+- [TrainNumber](09_timetable.md#TrainNumber)
+- [TimetabledPassingTime](09_timetable.md#TimetabledPassingTime)
+- [InterchangeRule](09_timetable.md#InterchangeRule)
+- [InterchangeRuleParameter](09_timetable.md#InterchangeRuleParameter)
+- [InterchangeRuleTiming](09_timetable.md#InterchangeRuleTiming)
+  
+In COMMON:
+- [AvailabilityCondition](10_common.md#AvailabilityCondition)
+- [Timeband](10_common.md#Timeband)
+- [NoticeAssignment](10_common.md#NoticeAssignment)
+- [ServiceFacilitySet](10_common.md#ServiceFacilitySet)
 
 ## TimetableFrame
-> *→ [Glossary definition](A4_annex_glossary.md#timetableframe)*
+*→ [Glossary definition](A4_annex_glossary.md#timetableframe)*
 
 ### Purpose
 
@@ -25,43 +38,36 @@ A ***TimetableFrame*** contains the operational journey definitions — the actu
 
 
 ### Table
-
-[//]: # (TODO: Add TimetableFrame links)
-> *→ [General NeTEx definition ](../generated/xcore/TimetableFrame.html)*
-
 TODO INSERT: [Swiss profile NeTEx definition](../generated/markdown-examples/TimetableFrame.md)
 
-> *→ [Template](../templates/TimetableFrame.xml)*
+*→ [General NeTEx definition ](../generated/xcore/TimetableFrame.html)*
 
 ### Example
 TODO INSERT: [Example snippet](../generated/xml-snippets/TimetableFrame.xml)
-> *→ [Template](../templates/TimetableFrame.xml)*
+
+*→ [Template](../templates/TimetableFrame.xml)*
 
 ### Frame Relationships
-
 TimetableFrame depends on **ServiceFrame** for JourneyPatterns and Lines referenced by ServiceJourneys. It depends on **ResourceFrame** for Operator definitions. **VehicleScheduleFrame** may reference journeys defined here for block and duty scheduling. TimetableFrame is typically wrapped in a **CompositeFrame** within a PublicationDelivery.
 
 ## ServiceJourney
-> *→ [Glossary definition](A4_annex_glossary.md#ServiceFrame)*
+*→ [Glossary definition](A4_annex_glossary.md#ServiceFrame)*
 
 ### Purpose
-
 A **ServiceJourney** represents a planned trip in the timetable operating on a recurring schedule. It defines the stop sequence via reference to a *JourneyPattern*, includes scheduled passing times, and specifies operational details such as operator and days of operation. Unlike *DatedServiceJourney*, which represents a concrete instance on a specific date, *ServiceJourney* is the reusable template used across multiple dates via *DayType* definitions
 
 ### Table
-[Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourney.md)
+TODO INSERT [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourney.md)
 
-> *→ [Template](../templates/ServiceJourney.xml)*
+*→ [General NeTEx definition ](../generated/xcore/ServiceJourney.html)*
 
 ### Example
-
 [Example snippet](../generated/xml-snippets/ServiceJourney.xml)
 
-> *→ [General NeTEx definition ](../generated/xcore/ServiceJourney.html)*
+*→ [Template](../templates/ServiceJourney.xml)*
 
 
 ### Usage Notes
-
 - **Template vs. Instance:** *ServiceJourney* is the template; *DatedServiceJourney* represents concrete daily instances.
 - **Consistency:** A *ServiceJourney* must reference exactly one *JourneyPattern*. The pattern's stop sequence is authoritative.
 - **Stop Times:** Each stop in the referenced *JourneyPattern* must have exactly one *TimetabledPassingTime* entry with *ArrivalTime* and/or *DepartureTime*.
@@ -72,81 +78,69 @@ A **ServiceJourney** represents a planned trip in the timetable operating on a r
 ## TemplateServiceJourney
 
 ### Purpose
-
 A ***TemplateServiceJourney*** represents a sequence of planned trips. It is similar to the *ServiceJourney*, but it is used if there is a frequency defined at which the trips are scheduled on an operating day. 
 
 ### Table
-
-[//]: # (TODO: Add TemplateServiceJourney links)
-
 TODO INSERT [Swiss profile NeTEx definition](../generated/markdown-examples/TemplateServiceJourney.md)
 
-> *→ [Template](../templates/TemplateServiceJourney.xml)*
+*→ [General NeTEx definition ](../generated/xcore/TemplateServiceJourney.html)*
 
 
 ### Example
-
 TODO INSERT [Example snippet](../generated/xml-snippets/TemplateServiceJourney.xml)
-> *→ [General NeTEx definition ](../generated/xcore/TemplateServiceJourney.html)*
+
+*→ [Template](../templates/TemplateServiceJourney.xml)*
+
+
 ## OccupancyView
 
 ### Purpose
-
 ***OccupancyView*** can be used on the *Journey*, *JourneyPart*, and *TimetabledPassingTime* elements. Used for predicted and planned occupancies of vehicles.
 
 ### Table
-
-
 TODO INSERT [Swiss profile NeTEx definition](../generated/markdown-examples/OccupancyView.md)
 
-> *→ [Template](../templates/OccupancyView.xml)*
+*→ [General NeTEx definition ](../generated/xcore/OccupancyView.html)*
 
 ### Example
-
-- [Example snippet](../generated/xml-snippets/OccupancyView.xml)
-> *→ [General NeTEx definition ](../generated/xcore/OccupancyView.html)*
+TODO INSERT [Example snippet](../generated/xml-snippets/OccupancyView.xml)
+ 
+ *→ [Template](../templates/OccupancyView.xml)*
 
 
 
 ## TrainNumber
 
 ### Purpose
-
 Codes assigned to particular journeys (*ServiceJourney*, *TemplateServiceJourney*) when operated by trains. *ServiceJourney*s can in principle have multiple different *TrainNumber*s whereas a *JourneyPart* can only reference a single one.
 
 ### Table
-
-
 TODO INSERT [Swiss profile NeTEx definition](../generated/markdown-examples/TrainNumber.md)
 
-> *→ [Template](../templates/TrainNumber.xml)*
+*→ [General NeTEx definition ](../generated/xcore/TrainNumber.html)*
 
- ### Example
- 
- TODO INSERT [Example snippet](../generated/xml-snippets/TrainNumber.xml)
-> *→ [General NeTEx definition ](../generated/xcore/TrainNumber.html)*
+### Example
+TODO INSERT [Example snippet](../generated/xml-snippets/TrainNumber.xml)
+
+*→ [Template](../templates/TrainNumber.xml)*
 
 
 ## TimetabledPassingTime
 
 ### Purpose
-
 Long-term planned time data concerning public transport vehicles passing a particular *PointInJourneyPattern* on a specified vehicle journey for a certain *DayType*. 
 
 ### Table
+TODO INSERT [Swiss profile NeTEx definition](../generated/markdown-examples/TimetabledPassingTime.md)
 
-
- TODO INSERT [Swiss profile NeTEx definition](../generated/markdown-examples/TimetabledPassingTime.md)
-
-> *→ [Template](../templates/TimetabledPassingTime.xml)*
+*→ [General NeTEx definition ](../generated/xcore/TimetabledPassingTime.html)*
 
 ### Example
-
 [Example snippet](../generated/xml-snippets/TimetabledPassingTime.xml)
-> *→ [General NeTEx definition ](../generated/xcore/TimetabledPassingTime.html)*
+
+*→ [Template](../templates/TimetabledPassingTime.xml)*
 
 ### Usage Notes
-
 - Note that for journeys lasting more than one day, *DayOffset* is available.
 - If *DepartureTime* is not on the same day as *ArrivalTime* this information will be provided using *WaitingTime*.
 
@@ -154,23 +148,21 @@ Long-term planned time data concerning public transport vehicles passing a parti
 ## InterchangeRule
 
 ### Purpose
-
 An ***InterchangeRule*** defines the possibility of interchanging between two *ServiceJourney*s at the same or different *ScheduledStopPoint*s — where at least one journey is specified indirectly via *Direction*, *Lne* or the VEHICLE JOURNEY (? TODO), rather than as an explicit journey pair. The rule specifies criteria (e.g. mode, *Line*, *Direction*) that a candidate feeder or distributor journey must fulfil.
 
 ### Table
-
-
 TODO INSERT [Swiss profile NeTEx definition](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/3825500c6a13a9a2cc1e89f3f6993acf881a3507/generated/markdown-examples/InterchangeRule_UMTEIGZ.md)
 
-> *→ [Template]*
+*→ [General NeTEx definition ](../generated/xcore/InterchangeRule.html)*
 
-### Example
+
+### Examples
 
 [Example snippet](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/c543acb1750e60bb369f53e3cbd10e1fac884ab0/generated/xml-snippets/InterchangeRule_UMTEIGZ.xml)
-> *→ [General NeTEx definition ](../generated/xcore/InterchangeRule.html)*
+
+*→ [Template](../templates/InterchangeRule_UMTEIGZ.xml)*
 
 ### Usage Notes
-
 - The *ScheduledStopPoint* is defined separately for the feeder and distributor side.
 
 
