@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame:" version="1">
+					<journeyInterchanges>
+						<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
+							<!-- ch-root -->
+							<!-- ch-attrs: id version -->
+							<!-- ch-usage: mandatory -->
+							<validityConditions>
+								<!-- ch-usage: expected -->
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" versionRef="1">
+									<!-- ch-usage: expected -->
+								</AvailabilityConditionRef>
+							</validityConditions>
+							<Description><!-- ch-usage: optional -->LineChange</Description>
+							<StaySeated><!-- ch-usage: mandatory -->true</StaySeated>
+							<CrossBorder><!-- ch-usage: optional -->false</CrossBorder>
+							<Planned><!-- ch-usage: optional -->true</Planned>
+							<Guaranteed><!-- ch-usage: optional -->false</Guaranteed>
+							<MaximumWaitTime><!-- ch-usage: optional --><!-- ch-note: If not set or PT0M, it is guaranteed. -->PT9M</MaximumWaitTime>
+							<FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="1">
+								<!-- ch-usage: mandatory -->
+							</FromPointRef>
+							<FromVisitNumber><!-- ch-usage: optional -->1</FromVisitNumber>
+							<ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="1">
+								<!-- ch-usage: mandatory -->
+							</ToPointRef>
+							<FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" versionRef="1">
+								<!-- ch-usage: mandatory -->
+							</FromServiceJourneyRef>
+							<ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" versionRef="1">
+								<!-- ch-usage: mandatory -->
+							</ToServiceJourneyRef>
+						</ServiceJourneyInterchange>
+					</journeyInterchanges>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame" version="1">
+					<dayTypes>
+						<DayType id="ch:1:DayType:Bundesfeier" version="1">
+							<Name>Bundesfeier</Name>
+							<properties>
+								<PropertyOfDay>
+									<HolidayTypes>NationalHoliday</HolidayTypes>
+								</PropertyOfDay>
+							</properties>
+						</DayType>
+					</dayTypes>
+					<dayTypeAssignments>
+						<DayTypeAssignment id="BundesfeierAssignment" version="1">
+							<!-- ch-root -->
+							<!-- ch-usage: expected -->
+							<!-- ch-note: We currently use DayType to store the national holidays.-->
+							<Date><!-- ch-usage: mandatory -->2023-08-01</Date>
+							<DayTypeRef ref="ch:1:DayType:Bundesfeier" version="1">
+								<!-- ch-usage: mandatory -->
+							</DayTypeRef>
+						</DayTypeAssignment>
+					</dayTypeAssignments>
+				</ServiceCalendarFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

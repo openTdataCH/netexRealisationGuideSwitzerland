@@ -7,19 +7,28 @@
 			<frames>
 				<TimetableFrame id="ch:1:TimetableFrame:" version="1">
 					<journeyMeetings>
-						<JourneyMeeting id="ch:1:JourneyMeeting:96884-PAG-25-1-63480_96884-PAG-5-1-64320_68918933_68918913_64320_64320" version="1">
+						<JourneyMeeting id="ch:1:JourneyMeeting:91014I-THU-17-1-5100_91030L-THU-80-1-7200_1642236775_1642209284_6660_7200" version="1">
 							<!-- ch-root -->
 							<!-- ch-attrs: id version -->
-							<!-- ch-note: Check latest policy - InterchangeRule may be the preferred alternative. **TODO**-->
-  							<validityConditions> 
-								<!-- ch-usage: expected -->
-    							<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1mh00" versionRef="1"><!-- ch-usage: expected --></AvailabilityConditionRef> 
-  							</validityConditions> 
-  							<AtStopPointRef ref="ch:1:ScheduledStopPoint:8583440-0-Gen" versionRef="1" ><!-- ch-usage: mandatory --></AtStopPointRef> 
-  							<FromJourneyRef ref="ch:1:ServiceJourney:801-54147-1-1_96884_.j23_25" versionRef="1" ><!-- ch-usage: mandatory --></FromJourneyRef> 
-  							<ToJourneyRef ref="ch:1:ServiceJourney:801-54150-1-1_96884_.j23_5" versionRef="1" ><!-- ch-usage: mandatory --></ToJourneyRef> 
- 							<EarliestTime><!-- ch-usage: optional -->17:52:00</EarliestTime> 
-  							<LatestTime><!-- ch-usage: optional -->17:52:00</LatestTime> 
+							<!-- ch-note: Used for joining and splitting of trains. Check latest policy - InterchangeRule may be the preferred alternative. **TODO**-->
+							<validityConditions>
+								<!-- ch-usage: expected --><!-- ch-note: A specific type of VALIDITY CON-DITION used to specify a set of temporal conditions that can be associated with the JOURNEY MEETING, for example that the corresponding connections only apply on particular days of a period (indicated by ValidDayBits “Verkehrstagebitfeld”). -->
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" versionRef="1">
+									<!-- ch-usage: expected -->
+								</AvailabilityConditionRef>
+							</validityConditions>
+							<AtStopPointRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="1">
+								<!-- ch-usage: mandatory -->
+							</AtStopPointRef>
+							<FromJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" versionRef="1">
+								<!-- ch-usage: mandatory -->
+							</FromJourneyRef>
+							<ToJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" versionRef="1">
+								<!-- ch-usage: mandatory -->
+							</ToJourneyRef>
+							<Description><!-- ch-usage: optional -->LineChange</Description>
+							<EarliestTime><!-- ch-usage: optional -->01:51:00</EarliestTime>
+							<LatestTime><!-- ch-usage: optional -->02:00:00</LatestTime>
 							<Reason><!-- ch-usage: optional --><!-- ch-allowed-enums: joining splitting tariffSection serviceFacility -->joining</Reason>
 						</JourneyMeeting>
 					</journeyMeetings>

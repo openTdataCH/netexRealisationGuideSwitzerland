@@ -1,7 +1,7 @@
 # Timetables
 
 
-
+![Timetable model](media/TimetableModel.png)
 
 ## TimetableFrame
 > *→ [Glossary definition](A4_annex_glossary.md#timetableframe)*
@@ -27,22 +27,19 @@ A ***TimetableFrame*** contains the operational journey definitions — the actu
 ### 3. Table
 
 [//]: # (TODO: Add TimetableFrame links)
-> *→ [General NeTEx definition ](generated/xcore/TimetableFrame.html)*
+> *→ [General NeTEx definition ](../generated/xcore/TimetableFrame.html)*
 
-TODO INSERT: [Swiss profile NeTEx definition](generated/markdown-examples/TimetableFrame.md)
+TODO INSERT: [Swiss profile NeTEx definition](../generated/markdown-examples/TimetableFrame.md)
 
 > *→ [Template](../templates/TimetableFrame.xml)*
 
 ### 4. Example
-TODO INSERT: [Example snippet](generated/xml-snippets/TimetableFrame.xml)
+TODO INSERT: [Example snippet](../generated/xml-snippets/TimetableFrame.xml)
 > *→ [Template](../templates/TimetableFrame.xml)*
 
 ### 5. Frame Relationships
 
 TimetableFrame depends on **ServiceFrame** for JourneyPatterns and Lines referenced by ServiceJourneys. It depends on **ResourceFrame** for Operator definitions. **VehicleScheduleFrame** may reference journeys defined here for block and duty scheduling. TimetableFrame is typically wrapped in a **CompositeFrame** within a PublicationDelivery.
-
-
-
 
 ## ServiceJourney
 > *→ [Glossary definition](A4_annex_glossary.md#ServiceFrame)*
@@ -52,15 +49,14 @@ TimetableFrame depends on **ServiceFrame** for JourneyPatterns and Lines referen
 A **ServiceJourney** represents a planned trip in the timetable operating on a recurring schedule. It defines the stop sequence via reference to a *JourneyPattern*, includes scheduled passing times, and specifies operational details such as operator and days of operation. Unlike *DatedServiceJourney*, which represents a concrete instance on a specific date, *ServiceJourney* is the reusable template used across multiple dates via *DayType* definitions
 
 ### 2. Table
-
-
-TODO INSERT [Swiss profile NeTEx definition](generated/markdown-examples/ServiceJourney.md)
+[Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourney.md)
 
 > *→ [Template](../templates/ServiceJourney.xml)*
 
 ### 3. Example
 
-TODO INSERT[Example snippet](generated/xml-snippets/ServiceJourney.xml)
+[Example snippet](../generated/xml-snippets/ServiceJourney.xml)
+
 > *→ [General NeTEx definition ](generated/xcore/ServiceJourney.html)*
 
 
@@ -193,16 +189,15 @@ Conditions for considering JOURNEYs to meet or not to meet, specified indirectly
 - [Example snippet](todo)
 
 
-
-
 ## AvailabilityCondition -> TODO: move to Common
 
 A specific type of VALIDITY CONDITION used to specify a set of temporal conditions that can be associated with an ENTITY, for example that a STOP PLACE is open on a particular DAY TYPE.
 
 [//]: # (TODO: Add AvailabilityCondition links)
-- [General NeTEx definition ](generated/xcore/AvailabilityCondition.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/AvailabilityCondition.md)
-- [Example snippet](generated/xml-snippets/AvailabilityCondition.xml)
+
+- [Swiss profile NeTEx definition](../generated/markdown-examples/AvailabilityCondition.md)
+- [Example snippet](../generated/xml-snippets/AvailabilityCondition.xml)
+- [General NeTEx definition ](../generated/xcore/AvailabilityCondition.html)
 
 > [Template](../templates/AvailabilityCondition.xml)
 
@@ -212,9 +207,10 @@ A specific type of VALIDITY CONDITION used to specify a set of temporal conditio
 
 
 [//]: # (TODO: Add Timeband links)
-- [General NeTEx definition ](generated/xcore/Timeband.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/Timeband.md)
-- [Example snippet](generated/xml-snippets/Timeband.xml)
+
+- [Swiss profile NeTEx definition](../generated/markdown-examples/Timeband.md)
+- [Example snippet](../generated/xml-snippets/Timeband.xml)
+- [General NeTEx definition ](../generated/xcore/Timeband.html)
 
 > [Template](../templates/Timeband.xml)
 
@@ -225,9 +221,10 @@ A specific type of VALIDITY CONDITION used to specify a set of temporal conditio
 The assignment of a NOTICE to any model element. Can be used in particular to show an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.
 
 [//]: # (TODO: Add NoticeAssignment links)
-- [General NeTEx definition ](generated/xcore/NoticeAssignment.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/NoticeAssignment.md)
-- [Example snippet](generated/xml-snippets/NoticeAssignment.xml)
+
+- [Swiss profile NeTEx definition](../generated/markdown-examples/NoticeAssignment.md)
+- [Example snippet](../generated/xml-snippets/NoticeAssignment.xml)
+- [General NeTEx definition ](../generated/xcore/NoticeAssignment.html)
 
 > [Template](../templates/NoticeAssignment.xml)
 
@@ -238,9 +235,10 @@ The assignment of a NOTICE to any model element. Can be used in particular to sh
 Set of FACILITies available for a SERVICE JOURNEY or a JOURNEY PART. The set may be available only for a specific VEHICLE TYPE within the SERVICE (e.g. carriage equipped with low floor). 
 
 [//]: # (TODO: Add ServiceFacilitySet links)
-- [General NeTEx definition ](generated/xcore/ServiceFacilitySet.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/ServiceFacilitySet.md)
-- [Example snippet](generated/xml-snippets/ServiceFacilitySet.xml)
+
+- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFacilitySet.md)
+- [Example snippet](../generated/xml-snippets/ServiceFacilitySet.xml)
+- [General NeTEx definition ](../generated/xcore/ServiceFacilitySet.html)
 
 > [Template](../templates/ServiceFacilitySet.xml)
 
@@ -248,10 +246,11 @@ Set of FACILITies available for a SERVICE JOURNEY or a JOURNEY PART. The set may
 tbd
 
 [//]: # (TODO: Add JourneyMeeting links)
-- [General NeTEx definition ](generated/xcore/JourneyMeeting.html)
-- [Swiss profile NeTEx definition](generated/markdown-examples/JourneyMeeting.md)
-- [Example snippet](generated/xml-snippets/JourneyMeeting.xml)
 
+- [Swiss profile NeTEx definition](../generated/markdown-examples/JourneyMeeting.md)
+- [Example snippet](../generated/xml-snippets/JourneyMeeting.xml)
+- [General NeTEx definition ](../generated/xcore/JourneyMeeting.html)
+- 
 > [Template](../templates/JourneyMeeting.xml)
 
 

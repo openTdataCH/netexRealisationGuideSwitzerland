@@ -4,7 +4,7 @@
 **TODO**
 
 ## Pull requests 
-** TODO **
+**TODO**
 
 ## The project board
 **TODO**

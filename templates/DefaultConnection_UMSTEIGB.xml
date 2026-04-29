@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ServiceFrame id="ch:1:ServiceFrame" version="1">
+					<connections>
+						<DefaultConnection id="ch:1:DefaultConnection:8506302" version="1">
+							<!-- ch-root -->
+							<!-- ch-usage: expected -->
+							<!-- ch-note:  Be aware only some combinations areallowed  mode - mode, operator/type of product category - operator/type of  product category. -->
+							<TransferDuration>
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: We use WalkTransferDuration sometimes. need to clarify **TODO** -->
+								<DefaultDuration><!-- ch-usage: mandatory -->PT3M</DefaultDuration>
+							</TransferDuration>
+							<StopPlaceRef ref="ch:2:StopPlace:8506302" versionRef="1">
+								<!-- ch-usage: optional -->
+							</StopPlaceRef>
+						</DefaultConnection>
+					</connections>
+				</ServiceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
