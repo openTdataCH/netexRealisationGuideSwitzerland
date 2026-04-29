@@ -32,10 +32,10 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
   -  `ServiceJourney`- describes an individual timetabled journey
   -  `TemplateServiceJourney`- describes a set of journeys repeating at a certain frequency
   -  The Swiss profile only models journeys that are available to the passengers
-- `TrainNumber`- each `(Template)ServiceJourney` is mapped one-to-one to exactly one train number
+- `TrainNumber`- each `ServiceJourney` and `TemplateServiceJourney` is mapped one-to-one to exactly one train number
 - `PassingTimes`- describe the times of vehicles at points in their journey
 - `InterchangeRule`s- describe interchanges between journeys
-- `NoticeAssignment`s- link *Notices* to specific journeys or stop points within journeys
+- `NoticeAssignment`s- link `Notice`s to specific journeys or stop points within journeys
 - `ServiceFacilitySet`s- describe the various services and facilities offered by the vehicles of a journey
 
 
@@ -50,7 +50,7 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 *→ [Template](../templates/TimetableFrame.xml)*
 
 ### Frame Relationships
-TimetableFrame depends on `ServiceFrame`for JourneyPatterns and Lines referenced by ServiceJourneys. It depends on `ResourceFrame` for Operator definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `TimetableFrame` is typically wrapped in a `CompositeFrame`within a `PublicationDelivery`.
+`TimetableFrame` depends on `ServiceFrame`for `JourneyPattern`s and `Line`s referenced by `ServiceJourney`s. It depends on `ResourceFrame` for `Operator` definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `TimetableFrame` is typically wrapped in a `CompositeFrame`within a `PublicationDelivery`.
 
 ## ServiceJourney
 *→ [Glossary definition](A4_annex_glossary.md#ServiceFrame)*
@@ -73,8 +73,8 @@ TODO INSERT [Swiss profile NeTEx definition](../generated/markdown-examples/Serv
 
 - **Template vs. Instance:** `ServiceJourney` is the template; `DatedServiceJourney` represents concrete daily instances.
 - **Consistency:** A `ServiceJourney` must reference exactly one `JourneyPattern`. The pattern's stop sequence is authoritative.
-- **Stop Times:** Each stop in the referenced `JourneyPattern` must have exactly one `TimetabledPassingTime` entry with `ArrivalTime` and/or `DepartureTime`.
-- **Day Governance:** DayType references control on which days the journey operates; per-date deviations belong to `DatedServiceJourney`.
+- **Stop Times:** Each stop in the referenced `JourneyPattern` must have exactly one `TimetabledPassingTimes` entry with `ArrivalTime` and/or `DepartureTime`.
+- **Day Governance:** `DayType` references control on which days the journey operates; per-date deviations belong to `DatedServiceJourney`.
 - **Validation:** Ensure `JourneyPatternRef`, `LineRef`, and `OperatorRef` are consistent and reference existing objects.
 
 ## TemplateServiceJourney
@@ -109,6 +109,7 @@ A `TemplateServiceJourney` represents a sequence of planned trips. It is similar
 ### Example
 
 - [Example snippet](../generated/xml-snippets/OccupancyView.xml)
+
 *→ [Template](../templates/OccupancyView.xml)*
 
 
@@ -181,7 +182,7 @@ Already defined in `TemplateServiceJourney.`
 
 ### Purpose
 
-An `InterchangeRule`defines the possibility of interchanging between two `ServiceJourney`s at the same or different `ScheduledStopPoint*` — where at least one journey is specified indirectly via `Direction`, `Line` or the VEHICLE JOURNEY (? TODO), rather than as an explicit journey pair. The rule specifies criteria (e.g. `Mode`, `Line`, `Direction`) that a candidate feeder or distributor journey must fulfil.
+An `InterchangeRule`defines the possibility of interchanging between two `ServiceJourney`s at the same or different `ScheduledStopPoint*` — where at least one journey is specified indirectly via `Direction`, `Line` or the VEHICLE JOURNEY (? **TODO**), rather than as an explicit journey pair. The rule specifies criteria (e.g. `Mode`, `Line`, `Direction`) that a candidate feeder or distributor journey must fulfil.
 
 ### Table
 
@@ -191,8 +192,6 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 
 
 ### Examples
-
-*→ [General NeTEx definition ](../generated/xcore/InterchangeRule.html)*
 
 #### Interchanges between ServiceJourneys
 [Example snippet](../generated/xml-snippets/InterchangeRule_UMSTEIGZ.xml)
@@ -220,7 +219,7 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 ### Example
 [Example snippet](../generated/xml-snippets/InterchangeRule_UMSTEIGZ.xml)
 
-*→ [Template](../templates/InterchangeRule.xml))*
+*→ [Template](../templates/InterchangeRule.xml)*
 
 
 ## InterchangeRuleTiming
@@ -234,8 +233,8 @@ Conditions for considering JOURNEYs to meet or not to meet, specified indirectly
 ### Table
 [Swiss profile NeTEx definition](../generated/markdown-examples/InterchangeRule_UMTEIGZ.md)
 
-- [General NeTEx definition ](../generated/xcore/InterchangeRuleTiming.html)
-- 
+*→ [General NeTEx definition ](../generated/xcore/InterchangeRuleTiming.html)*
+  
 ### Example
 
 [Example snippet](../generated/xml-snippets/InterchangeRule_UMSTEIGZ.xml)
