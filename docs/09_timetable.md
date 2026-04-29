@@ -166,7 +166,7 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 
 ### Examples
 
-> *→ [General NeTEx definition ](../generated/xcore/InterchangeRule.html)*
+*→ [General NeTEx definition ](../generated/xcore/InterchangeRule.html)*
 
 #### Interchanges between ServiceJourneys
 [Example snippet](../generated/xml-snippets/InterchangeRule_UMSTEIGZ.xml)
@@ -189,12 +189,12 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 ### Table
 [Swiss profile NeTEx definition](../generated/markdown-examples/InterchangeRule_UMTEIGZ.md)
 
-> *→ [General NeTEx definition ](../generated/xcore/InterchangeRuleParameter.html)*
+*→ [General NeTEx definition ](../generated/xcore/InterchangeRuleParameter.html)*
 
 ### Example
 [Example snippet](../generated/xml-snippets/InterchangeRule_UMSTEIGZ.xml)
 
-> *→ [Template](../templates/InterchangeRule.xml))*
+*→ [Template](../templates/InterchangeRule.xml))*
 
 
 ## InterchangeRuleTiming
@@ -214,7 +214,7 @@ Conditions for considering JOURNEYs to meet or not to meet, specified indirectly
 
 [Example snippet](../generated/xml-snippets/InterchangeRule_UMSTEIGZ.xml)
 
-> *→ [Template](../templates/InterchangeRule.xml)*
+*→ [Template](../templates/InterchangeRule.xml)*
 
 ## AvailabilityCondition 
 [see ServiceCalenderFrame](./08_service_calendars.md#AvailabilityCondition)
@@ -239,12 +239,12 @@ Set of FACILITies available for a SERVICE JOURNEY or a JOURNEY PART. The set may
 ### Table
 [Swiss profile NeTEx definition](../generated/markdown-examples/JourneyMeeting.md)
 
-> *→ [General NeTEx definition ](../generated/xcore/JourneyMeeting.html)*
+*→ [General NeTEx definition ](../generated/xcore/JourneyMeeting.html)*
 
 ### Example
 [Example snippet](../generated/xml-snippets/JourneyMeeting.xml)
 
-> *→ [Template](../templates/JourneyMeeting.xml))*
+*→ [Template](../templates/JourneyMeeting.xml))*
 
 
 
