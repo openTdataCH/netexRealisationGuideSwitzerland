@@ -16,13 +16,13 @@
 							<!-- ch-note: Structure of the id, example: "ch:2:StopPlace:8503000" -->
 							<ValidBetween>
 								<!-- ch-usage: optional -->
-								<!-- ch-note: We could transport the validity here. We prefer not to do this as we don't support versions -->
+								<!-- ch-note: **TODO** We could transport the validity here. We prefer not to do this as we don't support versions -->
 								<FromDate><!-- ch-usage: mandatory -->2026-01-01T00:00:00</FromDate>
 								<ToDate><!-- ch-usage: mandatory -->2026-12-31T00:00:00</ToDate>
 							</ValidBetween>
 							<alternativeTexts>
 								<AlternativeText id="ch:1:sloid:7000:AlternativeText">
-									<!-- ch-note: Used for abbreviated name of the StopPlace -->
+									<!-- ch-note: Used for abbreviated name of the StopPlace  **TODO** really? Also see ShortName below and note that we don't seem to use PublicCode-->
 									<!-- ch-see -->
 									<Text>CHR</Text>
 								</AlternativeText>
@@ -89,6 +89,36 @@
 								<!-- ch-note: Used to transmit the abbreviation of the StopPlace. Not available for every StopPlace.-->
                                 BE
                             </ShortName>
+							<alternativeNames>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: **TODO** To what extent are AlternativeNames used? Adapt everything below accordingly. -->
+								<AlternativeName id="generated" version="1">
+									<!-- ch-usage: optional -->
+									<Lang>
+										<!-- ch-usage: expected -->
+										it
+									</Lang>
+									<NameType>
+										<!-- ch-usage: optional -->
+										label
+									</NameType>
+									<TypeOfName>
+										<!-- ch-usage: forbidden -->
+									</TypeOfName>
+									<Name>
+										<!-- ch-usage: mandatory -->
+										Berna
+									</Name>
+									<ShortName>
+										<!-- ch-usage: optional -->
+										Berna
+									</ShortName>
+									<Abbreviation> 
+										<!-- ch-usage: optional -->
+										BE
+									</Abbreviation>
+								</AlternativeName>
+							</alternativeNames>
 							<PrivateCode>
 								<!-- ch-usage: forbidden -->
 								<!-- ch-note: Replaced by PublicCode nested within publicCodes, see above. -->
