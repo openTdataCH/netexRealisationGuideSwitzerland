@@ -9,7 +9,7 @@
 
 *→ [Glossary definition](A4_annex_glossary.md#siteframe)*
 
-### urpose
+### Purpose
 
 A `SiteFrame` contains the physical infrastructure model for public transport — `StopPlace`s, `Quay`s, and topographic context. It defines the spatial elements that passengers interact with and that other frames reference for stop assignments.
 
@@ -61,17 +61,11 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 
 ### Usage Notes
 
-In Switzerland all these StopPlace codes are defined in Didok by order of the Department of Transport (BAV). If the BAV will regulate also “Haltepunkte” and “Haltekante” then also the Quays will be regulated. Foreign StopPlaces may be mapped to Swiss Didok codes. 
- 
-It is important to notice that the main connection between Didok codes and the NeTEx export are the ScheduledStopPoints. Those will have the same Id (besides the different <Element Name> as the StopPlace in many cases. Exceptions are meta stations and local public transport that already uses assignment to “Haltekanten”. In that case the ScheduledStopPoint is more refined than the DiDok UIC like codes. 
- 
-There will be meta-stations added with their own code. In some cases these are added for operational or searching reasons. 
+- All `StopPlace`s in Switzerland are identifiable by both a DIDOK number and a SLOID. DIDOK number are under the responsability of the Department of Transport (BAV). It is possible that in the future the BAV will also regulate “Haltepunkte” and “Haltekanten” and, therefore, the identifiers of `Quays`.
+- Foreign `StopPlace`s may be mapped to Swiss DIDOK codes. 
+- The main connection between DIDOK codes and the NeTEx export are the `ScheduledStopPoints`. They typically have the same `Id` (except for the <Element Name> in the identifier string) as the `StopPlace`. Exceptions are meta stations and local public transport already using assignment to “Haltekanten”. In such cases the `ScheduledStopPoint` is more refined than the DIDOK and UIC codes. 
+- Meta-stations will have their own codes. In some cases these are added for operational or searching reasons. 
 
-
-> The `Centroid` always contains a location:
-> - The main coordinates are given as WSG84.
-> - The Swiss coordinates are added as well, when available (see below) 
-> - INFO+ will not use the data from the import. Always the DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places.
 
 ## Quay
 
@@ -94,34 +88,26 @@ A specific boarding or alighting position (platform, stand, bay) within a *StopP
 
 ### Usage Notes
 
-A QUAY may serve one or more VEHICLE STOPPING PLACEs and be associated with one or more STOP POINTs.  
- 
-A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.  
-
-Furthermore: 
-- A nested QUAY is always physically contiguous with its parent and so has the same accessibility characteristics 
+- In standard NeTEx, a `Quay` may serve one or more `VehicleStoppingPlace`s and be associated with one or more `StopPoints`s. The Swiss profile does not currently model that.
+- A `Quay` may contain other sub `Quay`s. A child `Quay` must be physically contained within its parent `Quay`.  Furthermore: 
+  - A nested `Quay` is always physically contiguous with its parent and so has the same accessibility characteristics 
 as it parents. 
-- Nested QUAYs should not be used to mark individual positions on a platform – BOARDING POSITIONs service this function. 
-- Nested QUAYs and ACCESS PLACES must always be on the same LEVEL as their parent
-
-QUAYs are mapped with the following resolution: 
-- No hierarchy between the different definitions of quays is foreseen at the moment 
-- All combinations between sectors of the same quay are considered as independent quays. 
-- Combinations of several quays are considered as independent quays. 
- 
-In future the modelling of the Quays might adhere to EPIAP (NeTEx part 6) more to make sure that accessibility features can be modelled 
-correctly.. 
-
+  - Nested `Quay`s should not be used to mark individual positions on a platform – `BoadingPosition` serve this function. 
+  - Nested `Quay`s and `AccessSpace`s must always be on the same `Level` as their parent (not currently modelled).
 - If the SLOID for platforms is not unique, it will be formed according to the schema:
 {StopPlace SLOID}_gen:{Quay SLOID}_pf:{Platform Code*}.
 - If no platform SLOID is available {StopPlace SLOID}_gen:missingSLOID_pf:{Platform Code*} will be used instead.
-
 - 👉 Please note: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.
 
 In the table below you will find an overview of the possible cases:
 	
 <img width="925" height="206" alt="SLOID_V1_EN" src="https://github.com/user-attachments/assets/45c5354d-be03-4d88-8b04-b3793e5568ba" />
 
+
+QUAYs are mapped with the following resolution: **TODO** not clear
+- No hierarchy between the different definitions of quays is foreseen at the moment 
+- All combinations between sectors of the same quay are considered as independent quays. 
+- Combinations of several quays are considered as independent quays. 
 
 ## TopographicPlace
 *→ [Glossary definition](A4_annex_glossary.md#TopographicPlace)*
@@ -145,7 +131,10 @@ A named geographic area such as a city, municipality, county, or region - used t
 ### Usage Notes
 The TopograficPlace represent the cantons and communes in Switzerland. The value will be set to the cantons for stops. 
 
-[//]: # (TODO: Comment to Centroid is repeated.)
+
+## Centroid
+
+
 Comment to Centroid:
 
 The “Centroid” always contains a location. 
