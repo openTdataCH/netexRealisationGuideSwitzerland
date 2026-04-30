@@ -233,7 +233,7 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
 -	`ServiceJourney`: references `TypeOfProductCategory`
 
 ### TypeOfNotice
-`TypeOfNotice` is used within a [Notice](#Notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
+`TypeOfNotice` is used within a [Notice](07_service.md#Notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
 
 > [!CAUTION]
 > **TODO** Rework table and example xml\
