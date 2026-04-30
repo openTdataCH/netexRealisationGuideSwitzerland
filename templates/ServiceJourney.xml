@@ -9,27 +9,33 @@
 					<vehicleJourneys>
 						<ServiceJourney id="generated" version="1">
 							<!-- ch-root -->
-							<!-- ch-note: ServiceJourney is used for common SERVICE JOURNEYs. -->
 							<!-- ch-attrs: id version responsibilitySetRef-->
 							<validityConditions>
 								<!-- ch-usage: mandatory -->
-								<!-- ch-note: A specific type of VALIDITY CONDITION used to specify a set of temporal conditions that can be associated with the SERVICE JOURNEY, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+								<!-- ch-note: Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
 								<AvailabilityCondition id="generated" version="1">
 									<!-- ch-usage: mandatory -->
 									<!-- ch-note: Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
-									<!-- ch-note: Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
 									<!-- ch-see -->
-									<FromDate><!-- ch-usage: mandatory --><!-- ch-note: Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.  -->2026-05-17T00:00:00Z</FromDate>
-									<ToDate><!-- ch-usage: mandatory --><!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->2026-05-17T00:00:00Z</ToDate>
+									<FromDate>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.  -->
+										2026-05-17T00:00:00Z
+									</FromDate>
+									<ToDate>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
+										2026-05-17T00:00:00Z
+									</ToDate>
 									<IsAvailable>
-									<!-- ch-usage: mandatory -->
-									<!-- ch-note: mandatory by NeTEx **TODO** really? -->
-									true
-								  </IsAvailable>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: mandatory by NeTEx **TODO** really? -->
+										true
+								  	</IsAvailable>
 									<ValidDayBits>
-									<!-- ch-usage: mandatory-->
-									01010111
-								  </ValidDayBits>
+										<!-- ch-usage: mandatory-->
+										01010111
+								  	</ValidDayBits>
 									<timebands>
 										<!-- ch-usage: ignored-->
 										<TimebandRef ref="generated" versionRef="1"/>
@@ -38,7 +44,10 @@
 							</validityConditions>
 							<privateCodes>
 								<!-- ch-usage: expected -->
-								<PrivateCode type="sjyid"><!-- ch-usage: expected -->ch:1:sjyid:100001:71707-003</PrivateCode>
+								<PrivateCode type="sjyid">
+									<!-- ch-usage: expected -->
+									ch:1:sjyid:100001:71707-003
+								</PrivateCode>
 							</privateCodes>
 							<keyList>
 								<!-- ch-usage: expected -->
@@ -70,8 +79,8 @@
 								</facilities>
 							</Extensions>
 							<PrivateCode>
-								<!-- ch-usage: optional -->
-								<!-- ch-note: Private code of SERVICE JOURNEY. -->
+								<!-- ch-usage: forbidden -->
+								<!-- ch-note: Replaced by <privateCodes>-<PrivateCode>, see above. -->
 								1
 							</PrivateCode>
 							<TransportMode>
@@ -80,7 +89,7 @@
 							</TransportMode>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1">
 								<!-- ch-usage: expected -->
-								<!-- ch-note: **TODO** I am not sure if it is not mandatory for us.-->
+								<!-- ch-note: **TODO** Or should it be mandatory?-->
 							</TypeOfProductCategoryRef>
 							<TypeOfServiceRef ref="ch:1:TypeOfService:1" versionRef="1">
 								<!-- ch-usage: optional -->
@@ -110,7 +119,10 @@
 								<!-- ch-note: Only the value planned is allowed. -->
 								planned
 							</ServiceAlteration>
-							<DepartureTime><!-- ch-usage: expected -->06:21:00</DepartureTime>
+							<DepartureTime>
+								<!-- ch-usage: expected -->
+								06:21:00
+							</DepartureTime>
 							<DepartureDayOffset>
 								<!-- ch-usage: optional -->
 								0
@@ -118,7 +130,12 @@
 							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1">
 								<!--ch-usage: mandatory -->
 							</LineRef>
-							<DirectionType><!-- ch-usage: mandatory --><!-- ch-allowed-enums: inbound outbound --><!-- ch-note: Allowed are: inbound, outbound -->outbound</DirectionType>
+							<DirectionType>
+								<!-- ch-usage: mandatory -->
+								<!-- ch-allowed-enums: inbound outbound -->
+								<!-- ch-note: Allowed are: inbound, outbound -->
+								outbound
+							</DirectionType>
 							<trainNumbers>
 								<!-- ch-usage: mandatory -->
 								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1">
