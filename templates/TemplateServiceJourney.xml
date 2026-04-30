@@ -9,30 +9,54 @@
 					<vehicleJourneys>
 						<TemplateServiceJourney id="generated" version="1">
 							<!-- ch-root -->
-							<!-- ch-note: TemplateServiceJourney is used for repeating SERVICE JOURNEYs. -->
+							<!-- ch-note: TemplateServiceJourney is used for journeys repeating at a certain frequency. -->
 							<!-- ch-attrs: id version responsibilitySetRef -->
 							<validityConditions>
 								<!-- ch-usage: expected -->
-								<!-- ch-note: A specific type of VALIDITY CONDITION used to specify a set of temporal conditions that can be associated with the SERVICE JOURNEY, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+								<!-- ch-note: Used to specify a set of temporal conditions that can be associated with the TemplateServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
 								<AvailabilityCondition id="generated" version="1">
-									<!-- ch-usage: expected -->
-									<!-- ch-note: **TODO** Expand the element, see ServiceJourney: more spacific requirements than standard AvailabilityCondition. -->
+									<!-- ch-usage: mandatory -->
+									<!-- ch-note: More spacific requirements than standard AvailabilityCondition. Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
 									<!-- ch-see -->
-									<FromDate>2026-02-15T00:00:00Z</FromDate>
-									<ToDate>2026-06-15T00:00:00Z</ToDate>
+									<FromDate>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.  -->
+										2026-05-17T00:00:00Z
+									</FromDate>
+									<ToDate>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
+										2026-05-17T00:00:00Z
+									</ToDate>
 									<IsAvailable>
-										<!-- mandatory by NeTEx **TODO** really? -->
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: mandatory by NeTEx **TODO** really? -->
 										true
-									</IsAvailable>
-									<ValidDayBits>01010111</ValidDayBits>
+								  	</IsAvailable>
+									<ValidDayBits>
+										<!-- ch-usage: mandatory-->
+										01010111
+								  	</ValidDayBits>
+									<timebands>
+										<!-- ch-usage: ignored-->
+										<TimebandRef ref="generated" versionRef="1"/>
+									</timebands>
 								</AvailabilityCondition>
 							</validityConditions>
+							<privateCodes>
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Replaces the single PrivateCode. -->
+								<PrivateCode type="sjyid">
+									<!-- ch-usage: expected -->
+									ch:1:sjyid:100001:71707-003
+								</PrivateCode>
+							</privateCodes>
 							<keyList>
 								<!-- ch-usage: mandatory -->
-								<!-- ch-note: KEY LIST with the KEY VALUEs belonging to the repeating SERVICE JOURNEYs. Will contain the SJYID. -->
+								<!-- ch-note: Key list for the repeating journeys. Contains the SJYID. -->
 								<KeyValue>
 									<!-- ch-usage: mandatory -->
-									<!-- ch-note: A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. -->
+									<!-- ch-note: A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. -->
 									<Key><!-- ch-usage: mandatory -->SJYID</Key>
 									<Value><!-- ch-usage: mandatory -->ch:1:sjyid:100001:71707-003</Value>
 								</KeyValue>
@@ -56,7 +80,11 @@
 									</Facility>
 								</facilities>
 							</Extensions>
-							<PrivateCode><!-- ch-usage: optional --><!-- ch-note: Private code of the repeating SERVICE JOURNEY. -->1</PrivateCode>
+							<PrivateCode>
+								<!-- ch-usage: forbidden -->
+								<!-- ch-note: Replaced by <privateCodes>-<PrivateCode>, see above. -->
+								1
+							</PrivateCode>
 							<TransportMode><!-- ch-usage: optional -->rail</TransportMode>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1">
 								<!-- ch-usage: expected -->
@@ -109,7 +137,6 @@
 								<!-- ch-usage: expected -->
 								<!-- ch-see -->
 								<!-- ch-note: **TODO** needs to be created as well -->
-								
 								<ScheduledStopPointRef versionRef="1" ref="ch:1:sloid:3412"/>
 							</Destination>
 							<passingTimes>
@@ -132,7 +159,7 @@
 							<TemplateVehicleJourneyType><!-- ch-usage: expected --><!-- ch-allowed-enums: rhythmic headway -->headway</TemplateVehicleJourneyType>
 							<frequencyGroups>
 								<!-- ch-usage: mandatory -->
-								<!-- ch-note: We strictly map one JOURNEY FREQUENCY per SERVICE JOURNEY. -->
+								<!-- ch-note: We strictly map one frequency to the TemplateServiceJourney. -->
 								<RhythmicalJourneyGroup version="1" id="ch:1:RhythmicalJourneyGroup:0253">
 									<!-- ch-usage: expected -->
 									<Name>Regular Interval service between 10am and 17:00 pm<!-- ch-usage: optional --><!-- ch-note: **TODO** - wanted? more advice on how to handle language? --></Name>
@@ -155,7 +182,12 @@
 									<LastDepartureTime><!-- ch-usage: mandatory -->18:00:00</LastDepartureTime>
 									<LastDayOffset><!-- ch-usage: optional -->0</LastDayOffset>
 									<ScheduledHeadwayInterval><!-- ch-usage: mandatory -->PT20M</ScheduledHeadwayInterval>
-									<HeadwayDisplay><!-- ch-usage: optional --><!-- ch-allowed-enums: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes --><!-- ch-note: Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly.-->DisplayInsteadOfPassingTimes</HeadwayDisplay>
+									<HeadwayDisplay>
+										<!-- ch-usage: optional -->
+										<!-- ch-allowed-enums: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes -->
+										<!-- ch-note: Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly.-->
+										DisplayInsteadOfPassingTimes
+									</HeadwayDisplay>
 								</HeadwayJourneyGroup>
 							</frequencyGroups>
 						</TemplateServiceJourney>
