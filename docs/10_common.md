@@ -1,15 +1,35 @@
 # Common Elements
 
+This chapter deals with elements that are commonly used. They belong into different frames.
+
+In this chapter:
+- Rules for id 
+- `MultilingualString`
+- `FrameDefaults` (in every frame)
+- Time formatting and journey after midnight
+- `AlternativeName` (in `TODOFrame`)
+- `AlternativeText` (in `TODOFrame`)
+- `ResourceFrame`
+  - `ResponsibilitySet`
+  - `TypeOfValue /Valuesets`
+    - `TypeOfProductCategory`
+    - `TypeOfService`
+  - `Organisation` / `Operator` / `Authority`
+  - `ServiceFacilitySet`
+  - `SiteFacilitySet`
+
+> **TODO** make links in the toc correct
+
 ## Rules for common Attributes
 
 The following rules apply to common attributes:
 
-| Attribute     | Rule                                                  |
-|---------------|-------------------------------------------------------|
-| `id`          | See description regarding [technical IDs](#ids) below |
-| `version`     | is always set to `"1"`                                |
-| `responsibilitySetRef`     | We use `responsibilitySetRef` in the following elements xxx |
-| `nameOfClass` | We use `nameOfClass` in the XXXRef elements.          |
+| Attribute              | Rule                                                        |
+|------------------------|-------------------------------------------------------------|
+| `id`                   | See description regarding [technical IDs](#ids) below       |
+| `version`              | is always set to `"1"`                                      |
+| `responsibilitySetRef` | We use `responsibilitySetRef` in the following elements xxx |
+| `nameOfClass`          | We use `nameOfClass` in the XXXRef elements.                |
 
 ### IDs
 IDs must be globally unique during importation. 
@@ -43,20 +63,48 @@ For [Organisations](#organisation--operator--authority) e.g. there are all langu
 The `StopPlace` names in Switzerland are language-independent.
 
 ## Time Formatting and Journey after Midnight
-The time format consists only of the hours, minutes (and seconds) of a 24 hour clock, e.g. `23:55:00`. 
+The time format consists only of the hours, minutes (and seconds) of a 24-hour clock, e.g. `23:55:00`. 
 Times that pass midnight of the current `OperatingDay` are marked with a `DayOffset` element. 
 If a `ServiceJourney` (in a particular `Call`) runs over midnight, then `DayOffset` must be set to `1`.
 
 ## FrameDefaults
+
+### Purpose
 With the FrameDefaults we set some basic parameters. When they are not set, we still assume the values that we present 
 in the XML snippet.
-- [Swiss profile tables](../generated/markdown-examples/FrameDefaults.md)
-- [XML Snippet](../generated/xml-snippets/FrameDefaults.xml)
-- [Original NeTEx table](tbd)
+### Table
+ 
+[Swiss profile tables](../generated/markdown-examples/FrameDefaults.md)
+
+*-> [Original NeTEx table](../generated/xcore/FrameDefaults.html)*
+
+
+### Example
+
+[XML Snippet](../generated/xml-snippets/FrameDefaults.xml)
+
+*-> [Template](../templates/FrameDefaults.xml)*
 
 ## AlternativeName
-> **Original NeTEx Definition:**\
-> The ALTERNATIVE NAME Model defines reusable texts. For example, we use it to distinguish between two places with the same name in different countries. It complements the ALTERNATIVE TEXT entity, which is used to provide translations for individual text attribues of elements.
+**TODO** Link to Glossary
+
+### Purpose
+
+**TODO**
+
+### Table
+
+[Swiss profile tables](../generated/markdown-examples/AlternativeName.md)
+
+*-> - [NeTEx](../generated/xcore/AlternativeName.html)*
+ 
+### Example
+
+[XML Snippet](../generated/xml-snippets/AlternativeName.xml)
+
+*-> - [Template](../templates/AlternativeName.xml)*
+
+### Usage Notes
 
 As a general rule: further names (aliases) of `StopPlace` or `Organisation` elements are modelled with `AlternativeName`, 
 whereas direct translations of content (for example of `Notice` texts) are modelled with AlternativeText.
@@ -67,33 +115,32 @@ We only allow the following values for `NameType`:
 - `alias`
 - `translation`
 
-``` xml 
-<alternativeNames>
-  <AlternativeName id="ch:1:AlternativeName:StopPlace:8500010_5" version="1">
-    <NameType>alias</NameType>
-    <TypeOfName>offical</TypeOfName>
-    <Name lang="de">Basilea FFS</Name>
-  </AlternativeName>
-  <AlternativeName id="ch:1:AlternativeName:StopPlace:8500010_8" version="1">
-    <NameType>alias</NameType>
-    <TypeOfName>offical</TypeOfName>
-    <Name lang="de">Bale</Name>
-  </AlternativeName>
-<alternativeNames>
-```
 
-- [Swiss profile tables](../generated/markdown-examples/AlternativeName.md)
-- [XML Snippet](../generated/xml-snippets/AlternativeName.xml)
+
 
 ## AlternativeText
-> **Original NeTEx Definition:** <br>
-> It is sometime necessary to provide seval variants of a single text, in particular if the infor-mation is required in several national languages. 
-> The AlternativeText element is a generic way of providing such variants for any text attribute of a DataManagedObject. 
-> It can be seen as a complement to the AlternativeName mechanism, and can be used to provide an alias for any description or text attribute.
+**TODO** Link to Glossary
 
-> [!CAUTION] 
-> US: term attribute is confusing. Text is in an element.
+### Purpose
+The AlternativeText element is a generic way of providing such variants for any text attribute of a DataManagedObject. 
 
+It can be seen as a complement to the AlternativeName mechanism, and can be used to provide an alias for any element.
+
+**TODO**
+
+### Table
+
+[Swiss profile tables](../generated/markdown-examples/AlternativeText.md)
+
+*-> - [NeTEx](../generated/xcore/AlternativeText.html)*
+ 
+### Example
+
+[XML Snippet](../generated/xml-snippets/AlternativeText.xml)
+
+*-> - [Template](../templates/AlternativeText.xml)*
+
+## Usage Notes
 The `AlternativeText` is part of a `DataManagedObject` and references the name of the attribute (in terms of the NeTEx 
 Metamodel), for which it provides an alternative. 
 It contains the alternative text as an attribute of type `MultilingualString` which indicates the language. 
@@ -105,88 +152,63 @@ of the string, but might be different.
 As a general rule: further names (aliases) of a `StopPlace` or `Organisation` are modelled with [AlternativeNames](#AlternativeName), whereas 
 direct translations of content (for example of `Notice` texts) are modelled with `AlternativeTexts`.
 
-> [!CAUTION] 
-> **TODO** 5.2
-
-<notices>
-    <Notice id=”ch:1:Notice:Hin-1229900” version=”1”>
-      <alternativeTexts>
-        <AlternativeText id=”ch:1:AlternativeText:Notice-Hin_1229900-fr” version=”1” attributeName=”Text” useForLanguage=”fr”>
-          <Text>Départ de la voie 2.</Text>
-        </AlternativeText>
-        <AlternativeText id=”ch:1:AlternativeText:Notice-Hin_1229900-it” version=”1” attributeName=”Text” useForLanguage=”it”>
-          <Text>Partenza dal binario 2.</Text>
-        </AlternativeText>
-        <AlternativeText id=”ch:1:AlternativeText:Notice-Hin_1229900-en” version=”1” attributeName=”Text” useForLanguage=”en”>
-          <Text>Departure on platform 2.</Text>
-        </AlternativeText>
-      </alternativeTexts>
-      <Text lang="de">Abfahrt auf Gleis 2.</Text>
-      <TypeOfNoticeRef ref="ch:1:TypeOfNotice:3" version="1" />
-    </Notice>
-</notices>
-```
-
-``` xml
-<AlternativeText attributeName="Name">
-  <Text lang="it">Train Express Regional</Text>
-</AlternativeText>
-```
-
-- [Swiss profile tables](../generated/markdown-examples/AlternativeText.md)
-- [XML Snippet](../generated/xml-snippets/AlternativeText.xml)
-
 # ResourceFrame
-The RESOURCE FRAME is a coherent set of resource data to which the same VALIDITY CONDITIONs have been assigned. Used to define common resources that will be referenced by other types of FRAME.
+**TODO** Link to Glossary
 
+## Purpose
 See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
 
 ![ResourceFrame](./media/ResourceFrame.png)
+## Contained Elements
+**TODO** 
 
-- [Swiss profile tables](../generated/markdown-examples/ResourceFrame.md)
-- [XML Snippet](../generated/xml-snippets/ResourceFrame.xml)
+## Table
+
+[Swiss profile tables](../generated/markdown-examples/ResourceFrame.md)
+
+*-> - [NeTEx](../generated/xcore/ResourceFrame.html)*
+
+## Example
+
+[XML Snippet](../generated/xml-snippets/ResourceFrame.xml)
+
+*-> - [Template](../templates/ResourceFrame.xml)*
+
+
+## Frame Relationships
+** TODO**
 
 ## ResponsibilitySet
+**TODO** Link to Glossary
+
+### Purpose
+We use this model to  describe the different roles of the participating companies. For the most part, the company code is used to fully identify the services provided. 
+
+
+| value of `StakeholderRoleType` | Description                                                                        |
+|--------------------------------|------------------------------------------------------------------------------------|
+| `EntityLegalOwnership`         | Role of the **concession company** holding the concession for the original service |
+| `Operation`                    | role of the **operator company** responsible for providing the transport service   |
+## Table
+
+[Swiss profile tables](../generated/markdown-examples/ResponsibilitySet.md)
+
+*-> - [NeTEx](../generated/xcore/ResponsibilitySet.html)*
+
+## Example
+
+[XML Snippet](../generated/xml-snippets/ResponsibilitySet.xml)
+
+*-> - [Template](../templates/ResponsibilitySet.xml)*
+
+## Usage Notes
 
 > [!CAUTION] 
 > US: Why is there an exception for the PAG? Is it still needed?
 
-We use this model to  describe the different roles of the participating companies. For the most part, the company code is used to fully identify the services provided. 
 For the PAG company (801), the attribute `ResponsibleArea(Ref)` must also be taken into account.
 
 Services (e.g. replacement services) can be associated with different roles. These roles can be defined inside the `ResponsibilitySet` element.
-
-| value of `StakeholderRoleType` | Description                                                                      |
-| ----- |----------------------------------------------------------------------------------|
-| `EntityLegalOwnership` | Role of the **conession company** holding the concession for the original service |
-| `Operation` | role of the **operator company** responsible for providing the transport service  |
-
-- [Swiss profile tables](../generated/markdown-examples/ResponsibilitySet.md)
-- [XML Snippet](../generated/xml-snippets/ResponsibilitySet.xml)
-
-``` xml
-<responsibilitySets>
-    <ResponsibilitySet id="ch:1:ResponsibilitySet:33_801-5678" version="1">
-        <!-- For Journey from BLS with replacement Journey by PAG -->
-        <Name lang="de">BLS AG (bls)</Name>
-        <PrivateCode>BLS</PrivateCode>
-        <roles>
-            <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:33_801-5678:1" version="1">
-                <StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
-                <ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
-            </ResponsibilityRoleAssignment>
-            <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:33_801-5678:2" version="1">
-                <StakeholderRoleType>Operation</StakeholderRoleType>
-                <ResponsibleOrganisationRef ref="ch:1:Operator:801" version="1"/>
-                <ResponsibleAreaRef ref="ch:1:TransportAdministrativeZone:801-5678" version="1"/>
-            </ResponsibilityRoleAssignment>
-        </roles>
-    </ResponsibilitySet>
-</responsibilitySets>
-```
-> [!CAUTION] 
-> **TODO** to be checked with ...\
-> **TODO** 6.5.3 Postauto needs to be checked
 
 Only the values defined below are allowed in Switzerland for `StakeholderRoleType` in `ResponsbilityRoleAssignment`:
 -	`Operation`
@@ -217,13 +239,13 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
 > **TODO** Rework table and example xml\
 > **COMMENT** US: remove things that are no longer used, e.g. values 2, 3?
 
-| PrivateCode | Name               | Description                                                                                                                                                                                                                                                    |
-|-------------|--------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 1           | Allgemeiner Hinweis | General information text                                                                                                                                                                                                                                       |
-| 2           | ~~Zugname~~            | Name of the train. Is not used, as this is stored in ServiceJourneyName.                                                                                                                                                                                       |
-| 3           | ~~Gleis-Angabe~~   | Quay and Quay section information. Is no longer used. Is put into Quay.                                                                                                                                                                                        |
-| 10          | Angebot            | Most of the `ServiceFacilitySet` are also transmitted as `Notice`. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to `ServiceFacilitySets`. This `TypeOfNotice` is used to deliver those special cases as Notices. |
-| 11          | ~~Region~~             | Postauto is divided into several regions. Will be omitted. If anything this will be done with different constructs.                                                                                                                                            |
+| PrivateCode | Name                | Description                                                                                                                                                                                                                                                      |
+|-------------|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1           | Allgemeiner Hinweis | General information text                                                                                                                                                                                                                                         |
+| 2           | ~~Zugname~~         | Name of the train. Is not used, as this is stored in ServiceJourneyName.                                                                                                                                                                                         |
+| 3           | ~~Gleis-Angabe~~    | Quay and Quay section information. Is no longer used. Is put into Quay.                                                                                                                                                                                          |
+| 10          | Angebot             | Most of the `ServiceFacilitySet` are also transmitted as `Notice`. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to `ServiceFacilitySets`. This `TypeOfNotice` is used to deliver those special cases as Notices. |
+| 11          | ~~Region~~          | Postauto is divided into several regions. Will be omitted. If anything this will be done with different constructs.                                                                                                                                              |
 
 ``` xml
 <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
@@ -252,9 +274,13 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
 </ValueSet>
 ```
 ### TypeOfProductCategory
+
+#### Purpose
+
 For the ServiceJourneys exclusively provided in Switzerland, only the ProductCategories defined in the document [06 Harmonisierung Verkehrsmittel](https://www.allianceswisspass.ch/de/tarife-vorschriften/uebersicht/V580/Produkte-der-V580-FIScommun-1) may be referenced. 
 For ServiceJourneys provided in other countries or partially in Switzerland, there are no restrictions, provided that the category does not overlap with the ProductCategories defined for Switzerland.
 
+#### Table
 ``` xml
 <ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
   <Name>ProductCategories</Name>
@@ -278,25 +304,19 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 </ValueSet>
 ```
 
+####  Example
+
+
 ### TypeOfService
+
+#### Purpose
 The container for `typesOfService` is in TimetableFrame. But it is rather general, so we describe it here.
 
+#### Table
 > [!CAUTION] 
 > **TODO** link?\
-> **TODO** remove table as it shows TypeOfServices not used in Switzerland?
 
-`TypeOfService` indicates the purpose of a `ServiceJourney`, for example, whether if it is a passenger transport or a garage run-in. The following types are currently used:
-
-| Name	          | Description                                                                                                                                               |
-|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PublicJourney	 | A public passenger transport                                                                                                                              |
-| ~~GarageRunOut~~	  | A garage run-out                                                                                                                                          |
-| ~~GarageRunIn~~	   | A garage run-in                                                                                                                                           |
-| ~~ThroughCoach~~   | 	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling. |
-
-Actually there is only one allowed value that we use in the Swiss profile: Only the `PublicJourney` are to be exchanged.
-
-So, this is what needs to be in the TimetableFrame:
+#### Example
 
 ``` xml
 <typesOfService>
@@ -307,11 +327,41 @@ So, this is what needs to be in the TimetableFrame:
     </TypeOfService>
 </typesOfService>
 ```
+#### Usage Notes
+
+`TypeOfService` indicates the purpose of a `ServiceJourney`, for example, whether if it is a passenger transport or a garage run-in. The following types are currently used:
+
+| Name	             | Description                                                                                                                                               |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| PublicJourney	    | A public passenger transport                                                                                                                              |
+| ~~GarageRunOut~~	 | A garage run-out                                                                                                                                          |
+| ~~GarageRunIn~~	  | A garage run-in                                                                                                                                           |
+| ~~ThroughCoach~~  | 	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling. |
+
+Actually there is only one allowed value that we use in the Swiss profile: Only the `PublicJourney` are to be exchanged.
+
+So, this is what needs to be in the TimetableFrame:
+
+
 
 ## Organisation / Operator / Authority
+
+
+### Purpose
+
 The ORGANISATION is a need to describe a concrete organisation like operator.
 The Organisations are identified by their [GO-number](https://opentransportdata.swiss/de/dataset/didok/resource/d66259a0-a77c-4aee-b7bd-e4fba99dcbb1) 
 in Switzerland. The TU-Code is to be used for operators of other countries. 
+
+### Table
+
+[Swiss profile tables](../generated/markdown-examples/Operator.md)
+
+### Example
+
+[XML Snippet](../generated/xml-snippets/Operator.xml)
+
+### Usage Notes
 
 > [!NOTE] From 2024, organisations will also be identified 
 > by [SBOIDs](https://transportdatamanagement.ch/content/uploads/2021/05/SwissBusinessOrganisationID_DE_1_2.pdf).
@@ -322,11 +372,6 @@ The Operators are identified by their GO-number in Switzerland. The TU-Code is t
 >The **PAG company** (GO = 801) is organised in different parts for managing and identifying journeys. 
 >These parts are represented by the `OrganisationPart` and `TransportAdministrativeZone` elements. 
 
-> [!CAUTION] 
-> **COMMENT** US: I would remove this sentence as it should be obvious from tables.
-
-~~The operators must be set.~~ 
-
 The SBOID and GO number will always be mainly stored in the `KeyList`.
 
 > [!CAUTION] 
@@ -335,8 +380,7 @@ The SBOID and GO number will always be mainly stored in the `KeyList`.
 `OperatorRef` on a `Line` is always the "Konzessionär". 
 If a different `Operator` is running a given `ServiceJourney`, then this is reflected in the `ServiceJourney` having 
 a different `OperatorRef`.
-- [Swiss profile tables](../generated/markdown-examples/Operator.md)
-- [XML Snippet](../generated/xml-snippets/Operator.xml)
+
 
 ## ServiceFacilitySet
 
