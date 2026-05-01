@@ -151,8 +151,7 @@ For example, it can be used for the translation of `Notice` texts.
 
 ## Usage Notes
 
-The `AlternativeText` is part of a `DataManagedObject` and references the name of the attribute (in terms of the NeTEx 
-Metamodel), for which it provides an alternative. 
+The `AlternativeText` is part of a `DataManagedObject` and references the name of the node, for which it provides an alternative. 
 It contains the alternative text as an attribute of type `MultilingualString` which indicates the language. 
 
 In addition, the `AlternativeText` element may have a `useForLanguage` attribute to indicate a second language for which it may be used as 
@@ -364,7 +363,7 @@ The following types are currently used:
 
 Actually there is only one allowed value that we use in the Swiss profile: Only the `PublicJourney` is to be exchanged.
 
-This element can also be defined in the `TimetableFrame` as children of `typesOfService`:
+This element can also be defined in the `TimetableFrame` as a child of `typesOfService`:
 ``` xml
 <typesOfService>
     <TypeOfService id="ch:1:TypeOfService:1" version="1">
@@ -409,7 +408,7 @@ The Operators are identified by their GO-number in Switzerland. The TU-Code is t
 >The **PAG company** (GO = 801) is organised in different parts for managing and identifying journeys. 
 >These parts are represented by the `OrganisationPart` and `TransportAdministrativeZone` elements. 
 
-The SBOID and GO number will always be mainly stored in the `KeyList`.
+The SBOID and GO number shall always also be stored in the `KeyList`.
 
 > [!CAUTION]\
 > **TODO**: `OrganisationPart` needs to be studied! 6.4.1
@@ -428,7 +427,27 @@ a different `OperatorRef`.
 > `ServiceFacilitySets` are listed in the `TimetableFrame` (between trainNumbers and notices). 
 > They are referenced in the facilities object of a `ServiceJourney`.
 
-The assignment of `facilities` to `ServiceJourney` or `JourneyPart` is made by using `FacilitySet`elements.
+The assignment of `facilities` to `ServiceJourney` or `JourneyPart` is made by using `ServiceFacilitySet`elements.
+
+> [!CAUTION]\
+> **TODO** 10.13.2ff
+
+> [!CAUTION]\
+> **TODO** a lot more detail needed. But probably in uc
+
+### Table
+
+[Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFacilitySet.md)
+
+*→ [General NeTEx definition](../generated/xcore/ServiceFacilitySet.html)*
+
+### Example
+
+[XML Snippet](../generated/xml-snippets/ServiceFacilitySet.xml)
+
+*→ - [Template](../templates/ServiceFacilitySet.xml)*
+
+### Usage Notes
 
 SKI uses the following groups to classify `facilities`:
 -	Accommodation facility
@@ -450,40 +469,14 @@ subcategory `MealFacilityList` or `FamilyFacilityList`, and a passenger informat
 a reasonable order. The categories themselves are from type `xsd:list`, meaning that the values of a category are a 
 separated list of elements. 
 
-> [!CAUTION]\
-> **TODO** 10.13.2ff
-
-``` xml
-<ServiceFacilitySet id="ch:1:ServiceFacilitySet:A___2" version="1">
-  <alternativeTexts>
-    <AlternativeText attributeName="Description">
-      <Text lang="en">2nd class only</Text>
-    </AlternativeText>
-    <AlternativeText attributeName="Description">
-      <Text lang="fr">Seulement 2e classe</Text>
-    </AlternativeText>
-    <AlternativeText attributeName="Description">
-      <Text lang="it">Solo 2a classe</Text>
-    </AlternativeText>
-  </alternativeTexts>
-  <Extensions>
-    <Priority>1</Priority>
-    <Condition>4</Condition>
-  </Extensions>
-  <Description lang="de">Nur 2. Klasse</Description>
-  <FareClasses>secondClass</FareClasses>
-</ServiceFacilitySet>
-```
-> [!CAUTION]\
-> **TODO** a lot more detail needed. But probably in uc
-
 ## SiteFacilitySet
 
 ### Purpose
 
-> [!CAUTION] \
+> [!CAUTION]\
 > **COMMENT** @tuxalp not decribed in RG 1.01.\
-> **COMMENT** @tuxalp missing in glossary
+> **COMMENT** @tuxalp missing in glossary\
+> **COMMENT** @tuxalp in the template there are some missing elements.
 
 A `SiteFacilitySet` defines a set of facilities like sanitary facilities, ticket service, lockers etc. that can be 
 referenced to define facilities of a site.
