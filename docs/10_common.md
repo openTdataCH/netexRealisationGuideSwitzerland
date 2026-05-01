@@ -1,5 +1,5 @@
 > [!CAUTION]\
-> **COMMENT** @tuxalp Title renamed because "Comment Element" was ambigous/unprecise
+> **COMMENT** @tuxalp I renamed the title because "Comment Element" seemed me ambigous/unprecise.
 
 # Common Building Blocks
 
@@ -201,8 +201,9 @@ See the following class diagram for the most important objects of the RESOURCE F
 *→ - [Template](../templates/ResourceFrame.xml)*
 
 ## Frame Relationships
-> [!CAUTION] 
-> **TODO**
+
+Elements of the `ResourceFrame` can be referenced in other frames like `SiteFrame`, `ServiceFrame`, `ServiceCalendarFrame` 
+and/or `TimetableFrame`.
 
 ## ResponsibilitySet
 
@@ -476,7 +477,7 @@ separated list of elements.
 > [!CAUTION]\
 > **COMMENT** @tuxalp not decribed in RG 1.01.\
 > **COMMENT** @tuxalp missing in glossary\
-> **COMMENT** @tuxalp in the template there are some missing elements.
+> **COMMENT** @tuxalp missing elements in template.
 
 A `SiteFacilitySet` defines a set of facilities like sanitary facilities, ticket service, lockers etc. that can be 
 referenced to define facilities of a site.
