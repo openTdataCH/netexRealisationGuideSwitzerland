@@ -85,16 +85,15 @@ in the XML snippet.
 
 ### Table
  
-[Swiss profile tables](../generated/markdown-examples/FrameDefaults.md)
+[Swiss profile NeTEx definition](../generated/markdown-examples/FrameDefaults.md)
 
-*-> [Original NeTEx table](../generated/xcore/FrameDefaults.html)*
-
+*→ [General NeTEx definition](../generated/xcore/FrameDefaults.html)*
 
 ### Example
 
 [XML Snippet](../generated/xml-snippets/FrameDefaults.xml)
 
-*-> [Template](../templates/FrameDefaults.xml)*
+*→ [Template](../templates/FrameDefaults.xml)*
 
 ## AlternativeName
 
@@ -113,15 +112,15 @@ For all other alternative texts use `AlternativeText`.
 
 ### Table
 
-[Swiss profile tables](../generated/markdown-examples/AlternativeName.md)
+[Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeName.md)
 
-*-> - [NeTEx](../generated/xcore/AlternativeName.html)*
+*→ - [General NeTEx definition](../generated/xcore/AlternativeName.html)*
  
 ### Example
 
 [XML Snippet](../generated/xml-snippets/AlternativeName.xml)
 
-*-> - [Template](../templates/AlternativeName.xml)*
+*→ - [Template](../templates/AlternativeName.xml)*
 
 ### Usage Notes
 
@@ -135,20 +134,20 @@ We only allow the following values for `NameType`:
 
 ### Purpose
 
-The `AlternativeText` is a generic way to provide an alternative text (translation or aliases) where not covered by `AlternativeName`. 
+The `AlternativeText` is a generic way to provide an alternative text (translation or alias).
 For example, it can be used for the translation of `Notice` texts.
 
 ### Table
 
-[Swiss profile tables](../generated/markdown-examples/AlternativeText.md)
+[Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeText.md)
 
-*-> - [NeTEx](../generated/xcore/AlternativeText.html)*
+*→ - [General NeTEx definition](../generated/xcore/AlternativeText.html)*
  
 ### Example
 
 [XML Snippet](../generated/xml-snippets/AlternativeText.xml)
 
-*-> - [Template](../templates/AlternativeText.xml)*
+*→ - [Template](../templates/AlternativeText.xml)*
 
 ## Usage Notes
 
@@ -160,8 +159,7 @@ In addition, the `AlternativeText` element may have a `useForLanguage` attribute
 an acceptable presentation, if there is no native language alternative; normally this will be the same as the language 
 of the string, but might be different.
 
-As a general rule: further names (aliases) of a `StopPlace` or `Organisation` are modelled with [AlternativeNames](#AlternativeName), whereas 
-direct translations of content (for example of `Notice` texts) are modelled with `AlternativeTexts`.
+Alternative names (translations or aliases) of a `StopPlace` or `Organisation` are modelled with [AlternativeNames](#AlternativeName).
 
 # ResourceFrame
 
@@ -193,16 +191,15 @@ See the following class diagram for the most important objects of the RESOURCE F
 
 ## Table
 
-[Swiss profile tables](../generated/markdown-examples/ResourceFrame.md)
+[Swiss profile NeTEx definition](../generated/markdown-examples/ResourceFrame.md)
 
-*-> - [NeTEx](../generated/xcore/ResourceFrame.html)*
+*→ - [General NeTEx definition](../generated/xcore/ResourceFrame.html)*
 
 ## Example
 
 [XML Snippet](../generated/xml-snippets/ResourceFrame.xml)
 
-*-> - [Template](../templates/ResourceFrame.xml)*
-
+*→ - [Template](../templates/ResourceFrame.xml)*
 
 ## Frame Relationships
 > [!CAUTION] 
@@ -213,7 +210,7 @@ See the following class diagram for the most important objects of the RESOURCE F
 *→ [Glossary definition](A4_annex_glossary.md#responsibilityset)*
 
 ### Purpose
-We use this model to  describe the different roles of the participating companies. For the most part, the company code is used to fully identify the services provided. 
+We use this element to  describe the different roles of the participating companies. For the most part, the company code is used to fully identify the provided services. 
 
 
 | value of `StakeholderRoleType` | Description                                                                        |
@@ -222,15 +219,15 @@ We use this model to  describe the different roles of the participating companie
 | `Operation`                    | role of the **operator company** responsible for providing the transport service   |
 ### Table
 
-[Swiss profile tables](../generated/markdown-examples/ResponsibilitySet.md)
+[Swiss profile NeTEx definition](../generated/markdown-examples/ResponsibilitySet.md)
 
-*-> - [NeTEx](../generated/xcore/ResponsibilitySet.html)*
+*→ - [General NeTEx definition](../generated/xcore/ResponsibilitySet.html)*
 
 ### Example
 
 [XML Snippet](../generated/xml-snippets/ResponsibilitySet.xml)
 
-*-> - [Template](../templates/ResponsibilitySet.xml)*
+*→ - [Template](../templates/ResponsibilitySet.xml)*
 
 ### Usage Notes
 
@@ -314,11 +311,16 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 
 ### Table
 
-[Swiss profile tables](../generated/markdown-examples/TypeOfProductCategory.md)
+[Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfProductCategory.md)
+
+*→ [General NeTEx definition](../generated/xcore/TypeOfProductCategory.html)*
+
 
 ###  Example
 
 [XML Snippet](../generated/xml-snippets/TypeOfProductCategory.xml)
+
+*→ [Template](../templates/TypeOfProductCategory.xml)*
 
 ## TypeOfService
 
@@ -339,11 +341,15 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 
 ### Table
 
-[Swiss profile tables](../generated/markdown-examples/TypeOfService.md)
+[Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfService.md)
+
+*→ [General NeTEx definition](../generated/xcore/TypeOfService.html)*
 
 ### Example
 
 [XML Snippet](../generated/xml-snippets/TypeOfService.xml)
+
+*→ - [Template](../templates/TypeOfService.xml)*
 
 ### Usage Notes
 
@@ -382,11 +388,15 @@ in Switzerland. The TU-Code is to be used for operators of other countries.
 
 ### Table
 
-[Swiss profile tables](../generated/markdown-examples/Operator.md)
+[Swiss profile NeTEx definition](../generated/markdown-examples/Operator.md)
+
+*→ [General NeTEx definition](../generated/xcore/Operator.html)*
 
 ### Example
 
 [XML Snippet](../generated/xml-snippets/Operator.xml)
+
+*→ - [Template](../templates/Operator.xml)*
 
 ### Usage Notes
 
@@ -480,11 +490,15 @@ referenced to define facilities of a site.
 
 ### Table
 
-[Swiss profile tables](../generated/markdown-examples/SiteFacilitySet.md)
+[Swiss profile NeTEx definition](../generated/markdown-examples/SiteFacilitySet.md)
+
+*→ [General NeTEx definition](../generated/xcore/SiteFacilitySet.html)*
 
 ### Example
 
 [XML Snippet](../generated/xml-snippets/SiteFacilitySet.xml)
+
+*→ - [Template](../templates/SiteFacilitySet.xml)*
 
 ### Usage Notes
 
