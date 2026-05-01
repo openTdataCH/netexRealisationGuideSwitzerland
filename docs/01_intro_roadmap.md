@@ -1,6 +1,6 @@
 # Introduction
 The task performed by the NeTEx interface in Switzerland is the transmission of timetable data to one or more partners. The data transmitted via this interface is also required for the provision of timetable data in information systems. 
-This document sets out the Swiss-wide standard for the implementation of the NeTEx inter-face and of individual data structures with regard to the mutual exchange of timetable infor-mation for modes of transport ( train, bus, … ) between public transport companies. This in-formation is then made available on the OpenData platform.
+This document sets out the Swiss-wide standard for the implementation of the NeTEx inter-face and of individual data structures with regard to the mutual exchange of timetable information for modes of transport ( e.g. train, bus ) between public transport companies. This information is then made available on the OpenData platform.
 
 The document specifically describes:
 -	which data may be exchanged between public transport partners
@@ -21,22 +21,17 @@ This document shows all elements of the norm that are deemed necessary for data 
 
 The tables in the structure section are based on the original XSD schema documentation and/or descriptions from the standard (whenever the XSD documentation is insufficient), but also adapted to the needs of public transport in Switzerland. In some cases the cardinality may change and fields may become mandatory or optional. An additional row is introduced for the specification of such business requirements. Elements that are not used/important, are not shown.
 
-Additionally we use the following information in the business requirement row (following each elment description):
--	NOT TO BE USED: This element or field is not used in Switzerland. When the data is present, the file will be rejected during import. This element is not ignored, but rejected.
--	IGNORED AT IMPORT: This element or field may be provided, but it will not be loaded and removed from the data.
-
 The business requirement row also specifies value transformations and mapping tables in some cases. Only the provided functions and values are to be used, no deviations are al-lowed.
 
 In some cases there are references to the HRDF format currently used in the data exchange of timetables in Switzerland. This is also to help implementers to understand how to work with it.
 
 # Roadmap
 
-| Date | Milestone|
-|--|--|
-|2026-07 |First draft for discussion of RG 2.0 (0.7 level)|
-|2026-09 |Review 1 done (0.8 level) |
-|2026-12|RG 2.0 ready (1.0 level |
-|**TODO**|RG 2.0 based NeTEx output |
-|tbd| Input accepted in version 2.0 format by SKI|
+| Date    | Milestone                                        |
+|---------|--------------------------------------------------|
+| 2026-07 | First draft for discussion of RG 2.0 (0.7 level) |
+| 2026-09 | Review 1 done (0.8 level)                        |
+| 2026-12 | RG 2.0 ready (1.0 level)                         |
+| tbd     | RG 2.0 based NeTEx output                        |
+| tbd     | Input accepted in version 2.0 format by SKI      |
 
-**TODO** Needs to be updated.

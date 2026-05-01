@@ -1,11 +1,11 @@
 # Stop Modelling
 
-- [SiteFrame](06_stops.md#SiteFrame)
+- [SiteFrame](06_stops.md#siteframe)
 - [StopPlace](06_stops.md#StopPlace)
 - [Quay](06_stops.md#Quay)
 - [TopographicPlace](06_stops.md#TopographicPlace)
 
-## SiteFrame 
+## SiteFrame
 
 *→ [Glossary definition](A4_annex_glossary.md#siteframe)*
 
