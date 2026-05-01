@@ -102,7 +102,14 @@ in the XML snippet.
 
 ### Purpose
 
-**TODO**
+As the name of the element states, the `AlternativeName` is used to provide an alternative (alias or translation) of a name, e.g. of 
+a `StopPlace` or `Organisation`. 
+
+For all other alternative texts use `AlternativeText`.
+
+> **Original NeTEx Definition:**\
+> The ALTERNATIVE NAME Model defines reusable texts. For example, we use it to distinguish between two places with the 
+> same name in different countries.
 
 ### Table
 
@@ -118,11 +125,6 @@ in the XML snippet.
 
 ### Usage Notes
 
-As a general rule: further names (aliases) of `StopPlace` or `Organisation` elements are modelled with `AlternativeName`, 
-whereas direct translations of content (for example of `Notice` texts) are modelled with AlternativeText.
-For names of `Organisation` and `StopPlace` elements etc., we use `AlternativeName`. 
-For text translations, however, [AlternativeText](#AlternativeText) is used.
-
 We only allow the following values for `NameType`: 
 - `alias`
 - `translation`
@@ -132,12 +134,9 @@ We only allow the following values for `NameType`:
 *→ [Glossary definition](A4_annex_glossary.md#alternativetext)*
 
 ### Purpose
-The AlternativeText element is a generic way of providing such variants for any text attribute of a DataManagedObject. 
 
-It can be seen as a complement to the AlternativeName mechanism, and can be used to provide an alias for any element.
-
-> [!CAUTION] 
-> **TODO**
+The `AlternativeText` is a generic way to provide an alternative text (translation or aliases) where not covered by `AlternativeName`. 
+For example, it can be used for the translation of `Notice` texts.
 
 ### Table
 
@@ -152,6 +151,7 @@ It can be seen as a complement to the AlternativeName mechanism, and can be used
 *-> - [Template](../templates/AlternativeText.xml)*
 
 ## Usage Notes
+
 The `AlternativeText` is part of a `DataManagedObject` and references the name of the attribute (in terms of the NeTEx 
 Metamodel), for which it provides an alternative. 
 It contains the alternative text as an attribute of type `MultilingualString` which indicates the language. 
@@ -164,17 +164,32 @@ As a general rule: further names (aliases) of a `StopPlace` or `Organisation` ar
 direct translations of content (for example of `Notice` texts) are modelled with `AlternativeTexts`.
 
 # ResourceFrame
-> [!CAUTION] 
-> **TODO** Link to Glossary
+
+*→ [Glossary definition](A4_annex_glossary.md#resourceframe)*
 
 ## Purpose
+
+The ResourceFrame is used to define common resources referenced in other FRAMEs.
+
+> **Original NeTEx Definition:**\
+> The RESOURCE FRAME is used to group reusable components for exchange, for example to declare the local code values 
+> used in a given data set (VALUE SETs and TYPE OF VALUEs.), or entities common to many frames such as ORGANISATIONs 
+> and RESPONSIBILITY SETs. A RESOURCE FRAME can be grouped with other frames using a COMPOSITE FRAME. 
+
 See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
 
 ![ResourceFrame](./media/ResourceFrame.png)
+
 ## Contained Elements
 
-> [!CAUTION] 
-> **TODO**
+- ResponsabilitySet
+- TypeOfValue / ValueSets
+- TypeOfNotice
+- TypeOfProductCategory
+- TypeOfService
+- Organisation / Operator / Authority
+- ServiceFacilitySet
+- SiteFacilitySet
 
 ## Table
 
@@ -205,19 +220,19 @@ We use this model to  describe the different roles of the participating companie
 |--------------------------------|------------------------------------------------------------------------------------|
 | `EntityLegalOwnership`         | Role of the **concession company** holding the concession for the original service |
 | `Operation`                    | role of the **operator company** responsible for providing the transport service   |
-## Table
+### Table
 
 [Swiss profile tables](../generated/markdown-examples/ResponsibilitySet.md)
 
 *-> - [NeTEx](../generated/xcore/ResponsibilitySet.html)*
 
-## Example
+### Example
 
 [XML Snippet](../generated/xml-snippets/ResponsibilitySet.xml)
 
 *-> - [Template](../templates/ResponsibilitySet.xml)*
 
-## Usage Notes
+### Usage Notes
 
 > [!CAUTION] 
 > US: Why is there an exception for the PAG? Is it still needed?
@@ -248,7 +263,7 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
 -	`Notice`: references `TypeOfNotice`
 -	`ServiceJourney`: references `TypeOfProductCategory`
 
-### TypeOfNotice
+## TypeOfNotice
 
 `TypeOfNotice` is used within a [Notice](07_service.md#Notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
 
@@ -290,51 +305,60 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
   </values>
 </ValueSet>
 ```
-### TypeOfProductCategory
+## TypeOfProductCategory
 
-#### Purpose
+### Purpose
 
 For the ServiceJourneys exclusively provided in Switzerland, only the ProductCategories defined in the document [06 Harmonisierung Verkehrsmittel](https://www.allianceswisspass.ch/de/tarife-vorschriften/uebersicht/V580/Produkte-der-V580-FIScommun-1) may be referenced. 
 For ServiceJourneys provided in other countries or partially in Switzerland, there are no restrictions, provided that the category does not overlap with the ProductCategories defined for Switzerland.
 
-#### Table
-``` xml
-<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
-  <Name>ProductCategories</Name>
-  <values>
-    <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
-      <alternativeTexts>
-        <AlternativeText attributeName="Name">
-          <Text lang="it">Train Express Regional</Text>
-        </AlternativeText>
-        <AlternativeText attributeName="Name">
-          <Text lang="en">Train Express Regional</Text>
-        </AlternativeText>
-        <AlternativeText attributeName="Name">
-          <Text lang="fr">Train Express Regional</Text>
-        </AlternativeText>
-      </alternativeTexts>
-      <Name lang="de">TER</Name>
-      <ShortName>TER</ShortName>
-    </TypeOfProductCategory>
-  </values>
-</ValueSet>
-```
+### Table
 
-####  Example
+[Swiss profile tables](../generated/markdown-examples/TypeOfProductCategory.md)
 
+###  Example
 
-### TypeOfService
+[XML Snippet](../generated/xml-snippets/TypeOfProductCategory.xml)
 
-#### Purpose
-The container for `typesOfService` is in TimetableFrame. But it is rather general, so we describe it here.
+## TypeOfService
 
-#### Table
-> [!CAUTION] 
-> **TODO** link?\
+> [!CAUTION]\
+> **COMMENT**: @tuxalp This element appears in both frames, ResourceFrame AND TimeTableFrame. This is somewhat confusing... 
+> Can I define it at both places? Why don't we describe it under ResourceFrame?
+> 
+### Purpose
 
-#### Example
+`TypeOfService` indicates the purpose of a `ServiceJourney`, for example, whether if it is a passenger transport or a garage run-in.
 
+> **Original NeTEx description:**\
+> A classification for VEHICLE JOURNEYs and SPECIAL SERVICEs to express some common properties of journeys to be taken 
+> into account in the scheduling and/or operations control process.
+
+> Not to be confused with TYPE OF SERVICE (FEATURE) of the LOCAL SERVICE and FACILITY model in NeTEx-1, which determines 
+> if a LOCAL SERVICE or FACILITY is, for example, a RETAIL SERVICE or TICKETING FACILITY.
+
+### Table
+
+[Swiss profile tables](../generated/markdown-examples/TypeOfService.md)
+
+### Example
+
+[XML Snippet](../generated/xml-snippets/TypeOfService.xml)
+
+### Usage Notes
+
+The following types are currently used:
+
+| Name	             | Description                                                                                                                                               |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| PublicJourney	    | A public passenger transport                                                                                                                              |
+| ~~GarageRunOut~~	 | A garage run-out                                                                                                                                          |
+| ~~GarageRunIn~~	  | A garage run-in                                                                                                                                           |
+| ~~ThroughCoach~~  | 	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling. |
+
+Actually there is only one allowed value that we use in the Swiss profile: Only the `PublicJourney` is to be exchanged.
+
+This element can also be defined in the `TimetableFrame` as children of `typesOfService`:
 ``` xml
 <typesOfService>
     <TypeOfService id="ch:1:TypeOfService:1" version="1">
@@ -344,20 +368,6 @@ The container for `typesOfService` is in TimetableFrame. But it is rather genera
     </TypeOfService>
 </typesOfService>
 ```
-#### Usage Notes
-
-`TypeOfService` indicates the purpose of a `ServiceJourney`, for example, whether if it is a passenger transport or a garage run-in. The following types are currently used:
-
-| Name	             | Description                                                                                                                                               |
-|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PublicJourney	    | A public passenger transport                                                                                                                              |
-| ~~GarageRunOut~~	 | A garage run-out                                                                                                                                          |
-| ~~GarageRunIn~~	  | A garage run-in                                                                                                                                           |
-| ~~ThroughCoach~~  | 	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling. |
-
-Actually there is only one allowed value that we use in the Swiss profile: Only the `PublicJourney` are to be exchanged.
-
-So, this is what needs to be in the TimetableFrame:
 
 ## Organisation / Operator / Authority
 
@@ -391,7 +401,7 @@ The Operators are identified by their GO-number in Switzerland. The TU-Code is t
 
 The SBOID and GO number will always be mainly stored in the `KeyList`.
 
-> [!CAUTION] 
+> [!CAUTION]\
 > **TODO**: `OrganisationPart` needs to be studied! 6.4.1
 
 `OperatorRef` on a `Line` is always the "Konzessionär". 
@@ -399,6 +409,8 @@ If a different `Operator` is running a given `ServiceJourney`, then this is refl
 a different `OperatorRef`.
 
 ## ServiceFacilitySet
+
+### Purpose
 
 > **Original NeTEx definition:**\
 > Set of `ServiceFacilitySet` objects available for a `ServiceJourney`. 
@@ -428,7 +440,7 @@ subcategory `MealFacilityList` or `FamilyFacilityList`, and a passenger informat
 a reasonable order. The categories themselves are from type `xsd:list`, meaning that the values of a category are a 
 separated list of elements. 
 
-> [!CAUTION] 
+> [!CAUTION]\
 > **TODO** 10.13.2ff
 
 ``` xml
@@ -452,10 +464,30 @@ separated list of elements.
   <FareClasses>secondClass</FareClasses>
 </ServiceFacilitySet>
 ```
-> [!CAUTION] 
+> [!CAUTION]\
 > **TODO** a lot more detail needed. But probably in uc
 
 ## SiteFacilitySet
 
-> [!CAUTION] 
-> **TODO** not decribed in RG 1.01. What do we do
+### Purpose
+
+> [!CAUTION] \
+> **COMMENT** @tuxalp not decribed in RG 1.01.\
+> **COMMENT** @tuxalp missing in glossary
+
+A `SiteFacilitySet` defines a set of facilities like sanitary facilities, ticket service, lockers etc. that can be 
+referenced to define facilities of a site.
+
+### Table
+
+[Swiss profile tables](../generated/markdown-examples/SiteFacilitySet.md)
+
+### Example
+
+[XML Snippet](../generated/xml-snippets/SiteFacilitySet.xml)
+
+### Usage Notes
+
+Make sure to not generate identical SiteFacilitySets. Reuse them.
+
+
