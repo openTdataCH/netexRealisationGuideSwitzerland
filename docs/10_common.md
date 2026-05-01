@@ -1,24 +1,27 @@
-# Common Elements
+> [!CAUTION]\
+> **COMMENT** @tuxalp Title renamed because "Comment Element" was ambigous/unprecise
 
-This chapter deals with elements that are commonly used. They belong into different frames.
+# Common Building Blocks
+
+This chapter deals with the elements, attributes, formats and types that are commonly used.
 
 In this chapter:
-- Rules for id 
-- `MultilingualString`
-- `FrameDefaults` (in every frame)
-- Time formatting and journey after midnight
-- `AlternativeName` (in `TODOFrame`)
-- `AlternativeText` (in `TODOFrame`)
-- `ResourceFrame`
-  - `ResponsibilitySet`
-  - `TypeOfValue /Valuesets`
-    - `TypeOfProductCategory`
-    - `TypeOfService`
-  - `Organisation` / `Operator` / `Authority`
-  - `ServiceFacilitySet`
-  - `SiteFacilitySet`
-
-> **TODO** make links in the toc correct
+- [Rules for common Attributes ](#rules-for-common-attributes)
+  - [Rules for IDs](#ids)
+- Common Types
+  - [MultilingualString](#multilingualstring)
+- [FrameDefaults](#framedefaults)
+- [Time formatting and journey after midnight](#time-formatting-and-journey-after-midnight)
+- [AlternativeName](#alternativename)
+- [AlternativeText](#alternativetext)
+- [ResourceFrame](#resourceframe)
+  - [ResponsibilitySet](#responsibilityset)
+  - [TypeOfValue / Valuesets](#typeofvalue--valuesets)
+    - [TypeOfProductCategory](#typeofproductcategory)
+    - [TypeOfService](#typeofproductcategory)
+  - [Organisation / Operator / Authority](#organisation--operator--authority)
+  - [ServiceFacilitySet](#servicefacilityset)
+  - [SiteFacilitySet](#servicefacilityset)
 
 ## Rules for common Attributes
 
@@ -45,33 +48,41 @@ For readability and easy referencing, we will use the following principles:
 -   We use appropriate business values to build technical IDs where available, e.g. `ch:1:TypeOfProductCategory:TER` 
 where the value of `ShortName` of the `TypeOfProductCategory` is used to build the ID, or `ch:1:Operator:11`.
 -	Where there is a compelling need for global stability, the ID will be a global ID. 
-This information will be also transmitted separately in a `KeyList`. 
+This information will be also provided separately in a `KeyList`. 
 
 > [!CAUTION] 
 > **TODO** Must be revisited and updated.
 
 All other defined attributes like `created`, `changed`, `modification` are not used. If we need one, we will inform about it in the table associated with the element.
 
-## MultilingualString
+## Common Types
+
+### MultilingualString
+
+#### Purpose
 
 NeTEx uses the type `MultilingualString` for descriptive text elements (e.g. `Notice` text, `Name`, `ShortName` etc.).
 However, only one language can be set for a given element (e.g. `<MultilingualString lang=”fr”>`). 
 Additional languages are introduced through the [AlternativeName](#alternativename) and [AlternativeText](#alternativetext) element.
 
-For [Organisations](#organisation--operator--authority) e.g. there are all languages present.
+#### Usage Notes
 
-The `StopPlace` names in Switzerland are language-independent.
+- For [Organisations](#organisation--operator--authority) e.g. there are all languages present.
+- The `StopPlace` names in Switzerland are language-independent.
 
 ## Time Formatting and Journey after Midnight
+
 The time format consists only of the hours, minutes (and seconds) of a 24-hour clock, e.g. `23:55:00`. 
+
 Times that pass midnight of the current `OperatingDay` are marked with a `DayOffset` element. 
 If a `ServiceJourney` (in a particular `Call`) runs over midnight, then `DayOffset` must be set to `1`.
 
 ## FrameDefaults
 
 ### Purpose
-With the FrameDefaults we set some basic parameters. When they are not set, we still assume the values that we present 
+In the element `FrameDefaults` we set some basic parameters. When they are not set, we still assume the values that we present 
 in the XML snippet.
+
 ### Table
  
 [Swiss profile tables](../generated/markdown-examples/FrameDefaults.md)
@@ -86,7 +97,8 @@ in the XML snippet.
 *-> [Template](../templates/FrameDefaults.xml)*
 
 ## AlternativeName
-**TODO** Link to Glossary
+
+*→ [Glossary definition](A4_annex_glossary.md#alternativename)*
 
 ### Purpose
 
@@ -115,18 +127,17 @@ We only allow the following values for `NameType`:
 - `alias`
 - `translation`
 
-
-
-
 ## AlternativeText
-**TODO** Link to Glossary
+
+*→ [Glossary definition](A4_annex_glossary.md#alternativetext)*
 
 ### Purpose
 The AlternativeText element is a generic way of providing such variants for any text attribute of a DataManagedObject. 
 
 It can be seen as a complement to the AlternativeName mechanism, and can be used to provide an alias for any element.
 
-**TODO**
+> [!CAUTION] 
+> **TODO**
 
 ### Table
 
@@ -153,14 +164,17 @@ As a general rule: further names (aliases) of a `StopPlace` or `Organisation` ar
 direct translations of content (for example of `Notice` texts) are modelled with `AlternativeTexts`.
 
 # ResourceFrame
-**TODO** Link to Glossary
+> [!CAUTION] 
+> **TODO** Link to Glossary
 
 ## Purpose
 See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
 
 ![ResourceFrame](./media/ResourceFrame.png)
 ## Contained Elements
-**TODO** 
+
+> [!CAUTION] 
+> **TODO**
 
 ## Table
 
@@ -176,10 +190,12 @@ See the following class diagram for the most important objects of the RESOURCE F
 
 
 ## Frame Relationships
-** TODO**
+> [!CAUTION] 
+> **TODO**
 
 ## ResponsibilitySet
-**TODO** Link to Glossary
+
+*→ [Glossary definition](A4_annex_glossary.md#responsibilityset)*
 
 ### Purpose
 We use this model to  describe the different roles of the participating companies. For the most part, the company code is used to fully identify the services provided. 
@@ -233,6 +249,7 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
 -	`ServiceJourney`: references `TypeOfProductCategory`
 
 ### TypeOfNotice
+
 `TypeOfNotice` is used within a [Notice](07_service.md#Notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
 
 > [!CAUTION]
@@ -342,10 +359,10 @@ Actually there is only one allowed value that we use in the Swiss profile: Only 
 
 So, this is what needs to be in the TimetableFrame:
 
-
-
 ## Organisation / Operator / Authority
 
+*→ [Glossary definition: Operator](A4_annex_glossary.md#operator)*\
+*→ [Glossary definition: Authority](A4_annex_glossary.md#authority)*
 
 ### Purpose
 
@@ -381,16 +398,15 @@ The SBOID and GO number will always be mainly stored in the `KeyList`.
 If a different `Operator` is running a given `ServiceJourney`, then this is reflected in the `ServiceJourney` having 
 a different `OperatorRef`.
 
-
 ## ServiceFacilitySet
 
->**Original NeTEx definition:**\
->Set of `ServiceFacilitySet` objects available for a `ServiceJourney`. 
->The set may be available only for a specific VEHICLE TYPE within the SERVICE (e.g. carriage equipped with low floor). 
->`ServiceFacilitySets` are listed in the `TimetableFrame` (between trainNumbers and notices). 
->They are referenced in the facilities object of a `ServiceJourney`.
+> **Original NeTEx definition:**\
+> Set of `ServiceFacilitySet` objects available for a `ServiceJourney`. 
+> The set may be available only for a specific VEHICLE TYPE within the SERVICE (e.g. carriage equipped with low floor). 
+> `ServiceFacilitySets` are listed in the `TimetableFrame` (between trainNumbers and notices). 
+> They are referenced in the facilities object of a `ServiceJourney`.
 
-The assignment of `facilities` to `ServiceJourney` or `JourneyPart` is made by using `FacilitySet` elements.
+The assignment of `facilities` to `ServiceJourney` or `JourneyPart` is made by using `FacilitySet`elements.
 
 SKI uses the following groups to classify `facilities`:
 -	Accommodation facility
