@@ -6,7 +6,7 @@ In this chapter:
 - [ServiceCalendar](#ServiceCalendar)
 - [DayType](#daytype)
 - [Timeband](#timeband)
-- [DayTypeAssignment(#daytypeassignment)]
+- [DayTypeAssignment](#daytypeassignment)]
 
 ##  ServiceCalendarFrame
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendarframe)*
