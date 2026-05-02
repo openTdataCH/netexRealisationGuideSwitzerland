@@ -12,19 +12,30 @@
                     <topographicPlaces>
                         <TopographicPlace id="ch:1:TopoGraphicPlace:CH-BE" version="1">
                             <!-- ch-root -->
+                            <!-- ch-attrs: id version -->
                             <!-- ch-usage: mandatory -->
                             <Descriptor>
                                 <!-- ch-usage: mandatory -->
-                                <Name><!-- ch-usage: mandatory -->Bern</Name>
-                                <ShortName><!-- ch-note: Abbreviation of the canton (leave empty if TopographicPlaceType is county) -->
+                                <Name>
+                                  <!-- ch-usage: mandatory -->
+                                  Bern
+                                </Name>
+                                <ShortName>
+                                  <!-- ch-usage: expected -->
+                                  <!-- ch-note: Abbreviation of the canton (leave empty if TopographicPlaceType is country) -->
                                     BE
                                 </ShortName>
                             </Descriptor>
                             <TopographicPlaceType>
                                 <!-- ch-usage: mandatory -->
-                                <!-- ch-note: Allowed values: country, county -->county
+                                <!-- ch-allowed-enums: county country -->
+                                <!-- ch-note: Allowed values: country, county -->
+                                county
                             </TopographicPlaceType>
-                            <ParentTopographicPlaceRef ref="ch:1:TopoGraphicPlace:CH-BE-Bern" versionRef="1"><!-- ch-note: Only used if TopographicPlaceType of referencing element is county. --></ParentTopographicPlaceRef>
+                            <ParentTopographicPlaceRef ref="ch:1:TopoGraphicPlace:CH-BE-Bern" versionRef="1">
+                              <!-- ch-usage: optional -->
+                              <!-- ch-note: **TODO ** ? Only used if TopographicPlaceType of referencing element is county. -->
+                            </ParentTopographicPlaceRef>
                         </TopographicPlace>
                     </topographicPlaces>
                 </SiteFrame>
