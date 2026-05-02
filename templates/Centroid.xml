@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Template</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<FrameDefaults/>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame" version="1"/>
+				<SiteFrame id="ch:1:SiteFrame" version="1">
+					<stopPlaces>
+						<StopPlace id="ch:1:sloid:7000" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>
+                    DIDOK
+                  </Key>
+									<Value>
+                    7000
+                  </Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>
+                    SLOID
+                  </Key>
+									<Value>
+                    ch:1:sloid:7000
+                  </Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">
+                  7000
+                </PrivateCode>
+								<PrivateCode type="sloid">
+                  ch:1:sloid:7000
+                </PrivateCode>
+							</privateCodes>
+							<Extensions>
+								<HafasPriority>
+									<Value>
+                    4
+                  </Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>
+                    1000
+                  </Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Bern</Name>
+							<Centroid>
+                <!-- ch-root -->
+							  <!-- ch-attrs: id version -->
+								<!-- ch-note: Global or national location -->
+								<Name>
+									<!-- ch-usage: ignored -->
+								</Name>
+								<Location>
+									<!-- ch-usage: mandatory -->
+									<!-- ch-note: Note concerning coordinates - The main coordinates are given as **WSG84**. - The Swiss coordinates are added as well if available. (**TODO** How?)- INFO+ will not use the data from the import, instead DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places. -->
+									<Longitude><!-- ch-usage: mandatory -->7.43913088992</Longitude>
+									<Latitude><!-- ch-usage: mandatory -->46.94883228914</Latitude>
+									<Altitude><!-- ch-usage: optional -->540.2</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+							</quays>
+						</StopPlace>
+					</stopPlaces>
+				</SiteFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
