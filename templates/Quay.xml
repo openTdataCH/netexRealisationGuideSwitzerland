@@ -13,15 +13,22 @@
 							<quays>
 								<Quay id="ch:1:sloid:7000:5:9" version="any">
 									<!-- ch-root -->
-									<!-- ch-note: Usually a sloid. Can be a platform, track, sector group or sector.  id is a sloid whenever possible or generated.-->
-									<!-- ch-usage: expected -->
+									<!-- ch-note: Can be a platform, track, sector group or sector. id is a sloid whenever possible or generated.-->
+									<!-- ch-attrs: id version -->
 									<keyList>
 										<!-- ch-usage: expected -->
 										<KeyValue>
 											<!-- ch-usage: expected -->
 											<!-- ch-note: When no sloid is possible, it may be empty -->
-											<Key><!-- ch-usage: mandatory -->SLOID</Key>
-											<Value><!-- ch-usage: mandatory -->ch:1:sloid:7000:5:9</Value>
+											<Key>
+												<!-- ch-usage: mandatory -->
+												<!-- ch-note: SLOID is mandatory key -->
+												SLOID
+											</Key>
+											<Value>
+												<!-- ch-usage: mandatory -->
+												ch:1:sloid:7000:5:9
+											</Value>
 										</KeyValue>
 									</keyList>
 									<privateCodes>
@@ -30,21 +37,23 @@
 									</privateCodes>
 									<Centroid>
 										<!-- ch-usage: mandatory -->
-										<!-- ch-note: Location of POINT of QUAY. -->
+										<!-- ch-note: Location of Quay. -->
+										<!-- ch-see -->
 										<Location>
-											<!-- ch-usage: mandatory -->
-											<Longitude><!-- ch-usage: mandatory -->7.43913088992</Longitude>
-											<Latitude><!-- ch-usage: mandatory -->46.94883228914</Latitude>
-											<Altitude><!-- ch-usage: expected -->540.2</Altitude>
+											<Longitude>7.43913088992</Longitude>
+											<Latitude>46.94883228914</Latitude>
+											<Altitude>540.2</Altitude>
 										</Location>
 									</Centroid>
-									<PublicCode><!-- ch-usage: mandatory --><!-- ch-note: Code use to identify QUAY to the public. -->9</PublicCode>
-									<!-- ch-note TODO: try to fix SiteRef - skipped due to validity issue. -->
-									<!--
-                                    <SiteRef ref="ch:1:sloid:7000">
-                                        ch-note: Can reference the parent Quay or StopPlace.
-                                    SiteRef
-                                    -->
+									<SiteRef ref="ch:1:sloid:7000">
+										<!-- ch-usage: optional -->
+                                        <!-- ch-note: Can reference the parent Quay or StopPlace -->
+									</SiteRef>
+									<PublicCode>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: Code used to identify the Quay to the public -->
+										9
+									</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
