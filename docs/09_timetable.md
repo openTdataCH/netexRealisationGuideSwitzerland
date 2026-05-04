@@ -82,6 +82,8 @@ TODO INSERT [Swiss profile NeTEx definition](../generated/markdown-examples/Serv
 ### Purpose
 A `TemplateServiceJourney` represents a sequence of planned trips. It is similar to the `ServiceJourney`, but it is used if there is a frequency defined at which the trips are scheduled on an operating day. 
 
+A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The `TemplateServiceJourney` may thus represent multiple journeys or it could be used simply as a template for adding extra date journeys after the planning phase. 
+
 ### Table
 
 [Swiss profile NeTEx definition](../generated/markdown-examples/TemplateServiceJourney.md)
@@ -93,6 +95,9 @@ A `TemplateServiceJourney` represents a sequence of planned trips. It is similar
 [Example snippet](../generated/xml-snippets/TemplateServiceJourney.xml)
 
 *→ [Template](../templates/TemplateServiceJourney.xml)*
+
+### Usage Notes
+- Note that in addtion to `HeadwayJourneyGroup`, standard NeTEx also features `RhythmicalJourneyGroup` to specifiy, e.g., departures at 15, 27 and 40 minutes past the hour - this is not used in the Swiss profile.
 
 ## OccupancyView
 
@@ -157,17 +162,11 @@ Long-term planned time data concerning public transport vehicles passing a parti
 
 
 
-## HeadwayGroup
-> **TODO**
+## HeadwayJourneyGroup
+> **TODO** - done - but it is redundant with the information already present in TemplateServiceJourney
 
 ### Purpose
-(NeTEx-2, 7.2.6.5.2)
-
-A group of VEHICLE JOURNEYs following the same JOURNEY PATTERN and having the same headway.interval between a specified start and end time (for example, ‘every 10 minutes’). This is especially useful.for presenting passenger information.
-
-JOURNEY FREQUENCY GROUP is not used directly. Instead we use the HEADWAY JOURNEY GROUP which inherits from JOURNEY FREQUENCY GROUP.
-
-A ServiceJourney which is serviced at a given frequency is defined as a TemplateServ-iceJourney (see example below). Such a TemplateServiceJourney has the same elements as a regular ServiceJourney, but also defines a single HeadwayJourneyGroups. This Group holds all the frequency-based information of the journey, as for example when the Calls of the journey are serviced the first/last time and in what interval (or with what frequency respective-ly). 
+`HeadwayJourneyGroup` holds all the frequency-based information of the journey, as for example when the stops of the journey are serviced the first/last time and in what interval (or at which frequency, respectively). 
 
 ### Table
 Already defined in `TemplateServiceJourney.`
@@ -175,8 +174,8 @@ Already defined in `TemplateServiceJourney.`
 ### Example
 Already defined in `TemplateServiceJourney.`
 
-### Usage NOtes
-- For sjyid see information about [frequencies](uc14_frequencies.md
+### Usage Notes
+- For sjyid see information about [frequencies](uc14_frequencies.md).
 - HeadwayUseEnum: How headway is to be displayed to passengers. Allowed values:
   - `displayInsteadOfPassingTimes`
   -	`displayAsWellAsPassingTimes`
