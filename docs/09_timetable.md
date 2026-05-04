@@ -163,7 +163,7 @@ Long-term planned time data concerning public transport vehicles passing a parti
 
 
 ## HeadwayJourneyGroup
-> **TODO** - done - but it is redundant with the information already present in TemplateServiceJourney
+> **TODO** - done - but it is redundant with the information already present in TemplateServiceJourney - therefore not needed, in my view (AM)
 
 ### Purpose
 `HeadwayJourneyGroup` holds all the frequency-based information of the journey, as for example when the stops of the journey are serviced the first/last time and in what interval (or at which frequency, respectively). 
@@ -211,7 +211,7 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 - [See use case transfers](uc03_transfers.md)
 
 ## InterchangeRuleParameter
-> **TODO** Finish it.
+> **TODO** not needed, in my view (AM)
 
 ### Purpose
 > **TODO** Finish it.
@@ -228,7 +228,7 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 
 
 ## InterchangeRuleTiming
-> **TODO** Finish it.
+> **TODO** not needed, in my view (AM)
 
 ### Purpose
 > **TODO** Finish it.
@@ -247,21 +247,18 @@ Conditions for considering JOURNEYs to meet or not to meet, specified indirectly
 *→ [Template](../templates/InterchangeRule.xml)*
 
 ## AvailabilityCondition 
-[see ServiceCalenderFrame](./08_service_calendars.md#AvailabilityCondition)
+*→ [see ServiceCalenderFrame](./08_service_calendars.md#AvailabilityCondition)*
 
 ## Timeband 
-[see ServiceCalenderFrame](./08_service_calendars.md#Timeband)
+*→ [see ServiceCalenderFrame](./08_service_calendars.md#Timeband)*
 
 
-## NoticeAssignment -> TODO: move to Common
-[see Common elements](./07_service.md#NoticeAssignment)
+## NoticeAssignment
+*→ [see Common elements](./07_service.md#NoticeAssignment)*
 
 
-
-## ServiceFacilitySet -> TODO: move to Common
-[see Common elements](./10_common.md#ServiceFacilitySet)
-
-Set of FACILITies available for a SERVICE JOURNEY or a JOURNEY PART. The set may be available only for a specific VEHICLE TYPE within the SERVICE (e.g. carriage equipped with low floor). 
+## ServiceFacilitySet
+*→ [see Common elements](./10_common.md#ServiceFacilitySet)*
 
 ## JourneyMeeting -> TODO: Probably to be removed
 [//]: # (TODO: Add JourneyMeeting links)
