@@ -17,10 +17,11 @@ none
 
 | Folder                 | Content                                                           |
 |------------------------|-------------------------------------------------------------------|
-| docs                   | The realisation guide itself.                                     |
+| docs                   | The realisation guide itself (with links)                                   |
 | examples               | Valid XML examples based on use cases                             |
 | generated              | all generated elements. Some we still publish.                    |
-| generated/schematrons  | schematron files to be used to validate Swiss data files          |
+| generated/docs  | schematron files to be used to validate Swiss data files          |
+| generated/schematrons  | The realisation guide where xml snippets and swiss element tables are included.          |
 | generated/elements.xml | Simple element examples XML.                                      |
 | generated/xcore        | xcore documentation of the NeTEX XSD.                             |
 | generated/elements.md  | markdowns of the relevant elements                                |
@@ -33,7 +34,7 @@ none
 | xsd                    | the NeTEx 2.0 XSD                                                 |
 
 
-## Governance
+## Governance of the realisation guide and this repository.
 [see here](mgmt/README.md)
 
 ## Changelog from version 1.0.1
