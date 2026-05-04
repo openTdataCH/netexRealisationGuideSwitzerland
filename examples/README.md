@@ -2,7 +2,7 @@
 This  folder contains the relevant examples for the realisation guide 2.0 based on NeTEX 2.0.
 
 
-### Basic PassingTime
+### Basic train with PassingTime
 Example of a normal rail journey train Spiez - Interlaken Ost with various quay combinations.
 
 [Link to example](NeTEx_CH_Spiez_Interlaken_Ost.xml)
@@ -27,7 +27,7 @@ In the case of international connections a "Durchbindung" is needed
 [Link to example](NeTEx_CH_Interlaken_BS_Freiburg_Breisach_Durchbindung.xml)
 
 
-## ServiceFacilities
+## Train with ServiceFacilities and Notes
 This example shows the usage of ServiceFacilities. It also shows when the ServiceFacility is
 - not available on all operating days
 - is restricted to a part of the journey
@@ -37,15 +37,23 @@ This example shows the usage of ServiceFacilities. It also shows when the Servic
 >**TODO** needs to be improved
 
 
-## Using a platform
+## Using a platform for a train
 This is and example of a rail journey from Niederhasli Zürich HB Zürich Stadelhofen Uster, where Zürich HB is mapped via PassengerStopAssignment to a shared platform Quay “41/42”
 
 This shows the problems with sloid.
 
 >**TODO** needs to be improved
 
+## Journey relationships
+>**TODO** needs to be improved
+
+## Full content of a minimal export
+Only few lines with some interaction to show all elements in action and the different files. The file names are already done as they should be.
+>**TODO** needs to be improved
+
 ## Special case: Destination display in a round trip
 >**TODO** needs to be improved
+
 
 ## Special case: Umsteigebeziehungen und Metastations
 >**TODO** needs to be improved
@@ -57,9 +65,6 @@ This shows the problems with sloid.
 >**TODO** needs to be improved
 
 ## carTransportRail
->**TODO** needs to be improved
-
-### Journey relationships
 >**TODO** needs to be improved
 
 ### rail replacement
