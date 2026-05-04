@@ -87,7 +87,7 @@ as it parents.
 - If no platform SLOID is available {StopPlace SLOID}_gen:missingSLOID_pf:{Platform Code*} will be used instead.
 - 👉 Please note: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.
 
-In the table below you will find an overview of the possible cases:
+In the table below you will find an overview of the possible cases. For more information on SLOID, see [Swiss Location Identification (SLOID) | öv-info.ch](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid "https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid")
 	
 <img width="925" height="206" alt="SLOID_V1_EN" src="https://github.com/user-attachments/assets/45c5354d-be03-4d88-8b04-b3793e5568ba" />
 > **TODO** If OK move table to media folder - or put and adjust things in a md table
