@@ -185,6 +185,17 @@ A planned transfer opportunity between two ServiceJourneys at a shared stop poin
 
 ---
 
+## InterchangeRule
+
+An InterchangeRule defines the possibility of interchanging between two ServiceJourneys at the same or different ScheduledStopPoints - where at least one journey is specified indirectly via Direction, Line, or the VehicleJourney, rather than as an explicit journey pair. The rule specifies criteria (e.g. Mode, Line, Direction) that a candidate feeder or distributor journey must fulfil.
+
+> **NeTEx XSD:** INTERCHANGE RULE specifies conditions governing the possibility of interchanging between two SERVICE JOURNEYs, stopping at the same or different SCHEDULED STOP POINTs, where at least one of the two SERVICE JOURNEYs is indicated indirectly by a DIRECTION, LINE or VEHICLE JOURNEY.
+> Such conditions may alternatively be specified directly, indicating the corresponding services. In this case, they are either a SERVICE JOURNEY PATTERN INTERCHANGE or a SERVICE JOURNEY INTERCHANGE.
+
+→ [Full documentation](09_timetable.md#InterchangeRule)
+
+---
+
 ## JourneyPattern
 
 The ordered sequence of ScheduledStopPoints that a transport service follows for a specific variant of a Route.
@@ -471,6 +482,16 @@ A geographic fare zone used for ticketing and pricing, grouping stops and areas 
 
 ---
 
+## TemplateServiceJourney
+
+A TemplateServiceJourney represents a sequence of planned trips. It is similar to the ServiceJourney, but it is used if there is a frequency or a rhythmical pattern defined at which the trips are scheduled on an operating day.
+
+> **NeTEx XSD:** A repeating SERVICE JOURNEY for which a frequency has been specified, either as a HEADWAY JOURNEY GROUP (e.g. every 20 minutes) or a RHYTHMICAL JOURNEY GROUP (e.g. at 15, 27 and 40 minutes past the hour). It may thus represent multiple journeys or it could be used simply as a template for adding single extra DATED VEHICLE JOURNEYs after the planning phase.
+
+→ [Full documentation](09_timetable.md#TemplateServiceJourney)
+
+---
+
 ## TicketingEquipment
 
 Ticket machines, validators, or other ticketing infrastructure available at a stop place or station.
@@ -478,6 +499,16 @@ Ticket machines, validators, or other ticketing infrastructure available at a st
 > **NeTEx XSD / Transmodel:** Specialisation of PASSENGER EQUIPMENT for ticketing.
 
 → [Full documentation](../../Objects/TicketingEquipment/Description_TicketingEquipment.md)
+
+---
+
+## TimetabledPassingTime
+
+Long-term planned time data concerning public transport vehicles passing a particular PointInJourneyPattern on a specified vehicle journey for a certain DayType.
+
+> **NeTEx XSD:** PASSING TIME indicates the time of a vehicle at a point in a journey pattern. There can be different types of time (arrival, departure, estimated, observed, etc.). TIMETABLED PASSING TIME represents  scheduled information.
+
+→ [Full documentation](09_timetable.md#TimetabledPassingTime)
 
 ---
 
@@ -512,6 +543,16 @@ A rail-specific specialisation of Block that represents an operational grouping 
 > **Transmodel:** The work required to be done by a vehicle from the time it leaves a PARKING POINT after parking until its next return to park at a PARKING POINT. *(Transmodel: BLOCK)*
 
 → [Full documentation](../../Objects/TrainBlock/Description_TrainBlock.md)
+
+---
+
+## TrainNumber
+
+Codes assigned to particular journeys (ServiceJourney, TemplateServiceJourney) when operated by trains. 
+
+> **NeTEx XSD:** Specification of codes assigned to particular VEHICLE JOURNEYs when operated by TRAINs or COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc.).
+
+→ [Full documentation](09_timetable.md#TrainNumber)
 
 ---
 
