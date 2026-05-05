@@ -1,6 +1,9 @@
 # Describing how to work in this Repo
 This file is a collection of ways we want to do things in this repo to promote the way we work as a team on the realisation guide.
 
+
+# Preparingto work with it.
+
 ## Generate a local copy to work with
 * check out the project
 * check out the xsd
@@ -16,6 +19,8 @@ When you clone this project, you will get an empty xsd directory. To complete th
 git submodule init
 git submodule update 
 ```
+
+# Editing 
 
 ## Markdown
 - Everything in the docs folder
@@ -35,7 +40,6 @@ git submodule update
    - Example:`*→ [Glossary definition](A4_annex_glossary.md#timetableframe)*` Result: *→ [Glossary definition](A4_annex_glossary.md#timetableframe)*
 - Element names from NeTEx are shown as `code` (except in the headings). Plurals are done like this `ServiceJourney`s.
 - A table of contents at the top of each file lists the elements used.
-
   
 ### Headings
 There is a defined structure to describe elements and frames (examples in [TimetableFrame doc](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/docs/09_timetable.md)). There is a structure for frames and one for elements.
@@ -84,4 +88,11 @@ usage of mermaid instead of plantuml
 - see: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 
 
+# Review process
+- We will always use a PR branch for the reviews.
+- Typos and stuff likethis can be directly commited to the review branch
+- The branch will regularly be merged.
+- Issues are to be created for reviews. An issue can deal with one,several or multiple problems.
 
+  
+- 
