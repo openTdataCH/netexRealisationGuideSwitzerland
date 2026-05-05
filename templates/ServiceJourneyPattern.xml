@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ServiceFrame id="ch:1:ServiceFrame" version="1">
+					<journeyPatterns>
+						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:1" version="1">
+							<!-- ch-root -->
+							<!-- ch-usage: mandatory -->
+							<Name><!-- ch-usage: optional -->Bern-Spiez</Name>
+							<RouteView>
+								<!-- ch-usage: mandatory -->
+								<LineRef ref="ch:1:slnid:1024437" versionRef="1">
+									<!-- ch-usage: mandatory -->
+								</LineRef>
+							</RouteView>
+							<DirectionType><!-- ch-usage: mandatory -->outbound</DirectionType>
+							<pointsInSequence>
+								<!-- ch-usage: mandatory -->
+								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.1" version="1">
+									<!-- ch-usage: mandatory -->
+									<ScheduledStopPointRef ref="ch:1:sloid:7000:5:9" versionRef="1">
+										<!-- ch-usage: mandatory -->
+									</ScheduledStopPointRef>
+									<ForAlighting><!-- ch-usage: mandatory -->false</ForAlighting>
+									<ForBoarding><!-- ch-usage: mandatory -->true</ForBoarding>
+									<DestinationDisplayRef ref="DestinationDisplay:1" versionRef="1">
+										<!-- ch-usage: optional -->
+										<!-- ch-note: Indicates that the destination has changed. Superseeds Line or ServiceJourney -->
+									</DestinationDisplayRef>
+									<RequestStop><!-- ch-usage: optional -->false</RequestStop>
+									<StopUse><!-- ch-usage: optional --><!-- ch-note: All values possible -->access</StopUse>
+									<bookingArrangements>
+										<!-- ch-usage: optional -->
+										<!-- ch-note: Specially we use bookingArrangements here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information. -->
+										<BookingArrangementRef ref="generated" versionRef="1">
+											<!-- ch-usage: optional -->
+											<!-- ch-see -->
+										</BookingArrangementRef>
+										<BookingArrangement id="generated" version="1">
+											<!-- ch-usage: ignored -->
+											<!-- ch-usage: we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here -->
+											<BookingMethods>phoneAtStop</BookingMethods>
+											<BookWhen>timeOfTravelOnly</BookWhen>
+											<BookingNote>You have to press the button at the stop at the latest 5 minutes before arrival.</BookingNote>
+										</BookingArrangement>
+									</bookingArrangements>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.2" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:7100:1:1" versionRef="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.3" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" versionRef="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+							<ServiceJourneyPatternType><!-- ch-usage: expected --><!-- ch-allowed-enums: Passenger -->passenger</ServiceJourneyPatternType>
+						</ServiceJourneyPattern>
+					</journeyPatterns>
+				</ServiceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

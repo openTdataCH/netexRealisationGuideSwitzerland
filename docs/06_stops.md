@@ -12,6 +12,41 @@
 ### Purpose
 A `SiteFrame` contains the physical infrastructure model for public transport — `StopPlace`s, `Quay`s, and topographic context. It defines the spatial elements that passengers interact with and that other frames reference for stop assignments.
 
+```mermaid
+classDiagram
+    %% Styles
+    classDef frame fill:#FFF8E1,stroke:#FFB300;
+    classDef contained fill:#E8F4FF,stroke:#1E90FF;
+    classDef external fill:#F6F6F6,stroke:#AAAAAA;
+
+    %% Frame
+    class SiteFrame {
+    }
+
+    %% Contained elements
+    class StopPlace {
+        - centroid
+        - quays []
+        
+    }
+
+    class Quay {
+        - centroid
+
+    }
+
+    class TopographicPlace {
+    }
+
+
+    %% Containment relations (only contained elements)
+    SiteFrame "1" o-- "0..*" StopPlace : contains
+    SiteFrame "1" o-- "0..*" TopographicPlace : contains
+    StopPlace "1" o-- "0..*" Quay : contains
+    StopPlace "1" o-- "1" Centroid : contains
+    Quay "1" o-- "1" Centroid : contains
+```
+
 
 ### Contained Elements
 
