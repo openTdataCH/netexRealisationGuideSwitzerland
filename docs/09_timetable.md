@@ -7,8 +7,6 @@ In this chapter:
 - [TrainNumber](09_timetable.md#TrainNumber)
 - [TimetabledPassingTime](09_timetable.md#TimetabledPassingTime)
 - [InterchangeRule](09_timetable.md#InterchangeRule)
-- [InterchangeRuleParameter](09_timetable.md#InterchangeRuleParameter)
-- [InterchangeRuleTiming](09_timetable.md#InterchangeRuleTiming)
 
 In Service: 
 - [NoticeAssignment](07_service.md#NoticeAssignment)
@@ -97,7 +95,10 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 *→ [Template](../templates/TemplateServiceJourney.xml)*
 
 ### Usage Notes
+- `HeadwayJourneyGroup` holds all the frequency-based information of the journey, as for example when the stops of the journey are serviced the first/last time and in what interval (or at which frequency, respectively). 
 - Note that in addtion to `HeadwayJourneyGroup`, standard NeTEx also features `RhythmicalJourneyGroup` to specifiy, e.g., departures at 15, 27 and 40 minutes past the hour - this is not used in the Swiss profile.
+- For sjyid see information about [frequencies](uc14_frequencies.md).
+
 
 ## OccupancyView
 
@@ -162,27 +163,6 @@ Long-term planned time data concerning public transport vehicles passing a parti
 
 
 
-## HeadwayJourneyGroup
-> **TODO** - done - but it is redundant with the information already present in TemplateServiceJourney - therefore not needed, in my view (AM)
-
-### Purpose
-`HeadwayJourneyGroup` holds all the frequency-based information of the journey, as for example when the stops of the journey are serviced the first/last time and in what interval (or at which frequency, respectively). 
-
-### Table
-Already defined in `TemplateServiceJourney.`
-
-### Example
-Already defined in `TemplateServiceJourney.`
-
-### Usage Notes
-- For sjyid see information about [frequencies](uc14_frequencies.md).
-- HeadwayUseEnum: How headway is to be displayed to passengers. Allowed values:
-  - `displayInsteadOfPassingTimes`
-  -	`displayAsWellAsPassingTimes`
-  -	`displayPassingTimesOnly`
-- We only export `displayPassingTimesOnly`.
-
-
 ## InterchangeRule
 
 ### Purpose
@@ -210,41 +190,6 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 - [See use case Durchbindung](uc01_durchbindung.md)
 - [See use case transfers](uc03_transfers.md)
 
-## InterchangeRuleParameter
-> **TODO** not needed, in my view (AM)
-
-### Purpose
-> **TODO** Finish it.
-
-### Table
-[Swiss profile NeTEx definition](../generated/markdown-examples/InterchangeRule_UMTEIGZ.md)
-
-*→ [General NeTEx definition ](../generated/xcore/InterchangeRuleParameter.html)*
-
-### Example
-[Example snippet](../generated/xml-snippets/InterchangeRule_UMSTEIGZ.xml)
-
-*→ [Template](../templates/InterchangeRule.xml)*
-
-
-## InterchangeRuleTiming
-> **TODO** not needed, in my view (AM)
-
-### Purpose
-> **TODO** Finish it.
-
-Conditions for considering JOURNEYs to meet or not to meet, specified indirectly: by a particular MODE, DIRECTION or LINE. Such conditions may alternatively be specified directly, indicating the corresponding services. In this case they are either a SERVICE JOURNEY PATTERN INTERCHANGE or a SERVICE JOURNEY INTERCHANGE. 
-
-### Table
-[Swiss profile NeTEx definition](../generated/markdown-examples/InterchangeRule_UMTEIGZ.md)
-
-*→ [General NeTEx definition ](../generated/xcore/InterchangeRuleTiming.html)*
-  
-### Example
-
-[Example snippet](../generated/xml-snippets/InterchangeRule_UMSTEIGZ.xml)
-
-*→ [Template](../templates/InterchangeRule.xml)*
 
 ## AvailabilityCondition 
 *→ [see ServiceCalenderFrame](./08_service_calendars.md#AvailabilityCondition)*
