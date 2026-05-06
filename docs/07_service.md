@@ -96,12 +96,12 @@ Other important classes of the `ServiceFrame` include:
 -	`Notice`s which are then assigned to `Journey` and `Passingtime` of the `TimetableFrame` through `NoticeAssignment`s. They model the association of footnotes and passenger information content such as stop announcements and the network.
 
 ### Table
-[Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFrame.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFrame.md)
 
 *→ [General NeTEx definition ](../generated/xcore/ServiceFrame.html)*
 
 ### Example
-[Example snippet](../generated/xml-snippets/ServiceFrame.xml)
+- [Example snippet](../generated/xml-snippets/ServiceFrame.xml)
 
 *→ [Template](../templates/ServiceFrame.xml)*
 

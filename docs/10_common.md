@@ -84,14 +84,13 @@ In the element `FrameDefaults` we set some basic parameters. When they are not s
 in the XML snippet.
 
 ### Table
- 
-[Swiss profile NeTEx definition](../generated/markdown-examples/FrameDefaults.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/FrameDefaults.md)
 
 *→ [General NeTEx definition](../generated/xcore/FrameDefaults.html)*
 
 ### Example
 
-[XML Snippet](../generated/xml-snippets/FrameDefaults.xml)
+- [XML Snippet](../generated/xml-snippets/FrameDefaults.xml)
 
 *→ [Template](../templates/FrameDefaults.xml)*
 
@@ -111,14 +110,12 @@ For all other alternative texts use `AlternativeText`.
 > same name in different countries.
 
 ### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeName.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeName.md)
 
 *→ - [General NeTEx definition](../generated/xcore/AlternativeName.html)*
  
 ### Example
-
-[XML Snippet](../generated/xml-snippets/AlternativeName.xml)
+- [XML Snippet](../generated/xml-snippets/AlternativeName.xml)
 
 *→ - [Template](../templates/AlternativeName.xml)*
 
@@ -138,14 +135,12 @@ The `AlternativeText` is a generic way to provide an alternative text (translati
 For example, it can be used for the translation of `Notice` texts.
 
 ### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeText.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeText.md)
 
 *→ - [General NeTEx definition](../generated/xcore/AlternativeText.html)*
  
 ### Example
-
-[XML Snippet](../generated/xml-snippets/AlternativeText.xml)
+- [XML Snippet](../generated/xml-snippets/AlternativeText.xml)
 
 *→ - [Template](../templates/AlternativeText.xml)*
 
@@ -189,14 +184,12 @@ See the following class diagram for the most important objects of the RESOURCE F
 - SiteFacilitySet
 
 ## Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/ResourceFrame.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/ResourceFrame.md)
 
 *→ - [General NeTEx definition](../generated/xcore/ResourceFrame.html)*
 
 ## Example
-
-[XML Snippet](../generated/xml-snippets/ResourceFrame.xml)
+- [XML Snippet](../generated/xml-snippets/ResourceFrame.xml)
 
 *→ - [Template](../templates/ResourceFrame.xml)*
 
@@ -218,14 +211,12 @@ We use this element to  describe the different roles of the participating compan
 | `EntityLegalOwnership`         | Role of the **concession company** holding the concession for the original service |
 | `Operation`                    | role of the **operator company** responsible for providing the transport service   |
 ### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/ResponsibilitySet.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/ResponsibilitySet.md)
 
 *→ - [General NeTEx definition](../generated/xcore/ResponsibilitySet.html)*
 
 ### Example
-
-[XML Snippet](../generated/xml-snippets/ResponsibilitySet.xml)
+- [XML Snippet](../generated/xml-snippets/ResponsibilitySet.xml)
 
 *→ - [Template](../templates/ResponsibilitySet.xml)*
 
@@ -310,15 +301,13 @@ For the ServiceJourneys exclusively provided in Switzerland, only the ProductCat
 For ServiceJourneys provided in other countries or partially in Switzerland, there are no restrictions, provided that the category does not overlap with the ProductCategories defined for Switzerland.
 
 ### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfProductCategory.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfProductCategory.md)
 
 *→ [General NeTEx definition](../generated/xcore/TypeOfProductCategory.html)*
 
 
 ###  Example
-
-[XML Snippet](../generated/xml-snippets/TypeOfProductCategory.xml)
+- [XML Snippet](../generated/xml-snippets/TypeOfProductCategory.xml)
 
 *→ [Template](../templates/TypeOfProductCategory.xml)*
 
@@ -340,14 +329,12 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 > if a LOCAL SERVICE or FACILITY is, for example, a RETAIL SERVICE or TICKETING FACILITY.
 
 ### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfService.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfService.md)
 
 *→ [General NeTEx definition](../generated/xcore/TypeOfService.html)*
 
 ### Example
-
-[XML Snippet](../generated/xml-snippets/TypeOfService.xml)
+- [XML Snippet](../generated/xml-snippets/TypeOfService.xml)
 
 *→ - [Template](../templates/TypeOfService.xml)*
 
@@ -387,14 +374,12 @@ The Organisations are identified by their [GO-number](https://opentransportdata.
 in Switzerland. The TU-Code is to be used for operators of other countries. 
 
 ### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/Operator.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/Operator.md)
 
 *→ [General NeTEx definition](../generated/xcore/Operator.html)*
 
 ### Example
-
-[XML Snippet](../generated/xml-snippets/Operator.xml)
+- [XML Snippet](../generated/xml-snippets/Operator.xml)
 
 *→ - [Template](../templates/Operator.xml)*
 
@@ -437,14 +422,12 @@ The assignment of `facilities` to `ServiceJourney` or `JourneyPart` is made by u
 > **TODO** a lot more detail needed. But probably in uc
 
 ### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFacilitySet.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFacilitySet.md)
 
 *→ [General NeTEx definition](../generated/xcore/ServiceFacilitySet.html)*
 
 ### Example
-
-[XML Snippet](../generated/xml-snippets/ServiceFacilitySet.xml)
+- [XML Snippet](../generated/xml-snippets/ServiceFacilitySet.xml)
 
 *→ - [Template](../templates/ServiceFacilitySet.xml)*
 
@@ -483,14 +466,12 @@ A `SiteFacilitySet` defines a set of facilities like sanitary facilities, ticket
 referenced to define facilities of a site.
 
 ### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/SiteFacilitySet.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/SiteFacilitySet.md)
 
 *→ [General NeTEx definition](../generated/xcore/SiteFacilitySet.html)*
 
 ### Example
-
-[XML Snippet](../generated/xml-snippets/SiteFacilitySet.xml)
+- [XML Snippet](../generated/xml-snippets/SiteFacilitySet.xml)
 
 *→ - [Template](../templates/SiteFacilitySet.xml)*
 

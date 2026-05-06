@@ -84,14 +84,45 @@ In the element `FrameDefaults` we set some basic parameters. When they are not s
 in the XML snippet.
 
 ### Table
- 
-[Swiss profile NeTEx definition](../generated/markdown-examples/FrameDefaults.md)
+
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | FrameDefaults | expected | 0..1 | VersionFrameDefaultsStructure | Default values to use on elements in the frame that do not explicitly state a value. |  |
+| + | DefaultLocale | mandatory | 0..1 | LocaleStructure | Default LOCAL for frame elements. Assume this value for timezone and language of elements if not specified on individual elements. | The default locale is German (de) for SBB and Swiss public transport. |
+| ++ | TimeZoneOffset | mandatory | 0..1 | TimeZoneOffsetType | Timezone offset from Greenwich at LOCALE. | We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+2) and SummerTimeZoneOffset (+1) |
+| ++ | TimeZone | mandatory | 0..1 | xsd:normalizedString | Timezone name at LOCALE. |  |
+| ++ | SummerTimeZoneOffset | mandatory | 0..1 | TimeZoneOffsetType | Summer timezone offset if different from Time zone offset. | We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+2) and SummerTimeZoneOffset (+1) |
+| ++ | DefaultLanguage | mandatory | 0..1 | xsd:language | Default Language for LOCALE. Assume language use is "normally used" | Is always set to “de” for SKI and Swiss public transport. |
+| + | DefaultLocationSystem | mandatory | 0..1 | xsd:normalizedString | Default spatial coordinate system (srsName). E.g. WGS84 Value to use for location elements using coordinates if not specified on individual elements. |  |
+
+
 
 *→ [General NeTEx definition](../generated/xcore/FrameDefaults.html)*
 
 ### Example
 
-[XML Snippet](../generated/xml-snippets/FrameDefaults.xml)
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<FrameDefaults >
+  <DefaultLocale>
+    <!-- The default locale is German (de) for SBB and Swiss public transport. -->
+    <TimeZoneOffset>1</TimeZoneOffset>
+    <!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+2) and SummerTimeZoneOffset (+1) -->
+    <TimeZone>Europe/Berlin</TimeZone>
+    <SummerTimeZoneOffset>2</SummerTimeZoneOffset>
+    <!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+2) and SummerTimeZoneOffset (+1) -->
+    <DefaultLanguage>de</DefaultLanguage>
+    <!-- Is always set to “de” for SKI and Swiss public transport. -->
+  </DefaultLocale>
+  <DefaultLocationSystem>urn:ogc:def:crs:EPSG::4326</DefaultLocationSystem>
+</FrameDefaults>
+
+```
+
+
 
 *→ [Template](../templates/FrameDefaults.xml)*
 
@@ -112,13 +143,33 @@ For all other alternative texts use `AlternativeText`.
 
 ### Table
 
-[Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeName.md)
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | AlternativeName | mandatory | 1..1 | unknown | Alternative Name. | In some cases we need translations or alias of the Name element. This is done with AlternativeName. |
+| + | TypeOfName | optional | 0..1 | xsd:normalizedString | Type of Name - open value. |  |
+| + | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
+| + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
+
+
 
 *→ - [General NeTEx definition](../generated/xcore/AlternativeName.html)*
  
 ### Example
 
-[XML Snippet](../generated/xml-snippets/AlternativeName.xml)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<AlternativeName >
+  <!-- In some cases we need translations or alias of the Name element. This is done with AlternativeName. -->
+  <NameType>alias</NameType>
+  <TypeOfName>offical</TypeOfName>
+  <Name lang="de">Die Übersetzung des Namens.</Name>
+</AlternativeName>
+
+```
+
+
 
 *→ - [Template](../templates/AlternativeName.xml)*
 
@@ -139,13 +190,29 @@ For example, it can be used for the translation of `Notice` texts.
 
 ### Table
 
-[Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeText.md)
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | AlternativeText | mandatory | 1..1 | unknown | Alternative Text. +v1.1 |  |
+| + | Text | mandatory | 0..1 | MultilingualString | Text content of NOTICe. |  |
+
+
 
 *→ - [General NeTEx definition](../generated/xcore/AlternativeText.html)*
  
 ### Example
 
-[XML Snippet](../generated/xml-snippets/AlternativeText.xml)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<AlternativeText  id="ch:1:AlternativeText:Notice-Hin_1229900-fr" version="1" attributeName="Text" useForLanguage="fr">
+  <!--  -->
+  <Text>Départ de la voie 2.</Text>
+</AlternativeText>
+
+```
+
+
 
 *→ - [Template](../templates/AlternativeText.xml)*
 
@@ -190,13 +257,101 @@ See the following class diagram for the most important objects of the RESOURCE F
 
 ## Table
 
-[Swiss profile NeTEx definition](../generated/markdown-examples/ResourceFrame.md)
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | ResourceFrame | mandatory | 1..1 | unknown | A coherent set of reference values for TYPE OF VALUEs , ORGANISATIONs, VEHICLE TYPEs etc that have a common validity, as specified by a set of frame VALIDITY CONDITIONs. Used to define common resources that will be referenced by other types of FRAME. |  |
+| + | responsibilitySets | mandatory | 0..1 | responsibilitySetsInFrame_RelStructure | RESPONSIBILITY SETs used in frame. | RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. |
+| ++ | [ResponsibilitySet](ResponsibilitySet.md) | mandatory | 1..1 | unknown | A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent. | Each combination of Authority and Operator needs a ResponsibilitySet. |
+| + | typesOfValue | mandatory | 0..1 | typesOfValueInFrame_RelStructure | VALUE SETs and TYPE OF VALUEs in frame. | Sets of TYPE OF VALUE con-tained in the RESOURCE FRAME. |
+| ++ | ValueSet | mandatory | 1..1 | unknown | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. |  |
+| + | organisations | mandatory | 0..1 | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD |
+| ++ | [Operator](Operator.md) | mandatory | 1..1 | unknown | A company providing public transport services. | We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. |
+| + | siteFacilitySets | optional | 0..1 | siteFacilitySetsInFrame_RelStructure |  | Depending on the export/import part, there will be SiteFacilitySets to be included or not. |
+| ++ | [SiteFacilitySet](SiteFacilitySet.md) | optional | 1..1 | unknown | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). |  |
+| ++ | [ServiceFacilitySet](ServiceFacilitySet.md) | optional | 1..1 | unknown | Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.). |  |
+
+
 
 *→ - [General NeTEx definition](../generated/xcore/ResourceFrame.html)*
 
 ## Example
 
-[XML Snippet](../generated/xml-snippets/ResourceFrame.xml)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ResourceFrame  id="ch:1:ResourceFrame" version="any">
+  <responsibilitySets>
+    <!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
+    <ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
+      <!-- Each combination of Authority and Operator needs a ResponsibilitySet. -->
+    </ResponsibilitySet>
+  </responsibilitySets>
+  <typesOfValue>
+    <!-- Sets of TYPE OF VALUE con-tained in the RESOURCE FRAME. -->
+    <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
+      <values>
+        <TypeOfNotice id="ch:1:TypeOfNotice:11" version="1">
+          <Name>Region</Name>
+          <PrivateCode>11</PrivateCode>
+        </TypeOfNotice>
+        <TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
+          <Name>Allgemeiner Hinweis</Name>
+          <PrivateCode>1</PrivateCode>
+        </TypeOfNotice>
+        <TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
+          <Name>Angebot</Name>
+          <PrivateCode>10</PrivateCode>
+        </TypeOfNotice>
+        <TypeOfNotice id="ch:1:TypeOfNotice:3" version="1">
+          <Name>Gleis-Angabe</Name>
+          <PrivateCode>3</PrivateCode>
+        </TypeOfNotice>
+        <TypeOfNotice id="ch:1:TypeOfNotice:2" version="1">
+          <Name>Zugname</Name>
+          <PrivateCode>2</PrivateCode>
+        </TypeOfNotice>
+      </values>
+    </ValueSet>
+    <ValueSet id="ch:1:ValueSet:TypesOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+      <values>
+        <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
+          <alternativeTexts>
+            <AlternativeText attributeName="Name">
+              <Text lang="it">Train Express Regional</Text>
+            </AlternativeText>
+            <AlternativeText attributeName="Name">
+              <Text lang="en">Train Express Regional</Text>
+            </AlternativeText>
+            <AlternativeText attributeName="Name">
+              <Text lang="fr">Train Express Regional</Text>
+            </AlternativeText>
+          </alternativeTexts>
+          <Name lang="de">TER</Name>
+          <ShortName>TER</ShortName>
+        </TypeOfProductCategory>
+      </values>
+    </ValueSet>
+  </typesOfValue>
+  <organisations>
+    <!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD -->
+    <Operator id="sboid" version="1">
+      <!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
+    </Operator>
+  </organisations>
+  <siteFacilitySets>
+    <!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. -->
+    <SiteFacilitySet id="generated" version="1"/>
+  </siteFacilitySets>
+  <serviceFacilitySets>
+    <!-- Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. -->
+    <ServiceFacilitySet id="generated" version="1"/>
+  </serviceFacilitySets>
+</ResourceFrame>
+
+```
+
+
 
 *→ - [Template](../templates/ResourceFrame.xml)*
 
@@ -219,13 +374,46 @@ We use this element to  describe the different roles of the participating compan
 | `Operation`                    | role of the **operator company** responsible for providing the transport service   |
 ### Table
 
-[Swiss profile NeTEx definition](../generated/markdown-examples/ResponsibilitySet.md)
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | ResponsibilitySet | mandatory | 1..1 | unknown | A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent. | Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line. |
+| + | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
+| + | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+| + | roles | mandatory | 0..1 | responsibilityRoleAssignments_RelStructure | Roles defined by this RESPONSIBILITY SET. |  |
+| ++ | ResponsibilityRoleAssignment | mandatory | 1..1 | unknown | Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision. |  |
+| +++ | StakeholderRoleType | mandatory | 0..1 | StakeholderRoleTypeListOfEnumerations | Stakeholder roles which this assignment assigns. | EntityLegalOwnership must be defined once. **TODO** we can't express this for the schematron currently. |
+| +++ | ResponsibleOrganisationRef | mandatory | 0..1 | OrganisationRefStructure | Responsible ORGANISATION. |  |
+
+
 
 *→ - [General NeTEx definition](../generated/xcore/ResponsibilitySet.html)*
 
 ### Example
 
-[XML Snippet](../generated/xml-snippets/ResponsibilitySet.xml)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ResponsibilitySet  id="ch:1:ResponsbilitySet-gen" version="1">
+  <!-- Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line. -->
+  <Name lang="de">Basler Verkehrsbetriebe</Name>
+  <PrivateCode>BVB</PrivateCode>
+  <roles>
+    <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:1" version="1">
+      <StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+      <!-- EntityLegalOwnership must be defined once. **TODO** we can't express this for the schematron currently. -->
+      <ResponsibleOrganisationRef ref="ch:1:sboid:100622" version="1"/>
+    </ResponsibilityRoleAssignment>
+    <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:2" version="1">
+      <StakeholderRoleType>Operation</StakeholderRoleType>
+      <ResponsibleOrganisationRef ref="ch:1:sboid:100622" version="1"/>
+    </ResponsibilityRoleAssignment>
+  </roles>
+</ResponsibilitySet>
+
+```
+
+
 
 *→ - [Template](../templates/ResponsibilitySet.xml)*
 
@@ -311,14 +499,45 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 
 ### Table
 
-[Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfProductCategory.md)
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | TypeOfProductCategory | mandatory | 1..1 | unknown | Classification of a PRODUCT CATEGORY. |  |
+| + | alternativeTexts | mandatory | 0..1 | alternativeTexts_RelStructure | Additional Translations of text elements. | For each language an AlternativeText is needed |
+| ++ | AlternativeText | mandatory | 1..1 | unknown | Alternative Text. +v1.1 |  |
+| + | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
+| + | ShortName | mandatory | 0..1 | MultilingualString | Short Name for service |  |
+
+
 
 *→ [General NeTEx definition](../generated/xcore/TypeOfProductCategory.html)*
 
 
 ###  Example
 
-[XML Snippet](../generated/xml-snippets/TypeOfProductCategory.xml)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<TypeOfProductCategory  id="ch:1:TypeOfProductCategory:TER" version="any">
+  <alternativeTexts>
+    <!-- For each language an AlternativeText is needed -->
+    <AlternativeText attributeName="Name">
+      <Text lang="it">Train Express Regional</Text>
+    </AlternativeText>
+    <AlternativeText attributeName="Name">
+      <Text lang="en">Train Express Regional</Text>
+    </AlternativeText>
+    <AlternativeText attributeName="Name">
+      <Text lang="fr">Train Express Regional</Text>
+    </AlternativeText>
+  </alternativeTexts>
+  <Name lang="de">TER</Name>
+  <ShortName>TER</ShortName>
+</TypeOfProductCategory>
+
+```
+
+
 
 *→ [Template](../templates/TypeOfProductCategory.xml)*
 
@@ -341,13 +560,32 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 
 ### Table
 
-[Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfService.md)
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | TypeOfService | expected | 1..1 | unknown | Classification of a Service. |  |
+| + | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
+| + | ShortName | mandatory | 0..1 | MultilingualString | Short Name for service |  |
+| + | PrivateCode | mandatory | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+
+
 
 *→ [General NeTEx definition](../generated/xcore/TypeOfService.html)*
 
 ### Example
 
-[XML Snippet](../generated/xml-snippets/TypeOfService.xml)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<TypeOfService  id="ch:1:TypeOfService:1" version="1">
+  <Name lang="en">PublicJourney</Name>
+  <ShortName lang="en">N</ShortName>
+  <PrivateCode>1</PrivateCode>
+</TypeOfService>
+
+```
+
+
 
 *→ - [Template](../templates/TypeOfService.xml)*
 
@@ -388,13 +626,72 @@ in Switzerland. The TU-Code is to be used for operators of other countries.
 
 ### Table
 
-[Swiss profile NeTEx definition](../generated/markdown-examples/Operator.md)
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | Operator | mandatory | 1..1 | unknown | A company providing public transport services. | We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. |
+| + | keyList | expected | 1..1 | KeyListStructure | A list of alternative Key values for an element. |  |
+| ++ | KeyValue | expected | 1..* | KeyValueStructure | Key value pair for Entity. |  |
+| + | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
+| ++ | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+| + | Name | expected | 0..1 | MultilingualString | Name of Traveller |  |
+| + | ShortName | expected | 0..1 | MultilingualString | Short Name for service | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
+| + | parts | optional | 0..1 | blockParts_RelStructure | BLOCK PARTs which make up COMPOUND BLOCK. |  |
+| ++ | OrganisationPart | optional | 1..1 | unknown | A named subdivision of an ORGANISATION. | We want to get rid of the OrganisationPart. **todo** |
+| +++ | administrativeZones | optional | 0..1 | administrativeZones_RelStructure | Zones managed by ORGANISATION PART. |  |
+| ++++ | TransportAdministrativeZone | optional | 1..1 | unknown | A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region. |  |
+
+
 
 *→ [General NeTEx definition](../generated/xcore/Operator.html)*
 
 ### Example
 
-[XML Snippet](../generated/xml-snippets/Operator.xml)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Operator  id="ch:1:sboid:100602" version="1">
+  <!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
+  <keyList>
+    <KeyValue>
+      <Key>GO</Key>
+      <Value>801</Value>
+    </KeyValue>
+    <KeyValue>
+      <Key>SBOID</Key>
+      <Value>ch:1:sboid:100602</Value>
+    </KeyValue>
+  </keyList>
+  <privateCodes>
+    <PrivateCode type="GO">801</PrivateCode>
+    <PrivateCode type="sboid">ch:1:sboid:100602</PrivateCode>
+  </privateCodes>
+  <PrivateCode>801</PrivateCode>
+  <Name>PostAuto AG</Name>
+  <ShortName>PAG</ShortName>
+  <!-- there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. -->
+  <parts>
+    <OrganisationPart id="ch:1:OrganisationPart:801-1234" version="1">
+      <!-- We want to get rid of the OrganisationPart. **todo** -->
+      <administrativeZones>
+        <TransportAdministrativeZone id="ch:1:TransportAdministrativeZone:801-1234" version="1">
+          <PrivateCode>1234</PrivateCode>
+        </TransportAdministrativeZone>
+      </administrativeZones>
+    </OrganisationPart>
+    <OrganisationPart id="ch:1:OrganisationPart:801-5678" version="1">
+      <administrativeZones>
+        <TransportAdministrativeZone id="ch:1:TransportAdministrativeZone:801-5678" version="1">
+          <PrivateCode>5678</PrivateCode>
+        </TransportAdministrativeZone>
+      </administrativeZones>
+    </OrganisationPart>
+  </parts>
+</Operator>
+
+```
+
+
 
 *→ - [Template](../templates/Operator.xml)*
 
@@ -438,13 +735,34 @@ The assignment of `facilities` to `ServiceJourney` or `JourneyPart` is made by u
 
 ### Table
 
-[Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFacilitySet.md)
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+| + | NuisanceFacilityList | optional | 1..1 | NuisanceFacilityListOfEnumerations | List of NUISANCE FACILITies. |  |
+| + | SanitaryFacilityList | optional | 1..1 | SanitaryFacilityListOfEnumerations | List of SANITARY FACILITies. |  |
+| + | CouchetteFacilityList | optional | 1..1 | CouchetteFacilityListOfEnumerations | List of COUCHETTE FACILITies. |  |
+| + | GroupBookingFacility | optional | 1..1 | GroupBookingEnumeration | Classification of GROUP FACILITY type - TPEG pti23. |  |
+
+
 
 *→ [General NeTEx definition](../generated/xcore/ServiceFacilitySet.html)*
 
 ### Example
 
-[XML Snippet](../generated/xml-snippets/ServiceFacilitySet.xml)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ServiceFacilitySet  id="generated" version="1">
+  <!-- List of ServiceFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical ServiceFacilitySets. Reuse them. -->
+  <NuisanceFacilityList>animalsAllowed</NuisanceFacilityList>
+  <SanitaryFacilityList>toilet</SanitaryFacilityList>
+  <CouchetteFacilityList>wheelchair</CouchetteFacilityList>
+  <GroupBookingFacility>groupsAllowed</GroupBookingFacility>
+</ServiceFacilitySet>
+
+```
+
+
 
 *→ - [Template](../templates/ServiceFacilitySet.xml)*
 
@@ -484,13 +802,44 @@ referenced to define facilities of a site.
 
 ### Table
 
-[Swiss profile NeTEx definition](../generated/markdown-examples/SiteFacilitySet.md)
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | SiteFacilitySet | mandatory | 1..1 | unknown | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). | List of SiteFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical SiteFacilitySets. Reuse them. |
+| + | validityConditions | optional | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. |  |
+| ++ | [AvailabilityCondition](AvailabilityCondition.md) | mandatory | 1..1 | unknown | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. |  |
+| + | FareClasses | optional | 1..1 | FareClassListOfEnumerations | List of FARE CLASSes. |  |
+| + | SanitaryFacilityList | optional | 1..1 | SanitaryFacilityListOfEnumerations | List of SANITARY FACILITies. |  |
+| + | TicketingServiceFacilityList | optional | 1..1 | TicketingServiceFacilityListOfEnumerations | List of TICKETING SERVICE FACILITies, e.g. purchase, collection. top up. |  |
+| + | LuggageLockerFacilityList | optional | 1..1 | LuggageLockerFacilityListOfEnumerations | List of LUGGAGE LOCKER FACILITies. |  |
+
+
 
 *→ [General NeTEx definition](../generated/xcore/SiteFacilitySet.html)*
 
 ### Example
 
-[XML Snippet](../generated/xml-snippets/SiteFacilitySet.xml)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SiteFacilitySet  id="generated" version="1">
+  <!-- List of SiteFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical SiteFacilitySets. Reuse them. -->
+  <validityConditions>
+    <AvailabilityCondition id="generated" version="1">
+      <FromDate>2026-03-30T12:00:00</FromDate>
+      <ToDate>2026-04-01T12:00:00</ToDate>
+      <ValidDayBits>01</ValidDayBits>
+    </AvailabilityCondition>
+  </validityConditions>
+  <FareClasses>firstClass</FareClasses>
+  <SanitaryFacilityList>babyChange</SanitaryFacilityList>
+  <TicketingServiceFacilityList>reservations</TicketingServiceFacilityList>
+  <LuggageLockerFacilityList>lockers</LuggageLockerFacilityList>
+</SiteFacilitySet>
+
+```
+
+
 
 *→ - [Template](../templates/SiteFacilitySet.xml)*
 

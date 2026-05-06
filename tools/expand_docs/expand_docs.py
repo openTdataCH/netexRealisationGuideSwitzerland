@@ -60,11 +60,11 @@ def process_markdown_file(input_path, output_path, base_folder):
         content = f.read()
     
     # Process XML snippets - match the entire line prefix and link (flexible text)
-    xml_pattern = r'- \[.*?\]\(\.\./generated/xml-snippets/([^)]+\.xml)\)'
+    xml_pattern = r'(?:- )?\[.*?\]\(\.\./generated/xml-snippets/([^)]+\.xml)\)'
     content = re.sub(xml_pattern, lambda m: '\n\n' + include_xml_snippet(m, base_folder) + '\n\n', content)
     
     # Process markdown tables - match the entire line prefix and link (flexible text)
-    md_pattern = r'- \[.*?\]\(\.\./generated/markdown-examples/([^)]+\.md)\)'
+    md_pattern = r'(?:- )?\[.*?\]\(\.\./generated/markdown-examples/([^)]+\.md)\)'
     content = re.sub(md_pattern, lambda m: '\n\n' + include_markdown_table(m, base_folder) + '\n\n', content)
     
     # Write processed content

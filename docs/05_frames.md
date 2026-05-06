@@ -9,12 +9,12 @@
 NeTEx is divided into [frames](#frames), containers for elements of a specific domain. These frames are introduced below.
 
 ### Tables
-[Swiss profile tables](../generated/markdown-examples/PublicationDelivery.md)
+- [Swiss profile tables](../generated/markdown-examples/PublicationDelivery.md)
 
 *→ [Original NeTEx table](../generated/xcore/PublicationDelivery.xml)*
 
 ### Example
-[XML Snippet](../generated/xml-snippets/PublicationDelivery.xml)
+- [XML Snippet](../generated/xml-snippets/PublicationDelivery.xml)
 
 *→ [Template](../templates/PublicationDelivery.xml)*
 
@@ -48,14 +48,12 @@ The `CompositeFrame` is the container for the `FrameDefaults` and the other fram
 appearing in this order.
 
 #### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/CompositeFrame.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/CompositeFrame.md)
 
 *→ [General NeTEx definition](../generated/xcore/CompositeFrame.html)*
 
 #### Example
-
-[Example snippet](../generated/xml-snippets/CompositeFrame.xml)
+- [Example snippet](../generated/xml-snippets/CompositeFrame.xml)
 
 *→ [Template](../templates/CompositeFrame.xml)*
 

@@ -86,14 +86,12 @@ classDiagram
 
 ```
 #### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/ServiceCalendarFrame.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceCalendarFrame.md)
 
 *→ [General NeTEx definition](../generated/xcore/ServiceCalendarFrame.html)*
 
 #### Example
-
-[Example snippet](../generated/xml-snippets/ServiceCalendarFrame.xml)
+- [Example snippet](../generated/xml-snippets/ServiceCalendarFrame.xml)
 
 *→ [Template](../templates/ServiceCalendarFrame.xml)*
 
@@ -107,14 +105,12 @@ classDiagram
 - An AVAILABILITY CONDITION can be defined by specific DAY TYPEs and/or OPERATING DAYs. It may be further qualified by one or more of TIME BANDs. The DATED AVAILABILITY CONDITION being the instance of VALIDITY CONDITION on a specific CALENDAR DAY.
 
 #### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/AvailabilityCondition.md)
+-[Swiss profile NeTEx definition](../generated/markdown-examples/AvailabilityCondition.md)
 
 *→ [General NeTEx definition](../generated/xcore/AvailabilityCondition.html)*
 
 #### Example
-
-[Example snippet](../generated/xml-snippets/AvailabilityCondition.xml)
+- [Example snippet](../generated/xml-snippets/AvailabilityCondition.xml)
 
 *→ [Template](../templates/AvailabilityCondition.xml)*
 
@@ -139,14 +135,12 @@ classDiagram
 The transport offering of a public transport company is tailored to accommodate different levels of demand. In order to simplify the supply planning almost all operators design their production plan using a classification by type of day, which summarises the level of demand or other characteristics: for example, workday, weekend, school holiday, market day,etc. Long-term planned schedules are designed through the so-called transportation calendar, in which calendar days are classified as specific DAY TYPEs.
 
 #### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/ServiceCalendar.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceCalendar.md)
 
 *→ [General NeTEx definition](../generated/xcore/ServiceCalendar.html)*
 
 #### Example
-
-[Example snippet](../generated/xml-snippets/ServiceCalendar.xml)
+- [Example snippet](../generated/xml-snippets/ServiceCalendar.xml)
 
 *→ [Template](../templates/ServiceCalendar.xml)*
 
@@ -160,14 +154,12 @@ The day type is used to describe the validity of the holidays in Switzerland. Ea
 
 
 #### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/DayType.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/DayType.md)
 
 *→ [General NeTEx definition](../generated/xcore/DayType.html)*
 
 #### Example
-
-[Example snippet](../generated/xml-snippets/DayType.xml)
+- [Example snippet](../generated/xml-snippets/DayType.xml)
 
 *→ [Template](../templates/DayType.xml)*
 
@@ -180,14 +172,12 @@ A period in a day, significant for some aspect of public transport, e.g. similar
 
 
 #### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/Timeband.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/Timeband.md)
 
 *→ [General NeTEx definition](../generated/xcore/Timeband.html)*
 
 #### Example
-
-[Example snippet](../generated/xml-snippets/Timeband.xml)
+- [Example snippet](../generated/xml-snippets/Timeband.xml)
 
 *→ [Template](../templates/Timeband.xml)*
 
@@ -205,13 +195,11 @@ Designation of one day or group of days
 
 
 #### Table
-
-[Swiss profile NeTEx definition](../generated/markdown-examples/DayTypeAssignment.md)
+- [Swiss profile NeTEx definition](../generated/markdown-examples/DayTypeAssignment.md)
 
 *→ [General NeTEx definition](../generated/xcore/DayTypeAssignment.html)*
 
 #### Example
-
 [Example snippet](../generated/xml-snippets/DayTypeAssignment.xml)
 
 *→ [Template](../templates/DayTypeAssignment.xml)*
