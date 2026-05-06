@@ -7,11 +7,14 @@
   <StaySeated>false</StaySeated>
   <Planned>true</Planned>
   <Guaranteed>false</Guaranteed>
+  <MaximumAutomaticTransferTime>PT2M</MaximumAutomaticTransferTime>
   <MinimumTransferTime>PT2M</MinimumTransferTime>
   <MaximumTransferTime>PT2M</MaximumTransferTime>
   <timings>
     <InterchangeRuleTiming id="ch:1:InterchangeRuleTiming:1696906:0:86400" version="1">
-      <TimebandRef ref="ch:1:Timeband:0:0" version="1"/>
+      <TimebandRef ref="ch:1:Timeband:0:0" version="1">
+        <!-- Timeband defined in ServiceCalendarFrame -->
+      </TimebandRef>
     </InterchangeRuleTiming>
   </timings>
   <FeederFilter>

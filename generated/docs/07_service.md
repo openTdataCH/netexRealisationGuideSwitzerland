@@ -1,111 +1,131 @@
-# ServiceFrame
+# Services
+In this chapter:
+- [Line](#line)
+- [DestinationDisplay](#destinationdisplay)
+- [ScheduledStopPoint](#scheduledstoppoint)
+- [PassengerStopAssignment](#passengerstopassignment)
+- [TrainStopAssignment](**TODO**)
+- [DefaultConnection](#defaultconnection)
+- [SiteConnection](#siteconnection)
+- [ServiceJourneyPattern](#servicejourneypattern)
+- [Notice](#NoticeAssignment)
+- [NoticeAssignment](#NoticeAssignment)
 
-The service related elements of the Network Description model can be grouped into a SER-VICE FRAME which holds a coherent set of elements for data exchange.
+## ServiceFrame
+*→ [Glossary definition](A4_annex_glossary.md#serviceframe)*
 
-The Service Frame model comprises among others:
--	Route model: fixed LINEs and ROUTEs of a transport network.
--	Flexible Network model: flexible LINEs and ROUTEs of a demand responsive transport network.
--	Line Network model: overall topology of the LINEs and LINE SECTIONs that make up a transport network.
--	Service Pattern model: SCHEDULED STOP POINTs and SERVICE LINKs, i.e., points and links referenced by schedules.
+### Purpose
+See the following class diagram for the most important objects of the `ServiceFrame` and their relationships to the other frames.
 
-Other important classes of the SERVICE FRAME include:
--	PASSENGER STOP ASSIGNMENTs and TRAIN STOP ASSIGNMENTs which model the relationship between stops in the timetable and the physical platforms of an actual station or other stop.
--	CONNECTIONs as the topological model of INTERCHANGES. They model the possi-bility of a transfer between two SCHEDULED STOP POINTs.
--	NOTICEs which are then assigned to JOURNEYs and CALLs of the TIMETABLE FRAME through NOTICE ASSIGNMENTs. They model the association of footnotes and passenger information content such as stop announcements and the network.
+```mermaid
+classDiagram
+    %% Styles
+    classDef frame fill:#FFF8E1,stroke:#FFB300;
+    classDef contained fill:#E8F4FF,stroke:#1E90FF;
+    classDef external fill:#F6F6F6,stroke:#AAAAAA;
 
-See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
-<img width="604" height="434" alt="ServiceModel" src="media/ServiceModel.png" />
+    %% Frame
+    class ServiceFrame {
+    }
 
+    %% Contained elements
+    class Line {
 
+        
+    }
 
-
-| Sub | Element | Usage | Card | Type | Description | Note |
-|-----|---------|-------|------|------|-------------|------|
-| + | lines | mandatory | 0..1 | lineRefs_RelStructure | Lines for FLEXIBLE STOP PLACE. | Only Line is used and not FlexibleLine |
-| ++ | [Line](Line.md) | mandatory | 1..1 | unknown | A group of ROUTEs which is generally known to the public by a similar name or number. |  |
-| + | destinationDisplays | expected | 0..1 | destinationDisplayRefs_RelStructure | Destinations associated with this GROUP OF SERVICEs, including via points. | We only allow fully formed content of destinationDisplays |
-| ++ | [DestinationDisplay](DestinationDisplay.md) | expected | 1..1 | unknown | An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations. | We only allow fully formed content of destinationDisplays |
-| + | scheduledStopPoints | mandatory | 0..1 | scheduledStopPointsInFrame_RelStructure | SCHEDULED STOP POINTs in frame. | Swiss ScheduledStopPoint are using the sloid in the id, when possible. |
-| ++ | [SiteConnection](SiteConnection.md) | expected | 1..1 | unknown | The physical (spatial) possibility to connect from one point to another in a SITE. | SiteConnection are used only in the main file and not in timetable files. |
-| ++ | [DefaultConnection](DefaultConnection.md) | expected | 1..1 | unknown | Specifies the default transfer times to transfer between MODEs and / or OPERATORs within a region. | DefaultConnection is only used in the site file |
-| + | stopAssignments | expected | 0..1 | stopAssignmentsInFrame_RelStructure | STOP ASSIGNMENTs in frame. |  |
-| ++ | [PassengerStopAssignment](PassengerStopAssignment.md) | expected | 1..1 | unknown | The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION. | are only used in a special PSA file in the export. |
-| + | notices | expected | 0..1 | noticesInFrame_RelStructure | NOTICEs in frame. | notices may be present or not |
-| ++ | [Notice](Notice.md) | expected | 1..1 | unknown | A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media. | if notices are present, one Notice must be. |
+    class DestinationDisplay {
 
 
+    }
 
+    class ScheduledStopPoint {
+    }
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<ServiceFrame  id="ch:1:ServiceFrame" version="any">
-  <!-- A minimal ServiceFrame must be present in all timetable files. TODO: analyse which part is in the general one. -->
-  <!-- TODO how would we describe additional id and which ones are mandatory? -->
-  <directions>
-    <!-- We don't use directions, but only direction type -->
-  </directions>
-  <lines>
-    <!-- Only Line is used and not FlexibleLine -->
-    <Line id="use swiss line id where possible" version="1" responsibilitySetRef="dsa">
-      <Name>Name is needed</Name>
-    </Line>
-    <FlexibleLine id="notUsed" version="none">
-      <!-- We work with Line only. -->
-    </FlexibleLine>
-  </lines>
-  <destinationDisplays>
-    <!-- We only allow fully formed content of destinationDisplays -->
-    <DestinationDisplay id="generated-id" version="1">
-      <!-- We only allow fully formed content of destinationDisplays -->
-    </DestinationDisplay>
-  </destinationDisplays>
-  <scheduledStopPoints>
-    <!-- Swiss ScheduledStopPoint are using the sloid in the id, when possible. -->
-    <ScheduledStopPoint id="sloid_where_possible" version="1">
-      <!-- TODO full or not -->
-    </ScheduledStopPoint>
-  </scheduledStopPoints>
-  <connections>
-    <SiteConnection id="generated" version="1">
-      <!-- SiteConnection are used only in the main file and not in timetable files. -->
-    </SiteConnection>
-    <DefaultConnection id="generated" version="1">
-      <!-- DefaultConnection is only used in the site file -->
-    </DefaultConnection>
-  </connections>
-  <stopAssignments>
-    <PassengerStopAssignment id="generated" version="1">
-      <!-- are only used in a special PSA file in the export. -->
-    </PassengerStopAssignment>
-  </stopAssignments>
-  <notices>
-    <!-- notices may be present or not -->
-    <Notice id="generated" version="1">
-      <!-- if notices are present, one Notice must be. -->
-    </Notice>
-  </notices>
-</ServiceFrame>
+    class PassengerStopAssignment {
+    }
 
+    class TrainStopAssignment {
+    }
+
+    class DefaultConnection {
+    }
+
+    class SiteConnection {
+    }
+
+    class Notice {
+    }
+
+class ServiceJourney {
+
+}
+    class NoticeAssignment {
+    }
+    %% Containment relations (only contained elements)
+    ServiceFrame "1" o-- "0..*" Line : contains
+    ServiceFrame "1" o-- "0..*" DestinationDisplay : contains
+    ServiceFrame "1" o-- "0..*" ScheduledStopPoint : contains
+    ServiceFrame "1" o-- "0..*" PassengerStopAssignment : contains
+    ServiceFrame "1" o-- "0..*" TrainStopAssignment : contains
+    ServiceFrame "1" o-- "0..*" DefaultConnection : contains
+    ServiceFrame "1" o-- "0..*" SiteConnection : contains
+    ServiceFrame "1" o-- "0..*" Notice : contains
+    ServiceFrame "1" o-- "0..*" NoticeAssignment : contains
+    Line "1" -- "1" DestinationDisplay : references
+
+    %% external references
+    ServiceJourney "1" -- "1" Line : references
+    ServiceJourney "1" -- "0..1" DestinationDisplay : references
+    ServiceJourney "1" -- "0..*" NoticeAssignment : contains
+
+    PassengerStopAssignment "1" -- "1" StopPlace : references
+    PassengerStopAssignment "1" -- "0..1" Quay : references
+    PassengerStopAssignment "1" -- "1" ScheduledStopPoint : references
 ```
 
+### Contained Elements
+The `ServiceFrame` model comprises among others:
+-	Route model: fixed and flexible  `Line`s and `Route`s of a transport network.
+-	Line network model: overall topology of the `Line` and line sections that make up a transport network.
+-	Service pattern model: `ScheduledStopPoint`s, `ServiceLink`, i.e., points and links referenced by schedules.
 
-- [General NeTEx definition](../generated/xcore/ServiceFrame.html)
+Other important classes of the `ServiceFrame` include:
+-	`PassengerStopAssignment`s and `TrainStopAssignment` which model the relationship between stops in the timetable and the physical platforms of an actual station or other stop.
+-	`Connection`s as the topological model of interchanges. They model the possibility of a transfer between two `ScheduledStopPoints`.
+-	`Notice`s which are then assigned to `Journey` and `Passingtime` of the `TimetableFrame` through `NoticeAssignment`s. They model the association of footnotes and passenger information content such as stop announcements and the network.
+
+### Table
+[Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFrame.md)
+
+*→ [General NeTEx definition ](../generated/xcore/ServiceFrame.html)*
+
+### Example
+[Example snippet](../generated/xml-snippets/ServiceFrame.xml)
+
+*→ [Template](../templates/ServiceFrame.xml)*
+
+### Frame Relationships
+`ServiceFrame` depends on `ResourceFrame` for `Operator` definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `PassengerStopAssignment`s build the connection between `ScheduledStopPoints` and the physical model in`SiteFrame`. ServiceFrame` is typically wrapped in a `CompositeFrame`within a `PublicationDelivery`.
+
 
 ## Direction
+We don't use `Direction` but only `DirectionType`. For this we need NeTEx 2.1.
 
-**TBD** DO we use Direction. 
-<Direction version="any" id="ch:1:Direction:H">
-<Direction-Type>outbound</DirectionType></Direction>
+This means that the old two defined dirctions `ch:1:Direction:H` and `ch:1:Direction:R` will no longer be supported.
 
 
-## Line 
-Transmodel defines a LINE as a grouping of ROUTEs that is generally known to the public by a similar name or number. These ROUTEs are usually very similar to each other from the top-ological point of view.
-Each LINE has a unique number  PrivateCode, a ShortName and a Name.  Passengers rec-ognise a LINE by its published “PublicCode”. The transport mode is specified in  “TransportMode”, e.g  metro, tram, bus etc.. 
-The assignement of a LINE to an ORGANISATION is done by the element OperatorRef and to the operationalContext with OperationalContextRef.
-Note that there exist journeys in Switzerland and neighbouring countries that are not associat-ed with a Line. In NeTEx, however, the ServiceJourneys corresponding to such journeys must still reference something in LineRef. To ensure this, we introduce a placeholder Line called "NoLine" for each Operator that has journeys without a Line. 
+## Line
+*→ [Glossary definition](A4_annex_glossary.md#Line)*
+### Purpose
+Transmodel defines a LINE as a grouping of ROUTEs that is generally known to the public by a similar name or number. These ROUTEs are usually very similar to each other from the topological point of view.
+Each LINE has a unique number  PrivateCode, a ShortName and a Name.  Passengers recognise a LINE by its published “PublicCode”. The transport mode is specified in  “TransportMode”, e.g.  metro, tram, bus etc. 
+The assignment of a LINE to an ORGANISATION is done by the element OperatorRef and to the operationalContext with OperationalContextRef.
+Note that there exist journeys in Switzerland and neighbouring countries that are not associated with a Line. In NeTEx, however, the ServiceJourneys corresponding to such journeys must still reference something in LineRef. To ensure this, we introduce a placeholder Line called "NoLine" for each Operator that has journeys without a Line. 
 For more information about SwissLineID: see https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf
-Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise the relevant operator must at least be set on the ServiceJourney.
+Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise, the relevant operator must at least be set on the ServiceJourney.
 
+### Table
 
 
 | Sub | Element | Usage | Card | Type | Description | Note |
@@ -123,6 +143,11 @@ Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise 
 | + | TransportMode | mandatory | 0..1 | AllModesEnumeration | MODE. |  |
 | ++ | RailSubmode | expected | 1..1 | RailSubmodeEnumeration | TPEG pti02 Rail submodes loc13.
 
+
+
+*-> [General NeTEx definition](../generated/xcore/Line.html)*
+
+### Example
 
 
 
@@ -166,14 +191,24 @@ Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise 
 ```
 
 
-- [General NeTEx definition](../generated/xcore/ServiceFrame.html)
+
+*->[Template](../templates/Line.xml)*
+
+### Usage Notes
+- slnid will be integrated wherever possible. We currently think that - where it exists - it has the necessary properties to be used in the `id`-attribute.
+- For foreign lines and id might need to be generated.
+- We store the slnid whenever possible in `id`, `privateCodes/PrivateCode` and `KeyList`.
+- **TODO** link to migration concept slnid
+- **TODO** handling of mixed lines
+- 
 
 ## DestinationDisplay
-(NeTEx-1, 8.4.5.8.4)
-The DESTINATION DISPLAY is an advertised destination of a specific LINE, usually displayed on a head-sign 
+*→ [Glossary definition](A4_annex_glossary.md#DestinationDisplay)*
 
-**TODO We need to discuss this in a lot more detail **
+### Purpose
+Showing the destination of a `ServiceJourney`.
 
+### Table
 
 
 | Sub | Element | Usage | Card | Type | Description | Note |
@@ -184,6 +219,11 @@ The DESTINATION DISPLAY is an advertised destination of a specific LINE, usually
 | + | DriverDisplayText | optional | 0..1 | MultilingualString | Text to show to Driver or Staff for the DESTINATION DISPLAY. | Text to display to DRIVER. |
 | + | PrivateCode | mandatory | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | **TODO** were do we get this code from. |
 
+
+
+*-> [General NeTEx definition](../generated/xcore/DestinationDisplay.html)*
+
+### Example
 
 
 
@@ -203,18 +243,28 @@ The DESTINATION DISPLAY is an advertised destination of a specific LINE, usually
 ```
 
 
-- [General NeTEx definition](../generated/xcore/DestinationDisplay.html)
+
+*->[Template](../templates/DestinationDisplay.xml)*
+
+### Usage Notes
+- In HRDF sometimes the destination is not set (`*R`). This results in NeTEX in a calculated destination definition. 
+- The `DestinationDiplay` is usually be set on the `ServiceJourney`. If it changes during the run, it needs to be changed in the `ServiceJourneyPattern`. If it changes on that, then the new destination should be used. In our output, we will fill all remaining `PointsInJourneyPattern`with the relevant change.
+- See also the [use case on changes in destination](uc13_changes_in_destination.md) 
+
+> **TODO** the rules for defining need to be clarified.
 
 ## ScheduledStopPoint
-(NeTEx-1, 8.6.3.4.2)
-A POINT where passengers can board or alight from vehicles. Where a STOP PLACE models stop points with the desired level of topographic details (areas, entrances, paths etc.), a SCHEDULED STOP POINT corresponds to the simpler network representation used for LINEs, STOP ASSIGNMENTs, JOURNEYs and so on. The connection of these network points with their respective STOP PLACEs is done via STOP ASSIGNEMTNs.
+*→ [Glossary definition](A4_annex_glossary.md#ScheduledStopPoint)*
 
-ScheduledStopPoint is a core concept. It is the “Point” used in the timetable for the services to stop. A ScheduledStopPoint can refer to a Quay or only a StopPlace. So the level of hierarchy is not determined by the element (see PassengerStopAssignment).
+### Purpose
+`ScheduledStopPoint` is a core concept. It is the “Point” used in the timetable for the services to stop. A `ScheduledStopPoint` can refer to a `Quay` or only a `StopPlace`. So the level of hierarchy is not determined by the element (see [PassengerStopAssignment](#passengerstopassignment)).
 
-A ScheduledStopPoint can represent two types of stop points:
--	In most cases, the ScheduledStopPoint is the station named in the timetable, especial-ly as some organisations don’t have a full physical model of their StopPlaces. 
--	In some cases, the ScheduledStopPoint may be mapped to the Quay. The more de-tailed mapping is also done with the PassengerStopAssignment.
+A `ScheduledStopPoint` can represent two types of stop points:
+-	In most cases, the `ScheduledStopPoint` is the station named in the timetable, especially as some organisations don’t have a full physical model of their StopPlaces. 
+-	In some cases, the `ScheduledStopPoint` may be mapped to the `Quay`. The more detailed mapping is also done with the `PassengerStopAssignment`.
 
+
+### Table
 
 
 | Sub | Element | Usage | Card | Type | Description | Note |
@@ -227,6 +277,11 @@ A ScheduledStopPoint can represent two types of stop points:
 | ++ | Name | mandatory | 0..1 | MultilingualString | Name of Traveller | The names are the same in all languages. |
 | ++ | ShortName | mandatory | 0..1 | MultilingualString | Short Name for service | StopPlace : Name of the Place, Quay : ShortName of the Quay |
 
+
+
+*-> [General NeTEx definition](../generated/xcore/ScheduledStopPoint.html)*
+
+### Example
 
 
 
@@ -256,17 +311,19 @@ A ScheduledStopPoint can represent two types of stop points:
 ```
 
 
-- [General NeTEx definition](../generated/xcore/ScheduledStopPoint.html)
+
+*->[Template](../templates/ScheduledStopPoint.xml)*
 
 ## PassengerStopAssignment
-(NeTEx-1, 8.6.6.4.2)
-The allocation of a SCHEDULED STOP POINT to a specific STOP PLACE for a PASSENGER SERVICE and, also possibly, a QUAY or BOARDING POSITION.
-PassengerStopAssignments bring the SiteModel and the ServiceModel in alignment. We have two general cases:
--	A ScheduledStopPoint in a Call is linked to a StopPlace for arrival and departure.
--	A ScheduledStopPoint in a Call is linked to a Quay for arrival and departure.
+*→ [Glossary definition](A4_annex_glossary.md#PassengerStopAssignment)*
 
-Suppose a vehicle arrives on QUAY 2A and departs on QUAY 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS.
+### Purpose
 
+`PassengerStopAssignment`s bring the Site model and the Service model in alignment. We have two general cases:
+-	A `ScheduledStopPoint` in a `ServiceJourneyPattern` is linked to a `StopPlace` for arrival and departure.
+-	A `ScheduledStopPoint` in a `ServiceJourneyPattern` is linked to a `Quay` for arrival and departure.
+
+### Table
 
 
 | Sub | Element | Usage | Card | Type | Description | Note |
@@ -276,6 +333,11 @@ Suppose a vehicle arrives on QUAY 2A and departs on QUAY 2D. In this case we mod
 | + | StopPlaceRef | mandatory | 0..1 | StopPlaceRefStructure | System identifier of a STOP PLACE. May be omitted if given by context. |  |
 | + | QuayRef | expected | 0..1 | QuayRefStructure | QUAY to which SCHEDULED STOP POINT is to be assigned. | Not having the track may be problematic, but it can happen |
 
+
+
+*-> [General NeTEx definition](../generated/xcore/PassengerStopAssignment.html)*
+
+### Example
 
 
 
@@ -292,22 +354,26 @@ Suppose a vehicle arrives on QUAY 2A and departs on QUAY 2D. In this case we mod
 ```
 
 
-- [General NeTEx definition](../generated/xcore/PassengerStopAssignment.html)
+
+*->[Template](../templates/PassengerStopAssignment.xml)*
+
+### Usage Notes
+
+> ** TODO ** Suppose a vehicle arrives at quay 2A and departs on quay 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS.
 
 ## DefaultConnection
-(NeTEx-1, 8.5.14)
-A CONNECTION expresses that there is a possible walking link  that is suitable for a passen-ger to interchange from one public transport vehicle to another between two specified SCHEDULED STOP POINTs and the time allocated for a passenger to traverse the link. Soft-ware used to control guaranteed interchanges can use the time information given to use a CONNECTION link as to assist calculating how long a distributor SERVICE JOURNEY needs to wait after a fetcher SERVICE JOURNEY has arrived before it can depart. If no specific CONNECTION link is available, timings from a DEFAULT CONNECTION must be used.
+*→ [Glossary definition](A4_annex_glossary.md#DefaultConnection)*
 
-DefaultConnections are used to transmit the ConnectionTimes for the following constellations:
--	between 2 ProductCategories
--	between 2 Operators
--	In a defined StopPlace
--	In a defined StopPlace and 2 Operators
--	in a defined StopPlace, 2 Operators and 2 ProductCategories
-For more Detail see 11 Appendix **TODO**
+### Purpose
+`DefaultConnections` are used to transmit the connection times for the following constellations:
+-	between 2 `ProductCategory`s
+-	between 2 `Operator`s
+-	In a defined `StopPlace`
+-	In a defined `StopPlace` and 2 `Operator`s
+-	in a defined `StopPlace`, 2 `Operator`s and 2 `ProductCategory`s
 
-For the details of Connections see [here](uc03_transfers.md).
 
+### Table
 
 
 | Sub | Element | Usage | Card | Type | Description | Note |
@@ -326,6 +392,11 @@ For the details of Connections see [here](uc03_transfers.md).
 | + | To | mandatory | 0..1 | ConnectionEndStructure | Destination end of CONNECTION. |  |
 | + | StopPlaceRef | optional | 0..1 | StopPlaceRefStructure | System identifier of a STOP PLACE. May be omitted if given by context. | Is a sloid usually. Not set, means whole network. |
 
+
+
+*-> [General NeTEx definition](../generated/xcore/DefaultConnection.html)*
+
+### Example
 
 
 
@@ -368,17 +439,21 @@ For the details of Connections see [here](uc03_transfers.md).
 ```
 
 
-- [General NeTEx definition](../generated/xcore/DefaultConnection.html)
 
+*->[Template](../templates/DefaultConnection.xml)*
+
+### Usage Notes
+For more details see the [use case on transfers](uc03_transfers.md).
 
 
 ## SiteConnection
-(NeTEx-1, 8.5.14.7.3)
-The physical (spatial) possibility for a passenger to change from one public transport vehicle to another to continue the trip. The ends of connection can be specified STOP PLACE or STOP AREA.
+*→ [Glossary definition](A4_annex_glossary.md#SiteConnection)*
 
-The SiteConnection describes the transfer times between two adjacent StopPlaces 
-For more Detail see 11 Appendix
+### Purpose
+The `SiteConnection` describes the transfer times between two adjacent `StopPlace`s. 
 
+
+### Table
 
 
 | Sub | Element | Usage | Card | Type | Description | Note |
@@ -393,17 +468,136 @@ For more Detail see 11 Appendix
 
 
 
+*-> [General NeTEx definition](../generated/xcore/SiteConnection.html)*
 
-- [Example snippet](../generated/xml-snippets/SiteConnection.xml)
+### Example
 
 
-- [General NeTEx definition](../generated/xcore/SiteConnection.html)
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SiteConnection  id="ch:1:SiteConnection:8506302-8589913" version="1">
+  <!-- SiteConnection are used only in the main file and not in timetable files. -->
+  <WalkTransferDuration>
+    <DefaultDuration>PT13M</DefaultDuration>
+  </WalkTransferDuration>
+  <BothWays>false</BothWays>
+  <From>
+    <!-- Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. -->
+    <StopPlaceRef ref="ch:2:StopPlace:8506302" version="1"/>
+  </From>
+  <To>
+    <!-- Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. -->
+    <StopPlaceRef ref="ch:2:StopPlace:8589913" version="1"/>
+  </To>
+</SiteConnection>
+
+```
+
+
+
+*->[Template](../templates/SiteConnection.xml)*
+
+### Usage Notes
+For more details see the [use case on transfers](uc03_transfers.md).
+
+
+
+## ServiceJourneyPattern
+*→ [Glossary definition](A4_annex_glossary.md#ServiceJourneyPattern)*
+
+### Purpose
+`ServiceJourneyPattern` are used to describe the basic patterns of `ServiceJourney`s.
+
+
+### Table
+
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | ServiceJourneyPattern | mandatory | 1..1 | unknown | The JOURNEY PATTERN for a (passenger carrying) SERVICE JOURNEY. |  |
+| + | Name | optional | 0..1 | MultilingualString | Name of Traveller |  |
+| + | RouteView | mandatory | 1..1 | unknown | Annotated reference to a ROUTE. |  |
+| ++ | LineRef | mandatory | 1..1 | LineRefStructure | Reference to a LINE. |  |
+| + | DirectionType | mandatory | 0..1 | RelativeDirectionEnumeration | For fares for DISTANCE MATRIXE LEMENTs, DIRECTION in which price applies. |  |
+| + | pointsInSequence | mandatory | 0..1 | vehicleMeetingPointsInSequence_RelStructure |  |  |
+| ++ | StopPointInJourneyPattern | mandatory | 1..1 | unknown | The use of a SCHEDULED STOP POINT in a specified order. within a JOURNEY PATTERN or SERVICE PATTERN. |  |
+| +++ | ScheduledStopPointRef | mandatory | 0..1 | ScheduledStopPointRefStructure | Specific SCHEDULED STOP POINT at end of CONNECTION. |  |
+| +++ | ForAlighting | mandatory | 0..1 | xsd:boolean | Whether alighting is allowed at the stop Default is true. |  |
+| +++ | ForBoarding | mandatory | 0..1 | xsd:boolean | Whether boarding is allowed at the stop. Default is true. |  |
+| +++ | DestinationDisplayRef | optional | 1..1 | DestinationDisplayRefStructure | Reference to a DESTINATION DISPLAY. | Indicates that the destination has changed. Superseeds Line or ServiceJourney |
+| +++ | RequestStop | optional | 0..1 | xsd:boolean | Whether stop is a request stop for this journey. Default is false. |  |
+| +++ | StopUse | optional | 0..1 | StopUseEnumeration | Nature of use of stop, e.g. access, interchange only, or pass through. Default is Access. | All values possible |
+| +++ | bookingArrangements | optional | 0..1 | bookingArrangements_RelStructure | Set of possible Booking Arrangements for Cancellations. +v2.0 |  |
+| ++++ | BookingArrangementRef | optional | 1..1 | BookingArrangementRefStructure | Reference to a BOOKING ARRANGEMENT. | Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information. |
+| ++++ | BookingArrangement | we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here | 1..1 | unknown | Details of the booking arrangements for a given LINE, STOP, SERVICE etc. |  |
+| + | ServiceJourneyPatternType | expected | 0..1 | ServiceJourneyPatternTypeEnumeration | Type of SERVICE JOURNEY PATTERN. |  |
+
+
+
+*-> [General NeTEx definition](../generated/xcore/ServiceJourneyPattern.html)*
+
+### Example
+
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ServiceJourneyPattern  id="ch:1:ServiceJourneyPattern:1" version="1">
+  <Name>Bern-Spiez</Name>
+  <RouteView>
+    <LineRef ref="ch:1:slnid:1024437" version="1"/>
+  </RouteView>
+  <DirectionType>outbound</DirectionType>
+  <pointsInSequence>
+    <StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.1" version="1">
+      <ScheduledStopPointRef ref="ch:1:sloid:7000:5:9" version="1"/>
+      <ForAlighting>false</ForAlighting>
+      <ForBoarding>true</ForBoarding>
+      <DestinationDisplayRef ref="DestinationDisplay:1" version="1">
+        <!-- Indicates that the destination has changed. Superseeds Line or ServiceJourney -->
+      </DestinationDisplayRef>
+      <RequestStop>false</RequestStop>
+      <StopUse>access</StopUse>
+      <!-- All values possible -->
+      <bookingArrangements>
+        <BookingArrangementRef ref="generated" version="1">
+          <!-- Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information. -->
+        </BookingArrangementRef>
+      </bookingArrangements>
+    </StopPointInJourneyPattern>
+    <StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.2" version="1">
+      <ScheduledStopPointRef ref="ch:1:sloid:7100:1:1" version="1"/>
+      <ForAlighting>true</ForAlighting>
+      <ForBoarding>true</ForBoarding>
+    </StopPointInJourneyPattern>
+    <StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.3" version="1">
+      <ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" version="1"/>
+      <ForAlighting>true</ForAlighting>
+      <ForBoarding>false</ForBoarding>
+    </StopPointInJourneyPattern>
+  </pointsInSequence>
+  <ServiceJourneyPatternType>passenger</ServiceJourneyPatternType>
+</ServiceJourneyPattern>
+
+```
+
+
+
+*->[Template](../templates/ServiceJourneyPattern)*
+
+### Usage Notes
+>** TODO**
 
 
 ## Notice
-(NeTEx-1, 7.7.18.4.1)
-The NOTICE Model defines reusable text note elements that may be attached to timetables as footnotes, used as announcements, etc. NOTICES are associated with other entities using a NOTICE ASSIGNMENT. NOTICES may be classified with a TYPE OF NOTICE.
+*→ [Glossary definition](A4_annex_glossary.md#Notice)*
 
+### Purpose
+> **TODO** needs to be described in more detail
+ 
+
+### Table
 
 
 | Sub | Element | Usage | Card | Type | Description | Note |
@@ -419,6 +613,11 @@ The NOTICE Model defines reusable text note elements that may be attached to tim
 | + | TypeOfNoticeRef | expected | 1..1 | TypeOfNoticeRefStructure | Reference to a TYPE OF NOTICE. |  |
 | + | CanBeAdvertised | expected | 0..1 | xsd:boolean | Whether NOTICE is advertised to public. This may be overridden on an assignment. | Wheter the NOTICE is advertised |
 
+
+
+*-> [General NeTEx definition](../generated/xcore/Notice.html)*
+
+### Example
 
 
 
@@ -452,11 +651,20 @@ The NOTICE Model defines reusable text note elements that may be attached to tim
 ```
 
 
-- [General NeTEx definition](../generated/xcore/Notice.html)
+
+*->[Template](../templates/Notice.xml)*
+
+### Usage Notes
+> ** TODO** do we need a special use case?
 
 
 ## NoticeAssignment
-> **TODO **
+*→ [Glossary definition](A4_annex_glossary.md#NoticeAssignment)*
+
+### Purpose
+Assign a `Notice` to an element. 
+
+### Table
 
 
 | Sub | Element | Usage | Card | Type | Description | Note |
@@ -465,6 +673,11 @@ The NOTICE Model defines reusable text note elements that may be attached to tim
 | ++ | AvailabilityConditionRef | optional | 1..1 | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. |  |
 | + | NoticeRef | expected | 1..1 | NoticeRefStructure | Reference to a NOTICE i.e. footnote, note, announcement or other informational text element. |  |
 
+
+
+*-> [General NeTEx definition](../generated/xcore/NoticeAssignment.html)*
+
+### Example
 
 
 
@@ -481,4 +694,5 @@ The NOTICE Model defines reusable text note elements that may be attached to tim
 ```
 
 
-- [General NeTEx definition](../generated/xcore/NoticeAssignment.html)
+
+*->[Template](../templates/NoticeAssignment.xml)*

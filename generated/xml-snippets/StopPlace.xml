@@ -2,45 +2,40 @@
 <StopPlace  id="ch:1:sloid:7000" version="1">
   <!-- Structure of the id, example: "ch:2:StopPlace:8503000" -->
   <ValidBetween>
+    <!-- **TODO** We could transport the validity here. We prefer not to do this as we don't support versions -->
     <FromDate>2026-01-01T00:00:00</FromDate>
     <ToDate>2026-12-31T00:00:00</ToDate>
   </ValidBetween>
-  <TopographicPlaceRef>TODO</TopographicPlaceRef>
   <alternativeTexts>
     <AlternativeText id="ch:1:sloid:7000:AlternativeText">
-      <!-- Abbreviation of the STOP PLACE. -->
+      <!-- Used for abbreviated name of the StopPlace  **TODO** really? Also see ShortName below and note that we don't seem to use PublicCode -->
       <Text>CHR</Text>
     </AlternativeText>
   </alternativeTexts>
   <keyList>
-    <!-- KEY LIST with the KEY VALUEs related to the STOP PLACE.\
-                                SKI use KeyValues:\
-                                - one for the Didok number
-                                - one for the SLOID
-                                For delivery to SKI only one Value is necessary. -->
+    <!-- Key value pairs for DIDOK number and SLOID -->
     <KeyValue>
       <Key>DIDOK</Key>
-      <!-- DIDOK number has to be provided -->
+      <!-- DIDOK number **TODO** Cf. duplicates in privatCode below -->
       <Value>7000</Value>
     </KeyValue>
     <KeyValue>
       <Key>SLOID</Key>
-      <!-- SLOID has to be provided **TODO** really mandatory, stations outside CH? -->
+      <!-- SLOID **TODO** really mandatory, stations outside CH? -->
       <Value>ch:1:sloid:7000</Value>
     </KeyValue>
   </keyList>
   <privateCodes>
-    <PrivateCode>7000</PrivateCode>
+    <PrivateCode type="didok">7000</PrivateCode>
     <!-- In Switzerland to be filled with the DiDok number. Replaces single PublicCode from NeTEx 1.0 -->
+    <PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
+    <!-- In Switzerland to be filled with the SLOID. Replaces single PublicCode from NeTEx 1.0 -->
   </privateCodes>
   <Extensions>
-    <!-- Extensions of the STOP PLACE:
-                                - HafasPriority
-                                - HafasKMInfo -->
     <HafasPriority>
-      <!-- (**TODO** Replace by Weighting ?) Interchange Priority, when several alternative interchange possibilities exist. -->
+      <!-- Interchange priority if several alternative interchange possibilities exist. Integer allows for finer grained value than standard element Weighting. -->
       <Value>4</Value>
-      <!-- **TODO** Allowed values... -->
+      <!-- **TODO** Allowed range... -->
     </HafasPriority>
     <HafasKMInfo>
       <!-- **TODO** ...Value for Interchange points. -->
@@ -50,38 +45,41 @@
   </Extensions>
   <Name>Bern</Name>
   <ShortName>BE</ShortName>
-  <!-- Used to transmit the abbreviation of the StopPlace. There is not one abbreviation for all StopPlaces -->
+  <!-- Used to transmit the abbreviation of the StopPlace. Not available for every StopPlace. -->
+  <alternativeNames>
+    <!-- **TODO** To what extent are AlternativeNames used? Adapt everything below accordingly. -->
+    <AlternativeName id="generated" version="1">
+      <Lang>it</Lang>
+      <NameType>label</NameType>
+      <Name>Berna</Name>
+      <ShortName>Berna</ShortName>
+      <Abbreviation>BE</Abbreviation>
+    </AlternativeName>
+  </alternativeNames>
   <Centroid>
-    <!-- Global or national location of STOP PLACE. -->
+    <!-- Global or national location -->
     <Name/>
     <Location>
-      <!-- Note concerning coordinates:
-- The main coordinates are given as **WSG84**.
-- The Swiss coordinates are added as well, when available
-- INFO+ will not use the data from the import. Always the DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places. -->
+      <!-- Note concerning coordinates - The main coordinates are given as **WSG84**. - The Swiss coordinates are added as well if available. (**TODO** How?)- INFO+ will not use the data from the import, instead DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places. -->
       <Longitude>7.43913088992</Longitude>
       <Latitude>46.94883228914</Latitude>
       <Altitude>540.2</Altitude>
     </Location>
   </Centroid>
-  <!-- Used for the abbreviation of the name if an abbreviation exists / is necessary -->
   <alternativeNames>
-    <!-- **TODO** Alternative names for SITE ELEMENT.\
-                                We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. -->
+    <!-- **TODO** Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. -->
     <AlternativeName id="ch:1:sloid:7000:it" version="1">
       <Name lang="it">Berna</Name>
     </AlternativeName>
   </alternativeNames>
+  <TopographicPlaceRef ref="BE-bern" version="1">
+    <!-- **TODO** more details -->
+  </TopographicPlaceRef>
   <StopPlaceType>railStation</StopPlaceType>
-  <Weighting>preferredInterchange<!-- TODO fix validation issue with Weighting element. --><!-- Default relative weighting to be used for stop place.\
-The STOP PLACE element WEIGHTING basically accomplishes this feature but only allows the following values:
-- noInterchange
-- interchangeAllowed
-- recommendedInterchange
-- preferredInterchange
-To incorporate the desired value range, we will add an EXTENSION element `HafasPriority` that contains the full information. --></Weighting>
+  <Weighting>preferredInterchange</Weighting>
+  <!-- TODO fix validation issue with Weighting element. --><!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. -->
   <quays>
-    <!-- The QUAYs contained in the STOP PLACE, that is platforms, jetties, bays, taxi ranks, and other points of physical access to VEHICLEs. -->
+    <!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. -->
     <Quay id="ch:1:sloid:7000:5:9" version="1"/>
   </quays>
 </StopPlace>

@@ -2,17 +2,18 @@
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-| + | validityConditions | expected | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. | A specific type of VALIDITY CONDITION used to specify a set of temporal conditions that can be associated with the SERVICE JOURNEY, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
-| ++ | [AvailabilityCondition](AvailabilityCondition.md) | expected | 1..1 | unknown | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. | **TODO** Expand the element, see ServiceJourney: more spacific requirements than standard AvailabilityCondition. |
-| + | keyList | mandatory | 1..1 | KeyListStructure | A list of alternative Key values for an element. | KEY LIST with the KEY VALUEs belonging to the repeating SERVICE JOURNEYs. Will contain the SJYID. |
-| ++ | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. | A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. |
+| + | validityConditions | expected | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. | Used to specify a set of temporal conditions that can be associated with the TemplateServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
+| ++ | [AvailabilityCondition](AvailabilityCondition.md) | mandatory | 1..1 | unknown | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. | More spacific requirements than standard AvailabilityCondition. Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. |
+| + | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | Replaces the single PrivateCode. |
+| ++ | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+| + | keyList | mandatory | 1..1 | KeyListStructure | A list of alternative Key values for an element. | Key list for the repeating journeys. Contains the SJYID. |
+| ++ | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. | A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. |
 | +++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
 | +++ | Value | mandatory | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
 | + | Extensions | optional | 1..1 | ExtensionsStructure | User defined Extensions to ENTITY in schema. (Wrapper tag used to avoid problems with handling of optional 'any' by some validators). | Used to indicate Facility changes. |
 | ++ | facilities | optional | 0..1 | serviceFacilitySets_RelStructure | FACILITies available associated with JOURNEY. |  |
 | +++ | Facility | optional | 1..1 | unknown |  |  |
 | ++++ | ServiceFacilitySetRef | mandatory | 1..1 | ServiceFacilitySetRefStructure | Reference to a SERVICE FACILITY SET. |  |
-| + | PrivateCode | optional | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | Private code of the repeating SERVICE JOURNEY. |
 | + | TransportMode | optional | 0..1 | AllModesEnumeration | MODE. |  |
 | + | TypeOfProductCategoryRef | expected | 1..1 | TypeOfProductCategoryRefStructure | Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc
 See ERA B.4 7037 Characteristic description code. |  |
@@ -28,12 +29,12 @@ See ERA B.4 7037 Characteristic description code. |  |
 | + | DirectionType | optional | 0..1 | RelativeDirectionEnumeration | For fares for DISTANCE MATRIXE LEMENTs, DIRECTION in which price applies. | Allowed are: inbound, outbound |
 | + | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure | TRAIN NUMBERs in frame. |  |
 | ++ | TrainNumberRef | mandatory | 1..1 | TrainNumberRefStructure | Reference to a TRAIN NUMBER. |  |
-| + | [Destination](Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure | Destination of Travel. Note that for a point-to-point TARIFF the origin is assigned with a DISTANCE MATRIX ELEMENT. | **TODO** needs to be created as well |
+| + | [Destination](Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure | Destination of Travel. Note that for a point-to-point TARIFF the origin is assigned with a DISTANCE MATRIX ELEMENT. | **TODO** needs to be created as well - is JourneyEndpointStructure |
 | + | passingTimes | expected | 0..1 | timetabledPassingTimes_RelStructure | PASSING TIMEs for VEHICLE JOURNEY. |  |
 | ++ | [TimetabledPassingTime](TimetabledPassingTime.md) | expected | 1..1 | unknown | TIMETABLED PASSING TIME at TIMING POINT. |  |
 | + | TemplateVehicleJourneyType | expected | 0..1 | TemplateVehicleJourneyTypeEnumeration | Type of TEMPLATE VEHICLE JOURNEY. |  |
-| + | frequencyGroups | mandatory | 0..1 | frequencyGroupsInFrame_RelStructure | FREQUENCY GROUPs In frame. Can be used to template VEHICLE JOURNEYs. | We strictly map one JOURNEY FREQUENCY per SERVICE JOURNEY. |
-| ++ | RhythmicalJourneyGroup | expected | 1..1 | unknown | A group of VEHICLE JOURNEYS following the same JOURNEY PATTERN having the same "rhythm" every hour (for example runs all xxh10, xxh25 and xxh45... e) between a specified start and end time. |  |
+| + | frequencyGroups | mandatory | 0..1 | frequencyGroupsInFrame_RelStructure | FREQUENCY GROUPs In frame. Can be used to template VEHICLE JOURNEYs. | We strictly map one frequency to the TemplateServiceJourney. |
+| ++ | RhythmicalJourneyGroup | optional | 1..1 | unknown | A group of VEHICLE JOURNEYS following the same JOURNEY PATTERN having the same "rhythm" every hour (for example runs all xxh10, xxh25 and xxh45... e) between a specified start and end time. | **TODO** Will this be used? Or should it be forbidden? |
 | +++ | Name | optional | 0..1 | MultilingualString | Name of Traveller | **TODO** - wanted? more advice on how to handle language? |
 | +++ | Description | optional | 0..1 | MultilingualString | Description of contents. |  |
 | +++ | FirstDepartureTime | mandatory | 1..1 | xsd:time | Time of first departure in JOURNEY FREQUENCY GROUP at the first stop. |  |

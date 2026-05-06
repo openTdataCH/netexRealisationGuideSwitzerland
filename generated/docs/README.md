@@ -3,7 +3,7 @@
 This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.
 It provides detailed clarifications and describes deviations from the official standard, with the aim of achieving consistent use throughout public transport in Switzerland.
 
-The realisation specifications in this document will be agreed by the KIDS (“Kundeninfor-mationsdaten-Schnittstellen im öV-Schweiz”) working group.
+The realisation specifications in this document will be agreed by the KIDS (“Kundeninformationsdaten-Schnittstellen im öV-Schweiz”) working group.
 
 The realisation specifications will be officially released by the National Commission Customer Information (Nationale Kommission Kundeninformation (KKI)) . 
 
@@ -13,9 +13,11 @@ The realisation specifications mainly concern:
 •	intentional deviations from the official standard within public transport in Switzerland.
 
 ## Supported NeTEx version
-This profile is based on NeTEx 2.0 xxxlink **TODO**.
+This profile is based on [NeTEx 2.0 XSD](https://github.com/NeTEx-CEN/NeTEx/tree/v2.0).
 
-The relevant specification documents are **TODO**
+>**TODO** we need to put the exact XSD on oev-info.ch including the DRT part
+
+The relevant specification documents can be found in the appropriate stores with the number: CEN/TS 16614. eg. through [VSS](https://www.vss.ch/vss_de/)
 
 ## Binding nature
 This document describes the way in which the NeTEx standard is specifically applied and interpreted in Switzerland. It forms the basis for agreements concerning the connection between the individual public transport partners for exchanging timetables. 
@@ -37,11 +39,16 @@ This document describes the way in which the NeTEx standard is specifically appl
   - [Transfers](uc03_transfers.md)
   - [Service facilities](uc04_service_facilities.md)
   - [Usage of JourneyParts](uc05_journey_parts.md)
-  - **TODO**
+  - [Modes and the "KI Branchenstandard"](uc06_modes_submodes.md)
+  - [Check constraints](uc07_checkconstraints.md)
   - [Direct carriages ("Kurswagen")](uc08_kurswagen.md)
   - [Accessibility](uc09_accessibility.md)
   - [Journeys passing midnight](uc10_midnight_passing.md)
-  - Modes  and the ["KI Branchenstandard"](https://www.oev-info.ch/de/branchenstandard/branchenstandard-kundeninformation-bs-ki/branchenstandard-kundeninformation-bs-ki)
+  - Later: [Touristic offers](uc11_touristic_offers.md)
+  - Later: [Car transport rail](uc12_carTransportRail.md)
+  - Later: [Changes in the destination](uc13_changes_in_destination.md)
+  - [Frequency based ServiceJourney](uc14_frequencies.md)
+  - Later: [Formations](uc15_formations.md)
 - Mapping tables
   - Modes
   - ServiceAttribute 
@@ -49,8 +56,8 @@ This document describes the way in which the NeTEx standard is specifically appl
   - [Resources and references](A1_annex_resources_references.md)
   - [Differences between Swiss profile and EPIP/EPIAP and how they could be amended](A2_annex_comparison_EPIP_EPIAP.md)
   - [Differences to the French and nordic profile](A3_annex_comparison_France_Norway.md)
-  - [Glossary](A4_annex_glossary)
-  - [Changelog andmigration from Swiss profile 1.0 to 2.0)](A5_changelog_migration.md)
+  - [Glossary](A4_annex_glossary.md)
+  - [Changelog and migration from Swiss profile 1.0 to 2.0)](A5_changelog_migration.md)
 
 
 ## Examples
@@ -62,7 +69,7 @@ We have a [set of examples](../examples/README.md) that show how to create use c
 * Last change: **TODO**
 * Contact: info.fachbus@sbb.ch
 
-## Copyright
+## Copyright / License
 The document is free. Proliferation in unchanged form is explicitly supported.
 All toolings are - when nothing else is mentioned - available as AGPL 3.0.
 

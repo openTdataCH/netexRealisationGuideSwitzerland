@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ServiceJourneyPattern  id="ch:1:ServiceJourneyPattern:1" version="1">
+  <Name>Bern-Spiez</Name>
+  <RouteView>
+    <LineRef ref="ch:1:slnid:1024437" version="1"/>
+  </RouteView>
+  <DirectionType>outbound</DirectionType>
+  <pointsInSequence>
+    <StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.1" version="1">
+      <ScheduledStopPointRef ref="ch:1:sloid:7000:5:9" version="1"/>
+      <ForAlighting>false</ForAlighting>
+      <ForBoarding>true</ForBoarding>
+      <DestinationDisplayRef ref="DestinationDisplay:1" version="1">
+        <!-- Indicates that the destination has changed. Superseeds Line or ServiceJourney -->
+      </DestinationDisplayRef>
+      <RequestStop>false</RequestStop>
+      <StopUse>access</StopUse>
+      <!-- All values possible -->
+      <bookingArrangements>
+        <BookingArrangementRef ref="generated" version="1">
+          <!-- Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information. -->
+        </BookingArrangementRef>
+      </bookingArrangements>
+    </StopPointInJourneyPattern>
+    <StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.2" version="1">
+      <ScheduledStopPointRef ref="ch:1:sloid:7100:1:1" version="1"/>
+      <ForAlighting>true</ForAlighting>
+      <ForBoarding>true</ForBoarding>
+    </StopPointInJourneyPattern>
+    <StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.3" version="1">
+      <ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" version="1"/>
+      <ForAlighting>true</ForAlighting>
+      <ForBoarding>false</ForBoarding>
+    </StopPointInJourneyPattern>
+  </pointsInSequence>
+  <ServiceJourneyPatternType>passenger</ServiceJourneyPatternType>
+</ServiceJourneyPattern>

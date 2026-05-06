@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ServiceJourney  id="generated" version="1">
-  <!-- ServiceJourney is used for common SERVICE JOURNEYs. -->
   <validityConditions>
-    <!-- A specific type of VALIDITY CONDITION used to specify a set of temporal conditions that can be associated with the SERVICE JOURNEY, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+    <!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
     <AvailabilityCondition id="generated" version="1">
-      <!-- Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
       <!-- Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
       <FromDate>2026-05-17T00:00:00Z</FromDate>
       <!-- Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
@@ -15,6 +13,9 @@
       <ValidDayBits>01010111</ValidDayBits>
     </AvailabilityCondition>
   </validityConditions>
+  <privateCodes>
+    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
+  </privateCodes>
   <keyList>
     <!-- KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. -->
     <KeyValue>
@@ -34,11 +35,9 @@
       </Facility>
     </facilities>
   </Extensions>
-  <PrivateCode>1</PrivateCode>
-  <!-- Private code of SERVICE JOURNEY. -->
   <TransportMode>rail</TransportMode>
   <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1">
-    <!-- **TODO** I am not sure if it is not mandatory for us. -->
+    <!-- **TODO** Or should it be mandatory? -->
   </TypeOfProductCategoryRef>
   <TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
   <noticeAssignments>

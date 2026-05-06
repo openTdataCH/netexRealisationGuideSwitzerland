@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TemplateServiceJourney  id="generated" version="1">
-  <!-- TemplateServiceJourney is used for repeating SERVICE JOURNEYs. -->
+  <!-- TemplateServiceJourney is used for journeys repeating at a certain frequency. -->
   <validityConditions>
-    <!-- A specific type of VALIDITY CONDITION used to specify a set of temporal conditions that can be associated with the SERVICE JOURNEY, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+    <!-- Used to specify a set of temporal conditions that can be associated with the TemplateServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
     <AvailabilityCondition id="generated" version="1">
-      <!-- **TODO** Expand the element, see ServiceJourney: more spacific requirements than standard AvailabilityCondition. -->
-      <FromDate>2026-02-15T00:00:00Z</FromDate>
-      <ToDate>2026-06-15T00:00:00Z</ToDate>
+      <!-- More spacific requirements than standard AvailabilityCondition. Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
+      <FromDate>2026-05-17T00:00:00Z</FromDate>
+      <!-- Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
+      <ToDate>2026-05-17T00:00:00Z</ToDate>
+      <!-- Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
       <IsAvailable>true</IsAvailable>
+      <!-- mandatory by NeTEx **TODO** really? -->
       <ValidDayBits>01010111</ValidDayBits>
     </AvailabilityCondition>
   </validityConditions>
+  <privateCodes>
+    <!-- Replaces the single PrivateCode. -->
+    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
+  </privateCodes>
   <keyList>
-    <!-- KEY LIST with the KEY VALUEs belonging to the repeating SERVICE JOURNEYs. Will contain the SJYID. -->
+    <!-- Key list for the repeating journeys. Contains the SJYID. -->
     <KeyValue>
-      <!-- A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. -->
+      <!-- A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. -->
       <Key>SJYID</Key>
       <Value>ch:1:sjyid:100001:71707-003</Value>
     </KeyValue>
@@ -30,8 +37,6 @@
       </Facility>
     </facilities>
   </Extensions>
-  <PrivateCode>1</PrivateCode>
-  <!-- Private code of the repeating SERVICE JOURNEY. -->
   <TransportMode>rail</TransportMode>
   <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1"/>
   <TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
@@ -60,8 +65,18 @@
     <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
   </trainNumbers>
   <Destination>
-    <!-- **TODO** needs to be created as well -->
-    <ScheduledStopPointRef ref="ch:1:sloid:3412" version="1"/>
+    <!-- **TODO** needs to be created as well - is JourneyEndpointStructure -->
+    <Name lang="de">Wollishofen</Name>
+    <!-- **TODO** - tbd / check -->
+    <ScheduledStopPointRef ref="ch:1:sloid:3412" version="1">
+      <!-- **TODO** - tbd / check -->
+    </ScheduledStopPointRef>
+    <DestinationDisplayRef ref="generated" version="1">
+      <!-- **TODO** - tbd / check -->
+    </DestinationDisplayRef>
+    <PlaceRef ref="generated" version="1">
+      <!-- **TODO** - tbd / check -->
+    </PlaceRef>
   </Destination>
   <passingTimes>
     <TimetabledPassingTime id="generated" version="1">
@@ -70,8 +85,9 @@
   </passingTimes>
   <TemplateVehicleJourneyType>headway</TemplateVehicleJourneyType>
   <frequencyGroups>
-    <!-- We strictly map one JOURNEY FREQUENCY per SERVICE JOURNEY. -->
+    <!-- We strictly map one frequency to the TemplateServiceJourney. -->
     <RhythmicalJourneyGroup version="1" id="ch:1:RhythmicalJourneyGroup:0253">
+      <!-- **TODO** Will this be used? Or should it be forbidden? -->
       <Name>Regular Interval service between 10am and 17:00 pm</Name>
       <!-- **TODO** - wanted? more advice on how to handle language? -->
       <Description>At 20 &amp; 45 Minutes past the hour</Description>

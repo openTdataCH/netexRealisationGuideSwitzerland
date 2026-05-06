@@ -2,14 +2,12 @@
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-| + | keyList | mandatory | 1..1 | KeyListStructure | A list of alternative Key values for an element. | KEY LIST with the KEY VALUEs related to the QUAY.\
-                                        SKI use KeyValues: for the SLOID.\
-                                        For delivery to SKI only if available. |
-| ++ | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. |  |
-| +++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
+| + | keyList | expected | 1..1 | KeyListStructure | A list of alternative Key values for an element. |  |
+| ++ | KeyValue | expected | 1..* | KeyValueStructure | Key value pair for Entity. | When no sloid is possible, it may be empty |
+| +++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. | SLOID is mandatory key |
 | +++ | Value | mandatory | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
-| + | Centroid | mandatory | 0..1 | SimplePoint_VersionStructure | Centre Coordinates of GROUP of STOP PLACEs. | Location of POINT of QUAY. |
-| ++ | Location | mandatory | 0..1 | LocationStructure | Absolute location of EQUIPMENT. |  |
-| +++ | Longitude | mandatory | 1..1 | LongitudeType | Longitude from Greenwich Meridian. -180 (East) to +180 (West). |  |
-| +++ | Latitude | mandatory | 1..1 | LatitudeType | Latitude from equator. -90 (South) to +90 (North). |  |
-| +++ | Altitude | mandatory | 0..1 | AltitudeType | Altitude. |  |
+| + | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
+| ++ | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+| + | [Centroid](Centroid.md) | mandatory | 0..1 | SimplePoint_VersionStructure | Centre Coordinates of GROUP of STOP PLACEs. | Location of Quay. |
+| + | SiteRef | optional | 0..1 | SiteRefStructure | Reference to parent of SITE, if any. | Can reference the parent Quay or StopPlace |
+| + | PublicCode | mandatory | 0..1 | PublicCodeStructure | Public code for JOURNEY. | Code used to identify the Quay to the public |

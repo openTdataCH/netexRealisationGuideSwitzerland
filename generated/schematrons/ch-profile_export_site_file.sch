@@ -8,9 +8,11 @@
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:FrameDefaults">
       <sch:assert test="count(netex:DefaultLocale) > 0">DefaultLocale must be present</sch:assert>
+      <sch:assert test="count(netex:DefaultLocationSystem) > 0">DefaultLocationSystem must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:FrameDefaults/netex:DefaultLocale">
       <sch:assert test="count(netex:TimeZoneOffset) > 0">TimeZoneOffset must be present</sch:assert>
+      <sch:assert test="count(netex:TimeZone) > 0">TimeZone must be present</sch:assert>
       <sch:assert test="count(netex:SummerTimeZoneOffset) > 0">SummerTimeZoneOffset must be present</sch:assert>
       <sch:assert test="count(netex:DefaultLanguage) > 0">DefaultLanguage must be present</sch:assert>
       </sch:rule>
@@ -26,6 +28,17 @@
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:responsibilitySets">
       <sch:assert test="count(netex:ResponsibilitySet) > 0">ResponsibilitySet must be present</sch:assert>
       <sch:assert test="count(netex:ResponsibilitySet) > 0">ResponsibilitySet must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:responsibilitySets/netex:ResponsibilitySet">
+      <sch:assert test="count(netex:Name) > 0">Name must be present</sch:assert>
+      <sch:assert test="count(netex:roles) > 0">roles must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:responsibilitySets/netex:ResponsibilitySet/netex:roles">
+      <sch:assert test="count(netex:ResponsibilityRoleAssignment) > 0">ResponsibilityRoleAssignment must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:responsibilitySets/netex:ResponsibilitySet/netex:roles/netex:ResponsibilityRoleAssignment">
+      <sch:assert test="count(netex:StakeholderRoleType) > 0">StakeholderRoleType must be present</sch:assert>
+      <sch:assert test="count(netex:ResponsibleOrganisationRef) > 0">ResponsibleOrganisationRef must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:typesOfValue/netex:ValueSet/netex:values/netex:TypeOfNotice">
       <!-- TypeOfNotice with id="ch:1:TypeOfNotice:11" must exist somewhere in the document -->
@@ -90,15 +103,20 @@
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ResourceFrame/netex:serviceFacilitySets/netex:ServiceFacilitySet">
       <sch:assert test="count(netex:accommodations) = 0">accommodations must NOT be present</sch:assert>
       </sch:rule>
-    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:topographicPlaces">
-      <sch:assert test="count(netex:TopographicPlace) > 0">TopographicPlace must be present</sch:assert>
-      </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:topographicPlaces/netex:TopographicPlace">
+      <sch:assert test="count(@id) > 0">Attribute "id" must be present on TopographicPlace</sch:assert>
+      <sch:assert test="count(@version) > 0">Attribute "version" must be present on TopographicPlace</sch:assert>
       <sch:assert test="count(netex:Descriptor) > 0">Descriptor must be present</sch:assert>
       <sch:assert test="count(netex:TopographicPlaceType) > 0">TopographicPlaceType must be present</sch:assert>
       </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:topographicPlaces">
+      <sch:assert test="count(netex:TopographicPlace) > 0">TopographicPlace must be present</sch:assert>
+      </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:topographicPlaces/netex:TopographicPlace/netex:Descriptor">
       <sch:assert test="count(netex:Name) > 0">Name must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:topographicPlaces/netex:TopographicPlace/netex:TopographicPlaceType">
+      <sch:assert test="(. = 'county' or . = 'country')">Value must be one of: county country</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame">
       <sch:assert test="count(netex:addresses) = 0">addresses must NOT be present</sch:assert>
@@ -124,6 +142,10 @@
       <sch:assert test="count(netex:Centroid) > 0">Centroid must be present</sch:assert>
       <sch:assert test="count(netex:Url) = 0">Url must NOT be present</sch:assert>
       </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:ValidBetween">
+      <sch:assert test="count(netex:FromDate) > 0">FromDate must be present</sch:assert>
+      <sch:assert test="count(netex:ToDate) > 0">ToDate must be present</sch:assert>
+      </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:alternativeTexts">
       <sch:assert test="count(netex:AlternativeText) > 0">AlternativeText must be present</sch:assert>
       </sch:rule>
@@ -145,12 +167,18 @@
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:privateCodes">
       <sch:assert test="count(netex:PrivateCode) > 0">PrivateCode must be present</sch:assert>
+      <sch:assert test="count(netex:PrivateCode) > 0">PrivateCode must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:Extensions/netex:HafasPriority">
       <sch:assert test="count(netex:Value) > 0">Value must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:Extensions/netex:HafasKMInfo">
       <sch:assert test="count(netex:Value) > 0">Value must be present</sch:assert>
+      </sch:rule>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:alternativeNames/netex:AlternativeName">
+      <sch:assert test="count(netex:TypeOfName) = 0">TypeOfName must NOT be present</sch:assert>
+      <sch:assert test="count(netex:Name) > 0">Name must be present</sch:assert>
+      <sch:assert test="count(netex:Name) > 0">Name must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:Centroid">
       <sch:assert test="count(netex:Location) > 0">Location must be present</sch:assert>
@@ -165,30 +193,30 @@
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:alternativeNames/netex:AlternativeName/netex:NameType">
       <sch:assert test="(. = 'alias' or . = 'translation')">Value must be one of: alias translation</sch:assert>
       </sch:rule>
-    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:alternativeNames/netex:AlternativeName">
-      <sch:assert test="count(netex:Name) > 0">Name must be present</sch:assert>
-      </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:alternativeNames/netex:AlternativeName/netex:Name">
       <sch:assert test="count(@lang) > 0">Attribute "lang" must be present on Name</sch:assert>
       </sch:rule>
-    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:quays/netex:Quay">
-      <sch:assert test="count(netex:keyList) > 0">keyList must be present</sch:assert>
-      <sch:assert test="count(netex:Centroid) > 0">Centroid must be present</sch:assert>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:Weighting">
+      <sch:assert test="(. = 'noInterchange' or . = 'interchangeAllowed' or . = 'recommendedInterchange' or . = 'preferredInterchange')">Value must be one of: noInterchange interchangeAllowed recommendedInterchange preferredInterchange</sch:assert>
       </sch:rule>
-    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:quays/netex:Quay/netex:keyList">
-      <sch:assert test="count(netex:KeyValue) > 0">KeyValue must be present</sch:assert>
+    <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:quays/netex:Quay">
+      <sch:assert test="count(@id) > 0">Attribute "id" must be present on Quay</sch:assert>
+      <sch:assert test="count(@version) > 0">Attribute "version" must be present on Quay</sch:assert>
+      <sch:assert test="count(netex:Centroid) > 0">Centroid must be present</sch:assert>
+      <sch:assert test="count(netex:PublicCode) > 0">PublicCode must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:quays/netex:Quay/netex:keyList/netex:KeyValue">
       <sch:assert test="count(netex:Key) > 0">Key must be present</sch:assert>
       <sch:assert test="count(netex:Value) > 0">Value must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:quays/netex:Quay/netex:Centroid">
+      <sch:assert test="count(@id) > 0">Attribute "id" must be present on Centroid</sch:assert>
+      <sch:assert test="count(@version) > 0">Attribute "version" must be present on Centroid</sch:assert>
       <sch:assert test="count(netex:Location) > 0">Location must be present</sch:assert>
       </sch:rule>
     <sch:rule context="//netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:SiteFrame/netex:stopPlaces/netex:StopPlace/netex:quays/netex:Quay/netex:Centroid/netex:Location">
       <sch:assert test="count(netex:Longitude) > 0">Longitude must be present</sch:assert>
       <sch:assert test="count(netex:Latitude) > 0">Latitude must be present</sch:assert>
-      <sch:assert test="count(netex:Altitude) > 0">Altitude must be present</sch:assert>
       </sch:rule>
     </sch:pattern>
   </sch:schema>
