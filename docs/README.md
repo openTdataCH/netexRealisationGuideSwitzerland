@@ -48,6 +48,7 @@ This document describes the way in which the NeTEx standard is specifically appl
   - Later: [Car transport rail](uc12_carTransportRail.md)
   - Later: [Changes in the destination](uc13_changes_in_destination.md)
   - [Frequency based ServiceJourney](uc14_frequencies.md)
+  - Later: [Formations](uc_15_formations.md)
 - Mapping tables
   - Modes
   - ServiceAttribute 
