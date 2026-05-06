@@ -395,7 +395,7 @@ def parse_template_file(file_path, xsd_type_info):
         has_ch_see = any('ch-see' in (comment.text.strip() if comment.text else '') 
                                for comment in comments)
         
-        if not root_element and has_ch_see:
+        if not root_element and has_ch_see is not None:
             # This is a ch-profile template, use root as the element
             root_element = root
         

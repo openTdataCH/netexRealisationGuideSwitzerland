@@ -97,7 +97,7 @@ in the XML snippet.
 
 ## AlternativeName
 
-*→ [Glossary definition](A4_annex_glossary.md#alternativename)*
+*→ [Glossary definition](A4_annex_glossary.md#alternativetext)*
 
 ### Purpose
 
@@ -262,7 +262,7 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
 
 ## TypeOfNotice
 
-`TypeOfNotice` is used within a [Notice](07_service.md#Notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
+`TypeOfNotice` is used within a [Notice](07_service.md#notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
 
 > [!CAUTION]
 > **TODO** Rework table and example xml\

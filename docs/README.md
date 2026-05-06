@@ -48,7 +48,7 @@ This document describes the way in which the NeTEx standard is specifically appl
   - Later: [Car transport rail](uc12_carTransportRail.md)
   - Later: [Changes in the destination](uc13_changes_in_destination.md)
   - [Frequency based ServiceJourney](uc14_frequencies.md)
-  - Later: [Formations](uc_15_formations.md)
+  - Later: [Formations](uc15_formations.md)
 - Mapping tables
   - Modes
   - ServiceAttribute 
@@ -56,7 +56,7 @@ This document describes the way in which the NeTEx standard is specifically appl
   - [Resources and references](A1_annex_resources_references.md)
   - [Differences between Swiss profile and EPIP/EPIAP and how they could be amended](A2_annex_comparison_EPIP_EPIAP.md)
   - [Differences to the French and nordic profile](A3_annex_comparison_France_Norway.md)
-  - [Glossary](A4_annex_glossary)
+  - [Glossary](A4_annex_glossary.md)
   - [Changelog and migration from Swiss profile 1.0 to 2.0)](A5_changelog_migration.md)
 
 

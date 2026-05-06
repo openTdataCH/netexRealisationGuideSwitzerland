@@ -1,20 +1,20 @@
 # Timetables
 In this chapter:
-- [TimetableFrame](09_timetable.md#TimetableFrame)
-- [ServiceJourney](09_timetable.md#ServiceJourney)
-- [TemplateServiceJourney](09_timetable.md#TemplateServiceJourney)
-- [OccupancyView](09_timetable.md#OccupancyView)
-- [TrainNumber](09_timetable.md#TrainNumber)
-- [TimetabledPassingTime](09_timetable.md#TimetabledPassingTime)
-- [InterchangeRule](09_timetable.md#InterchangeRule)
+- [TimetableFrame](09_timetable.md#timetableframe)
+- [ServiceJourney](09_timetable.md#servicejourney)
+- [TemplateServiceJourney](09_timetable.md#templateservicejourney)
+- [OccupancyView](09_timetable.md#occupancyview)
+- [TrainNumber](09_timetable.md#trainnumber)
+- [TimetabledPassingTime](09_timetable.md#timetabledpassingtime)
+- [InterchangeRule](09_timetable.md#interchangerule)
 
 In Service: 
-- [NoticeAssignment](07_service.md#NoticeAssignment)
+- [NoticeAssignment](07_service.md#noticeassignment)
 - [ServiceFacilitySet](10_common.md#ServiceFacilitySet)
 
 In ServiceCalender:
-- [AvailabilityCondition](08_service_calendars.md#AvailabilityCondition)
-- [Timeband](08_service_calendars.md#Timeband)
+- [AvailabilityCondition](08_service_calendars.md#availabilitycondition)
+- [Timeband](08_service_calendars.md#timeband)
 
 
 
@@ -203,7 +203,7 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 
 
 ## ServiceFacilitySet
-*→ [see Common elements](./10_common.md#ServiceFacilitySet)*
+*→ [see Common elements](./10_common.md#servicefacilityset)*
 
 ## JourneyMeeting -> TODO: Probably to be removed
 [//]: # (TODO: Add JourneyMeeting links)
