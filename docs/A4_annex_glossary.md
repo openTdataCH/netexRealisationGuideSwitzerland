@@ -408,6 +408,16 @@ An enumeration on DatedServiceJourney indicating the deviation type. Allowed val
 
 ---
 
+## ServiceCalendar
+
+Long-term planning uses calendar days that are classified as specific DayTypes (example: weekday in school holidays). A ServiceCalendar defines a mapping between DayTypes and OperatingDays
+
+> **NeTEx XSD:** A collection of assignments of OPERATING DAYs to DAY TYPEs.
+
+→ [Full documentation](08_service_calendars.md#ServiceCalendar)
+
+---
+
 ## ServiceCalendarFrame
 
 Groups calendar definitions that describe when services operate - day types, operating periods, and day-type assignments.
