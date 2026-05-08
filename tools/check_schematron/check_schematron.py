@@ -55,7 +55,7 @@ def get_xml_files(input_path):
     else:
         raise ValueError(f"Invalid input path: {input_path}")
 
-def main(argv):
+def main(argv=None):
     try:
         args = parse_args(argv)
 

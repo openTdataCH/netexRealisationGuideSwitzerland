@@ -815,15 +815,11 @@ def parse_args(argv):
         default='PublicationDelivery',
         help='Root element to start processing from (default: PublicationDelivery).'
     )
-    return parser.parse_args(argv[1:])
+    return parser.parse_args(argv)
 
 
-def main(argv):
+def main(argv = None):
     global VERBOSE
-
-    if len(argv) == 1:
-        usage()
-
     args = parse_args(argv)
     template_path = args.template
     xsd_path = args.xsd

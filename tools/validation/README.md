@@ -6,17 +6,17 @@ This tool validates XML files or folders against an XSD schema using `lxml`.
 
 ### Validate a Single XML File
 ```bash
-python xml-validator.py --xml path/to/file.xml --xsd path/to/schema.xsd
+python xml_validator.py --xml path/to/file.xml --xsd path/to/schema.xsd
 ```
 
 ### Validate All XML Files in a Folder
 ```bash
-python xml-validator.py --xml path/to/folder --xsd path/to/schema.xsd
+python xml_validator.py --xml path/to/folder --xsd path/to/schema.xsd
 ```
 
 ### Help
 ```bash
-python xml-validator.py --help
+python xml_validator.py --help
 ```
 
 ## Parameters
@@ -34,7 +34,7 @@ python xml-validator.py --help
 
 ```bash
 # Validate all XML files in the templates folder
-python xml-validator.py --xml templates --xsd xsd/xsd/NeTEx_Publication.xsd
+python xml_validator.py --xml templates --xsd xsd/xsd/NeTEx_Publication.xsd
 ```
 
 ## Dependencies
