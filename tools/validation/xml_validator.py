@@ -8,6 +8,7 @@ import argparse
 import os
 import sys
 from lxml import etree
+from tools.configuration import XSD_FILE_PATH
 
 
 def validate_xml(xml_path, xsd_path):
@@ -59,8 +60,8 @@ def main():
     )
     parser.add_argument(
         "--xsd",
-        required=True,
-        help="Path to the XSD schema file."
+        default = XSD_FILE_PATH,
+        help=f"Path to the XSD schema file (Default: {XSD_FILE_PATH})."
     )
 
     args = parser.parse_args()
