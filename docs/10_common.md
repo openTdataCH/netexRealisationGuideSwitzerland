@@ -86,7 +86,7 @@ in the XML snippet.
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/FrameDefaults.md)
 
-*→ [General NeTEx definition](../generated/xcore/FrameDefaults.html)*
+*→ [General NeTEx definition](../generated/netex-html/FrameDefaults.html)*
 
 ### Example
 
@@ -112,7 +112,7 @@ For all other alternative texts use `AlternativeText`.
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeName.md)
 
-*→ - [General NeTEx definition](../generated/xcore/AlternativeName.html)*
+*→ - [General NeTEx definition](../generated/netex-html/AlternativeName.html)*
  
 ### Example
 - [XML Snippet](../generated/xml-snippets/AlternativeName.xml)
@@ -137,7 +137,7 @@ For example, it can be used for the translation of `Notice` texts.
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeText.md)
 
-*→ - [General NeTEx definition](../generated/xcore/AlternativeText.html)*
+*→ - [General NeTEx definition](../generated/netex-html/AlternativeText.html)*
  
 ### Example
 - [XML Snippet](../generated/xml-snippets/AlternativeText.xml)
@@ -186,7 +186,7 @@ See the following class diagram for the most important objects of the RESOURCE F
 ## Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/ResourceFrame.md)
 
-*→ - [General NeTEx definition](../generated/xcore/ResourceFrame.html)*
+*→ - [General NeTEx definition](../generated/netex-html/ResourceFrame.html)*
 
 ## Example
 - [XML Snippet](../generated/xml-snippets/ResourceFrame.xml)
@@ -213,7 +213,7 @@ We use this element to  describe the different roles of the participating compan
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/ResponsibilitySet.md)
 
-*→ - [General NeTEx definition](../generated/xcore/ResponsibilitySet.html)*
+*→ - [General NeTEx definition](../generated/netex-html/ResponsibilitySet.html)*
 
 ### Example
 - [XML Snippet](../generated/xml-snippets/ResponsibilitySet.xml)
@@ -303,7 +303,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfProductCategory.md)
 
-*→ [General NeTEx definition](../generated/xcore/TypeOfProductCategory.html)*
+*→ [General NeTEx definition](../generated/netex-html/TypeOfProductCategory.html)*
 
 
 ###  Example
@@ -331,7 +331,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfService.md)
 
-*→ [General NeTEx definition](../generated/xcore/TypeOfService.html)*
+*→ [General NeTEx definition](../generated/netex-html/TypeOfService.html)*
 
 ### Example
 - [XML Snippet](../generated/xml-snippets/TypeOfService.xml)
@@ -376,7 +376,7 @@ in Switzerland. The TU-Code is to be used for operators of other countries.
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/Operator.md)
 
-*→ [General NeTEx definition](../generated/xcore/Operator.html)*
+*→ [General NeTEx definition](../generated/netex-html/Operator.html)*
 
 ### Example
 - [XML Snippet](../generated/xml-snippets/Operator.xml)
@@ -424,7 +424,7 @@ The assignment of `facilities` to `ServiceJourney` or `JourneyPart` is made by u
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFacilitySet.md)
 
-*→ [General NeTEx definition](../generated/xcore/ServiceFacilitySet.html)*
+*→ [General NeTEx definition](../generated/netex-html/ServiceFacilitySet.html)*
 
 ### Example
 - [XML Snippet](../generated/xml-snippets/ServiceFacilitySet.xml)
@@ -468,7 +468,7 @@ referenced to define facilities of a site.
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/SiteFacilitySet.md)
 
-*→ [General NeTEx definition](../generated/xcore/SiteFacilitySet.html)*
+*→ [General NeTEx definition](../generated/netex-html/SiteFacilitySet.html)*
 
 ### Example
 - [XML Snippet](../generated/xml-snippets/SiteFacilitySet.xml)

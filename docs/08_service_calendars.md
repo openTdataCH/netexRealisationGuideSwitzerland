@@ -88,7 +88,7 @@ classDiagram
 #### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceCalendarFrame.md)
 
-*→ [General NeTEx definition](../generated/xcore/ServiceCalendarFrame.html)*
+*→ [General NeTEx definition](../generated/netex-html/ServiceCalendarFrame.html)*
 
 #### Example
 - [Example snippet](../generated/xml-snippets/ServiceCalendarFrame.xml)
@@ -107,7 +107,7 @@ classDiagram
 #### Table
 -[Swiss profile NeTEx definition](../generated/markdown-examples/AvailabilityCondition.md)
 
-*→ [General NeTEx definition](../generated/xcore/AvailabilityCondition.html)*
+*→ [General NeTEx definition](../generated/netex-html/AvailabilityCondition.html)*
 
 #### Example
 - [Example snippet](../generated/xml-snippets/AvailabilityCondition.xml)
@@ -137,7 +137,7 @@ The transport offering of a public transport company is tailored to accommodate 
 #### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceCalendar.md)
 
-*→ [General NeTEx definition](../generated/xcore/ServiceCalendar.html)*
+*→ [General NeTEx definition](../generated/netex-html/ServiceCalendar.html)*
 
 #### Example
 - [Example snippet](../generated/xml-snippets/ServiceCalendar.xml)
@@ -156,7 +156,7 @@ The day type is used to describe the validity of the holidays in Switzerland. Ea
 #### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/DayType.md)
 
-*→ [General NeTEx definition](../generated/xcore/DayType.html)*
+*→ [General NeTEx definition](../generated/netex-html/DayType.html)*
 
 #### Example
 - [Example snippet](../generated/xml-snippets/DayType.xml)
@@ -174,7 +174,7 @@ A period in a day, significant for some aspect of public transport, e.g. similar
 #### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/Timeband.md)
 
-*→ [General NeTEx definition](../generated/xcore/Timeband.html)*
+*→ [General NeTEx definition](../generated/netex-html/Timeband.html)*
 
 #### Example
 - [Example snippet](../generated/xml-snippets/Timeband.xml)
@@ -197,7 +197,7 @@ Designation of one day or group of days
 #### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/DayTypeAssignment.md)
 
-*→ [General NeTEx definition](../generated/xcore/DayTypeAssignment.html)*
+*→ [General NeTEx definition](../generated/netex-html/DayTypeAssignment.html)*
 
 #### Example
 [Example snippet](../generated/xml-snippets/DayTypeAssignment.xml)

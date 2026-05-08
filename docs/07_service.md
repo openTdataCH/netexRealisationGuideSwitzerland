@@ -98,7 +98,7 @@ Other important classes of the `ServiceFrame` include:
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFrame.md)
 
-*→ [General NeTEx definition ](../generated/xcore/ServiceFrame.html)*
+*→ [General NeTEx definition ](../generated/netex-html/ServiceFrame.html)*
 
 ### Example
 - [Example snippet](../generated/xml-snippets/ServiceFrame.xml)
@@ -128,7 +128,7 @@ Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise,
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/Line.md)
 
-*-> [General NeTEx definition](../generated/xcore/Line.html)*
+*-> [General NeTEx definition](../generated/netex-html/Line.html)*
 
 ### Example
 
@@ -153,7 +153,7 @@ Showing the destination of a `ServiceJourney`.
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/DestinationDisplay.md)
 
-*-> [General NeTEx definition](../generated/xcore/DestinationDisplay.html)*
+*-> [General NeTEx definition](../generated/netex-html/DestinationDisplay.html)*
 
 ### Example
 
@@ -182,7 +182,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/ScheduledStopPoint.md)
 
-*-> [General NeTEx definition](../generated/xcore/ScheduledStopPoint.html)*
+*-> [General NeTEx definition](../generated/netex-html/ScheduledStopPoint.html)*
 
 ### Example
 
@@ -202,7 +202,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/PassengerStopAssignment.md)
 
-*-> [General NeTEx definition](../generated/xcore/PassengerStopAssignment.html)*
+*-> [General NeTEx definition](../generated/netex-html/PassengerStopAssignment.html)*
 
 ### Example
 
@@ -229,7 +229,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/DefaultConnection.md)
 
-*-> [General NeTEx definition](../generated/xcore/DefaultConnection.html)*
+*-> [General NeTEx definition](../generated/netex-html/DefaultConnection.html)*
 
 ### Example
 
@@ -251,7 +251,7 @@ The `SiteConnection` describes the transfer times between two adjacent `StopPlac
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/SiteConnection.md)
 
-*-> [General NeTEx definition](../generated/xcore/SiteConnection.html)*
+*-> [General NeTEx definition](../generated/netex-html/SiteConnection.html)*
 
 ### Example
 
@@ -274,7 +274,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourneyPattern.md)
 
-*-> [General NeTEx definition](../generated/xcore/ServiceJourneyPattern.html)*
+*-> [General NeTEx definition](../generated/netex-html/ServiceJourneyPattern.html)*
 
 ### Example
 
@@ -296,7 +296,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/Notice.md)
 
-*-> [General NeTEx definition](../generated/xcore/Notice.html)*
+*-> [General NeTEx definition](../generated/netex-html/Notice.html)*
 
 ### Example
 
@@ -317,7 +317,7 @@ Assign a `Notice` to an element.
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/NoticeAssignment.md)
 
-*-> [General NeTEx definition](../generated/xcore/NoticeAssignment.html)*
+*-> [General NeTEx definition](../generated/netex-html/NoticeAssignment.html)*
 
 ### Example
 

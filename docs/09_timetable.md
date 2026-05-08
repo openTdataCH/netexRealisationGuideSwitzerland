@@ -40,7 +40,7 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/TimetableFrame.md)
 
-*→ [General NeTEx definition ](../generated/xcore/TimetableFrame.html)*
+*→ [General NeTEx definition ](../generated/netex-html/TimetableFrame.html)*
 
 ### Example
 - [Example snippet](../generated/xml-snippets/TimetableFrame.xml)
@@ -59,7 +59,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourney.md)
 
-*→ [General NeTEx definition ](../generated/xcore/ServiceJourney.html)*
+*→ [General NeTEx definition ](../generated/netex-html/ServiceJourney.html)*
 
 ### Example
 - [Example snippet](../generated/xml-snippets/ServiceJourney.xml)
@@ -85,7 +85,7 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/TemplateServiceJourney.md)
 
-*→ [General NeTEx definition ](../generated/xcore/TemplateServiceJourney.html)*
+*→ [General NeTEx definition ](../generated/netex-html/TemplateServiceJourney.html)*
 
 ### Example
 - [Example snippet](../generated/xml-snippets/TemplateServiceJourney.xml)
@@ -107,7 +107,7 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/OccupancyView.md)
 
-*→ [General NeTEx definition ](../generated/xcore/OccupancyView.html)*
+*→ [General NeTEx definition ](../generated/netex-html/OccupancyView.html)*
 
 ### Example
 - [Example snippet](../generated/xml-snippets/OccupancyView.xml)
@@ -124,7 +124,7 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/TrainNumber.md)
 
-*→ [General NeTEx definition ](../generated/xcore/TrainNumber.html)*
+*→ [General NeTEx definition ](../generated/netex-html/TrainNumber.html)*
 
  ### Example
 - [Example snippet](../generated/xml-snippets/TrainNumber.xml)
@@ -141,7 +141,7 @@ Long-term planned time data concerning public transport vehicles passing a parti
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/TimetabledPassingTime.md)
 
-*→ [General NeTEx definition ](../generated/xcore/TimetabledPassingTime.html)*
+*→ [General NeTEx definition ](../generated/netex-html/TimetabledPassingTime.html)*
 
 ### Example
 - [Example snippet](../generated/xml-snippets/TimetabledPassingTime.xml)
@@ -168,7 +168,7 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/InterchangeRule.md)
 
-*→ [General NeTEx definition ](../generated/xcore/InterchangeRule.html)*
+*→ [General NeTEx definition ](../generated/netex-html/InterchangeRule.html)*
 
 
 ### Examples
@@ -206,7 +206,7 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/JourneyMeeting.md)
 
-*→ [General NeTEx definition ](../generated/xcore/JourneyMeeting.html)*
+*→ [General NeTEx definition ](../generated/netex-html/JourneyMeeting.html)*
 
 ### Example
 - [Example snippet](../generated/xml-snippets/JourneyMeeting.xml)

@@ -11,7 +11,7 @@ NeTEx is divided into [frames](#frames), containers for elements of a specific d
 ### Tables
 - [Swiss profile tables](../generated/markdown-examples/PublicationDelivery.md)
 
-*→ [Original NeTEx table](../generated/xcore/PublicationDelivery.xml)*
+*→ [Original NeTEx table](../generated/netex-html/PublicationDelivery.html)*
 
 ### Example
 - [XML Snippet](../generated/xml-snippets/PublicationDelivery.xml)
@@ -50,7 +50,7 @@ appearing in this order.
 #### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/CompositeFrame.md)
 
-*→ [General NeTEx definition](../generated/xcore/CompositeFrame.html)*
+*→ [General NeTEx definition](../generated/netex-html/CompositeFrame.html)*
 
 #### Example
 - [Example snippet](../generated/xml-snippets/CompositeFrame.xml)
