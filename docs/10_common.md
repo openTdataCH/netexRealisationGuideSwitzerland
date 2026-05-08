@@ -479,4 +479,5 @@ referenced to define facilities of a site.
 
 Make sure to not generate identical SiteFacilitySets. Reuse them.
 
-## TODO: VehicleType
+## VehicleType
+**TODO**
