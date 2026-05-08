@@ -186,7 +186,7 @@ The ordered sequence of ScheduledStopPoints that a transport service follows for
 >
 > **Transmodel:** An ordered list of SCHEDULED STOP POINTs and TIMING POINTs on a single ROUTE, describing the pattern of working for public transport vehicles.
 
-→ [Full documentation](07_service.md#JourneyPattern)
+→ [Full documentation](07_service.md#ServiceJourneyPattern)
 
 ---
 
@@ -486,7 +486,7 @@ Contains operational journey definitions - ServiceJourneys, DatedServiceJourneys
 
 > **NeTEx XSD:** A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.
 
-→ [Full documentation](06_stops.md#TimetableFrame)
+→ [Full documentation](09_timetable.md#TimetableFrame)
 
 ---
 
