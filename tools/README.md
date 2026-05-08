@@ -2,6 +2,12 @@
 
 ## Install Tools with uv
 
+The package manager `uv` simplifies the build and installation of scripts for the tools.
+
+- Dependencies are managed by `uv`, as configured in `pyproject.toml.` 
+- `uv` provides an os-independent interface for scripts
+- The generated tool scripts run on Windows, Mac or Linux
+
 ### Install the package manager
 
 See [uv package manager](https://docs.astral.sh/uv/)
