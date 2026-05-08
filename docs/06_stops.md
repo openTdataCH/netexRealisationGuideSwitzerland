@@ -1,10 +1,10 @@
 # Stop Modelling
 
-- [SiteFrame](06_stops.md#siteframe)
-- [StopPlace](06_stops.md#StopPlace)
-- [Quay](06_stops.md#Quay)
-- [TopographicPlace](06_stops.md#TopographicPlace)
-- [Centroid](06_stops.md#Centroid)
+- [SiteFrame](#siteframe)
+- [StopPlace](#StopPlace)
+- [Quay](#Quay)
+- [TopographicPlace](#TopographicPlace)
+- [Centroid](#Centroid)
 
 ## SiteFrame
 *→ [Glossary definition](A4_annex_glossary.md#siteframe)*

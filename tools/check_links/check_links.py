@@ -5,9 +5,10 @@ Check relative links in markdown files and warn if target files don't exist.
 import os
 import re
 import argparse
-from pathlib import Path
+from tools.configuration import DOCS_DIR, PROJECT_DIR
 
-def check_markdown_links(docs_folder, main_folder):
+
+def check_markdown_links(docs_folder):
     """Check all relative links in markdown files."""
     markdown_extensions = ('.md', '.MD', '.markdown', '.Markdown')
     link_pattern = r'\[([^\]]+)\]\(([^)]+)\)'
@@ -19,7 +20,7 @@ def check_markdown_links(docs_folder, main_folder):
     
     # Convert to absolute paths for consistent resolution
     docs_folder = os.path.abspath(docs_folder)
-    main_folder = os.path.abspath(main_folder)
+    print(f"Checking relative links in folder {docs_folder}")
     
     for root, dirs, files in os.walk(docs_folder):
         for file in files:
@@ -62,15 +63,17 @@ def check_markdown_links(docs_folder, main_folder):
                     # Convert absolute path back to relative path for display (using forward slashes)
                     rel_target_path = os.path.relpath(target_path, docs_folder)
                     rel_target_path = rel_target_path.replace(os.sep, '/')
-                    
-                    # Check if target exists
-                    if not os.path.exists(target_path):
+
+                    target_file_path = get_target_file_path(target_path)
+
+                    # Check if target file exists
+                    if not os.path.exists(target_file_path):
                         broken_links += 1
                         print(f"WARNING: Broken link in {os.path.relpath(file_path, docs_folder)}")
                         print(f"  Link text: '{link_text}'")
                         print(f"  Link URL: '{link_url}'")
                         print(f"  Expected at: {rel_target_path}")
-                        print()
+                        print(f"  Target file path: '{target_file_path}'")
                     else:
                         working_links += 1
     
@@ -91,13 +94,22 @@ def check_markdown_links(docs_folder, main_folder):
             status_messages.append(f"Found {backslash_warnings} backslash warnings")
         print(f"  Status: {', '.join(status_messages)} :(")
 
+
+def get_target_file_path(target_path: str):
+    """ Gets the file path removing the anchor part."""
+    target_file_path = target_path
+    hash_start = target_path.rfind('#')
+    if hash_start > 1:
+        target_file_path = target_path[:hash_start]
+    return target_file_path
+
+
 def main():
     parser = argparse.ArgumentParser(description='Check relative links in markdown files.')
-    parser.add_argument('--docs', required=True, help='Documentation folder to process')
-    parser.add_argument('--main', required=True, help='Main project folder')
+    parser.add_argument('--docs', default=DOCS_DIR, help=f"Documentation folder to process (default: {DOCS_DIR})")
     args = parser.parse_args()
     
-    check_markdown_links(args.docs, args.main)
+    check_markdown_links(args.docs)
 
 if __name__ == '__main__':
     main()

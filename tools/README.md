@@ -4,7 +4,7 @@
 
 The package manager `uv` simplifies the build and installation of scripts for the tools.
 
-- Dependencies are managed by `uv`, as configured in `pyproject.toml.` 
+- Dependencies are managed by `uv`, as configured in `pyproject.toml` and more detailed in `uv.lock`. 
 - `uv` provides an os-independent interface for scripts
 - The generated tool scripts run on Windows, Mac or Linux
 
@@ -51,4 +51,5 @@ This generates executable scripts for Linux/Mac and Windows in subdirectories of
 
 ### How to add a new Script
 
-Add a new entry in the `[project.scripts]` section of `pyproject.toml`. 
+- Add a new entry in the `[project.scripts]` section of `pyproject.toml`.
+- If the script requires another package, use `uv add` to added to the environment.
