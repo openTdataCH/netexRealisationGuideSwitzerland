@@ -24,6 +24,7 @@
 
 
  -->
+
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-04-10T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Examples</ParticipantRef>
@@ -56,57 +57,29 @@
 							<roles>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLT:1" version="1">
 									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:37:1" version="1"/>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100019" version="1"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLT:2" version="1">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:37:1" version="1"/>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100019" version="1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
 					</responsibilitySets>
 					<typesOfValue>
-						<ValueSet id="ch:blt:generated:VS:TypeOfService" version="1" nameOfClass="TypeOfService">
+						<ValueSet id="ch:1:TypeOfService" version="1" nameOfClass="TypeOfService">
 							<Name>Service Types</Name>
 							<values>
-								<!-- TODO: Where did you get this from::: Korrigiert auf ODV in TypeofService sowie bei Name -->
-								<TypeOfService id="ch:blt:generated:TypeOfService:ODV" version="1">
-									<Name>On Demand Verkehr</Name>
-								</TypeOfService>
-							</values>
-						</ValueSet>
-						<ValueSet id="ch:1:ValueSet:TypeOfFlexibleService" version="1" nameOfClass="TypeOfFlexibleService">
-							<values>
-								<TypeOfFlexibleService id="ch:1:TypeOfFlexibleService:L" version="1">
-									<Name lang="de">Bedarfslinie</Name>
-									<ShortName lang="de">L</ShortName>
+								<TypeOfService id="ch:1:TypeOfService:1" version="1">
+									<Name lang="en">PublicJourney</Name>
+									<ShortName lang="en">N</ShortName>
 									<PrivateCode>1</PrivateCode>
-								</TypeOfFlexibleService>
-								<TypeOfFlexibleService id="ch:1:TypeOfFlexibleService:A" version="1">
-									<Name lang="de">Anrufsammelverkehr</Name>
-									<ShortName lang="de">A</ShortName>
-									<PrivateCode>2</PrivateCode>
-								</TypeOfFlexibleService>
-								<TypeOfFlexibleService id="ch:1:TypeOfFlexibleService:Ö" version="1">
-									<Name lang="de">Richtungsband, örtlich disponierter Bus</Name>
-									<ShortName lang="de">Ö</ShortName>
-									<PrivateCode>3</PrivateCode>
-								</TypeOfFlexibleService>
-								<TypeOfFlexibleService id="ch:1:TypeOfFlexibleService:Z" version="1">
-									<Name lang="de">Zeitbezogener Flächenverkehr</Name>
-									<ShortName lang="de">Z</ShortName>
-									<PrivateCode>4</PrivateCode>
-								</TypeOfFlexibleService>
-								<TypeOfFlexibleService id="ch:1:TypeOfFlexibleService:F" version="1">
-									<Name lang="de">Freier Flächenverkehr</Name>
-									<ShortName lang="de">F</ShortName>
-									<PrivateCode>5</PrivateCode>
-								</TypeOfFlexibleService>
+								</TypeOfService>
 							</values>
 						</ValueSet>
 					</typesOfValue>
 					<organisations>
-						<Operator id="ch:1:Operator:37:1" version="1">
+						<Operator id="ch:1:sboid:100019" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
@@ -117,7 +90,9 @@
 									<Value>ch:1:sboid:100019</Value>
 								</KeyValue>
 							</keyList>
-							<PrivateCode>37</PrivateCode>
+							<privateCodes>
+								<PrivateCode type="sboid">ch:1:sboid:100019</PrivateCode>
+							</privateCodes>
 							<Name>BLT Baselland Transport</Name>
 						</Operator>
 					</organisations>
@@ -294,9 +269,8 @@
 							<TransportSubmode>
 								<BusSubmode>localBus</BusSubmode>
 							</TransportSubmode>
-							<!--TODO Operator/Authority are of a different type <AuthorityRef ref="ch:1:Operator:37:1" version="1"/>  -->
-							<OperatorRef ref="ch:1:Operator:37:1" version="1"/>
-							<TypeOfServiceRef ref="ch:blt:generated:TypeOfService:ODV" version="1"/>
+							<OperatorRef ref="ch:1:sboid:100019" version="1"/>
+							<TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
 							<bookingArrangements>
 								<BookingArrangement id="ch:blt:generated:BOOK:29013" version="1">
 									<BookingMethods>mobileApp</BookingMethods>

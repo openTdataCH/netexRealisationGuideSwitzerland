@@ -1,61 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2025 rel. 2 (x64) (https://www.altova.com) by Martin Bennett (Schweizerische Bundesbahnen SBB) -->
+<!-- problems with this example **TODO**
+- no description of example
+- switch to PassingTimes
+-->
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-02-19T10:00:00Z</PublicationTimestamp>
 	<ParticipantRef>SBB</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="ch:1:CompositeFrame:J26" version="any">
+		<CompositeFrame id="ch:1:CompositeFrame:J26" version="1">
 			<ValidBetween>
 				<FromDate>2025-12-14T00:00:00</FromDate>
 				<ToDate>2026-12-13T23:59:59</ToDate>
 			</ValidBetween>
 			<frames>
-				<!-- Resource Frame -->
-				<ResourceFrame id="ch:1:ResourceFrame:j26" version="any">
+				<ResourceFrame id="ch:1:ResourceFrame:j26" version="1">
 					<responsibilitySets>
-						<!-- SBB Responsibility set -->
-						<ResponsibilitySet id="ch:1:ResponsibilitySet:SBB" version="any">
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:SBB" version="1">
 							<Name>SBB</Name>
 							<PrivateCode>SBB</PrivateCode>
 							<roles>
-								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:SBB:1" version="any">
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:SBB:1" version="1">
 									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:11" version="any"/>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100001" version="1"/>
 								</ResponsibilityRoleAssignment>
-								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:SBB:2" version="any">
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:SBB:2" version="1">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:11" version="any"/>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100001" version="1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
-						<!-- DB Responsibility set -->
-						<ResponsibilitySet id="ch:1:ResponsibilitySet:DB" version="any">
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:DB" version="1">
 							<Name>DB</Name>
 							<roles>
-								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:DB:1" version="any">
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:DB:1" version="1">
 									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:353" version="any"/>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100310" version="1"/>
 								</ResponsibilityRoleAssignment>
-								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:DB:2" version="any">
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:DB:2" version="1">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:353" version="any"/>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100310" version="1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
 					</responsibilitySets>
-					<!-- type of Values -->
 					<typesOfValue>
-						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="any" nameOfClass="TypeOfProductCategory">
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
 							<Name>ProductCategories</Name>
 							<values>
-								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:IC" version="any">
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:IC" version="1">
 									<Name>InterCity</Name>
 								</TypeOfProductCategory>
 							</values>
 						</ValueSet>
 					</typesOfValue>
 					<organisations>
-						<Operator id="ch:1:Operator:11" version="any">
+						<Operator id="ch:1:sboid:100001" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>GO</Key>
@@ -66,11 +65,13 @@
 									<Value>ch:1:sboid:100001</Value>
 								</KeyValue>
 							</keyList>
-							<PrivateCode>11</PrivateCode>
+							<privateCodes>
+								<PrivateCode type="sboid">ch:1:sboid:100001</PrivateCode>
+							</privateCodes>
 							<Name>SBB</Name>
 							<ShortName>SBB</ShortName>
 						</Operator>
-						<Operator id="ch:1:Operator:353" version="any">
+						<Operator id="ch:1:sboid:100310" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>GO</Key>
@@ -81,17 +82,17 @@
 									<Value>ch:1:sboid:100310</Value>
 								</KeyValue>
 							</keyList>
-							<PrivateCode>351</PrivateCode>
+							<privateCodes>
+								<PrivateCode type="sboid">ch:1:sboid:100310</PrivateCode>
+							</privateCodes>
 							<Name>Deutsche Bahn</Name>
 							<ShortName>DB</ShortName>
 						</Operator>
 					</organisations>
 				</ResourceFrame>
-				<!-- Site Frame -->
-				<SiteFrame id="ch:1:SiteFrame:j26" version="any">
+				<SiteFrame id="ch:1:SiteFrame:j26" version="1">
 					<stopPlaces>
-						<!-- Interlaken Ost -->
-						<StopPlace id="ch:1:sloid:7492" version="any">
+						<StopPlace id="ch:1:sloid:7492" version="1">
 							<ValidBetween>
 								<FromDate>2025-12-15T00:00:00</FromDate>
 								<ToDate>2026-12-13T23:59:59</ToDate>
@@ -123,7 +124,7 @@
 							</Centroid>
 							<Weighting>preferredInterchange</Weighting>
 							<quays>
-								<Quay id="ch:1:sloid:7492:0:460848" version="any">
+								<Quay id="ch:1:sloid:7492:0:460848" version="1">
 									<keyList>
 										<KeyValue>
 											<Key>SLOID</Key>
@@ -134,8 +135,7 @@
 								</Quay>
 							</quays>
 						</StopPlace>
-						<!-- Basel SBB -->
-						<StopPlace id="ch:1:sloid:10" version="any">
+						<StopPlace id="ch:1:sloid:10" version="1">
 							<ValidBetween>
 								<FromDate>2025-12-15T00:00:00</FromDate>
 								<ToDate>2026-12-13T23:59:59</ToDate>
@@ -167,13 +167,12 @@
 							</Centroid>
 							<Weighting>preferredInterchange</Weighting>
 							<quays>
-								<Quay id="ch:1:sloid:10:1:1" version="any">
+								<Quay id="ch:1:sloid:10:1:1" version="1">
 									<PublicCode>8</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
-						<!-- 	<Basel Bad> -->
-						<StopPlace id="ch:1:sloid:90" version="any">
+						<StopPlace id="ch:1:sloid:90" version="1">
 							<ValidBetween>
 								<FromDate>2025-12-15T00:00:00</FromDate>
 								<ToDate>2026-12-13T23:59:59</ToDate>
@@ -205,13 +204,12 @@
 							</Centroid>
 							<Weighting>preferredInterchange</Weighting>
 							<quays>
-								<Quay id="ch:1:sloid:90:0:529134" version="any">
+								<Quay id="ch:1:sloid:90:0:529134" version="1">
 									<PublicCode>8</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
-						<!-- 	Freiburg i. Br. (D) -->
-						<StopPlace id="ch:1:sloid:18799" version="any">
+						<StopPlace id="ch:1:sloid:18799" version="1">
 							<ValidBetween>
 								<FromDate>2025-12-15T00:00:00</FromDate>
 								<ToDate>2026-12-13T23:59:59</ToDate>
@@ -246,10 +244,9 @@
 						</StopPlace>
 					</stopPlaces>
 				</SiteFrame>
-				<!-- Service Frame -->
-				<ServiceFrame id="ch:1:ServiceFrame:j26" version="any">
+				<ServiceFrame id="ch:1:ServiceFrame:j26" version="1">
 					<lines>
-						<Line id="ch:1:slnid:1024337" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
+						<Line id="ch:1:slnid:1024337" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
 							<ValidBetween>
 								<FromDate>2025-12-14T00:00:00</FromDate>
 								<ToDate>2026-12-13T23:59:59</ToDate>
@@ -263,7 +260,7 @@
 							<Name>SBB</Name>
 							<ShortName>SBB</ShortName>
 						</Line>
-						<Line id="ch:1:slnid:1024356" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:DB">
+						<Line id="ch:1:slnid:1024356" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:DB">
 							<ValidBetween>
 								<FromDate>2025-12-14T00:00:00</FromDate>
 								<ToDate>2026-12-13T23:59:59</ToDate>
@@ -279,8 +276,7 @@
 						</Line>
 					</lines>
 					<scheduledStopPoints>
-						<!-- Interlaken Ost -->
-						<ScheduledStopPoint id="ch:1:sloid:7492:0:261628" version="any">
+						<ScheduledStopPoint id="ch:1:sloid:7492:0:261628" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
@@ -294,8 +290,7 @@
 							<Name lang="de">Interlaken Ost</Name>
 							<ShortName lang="de">1</ShortName>
 						</ScheduledStopPoint>
-						<!-- Basel SBB -->
-						<ScheduledStopPoint id="ch:1:sloid:10:1:1" version="any">
+						<ScheduledStopPoint id="ch:1:sloid:10:1:1" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
@@ -309,8 +304,7 @@
 							<Name lang="de">Basel SBB</Name>
 							<ShortName lang="de">1</ShortName>
 						</ScheduledStopPoint>
-						<!-- Basel Bad -->
-						<ScheduledStopPoint id="ch:1:sloid:90:0:529134" version="any">
+						<ScheduledStopPoint id="ch:1:sloid:90:0:529134" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
@@ -324,8 +318,7 @@
 							<Name lang="de">Basel Bad</Name>
 							<ShortName lang="de">1</ShortName>
 						</ScheduledStopPoint>
-						<!-- Freiburg in Breisgau -->
-						<ScheduledStopPoint id="ch:1:sloid:18799" version="any">
+						<ScheduledStopPoint id="ch:1:sloid:18799" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
@@ -340,57 +333,49 @@
 							<ShortName lang="de">1</ShortName>
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
-					<!-- Stop Assignments -->
 					<stopAssignments>
-						<!-- Interlaken Ost -->
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507492:1" version="any">
-							<ScheduledStopPointRef ref="ch:1:sloid:7492:0:261628" version="any"/>
-							<StopPlaceRef ref="ch:1:sloid:7492" version="any"/>
-							<QuayRef ref="ch:1:sloid:7492:0:460848" version="any"/>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507492:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:sloid:7492:0:261628" version="1"/>
+							<StopPlaceRef ref="ch:1:sloid:7492" version="1"/>
+							<QuayRef ref="ch:1:sloid:7492:0:460848" version="1"/>
 						</PassengerStopAssignment>
-						<!-- Basel SBB -->
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8500010:1" version="any">
-							<ScheduledStopPointRef ref="ch:1:sloid:10:1:1" version="any"/>
-							<StopPlaceRef ref="ch:1:sloid:10" version="any"/>
-							<QuayRef ref="ch:1:sloid:10:1:1" version="any"/>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8500010:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:sloid:10:1:1" version="1"/>
+							<StopPlaceRef ref="ch:1:sloid:10" version="1"/>
+							<QuayRef ref="ch:1:sloid:10:1:1" version="1"/>
 						</PassengerStopAssignment>
-						<!-- Basel Bad -->
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8500090:7" version="any">
-							<ScheduledStopPointRef ref="ch:1:sloid:90:0:529134" version="any"/>
-							<StopPlaceRef ref="ch:1:sloid:90" version="any"/>
-							<QuayRef ref="ch:1:sloid:90:0:529134" version="any"/>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8500090:7" version="1">
+							<ScheduledStopPointRef ref="ch:1:sloid:90:0:529134" version="1"/>
+							<StopPlaceRef ref="ch:1:sloid:90" version="1"/>
+							<QuayRef ref="ch:1:sloid:90:0:529134" version="1"/>
 						</PassengerStopAssignment>
-						<!-- Freiburg in Breisgau -->
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8518799:1" version="any">
-							<StopPlaceRef ref="ch:1:sloid:18799" version="any"/>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8518799:1" version="1">
+							<StopPlaceRef ref="ch:1:sloid:18799" version="1"/>
 						</PassengerStopAssignment>
 					</stopAssignments>
 				</ServiceFrame>
-				<!-- Service Calendar Frame -->
-				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="any">
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="1">
 					<validityConditions>
-						<AvailabilityCondition id="ch:1:AvailabilityCondition:j26" version="any">
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:j26" version="1">
 							<FromDate>2025-12-14T00:00:00</FromDate>
 							<ToDate>2026-12-13T23:59:59</ToDate>
 							<ValidDayBits>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000</ValidDayBits>
 						</AvailabilityCondition>
 					</validityConditions>
 				</ServiceCalendarFrame>
-				<!-- Timetable Frame -->
-				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="any">
+				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="1">
 					<vehicleJourneys>
-						<ServiceJourney id="ch:1:sjyid:100014:4208-003A" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
+						<ServiceJourney id="ch:1:sjyid:100014:4208-003A" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
 							<TransportMode>rail</TransportMode>
-							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IC" version="any"/>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IC" version="1"/>
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>11:04:00</DepartureTime>
-							<OperatorRef ref="ch:1:Operator:11" version="any"/>
-							<LineRef ref="ch:1:slnid:1024337" version="any"/>
+							<OperatorRef ref="ch:1:sboid:100310" version="1"/>
+							<LineRef ref="ch:1:slnid:1024337" version="1"/>
 							<DirectionType>outbound</DirectionType>
 							<calls>
-								<!-- Interlaken Ost -->
-								<Call id="ch:1:sjyid:100014:4208-003A:call:1" version="any" order="1">
-									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:261628" version="any"/>
+								<Call id="ch:1:sjyid:100014:4208-003A:call:1" version="1" order="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:261628" version="1"/>
 									<Departure>
 										<Time>11:04:00</Time>
 										<ForBoarding>true</ForBoarding>
@@ -398,12 +383,10 @@
 									</Departure>
 									<RequestStop>false</RequestStop>
 								</Call>
-								<!-- Basel SBB -->
-								<Call id="ch:1:sjyid:100014:4208-003A:2:call:2" version="any" order="2">
-									<ScheduledStopPointRef ref="ch:1:sloid:10:1:1" version="any"/>
+								<Call id="ch:1:sjyid:100014:4208-003A:2:call:2" version="1" order="2">
+									<ScheduledStopPointRef ref="ch:1:sloid:10:1:1" version="1"/>
 									<Arrival>
 										<Time>13:00:00</Time>
-										<!--Question 3: Are the times correct according to the RG? -->
 										<ForAlighting>true</ForAlighting>
 										<IsFlexible>false</IsFlexible>
 									</Arrival>
@@ -414,9 +397,8 @@
 									</Departure>
 									<RequestStop>false</RequestStop>
 								</Call>
-								<!-- Basel Bad -->
-								<Call id="ch:1:sjyid:100014:4208-003A:call:3" version="any" order="3">
-									<ScheduledStopPointRef ref="ch:1:sloid:90:0:529134" version="any"/>
+								<Call id="ch:1:sjyid:100014:4208-003A:call:3" version="1" order="3">
+									<ScheduledStopPointRef ref="ch:1:sloid:90:0:529134" version="1"/>
 									<Arrival>
 										<Time>13:23:00</Time>
 										<ForAlighting>false</ForAlighting>
@@ -426,17 +408,16 @@
 							</calls>
 						</ServiceJourney>
 						<!-- Basel Bad Depart New Number / New Transport Company -->
-						<ServiceJourney id="ch:1:sjyid:100014:4208-003B_DB" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
-							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IC" version="any"/>
+						<ServiceJourney id="ch:1:sjyid:100014:4208-003B_DB" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IC" version="1"/>
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>13:25:00</DepartureTime>
-							<OperatorRef ref="ch:1:Operator:353" version="any"/>
-							<LineRef ref="ch:1:slnid:1024356" version="any"/>
+							<OperatorRef ref="ch:1:sboid:100310" version="1"/>
+							<LineRef ref="ch:1:slnid:1024356" version="1"/>
 							<DirectionType>outbound</DirectionType>
 							<calls>
-								<!-- Basel Bad (Abfahrt) -->
-								<Call id="ch:1:Call:100014:4208-003B:1" version="any" order="1">
-									<ScheduledStopPointRef ref="ch:1:sloid:90:0:529134" version="any"/>
+								<Call id="ch:1:Call:100014:4208-003B:1" version="1" order="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:90:0:529134" version="1"/>
 									<Departure>
 										<Time>13:25:00</Time>
 										<ForBoarding>true</ForBoarding>
@@ -444,9 +425,8 @@
 									</Departure>
 									<RequestStop>false</RequestStop>
 								</Call>
-								<!-- Freiburg in Breisgau -->
-								<Call id="ch:1:Call:100014:4208-003B:2" version="any" order="2">
-									<ScheduledStopPointRef ref="ch:1:sloid:18799" version="any"/>
+								<Call id="ch:1:Call:100014:4208-003B:2" version="1" order="2">
+									<ScheduledStopPointRef ref="ch:1:sloid:18799" version="1"/>
 									<Arrival>
 										<Time>13:52:00</Time>
 										<ForAlighting>false</ForAlighting>
@@ -458,36 +438,33 @@
 						</ServiceJourney>
 					</vehicleJourneys>
 					<trainNumbers>
-						<TrainNumber id="ch:1:TrainNumber:7546" version="any">
+						<TrainNumber id="ch:1:TrainNumber:7546" version="1">
 							<ForAdvertisement>7546</ForAdvertisement>
 						</TrainNumber>
-						<TrainNumber id="ch:1:TrainNumber:7547" version="any">
+						<TrainNumber id="ch:1:TrainNumber:7547" version="1">
 							<ForAdvertisement>7546</ForAdvertisement>
 						</TrainNumber>
 					</trainNumbers>
 					<interchangeRules>
-						<InterchangeRule id="ch:1:InterchangeRule:1" version="any">
+						<InterchangeRule id="ch:1:InterchangeRule:1" version="1">
 							<validityConditions>
-								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="any"/>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="1"/>
 							</validityConditions>
 							<StaySeated>true</StaySeated>
 							<Planned>true</Planned>
 							<Guaranteed>true</Guaranteed>
 							<FeederFilter>
-								<StopPlaceRef ref="ch:1:sloid:90" version="any"/>
+								<StopPlaceRef ref="ch:1:sloid:90" version="1"/>
 								<AllLines/>
-								<ServiceJourneyRef ref="ch:1:sjyid:100014:4208-003A" version="any"/>
+								<ServiceJourneyRef ref="ch:1:sjyid:100014:4208-003A" version="1"/>
 							</FeederFilter>
 							<DistributorFilter>
-								<StopPlaceRef ref="ch:1:sloid:18799" version="any"/>
+								<StopPlaceRef ref="ch:1:sloid:18799" version="1"/>
 								<AllLines/>
-								<ServiceJourneyRef ref="ch:1:sjyid:100014:4208-003B_DB" version="any"/>
+								<ServiceJourneyRef ref="ch:1:sjyid:100014:4208-003B_DB" version="1"/>
 							</DistributorFilter>
 						</InterchangeRule>
 					</interchangeRules>
-					<occupancies>
-						<OccupancyView id="ch:1:OccupancyView.dummy" version="any"/>
-					</occupancies>
 				</TimetableFrame>
 			</frames>
 		</CompositeFrame>

@@ -1,4 +1,6 @@
 # Transfers
+Transfers between StopPlace and between Quay may depend on some factors.
+In HRDF these are modeled on a time base with UMSTEIGX and METABHF.
 
 ## Mapping between HRDF and NeTEx 
 
@@ -17,7 +19,6 @@ The following table shows how we will map HRDF tables into NeTEX.
 
 **TODO** details from  Powerpoint to be included
 ## General transfer time between modes
-
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -40,12 +41,8 @@ The following table shows how we will map HRDF tables into NeTEX.
 ```
 
 
-
-
 ## Transfer times at a given StopPlace
 **TODO** details from  Powerpoint to be included
-
-
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -61,12 +58,8 @@ The following table shows how we will map HRDF tables into NeTEX.
 ```
 
 
-
-
 ## Operator related transfer times
 **TODO** details from  Powerpoint to be included
-
-
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -106,12 +99,8 @@ The following table shows how we will map HRDF tables into NeTEX.
 ```
 
 
-
-
 ## Line and Direction-oriented transfer times
 **TODO** details from  Powerpoint to be included
-
-
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -149,9 +138,6 @@ The following table shows how we will map HRDF tables into NeTEX.
 </InterchangeRule>
 
 ```
-
-
-
 
 ## ServiceJourney related transfer times
 **TODO** details from  Powerpoint to be included
@@ -208,14 +194,10 @@ The differences between the various situations are to be differentiated with the
 ```
 
 
-
-
 ## Transfer times between StopPlaces
 **TODO** details from  Powerpoint to be included
 
 The differences between the various situations are to be differentiated with the value in some attributes.
-
-
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

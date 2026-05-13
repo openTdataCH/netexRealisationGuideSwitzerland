@@ -16,14 +16,10 @@ Bern - Thun - Spiez - (Zweisimmen | Brig)
 
 [Link to example](NeTEx_CH_Bern_Spiez_Zweisimmen_Passingtime.xml)
 
-### Example splitting train Bern - Zweisimmen | Brig
-This example models the basic splitting of a train with 3 'ServiceJourney'
 
->**TODO**
 
 ## Basic ThroughJourney
-In the case of international connections a "Durchbindung" is needed
-
+In the case of international connections a "Durchbindung" is needed.
 [Link to example](NeTEx_CH_Interlaken_BS_Freiburg_Breisach_Durchbindung.xml)
 
 
@@ -39,10 +35,16 @@ This example shows the usage of ServiceFacilities. It also shows when the Servic
 
 ## Using a platform for a train
 This is and example of a rail journey from Niederhasli Zürich HB Zürich Stadelhofen Uster, where Zürich HB is mapped via PassengerStopAssignment to a shared platform Quay “41/42”
-
 This shows the problems with sloid.
 
 >**TODO** needs to be improved
+
+## Special case: Destination changed
+>**TODO** needs to be improved
+
+## Special case: Destination display in a round trip
+>**TODO** needs to be improved
+
 
 ## Journey relationships
 >**TODO** needs to be improved
@@ -51,8 +53,6 @@ This shows the problems with sloid.
 Only few lines with some interaction to show all elements in action and the different files. The file names are already done as they should be.
 >**TODO** needs to be improved
 
-## Special case: Destination display in a round trip
->**TODO** needs to be improved
 
 
 ## Special case: Umsteigebeziehungen und Metastations
@@ -100,10 +100,3 @@ We consider to use a minimalistic version for importation in INFO+. All basic da
 
 ## No longer used
 >**TODO** probably removed in the end.
-
-###  Call Based (DEPRECIATED)
-The 1.x series of the Swiss profile were CALL based. 
-
-> **TODO** if we want to have something call based in here, then we can't do the schematron on it. To check. Perhaps a subfolder no_schematron. or not here.
-
-
