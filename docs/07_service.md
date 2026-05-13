@@ -15,6 +15,8 @@ In this chapter:
 *→ [Glossary definition](A4_annex_glossary.md#serviceframe)*
 
 ### Purpose
+Contains the network and route definitions - `Line`s, `ScheduledStopPoint`s, `DestinationDisplay`s, and `PassengerStopAssignment`s.
+
 See the following class diagram for the most important objects of the `ServiceFrame` and their relationships to the other frames.
 
 ```mermaid
@@ -118,12 +120,7 @@ This means that the old two defined dirctions `ch:1:Direction:H` and `ch:1:Direc
 ## Line
 *→ [Glossary definition](A4_annex_glossary.md#Line)*
 ### Purpose
-Transmodel defines a LINE as a grouping of ROUTEs that is generally known to the public by a similar name or number. These ROUTEs are usually very similar to each other from the topological point of view.
-Each LINE has a unique number  PrivateCode, a ShortName and a Name.  Passengers recognise a LINE by its published “PublicCode”. The transport mode is specified in  “TransportMode”, e.g.  metro, tram, bus etc. 
-The assignment of a LINE to an ORGANISATION is done by the element OperatorRef and to the operationalContext with OperationalContextRef.
-Note that there exist journeys in Switzerland and neighbouring countries that are not associated with a Line. In NeTEx, however, the ServiceJourneys corresponding to such journeys must still reference something in LineRef. To ensure this, we introduce a placeholder Line called "NoLine" for each Operator that has journeys without a Line. 
-For more information about SwissLineID: see https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf
-Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise, the relevant operator must at least be set on the ServiceJourney.
+A public transport service line, representing a marketed route with a `Name`, `TransportMode`, and `Operator`.
 
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/Line.md)
@@ -142,7 +139,9 @@ Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise,
 - We store the slnid whenever possible in `id`, `privateCodes/PrivateCode` and `KeyList`.
 - **TODO** link to migration concept slnid
 - **TODO** handling of mixed lines
-- 
+- Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
+- Note that there exist journeys in Switzerland and neighbouring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
+- For more information about SwissLineID: see https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf
 
 ## DestinationDisplay
 *→ [Glossary definition](A4_annex_glossary.md#DestinationDisplay)*
