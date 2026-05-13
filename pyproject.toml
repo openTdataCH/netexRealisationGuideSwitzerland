@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=70", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "netex-rg-ch"
+version = "0.1.0"
+description = "Provides tools to help building the NeTEx RG."
+requires-python = ">=3.13"
+dependencies = [
+    "lxml","pyschematron"
+]
+
+[project.scripts]
+check-links ="tools.check_links.check_links:main"
+check-schematron = "tools.check_schematron.check_schematron:main"
+expand-docs="tools.expand_docs.expand_docs:main"
+md-builder="tools.md_builder.md_builder:main"
+pycore="tools.pycore.pycore:main"
+schematron-builder="tools.schematron_builder.template2schematron:main"
+xml-validator="tools.validation.xml_validator:main"
+xml-snippets="tools.xml_snippets.build_xml_snippets:main"
+
+# Only package the specified packages
+[tool.setuptools.packages.find]
+include = ["tools*"]

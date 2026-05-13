@@ -6,7 +6,7 @@
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/DestinationDisplayChange.md)
 
-*-> [General NeTEx definition](../generated/xcore/DestinationDisplay.html)*
+*-> [General NeTEx definition](../generated/netex-html/DestinationDisplay.html)*
 
 ### Example
 
