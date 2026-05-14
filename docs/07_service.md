@@ -267,7 +267,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
 *→ [Glossary definition](A4_annex_glossary.md#ServiceJourneyPattern)*
 
 ### Purpose
-`ServiceJourneyPattern` are used to describe the basic patterns of `ServiceJourney`s.
+`ServiceJourneyPattern` is used to describe the journey pattern (sequence and times of `ScheduledStopPoints`) of `ServiceJourney`.
 
 
 ### Table
