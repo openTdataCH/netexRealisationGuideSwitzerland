@@ -236,6 +236,19 @@ Informational or regulatory text associated with public transport services, disp
 
 ---
 
+## NoticeAssignment
+
+Assign a `Notice` to an element.
+
+> **NeTEx XSD:** The assignment of a NOTICE to any model element. Can be used in particular to show an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.
+>
+> **Transmodel:** The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the
+validity of the NOTICE starts and ends respectively.
+
+→ [Full documentation](07_service.md#NoticeAssignment)
+
+---
+
 ## OperatingDay
 
 A specific calendar date on which transport services operate, referenced by DatedServiceJourney to anchor a journey to a concrete day.
@@ -428,6 +441,16 @@ A planned trip in the timetable operating on a recurring schedule, defining the 
 
 ---
 
+## ServiceJourneyPattern
+
+ServiceJourneyPattern is used to describe the journey pattern (sequence and times of ScheduledStopPoints) of ServiceJourney.
+
+> **NeTEx XSD / Transmodel:** The JOURNEY PATTERN for a (passenger carrying) SERVICE JOURNEY.
+
+→ [Full documentation](07_service.md#ServiceJourneyPattern)
+
+---
+
 ## ShelterEquipment
 
 Weather shelter facilities available at a stop place or quay, with properties such as seating, step-free access, and enclosure.
@@ -435,6 +458,19 @@ Weather shelter facilities available at a stop place or quay, with properties su
 > **NeTEx XSD:** Specialisation of WAITING EQUIPMENT for a SHELTER.
 >
 > **Transmodel:** Specialisation of WAITING EQUIPMENT describing a shelter.
+
+---
+
+## SiteConnection
+
+Sanitary facilities (toilets, washrooms) available at a stop place, station, or onboard a vehicle.
+
+> **NeTEx XSD:** The physical (spatial) possibility for a passenger to change from one public transport vehicle to another to continue the trip. The ends of connection can be specified as SCHEDULED STOP POINT or STOP AREA. Optionally this may be additionally qualified with physical STOP PLACE. Different times may be necessary to cover this link, depending on the kind of passenger.
+>
+> **Transmodel:** The physical (spatial) possibility for a passenger to change from one public transport vehicle to another to continue the trip, determined by physical locations, such as SITEs and/or its
+components and/or ENTRANCEs, in particular STOP PLACEs and/or its components. NOTE: Different times may be necessary to cover the resulting distance, depending on the kind of passenger.
+
+→ [Full documentation](07_service.md#SiteConnection)
 
 ---
 
