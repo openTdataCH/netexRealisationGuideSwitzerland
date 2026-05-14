@@ -147,7 +147,7 @@ A public transport service line, representing a marketed route with a `Name`, `T
 *→ [Glossary definition](A4_annex_glossary.md#DestinationDisplay)*
 
 ### Purpose
-Showing the destination of a `ServiceJourney`.
+Showing the destination of a `ServiceJourney`. The text shown on the front or side of a public transport vehicle to indicate its destination, including via-points and variant labels.
 
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/DestinationDisplay.md)
@@ -171,7 +171,7 @@ Showing the destination of a `ServiceJourney`.
 *→ [Glossary definition](A4_annex_glossary.md#ScheduledStopPoint)*
 
 ### Purpose
-`ScheduledStopPoint` is a core concept. It is the “Point” used in the timetable for the services to stop. A `ScheduledStopPoint` can refer to a `Quay` or only a `StopPlace`. So the level of hierarchy is not determined by the element (see [PassengerStopAssignment](#passengerstopassignment)).
+A logical point used in the timetable to indicate a stop of a service where passengers can board or alight. A `ScheduledStopPoint` is linked to a physical `Quay` or `StopPlace` via a [PassengerStopAssignment](#passengerstopassignment). 
 
 A `ScheduledStopPoint` can represent two types of stop points:
 -	In most cases, the `ScheduledStopPoint` is the station named in the timetable, especially as some organisations don’t have a full physical model of their StopPlaces. 
