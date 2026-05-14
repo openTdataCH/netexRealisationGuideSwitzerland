@@ -105,6 +105,19 @@ The binding between a DayType and a specific date or date range (OperatingPeriod
 
 ---
 
+## DefaultConnection
+
+Specifies default times for various transfer situations (within a StopPlace, between different Operators, between different ProductCategorys, etc.).
+
+> **NeTEx XSD:** Specifies default times to be used to change from one mode of transport or another at an area or national level as specified by a TOPOGRAPHIC PLACE or SITE. May be restricted to a specific MODE or OPERATOR or only apply in a particular direction of transfer, e.g. bus to rail may have a different time as rail to bus.
+>
+> **Transmodel:** The physical (spatial) possibility for a passenger to change from one public transport vehicle to another to continue the trip. NOTE1: It specifies default times to be used to change from one mode of transport to another at an area or national level as specified by a TOPOGRAPHIC PLACE, STOP AREA or SITE
+ELEMENT. NOTE2: It may be further restricted to a specific MODE or OPERATOR or only apply in a particular direction of transfer, e.g., bus to rail may have a different time for rail to bus.
+
+→ [Full documentation](07_service.md#DefaultConnection)
+
+---
+
 ## DestinationDisplay
 
 The text shown on the front or side of a public transport vehicle to indicate its destination, including via-points and variant labels.
@@ -173,6 +186,9 @@ An InterchangeRule defines the possibility of interchanging between two ServiceJ
 
 > **NeTEx XSD:** INTERCHANGE RULE specifies conditions governing the possibility of interchanging between two SERVICE JOURNEYs, stopping at the same or different SCHEDULED STOP POINTs, where at least one of the two SERVICE JOURNEYs is indicated indirectly by a DIRECTION, LINE or VEHICLE JOURNEY.
 > Such conditions may alternatively be specified directly, indicating the corresponding services. In this case, they are either a SERVICE JOURNEY PATTERN INTERCHANGE or a SERVICE JOURNEY INTERCHANGE.
+>
+> **Transmodel:** Conditions governing the possibility of interchanging between two SERVICE JOURNEYs, stopping at the same or different SCHEDULED STOP POINTs, where at least one of the two SERVICE</font>
+<font color="#f79646">JOURNEYs is indicated indirectly by a DIRECTION, LINE or VEHICLE JOURNEY.
 
 → [Full documentation](09_timetable.md#InterchangeRule)
 
@@ -457,6 +473,8 @@ A geographic fare zone used for ticketing and pricing, grouping stops and areas 
 A TemplateServiceJourney represents a sequence of planned trips. It is similar to the ServiceJourney, but it is used if there is a frequency or a rhythmical pattern defined at which the trips are scheduled on an operating day.
 
 > **NeTEx XSD:** A repeating SERVICE JOURNEY for which a frequency has been specified, either as a HEADWAY JOURNEY GROUP (e.g. every 20 minutes) or a RHYTHMICAL JOURNEY GROUP (e.g. at 15, 27 and 40 minutes past the hour). It may thus represent multiple journeys or it could be used simply as a template for adding single extra DATED VEHICLE JOURNEYs after the planning phase.
+>
+> **Transmodel:** A passenger carrying TEMPLATE VEHICLE JOURNEY. NOTE: It may represent multiple journeys.
 
 → [Full documentation](09_timetable.md#TemplateServiceJourney)
 
@@ -475,6 +493,8 @@ Ticket machines, validators, or other ticketing infrastructure available at a st
 Long-term planned time data concerning public transport vehicles passing a particular PointInJourneyPattern on a specified vehicle journey for a certain DayType.
 
 > **NeTEx XSD:** PASSING TIME indicates the time of a vehicle at a point in a journey pattern. There can be different types of time (arrival, departure, estimated, observed, etc.). TIMETABLED PASSING TIME represents  scheduled information.
+>
+> **Transmodel:** Long-term planned time data concerning public transport vehicles passing a particular POINT IN JOURNEY PATTERN on a specified VEHICLE JOURNEY for a certain DAY TYPE.
 
 → [Full documentation](09_timetable.md#TimetabledPassingTime)
 
@@ -517,6 +537,8 @@ A rail-specific specialisation of Block that represents an operational grouping 
 Codes assigned to particular journeys (ServiceJourney, TemplateServiceJourney) when operated by trains. 
 
 > **NeTEx XSD:** Specification of codes assigned to particular VEHICLE JOURNEYs when operated by TRAINs or COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc.).
+>
+> **Transmodel:** A specification of codes assigned to particular VEHICLE JOURNEYs or JOURNEY PARTs when operated by TRAINs or COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc.)
 
 → [Full documentation](09_timetable.md#TrainNumber)
 
