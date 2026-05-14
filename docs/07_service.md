@@ -289,7 +289,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
 *→ [Glossary definition](A4_annex_glossary.md#Notice)*
 
 ### Purpose
-> **TODO** needs to be described in more detail
+Informational or regulatory text associated with public transport services, displayed to passengers.
  
 
 ### Table
