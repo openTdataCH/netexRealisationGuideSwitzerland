@@ -151,7 +151,7 @@ Long-term planning uses calendar days that are classified as specific DayTypes (
 *→ [Glossary definition](A4_annex_glossary.md#daytype)*
 
 #### Purpose
-A classification of days on which a specific set of transport services operates (e.g., Weekdays, Saturdays, Public Holidays).
+A classification of days on which a specific set of transport services operates (e.g., Weekdays, Saturdays, Public Holidays). The `DayType`s of the Swiss profile represent national holidays.
 
 
 #### Table
@@ -169,7 +169,7 @@ A classification of days on which a specific set of transport services operates 
 *→ [Glossary definition](A4_annex_glossary.md#timeband)*
 
 #### Purpose
-A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category.
+A period of time within a day, usually defined by a start and end time.
 
 
 #### Table
@@ -191,8 +191,9 @@ Currently `Timeband` is used for `InterchangeRuleTiming`s, later also used for t
 
 
 #### Purpose
-This assignment overrides the DAY TYPE which was generally chosen for this OPERATING DAY in the overall DAY TYPE assignment plan.
-Designation of one day or group of days
+Assignment of a date to `DayType`. The `DayType`s of the Swiss profile represent national holidays.
+
+This assignment overrides the `DayType` specified for the day in the overall plan. (**TODO** should be stated more clearly / precisely)
 
 
 #### Table
