@@ -12,9 +12,9 @@ In this chapter:
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendarframe)*
 
 ### Purpose
-Groups calendar definitions that describe when services operate - day types, operating periods, and day-type assignments.
+Groups calendar definitions that describe when services operate - `DayType`s, [operating periods, **TODO** we don't define / use OperatingPeriod, do we?] and `DayTypeAssignment`s.
 
-See the following class diagram for the most important objects of the SERVICE CALENDAR FRAME and their relationships to the other frames.
+See the following class diagram for the most important objects of the `ServiceCalendarFrame` and their relationships to the other frames.
 
 ```mermaid
 classDiagram
