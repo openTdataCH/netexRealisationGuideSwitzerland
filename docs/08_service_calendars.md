@@ -12,6 +12,8 @@ In this chapter:
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendarframe)*
 
 ### Purpose
+Groups calendar definitions that describe when services operate - day types, operating periods, and day-type assignments.
+
 See the following class diagram for the most important objects of the SERVICE CALENDAR FRAME and their relationships to the other frames.
 
 ```mermaid
@@ -102,7 +104,7 @@ classDiagram
 *→ [Glossary definition](A4_annex_glossary.md#availabilitycondition)*
 
 #### Purpose
-- An AVAILABILITY CONDITION can be defined by specific DAY TYPEs and/or OPERATING DAYs. It may be further qualified by one or more of TIME BANDs. The DATED AVAILABILITY CONDITION being the instance of VALIDITY CONDITION on a specific CALENDAR DAY.
+Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 
 #### Table
 -[Swiss profile NeTEx definition](../generated/markdown-examples/AvailabilityCondition.md)
@@ -132,7 +134,7 @@ classDiagram
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendar)*
 
 #### Purpose
-The transport offering of a public transport company is tailored to accommodate different levels of demand. In order to simplify the supply planning almost all operators design their production plan using a classification by type of day, which summarises the level of demand or other characteristics: for example, workday, weekend, school holiday, market day,etc. Long-term planned schedules are designed through the so-called transportation calendar, in which calendar days are classified as specific DAY TYPEs.
+Long-term planning uses calendar days that are classified as specific DayTypes (example: weekday in school holidays). A ServiceCalendar defines a mapping between DayTypes and OperatingDays.
 
 #### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceCalendar.md)
@@ -149,8 +151,7 @@ The transport offering of a public transport company is tailored to accommodate 
 *→ [Glossary definition](A4_annex_glossary.md#daytype)*
 
 #### Purpose
-In Transmodel, a DAY TYPE is defined as a combination of various different properties a day may have, and which will influence the transport demand and the running conditions. 
-The day type is used to describe the validity of the holidays in Switzerland. Each day is de-scripted with a day Type. 
+A classification of days on which a specific set of transport services operates (e.g., Weekdays, Saturdays, Public Holidays).
 
 
 #### Table
