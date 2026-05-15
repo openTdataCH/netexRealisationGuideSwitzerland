@@ -43,6 +43,19 @@ A public transport organisation responsible for planning, organising, and managi
 
 ---
 
+## AvailabilityCondition
+
+Temporal availability in terms of, e.g., Dates, Timebands, ValidDayBits.
+
+> **NeTEx XSD:** A specific type of VALIDITY CONDITION used to specify a set of temporal conditions that can be associated with an ENTITY, for example that a STOP PLACE is open on a particular DAY TYPE.
+>
+> **Transmodel:** A VALIDITY CONDITION expressed in terms of temporal parameters and referring to DAY TYPEs.
+
+→ [Full documentation](08_service_calendars.md#AvailabilityCondition)
+
+---
+
+
 ## Codespace
 
 The namespace definition used for all NeTEx `@id` and `@ref` values within a dataset, ensuring identifier uniqueness across producers.
