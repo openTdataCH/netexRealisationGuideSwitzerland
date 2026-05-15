@@ -537,6 +537,15 @@ Ticket machines, validators, or other ticketing infrastructure available at a st
 
 ---
 
+## Timeband
+
+A period of time within a day, usually defined by a start and end time.
+
+> **NeTEx XSD / Transmodel:** A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category.
+
+---
+
+
 ## TimetabledPassingTime
 
 Long-term planned time data concerning public transport vehicles passing a particular PointInJourneyPattern on a specified vehicle journey for a certain DayType.
