@@ -1,7 +1,9 @@
 # Glossary
 
 Core terms used in this NeTEx profile, organised alphabetically.
-Each entry includes the profile definition, the official NeTEx XSD annotation, and (where applicable) the Transmodel (EN 12896) definition.
+Each entry includes the definition (adapted to the context of the profile), the official NeTEx XSD annotation, and (where applicable) the Transmodel (EN 12896) definition.
+
+Note that not all elements are used in the profile. Where the element exists and is documented, a link (→ [Full documentation](10_common.md#AlternativeName)) points to the appropriate section in the realisation guide. 
 
 <!-- entur-terms-ready: format maps to SKOS prefLabel + definition -->
 
