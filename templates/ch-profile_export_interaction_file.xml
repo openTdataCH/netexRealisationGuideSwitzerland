@@ -13,16 +13,17 @@
 				<TimetableFrame id="ch:1:TimetableFrame" version="1">
 					<!-- ch-usage: mandatory -->
 					<journeyMeetings>
-						<!-- ch-usage: forbidden -->
-						<!-- ch-note: **TODO** really forbidden? -->
+						<!-- ch-usage: expected -->
+						<!-- ch-note: For splitting and joining -->
 						<JourneyMeeting id="generated" version="1">
+                            <!-- ch-usage: mandatory -->
 							<!-- ch-see -->
 							<FromJourneyRef ref="sjyid" versionRef="referenced"/>
 							<ToJourneyRef ref="sjyid1" versionRef="referenced"/>
 						</JourneyMeeting>
 					</journeyMeetings>
 					<interchangeRules>
-						<!-- ch-usage: mandatory -->
+						<!-- ch-usage: expected -->
 						<InterchangeRule id="generated2" version="1">
 							<!-- This is the rule Interchange Rule that is important for the schematron generation -->
 							<!-- ch-usage: mandatory -->

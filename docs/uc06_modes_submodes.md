@@ -17,3 +17,6 @@ NeTEx definies the Physical Model for reusable transport mode normally implement
 | water | 	Water  |
 | cableway | 	Cableway  |
 | other | 	Other mode  |
+
+
+>**TODO** Anhang der Mappingtabellen machen

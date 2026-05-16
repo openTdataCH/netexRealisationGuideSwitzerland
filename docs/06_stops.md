@@ -122,15 +122,25 @@ as it parents.
 - If no platform SLOID is available {StopPlace SLOID}_gen:missingSLOID_pf:{Platform Code*} will be used instead.
 - 👉 Please note: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.
 
-In the table below you will find an overview of the possible cases. For more information on SLOID, see [Swiss Location Identification (SLOID) | öv-info.ch](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid "https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid")
-	
-<img width="925" height="206" alt="SLOID_V1_EN" src="https://github.com/user-attachments/assets/45c5354d-be03-4d88-8b04-b3793e5568ba" />
-> **TODO** If OK move table to media folder - or put and adjust things in a md table
 
-> QUAYs are mapped with the following resolution: **TODO** not clear
-> - No hierarchy between the different definitions of quays is foreseen at the moment 
-> - All combinations between sectors of the same quay are considered as independent quays. 
-> - Combinations of several quays are considered as independent quays. 
+In the table below you will find an overview of the possible cases. For more information on SLOID, see [Swiss Location Identification (SLOID) | öv-info.ch](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid "https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid")
+
+| Case | id | sloid in Key/Value, PrivateCode |
+| -- | --|--|
+| Unique track sloid | ch:1:sloid:7000:6:32 | ch:1:sloid:7000:6:32 |
+| Non-unique track sloid | ch:1:sloid:7000_gen:ch:1:sloid:7000:0:349752_pf:2A-D | ch:1:sloid:7000:0:349752 |
+| Non-unique SLOID with special characters "11/12 | ch.1:sloid:6206_gen:ch:1:sloid:6206:0:11_pf:11.12 | ch:1:sloid:6206:0:11 |
+| non platform SLOID | ch:1:sloid:1102381_gen:missingSLOID_pf:1 | |
+| No Sloid (abroad) | 8029701_gen_missingSLOID_pf:1 | |
+
+QUAYs are mapped with the following resolution: 
+- No hierarchy between the different definitions of quays is foreseen at the moment 
+- All combinations between sectors of the same quay are considered as independent quays. 
+- Combinations of several quays are considered as independent quays. 
+
+Further notes:
+- We will at some point include also `Quay`s that are not used actually to have the base data, if they are needed in real-time.
+- Atlas does model the hierarchy of the quays.
 
 ## TopographicPlace
 *→ [Glossary definition](A4_annex_glossary.md#TopographicPlace)*
@@ -174,6 +184,6 @@ The `Centroid` always contains a location.
 - The main coordinates are given as WSG84.
 - Required accuracy 4+ decimal positions.
 - The Swiss coordinates are added as well, when available (see below) **TODO**
-- INFO+ will not use the data from the NeTEx import, it will rely on the DIDOK master data for all Swiss coordinates. INFO+ will, however, use the imported location data of foreign places without DIDOK numbers. 
+- INFO+ will not use the master data from NeTEx imports, it will rely on the Atlas master data for all Swiss coordinates. INFO+ will, however, use the imported location data of foreign places without DIDOK numbers. 
 
 

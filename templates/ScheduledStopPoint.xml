@@ -8,7 +8,7 @@
 				<ServiceFrame id="ch:1:ServiceFrame" version="any">
 					<scheduledStopPoints>
 						<!-- ch-root -->
-						<ScheduledStopPoint id="ch:1:ScheduledStopPoint:8504128:1" version="any">
+						<ScheduledStopPoint id="ch:1:sloid:4128:1:1" version="any">
 							<!-- ch-note: Swiss ScheduledStopPoint are using the sloid in the id, when possible.-->
 							<!-- ch-usage: mandatory -->
 							<keyList>
@@ -21,9 +21,13 @@
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
-									<Value>ch:1:sloid:4128</Value>
+									<Value>ch:1:sloid:4128:1:1</Value>
 								</KeyValue>
 							</keyList>
+                            <privateCodes>
+                                <!-- ch-usage: mandatory -->
+                                <PrivateCode type="sloid"><!-- ch-usage: mandatory -->ch:1:sloid:4128:1:1</PrivateCode>
+                            </privateCodes>
 							<Name lang="de"><!-- ch-usage: mandatory --><!-- ch-note: The names are the same in all languages. -->Murten/Morat</Name>
 							<ShortName lang="de"><!-- ch-usage: mandatory --><!-- ch-note: StopPlace : Name of the Place, Quay : ShortName of the Quay -->1</ShortName>
 						</ScheduledStopPoint>

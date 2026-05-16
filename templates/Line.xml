@@ -12,7 +12,7 @@
 							<!-- ch-root -->
 							<!-- ch-usage: mandatory -->
 							<!-- ch-attrs: responsibilitySetRef -->
-							<!-- ch-note: We have a duplication with responsibilitySet and OperatorRef. With AuthorityRef we currently have a problem, because we can't use the same organisation **TODO** -->
+							<!-- ch-note: We have a duplication with responsibilitySet and OperatorRef. AuthorityRef is not used. -->
 							<ValidBetween>
 								<!-- ch-usage: expected -->
 								<!-- ch-note: Usually set to the whole timetable year -->
@@ -35,17 +35,13 @@
 								<RailSubmode><!-- ch-usage: expected -->suburbanRailway</RailSubmode>
 							</TransportSubmode>
 							<PublicCode><!-- ch-usage: mandatory --><!-- ch-note: Contains LinieLangName (attribute LT from HRDF) -->3</PublicCode>
-							<AuthorityRef ref="ch:1:Operator:11" versionRef="1">
-								<!-- ch-usage: mandatory -->
-								<!-- ch-note: Contains the AUTHORITY OF the LINE. -->
-							</AuthorityRef>
 							<OperatorRef ref="ch:1:Operator:11" versionRef="1">
 								<!-- ch-usage: optional -->
 								<!-- ch-note: The operator is the transport organisation that really will do the operation. If different from AuthorityRef -->
 							</OperatorRef>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:TER" versionRef="1">
 								<!-- ch-usage: mandatory -->
-								<!-- ch-note: **TODO** needs tobe clarified from BS KI -->
+								<!-- ch-note: Always aligned with BS KI oev-info.ch  -->
 							</TypeOfProductCategoryRef>
 							
 						</Line>

@@ -463,9 +463,9 @@ separated list of elements.
 Set of `Facilitiy`s available at a `StopPlace`, `Quay` or other site elements.
 
 > [!CAUTION]\
-> **COMMENT** @tuxalp not decribed in RG 1.01.\
-> **COMMENT** @tuxalp missing in glossary\
-> **COMMENT** @tuxalp missing elements in template.
+> **TODO** @tuxalp not decribed in RG 1.01.\
+> **TODO** @tuxalp missing in glossary\
+> **TODO** @tuxalp missing elements in template.
 
 A `SiteFacilitySet` defines a set of facilities like sanitary facilities, ticket service, lockers etc. that can be 
 referenced to define facilities of a site.
