@@ -58,6 +58,7 @@ All other defined attributes like `created`, `changed`, `modification` are not u
 ## Common Types
 
 ### MultilingualString
+*→ [Glossary definition](A4_annex_glossary.md#multilingualstring)*
 
 #### Purpose
 
@@ -83,9 +84,6 @@ If a `ServiceJourney` (in a particular `Call`) runs over midnight, then `DayOffs
 ### Purpose
 Holds default values for certain basic parameters. 
 
-> [!CAUTION]
-> For values not set in `FrameDefaults` we use the values as indicated in the table and example below.
-
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/FrameDefaults.md)
 
@@ -97,20 +95,19 @@ Holds default values for certain basic parameters.
 
 *→ [Template](../templates/FrameDefaults.xml)*
 
+### Usage Notes
+For values not set in `FrameDefaults` we use the values as indicated in the table and example above.
+
 ## AlternativeName
 
 *→ [Glossary definition](A4_annex_glossary.md#alternativetext)*
 
 ### Purpose
 
-As the name of the element states, the `AlternativeName` is used to provide an alternative (alias or translation) of a name, e.g. of 
+`AlternativeName` is used to provide an alternative (alias or translation) of a name, e.g. of 
 a `StopPlace` or `Organisation`. 
 
 For all other alternative texts use `AlternativeText`.
-
-> **Original NeTEx Definition:**\
-> The ALTERNATIVE NAME Model defines reusable texts. For example, we use it to distinguish between two places with the 
-> same name in different countries.
 
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeName.md)
@@ -163,13 +160,7 @@ Alternative names (translations or aliases) of a `StopPlace` or `Organisation` a
 *→ [Glossary definition](A4_annex_glossary.md#resourceframe)*
 
 ## Purpose
-
-The ResourceFrame is used to define common resources referenced in other FRAMEs.
-
-> **Original NeTEx Definition:**\
-> The RESOURCE FRAME is used to group reusable components for exchange, for example to declare the local code values 
-> used in a given data set (VALUE SETs and TYPE OF VALUEs.), or entities common to many frames such as ORGANISATIONs 
-> and RESPONSIBILITY SETs. A RESOURCE FRAME can be grouped with other frames using a COMPOSITE FRAME. 
+Contains shared resources used / referenced in other frames - organisations (`Authoritiy`s and `Operator`s), `VehicleType`s, codespaces, and other common reference data.
 
 See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
 
@@ -206,6 +197,7 @@ and/or `TimetableFrame`.
 *→ [Glossary definition](A4_annex_glossary.md#responsibilityset)*
 
 ### Purpose
+The set of roles and organisations responsible for managing data, operations, or contractual obligations within a defined scope.
 We use this element to  describe the different roles of the participating companies. For the most part, the company code is used to fully identify the provided services. 
 
 
@@ -375,9 +367,8 @@ This element can also be defined in the `TimetableFrame` as a child of `typesOfS
 *→ [Glossary definition: Authority](A4_annex_glossary.md#authority)*
 
 ### Purpose
-
-The ORGANISATION is a need to describe a concrete organisation like operator.
-The Organisations are identified by their [GO-number](https://opentransportdata.swiss/de/dataset/didok/resource/d66259a0-a77c-4aee-b7bd-e4fba99dcbb1) 
+A legally incorporated body associated with any aspect of public transportation. Authority and Operator are Organisations. An Operator provides public transport services under contract with an Authority.
+Organisations located in Switzerland are identified by their [GO-number](https://opentransportdata.swiss/de/dataset/didok/resource/d66259a0-a77c-4aee-b7bd-e4fba99dcbb1) 
 in Switzerland. The TU-Code is to be used for operators of other countries. 
 
 ### Table
@@ -411,16 +402,10 @@ If a different `Operator` is running a given `ServiceJourney`, then this is refl
 a different `OperatorRef`.
 
 ## ServiceFacilitySet
+*→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
 
 ### Purpose
-
-> **Original NeTEx definition:**\
-> Set of `ServiceFacilitySet` objects available for a `ServiceJourney`. 
-> The set may be available only for a specific VEHICLE TYPE within the SERVICE (e.g. carriage equipped with low floor). 
-> `ServiceFacilitySets` are listed in the `TimetableFrame` (between trainNumbers and notices). 
-> They are referenced in the facilities object of a `ServiceJourney`.
-
-The assignment of `facilities` to `ServiceJourney` or `JourneyPart` is made by using `ServiceFacilitySet`elements.
+Set of `Facilitiy`s available for a `ServiceJourney` or a `JourneyPart`. 
 
 > [!CAUTION]\
 > **TODO** 10.13.2ff
@@ -461,8 +446,10 @@ a reasonable order. The categories themselves are from type `xsd:list`, meaning 
 separated list of elements. 
 
 ## SiteFacilitySet
+*→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
 
 ### Purpose
+Set of `Facilitiy`s available at a `StopPlace`, `Quay` or other site elements.
 
 > [!CAUTION]\
 > **COMMENT** @tuxalp not decribed in RG 1.01.\
@@ -487,4 +474,10 @@ referenced to define facilities of a site.
 Make sure to not generate identical SiteFacilitySets. Reuse them.
 
 ## VehicleType
+*→ [Glossary definition](A4_annex_glossary.md#vehicletype)*
+
+### Purpose
+A typified vehicle configuration (model or series) defining reusable characteristics such as capacity, dimensions, propulsion, and accessibility features.
+
+
 **TODO**
