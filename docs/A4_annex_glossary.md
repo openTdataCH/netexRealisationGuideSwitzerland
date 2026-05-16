@@ -175,6 +175,16 @@ The scheduling and operational characteristics of a flexible (demand-responsive)
 
 ---
 
+## FrameDefaults
+
+Holds default values for certain basic parameters.
+
+> **NeTEx XSD:** The FrameDefaults element specifies default values for certain common properties of elements in the frame, such as DATA SOURCE, time-zone etc., to be applied to elements in the frame for which an explicit value has not been specifed. The use of defaults can both simplify export and reduce the size of documents.
+
+→ [Full documentation](10_common.md#FrameDefaults)
+
+---
+
 ## GroupOfLines
 
 A logical grouping of multiple Line objects for common management, branding, distribution, or filtering.
@@ -234,6 +244,16 @@ A public transport service line, representing a marketed route with a name, tran
 The geographic representation of a ServiceLink, carrying GML geometry (typically a LineString) describing the spatial path between two consecutive ScheduledStopPoints.
 
 > **NeTEx XSD:** A Projection of a whole LINK SEQUENCE as an ordered series of POINTs.
+
+---
+
+# MultilingualString
+
+NeTEx type used to define a string in one or more natural languages. 
+
+> **NeTEx XSD:** `MultilingualString` allows the definition of a string in one or more natural languages.
+
+→ [Full documentation](10_common.md#multilingualstring)
 
 ---
 
@@ -543,6 +563,8 @@ A period of time within a day, usually defined by a start and end time.
 
 > **NeTEx XSD / Transmodel:** A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category.
 
+→ [Full documentation](08_service_calendars.md#timeband)
+
 ---
 
 
@@ -599,6 +621,18 @@ Codes assigned to particular journeys (ServiceJourney, TemplateServiceJourney) w
 > **Transmodel:** A specification of codes assigned to particular VEHICLE JOURNEYs or JOURNEY PARTs when operated by TRAINs or COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc.)
 
 → [Full documentation](09_timetable.md#TrainNumber)
+
+---
+
+## TypeOf...
+
+Used for classification of NeTEx entities.
+
+> **NeTEx XSD:** Classification of ENTITies, for instance according to the domain in which they are defined or used.
+>
+> **Transmodel:** TYPE OF VALUE - an ENTITY that serves to classify another entry, using as a list of simple code values, each with a name.
+
+→ [Full documentation](10_common.md#typeof--valueset)
 
 ---
 
