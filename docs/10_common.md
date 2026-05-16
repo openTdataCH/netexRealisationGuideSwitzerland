@@ -78,10 +78,13 @@ Times that pass midnight of the current `OperatingDay` are marked with a `DayOff
 If a `ServiceJourney` (in a particular `Call`) runs over midnight, then `DayOffset` must be set to `1`.
 
 ## FrameDefaults
+*→ [Glossary definition](A4_annex_glossary.md#framedefaults)*
 
 ### Purpose
-In the element `FrameDefaults` we set some basic parameters. When they are not set, we still assume the values that we present 
-in the XML snippet.
+Holds default values for certain basic parameters. 
+
+> [!CAUTION]
+> For values not set in `FrameDefaults` we use the values as indicated in the table and example below.
 
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/FrameDefaults.md)
@@ -239,6 +242,10 @@ Only the values defined below are allowed in Switzerland for `StakeholderRoleTyp
 
 > [!CAUTION] 
 > **TODO** put this into template as well as a check for enums.
+
+## TypeOf... / ValueSet
+*→ [Glossary definition: TypeOf...](A4_annex_glossary.md#typeof...)*\
+*→ [Glossary definition: ValueSet](A4_annex_glossary.md#valueset)*
 
 ## TypeOfValue / ValueSets
 The ResourceFrame contains all the `ValueSets` and `TypeOfValues`. These are used for classification of NeTEx entities like `Notice`, `ProductCategory` etc.
