@@ -310,6 +310,17 @@ An organisation that provides public transport services under contract with an A
 
 ---
 
+## Organisation
+
+A legally incorporated body associated with any aspect of public transportation. Authority and Operator are Organisations.
+
+> **NeTEx XSD / Transmodel:** A legally incorporated body associated with any aspect of public transportation.
+
+→ [Full documentation](10_common.md#organisation--operator--authority)
+
+---
+
+
 ## Parking
 
 A parking facility associated with public transport - such as a park-and-ride lot, bike parking, or car park at a station.
@@ -454,6 +465,18 @@ Groups calendar definitions that describe when services operate - day types, ope
 
 ---
 
+## ServiceFacilitySet
+
+Set of facilities available for a ServiceJourney or a JourneyPart.
+
+> **NeTEx XSD:** Set of FACILITies available for a SERVICE JOURNEY or a JOURNEY PART. The set may be available only for a specific VEHICLE TYPE within the SERVICE (e.g. carriage equipped with low floor).
+>
+> **Transmodel:** Set of FACILITies available for a specific VEHICLE TYPE (e.g., carriage equipped with low floor) possibly only for a service (or for a SERVICE JOURNEY or a JOURNEY).
+
+→ [Full documentation](10_common.md#servicefacilityset)
+
+---
+
 ## ServiceFrame
 
 Contains the network and route definitions - Lines, Routes, JourneyPatterns, ScheduledStopPoints, DestinationDisplays, and PassengerStopAssignments.
@@ -504,6 +527,18 @@ Sanitary facilities (toilets, washrooms) available at a stop place, station, or 
 components and/or ENTRANCEs, in particular STOP PLACEs and/or its components. NOTE: Different times may be necessary to cover the resulting distance, depending on the kind of passenger.
 
 → [Full documentation](07_service.md#SiteConnection)
+
+---
+
+## SiteFacilitySet
+
+Set of facilities available at a StopPlace, Quay or other site elements.
+
+> **NeTEx XSD:** Set of FACILITies available for a SITE or SITE ELEMENT.
+>
+> **Transmodel:** Set of FACILITies available for a SITE ELEMENT. 
+
+→ [Full documentation](10_common.md#sitefacilityset)
 
 ---
 
@@ -633,6 +668,16 @@ Used for classification of NeTEx entities.
 > **Transmodel:** TYPE OF VALUE - an ENTITY that serves to classify another entry, using as a list of simple code values, each with a name.
 
 → [Full documentation](10_common.md#typeof--valueset)
+
+---
+
+## ValueSet
+
+A collection of classification codes of a particular NeTEx entity (e.g., a list of TypeOfNotice values).
+
+> **NeTEx XSD:** A grouping of instances of a specific TYPE OF VALUE instances for the purposes of exchange (i.e. a list of codes).
+
+→ [Full documentation](10_common.md#ValueSet)
 
 ---
 
