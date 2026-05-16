@@ -236,8 +236,18 @@ Only the values defined below are allowed in Switzerland for `StakeholderRoleTyp
 > **TODO** put this into template as well as a check for enums.
 
 ## TypeOf... / ValueSet
+**TODO** This is an alternative presentation or the next section... (because `TypeOfValue` and `ValueSets` do not exist)
+
 *→ [Glossary definition: TypeOf...](A4_annex_glossary.md#typeof...)*\
 *→ [Glossary definition: ValueSet](A4_annex_glossary.md#valueset)*
+
+### Purpose
+TypeOf... (examples: `TypeOfNotice`, `TypeOfProductCategory`, `TypeOfService`) are used for classification of NeTEx entities.  They are listed in `ValueSet`s as part of the `ResourceFrame`. 
+
+### Usage Notes
+We use TypeOfValue references in various Frames in objects including:
+-	`Notice`: references `TypeOfNotice`
+-	`ServiceJourney`: references `TypeOfProductCategory`
 
 ## TypeOfValue / ValueSets
 The ResourceFrame contains all the `ValueSets` and `TypeOfValues`. These are used for classification of NeTEx entities like `Notice`, `ProductCategory` etc.
@@ -252,6 +262,7 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
 
 ## TypeOfNotice
 
+### Purpose
 `TypeOfNotice` is used within a [Notice](07_service.md#notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
 
 > [!CAUTION]
