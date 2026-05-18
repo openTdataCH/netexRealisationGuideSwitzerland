@@ -1,11 +1,15 @@
 # The NeTEx Structure
+In this chapter:
+- [PublicationDelivery](#PublicationDelivery)
+- [Frames](#Frames)
+- [CompositeFrame](#CompositeFrame)
 
 ## PublicationDelivery
-
-Any valid XML document must start with one root element.
-`PublicationDelivery` is the root element of NeTEx XML. 
+*→ [Glossary definition](A4_annex_glossary.md#PublicationDelivery)*
 
 ### Purpose
+Any valid XML document must start with one root element.
+`PublicationDelivery` is the root element of NeTEx XML. 
 
 In addition to linking to the NeTEx XML schema, this element is used to specify the publication timestamp and the 
 participant's identifier. 
@@ -47,18 +51,19 @@ We use the following frames in Switzerland:
 > - `DriverScheduleFrame`
 > - `FareFrame`
 
-### CompositeFrame
+## CompositeFrame
+*→ [Glossary definition](A4_annex_glossary.md#compositeframe)*
 
-#### Purpose
+### Purpose
 The `CompositeFrame` is the container for the `FrameDefaults` and the other frames like `ResourceFrame`, `SiteFrame`, `ServiceFrame`, `ServiceCalendarFrame` and `TimeTableFrame`, 
 appearing in this order.
 
-#### Table
+### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/CompositeFrame.md)
 
 *→ [General NeTEx definition](../generated/netex-html/CompositeFrame.html)*
 
-#### Example
+### Example
 - [Example snippet](../generated/xml-snippets/CompositeFrame.xml)
 
 *→ [Template](../templates/CompositeFrame.xml)*
