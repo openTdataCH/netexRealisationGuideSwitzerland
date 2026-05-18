@@ -321,7 +321,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 ## TypeOfService
 
 > [!CAUTION]\
-> **COMMENT**: @tuxalp This element appears in both frames, ResourceFrame AND TimeTableFrame. This is somewhat confusing... 
+> **COMMENT**: @tuxalp **TODO** This element appears in both frames, ResourceFrame AND TimeTableFrame. This is somewhat confusing... 
 > Can I define it at both places? Why don't we describe it under ResourceFrame?
 > 
 ### Purpose

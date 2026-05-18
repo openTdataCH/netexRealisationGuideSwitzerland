@@ -201,7 +201,7 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 *→ [see Common elements](./10_common.md#servicefacilityset)*
 
 ## JourneyMeeting -> TODO: Probably to be removed
-[//]: # (TODO: Add JourneyMeeting links)
+[//]: # (**TODO**: Add JourneyMeeting links)
 
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/JourneyMeeting.md)
