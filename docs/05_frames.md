@@ -10,7 +10,7 @@ Any valid XML document must start with one root element.
 In addition to linking to the NeTEx XML schema, this element is used to specify the publication timestamp and the 
 participant's identifier. 
 
-### Tables
+### Table
 - [Swiss profile tables](../generated/markdown-examples/PublicationDelivery.md)
 
 *→ [Original NeTEx table](../generated/netex-html/PublicationDelivery.html)*
@@ -20,7 +20,7 @@ participant's identifier.
 
 *→ [Template](../templates/PublicationDelivery.xml)*
 
-### Usage Hints
+### Usage Notes
 
 Basically, the containers could be defined arbitrarily. We are using the most common used version.
 
