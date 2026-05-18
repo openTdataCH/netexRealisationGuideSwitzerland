@@ -1,6 +1,3 @@
-> [!CAUTION]\
-> **COMMENT** @tuxalp I renamed the title because "Comment Element" seemed me ambigous/unprecise.
-
 # Common Building Blocks
 
 This chapter deals with the elements, attributes, formats and types that are commonly used.
