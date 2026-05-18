@@ -32,7 +32,7 @@ This document describes the way in which the NeTEx standard is specifically appl
 - [Service model](07_service.md)
 - [Service Calendar model](07_service.md)
 - [Timetables](09_timetable.md)
-- [Common elements](10_common.md)
+- [Common building blocks](10_common.md)
 - Special use cases:
   - ["Durchbindung"](uc01_durchbindung.md)
   - [Joining / splitting](uc02_joining_splitting.md)
