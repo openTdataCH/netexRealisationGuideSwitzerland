@@ -1,9 +1,9 @@
 # Service calendars
 
 In this chapter:
-- [ServiceCalendarFrame](#ServiceCalendarFrame)
-- [AvailabilityCondition](#AvailabilityCondition)
-- [ServiceCalendar](#ServiceCalendar)
+- [ServiceCalendarFrame](#servicecalendarframe)
+- [AvailabilityCondition](#availabilitycondition)
+- [ServiceCalendar](#servicecalendar)
 - [DayType](#daytype)
 - [Timeband](#timeband)
 - [DayTypeAssignment](#daytypeassignment)
@@ -183,7 +183,7 @@ A period of time within a day, usually defined by a start and end time.
 *→ [Template](../templates/Timeband.xml)*
 
 
-#### Usage Hints
+#### Usage Notes
 Currently `Timeband` is used for `InterchangeRuleTiming`s, later also used for the opening hours in `StopPlace` models. 
 
 ## DayTypeAssignment
@@ -206,6 +206,8 @@ This assignment overrides the `DayType` specified for the day in the overall pla
 
 *→ [Template](../templates/DayTypeAssignment.xml)*
 
+
 #### Usage Notes
-We also use DayTypeAssignment currently only for the national holidays.
+We currently use `DayTypeAssignment` only for the national holidays.
+
 
