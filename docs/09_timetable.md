@@ -5,6 +5,7 @@ In this chapter:
 - [TemplateServiceJourney](09_timetable.md#templateservicejourney)
 - [OccupancyView](09_timetable.md#occupancyview)
 - [TrainNumber](09_timetable.md#trainnumber)
+- [TypeOfService](#typeofservice)
 - [TimetabledPassingTime](09_timetable.md#timetabledpassingtime)
 - [InterchangeRule](09_timetable.md#interchangerule)
 
@@ -114,6 +115,9 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 
 *→ [Template](../templates/OccupancyView.xml)*
 
+### Usage Notes
+We currently don't use OccupancyView.
+
 
 ## TrainNumber
 
@@ -130,6 +134,35 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 - [Example snippet](../generated/xml-snippets/TrainNumber.xml)
 
 *→ [Template](../templates/TrainNumber.xml)*
+
+## TypeOfService
+
+### Purpose
+
+`TypeOfService` indicates the purpose of a `ServiceJourney`, for example, whether if it is a passenger transport or a garage run-in. We only use `ch:1:TypeOfService:1`
+
+### Table
+- [Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfService.md)
+
+*→ [General NeTEx definition](../generated/netex-html/TypeOfService.html)*
+
+### Example
+- [XML Snippet](../generated/xml-snippets/TypeOfService.xml)
+
+*→ - [Template](../templates/TypeOfService.xml)*
+
+### Usage Notes
+
+The following types are currently used:
+
+| Name	             | Description                                                                                                                                               |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| PublicJourney	    | A public passenger transport                                                                                                                              |
+| ~~GarageRunOut~~	 | A garage run-out                                                                                                                                          |
+| ~~GarageRunIn~~	  | A garage run-in                                                                                                                                           |
+| ~~ThroughCoach~~  | 	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling. |
+
+Actually there is only one allowed value that we use in the Swiss profile: Only the `PublicJourney` is to be exchanged.
 
 
 ## TimetabledPassingTime

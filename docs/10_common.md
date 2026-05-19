@@ -15,7 +15,7 @@ In this chapter:
   - [ResponsibilitySet](#responsibilityset)
   - [TypeOfValue / Valuesets](#typeofvalue--valuesets)
     - [TypeOfProductCategory](#typeofproductcategory)
-    - [TypeOfService](#typeofproductcategory)
+    - [TypeOfService](#typeofservice)
   - [Organisation / Operator / Authority](#organisation--operator--authority)
   - [ServiceFacilitySet](#servicefacilityset)
   - [SiteFacilitySet](#servicefacilityset)
@@ -229,9 +229,6 @@ Only the values defined below are allowed in Switzerland for `StakeholderRoleTyp
 
 `FareManagement` and `Planning` are currently not used. Not all roles must be filled.
 
-> [!CAUTION] 
-> **TODO** put this into template as well as a check for enums.
-
 ## TypeOf... / ValueSet
 **TODO** This is an alternative presentation or the next section... (because `TypeOfValue` and `ValueSets` do not exist)
 
@@ -262,9 +259,6 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
 ### Purpose
 `TypeOfNotice` is used within a [Notice](07_service.md#notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
 
-> [!CAUTION]
-> **TODO** Rework table and example xml\
-> **COMMENT** US: remove things that are no longer used, e.g. values 2, 3?
 
 | PrivateCode | Name                | Description                                                                                                                                                                                                                                                      |
 |-------------|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -277,10 +271,6 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
 ``` xml
 <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
   <values>
-    <TypeOfNotice id="ch:1:TypeOfNotice:11" version="1">
-      <Name>Region</Name>
-      <PrivateCode>11</PrivateCode>
-    </TypeOfNotice>
     <TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
       <Name>Allgemeiner Hinweis</Name>
       <PrivateCode>1</PrivateCode>
@@ -288,14 +278,6 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
     <TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
       <Name>Angebot</Name>
       <PrivateCode>10</PrivateCode>
-    </TypeOfNotice>
-    <TypeOfNotice id="ch:1:TypeOfNotice:3" version="1">
-      <Name>Gleis-Angabe</Name>
-      <PrivateCode>3</PrivateCode>
-    </TypeOfNotice>
-    <TypeOfNotice id="ch:1:TypeOfNotice:2" version="1">
-      <Name>Zugname</Name>
-      <PrivateCode>2</PrivateCode>
     </TypeOfNotice>
   </values>
 </ValueSet>
@@ -319,55 +301,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 *→ [Template](../templates/TypeOfProductCategory.xml)*
 
 ## TypeOfService
-
-> [!CAUTION]\
-> **COMMENT**: @tuxalp **TODO** This element appears in both frames, ResourceFrame AND TimeTableFrame. This is somewhat confusing... 
-> Can I define it at both places? Why don't we describe it under ResourceFrame?
-> 
-### Purpose
-
-`TypeOfService` indicates the purpose of a `ServiceJourney`, for example, whether if it is a passenger transport or a garage run-in.
-
-> **Original NeTEx description:**\
-> A classification for VEHICLE JOURNEYs and SPECIAL SERVICEs to express some common properties of journeys to be taken 
-> into account in the scheduling and/or operations control process.
-
-> Not to be confused with TYPE OF SERVICE (FEATURE) of the LOCAL SERVICE and FACILITY model in NeTEx-1, which determines 
-> if a LOCAL SERVICE or FACILITY is, for example, a RETAIL SERVICE or TICKETING FACILITY.
-
-### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfService.md)
-
-*→ [General NeTEx definition](../generated/netex-html/TypeOfService.html)*
-
-### Example
-- [XML Snippet](../generated/xml-snippets/TypeOfService.xml)
-
-*→ - [Template](../templates/TypeOfService.xml)*
-
-### Usage Notes
-
-The following types are currently used:
-
-| Name	             | Description                                                                                                                                               |
-|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PublicJourney	    | A public passenger transport                                                                                                                              |
-| ~~GarageRunOut~~	 | A garage run-out                                                                                                                                          |
-| ~~GarageRunIn~~	  | A garage run-in                                                                                                                                           |
-| ~~ThroughCoach~~  | 	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling. |
-
-Actually there is only one allowed value that we use in the Swiss profile: Only the `PublicJourney` is to be exchanged.
-
-This element can also be defined in the `TimetableFrame` as a child of `typesOfService`:
-``` xml
-<typesOfService>
-    <TypeOfService id="ch:1:TypeOfService:1" version="1">
-        <Name lang="en">PublicJourney</Name>
-        <ShortName lang="en">N</ShortName>
-        <PrivateCode>1</PrivateCode>
-    </TypeOfService>
-</typesOfService>
-```
+`TypeOfService` is dealt with in the `TimetableFrame`.
 
 ## Organisation / Operator / Authority
 
@@ -487,5 +421,6 @@ Make sure to not generate identical SiteFacilitySets. Reuse them.
 ### Purpose
 A typified vehicle configuration (model or series) defining reusable characteristics such as capacity, dimensions, propulsion, and accessibility features.
 
+### Usage Notes
+We currently don't use `VehicleType` or `VehicleModel`. We will need those at some point.
 
-**TODO**

@@ -27,11 +27,6 @@
 										<!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
 										2026-05-17T00:00:00Z
 									</ToDate>
-									<IsAvailable>
-										<!-- ch-usage: mandatory -->
-										<!-- ch-note: mandatory by NeTEx **TODO** really? -->
-										true
-								  	</IsAvailable>
 									<ValidDayBits>
 										<!-- ch-usage: mandatory-->
 										01010111
@@ -42,13 +37,6 @@
 									</timebands>
 								</AvailabilityCondition>
 							</validityConditions>
-							<privateCodes>
-								<!-- ch-usage: expected -->
-								<PrivateCode type="sjyid">
-									<!-- ch-usage: expected -->
-									ch:1:sjyid:100001:71707-003
-								</PrivateCode>
-							</privateCodes>
 							<keyList>
 								<!-- ch-usage: expected -->
 								<!-- ch-note: KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. -->
@@ -59,6 +47,13 @@
 									<Value><!-- ch-usage: mandatory -->ch:1:sjyid:100001:71707-003</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<!-- ch-usage: expected -->
+								<PrivateCode type="sjyid">
+									<!-- ch-usage: expected -->
+									ch:1:sjyid:100001:71707-003
+								</PrivateCode>
+							</privateCodes>							
 							<Extensions>
 								<!-- ch-usage: optional -->
 								<!-- ch-note: Used to indicate Facility changes. -->
@@ -88,8 +83,7 @@
 								rail
 							</TransportMode>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1">
-								<!-- ch-usage: expected -->
-								<!-- ch-note: **TODO** Or should it be mandatory?-->
+								<!-- ch-usage: mandatory -->
 							</TypeOfProductCategoryRef>
 							<TypeOfServiceRef ref="ch:1:TypeOfService:1" versionRef="1">
 								<!-- ch-usage: optional -->
@@ -130,12 +124,7 @@
 							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1">
 								<!--ch-usage: mandatory -->
 							</LineRef>
-							<DirectionType>
-								<!-- ch-usage: mandatory -->
-								<!-- ch-allowed-enums: inbound outbound -->
-								<!-- ch-note: Allowed are: inbound, outbound -->
-								outbound
-							</DirectionType>
+							<DirectionType><!-- ch-usage: mandatory --><!-- ch-allowed-enums: inbound outbound --><!-- ch-note: Allowed are: inbound, outbound -->outbound</DirectionType>
 							<trainNumbers>
 								<!-- ch-usage: mandatory -->
 								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1">

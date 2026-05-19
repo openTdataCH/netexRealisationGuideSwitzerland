@@ -4,7 +4,7 @@ In this chapter:
 - [DestinationDisplay](#destinationdisplay)
 - [ScheduledStopPoint](#scheduledstoppoint)
 - [PassengerStopAssignment](#passengerstopassignment)
-- [TrainStopAssignment](**TODO**)
+- [PassengerBoardingPositionAssignment](**TODO**)
 - [DefaultConnection](#defaultconnection)
 - [SiteConnection](#siteconnection)
 - [ServiceJourneyPattern](#servicejourneypattern)
@@ -47,7 +47,7 @@ classDiagram
     class PassengerStopAssignment {
     }
 
-    class TrainStopAssignment {
+    class PassengerBoardingPositionAssignment {
     }
 
     class DefaultConnection {
@@ -69,7 +69,7 @@ class ServiceJourney {
     ServiceFrame "1" o-- "0..*" DestinationDisplay : contains
     ServiceFrame "1" o-- "0..*" ScheduledStopPoint : contains
     ServiceFrame "1" o-- "0..*" PassengerStopAssignment : contains
-    ServiceFrame "1" o-- "0..*" TrainStopAssignment : contains
+    ServiceFrame "1" o-- "0..*" PassengerBoardingPositionAssignment : contains
     ServiceFrame "1" o-- "0..*" DefaultConnection : contains
     ServiceFrame "1" o-- "0..*" SiteConnection : contains
     ServiceFrame "1" o-- "0..*" Notice : contains
@@ -93,7 +93,7 @@ The `ServiceFrame` model comprises among others:
 -	Service pattern model: `ScheduledStopPoint`s, `ServiceLink`, i.e., points and links referenced by schedules.
 
 Other important classes of the `ServiceFrame` include:
--	`PassengerStopAssignment`s and `TrainStopAssignment` which model the relationship between stops in the timetable and the physical platforms of an actual station or other stop.
+-	`PassengerStopAssignment`s and `PassengerBoardingPositionAssignment` which model the relationship between stops in the timetable and the physical platforms of an actual station or other stop.
 -	`Connection`s as the topological model of interchanges. They model the possibility of a transfer between two `ScheduledStopPoints`.
 -	`Notice`s which are then assigned to `Journey` and `Passingtime` of the `TimetableFrame` through `NoticeAssignment`s. They model the association of footnotes and passenger information content such as stop announcements and the network.
 

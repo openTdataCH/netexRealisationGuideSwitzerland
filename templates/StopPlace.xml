@@ -13,22 +13,13 @@
 							<!-- ch-root -->
 							<!-- ch-usage: mandatory -->
 							<!-- ch-attrs: id version -->
-							<!-- ch-note: Structure of the id, example: "ch:2:StopPlace:8503000" -->
+							<!-- ch-note: In some cases the id is not a sloid. -->
 							<ValidBetween>
 								<!-- ch-usage: optional -->
-								<!-- ch-note: **TODO** We could transport the validity here. We prefer not to do this as we don't support versions -->
+								<!-- ch-note: This can be used to show, when the StopPlace can be used. -->
 								<FromDate><!-- ch-usage: mandatory -->2026-01-01T00:00:00</FromDate>
 								<ToDate><!-- ch-usage: mandatory -->2026-12-31T00:00:00</ToDate>
 							</ValidBetween>
-							<alternativeTexts>
-								<!-- ch-usage: optional -->
-								<AlternativeText id="ch:1:sloid:7000:AlternativeText">
-									<!-- ch-usage: optional -->
-									<!-- ch-note: Used for abbreviated name of the StopPlace  **TODO** really? Also see ShortName below and note that we don't seem to use PublicCode-->
-									<!-- ch-see -->
-									<Text>CHR</Text>
-								</AlternativeText>
-							</alternativeTexts>
 							<keyList>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: Key value pairs for DIDOK number and SLOID -->
@@ -36,7 +27,6 @@
 									<!-- ch-usage: mandatory -->
 									<Key>
                                         <!-- ch-usage: mandatory -->
-                                        <!-- ch-note: DIDOK number **TODO** Cf. duplicates in privatCode below -->
                                         DIDOK
                                     </Key>
 									<Value>
@@ -45,25 +35,17 @@
                                     </Value>
 								</KeyValue>
 								<KeyValue>
-									<Key>
-                                        <!-- ch-usage: mandatory -->
-                                        <!-- ch-note: SLOID **TODO** really mandatory, stations outside CH?-->
-                                        SLOID
-                                    </Key>
-									<Value>
-                                        <!-- ch-usage: mandatory -->
-                                        ch:1:sloid:7000
-                                    </Value>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:7000</Value>
 								</KeyValue>
 							</keyList>
 							<privateCodes>
 								<!-- ch-usage: mandatory -->
 								<PrivateCode type="didok">
                                     <!-- ch-usage: mandatory -->
-                                    <!-- ch-note: In Switzerland to be filled with the DiDok number. Replaces single PublicCode from NeTEx 1.0 -->7000</PrivateCode>
-								<PrivateCode type="sloid">
-                                    <!-- ch-usage: mandatory -->
-                                    <!-- ch-note: In Switzerland to be filled with the SLOID. Replaces single PublicCode from NeTEx 1.0 -->ch:1:sloid:7000</PrivateCode>
+                                    <!-- ch-attrs: type -->
+                                    <!-- ch-note: In Switzerland to be filled with the didok number and the sloid -->7000</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
 							</privateCodes>
 							<Extensions>
 								<!-- ch-usage: optional -->
@@ -72,59 +54,25 @@
 									<!-- ch-note: Interchange priority if several alternative interchange possibilities exist. Integer allows for finer grained value than standard element Weighting. -->
 									<Value>
                                         <!-- ch-usage: mandatory -->
-                                        <!-- ch-note: **TODO** Allowed range... -->
                                         4
                                     </Value>
 								</HafasPriority>
 								<HafasKMInfo>
 									<!-- ch-usage: optional -->
-									<!-- ch-note: **TODO** ...Value for Interchange points. -->
+								    <!-- ch-note: Special value for Hafas environments. -->
+
 									<Value>
                                         <!-- ch-usage: mandatory -->
-                                        <!-- ch-note: km -->
+                                        <!-- ch-note: Special value for Hafas environments. -->
                                         1000
                                     </Value>
 								</HafasKMInfo>
 							</Extensions>
 							<Name><!-- ch-usage: mandatory -->Bern</Name>
-							<ShortName>
-								<!-- ch-note: Used to transmit the abbreviation of the StopPlace. Not available for every StopPlace.-->
-                                BE
-                            </ShortName>
-							<alternativeNames>
-								<!-- ch-usage: optional -->
-								<!-- ch-note: **TODO** To what extent are AlternativeNames used? Adapt everything below accordingly. -->
-								<AlternativeName id="generated" version="1">
-									<!-- ch-usage: optional -->
-									<Lang>
-										<!-- ch-usage: expected -->
-										it
-									</Lang>
-									<NameType>
-										<!-- ch-usage: optional -->
-										label
-									</NameType>
-									<TypeOfName>
-										<!-- ch-usage: forbidden -->
-									</TypeOfName>
-									<Name>
-										<!-- ch-usage: mandatory -->
-										Berna
-									</Name>
-									<ShortName>
-										<!-- ch-usage: optional -->
-										Berna
-									</ShortName>
-									<Abbreviation> 
-										<!-- ch-usage: optional -->
-										BE
-									</Abbreviation>
-								</AlternativeName>
-							</alternativeNames>
 							<PrivateCode>
 								<!-- ch-usage: forbidden -->
 								<!-- ch-note: Replaced by PublicCode nested within publicCodes, see above. -->
-							</PrivateCode>
+							</PrivateCode>							
 							<Centroid>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: Global or national location -->
@@ -133,7 +81,7 @@
 								</Name>
 								<Location>
 									<!-- ch-usage: mandatory -->
-									<!-- ch-note: Note concerning coordinates - The main coordinates are given as **WSG84**. - The Swiss coordinates are added as well if available. (**TODO** How?)- INFO+ will not use the data from the import, instead DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places. -->
+									<!-- ch-note: Note concerning coordinates - The main coordinates are given as **WSG84**. -->
 									<Longitude><!-- ch-usage: mandatory -->7.43913088992</Longitude>
 									<Latitude><!-- ch-usage: mandatory -->46.94883228914</Latitude>
 									<Altitude><!-- ch-usage: optional -->540.2</Altitude>
@@ -144,24 +92,18 @@
 							</Url>
 							<alternativeNames>
 								<!-- ch-usage: optional -->
-								<!-- ch-note: **TODO** Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. -->
+								<!-- ch-note: Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. -->
 								<AlternativeName id="ch:1:sloid:7000:it" version="1">
 									<!-- ch-see -->
 									<Name lang="it">Berna</Name>
 								</AlternativeName>
 							</alternativeNames>
 							<TopographicPlaceRef ref="BE-bern" versionRef="1">
-								<!-- ch-note: **TODO** more details -->
+								<!-- ch-note: Id to the county, community, canton or country. -->
 								<!-- ch-usage: optional -->
 							</TopographicPlaceRef>
 							<StopPlaceType><!-- ch-usage: optional -->railStation</StopPlaceType>
-							<Weighting>
-								<!-- ch-usage: optional -->
-								<!-- ch-note: TODO fix validation issue with Weighting element. -->
-								<!-- ch-note: Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. -->
-								<!-- ch-allowed-enums: noInterchange interchangeAllowed recommendedInterchange preferredInterchange -->
-								preferredInterchange
-							</Weighting>
+							<Weighting><!-- ch-usage: optional --><!-- ch-note: Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. --><!-- ch-allowed-enums: noInterchange interchangeAllowed recommendedInterchange preferredInterchange -->preferredInterchange</Weighting>
 							<quays>
 								<!-- ch-usage: expected -->
 								<!-- ch-note: The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. -->

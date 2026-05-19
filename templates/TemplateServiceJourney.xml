@@ -28,11 +28,6 @@
 										<!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
 										2026-05-17T00:00:00Z
 									</ToDate>
-									<IsAvailable>
-										<!-- ch-usage: mandatory -->
-										<!-- ch-note: mandatory by NeTEx **TODO** really? -->
-										true
-								  	</IsAvailable>
 									<ValidDayBits>
 										<!-- ch-usage: mandatory-->
 										01010111
@@ -43,14 +38,6 @@
 									</timebands>
 								</AvailabilityCondition>
 							</validityConditions>
-							<privateCodes>
-								<!-- ch-usage: expected -->
-								<!-- ch-note: Replaces the single PrivateCode. -->
-								<PrivateCode type="sjyid">
-									<!-- ch-usage: expected -->
-									ch:1:sjyid:100001:71707-003
-								</PrivateCode>
-							</privateCodes>
 							<keyList>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: Key list for the repeating journeys. Contains the SJYID. -->
@@ -61,6 +48,14 @@
 									<Value><!-- ch-usage: mandatory -->ch:1:sjyid:100001:71707-003</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Replaces the single PrivateCode. -->
+								<PrivateCode type="sjyid">
+									<!-- ch-usage: expected -->
+									ch:1:sjyid:100001:71707-003
+								</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<!-- ch-usage: optional -->
 								<!-- ch-note: Used to indicate Facility changes. -->
@@ -117,10 +112,10 @@
 								<!-- ch-note: Only the value planned is allowed. -->
 								planned
 							</ServiceAlteration>
-							<DepartureTime><!-- ch-usage: optional --><!-- ch-note: **TODO** - does this make sense given that repeated journeys are described ? -->06:21:00</DepartureTime>
-              				<DepartureDayOffset>
+							<DepartureTime><!-- ch-usage: optional --><!-- ch-note: Departure of the first journey. -->06:21:00</DepartureTime>
+							<DepartureDayOffset>
 								<!-- ch-usage: optional -->
-                				<!-- ch-note: **TODO** - same question as above -->
+                				<!-- ch-note: DayOffset if relevant. -->
 								0
 							</DepartureDayOffset>
 							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1">
@@ -136,20 +131,10 @@
 							<Destination>
 								<!-- ch-usage: expected -->
 								<!-- ch-see -->
-								<!-- ch-note: **TODO** needs to be created as well - is JourneyEndpointStructure -->
-								<Name lang="de"><!-- ch-usage: optional --><!-- ch-note: **TODO** - tbd / check -->Wollishofen</Name>
-								<ScheduledStopPointRef versionRef="1" ref="ch:1:sloid:3412">
-									<!-- ch-usage: expected -->
-									<!-- ch-note: **TODO** - tbd / check -->
-								</ScheduledStopPointRef>
-								<DestinationDisplayRef ref="generated" version="1">
-									<!-- ch-usage: expected -->
-									<!-- ch-note: **TODO** - tbd / check -->
-								</DestinationDisplayRef>
-								<PlaceRef ref="generated" version="1">
-									<!-- ch-usage: expected -->
-									<!-- ch-note: **TODO** - tbd / check -->
-								</PlaceRef>
+								<Name lang="de">Wollishofen</Name>
+								<ScheduledStopPointRef versionRef="1" ref="ch:1:sloid:3412"/>
+								<DestinationDisplayRef ref="generated" versionRef="1"/>
+								<PlaceRef ref="ch:1:sloid:3412" version="1"/>
 							</Destination>
 							<passingTimes>
 								<!-- ch-usage: expected -->
@@ -173,21 +158,19 @@
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: We strictly map one frequency to the TemplateServiceJourney. -->
 								<RhythmicalJourneyGroup version="1" id="ch:1:RhythmicalJourneyGroup:0253">
-									<!-- ch-usage: optional -->
-									<!-- ch-note: **TODO** Will this be used? Or should it be forbidden? -->
-									<Name>Regular Interval service between 10am and 17:00 pm<!-- ch-usage: optional --><!-- ch-note: **TODO** - wanted? more advice on how to handle language? --></Name>
-									<Description>At 20 &amp; 45 Minutes past the hour<!-- ch-usage: optional --></Description>
-									<FirstDepartureTime>10:00:00<!-- ch-usage: mandatory --></FirstDepartureTime>
-									<FirstDayOffset>0<!-- ch-usage: optional --></FirstDayOffset>
-									<LastDepartureTime>17:00:00<!-- ch-usage: mandatory --></LastDepartureTime>
-									<LastDayOffset>0<!-- ch-usage: optional --></LastDayOffset>
+									<!-- ch-usage: forbidden -->
+									<Name>Regular Interval service between 10am and 17:00 pm</Name>
+									<Description>At 20 &amp; 45 Minutes past the hour</Description>
+									<FirstDepartureTime>10:00:00</FirstDepartureTime>
+									<FirstDayOffset>0</FirstDayOffset>
+									<LastDepartureTime>17:00:00</LastDepartureTime>
+									<LastDayOffset>0</LastDayOffset>
 									<timebands>
-										<!-- ch-usage: optional -->
 										<TimebandRef versionRef="1" ref="hde:TM_20"/>
 									</timebands>
 								</RhythmicalJourneyGroup>
 								<HeadwayJourneyGroup version="1" id="ch:1:HeadwayJourneyGroup:432">
-									<!-- ch-usage: optional -->
+									<!-- ch-usage: mandatory -->
 									<Name><!-- ch-usage: optional -->Regular Interval service between 12am and 18:00 pm</Name>
 									<Description><!-- ch-usage: optional -->About every 20 minutes</Description>
 									<FirstDepartureTime><!-- ch-usage: mandatory -->12:00:00</FirstDepartureTime>
@@ -195,12 +178,7 @@
 									<LastDepartureTime><!-- ch-usage: mandatory -->18:00:00</LastDepartureTime>
 									<LastDayOffset><!-- ch-usage: optional -->0</LastDayOffset>
 									<ScheduledHeadwayInterval><!-- ch-usage: mandatory -->PT20M</ScheduledHeadwayInterval>
-									<HeadwayDisplay>
-										<!-- ch-usage: optional -->
-										<!-- ch-allowed-enums: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes -->
-										<!-- ch-note: Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly.-->
-										DisplayInsteadOfPassingTimes
-									</HeadwayDisplay>
+									<HeadwayDisplay><!-- ch-usage: optional --><!-- ch-allowed-enums: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes --><!-- ch-note: Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly.-->DisplayInsteadOfPassingTimes</HeadwayDisplay>
 								</HeadwayJourneyGroup>
 							</frequencyGroups>
 						</TemplateServiceJourney>
