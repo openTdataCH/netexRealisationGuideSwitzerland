@@ -4,7 +4,7 @@ In this chapter:
 - [DestinationDisplay](#destinationdisplay)
 - [ScheduledStopPoint](#scheduledstoppoint)
 - [PassengerStopAssignment](#passengerstopassignment)
-- [TrainStopAssignment](**TODO**)
+- [PassengerBoardingPositionAssignment](**TODO**)
 - [DefaultConnection](#defaultconnection)
 - [SiteConnection](#siteconnection)
 - [ServiceJourneyPattern](#servicejourneypattern)
@@ -15,6 +15,8 @@ In this chapter:
 *→ [Glossary definition](A4_annex_glossary.md#serviceframe)*
 
 ### Purpose
+Contains the network and route definitions - `Line`s, `ScheduledStopPoint`s, `DestinationDisplay`s, and `PassengerStopAssignment`s.
+
 See the following class diagram for the most important objects of the `ServiceFrame` and their relationships to the other frames.
 
 ```mermaid
@@ -45,7 +47,7 @@ classDiagram
     class PassengerStopAssignment {
     }
 
-    class TrainStopAssignment {
+    class PassengerBoardingPositionAssignment {
     }
 
     class DefaultConnection {
@@ -67,7 +69,7 @@ class ServiceJourney {
     ServiceFrame "1" o-- "0..*" DestinationDisplay : contains
     ServiceFrame "1" o-- "0..*" ScheduledStopPoint : contains
     ServiceFrame "1" o-- "0..*" PassengerStopAssignment : contains
-    ServiceFrame "1" o-- "0..*" TrainStopAssignment : contains
+    ServiceFrame "1" o-- "0..*" PassengerBoardingPositionAssignment : contains
     ServiceFrame "1" o-- "0..*" DefaultConnection : contains
     ServiceFrame "1" o-- "0..*" SiteConnection : contains
     ServiceFrame "1" o-- "0..*" Notice : contains
@@ -91,7 +93,7 @@ The `ServiceFrame` model comprises among others:
 -	Service pattern model: `ScheduledStopPoint`s, `ServiceLink`, i.e., points and links referenced by schedules.
 
 Other important classes of the `ServiceFrame` include:
--	`PassengerStopAssignment`s and `TrainStopAssignment` which model the relationship between stops in the timetable and the physical platforms of an actual station or other stop.
+-	`PassengerStopAssignment`s and `PassengerBoardingPositionAssignment` which model the relationship between stops in the timetable and the physical platforms of an actual station or other stop.
 -	`Connection`s as the topological model of interchanges. They model the possibility of a transfer between two `ScheduledStopPoints`.
 -	`Notice`s which are then assigned to `Journey` and `Passingtime` of the `TimetableFrame` through `NoticeAssignment`s. They model the association of footnotes and passenger information content such as stop announcements and the network.
 
@@ -116,7 +118,7 @@ Other important classes of the `ServiceFrame` include:
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/ServiceFrame.html)*
+*→ [General NeTEx definition ](../generated/netex-html/ServiceFrame.html)*
 
 ### Example
 
@@ -193,19 +195,14 @@ This means that the old two defined dirctions `ch:1:Direction:H` and `ch:1:Direc
 ## Line
 *→ [Glossary definition](A4_annex_glossary.md#Line)*
 ### Purpose
-Transmodel defines a LINE as a grouping of ROUTEs that is generally known to the public by a similar name or number. These ROUTEs are usually very similar to each other from the topological point of view.
-Each LINE has a unique number  PrivateCode, a ShortName and a Name.  Passengers recognise a LINE by its published “PublicCode”. The transport mode is specified in  “TransportMode”, e.g.  metro, tram, bus etc. 
-The assignment of a LINE to an ORGANISATION is done by the element OperatorRef and to the operationalContext with OperationalContextRef.
-Note that there exist journeys in Switzerland and neighbouring countries that are not associated with a Line. In NeTEx, however, the ServiceJourneys corresponding to such journeys must still reference something in LineRef. To ensure this, we introduce a placeholder Line called "NoLine" for each Operator that has journeys without a Line. 
-For more information about SwissLineID: see https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf
-Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise, the relevant operator must at least be set on the ServiceJourney.
+A public transport service line, representing a marketed route with a `Name`, `TransportMode`, and `Operator`.
 
 ### Table
 
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | Line | mandatory | 1..1 | unknown | A group of ROUTEs which is generally known to the public by a similar name or number. | We have a duplication with responsibilitySet and OperatorRef. With AuthorityRef we currently have a problem, because we can't use the same organisation **TODO** |
+|  | Line | mandatory | 1..1 | unknown | A group of ROUTEs which is generally known to the public by a similar name or number. | We have a duplication with responsibilitySet and OperatorRef. AuthorityRef is not used. |
 | + | ValidBetween | expected | 1..1 | unknown | OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT. | Usually set to the whole timetable year |
 | ++ | FromDate | expected | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. |  |
 | ++ | ToDate | expected | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. |  |
@@ -220,7 +217,7 @@ Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise,
 
 
 
-*-> [General NeTEx definition](../generated/xcore/Line.html)*
+*-> [General NeTEx definition](../generated/netex-html/Line.html)*
 
 ### Example
 
@@ -229,7 +226,7 @@ Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise,
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Line  id="use swiss line id where possible" version="1" responsibilitySetRef="dsa">
-  <!-- We have a duplication with responsibilitySet and OperatorRef. With AuthorityRef we currently have a problem, because we can't use the same organisation **TODO** -->
+  <!-- We have a duplication with responsibilitySet and OperatorRef. AuthorityRef is not used. -->
   <ValidBetween>
     <!-- Usually set to the whole timetable year -->
     <FromDate>2022-12-11T00:00:00</FromDate>
@@ -252,14 +249,11 @@ Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise,
   </TransportSubmode>
   <PublicCode>3</PublicCode>
   <!-- Contains LinieLangName (attribute LT from HRDF) -->
-  <AuthorityRef ref="ch:1:Operator:11" version="1">
-    <!-- Contains the AUTHORITY OF the LINE. -->
-  </AuthorityRef>
   <OperatorRef ref="ch:1:Operator:11" version="1">
     <!-- The operator is the transport organisation that really will do the operation. If different from AuthorityRef -->
   </OperatorRef>
   <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:TER" version="1">
-    <!-- **TODO** needs tobe clarified from BS KI -->
+    <!-- Always aligned with BS KI oev-info.ch -->
   </TypeOfProductCategoryRef>
 </Line>
 
@@ -275,13 +269,15 @@ Be aware that there might be for mixed lines multiple lines in NeTEx. Otherwise,
 - We store the slnid whenever possible in `id`, `privateCodes/PrivateCode` and `KeyList`.
 - **TODO** link to migration concept slnid
 - **TODO** handling of mixed lines
-- 
+- Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
+- Note that there exist journeys in Switzerland and neighbouring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
+- For more information about SwissLineID: see https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf
 
 ## DestinationDisplay
 *→ [Glossary definition](A4_annex_glossary.md#DestinationDisplay)*
 
 ### Purpose
-Showing the destination of a `ServiceJourney`.
+Showing the destination of a `ServiceJourney`. The text shown on the front or side of a public transport vehicle to indicate its destination, including via-points and variant labels.
 
 ### Table
 
@@ -292,11 +288,10 @@ Showing the destination of a `ServiceJourney`.
 | + | Name | mandatory | 0..1 | MultilingualString | Name of Traveller | Is always language neutral. The data is taken from the Des-tination or from the reference in *R (HRDF). If DURCHBI is used then the destination display shows the final destination. |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | + | DriverDisplayText | optional | 0..1 | MultilingualString | Text to show to Driver or Staff for the DESTINATION DISPLAY. | Text to display to DRIVER. |
-| + | PrivateCode | mandatory | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | **TODO** were do we get this code from. |
 
 
 
-*-> [General NeTEx definition](../generated/xcore/DestinationDisplay.html)*
+*-> [General NeTEx definition](../generated/netex-html/DestinationDisplay.html)*
 
 ### Example
 
@@ -310,8 +305,6 @@ Showing the destination of a `ServiceJourney`.
   <!-- Is always language neutral. The data is taken from the Des-tination or from the reference in *R (HRDF). If DURCHBI is used then the destination display shows the final destination. -->
   <DriverDisplayText>Porrentruy</DriverDisplayText>
   <!-- Text to display to DRIVER. -->
-  <PrivateCode>212</PrivateCode>
-  <!-- **TODO** were do we get this code from. -->
   <Presentation/>
 </DestinationDisplay>
 
@@ -332,7 +325,7 @@ Showing the destination of a `ServiceJourney`.
 *→ [Glossary definition](A4_annex_glossary.md#ScheduledStopPoint)*
 
 ### Purpose
-`ScheduledStopPoint` is a core concept. It is the “Point” used in the timetable for the services to stop. A `ScheduledStopPoint` can refer to a `Quay` or only a `StopPlace`. So the level of hierarchy is not determined by the element (see [PassengerStopAssignment](#passengerstopassignment)).
+A logical point used in the timetable to indicate a stop of a service where passengers can board or alight. A `ScheduledStopPoint` is linked to a physical `Quay` or `StopPlace` via a [PassengerStopAssignment](#passengerstopassignment). 
 
 A `ScheduledStopPoint` can represent two types of stop points:
 -	In most cases, the `ScheduledStopPoint` is the station named in the timetable, especially as some organisations don’t have a full physical model of their StopPlaces. 
@@ -349,12 +342,14 @@ A `ScheduledStopPoint` can represent two types of stop points:
 | +++ | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. | We expect a DIDOK key and a SLOID, whereever possible. |
 | ++++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
 | ++++ | Value | mandatory | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
+| ++ | privateCodes | mandatory | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
+| +++ | PrivateCode | mandatory | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 | ++ | Name | mandatory | 0..1 | MultilingualString | Name of Traveller | The names are the same in all languages. |
 | ++ | ShortName | mandatory | 0..1 | MultilingualString | Short Name for service | StopPlace : Name of the Place, Quay : ShortName of the Quay |
 
 
 
-*-> [General NeTEx definition](../generated/xcore/ScheduledStopPoint.html)*
+*-> [General NeTEx definition](../generated/netex-html/ScheduledStopPoint.html)*
 
 ### Example
 
@@ -363,7 +358,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <scheduledStopPoints >
-  <ScheduledStopPoint id="ch:1:ScheduledStopPoint:8504128:1" version="any">
+  <ScheduledStopPoint id="ch:1:sloid:4128:1:1" version="any">
     <!-- Swiss ScheduledStopPoint are using the sloid in the id, when possible. -->
     <keyList>
       <KeyValue>
@@ -373,9 +368,12 @@ A `ScheduledStopPoint` can represent two types of stop points:
       </KeyValue>
       <KeyValue>
         <Key>SLOID</Key>
-        <Value>ch:1:sloid:4128</Value>
+        <Value>ch:1:sloid:4128:1:1</Value>
       </KeyValue>
     </keyList>
+    <privateCodes>
+      <PrivateCode type="sloid">ch:1:sloid:4128:1:1</PrivateCode>
+    </privateCodes>
     <Name lang="de">Murten/Morat</Name>
     <!-- The names are the same in all languages. -->
     <ShortName lang="de">1</ShortName>
@@ -410,7 +408,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 
 
 
-*-> [General NeTEx definition](../generated/xcore/PassengerStopAssignment.html)*
+*-> [General NeTEx definition](../generated/netex-html/PassengerStopAssignment.html)*
 
 ### Example
 
@@ -457,9 +455,9 @@ A `ScheduledStopPoint` can represent two types of stop points:
 | + | Extensions | optional | 1..1 | ExtensionsStructure | User defined Extensions to ENTITY in schema. (Wrapper tag used to avoid problems with handling of optional 'any' by some validators). | When also ProductCategory is relevant, then this extension must be used |
 | ++ | FromProductCategoryRef | mandatory | 1..1 | unknown |  | Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. |
 | ++ | ToProductCategoryRef | mandatory | 1..1 | unknown |  | Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. |
-| + | TransferDuration | mandatory | 0..1 | TransferDurationStructure | Timings for the transfer. | We use WalkTransferDuration sometimes. need to clarify **TODO** |
-| ++ | DefaultDuration | mandatory | 0..1 | xsd:duration | Default time needed for a traveller to make a TRANSFER. |  |
-| + | BothWays | optional | 0..1 | xsd:boolean | Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER. | **TODO** to use or not |
+| + | WalkTransferDuration | mandatory | 0..1 | TransferDurationStructure | Timings for walking over TRANSFER if different from the JOURNEY PATTERN transfer duration, | We use WalkTransferDuration. At some point we need a solution for bicyle duration too (TSI telemetics) |
+| ++ | MobilityRestrictedTravellerDuration | expected | 0..1 | xsd:duration | Time for a Mobility Restricted traveller to make a TRANSFER. |  |
+| + | BothWays | optional | 0..1 | xsd:boolean | Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER. | We always intend to use only one way, because the behaviour may not be the same. |
 | + | From | mandatory | 0..1 | ConnectionEndStructure | Origin end of CONNECTION. |  |
 | ++ | TransportMode | optional | 0..1 | AllModesEnumeration | MODE. |  |
 | ++ | OperatorView | optional | 1..1 | unknown | Simplified view of OPERATOR. All data except the identifier will be derived through the relationship. |  |
@@ -469,7 +467,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 
 
 
-*-> [General NeTEx definition](../generated/xcore/DefaultConnection.html)*
+*-> [General NeTEx definition](../generated/netex-html/DefaultConnection.html)*
 
 ### Example
 
@@ -488,12 +486,13 @@ A `ScheduledStopPoint` can represent two types of stop points:
       <!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
     </ToProductCategoryRef>
   </Extensions>
-  <TransferDuration>
-    <!-- We use WalkTransferDuration sometimes. need to clarify **TODO** -->
+  <WalkTransferDuration>
+    <!-- We use WalkTransferDuration. At some point we need a solution for bicyle duration too (TSI telemetics) -->
     <DefaultDuration>PT2M</DefaultDuration>
-  </TransferDuration>
+    <MobilityRestrictedTravellerDuration>PT4M</MobilityRestrictedTravellerDuration>
+  </WalkTransferDuration>
   <BothWays>false</BothWays>
-  <!-- **TODO** to use or not -->
+  <!-- We always intend to use only one way, because the behaviour may not be the same. -->
   <From>
     <TransportMode>all</TransportMode>
     <OperatorView>
@@ -543,7 +542,7 @@ The `SiteConnection` describes the transfer times between two adjacent `StopPlac
 
 
 
-*-> [General NeTEx definition](../generated/xcore/SiteConnection.html)*
+*-> [General NeTEx definition](../generated/netex-html/SiteConnection.html)*
 
 ### Example
 
@@ -582,7 +581,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
 *→ [Glossary definition](A4_annex_glossary.md#ServiceJourneyPattern)*
 
 ### Purpose
-`ServiceJourneyPattern` are used to describe the basic patterns of `ServiceJourney`s.
+`ServiceJourneyPattern` is used to describe the journey pattern (sequence and times of `ScheduledStopPoints`) of `ServiceJourney`.
 
 
 ### Table
@@ -610,7 +609,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
 
 
 
-*-> [General NeTEx definition](../generated/xcore/ServiceJourneyPattern.html)*
+*-> [General NeTEx definition](../generated/netex-html/ServiceJourneyPattern.html)*
 
 ### Example
 
@@ -669,7 +668,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
 *→ [Glossary definition](A4_annex_glossary.md#Notice)*
 
 ### Purpose
-> **TODO** needs to be described in more detail
+Informational or regulatory text associated with public transport services, displayed to passengers.
  
 
 ### Table
@@ -682,15 +681,15 @@ For more details see the [use case on transfers](uc03_transfers.md).
 | ++ | [AlternativeText](AlternativeText.md) | expected | 1..1 | unknown | Alternative Text. +v1.1 |  |
 | + | Text | expected | 0..1 | MultilingualString | Text content of NOTICe. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | PublicCode | mandatory | 0..1 | PublicCodeStructure | Public code for JOURNEY. | The public code is transmitted when it is to be published and when it is the type of notice 10 |
+| + | PublicCode | mandatory | 0..1 | PublicCodeStructure | Public code for JOURNEY. | The public code is transmitted when it is to be published and when it is the type of notice 10. Only 1 and 10 aree allowed. |
 | + | ShortCode | expected | 0..1 | CleardownCodeType | A 20 bit number used for wireless cleardown of stop displays by some AVL systems. | A duplication, but we want it. |
 | + | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | A duplication, but we want it. |
 | + | TypeOfNoticeRef | expected | 1..1 | TypeOfNoticeRefStructure | Reference to a TYPE OF NOTICE. |  |
-| + | CanBeAdvertised | expected | 0..1 | xsd:boolean | Whether NOTICE is advertised to public. This may be overridden on an assignment. | Wheter the NOTICE is advertised |
+| + | CanBeAdvertised | expected | 0..1 | xsd:boolean | Whether NOTICE is advertised to public. This may be overridden on an assignment. | Whether the NOTICE is advertised. |
 
 
 
-*-> [General NeTEx definition](../generated/xcore/Notice.html)*
+*-> [General NeTEx definition](../generated/netex-html/Notice.html)*
 
 ### Example
 
@@ -712,7 +711,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
   </alternativeTexts>
   <Text lang="de">Cateringzone / Automaten</Text>
   <PublicCode>
-    <!-- The public code is transmitted when it is to be published and when it is the type of notice 10 -->
+    <!-- The public code is transmitted when it is to be published and when it is the type of notice 10. Only 1 and 10 aree allowed. -->
   </PublicCode>
   <ShortCode>A__SN</ShortCode>
   <!-- A duplication, but we want it. -->
@@ -720,7 +719,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
   <!-- A duplication, but we want it. -->
   <TypeOfNoticeRef ref="ch:1:TypeOfNotice:10" version="any"/>
   <CanBeAdvertised>true</CanBeAdvertised>
-  <!-- Wheter the NOTICE is advertised -->
+  <!-- Whether the NOTICE is advertised. -->
 </Notice>
 
 ```
@@ -750,7 +749,7 @@ Assign a `Notice` to an element.
 
 
 
-*-> [General NeTEx definition](../generated/xcore/NoticeAssignment.html)*
+*-> [General NeTEx definition](../generated/netex-html/NoticeAssignment.html)*
 
 ### Example
 

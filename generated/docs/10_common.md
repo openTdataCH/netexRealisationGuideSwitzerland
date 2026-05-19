@@ -1,6 +1,3 @@
-> [!CAUTION]\
-> **COMMENT** @tuxalp I renamed the title because "Comment Element" seemed me ambigous/unprecise.
-
 # Common Building Blocks
 
 This chapter deals with the elements, attributes, formats and types that are commonly used.
@@ -18,7 +15,7 @@ In this chapter:
   - [ResponsibilitySet](#responsibilityset)
   - [TypeOfValue / Valuesets](#typeofvalue--valuesets)
     - [TypeOfProductCategory](#typeofproductcategory)
-    - [TypeOfService](#typeofproductcategory)
+    - [TypeOfService](#typeofservice)
   - [Organisation / Operator / Authority](#organisation--operator--authority)
   - [ServiceFacilitySet](#servicefacilityset)
   - [SiteFacilitySet](#servicefacilityset)
@@ -58,6 +55,7 @@ All other defined attributes like `created`, `changed`, `modification` are not u
 ## Common Types
 
 ### MultilingualString
+*→ [Glossary definition](A4_annex_glossary.md#multilingualstring)*
 
 #### Purpose
 
@@ -78,10 +76,10 @@ Times that pass midnight of the current `OperatingDay` are marked with a `DayOff
 If a `ServiceJourney` (in a particular `Call`) runs over midnight, then `DayOffset` must be set to `1`.
 
 ## FrameDefaults
+*→ [Glossary definition](A4_annex_glossary.md#framedefaults)*
 
 ### Purpose
-In the element `FrameDefaults` we set some basic parameters. When they are not set, we still assume the values that we present 
-in the XML snippet.
+Holds default values for certain basic parameters. 
 
 ### Table
 
@@ -98,7 +96,7 @@ in the XML snippet.
 
 
 
-*→ [General NeTEx definition](../generated/xcore/FrameDefaults.html)*
+*→ [General NeTEx definition](../generated/netex-html/FrameDefaults.html)*
 
 ### Example
 
@@ -126,20 +124,19 @@ in the XML snippet.
 
 *→ [Template](../templates/FrameDefaults.xml)*
 
+### Usage Notes
+For values not set in `FrameDefaults` we use the values as indicated in the table and example above.
+
 ## AlternativeName
 
 *→ [Glossary definition](A4_annex_glossary.md#alternativetext)*
 
 ### Purpose
 
-As the name of the element states, the `AlternativeName` is used to provide an alternative (alias or translation) of a name, e.g. of 
+`AlternativeName` is used to provide an alternative (alias or translation) of a name, e.g. of 
 a `StopPlace` or `Organisation`. 
 
 For all other alternative texts use `AlternativeText`.
-
-> **Original NeTEx Definition:**\
-> The ALTERNATIVE NAME Model defines reusable texts. For example, we use it to distinguish between two places with the 
-> same name in different countries.
 
 ### Table
 
@@ -153,7 +150,7 @@ For all other alternative texts use `AlternativeText`.
 
 
 
-*→ - [General NeTEx definition](../generated/xcore/AlternativeName.html)*
+*→ - [General NeTEx definition](../generated/netex-html/AlternativeName.html)*
  
 ### Example
 
@@ -198,7 +195,7 @@ For example, it can be used for the translation of `Notice` texts.
 
 
 
-*→ - [General NeTEx definition](../generated/xcore/AlternativeText.html)*
+*→ - [General NeTEx definition](../generated/netex-html/AlternativeText.html)*
  
 ### Example
 
@@ -232,13 +229,7 @@ Alternative names (translations or aliases) of a `StopPlace` or `Organisation` a
 *→ [Glossary definition](A4_annex_glossary.md#resourceframe)*
 
 ## Purpose
-
-The ResourceFrame is used to define common resources referenced in other FRAMEs.
-
-> **Original NeTEx Definition:**\
-> The RESOURCE FRAME is used to group reusable components for exchange, for example to declare the local code values 
-> used in a given data set (VALUE SETs and TYPE OF VALUEs.), or entities common to many frames such as ORGANISATIONs 
-> and RESPONSIBILITY SETs. A RESOURCE FRAME can be grouped with other frames using a COMPOSITE FRAME. 
+Contains shared resources used / referenced in other frames - organisations (`Authoritiy`s and `Operator`s), `VehicleType`s, codespaces, and other common reference data.
 
 See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
 
@@ -263,7 +254,7 @@ See the following class diagram for the most important objects of the RESOURCE F
 |  | ResourceFrame | mandatory | 1..1 | unknown | A coherent set of reference values for TYPE OF VALUEs , ORGANISATIONs, VEHICLE TYPEs etc that have a common validity, as specified by a set of frame VALIDITY CONDITIONs. Used to define common resources that will be referenced by other types of FRAME. |  |
 | + | responsibilitySets | mandatory | 0..1 | responsibilitySetsInFrame_RelStructure | RESPONSIBILITY SETs used in frame. | RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. |
 | ++ | [ResponsibilitySet](ResponsibilitySet.md) | mandatory | 1..1 | unknown | A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent. | Each combination of Authority and Operator needs a ResponsibilitySet. |
-| + | typesOfValue | mandatory | 0..1 | typesOfValueInFrame_RelStructure | VALUE SETs and TYPE OF VALUEs in frame. | Sets of TYPE OF VALUE con-tained in the RESOURCE FRAME. |
+| + | typesOfValue | mandatory | 0..1 | typesOfValueInFrame_RelStructure | VALUE SETs and TYPE OF VALUEs in frame. | Sets of TYPE OF VALUE contained in the RESOURCE FRAME. |
 | ++ | ValueSet | mandatory | 1..1 | unknown | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. |  |
 | + | organisations | mandatory | 0..1 | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD |
 | ++ | [Operator](Operator.md) | mandatory | 1..1 | unknown | A company providing public transport services. | We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. |
@@ -273,7 +264,7 @@ See the following class diagram for the most important objects of the RESOURCE F
 
 
 
-*→ - [General NeTEx definition](../generated/xcore/ResourceFrame.html)*
+*→ - [General NeTEx definition](../generated/netex-html/ResourceFrame.html)*
 
 ## Example
 
@@ -288,13 +279,9 @@ See the following class diagram for the most important objects of the RESOURCE F
     </ResponsibilitySet>
   </responsibilitySets>
   <typesOfValue>
-    <!-- Sets of TYPE OF VALUE con-tained in the RESOURCE FRAME. -->
+    <!-- Sets of TYPE OF VALUE contained in the RESOURCE FRAME. -->
     <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
       <values>
-        <TypeOfNotice id="ch:1:TypeOfNotice:11" version="1">
-          <Name>Region</Name>
-          <PrivateCode>11</PrivateCode>
-        </TypeOfNotice>
         <TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
           <Name>Allgemeiner Hinweis</Name>
           <PrivateCode>1</PrivateCode>
@@ -302,14 +289,6 @@ See the following class diagram for the most important objects of the RESOURCE F
         <TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
           <Name>Angebot</Name>
           <PrivateCode>10</PrivateCode>
-        </TypeOfNotice>
-        <TypeOfNotice id="ch:1:TypeOfNotice:3" version="1">
-          <Name>Gleis-Angabe</Name>
-          <PrivateCode>3</PrivateCode>
-        </TypeOfNotice>
-        <TypeOfNotice id="ch:1:TypeOfNotice:2" version="1">
-          <Name>Zugname</Name>
-          <PrivateCode>2</PrivateCode>
         </TypeOfNotice>
       </values>
     </ValueSet>
@@ -365,6 +344,7 @@ and/or `TimetableFrame`.
 *→ [Glossary definition](A4_annex_glossary.md#responsibilityset)*
 
 ### Purpose
+The set of roles and organisations responsible for managing data, operations, or contractual obligations within a defined scope.
 We use this element to  describe the different roles of the participating companies. For the most part, the company code is used to fully identify the provided services. 
 
 
@@ -382,12 +362,12 @@ We use this element to  describe the different roles of the participating compan
 | + | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 | + | roles | mandatory | 0..1 | responsibilityRoleAssignments_RelStructure | Roles defined by this RESPONSIBILITY SET. |  |
 | ++ | ResponsibilityRoleAssignment | mandatory | 1..1 | unknown | Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision. |  |
-| +++ | StakeholderRoleType | mandatory | 0..1 | StakeholderRoleTypeListOfEnumerations | Stakeholder roles which this assignment assigns. | EntityLegalOwnership must be defined once. **TODO** we can't express this for the schematron currently. |
+| +++ | StakeholderRoleType | mandatory | 0..1 | StakeholderRoleTypeListOfEnumerations | Stakeholder roles which this assignment assigns. | "EntityLegalOwnership" must be defined once and "Operator" should be too. |
 | +++ | ResponsibleOrganisationRef | mandatory | 0..1 | OrganisationRefStructure | Responsible ORGANISATION. |  |
 
 
 
-*→ - [General NeTEx definition](../generated/xcore/ResponsibilitySet.html)*
+*→ - [General NeTEx definition](../generated/netex-html/ResponsibilitySet.html)*
 
 ### Example
 
@@ -401,7 +381,7 @@ We use this element to  describe the different roles of the participating compan
   <roles>
     <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:1" version="1">
       <StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
-      <!-- EntityLegalOwnership must be defined once. **TODO** we can't express this for the schematron currently. -->
+      <!-- "EntityLegalOwnership" must be defined once and "Operator" should be too. -->
       <ResponsibleOrganisationRef ref="ch:1:sboid:100622" version="1"/>
     </ResponsibilityRoleAssignment>
     <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:2" version="1">
@@ -434,8 +414,19 @@ Only the values defined below are allowed in Switzerland for `StakeholderRoleTyp
 
 `FareManagement` and `Planning` are currently not used. Not all roles must be filled.
 
-> [!CAUTION] 
-> **TODO** put this into template as well as a check for enums.
+## TypeOf... / ValueSet
+**TODO** This is an alternative presentation or the next section... (because `TypeOfValue` and `ValueSets` do not exist)
+
+*→ [Glossary definition: TypeOf...](A4_annex_glossary.md#typeof...)*\
+*→ [Glossary definition: ValueSet](A4_annex_glossary.md#valueset)*
+
+### Purpose
+TypeOf... (examples: `TypeOfNotice`, `TypeOfProductCategory`, `TypeOfService`) are used for classification of NeTEx entities.  They are listed in `ValueSet`s as part of the `ResourceFrame`. 
+
+### Usage Notes
+We use TypeOfValue references in various Frames in objects including:
+-	`Notice`: references `TypeOfNotice`
+-	`ServiceJourney`: references `TypeOfProductCategory`
 
 ## TypeOfValue / ValueSets
 The ResourceFrame contains all the `ValueSets` and `TypeOfValues`. These are used for classification of NeTEx entities like `Notice`, `ProductCategory` etc.
@@ -450,11 +441,9 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
 
 ## TypeOfNotice
 
+### Purpose
 `TypeOfNotice` is used within a [Notice](07_service.md#notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
 
-> [!CAUTION]
-> **TODO** Rework table and example xml\
-> **COMMENT** US: remove things that are no longer used, e.g. values 2, 3?
 
 | PrivateCode | Name                | Description                                                                                                                                                                                                                                                      |
 |-------------|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -467,10 +456,6 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
 ``` xml
 <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
   <values>
-    <TypeOfNotice id="ch:1:TypeOfNotice:11" version="1">
-      <Name>Region</Name>
-      <PrivateCode>11</PrivateCode>
-    </TypeOfNotice>
     <TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
       <Name>Allgemeiner Hinweis</Name>
       <PrivateCode>1</PrivateCode>
@@ -478,14 +463,6 @@ It is preferred that the `TypeOfValue` are copied from the SKI files and no indi
     <TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
       <Name>Angebot</Name>
       <PrivateCode>10</PrivateCode>
-    </TypeOfNotice>
-    <TypeOfNotice id="ch:1:TypeOfNotice:3" version="1">
-      <Name>Gleis-Angabe</Name>
-      <PrivateCode>3</PrivateCode>
-    </TypeOfNotice>
-    <TypeOfNotice id="ch:1:TypeOfNotice:2" version="1">
-      <Name>Zugname</Name>
-      <PrivateCode>2</PrivateCode>
     </TypeOfNotice>
   </values>
 </ValueSet>
@@ -510,7 +487,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 
 
 
-*→ [General NeTEx definition](../generated/xcore/TypeOfProductCategory.html)*
+*→ [General NeTEx definition](../generated/netex-html/TypeOfProductCategory.html)*
 
 
 ###  Example
@@ -542,76 +519,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 *→ [Template](../templates/TypeOfProductCategory.xml)*
 
 ## TypeOfService
-
-> [!CAUTION]\
-> **COMMENT**: @tuxalp This element appears in both frames, ResourceFrame AND TimeTableFrame. This is somewhat confusing... 
-> Can I define it at both places? Why don't we describe it under ResourceFrame?
-> 
-### Purpose
-
-`TypeOfService` indicates the purpose of a `ServiceJourney`, for example, whether if it is a passenger transport or a garage run-in.
-
-> **Original NeTEx description:**\
-> A classification for VEHICLE JOURNEYs and SPECIAL SERVICEs to express some common properties of journeys to be taken 
-> into account in the scheduling and/or operations control process.
-
-> Not to be confused with TYPE OF SERVICE (FEATURE) of the LOCAL SERVICE and FACILITY model in NeTEx-1, which determines 
-> if a LOCAL SERVICE or FACILITY is, for example, a RETAIL SERVICE or TICKETING FACILITY.
-
-### Table
-
-
-| Sub | Element | Usage | Card | Type | Description | Note |
-|-----|---------|-------|------|------|-------------|------|
-|  | TypeOfService | expected | 1..1 | unknown | Classification of a Service. |  |
-| + | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
-| + | ShortName | mandatory | 0..1 | MultilingualString | Short Name for service |  |
-| + | PrivateCode | mandatory | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
-
-
-
-*→ [General NeTEx definition](../generated/xcore/TypeOfService.html)*
-
-### Example
-
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<TypeOfService  id="ch:1:TypeOfService:1" version="1">
-  <Name lang="en">PublicJourney</Name>
-  <ShortName lang="en">N</ShortName>
-  <PrivateCode>1</PrivateCode>
-</TypeOfService>
-
-```
-
-
-
-*→ - [Template](../templates/TypeOfService.xml)*
-
-### Usage Notes
-
-The following types are currently used:
-
-| Name	             | Description                                                                                                                                               |
-|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PublicJourney	    | A public passenger transport                                                                                                                              |
-| ~~GarageRunOut~~	 | A garage run-out                                                                                                                                          |
-| ~~GarageRunIn~~	  | A garage run-in                                                                                                                                           |
-| ~~ThroughCoach~~  | 	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling. |
-
-Actually there is only one allowed value that we use in the Swiss profile: Only the `PublicJourney` is to be exchanged.
-
-This element can also be defined in the `TimetableFrame` as a child of `typesOfService`:
-``` xml
-<typesOfService>
-    <TypeOfService id="ch:1:TypeOfService:1" version="1">
-        <Name lang="en">PublicJourney</Name>
-        <ShortName lang="en">N</ShortName>
-        <PrivateCode>1</PrivateCode>
-    </TypeOfService>
-</typesOfService>
-```
+`TypeOfService` is dealt with in the `TimetableFrame`.
 
 ## Organisation / Operator / Authority
 
@@ -619,9 +527,8 @@ This element can also be defined in the `TimetableFrame` as a child of `typesOfS
 *→ [Glossary definition: Authority](A4_annex_glossary.md#authority)*
 
 ### Purpose
-
-The ORGANISATION is a need to describe a concrete organisation like operator.
-The Organisations are identified by their [GO-number](https://opentransportdata.swiss/de/dataset/didok/resource/d66259a0-a77c-4aee-b7bd-e4fba99dcbb1) 
+A legally incorporated body associated with any aspect of public transportation. Authority and Operator are Organisations. An Operator provides public transport services under contract with an Authority.
+Organisations located in Switzerland are identified by their [GO-number](https://opentransportdata.swiss/de/dataset/didok/resource/d66259a0-a77c-4aee-b7bd-e4fba99dcbb1) 
 in Switzerland. The TU-Code is to be used for operators of other countries. 
 
 ### Table
@@ -633,7 +540,7 @@ in Switzerland. The TU-Code is to be used for operators of other countries.
 | + | keyList | expected | 1..1 | KeyListStructure | A list of alternative Key values for an element. |  |
 | ++ | KeyValue | expected | 1..* | KeyValueStructure | Key value pair for Entity. |  |
 | + | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
-| ++ | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+| ++ | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | Busines organisation |
 | + | Name | expected | 0..1 | MultilingualString | Name of Traveller |  |
 | + | ShortName | expected | 0..1 | MultilingualString | Short Name for service | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
 | + | parts | optional | 0..1 | blockParts_RelStructure | BLOCK PARTs which make up COMPOUND BLOCK. |  |
@@ -643,7 +550,7 @@ in Switzerland. The TU-Code is to be used for operators of other countries.
 
 
 
-*→ [General NeTEx definition](../generated/xcore/Operator.html)*
+*→ [General NeTEx definition](../generated/netex-html/Operator.html)*
 
 ### Example
 
@@ -664,6 +571,7 @@ in Switzerland. The TU-Code is to be used for operators of other countries.
   </keyList>
   <privateCodes>
     <PrivateCode type="GO">801</PrivateCode>
+    <!-- Busines organisation -->
     <PrivateCode type="sboid">ch:1:sboid:100602</PrivateCode>
   </privateCodes>
   <PrivateCode>801</PrivateCode>
@@ -716,16 +624,10 @@ If a different `Operator` is running a given `ServiceJourney`, then this is refl
 a different `OperatorRef`.
 
 ## ServiceFacilitySet
+*→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
 
 ### Purpose
-
-> **Original NeTEx definition:**\
-> Set of `ServiceFacilitySet` objects available for a `ServiceJourney`. 
-> The set may be available only for a specific VEHICLE TYPE within the SERVICE (e.g. carriage equipped with low floor). 
-> `ServiceFacilitySets` are listed in the `TimetableFrame` (between trainNumbers and notices). 
-> They are referenced in the facilities object of a `ServiceJourney`.
-
-The assignment of `facilities` to `ServiceJourney` or `JourneyPart` is made by using `ServiceFacilitySet`elements.
+Set of `Facilitiy`s available for a `ServiceJourney` or a `JourneyPart`. 
 
 > [!CAUTION]\
 > **TODO** 10.13.2ff
@@ -745,7 +647,7 @@ The assignment of `facilities` to `ServiceJourney` or `JourneyPart` is made by u
 
 
 
-*→ [General NeTEx definition](../generated/xcore/ServiceFacilitySet.html)*
+*→ [General NeTEx definition](../generated/netex-html/ServiceFacilitySet.html)*
 
 ### Example
 
@@ -789,13 +691,15 @@ a reasonable order. The categories themselves are from type `xsd:list`, meaning 
 separated list of elements. 
 
 ## SiteFacilitySet
+*→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
 
 ### Purpose
+Set of `Facilitiy`s available at a `StopPlace`, `Quay` or other site elements.
 
 > [!CAUTION]\
-> **COMMENT** @tuxalp not decribed in RG 1.01.\
-> **COMMENT** @tuxalp missing in glossary\
-> **COMMENT** @tuxalp missing elements in template.
+> **TODO** @tuxalp not decribed in RG 1.01.\
+> **TODO** @tuxalp missing in glossary\
+> **TODO** @tuxalp missing elements in template.
 
 A `SiteFacilitySet` defines a set of facilities like sanitary facilities, ticket service, lockers etc. that can be 
 referenced to define facilities of a site.
@@ -815,7 +719,7 @@ referenced to define facilities of a site.
 
 
 
-*→ [General NeTEx definition](../generated/xcore/SiteFacilitySet.html)*
+*→ [General NeTEx definition](../generated/netex-html/SiteFacilitySet.html)*
 
 ### Example
 
@@ -847,4 +751,12 @@ referenced to define facilities of a site.
 
 Make sure to not generate identical SiteFacilitySets. Reuse them.
 
+## VehicleType
+*→ [Glossary definition](A4_annex_glossary.md#vehicletype)*
+
+### Purpose
+A typified vehicle configuration (model or series) defining reusable characteristics such as capacity, dimensions, propulsion, and accessibility features.
+
+### Usage Notes
+We currently don't use `VehicleType` or `VehicleModel`. We will need those at some point.
 

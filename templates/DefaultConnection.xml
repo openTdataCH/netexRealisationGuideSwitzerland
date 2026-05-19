@@ -24,10 +24,16 @@
 								</ToProductCategoryRef>
 							</Extensions>
 							<TransferDuration>
-								<!-- ch-usage: mandatory -->
-								<!-- ch-note: We use WalkTransferDuration sometimes. need to clarify **TODO** -->
-								<DefaultDuration><!-- ch-usage: mandatory -->PT2M</DefaultDuration>
+								<!-- ch-usage: forbidden -->
+								<!-- ch-note: We use WalkTransferDuration. -->
+								<DefaultDuration>PT2M</DefaultDuration>
 							</TransferDuration>
+							<WalkTransferDuration>
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: We use WalkTransferDuration. At some point we need a solution for bicyle duration too (TSI telemetics) -->
+								<DefaultDuration><!-- ch-usage: mandatory -->PT2M</DefaultDuration>
+								<MobilityRestrictedTravellerDuration><!-- ch-usage: expected -->PT4M</MobilityRestrictedTravellerDuration>
+							</WalkTransferDuration>
 							<BothWays><!-- ch-usage: optional--><!-- ch-note: We always intend to use only one way, because the behaviour may not be the same.-->false</BothWays>
 							<From>
 								<!-- ch-usage: mandatory -->

@@ -5,6 +5,7 @@ In this chapter:
 - [TemplateServiceJourney](09_timetable.md#templateservicejourney)
 - [OccupancyView](09_timetable.md#occupancyview)
 - [TrainNumber](09_timetable.md#trainnumber)
+- [TypeOfService](#typeofservice)
 - [TimetabledPassingTime](09_timetable.md#timetabledpassingtime)
 - [InterchangeRule](09_timetable.md#interchangerule)
 
@@ -47,7 +48,7 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/TimetableFrame.html)*
+*→ [General NeTEx definition ](../generated/netex-html/TimetableFrame.html)*
 
 ### Example
 
@@ -81,7 +82,7 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
   </typesOfService>
   <journeyMeetings>
     <JourneyMeeting id="ch:1:JourneyMeeting:1" version="1">
-      <!-- Check latest policy - InterchangeRule may be the preferred alternative. **TODO** -->
+      <!-- For splitting and joining. -->
       <FromJourneyRef ref="sjyid1" version="1"/>
       <ToJourneyRef ref="sjyid2" version="1"/>
     </JourneyMeeting>
@@ -113,22 +114,22 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 |-----|---------|-------|------|------|-------------|------|
 | + | validityConditions | mandatory | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
 | ++ | [AvailabilityCondition](AvailabilityCondition.md) | mandatory | 1..1 | unknown | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. | Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. |
-| + | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
-| ++ | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 | + | keyList | expected | 1..1 | KeyListStructure | A list of alternative Key values for an element. | KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. |
 | ++ | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. | A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. |
 | +++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
 | +++ | Value | mandatory | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
+| + | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
+| ++ | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 | + | Extensions | optional | 1..1 | ExtensionsStructure | User defined Extensions to ENTITY in schema. (Wrapper tag used to avoid problems with handling of optional 'any' by some validators). | Used to indicate Facility changes. |
 | ++ | facilities | optional | 0..1 | serviceFacilitySets_RelStructure | FACILITies available associated with JOURNEY. |  |
 | +++ | Facility | optional | 1..1 | unknown |  |  |
 | ++++ | ServiceFacilitySetRef | mandatory | 1..1 | ServiceFacilitySetRefStructure | Reference to a SERVICE FACILITY SET. |  |
 | + | TransportMode | optional | 0..1 | AllModesEnumeration | MODE. |  |
-| + | TypeOfProductCategoryRef | expected | 1..1 | TypeOfProductCategoryRefStructure | Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc
+| + | TypeOfProductCategoryRef | mandatory | 1..1 | TypeOfProductCategoryRefStructure | Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/ServiceJourney.html)*
+*→ [General NeTEx definition ](../generated/netex-html/ServiceJourney.html)*
 
 ### Example
 
@@ -144,14 +145,9 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
       <!-- Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
       <ToDate>2026-05-17T00:00:00Z</ToDate>
       <!-- Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
-      <IsAvailable>true</IsAvailable>
-      <!-- mandatory by NeTEx **TODO** really? -->
       <ValidDayBits>01010111</ValidDayBits>
     </AvailabilityCondition>
   </validityConditions>
-  <privateCodes>
-    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
-  </privateCodes>
   <keyList>
     <!-- KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. -->
     <KeyValue>
@@ -160,6 +156,9 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
       <Value>ch:1:sjyid:100001:71707-003</Value>
     </KeyValue>
   </keyList>
+  <privateCodes>
+    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
+  </privateCodes>
   <Extensions>
     <!-- Used to indicate Facility changes. -->
     <facilities>
@@ -172,9 +171,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
     </facilities>
   </Extensions>
   <TransportMode>rail</TransportMode>
-  <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1">
-    <!-- **TODO** Or should it be mandatory? -->
-  </TypeOfProductCategoryRef>
+  <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1"/>
   <TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
   <noticeAssignments>
     <!-- The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. -->
@@ -199,7 +196,6 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
     <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
   </trainNumbers>
   <Destination>
-    <!-- **TODO** needs to be created as well -->
     <ScheduledStopPointRef ref="ch:1:sloid:3412" version="1"/>
   </Destination>
   <passingTimes>
@@ -238,12 +234,12 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 |-----|---------|-------|------|------|-------------|------|
 | + | validityConditions | expected | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. | Used to specify a set of temporal conditions that can be associated with the TemplateServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
 | ++ | [AvailabilityCondition](AvailabilityCondition.md) | mandatory | 1..1 | unknown | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. | More spacific requirements than standard AvailabilityCondition. Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. |
-| + | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | Replaces the single PrivateCode. |
-| ++ | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 | + | keyList | mandatory | 1..1 | KeyListStructure | A list of alternative Key values for an element. | Key list for the repeating journeys. Contains the SJYID. |
 | ++ | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. | A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. |
 | +++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
 | +++ | Value | mandatory | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
+| + | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | Replaces the single PrivateCode. |
+| ++ | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 | + | Extensions | optional | 1..1 | ExtensionsStructure | User defined Extensions to ENTITY in schema. (Wrapper tag used to avoid problems with handling of optional 'any' by some validators). | Used to indicate Facility changes. |
 | ++ | facilities | optional | 0..1 | serviceFacilitySets_RelStructure | FACILITies available associated with JOURNEY. |  |
 | +++ | Facility | optional | 1..1 | unknown |  |  |
@@ -253,7 +249,7 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/TemplateServiceJourney.html)*
+*→ [General NeTEx definition ](../generated/netex-html/TemplateServiceJourney.html)*
 
 ### Example
 
@@ -270,15 +266,9 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
       <!-- Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
       <ToDate>2026-05-17T00:00:00Z</ToDate>
       <!-- Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
-      <IsAvailable>true</IsAvailable>
-      <!-- mandatory by NeTEx **TODO** really? -->
       <ValidDayBits>01010111</ValidDayBits>
     </AvailabilityCondition>
   </validityConditions>
-  <privateCodes>
-    <!-- Replaces the single PrivateCode. -->
-    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
-  </privateCodes>
   <keyList>
     <!-- Key list for the repeating journeys. Contains the SJYID. -->
     <KeyValue>
@@ -287,6 +277,10 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
       <Value>ch:1:sjyid:100001:71707-003</Value>
     </KeyValue>
   </keyList>
+  <privateCodes>
+    <!-- Replaces the single PrivateCode. -->
+    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
+  </privateCodes>
   <Extensions>
     <!-- Used to indicate Facility changes. -->
     <facilities>
@@ -316,9 +310,9 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
   <ServiceAlteration>planned</ServiceAlteration>
   <!-- Only the value planned is allowed. -->
   <DepartureTime>06:21:00</DepartureTime>
-  <!-- **TODO** - does this make sense given that repeated journeys are described ? -->
+  <!-- Departure of the first journey. -->
   <DepartureDayOffset>0</DepartureDayOffset>
-  <!-- **TODO** - same question as above -->
+  <!-- DayOffset if relevant. -->
   <LineRef ref="ch:2:Line:11.IR.90" version="1"/>
   <DirectionType>inbound</DirectionType>
   <!-- Allowed are: inbound, outbound -->
@@ -326,18 +320,10 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
     <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
   </trainNumbers>
   <Destination>
-    <!-- **TODO** needs to be created as well - is JourneyEndpointStructure -->
     <Name lang="de">Wollishofen</Name>
-    <!-- **TODO** - tbd / check -->
-    <ScheduledStopPointRef ref="ch:1:sloid:3412" version="1">
-      <!-- **TODO** - tbd / check -->
-    </ScheduledStopPointRef>
-    <DestinationDisplayRef ref="generated" version="1">
-      <!-- **TODO** - tbd / check -->
-    </DestinationDisplayRef>
-    <PlaceRef ref="generated" version="1">
-      <!-- **TODO** - tbd / check -->
-    </PlaceRef>
+    <ScheduledStopPointRef ref="ch:1:sloid:3412" version="1"/>
+    <DestinationDisplayRef ref="generated" version="1"/>
+    <PlaceRef ref="ch:1:sloid:3412" version="1"/>
   </Destination>
   <passingTimes>
     <TimetabledPassingTime id="generated" version="1">
@@ -347,19 +333,6 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
   <TemplateVehicleJourneyType>headway</TemplateVehicleJourneyType>
   <frequencyGroups>
     <!-- We strictly map one frequency to the TemplateServiceJourney. -->
-    <RhythmicalJourneyGroup version="1" id="ch:1:RhythmicalJourneyGroup:0253">
-      <!-- **TODO** Will this be used? Or should it be forbidden? -->
-      <Name>Regular Interval service between 10am and 17:00 pm</Name>
-      <!-- **TODO** - wanted? more advice on how to handle language? -->
-      <Description>At 20 &amp; 45 Minutes past the hour</Description>
-      <FirstDepartureTime>10:00:00</FirstDepartureTime>
-      <FirstDayOffset>0</FirstDayOffset>
-      <LastDepartureTime>17:00:00</LastDepartureTime>
-      <LastDayOffset>0</LastDayOffset>
-      <timebands>
-        <TimebandRef ref="hde:TM_20" version="1"/>
-      </timebands>
-    </RhythmicalJourneyGroup>
     <HeadwayJourneyGroup version="1" id="ch:1:HeadwayJourneyGroup:432">
       <Name>Regular Interval service between 12am and 18:00 pm</Name>
       <Description>About every 20 minutes</Description>
@@ -398,15 +371,15 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
 | + | dayTypeRefs | optional | 0..1 | unknown | DAY TYPEs for BLOCK. |  |
-| ++ | DayTypeRef | optional | 1..* | DayTypeRefStructure | The DAY TYPE of all the services in this group. | **TODO** Profile should be clear about DayType vs. DayTypeRef usage |
-| + | dayTypes | expected | 0..1 | unknown | DAY TYPEs for BLOCK. | **TODO** Superfluous? DAY TYPEs should be the same as for the VEHICLE JOURNEY. |
+| ++ | DayTypeRef | optional | 1..* | DayTypeRefStructure | The DAY TYPE of all the services in this group. |  |
+| + | dayTypes | expected | 0..1 | unknown | DAY TYPEs for BLOCK. |  |
 | ++ | [DayType](DayType.md) | expected | 1..1 | unknown | A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays. |  |
 | + | FareClass | expected | 0..1 | FareClassEnumeration | Fare class in VEHICLE for which occupancy or capacities are specified. |  |
 | + | OccupancyLevel | expected | 0..1 | OccupancyEnumeration | An approximate figure of how occupied or full a VEHICLE and its parts are, e.g. 'manySeatsAvailable' or 'standingRoomOnly'.  
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/OccupancyView.html)*
+*→ [General NeTEx definition ](../generated/netex-html/OccupancyView.html)*
 
 ### Example
 
@@ -415,12 +388,9 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 <?xml version="1.0" encoding="UTF-8"?>
 <OccupancyView  id="generated" version="1">
   <dayTypeRefs>
-    <DayTypeRef ref="generated" version="1">
-      <!-- **TODO** Profile should be clear about DayType vs. DayTypeRef usage -->
-    </DayTypeRef>
+    <DayTypeRef ref="generated" version="1"/>
   </dayTypeRefs>
   <dayTypes>
-    <!-- **TODO** Superfluous? DAY TYPEs should be the same as for the VEHICLE JOURNEY. -->
     <DayType id="generated" version="1"/>
   </dayTypes>
   <FareClass>firstClass</FareClass>
@@ -437,6 +407,9 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 
 
 *→ [Template](../templates/OccupancyView.xml)*
+
+### Usage Notes
+We currently don't use OccupancyView.
 
 
 ## TrainNumber
@@ -456,7 +429,7 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/TrainNumber.html)*
+*→ [General NeTEx definition ](../generated/netex-html/TrainNumber.html)*
 
  ### Example
 
@@ -464,7 +437,7 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <TrainNumber  id="71707" version="1">
-  <!-- The TRAIN NUMBERs are currently a maximum of 6 digits long. TRAIN NUMBERs for advertisment und production are identical. **TODO**: Is this ture, i.e. is the id supposed to be a pure number and not something like ch:1:TrainNumber:71707 ? -->
+  <!-- The TRAIN NUMBERs are currently a maximum of 6 digits long. TRAIN NUMBERs for advertisment und production are identical. -->
   <Description>Information about the train</Description>
   <ForAdvertisement>12311A</ForAdvertisement>
   <!-- TRAIN NUMBER to use for advertisement to public. Use iff different from ID. -->
@@ -477,6 +450,56 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 
 
 *→ [Template](../templates/TrainNumber.xml)*
+
+## TypeOfService
+
+### Purpose
+
+`TypeOfService` indicates the purpose of a `ServiceJourney`, for example, whether if it is a passenger transport or a garage run-in. We only use `ch:1:TypeOfService:1`
+
+### Table
+
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | TypeOfService | expected | 1..1 | unknown | Classification of a Service. |  |
+| + | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
+| + | ShortName | mandatory | 0..1 | MultilingualString | Short Name for service |  |
+| + | PrivateCode | mandatory | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+
+
+
+*→ [General NeTEx definition](../generated/netex-html/TypeOfService.html)*
+
+### Example
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<TypeOfService  id="ch:1:TypeOfService:1" version="1">
+  <Name lang="en">PublicJourney</Name>
+  <ShortName lang="en">N</ShortName>
+  <PrivateCode>1</PrivateCode>
+</TypeOfService>
+
+```
+
+
+
+*→ - [Template](../templates/TypeOfService.xml)*
+
+### Usage Notes
+
+The following types are currently used:
+
+| Name	             | Description                                                                                                                                               |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| PublicJourney	    | A public passenger transport                                                                                                                              |
+| ~~GarageRunOut~~	 | A garage run-out                                                                                                                                          |
+| ~~GarageRunIn~~	  | A garage run-in                                                                                                                                           |
+| ~~ThroughCoach~~  | 	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling. |
+
+Actually there is only one allowed value that we use in the Swiss profile: Only the `PublicJourney` is to be exchanged.
 
 
 ## TimetabledPassingTime
@@ -494,7 +517,7 @@ Long-term planned time data concerning public transport vehicles passing a parti
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/TimetabledPassingTime.html)*
+*→ [General NeTEx definition ](../generated/netex-html/TimetabledPassingTime.html)*
 
 ### Example
 
@@ -523,9 +546,6 @@ Long-term planned time data concerning public transport vehicles passing a parti
   <LatestArrivalDayOffset>0</LatestArrivalDayOffset>
   <EarliestDepartureTime>07:58:00</EarliestDepartureTime>
   <EarliestDepartureDayOffset>0</EarliestDepartureDayOffset>
-  <occupancies>
-    <OccupancyView id="generated" version="1"/>
-  </occupancies>
 </TimetabledPassingTime>
 
 ```
@@ -562,7 +582,7 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/InterchangeRule.html)*
+*→ [General NeTEx definition ](../generated/netex-html/InterchangeRule.html)*
 
 
 ### Examples
@@ -675,7 +695,7 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 *→ [see Common elements](./10_common.md#servicefacilityset)*
 
 ## JourneyMeeting -> TODO: Probably to be removed
-[//]: # (TODO: Add JourneyMeeting links)
+[//]: # (**TODO**: Add JourneyMeeting links)
 
 ### Table
 
@@ -694,7 +714,7 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/JourneyMeeting.html)*
+*→ [General NeTEx definition ](../generated/netex-html/JourneyMeeting.html)*
 
 ### Example
 

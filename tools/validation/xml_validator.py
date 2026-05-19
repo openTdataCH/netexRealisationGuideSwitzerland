@@ -8,16 +8,22 @@ import argparse
 import os
 import sys
 from lxml import etree
-from tools.configuration import XSD_FILE_PATH
+#from tools.configuration import XSD_FILE_PATH
+XSD_FILE_PATH ="../xsd/xsd/NeTEx_publication.xsd"
 
-
-def validate_xml(xml_path, xsd_path):
-    """Validate an XML file against an XSD schema."""
+def load_schema(xsd_path):
     try:
         # Parse the XSD schema
         with open(xsd_path, 'rb') as xsd_file:
             schema_doc = etree.parse(xsd_file)
             schema = etree.XMLSchema(schema_doc)
+            return schema
+    except Exception as e:
+        print(f"✗ Error loading schema {xsd_path}: {e}")
+        return False
+def validate_xml(xml_path, schema):
+    """Validate an XML file against an XSD schema."""
+    try:
 
         # Parse the XML file
         with open(xml_path, 'rb') as xml_file:
@@ -40,11 +46,14 @@ def validate_xml(xml_path, xsd_path):
 def validate_folder(folder_path, xsd_path):
     """Recursively validate all XML files in a folder."""
     validated_count = 0
+    schema=load_schema(xsd_path)
+    if not schema:
+        exit
     for root, _, files in os.walk(folder_path):
         for file in files:
             if file.lower().endswith('.xml'):
                 xml_path = os.path.join(root, file)
-                validate_xml(xml_path, xsd_path)
+                validate_xml(xml_path, schema)
                 validated_count += 1
     print(f"\nValidated {validated_count} XML files in {folder_path}.")
 
@@ -77,7 +86,10 @@ def main():
     if os.path.isdir(args.xml):
         validate_folder(args.xml, args.xsd)
     else:
-        validate_xml(args.xml, args.xsd)
+        schema = load_schema(xsd_path)
+        if not schema:
+            exit
+        validate_xml(args.xml, schema)
 
 
 if __name__ == "__main__":

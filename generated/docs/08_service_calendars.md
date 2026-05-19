@@ -1,9 +1,9 @@
 # Service calendars
 
 In this chapter:
-- [ServiceCalendarFrame](#ServiceCalendarFrame)
-- [AvailabilityCondition](#AvailabilityCondition)
-- [ServiceCalendar](#ServiceCalendar)
+- [ServiceCalendarFrame](#servicecalendarframe)
+- [AvailabilityCondition](#availabilitycondition)
+- [ServiceCalendar](#servicecalendar)
 - [DayType](#daytype)
 - [Timeband](#timeband)
 - [DayTypeAssignment](#daytypeassignment)
@@ -12,7 +12,9 @@ In this chapter:
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendarframe)*
 
 ### Purpose
-See the following class diagram for the most important objects of the SERVICE CALENDAR FRAME and their relationships to the other frames.
+Groups calendar definitions that describe when services operate - `DayType`s, [operating periods, **TODO** we don't define / use OperatingPeriod, do we?] and `DayTypeAssignment`s.
+
+See the following class diagram for the most important objects of the `ServiceCalendarFrame` and their relationships to the other frames.
 
 ```mermaid
 classDiagram
@@ -101,7 +103,7 @@ classDiagram
 
 
 
-*→ [General NeTEx definition](../generated/xcore/ServiceCalendarFrame.html)*
+*→ [General NeTEx definition](../generated/netex-html/ServiceCalendarFrame.html)*
 
 #### Example
 
@@ -135,7 +137,7 @@ classDiagram
 *→ [Glossary definition](A4_annex_glossary.md#availabilitycondition)*
 
 #### Purpose
-- An AVAILABILITY CONDITION can be defined by specific DAY TYPEs and/or OPERATING DAYs. It may be further qualified by one or more of TIME BANDs. The DATED AVAILABILITY CONDITION being the instance of VALIDITY CONDITION on a specific CALENDAR DAY.
+Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 
 #### Table
 -
@@ -151,7 +153,7 @@ classDiagram
 
 
 
-*→ [General NeTEx definition](../generated/xcore/AvailabilityCondition.html)*
+*→ [General NeTEx definition](../generated/netex-html/AvailabilityCondition.html)*
 
 #### Example
 
@@ -198,7 +200,7 @@ classDiagram
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendar)*
 
 #### Purpose
-The transport offering of a public transport company is tailored to accommodate different levels of demand. In order to simplify the supply planning almost all operators design their production plan using a classification by type of day, which summarises the level of demand or other characteristics: for example, workday, weekend, school holiday, market day,etc. Long-term planned schedules are designed through the so-called transportation calendar, in which calendar days are classified as specific DAY TYPEs.
+Long-term planning uses calendar days that are classified as specific DayTypes (example: weekday in school holidays). A ServiceCalendar defines a mapping between DayTypes and OperatingDays.
 
 #### Table
 
@@ -212,7 +214,7 @@ The transport offering of a public transport company is tailored to accommodate 
 
 
 
-*→ [General NeTEx definition](../generated/xcore/ServiceCalendar.html)*
+*→ [General NeTEx definition](../generated/netex-html/ServiceCalendar.html)*
 
 #### Example
 
@@ -239,8 +241,7 @@ The transport offering of a public transport company is tailored to accommodate 
 *→ [Glossary definition](A4_annex_glossary.md#daytype)*
 
 #### Purpose
-In Transmodel, a DAY TYPE is defined as a combination of various different properties a day may have, and which will influence the transport demand and the running conditions. 
-The day type is used to describe the validity of the holidays in Switzerland. Each day is de-scripted with a day Type. 
+A classification of days on which a specific set of transport services operates (e.g., Weekdays, Saturdays, Public Holidays). The `DayType`s of the Swiss profile represent national holidays.
 
 
 #### Table
@@ -260,7 +261,7 @@ The day type is used to describe the validity of the holidays in Switzerland. Ea
 
 
 
-*→ [General NeTEx definition](../generated/xcore/DayType.html)*
+*→ [General NeTEx definition](../generated/netex-html/DayType.html)*
 
 #### Example
 
@@ -301,7 +302,7 @@ The day type is used to describe the validity of the holidays in Switzerland. Ea
 *→ [Glossary definition](A4_annex_glossary.md#timeband)*
 
 #### Purpose
-A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category.
+A period of time within a day, usually defined by a start and end time.
 
 
 #### Table
@@ -315,7 +316,7 @@ A period in a day, significant for some aspect of public transport, e.g. similar
 
 
 
-*→ [General NeTEx definition](../generated/xcore/Timeband.html)*
+*→ [General NeTEx definition](../generated/netex-html/Timeband.html)*
 
 #### Example
 
@@ -336,7 +337,7 @@ A period in a day, significant for some aspect of public transport, e.g. similar
 *→ [Template](../templates/Timeband.xml)*
 
 
-#### Usage Hints
+#### Usage Notes
 Currently `Timeband` is used for `InterchangeRuleTiming`s, later also used for the opening hours in `StopPlace` models. 
 
 ## DayTypeAssignment
@@ -344,8 +345,9 @@ Currently `Timeband` is used for `InterchangeRuleTiming`s, later also used for t
 
 
 #### Purpose
-This assignment overrides the DAY TYPE which was generally chosen for this OPERATING DAY in the overall DAY TYPE assignment plan.
-Designation of one day or group of days
+Assignment of a date to `DayType`. The `DayType`s of the Swiss profile represent national holidays.
+
+This assignment overrides the `DayType` specified for the day in the overall plan. (**TODO** should be stated more clearly / precisely)
 
 
 #### Table
@@ -359,7 +361,7 @@ Designation of one day or group of days
 
 
 
-*→ [General NeTEx definition](../generated/xcore/DayTypeAssignment.html)*
+*→ [General NeTEx definition](../generated/netex-html/DayTypeAssignment.html)*
 
 #### Example
 
@@ -378,6 +380,8 @@ Designation of one day or group of days
 
 *→ [Template](../templates/DayTypeAssignment.xml)*
 
+
 #### Usage Notes
-We also use DayTypeAssignment currently only for the national holidays.
+We currently use `DayTypeAssignment` only for the national holidays.
+
 

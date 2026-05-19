@@ -8,14 +8,9 @@
       <!-- Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
       <ToDate>2026-05-17T00:00:00Z</ToDate>
       <!-- Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
-      <IsAvailable>true</IsAvailable>
-      <!-- mandatory by NeTEx **TODO** really? -->
       <ValidDayBits>01010111</ValidDayBits>
     </AvailabilityCondition>
   </validityConditions>
-  <privateCodes>
-    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
-  </privateCodes>
   <keyList>
     <!-- KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. -->
     <KeyValue>
@@ -24,6 +19,9 @@
       <Value>ch:1:sjyid:100001:71707-003</Value>
     </KeyValue>
   </keyList>
+  <privateCodes>
+    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
+  </privateCodes>
   <Extensions>
     <!-- Used to indicate Facility changes. -->
     <facilities>
@@ -36,9 +34,7 @@
     </facilities>
   </Extensions>
   <TransportMode>rail</TransportMode>
-  <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1">
-    <!-- **TODO** Or should it be mandatory? -->
-  </TypeOfProductCategoryRef>
+  <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1"/>
   <TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
   <noticeAssignments>
     <!-- The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. -->
@@ -63,7 +59,6 @@
     <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
   </trainNumbers>
   <Destination>
-    <!-- **TODO** needs to be created as well -->
     <ScheduledStopPointRef ref="ch:1:sloid:3412" version="1"/>
   </Destination>
   <passingTimes>

@@ -1,83 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <StopPlace  id="ch:1:sloid:7000" version="1">
-  <!-- Structure of the id, example: "ch:2:StopPlace:8503000" -->
+  <!-- In some cases the id is not a sloid. -->
   <ValidBetween>
-    <!-- **TODO** We could transport the validity here. We prefer not to do this as we don't support versions -->
+    <!-- This can be used to show, when the StopPlace can be used. -->
     <FromDate>2026-01-01T00:00:00</FromDate>
     <ToDate>2026-12-31T00:00:00</ToDate>
   </ValidBetween>
-  <alternativeTexts>
-    <AlternativeText id="ch:1:sloid:7000:AlternativeText">
-      <!-- Used for abbreviated name of the StopPlace  **TODO** really? Also see ShortName below and note that we don't seem to use PublicCode -->
-      <Text>CHR</Text>
-    </AlternativeText>
-  </alternativeTexts>
   <keyList>
     <!-- Key value pairs for DIDOK number and SLOID -->
     <KeyValue>
       <Key>DIDOK</Key>
-      <!-- DIDOK number **TODO** Cf. duplicates in privatCode below -->
       <Value>7000</Value>
     </KeyValue>
     <KeyValue>
       <Key>SLOID</Key>
-      <!-- SLOID **TODO** really mandatory, stations outside CH? -->
       <Value>ch:1:sloid:7000</Value>
     </KeyValue>
   </keyList>
   <privateCodes>
     <PrivateCode type="didok">7000</PrivateCode>
-    <!-- In Switzerland to be filled with the DiDok number. Replaces single PublicCode from NeTEx 1.0 -->
+    <!-- In Switzerland to be filled with the didok number and the sloid -->
     <PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
-    <!-- In Switzerland to be filled with the SLOID. Replaces single PublicCode from NeTEx 1.0 -->
   </privateCodes>
   <Extensions>
     <HafasPriority>
       <!-- Interchange priority if several alternative interchange possibilities exist. Integer allows for finer grained value than standard element Weighting. -->
       <Value>4</Value>
-      <!-- **TODO** Allowed range... -->
     </HafasPriority>
     <HafasKMInfo>
-      <!-- **TODO** ...Value for Interchange points. -->
+      <!-- Special value for Hafas environments. -->
       <Value>1000</Value>
-      <!-- km -->
+      <!-- Special value for Hafas environments. -->
     </HafasKMInfo>
   </Extensions>
   <Name>Bern</Name>
-  <ShortName>BE</ShortName>
-  <!-- Used to transmit the abbreviation of the StopPlace. Not available for every StopPlace. -->
-  <alternativeNames>
-    <!-- **TODO** To what extent are AlternativeNames used? Adapt everything below accordingly. -->
-    <AlternativeName id="generated" version="1">
-      <Lang>it</Lang>
-      <NameType>label</NameType>
-      <Name>Berna</Name>
-      <ShortName>Berna</ShortName>
-      <Abbreviation>BE</Abbreviation>
-    </AlternativeName>
-  </alternativeNames>
   <Centroid>
     <!-- Global or national location -->
     <Name/>
     <Location>
-      <!-- Note concerning coordinates - The main coordinates are given as **WSG84**. - The Swiss coordinates are added as well if available. (**TODO** How?)- INFO+ will not use the data from the import, instead DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places. -->
+      <!-- Note concerning coordinates - The main coordinates are given as **WSG84**. -->
       <Longitude>7.43913088992</Longitude>
       <Latitude>46.94883228914</Latitude>
       <Altitude>540.2</Altitude>
     </Location>
   </Centroid>
   <alternativeNames>
-    <!-- **TODO** Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. -->
+    <!-- Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. -->
     <AlternativeName id="ch:1:sloid:7000:it" version="1">
       <Name lang="it">Berna</Name>
     </AlternativeName>
   </alternativeNames>
   <TopographicPlaceRef ref="BE-bern" version="1">
-    <!-- **TODO** more details -->
+    <!-- Id to the county, community, canton or country. -->
   </TopographicPlaceRef>
   <StopPlaceType>railStation</StopPlaceType>
   <Weighting>preferredInterchange</Weighting>
-  <!-- TODO fix validation issue with Weighting element. --><!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. -->
+  <!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. -->
   <quays>
     <!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. -->
     <Quay id="ch:1:sloid:7000:5:9" version="1"/>

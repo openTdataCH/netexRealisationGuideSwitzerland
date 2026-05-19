@@ -43,6 +43,4 @@ graph LR
 - [Example](../generated/xml-snippet/JourneyMeeting.xml)
 
 ## Modeling with JourneyPartCouples
-
-**TODO**
-- [Example](../generated/xml-snippet/JourneyPartCouple.xml)
+We currently will not use `JourneyPartCouple` to model splitting and joining.

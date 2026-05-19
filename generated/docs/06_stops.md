@@ -1,10 +1,11 @@
 # Stop Modelling
+In this chapter:
 
-- [SiteFrame](06_stops.md#siteframe)
-- [StopPlace](06_stops.md#StopPlace)
-- [Quay](06_stops.md#Quay)
-- [TopographicPlace](06_stops.md#TopographicPlace)
-- [Centroid](06_stops.md#Centroid)
+- [SiteFrame](#siteframe)
+- [StopPlace](#StopPlace)
+- [Quay](#Quay)
+- [TopographicPlace](#TopographicPlace)
+- [Centroid](#Centroid)
 
 ## SiteFrame
 *→ [Glossary definition](A4_annex_glossary.md#siteframe)*
@@ -70,7 +71,7 @@ classDiagram
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/SiteFrame.html)*
+*→ [General NeTEx definition ](../generated/netex-html/SiteFrame.html)*
 
 ### Example
 
@@ -117,33 +118,28 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | StopPlace | mandatory | 1..1 | unknown | Version of a named place where public transport may be accessed. May be a building complex (e.g. a station) or an on-street location. Can be a STOP PLACE, VEHICLE MEETING POINT, TAXI RANK. Note: If a master id exists for a StopPlace (must be stable and globally unique), then it is best used in the id. Optimally it would be built according IFOPT. It can also be put into one of the privateCodes in addition. If it is stored in KeyValue, then it should be documented well, so that importing systems know, which id is the relevant one. | Structure of the id, example: "ch:2:StopPlace:8503000" |
-| + | ValidBetween | optional | 1..1 | unknown | OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT. | **TODO** We could transport the validity here. We prefer not to do this as we don't support versions |
+|  | StopPlace | mandatory | 1..1 | unknown | Version of a named place where public transport may be accessed. May be a building complex (e.g. a station) or an on-street location. Can be a STOP PLACE, VEHICLE MEETING POINT, TAXI RANK. Note: If a master id exists for a StopPlace (must be stable and globally unique), then it is best used in the id. Optimally it would be built according IFOPT. It can also be put into one of the privateCodes in addition. If it is stored in KeyValue, then it should be documented well, so that importing systems know, which id is the relevant one. | In some cases the id is not a sloid. |
+| + | ValidBetween | optional | 1..1 | unknown | OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT. | This can be used to show, when the StopPlace can be used. |
 | ++ | FromDate | mandatory | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. |  |
 | ++ | ToDate | mandatory | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. |  |
-| + | alternativeTexts | optional | 0..1 | alternativeTexts_RelStructure | Additional Translations of text elements. |  |
-| ++ | [AlternativeText](AlternativeText.md) | optional | 1..1 | unknown | Alternative Text. +v1.1 | Used for abbreviated name of the StopPlace  **TODO** really? Also see ShortName below and note that we don't seem to use PublicCode |
 | + | keyList | mandatory | 1..1 | KeyListStructure | A list of alternative Key values for an element. | Key value pairs for DIDOK number and SLOID |
 | ++ | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. |  |
-| +++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. | DIDOK number **TODO** Cf. duplicates in privatCode below |
+| +++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
 | +++ | Value | mandatory | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
 | + | privateCodes | mandatory | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
-| ++ | PrivateCode | mandatory | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | In Switzerland to be filled with the DiDok number. Replaces single PublicCode from NeTEx 1.0 |
+| ++ | PrivateCode | mandatory | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | In Switzerland to be filled with the didok number and the sloid |
+| ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
 | + | Extensions | optional | 1..1 | ExtensionsStructure | User defined Extensions to ENTITY in schema. (Wrapper tag used to avoid problems with handling of optional 'any' by some validators). |  |
 | ++ | HafasPriority | optional | 1..1 | unknown |  | Interchange priority if several alternative interchange possibilities exist. Integer allows for finer grained value than standard element Weighting. |
-| ++ | HafasKMInfo | optional | 1..1 | unknown |  | **TODO** ...Value for Interchange points. |
+| ++ | HafasKMInfo | optional | 1..1 | unknown |  | Special value for Hafas environments. |
 | + | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
-| + | alternativeNames | optional | 0..1 | alternativeNames_RelStructure | ALTERNATIVE NAMES for MACHINE READABILITY. | **TODO** To what extent are AlternativeNames used? Adapt everything below accordingly. |
-| ++ | AlternativeName | optional | 1..1 | unknown | Alternative Name. |  |
-| +++ | Lang | expected | 0..1 | xsd:language | Language of the ALTERNATIVE NAME. |  |
-| +++ | NameType | optional | 0..1 | NameTypeEnumeration | Type of Name - fixed value. Default is alias. |  |
-| +++ | Abbreviation | optional | 0..1 | MultilingualString | Abbreviation of the entity. |  |
 | + | Centroid | mandatory | 0..1 | SimplePoint_VersionStructure | Centre Coordinates of GROUP of STOP PLACEs. | Global or national location |
-| ++ | Location | mandatory | 0..1 | LocationStructure | Absolute location of EQUIPMENT. | Note concerning coordinates - The main coordinates are given as **WSG84**. - The Swiss coordinates are added as well if available. (**TODO** How?)- INFO+ will not use the data from the import, instead DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places. |
+| ++ | Location | mandatory | 0..1 | LocationStructure | Absolute location of EQUIPMENT. | Note concerning coordinates - The main coordinates are given as **WSG84**. |
 | +++ | Longitude | mandatory | 1..1 | LongitudeType | Longitude from Greenwich Meridian. -180 (East) to +180 (West). |  |
 | +++ | Latitude | mandatory | 1..1 | LatitudeType | Latitude from equator. -90 (South) to +90 (North). |  |
 | +++ | Altitude | optional | 0..1 | AltitudeType | Altitude. |  |
-| + | TopographicPlaceRef | optional | 1..* | TopographicPlaceRefStructure | Reference to the identifier of a TOPOGRAPHIC PLACE. | **TODO** more details |
+| + | alternativeNames | optional | 0..1 | alternativeNames_RelStructure | ALTERNATIVE NAMES for MACHINE READABILITY. | Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. |
+| + | TopographicPlaceRef | optional | 1..* | TopographicPlaceRefStructure | Reference to the identifier of a TOPOGRAPHIC PLACE. | Id to the county, community, canton or country. |
 | + | StopPlaceType | optional | 0..1 | StopTypeEnumeration | Type of STOP PLACE. |  |
 | + | Weighting | optional | 0..1 | InterchangeWeightingEnumeration | Default rating of the STOP PLACE for making interchanges. | Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. |
 | + | quays | expected | 1..1 | quays_RelStructure | QUAYs within the STOP PLACE. | The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. |
@@ -151,7 +147,7 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/StopPlace.html)*
+*→ [General NeTEx definition ](../generated/netex-html/StopPlace.html)*
 
 ### Example
 
@@ -159,84 +155,62 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <StopPlace  id="ch:1:sloid:7000" version="1">
-  <!-- Structure of the id, example: "ch:2:StopPlace:8503000" -->
+  <!-- In some cases the id is not a sloid. -->
   <ValidBetween>
-    <!-- **TODO** We could transport the validity here. We prefer not to do this as we don't support versions -->
+    <!-- This can be used to show, when the StopPlace can be used. -->
     <FromDate>2026-01-01T00:00:00</FromDate>
     <ToDate>2026-12-31T00:00:00</ToDate>
   </ValidBetween>
-  <alternativeTexts>
-    <AlternativeText id="ch:1:sloid:7000:AlternativeText">
-      <!-- Used for abbreviated name of the StopPlace  **TODO** really? Also see ShortName below and note that we don't seem to use PublicCode -->
-      <Text>CHR</Text>
-    </AlternativeText>
-  </alternativeTexts>
   <keyList>
     <!-- Key value pairs for DIDOK number and SLOID -->
     <KeyValue>
       <Key>DIDOK</Key>
-      <!-- DIDOK number **TODO** Cf. duplicates in privatCode below -->
       <Value>7000</Value>
     </KeyValue>
     <KeyValue>
       <Key>SLOID</Key>
-      <!-- SLOID **TODO** really mandatory, stations outside CH? -->
       <Value>ch:1:sloid:7000</Value>
     </KeyValue>
   </keyList>
   <privateCodes>
     <PrivateCode type="didok">7000</PrivateCode>
-    <!-- In Switzerland to be filled with the DiDok number. Replaces single PublicCode from NeTEx 1.0 -->
+    <!-- In Switzerland to be filled with the didok number and the sloid -->
     <PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
-    <!-- In Switzerland to be filled with the SLOID. Replaces single PublicCode from NeTEx 1.0 -->
   </privateCodes>
   <Extensions>
     <HafasPriority>
       <!-- Interchange priority if several alternative interchange possibilities exist. Integer allows for finer grained value than standard element Weighting. -->
       <Value>4</Value>
-      <!-- **TODO** Allowed range... -->
     </HafasPriority>
     <HafasKMInfo>
-      <!-- **TODO** ...Value for Interchange points. -->
+      <!-- Special value for Hafas environments. -->
       <Value>1000</Value>
-      <!-- km -->
+      <!-- Special value for Hafas environments. -->
     </HafasKMInfo>
   </Extensions>
   <Name>Bern</Name>
-  <ShortName>BE</ShortName>
-  <!-- Used to transmit the abbreviation of the StopPlace. Not available for every StopPlace. -->
-  <alternativeNames>
-    <!-- **TODO** To what extent are AlternativeNames used? Adapt everything below accordingly. -->
-    <AlternativeName id="generated" version="1">
-      <Lang>it</Lang>
-      <NameType>label</NameType>
-      <Name>Berna</Name>
-      <ShortName>Berna</ShortName>
-      <Abbreviation>BE</Abbreviation>
-    </AlternativeName>
-  </alternativeNames>
   <Centroid>
     <!-- Global or national location -->
     <Name/>
     <Location>
-      <!-- Note concerning coordinates - The main coordinates are given as **WSG84**. - The Swiss coordinates are added as well if available. (**TODO** How?)- INFO+ will not use the data from the import, instead DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places. -->
+      <!-- Note concerning coordinates - The main coordinates are given as **WSG84**. -->
       <Longitude>7.43913088992</Longitude>
       <Latitude>46.94883228914</Latitude>
       <Altitude>540.2</Altitude>
     </Location>
   </Centroid>
   <alternativeNames>
-    <!-- **TODO** Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. -->
+    <!-- Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. -->
     <AlternativeName id="ch:1:sloid:7000:it" version="1">
       <Name lang="it">Berna</Name>
     </AlternativeName>
   </alternativeNames>
   <TopographicPlaceRef ref="BE-bern" version="1">
-    <!-- **TODO** more details -->
+    <!-- Id to the county, community, canton or country. -->
   </TopographicPlaceRef>
   <StopPlaceType>railStation</StopPlaceType>
   <Weighting>preferredInterchange</Weighting>
-  <!-- TODO fix validation issue with Weighting element. --><!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. -->
+  <!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. -->
   <quays>
     <!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. -->
     <Quay id="ch:1:sloid:7000:5:9" version="1"/>
@@ -268,33 +242,28 @@ A specific boarding or alighting position (platform, stand, bay) within a `StopP
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | StopPlace | mandatory | 1..1 | unknown | Version of a named place where public transport may be accessed. May be a building complex (e.g. a station) or an on-street location. Can be a STOP PLACE, VEHICLE MEETING POINT, TAXI RANK. Note: If a master id exists for a StopPlace (must be stable and globally unique), then it is best used in the id. Optimally it would be built according IFOPT. It can also be put into one of the privateCodes in addition. If it is stored in KeyValue, then it should be documented well, so that importing systems know, which id is the relevant one. | Structure of the id, example: "ch:2:StopPlace:8503000" |
-| + | ValidBetween | optional | 1..1 | unknown | OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT. | **TODO** We could transport the validity here. We prefer not to do this as we don't support versions |
+|  | StopPlace | mandatory | 1..1 | unknown | Version of a named place where public transport may be accessed. May be a building complex (e.g. a station) or an on-street location. Can be a STOP PLACE, VEHICLE MEETING POINT, TAXI RANK. Note: If a master id exists for a StopPlace (must be stable and globally unique), then it is best used in the id. Optimally it would be built according IFOPT. It can also be put into one of the privateCodes in addition. If it is stored in KeyValue, then it should be documented well, so that importing systems know, which id is the relevant one. | In some cases the id is not a sloid. |
+| + | ValidBetween | optional | 1..1 | unknown | OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT. | This can be used to show, when the StopPlace can be used. |
 | ++ | FromDate | mandatory | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. |  |
 | ++ | ToDate | mandatory | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. |  |
-| + | alternativeTexts | optional | 0..1 | alternativeTexts_RelStructure | Additional Translations of text elements. |  |
-| ++ | [AlternativeText](AlternativeText.md) | optional | 1..1 | unknown | Alternative Text. +v1.1 | Used for abbreviated name of the StopPlace  **TODO** really? Also see ShortName below and note that we don't seem to use PublicCode |
 | + | keyList | mandatory | 1..1 | KeyListStructure | A list of alternative Key values for an element. | Key value pairs for DIDOK number and SLOID |
 | ++ | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. |  |
-| +++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. | DIDOK number **TODO** Cf. duplicates in privatCode below |
+| +++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
 | +++ | Value | mandatory | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
 | + | privateCodes | mandatory | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
-| ++ | PrivateCode | mandatory | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | In Switzerland to be filled with the DiDok number. Replaces single PublicCode from NeTEx 1.0 |
+| ++ | PrivateCode | mandatory | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | In Switzerland to be filled with the didok number and the sloid |
+| ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
 | + | Extensions | optional | 1..1 | ExtensionsStructure | User defined Extensions to ENTITY in schema. (Wrapper tag used to avoid problems with handling of optional 'any' by some validators). |  |
 | ++ | HafasPriority | optional | 1..1 | unknown |  | Interchange priority if several alternative interchange possibilities exist. Integer allows for finer grained value than standard element Weighting. |
-| ++ | HafasKMInfo | optional | 1..1 | unknown |  | **TODO** ...Value for Interchange points. |
+| ++ | HafasKMInfo | optional | 1..1 | unknown |  | Special value for Hafas environments. |
 | + | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
-| + | alternativeNames | optional | 0..1 | alternativeNames_RelStructure | ALTERNATIVE NAMES for MACHINE READABILITY. | **TODO** To what extent are AlternativeNames used? Adapt everything below accordingly. |
-| ++ | AlternativeName | optional | 1..1 | unknown | Alternative Name. |  |
-| +++ | Lang | expected | 0..1 | xsd:language | Language of the ALTERNATIVE NAME. |  |
-| +++ | NameType | optional | 0..1 | NameTypeEnumeration | Type of Name - fixed value. Default is alias. |  |
-| +++ | Abbreviation | optional | 0..1 | MultilingualString | Abbreviation of the entity. |  |
 | + | Centroid | mandatory | 0..1 | SimplePoint_VersionStructure | Centre Coordinates of GROUP of STOP PLACEs. | Global or national location |
-| ++ | Location | mandatory | 0..1 | LocationStructure | Absolute location of EQUIPMENT. | Note concerning coordinates - The main coordinates are given as **WSG84**. - The Swiss coordinates are added as well if available. (**TODO** How?)- INFO+ will not use the data from the import, instead DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places. |
+| ++ | Location | mandatory | 0..1 | LocationStructure | Absolute location of EQUIPMENT. | Note concerning coordinates - The main coordinates are given as **WSG84**. |
 | +++ | Longitude | mandatory | 1..1 | LongitudeType | Longitude from Greenwich Meridian. -180 (East) to +180 (West). |  |
 | +++ | Latitude | mandatory | 1..1 | LatitudeType | Latitude from equator. -90 (South) to +90 (North). |  |
 | +++ | Altitude | optional | 0..1 | AltitudeType | Altitude. |  |
-| + | TopographicPlaceRef | optional | 1..* | TopographicPlaceRefStructure | Reference to the identifier of a TOPOGRAPHIC PLACE. | **TODO** more details |
+| + | alternativeNames | optional | 0..1 | alternativeNames_RelStructure | ALTERNATIVE NAMES for MACHINE READABILITY. | Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. |
+| + | TopographicPlaceRef | optional | 1..* | TopographicPlaceRefStructure | Reference to the identifier of a TOPOGRAPHIC PLACE. | Id to the county, community, canton or country. |
 | + | StopPlaceType | optional | 0..1 | StopTypeEnumeration | Type of STOP PLACE. |  |
 | + | Weighting | optional | 0..1 | InterchangeWeightingEnumeration | Default rating of the STOP PLACE for making interchanges. | Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. |
 | + | quays | expected | 1..1 | quays_RelStructure | QUAYs within the STOP PLACE. | The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. |
@@ -302,7 +271,7 @@ A specific boarding or alighting position (platform, stand, bay) within a `StopP
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/StopPlace.html)*
+*→ [General NeTEx definition ](../generated/netex-html/StopPlace.html)*
 
 ### Example
 
@@ -310,84 +279,62 @@ A specific boarding or alighting position (platform, stand, bay) within a `StopP
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <StopPlace  id="ch:1:sloid:7000" version="1">
-  <!-- Structure of the id, example: "ch:2:StopPlace:8503000" -->
+  <!-- In some cases the id is not a sloid. -->
   <ValidBetween>
-    <!-- **TODO** We could transport the validity here. We prefer not to do this as we don't support versions -->
+    <!-- This can be used to show, when the StopPlace can be used. -->
     <FromDate>2026-01-01T00:00:00</FromDate>
     <ToDate>2026-12-31T00:00:00</ToDate>
   </ValidBetween>
-  <alternativeTexts>
-    <AlternativeText id="ch:1:sloid:7000:AlternativeText">
-      <!-- Used for abbreviated name of the StopPlace  **TODO** really? Also see ShortName below and note that we don't seem to use PublicCode -->
-      <Text>CHR</Text>
-    </AlternativeText>
-  </alternativeTexts>
   <keyList>
     <!-- Key value pairs for DIDOK number and SLOID -->
     <KeyValue>
       <Key>DIDOK</Key>
-      <!-- DIDOK number **TODO** Cf. duplicates in privatCode below -->
       <Value>7000</Value>
     </KeyValue>
     <KeyValue>
       <Key>SLOID</Key>
-      <!-- SLOID **TODO** really mandatory, stations outside CH? -->
       <Value>ch:1:sloid:7000</Value>
     </KeyValue>
   </keyList>
   <privateCodes>
     <PrivateCode type="didok">7000</PrivateCode>
-    <!-- In Switzerland to be filled with the DiDok number. Replaces single PublicCode from NeTEx 1.0 -->
+    <!-- In Switzerland to be filled with the didok number and the sloid -->
     <PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
-    <!-- In Switzerland to be filled with the SLOID. Replaces single PublicCode from NeTEx 1.0 -->
   </privateCodes>
   <Extensions>
     <HafasPriority>
       <!-- Interchange priority if several alternative interchange possibilities exist. Integer allows for finer grained value than standard element Weighting. -->
       <Value>4</Value>
-      <!-- **TODO** Allowed range... -->
     </HafasPriority>
     <HafasKMInfo>
-      <!-- **TODO** ...Value for Interchange points. -->
+      <!-- Special value for Hafas environments. -->
       <Value>1000</Value>
-      <!-- km -->
+      <!-- Special value for Hafas environments. -->
     </HafasKMInfo>
   </Extensions>
   <Name>Bern</Name>
-  <ShortName>BE</ShortName>
-  <!-- Used to transmit the abbreviation of the StopPlace. Not available for every StopPlace. -->
-  <alternativeNames>
-    <!-- **TODO** To what extent are AlternativeNames used? Adapt everything below accordingly. -->
-    <AlternativeName id="generated" version="1">
-      <Lang>it</Lang>
-      <NameType>label</NameType>
-      <Name>Berna</Name>
-      <ShortName>Berna</ShortName>
-      <Abbreviation>BE</Abbreviation>
-    </AlternativeName>
-  </alternativeNames>
   <Centroid>
     <!-- Global or national location -->
     <Name/>
     <Location>
-      <!-- Note concerning coordinates - The main coordinates are given as **WSG84**. - The Swiss coordinates are added as well if available. (**TODO** How?)- INFO+ will not use the data from the import, instead DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places. -->
+      <!-- Note concerning coordinates - The main coordinates are given as **WSG84**. -->
       <Longitude>7.43913088992</Longitude>
       <Latitude>46.94883228914</Latitude>
       <Altitude>540.2</Altitude>
     </Location>
   </Centroid>
   <alternativeNames>
-    <!-- **TODO** Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. -->
+    <!-- Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. -->
     <AlternativeName id="ch:1:sloid:7000:it" version="1">
       <Name lang="it">Berna</Name>
     </AlternativeName>
   </alternativeNames>
   <TopographicPlaceRef ref="BE-bern" version="1">
-    <!-- **TODO** more details -->
+    <!-- Id to the county, community, canton or country. -->
   </TopographicPlaceRef>
   <StopPlaceType>railStation</StopPlaceType>
   <Weighting>preferredInterchange</Weighting>
-  <!-- TODO fix validation issue with Weighting element. --><!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. -->
+  <!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. -->
   <quays>
     <!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. -->
     <Quay id="ch:1:sloid:7000:5:9" version="1"/>
@@ -412,15 +359,25 @@ as it parents.
 - If no platform SLOID is available {StopPlace SLOID}_gen:missingSLOID_pf:{Platform Code*} will be used instead.
 - 👉 Please note: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.
 
-In the table below you will find an overview of the possible cases. For more information on SLOID, see [Swiss Location Identification (SLOID) | öv-info.ch](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid "https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid")
-	
-<img width="925" height="206" alt="SLOID_V1_EN" src="https://github.com/user-attachments/assets/45c5354d-be03-4d88-8b04-b3793e5568ba" />
-> **TODO** If OK move table to media folder - or put and adjust things in a md table
 
-> QUAYs are mapped with the following resolution: **TODO** not clear
-> - No hierarchy between the different definitions of quays is foreseen at the moment 
-> - All combinations between sectors of the same quay are considered as independent quays. 
-> - Combinations of several quays are considered as independent quays. 
+In the table below you will find an overview of the possible cases. For more information on SLOID, see [Swiss Location Identification (SLOID) | öv-info.ch](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid "https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid")
+
+| Case | id | sloid in Key/Value, PrivateCode |
+| -- | --|--|
+| Unique track sloid | ch:1:sloid:7000:6:32 | ch:1:sloid:7000:6:32 |
+| Non-unique track sloid | ch:1:sloid:7000_gen:ch:1:sloid:7000:0:349752_pf:2A-D | ch:1:sloid:7000:0:349752 |
+| Non-unique SLOID with special characters "11/12 | ch.1:sloid:6206_gen:ch:1:sloid:6206:0:11_pf:11.12 | ch:1:sloid:6206:0:11 |
+| non platform SLOID | ch:1:sloid:1102381_gen:missingSLOID_pf:1 | |
+| No Sloid (abroad) | 8029701_gen_missingSLOID_pf:1 | |
+
+QUAYs are mapped with the following resolution: 
+- No hierarchy between the different definitions of quays is foreseen at the moment 
+- All combinations between sectors of the same quay are considered as independent quays. 
+- Combinations of several quays are considered as independent quays. 
+
+Further notes:
+- We will at some point include also `Quay`s that are not used actually to have the base data, if they are needed in real-time.
+- Atlas does model the hierarchy of the quays.
 
 ## TopographicPlace
 *→ [Glossary definition](A4_annex_glossary.md#TopographicPlace)*
@@ -439,11 +396,11 @@ A named geographic area such as a city, municipality, county, or region - used t
 | ++ | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
 | ++ | ShortName | expected | 0..1 | MultilingualString | Short Name for service | Abbreviation of the canton (leave empty if TopographicPlaceType is country) |
 | + | TopographicPlaceType | mandatory | 0..1 | TopographicPlaceTypeEnumeration | Classification of the TOPOGRAPHIC PLACE as a settlement. Enumerated value. | Allowed values: country, county |
-| + | ParentTopographicPlaceRef | optional | 0..1 | TopographicPlaceRefStructure | Parent TOPOGRAPHIC PLACE. Reference to another TOPOGRAPHIC PLACE that contains the child TOPOGRAPHIC PLACE completely. Must not be cyclic. | **TODO ** ? Only used if TopographicPlaceType of referencing element is county. |
+| + | ParentTopographicPlaceRef | optional | 0..1 | TopographicPlaceRefStructure | Parent TOPOGRAPHIC PLACE. Reference to another TOPOGRAPHIC PLACE that contains the child TOPOGRAPHIC PLACE completely. Must not be cyclic. | Parent topographic place when it exists. |
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/TopographicPlace.html)*
+*→ [General NeTEx definition ](../generated/netex-html/TopographicPlace.html)*
 
 
 ### Example
@@ -460,7 +417,7 @@ A named geographic area such as a city, municipality, county, or region - used t
   <TopographicPlaceType>county</TopographicPlaceType>
   <!-- Allowed values: country, county -->
   <ParentTopographicPlaceRef ref="ch:1:TopoGraphicPlace:CH-BE-Bern" version="1">
-    <!-- **TODO ** ? Only used if TopographicPlaceType of referencing element is county. -->
+    <!-- Parent topographic place when it exists. -->
   </ParentTopographicPlaceRef>
 </TopographicPlace>
 
@@ -491,7 +448,7 @@ It provides precise geographic coordinates (WGS84) of a central reference point 
 
 
 
-*→ [General NeTEx definition ](../generated/xcore/Centroid.html)*
+*→ [General NeTEx definition ](../generated/netex-html/Centroid.html)*
 
 ### Example
 
@@ -519,6 +476,6 @@ The `Centroid` always contains a location.
 - The main coordinates are given as WSG84.
 - Required accuracy 4+ decimal positions.
 - The Swiss coordinates are added as well, when available (see below) **TODO**
-- INFO+ will not use the data from the NeTEx import, it will rely on the DIDOK master data for all Swiss coordinates. INFO+ will, however, use the imported location data of foreign places without DIDOK numbers. 
+- INFO+ will not use the master data from NeTEx imports, it will rely on the Atlas master data for all Swiss coordinates. INFO+ will, however, use the imported location data of foreign places without DIDOK numbers. 
 
 

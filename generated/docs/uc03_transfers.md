@@ -1,6 +1,4 @@
 # Transfers
-Transfers between StopPlace and between Quay may depend on some factors.
-In HRDF these are modeled on a time base with UMSTEIGX and METABHF.
 
 ## Mapping between HRDF and NeTEx 
 
@@ -20,13 +18,14 @@ The following table shows how we will map HRDF tables into NeTEX.
 **TODO** details from  Powerpoint to be included
 ## General transfer time between modes
 
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <DefaultConnection  id="ch:1:DefaultConnection:9999999-1" version="1">
   <!-- General connection between two modes in the whole network, when not StopPlaceRef is mentioned. Most exist for each mode pair. -->
-  <TransferDuration>
+  <WalkTransferDuration>
     <DefaultDuration>PT2M</DefaultDuration>
-  </TransferDuration>
+  </WalkTransferDuration>
   <From>
     <TransportMode>tram</TransportMode>
   </From>
@@ -41,25 +40,32 @@ The following table shows how we will map HRDF tables into NeTEX.
 ```
 
 
+
+
 ## Transfer times at a given StopPlace
 **TODO** details from  Powerpoint to be included
+
+
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <DefaultConnection  id="ch:1:DefaultConnection:8506302" version="1">
   <!-- Be aware only some combinations areallowed  mode - mode, operator/type of product category - operator/type of  product category. -->
-  <TransferDuration>
-    <!-- We use WalkTransferDuration sometimes. need to clarify **TODO** -->
+  <WalkTransferDuration>
     <DefaultDuration>PT3M</DefaultDuration>
-  </TransferDuration>
+  </WalkTransferDuration>
   <StopPlaceRef ref="ch:2:StopPlace:8506302" version="1"/>
 </DefaultConnection>
 
 ```
 
 
+
+
 ## Operator related transfer times
 **TODO** details from  Powerpoint to be included
+
+
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -73,12 +79,11 @@ The following table shows how we will map HRDF tables into NeTEX.
       <!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
     </ToProductCategoryRef>
   </Extensions>
-  <TransferDuration>
-    <!-- We use WalkTransferDuration sometimes. need to clarify **TODO** -->
+  <WalkTransferDuration>
     <DefaultDuration>PT2M</DefaultDuration>
-  </TransferDuration>
+  </WalkTransferDuration>
   <BothWays>false</BothWays>
-  <!-- **TODO** to use or not -->
+  <!-- We don't use BothWays true, as it might differ. -->
   <From>
     <TransportMode>all</TransportMode>
     <OperatorView>
@@ -99,8 +104,12 @@ The following table shows how we will map HRDF tables into NeTEX.
 ```
 
 
+
+
 ## Line and Direction-oriented transfer times
 **TODO** details from  Powerpoint to be included
+
+
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -138,6 +147,9 @@ The following table shows how we will map HRDF tables into NeTEX.
 </InterchangeRule>
 
 ```
+
+
+
 
 ## ServiceJourney related transfer times
 **TODO** details from  Powerpoint to be included
@@ -194,10 +206,14 @@ The differences between the various situations are to be differentiated with the
 ```
 
 
+
+
 ## Transfer times between StopPlaces
 **TODO** details from  Powerpoint to be included
 
 The differences between the various situations are to be differentiated with the value in some attributes.
+
+
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

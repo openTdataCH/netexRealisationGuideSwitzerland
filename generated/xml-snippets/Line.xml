@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Line  id="use swiss line id where possible" version="1" responsibilitySetRef="dsa">
-  <!-- We have a duplication with responsibilitySet and OperatorRef. With AuthorityRef we currently have a problem, because we can't use the same organisation **TODO** -->
+  <!-- We have a duplication with responsibilitySet and OperatorRef. AuthorityRef is not used. -->
   <ValidBetween>
     <!-- Usually set to the whole timetable year -->
     <FromDate>2022-12-11T00:00:00</FromDate>
@@ -23,13 +23,10 @@
   </TransportSubmode>
   <PublicCode>3</PublicCode>
   <!-- Contains LinieLangName (attribute LT from HRDF) -->
-  <AuthorityRef ref="ch:1:Operator:11" version="1">
-    <!-- Contains the AUTHORITY OF the LINE. -->
-  </AuthorityRef>
   <OperatorRef ref="ch:1:Operator:11" version="1">
     <!-- The operator is the transport organisation that really will do the operation. If different from AuthorityRef -->
   </OperatorRef>
   <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:TER" version="1">
-    <!-- **TODO** needs tobe clarified from BS KI -->
+    <!-- Always aligned with BS KI oev-info.ch -->
   </TypeOfProductCategoryRef>
 </Line>

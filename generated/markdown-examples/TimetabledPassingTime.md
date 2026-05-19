@@ -16,5 +16,3 @@ screening, ticket control or immigration, that may potentially incur a time pena
 | + | LatestArrivalDayOffset | optional | 0..1 | DayOffsetType | Number of days after the starting time of the journey if not same calendar day. Default is 0 for same day. |  |
 | + | EarliestDepartureTime | optional | 0..1 | xsd:time | Earliest Timetabled departure time. |  |
 | + | EarliestDepartureDayOffset | optional | 0..1 | DayOffsetType | Number of days after the starting time of the journey if not same calendar day. Default is 0 for same day. |  |
-| + | occupancies | optional | 0..1 | OccupancyView_RelStructure | OCCUPANCYs associated with this journey. +v2.0 |  |
-| ++ | [OccupancyView](OccupancyView.md) | optional | 1..1 | OccupancyView_VersionStructure |  |  |

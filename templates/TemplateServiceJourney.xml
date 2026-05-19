@@ -18,16 +18,8 @@
 									<!-- ch-usage: mandatory -->
 									<!-- ch-note: More spacific requirements than standard AvailabilityCondition. Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
 									<!-- ch-see -->
-									<FromDate>
-										<!-- ch-usage: mandatory -->
-										<!-- ch-note: Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.  -->
-										2026-05-17T00:00:00Z
-									</FromDate>
-									<ToDate>
-										<!-- ch-usage: mandatory -->
-										<!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
-										2026-05-17T00:00:00Z
-									</ToDate>
+									<FromDate><!-- ch-usage: mandatory --><!-- ch-note: Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.  -->2026-05-17T00:00:00Z</FromDate>
+									<ToDate><!-- ch-usage: mandatory --><!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->2026-05-17T00:00:00Z</ToDate>
 									<ValidDayBits>
 										<!-- ch-usage: mandatory-->
 										01010111
@@ -61,7 +53,7 @@
 								<!-- ch-note: Used to indicate Facility changes. -->
 								<facilities>
 									<!-- ch-usage: optional -->
-									<Facility id="ch:1:facility:f1" version="1">
+									<Facility id="ch:1:facility:f1" versionRef="1">
 										<!-- ch-usage: optional -->
 										<validityConditions>
 											<!-- ch-usage: optional -->

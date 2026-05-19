@@ -9,12 +9,11 @@
       <!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
     </ToProductCategoryRef>
   </Extensions>
-  <TransferDuration>
-    <!-- We use WalkTransferDuration sometimes. need to clarify **TODO** -->
+  <WalkTransferDuration>
     <DefaultDuration>PT2M</DefaultDuration>
-  </TransferDuration>
+  </WalkTransferDuration>
   <BothWays>false</BothWays>
-  <!-- **TODO** to use or not -->
+  <!-- We don't use BothWays true, as it might differ. -->
   <From>
     <TransportMode>all</TransportMode>
     <OperatorView>

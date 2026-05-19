@@ -9,15 +9,9 @@
       <!-- Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
       <ToDate>2026-05-17T00:00:00Z</ToDate>
       <!-- Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
-      <IsAvailable>true</IsAvailable>
-      <!-- mandatory by NeTEx **TODO** really? -->
       <ValidDayBits>01010111</ValidDayBits>
     </AvailabilityCondition>
   </validityConditions>
-  <privateCodes>
-    <!-- Replaces the single PrivateCode. -->
-    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
-  </privateCodes>
   <keyList>
     <!-- Key list for the repeating journeys. Contains the SJYID. -->
     <KeyValue>
@@ -26,6 +20,10 @@
       <Value>ch:1:sjyid:100001:71707-003</Value>
     </KeyValue>
   </keyList>
+  <privateCodes>
+    <!-- Replaces the single PrivateCode. -->
+    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
+  </privateCodes>
   <Extensions>
     <!-- Used to indicate Facility changes. -->
     <facilities>
@@ -55,9 +53,9 @@
   <ServiceAlteration>planned</ServiceAlteration>
   <!-- Only the value planned is allowed. -->
   <DepartureTime>06:21:00</DepartureTime>
-  <!-- **TODO** - does this make sense given that repeated journeys are described ? -->
+  <!-- Departure of the first journey. -->
   <DepartureDayOffset>0</DepartureDayOffset>
-  <!-- **TODO** - same question as above -->
+  <!-- DayOffset if relevant. -->
   <LineRef ref="ch:2:Line:11.IR.90" version="1"/>
   <DirectionType>inbound</DirectionType>
   <!-- Allowed are: inbound, outbound -->
@@ -65,18 +63,10 @@
     <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
   </trainNumbers>
   <Destination>
-    <!-- **TODO** needs to be created as well - is JourneyEndpointStructure -->
     <Name lang="de">Wollishofen</Name>
-    <!-- **TODO** - tbd / check -->
-    <ScheduledStopPointRef ref="ch:1:sloid:3412" version="1">
-      <!-- **TODO** - tbd / check -->
-    </ScheduledStopPointRef>
-    <DestinationDisplayRef ref="generated" version="1">
-      <!-- **TODO** - tbd / check -->
-    </DestinationDisplayRef>
-    <PlaceRef ref="generated" version="1">
-      <!-- **TODO** - tbd / check -->
-    </PlaceRef>
+    <ScheduledStopPointRef ref="ch:1:sloid:3412" version="1"/>
+    <DestinationDisplayRef ref="generated" version="1"/>
+    <PlaceRef ref="ch:1:sloid:3412" version="1"/>
   </Destination>
   <passingTimes>
     <TimetabledPassingTime id="generated" version="1">
@@ -86,19 +76,6 @@
   <TemplateVehicleJourneyType>headway</TemplateVehicleJourneyType>
   <frequencyGroups>
     <!-- We strictly map one frequency to the TemplateServiceJourney. -->
-    <RhythmicalJourneyGroup version="1" id="ch:1:RhythmicalJourneyGroup:0253">
-      <!-- **TODO** Will this be used? Or should it be forbidden? -->
-      <Name>Regular Interval service between 10am and 17:00 pm</Name>
-      <!-- **TODO** - wanted? more advice on how to handle language? -->
-      <Description>At 20 &amp; 45 Minutes past the hour</Description>
-      <FirstDepartureTime>10:00:00</FirstDepartureTime>
-      <FirstDayOffset>0</FirstDayOffset>
-      <LastDepartureTime>17:00:00</LastDepartureTime>
-      <LastDayOffset>0</LastDayOffset>
-      <timebands>
-        <TimebandRef ref="hde:TM_20" version="1"/>
-      </timebands>
-    </RhythmicalJourneyGroup>
     <HeadwayJourneyGroup version="1" id="ch:1:HeadwayJourneyGroup:432">
       <Name>Regular Interval service between 12am and 18:00 pm</Name>
       <Description>About every 20 minutes</Description>

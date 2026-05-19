@@ -6,7 +6,7 @@
 | + | Extensions | optional | 1..1 | ExtensionsStructure | User defined Extensions to ENTITY in schema. (Wrapper tag used to avoid problems with handling of optional 'any' by some validators). | When also ProductCategory is relevant, then this extension must be used |
 | ++ | FromProductCategoryRef | mandatory | 1..1 | unknown |  |  |
 | ++ | ToProductCategoryRef | mandatory | 1..1 | unknown |  |  |
-| + | TransferDuration | mandatory | 0..1 | TransferDurationStructure | Timings for the transfer. |  |
+| + | WalkTransferDuration | mandatory | 0..1 | TransferDurationStructure | Timings for walking over TRANSFER if different from the JOURNEY PATTERN transfer duration, |  |
 | ++ | DefaultDuration | mandatory | 0..1 | xsd:duration | Default time needed for a traveller to make a TRANSFER. |  |
 | + | From | mandatory | 0..1 | ConnectionEndStructure | Origin end of CONNECTION. |  |
 | ++ | OperatorView | mandatory | 1..1 | unknown | Simplified view of OPERATOR. All data except the identifier will be derived through the relationship. |  |
