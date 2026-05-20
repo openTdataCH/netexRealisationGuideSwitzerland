@@ -1,85 +1,100 @@
 # Examples
 This  folder contains the relevant examples for the realisation guide 2.0 based on NeTEX 2.0.
 
-
 ### Basic train with PassingTime
 Example of a normal rail journey train Spiez - Interlaken Ost with various quay combinations.
 
-[Link to example](NeTEx_CH_Spiez_Interlaken_Ost.xml)
+[Link to example](NeTEx_Spiez_Interlaken_Ost_PassingTime.xml)
 
 ### Basic bus
 Swiss NeTEx 2.0 models repeated stops within a journey using PassingTimes and JourneyPattern references, enabling quay-level differentiation (e.g. opposite sides of the road) without duplicating journeys or introducing additional segmentation structures
 
+[Link to example](NeTEx_CH_PAG_11929.xml)
+
+Another bus i an example from Nyon.
+
+[Link to example]([Link to example](NeTEx_CH_PAG_11929.xml)
+
+### Bus with some DRT properties
 We modeled some `ServiceJourney` from the following bus: https://github.com/user-attachments/files/26309155/50.110.pdf
 
-[Link to example](../examples/NeTEx_CH_DRT_Line_50.110.xml)
+[Link to example](NeTEx_CH_DRT_Line_50.110.xml)
+
+## Bus where there must be passengers present at the start
+Als drittes Beispiel eignet sich die Fahrt 11957 auf der Linie 50.119. Diese Fahrt ist fahrplanmässig fix (kein Rufbus, keine Voranmeldung), weist jedoch entlang der gesamten Strecke ausschliesslich Haltestellen zum Ausstieg auf. Sofern niemand an der Starthaltestelle einsteigt, wird die Fahrt auch nicht gefahren.
+
+[Link to example](NeTEx_CH_DRT_Line_Dependent_on_Passengers_At_Start.xml)
 
 ### Example splitting train Bern - Zweisimmen | Brig
 A simple splitting train without any additional information.
 Bern - Thun - Spiez - (Zweisimmen | Brig)
 
+> ** TODO **: Check if this really is the full example with the latest version JourneyMeeting or the improved InterchangeRule also 3 parts and one stays in Brig
+
 [Link to example](NeTEx_CH_Bern_Spiez_Zweisimmen_Passingtime.xml)
-
-## Bus where there must be passengers present at the start
-> **TODO** were is the definition?
-> 
-
-[Link to example](../examples/NeTEx_CH_DRT_Line_Dependent_on_Passengers_At_Start.xml)
-
 
 ## Basic ThroughJourney
 In the case of international connections a "Durchbindung" is needed.
-[Link to example](NeTEx_CH_Interlaken_BS_Freiburg_Breisach_Durchbindung.xml)
 
+[Link to example](NeTEx_CH_Interlaken_BS_Freiburg_Breisach_Durchbindung.xml)
 
 ## Train with ServiceFacilities and Notes
 This example shows the usage of ServiceFacilities. It also shows when the ServiceFacility is
 - not available on all operating days
-- is restricted to a part of the journey
+- is restricted to a part of the journey (here the bistro is not open between Olten and Zürich)
 
-I would like to suggest the following text for this xml example: Swiss NeTEx 2.0 uses PassingTimes for precise stop timing and models ServiceFacilities per operating day and journey segment, replacing Call-based structures and avoiding additional segmentation layers like JourneyParts.
-
-[Link to example](NeTEx_CH_Bern_Olten_Zürich_Notes_Facilities.xml)
-
->**TODO** needs to be improved
-
+[Link to example](NeEX_CH_Bern_Olten_ZuerichHB_Winterthur_StGallen_with_Facilities.xml)
 
 ## Using a platform for a train
-This is and example of a rail journey from Niederhasli Zürich HB Zürich Stadelhofen Uster, where Zürich HB is mapped via PassengerStopAssignment to a shared platform Quay “41/42”
+This is and example of a rail journey from Niederhasli Zürich HB Zürich Stadelhofen Uster, where Zürich HB is mapped via PassengerStopAssignment to a shared platform Quay “33/34”
 This shows the problems with sloid.
 
->**TODO** needs to be improved
+We model a train that has the following stops Fribourg - Bern - Zürich. Zürich it uses Zürich Löwenstrasse 33/34
+
+![img.png](media/fribourg_zuerich.png)
+
+[Link to example](NeTEx_CH_Fribourg_Bern_Zuerich_Perron.xml)
 
 ## Special case: Destination changed
->**TODO** needs to be improved
+We use a BLS train from Bern to Luzern. Due to construction it is terminated at Wolhusen.
+We assume that in Bern, Konolfingen and Langnau i.E. we want to show Destination Luzern. On the ServiceJourney we want to show Wolhusen. And in the stops after Langnau i.E. we show Wolhusen as destination.
+
+![img.png](media/DestinationChange_Bern_Luzern.png)
+
+[Link to example](NeTEx_CH_BLS_Bern_Luzern_DestinationChange.xml)
+
+
+In a second modeling we want to model the change in the train number as also shown in the example. In this version the train goes to Luzern exactly as shown in the image.
+
+[Link to example](NeTEx_CH_BLS_Bern_Luzern_Change_TrainNumber_and_other_stuff.xml)
+
 
 ## Special case: Destination display in a round trip
->**TODO** needs to be improved
+>**TODO** LATER
 
 
 ## Journey relationships
->**TODO** needs to be improved
+>**TODO** Examples from Adrian
 
 ## Full content of a minimal export
 Only few lines with some interaction to show all elements in action and the different files. The file names are already done as they should be.
->**TODO** needs to be improved
 
-
+>**TODO** Later by MENTZ when file structure is defined
 
 ## Special case: Umsteigebeziehungen und Metastations
->**TODO** needs to be improved
+>**TODO** by Adrian
 
 ## Postauto with Anhänger
->**TODO** needs to be improved
+>**TODO** to be provided by PAG
 
 ## Formation for trains
->**TODO** needs to be improved
+>**TODO** Will be done by Matthias in June
 
 ## carTransportRail
->**TODO** needs to be improved
+>**TODO** Later
 
 ### rail replacement
->**TODO** needs to be improved
+>**TODO** Later
 
 ### Frequency based traffic
 >**TODO** needs to be improved
@@ -91,14 +106,18 @@ Only few lines with some interaction to show all elements in action and the diff
 >**TODO** needs to be improved
 
 
-## Demand Responsive Traffic (DRT)
+## Other Demand Responsive Traffic (DRT)
 Swiss NeTEx 2.0 replaces Call-based, order-dependent modelling with a flat, PassingTime-driven structure that separates stop sequence, timing, and operational semantics more clearly than previous version
 
+We already have seen line-based DRT. Here we deal with area based DRT.
+
+> **TODO** Later
+
 ## Accessibility
-For NeTEx 2.0 EPIAP (European Passsenger accessibility Profile, NeTEx Part 6) Chur was used as ann example. 
+For NeTEx 2.0 EPIAP (European Passsenger accessibility Profile, NeTEx Part 6) Chur was used as an example. 
 We don't do accessibility modeling in NeTEx even for RG 2.0
 
-[Accessibility examples in the main repo](https://github.com/NeTEx-CEN/NeTEx/tree/v2.0/examples/standards/epiap)
+[Accessibility example in the main NeTEx repo](https://github.com/NeTEx-CEN/NeTEx/tree/v2.0/examples/standards/epiap)
 
 ## Experimental
 The following examples are experimental. They are NOT to be used as of now as good templates for modeling stuff
@@ -109,5 +128,3 @@ We consider to use a minimalistic version for importation in INFO+. All basic da
 [Minimal Template Journey](Experimental_Minimal_TemplateJourney_Passingtime.xml)
 
 
-## No longer used
->**TODO** probably removed in the end.
