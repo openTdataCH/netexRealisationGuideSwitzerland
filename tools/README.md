@@ -91,9 +91,9 @@ This generates executable scripts for Linux/Mac and Windows in subdirectories of
 - Add a new entry in the `[project.scripts]` section of `pyproject.toml`.
 - If the script requires another package, use `uv add` to added to the environment.
 
-### Build Automation Framework
+## Build Automation Framework
 
-#### Package Manager
+### Package Manager
 
 The package manager `uv` simplifies the build and installation of scripts for the tools.
 
@@ -101,7 +101,7 @@ The package manager `uv` simplifies the build and installation of scripts for th
 - `uv` provides an os-independent interface for scripts
   - Generated tool scripts run on Windows, Mac or Linux
 
-#### Project build
+### Project build
 
 Components of the build automation:
 - [pyproject.toml](../pyproject.toml) is configured with `setuptools` (https://setuptools.pypa.io/en/latest/)
@@ -110,7 +110,7 @@ Components of the build automation:
   - here we can add tools to be run during the build.
 - The build writes all output to directory `site`, excluded from git
 
-#### Github Action
+### Github Action
 
 The Github Action [pages.yaml](../.github/pages.yaml) runs the script [build.sh](./build.sh) (can also be tested locally) 
   - triggered after commits to main branch (e.g. after the merge of a branch)
