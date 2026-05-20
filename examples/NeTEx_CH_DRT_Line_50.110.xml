@@ -24,32 +24,17 @@
 
 
  -->
-
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-04-10T12:00:00</PublicationTimestamp>
-	<ParticipantRef>SKI-Examples</ParticipantRef>
+	<ParticipantRef>CH:BLT</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+		<CompositeFrame id="ch:1:CompositeFrame:1231" version="1">
+			<ValidBetween>
+				<FromDate>2025-12-14T00:00:00</FromDate>
+				<ToDate>2026-12-10T23:59:59</ToDate>
+			</ValidBetween>
 			<frames>
-				<ResourceFrame id="ch:1:CompositeFrame" version="1">
-					<organisations>
-						<Operator id="ch:1:Operator:37" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>GO</Key>
-									<Value>37</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SBOID</Key>
-									<Value>ch:1:sboid:100019</Value>
-								</KeyValue>
-							</keyList>
-							<PrivateCode>37</PrivateCode>
-							<Name>BLT Baselland Transport</Name>
-						</Operator>
-					</organisations>
-				</ResourceFrame>
-				<ResourceFrame id="ch:1:ResourceFrame" version="1">
+				<ResourceFrame id="ch:1:ResourceFrame:1231" version="1">
 					<responsibilitySets>
 						<ResponsibilitySet id="ch:1:ResponsibilitySet:BLT" version="1">
 							<Name>BLT Baselland Transport</Name>
@@ -67,14 +52,42 @@
 						</ResponsibilitySet>
 					</responsibilitySets>
 					<typesOfValue>
-						<ValueSet id="ch:1:TypeOfService" version="1" nameOfClass="TypeOfService">
+						<ValueSet id="ch:blt:generated:VS:TypeOfService" version="1" nameOfClass="TypeOfService">
 							<Name>Service Types</Name>
 							<values>
+								<!-- TODO: Where did you get this from::: Korrigiert auf ODV in TypeofService sowie bei Name -->
 								<TypeOfService id="ch:1:TypeOfService:1" version="1">
-									<Name lang="en">PublicJourney</Name>
-									<ShortName lang="en">N</ShortName>
-									<PrivateCode>1</PrivateCode>
+									<Name>On Demand Verkehr</Name>
 								</TypeOfService>
+							</values>
+						</ValueSet>
+						<ValueSet id="ch:1:ValueSet:TypeOfFlexibleService" version="1" nameOfClass="TypeOfFlexibleService">
+							<values>
+								<TypeOfFlexibleService id="ch:1:TypeOfFlexibleService:L" version="1">
+									<Name lang="de">Bedarfslinie</Name>
+									<ShortName lang="de">L</ShortName>
+									<PrivateCode>1</PrivateCode>
+								</TypeOfFlexibleService>
+								<TypeOfFlexibleService id="ch:1:TypeOfFlexibleService:A" version="1">
+									<Name lang="de">Anrufsammelverkehr</Name>
+									<ShortName lang="de">A</ShortName>
+									<PrivateCode>2</PrivateCode>
+								</TypeOfFlexibleService>
+								<TypeOfFlexibleService id="ch:1:TypeOfFlexibleService:Ö" version="1">
+									<Name lang="de">Richtungsband, örtlich disponierter Bus</Name>
+									<ShortName lang="de">Ö</ShortName>
+									<PrivateCode>3</PrivateCode>
+								</TypeOfFlexibleService>
+								<TypeOfFlexibleService id="ch:1:TypeOfFlexibleService:Z" version="1">
+									<Name lang="de">Zeitbezogener Flächenverkehr</Name>
+									<ShortName lang="de">Z</ShortName>
+									<PrivateCode>4</PrivateCode>
+								</TypeOfFlexibleService>
+								<TypeOfFlexibleService id="ch:1:TypeOfFlexibleService:F" version="1">
+									<Name lang="de">Freier Flächenverkehr</Name>
+									<ShortName lang="de">F</ShortName>
+									<PrivateCode>5</PrivateCode>
+								</TypeOfFlexibleService>
 							</values>
 						</ValueSet>
 					</typesOfValue>
@@ -90,14 +103,12 @@
 									<Value>ch:1:sboid:100019</Value>
 								</KeyValue>
 							</keyList>
-							<privateCodes>
-								<PrivateCode type="sboid">ch:1:sboid:100019</PrivateCode>
-							</privateCodes>
+							<PrivateCode>37</PrivateCode>
 							<Name>BLT Baselland Transport</Name>
 						</Operator>
 					</organisations>
 				</ResourceFrame>
-				<SiteFrame id="ch:1:SiteFrame" version="1">
+				<SiteFrame id="ch:1:SiteFrame:1231" version="1">
 					<stopPlaces>
 						<StopPlace id="ch:1:sloid:78296" version="1">
 							<keyList>
@@ -105,9 +116,15 @@
 									<Key>SLOID</Key>
 									<Value>ch:1:sloid:78296</Value>
 								</KeyValue>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8578296</Value>
+								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78296</PrivateCode>
+							</privateCodes>
 							<Name>Ruemlingen Dorf</Name>
-							<PrivateCode>8578296</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.84783</Longitude>
@@ -117,6 +134,15 @@
 							</Centroid>
 							<quays>
 								<Quay id="ch:1:sloid:78296:1:1" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:78296:1:1</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:78296:1:1</PrivateCode>
+									</privateCodes>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -127,9 +153,15 @@
 									<Key>SLOID</Key>
 									<Value>ch:1:sloid:78303</Value>
 								</KeyValue>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8578303</Value>
+								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78303</PrivateCode>
+							</privateCodes>
 							<Name>Haefelfingen Dorf</Name>
-							<PrivateCode>8578303</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.865972</Longitude>
@@ -139,6 +171,15 @@
 							</Centroid>
 							<quays>
 								<Quay id="ch:1:sloid:78303:1:1" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:78303:1:1</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:78303:1:1</PrivateCode>
+									</privateCodes>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -149,9 +190,15 @@
 									<Key>SLOID</Key>
 									<Value>ch:1:sloid:5168</Value>
 								</KeyValue>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8505168</Value>
+								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:5168</PrivateCode>
+							</privateCodes>
 							<Name>Haefelfingen Rebenrank</Name>
-							<PrivateCode>8505168</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.8673784</Longitude>
@@ -161,6 +208,15 @@
 							</Centroid>
 							<quays>
 								<Quay id="ch:1:sloid:5168:1:1" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>sloid</Key>
+											<Value>ch:1:sloid:5168:1:1</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:5168:1:1</PrivateCode>
+									</privateCodes>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -171,9 +227,16 @@
 									<Key>SLOID</Key>
 									<Value>ch:1:sloid:2648</Value>
 								</KeyValue>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8502648</Value>
+								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:2648</PrivateCode>
+								<PrivateCode type="didok">8502648</PrivateCode>
+							</privateCodes>
 							<Name>Haefelfingen Bad Ramsach</Name>
-							<PrivateCode>8502648</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.8711704</Longitude>
@@ -183,6 +246,15 @@
 							</Centroid>
 							<quays>
 								<Quay id="ch:1:sloid:2648:1:1" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>sloid</Key>
+											<Value>ch:1:sloid:2648:1:1</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:2648:1:1</PrivateCode>
+									</privateCodes>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -193,9 +265,16 @@
 									<Key>SLOID</Key>
 									<Value>ch:1:sloid:7335</Value>
 								</KeyValue>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507335</Value>
+								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:7335</PrivateCode>
+								<PrivateCode type="didok">8507335</PrivateCode>
+							</privateCodes>
 							<Name>Laeufelfingen Herrenmatt</Name>
-							<PrivateCode>8507335</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.8563981</Longitude>
@@ -205,6 +284,15 @@
 							</Centroid>
 							<quays>
 								<Quay id="ch:1:sloid:7335:1:1" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>sloid</Key>
+											<Value>ch:1:sloid:7335:1:1</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:7335:1:1</PrivateCode>
+									</privateCodes>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -215,9 +303,16 @@
 									<Key>SLOID</Key>
 									<Value>ch:1:sloid:92449</Value>
 								</KeyValue>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8592449</Value>
+								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:92449</PrivateCode>
+								<PrivateCode type="didok">8592449</PrivateCode>
+							</privateCodes>
 							<Name>Laeufelfingen Bahnhof</Name>
-							<PrivateCode>8592449</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.8563981</Longitude>
@@ -227,6 +322,15 @@
 							</Centroid>
 							<quays>
 								<Quay id="ch:1:sloid:92449:1:1" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>sloid</Key>
+											<Value>ch:1:sloid:92449:1:1</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:92449:1:1</PrivateCode>
+									</privateCodes>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -236,6 +340,10 @@
 								<KeyValue>
 									<Key>SLOID</Key>
 									<Value>ch:1:sloid:6073</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8506073</Value>
 								</KeyValue>
 							</keyList>
 							<Name>Buckten, Bahnhof</Name>
@@ -249,21 +357,33 @@
 							</Centroid>
 							<quays>
 								<Quay id="ch:1:sloid:6073:1:1" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>sloid</Key>
+											<Value>ch:1:sloid:6073:1:1</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:6073:1:1</PrivateCode>
+									</privateCodes>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
 					</stopPlaces>
 				</SiteFrame>
-				<ServiceFrame id="ch:1:ServiceFrame" version="1">
+				<ServiceFrame id="ch:1:ServiceFrame:1231" version="1">
 					<lines>
-						<Line id="ch:blt:generated:Line:29013" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BLT">
+						<Line id="ch:1:slnid:1026470" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BLT">
 							<keyList>
 								<KeyValue>
 									<Key>SLNID</Key>
 									<Value>ch:1:slnid:1026470</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="slnid">ch:1:slnid:1026470</PrivateCode>
+							</privateCodes>
 							<Name>29013 Ruemlingen – Haefelfingen Dorf – Bad Ramsach - Laeufelfingen</Name>
 							<TransportMode>bus</TransportMode>
 							<TransportSubmode>
@@ -445,11 +565,34 @@
 						</JourneyPattern>
 					</journeyPatterns>
 				</ServiceFrame>
-				<TimetableFrame id="ch:1:TimetableFrame" version="1">
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:1231" version="1">
+					<validityConditions>
+						<AvailabilityCondition id="generated" version="1">
+							<Description>every day</Description>
+							<FromDate>2025-12-14T00:00:00</FromDate>
+							<ToDate>2026-12-10T23:59:59</ToDate>
+							<ValidDayBits>11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</ValidDayBits>
+							<!-- number of bits not checked here. Must be the same as the days between FromDate and ToDate. -->
+						</AvailabilityCondition>
+					</validityConditions>
+				</ServiceCalendarFrame>
+				<TimetableFrame id="ch:1:TimetableFrame:1231" version="1">
 					<vehicleJourneys>
 						<ServiceJourney id="ch:blt:generated:SJ:29013:ODV" version="1">
-							<OperatorRef ref="ch:1:Operator:37" version="1"/>
-							<LineRef ref="ch:blt:generated:Line:29013" version="1"/>
+							<validityConditions>
+								<AvailabilityConditionRef ref="generated" version="1"/>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>SJYID</Key>
+									<Value>sjyid-1</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sjyid">sjyid-1</PrivateCode>
+							</privateCodes>
+							<OperatorRef ref="ch:1:sboid:100019" version="1"/>
+							<LineRef ref="ch:1:slnid:1026470" version="1"/>
 							<JourneyPatternView>
 								<JourneyPatternRef ref="ch:blt:generated:JourneyPattern:29013" version="1"/>
 							</JourneyPatternView>
@@ -488,8 +631,20 @@
 							</FlexibleServiceProperties>
 						</ServiceJourney>
 						<ServiceJourney id="ch:blt:generated:SJ:30001:1" version="1">
+							<validityConditions>
+								<AvailabilityConditionRef ref="generated" version="1"/>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>SJYID</Key>
+									<Value>sjyid-2</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sjyid">sjyid-2</PrivateCode>
+							</privateCodes>
 							<PublicCode>30001</PublicCode>
-							<LineRef ref="ch:blt:generated:Line:29013" version="1"/>
+							<LineRef ref="ch:1:slnid:1026470" version="1"/>
 							<JourneyPatternView>
 								<JourneyPatternRef ref="ch:blt:generated:JourneyPattern:30001" version="1"/>
 							</JourneyPatternView>
@@ -519,8 +674,20 @@
 							</passingTimes>
 						</ServiceJourney>
 						<ServiceJourney id="ch:blt:generated:SJ:30011:1" version="1">
+							<validityConditions>
+								<AvailabilityConditionRef ref="generated" version="1"/>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>SJYID</Key>
+									<Value>sjyid-3</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sjyid">sjyid-3</PrivateCode>
+							</privateCodes>
 							<PublicCode>30011</PublicCode>
-							<LineRef ref="ch:blt:generated:Line:29013" version="1"/>
+							<LineRef ref="ch:1:slnid:1026470" version="1"/>
 							<JourneyPatternView>
 								<JourneyPatternRef ref="ch:blt:generated:JourneyPattern:30011" version="1"/>
 							</JourneyPatternView>

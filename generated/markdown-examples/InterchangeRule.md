@@ -8,7 +8,6 @@
 Default is false. |  |
 | + | Planned | mandatory | 0..1 | xsd:boolean | Whether INTERCHANGE is planned in a timetable. Default is true. |  |
 | + | Guaranteed | mandatory | 0..1 | xsd:boolean | Whether INTERCHANGE is guaranteed. Default is false. |  |
-| + | MaximumAutomaticTransferTime | optional | 1..1 | unknown |  |  |
 | + | MinimumTransferTime | expected | 0..1 | xsd:duration | Maximum transfer duration for INTERCHANGE. |  |
 | + | MaximumTransferTime | expected | 0..1 | xsd:duration | Maximum transfer duration for INTERCHANGE. |  |
 | + | timings | optional | 0..1 | interchangeRuleTimings_RelStructure | Additional timings for the INTERCHANGE RULE for specific TIME DEMAND TYPEs. |  |

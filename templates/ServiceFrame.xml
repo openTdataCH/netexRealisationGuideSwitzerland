@@ -7,8 +7,7 @@
 			<frames>
 				<ServiceFrame id="ch:1:ServiceFrame" version="any">
 					<!-- ch-root -->
-					<!-- ch-note: A minimal ServiceFrame must be present in all timetable files. TODO: analyse which part is in the general one.-->
-					<!-- ch-note: TODO how would we describe additional id and which ones are mandatory?-->
+					<!-- ch-note: A minimal ServiceFrame must be present in all timetable files.-->
 					<directions>
 						<!-- ch-note: We don't use directions, but only direction type -->
 						<!-- ch-usage: forbidden -->
@@ -50,7 +49,7 @@
 						<!-- ch-note: Swiss ScheduledStopPoint are using the sloid in the id, when possible.-->
 						<!-- ch-usage: mandatory -->
 						<ScheduledStopPoint id="sloid_where_possible" version="1">
-							<!-- ch-note: TODO full or not -->
+							<!-- ch-note: The id of the ScheduledStopPoint is a sloid, when one exists. Otherwisse it contains a gen part. -->
 							<!-- ch-see -->
 						</ScheduledStopPoint>
 					</scheduledStopPoints>

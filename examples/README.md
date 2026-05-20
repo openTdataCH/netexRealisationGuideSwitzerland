@@ -10,6 +10,9 @@ Example of a normal rail journey train Spiez - Interlaken Ost with various quay 
 ### Basic bus
 Swiss NeTEx 2.0 models repeated stops within a journey using PassingTimes and JourneyPattern references, enabling quay-level differentiation (e.g. opposite sides of the road) without duplicating journeys or introducing additional segmentation structures
 
+We modeled some `ServiceJourney` from the following bus: https://github.com/user-attachments/files/26309155/50.110.pdf
+
+[Link to example](../examples/NeTEx_CH_DRT_Line_50.110.xml)
 
 ### Example splitting train Bern - Zweisimmen | Brig
 A simple splitting train without any additional information.
@@ -17,6 +20,11 @@ Bern - Thun - Spiez - (Zweisimmen | Brig)
 
 [Link to example](NeTEx_CH_Bern_Spiez_Zweisimmen_Passingtime.xml)
 
+## Bus where there must be passengers present at the start
+> **TODO** were is the definition?
+> 
+
+[Link to example](../examples/NeTEx_CH_DRT_Line_Dependent_on_Passengers_At_Start.xml)
 
 
 ## Basic ThroughJourney
