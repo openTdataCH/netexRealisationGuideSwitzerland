@@ -6,6 +6,12 @@ import os
 import shutil
 import argparse
 import re
+from abc import ABC
+
+from setuptools import Command
+
+from tools.configuration import DOCS_DIR, GENERATED_DOCS_DIR
+
 
 def copy_media_folder(input_folder, output_folder):
     """Copy media folder from input to output."""
@@ -73,8 +79,8 @@ def process_markdown_file(input_path, output_path, base_folder):
 
 def main():
     parser = argparse.ArgumentParser(description='Expand documentation by including examples and tables.')
-    parser.add_argument('--docs', required=True, help='Input documentation folder')
-    parser.add_argument('--out', required=True, help='Output folder')
+    parser.add_argument('--docs', default=DOCS_DIR, help=f"Input documentation folder (default = {DOCS_DIR})")
+    parser.add_argument('--out', default=GENERATED_DOCS_DIR, help=f"Output folder (default = {GENERATED_DOCS_DIR})")
     args = parser.parse_args()
     
     # Create output folder if it doesn't exist
@@ -94,3 +100,15 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+class ExpandDocs(Command, ABC):
+    """Setuptools plugin for the project build."""
+
+    def run(self) -> None:
+        """
+        Execute the actions intended by the command.
+        (Side effects **SHOULD** only take place when :meth:`run` is executed,
+        for example, creating new files or writing to the terminal output).
+        """
+        main()
+        pass
