@@ -48,10 +48,13 @@ def validate_folder(folder_path, xsd_path):
     validated_count = 0
     schema=load_schema(xsd_path)
     if not schema:
-        exit
+        exit(1)
     for root, _, files in os.walk(folder_path):
         for file in files:
             if file.lower().endswith('.xml'):
+                if "archive" in root:
+                    # we dont parse archive folders
+                    break
                 xml_path = os.path.join(root, file)
                 validate_xml(xml_path, schema)
                 validated_count += 1
