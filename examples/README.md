@@ -28,6 +28,8 @@ This example shows the usage of ServiceFacilities. It also shows when the Servic
 - not available on all operating days
 - is restricted to a part of the journey
 
+I would like to suggest the following text for this xml example: Swiss NeTEx 2.0 uses PassingTimes for precise stop timing and models ServiceFacilities per operating day and journey segment, replacing Call-based structures and avoiding additional segmentation layers like JourneyParts.
+
 [Link to example](NeTEx_CH_Bern_Olten_Zürich_Notes_Facilities.xml)
 
 >**TODO** needs to be improved
