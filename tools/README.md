@@ -1,16 +1,53 @@
 # Tools for the Swiss NeTEx RG
 
-## Install Tools with uv
+## How to setup and run the build
 
-The package manager `uv` simplifies the build and installation of scripts for the tools.
+The build builds the tools and runs them to create the generated documents in the directory `site`.
 
-- Dependencies are managed by `uv`, as configured in `pyproject.toml` and more detailed in `uv.lock`. 
-- `uv` provides an os-independent interface for scripts
-- The generated tool scripts run on Windows, Mac or Linux
+### Steps involved to setup and run the build
 
-### Install the package manager
+1. Install the [uv package manager](#install-the-uv-package-manager)
+2. Initialize the [virtual environment](#initialize-the-virtual-environment)
+3. [Run the build]()
 
-See [uv package manager](https://docs.astral.sh/uv/)
+For more information about the build framework, see [Build Automation](#build-automation).
+
+### Install the uv package manager
+
+Install the uv package manager:
+- See [uv package manager](https://docs.astral.sh/uv/)
+- if you have pip installed, you can run `pip install uv`
+
+### Initialize the virtual environment
+
+#### Mac/Linux
+
+Run the following following commands in the project root directory:
+```sh
+uv venv
+uv sync
+sh ./venv/bin/activate
+```
+
+#### Windows
+
+Run the following following commands in the project root directory:
+
+``` shell
+uv venv
+uv sync
+venv\bin\activate.bat
+```
+
+### Run the build
+
+If everything is setup correctly, you should be able to run the build doing `python -m build` in the project root directory.
+
+
+## Tool Scripts
+
+The `pyproject.toml` is configured to generate scripts for the tools.
+These tool scripts are not required for the build, but they may be useful for running tools locally.
 
 ### Prerequisites: Set PYTHONPATH and PATH
 
@@ -56,9 +93,15 @@ This generates executable scripts for Linux/Mac and Windows in subdirectories of
 
 ### Build Automation Framework
 
-In order to build locally, run `python -m build`.
+#### Package Manager
 
-#### Build Automation
+The package manager `uv` simplifies the build and installation of scripts for the tools.
+
+- Dependencies are managed by `uv`, as configured in `pyproject.toml` and more detailed in `uv.lock`. 
+- `uv` provides an os-independent interface for scripts
+  - Generated tool scripts run on Windows, Mac or Linux
+
+#### Project build
 
 Components of the build automation:
 - [pyproject.toml](../pyproject.toml) is configured with `setuptools` (https://setuptools.pypa.io/en/latest/)
