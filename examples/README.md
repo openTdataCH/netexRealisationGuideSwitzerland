@@ -81,7 +81,7 @@ Only few lines with some interaction to show all elements in action and the diff
 
 
 ## Demand Responsive Traffic (DRT)
->**TODO** needs to be improved
+Swiss NeTEx 2.0 replaces Call-based, order-dependent modelling with a flat, PassingTime-driven structure that separates stop sequence, timing, and operational semantics more clearly than previous version
 
 ## Accessibility
 For NeTEx 2.0 EPIAP (European Passsenger accessibility Profile, NeTEx Part 6) Chur was used as ann example. 
