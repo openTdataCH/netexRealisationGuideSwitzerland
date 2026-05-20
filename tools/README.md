@@ -53,3 +53,23 @@ This generates executable scripts for Linux/Mac and Windows in subdirectories of
 
 - Add a new entry in the `[project.scripts]` section of `pyproject.toml`.
 - If the script requires another package, use `uv add` to added to the environment.
+
+### Build Automation Framework
+
+In order to build locally, run `python -m build`.
+
+#### Build Automation
+
+Components of the build automation:
+- [pyproject.toml](../pyproject.toml) is configured with `setuptools` (https://setuptools.pypa.io/en/latest/)
+  - docs can be generated running `python -m build`
+- `setup.py` in the root project acts as the interface for the build
+  - here we can add tools to be run during the build.
+- The build writes all output to directory `site`, excluded from git
+
+#### Github Action
+
+The Github Action [pages.yaml](../.github/pages.yaml) runs the script [build.sh](./build.sh) (can also be tested locally) 
+  - triggered after commits to main branch (e.g. after the merge of a branch)
+  - runs the build via the `python -m build` mechanism 
+  - uploads generated docs to GitHub Pages
