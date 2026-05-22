@@ -24,9 +24,9 @@ Install the uv package manager:
 
 Run the following following commands in the project root directory:
 ```sh
-uv venv
+uv .venv
+source .venv/bin/activate
 uv sync
-sh ./venv/bin/activate
 ```
 
 #### Windows
@@ -34,9 +34,9 @@ sh ./venv/bin/activate
 Run the following following commands in the project root directory:
 
 ``` shell
-uv venv
+uv .venv
+.venv\bin\activate.bat
 uv sync
-venv\bin\activate.bat
 ```
 
 ### Run the build
