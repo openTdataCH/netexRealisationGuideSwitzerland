@@ -1,16 +1,63 @@
 # Tools for the Swiss NeTEx RG
 
-## Install Tools with uv
+## How to setup and run the build
 
-The package manager `uv` simplifies the build and installation of scripts for the tools.
+The build builds the tools and runs them to create the generated documents in the directory `site`.
 
-- Dependencies are managed by `uv`, as configured in `pyproject.toml` and more detailed in `uv.lock`. 
-- `uv` provides an os-independent interface for scripts
-- The generated tool scripts run on Windows, Mac or Linux
+### Steps involved to setup and run the build
 
-### Install the package manager
+1. Install the [uv package manager](#install-the-uv-package-manager)
+2. Initialize the [virtual environment](#initialize-the-virtual-environment)
+3. Install the [build module](#install-build-module)
+4. [Run the build]()
 
-See [uv package manager](https://docs.astral.sh/uv/)
+For more information about the build framework, see [Build Automation](#build-automation).
+
+### Install the uv package manager
+
+Install the uv package manager:
+- See [uv package manager](https://docs.astral.sh/uv/)
+- if you have pip installed, you can run `pip install uv`
+
+### Initialize the virtual environment
+
+#### Mac/Linux
+
+Run the following following commands in the project root directory:
+```sh
+uv venv
+source .venv/bin/activate
+uv sync
+```
+
+#### Windows
+
+Run the following following commands in the project root directory:
+
+``` shell
+uv venv
+.venv\bin\activate.bat
+uv sync
+```
+### Install build module
+
+Make sure you have an up-to-date version of `pip` and of module `build` used to run the build:
+```
+python -m ensurepip
+python -m pip install --upgrade pip build
+```
+### Run the build
+
+If everything is setup correctly, you should be able to the build from your project root directory:
+
+```
+python -m build
+```
+
+## Tool Scripts
+
+The `pyproject.toml` is configured to generate scripts for the tools.
+These tool scripts are not required for the build, but they may be useful for running tools locally.
 
 ### Prerequisites: Set PYTHONPATH and PATH
 
@@ -53,3 +100,29 @@ This generates executable scripts for Linux/Mac and Windows in subdirectories of
 
 - Add a new entry in the `[project.scripts]` section of `pyproject.toml`.
 - If the script requires another package, use `uv add` to added to the environment.
+
+## Build Automation Framework
+
+### Package Manager
+
+The package manager `uv` simplifies the build and installation of scripts for the tools.
+
+- Dependencies are managed by `uv`, as configured in `pyproject.toml` and more detailed in `uv.lock`. 
+- `uv` provides an os-independent interface for scripts
+  - Generated tool scripts run on Windows, Mac or Linux
+
+### Project build
+
+Components of the build automation:
+- [pyproject.toml](../pyproject.toml) is configured with `setuptools` (https://setuptools.pypa.io/en/latest/)
+  - docs can be generated running `python -m build`
+- `setup.py` in the root project acts as the interface for the build
+  - here we can add tools to be run during the build.
+- The build writes all output to directory `site`, excluded from git
+
+### Github Action
+
+The Github Action [pages.yaml](../.github/pages.yaml) runs the script [build.sh](./build.sh) (can also be tested locally) 
+  - triggered after commits to main branch (e.g. after the merge of a branch)
+  - runs the build via the `python -m build` mechanism 
+  - uploads generated docs to GitHub Pages
