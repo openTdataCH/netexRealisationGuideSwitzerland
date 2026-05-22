@@ -8,7 +8,8 @@ The build builds the tools and runs them to create the generated documents in th
 
 1. Install the [uv package manager](#install-the-uv-package-manager)
 2. Initialize the [virtual environment](#initialize-the-virtual-environment)
-3. [Run the build]()
+3. Install the [build module](#install-build-module)
+4. [Run the build]()
 
 For more information about the build framework, see [Build Automation](#build-automation).
 
@@ -24,7 +25,7 @@ Install the uv package manager:
 
 Run the following following commands in the project root directory:
 ```sh
-uv .venv
+uv venv
 source .venv/bin/activate
 uv sync
 ```
@@ -34,15 +35,24 @@ uv sync
 Run the following following commands in the project root directory:
 
 ``` shell
-uv .venv
+uv venv
 .venv\bin\activate.bat
 uv sync
 ```
+### Install build module
 
+Make sure you have an up-to-date version of `pip` and of module `build` used to run the build:
+```
+python -m ensurepip
+python -m pip install --upgrade pip build
+```
 ### Run the build
 
-If everything is setup correctly, you should be able to run the build doing `python -m build` in the project root directory.
+If everything is setup correctly, you should be able to the build from your project root directory:
 
+```
+python -m build
+```
 
 ## Tool Scripts
 
