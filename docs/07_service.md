@@ -4,7 +4,7 @@ In this chapter:
 - [DestinationDisplay](#destinationdisplay)
 - [ScheduledStopPoint](#scheduledstoppoint)
 - [PassengerStopAssignment](#passengerstopassignment)
-- [PassengerBoardingPositionAssignment](**TODO**)
+- [PassengerBoardingPositionAssignment](**TODO** https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/80)
 - [DefaultConnection](#defaultconnection)
 - [SiteConnection](#siteconnection)
 - [ServiceJourneyPattern](#servicejourneypattern)
@@ -137,8 +137,8 @@ A public transport service line, representing a marketed route with a `Name`, `T
 - slnid will be integrated wherever possible. We currently think that - where it exists - it has the necessary properties to be used in the `id`-attribute.
 - For foreign lines and id might need to be generated.
 - We store the slnid whenever possible in `id`, `privateCodes/PrivateCode` and `KeyList`.
-- **TODO** link to migration concept slnid
-- **TODO** handling of mixed lines
+- **TODO** link to migration concept slnid https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/48
+- **TODO** handling of mixed lines https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/48
 - Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
 - Note that there exist journeys in Switzerland and neighbouring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
 - For more information about SwissLineID: see https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf
@@ -165,7 +165,7 @@ Showing the destination of a `ServiceJourney`. The text shown on the front or si
 - The `DestinationDiplay` is usually be set on the `ServiceJourney`. If it changes during the run, it needs to be changed in the `ServiceJourneyPattern`. If it changes on that, then the new destination should be used. In our output, we will fill all remaining `PointsInJourneyPattern`with the relevant change.
 - See also the [use case on changes in destination](uc13_changes_in_destination.md) 
 
-> **TODO** the rules for defining need to be clarified.
+> **TODO** the rules for defining need to be clarified. https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/81
 
 ## ScheduledStopPoint
 *→ [Glossary definition](A4_annex_glossary.md#ScheduledStopPoint)*
@@ -212,7 +212,8 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Usage Notes
 
 > ** TODO ** Suppose a vehicle arrives at quay 2A and departs on quay 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS.
-
+https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/82
+> 
 ## DefaultConnection
 *→ [Glossary definition](A4_annex_glossary.md#DefaultConnection)*
 

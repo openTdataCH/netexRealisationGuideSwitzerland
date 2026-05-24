@@ -7,6 +7,7 @@ In this chapter:
 - [TrainNumber](09_timetable.md#trainnumber)
 - [TypeOfService](#typeofservice)
 - [TimetabledPassingTime](09_timetable.md#timetabledpassingtime)
+- [ServiceJourneyInterchange](#servicejourneyinterchange)
 - [InterchangeRule](09_timetable.md#interchangerule)
 
 In Service: 
@@ -77,7 +78,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - **Validation:** Ensure `JourneyPatternRef`, `LineRef`, and `OperatorRef` are consistent and reference existing objects.
 
 ## TemplateServiceJourney
-
+*→ [Glossary definition](A4_annex_glossary.md#templateservicejourney)*
 ### Purpose
 A `TemplateServiceJourney` represents a sequence of planned trips. It is similar to the `ServiceJourney`, but it is used if there is a frequency defined at which the trips are scheduled on an operating day. 
 
@@ -102,7 +103,6 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 ## OccupancyView
 
 ### Purpose
-
 `OccupancyView`can be used on the `Journey`, `JourneyPart`, and `TimetabledPassingTime` elements. Used for predicted and planned occupancies of vehicles.
 
 ### Table
@@ -120,6 +120,7 @@ We currently don't use OccupancyView.
 
 
 ## TrainNumber
+*→ [Glossary definition](A4_annex_glossary.md#trainnumber)*
 
 ### Purpose
 
@@ -166,6 +167,7 @@ Actually there is only one allowed value that we use in the Swiss profile: Only 
 
 
 ## TimetabledPassingTime
+*→ [Glossary definition](A4_annex_glossary.md#timetabledpassingtime)*
 
 ### Purpose
 
@@ -191,9 +193,29 @@ Long-term planned time data concerning public transport vehicles passing a parti
 - We store the sjyid in different places `id`, `privateCodes/PrivateCode`, `KeyList`. This allows different importing systems to find the sjyid.
 
 
+## ServiceJourneyInterchange
+*→ [Glossary definition](A4_annex_glossary.md#servicejourneyinterchange)*
+
+### Purpose
+The standard say: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle. This concept is for instance used for circular lines and coupled journeys. This means that passenger information should be adapted to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also im-portant that operation control staff is aware of the consequences to passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs."
+
+StaySeated can and should be modeled this way (especially if one uses EPIP as basis. Splitting is very technically not the same vehicle, but on on a higher level for the passenger it is. So we can indicate the splitting there.
+
+### Table
+- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourneyInterchange.md)
+
+*→ [General NeTEx definition ](../generated/netex-html/ServiceJourneyInterchange.html)*
+
+### Example
+- [Example snippet](../generated/xml-snippets/ServiceJourneyInterchange.xml)
+
+*→ [Template](../templates/ServiceJourneyInterchange.xml))*
+
+### Usage Notes
 
 ## InterchangeRule
-
+*→ [Glossary definition](A4_annex_glossary.md#interchangerule)*
+> **TODO** will probably be removed and replaced by ServiceJourneyInterchange
 ### Purpose
 
 An `InterchangeRule`defines the possibility of interchanging between two `ServiceJourney`s at the same or different `ScheduledStopPoint*` — where at least one journey is specified indirectly via `Direction`, `Line` or the VEHICLE JOURNEY (? **TODO**), rather than as an explicit journey pair. The rule specifies criteria (e.g. `Mode`, `Line`, `Direction`) that a candidate feeder or distributor journey must fulfil.
@@ -232,20 +254,6 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 
 ## ServiceFacilitySet
 *→ [see Common elements](./10_common.md#servicefacilityset)*
-
-## JourneyMeeting -> TODO: Probably to be removed
-[//]: # (**TODO**: Add JourneyMeeting links)
-
-### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/JourneyMeeting.md)
-
-*→ [General NeTEx definition ](../generated/netex-html/JourneyMeeting.html)*
-
-### Example
-- [Example snippet](../generated/xml-snippets/JourneyMeeting.xml)
-
-*→ [Template](../templates/JourneyMeeting.xml))*
-
 
 
 ### Usage Notes

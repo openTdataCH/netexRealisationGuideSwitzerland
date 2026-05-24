@@ -351,9 +351,7 @@ Set of `Facilitiy`s available for a `ServiceJourney` or a `JourneyPart`.
 
 > [!CAUTION]\
 > **TODO** 10.13.2ff
-
-> [!CAUTION]\
-> **TODO** a lot more detail needed. But probably in uc
+> a lot more detail needed. But probably in uc
 
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFacilitySet.md)
@@ -394,9 +392,7 @@ separated list of elements.
 Set of `Facilitiy`s available at a `StopPlace`, `Quay` or other site elements.
 
 > [!CAUTION]\
-> **TODO** @tuxalp not decribed in RG 1.01.\
-> **TODO** @tuxalp missing in glossary\
-> **TODO** @tuxalp missing elements in template.
+> **TODO** @tuxalp not decribed in RG 1.01.\@tuxalp missing in glossary\ @tuxalp missing elements in template.
 
 A `SiteFacilitySet` defines a set of facilities like sanitary facilities, ticket service, lockers etc. that can be 
 referenced to define facilities of a site.

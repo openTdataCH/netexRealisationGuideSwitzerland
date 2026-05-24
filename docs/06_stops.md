@@ -184,7 +184,7 @@ It provides precise geographic coordinates (WGS84) of a central reference point 
 The `Centroid` always contains a location. 
 - The main coordinates are given as WSG84.
 - Required accuracy 4+ decimal positions.
-- The Swiss coordinates are added as well, when available (see below) **TODO**
+- The Swiss coordinates are added as well, when available (see below) **TODO** https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/docs/06_stops.md
 - INFO+ will not use the master data from NeTEx imports, it will rely on the Atlas master data for all Swiss coordinates. INFO+ will, however, use the imported location data of foreign places without DIDOK numbers. 
 
 

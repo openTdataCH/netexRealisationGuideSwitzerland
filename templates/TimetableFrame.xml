@@ -52,15 +52,31 @@
 						</TypeOfService>
 					</typesOfService>
 					<journeyMeetings>
-						<!-- ch-usage: optional -->
+						<!-- ch-usage: forbidden -->
 						<JourneyMeeting id="ch:1:JourneyMeeting:1" version="1">
-							<!-- ch-usage: optional -->
-							<!-- ch-note: For splitting and joining. -->
-							<!-- ch-see -->
+							<!-- ch-usage: forbidden -->
+							<!-- ch-note: For splitting and joining we use ServiceJourneyInterchange -->
 							<FromJourneyRef ref="sjyid1" versionRef="1"/>
 							<ToJourneyRef ref="sjyid2" versionRef="1"/>
 						</JourneyMeeting>
 					</journeyMeetings>
+					<journeyInterchanges>
+						<!-- ch-usage: optional -->
+						<ServiceJourneyInterchange id="ch:1:sji:generated-1" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-note: For modeling many forms of interchanges -->
+							<!-- ch-see -->
+							<FromJourneyRef ref="sjyid-1" versionRef="1"/>
+							<ToJourneyRef ref="sjyid-2" versionRef="1"/>
+						</ServiceJourneyInterchange>
+						<ServiceJourneyPatternInterchange id="ch:1:ServiceJourneyPatt" version="1">
+							<!-- ch-usage: forbidden -->
+							<FromPointRef ref="point1" versionRef="1"/>
+							<ToPointRef ref="point2" versionRef="1"/>
+							<FromJourneyPatternRef ref="pattern1" versionRef="1"/>
+							<ToJourneyPatternRef ref="pattern2" versionRef="1"/>
+						</ServiceJourneyPatternInterchange>
+					</journeyInterchanges>					
 					<interchangeRules>
 						<!-- ch-usage: expected -->
 						<InterchangeRule id="ch:1:InterchangeRule:1" version="1">
