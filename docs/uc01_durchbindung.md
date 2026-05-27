@@ -1,6 +1,6 @@
  ServiceJourneyInterchanges and JourneyMeetings
 
-## ServiceJourneyInterchange
+## ServiceJourneyInterchange (DURCHBI)
 **Durchbindung, splitting and joining**
 
 A "Durchbindung" (through-service) describes a planned operational connection between two `ServiceJourney`s where the same physical vehicle continues under a new service identity — typically with a new line, operator, or train number. 
@@ -31,7 +31,6 @@ replacing the deprecated `JourneyMeeting` from RG 1.0.
 
 **Situation with Realisation Guide 2.0**
 ```
-```xml
 			<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
 				<validityConditions>
     				<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" version="any"/>
