@@ -1,8 +1,14 @@
  ServiceJourneyInterchanges and JourneyMeetings
 
 ## ServiceJourneyInterchange
-**TODO**
+**Durchbindung, splitting and joining**
 
+A "Durchbindung" (through-service) describes a planned operational connection between two `ServiceJourney`s where the same physical vehicle continues under a new service identity — typically with a new line, operator, or train number. 
+From the passenger's perspective, no vehicle change is required (`StaySeated=true`).
+
+This use case also covers splitting (Flügelzug) and joining (Vereinigung) of trains. 
+All three cases are modelled using `ServiceJourneyInterchange` in NeTEx RG 2.0, 
+replacing the deprecated `JourneyMeeting` from RG 1.0.
 		
 Situation with Realisation Guide 1.0
 ```
