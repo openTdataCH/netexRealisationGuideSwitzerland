@@ -8,9 +8,13 @@ From the passenger's perspective, no vehicle change is required (`StaySeated=tru
 
 This use case also covers splitting (Flügelzug) and joining (Vereinigung) of trains. 
 All three cases are modelled using `ServiceJourneyInterchange` in NeTEx RG 2.0, 
-replacing the deprecated `JourneyMeeting` from RG 1.0.
+replacing the deprecated `JourneyMeeting` from RG 1.0.  
+
+  
+**Situation**
+>The feeder train IR 17 (Thurbo/SBB, line 91014I) arrives at Weinfelden platform 3, where it continues as regional train R 80 (line 91030L) towards Wil SG or Winterthur. The passenger remains seated (StaySeated=true) — this is a through-service where the train changes its line identity at Weinfelden without the passenger needing to change vehicles. Maximum wait time is 9 minutes (PT9M).
 		
-Situation with Realisation Guide 1.0
+**Situation with Realisation Guide 1.0**
 ```
             <JourneyMeeting id="ch:1:JourneyMeeting:91014I-THU-17-1-5100_91030L-THU-80-1-7200_1642236775_1642209284_6660_7200" version="any">
               <validityConditions>
@@ -25,23 +29,20 @@ Situation with Realisation Guide 1.0
             </JourneyMeeting>
 ```
 
-situation with Realisation Guide 2.0
+**Situation with Realisation Guide 2.0**
 ```
+```xml
 			<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
 				<validityConditions>
-					<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" versionRef="any"/>
-				</validityConditions>
-				<Description>LineChange</Description>
-				<InterchangeLocationRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="any"/>
-				<FeederRef>
-					<ServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" version="any"/>
-				</FeederRef>
-				<DistributorRef>
-					<ServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" version="any"/>
-				</DistributorRef>
-				<MaximumWaitTime>PT9M</MaximumWaitTime>
+    				<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" version="any"/>
+  				</validityConditions>
+  				<Description lang="de">LineChange</Description>
 				<StaySeated>true</StaySeated>
-				<CrossBorder>false</CrossBorder>
+  				<CrossBorder>false</CrossBorder>
+				<MaximumWaitTime>PT9M</MaximumWaitTime>
+				<FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" version="any"/>
+  				<ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" version="any"/>
+				<FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" version="any"/>
+				<ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" version="any"/>
 			</ServiceJourneyInterchange>
 ```
-
