@@ -7,13 +7,13 @@ This use case describes how transfer times and interchange connections between j
 
 The following table shows how we will map HRDF tables into NeTEX.
 
-| HRDF     | NeTEx RG1         | NeTEx RG2                                                                                                    | Use Case                                   |
-|----------|-------------------|--------------------------------------------------------------------------------------------------------------|--------------------------------------------|
-| UMSTEIGZ | `InterchangeRule`   | `ServiceJourneyInterchange`                                                        | Fahrtbezogene Umsteigezeit                 |
-| UMSTEIGL | `InterchangeRule`   | `ServiceJourneyInterchange`                                                        | Linien- und Richtungsbezogene Umsteigezeit |
-| UMSTEIGB | `DefaultConnection` | `DefaultConnection`                                                                                        | Standardumsteigezeit pro Haltestelle       |
-| METABHF  | `SiteConnection`    | `SiteConnection`                                                                                           | Umsteigezeit zwischen Haltestellen         |
-| UMSTEIGV | `DefaultConnection` | `DefaultConnection`                                                                                        | Verwaltungsbezogene Umsteigezeit             |
+| HRDF     | NeTEx RG1           | NeTEx RG2                                                                                                      | Use Case                                   |
+|----------|---------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+| UMSTEIGZ | `InterchangeRule`   | `ServiceJourneyInterchange`                                                                                    | Fahrtbezogene Umsteigezeit                 |
+| UMSTEIGL | `InterchangeRule`   | `ServiceJourneyInterchange`                                                                                    | Linien- und Richtungsbezogene Umsteigezeit |
+| UMSTEIGB | `DefaultConnection` | `DefaultConnection`                                                                                            | Standardumsteigezeit pro Haltestelle       |
+| METABHF  | `SiteConnection`    | `SiteConnection`                                                                                               | Umsteigezeit zwischen Haltestellen         |
+| UMSTEIGV | `DefaultConnection` | `DefaultConnection`                                                                                            | Verwaltungsbezogene Umsteigezeit           |
 | DURCHBI  | `JourneyMeeting`    | `ServiceJourneyInterchange`<br>Alternativ für Flügelzug, Vereinigung: <br>JourneyParts, JourneyPartsCouple<br> | Durchbindung, Flügelzug, Vereinigung       |
 
 
@@ -25,20 +25,26 @@ Defines the default transfer time at a specific stop place, regardless of operat
 - [Example](../generated/xml-snippets/DefaultConnection_UMSTEIGB.xml)
 
 >Note: If no StopPlaceRef is set, the DefaultConnection applies network-wide for the given mode combination. A separate DefaultConnection must be defined for each relevant mode pair.
->[Example](../generated/xml-snippets/DefaultConnection_Modes.xml)
 
 
-## Operator related transfer times(UMSTEIGV)
-Defines transfer times between two specific operators at a stop place. The HRDF umsteigV record specifies the default transfer time between two administrations (operators). 
+- [Example](../generated/xml-snippets/DefaultConnection_Modes.xml)
+
+
+## Operator related transfer times (UMSTEIGV)
+Defines transfer times between two specific operators at a stop place. The HRDF UMSTEIGV record specifies the default transfer time between two administrations (operators). 
 
 **When to use:** When the transfer time depends on the operator combination at a given stop place.
+
 - [Example](../generated/xml-snippets/DefaultConnection_UMSTEIGV.xml)
 
 
 ## Line and Direction-oriented transfer times (UMSTEIGL)
 Defines transfer times between specific `lines` and `directions` at a stop place. Journeys are specified indirectly via Line and Direction, not as an explicit journey pair. The ! marker in HRDF indicates a guaranteed connection.
+> **TODO** Adrian we don't have Direction anymore. This should be solved by the PR.
+ 
 
 **When to use:** When the transfer time applies to all journeys of a specific line/direction combination at a given stop place.
+
 - [Example](../generated/xml-snippets/InterchangeRule_UMSTEIGL.xml)
 
 

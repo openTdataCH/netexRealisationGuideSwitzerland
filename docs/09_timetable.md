@@ -212,6 +212,7 @@ StaySeated can and should be modeled this way (especially if one uses EPIP as ba
 *→ [Template](../templates/ServiceJourneyInterchange.xml))*
 
 ### Usage Notes
+> **TODO*** Adrian pls add some descriptions here.
 
 ## InterchangeRule
 *→ [Glossary definition](A4_annex_glossary.md#interchangerule)*
