@@ -34,7 +34,7 @@ Bern - Thun - Spiez - (Zweisimmen | Brig)
 [Link to example](NeTEx_CH_Bern_Spiez_Zweisimmen_Passingtime.xml)
 
 ## Basic ThroughJourney
-In the case of international connections a "Durchbindung" is needed.
+This example demonstrates a Swiss NeTEx 2.0 modelling of an international ThroughJourney (Durchbindung) extending beyond Swiss borders, highlighting the use of TimetabledPassingTimes, consistent KeyList and PrivateCode usage, and a complete mapping between ScheduledStopPoints and PassengerStopAssignments to ensure both temporal and spatial consistency.
 
 [Link to example](NeTEx_CH_Interlaken_BS_Freiburg_Breisach_Durchbindung.xml)
 
