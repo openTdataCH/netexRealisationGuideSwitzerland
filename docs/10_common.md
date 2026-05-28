@@ -48,7 +48,7 @@ where the value of `ShortName` of the `TypeOfProductCategory` is used to build t
 This information will be also provided separately in a `KeyList`. 
 
 > [!CAUTION] 
-> **TODO** Must be revisited and updated.
+> **TODO** Must be revisited and updated. #83
 
 All other defined attributes like `created`, `changed`, `modification` are not used. If we need one, we will inform about it in the table associated with the element.
 
@@ -230,7 +230,7 @@ Only the values defined below are allowed in Switzerland for `StakeholderRoleTyp
 `FareManagement` and `Planning` are currently not used. Not all roles must be filled.
 
 ## TypeOf... / ValueSet
-**TODO** This is an alternative presentation or the next section... (because `TypeOfValue` and `ValueSets` do not exist)
+**TODO**#74 This is an alternative presentation or the next section... (because `TypeOfValue` and `ValueSets` do not exist)
 
 *→ [Glossary definition: TypeOf...](A4_annex_glossary.md#typeof...)*\
 *→ [Glossary definition: ValueSet](A4_annex_glossary.md#valueset)*
@@ -248,7 +248,7 @@ The ResourceFrame contains all the `ValueSets` and `TypeOfValues`. These are use
 It is preferred that the `TypeOfValue` are copied from the SKI files and no individual `TypeOfValue` are created.
 
 > [!CAUTION] 
-> **TODO** add more examples for TypeOfValue usage
+> **TODO**#73 add more examples for TypeOfValue usage
 
 `TypeOfValue` elements are stored in `ValueSets` as part of the ResourceFrame. We use TypeOfValue references in various Frames in objects including:
 -	`Notice`: references `TypeOfNotice`
@@ -337,7 +337,7 @@ The Operators are identified by their GO-number in Switzerland. The TU-Code is t
 The SBOID and GO number shall always also be stored in the `KeyList`.
 
 > [!CAUTION]\
-> **TODO**: `OrganisationPart` needs to be studied! 6.4.1
+> **TODO**#67: `OrganisationPart` needs to be studied! 6.4.1
 
 `OperatorRef` on a `Line` is always the "Konzessionär". 
 If a different `Operator` is running a given `ServiceJourney`, then this is reflected in the `ServiceJourney` having 
@@ -350,7 +350,7 @@ a different `OperatorRef`.
 Set of `Facilitiy`s available for a `ServiceJourney` or a `JourneyPart`. 
 
 > [!CAUTION]\
-> **TODO** 10.13.2ff
+> **TODO**#53 10.13.2ff
 > a lot more detail needed. But probably in uc
 
 ### Table
@@ -392,7 +392,7 @@ separated list of elements.
 Set of `Facilitiy`s available at a `StopPlace`, `Quay` or other site elements.
 
 > [!CAUTION]\
-> **TODO** @tuxalp not decribed in RG 1.01.\@tuxalp missing in glossary\ @tuxalp missing elements in template.
+> **TODO**#53 @tuxalp not decribed in RG 1.01.\@tuxalp missing in glossary\ @tuxalp missing elements in template.
 
 A `SiteFacilitySet` defines a set of facilities like sanitary facilities, ticket service, lockers etc. that can be 
 referenced to define facilities of a site.

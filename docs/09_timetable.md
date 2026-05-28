@@ -189,7 +189,7 @@ Long-term planned time data concerning public transport vehicles passing a parti
 - If `DepartureTime` is not on the same day as `ArrivalTime` this information will be provided using `WaitingTime`.
 - We use sjyid whenever possible as the attribute. However, there are different types of `ServiceJourney`s that don't have one:
   - foreign `ServiceJourney`s
-  - **TODO** which other cases
+  - **TODO** which other cases don't have sjyid #83
 - We store the sjyid in different places `id`, `privateCodes/PrivateCode`, `KeyList`. This allows different importing systems to find the sjyid.
 
 
@@ -212,14 +212,14 @@ StaySeated can and should be modeled this way (especially if one uses EPIP as ba
 *→ [Template](../templates/ServiceJourneyInterchange.xml))*
 
 ### Usage Notes
-> **TODO*** Adrian pls add some descriptions here.
+> **TODO*** Adrian pls add some descriptions here. #63
 
 ## InterchangeRule
 *→ [Glossary definition](A4_annex_glossary.md#interchangerule)*
-> **TODO** will probably be removed and replaced by ServiceJourneyInterchange
+> **TODO** will probably be removed and replaced by ServiceJourneyInterchange #63
 ### Purpose
 
-An `InterchangeRule`defines the possibility of interchanging between two `ServiceJourney`s at the same or different `ScheduledStopPoint*` — where at least one journey is specified indirectly via `Direction`, `Line` or the VEHICLE JOURNEY (? **TODO**), rather than as an explicit journey pair. The rule specifies criteria (e.g. `Mode`, `Line`, `Direction`) that a candidate feeder or distributor journey must fulfil.
+An `InterchangeRule`defines the possibility of interchanging between two `ServiceJourney`s at the same or different `ScheduledStopPoint*` — where at least one journey is specified indirectly via `Direction`, `Line` or the VEHICLE JOURNEY (? **TODO** #63), rather than as an explicit journey pair. The rule specifies criteria (e.g. `Mode`, `Line`, `Direction`) that a candidate feeder or distributor journey must fulfil.
 
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/InterchangeRule.md)
