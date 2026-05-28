@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- problems with this example **TODO**
-- no description of example
-- switch to PassingTimes
--->
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-02-19T10:00:00Z</PublicationTimestamp>
 	<ParticipantRef>SBB</ParticipantRef>
 	<dataObjects>
@@ -67,8 +63,9 @@
 							</keyList>
 							<privateCodes>
 								<PrivateCode type="sboid">ch:1:sboid:100001</PrivateCode>
+								<PrivateCode type="go">11</PrivateCode>
 							</privateCodes>
-							<Name>SBB</Name>
+							<Name>SBB Schweizerische Bundesbahn</Name>
 							<ShortName>SBB</ShortName>
 						</Operator>
 						<Operator id="ch:1:sboid:100310" version="1">
@@ -84,6 +81,7 @@
 							</keyList>
 							<privateCodes>
 								<PrivateCode type="sboid">ch:1:sboid:100310</PrivateCode>
+								<PrivateCode type="go">353</PrivateCode>
 							</privateCodes>
 							<Name>Deutsche Bahn</Name>
 							<ShortName>DB</ShortName>
@@ -93,28 +91,21 @@
 				<SiteFrame id="ch:1:SiteFrame:j26" version="1">
 					<stopPlaces>
 						<StopPlace id="ch:1:sloid:7492" version="1">
-							<ValidBetween>
-								<FromDate>2025-12-15T00:00:00</FromDate>
-								<ToDate>2026-12-13T23:59:59</ToDate>
-							</ValidBetween>
-							<alternativeTexts>
-								<AlternativeText attributeName="Text">
-									<Text lang="de">Interlaken Ost</Text>
-								</AlternativeText>
-							</alternativeTexts>
 							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8507492</Value>
-								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
 									<Value>ch:1:sloid:7492</Value>
 								</KeyValue>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507492</Value>
+								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:7492</PrivateCode>
+								<PrivateCode type="didok">8507492</PrivateCode>
+							</privateCodes>
 							<Name>Interlaken Ost</Name>
-							<ShortName lang="de">8507492</ShortName>
-							<PrivateCode>8507492</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.869000</Longitude>
@@ -122,7 +113,6 @@
 									<Altitude>567</Altitude>
 								</Location>
 							</Centroid>
-							<Weighting>preferredInterchange</Weighting>
 							<quays>
 								<Quay id="ch:1:sloid:7492:0:460848" version="1">
 									<keyList>
@@ -131,33 +121,29 @@
 											<Value>ch:1:sloid:7492:0:460848</Value>
 										</KeyValue>
 									</keyList>
-									<PublicCode>8</PublicCode>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:7492:0:460848</PrivateCode>
+									</privateCodes>
+									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:10" version="1">
-							<ValidBetween>
-								<FromDate>2025-12-15T00:00:00</FromDate>
-								<ToDate>2026-12-13T23:59:59</ToDate>
-							</ValidBetween>
-							<alternativeTexts>
-								<AlternativeText attributeName="Text">
-									<Text lang="de">Basel SBB</Text>
-								</AlternativeText>
-							</alternativeTexts>
 							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8500010</Value>
-								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
 									<Value>ch:1:sloid:10</Value>
 								</KeyValue>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8500010</Value>
+								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:10</PrivateCode>
+								<PrivateCode type="didok">8500010</PrivateCode>
+							</privateCodes>
 							<Name>Basel SBB</Name>
-							<ShortName lang="de">8500010</ShortName>
-							<PrivateCode>8500010</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.589562</Longitude>
@@ -165,36 +151,37 @@
 									<Altitude>276</Altitude>
 								</Location>
 							</Centroid>
-							<Weighting>preferredInterchange</Weighting>
 							<quays>
 								<Quay id="ch:1:sloid:10:1:1" version="1">
-									<PublicCode>8</PublicCode>
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:10:1:1</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:10:1:1</PrivateCode>
+									</privateCodes>
+									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:90" version="1">
-							<ValidBetween>
-								<FromDate>2025-12-15T00:00:00</FromDate>
-								<ToDate>2026-12-13T23:59:59</ToDate>
-							</ValidBetween>
-							<alternativeTexts>
-								<AlternativeText attributeName="Text">
-									<Text lang="de">Basel Bad</Text>
-								</AlternativeText>
-							</alternativeTexts>
 							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8500090</Value>
-								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
 									<Value>ch:1:sloid:90</Value>
 								</KeyValue>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8500090</Value>
+								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:90</PrivateCode>
+								<PrivateCode type="didok">8500090</PrivateCode>
+							</privateCodes>
 							<Name>Basel Bad</Name>
-							<ShortName lang="de">8500090</ShortName>
-							<PrivateCode>8500090</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.606920</Longitude>
@@ -202,36 +189,29 @@
 									<Altitude>263</Altitude>
 								</Location>
 							</Centroid>
-							<Weighting>preferredInterchange</Weighting>
 							<quays>
 								<Quay id="ch:1:sloid:90:0:529134" version="1">
-									<PublicCode>8</PublicCode>
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:90:0:529134</Value>
+										</KeyValue>
+									</keyList>
 								</Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:18799" version="1">
-							<ValidBetween>
-								<FromDate>2025-12-15T00:00:00</FromDate>
-								<ToDate>2026-12-13T23:59:59</ToDate>
-							</ValidBetween>
-							<alternativeTexts>
-								<AlternativeText attributeName="Text">
-									<Text lang="de">Freiburg in Breisgau</Text>
-								</AlternativeText>
-							</alternativeTexts>
 							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8518799</Value>
-								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
 									<Value>ch:1:sloid:18799</Value>
 								</KeyValue>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8518799</Value>
+								</KeyValue>
 							</keyList>
 							<Name>Freiburg in Breisgau</Name>
-							<ShortName lang="de">8518799</ShortName>
-							<PrivateCode>8518799</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.8418</Longitude>
@@ -239,7 +219,6 @@
 									<Altitude>286</Altitude>
 								</Location>
 							</Centroid>
-							<Weighting>preferredInterchange</Weighting>
 							<!-- No Quay Avilable for Freiburg i. Br. -->
 						</StopPlace>
 					</stopPlaces>
@@ -247,90 +226,47 @@
 				<ServiceFrame id="ch:1:ServiceFrame:j26" version="1">
 					<lines>
 						<Line id="ch:1:slnid:1024337" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
-							<ValidBetween>
-								<FromDate>2025-12-14T00:00:00</FromDate>
-								<ToDate>2026-12-13T23:59:59</ToDate>
-							</ValidBetween>
 							<keyList>
 								<KeyValue>
 									<Key>SLNID</Key>
 									<Value>ch:1:slnid:1024337</Value>
 								</KeyValue>
 							</keyList>
-							<Name>SBB</Name>
-							<ShortName>SBB</ShortName>
+							<privateCodes>
+								<PrivateCode type="slnid">ch:1:slnid:1024337</PrivateCode>
+							</privateCodes>
+							<Name>Interlaken Ost-Basel SBB</Name>
+							<TransportMode>rail</TransportMode>
+							<OperatorRef ref="ch:1:sboid:100001" version="1"/>
 						</Line>
 						<Line id="ch:1:slnid:1024356" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:DB">
-							<ValidBetween>
-								<FromDate>2025-12-14T00:00:00</FromDate>
-								<ToDate>2026-12-13T23:59:59</ToDate>
-							</ValidBetween>
 							<keyList>
 								<KeyValue>
 									<Key>SLNID</Key>
 									<Value>ch:1:slnid:1024356</Value>
 								</KeyValue>
 							</keyList>
-							<Name>Deutsche Bahn</Name>
-							<ShortName>DB</ShortName>
+							<privateCodes>
+								<PrivateCode type="slnid">ch:1:slnid:1024356</PrivateCode>
+							</privateCodes>
+							<Name>Basel Bad-Freiburg_in_Breisach</Name>
+							<TransportMode>rail</TransportMode>
+							<OperatorRef ref="ch:1:sboid:100310" version="1"/>
 						</Line>
 					</lines>
 					<scheduledStopPoints>
 						<ScheduledStopPoint id="ch:1:sloid:7492:0:261628" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8507492</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7492:0:261628</Value>
-								</KeyValue>
-							</keyList>
-							<Name lang="de">Interlaken Ost</Name>
-							<ShortName lang="de">1</ShortName>
+							<Name>Interlaken Ost</Name>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:sloid:10:1:1" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8500010</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:10:1:1</Value>
-								</KeyValue>
-							</keyList>
-							<Name lang="de">Basel SBB</Name>
-							<ShortName lang="de">1</ShortName>
+							<Name>Basel SBB</Name>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:sloid:90:0:529134" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8500090</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:90:0:529134</Value>
-								</KeyValue>
-							</keyList>
-							<Name lang="de">Basel Bad</Name>
+							<Name>Basel Bad</Name>
 							<ShortName lang="de">1</ShortName>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:sloid:18799" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8518799</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:18799</Value>
-								</KeyValue>
-							</keyList>
-							<Name lang="de">Freiburg in Breisgau</Name>
-							<ShortName lang="de">1</ShortName>
+							<Name>Freiburg in Breisgau</Name>
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
 					<stopAssignments>
@@ -353,6 +289,43 @@
 							<StopPlaceRef ref="ch:1:sloid:18799" version="1"/>
 						</PassengerStopAssignment>
 					</stopAssignments>
+					<journeyPatterns>
+						<JourneyPattern id="ch:1:J_SBB:1024337" version="1">
+							<Name>Interlaken_Ost_Basel_SBB_Basel_Bad</Name>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="ch:SBB:JP:1024337:1" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:261628" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:SBB:JP:1024337:2" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:10:1:1" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:SBB:JP:1024337:3" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:90:0:529134" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+						</JourneyPattern>
+						<JourneyPattern id="ch:1:J_DB:1024356" version="1">
+							<Name>Basel_Bad_Freiburg</Name>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="ch:DB:JP:1024356:1_DB" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:90:0:529134" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:DB:JP:1024356:2_DB" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:18799" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+						</JourneyPattern>
+					</journeyPatterns>
 				</ServiceFrame>
 				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="1">
 					<validityConditions>
@@ -364,77 +337,77 @@
 					</validityConditions>
 				</ServiceCalendarFrame>
 				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="1">
+					<ServiceCalendarFrameRef ref="ch:1:ServiceCalendarFrame:j26" version="1"/>
 					<vehicleJourneys>
-						<ServiceJourney id="ch:1:sjyid:100014:4208-003A" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
-							<TransportMode>rail</TransportMode>
-							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IC" version="1"/>
-							<ServiceAlteration>planned</ServiceAlteration>
-							<DepartureTime>11:04:00</DepartureTime>
-							<OperatorRef ref="ch:1:sboid:100310" version="1"/>
+						<ServiceJourney id="ch:1:SBB_SJ:1" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="1"/>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>SJYID</Key>
+									<Value>sjyid-1</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sjyid">sjyid-1</PrivateCode>
+							</privateCodes>
+							<JourneyPatternRef ref="ch:1:J_SBB:1024337" version="1"/>
+							<OperatorRef ref="ch:1:sboid:100001" version="1"/>
 							<LineRef ref="ch:1:slnid:1024337" version="1"/>
 							<DirectionType>outbound</DirectionType>
-							<calls>
-								<Call id="ch:1:sjyid:100014:4208-003A:call:1" version="1" order="1">
-									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:261628" version="1"/>
-									<Departure>
-										<Time>11:04:00</Time>
-										<ForBoarding>true</ForBoarding>
-										<IsFlexible>false</IsFlexible>
-									</Departure>
-									<RequestStop>false</RequestStop>
-								</Call>
-								<Call id="ch:1:sjyid:100014:4208-003A:2:call:2" version="1" order="2">
-									<ScheduledStopPointRef ref="ch:1:sloid:10:1:1" version="1"/>
-									<Arrival>
-										<Time>13:00:00</Time>
-										<ForAlighting>true</ForAlighting>
-										<IsFlexible>false</IsFlexible>
-									</Arrival>
-									<Departure>
-										<Time>13:16:00</Time>
-										<ForBoarding>true</ForBoarding>
-										<IsFlexible>false</IsFlexible>
-									</Departure>
-									<RequestStop>false</RequestStop>
-								</Call>
-								<Call id="ch:1:sjyid:100014:4208-003A:call:3" version="1" order="3">
-									<ScheduledStopPointRef ref="ch:1:sloid:90:0:529134" version="1"/>
-									<Arrival>
-										<Time>13:23:00</Time>
-										<ForAlighting>false</ForAlighting>
-										<IsFlexible>false</IsFlexible>
-									</Arrival>
-								</Call>
-							</calls>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:7546" version="1"/>
+							</trainNumbers>
+							<passingTimes>
+								<TimetabledPassingTime id="ch:SBB:TPT:1" version="1">
+									<StopPointInJourneyPatternRef ref="ch:SBB:JP:1024337:1" version="1"/>
+									<DepartureTime>08:00:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="ch:SBB:TPT:2" version="1">
+									<StopPointInJourneyPatternRef ref="ch:SBB:JP:1024337:2" version="1"/>
+									<ArrivalTime>09:30:00</ArrivalTime>
+									<DepartureTime>09:40:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="ch:SBB:TPT:3" version="1">
+									<StopPointInJourneyPatternRef ref="ch:SBB:JP:1024337:3" version="1"/>
+									<ArrivalTime>09:45:00</ArrivalTime>
+								</TimetabledPassingTime>
+							</passingTimes>
 						</ServiceJourney>
 						<!-- Basel Bad Depart New Number / New Transport Company -->
 						<ServiceJourney id="ch:1:sjyid:100014:4208-003B_DB" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
-							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IC" version="1"/>
-							<ServiceAlteration>planned</ServiceAlteration>
-							<DepartureTime>13:25:00</DepartureTime>
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="1"/>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>SJYID</Key>
+									<Value>sjyid-2</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sjyid">sjyid-2</PrivateCode>
+							</privateCodes>
 							<OperatorRef ref="ch:1:sboid:100310" version="1"/>
 							<LineRef ref="ch:1:slnid:1024356" version="1"/>
 							<DirectionType>outbound</DirectionType>
-							<calls>
-								<Call id="ch:1:Call:100014:4208-003B:1" version="1" order="1">
-									<ScheduledStopPointRef ref="ch:1:sloid:90:0:529134" version="1"/>
-									<Departure>
-										<Time>13:25:00</Time>
-										<ForBoarding>true</ForBoarding>
-										<IsFlexible>false</IsFlexible>
-									</Departure>
-									<RequestStop>false</RequestStop>
-								</Call>
-								<Call id="ch:1:Call:100014:4208-003B:2" version="1" order="2">
-									<ScheduledStopPointRef ref="ch:1:sloid:18799" version="1"/>
-									<Arrival>
-										<Time>13:52:00</Time>
-										<ForAlighting>false</ForAlighting>
-										<IsFlexible>false</IsFlexible>
-									</Arrival>
-									<RequestStop>false</RequestStop>
-								</Call>
-							</calls>
+							<JourneyPatternView>
+								<JourneyPatternRef ref="ch:1:J_DB:1024356" version="1"/>
+							</JourneyPatternView>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:7547" version="1"/>
+							</trainNumbers>
+							<passingTimes>
+								<TimetabledPassingTime id="ch:DB:TPT:1" version="1">
+									<StopPointInJourneyPatternRef ref="ch:DB:JP:1024356:1_DB" version="1"/>
+									<DepartureTime>09:50:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="ch:DB:TPT:2" version="1">
+									<StopPointInJourneyPatternRef ref="ch:DB:JP:1024356:2_DB" version="1"/>
+									<ArrivalTime>10:30:00</ArrivalTime>
+								</TimetabledPassingTime>
+							</passingTimes>
 						</ServiceJourney>
 					</vehicleJourneys>
 					<trainNumbers>
@@ -442,29 +415,23 @@
 							<ForAdvertisement>7546</ForAdvertisement>
 						</TrainNumber>
 						<TrainNumber id="ch:1:TrainNumber:7547" version="1">
-							<ForAdvertisement>7546</ForAdvertisement>
+							<ForAdvertisement>7547</ForAdvertisement>
 						</TrainNumber>
 					</trainNumbers>
-					<interchangeRules>
-						<InterchangeRule id="ch:1:InterchangeRule:1" version="1">
+					<journeyInterchanges>
+						<ServiceJourneyInterchange id="sji-1" version="1">
 							<validityConditions>
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="1"/>
 							</validityConditions>
 							<StaySeated>true</StaySeated>
 							<Planned>true</Planned>
 							<Guaranteed>true</Guaranteed>
-							<FeederFilter>
-								<StopPlaceRef ref="ch:1:sloid:90" version="1"/>
-								<AllLines/>
-								<ServiceJourneyRef ref="ch:1:sjyid:100014:4208-003A" version="1"/>
-							</FeederFilter>
-							<DistributorFilter>
-								<StopPlaceRef ref="ch:1:sloid:18799" version="1"/>
-								<AllLines/>
-								<ServiceJourneyRef ref="ch:1:sjyid:100014:4208-003B_DB" version="1"/>
-							</DistributorFilter>
-						</InterchangeRule>
-					</interchangeRules>
+							<FromPointRef ref="ch:1:sloid:90"/>
+							<ToPointRef ref="ch:1:sloid:90"/>
+							<FromJourneyRef ref="ch:1:SBB_SJ:1" version="1"/>
+							<ToJourneyRef ref="ch:1:sjyid:100014:4208-003B_DB" version="1"/>
+						</ServiceJourneyInterchange>
+					</journeyInterchanges>
 				</TimetableFrame>
 			</frames>
 		</CompositeFrame>
