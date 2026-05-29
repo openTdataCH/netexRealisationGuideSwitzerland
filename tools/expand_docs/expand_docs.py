@@ -6,12 +6,7 @@ import os
 import shutil
 import argparse
 import re
-from abc import ABC
-
-from setuptools import Command
-
 from tools.configuration import DOCS_DIR, GENERATED_DOCS_DIR
-
 
 def copy_media_folder(input_folder, output_folder):
     """Copy media folder from input to output."""
