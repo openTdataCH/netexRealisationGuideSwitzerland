@@ -41,6 +41,8 @@ uv sync
 ```
 ### Install build module
 
+> This can be skipped as the `build` module is now part of the build dependencies.
+
 Make sure you have an up-to-date version of `pip` and of module `build` used to run the build:
 ```
 python -m ensurepip
