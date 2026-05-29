@@ -80,41 +80,28 @@ def process_markdown_file(input_path, output_path, base_folder):
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(content)
 
+def expand_docs(input_dir: str, output_dir: str):
+    # Create output folder if it doesn't exist
+    os.makedirs(output_dir, exist_ok=True)
+
+    # Copy media folder
+    copy_media_folder(input_dir, output_dir)
+
+    # Process each markdown file
+    for filename in os.listdir(input_dir):
+        if filename.endswith('.md'):
+            input_md = os.path.join(input_dir, filename)
+            output_md = os.path.join(output_dir, filename)
+            process_markdown_file(input_md, output_md, input_dir)
+
+    print(f"Documentation expanded successfully to {output_dir}")
 
 def main():
     parser = argparse.ArgumentParser(description='Expand documentation by including examples and tables.')
     parser.add_argument('--docs', default=DOCS_DIR, help=f"Input documentation folder (default = {DOCS_DIR})")
     parser.add_argument('--out', default=GENERATED_DOCS_DIR, help=f"Output folder (default = {GENERATED_DOCS_DIR})")
     args = parser.parse_args()
-
-    # Create output folder if it doesn't exist
-    os.makedirs(args.out, exist_ok=True)
-
-    # Copy media folder
-    copy_media_folder(args.docs, args.out)
-
-    # Process each markdown file
-    for filename in os.listdir(args.docs):
-        if filename.endswith('.md'):
-            input_path = os.path.join(args.docs, filename)
-            output_path = os.path.join(args.out, filename)
-            process_markdown_file(input_path, output_path, args.docs)
-
-    print(f"Documentation expanded successfully to {args.out}")
-
+    expand_docs(args.docs, args.out)
 
 if __name__ == '__main__':
     main()
-
-
-class ExpandDocs(Command, ABC):
-    """Setuptools plugin for the project build."""
-
-    def run(self) -> None:
-        """
-        Execute the actions intended by the command.
-        (Side effects **SHOULD** only take place when :meth:`run` is executed,
-        for example, creating new files or writing to the terminal output).
-        """
-        main()
-        pass
