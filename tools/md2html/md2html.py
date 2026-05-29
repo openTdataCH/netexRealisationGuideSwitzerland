@@ -5,7 +5,7 @@ import re
 import markdown
 from pygments.formatters import HtmlFormatter
 
-from tools.configuration import GENERATED_DOCS_DIR
+from tools.configuration import SITE_DIR
 
 MD_LINK_PATTERN = re.compile(r'(\[.*\])(\(.*\.)(md)(.*\))')
 MD_LINK_REPLACEMENT = r'\1\2html\4'
@@ -66,7 +66,7 @@ def generate_html_files(src_dir: str):
 
 def main():
     parser = argparse.ArgumentParser(description='Generate HTML files from Markdown files.')
-    parser.add_argument('--dir', default=GENERATED_DOCS_DIR, help=f"Folder to search for md files (default = {GENERATED_DOCS_DIR})")
+    parser.add_argument('--dir', default=SITE_DIR, help=f"Folder to search for md files (default = {SITE_DIR})")
     args = parser.parse_args()
     generate_html_files(args.dir)
 
