@@ -42,6 +42,7 @@ jobs:
           ruby-version: 3.1
       - name: Install bundler and gems for jekyll
         run: |
+          cd site
           gem install bundler
           bundle install --jobs 4 --retry 3
       - name: Build static html web page with jekyll
