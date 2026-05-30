@@ -27,6 +27,20 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1
+      - name: Install bundler and gems
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+      - name: Jekyll build
+        run: bundle exec jekyll build -d site
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
 
