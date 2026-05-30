@@ -48,6 +48,7 @@ jobs:
       - name: Build static html web page with jekyll
         run: |
           cd site
+          ls Gemfile
           bundle exec jekyll build
 
       # Creates and uploads the build artifact from ./site
