@@ -1,5 +1,4 @@
 # Builds the docs and deploys them to GitHub pages.
-
 name: Pages
 
 # Controls when the workflow will run
@@ -18,41 +17,42 @@ permissions:
   pages: write
   id-token: write
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# Workflow run composed of build and deploy jobs
 jobs:
 
+  # Builds and uploads artifact for GitHib pages
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+
+      # Checks out git repository
+      - uses: actions/checkout@v4
+
+      # Builds tools and generates md docs under ./site
+      - name: Build tools and generate md docs
+        run: |
+          ./tools/build.sh
+
+      # Builds static html web pages with jekyll under ./site
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.1
-      - name: Install bundler and gems
+      - name: Install bundler and gems for jekyll
         run: |
           gem install bundler
           bundle install --jobs 4 --retry 3
-      - name: Jekyll build
+      - name: Build static html web page with jekyll
         run: bundle exec jekyll build -d site
 
+      # Creates and uploads the build artifact from ./site
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
 
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: | 
-          ./tools/build.sh
-
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: site
-
+  # Deploys artifact to GitHub pages
   deploy:
     needs: build
     runs-on: ubuntu-latest
