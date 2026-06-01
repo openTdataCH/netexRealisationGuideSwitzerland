@@ -13,7 +13,7 @@ In this chapter:
 ### Purpose
 A `SiteFrame` contains the physical infrastructure model for public transport — `StopPlace`s, `Quay`s, and topographic context. It defines the spatial elements that passengers interact with and that other frames reference for stop assignments.
 
-```mermaid
+```mermaid!
 classDiagram
     %% Styles
     classDef frame fill:#FFF8E1,stroke:#FFB300;
