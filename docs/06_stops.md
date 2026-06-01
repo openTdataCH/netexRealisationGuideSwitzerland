@@ -2,10 +2,10 @@
 In this chapter:
 
 - [SiteFrame](#siteframe)
-- [StopPlace](#StopPlace)
-- [Quay](#Quay)
-- [TopographicPlace](#TopographicPlace)
-- [Centroid](#Centroid)
+- [StopPlace](#stopplace)
+- [Quay](#quay)
+- [TopographicPlace](#topographicplace)
+- [Centroid](#centroid)
 
 ## SiteFrame
 *→ [Glossary definition](A4_annex_glossary.md#siteframe)*
@@ -70,7 +70,7 @@ classDiagram
 `SiteFrame` is independent of other frames but provides the physical stop infrastructure that `ServiceFrame` references through `PassengerStopAssignments`. `TimetableFrame` indirectly depends on `SiteFrame` through the `JourneyPattern` stop sequence. `SiteFrame` is typically wrapped in a `CompositeFrame` within a `PublicationDelivery`.
 
 ## StopPlace
-*→ [Glossary definition](A4_annex_glossary.md#StopPlace)*
+*→ [Glossary definition](A4_annex_glossary.md#stopplace)*
 
 ### Purpose
 A named physical or virtual location where passengers can board or alight from public transport, containing one or more `Quays`.
