@@ -8,6 +8,9 @@ import argparse
 import re
 from tools.configuration import DOCS_DIR, SITE_DIR
 
+TABLE_MD_LINK_TARGET_PATTERN = re.compile(r'(\[.*])\((.*(\.)md).*\)')
+TABLE_MD_LINK_TARGET_REPLACEMENT = r'\1(./tables/\2)'
+
 def copy_media_folder(input_folder, output_folder):
     """Copy media folder from input to output."""
     media_src = os.path.join(input_folder, 'media')
@@ -31,7 +34,6 @@ def include_xml_snippet(match, base_folder):
             return f"```xml\n{f.read()}\n```"
     return match.group(0)
 
-
 def include_markdown_table(match, base_folder):
     """Include markdown table content directly."""
     table_path = match.group(1)
@@ -51,6 +53,8 @@ def include_markdown_table(match, base_folder):
             for line in lines:
                 if line.startswith('|') or line.startswith('---'):
                     in_table = True
+                    # correct md link target
+                    line = TABLE_MD_LINK_TARGET_PATTERN.sub(TABLE_MD_LINK_TARGET_REPLACEMENT,line)
                     table_lines.append(line)
                 elif in_table:
                     break
