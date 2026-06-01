@@ -20,7 +20,15 @@ url: https://opentdatach.github.io # the base hostname & protocol for your site,
 
 # Build settings
 theme: minima
-markdown: GFM
+plugins:
+  - jekyll-titles-from-headings
+
+titles_from_headings:
+  enabled:     true
+  strip_title: true
+  collections: true
+
+# markdown: GFM
 # plugins:
 #   - jekyll-feed
 
