@@ -48,7 +48,7 @@ where the value of `ShortName` of the `TypeOfProductCategory` is used to build t
 This information will be also provided separately in a `KeyList`. 
 
 > [!CAUTION] 
-> **TODO** Must be revisited and updated.
+> **TODO** Must be revisited and updated. #83
 
 All other defined attributes like `created`, `changed`, `modification` are not used. If we need one, we will inform about it in the table associated with the element.
 
@@ -415,7 +415,7 @@ Only the values defined below are allowed in Switzerland for `StakeholderRoleTyp
 `FareManagement` and `Planning` are currently not used. Not all roles must be filled.
 
 ## TypeOf... / ValueSet
-**TODO** This is an alternative presentation or the next section... (because `TypeOfValue` and `ValueSets` do not exist)
+**TODO**#74 This is an alternative presentation or the next section... (because `TypeOfValue` and `ValueSets` do not exist)
 
 *→ [Glossary definition: TypeOf...](A4_annex_glossary.md#typeof...)*\
 *→ [Glossary definition: ValueSet](A4_annex_glossary.md#valueset)*
@@ -433,7 +433,7 @@ The ResourceFrame contains all the `ValueSets` and `TypeOfValues`. These are use
 It is preferred that the `TypeOfValue` are copied from the SKI files and no individual `TypeOfValue` are created.
 
 > [!CAUTION] 
-> **TODO** add more examples for TypeOfValue usage
+> **TODO**#73 add more examples for TypeOfValue usage
 
 `TypeOfValue` elements are stored in `ValueSets` as part of the ResourceFrame. We use TypeOfValue references in various Frames in objects including:
 -	`Notice`: references `TypeOfNotice`
@@ -544,7 +544,6 @@ in Switzerland. The TU-Code is to be used for operators of other countries.
 | + | Name | expected | 0..1 | MultilingualString | Name of Traveller |  |
 | + | ShortName | expected | 0..1 | MultilingualString | Short Name for service | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
 | + | parts | optional | 0..1 | blockParts_RelStructure | BLOCK PARTs which make up COMPOUND BLOCK. |  |
-| ++ | OrganisationPart | optional | 1..1 | unknown | A named subdivision of an ORGANISATION. | We want to get rid of the OrganisationPart. **todo** |
 | +++ | administrativeZones | optional | 0..1 | administrativeZones_RelStructure | Zones managed by ORGANISATION PART. |  |
 | ++++ | TransportAdministrativeZone | optional | 1..1 | unknown | A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region. |  |
 
@@ -579,14 +578,6 @@ in Switzerland. The TU-Code is to be used for operators of other countries.
   <ShortName>PAG</ShortName>
   <!-- there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. -->
   <parts>
-    <OrganisationPart id="ch:1:OrganisationPart:801-1234" version="1">
-      <!-- We want to get rid of the OrganisationPart. **todo** -->
-      <administrativeZones>
-        <TransportAdministrativeZone id="ch:1:TransportAdministrativeZone:801-1234" version="1">
-          <PrivateCode>1234</PrivateCode>
-        </TransportAdministrativeZone>
-      </administrativeZones>
-    </OrganisationPart>
     <OrganisationPart id="ch:1:OrganisationPart:801-5678" version="1">
       <administrativeZones>
         <TransportAdministrativeZone id="ch:1:TransportAdministrativeZone:801-5678" version="1">
@@ -617,7 +608,7 @@ The Operators are identified by their GO-number in Switzerland. The TU-Code is t
 The SBOID and GO number shall always also be stored in the `KeyList`.
 
 > [!CAUTION]\
-> **TODO**: `OrganisationPart` needs to be studied! 6.4.1
+> **TODO**#67: `OrganisationPart` needs to be studied! 6.4.1
 
 `OperatorRef` on a `Line` is always the "Konzessionär". 
 If a different `Operator` is running a given `ServiceJourney`, then this is reflected in the `ServiceJourney` having 
@@ -630,10 +621,8 @@ a different `OperatorRef`.
 Set of `Facilitiy`s available for a `ServiceJourney` or a `JourneyPart`. 
 
 > [!CAUTION]\
-> **TODO** 10.13.2ff
-
-> [!CAUTION]\
-> **TODO** a lot more detail needed. But probably in uc
+> **TODO**#53 10.13.2ff
+> a lot more detail needed. But probably in uc
 
 ### Table
 
@@ -697,9 +686,7 @@ separated list of elements.
 Set of `Facilitiy`s available at a `StopPlace`, `Quay` or other site elements.
 
 > [!CAUTION]\
-> **TODO** @tuxalp not decribed in RG 1.01.\
-> **TODO** @tuxalp missing in glossary\
-> **TODO** @tuxalp missing elements in template.
+> **TODO**#53 @tuxalp not decribed in RG 1.01.\@tuxalp missing in glossary\ @tuxalp missing elements in template.
 
 A `SiteFacilitySet` defines a set of facilities like sanitary facilities, ticket service, lockers etc. that can be 
 referenced to define facilities of a site.

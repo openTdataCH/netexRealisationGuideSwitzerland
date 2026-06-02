@@ -4,7 +4,7 @@ In this chapter:
 - [DestinationDisplay](#destinationdisplay)
 - [ScheduledStopPoint](#scheduledstoppoint)
 - [PassengerStopAssignment](#passengerstopassignment)
-- [PassengerBoardingPositionAssignment](**TODO**)
+- [PassengerBoardingPositionAssignment](**TODO** #80)
 - [DefaultConnection](#defaultconnection)
 - [SiteConnection](#siteconnection)
 - [ServiceJourneyPattern](#servicejourneypattern)
@@ -126,8 +126,7 @@ Other important classes of the `ServiceFrame` include:
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <ServiceFrame  id="ch:1:ServiceFrame" version="any">
-  <!-- A minimal ServiceFrame must be present in all timetable files. TODO: analyse which part is in the general one. -->
-  <!-- TODO how would we describe additional id and which ones are mandatory? -->
+  <!-- A minimal ServiceFrame must be present in all timetable files. -->
   <directions>
     <!-- We don't use directions, but only direction type -->
   </directions>
@@ -149,7 +148,7 @@ Other important classes of the `ServiceFrame` include:
   <scheduledStopPoints>
     <!-- Swiss ScheduledStopPoint are using the sloid in the id, when possible. -->
     <ScheduledStopPoint id="sloid_where_possible" version="1">
-      <!-- TODO full or not -->
+      <!-- The id of the ScheduledStopPoint is a sloid, when one exists. Otherwisse it contains a gen part. -->
     </ScheduledStopPoint>
   </scheduledStopPoints>
   <connections>
@@ -267,8 +266,8 @@ A public transport service line, representing a marketed route with a `Name`, `T
 - slnid will be integrated wherever possible. We currently think that - where it exists - it has the necessary properties to be used in the `id`-attribute.
 - For foreign lines and id might need to be generated.
 - We store the slnid whenever possible in `id`, `privateCodes/PrivateCode` and `KeyList`.
-- **TODO** link to migration concept slnid
-- **TODO** handling of mixed lines
+- **TODO** link to migration concept slnid #48
+- **TODO** handling of mixed lines #48
 - Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
 - Note that there exist journeys in Switzerland and neighbouring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
 - For more information about SwissLineID: see https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf
@@ -319,7 +318,7 @@ Showing the destination of a `ServiceJourney`. The text shown on the front or si
 - The `DestinationDiplay` is usually be set on the `ServiceJourney`. If it changes during the run, it needs to be changed in the `ServiceJourneyPattern`. If it changes on that, then the new destination should be used. In our output, we will fill all remaining `PointsInJourneyPattern`with the relevant change.
 - See also the [use case on changes in destination](uc13_changes_in_destination.md) 
 
-> **TODO** the rules for defining need to be clarified.
+> **TODO** the rules for defining need to be clarified. #81
 
 ## ScheduledStopPoint
 *→ [Glossary definition](A4_annex_glossary.md#ScheduledStopPoint)*
@@ -432,8 +431,9 @@ A `ScheduledStopPoint` can represent two types of stop points:
 
 ### Usage Notes
 
-> ** TODO ** Suppose a vehicle arrives at quay 2A and departs on quay 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS.
-
+> ** TODO ** Suppose a vehicle arrives at quay 2A and departs on quay 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS. #82
+https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/82
+> 
 ## DefaultConnection
 *→ [Glossary definition](A4_annex_glossary.md#DefaultConnection)*
 
@@ -661,7 +661,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
 *->[Template](../templates/ServiceJourneyPattern)*
 
 ### Usage Notes
->** TODO**
+>** TODO** Diskussion Wilfried 10.6.
 
 
 ## Notice
@@ -729,7 +729,7 @@ Informational or regulatory text associated with public transport services, disp
 *->[Template](../templates/Notice.xml)*
 
 ### Usage Notes
-> ** TODO** do we need a special use case?
+> ** TODO** do we need a special use case? Wilfried 10.6.
 
 
 ## NoticeAssignment

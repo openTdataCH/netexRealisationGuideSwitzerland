@@ -63,7 +63,7 @@ classDiagram
 |-----|---------|-------|------|------|-------------|------|
 |  | SiteFrame | expected | 1..1 | unknown | A coherent set of SITE data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
 | + | topographicPlaces | expected | 0..1 | topographicPlacesInFrame_RelStructure | PLACEs in frame. |  |
-| ++ | [TopographicPlace](TopographicPlace.md) | expected | 1..1 | unknown | A town, city, village, suburb, quarter or other name settlement within a country. Provides a Gazetteer of Transport related place names. | Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces. **TODO** Is that the correct meaning? (previously: The value will be set to the cantons for stops.) |
+| ++ | [TopographicPlace](TopographicPlace.md) | expected | 1..1 | unknown | A town, city, village, suburb, quarter or other name settlement within a country. Provides a Gazetteer of Transport related place names. | Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces. |
 | + | stopPlaces | mandatory | 0..1 | stopPlacesInFrame_RelStructure | STOP PLACEs in frame. |  |
 | ++ | [StopPlace](StopPlace.md) | mandatory | 1..1 | unknown | Version of a named place where public transport may be accessed. May be a building complex (e.g. a station) or an on-street location. Can be a STOP PLACE, VEHICLE MEETING POINT, TAXI RANK. Note: If a master id exists for a StopPlace (must be stable and globally unique), then it is best used in the id. Optimally it would be built according IFOPT. It can also be put into one of the privateCodes in addition. If it is stored in KeyValue, then it should be documented well, so that importing systems know, which id is the relevant one. |  |
 | + | siteFacilitySets | optional | 0..1 | siteFacilitySetsInFrame_RelStructure |  | We expect the SiteFacilitySet in the ResourceFrame |
@@ -81,7 +81,7 @@ classDiagram
 <SiteFrame  id="ch:1:SiteFrame" version="1">
   <topographicPlaces>
     <TopographicPlace id="ch:1:TopoGraphicPlace:CH-BE" version="1">
-      <!-- Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces. **TODO** Is that the correct meaning? (previously: The value will be set to the cantons for stops.) -->
+      <!-- Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces. -->
       <Descriptor>
         <Name>Bern</Name>
       </Descriptor>
@@ -441,7 +441,7 @@ It provides precise geographic coordinates (WGS84) of a central reference point 
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-| + | Location | mandatory | 0..1 | LocationStructure | Absolute location of EQUIPMENT. | Note concerning coordinates - The main coordinates are given as **WSG84**. - The Swiss coordinates are added as well if available. (**TODO** How?)- INFO+ will not use the data from the import, instead DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places. |
+| + | Location | mandatory | 0..1 | LocationStructure | Absolute location of EQUIPMENT. | Note concerning coordinates - The main coordinates are given as **WSG84**. |
 | ++ | Longitude | mandatory | 1..1 | LongitudeType | Longitude from Greenwich Meridian. -180 (East) to +180 (West). |  |
 | ++ | Latitude | mandatory | 1..1 | LatitudeType | Latitude from equator. -90 (South) to +90 (North). |  |
 | ++ | Altitude | optional | 0..1 | AltitudeType | Altitude. |  |
@@ -458,7 +458,7 @@ It provides precise geographic coordinates (WGS84) of a central reference point 
 <Centroid >
   <!-- Global or national location -->
   <Location>
-    <!-- Note concerning coordinates - The main coordinates are given as **WSG84**. - The Swiss coordinates are added as well if available. (**TODO** How?)- INFO+ will not use the data from the import, instead DIDOK master data will be used for all Swiss coordinates. INFO+ will use the data of foreign places. -->
+    <!-- Note concerning coordinates - The main coordinates are given as **WSG84**. -->
     <Longitude>7.43913088992</Longitude>
     <Latitude>46.94883228914</Latitude>
     <Altitude>540.2</Altitude>
@@ -475,7 +475,7 @@ It provides precise geographic coordinates (WGS84) of a central reference point 
 The `Centroid` always contains a location. 
 - The main coordinates are given as WSG84.
 - Required accuracy 4+ decimal positions.
-- The Swiss coordinates are added as well, when available (see below) **TODO**
+- The Swiss coordinates are added as well, when available (see below) **TODO** #83
 - INFO+ will not use the master data from NeTEx imports, it will rely on the Atlas master data for all Swiss coordinates. INFO+ will, however, use the imported location data of foreign places without DIDOK numbers. 
 
 

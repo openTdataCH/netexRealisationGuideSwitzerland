@@ -24,13 +24,13 @@
       <PrivateCode>1</PrivateCode>
     </TypeOfService>
   </typesOfService>
-  <journeyMeetings>
-    <JourneyMeeting id="ch:1:JourneyMeeting:1" version="1">
-      <!-- For splitting and joining. -->
-      <FromJourneyRef ref="sjyid1" version="1"/>
-      <ToJourneyRef ref="sjyid2" version="1"/>
-    </JourneyMeeting>
-  </journeyMeetings>
+  <journeyInterchanges>
+    <ServiceJourneyInterchange id="ch:1:sji:generated-1" version="1">
+      <!-- For modeling many forms of interchanges -->
+      <FromJourneyRef ref="sjyid-1" version="1"/>
+      <ToJourneyRef ref="sjyid-2" version="1"/>
+    </ServiceJourneyInterchange>
+  </journeyInterchanges>
   <interchangeRules>
     <InterchangeRule id="ch:1:InterchangeRule:1" version="1"/>
   </interchangeRules>
