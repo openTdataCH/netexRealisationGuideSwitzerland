@@ -197,9 +197,10 @@ Long-term planned time data concerning public transport vehicles passing a parti
 *→ [Glossary definition](A4_annex_glossary.md#servicejourneyinterchange)*
 
 ### Purpose
-The standard say: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle. This concept is for instance used for circular lines and coupled journeys. This means that passenger information should be adapted to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also im-portant that operation control staff is aware of the consequences to passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs."
+The standard say: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle. This concept is for instance used for circular lines and coupled journeys. This means that passenger information should be adapted to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also important that operation control staff is aware of the consequences to passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs."
 
-StaySeated can and should be modeled this way (especially if one uses EPIP as basis. Splitting is very technically not the same vehicle, but on on a higher level for the passenger it is. So we can indicate the splitting there.
+`StaySeated=true` should be used for through-services, splitting and joining. While splitting technically involves different vehicle parts, from the passenger's perspective the journey continues in the same physical train — modelling it with `StaySeated=true` is therefore correct
+and recommended, also in alignment with EPIP.
 
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourneyInterchange.md)
@@ -209,38 +210,26 @@ StaySeated can and should be modeled this way (especially if one uses EPIP as ba
 ### Example
 - [Example snippet](../generated/xml-snippets/ServiceJourneyInterchange.xml)
 
-*→ [Template](../templates/ServiceJourneyInterchange.xml))*
+*→ [Template](../templates/ServiceJourneyInterchange.xml)*
 
 ### Usage Notes
-> **TODO*** Adrian pls add some descriptions here. #63
+- `ServiceJourneyInterchange` is placed in the `TimetableFrame` within the `journeyInterchanges` collection.
+- `StaySeated=true` indicates that the passenger remains in the vehicle — typically used for through-services (Durchbindung), splitting (Flügelzug) and joining (Vereinigung). See [uc01 Durchbindung](uc01_durchbindung.md).
+- `StaySeated=false` indicates that the passenger must change vehicles. This covers guaranteed and non-guaranteed connections. See [uc03 Transfers](uc03_transfers.md).
+- `Guaranteed=true` marks the connection as guaranteed. 
+- If `MaximumWaitTime` is set to `PT0M` or is absent, the connection is considered guaranteed.
+- `CrossBorder=true` must be set if the interchange crosses a national border.
+- `ChangeWithinVehicle=true` indicates, that in case of train splitting, the passenger may have to move to a different part of the train. Default is `false`.
+- `FromPointRef` and `ToPointRef` reference the `ScheduledStopPoint` at which the interchange takes place. For a line change at the same stop, both refs point to the same `ScheduledStopPoint`.
+- `FromServiceJourneyRef` references the feeder journey; `ToServiceJourneyRef` references the distributor journey. Note: the deprecated elements `FromJourneyRef` / `ToJourneyRef` from RG 1.0 (`JourneyMeeting`) must not be used.
+- Element order must follow the XSD sequence: `StaySeated` → `CrossBorder` → `MaximumWaitTime` → `FromPointRef` / `ToPointRef` → `FromServiceJourneyRef` / `ToServiceJourneyRef`.
+- Make sure not to generate identical `ServiceJourneyInterchange`s. Reuse them where possible.
 
 ## InterchangeRule
+> ⚠️ **Deprecated** — `InterchangeRule` is replaced by `ServiceJourneyInterchange` in RG 2.0.  
+> See [uc03 Transfers](uc03_transfers.md) for the current modelling approach.
+
 *→ [Glossary definition](A4_annex_glossary.md#interchangerule)*
-> **TODO** will probably be removed and replaced by ServiceJourneyInterchange #63
-### Purpose
-
-An `InterchangeRule`defines the possibility of interchanging between two `ServiceJourney`s at the same or different `ScheduledStopPoint*` — where at least one journey is specified indirectly via `Direction`, `Line` or the VEHICLE JOURNEY (? **TODO** #63), rather than as an explicit journey pair. The rule specifies criteria (e.g. `Mode`, `Line`, `Direction`) that a candidate feeder or distributor journey must fulfil.
-
-### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/InterchangeRule.md)
-
-*→ [General NeTEx definition ](../generated/netex-html/InterchangeRule.html)*
-
-
-### Examples
-
-#### Interchanges between ServiceJourneys
-- [Example snippet](../generated/xml-snippets/InterchangeRule_UMSTEIGZ.xml)
-
-#### Interchange between Lines/Directions/Operators
-- [Example snippet](../generated/xml-snippets/InterchangeRule_UMSTEIGL.xml)
-
-
-### Usage Notes
-- The `ScheduledStopPoint` is defined separately for the feeder and distributor side.
-- [See use case Durchbindung](uc01_durchbindung.md)
-- [See use case transfers](uc03_transfers.md)
-
 
 ## AvailabilityCondition 
 *→ [see ServiceCalenderFrame](./08_service_calendars.md#AvailabilityCondition)*
