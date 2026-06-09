@@ -17,5 +17,4 @@ Conclusion:
 * The references for the whole `ServiceJourney` are stored in `ServiceJourney/Destination/DestinationDisplayRef`.
 * If the destination changes on a given stop, it is mentionend in `ServiceJourneyPattern/pointsInJourneyPattern/StopPointInJourneyPattern/DestinationDisplayRef`.
 
-
 All this is shown in one of the [examples](../examples/NeTEx_CH_BLS_Bern_Luzern_DestinationChange.xml).

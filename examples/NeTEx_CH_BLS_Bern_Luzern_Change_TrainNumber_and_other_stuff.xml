@@ -1,55 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!--
 We use a BLS train from Bern to Luzern.
 In Wolhusen it changes the train number to 4487 (was 4387 before)
 In a second modeling we want to model the change in the train number as also shown in the example.
 In this version the train goes to Luzern exactly as shown in the image.
-**TODO**
--->
 
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.09" xsi:schemaLocation="http://www.netex.org.uk/netex ./xsd/xsd/NeTEx_publication.xsd">
+VM Nr. 4357
+Bern                    20:36
+Konolfingen       20:52 20:52
+Langnau i.E       21:05 21:06
+Trubschachen      21:12 21:14
+Escholzmatt		  21:21 21:21
+Schüpfheim        21:28 21:29
+Entlebuch		  21:35	21:35
+Wolhusen          21:44
+VM Nr. 4487
+Wolhusen		         21:45
+Malters		      21:52  21:52
+Luzern			  22:03       
+-->
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.09" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
-	<ParticipantRef>INTERMAPS</ParticipantRef>
-	<Description lang="de">NeTEx-Export INTERMAPS Version 1.0</Description>
-	<!-- Question 3: What would be a good thing to put in here? -->
+	<ParticipantRef>BLS</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="ch:1:CompositeFrame:J26" version="any">
+		<CompositeFrame id="ch:1:CompositeFrame:J26" version="1">
 			<ValidBetween>
 				<FromDate>2025-12-15T00:00:00</FromDate>
 				<ToDate>2026-12-12T23:59:59</ToDate>
 			</ValidBetween>
 			<frames>
-				<!-- Resource Frame -->
-				<ResourceFrame id="ch:1:ResourceFrame:j26" version="any">
+				<ResourceFrame id="ch:1:ResourceFrame:j26" version="1">
 					<responsibilitySets>
-						<ResponsibilitySet id="ch:1:ResponsibilitySet:BLS-bls-33" version="any">
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:BLS-bls-33" version="1">
 							<Name>BLS</Name>
 							<PrivateCode>BLS AG</PrivateCode>
 							<roles>
-								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:1" version="any">
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:1" version="1">
 									<StakeholderRoleType>entityLegalOwnership</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="any"/>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
 								</ResponsibilityRoleAssignment>
-								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:2" version="any">
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:2" version="1">
 									<StakeholderRoleType>operation</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="any"/>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
 					</responsibilitySets>
 					<typesOfValue>
-						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="any" nameOfClass="TypeOfProductCategory">
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
 							<Name>ProductCategories</Name>
 							<values>
-								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:RE" version="any">
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:RE" version="1">
 									<Name>RegioExpress</Name>
 								</TypeOfProductCategory>
 							</values>
 						</ValueSet>
 					</typesOfValue>
 					<organisations>
-						<Operator id="ch:1:Operator:33" version="any">
+						<Operator id="ch:1:Operator:33" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>GO</Key>
@@ -66,26 +74,20 @@ In this version the train goes to Luzern exactly as shown in the image.
 						</Operator>
 					</organisations>
 				</ResourceFrame>
-				<!-- Site Frame -->
-				<SiteFrame id="ch:1:SiteFrame:j26" version="any">
+				<SiteFrame id="ch:1:SiteFrame:j26" version="1">
 					<stopPlaces>
-						<StopPlace id="ch:1:sloid:7483" version="any">
+						<StopPlace id="ch:1:StopPlace:7000" version="1">
 							<ValidBetween>
-								<FromDate>20205-12-14T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
-							<alternativeTexts>
-								<AlternativeText attributeName="Text">
-									<Text lang="de">Spiez</Text>
-								</AlternativeText>
-							</alternativeTexts>
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
-									<Value>8507483</Value>
+									<Value>8507000</Value>
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7483</Value>
+									<Value>ch:1:sloid:7000</Value>
 								</KeyValue>
 							</keyList>
 							<Extensions>
@@ -97,63 +99,39 @@ In this version the train goes to Luzern exactly as shown in the image.
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Bern</Name>
-							<ShortName lang="de">8507483</ShortName>
-							<PrivateCode>8507483</PrivateCode>
+							<ShortName lang="de">8507000</ShortName>
+							<PrivateCode>8507000</PrivateCode>
 							<Centroid>
 								<Location>
-									<Longitude>7.680103</Longitude>
-									<Latitude>46.686395</Latitude>
-									<Altitude>627</Altitude>
+									<Longitude>7.4391308</Longitude>
+									<Latitude>46.948832</Latitude>
+									<Altitude>540.2</Altitude>
 								</Location>
 							</Centroid>
-							<alternativeNames>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483_4" version="any">
-									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="de">Spiez</Name>
-								</AlternativeName>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483_5" version="any">
-									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="it">Spiezeria</Name>
-								</AlternativeName>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483_6" version="any">
-									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="fr">Spieze (CH)</Name>
-								</AlternativeName>
-							</alternativeNames>
-							<Weighting>preferredInterchange</Weighting>
 							<quays>
-								<Quay id="ch:1:sloid:7483:0:90840" version="any">
+								<Quay id="ch:1:sloid:7000:1:2" version="1">
 									<keyList>
 										<KeyValue>
 											<Key>SLOID</Key>
-											<Value>ch:1:sloid:7483:0:90840</Value>
+											<Value>ch:1:sloid:7000:1:2</Value>
 										</KeyValue>
 									</keyList>
 									<PublicCode>8</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
-						<!-- Interlaken west -->
-						<StopPlace id="ch:1:sloid:71310" version="any">
+						<StopPlace id="ch:1:StopPlace:8202" version="1">
 							<ValidBetween>
 								<FromDate>20205-12-14T00:00:00</FromDate>
 							</ValidBetween>
-							<alternativeTexts>
-								<AlternativeText attributeName="Text">
-									<Text lang="de">Interlaken West</Text>
-								</AlternativeText>
-							</alternativeTexts>
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
-									<Value>8507493</Value>
+									<Value>8508202</Value>
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
-									<Value>ch:1:sloid:71310</Value>
+									<Value>ch:1:sloid:8202</Value>
 								</KeyValue>
 							</keyList>
 							<Extensions>
@@ -164,58 +142,33 @@ In this version the train goes to Luzern exactly as shown in the image.
 									<Value>14</Value>
 								</HafasKMInfo>
 							</Extensions>
-							<Name>Interlaken West</Name>
-							<ShortName lang="de">8507493</ShortName>
-							<PrivateCode>8507493</PrivateCode>
+							<Name>Konolfingen</Name>
+							<PrivateCode>8508202</PrivateCode>
 							<Centroid>
 								<Location>
-									<Longitude>7.851453</Longitude>
-									<Latitude>46.682627</Latitude>
-									<Altitude>563</Altitude>
+									<Longitude>7.6213670</Longitude>
+									<Latitude>46.8807024</Latitude>
+									<Altitude>663</Altitude>
 								</Location>
 							</Centroid>
-							<alternativeNames>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_4" version="any">
-									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="de">Interlaken West</Name>
-								</AlternativeName>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_5" version="any">
-									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="it">Interlaken West </Name>
-								</AlternativeName>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_6" version="any">
-									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="fr">Interlaken West (CH)</Name>
-								</AlternativeName>
-							</alternativeNames>
-							<Weighting>preferredInterchange</Weighting>
 							<quays>
-								<Quay id="ch:1:sloid:71310:0:304706" version="any">
+								<Quay id="ch:1:sloid:8202:1:2" version="1">
 									<PublicCode>8</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
-						<!-- 	<Name lang="de">Interlaken Ost</Name> -->
-						<StopPlace id="ch:1:sloid:7492" version="any">
+						<StopPlace id="ch:1:StopPlace:8207" version="1">
 							<ValidBetween>
 								<FromDate>20205-12-14T00:00:00</FromDate>
 							</ValidBetween>
-							<alternativeTexts>
-								<AlternativeText attributeName="Text">
-									<Text lang="de">Interlaken Ost</Text>
-								</AlternativeText>
-							</alternativeTexts>
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
-									<Value>8507492</Value>
+									<Value>8508207</Value>
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7492:0:470772</Value>
+									<Value>ch:1:sloid:8207</Value>
 								</KeyValue>
 							</keyList>
 							<Extensions>
@@ -226,47 +179,285 @@ In this version the train goes to Luzern exactly as shown in the image.
 									<Value>15</Value>
 								</HafasKMInfo>
 							</Extensions>
-							<Name>Interlaken Ost</Name>
-							<ShortName lang="de">8507492</ShortName>
-							<PrivateCode>8507492</PrivateCode>
+							<Name>Langnau_i_Emmental</Name>
+							<PrivateCode>8508207</PrivateCode>
 							<Centroid>
 								<Location>
-									<Longitude>7.869000</Longitude>
-									<Latitude>46.6904999</Latitude>
-									<Altitude>567</Altitude>
+									<Longitude>7.78419743</Longitude>
+									<Latitude>46.9392422</Latitude>
+									<Altitude>673</Altitude>
 								</Location>
 							</Centroid>
-							<alternativeNames>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492_4" version="any">
-									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="de">Interlaken Ost</Name>
-								</AlternativeName>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492_5" version="any">
-									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="it">Interlaken Ost</Name>
-								</AlternativeName>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492_6" version="any">
-									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="fr">Interlaken Ost (CH)</Name>
-								</AlternativeName>
-							</alternativeNames>
-							<Weighting>preferredInterchange</Weighting>
 							<quays>
-								<Quay id="ch:1:sloid:7492:0:460848" version="any">
+								<Quay id="ch:1:sloid:8207:1:1" version="1">
+									<PublicCode>8</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:StopPlace:8208" version="1">
+							<ValidBetween>
+								<FromDate>20205-12-14T00:00:00</FromDate>
+							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8508208</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:8208</Value>
+								</KeyValue>
+							</keyList>
+							<Extensions>
+								<HafasPriority>
+									<Value>4</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>15</Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Trubschachen</Name>
+							<PrivateCode>8508208</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>7.78419743</Longitude>
+									<Latitude>46.9392422</Latitude>
+									<Altitude>732</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+								<Quay id="ch:1:sloid:8208:0:1122" version="1">
+									<PublicCode>8</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:StopPlace:8210" version="1">
+							<ValidBetween>
+								<FromDate>20205-12-14T00:00:00</FromDate>
+							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8508210</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:8210</Value>
+								</KeyValue>
+							</keyList>
+							<Extensions>
+								<HafasPriority>
+									<Value>4</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>15</Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Escholzmatt</Name>
+							<PrivateCode>8508210</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>7.9363779</Longitude>
+									<Latitude>46.9153482</Latitude>
+									<Altitude>853</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+								<Quay id="ch:1:sloid:8210:0:1" version="1">
+									<PublicCode>8</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:StopPlace:8211" version="1">
+							<ValidBetween>
+								<FromDate>20205-12-14T00:00:00</FromDate>
+							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8508211</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:8211</Value>
+								</KeyValue>
+							</keyList>
+							<Extensions>
+								<HafasPriority>
+									<Value>4</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>15</Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Schüpfheim</Name>
+							<PrivateCode>88508211</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>7.78419743</Longitude>
+									<Latitude>46.9392422</Latitude>
+									<Altitude>732</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+								<Quay id="ch:1:sloid:8211:2:2" version="1">
+									<PublicCode>8</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:StopPlace:8213" version="1">
+							<ValidBetween>
+								<FromDate>20205-12-14T00:00:00</FromDate>
+							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8508213</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:8213</Value>
+								</KeyValue>
+							</keyList>
+							<Extensions>
+								<HafasPriority>
+									<Value>4</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>15</Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Entlebuch</Name>
+							<PrivateCode>8508213</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>8.0622897</Longitude>
+									<Latitude>46.9939202</Latitude>
+									<Altitude>683</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+								<Quay id="ch:1:sloid:8213:0:3" version="1">
+									<PublicCode>8</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:StopPlace:8215" version="1">
+							<ValidBetween>
+								<FromDate>20205-12-14T00:00:00</FromDate>
+							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8508215</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:8215</Value>
+								</KeyValue>
+							</keyList>
+							<Extensions>
+								<HafasPriority>
+									<Value>4</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>15</Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Wolhusen</Name>
+							<PrivateCode>8508215</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>8.0797541</Longitude>
+									<Latitude>46.9392422</Latitude>
+									<Altitude>565</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+								<Quay id="ch:1:sloid:8215:2:3" version="1">
+									<PublicCode>8</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:StopPlace:8218" version="1">
+							<ValidBetween>
+								<FromDate>20205-12-14T00:00:00</FromDate>
+							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8508218</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:8218</Value>
+								</KeyValue>
+							</keyList>
+							<Extensions>
+								<HafasPriority>
+									<Value>4</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>15</Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Malters</Name>
+							<PrivateCode>8508218</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>8.1819719</Longitude>
+									<Latitude>47.0385842</Latitude>
+									<Altitude>496.8</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+								<Quay id="ch:1:sloid:8218:1:3" version="1">
+									<PublicCode>8</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:StopPlace:5000" version="1">
+							<ValidBetween>
+								<FromDate>20205-12-14T00:00:00</FromDate>
+							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8505000</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:5000</Value>
+								</KeyValue>
+							</keyList>
+							<Extensions>
+								<HafasPriority>
+									<Value>4</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>15</Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Luzern</Name>
+							<PrivateCode>8505000</PrivateCode>
+							<Centroid>
+								<Location>
+									<Longitude>8.3101832</Longitude>
+									<Latitude>47.0501778</Latitude>
+									<Altitude>436</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+								<Quay id="ch:1:sloid:5000:3:6" version="1">
 									<PublicCode>8</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
 					</stopPlaces>
 				</SiteFrame>
-				<!-- Service Frame -->
-				<ServiceFrame id="ch:1:ServiceFrame:j26" version="any">
-					<!--Problem 5: PassengerStopAssignment missing -->
+				<ServiceFrame id="ch:1:ServiceFrame:j26" version="1">
 					<lines>
-						<Line id="ch:1:slnid:1024440" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
+						<Line id="ch:1:slnid:1024438" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
 							<ValidBetween>
 								<FromDate>2025-12-14T00:00:00</FromDate>
 								<ToDate>2026-12-13T23:59:59</ToDate>
@@ -274,93 +465,254 @@ In this version the train goes to Luzern exactly as shown in the image.
 							<keyList>
 								<KeyValue>
 									<Key>SLNID</Key>
-									<Value>ch:1:slnid:1024440</Value>
+									<Value>ch:1:slnid:1024438</Value>
 								</KeyValue>
 							</keyList>
 							<Name>BLS AG</Name>
-							<ShortName>BLS</ShortName>
+							<TransportMode>rail</TransportMode>
+							<PublicCode>RE7</PublicCode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:RE" version="1"/>
 						</Line>
 					</lines>
 					<scheduledStopPoints>
-						<ScheduledStopPoint id="ch:1:sloid:7483:0:90840" version="any">
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:7000" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
-									<Value>8507483</Value>
+									<Value>8507000</Value>
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7483:0:90840</Value>
+									<Value>ch:1:sloid:7000</Value>
 								</KeyValue>
 							</keyList>
-							<Name lang="de">Spiez</Name>
+							<Name lang="de">Bern</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:8202" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8508202</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:8202</Value>
+								</KeyValue>
+							</keyList>
+							<Name lang="de">Konolfingen</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:8207" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8508207</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:8207</Value>
+								</KeyValue>
+							</keyList>
+							<Name lang="de">Langnau_i_Emmental</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:8208" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8508208</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:8208</Value>
+								</KeyValue>
+							</keyList>
+							<Name lang="de">Trubschachen</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:8210" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8508210</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:8210</Value>
+								</KeyValue>
+							</keyList>
+							<Name lang="de">Escholzmatt</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:8211" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8508211</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:8211</Value>
+								</KeyValue>
+							</keyList>
+							<Name lang="de">Schüpfheim</Name>
 							<ShortName lang="de">1</ShortName>
 						</ScheduledStopPoint>
-						<ScheduledStopPoint id="ch:1:sloid:7493:0:470772" version="any">
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:8213" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
-									<Value>8507493</Value>
+									<Value>8508213</Value>
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7493:0:470772</Value>
+									<Value>ch:1:sloid:8213</Value>
 								</KeyValue>
 							</keyList>
-							<Name lang="de">Interlaken West</Name>
-							<ShortName lang="de">1</ShortName>
+							<Name lang="de">Entlebuch</Name>
 						</ScheduledStopPoint>
-						<ScheduledStopPoint id="ch:1:sloid:7492:0:460848" version="any">
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:8215" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
-									<Value>8507492</Value>
+									<Value>8508215</Value>
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7492:0:460848</Value>
+									<Value>ch:1:sloid:8215</Value>
 								</KeyValue>
 							</keyList>
-							<Name lang="de">Interlaken Ost</Name>
-							<ShortName lang="de">1</ShortName>
+							<Name lang="de">Wolhusen</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:8218" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8508218</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:8218</Value>
+								</KeyValue>
+							</keyList>
+							<Name lang="de">Malters</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:5000" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8505000</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:5000</Value>
+								</KeyValue>
+							</keyList>
+							<Name lang="de">Luzern</Name>
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
 					<stopAssignments>
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507483:1" version="any">
-							<ScheduledStopPointRef ref="ch:1:sloid:7483:0:90840" version="any"/>
-							<StopPlaceRef ref="ch:1:sloid:7483" version="any"/>
-							<QuayRef ref="ch:1:sloid:7483:0:90840" version="any"/>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507000:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:SchedStopPoint:7000" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:7000" version="1"/>
+							<QuayRef ref="ch:1:sloid:7000:1:2" version="1"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507493:1" version="any">
-							<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="any"/>
-							<StopPlaceRef ref="ch:1:sloid:71310" version="any"/>
-							<QuayRef ref="ch:1:sloid:71310:0:304706" version="any"/>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8508202:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8202" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:8202" version="1"/>
+							<QuayRef ref="ch:1:sloid:8202:1:2" version="1"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507492:7" version="any">
-							<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="any"/>
-							<StopPlaceRef ref="ch:1:sloid:7492" version="any"/>
-							<QuayRef ref="ch:1:sloid:7492:0:460848" version="any"/>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8508207:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8207" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:8207" version="1"/>
+							<QuayRef ref="ch:1:sloid:8207:1:1" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8508208:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8208" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:8208" version="1"/>
+							<QuayRef ref="ch:1:sloid:8208:0:1122" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8508210:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8210" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:8210" version="1"/>
+							<QuayRef ref="ch:1:sloid:8210:0:1" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8508211:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8211" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:8211" version="1"/>
+							<QuayRef ref="ch:1:sloid:8211:2:2" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8508213:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8213" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:8213" version="1"/>
+							<QuayRef ref="ch:1:sloid:8213:0:3" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8508215:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8215" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:8215" version="1"/>
+							<QuayRef ref="ch:1:sloid:8215:2:3" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8508218:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8218" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:8218" version="1"/>
+							<QuayRef ref="ch:1:sloid:8218:1:3" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8505000:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:SchedStopPoint:5000" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:5000" version="1"/>
+							<QuayRef ref="ch:1:sloid:5000:3:6" version="1"/>
 						</PassengerStopAssignment>
 					</stopAssignments>
 					<journeyPatterns>
-						<ServiceJourneyPattern id="sjp1" version="any">
-						<RouteView>
-							<LineRef ref="ch:1:slnid:1024440" version="any"/>
-						</RouteView>
-						<DirectionType>inbound</DirectionType>
+						<ServiceJourneyPattern id="sjp1" version="1">
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1024438" version="1"/>
+							</RouteView>
+							<DirectionType>inbound</DirectionType>
 							<pointsInSequence>
-								<StopPointInJourneyPattern id="spijp1" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:90840" version="any"/>
+								<StopPointInJourneyPattern id="spijp1" version="1">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:7000" version="1"/>
 									<ForAlighting>false</ForAlighting>
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="spijp2" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="any"/>
+								<StopPointInJourneyPattern id="spijp2" version="1">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8202" version="1"/>
 									<ForAlighting>true</ForAlighting>
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="spijp3" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="any"/>
+								<StopPointInJourneyPattern id="spijp3" version="1">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8207" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp4" version="1">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8208" version="1"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp5" version="1">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8210" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp6" version="1">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8211" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp7" version="1">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8213" version="1"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp8" version="1">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8215" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp9" version="1">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8218" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp10" version="1">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:5000" version="1"/>
 									<ForAlighting>true</ForAlighting>
 									<ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
@@ -368,54 +720,132 @@ In this version the train goes to Luzern exactly as shown in the image.
 						</ServiceJourneyPattern>
 					</journeyPatterns>
 				</ServiceFrame>
-				<!-- Service Calendar Frame -->
-				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="any">
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="1">
 					<validityConditions>
-						<AvailabilityCondition id="ch:1:AvailabilityCondition:j26" version="any">
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:j26" version="1">
 							<FromDate>2025-12-14T00:00:00</FromDate>
 							<ToDate>2026-12-13T23:59:59</ToDate>
 							<ValidDayBits>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000</ValidDayBits>
 						</AvailabilityCondition>
 					</validityConditions>
 				</ServiceCalendarFrame>
-				<!-- Timetable Frame -->
-				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="any">
+				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="1">
 					<vehicleJourneys>
-						<ServiceJourney id="ch:1:sjyid:100014:4208-003" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
+						<ServiceJourney id="ch:1:sjyid:Bern_Wolhusen:1" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
 							<validityConditions>
-								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="any"/>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="1"/>
 							</validityConditions>
-							<TransportMode>rail</TransportMode>
-							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:RE" version="any"/>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:RE" version="1"/>
 							<ServiceAlteration>planned</ServiceAlteration>
-							<DepartureTime>10:35:00</DepartureTime>
-							<DepartureDayOffset>0</DepartureDayOffset>
-							<JourneyPatternRef ref="sjp1" version="any"/>
-							<OperatorRef ref="ch:1:Operator:33" version="any"/>
-							<LineRef ref="ch:1:slnid:1024440" version="any"/>
+							<DepartureTime>20:36:00</DepartureTime>
+							<JourneyPatternRef ref="sjp1" version="1"/>
+							<OperatorRef ref="ch:1:Operator:33" version="1"/>
+							<LineRef ref="ch:1:slnid:1024438" version="1"/>
 							<DirectionType>inbound</DirectionType>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:4357" version="1"/>
+							</trainNumbers>
+							<Destination>
+								<Name>Wolhusen</Name>
+							</Destination>
 							<passingTimes>
-								<TimetabledPassingTime id="tpt1" version="any">
-									<PointInJourneyPatternRef ref="spijp1" version="any"/>
-									<DepartureTime>10:35:00</DepartureTime>
+								<TimetabledPassingTime id="tpt1" version="1">
+									<PointInJourneyPatternRef ref="spijp1" version="1"/>
+									<DepartureTime>20:36:00</DepartureTime>
 								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt2" version="any">
-									<PointInJourneyPatternRef ref="spijp2" version="any"/>
-									<ArrivalTime>10:45:00</ArrivalTime>
-									<DepartureTime>10:48:00</DepartureTime>
+								<TimetabledPassingTime id="tpt2" version="1">
+									<PointInJourneyPatternRef ref="spijp2" version="1"/>
+									<ArrivalTime>20:52:00</ArrivalTime>
+									<DepartureTime>20:52:00</DepartureTime>
 								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt3" version="any">
-									<PointInJourneyPatternRef ref="spijp3" version="any"/>
-									<ArrivalTime>10:54:00</ArrivalTime>
+								<TimetabledPassingTime id="tpt3" version="1">
+									<PointInJourneyPatternRef ref="spijp3" version="1"/>
+									<ArrivalTime>21:05:00</ArrivalTime>
+									<DepartureTime>21:06:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="tpt4" version="1">
+									<PointInJourneyPatternRef ref="spijp4" version="1"/>
+									<ArrivalTime>21:12:00</ArrivalTime>
+									<DepartureTime>21:14:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="tpt5" version="1">
+									<PointInJourneyPatternRef ref="spijp5" version="1"/>
+									<ArrivalTime>21:21:00</ArrivalTime>
+									<DepartureTime>21:21:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="tpt6" version="1">
+									<PointInJourneyPatternRef ref="spijp6" version="1"/>
+									<ArrivalTime>21:28:00</ArrivalTime>
+									<DepartureTime>21:29:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="tpt7" version="1">
+									<PointInJourneyPatternRef ref="spijp7" version="1"/>
+									<ArrivalTime>21:35:00</ArrivalTime>
+									<DepartureTime>21:35:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="tpt8" version="1">
+									<PointInJourneyPatternRef ref="spijp8" version="1"/>
+									<ArrivalTime>21:44:00</ArrivalTime>
+								</TimetabledPassingTime>
+							</passingTimes>
+							<parts>
+								<JourneyPart id="jp1" version="1">
+									<!-- we communicate the new TrainNumber and the new Line -->
+									<TrainNumberRef ref="ch:1:TrainNumber:4487" version="1"/>
+									<StartTime>21:45:00</StartTime>
+									<!-- will be switched to PointInJourneyPattern -->
+									<EndTime>22:03:00</EndTime>
+								</JourneyPart>
+							</parts>
+						</ServiceJourney>
+						<ServiceJourney id="ch:1:sjyid:Wolhusen_Luzern:1" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="1"/>
+							</validityConditions>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:RE" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>21:45:00</DepartureTime>
+							<JourneyPatternRef ref="sjp1" version="1"/>
+							<OperatorRef ref="ch:1:Operator:33" version="1"/>
+							<LineRef ref="ch:1:slnid:1024438" version="1"/>
+							<DirectionType>inbound</DirectionType>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:4487" version="1"/>
+							</trainNumbers>
+							<Destination>
+								<Name>Luzern</Name>
+							</Destination>
+							<passingTimes>
+								<TimetabledPassingTime id="tpt9" version="1">
+									<PointInJourneyPatternRef ref="spijp8" version="1"/>
+									<DepartureTime>21:45:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="tpt10" version="1">
+									<PointInJourneyPatternRef ref="spijp9" version="1"/>
+									<ArrivalTime>21:52:00</ArrivalTime>
+									<DepartureTime>21:52:00</DepartureTime>
+								</TimetabledPassingTime>
+								<TimetabledPassingTime id="tpt11" version="1">
+									<PointInJourneyPatternRef ref="spijp10" version="1"/>
+									<ArrivalTime>22:03:00</ArrivalTime>
 								</TimetabledPassingTime>
 							</passingTimes>
 						</ServiceJourney>
 					</vehicleJourneys>
 					<trainNumbers>
-						<TrainNumber id="ch:1:TrainNumber:99999" version="any">
-							<ForAdvertisement>99999</ForAdvertisement>
+						<TrainNumber id="ch:1:TrainNumber:4357" version="1">
+							<ForAdvertisement>4357</ForAdvertisement>
+						</TrainNumber>
+						<TrainNumber id="ch:1:TrainNumber:4487" version="1">
+							<ForAdvertisement>4487</ForAdvertisement>
 						</TrainNumber>
 					</trainNumbers>
+					<journeyInterchanges>
+						<ServiceJourneyInterchange id="ch:1:SJI:1" version="1">
+							<FromServiceJourneyRef ref="ch:1:sjyid:Bern_Wolhusen:1" version="1"/>
+							<ToServiceJourneyRef ref="ch:1:sjyid:Wolhusen_Luzern:1" version="1"/>
+						</ServiceJourneyInterchange>
+					</journeyInterchanges>
 				</TimetableFrame>
 			</frames>
 		</CompositeFrame>
