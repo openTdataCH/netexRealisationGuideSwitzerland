@@ -7,24 +7,30 @@
 			<frames>
 				<ResourceFrame id="ch:1:ResourceFrame" version="any">
 					<siteFacilitySets>
-                        <SiteFacilitySet id="generated" version="1">
+						<SiteFacilitySet id="generated" version="1">
 							<!-- ch-root -->
 							<!-- ch-usage: mandatory -->
-							<!-- ch-note: List of SiteFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical SiteFacilitySets. Reuse them. -->
+							<!-- ch-note: List of SiteFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical SiteFacilitySets. Reuse them. There might be an overlap to ServiceFacilitySet, but they are used for different purposes.-->
 							<validityConditions>
 								<!-- ch-usage: optional -->
 								<AvailabilityCondition id="generated" version="1">
-									<!-- ch-usage: mandatory -->
+									<!-- ch-usage: optional -->
 									<!-- ch-see -->
 									<FromDate>2026-03-30T12:00:00</FromDate>
 									<ToDate>2026-04-01T12:00:00</ToDate>
 									<ValidDayBits>01</ValidDayBits>
 								</AvailabilityCondition>
 							</validityConditions>
-							<FareClasses><!-- ch-usage: optional -->firstClass</FareClasses>
-							<SanitaryFacilityList><!-- ch-usage: optional -->babyChange</SanitaryFacilityList>
-							<TicketingServiceFacilityList><!-- ch-usage: optional -->reservations</TicketingServiceFacilityList>
+							<Description lang="de"><!-- ch-usage: optional --><!-- ch-note: Description is optional -->SiteFacilitySet Solothurn 
+								<Text lang="en"><!-- ch-usage: optional -->SiteFacilitySet Solothurn </Text>      
+							</Description>
+							<AssistanceFacilityList><!-- ch-usage: optional -->personalAssistance information boardingAssistance</AssistanceFacilityList>
+							<AccessibilityToolList><!-- ch-usage: optional -->audioNavigator</AccessibilityToolList>
+							<SanitaryFacilityList><!-- ch-usage: optional -->toilet babyChange</SanitaryFacilityList>
+							<TicketingServiceFacilityList><!-- ch-usage: optional -->all reservations</TicketingServiceFacilityList>
+							<EmergencyServiceList><!-- ch-usage: optional -->police firstAid</EmergencyServiceList>
 							<LuggageLockerFacilityList><!-- ch-usage: optional -->lockers</LuggageLockerFacilityList>
+							<ParkingFacilityList><!-- ch-usage: optional -->parkAndRidePark</ParkingFacilityList>
 						</SiteFacilitySet>
 					</siteFacilitySets>
 				</ResourceFrame>

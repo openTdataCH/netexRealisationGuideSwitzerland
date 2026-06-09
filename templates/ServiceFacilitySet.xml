@@ -7,9 +7,22 @@
 			<frames>
 				<ResourceFrame id="ch:1:ResourceFrame" version="any">
 					<serviceFacilitySets>
-                        <ServiceFacilitySet id="generated" version="1">
-                            <!-- ch-root -->
-                            <!-- ch-note: List of ServiceFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical ServiceFacilitySets. Reuse them. -->
+						<ServiceFacilitySet id="ch:1:ServiceFacilitySet:A___2" version="1">
+							<!-- ch-root -->
+							<!-- ch-note: List of ServiceFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical ServiceFacilitySets. Reuse them. -->
+							<!-- ch-usage: expected-->
+							<Extensions>
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Two elements used in HRDF for ordering facilities -->
+								<Priority><!-- ch-usage: expected -->1</Priority>
+								<Condition>4</Condition>
+							</Extensions>
+							<Description lang="de"><!-- ch-usage: expected-->Nur 2. Klasse
+								<Text lang="en"><!-- ch-usage: optional -->2nd class only</Text>      
+								<Text lang="fr">Seulement 2e classe</Text>      
+								<Text lang="it">Solo 2a classe</Text>
+							</Description>
+							<FareClasses><!-- ch-usage: optional -->secondClass</FareClasses>
 							<NuisanceFacilityList><!-- ch-usage: optional -->animalsAllowed</NuisanceFacilityList>
 							<SanitaryFacilityList><!-- ch-usage: optional -->toilet</SanitaryFacilityList>
 							<CouchetteFacilityList><!-- ch-usage: optional -->wheelchair</CouchetteFacilityList>
