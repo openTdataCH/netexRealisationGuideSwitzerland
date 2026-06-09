@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
-	<PublicationTimestamp>2026-02-19T10:00:00Z</PublicationTimestamp>
+<PublicationTimestamp>2026-02-19T10:00:00Z</PublicationTimestamp>
 	<ParticipantRef>SBB</ParticipantRef>
 	<dataObjects>
 		<CompositeFrame id="ch:1:CompositeFrame:J26" version="1">
@@ -263,7 +263,6 @@
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:sloid:90:0:529134" version="1">
 							<Name>Basel Bad</Name>
-							<ShortName lang="de">1</ShortName>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:sloid:18799" version="1">
 							<Name>Freiburg in Breisgau</Name>
@@ -389,12 +388,10 @@
 							<privateCodes>
 								<PrivateCode type="sjyid">sjyid-2</PrivateCode>
 							</privateCodes>
+							<JourneyPatternRef ref="ch:1:J_DB:1024356" version="1"/>
 							<OperatorRef ref="ch:1:sboid:100310" version="1"/>
 							<LineRef ref="ch:1:slnid:1024356" version="1"/>
 							<DirectionType>outbound</DirectionType>
-							<JourneyPatternView>
-								<JourneyPatternRef ref="ch:1:J_DB:1024356" version="1"/>
-							</JourneyPatternView>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:7547" version="1"/>
 							</trainNumbers>
@@ -419,17 +416,18 @@
 						</TrainNumber>
 					</trainNumbers>
 					<journeyInterchanges>
-						<ServiceJourneyInterchange id="sji-1" version="1">
+						<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:SBB-7546-DB-7547-BaselBad">
 							<validityConditions>
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="1"/>
 							</validityConditions>
 							<StaySeated>true</StaySeated>
+							<CrossBorder>true</CrossBorder>
 							<Planned>true</Planned>
 							<Guaranteed>true</Guaranteed>
-							<FromPointRef ref="ch:1:sloid:90"/>
-							<ToPointRef ref="ch:1:sloid:90"/>
-							<FromJourneyRef ref="ch:1:SBB_SJ:1" version="1"/>
-							<ToJourneyRef ref="ch:1:sjyid:100014:4208-003B_DB" version="1"/>
+							<FromPointRef ref="ch:1:sloid:90:0:529134" version="1"/>
+							<ToPointRef ref="ch:1:sloid:90:0:529134" version="1"/>
+							<FromServiceJourneyRef ref="ch:1:SBB_SJ:1" version="1"/>
+							<ToServiceJourneyRef ref="ch:1:sjyid:100014:4208-003B_DB" version="1"/>
 						</ServiceJourneyInterchange>
 					</journeyInterchanges>
 				</TimetableFrame>
