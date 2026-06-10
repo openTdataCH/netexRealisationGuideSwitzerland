@@ -25,7 +25,7 @@ In ServiceCalender:
 
 ### Purpose
 
-A `TimetableFrame` contains the operational journey definitions — the actual trips that run on the network. It groups `ServiceJourney`s, `TemplateServiceJourney`s, and `InterchangeRules` that together describe the timetabled service offering.
+A `TimetableFrame` contains the operational journey definitions — the actual trips that run on the network. It groups `ServiceJourney`s, `TemplateServiceJourney`s, and `ServiceJourneyInterchange` that together describe the timetabled service offering.
 
 ### Contained Elements
 - `vehicleJourneys`– collection of journey types:
@@ -34,7 +34,7 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
   -  The Swiss profile only models journeys that are available to the passengers
 - `TrainNumber`- each `ServiceJourney` and `TemplateServiceJourney` is mapped one-to-one to exactly one train number
 - `PassingTimes`- describe the times of vehicles at points in their journey
-- `InterchangeRule`s- describe interchanges between journeys
+- `journeyInterchanges` – collection of ServiceJourneyInterchanges describing planned connections and through-services between journeys
 - `NoticeAssignment`s- link `Notice`s to specific journeys or stop points within journeys
 - `ServiceFacilitySet`s- describe the various services and facilities offered by the vehicles of a journey
 
@@ -219,10 +219,10 @@ and recommended, also in alignment with EPIP.
 - `Guaranteed=true` marks the connection as guaranteed. 
 - If `MaximumWaitTime` is set to `PT0M` or is absent, the connection is considered guaranteed.
 - `CrossBorder=true` must be set if the interchange crosses a national border.
-- `ChangeWithinVehicle=true` indicates, that in case of train splitting, the passenger may have to move to a different part of the train. Default is `false`.
+- `ChangeWithinVehicle=true` indicates that in case of train splitting, the passenger may have to move to a different part of the train. Default is `false`. See uc02 Joining and splitting.
 - `FromPointRef` and `ToPointRef` reference the `ScheduledStopPoint` at which the interchange takes place. For a line change at the same stop, both refs point to the same `ScheduledStopPoint`.
 - `FromServiceJourneyRef` references the feeder journey; `ToServiceJourneyRef` references the distributor journey. Note: the deprecated elements `FromJourneyRef` / `ToJourneyRef` from RG 1.0 (`JourneyMeeting`) must not be used.
-- Element order must follow the XSD sequence: `StaySeated` → `CrossBorder` → `MaximumWaitTime` → `FromPointRef` / `ToPointRef` → `FromServiceJourneyRef` / `ToServiceJourneyRef`.
+- Element order must follow the XSD sequence: `StaySeated` → `CrossBorder` → `ChangeWithinVehicle` → `MaximumWaitTime` → `FromPointRef` / `ToPointRef` → `FromServiceJourneyRef` / `ToServiceJourneyRef`.
 - Make sure not to generate identical `ServiceJourneyInterchange`s. Reuse them where possible.
 
 ## InterchangeRule
@@ -244,8 +244,3 @@ and recommended, also in alignment with EPIP.
 
 ## ServiceFacilitySet
 *→ [see Common elements](./10_common.md#servicefacilityset)*
-
-
-### Usage Notes
-* [See use case Joining and splitting](uc02_joining_splitting.md)
-
