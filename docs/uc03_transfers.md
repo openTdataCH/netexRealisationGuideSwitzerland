@@ -45,7 +45,7 @@ Defines transfer times between specific `lines` and `directions` at a stop place
 
 **When to use:** When the transfer time applies to all journeys of a specific line/direction combination at a given stop place.
 
-- [Example](../generated/xml-snippets/InterchangeRule_UMSTEIGL.xml)
+- [Example](../generated/xml-snippets/ServiceJourneyInterchange_UMSTEIGL.xml)
 
 
 ## ServiceJourney related transfer times (UMSTEIGZ)
@@ -68,7 +68,7 @@ The differences between the various situations are to be differentiated with the
 | Transfer required | `false` | `false` / `true` | Passenger must change vehicles |
 | Through-service (stay seated) | `true` | `true` | Passenger remains in vehicle → see [uc01_durchbindung](uc01_durchbindung.md) |
 
-- [Example](../generated/xml-snippets/InterchangeRule_UMSTEIGZ.xml)
+- [Example](../generated/xml-snippets/ServiceJourneyInterchange_UMSTEIGZ.xml)
 
 
 ## Transfer times between different StopPlaces (METABHF)
