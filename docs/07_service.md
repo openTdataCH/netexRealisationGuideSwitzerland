@@ -283,11 +283,13 @@ For more details see the [use case on transfers](uc03_transfers.md).
 *->[Template](../templates/ServiceJourneyPattern)*
 
 ### Usage Notes
->** TODO** Diskussion Wilfried 10.6.
+
+ServiceJourneyPatterns are a common concept in the VDV interface world ("Linienfahrweg"). In order to model ServiceJourneys effictiently and to reduce overall file size, ServiceJourneys sharing the same stop sequence and the same boarding/alighting options should use the same ServiceJourneyPattern. Do not just generate one ServiceJourneyPattern for each ServiceJourney.
 
 
 ## Notice
 *→ [Glossary definition](A4_annex_glossary.md#Notice)*
+
 
 ### Purpose
 Informational or regulatory text associated with public transport services, displayed to passengers.
@@ -305,7 +307,7 @@ Informational or regulatory text associated with public transport services, disp
 *->[Template](../templates/Notice.xml)*
 
 ### Usage Notes
-> ** TODO** do we need a special use case? Wilfried 10.6.
+Notice elements should only be used to convey information which cannot be transported using specific model elements. Do not use Notice when the information could be expressed by specific elements, e.g. FacilitySet, DayType, ForAlighting, ForBoarding. Notices can be used to provide further information on ServiceFacilities but not as a replacement for them. Ideally, the description of a Notice is translated into common languages of CH (DE, IT, FR).
 
 
 ## NoticeAssignment
