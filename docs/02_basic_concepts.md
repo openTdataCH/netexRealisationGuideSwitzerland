@@ -37,9 +37,8 @@ graph TD
 
   %% Bottom: Other stuff
   subgraph OtherStuff["Other stuff"]
-    JM[JourneyMeeting]
     CN[DefaultConnection]
-    IR[InterchangeRule]
+    SI[ServiceJourneyInterchange]
     JP[JourneyPart]
     N[Notice]
     AT[AlternativeText]
@@ -102,7 +101,7 @@ Notes:
 * The physical stops are modeled as `StopPlac`e with `Quays`.
 * `ScheduledStopPoint`s are are the "logical" stops.
 * The `PassengerStopAssignment` associates the physical and the logical stops.
-* `DefaultConnection`, `ServiceJourneyInterchange`  and `InterchangeRule` defined transfers
+* `DefaultConnection`, `SiteConnection` and `ServiceJourneyInterchange` defined transfers
 * `JourneyMeetin`gs are used for splitting and joining of trains.
 * `Notice`, `ServiceFacility` and `SiteFacility` model almost everythingelse
 * The operating days are defined through `ValidDayBits` for the whole timetable year in `AvailabilityCondition`s.

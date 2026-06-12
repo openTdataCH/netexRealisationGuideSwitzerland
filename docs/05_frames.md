@@ -43,7 +43,7 @@ We use the following frames in Switzerland:
 | [SiteFrame](06_stops.md#SiteFrame)                                   | Contains the physical infrastructure model: Encloses elements describing locations like `Site`, `StopPlace`, `Quay` and `TopographicPlace`.                                                                                            |
 | [ServiceFrame](07_service.md#ServiceFrame)                           | Contains, among other, the network model with elements such as `Line` and `Route`, the service pattern model with `ScheduledStopPoint` and `JourneyPattern` and `Connection` elements for the topological model of interchanges.       |
 | [ServiceCalendarFrame](08_service_calendars.md#ServiceCalendarFrame) | Contains calendar specific elements like `AvailabilityConditions`, `ServiceCalendar` and `DayType` that are referenced in other frames like the `TimetableFrame`.                                                                      |
-| [TimetableFrame](09_timetable.md#TimeTableFrame)                     | Contains the operational journey definitions with elements like `ServiceJourney`, `PassingTimes`, `InterchangeRule` and others.                                                                                                          |
+| [TimetableFrame](09_timetable.md#TimeTableFrame)                     | Contains the operational journey definitions with elements like `ServiceJourney`, `PassingTimes`, `ServiceJourneyInterchange` and others.                                                                                              |
 
 > The following frames are **not to be used** in Switzerland:
 > - `GeneralFrame`

@@ -123,11 +123,9 @@ Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 - The element ValidDayBits directly indicates the days on which some service is provided or not. They are similar to the HRDF bitfields. 
 - ValidDayBits is required whenever the `AvailabilityCondition` is of temporal nature (more often than not). Examples include:
   -	`ServiceJourney`
-  -	`JourneyMeeting`
   -	`NoticeAssignment`
   -	`ServiceFacilitySet`
   -	`ServiceJourneyInterchange`
-  -	`InterchangeRule`
 - Hint: The frames `TimetableFrame`, `ServiceFrame` and `ServiceCalendarFrame` and their elements must have the same validity.
 
 ### ServiceCalendar
@@ -184,7 +182,7 @@ A period of time within a day, usually defined by a start and end time.
 
 
 #### Usage Notes
-Currently `Timeband` is used for `InterchangeRuleTiming`s, later also used for the opening hours in `StopPlace` models. 
+Currently `Timeband` is used in RG 1.0 for `InterchangeRuleTiming`s, later also used for the opening hours in `StopPlace` models. 
 
 ## DayTypeAssignment
 *→ [Glossary definition](A4_annex_glossary.md#daytypeassignment)*
