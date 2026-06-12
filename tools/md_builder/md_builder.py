@@ -5,22 +5,10 @@ Extracts documentation from annotated XML templates and generates markdown table
 with type information from XSD schemas.
 """
 
-import os
-import sys
 import argparse
+import os
 from lxml import etree
-from collections import defaultdict
-import re
-
-
-def parse_args():
-    """Parse command line arguments"""
-    parser = argparse.ArgumentParser(description='Generate markdown documentation from NeTEx templates')
-    parser.add_argument('-i', '--input', required=True, help='Input folder containing XML templates')
-    parser.add_argument('-o', '--output', required=True, help='Output folder for markdown files')
-    parser.add_argument('-x', '--xsd', required=True, help='XSD schema file for type information')
-    return parser.parse_args()
-
+from tools.configuration import TEMPLATES_DIR, XSD_FILE_PATH, SITE_TABLES_DIR
 
 def load_xsd_type_info(xsd_path):
     """Load type and cardinality information from XSD"""
@@ -529,7 +517,7 @@ def parse_template_file(file_path, xsd_type_info):
         return None
 
 
-def generate_markdown_table(data, filename, xsd_type_info):
+def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
     """Generate markdown table from parsed data"""
     if not data:
         return ''
@@ -695,7 +683,7 @@ def check_referenced_files_exist(data, template_dir):
     return True
 
 
-def process_ch_profile_templates(input_dir, output_dir, xsd_type_info):
+def process_ch_profile_templates(input_dir: str, output_dir: str, xsd_path: str, xsd_type_info):
     """Process ch-profile template files and generate MD files"""
     ch_profile_files = [f for f in os.listdir(input_dir) if f.startswith('ch-profile_') and f.endswith('.xml')]
     
@@ -713,7 +701,7 @@ def process_ch_profile_templates(input_dir, output_dir, xsd_type_info):
             
             # Generate markdown content
             element_name = os.path.splitext(xml_file)[0]
-            markdown_content = generate_markdown_table(data, element_name, xsd_type_info)
+            markdown_content = generate_markdown_table(data, element_name, xsd_path, xsd_type_info)
             
             # Write to file
             with open(md_path, 'w', encoding='utf-8') as f:
@@ -724,44 +712,40 @@ def process_ch_profile_templates(input_dir, output_dir, xsd_type_info):
             print(f"No data extracted from ch-profile template {xml_file}")
 
 
-def main():
-    args = parse_args()
-    
+def build_markdown_tables(input_path: str, output_path: str, xsd_path: str):
+
     # Load XSD type information
-    print(f"Loading XSD from {args.xsd}")
-    xsd_type_info = load_xsd_type_info(args.xsd)
+    print(f"Loading XSD from {xsd_path}")
+    xsd_type_info = load_xsd_type_info(xsd_path)
     print(f"Loaded {len(xsd_type_info)} type definitions")
-    
-    # Store XSD path for metadata extraction
-    xsd_path = args.xsd
-    
+
     # Create output directory
-    os.makedirs(args.output, exist_ok=True)
+    os.makedirs(output_path, exist_ok=True)
     
     # Process ch-profile templates first
-    process_ch_profile_templates(args.input, args.output, xsd_type_info)
+    process_ch_profile_templates(input_path, output_path, xsd_path, xsd_type_info)
     
     # Process all XML files in input directory
-    xml_files = [f for f in os.listdir(args.input) if f.endswith('.xml') and not f.startswith('ch-profile_')]
+    xml_files = [f for f in os.listdir(input_path) if f.endswith('.xml') and not f.startswith('ch-profile_')]
     
     for xml_file in xml_files:
         print(f"Processing {xml_file}")
-        file_path = os.path.join(args.input, xml_file)
+        file_path = os.path.join(input_path, xml_file)
         
         # Parse template
         data = parse_template_file(file_path, xsd_type_info)
         
         if data:
             # Check for missing referenced files
-            check_referenced_files_exist(data, args.input)
+            check_referenced_files_exist(data, input_path)
             
             # Generate markdown filename (remove .xml, add .md)
             md_filename = os.path.splitext(xml_file)[0] + '.md'
-            md_path = os.path.join(args.output, md_filename)
+            md_path = os.path.join(output_path, md_filename)
             
             # Generate markdown content
             element_name = os.path.splitext(xml_file)[0]
-            markdown_content = generate_markdown_table(data, element_name, xsd_type_info)
+            markdown_content = generate_markdown_table(data, element_name, xsd_path, xsd_type_info)
             
             # Write to file
             with open(md_path, 'w', encoding='utf-8') as f:
@@ -773,6 +757,17 @@ def main():
     
     print(f"Processed {len(xml_files)} files")
 
+def parse_args():
+    """Parse command line arguments"""
+    parser = argparse.ArgumentParser(description='Generate markdown documentation from NeTEx templates')
+    parser.add_argument('-i', '--input', default=TEMPLATES_DIR, help=f'Input folder containing XML templates (Default = {TEMPLATES_DIR})')
+    parser.add_argument('-o', '--output', default=SITE_TABLES_DIR, help=f'Output folder for markdown files (Default = {SITE_TABLES_DIR})')
+    parser.add_argument('-x', '--xsd', default=XSD_FILE_PATH, help=f'XSD schema file for type information (Default = {XSD_FILE_PATH})')
+    return parser.parse_args()
+
+def main():
+    args = parse_args()
+    build_markdown_tables(args.input, args.output, args.xsd)
 
 if __name__ == '__main__':
     main()
