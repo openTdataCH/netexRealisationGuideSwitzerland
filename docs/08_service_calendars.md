@@ -88,12 +88,12 @@ classDiagram
 
 ```
 #### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceCalendarFrame.md)
+- [Swiss profile NeTEx definition](../site/tables/ServiceCalendarFrame.md)
 
 *→ [General NeTEx definition](../generated/netex-html/ServiceCalendarFrame.html)*
 
 #### Example
-- [Example snippet](../generated/xml-snippets/ServiceCalendarFrame.xml)
+- [Example snippet](../site/xml-snippets/ServiceCalendarFrame.xml)
 
 *→ [Template](../templates/ServiceCalendarFrame.xml)*
 
@@ -107,12 +107,12 @@ classDiagram
 Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 
 #### Table
--[Swiss profile NeTEx definition](../generated/markdown-examples/AvailabilityCondition.md)
+-[Swiss profile NeTEx definition](../site/tables/AvailabilityCondition.md)
 
 *→ [General NeTEx definition](../generated/netex-html/AvailabilityCondition.html)*
 
 #### Example
-- [Example snippet](../generated/xml-snippets/AvailabilityCondition.xml)
+- [Example snippet](../site/xml-snippets/AvailabilityCondition.xml)
 
 *→ [Template](../templates/AvailabilityCondition.xml)*
 
@@ -137,12 +137,12 @@ Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 Long-term planning uses calendar days that are classified as specific DayTypes (example: weekday in school holidays). A ServiceCalendar defines a mapping between DayTypes and OperatingDays.
 
 #### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceCalendar.md)
+- [Swiss profile NeTEx definition](../site/tables/ServiceCalendar.md)
 
 *→ [General NeTEx definition](../generated/netex-html/ServiceCalendar.html)*
 
 #### Example
-- [Example snippet](../generated/xml-snippets/ServiceCalendar.xml)
+- [Example snippet](../site/xml-snippets/ServiceCalendar.xml)
 
 *→ [Template](../templates/ServiceCalendar.xml)*
 
@@ -155,12 +155,12 @@ A classification of days on which a specific set of transport services operates 
 
 
 #### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/DayType.md)
+- [Swiss profile NeTEx definition](../site/tables/DayType.md)
 
 *→ [General NeTEx definition](../generated/netex-html/DayType.html)*
 
 #### Example
-- [Example snippet](../generated/xml-snippets/DayType.xml)
+- [Example snippet](../site/xml-snippets/DayType.xml)
 
 *→ [Template](../templates/DayType.xml)*
 
@@ -173,12 +173,12 @@ A period of time within a day, usually defined by a start and end time.
 
 
 #### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/Timeband.md)
+- [Swiss profile NeTEx definition](../site/tables/Timeband.md)
 
 *→ [General NeTEx definition](../generated/netex-html/Timeband.html)*
 
 #### Example
-- [Example snippet](../generated/xml-snippets/Timeband.xml)
+- [Example snippet](../site/xml-snippets/Timeband.xml)
 
 *→ [Template](../templates/Timeband.xml)*
 
@@ -197,12 +197,12 @@ This assignment overrides the `DayType` specified for the day in the overall pla
 
 
 #### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/DayTypeAssignment.md)
+- [Swiss profile NeTEx definition](../site/tables/DayTypeAssignment.md)
 
 *→ [General NeTEx definition](../generated/netex-html/DayTypeAssignment.html)*
 
 #### Example
-[Example snippet](../generated/xml-snippets/DayTypeAssignment.xml)
+[Example snippet](../site/xml-snippets/DayTypeAssignment.xml)
 
 *→ [Template](../templates/DayTypeAssignment.xml)*
 

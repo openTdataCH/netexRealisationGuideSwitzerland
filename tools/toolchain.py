@@ -36,6 +36,5 @@ def main():
     generate_xml_snippets()
     generate_docs()
 
-
 if __name__ == '__main__':
     main()

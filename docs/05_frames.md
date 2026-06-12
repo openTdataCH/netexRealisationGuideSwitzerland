@@ -15,12 +15,12 @@ In addition to linking to the NeTEx XML schema, this element is used to specify 
 participant's identifier. 
 
 ### Table
-- [Swiss profile tables](../generated/markdown-examples/PublicationDelivery.md)
+- [Swiss profile tables](../site/tables/PublicationDelivery.md)
 
 *→ [Original NeTEx table](../generated/netex-html/PublicationDelivery.html)*
 
 ### Example
-- [XML Snippet](../generated/xml-snippets/PublicationDelivery.xml)
+- [XML Snippet](../site/xml-snippets/PublicationDelivery.xml)
 
 *→ [Template](../templates/PublicationDelivery.xml)*
 
@@ -59,12 +59,12 @@ The `CompositeFrame` is the container for the `FrameDefaults` and the other fram
 appearing in this order.
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/CompositeFrame.md)
+- [Swiss profile NeTEx definition](../site/tables/CompositeFrame.md)
 
 *→ [General NeTEx definition](../generated/netex-html/CompositeFrame.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/CompositeFrame.xml)
+- [Example snippet](../site/xml-snippets/CompositeFrame.xml)
 
 *→ [Template](../templates/CompositeFrame.xml)*
 

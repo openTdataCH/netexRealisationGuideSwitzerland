@@ -39,12 +39,12 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TimetableFrame.md)
+- [Swiss profile NeTEx definition](../site/tables/TimetableFrame.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/TimetableFrame.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/TimetableFrame.xml)
+- [Example snippet](../site/xml-snippets/TimetableFrame.xml)
 
 *→ [Template](../templates/TimetableFrame.xml)*
 
@@ -58,12 +58,12 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 A `ServiceJourney` represents a planned trip in the timetable operating on a recurring schedule. It defines the stop sequence via reference to a `JourneyPattern`, includes scheduled passing times, and specifies operational details such as operator and days of operation. Unlike `DatedServiceJourney`, which represents a concrete instance on a specific date, `ServiceJourney` is the reusable template used across multiple dates via `DayType` definitions
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourney.md)
+- [Swiss profile NeTEx definition](../site/tables/ServiceJourney.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/ServiceJourney.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/ServiceJourney.xml)
+- [Example snippet](../site/xml-snippets/ServiceJourney.xml)
 
 *→ [Template](../templates/ServiceJourney.xml)*
 
@@ -84,12 +84,12 @@ A `TemplateServiceJourney` represents a sequence of planned trips. It is similar
 A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The `TemplateServiceJourney` may thus represent multiple journeys or it could be used simply as a template for adding extra date journeys after the planning phase. 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TemplateServiceJourney.md)
+- [Swiss profile NeTEx definition](../site/tables/TemplateServiceJourney.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/TemplateServiceJourney.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/TemplateServiceJourney.xml)
+- [Example snippet](../site/xml-snippets/TemplateServiceJourney.xml)
 
 *→ [Template](../templates/TemplateServiceJourney.xml)*
 
@@ -106,12 +106,12 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 `OccupancyView`can be used on the `Journey`, `JourneyPart`, and `TimetabledPassingTime` elements. Used for predicted and planned occupancies of vehicles.
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/OccupancyView.md)
+- [Swiss profile NeTEx definition](../site/tables/OccupancyView.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/OccupancyView.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/OccupancyView.xml)
+- [Example snippet](../site/xml-snippets/OccupancyView.xml)
 
 *→ [Template](../templates/OccupancyView.xml)*
 
@@ -126,12 +126,12 @@ We currently don't use OccupancyView.
 Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney`) when operated by trains. `ServiceJourney`s can in principle have multiple different `TrainNumber`s whereas a `JourneyPart` can only reference a single one.
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TrainNumber.md)
+- [Swiss profile NeTEx definition](../site/tables/TrainNumber.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/TrainNumber.html)*
 
  ### Example
-- [Example snippet](../generated/xml-snippets/TrainNumber.xml)
+- [Example snippet](../site/xml-snippets/TrainNumber.xml)
 
 *→ [Template](../templates/TrainNumber.xml)*
 
@@ -142,12 +142,12 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 `TypeOfService` indicates the purpose of a `ServiceJourney`, for example, whether if it is a passenger transport or a garage run-in. We only use `ch:1:TypeOfService:1`
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfService.md)
+- [Swiss profile NeTEx definition](../site/tables/TypeOfService.md)
 
 *→ [General NeTEx definition](../generated/netex-html/TypeOfService.html)*
 
 ### Example
-- [XML Snippet](../generated/xml-snippets/TypeOfService.xml)
+- [XML Snippet](../site/xml-snippets/TypeOfService.xml)
 
 *→ - [Template](../templates/TypeOfService.xml)*
 
@@ -172,12 +172,12 @@ Actually there is only one allowed value that we use in the Swiss profile: Only 
 Long-term planned time data concerning public transport vehicles passing a particular `PointInJourneyPattern` on a specified vehicle journey for a certain `DayType`. 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TimetabledPassingTime.md)
+- [Swiss profile NeTEx definition](../site/tables/TimetabledPassingTime.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/TimetabledPassingTime.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/TimetabledPassingTime.xml)
+- [Example snippet](../site/xml-snippets/TimetabledPassingTime.xml)
 
 *→ [Template](../templates/TimetabledPassingTime.xml)*
 
@@ -199,7 +199,7 @@ Long-term planned time data concerning public transport vehicles passing a parti
 An `InterchangeRule`defines the possibility of interchanging between two `ServiceJourney`s at the same or different `ScheduledStopPoint*` — where at least one journey is specified indirectly via `Direction`, `Line` or the VEHICLE JOURNEY (? **TODO**), rather than as an explicit journey pair. The rule specifies criteria (e.g. `Mode`, `Line`, `Direction`) that a candidate feeder or distributor journey must fulfil.
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/InterchangeRule.md)
+- [Swiss profile NeTEx definition](../site/tables/InterchangeRule.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/InterchangeRule.html)*
 
@@ -207,10 +207,10 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 ### Examples
 
 #### Interchanges between ServiceJourneys
-- [Example snippet](../generated/xml-snippets/InterchangeRule_UMSTEIGZ.xml)
+- [Example snippet](../site/xml-snippets/InterchangeRule_UMSTEIGZ.xml)
 
 #### Interchange between Lines/Directions/Operators
-- [Example snippet](../generated/xml-snippets/InterchangeRule_UMSTEIGL.xml)
+- [Example snippet](../site/xml-snippets/InterchangeRule_UMSTEIGL.xml)
 
 
 ### Usage Notes
@@ -237,12 +237,12 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 [//]: # (**TODO**: Add JourneyMeeting links)
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/JourneyMeeting.md)
+- [Swiss profile NeTEx definition](../site/tables/JourneyMeeting.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/JourneyMeeting.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/JourneyMeeting.xml)
+- [Example snippet](../site/xml-snippets/JourneyMeeting.xml)
 
 *→ [Template](../templates/JourneyMeeting.xml))*
 

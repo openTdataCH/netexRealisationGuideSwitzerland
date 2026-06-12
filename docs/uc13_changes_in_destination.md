@@ -4,12 +4,12 @@
 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/DestinationDisplayChange.md)
+- [Swiss profile NeTEx definition](../site/tables/DestinationDisplayChange.md)
 
 *-> [General NeTEx definition](../generated/netex-html/DestinationDisplay.html)*
 
 ### Example
 
-- [Example snippet](../generated/xml-snippets/DestinationDisplayChange.xml)
+- [Example snippet](../site/xml-snippets/DestinationDisplayChange.xml)
 
 *->[Template](../templates/DestinationDisplayChange.xml)*

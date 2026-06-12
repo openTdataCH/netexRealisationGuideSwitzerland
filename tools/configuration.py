@@ -12,6 +12,6 @@ XSD_FILE_PATH = PROJECT_DIR.joinpath("../xsd/xsd/NeTEx_publication.xsd")
 # Generated documents
 SITE_DIR = PROJECT_DIR.joinpath("../site")
 SITE_TABLES_DIR = SITE_DIR.joinpath("tables")
-SITE_XML_SNIPPETS_DIR = SITE_DIR.joinpath("xml_snippets")
+SITE_XML_SNIPPETS_DIR = SITE_DIR.joinpath("xml-snippets")
 
 
