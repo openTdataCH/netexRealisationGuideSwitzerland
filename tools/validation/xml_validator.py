@@ -8,8 +8,7 @@ import argparse
 import os
 import sys
 from lxml import etree
-#from tools.configuration import XSD_FILE_PATH
-XSD_FILE_PATH ="../xsd/xsd/NeTEx_publication.xsd"
+from tools.configuration import XSD_FILE_PATH
 
 def load_schema(xsd_path):
     try:
@@ -89,7 +88,7 @@ def main():
     if os.path.isdir(args.xml):
         validate_folder(args.xml, args.xsd)
     else:
-        schema = load_schema(xsd_path)
+        schema = load_schema(XSD_FILE_PATH)
         if not schema:
             exit
         validate_xml(args.xml, schema)

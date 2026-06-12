@@ -6,7 +6,10 @@ import os
 import shutil
 import argparse
 import re
-from tools.configuration import DOCS_DIR, GENERATED_DOCS_DIR
+from tools.configuration import DOCS_DIR, SITE_DIR
+
+TABLE_MD_LINK_TARGET_PATTERN = re.compile(r'(\[.*])\((.*(\.)md).*\)')
+TABLE_MD_LINK_TARGET_REPLACEMENT = r'\1(./tables/\2)'
 
 def copy_media_folder(input_folder, output_folder):
     """Copy media folder from input to output."""
@@ -51,6 +54,8 @@ def include_markdown_table(match, base_folder):
             for line in lines:
                 if line.startswith('|') or line.startswith('---'):
                     in_table = True
+                    # correct md link target
+                    line = TABLE_MD_LINK_TARGET_PATTERN.sub(TABLE_MD_LINK_TARGET_REPLACEMENT,line)
                     table_lines.append(line)
                 elif in_table:
                     break
@@ -94,7 +99,7 @@ def expand_docs(input_dir: str, output_dir: str):
 def main():
     parser = argparse.ArgumentParser(description='Expand documentation by including examples and tables.')
     parser.add_argument('--docs', default=DOCS_DIR, help=f"Input documentation folder (default = {DOCS_DIR})")
-    parser.add_argument('--out', default=GENERATED_DOCS_DIR, help=f"Output folder (default = {GENERATED_DOCS_DIR})")
+    parser.add_argument('--out', default=SITE_DIR, help=f"Output folder (default = {SITE_DIR})")
     args = parser.parse_args()
     expand_docs(args.docs, args.out)
 
