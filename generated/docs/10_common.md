@@ -177,16 +177,15 @@ We only allow the following values for `NameType`:
 - `translation`
 
 ## AlternativeText
-
 *→ [Glossary definition](A4_annex_glossary.md#alternativetext)*
 
 ### Purpose
+> DEPRECATED
 
 The `AlternativeText` is a generic way to provide an alternative text (translation or alias).
 For example, it can be used for the translation of `Notice` texts.
 
 ### Table
-
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
@@ -208,14 +207,10 @@ For example, it can be used for the translation of `Notice` texts.
 </AlternativeText>
 
 ```
-
-
-
 *→ - [Template](../templates/AlternativeText.xml)*
 
 ## Usage Notes
-
-The `AlternativeText` is part of a `DataManagedObject` and references the name of the node, for which it provides an alternative. 
+* `AlternativeText` is depreciated and won't be used in RG 2.0. We will use the properties of MultilingualString that were added.  We is part of a `DataManagedObject` and references the name of the node, for which it provides an alternative. 
 It contains the alternative text as an attribute of type `MultilingualString` which indicates the language. 
 
 In addition, the `AlternativeText` element may have a `useForLanguage` attribute to indicate a second language for which it may be used as 

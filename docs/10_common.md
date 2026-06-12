@@ -32,36 +32,44 @@ The following rules apply to common attributes:
 | `nameOfClass`          | We use `nameOfClass` in the XXXRef elements.                |
 
 ### IDs
-IDs must be globally unique during importation. 
-They may also be partially or completely artificially generated. The persistence of these IDs between exports is then 
-usually not guaranteed. 
-Important business level keys are stored in elements (`PublicKey`, `PrivateKey`, `KeyList`), not in IDs.
+IDs must be globally unique during importation (in the `id`-attribute). 
+They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for "primary" objects we expect object permanence. This is mentioned in the usage note of each element.
+Important business level keys are stored in elements (`KeyList`, `privateKeys/PrivateKey`)in addition to the IDs.
 
-It is important to note that internal or artificially generated IDs should not be used to extract content whenever 
-business keys and attributes are available. 
+It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available. 
 
 For readability and easy referencing, we will use the following principles:
 -	We use the class of the object to prefix the technical ID like `ch:1:TypeOfNotice:3"` for a `TypeOfNotice` element.
 -   We use appropriate business values to build technical IDs where available, e.g. `ch:1:TypeOfProductCategory:TER` 
 where the value of `ShortName` of the `TypeOfProductCategory` is used to build the ID, or `ch:1:Operator:11`.
 -	Where there is a compelling need for global stability, the ID will be a global ID. 
-This information will be also provided separately in a `KeyList`. 
 
-> [!CAUTION] 
-> **TODO** Must be revisited and updated. #83
 
 All other defined attributes like `created`, `changed`, `modification` are not used. If we need one, we will inform about it in the table associated with the element.
 
-## Common Types
+### Version
+We will use `version="1"` in Switzerland. In some cases we use `versionRef="1"` instead, when the referenced object is not in the same file in references (`XXXRef`-elements). We no longer use `any` and expect to remove that semantic if possible. Also, the version (or versionRef) always must be present.
+
 
 ### MultilingualString
 *→ [Glossary definition](A4_annex_glossary.md#multilingualstring)*
 
+
+#### Example
+
+```
+<Name lang="de">Train Express Regional
+  <Text lang="it">Train Express Regional</Text>
+  <Text lang="en">Train Express Regional</Text>
+  <Text lang="fr">Train Express Regional</Text>
+</Name>
+```
 #### Purpose
 
 NeTEx uses the type `MultilingualString` for descriptive text elements (e.g. `Notice` text, `Name`, `ShortName` etc.).
 However, only one language can be set for a given element (e.g. `<MultilingualString lang=”fr”>`). 
 Additional languages are introduced through the [AlternativeName](#alternativename) and [AlternativeText](#alternativetext) element.
+
 
 #### Usage Notes
 
