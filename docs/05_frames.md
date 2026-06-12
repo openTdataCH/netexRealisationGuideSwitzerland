@@ -26,7 +26,8 @@ participant's identifier.
 
 ### Usage Notes
 
-Basically, the containers could be defined arbitrarily. We are using the most common used version.
+* Basically, the containers could be defined arbitrarily. We are using the most common used version.
+* Be aware that what should be in a Frame in a given file is defined by the organisation of files that are defined in chapter on the [files](04_files.md).
 
 ## Frames
 
