@@ -32,13 +32,26 @@ uv sync
 
 #### Windows
 
-Run the following following commands in the project root directory:
+Create the virtual environment directory `venv` running the following command in the project root directory (needs `uv`, see [Install the uv package manager](#install-the-uv-package-manager) above):
 
 ``` shell
 uv venv
-.venv\bin\activate.bat
+```
+
+It may respond like this, or similar:
+```
+Using CPython 3.14.6
+Creating virtual environment at: .venv
+Activate with: .venv\Scripts\activate
+```
+
+Run the activation script to activate the virtual environment as proposed in the output above. Then, do the sync to download 
+the project dependencies:
+
+``` shell
 uv sync
 ```
+
 ### Install build module
 
 > This can be skipped as the `build` module is now part of the build dependencies.
@@ -53,8 +66,12 @@ python -m pip install --upgrade pip build
 If everything is setup correctly, you should be able to the build from your project root directory:
 
 ```
-python -m build
+uv run python -m build
 ```
+
+### Configure PyCharm with uv Python Interpreter
+
+In the PyCharm settings you may configure the Python interpreter with `uv` based on the `.venv` directory of the project. 
 
 ## Tool Scripts
 
@@ -118,8 +135,9 @@ The package manager `uv` simplifies the build and installation of scripts for th
 Components of the build automation:
 - [pyproject.toml](../pyproject.toml) is configured with `setuptools` (https://setuptools.pypa.io/en/latest/)
   - docs can be generated running `python -m build`
-- `setup.py` in the root project acts as the interface for the build
-  - here we can add tools to be run during the build.
+- `setup.py` in the root project acts as the interface for the build system
+  - runs `tools.toolchain` from `tools/toolchain.py` to generate the docs
+    - here we can add tools to be run during the build.
 - The build writes all output to directory `site`, excluded from git
 
 ### Github Action
