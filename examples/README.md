@@ -13,7 +13,7 @@ Swiss NeTEx 2.0 models repeated stops within a journey using PassingTimes and Jo
 
 Another bus i an example from Nyon.
 
-[Link to example]([Link to example](NeTEx_CH_PAG_11929.xml)
+[Link to example](NeTEx_CH_PAG_11929.xml)
 
 ### Bus with some DRT properties
 We modeled some `ServiceJourney` from the following bus: https://github.com/user-attachments/files/26309155/50.110.pdf
