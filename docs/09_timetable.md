@@ -33,7 +33,7 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
   -  `TemplateServiceJourney`- describes a set of journeys repeating at a certain frequency
   -  The Swiss profile only models journeys that are available to the passengers
 - `TrainNumber`- each `ServiceJourney` and `TemplateServiceJourney` is mapped one-to-one to exactly one train number
-- `PassingTimes`- describe the times of vehicles at points in their journey
+- `passingTimes`- describe the times of vehicles at points in their journey
 - `journeyInterchanges` – collection of ServiceJourneyInterchanges describing planned connections and through-services between journeys
 - `NoticeAssignment`s- link `Notice`s to specific journeys or stop points within journeys
 - `ServiceFacilitySet`s- describe the various services and facilities offered by the vehicles of a journey
@@ -53,7 +53,7 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 `TimetableFrame` depends on `ServiceFrame`for `JourneyPattern`s and `Line`s referenced by `ServiceJourney`s. It depends on `ResourceFrame` for `Operator` definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `TimetableFrame` is typically wrapped in a `CompositeFrame`within a `PublicationDelivery`.
 
 ## ServiceJourney
-*→ [Glossary definition](A4_annex_glossary.md#ServiceFrame)*
+*→ [Glossary definition](A4_annex_glossary.md#ServiceJourney)*
 
 ### Purpose
 A `ServiceJourney` represents a planned trip in the timetable operating on a recurring schedule. It defines the stop sequence via reference to a `JourneyPattern`, includes scheduled passing times, and specifies operational details such as operator and days of operation. Unlike `DatedServiceJourney`, which represents a concrete instance on a specific date, `ServiceJourney` is the reusable template used across multiple dates via `DayType` definitions
@@ -97,7 +97,7 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 
 ### Usage Notes
 - `HeadwayJourneyGroup` holds all the frequency-based information of the journey, as for example when the stops of the journey are serviced the first/last time and in what interval (or at which frequency, respectively). 
-- Note that in addtion to `HeadwayJourneyGroup`, standard NeTEx also features `RhythmicalJourneyGroup` to specifiy, e.g., departures at 15, 27 and 40 minutes past the hour - this is not used in the Swiss profile.
+- Note that in addition to `HeadwayJourneyGroup`, standard NeTEx also features `RhythmicalJourneyGroup` to specifiy, e.g., departures at 15, 27 and 40 minutes past the hour - this is not used in the Swiss profile.
 - For sjyid see information about [frequencies](uc14_frequencies.md).
 
 
@@ -198,10 +198,9 @@ Long-term planned time data concerning public transport vehicles passing a parti
 *→ [Glossary definition](A4_annex_glossary.md#servicejourneyinterchange)*
 
 ### Purpose
-The standard say: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle. This concept is for instance used for circular lines and coupled journeys. This means that passenger information should be adapted to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also important that operation control staff is aware of the consequences to passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs."
+The standard states: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle. This concept is for instance used for circular lines and coupled journeys. This means that passenger information should be adapted to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also important that operation control staff is aware of the consequences to passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs."
 
-`StaySeated=true` should be used for through-services, splitting and joining. While splitting technically involves different vehicle parts, from the passenger's perspective the journey continues in the same physical train — modelling it with `StaySeated=true` is therefore correct
-and recommended, also in alignment with EPIP.
+`StaySeated=true` should be used for through-services (Durchbindung) and joining (Vereinigung). While splitting (Flügelzug) technically involves different vehicle parts, the passenger does not leave the train — however, they may need to move to the correct coach. For splitting, `StaySeated=false` combined with `ChangeWithinVehicle=true` is therefore the correct modelling. See [uc02 Joining and splitting](uc02_joining_splitting.md).
 
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourneyInterchange.md)
@@ -217,10 +216,10 @@ and recommended, also in alignment with EPIP.
 - `ServiceJourneyInterchange` is placed in the `TimetableFrame` within the `journeyInterchanges` collection.
 - `StaySeated=true` indicates that the passenger remains in the vehicle — typically used for through-services (Durchbindung), splitting (Flügelzug) and joining (Vereinigung). See [uc01 Durchbindung](uc01_durchbindung.md).
 - `StaySeated=false` indicates that the passenger must change vehicles. This covers guaranteed and non-guaranteed connections. See [uc03 Transfers](uc03_transfers.md).
-- `Guaranteed=true` marks the connection as guaranteed. 
-- If `MaximumWaitTime` is set to `PT0M` or is absent, the connection is considered guaranteed.
+- `Guaranteed=true` explicitly marks the connection as guaranteed. 
+- `MaximumWaitTime` defines how long the distributor waits — if absent, no explicit wait time is defined.
 - `CrossBorder=true` must be set if the interchange crosses a national border.
-- `ChangeWithinVehicle=true` indicates that in case of train splitting, the passenger may have to move to a different part of the train. Default is `false`. See uc02 Joining and splitting.
+- `ChangeWithinVehicle=true` indicates that in case of train splitting, the passenger may have to move to a different part of the train. Default is `false`. See [uc02 Joining and splitting](uc02_joining_splitting.md)
 - `FromPointRef` and `ToPointRef` reference the `ScheduledStopPoint` at which the interchange takes place. For a line change at the same stop, both refs point to the same `ScheduledStopPoint`.
 - `FromServiceJourneyRef` references the feeder journey; `ToServiceJourneyRef` references the distributor journey. Note: the deprecated elements `FromJourneyRef` / `ToJourneyRef` from RG 1.0 (`JourneyMeeting`) must not be used.
 - Element order must follow the XSD sequence: `StaySeated` → `CrossBorder` → `ChangeWithinVehicle` → `MaximumWaitTime` → `FromPointRef` / `ToPointRef` → `FromServiceJourneyRef` / `ToServiceJourneyRef`.
