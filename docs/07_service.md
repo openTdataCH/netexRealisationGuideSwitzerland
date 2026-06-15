@@ -8,7 +8,7 @@ In this chapter:
 - [DefaultConnection](#defaultconnection)
 - [SiteConnection](#siteconnection)
 - [ServiceJourneyPattern](#servicejourneypattern)
-- [Notice](#NoticeAssignment)
+- [Notice](#Notice)
 - [NoticeAssignment](#NoticeAssignment)
 
 ## ServiceFrame
@@ -108,7 +108,7 @@ Other important classes of the `ServiceFrame` include:
 *→ [Template](../templates/ServiceFrame.xml)*
 
 ### Frame Relationships
-`ServiceFrame` depends on `ResourceFrame` for `Operator` definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `PassengerStopAssignment`s build the connection between `ScheduledStopPoints` and the physical model in`SiteFrame`. ServiceFrame` is typically wrapped in a `CompositeFrame`within a `PublicationDelivery`.
+`ServiceFrame` depends on `ResourceFrame` for `Operator` definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `PassengerStopAssignment`s build the connection between `ScheduledStopPoints` and the physical model in `SiteFrame`. ServiceFrame` is typically wrapped in a `CompositeFrame`within a `PublicationDelivery`.
 
 
 ## Direction
@@ -162,7 +162,7 @@ Showing the destination of a `ServiceJourney`. The text shown on the front or si
 
 ### Usage Notes
 - In HRDF sometimes the destination is not set (`*R`). This results in NeTEX in a calculated destination definition. 
-- The `DestinationDiplay` is usually be set on the `ServiceJourney`. If it changes during the run, it needs to be changed in the `ServiceJourneyPattern`. If it changes on that, then the new destination should be used. In our output, we will fill all remaining `PointsInJourneyPattern`with the relevant change.
+- The `DestinationDisplay` is usually set on the `ServiceJourney`. If it changes during the run, it needs to be changed in the `ServiceJourneyPattern`. If it changes on that, then the new destination should be used. In our output, we will fill all remaining `PointsInJourneyPattern`with the relevant change.
 - See also the [use case on changes in destination](uc13_changes_in_destination.md) 
 
 > **TODO** the rules for defining need to be clarified. #81

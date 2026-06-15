@@ -12,28 +12,40 @@
 				<!-- ch-usage: mandatory -->
 				<TimetableFrame id="ch:1:TimetableFrame" version="1">
 					<!-- ch-usage: mandatory -->
-					<journeyMeetings>
-						<!-- ch-usage: expected -->
-						<!-- ch-note: For splitting and joining -->
+										<journeyMeetings>
+						<!-- ch-usage: forbidden -->
+						<!-- ch-note: Could have been used for splitting and joining. We will do it with ServiceJourneyInterchange -->
 						<JourneyMeeting id="generated" version="1">
-                            <!-- ch-usage: mandatory -->
-							<!-- ch-see -->
 							<FromJourneyRef ref="sjyid" versionRef="referenced"/>
 							<ToJourneyRef ref="sjyid1" versionRef="referenced"/>
 						</JourneyMeeting>
 					</journeyMeetings>
+<journeyInterchanges>
+						<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
+							<!-- ch-usage: mandatory -->
+							<!-- ch-see -->
+							<FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="1">
+							</FromPointRef>
+							<FromVisitNumber>1</FromVisitNumber>
+							<ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="1">
+							</ToPointRef>
+							<FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" versionRef="1">
+							</FromServiceJourneyRef>
+							<ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" versionRef="1">
+							</ToServiceJourneyRef>
+						</ServiceJourneyInterchange>
+					</journeyInterchanges>
+
 					<interchangeRules>
-						<!-- ch-usage: expected -->
+						<!-- ch-usage: forbidden -->
 						<InterchangeRule id="generated2" version="1">
-							<!-- This is the rule Interchange Rule that is important for the schematron generation -->
 							<!-- ch-usage: mandatory -->
 						</InterchangeRule>
 						<InterchangeRule id="generated" version="1">
-							<!-- ch-usage: optional -->
-							<!-- ch-note: transfer times between ServiceJourneys (UMSTEIGZ) -->
-							<!-- ch-see InterchangeRule_UMSTEIGZ -->
 						</InterchangeRule>
 					</interchangeRules>
+
+
 				</TimetableFrame>
 			</frames>
 		</CompositeFrame>
