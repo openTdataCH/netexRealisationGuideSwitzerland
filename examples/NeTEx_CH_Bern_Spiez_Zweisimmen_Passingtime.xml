@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Problems with this example **TODO**:
-- explanatory comment at the top missing 
-- should be JourneyMeeting shouldn't it
--->
+<!-- NeTEx Example: Flügelzug Bern - Spiez - Zweisimmen / Brig (RG 2.0) -->
 <PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
 	<ParticipantRef>TUXALP</ParticipantRef>
@@ -17,7 +14,8 @@
 			<frames>
 				<ResourceFrame id="ch:1:ResourceFrame:1" version="any">
 					<validityConditions>
-						<ValidityCondition id="ch:1:ValidityCondition:1" version="any">		
+						<ValidityCondition id="ch:1:ValidityCondition:1" version="any">
+							<Name>Fahrplanjahr 2025/26</Name>
 						</ValidityCondition>
 					</validityConditions>
 					<responsibilitySets>
@@ -88,7 +86,7 @@
 								</Location>
 							</Centroid>
 							<alternativeNames>
-								<AlternativeName id="ch:1:sloid:7000:it">
+								<AlternativeName id="ch:1:sloid:7000:it" version="any">
 									<Name lang="it">Berna</Name>
 								</AlternativeName>
 							</alternativeNames>		
@@ -271,7 +269,7 @@
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
-									<Value>8507290</Value>
+									<Value>8501609</Value>
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
@@ -342,7 +340,8 @@
 						</Line>
 					</lines>
 					<destinationDisplays>
-						<DestinationDisplay id="DestinationDisplay:1" version="any">
+						<DestinationDisplay id="ch:1:DestinationDisplay:1" version="any">
+							<Name lang="de">Brig / Zweisimmen</Name>
 						</DestinationDisplay>
 					</destinationDisplays>
 					<scheduledStopPoints>
@@ -410,11 +409,11 @@
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
-									<Value>8507290</Value>
+									<Value>8507478</Value>
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7290:0:930269</Value>
+									<Value>ch:1:sloid:7478:0:852180</Value>
 								</KeyValue>
 							</keyList>
 							<Name lang="de">Frutigen</Name>
@@ -482,7 +481,7 @@
 								  <ScheduledStopPointRef ref="ch:1:sloid:7000:5:9"/>
 								  <ForAlighting>false</ForAlighting>
 								  <ForBoarding>true</ForBoarding>
-								  <DestinationDisplayRef ref="DestinationDisplay:1"/>
+								  <DestinationDisplayRef ref="ch:1:DestinationDisplay:1"/>
 								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.2" version="any">
 									<ScheduledStopPointRef ref="ch:1:sloid:7100:1:1"/>
@@ -519,7 +518,7 @@
 						</ServiceJourneyPattern>
 						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:3" version="any">
 							<validityConditions>
-								<ValidityConditionRef ref="ch:1:ValidityConditions:1"></ValidityConditionRef>
+								<ValidityConditionRef ref="ch:1:ValidityCondition:1"></ValidityConditionRef>
 							</validityConditions>
 							<Name>Spiez-Brig</Name>
 							<RouteView>
@@ -563,7 +562,7 @@
 				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="any">
 					
 					<vehicleJourneys>
-						<ServiceJourney id="ch:1:ServiceJourney:1" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:1">
+						<ServiceJourney id="ch:1:ServiceJourney:1" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
 							<validityConditions>
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
 							</validityConditions>
@@ -585,7 +584,7 @@
 							<LineRef ref="ch:1:slnid:1024437" version="any"/>
 							<DirectionType>outbound</DirectionType>
 							<trainNumbers>
-								<TrainNumberRef ref="ch:1:TrainNumber:4179"/>
+								<TrainNumberRef ref="ch:1:TrainNumber:4175"/>
 							</trainNumbers>
 							<passingTimes>
 								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:1.1" version="any">
@@ -603,7 +602,7 @@
 								</TimetabledPassingTime>
 							</passingTimes>
 						</ServiceJourney>
-						<ServiceJourney id="ch:1:ServiceJourney:2" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:1">
+						<ServiceJourney id="ch:1:ServiceJourney:2" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
 							<validityConditions>
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
 							</validityConditions>
@@ -625,7 +624,7 @@
 							<LineRef ref="ch:1:slnid:1024426" version="any"/>
 							<DirectionType>outbound</DirectionType>
 							<trainNumbers>
-								<TrainNumberRef ref="ch:1:TrainNumber:6831"/>
+								<TrainNumberRef ref="ch:1:TrainNumber:6829"/>
 							</trainNumbers>
 							<passingTimes>
 								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:2.1" version="any">
@@ -638,7 +637,7 @@
 								</TimetabledPassingTime>
 							</passingTimes>
 						</ServiceJourney>
-						<ServiceJourney id="ch:1:ServiceJourney:3" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:1">
+						<ServiceJourney id="ch:1:ServiceJourney:3" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
 							<validityConditions>
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
 							</validityConditions>
@@ -681,52 +680,55 @@
 					</vehicleJourneys>
 					<trainNumbers>
 						<TrainNumber id="ch:1:TrainNumber:4175" version="any">
-							<Description lang="de">Bern - Spiez - Kandersteg - Brig (- Domodossola)</Description>
+							<Description lang="de">RE1 4175 Bern - Spiez</Description>
+							<ForAdvertisement>4175</ForAdvertisement>
 						</TrainNumber>
 						<TrainNumber id="ch:1:TrainNumber:6829" version="any">
-							<Description lang="de">Spiez - Zweisimmen</Description>
+							<Description lang="de">R11 6829 Spiez - Zweisimmen</Description>
+							<ForAdvertisement>6829</ForAdvertisement>
+						</TrainNumber>
+						<TrainNumber id="ch:1:TrainNumber:4179" version="any">
+							<Description lang="de">RE1 4179 Spiez - Brig</Description>
+							<ForAdvertisement>4179</ForAdvertisement>
 						</TrainNumber>
 					</trainNumbers>
 					<typesOfService>
 						<TypeOfService id="ch:1:TypeOfService:1" version="any">
 						</TypeOfService>
 					</typesOfService>
-					<interchangeRules>
-						<InterchangeRule id="ch:1:InterchangeRule:1" version="any">
+					<journeyInterchanges>
+						<!-- Durchbindung Spiez: SJ1 (RE Bern→Spiez) → SJ2 (R Spiez→Zweisimmen) -->
+						<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:SJ1-SJ2-Spiez">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
+							</validityConditions>
 							<StaySeated>true</StaySeated>
+							<CrossBorder>false</CrossBorder>
 							<Planned>true</Planned>
-							<Advertised>true</Advertised>
-							<Controlled>true</Controlled>
-							<FeederFilter>
-								<StopPlaceRef ref="ch:1:sloid:7483:0:954324" versionRef="any"/>
-								<AllLines/>
-								<ServiceJourneyRef ref="ch:1:ServiceJourney:1" version="any"/>
-							</FeederFilter>
-							<DistributorFilter>
-								<StopPlaceRef ref="ch:1:sloid:7483:0:954324" versionRef="any"/>
-								<AllLines/>
-								<ServiceJourneyRef ref="ch:1:ServiceJourney:2" version="any"/>
-							</DistributorFilter>
-						</InterchangeRule>
-						<InterchangeRule id="ch:1:InterchangeRule:2" version="any">
-							<StaySeated>true</StaySeated>
+							<Guaranteed>true</Guaranteed>
+							<FromPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
+							<ToPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
+							<FromServiceJourneyRef ref="ch:1:ServiceJourney:1" version="any"/>
+							<ToServiceJourneyRef ref="ch:1:ServiceJourney:2" version="any"/>
+						</ServiceJourneyInterchange>
+						<!-- Flügelung Spiez: SJ1 (RE Bern→Spiez) → SJ3 (RE Spiez→Brig) -->
+						<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:SJ1-SJ3-Spiez">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
+							</validityConditions>
+							<StaySeated>false</StaySeated>
+							<CrossBorder>false</CrossBorder>
+							<!-- ChangeWithinVehicle>true</ChangeWithinVehicle -->
+							<!-- TODO: uncomment once NeTEx XSD is updated with PR commit 40c8f31 -->
 							<Planned>true</Planned>
-							<Advertised>true</Advertised>
-							<Controlled>true</Controlled>
-							<FeederFilter>
-								<StopPlaceRef ref="ch:1:sloid:7483:0:954324" versionRef="any"/>
-								<AllLines/>
-								<ServiceJourneyRef ref="ch:1:ServiceJourney:1" version="any"/>
-							</FeederFilter>
-							<DistributorFilter>
-								<StopPlaceRef ref="ch:1:sloid:7483:0:954324" versionRef="any"/>
-								<AllLines/>
-								<ServiceJourneyRef ref="ch:1:ServiceJourney:3" version="any"/>
-							</DistributorFilter>
-						</InterchangeRule>
-					</interchangeRules>
+							<Guaranteed>true</Guaranteed>
+							<FromPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
+							<ToPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
+							<FromServiceJourneyRef ref="ch:1:ServiceJourney:1" version="any"/>
+							<ToServiceJourneyRef ref="ch:1:ServiceJourney:3" version="any"/>
+						</ServiceJourneyInterchange>
+					</journeyInterchanges>
 				</TimetableFrame>
-				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:ts3" version="any"/>
 			</frames>
 		</CompositeFrame>
 	</dataObjects>
