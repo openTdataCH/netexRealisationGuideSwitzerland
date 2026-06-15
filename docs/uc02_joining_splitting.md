@@ -19,7 +19,8 @@ graph LR
 
 > **Note:** `ChangeWithinVehicle` should be set to `true` when a passenger may need
 > to move to a different part of the train at the splitting point to continue their
-> journey. See also [uc01 Durchbindung](uc01_durchbindung.md).
+> journey.
+> See also [uc01 Durchbindung](uc01_durchbindung.md).
 
 ## Mapping between HRDF and NeTEx
 
@@ -116,7 +117,8 @@ splitting and joining.
 
 The detailed handling is described for the element [ServiceJourneyInterchange](09_timetable.md#servicejourneyinterchange).
 
-- [Example](../generated/xml-snippet/ServiceJourneyInterchange.xml)
+- [Example](../generated/xml-snippets/ServiceJourneyInterchange.xml)
+- [Example Splitting (Flügelzug Bern–Spiez–Brig/Zweisimmen)](../examples/NeTEx_CH_Bern_Spiez_Zweisimmen_Passingtime.xml)
 
 ## Related use cases
 
