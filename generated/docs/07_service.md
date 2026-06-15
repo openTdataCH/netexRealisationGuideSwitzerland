@@ -431,7 +431,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 
 ### Usage Notes
 
-> ** TODO ** Suppose a vehicle arrives at quay 2A and departs on quay 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS. #82
+> **TODO** Suppose a vehicle arrives at quay 2A and departs on quay 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS. #82
 https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/82
 > 
 ## DefaultConnection
@@ -661,7 +661,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
 *->[Template](../templates/ServiceJourneyPattern)*
 
 ### Usage Notes
->** TODO** Diskussion Wilfried 10.6.
+>**TODO** Diskussion Wilfried 10.6.
 
 
 ## Notice
@@ -729,7 +729,7 @@ Informational or regulatory text associated with public transport services, disp
 *->[Template](../templates/Notice.xml)*
 
 ### Usage Notes
-> ** TODO** do we need a special use case? Wilfried 10.6.
+> **TODO** do we need a special use case? Wilfried 10.6.
 
 
 ## NoticeAssignment

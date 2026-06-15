@@ -29,7 +29,7 @@ Als drittes Beispiel eignet sich die Fahrt 11957 auf der Linie 50.119. Diese Fah
 A simple splitting train without any additional information.
 Bern - Thun - Spiez - (Zweisimmen | Brig)
 
-> ** TODO **: Check if this really is the full example with the latest version JourneyMeeting or the improved InterchangeRule also 3 parts and one stays in Brig
+> **TODO**: Check if this really is the full example with the latest version JourneyMeeting or the improved InterchangeRule also 3 parts and one stays in Brig
 
 [Link to example](NeTEx_CH_Bern_Spiez_Zweisimmen_Passingtime.xml)
 
