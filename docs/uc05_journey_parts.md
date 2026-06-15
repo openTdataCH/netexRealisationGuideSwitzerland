@@ -58,6 +58,7 @@ graph LR
   </parts>
 </ServiceJourney>
 ```
+- [Example](../examples/NeEX_CH_Bern_Olten_ZuerichHB_Winterthur_StGallen_with_Facilities.xml)
 
 ### 2. Change of train number (`TrainNumberRef`)
 
