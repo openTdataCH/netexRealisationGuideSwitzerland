@@ -6,7 +6,7 @@
 NeTEx is a CEN Technical Specification (CEN/TS), published as a series referenced as CEN/TS 16614. It is based on Transmodel V6.2 (EN 12896 series) and SIRI (CEN/TS 15531-4/-5 and EN 15531-1/-2/-3).
 
 ### Access to the Standards
-All norms and technical specfications can be purchased via VSS-Mobilityplattform. Search for "netex", "siri", "transmodel".
+All norms and technical specifications can be purchased via VSS-Mobilityplattform. Search for "netex", "siri", "transmodel".
 
 https://www.mobilityplatform.ch
 
@@ -76,7 +76,7 @@ https://normes.transport.data.gouv.fr/
 https://github.com/hfjelstad/Profile_Documentation_v2/tree/slovenian-profile-analysis
 (under construction)
 
-## Other 
+## Other Ressources
 
 - https://opentransportdata.swiss/de/cookbook/timetable-cookbook/netex/ (opentransportdata.swiss)
 - https://www.vdv.de/netex.aspx (vdv.de)
