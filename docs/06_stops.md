@@ -13,34 +13,28 @@ In this chapter:
 ### Purpose
 A `SiteFrame` contains the physical infrastructure model for public transport — `StopPlace`s, `Quay`s, and topographic context. It defines the spatial elements that passengers interact with and that other frames reference for stop assignments.
 
-```mermaid!
+```mermaid
 classDiagram
     %% Styles
-    classDef frame fill:#FFF8E1,stroke:#FFB300;
-    classDef contained fill:#E8F4FF,stroke:#1E90FF;
-    classDef external fill:#F6F6F6,stroke:#AAAAAA;
+    classDef frame fill:#FFF8E1,stroke:#FFB300
+    classDef contained fill:#E8F4FF,stroke:#1E90FF
+    classDef external fill:#F6F6F6,stroke:#AAAAAA
 
     %% Frame
-    class SiteFrame {
-    }
+    class SiteFrame:::frame
 
     %% Contained elements
-    class StopPlace {
+    class StopPlace:::contained {
         - centroid
         - quays []
-        
     }
-
-    class Quay {
+    class Quay:::contained {
         - centroid
-
     }
+    class TopographicPlace:::contained
+    class Centroid:::contained
 
-    class TopographicPlace {
-    }
-
-
-    %% Containment relations (only contained elements)
+    %% Containment relations
     SiteFrame "1" o-- "0..*" StopPlace : contains
     SiteFrame "1" o-- "0..*" TopographicPlace : contains
     StopPlace "1" o-- "0..*" Quay : contains
@@ -107,7 +101,7 @@ A specific boarding or alighting position (platform, stand, bay) within a `StopP
 *→ [General NeTEx definition ](../generated/netex-html/StopPlace.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/Quay.md)
+- [Example snippet](../generated/xml-snippets/StopPlace.xml)
 
 *→ [Template](../templates/StopPlace.xml)*
 
