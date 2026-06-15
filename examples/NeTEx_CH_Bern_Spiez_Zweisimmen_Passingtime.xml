@@ -713,19 +713,18 @@
 						</ServiceJourneyInterchange>
 						<!-- Flügelung Spiez: SJ1 (RE Bern→Spiez) → SJ3 (RE Spiez→Brig) -->
 						<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:SJ1-SJ3-Spiez">
-							<validityConditions>
-								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
-							</validityConditions>
-							<StaySeated>false</StaySeated>
-							<CrossBorder>false</CrossBorder>
-							<!-- ChangeWithinVehicle>true</ChangeWithinVehicle -->
-							<!-- TODO: uncomment once NeTEx XSD is updated with PR commit 40c8f31 -->
-							<Planned>true</Planned>
-							<Guaranteed>true</Guaranteed>
-							<FromPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
-							<ToPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
-							<FromServiceJourneyRef ref="ch:1:ServiceJourney:1" version="any"/>
-							<ToServiceJourneyRef ref="ch:1:ServiceJourney:3" version="any"/>
+ 						 <validityConditions>
+    						<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
+  							</validityConditions>
+						  <StaySeated>false</StaySeated>
+						  <CrossBorder>false</CrossBorder>
+						  <ChangeWithinVehicle>true</ChangeWithinVehicle>
+						  <Planned>true</Planned>
+						  <Guaranteed>true</Guaranteed>
+						  <FromPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
+						  <ToPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
+						  <FromServiceJourneyRef ref="ch:1:ServiceJourney:1" version="any"/>
+						  <ToServiceJourneyRef ref="ch:1:ServiceJourney:3" version="any"/>
 						</ServiceJourneyInterchange>
 					</journeyInterchanges>
 				</TimetableFrame>
