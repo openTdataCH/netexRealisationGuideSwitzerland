@@ -11,7 +11,7 @@
 	<ParticipantRef>ch:PAG</ParticipantRef>
 	<dataObjects>
 		<CompositeFrame id="ch:1:CompositeFrame:j26" version="1">
-							<ValidBetween>
+			<ValidBetween>
 				<FromDate>2025-12-14T00:00:00</FromDate>
 				<ToDate>2026-12-10T23:59:59</ToDate>
 			</ValidBetween>
@@ -33,6 +33,16 @@
 							</roles>
 						</ResponsibilitySet>
 					</responsibilitySets>
+					<typesOfValue>
+						<ValueSet id="TypeOfProductCategory" version="1">
+							<values>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:B" version="1">
+									<Name>Bus</Name>
+									<ShortName>B</ShortName>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+					</typesOfValue>
 					<organisations>
 						<Operator id="ch:1:sboid:100602" version="1">
 							<keyList>
@@ -299,6 +309,24 @@
 							<QuayRef ref="ch:1:sloid:72204:0:352830" version="1"/>
 						</PassengerStopAssignment>
 					</stopAssignments>
+					<timingLinks>
+						<TimingLink id="ch:1:TimingLink:1" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:72178:0:535942"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:72202:0:134953"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:2" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:72202:0:134953"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:72203:0:404965"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:3" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:72203:0:404965"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:673:0:688162"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:4" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:673:0:688162"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:72204:0:352830"/>
+						</TimingLink>
+					</timingLinks>
 					<journeyPatterns>
 						<JourneyPattern id="ch:PAG:JourneyPattern:50_119" version="1">
 							<Name>Special Early_Bird_Holiday_Service_50.110</Name>
@@ -331,62 +359,71 @@
 							</pointsInSequence>
 						</JourneyPattern>
 					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="ch:1:TimeDemandType:PAG:1" version="1">
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1:1" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:1" version="1"/>
+									<RunTime>PT22M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1:2" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:2" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1:3" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:3" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1:4" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:4" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+							<!-- we don't have waiting times here. They all restart at the same minute. -->
+						</TimeDemandType>
+					</timeDemandTypes>
 				</ServiceFrame>
 				<!-- Special Service Days for PostBus for Christmas / Fastnacht -->
 				<ServiceCalendarFrame id="ch:PAG:ServiceCalendarFrame:50_119" version="1">
-				<validityConditions>
-					<AvailabilityCondition id="generated" version="1">
-					<Description>Christmas_and_Fastnacht (25.-27. 12. 2025 and 3./4. 4. 2026 and 1./2. 8. 2026)</Description>
-				<FromDate>2025-12-14T00:00:00</FromDate>
-				<ToDate>2026-12-10T23:59:59</ToDate>
-					<ValidDayBits>00000000001110000000000000000000000000000000000000000000000000000000000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000000000000000000000000</ValidDayBits>
-					</AvailabilityCondition> <!-- ValidDayBits  NOT tested -->
-				</validityConditions>
+					<validityConditions>
+						<AvailabilityCondition id="generated" version="1">
+							<Description>Christmas_and_Fastnacht (25.-27. 12. 2025 and 3./4. 4. 2026 and 1./2. 8. 2026)</Description>
+							<FromDate>2025-12-14T00:00:00</FromDate>
+							<ToDate>2026-12-10T23:59:59</ToDate>
+							<ValidDayBits>00000000001110000000000000000000000000000000000000000000000000000000000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000000000000000000000000</ValidDayBits>
+						</AvailabilityCondition>
+						<!-- ValidDayBits  NOT tested -->
+					</validityConditions>
 				</ServiceCalendarFrame>
 				<TimetableFrame id="ch:PAG:TimetableFrame:50_119" version="1">
 					<vehicleJourneys>
 						<ServiceJourney id="ch:PAG:SJ:50_119:Special" version="1">
-						<validityConditions>
-							<AvailabilityConditionRef ref="generated" version="1"/>
-						</validityConditions>
-						<keyList>
-							<KeyValue>
-								<Key>sjyid</Key>
-								<Value>sjyid-1</Value>
-							</KeyValue>
-						</keyList>
-						<privateCodes>
-							<PrivateCode type="sjyid">sjyid-1</PrivateCode>
-						</privateCodes>
+							<validityConditions>
+								<AvailabilityConditionRef ref="generated" version="1"/>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>sjyid</Key>
+									<Value>sjyid-1</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sjyid">sjyid-1</PrivateCode>
+							</privateCodes>
+							<TransportMode>bus</TransportMode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+							<TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>04:34:00</DepartureTime>
+							<DepartureDayOffset>0</DepartureDayOffset>
 							<JourneyPatternRef ref="ch:PAG:JourneyPattern:50_119" version="1"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:PAG:1" version="1"/>
 							<OperatorRef ref="ch:1:sboid:100602" version="1"/>
 							<LineRef ref="ch:1:slnid:1026478" version="1"/>
 							<DirectionType>outbound</DirectionType>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:11957" version="1"/>
 							</trainNumbers>
-							<passingTimes>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:1" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:1" version="1"/>
-									<DepartureTime>04:34:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:2" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:2" version="1"/>
-									<ArrivalTime>04:36:00</ArrivalTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:3" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:3" version="1"/>
-									<ArrivalTime>04:37:00</ArrivalTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:4" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:4" version="1"/>
-									<ArrivalTime>04:39:00</ArrivalTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:5" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:5" version="1"/>
-									<ArrivalTime>04:41:00</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
 						</ServiceJourney>
 					</vehicleJourneys>
 					<trainNumbers>
@@ -405,7 +442,7 @@
 						</Notice>
 						<!-- Journey only runs when passengers board at first stop -->
 						<Notice id="ch:PAG:Notice:StartOnlyIfPassengers" version="1">
-							<Text lang="en">Journey runs only if passengers board at the origin stop.</Text>
+							<Text lang="en">Journey runs only if passengers board at the origin stop.<Text lang="de">Dieser Kurs fährt nur, wenn bereits am Start Fahrgäste zugestiegen sind.</Text></Text>
 						</Notice>
 					</notices>
 					<noticeAssignments>
