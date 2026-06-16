@@ -45,7 +45,7 @@
 									<!-- ch-usage: expected -->
 									ch:1:sjyid:100001:71707-003
 								</PrivateCode>
-							</privateCodes>
+							</privateCodes>							
 							<Extensions>
 								<!-- ch-usage: optional -->
 								<!-- ch-note: Used to indicate Facility changes. -->
@@ -110,10 +110,6 @@
 								<!-- ch-usage: optional -->
 								0
 							</DepartureDayOffset>
-							<TimeDemandTypeRef ref="generated" versionRef="1">
-								<!-- ch-usage: mandatory -->
-								<!-- ch-note: The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
-							</TimeDemandTypeRef>
 							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1">
 								<!--ch-usage: mandatory -->
 							</LineRef>
@@ -130,8 +126,10 @@
 								<ScheduledStopPointRef versionRef="1" ref="ch:1:sloid:3412"/>
 							</Destination>
 							<passingTimes>
-								<!-- ch-usage: forbidden -->
+								<!-- ch-usage: mandatory -->
 								<TimetabledPassingTime id="generated" version="1">
+									<!-- ch-usage: expected -->
+									<!-- ch-see -->
 									<PointInJourneyPatternRef ref="generated" versionRef="1"/>
 								</TimetabledPassingTime>
 							</passingTimes>

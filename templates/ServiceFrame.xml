@@ -78,6 +78,18 @@
 							<!-- ch-see -->
 						</PassengerStopAssignment>
 					</stopAssignments>
+					<timingLinks>
+						<!-- ch-usage: expected -->
+						<!-- ch-see -->
+						<!-- ch-note: We use TimingLink as the time behaviour between two ScheduledStopPoints -->
+						<TimingLink id="generated" version="1">
+							<!-- ch-note: every different handling of the link needs a different timing link e.g. bus vs tram -->
+							<!-- ch-usage: expected -->
+							<!-- ch-see -->
+							<FromPointRef ref="sloid1" versionRef="1"/>
+							<ToPointRef ref="sloid 2" versionRef="1"/>
+						</TimingLink>
+					</timingLinks>							
 					<journeyPatterns>
 						<!-- ch-usage: mandatory -->
 						<ServiceJourneyPattern id="generated" version="1">
@@ -85,6 +97,16 @@
 							<!-- ch-see -->
 						</ServiceJourneyPattern>
 					</journeyPatterns>
+					<timeDemandTypes>
+						<!-- ch-usage: expected -->
+						<!-- ch-see -->
+						<TimeDemandType id="generated" version="1"/>
+					</timeDemandTypes>
+						<!-- ch-usage: forbidden -->
+					<timeDemandTypeAssignments>
+						<!--ch-usage: forbidden-->
+						<TimeDemandTypeAssignment id="generated" version="1"/>
+					</timeDemandTypeAssignments>					
 					<notices>
 						<!-- ch-note: notices may be present or not -->
 						<!-- ch-usage: expected-->

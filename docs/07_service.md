@@ -8,6 +8,7 @@ In this chapter:
 - [DefaultConnection](#defaultconnection)
 - [SiteConnection](#siteconnection)
 - [ServiceJourneyPattern](#servicejourneypattern)
+- [TimeDemandType](xxx)
 - [Notice](#Notice)
 - [NoticeAssignment](#NoticeAssignment)
 
@@ -264,6 +265,33 @@ For more details see the [use case on transfers](uc03_transfers.md).
 
 
 
+## TimingLink
+*→ [Glossary definition](A4_annex_glossary.md#TimingLink)*
+
+### Purpose
+`TimingLink`  is used to describe the run times and wait times of a given `ServiceJourney`. 
+
+
+### Table
+- [Swiss profile NeTEx definition](../generated/markdown-examples/TimingLink.md)
+
+*-> [General NeTEx definition](../generated/netex-html/TimingLink.html)*
+
+### Example
+
+- [Example snippet](../generated/xml-snippets/TimingLink.xml)
+
+*->[Template](../templates/TimingLink.xml)*
+
+### Usage Notes
+* It must fit with the sequence defined in `ServiceJourneyPattern`.
+* `WaitTime`is only needed when >0..
+* It is between `ScheduledStopPoints for the time being`.
+* If there is maneuvering or change of quay, then a a timing link needs to be added for that too.
+* Multiple visits in the same `ServiceJourneyPattern` are currently a problem.
+
+> **TODO** Adrian/Wilfried
+
 ## ServiceJourneyPattern
 *→ [Glossary definition](A4_annex_glossary.md#ServiceJourneyPattern)*
 
@@ -280,11 +308,34 @@ For more details see the [use case on transfers](uc03_transfers.md).
 
 - [Example snippet](../generated/xml-snippets/ServiceJourneyPattern.xml)
 
-*->[Template](../templates/ServiceJourneyPattern)*
+*->[Template](../templates/ServiceJourneyPattern.xml)*
 
 ### Usage Notes
 
 ServiceJourneyPatterns are a common concept in the VDV interface world ("Linienfahrweg"). In order to model ServiceJourneys effictiently and to reduce overall file size, ServiceJourneys sharing the same stop sequence and the same boarding/alighting options should use the same ServiceJourneyPattern. Do not just generate one ServiceJourneyPattern for each ServiceJourney.
+
+
+
+## TimeDemandType
+*→ [Glossary definition](A4_annex_glossary.md#timedemandtype)*
+
+### Purpose
+`TimeDemandType` is used to describe the timing pattern (run times and wait times) on a `ServiceJourneyPattern`. They currently work on `ScheduledStopPoints`.
+
+
+### Table
+- [Swiss profile NeTEx definition](../generated/markdown-examples/TimeDemandType.md)
+
+*-> [General NeTEx definition](../generated/netex-html/TimeDemandType.html)*
+
+### Example
+
+- [Example snippet](../generated/xml-snippets/TimeDemandType.xml)
+
+*->[Template](../templates/TimeDemandType.xml)*
+
+### Usage Notes
+> **TODO** Wilfried und Adrian
 
 
 ## Notice

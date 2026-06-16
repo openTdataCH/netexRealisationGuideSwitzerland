@@ -77,6 +77,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - **Day Governance:** `DayType` references control on which days the journey operates; per-date deviations belong to `DatedServiceJourney`.
 - **Validation:** Ensure `JourneyPatternRef`, `LineRef`, and `OperatorRef` are consistent and reference existing objects.
 - We assume that a swiss journey exists for almost every `ServiceJourney`. In those cases the `id` is also set to the `sjyid`. Possible problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `id` will contain a `_gen` substring.
+- A `ServiceJourney`can be associated with exactly one `ServiceJourneyPattern` and `TimeDemandType`.
 
 ## TemplateServiceJourney
 *→ [Glossary definition](A4_annex_glossary.md#templateservicejourney)*
