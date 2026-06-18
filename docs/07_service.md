@@ -143,6 +143,7 @@ A public transport service line, representing a marketed route with a `Name`, `T
 - Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
 - Note that there exist journeys in Switzerland and neighbouring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
 - For more information about SwissLineID: see https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf
+- id-attribute needs to be kept stable between exports.
 
 ## DestinationDisplay
 *→ [Glossary definition](A4_annex_glossary.md#DestinationDisplay)*
@@ -165,6 +166,7 @@ Showing the destination of a `ServiceJourney`. The text shown on the front or si
 - In HRDF sometimes the destination is not set (`*R`). This results in NeTEX in a calculated destination definition. 
 - The `DestinationDisplay` is usually set on the `ServiceJourney`. If it changes during the run, it needs to be changed in the `ServiceJourneyPattern`. If it changes on that, then the new destination should be used. In our output, we will fill all remaining `PointsInJourneyPattern`with the relevant change.
 - See also the [use case on changes in destination](uc13_changes_in_destination.md) 
+- id-attribute needs to be kept stable between exports.
 
 > **TODO** the rules for defining need to be clarified. #81
 
@@ -190,6 +192,9 @@ A `ScheduledStopPoint` can represent two types of stop points:
 
 *->[Template](../templates/ScheduledStopPoint.xml)*
 
+### Usage Notes
+- id-attribute needs to be kept stable between exports.
+
 ## PassengerStopAssignment
 *→ [Glossary definition](A4_annex_glossary.md#PassengerStopAssignment)*
 
@@ -211,10 +216,13 @@ A `ScheduledStopPoint` can represent two types of stop points:
 *->[Template](../templates/PassengerStopAssignment.xml)*
 
 ### Usage Notes
-
 > **TODO** Suppose a vehicle arrives at quay 2A and departs on quay 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS. #82
 https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/82
-> 
+
+- id-attributes don't need to be stable.
+
+
+
 ## DefaultConnection
 *→ [Glossary definition](A4_annex_glossary.md#DefaultConnection)*
 
@@ -239,14 +247,16 @@ https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/82
 *->[Template](../templates/DefaultConnection.xml)*
 
 ### Usage Notes
-For more details see the [use case on transfers](uc03_transfers.md).
+- For more details see the [use case on transfers](uc03_transfers.md).
+- id-attribute needs to be kept stable between exports.
 
 
 ## SiteConnection
 *→ [Glossary definition](A4_annex_glossary.md#SiteConnection)*
 
 ### Purpose
-The `SiteConnection` describes the transfer times between two adjacent `StopPlace`s. 
+- The `SiteConnection` describes the transfer times between two adjacent `StopPlace`s. 
+- id-attribute needs to be kept stable between exports.
 
 
 ### Table
@@ -289,6 +299,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
 * It is between `ScheduledStopPoints for the time being`.
 * If there is maneuvering or change of quay, then a a timing link needs to be added for that too.
 * Multiple visits in the same `ServiceJourneyPattern` are currently a problem.
+- id-attribute needs to be kept stable between exports.
 
 > **TODO** Adrian/Wilfried
 
@@ -313,7 +324,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
 ### Usage Notes
 
 ServiceJourneyPatterns are a common concept in the VDV interface world ("Linienfahrweg"). In order to model ServiceJourneys effictiently and to reduce overall file size, ServiceJourneys sharing the same stop sequence and the same boarding/alighting options should use the same ServiceJourneyPattern. Do not just generate one ServiceJourneyPattern for each ServiceJourney.
-
+- id-attribute should be kept stable between exports.
 
 
 ## TimeDemandType
@@ -359,6 +370,7 @@ Informational or regulatory text associated with public transport services, disp
 
 ### Usage Notes
 Notice elements should only be used to convey information which cannot be transported using specific model elements. Do not use Notice when the information could be expressed by specific elements, e.g. FacilitySet, DayType, ForAlighting, ForBoarding. Notices can be used to provide further information on ServiceFacilities but not as a replacement for them. Ideally, the description of a Notice is translated into common languages of CH (DE, IT, FR).
+- id-attribute don't need to be kept stable between exports.
 
 
 ## NoticeAssignment
@@ -377,3 +389,6 @@ Assign a `Notice` to an element.
 - [Example snippet](../generated/xml-snippets/NoticeAssignment.xml)
 
 *->[Template](../templates/NoticeAssignment.xml)*
+
+### Usage Notes
+- id-attribute does not to be kept stable.

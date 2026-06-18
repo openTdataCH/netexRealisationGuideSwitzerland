@@ -129,7 +129,7 @@ Examples.: `test_zvv_2024_20231112_095217.zip`, `prod_tl_2024_20231114_152836.zi
 
 The file name must be agreed on between the data provider and SKI. Generally it is agreed that delivery can be on network, operator or line base.
 
->**TODO** handling of partial deliveries and mixed lines 
+>**TODO** handling of partial deliveries and mixed lines will be added later.
 
 ## File sent by SKI to data receivers 
 As the quantity of data is very large for a single XML-file, SKI provides the data a list of XML files. In addition to the XML files, SKI provides a README file listing the contents of each XML file. 

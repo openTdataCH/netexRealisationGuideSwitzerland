@@ -78,6 +78,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - **Validation:** Ensure `JourneyPatternRef`, `LineRef`, and `OperatorRef` are consistent and reference existing objects.
 - We assume that a swiss journey exists for almost every `ServiceJourney`. In those cases the `id` is also set to the `sjyid`. Possible problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `id` will contain a `_gen` substring.
 - A `ServiceJourney`can be associated with exactly one `ServiceJourneyPattern` and `TimeDemandType`.
+- id-attribute needs to be kept stable between exports.
 
 ## TemplateServiceJourney
 *→ [Glossary definition](A4_annex_glossary.md#templateservicejourney)*
@@ -100,6 +101,7 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 - `HeadwayJourneyGroup` holds all the frequency-based information of the journey, as for example when the stops of the journey are serviced the first/last time and in what interval (or at which frequency, respectively). 
 - Note that in addition to `HeadwayJourneyGroup`, standard NeTEx also features `RhythmicalJourneyGroup` to specifiy, e.g., departures at 15, 27 and 40 minutes past the hour - this is not used in the Swiss profile.
 - For sjyid see information about [frequencies](uc14_frequencies.md).
+- id-attribute needs to be kept stable between exports.
 
 
 ## OccupancyView
@@ -138,6 +140,9 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 
 *→ [Template](../templates/TrainNumber.xml)*
 
+### Usage Note
+- id-attribute needs to be kept stable between exports.
+
 ## TypeOfService
 
 ### Purpose
@@ -155,6 +160,7 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 *→ - [Template](../templates/TypeOfService.xml)*
 
 ### Usage Notes
+- id-attribute needs to be kept stable between exports.
 
 The following types are currently used:
 
@@ -170,6 +176,7 @@ Actually there is only one allowed value that we use in the Swiss profile: Only 
 
 ## TimetabledPassingTime
 *→ [Glossary definition](A4_annex_glossary.md#timetabledpassingtime)*
+> We don't use TimetabledPassingTime. We will remove this. We use TimeDemandType now.
 
 ### Purpose
 
@@ -186,12 +193,12 @@ Long-term planned time data concerning public transport vehicles passing a parti
 *→ [Template](../templates/TimetabledPassingTime.xml)*
 
 ### Usage Notes
-
 - Note that for journeys lasting more than one day, `DayOffset` is available.
 - If `DepartureTime` is not on the same day as `ArrivalTime` this information will be provided using `WaitingTime`.
 - We use sjyid whenever possible as the attribute. However, there are different types of `ServiceJourney`s that don't have one:
   - foreign `ServiceJourney`s
-  - **TODO** which other cases don't have sjyid #83
+  - perhaps some touristic offers
+  - frequency-based journeys that are wrongly modeled in HRDF (will be removed)
 - We store the sjyid in different places `id`, `privateCodes/PrivateCode`, `KeyList`. This allows different importing systems to find the sjyid.
 
 
@@ -225,6 +232,7 @@ The standard states: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an 
 - `FromServiceJourneyRef` references the feeder journey; `ToServiceJourneyRef` references the distributor journey. Note: the deprecated elements `FromJourneyRef` / `ToJourneyRef` from RG 1.0 (`JourneyMeeting`) must not be used.
 - Element order must follow the XSD sequence: `StaySeated` → `CrossBorder` → `ChangeWithinVehicle` → `MaximumWaitTime` → `FromPointRef` / `ToPointRef` → `FromServiceJourneyRef` / `ToServiceJourneyRef`.
 - Make sure not to generate identical `ServiceJourneyInterchange`s. Reuse them where possible.
+- id-attribute should be kept stable between exports.
 
 ## InterchangeRule
 > ⚠️ **Deprecated** — `InterchangeRule` is replaced by `ServiceJourneyInterchange` in RG 2.0.  

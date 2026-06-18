@@ -86,6 +86,7 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 - Foreign `StopPlace`s may be mapped to Swiss DIDOK codes. 
 - The main connection between DIDOK codes and the NeTEx export are the `ScheduledStopPoints`. They typically have the same `Id` (except for the <Element Name> in the identifier string) as the `StopPlace`. Exceptions are meta stations and local public transport already using assignment to “Haltekanten”. In such cases the `ScheduledStopPoint` is more refined than the DIDOK and UIC codes. 
 - Meta-stations will have their own codes. In some cases these are added for operational or searching reasons. 
+- id-attribute needs to be kept stable between exports.
 
 
 ## Quay
@@ -116,6 +117,7 @@ as it parents.
 {StopPlace SLOID}_gen:{Quay SLOID}_pf:{Platform Code*}.
 - If no platform SLOID is available {StopPlace SLOID}_gen:missingSLOID_pf:{Platform Code*} will be used instead.
 - 👉 Please note: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.
+- id-attribute needs to be kept stable between exports.
 
 
 In the table below you will find an overview of the possible cases. For more information on SLOID, see [Swiss Location Identification (SLOID) | öv-info.ch](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid "https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid")
@@ -156,7 +158,8 @@ A named geographic area such as a city, municipality, county, or region - used t
 *→ [Template](../templates/TopographicPlace.xml)*
 
 ### Usage Notes
-The `TopographicPlace` represent the cantons and communes in Switzerland. Each `StopPlace` should reference the `TopographicPlace` representing its canton.  
+- The `TopographicPlace` represent the cantons and communes in Switzerland. Each `StopPlace` should reference the `TopographicPlace` representing its canton.  
+- id-attribute needs to be kept stable between exports.
 
 
 ## Centroid
@@ -178,7 +181,6 @@ It provides precise geographic coordinates (WGS84) of a central reference point 
 The `Centroid` always contains a location. 
 - The main coordinates are given as WGS84.
 - Required accuracy 4+ decimal positions.
-- The Swiss coordinates are added as well, when available (see below) **TODO** #83
+- The Swiss coordinates are added as well, when available (for Swiss stops). The format is LV95. For imports they are not needed, however.
 - INFO+ will not use the master data from NeTEx imports, it will rely on the Atlas master data for all Swiss coordinates. INFO+ will, however, use the imported location data of foreign places without DIDOK numbers. 
-
-
+- no id-attribute

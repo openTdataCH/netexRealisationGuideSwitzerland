@@ -131,15 +131,14 @@ We only allow the following values for `NameType`:
 - `translation`
 
 ## AlternativeText
-> **TODO** remove AlternativeText with MultilanguageString
- 
+> `AlternativeText` is not used. We will use `MultilingualString`. This means that there are multiple `<Text>` elements with different `lang`-attributes. 
 
 *→ [Glossary definition](A4_annex_glossary.md#alternativetext)*
 
 ### Purpose
+The `AlternativeText` is a generic way to provide an alternative text (translation or alias).  For example, it can be used for the translation of `Notice` texts.
 
-The `AlternativeText` is a generic way to provide an alternative text (translation or alias).
-For example, it can be used for the translation of `Notice` texts.
+
 
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeText.md)
@@ -170,9 +169,6 @@ Alternative names (translations or aliases) of a `StopPlace` or `Organisation` a
 Contains shared resources used / referenced in other frames - organisations (`Authoritiy`s and `Operator`s), `VehicleType`s, codespaces, and other common reference data.
 
 See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
-
-![ResourceFrame](./media/ResourceFrame.png)
-> **TODO** replace image with a mermaid diagram
 
 ## Contained Elements
 
@@ -225,11 +221,6 @@ We use this element to  describe the different roles of the participating compan
 *→ - [Template](../templates/ResponsibilitySet.xml)*
 
 ### Usage Notes
-
-> **TODO** see if we still need the Organisation part 
-
-For the PAG company (801), the attribute `ResponsibleArea(Ref)` must also be taken into account.
-
 Services (e.g. replacement services) can be associated with different roles. These roles can be defined inside the `ResponsibilitySet` element.
 
 Only the values defined below are allowed in Switzerland for `StakeholderRoleType` in `ResponsbilityRoleAssignment`:
@@ -239,6 +230,8 @@ Only the values defined below are allowed in Switzerland for `StakeholderRoleTyp
 -	`Planning`
 
 `FareManagement` and `Planning` are currently not used. Not all roles must be filled.
+
+id-attribute should be kept stable between exports.
 
 ## TypeOf... / ValueSet
 *→ [Glossary definition: TypeOf...](A4_annex_glossary.md#typeof...)*\
@@ -251,6 +244,7 @@ TypeOf... (examples: `TypeOfNotice`, `TypeOfProductCategory`, `TypeOfService`) a
 We use TypeOfValue references in various Frames in objects including:
 -	`Notice`: references `TypeOfNotice`
 -	`Line` and `ServiceJourney`: references `TypeOfProductCategory`
+- id-attribute needs to be kept stable between exports.
 
 ## TypeOfNotice
 
@@ -328,11 +322,7 @@ in Switzerland. The TU-Code is to be used for operators of other countries.
 * If a different `Operator` is running a given `ServiceJourney`, then this is reflected in the `ServiceJourney` having 
 a different `OperatorRef`.
 * `Authority`  and `Organisation` are not used.
-
-
-> **TODO** The **PAG company** (GO = 801) is organised in different parts for managing and identifying journeys. 
->These parts are represented by the `OrganisationPart` and `TransportAdministrativeZone` elements. 
-> **TODO**#67: `OrganisationPart` needs to be studied! 6.4.1
+- id-attribute needs to be kept stable between exports.
 
 ## ServiceFacilitySet
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
@@ -372,6 +362,7 @@ separated list of elements.
 * When transforming from HRDF to NeTEx. The `Facility` is often also copied as a `Notice` in textual form.
 * The details of the usage are defined in the [mapping table for NeTEX 2.0](media/Mappingtabellen_NeTEx_v2.0.xlsx).
 * See also [Use case on service facilities](uc04_service_facilities.md).
+- id-attribute should be kept stable between exports.
 
 ## SiteFacilitySet
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
@@ -399,6 +390,7 @@ referenced to define facilities of a site.
 * There may be an overlap between `SiteFacilitySet` and `ServiceFacilitySet`. However, they reference very different things: site elements and vehicles.
 * Sometimes "capabilities"/"limitations" are defined through combinations of what a stop and what a vehicle can do.
 * In future also the use of `Equipment` and `EquipmentPlace` may become more important. These are then actual pieces of equipment. This also means that the `Vehicle` must be known and referenced. 
+- id-attribute should be kept stable between exports.
 
 ## VehicleType
 *→ [Glossary definition](A4_annex_glossary.md#vehicletype)*

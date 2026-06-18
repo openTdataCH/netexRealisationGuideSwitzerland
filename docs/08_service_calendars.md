@@ -127,6 +127,7 @@ Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
   -	`ServiceFacilitySet`
   -	`ServiceJourneyInterchange`
 - Hint: The frames `TimetableFrame`, `ServiceFrame` and `ServiceCalendarFrame` and their elements must have the same validity.
+- id-attribute does not need to be kept stable between exports.
 
 ### ServiceCalendar
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendar)*
@@ -143,6 +144,9 @@ Long-term planning uses calendar days that are classified as specific DayTypes (
 - [Example snippet](../generated/xml-snippets/ServiceCalendar.xml)
 
 *→ [Template](../templates/ServiceCalendar.xml)*
+
+#### Usage Note
+- id-attribute should to be kept stable between exports.
 
 
 ### DayType
@@ -162,6 +166,8 @@ A classification of days on which a specific set of transport services operates 
 
 *→ [Template](../templates/DayType.xml)*
 
+#### Usage Note
+- id-attribute needs to be kept stable between exports.
 
 ### Timeband
 *→ [Glossary definition](A4_annex_glossary.md#timeband)*
@@ -182,7 +188,8 @@ A period of time within a day, usually defined by a start and end time.
 
 
 #### Usage Notes
-Currently `Timeband` is used in RG 1.0 for `InterchangeRuleTiming`s, later also used for the opening hours in `StopPlace` models. 
+- Currently `Timeband` is used in RG 1.0 for `InterchangeRuleTiming`s, later also used for the opening hours in `StopPlace` models. 
+- id-attribute should be kept stable between exports.
 
 ## DayTypeAssignment
 *→ [Glossary definition](A4_annex_glossary.md#daytypeassignment)*
@@ -206,6 +213,7 @@ This assignment overrides the `DayType` specified for the day in the overall pla
 
 
 #### Usage Notes
-We currently use `DayTypeAssignment` only for the national holidays.
+- We currently use `DayTypeAssignment` only for the national holidays.
+- id-attribute should be kept stable between exports.
 
 
