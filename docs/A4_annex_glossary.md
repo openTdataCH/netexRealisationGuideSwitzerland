@@ -249,7 +249,7 @@ The geographic representation of a ServiceLink, carrying GML geometry (typically
 
 ---
 
-# MultilingualString
+## MultilingualString
 
 NeTEx type used to define a string in one or more natural languages. 
 
