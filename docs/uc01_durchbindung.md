@@ -44,4 +44,4 @@ replacing the deprecated `JourneyMeeting` and `InterchangeRule` from RG 1.0.
 	<ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" version="any"/>
 </ServiceJourneyInterchange>
 ```
-The detailed handling is descrbe for the element [ServiceJourneyInterchange](09_timetable.md#servicejourneyinterchange).
+The detailed handling is described for the element [ServiceJourneyInterchange](09_timetable.md#servicejourneyinterchange).
