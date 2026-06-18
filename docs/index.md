@@ -64,12 +64,12 @@ This document describes the way in which the NeTEx standard is specifically appl
 We have a [set of examples](../examples/README.md) that show how to create use cases with the realisation guide.
 
 ## Impressum
-* Authors: **TODO**
+* Authors: Thomas Schäfer, Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Martin Bennett, Emeric Matthias Günter
 * Status: Draft
 * Last change: **TODO**
 * Contact: info.fachbus@sbb.ch
 
 ## Copyright / License
 The document is free. Proliferation in unchanged form is explicitly supported.
-All toolings are - when nothing else is mentioned - available as AGPL 3.0.
+All tools are - when nothing else is mentioned - available as AGPL 3.0.
 
