@@ -7,8 +7,9 @@ In this chapter:
 - [PassengerBoardingPositionAssignment](**TODO** #80)
 - [DefaultConnection](#defaultconnection)
 - [SiteConnection](#siteconnection)
+- [TimingLink](#timinglink)
 - [ServiceJourneyPattern](#servicejourneypattern)
-- [TimeDemandType](xxx)
+- [TimeDemandType](#timedemandtype)
 - [Notice](#Notice)
 - [NoticeAssignment](#NoticeAssignment)
 
