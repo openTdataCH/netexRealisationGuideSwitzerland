@@ -1,5 +1,4 @@
 # Annex: References
-**TODO** # 74 André
 
 ## Standards
 
