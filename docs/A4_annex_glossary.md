@@ -610,7 +610,7 @@ An indicator of traffic conditions or other factors which may affect vehicle run
 
 > **NeTEx XSD / Transmodel:** An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.
 
-→ [Full documentation](08_service_calendars.md#timedemandtype)
+→ [Full documentation](07_service.md#timedemandtype)
 
 ---
 
@@ -642,7 +642,7 @@ An ordered pair of TimingPoints for which run times may be recorded.
 
 > **NeTEx XSD / Transmodel:** An ordered pair of TIMING POINTs for which run times may be recorded.
 
-→ [Full documentation](08_service_calendars.md#timinglink)
+→ [Full documentation](07_service.md#timinglink)
 
 ---
 
@@ -652,7 +652,7 @@ A (geographic) point against which the timing information necessary to build sch
 
 > **NeTEx XSD / Transmodel:** A POINT against which the timing information necessary to build schedules may be recorded.
 
-→ [Full documentation](08_service_calendars.md#timingpoint)
+→ [Full documentation](07_service.md#timinglink)
 
 ---
 
