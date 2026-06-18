@@ -604,6 +604,15 @@ A period of time within a day, usually defined by a start and end time.
 
 ---
 
+## TimeDemandType
+
+An indicator of traffic conditions or other factors which may affect vehicle run or wait times.
+
+> **NeTEx XSD / Transmodel:** An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.
+
+→ [Full documentation](08_service_calendars.md#timedemandtype)
+
+---
 
 ## TimetabledPassingTime
 
@@ -624,6 +633,26 @@ Contains operational journey definitions - ServiceJourneys, DatedServiceJourneys
 > **NeTEx XSD:** A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.
 
 → [Full documentation](09_timetable.md#TimetableFrame)
+
+---
+
+## TimingLink
+
+An ordered pair of TimingPoints for which run times may be recorded.
+
+> **NeTEx XSD / Transmodel:** An ordered pair of TIMING POINTs for which run times may be recorded.
+
+→ [Full documentation](08_service_calendars.md#timinglink)
+
+---
+
+## TimingPoint
+
+A (geographic) point against which the timing information necessary to build schedules may be recorded.
+
+> **NeTEx XSD / Transmodel:** A POINT against which the timing information necessary to build schedules may be recorded.
+
+→ [Full documentation](08_service_calendars.md#timingpoint)
 
 ---
 
