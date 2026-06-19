@@ -146,3 +146,5 @@ The Github Action [pages.yaml](../.github/pages.yaml) runs the script [build.sh]
   - triggered after commits to main branch (e.g. after the merge of a branch)
   - runs the build via the `python -m build` mechanism 
   - uploads generated docs to GitHub Pages
+
+
