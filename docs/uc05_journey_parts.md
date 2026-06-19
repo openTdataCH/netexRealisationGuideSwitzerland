@@ -64,6 +64,7 @@ graph LR
 
 **When to use:** When a train operates under different train numbers on different sections of the same `ServiceJourney`.
 
+> NOT TO BE USED: We have on the displays this kind of behaviour. However, in the data it is always two `ServiceJourney` and a `ServiceJourneyInterchange`, that is suppressed in the presenting to the passangers.
 ```xml
 <JourneyPart id="ch:1:JourneyPart:4171-BernSpiez" version="1">
   <TrainNumberRef ref="ch:1:TrainNumber:4171" version="1"/>

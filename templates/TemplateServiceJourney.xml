@@ -48,25 +48,6 @@
 									ch:1:sjyid:100001:71707-003
 								</PrivateCode>
 							</privateCodes>
-							<Extensions>
-								<!-- ch-usage: optional -->
-								<!-- ch-note: Used to indicate Facility changes. -->
-								<facilities>
-									<!-- ch-usage: optional -->
-									<Facility id="ch:1:facility:f1" versionRef="1">
-										<!-- ch-usage: optional -->
-										<validityConditions>
-											<!-- ch-usage: optional -->
-											<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" versionRef="1">
-												<!-- ch-usage: optional -->
-											</AvailabilityConditionRef>
-										</validityConditions>
-										<ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A___1" versionRef="1">
-											<!-- ch-usage: mandatory -->
-										</ServiceFacilitySetRef>
-									</Facility>
-								</facilities>
-							</Extensions>
 							<PrivateCode>
 								<!-- ch-usage: forbidden -->
 								<!-- ch-note: Replaced by <privateCodes>-<PrivateCode>, see above. -->
@@ -129,13 +110,19 @@
 								<PlaceRef ref="ch:1:sloid:3412" version="1"/>
 							</Destination>
 							<passingTimes>
-								<!-- ch-usage: expected -->
+								<!-- ch-usage: forbidden-->
 								<TimetabledPassingTime id="generated" version="1">
-									<!-- ch-usage: expected -->
-									<!-- ch-see -->
 									<PointInJourneyPatternRef ref="generated" versionRef="1"/>
 								</TimetabledPassingTime>
 							</passingTimes>
+							<parts>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: For some use cases e.g. change of Facilities during ServiceJourney -->
+								<JourneyPartRef ref="generated" versionRef="1">
+									<!-- ch-usage: expected -->
+									<!-- ch-see -->
+								</JourneyPartRef>
+							</parts>							
 							<calls>
 								<!-- ch-usage: forbidden -->
 								<Call id="c1" version="1">
