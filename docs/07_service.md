@@ -100,12 +100,12 @@ Other important classes of the `ServiceFrame` include:
 -	`Notice`s which are then assigned to `Journey` and `Passingtime` of the `TimetableFrame` through `NoticeAssignment`s. They model the association of footnotes and passenger information content such as stop announcements and the network.
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFrame.md)
+- [Swiss profile NeTEx definition](../site/tables/ServiceFrame.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/ServiceFrame.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/ServiceFrame.xml)
+- [Example snippet](../site/xml-snippets/ServiceFrame.xml)
 
 *→ [Template](../templates/ServiceFrame.xml)*
 
@@ -125,13 +125,13 @@ This means that the old two defined dirctions `ch:1:Direction:H` and `ch:1:Direc
 A public transport service line, representing a marketed route with a `Name`, `TransportMode`, and `Operator`.
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/Line.md)
+- [Swiss profile NeTEx definition](../site/tables/Line.md)
 
 *-> [General NeTEx definition](../generated/netex-html/Line.html)*
 
 ### Example
 
-- [Example snippet](../generated/xml-snippets/Line.xml)
+- [Example snippet](../site/xml-snippets/Line.xml)
 
 *->[Template](../templates/Line.xml)*
 
@@ -153,13 +153,13 @@ A public transport service line, representing a marketed route with a `Name`, `T
 Showing the destination of a `ServiceJourney`. The text shown on the front or side of a public transport vehicle to indicate its destination, including via-points and variant labels.
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/DestinationDisplay.md)
+- [Swiss profile NeTEx definition](../site/tables/DestinationDisplay.md)
 
 *-> [General NeTEx definition](../generated/netex-html/DestinationDisplay.html)*
 
 ### Example
 
-- [Example snippet](../generated/xml-snippets/DestinationDisplay.xml)
+- [Example snippet](../site/xml-snippets/DestinationDisplay.xml)
 
 *->[Template](../templates/DestinationDisplay.xml)*
 
@@ -183,13 +183,13 @@ A `ScheduledStopPoint` can represent two types of stop points:
 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/ScheduledStopPoint.md)
+- [Swiss profile NeTEx definition](../site/tables/ScheduledStopPoint.md)
 
 *-> [General NeTEx definition](../generated/netex-html/ScheduledStopPoint.html)*
 
 ### Example
 
-- [Example snippet](../generated/xml-snippets/ScheduledStopPoint.xml)
+- [Example snippet](../site/xml-snippets/ScheduledStopPoint.xml)
 
 *->[Template](../templates/ScheduledStopPoint.xml)*
 
@@ -206,13 +206,13 @@ A `ScheduledStopPoint` can represent two types of stop points:
 -	A `ScheduledStopPoint` in a `ServiceJourneyPattern` is linked to a `Quay` for arrival and departure.
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/PassengerStopAssignment.md)
+- [Swiss profile NeTEx definition](../site/tables/PassengerStopAssignment.md)
 
 *-> [General NeTEx definition](../generated/netex-html/PassengerStopAssignment.html)*
 
 ### Example
 
-- [Example snippet](../generated/xml-snippets/PassengerStopAssignment.xml)
+- [Example snippet](../site/xml-snippets/PassengerStopAssignment.xml)
 
 *->[Template](../templates/PassengerStopAssignment.xml)*
 
@@ -237,13 +237,13 @@ https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/82
 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/DefaultConnection.md)
+- [Swiss profile NeTEx definition](../site/tables/DefaultConnection.md)
 
 *-> [General NeTEx definition](../generated/netex-html/DefaultConnection.html)*
 
 ### Example
 
-- [Example snippet](../generated/xml-snippets/DefaultConnection.xml)
+- [Example snippet](../site/xml-snippets/DefaultConnection.xml)
 
 *->[Template](../templates/DefaultConnection.xml)*
 
@@ -261,13 +261,13 @@ https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/82
 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/SiteConnection.md)
+- [Swiss profile NeTEx definition](../site/tables/SiteConnection.md)
 
 *-> [General NeTEx definition](../generated/netex-html/SiteConnection.html)*
 
 ### Example
 
-- [Example snippet](../generated/xml-snippets/SiteConnection.xml)
+- [Example snippet](../site/xml-snippets/SiteConnection.xml)
 
 *->[Template](../templates/SiteConnection.xml)*
 
@@ -312,13 +312,13 @@ For more details see the [use case on transfers](uc03_transfers.md).
 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourneyPattern.md)
+- [Swiss profile NeTEx definition](../site/tables/ServiceJourneyPattern.md)
 
 *-> [General NeTEx definition](../generated/netex-html/ServiceJourneyPattern.html)*
 
 ### Example
 
-- [Example snippet](../generated/xml-snippets/ServiceJourneyPattern.xml)
+- [Example snippet](../site/xml-snippets/ServiceJourneyPattern.xml)
 
 *->[Template](../templates/ServiceJourneyPattern.xml)*
 
@@ -359,13 +359,13 @@ Informational or regulatory text associated with public transport services, disp
  
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/Notice.md)
+- [Swiss profile NeTEx definition](../site/tables/Notice.md)
 
 *-> [General NeTEx definition](../generated/netex-html/Notice.html)*
 
 ### Example
 
-- [Example snippet](../generated/xml-snippets/Notice.xml)
+- [Example snippet](../site/xml-snippets/Notice.xml)
 
 *->[Template](../templates/Notice.xml)*
 
@@ -381,13 +381,13 @@ Notice elements should only be used to convey information which cannot be transp
 Assign a `Notice` to an element. 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/NoticeAssignment.md)
+- [Swiss profile NeTEx definition](../site/tables/NoticeAssignment.md)
 
 *-> [General NeTEx definition](../generated/netex-html/NoticeAssignment.html)*
 
 ### Example
 
-- [Example snippet](../generated/xml-snippets/NoticeAssignment.xml)
+- [Example snippet](../site/xml-snippets/NoticeAssignment.xml)
 
 *->[Template](../templates/NoticeAssignment.xml)*
 

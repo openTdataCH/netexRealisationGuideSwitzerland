@@ -40,12 +40,12 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TimetableFrame.md)
+- [Swiss profile NeTEx definition](../site/tables/TimetableFrame.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/TimetableFrame.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/TimetableFrame.xml)
+- [Example snippet](../site/xml-snippets/TimetableFrame.xml)
 
 *→ [Template](../templates/TimetableFrame.xml)*
 
@@ -59,12 +59,12 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 A `ServiceJourney` represents a planned trip in the timetable operating on a recurring schedule. It defines the stop sequence via reference to a `JourneyPattern`, includes scheduled passing times, and specifies operational details such as operator and days of operation. Unlike `DatedServiceJourney`, which represents a concrete instance on a specific date, `ServiceJourney` is the reusable template used across multiple dates via `DayType` definitions
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourney.md)
+- [Swiss profile NeTEx definition](../site/tables/ServiceJourney.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/ServiceJourney.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/ServiceJourney.xml)
+- [Example snippet](../site/xml-snippets/ServiceJourney.xml)
 
 *→ [Template](../templates/ServiceJourney.xml)*
 
@@ -88,12 +88,12 @@ A `TemplateServiceJourney` represents a sequence of planned trips. It is similar
 A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The `TemplateServiceJourney` may thus represent multiple journeys or it could be used simply as a template for adding extra date journeys after the planning phase. 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TemplateServiceJourney.md)
+- [Swiss profile NeTEx definition](../site/tables/TemplateServiceJourney.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/TemplateServiceJourney.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/TemplateServiceJourney.xml)
+- [Example snippet](../site/xml-snippets/TemplateServiceJourney.xml)
 
 *→ [Template](../templates/TemplateServiceJourney.xml)*
 
@@ -110,12 +110,12 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 `OccupancyView`can be used on the `Journey`, `JourneyPart`, and `TimetabledPassingTime` elements. Used for predicted and planned occupancies of vehicles.
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/OccupancyView.md)
+- [Swiss profile NeTEx definition](../site/tables/OccupancyView.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/OccupancyView.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/OccupancyView.xml)
+- [Example snippet](../site/xml-snippets/OccupancyView.xml)
 
 *→ [Template](../templates/OccupancyView.xml)*
 
@@ -131,12 +131,12 @@ We currently don't use OccupancyView.
 Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney`) when operated by trains. `ServiceJourney`s can in principle have multiple different `TrainNumber`s whereas a `JourneyPart` can only reference a single one.
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TrainNumber.md)
+- [Swiss profile NeTEx definition](../site/tables/TrainNumber.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/TrainNumber.html)*
 
  ### Example
-- [Example snippet](../generated/xml-snippets/TrainNumber.xml)
+- [Example snippet](../site/xml-snippets/TrainNumber.xml)
 
 *→ [Template](../templates/TrainNumber.xml)*
 
@@ -150,12 +150,12 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 `TypeOfService` indicates the purpose of a `ServiceJourney`, for example, whether if it is a passenger transport or a garage run-in. We only use `ch:1:TypeOfService:1`
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfService.md)
+- [Swiss profile NeTEx definition](../site/tables/TypeOfService.md)
 
 *→ [General NeTEx definition](../generated/netex-html/TypeOfService.html)*
 
 ### Example
-- [XML Snippet](../generated/xml-snippets/TypeOfService.xml)
+- [XML Snippet](../site/xml-snippets/TypeOfService.xml)
 
 *→ - [Template](../templates/TypeOfService.xml)*
 
@@ -183,12 +183,12 @@ Actually there is only one allowed value that we use in the Swiss profile: Only 
 Long-term planned time data concerning public transport vehicles passing a particular `PointInJourneyPattern` on a specified vehicle journey for a certain `DayType`. 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TimetabledPassingTime.md)
+- [Swiss profile NeTEx definition](../site/tables/TimetabledPassingTime.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/TimetabledPassingTime.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/TimetabledPassingTime.xml)
+- [Example snippet](../site/xml-snippets/TimetabledPassingTime.xml)
 
 *→ [Template](../templates/TimetabledPassingTime.xml)*
 
@@ -211,7 +211,8 @@ The standard states: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an 
 `StaySeated=true` should be used for through-services (Durchbindung) and joining (Vereinigung). While splitting (Flügelzug) technically involves different vehicle parts, the passenger does not leave the train — however, they may need to move to the correct coach. For splitting, `StaySeated=false` combined with `ChangeWithinVehicle=true` is therefore the correct modelling. See [uc02 Joining and splitting](uc02_joining_splitting.md).
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourneyInterchange.md)
+
+- [Swiss profile NeTEx definition](../site/tables/ServiceJourneyInterchange.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/ServiceJourneyInterchange.html)*
 
@@ -253,3 +254,4 @@ The standard states: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an 
 
 ## ServiceFacilitySet
 *→ [see Common elements](./10_common.md#servicefacilityset)*
+

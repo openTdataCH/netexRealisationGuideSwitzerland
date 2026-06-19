@@ -51,12 +51,12 @@ classDiagram
 - Not currently modelled: entrances, levels, equipments, paths, accessibility properties, points of interest
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/SiteFrame.md)
+- [Swiss profile NeTEx definition](../site/tables/SiteFrame.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/SiteFrame.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/SiteFrame.xml)
+- [Example snippet](../site/xml-snippets/SiteFrame.xml)
 
 *→ [Template](../templates/SiteFrame.xml)*
 
@@ -72,12 +72,12 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/StopPlace.md)
+- [Swiss profile NeTEx definition](../site/tables/StopPlace.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/StopPlace.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/StopPlace.xml)
+- [Example snippet](../site/xml-snippets/StopPlace.xml)
 
 *→ [Template](../templates/StopPlace.xml)*
 
@@ -95,14 +95,13 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 ### Purpose
 A specific boarding or alighting position (platform, stand, bay) within a `StopPlace` where passengers physically meet vehicles. 
 
-
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/Quay.md)
+- [Swiss profile NeTEx definition](../site/tables/Quai.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/StopPlace.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/StopPlace.xml)
+- [Example snippet](../site/xml-snippets/StopPlace.xml)
 
 *→ [Template](../templates/StopPlace.xml)*
 
@@ -147,13 +146,13 @@ A named geographic area such as a city, municipality, county, or region - used t
 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TopographicPlace.md)
+- [Swiss profile NeTEx definition](../site/tables/TopographicPlace.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/TopographicPlace.html)*
 
 
 ### Example
-- [Example snippet](../generated/xml-snippets/TopographicPlace.xml)
+- [Example snippet](../site/xml-snippets/TopographicPlace.xml)
 
 *→ [Template](../templates/TopographicPlace.xml)*
 
@@ -168,12 +167,12 @@ A named geographic area such as a city, municipality, county, or region - used t
 It provides precise geographic coordinates (WGS84) of a central reference point representing a single point or an area such as a `Quay`or a `StopPlace`. 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/Centroid.md)
+- [Swiss profile NeTEx definition](../site/tables/Centroid.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/Centroid.html)*
 
 ### Example
-- [Example snippet](../generated/xml-snippets/Centroid.xml)
+- [Example snippet](../site/xml-snippets/Centroid.xml)
 
 *→ [Template](../templates/Centroid.xml)*
 

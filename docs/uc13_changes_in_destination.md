@@ -11,10 +11,10 @@ We will adhere to the following rules:
  
 We could have a sort of progression rule, e.g. when at the third stop the destination display changes, keep it to the end. We want however, that from then on the `DestinationDisplayRef` is set. Otherwise it reverses to the one on the `ServiceJourneyPattern`
 
-
 Conclusion:
 * The `DestinationDisplay` are stored in `ServiceFrame`.
 * The references for the whole `ServiceJourney` are stored in `ServiceJourney/Destination/DestinationDisplayRef`.
 * If the destination changes on a given stop, it is mentionend in `ServiceJourneyPattern/pointsInJourneyPattern/StopPointInJourneyPattern/DestinationDisplayRef`.
 
 All this is shown in one of the [examples](../examples/NeTEx_CH_BLS_Bern_Luzern_DestinationChange.xml).
+
