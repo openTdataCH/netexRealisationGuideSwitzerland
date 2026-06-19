@@ -90,13 +90,13 @@ If a `ServiceJourney` (in a particular `Call`) runs over midnight, then `DayOffs
 Holds default values for certain basic parameters. 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/FrameDefaults.md)
+- [Swiss profile NeTEx definition](../site/tables/FrameDefaults.md)
 
 *→ [General NeTEx definition](../generated/netex-html/FrameDefaults.html)*
 
 ### Example
 
-- [XML Snippet](../generated/xml-snippets/FrameDefaults.xml)
+- [XML Snippet](../site/xml-snippets/FrameDefaults.xml)
 
 *→ [Template](../templates/FrameDefaults.xml)*
 
@@ -115,12 +115,12 @@ a `StopPlace` or `Organisation`.
 For all other alternative texts use `AlternativeText`.
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeName.md)
+- [Swiss profile NeTEx definition](../site/tables/AlternativeName.md)
 
 *→ - [General NeTEx definition](../generated/netex-html/AlternativeName.html)*
  
 ### Example
-- [XML Snippet](../generated/xml-snippets/AlternativeName.xml)
+- [XML Snippet](../site/xml-snippets/AlternativeName.xml)
 
 *→ - [Template](../templates/AlternativeName.xml)*
 
@@ -141,12 +141,12 @@ The `AlternativeText` is a generic way to provide an alternative text (translati
 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/AlternativeText.md)
+- [Swiss profile NeTEx definition](../site/tables/AlternativeText.md)
 
 *→ - [General NeTEx definition](../generated/netex-html/AlternativeText.html)*
  
 ### Example
-- [XML Snippet](../generated/xml-snippets/AlternativeText.xml)
+- [XML Snippet](../site/xml-snippets/AlternativeText.xml)
 
 *→ - [Template](../templates/AlternativeText.xml)*
 
@@ -182,12 +182,12 @@ See the following class diagram for the most important objects of the RESOURCE F
 - SiteFacilitySet
 
 ## Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/ResourceFrame.md)
+- [Swiss profile NeTEx definition](../site/tables/ResourceFrame.md)
 
 *→ - [General NeTEx definition](../generated/netex-html/ResourceFrame.html)*
 
 ## Example
-- [XML Snippet](../generated/xml-snippets/ResourceFrame.xml)
+- [XML Snippet](../site/xml-snippets/ResourceFrame.xml)
 
 *→ - [Template](../templates/ResourceFrame.xml)*
 
@@ -211,12 +211,12 @@ We use this element to  describe the different roles of the participating compan
 | `Operation`                    | role of the **operator company** responsible for providing the transport service   |
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/ResponsibilitySet.md)
+- [Swiss profile NeTEx definition](../site/tables/ResponsibilitySet.md)
 
 *→ - [General NeTEx definition](../generated/netex-html/ResponsibilitySet.html)*
 
 ### Example
-- [XML Snippet](../generated/xml-snippets/ResponsibilitySet.xml)
+- [XML Snippet](../site/xml-snippets/ResponsibilitySet.xml)
 
 *→ - [Template](../templates/ResponsibilitySet.xml)*
 
@@ -282,13 +282,13 @@ For the ServiceJourneys exclusively provided in Switzerland, only the ProductCat
 For ServiceJourneys provided in other countries or partially in Switzerland, there are no restrictions, provided that the category does not overlap with the ProductCategories defined for Switzerland.
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TypeOfProductCategory.md)
+- [Swiss profile NeTEx definition](../site/tables/TypeOfProductCategory.md)
 
 *→ [General NeTEx definition](../generated/netex-html/TypeOfProductCategory.html)*
 
 
 ###  Example
-- [XML Snippet](../generated/xml-snippets/TypeOfProductCategory.xml)
+- [XML Snippet](../site/xml-snippets/TypeOfProductCategory.xml)
 
 *→ [Template](../templates/TypeOfProductCategory.xml)*
 
@@ -305,12 +305,12 @@ A legally incorporated body associated with any aspect of public transportation.
 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/Operator.md)
+- [Swiss profile NeTEx definition](../site/tables/Operator.md)
 
 *→ [General NeTEx definition](../generated/netex-html/Operator.html)*
 
 ### Example
-- [XML Snippet](../generated/xml-snippets/Operator.xml)
+- [XML Snippet](../site/xml-snippets/Operator.xml)
 
 *→ - [Template](../templates/Operator.xml)*
 
@@ -331,12 +331,12 @@ a different `OperatorRef`.
 Set of `Facilitiy`s available for a `ServiceJourney` or a `JourneyPart`. 
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFacilitySet.md)
+- [Swiss profile NeTEx definition](../site/tables/ServiceFacilitySet.md)
 
 *→ [General NeTEx definition](../generated/netex-html/ServiceFacilitySet.html)*
 
 ### Example
-- [XML Snippet](../generated/xml-snippets/ServiceFacilitySet.xml)
+- [XML Snippet](../site/xml-snippets/ServiceFacilitySet.xml)
 
 *→ - [Template](../templates/ServiceFacilitySet.xml)*
 
@@ -374,12 +374,12 @@ A `SiteFacilitySet` defines a set of facilities like sanitary facilities, ticket
 referenced to define facilities of a site.
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/SiteFacilitySet.md)
+- [Swiss profile NeTEx definition](../site/tables/SiteFacilitySet.md)
 
 *→ [General NeTEx definition](../generated/netex-html/SiteFacilitySet.html)*
 
 ### Example
-- [XML Snippet](../generated/xml-snippets/SiteFacilitySet.xml)
+- [XML Snippet](../site/xml-snippets/SiteFacilitySet.xml)
 
 *→ - [Template](../templates/SiteFacilitySet.xml)*
 

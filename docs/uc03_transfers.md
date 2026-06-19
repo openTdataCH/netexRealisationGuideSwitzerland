@@ -20,9 +20,10 @@ The following table shows how we will map HRDF tables into NeTEX.
 ## Transfer times at a given StopPlace (UMSTEIGB)
 Defines the default transfer time at a specific stop place, regardless of operator or line.
 
+<<<<<<< HEAD
 **When to use:** When a particular stop place has a transfer time that differs from the network-wide default.
 
-- [Example](../generated/xml-snippets/DefaultConnection_UMSTEIGB.xml)
+- [Example](../site/xml-snippets/DefaultConnection_UMSTEIGB.xml)
 
 >Note: If no StopPlaceRef is set, the DefaultConnection applies network-wide for the given mode combination. A separate DefaultConnection must be defined for each relevant mode pair.
 
@@ -35,18 +36,16 @@ Defines transfer times between two specific operators at a stop place. The HRDF 
 
 **When to use:** When the transfer time depends on the operator combination at a given stop place.
 
-- [Example](../generated/xml-snippets/DefaultConnection_UMSTEIGV.xml)
+- [Example](../site/xml-snippets/DefaultConnection_UMSTEIGV.xml)
 
 
 ## Line and Direction-oriented transfer times (UMSTEIGL)
 Defines transfer times between specific `lines` and `directions` at a stop place. Journeys are specified indirectly via Line and Direction, not as an explicit journey pair. The ! marker in HRDF indicates a guaranteed connection.
 > **TODO** Adrian we don't have Direction anymore. This should be solved by the PR.
- 
 
 **When to use:** When the transfer time applies to all journeys of a specific line/direction combination at a given stop place.
 
-- [Example](../generated/xml-snippets/ServiceJourneyInterchange_UMSTEIGL.xml)
-
+- [Example](../site/xml-snippets/ServiceJourneyInterchange_UMSTEIGL.xml)
 
 ## ServiceJourney related transfer times (UMSTEIGZ)
 Defines transfer times between two specific `ServiceJourneys` at a given stop place. Unlike UMSTEIGL, journeys are referenced directly via `ServiceJourneyRef`. The ! marker in HRDF indicates a guaranteed connection; an optional `Verkehrstagebitfeldnummer` restricts validity to specific days.
@@ -68,11 +67,11 @@ The differences between the various situations are to be differentiated with the
 | Transfer required | `false` | `false` / `true` | Passenger must change vehicles |
 | Through-service (stay seated) | `true` | `true` | Passenger remains in vehicle → see [uc01_durchbindung](uc01_durchbindung.md) |
 
-- [Example](../generated/xml-snippets/ServiceJourneyInterchange_UMSTEIGZ.xml)
+- [Example](../site/xml-snippets/ServiceJourneyInterchange_UMSTEIGZ.xml)
 
 
 ## Transfer times between different StopPlaces (METABHF)
 Describes the walking time between two adjacent `StopPlaces` (e.g. main station A → tram stop B). Used only in the master data file, not in timetable files.  
 **When to use:** When passengers need to transfer between two physically separate stop places.
 
-- [Example](../generated/xml-snippets/SiteConnection.xml)
+- [Example](../site/xml-snippets/SiteConnection.xml)

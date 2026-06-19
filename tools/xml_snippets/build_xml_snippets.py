@@ -21,22 +21,7 @@ import re
 from lxml import etree
 
 
-def parse_args():
-    """Parse command line arguments"""
-    parser = argparse.ArgumentParser(
-        description='Extract XML snippets from templates with ch-start/ch-stop markers'
-    )
-    parser.add_argument(
-        '-i', '--input',
-        required=True,
-        help='Input folder or single XML file containing templates'
-    )
-    parser.add_argument(
-        '-o', '--output',
-        required=True,
-        help='Output folder for XML snippet files'
-    )
-    return parser.parse_args()
+
 
 
 def remove_ch_annotations(text):
@@ -357,43 +342,79 @@ def extract_snippet_from_template(file_path):
         return None
 
 
+def generate_all_snippets(input_dir: str, output_dir: str):
+    """
+    Generates all XML snippets from templates in input_dir.
+
+    :param input_dir: Input directory
+    :param output_dir: Output directory where the XML snippets will be generated.
+    """
+
+    xml_files = [os.path.join(input_dir, f) for f in os.listdir(input_dir) if f.endswith('.xml')]
+
+    for file_path in xml_files:
+        generate_snippet(file_path, output_dir)
+    print(f"Processed {len(xml_files)} files")
+
+
+def generate_snippet(template_path: str, output_dir: str):
+    """
+    Generates a XML snippet from a single template.
+
+    :param template_path: Path to the template file.
+    :param output_dir: Output directory where the XML snippet will be generated.
+    """
+    print(f"Processing {os.path.basename(template_path)}")
+
+    # Extract snippet
+    snippet = extract_snippet_from_template(template_path)
+
+    if snippet:
+
+        # Create output directory
+        os.makedirs(output_dir, exist_ok=True)
+
+        # Generate output filename
+        output_filename = os.path.splitext(os.path.basename(template_path))[0] + '.xml'
+        output_path = os.path.join(output_dir, output_filename)
+
+        # Write to file
+        with open(output_path, 'w', encoding='utf-8') as f:
+            # Add XML declaration
+            f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
+            f.write(snippet)
+
+        print(f"Generated {output_path}")
+    else:
+        print(f"No snippet extracted from {os.path.basename(template_path)}")
+
+
+def parse_args():
+    """Parse command line arguments"""
+    parser = argparse.ArgumentParser(
+        description='Extract XML snippets from templates with ch-start/ch-stop markers'
+    )
+    parser.add_argument(
+        '-i', '--input',
+        required=True,
+        help='Input folder or single XML file containing templates'
+    )
+    parser.add_argument(
+        '-o', '--output',
+        required=True,
+        help='Output folder for XML snippet files'
+    )
+    return parser.parse_args()
+
 def main():
     args = parse_args()
 
-    # Create output directory
-    os.makedirs(args.output, exist_ok=True)
-
     # Determine if input is a file or directory
     if os.path.isfile(args.input):
-        # Single file mode
-        xml_files = [args.input]
+        generate_snippet(args.input, args.output)
     else:
         # Directory mode - process all XML files in input directory
-        xml_files = [os.path.join(args.input, f) for f in os.listdir(args.input) if f.endswith('.xml')]
-
-    for file_path in xml_files:
-        print(f"Processing {os.path.basename(file_path)}")
-
-        # Extract snippet
-        snippet = extract_snippet_from_template(file_path)
-
-        if snippet:
-            # Generate output filename
-            output_filename = os.path.splitext(os.path.basename(file_path))[0] + '.xml'
-            output_path = os.path.join(args.output, output_filename)
-
-            # Write to file
-            with open(output_path, 'w', encoding='utf-8') as f:
-                # Add XML declaration
-                f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
-                f.write(snippet)
-
-            print(f"Generated {output_path}")
-        else:
-            print(f"No snippet extracted from {os.path.basename(file_path)}")
-
-    print(f"Processed {len(xml_files)} files")
-
+        generate_all_snippets(args.input, args.output)
 
 if __name__ == '__main__':
     main()
