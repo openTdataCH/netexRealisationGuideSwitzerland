@@ -20,7 +20,6 @@ The following table shows how we will map HRDF tables into NeTEX.
 ## Transfer times at a given StopPlace (UMSTEIGB)
 Defines the default transfer time at a specific stop place, regardless of operator or line.
 
-<<<<<<< HEAD
 **When to use:** When a particular stop place has a transfer time that differs from the network-wide default.
 
 - [Example](../site/xml-snippets/DefaultConnection_UMSTEIGB.xml)
