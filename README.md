@@ -19,29 +19,38 @@ none
 
 ## Folders
 
-| Folder                      | Content                                                                         |
-|-----------------------------|---------------------------------------------------------------------------------|
-| docs                        | The realisation guide itself (with links)                                       |
-| examples                    | Valid XML examples based on use cases                                           |
-| generated                   | all generated elements. Some we still publish.                                  |
-| generated/docs              | The realisation guide where xml snippets and swiss element tables are included. |
-| generated/schematrons       | Schematron files to be used to validate Swiss data files                        |
-| generated/xml-snippets      | Simple element examples XML.                                                    |
-| generated/netex-thml        | xcore documentation of the NeTEX XSD.                                           |
-| generated/markdown-examples | markdowns of the relevant elements                                              |
-| jekyll                      | jekyll used to produce html from md                                             |
-| mgmt                        | governance and organisation                                                     |
-| templates                   | template files to generade schematrons and elements in elements.md              |
-| tools                       | relevant tools to build everything ([see](./tools/README.md))                   |
-| xsd                         | the NeTEx 2.0 XSD                                                               |
+### Source Folders
 
+Source folders added to git:
+
+| Folder            | Content                                                                                                                   |
+|-------------------|---------------------------------------------------------------------------------------------------------------------------|
+| docs              | The document sources of the realisation guide (with links)                                                                |
+| examples          | Valid XML examples based on use cases                                                                                     |
+| jekyll            | jekyll template folder (is copied to the site folder during the build). Jekyll is used to generate html for GitHub pages. |
+| mgmt              | governance and organisation                                                                                               |
+| templates         | template files to generade schematrons and elements in elements.md                                                        |
+| tools             | Python tools to build everything ([see](./tools/README.md))                                                               |
+| xsd               | the NeTEx 2.0 XSD                                                                                                         |
+
+### Generated Folders
+
+The ([build automation framework](./tools/README.md#build-automation-framework)) generates target documents from source documents.  
+These target documents are written to `site` and according subfolders, excluded from git:
+
+| Folder            | Content                                                                                       |
+|-------------------|-----------------------------------------------------------------------------------------------|
+| site              | Destination folder for generated docs. The content of this older is deployed to github pages. |
+| site/schematrons  | Schematron files to be used to validate Swiss data files                                      |
+| site/xml-snippets | Simple element examples XML.                                                                  |
+| site/netex-html   | xcore documentation of the NeTEX XSD.                                                         |
+| site/tables       | markdown tables of the relevant elements                                                      |
 
 ## Governance of the realisation guide and this repository.
 [see here](mgmt/README.md)
 
 ## Changelog from version 1.0.1
 [see here](docs/A5_changelog_migration.md)
-
 
 ## Contact
 Contact: info.fachbus@sbb.ch
