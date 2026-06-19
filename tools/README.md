@@ -26,7 +26,7 @@ The following tools are used to generate target files from sources:
 
 ## General rules applying to all tools
 
-- Default input folders and/or output folders are used if folders are not explicitly not given (not all tools yet).
+- Default input folders and/or output folders are used if folders are not explicitly given (not all tools yet).
 - The default output folder of the tools is `site`, or an according subdirectory of `site`, excluded from git. See also [Folders](../README.md#folders).
 - Option `-h` or `--help` prints the usage text.
 
