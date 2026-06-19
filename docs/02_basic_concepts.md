@@ -1,3 +1,6 @@
+---
+mermaid: true
+---
 # Basic concepts in NeTEx
 
 NeTEx can support multiple use cases. Here we talk about the Swiss timetable delivery.
