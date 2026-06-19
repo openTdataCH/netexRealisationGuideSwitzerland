@@ -1,5 +1,26 @@
 # Tools for the Swiss NeTEx RG
 
+## Tools Overview
+
+In general, the NeTEx RG python tools use the `argparse` library, thus you should allways be able to get a usage description by providing the option `-h` or `--help`, e.g. with 
+```
+uv run md_builder.py --help 
+```
+The example above requires `uv`, see [How to setup and run the build](#how-to-setup-and-run-the-build).
+
+| Name                                               | Type   | Description                                                                                                                                                | 
+|----------------------------------------------------|--------|------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| [check_links](check_links/README.md)               | Python | **Checks relative links** in Markdown files and warns if the target files doesn't exist.                                                                     
+| [check_schematron](check_schematron/README.md)     | Python | **Validates XML** files against Schematron schemas and reports validation issues.                                                                            |
+| [expand_docs](expand_docs/README.md)               | Python |  **Expands Markdown** documentation: Includes XML snippets and Markdown tables directly in the Markdown and copies the media folder to the output location.   
+| [md_builder](md_builder/README.md)                 | Python |  **Generates Markdown tables** from annotated NeTEx XML templates, using XSD schemas for type and cardinality information.                                    | 
+| [pycore](pycore/README.md)                         | xquery |  **Generates Markdown tables** from a XSD schema.                                                                                                             | 
+| [schematron_builder](schematron_builder/README.md) | Python |  **Generates Schematron files** from XML templates with special comment annotations.                                                                          | 
+| [xml_validator](validation/README.md)              | Python |  **Validates XML** files or folders against an XSD schema.                                                                                                    | 
+| [xml_snippets](xml_snippets/README.md)             | Python |  **Extracts XML Snippets** from templates.                                                                                                                    |
+
+The [tool scripts](#install-tool-scripts), provide an other possibility to run tools from the command line, e.g. by running `md-builder`.
+
 ## How to setup and run the build
 
 The build builds the tools and runs them to create the generated documents in the directory `site`.
@@ -104,16 +125,17 @@ This generates executable scripts for Linux/Mac and Windows in subdirectories of
 
 ### Tool Scripts Overview
 
-| Name | Description                                                                                                                                                | 
-| --- |------------------------------------------------------------------------------------------------------------------------------------------------------------| 
-| check-links | **Checks relative links** in Markdown files and warns if the target files doesn't exist.                                                                   
-| check-schematron | **Validates XML** files against Schematron schemas and reports validation issues.                                                                          |
-| expand-docs | **Expands Markdown** documentation: Includes XML snippets and Markdown tables directly in the Markdown and copies the media folder to the output location. 
-| md-builder | **Generates Markdown tables** from annotated NeTEx XML templates, using XSD schemas for type and cardinality information.                                  | 
-| pycore | **Generates Markdown tables** from a XSD schema.                                                                                                           | 
-| schematron-builder | **Generates Schematron files** from XML templates with special comment annotations.                                                                        | 
-| xml-validator | **Validates XML** files or folders against an XSD schema.                                                                                                  | 
-| xml-snippets | **Extracts XML Snippets** from templates.                                                                                                                  | 
+The following tool scripts are available after installation:
+- check-links
+- check-schematron
+- expand-docs
+- md-builder
+- pycore
+- schematron-builder
+- xml-validator
+- xml-snippets
+
+See also [Tools Overview](#tools-overview) for more information about the tools.
 
 ### How to add a new Script
 
