@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 <PublicationTimestamp>2026-02-19T10:00:00Z</PublicationTimestamp>
 	<ParticipantRef>SBB</ParticipantRef>
 	<dataObjects>
@@ -288,6 +288,23 @@
 							<StopPlaceRef ref="ch:1:sloid:18799" version="1"/>
 						</PassengerStopAssignment>
 					</stopAssignments>
+					<timingLinks>
+						<TimingLink id="ch:1:TimingLink:1.1" version="1">
+							<Name>Interlaken Ost - Basel SBB</Name>
+							<FromPointRef ref="ch:1:sloid:7492:0:261628"/>
+							<ToPointRef ref="ch:1:sloid:10:1:1"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:1.2" version="1">
+							<Name>Basel SBB - Basel Bad</Name>
+							<FromPointRef ref="ch:1:sloid:10:1:1"/>
+							<ToPointRef ref="ch:1:sloid:90:0:529134"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:2.1" version="1">
+							<Name>Basel Bad - Freiburg i. Br.</Name>
+							<FromPointRef ref="ch:1:sloid:10:1:1"/>
+							<ToPointRef ref="ch:1:sloid:18799"/>
+						</TimingLink>
+					</timingLinks>
 					<journeyPatterns>
 						<JourneyPattern id="ch:1:J_SBB:1024337" version="1">
 							<Name>Interlaken_Ost_Basel_SBB_Basel_Bad</Name>
@@ -337,6 +354,34 @@
 				</ServiceCalendarFrame>
 				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="1">
 					<ServiceCalendarFrameRef ref="ch:1:ServiceCalendarFrame:j26" version="1"/>
+					<timeDemandTypes>
+						<TimeDemandType id="ch:1:TimeDemandType:1" version="1">
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1.1" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:1.1"/>
+									<RunTime>PT1H30M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1.2" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:1.2"/>
+									<RunTime>PT5M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+							<waitTimes>
+								<JourneyWaitTime id="ch:1:WaitTime:1.1">
+									<ScheduledStopPointRef ref="ch:1:sloid:10:1:1"/>
+									<WaitTime>PT10M</WaitTime>
+								</JourneyWaitTime>
+							</waitTimes>
+						</TimeDemandType>
+						<TimeDemandType id="ch:1:TimeDemandType:2" version="1">
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:2.1" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:2.1"/>
+									<RunTime>PT40M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+						</TimeDemandType>
+					</timeDemandTypes>
 					<vehicleJourneys>
 						<ServiceJourney id="ch:1:SBB_SJ:1" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
 							<validityConditions>
@@ -351,28 +396,15 @@
 							<privateCodes>
 								<PrivateCode type="sjyid">sjyid-1</PrivateCode>
 							</privateCodes>
+							<DepartureTime>08:00:00</DepartureTime>
 							<JourneyPatternRef ref="ch:1:J_SBB:1024337" version="1"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:1" version="1"/>
 							<OperatorRef ref="ch:1:sboid:100001" version="1"/>
 							<LineRef ref="ch:1:slnid:1024337" version="1"/>
 							<DirectionType>outbound</DirectionType>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:7546" version="1"/>
 							</trainNumbers>
-							<passingTimes>
-								<TimetabledPassingTime id="ch:SBB:TPT:1" version="1">
-									<StopPointInJourneyPatternRef ref="ch:SBB:JP:1024337:1" version="1"/>
-									<DepartureTime>08:00:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:SBB:TPT:2" version="1">
-									<StopPointInJourneyPatternRef ref="ch:SBB:JP:1024337:2" version="1"/>
-									<ArrivalTime>09:30:00</ArrivalTime>
-									<DepartureTime>09:40:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:SBB:TPT:3" version="1">
-									<StopPointInJourneyPatternRef ref="ch:SBB:JP:1024337:3" version="1"/>
-									<ArrivalTime>09:45:00</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
 						</ServiceJourney>
 						<!-- Basel Bad Depart New Number / New Transport Company -->
 						<ServiceJourney id="ch:1:sjyid:100014:4208-003B_DB" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
@@ -388,23 +420,15 @@
 							<privateCodes>
 								<PrivateCode type="sjyid">sjyid-2</PrivateCode>
 							</privateCodes>
+							<DepartureTime>09:50:00</DepartureTime>
 							<JourneyPatternRef ref="ch:1:J_DB:1024356" version="1"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:2" version="1"/>
 							<OperatorRef ref="ch:1:sboid:100310" version="1"/>
 							<LineRef ref="ch:1:slnid:1024356" version="1"/>
 							<DirectionType>outbound</DirectionType>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:7547" version="1"/>
 							</trainNumbers>
-							<passingTimes>
-								<TimetabledPassingTime id="ch:DB:TPT:1" version="1">
-									<StopPointInJourneyPatternRef ref="ch:DB:JP:1024356:1_DB" version="1"/>
-									<DepartureTime>09:50:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:DB:TPT:2" version="1">
-									<StopPointInJourneyPatternRef ref="ch:DB:JP:1024356:2_DB" version="1"/>
-									<ArrivalTime>10:30:00</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
 						</ServiceJourney>
 					</vehicleJourneys>
 					<trainNumbers>
