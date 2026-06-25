@@ -1,3 +1,7 @@
+---
+mermaid: true
+---
+
 # Services
 In this chapter:
 - [Line](#line)

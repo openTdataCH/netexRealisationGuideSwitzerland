@@ -1,3 +1,7 @@
+---
+mermaid: true
+---
+
 # Stop Modelling
 In this chapter:
 

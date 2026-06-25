@@ -1,3 +1,7 @@
+---
+mermaid: true
+---
+
 # Service calendars
 
 In this chapter:
