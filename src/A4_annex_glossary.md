@@ -3,7 +3,7 @@
 Core terms used in this NeTEx profile, organised alphabetically.
 Each entry includes the definition (adapted to the context of the profile), the official NeTEx XSD annotation, and (where applicable) the Transmodel (EN 12896) definition.
 
-Note that not all elements are used in the profile. Where the element exists and is documented, a link (→ [Full documentation](10_common.md#AlternativeName)) points to the appropriate section in the realisation guide. 
+Note that not all elements are used in the profile. Where the element exists and is documented, a link (→ [Full documentation](10_common.md#alternativename)) points to the appropriate section in the realisation guide. 
 
 <!-- entur-terms-ready: format maps to SKOS prefLabel + definition -->
 
@@ -17,7 +17,7 @@ Additional name variant for a NeTEx object - such as an official registration, t
 >
 > **Transmodel:** Alternative name for an ENTITY.
 
-→ [Full documentation](10_common.md#AlternativeName)
+→ [Full documentation](10_common.md#alternativename)
 
 ---
 
@@ -29,7 +29,7 @@ Supplementary textual description attached to any NeTEx object.
 >
 > **Transmodel:** Alternative text for any textual attribute of an ENTITY.
 
-→ [Full documentation](10_common.md#AlternativeText)
+→ [Full documentation](10_common.md#alternativetext)
 
 ---
 
@@ -53,7 +53,7 @@ Temporal availability in terms of, e.g., Dates, Timebands, ValidDayBits.
 >
 > **Transmodel:** A VALIDITY CONDITION expressed in terms of temporal parameters and referring to DAY TYPEs.
 
-→ [Full documentation](08_service_calendars.md#AvailabilityCondition)
+→ [Full documentation](08_service_calendars.md#availabilitycondition)
 
 ---
 
@@ -74,7 +74,7 @@ A container frame that groups multiple typed frames (ServiceFrame, TimetableFram
 >
 > **Transmodel:** A set of VERSION FRAMEs to which the same VALIDITY CONDITIONs have been assigned.
 
-→ [Full documentation](05_frames.md#CompositeFrame)
+→ [Full documentation](05_frames.md#compositeframe)
 
 ---
 
@@ -104,7 +104,7 @@ A classification of days on which a specific set of transport services operates 
 >
 > **Transmodel:** A type of day characterised by one or more properties which affect public transport operation (for example: working day, sunday, weekday in school holidays, etc.).
 
-→ [Full documentation](08_service_calendars.md#DayType)
+→ [Full documentation](08_service_calendars.md#daytype)
 
 ---
 
@@ -116,7 +116,7 @@ The binding between a DayType and a specific date or date range (OperatingPeriod
 >
 > **Transmodel:** The assignment of operational characteristics, expressed by DAY TYPEs, to particular OPERATING DAYs within a SERVICE CALENDAR.
 
-→ [Full documentation](08_service_calendars.md#DayTypeAssignment)
+→ [Full documentation](08_service_calendars.md#daytypeassignment)
 
 ---
 
@@ -129,7 +129,7 @@ Specifies default times for various transfer situations (within a StopPlace, bet
 > **Transmodel:** The physical (spatial) possibility for a passenger to change from one public transport vehicle to another to continue the trip. NOTE1: It specifies default times to be used to change from one mode of transport to another at an area or national level as specified by a TOPOGRAPHIC PLACE, STOP AREA or SITE
 ELEMENT. NOTE2: It may be further restricted to a specific MODE or OPERATOR or only apply in a particular direction of transfer, e.g., bus to rail may have a different time for rail to bus.
 
-→ [Full documentation](07_service.md#DefaultConnection)
+→ [Full documentation](07_service.md#defaultconnection)
 
 ---
 
@@ -139,7 +139,7 @@ The text shown on the front or side of a public transport vehicle to indicate it
 
 > **NeTEx XSD / Transmodel:** An advertised destination of a specific JOURNEY PATTERN, usually displayed on a headsign or at other on-board locations.
 
-→ [Full documentation](07_service.md#DestinationDisplay)
+→ [Full documentation](07_service.md#destinationdisplay)
 
 ---
 
@@ -183,7 +183,7 @@ Holds default values for certain basic parameters.
 
 > **NeTEx XSD:** The FrameDefaults element specifies default values for certain common properties of elements in the frame, such as DATA SOURCE, time-zone etc., to be applied to elements in the frame for which an explicit value has not been specifed. The use of defaults can both simplify export and reduce the size of documents.
 
-→ [Full documentation](10_common.md#FrameDefaults)
+→ [Full documentation](10_common.md#framedefaults)
 
 ---
 
@@ -222,7 +222,7 @@ or distributor journey must fulfil.
 > same or different SCHEDULED STOP POINTs, where at least one of the two SERVICE JOURNEYs is indicated indirectly by a 
 > DIRECTION, LINE or VEHICLE JOURNEY.
 
-→ [Full documentation](09_timetable.md#InterchangeRule)
+→ [Full documentation](09_timetable.md#interchangerule)
 
 ---
 
@@ -234,7 +234,7 @@ The ordered sequence of ScheduledStopPoints that a transport service follows for
 >
 > **Transmodel:** An ordered list of SCHEDULED STOP POINTs and TIMING POINTs on a single ROUTE, describing the pattern of working for public transport vehicles.
 
-→ [Full documentation](07_service.md#ServiceJourneyPattern)
+→ [Full documentation](07_service.md#servicejourneypattern)
 
 ---
 
@@ -244,7 +244,7 @@ A public transport service line, representing a marketed route with a name, tran
 
 > **NeTEx XSD / Transmodel:** A group of ROUTEs which is generally known to the public by a similar name or number.
 
-→ [Full documentation](07_service.md#Line)
+→ [Full documentation](07_service.md#line)
 
 ---
 
@@ -274,7 +274,7 @@ Informational or regulatory text associated with public transport services, disp
 >
 > **Transmodel:** A text for informational purposes on exceptions in a LINE, a JOURNEY PATTERN, etc. The information may be usable for passenger or driver information.
 
-→ [Full documentation](07_service.md#Notice)
+→ [Full documentation](07_service.md#notice)
 
 ---
 
@@ -287,7 +287,7 @@ Assign a `Notice` to an element.
 > **Transmodel:** The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the
 validity of the NOTICE starts and ends respectively.
 
-→ [Full documentation](07_service.md#NoticeAssignment)
+→ [Full documentation](07_service.md#noticeassignment)
 
 ---
 
@@ -348,7 +348,7 @@ The bridge linking a logical ScheduledStopPoint to a physical Quay within a Stop
 >
 > **Transmodel:** The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY.
 
-→ [Full documentation](07_service.md#PassengerStopAssignment)
+→ [Full documentation](07_service.md#passengerstopassignment)
 
 ---
 
@@ -364,7 +364,7 @@ The root element of every NeTEx XML document, wrapping one or more frames with m
 
 > **NeTEx XSD:** A set of NeTEx objects as assembled by a publication request or other service. Provides a general purpose wrapper for NeTEx data content.
 
-→ [Full documentation](05_frames.md#PublicationDelivery)
+→ [Full documentation](05_frames.md#publicationdelivery)
 
 ---
 
@@ -384,7 +384,7 @@ A specific boarding or alighting position (platform, stand, bay) within a StopPl
 >
 > **Transmodel:** A place such as platform, stance, or quay side where passengers have access to PT vehicles, Taxis, cars or other means of transportation.
 
-→ [Full documentation](06_stops.md#Quay)
+→ [Full documentation](06_stops.md#quay)
 
 ---
 
@@ -396,7 +396,7 @@ The set of roles and organisations responsible for managing data, operations, or
 >
 > **Transmodel:** A list of possible responsibilities over one or more ENTITies IN VERSION, resulting from the process of the assignment of RESPONSIBILITY ROLEs (such as data origination, ownership, etc.) on specific data (instances) to ORGANISATIONs or ORGANISATION PARTs.
 
-→ [Full documentation](10_common.md#ResponsibilitySet)
+→ [Full documentation](10_common.md#responsibilityset)
 
 ---
 
@@ -406,7 +406,7 @@ Contains shared resources used across other frames - organisations (Authorities 
 
 > **NeTEx XSD:** A coherent set of reference values for TYPE OF VALUEs, ORGANISATIONs, VEHICLE TYPEs etc that have a common validity. Used to define common resources that will be referenced by other types of FRAME.
 
-→ [Full documentation](10_common.md#ResourceFrame)
+→ [Full documentation](10_common.md#resourceframe)
 
 ---
 
@@ -442,7 +442,7 @@ A logical stopping point in the timetable, used by JourneyPatterns and ServiceJo
 
 > **NeTEx XSD / Transmodel:** A POINT where passengers can board or alight from vehicles.
 
-→ [Full documentation](07_service.md#ScheduledStopPoint)
+→ [Full documentation](07_service.md#scheduledstoppoint)
 
 ---
 
@@ -450,7 +450,7 @@ A logical stopping point in the timetable, used by JourneyPatterns and ServiceJo
 
 An enumeration on DatedServiceJourney indicating the deviation type. Allowed values: `planned`, `cancellation`, `replaced`, `extraJourney`. Omitted implies `planned`.
 
-→ [DatedServiceJourney table](09_timetable.md#ServiceJourney)
+→ [DatedServiceJourney table](09_timetable.md#servicejourney)
 
 ---
 
@@ -460,7 +460,7 @@ Long-term planning uses calendar days that are classified as specific DayTypes (
 
 > **NeTEx XSD:** A collection of assignments of OPERATING DAYs to DAY TYPEs.
 
-→ [Full documentation](08_service_calendars.md#ServiceCalendar)
+→ [Full documentation](08_service_calendars.md#servicecalendar)
 
 ---
 
@@ -470,7 +470,7 @@ Groups calendar definitions that describe when services operate - day types, ope
 
 > **NeTEx XSD:** A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar, used to state the temporal VALIDITY of other NeTEx entities such as Timetables and STOP PLACEs.
 
-→ [Full documentation](08_service_calendars.md#ServiceCalendarFrame)
+→ [Full documentation](08_service_calendars.md#servicecalendarframe)
 
 ---
 
@@ -492,7 +492,7 @@ Contains the network and route definitions - Lines, Routes, JourneyPatterns, Sch
 
 > **NeTEx XSD:** A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.
 
-→ [Full documentation](07_service.md#ServiceFrame)
+→ [Full documentation](07_service.md#serviceframe)
 
 ---
 
@@ -502,7 +502,7 @@ A planned trip in the timetable operating on a recurring schedule, defining the 
 
 > **NeTEx XSD / Transmodel:** A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN.
 
-→ [Full documentation](09_timetable.md#ServiceJourney)
+→ [Full documentation](09_timetable.md#servicejourney)
 
 ---
 
@@ -512,7 +512,7 @@ ServiceJourneyPattern is used to describe the journey pattern (sequence and time
 
 > **NeTEx XSD / Transmodel:** The JOURNEY PATTERN for a (passenger carrying) SERVICE JOURNEY.
 
-→ [Full documentation](07_service.md#ServiceJourneyPattern)
+→ [Full documentation](07_service.md#servicejourneypattern)
 
 ---
 
@@ -535,7 +535,7 @@ Sanitary facilities (toilets, washrooms) available at a stop place, station, or 
 > **Transmodel:** The physical (spatial) possibility for a passenger to change from one public transport vehicle to another to continue the trip, determined by physical locations, such as SITEs and/or its
 components and/or ENTRANCEs, in particular STOP PLACEs and/or its components. NOTE: Different times may be necessary to cover the resulting distance, depending on the kind of passenger.
 
-→ [Full documentation](07_service.md#SiteConnection)
+→ [Full documentation](07_service.md#siteconnection)
 
 ---
 
@@ -557,7 +557,7 @@ Contains the physical infrastructure model for public transport - stop places, q
 
 > **NeTEx XSD:** A coherent set of SITE data to which the same frame VALIDITY CONDITIONs have been assigned.
 
-→ [Full documentation](06_stops.md#SiteFrame)
+→ [Full documentation](06_stops.md#siteframe)
 
 ---
 
@@ -569,7 +569,7 @@ A named physical or virtual location where passengers can board or alight from p
 >
 > **Transmodel:** A place comprising one or more locations where vehicles may stop and where passengers may board or leave vehicles or prepare their trip. A STOP PLACE will usually have one or more well-known names.
 
-→ [Full documentation](06_stops.md#StopPlace)
+→ [Full documentation](06_stops.md#stopplace)
 
 ---
 
@@ -589,7 +589,7 @@ A TemplateServiceJourney represents a sequence of planned trips. It is similar t
 >
 > **Transmodel:** A passenger carrying TEMPLATE VEHICLE JOURNEY. NOTE: It may represent multiple journeys.
 
-→ [Full documentation](09_timetable.md#TemplateServiceJourney)
+→ [Full documentation](09_timetable.md#templateservicejourney)
 
 ---
 
@@ -629,7 +629,7 @@ Long-term planned time data concerning public transport vehicles passing a parti
 >
 > **Transmodel:** Long-term planned time data concerning public transport vehicles passing a particular POINT IN JOURNEY PATTERN on a specified VEHICLE JOURNEY for a certain DAY TYPE.
 
-→ [Full documentation](09_timetable.md#TimetabledPassingTime)
+→ [Full documentation](09_timetable.md#timetabledpassingtime)
 
 ---
 
@@ -639,7 +639,7 @@ Contains operational journey definitions - ServiceJourneys, DatedServiceJourneys
 
 > **NeTEx XSD:** A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.
 
-→ [Full documentation](09_timetable.md#TimetableFrame)
+→ [Full documentation](09_timetable.md#timetableframe)
 
 ---
 
@@ -671,7 +671,7 @@ A named geographic area such as a city, municipality, county, or region - used t
 >
 > **Transmodel:** A type of PLACE providing the topographical context when searching for or presenting travel information, for example as the origin or destination of a trip.
 
-→ [Full documentation](06_stops.md#TopographicPlace)
+→ [Full documentation](06_stops.md#topographicplace)
 
 ---
 
@@ -693,7 +693,7 @@ Codes assigned to particular journeys (ServiceJourney, TemplateServiceJourney) w
 >
 > **Transmodel:** A specification of codes assigned to particular VEHICLE JOURNEYs or JOURNEY PARTs when operated by TRAINs or COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc.)
 
-→ [Full documentation](09_timetable.md#TrainNumber)
+→ [Full documentation](09_timetable.md#trainnumber)
 
 ---
 
@@ -715,7 +715,7 @@ A collection of classification codes of a particular NeTEx entity (e.g., a list 
 
 > **NeTEx XSD:** A grouping of instances of a specific TYPE OF VALUE instances for the purposes of exchange (i.e. a list of codes).
 
-→ [Full documentation](10_common.md#ValueSet)
+→ [Full documentation](10_common.md#valueset)
 
 ---
 
@@ -743,7 +743,7 @@ A typified vehicle configuration (model or series) defining reusable characteris
 >
 > **Transmodel:** A classification of public transport vehicles according to the vehicle scheduling requirements in mode and capacity (e.g., standard bus, double-decker, etc.).
 
-→ [Full documentation](10_common.md#VehicleType)
+→ [Full documentation](10_common.md#vehicletype)
 
 ---
 

@@ -12,7 +12,7 @@ In this chapter:
 
 In Service: 
 - [NoticeAssignment](07_service.md#noticeassignment)
-- [ServiceFacilitySet](10_common.md#ServiceFacilitySet)
+- [ServiceFacilitySet](10_common.md#servicefacilityset)
 
 In ServiceCalender:
 - [AvailabilityCondition](08_service_calendars.md#availabilitycondition)
@@ -242,14 +242,14 @@ The standard states: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an 
 *→ [Glossary definition](A4_annex_glossary.md#interchangerule)*
 
 ## AvailabilityCondition 
-*→ [see ServiceCalenderFrame](./08_service_calendars.md#AvailabilityCondition)*
+*→ [see ServiceCalenderFrame](./08_service_calendars.md#availabilitycondition)*
 
 ## Timeband 
-*→ [see ServiceCalenderFrame](./08_service_calendars.md#Timeband)*
+*→ [see ServiceCalenderFrame](./08_service_calendars.md#timeband)*
 
 
 ## NoticeAssignment
-*→ [see Common elements](./07_service.md#NoticeAssignment)*
+*→ [see Common elements](./07_service.md#noticeassignment)*
 
 
 ## ServiceFacilitySet
