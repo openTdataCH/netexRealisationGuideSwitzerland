@@ -61,7 +61,7 @@ This document describes the way in which the NeTEx standard is specifically appl
 
 
 ## Examples
-We have a [set of examples](../examples/README.md) that show how to create use cases with the realisation guide.
+We have a [set of examples](./examples/README.md) that show how to create use cases with the realisation guide.
 
 ## Impressum
 * Authors: Thomas Schäfer, Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Martin Bennett, Emeric Matthias Günter
