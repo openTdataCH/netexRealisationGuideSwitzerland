@@ -96,14 +96,14 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 A specific boarding or alighting position (platform, stand, bay) within a `StopPlace` where passengers physically meet vehicles. 
 
 ### Table
-- [Swiss profile NeTEx definition](../site/tables/Quai.md)
+- [Swiss profile NeTEx definition](../site/tables/Quay.md)
 
-*→ [General NeTEx definition ](../generated/netex-html/StopPlace.html)*
+*→ [General NeTEx definition ](../generated/netex-html/Quay.html)*
 
 ### Example
-- [Example snippet](../site/xml-snippets/StopPlace.xml)
+- [Example snippet](../site/xml-snippets/Quay.xml)
 
-*→ [Template](./templates/StopPlace.xml)*
+*→ [Template](./templates/Quay.xml)*
 
 ### Usage Notes
 - In standard NeTEx, a `Quay` may serve one or more `VehicleStoppingPlace`s and be associated with one or more `StopPoints`s. The Swiss profile does not currently model that.
