@@ -14,7 +14,7 @@ replacing the deprecated `JourneyMeeting` and `InterchangeRule` from RG 1.0.
 >The feeder train IR 17 (Thurbo/SBB, line 91014I) arrives at Weinfelden platform 3, where it continues as regional train R 80 (line 91030L) towards Wil SG or Winterthur. The passenger remains seated (StaySeated=true) — this is a through-service where the train changes its line identity at Weinfelden without the passenger needing to change vehicles. Maximum wait time is 9 minutes (PT9M).
 		
 **Situation according to Realisation Guide 1.0**
-```
+```xml
 <JourneyMeeting id="ch:1:JourneyMeeting:91014I-THU-17-1-5100_91030L-THU-80-1-7200_1642236775_1642209284_6660_7200" version="any">
   <validityConditions>
     <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" versionRef="any" />
@@ -29,7 +29,7 @@ replacing the deprecated `JourneyMeeting` and `InterchangeRule` from RG 1.0.
 ```
 
 **Situation with Realisation Guide 2.0**
-```
+```xml
 <ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
 	<validityConditions>
     	<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" version="any"/>

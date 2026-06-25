@@ -57,7 +57,7 @@ We will use `version="1"` in Switzerland. In some cases we use `versionRef="1"` 
 
 #### Example
 
-```
+```xml
 <Name lang="de">Train Express Regional
   <Text lang="it">Train Express Regional</Text>
   <Text lang="en">Train Express Regional</Text>
