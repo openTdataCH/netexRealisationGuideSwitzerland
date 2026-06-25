@@ -10,8 +10,8 @@ Usage:
     python build_xml_snippets.py -i INPUT_FOLDER_OR_FILE -o OUTPUT_FOLDER
 
 Example:
-    python build_xml_snippets.py -i templates -o generated/xml-snippets
-    python build_xml_snippets.py -i single_template.xml -o generated/xml-snippets
+    python build_xml_snippets.py -i templates -o site/xml-snippets
+    python build_xml_snippets.py -i single_template.xml -o site/xml-snippets
 """
 
 import os

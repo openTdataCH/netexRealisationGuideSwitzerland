@@ -13,7 +13,7 @@ python expand_docs.py --docs docs --out generated/docs
 
 ## Features
 
-- **XML Snippet Inclusion**: Links like `- [Example snippet](../generated/xml-snippets/ServiceFrame.xml)` are replaced with the actual XML content wrapped in code blocks
+- **XML Snippet Inclusion**: Links like `- [Example snippet](../site/xml-snippets/ServiceFrame.xml)` are replaced with the actual XML content wrapped in code blocks
 - **Markdown Table Inclusion**: Links like `- [Swiss profile NeTEx definition](../generated/markdown-examples/ServiceFrame.md)` are replaced with the table content from the referenced markdown file
 - **Media Folder Copy**: The entire `media` folder from the input directory is copied to the output directory
 

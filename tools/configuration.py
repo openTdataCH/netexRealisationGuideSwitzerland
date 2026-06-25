@@ -3,8 +3,8 @@ from importlib.resources import files
 PROJECT_DIR=files()
 
 # Source documents
-DOCS_DIR = PROJECT_DIR.joinpath("../docs")
-TEMPLATES_DIR = PROJECT_DIR.joinpath("../templates")
+DOCS_DIR = PROJECT_DIR.joinpath("../src")
+TEMPLATES_DIR = DOCS_DIR.joinpath("templates")
 
 JEKYLL_DIR = PROJECT_DIR.joinpath("../jekyll")
 

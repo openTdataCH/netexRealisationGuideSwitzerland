@@ -59,7 +59,7 @@ There is a defined structure to describe elements and frames (examples in [Timet
 
 In the Table heading first it is the link to the element/frame md which will be copied into it by the generator. The link is formed this way `[Swiss profile NeTEx definition](../generated/markdown-examples/ServiceJourney.md)`. The Link to the future xcore Snippet is formed this ways `*→ [General NeTEx definition ](../generated/xcore/ServiceJourney.html)*`
 
-In the Example portion first the link to the snippet is formed  `[Example snippet](../generated/xml-snippets/ServiceJourney.xml)`. There may be several examples with text between them. Also the templates are to be added below each snippet: `[Template](../templates/ServiceJourney.xml)`
+In the Example portion first the link to the snippet is formed  `[Example snippet](../site/xml-snippets/ServiceJourney.xml)`. There may be several examples with text between them. Also the templates are to be added below each snippet: `[Template](./templates/ServiceJourney.xml)`
 
 ### Tables
 - Tables as markdown
