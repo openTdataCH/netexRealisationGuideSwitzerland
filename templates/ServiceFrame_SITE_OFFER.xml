@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="any">
+			<frames>
+				<ServiceFrame id="ch:1:ServiceFrame" version="any">
+					<!-- ch-root -->
+					<!-- ch-note: There is a partial ServiceFrame in the SITE_OFFER-->
+					<directions>
+						<!-- ch-note: We don't use directions, but only direction type -->
+						<!-- ch-usage: forbidden -->
+						<Direction id="notUsed" version="none">
+							<!-- ch-usage: forbidden -->
+						</Direction>
+					</directions>
+					<lines>
+						<!-- ch-usage: forbidden -->
+						<Line id="use swiss line id where possible" version="1" responsibilitySetRef="dsa">
+							<Name>Name is needed</Name>
+						</Line>
+					</lines>
+					<groupsOfLines>
+						<!-- ch-usage: forbidden-->
+						<GroupOfLines id="notUsed" version="none">
+							<Name>NotUsed</Name>
+						</GroupOfLines>
+					</groupsOfLines>
+					<destinationDisplays>
+						<!-- ch-usage: forbidden-->
+						<DestinationDisplay id="generated-id" version="1">
+						</DestinationDisplay>
+					</destinationDisplays>
+					<scheduledStopPoints>
+						<!-- ch-usage: forbidden -->
+						<ScheduledStopPoint id="sloid_where_possible" version="1">
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+					<connections>
+						<Access id="notUsed" version="none">
+							<!-- ch-usage: forbidden -->
+							<From/>
+							<To/>
+						</Access>
+						<SiteConnection id="generated" version="1">
+							<!-- ch-note: SiteConnection are used only in the main file and not in timetable files.-->
+							<!-- ch-usage: expected -->
+							<!-- ch-see -->
+						</SiteConnection>
+						<DefaultConnection id="generated" version="1">
+							<!-- ch-note: DefaultConnection is only used in the site file -->
+							<!-- ch-usage: expected-->
+							<!-- ch-see -->
+						</DefaultConnection>
+					</connections>
+					<stopAssignments>
+						<!-- ch-usage: forbidden-->
+						<PassengerStopAssignment id="generated" version="1">
+						</PassengerStopAssignment>
+					</stopAssignments>
+					<timingLinks>
+						<!-- ch-usage: forbidden -->
+						<!-- ch-note: We don't use TimingLink in SITE_OFFER -->
+						<TimingLink id="generated" version="1">
+							<FromPointRef ref="sloid1" versionRef="1"/>
+							<ToPointRef ref="sloid 2" versionRef="1"/>
+						</TimingLink>
+					</timingLinks>
+					<journeyPatterns>
+						<!-- ch-usage: forbidden -->
+						<ServiceJourneyPattern id="generated" version="1">
+						</ServiceJourneyPattern>
+					</journeyPatterns>
+					<timeDemandTypes>
+						<!-- ch-usage: forbidden -->
+						<!-- ch-note: not used in SITE OFFER. -->
+						<TimeDemandType id="generated" version="1"/>
+					</timeDemandTypes>
+						<!-- ch-usage: forbidden -->
+					<timeDemandTypeAssignments>
+						<!--ch-usage: forbidden-->
+						<TimeDemandTypeAssignment id="generated" version="1"/>
+					</timeDemandTypeAssignments>
+					<notices>
+						<!-- ch-usage: forbidden -->
+						<Notice id="generated" version="1">
+						</Notice>
+					</notices>
+				</ServiceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Template</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame:1" version="1">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame:1" version="1">
+					<journeyInterchanges>
+						<ServiceJourneyInterchange id="ch:1:ServiceJourneyInterchange:1692675_80600_18840_18960" version="1">
+							<!-- ch-root -->
+							<!-- ch-attrs: id version -->
+							<!-- ch-usage: mandatory -->
+							<!-- ch-note: Transfer time between two specific ServiceJourneys at a given stop (UMSTEIGZ). StaySeated=false: passenger must change vehicles. Replaces InterchangeRule in RG 2.0. One element per journey pair required. -->
+							<validityConditions>
+								<!-- ch-usage: expected -->
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:80600" versionRef="1">
+									<!-- ch-usage: expected -->
+								</AvailabilityConditionRef>
+							</validityConditions>
+							<Description><!-- ch-usage: optional -->UMSTEIGZ: transfer at stop 8506131, S1 → IR75</Description>
+							<StaySeated><!-- ch-usage: mandatory -->false</StaySeated>
+							<CrossBorder><!-- ch-usage: optional -->false</CrossBorder>
+							<Planned><!-- ch-usage: mandatory -->true</Planned>
+							<Guaranteed><!-- ch-usage: optional -->false</Guaranteed>
+							<MaximumWaitTime><!-- ch-usage: optional --><!-- ch-note: If not set or PT0M, connection is considered guaranteed. -->PT2M</MaximumWaitTime>
+							<MinimumTransferTime><!-- ch-usage: expected -->PT1M</MinimumTransferTime>
+							<MaximumTransferTime><!-- ch-usage: expected -->PT2M</MaximumTransferTime>
+							<FromPointRef ref="ch:1:ScheduledStopPoint:8506131:1" versionRef="1">
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. -->
+							</FromPointRef>
+							<ToPointRef ref="ch:1:ScheduledStopPoint:8506131:1" versionRef="1">
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. -->
+							</ToPointRef>
+							<FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:11111-001_91001C.j26_1012" versionRef="1">
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: Reference to the specific feeder ServiceJourney. Replaces FeederFilter/ServiceJourneyRef from InterchangeRule. -->
+							</FromServiceJourneyRef>
+							<ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100001:2106-001_91075_.j26_802" versionRef="1">
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/ServiceJourneyRef from InterchangeRule. -->
+							</ToServiceJourneyRef>
+						</ServiceJourneyInterchange>
+					</journeyInterchanges>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

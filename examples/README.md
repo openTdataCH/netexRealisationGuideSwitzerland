@@ -13,7 +13,7 @@ Swiss NeTEx 2.0 models repeated stops within a journey using PassingTimes and Jo
 
 Another bus i an example from Nyon.
 
-[Link to example]([Link to example](NeTEx_CH_PAG_11929.xml)
+[Link to example](NeTEx_CH_PAG_11929.xml)
 
 ### Bus with some DRT properties
 We modeled some `ServiceJourney` from the following bus: https://github.com/user-attachments/files/26309155/50.110.pdf
@@ -29,12 +29,12 @@ Als drittes Beispiel eignet sich die Fahrt 11957 auf der Linie 50.119. Diese Fah
 A simple splitting train without any additional information.
 Bern - Thun - Spiez - (Zweisimmen | Brig)
 
-> ** TODO **: Check if this really is the full example with the latest version JourneyMeeting or the improved InterchangeRule also 3 parts and one stays in Brig
+> **TODO**: Check if this really is the full example with the latest version JourneyMeeting or the improved InterchangeRule also 3 parts and one stays in Brig
 
 [Link to example](NeTEx_CH_Bern_Spiez_Zweisimmen_Passingtime.xml)
 
 ## Basic ThroughJourney
-In the case of international connections a "Durchbindung" is needed.
+This example demonstrates a Swiss NeTEx 2.0 modelling of an international ThroughJourney (Durchbindung) extending beyond Swiss borders, highlighting the use of TimetabledPassingTimes, consistent KeyList and PrivateCode usage, and a complete mapping between ScheduledStopPoints and PassengerStopAssignments to ensure both temporal and spatial consistency.
 
 [Link to example](NeTEx_CH_Interlaken_BS_Freiburg_Breisach_Durchbindung.xml)
 

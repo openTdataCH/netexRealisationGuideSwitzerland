@@ -7,6 +7,7 @@ In this chapter:
 - [TrainNumber](09_timetable.md#trainnumber)
 - [TypeOfService](#typeofservice)
 - [TimetabledPassingTime](09_timetable.md#timetabledpassingtime)
+- [ServiceJourneyInterchange](#servicejourneyinterchange)
 - [InterchangeRule](09_timetable.md#interchangerule)
 
 In Service: 
@@ -80,13 +81,13 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
       <PrivateCode>1</PrivateCode>
     </TypeOfService>
   </typesOfService>
-  <journeyMeetings>
-    <JourneyMeeting id="ch:1:JourneyMeeting:1" version="1">
-      <!-- For splitting and joining. -->
-      <FromJourneyRef ref="sjyid1" version="1"/>
-      <ToJourneyRef ref="sjyid2" version="1"/>
-    </JourneyMeeting>
-  </journeyMeetings>
+  <journeyInterchanges>
+    <ServiceJourneyInterchange id="ch:1:sji:generated-1" version="1">
+      <!-- For modeling many forms of interchanges -->
+      <FromJourneyRef ref="sjyid-1" version="1"/>
+      <ToJourneyRef ref="sjyid-2" version="1"/>
+    </ServiceJourneyInterchange>
+  </journeyInterchanges>
   <interchangeRules>
     <InterchangeRule id="ch:1:InterchangeRule:1" version="1"/>
   </interchangeRules>
@@ -221,7 +222,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - **Validation:** Ensure `JourneyPatternRef`, `LineRef`, and `OperatorRef` are consistent and reference existing objects.
 
 ## TemplateServiceJourney
-
+*→ [Glossary definition](A4_annex_glossary.md#templateservicejourney)*
 ### Purpose
 A `TemplateServiceJourney` represents a sequence of planned trips. It is similar to the `ServiceJourney`, but it is used if there is a frequency defined at which the trips are scheduled on an operating day. 
 
@@ -362,7 +363,6 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 ## OccupancyView
 
 ### Purpose
-
 `OccupancyView`can be used on the `Journey`, `JourneyPart`, and `TimetabledPassingTime` elements. Used for predicted and planned occupancies of vehicles.
 
 ### Table
@@ -413,6 +413,7 @@ We currently don't use OccupancyView.
 
 
 ## TrainNumber
+*→ [Glossary definition](A4_annex_glossary.md#trainnumber)*
 
 ### Purpose
 
@@ -503,6 +504,7 @@ Actually there is only one allowed value that we use in the Swiss profile: Only 
 
 
 ## TimetabledPassingTime
+*→ [Glossary definition](A4_annex_glossary.md#timetabledpassingtime)*
 
 ### Purpose
 
@@ -560,16 +562,71 @@ Long-term planned time data concerning public transport vehicles passing a parti
 - If `DepartureTime` is not on the same day as `ArrivalTime` this information will be provided using `WaitingTime`.
 - We use sjyid whenever possible as the attribute. However, there are different types of `ServiceJourney`s that don't have one:
   - foreign `ServiceJourney`s
-  - **TODO** which other cases
+  - **TODO** which other cases don't have sjyid #83
 - We store the sjyid in different places `id`, `privateCodes/PrivateCode`, `KeyList`. This allows different importing systems to find the sjyid.
 
 
-
-## InterchangeRule
+## ServiceJourneyInterchange
+*→ [Glossary definition](A4_annex_glossary.md#servicejourneyinterchange)*
 
 ### Purpose
+The standard say: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle. This concept is for instance used for circular lines and coupled journeys. This means that passenger information should be adapted to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also im-portant that operation control staff is aware of the consequences to passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs."
 
-An `InterchangeRule`defines the possibility of interchanging between two `ServiceJourney`s at the same or different `ScheduledStopPoint*` — where at least one journey is specified indirectly via `Direction`, `Line` or the VEHICLE JOURNEY (? **TODO**), rather than as an explicit journey pair. The rule specifies criteria (e.g. `Mode`, `Line`, `Direction`) that a candidate feeder or distributor journey must fulfil.
+StaySeated can and should be modeled this way (especially if one uses EPIP as basis. Splitting is very technically not the same vehicle, but on on a higher level for the passenger it is. So we can indicate the splitting there.
+
+### Table
+
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | ServiceJourneyInterchange | mandatory | 1..1 | unknown | The scheduled possibility for transfer of passengers between two SERVICE JOURNEYs at the same or different STOP POINTs. |  |
+| + | validityConditions | expected | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. |  |
+| ++ | AvailabilityConditionRef | expected | 1..1 | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. |  |
+| + | Description | optional | 0..1 | MultilingualString | Description of contents. |  |
+| + | StaySeated | mandatory | 0..1 | xsd:boolean | Whether the passenger can remain in vehicle (i.e. block linking). Default is false: the passenger must change vehicles for this INTERCHANGE.
+
+
+
+*→ [General NeTEx definition ](../generated/netex-html/ServiceJourneyInterchange.html)*
+
+### Example
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ServiceJourneyInterchange  version="2.0" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
+  <validityConditions>
+    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" version="1"/>
+  </validityConditions>
+  <Description>LineChange</Description>
+  <StaySeated>true</StaySeated>
+  <CrossBorder>false</CrossBorder>
+  <Planned>true</Planned>
+  <Guaranteed>false</Guaranteed>
+  <MaximumWaitTime>PT9M</MaximumWaitTime>
+  <!-- If not set or PT0M, it is guaranteed. -->
+  <FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" version="1"/>
+  <FromVisitNumber>1</FromVisitNumber>
+  <ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" version="1"/>
+  <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" version="1"/>
+  <ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" version="1"/>
+</ServiceJourneyInterchange>
+
+```
+
+
+
+*→ [Template](../templates/ServiceJourneyInterchange.xml))*
+
+### Usage Notes
+> **TODO*** Adrian pls add some descriptions here. #63
+
+## InterchangeRule
+*→ [Glossary definition](A4_annex_glossary.md#interchangerule)*
+> **TODO** will probably be removed and replaced by ServiceJourneyInterchange #63
+### Purpose
+
+An `InterchangeRule`defines the possibility of interchanging between two `ServiceJourney`s at the same or different `ScheduledStopPoint*` — where at least one journey is specified indirectly via `Direction`, `Line` or the VEHICLE JOURNEY (? **TODO** #63), rather than as an explicit journey pair. The rule specifies criteria (e.g. `Mode`, `Line`, `Direction`) that a candidate feeder or distributor journey must fulfil.
 
 ### Table
 
@@ -693,55 +750,6 @@ An `InterchangeRule`defines the possibility of interchanging between two `Servic
 
 ## ServiceFacilitySet
 *→ [see Common elements](./10_common.md#servicefacilityset)*
-
-## JourneyMeeting -> TODO: Probably to be removed
-[//]: # (**TODO**: Add JourneyMeeting links)
-
-### Table
-
-
-| Sub | Element | Usage | Card | Type | Description | Note |
-|-----|---------|-------|------|------|-------------|------|
-| + | validityConditions | expected | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. | A specific type of VALIDITY CON-DITION used to specify a set of temporal conditions that can be associated with the JOURNEY MEETING, for example that the corresponding connections only apply on particular days of a period (indicated by ValidDayBits “Verkehrstagebitfeld”). |
-| ++ | AvailabilityConditionRef | expected | 1..1 | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. |  |
-| + | AtStopPointRef | mandatory | 0..1 | ScheduledStopPointRefStructure | SCHEDULED STOP POINT at which JOURNEY MEETING takes place. |  |
-| + | FromJourneyRef | mandatory | 1..1 | JourneyRefStructure | DEPRECATE: JOURNEY that feeds the INTERCHANGE. -v2.0 |  |
-| + | ToJourneyRef | mandatory | 1..1 | JourneyRefStructure | DEPRECATE: JOURNEY that distributes from the INTERCHANGE. -v2.0 |  |
-| + | Description | optional | 0..1 | MultilingualString | Description of contents. |  |
-| + | EarliestTime | optional | 0..1 | xsd:time | Earliest time for JOURNEY MEETING. |  |
-| + | LatestTime | optional | 0..1 | xsd:time | Latest time on specified last day when ticket can be purchased. |  |
-| + | Reason | optional | 0..1 | ReasonForMeetingEnumeration | Reason for JOURNEY MEETING. |  |
-
-
-
-*→ [General NeTEx definition ](../generated/netex-html/JourneyMeeting.html)*
-
-### Example
-
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<JourneyMeeting  id="ch:1:JourneyMeeting:91014I-THU-17-1-5100_91030L-THU-80-1-7200_1642236775_1642209284_6660_7200" version="1">
-  <!-- Used for joining and splitting of trains. Check latest policy - InterchangeRule may be the preferred alternative. **TODO** -->
-  <validityConditions>
-    <!-- A specific type of VALIDITY CON-DITION used to specify a set of temporal conditions that can be associated with the JOURNEY MEETING, for example that the corresponding connections only apply on particular days of a period (indicated by ValidDayBits “Verkehrstagebitfeld”). -->
-    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" version="1"/>
-  </validityConditions>
-  <AtStopPointRef ref="ch:1:ScheduledStopPoint:8506105:3" version="1"/>
-  <FromJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" version="1"/>
-  <ToJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" version="1"/>
-  <Description>LineChange</Description>
-  <EarliestTime>01:51:00</EarliestTime>
-  <LatestTime>02:00:00</LatestTime>
-  <Reason>joining</Reason>
-</JourneyMeeting>
-
-```
-
-
-
-*→ [Template](../templates/JourneyMeeting.xml))*
-
 
 
 ### Usage Notes

@@ -4,11 +4,13 @@ In this chapter:
 - [DestinationDisplay](#destinationdisplay)
 - [ScheduledStopPoint](#scheduledstoppoint)
 - [PassengerStopAssignment](#passengerstopassignment)
-- [PassengerBoardingPositionAssignment](**TODO**)
+- [PassengerBoardingPositionAssignment](**TODO** #80)
 - [DefaultConnection](#defaultconnection)
 - [SiteConnection](#siteconnection)
+- [TimingLink](#timinglink)
 - [ServiceJourneyPattern](#servicejourneypattern)
-- [Notice](#NoticeAssignment)
+- [TimeDemandType](#timedemandtype)
+- [Notice](#Notice)
 - [NoticeAssignment](#NoticeAssignment)
 
 ## ServiceFrame
@@ -108,7 +110,7 @@ Other important classes of the `ServiceFrame` include:
 *→ [Template](../templates/ServiceFrame.xml)*
 
 ### Frame Relationships
-`ServiceFrame` depends on `ResourceFrame` for `Operator` definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `PassengerStopAssignment`s build the connection between `ScheduledStopPoints` and the physical model in`SiteFrame`. ServiceFrame` is typically wrapped in a `CompositeFrame`within a `PublicationDelivery`.
+`ServiceFrame` depends on `ResourceFrame` for `Operator` definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `PassengerStopAssignment`s build the connection between `ScheduledStopPoints` and the physical model in `SiteFrame`. ServiceFrame` is typically wrapped in a `CompositeFrame`within a `PublicationDelivery`.
 
 
 ## Direction
@@ -137,11 +139,12 @@ A public transport service line, representing a marketed route with a `Name`, `T
 - slnid will be integrated wherever possible. We currently think that - where it exists - it has the necessary properties to be used in the `id`-attribute.
 - For foreign lines and id might need to be generated.
 - We store the slnid whenever possible in `id`, `privateCodes/PrivateCode` and `KeyList`.
-- **TODO** link to migration concept slnid
-- **TODO** handling of mixed lines
+- **TODO** link to migration concept slnid #48
+- **TODO** handling of mixed lines #48
 - Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
 - Note that there exist journeys in Switzerland and neighbouring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
 - For more information about SwissLineID: see https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf
+- id-attribute needs to be kept stable between exports.
 
 ## DestinationDisplay
 *→ [Glossary definition](A4_annex_glossary.md#DestinationDisplay)*
@@ -162,10 +165,11 @@ Showing the destination of a `ServiceJourney`. The text shown on the front or si
 
 ### Usage Notes
 - In HRDF sometimes the destination is not set (`*R`). This results in NeTEX in a calculated destination definition. 
-- The `DestinationDiplay` is usually be set on the `ServiceJourney`. If it changes during the run, it needs to be changed in the `ServiceJourneyPattern`. If it changes on that, then the new destination should be used. In our output, we will fill all remaining `PointsInJourneyPattern`with the relevant change.
+- The `DestinationDisplay` is usually set on the `ServiceJourney`. If it changes during the run, it needs to be changed in the `ServiceJourneyPattern`. If it changes on that, then the new destination should be used. In our output, we will fill all remaining `PointsInJourneyPattern`with the relevant change.
 - See also the [use case on changes in destination](uc13_changes_in_destination.md) 
+- id-attribute needs to be kept stable between exports.
 
-> **TODO** the rules for defining need to be clarified.
+> **TODO** the rules for defining need to be clarified. #81
 
 ## ScheduledStopPoint
 *→ [Glossary definition](A4_annex_glossary.md#ScheduledStopPoint)*
@@ -189,6 +193,9 @@ A `ScheduledStopPoint` can represent two types of stop points:
 
 *->[Template](../templates/ScheduledStopPoint.xml)*
 
+### Usage Notes
+- id-attribute needs to be kept stable between exports.
+
 ## PassengerStopAssignment
 *→ [Glossary definition](A4_annex_glossary.md#PassengerStopAssignment)*
 
@@ -210,8 +217,12 @@ A `ScheduledStopPoint` can represent two types of stop points:
 *->[Template](../templates/PassengerStopAssignment.xml)*
 
 ### Usage Notes
+> **TODO** Suppose a vehicle arrives at quay 2A and departs on quay 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS. #82
+https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/82
 
-> ** TODO ** Suppose a vehicle arrives at quay 2A and departs on quay 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS.
+- id-attributes don't need to be stable.
+
+
 
 ## DefaultConnection
 *→ [Glossary definition](A4_annex_glossary.md#DefaultConnection)*
@@ -237,14 +248,16 @@ A `ScheduledStopPoint` can represent two types of stop points:
 *->[Template](../templates/DefaultConnection.xml)*
 
 ### Usage Notes
-For more details see the [use case on transfers](uc03_transfers.md).
+- For more details see the [use case on transfers](uc03_transfers.md).
+- id-attribute needs to be kept stable between exports.
 
 
 ## SiteConnection
 *→ [Glossary definition](A4_annex_glossary.md#SiteConnection)*
 
 ### Purpose
-The `SiteConnection` describes the transfer times between two adjacent `StopPlace`s. 
+- The `SiteConnection` describes the transfer times between two adjacent `StopPlace`s. 
+- id-attribute needs to be kept stable between exports.
 
 
 ### Table
@@ -263,6 +276,34 @@ For more details see the [use case on transfers](uc03_transfers.md).
 
 
 
+## TimingLink
+*→ [Glossary definition](A4_annex_glossary.md#TimingLink)*
+
+### Purpose
+`TimingLink`  is used to describe the run times and wait times of a given `ServiceJourney`. 
+
+
+### Table
+- [Swiss profile NeTEx definition](../generated/markdown-examples/TimingLink.md)
+
+*-> [General NeTEx definition](../generated/netex-html/TimingLink.html)*
+
+### Example
+
+- [Example snippet](../generated/xml-snippets/TimingLink.xml)
+
+*->[Template](../templates/TimingLink.xml)*
+
+### Usage Notes
+* It must fit with the sequence defined in `ServiceJourneyPattern`.
+* `WaitTime`is only needed when >0..
+* It is between `ScheduledStopPoints for the time being`.
+* If there is maneuvering or change of quay, then a a timing link needs to be added for that too.
+* Multiple visits in the same `ServiceJourneyPattern` are currently a problem.
+- id-attribute needs to be kept stable between exports.
+
+> **TODO** Adrian/Wilfried
+
 ## ServiceJourneyPattern
 *→ [Glossary definition](A4_annex_glossary.md#ServiceJourneyPattern)*
 
@@ -279,14 +320,39 @@ For more details see the [use case on transfers](uc03_transfers.md).
 
 - [Example snippet](../site/xml-snippets/ServiceJourneyPattern.xml)
 
-*->[Template](../templates/ServiceJourneyPattern)*
+*->[Template](../templates/ServiceJourneyPattern.xml)*
 
 ### Usage Notes
->** TODO**
+
+ServiceJourneyPatterns are a common concept in the VDV interface world ("Linienfahrweg"). In order to model ServiceJourneys effictiently and to reduce overall file size, ServiceJourneys sharing the same stop sequence and the same boarding/alighting options should use the same ServiceJourneyPattern. Do not just generate one ServiceJourneyPattern for each ServiceJourney.
+- id-attribute should be kept stable between exports.
+
+
+## TimeDemandType
+*→ [Glossary definition](A4_annex_glossary.md#timedemandtype)*
+
+### Purpose
+`TimeDemandType` is used to describe the timing pattern (run times and wait times) on a `ServiceJourneyPattern`. They currently work on `ScheduledStopPoints`.
+
+
+### Table
+- [Swiss profile NeTEx definition](../generated/markdown-examples/TimeDemandType.md)
+
+*-> [General NeTEx definition](../generated/netex-html/TimeDemandType.html)*
+
+### Example
+
+- [Example snippet](../generated/xml-snippets/TimeDemandType.xml)
+
+*->[Template](../templates/TimeDemandType.xml)*
+
+### Usage Notes
+> **TODO** Wilfried und Adrian
 
 
 ## Notice
 *→ [Glossary definition](A4_annex_glossary.md#Notice)*
+
 
 ### Purpose
 Informational or regulatory text associated with public transport services, displayed to passengers.
@@ -304,7 +370,8 @@ Informational or regulatory text associated with public transport services, disp
 *->[Template](../templates/Notice.xml)*
 
 ### Usage Notes
-> ** TODO** do we need a special use case?
+Notice elements should only be used to convey information which cannot be transported using specific model elements. Do not use Notice when the information could be expressed by specific elements, e.g. FacilitySet, DayType, ForAlighting, ForBoarding. Notices can be used to provide further information on ServiceFacilities but not as a replacement for them. Ideally, the description of a Notice is translated into common languages of CH (DE, IT, FR).
+- id-attribute don't need to be kept stable between exports.
 
 
 ## NoticeAssignment
@@ -323,3 +390,6 @@ Assign a `Notice` to an element.
 - [Example snippet](../site/xml-snippets/NoticeAssignment.xml)
 
 *->[Template](../templates/NoticeAssignment.xml)*
+
+### Usage Notes
+- id-attribute does not to be kept stable.

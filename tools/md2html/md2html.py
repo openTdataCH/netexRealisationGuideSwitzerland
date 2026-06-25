@@ -1,7 +1,6 @@
 import argparse
 import os
 import re
-
 import markdown
 from pygments.formatters import HtmlFormatter
 

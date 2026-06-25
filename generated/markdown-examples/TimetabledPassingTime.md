@@ -1,4 +1,4 @@
-# TimetabledPassingTime
+# TimetabledPassingtime
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|

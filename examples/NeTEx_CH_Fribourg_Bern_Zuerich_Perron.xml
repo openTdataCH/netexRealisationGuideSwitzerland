@@ -1,84 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--  NeTEx CH Beispiel: Spiez – Interlaken West – Interlaken Ost
+  Perron-Zuweisung via PassengerStopAssignment + Quay
 
-<!--
-This is and example of a rail journey from Niederhasli Zürich HB Zürich Stadelhofen Uster, where Zürich HB is mapped via PassengerStopAssignment to a shared platform Quay “41/42”
-This shows the problems with sloid.
+  Umbau von TimetabledPassingTime auf TimeDemandType (RV 2.0)
 
-We model a train that has the following stops Fribourg - Bern - Zürich. Zürich it uses Zürich Löwenstrasse 31/32
+  Zeitlogik aus Original-PassingTimes:
+    Spiez dep          10:35
+    Interlaken West arr 10:45  dep 10:48  → RunTime PT10M, WaitTime PT3M
+    Interlaken Ost  arr 10:54              → RunTime PT6M
 
-**TODO**
+  TimingLinks:
+    ch:1:TimingLink:7483_0_90840-7493_0_470772   Spiez → Interlaken West
+    ch:1:TimingLink:7493_0_470772-7492_0_460848  Interlaken West → Interlaken Ost
+
+  TimeDemandType:
+    ch:1:TimeDemandType:1  enthält beide RunTimes + WaitTime Interlaken West
 -->
-
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.09" xsi:schemaLocation="http://www.netex.org.uk/netex ./xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
 	<ParticipantRef>INTERMAPS</ParticipantRef>
-	<Description lang="de">NeTEx-Export INTERMAPS Version 1.0</Description>
-	<!-- Question 3: What would be a good thing to put in here? -->
+	<Description lang="de">NeTEx CH Spiez–Interlaken Ost mit Perron, TimeDemandType (RV 2.0)</Description>
 	<dataObjects>
-		<CompositeFrame id="ch:1:CompositeFrame:J26" version="any">
+		<CompositeFrame id="ch:1:CompositeFrame:J26" version="1">
 			<ValidBetween>
 				<FromDate>2025-12-15T00:00:00</FromDate>
 				<ToDate>2026-12-12T23:59:59</ToDate>
 			</ValidBetween>
 			<frames>
-				<!-- Resource Frame -->
-				<ResourceFrame id="ch:1:ResourceFrame:j26" version="any">
+				<ResourceFrame id="ch:1:ResourceFrame:J26" version="1">
 					<responsibilitySets>
-						<ResponsibilitySet id="ch:1:ResponsibilitySet:BLS-bls-33" version="any">
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:BLS-bls-33" version="1">
 							<Name>BLS</Name>
 							<PrivateCode>BLS AG</PrivateCode>
 							<roles>
-								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:1" version="any">
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:1" version="1">
 									<StakeholderRoleType>entityLegalOwnership</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="any"/>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:100015" version="1"/>
 								</ResponsibilityRoleAssignment>
-								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:2" version="any">
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:2" version="1">
 									<StakeholderRoleType>operation</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="any"/>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:100015" version="1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
 					</responsibilitySets>
 					<typesOfValue>
-						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="any" nameOfClass="TypeOfProductCategory">
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
 							<Name>ProductCategories</Name>
 							<values>
-								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:RE" version="any">
-									<Name>RegioExpress</Name>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:RE" version="1">
+									<Name lang="de">Regio Express</Name>
+									<ShortName lang="de">RE</ShortName>
 								</TypeOfProductCategory>
 							</values>
 						</ValueSet>
 					</typesOfValue>
 					<organisations>
-						<Operator id="ch:1:Operator:33" version="any">
+						<Operator id="ch:1:Operator:100015" version="1">
 							<keyList>
-								<KeyValue>
-									<Key>GO</Key>
-									<Value>33</Value>
-								</KeyValue>
 								<KeyValue>
 									<Key>SBOID</Key>
 									<Value>ch:1:sboid:100015</Value>
 								</KeyValue>
 							</keyList>
-							<PrivateCode>33</PrivateCode>
-							<Name>BLS AG</Name>
-							<ShortName>BLS</ShortName>
+							<privateCodes>
+								<PrivateCode type="sboid">ch:1:sboid:100015</PrivateCode>
+							</privateCodes>
+							<Name lang="de">BLS AG</Name>
+							<ShortName lang="de">BLS</ShortName>
 						</Operator>
 					</organisations>
 				</ResourceFrame>
-				<!-- Site Frame -->
-				<SiteFrame id="ch:1:SiteFrame:j26" version="any">
+				<SiteFrame id="ch:1:SiteFrame:J26" version="1">
 					<stopPlaces>
-						<StopPlace id="ch:1:sloid:7483" version="any">
+						<StopPlace id="ch:1:sloid:7483" version="1">
 							<ValidBetween>
-								<FromDate>20205-12-14T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
-							<alternativeTexts>
-								<AlternativeText attributeName="Text">
-									<Text lang="de">Spiez</Text>
-								</AlternativeText>
-							</alternativeTexts>
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
@@ -89,17 +87,11 @@ We model a train that has the following stops Fribourg - Bern - Zürich. Zürich
 									<Value>ch:1:sloid:7483</Value>
 								</KeyValue>
 							</keyList>
-							<Extensions>
-								<HafasPriority>
-									<Value>4</Value>
-								</HafasPriority>
-								<HafasKMInfo>
-									<Value>1</Value>
-								</HafasKMInfo>
-							</Extensions>
-							<Name>Bern</Name>
-							<ShortName lang="de">8507483</ShortName>
-							<PrivateCode>8507483</PrivateCode>
+							<privateCodes>
+								<PrivateCode type="didok">8507483</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:7483</PrivateCode>
+							</privateCodes>
+							<Name>Spiez</Name>
 							<Centroid>
 								<Location>
 									<Longitude>7.680103</Longitude>
@@ -108,45 +100,36 @@ We model a train that has the following stops Fribourg - Bern - Zürich. Zürich
 								</Location>
 							</Centroid>
 							<alternativeNames>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483_4" version="any">
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483:de" version="1">
 									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
 									<Name lang="de">Spiez</Name>
 								</AlternativeName>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483_5" version="any">
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483:fr" version="1">
 									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="it">Spiezeria</Name>
-								</AlternativeName>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483_6" version="any">
-									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="fr">Spieze (CH)</Name>
+									<Name lang="fr">Spiez</Name>
 								</AlternativeName>
 							</alternativeNames>
+							<StopPlaceType>railStation</StopPlaceType>
 							<Weighting>preferredInterchange</Weighting>
 							<quays>
-								<Quay id="ch:1:sloid:7483:0:90840" version="any">
+								<Quay id="ch:1:sloid:7483:0:90840" version="1">
 									<keyList>
 										<KeyValue>
 											<Key>SLOID</Key>
 											<Value>ch:1:sloid:7483:0:90840</Value>
 										</KeyValue>
 									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:7483:0:90840</PrivateCode>
+									</privateCodes>
 									<PublicCode>8</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
-						<!-- Interlaken west -->
-						<StopPlace id="ch:1:sloid:71310" version="any">
+						<StopPlace id="ch:1:sloid:71310" version="1">
 							<ValidBetween>
-								<FromDate>20205-12-14T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
-							<alternativeTexts>
-								<AlternativeText attributeName="Text">
-									<Text lang="de">Interlaken West</Text>
-								</AlternativeText>
-							</alternativeTexts>
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
@@ -157,17 +140,11 @@ We model a train that has the following stops Fribourg - Bern - Zürich. Zürich
 									<Value>ch:1:sloid:71310</Value>
 								</KeyValue>
 							</keyList>
-							<Extensions>
-								<HafasPriority>
-									<Value>4</Value>
-								</HafasPriority>
-								<HafasKMInfo>
-									<Value>14</Value>
-								</HafasKMInfo>
-							</Extensions>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:71310</PrivateCode>
+								<PrivateCode type="didoik">8507493</PrivateCode>
+							</privateCodes>
 							<Name>Interlaken West</Name>
-							<ShortName lang="de">8507493</ShortName>
-							<PrivateCode>8507493</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.851453</Longitude>
@@ -176,39 +153,36 @@ We model a train that has the following stops Fribourg - Bern - Zürich. Zürich
 								</Location>
 							</Centroid>
 							<alternativeNames>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_4" version="any">
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493:de" version="1">
 									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
 									<Name lang="de">Interlaken West</Name>
 								</AlternativeName>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_5" version="any">
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493:fr" version="1">
 									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="it">Interlaken West </Name>
-								</AlternativeName>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_6" version="any">
-									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="fr">Interlaken West (CH)</Name>
+									<Name lang="fr">Interlaken Ouest</Name>
 								</AlternativeName>
 							</alternativeNames>
+							<StopPlaceType>railStation</StopPlaceType>
 							<Weighting>preferredInterchange</Weighting>
 							<quays>
-								<Quay id="ch:1:sloid:71310:0:304706" version="any">
+								<Quay id="ch:1:sloid:71310:0:304706" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:71310:0:304706</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:71310:0:304706</PrivateCode>
+									</privateCodes>
 									<PublicCode>8</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
-						<!-- 	<Name lang="de">Interlaken Ost</Name> -->
-						<StopPlace id="ch:1:sloid:7492" version="any">
+						<StopPlace id="ch:1:sloid:7492" version="1">
 							<ValidBetween>
-								<FromDate>20205-12-14T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
-							<alternativeTexts>
-								<AlternativeText attributeName="Text">
-									<Text lang="de">Interlaken Ost</Text>
-								</AlternativeText>
-							</alternativeTexts>
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
@@ -216,58 +190,53 @@ We model a train that has the following stops Fribourg - Bern - Zürich. Zürich
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7492:0:470772</Value>
+									<Value>ch:1:sloid:7492</Value>
 								</KeyValue>
 							</keyList>
-							<Extensions>
-								<HafasPriority>
-									<Value>4</Value>
-								</HafasPriority>
-								<HafasKMInfo>
-									<Value>15</Value>
-								</HafasKMInfo>
-							</Extensions>
+							<privateCodes>
+								<PrivateCode type="didok">8507492</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:7492</PrivateCode>
+							</privateCodes>
 							<Name>Interlaken Ost</Name>
-							<ShortName lang="de">8507492</ShortName>
-							<PrivateCode>8507492</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.869000</Longitude>
-									<Latitude>46.6904999</Latitude>
+									<Latitude>46.690499</Latitude>
 									<Altitude>567</Altitude>
 								</Location>
 							</Centroid>
 							<alternativeNames>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492_4" version="any">
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492:de" version="1">
 									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
 									<Name lang="de">Interlaken Ost</Name>
 								</AlternativeName>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492_5" version="any">
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492:fr" version="1">
 									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="it">Interlaken Ost</Name>
-								</AlternativeName>
-								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492_6" version="any">
-									<NameType>alias</NameType>
-									<TypeOfName>offical</TypeOfName>
-									<Name lang="fr">Interlaken Ost (CH)</Name>
+									<Name lang="fr">Interlaken Est</Name>
 								</AlternativeName>
 							</alternativeNames>
+							<StopPlaceType>railStation</StopPlaceType>
 							<Weighting>preferredInterchange</Weighting>
 							<quays>
-								<Quay id="ch:1:sloid:7492:0:460848" version="any">
+								<Quay id="ch:1:sloid:7492:0:460848" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:7492:0:460848</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:7492:0:460848</PrivateCode>
+									</privateCodes>
 									<PublicCode>8</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
 					</stopPlaces>
 				</SiteFrame>
-				<!-- Service Frame -->
-				<ServiceFrame id="ch:1:ServiceFrame:j26" version="any">
-					<!--Problem 5: PassengerStopAssignment missing -->
+				<ServiceFrame id="ch:1:ServiceFrame:J26" version="1">
 					<lines>
-						<Line id="ch:1:slnid:1024440" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
+						<Line id="ch:1:slnid:1024440" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
 							<ValidBetween>
 								<FromDate>2025-12-14T00:00:00</FromDate>
 								<ToDate>2026-12-13T23:59:59</ToDate>
@@ -278,142 +247,141 @@ We model a train that has the following stops Fribourg - Bern - Zürich. Zürich
 									<Value>ch:1:slnid:1024440</Value>
 								</KeyValue>
 							</keyList>
-							<Name>BLS AG</Name>
-							<ShortName>BLS</ShortName>
+							<privateCodes>
+								<PrivateCode type="slnid">ch:1:slnid:1024440</PrivateCode>
+							</privateCodes>
+							<Name>BLS AG - Linie Thun - Interlaken Ost</Name>
+							<TransportMode>rail</TransportMode>
 						</Line>
 					</lines>
 					<scheduledStopPoints>
-						<ScheduledStopPoint id="ch:1:sloid:7483:0:90840" version="any">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8507483</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7483:0:90840</Value>
-								</KeyValue>
-							</keyList>
-							<Name lang="de">Spiez</Name>
-							<ShortName lang="de">1</ShortName>
+						<ScheduledStopPoint id="ch:1:sloid:7483:0:90840" version="1">
+
 						</ScheduledStopPoint>
-						<ScheduledStopPoint id="ch:1:sloid:7493:0:470772" version="any">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8507493</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7493:0:470772</Value>
-								</KeyValue>
-							</keyList>
-							<Name lang="de">Interlaken West</Name>
-							<ShortName lang="de">1</ShortName>
+						<ScheduledStopPoint id="ch:1:sloid:7493:0:470772" version="1">
+
 						</ScheduledStopPoint>
-						<ScheduledStopPoint id="ch:1:sloid:7492:0:460848" version="any">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8507492</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7492:0:460848</Value>
-								</KeyValue>
-							</keyList>
-							<Name lang="de">Interlaken Ost</Name>
-							<ShortName lang="de">1</ShortName>
+						<ScheduledStopPoint id="ch:1:sloid:7492:0:460848" version="1">
+
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
 					<stopAssignments>
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507483:1" version="any">
-							<ScheduledStopPointRef ref="ch:1:sloid:7483:0:90840" version="any"/>
-							<StopPlaceRef ref="ch:1:sloid:7483" version="any"/>
-							<QuayRef ref="ch:1:sloid:7483:0:90840" version="any"/>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507483:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:sloid:7483:0:90840" version="1"/>
+							<StopPlaceRef ref="ch:1:sloid:7483" version="1"/>
+							<QuayRef ref="ch:1:sloid:7483:0:90840" version="1"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507493:1" version="any">
-							<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="any"/>
-							<StopPlaceRef ref="ch:1:sloid:71310" version="any"/>
-							<QuayRef ref="ch:1:sloid:71310:0:304706" version="any"/>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507493:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="1"/>
+							<StopPlaceRef ref="ch:1:sloid:71310" version="1"/>
+							<QuayRef ref="ch:1:sloid:71310:0:304706" version="1"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507492:7" version="any">
-							<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="any"/>
-							<StopPlaceRef ref="ch:1:sloid:7492" version="any"/>
-							<QuayRef ref="ch:1:sloid:7492:0:460848" version="any"/>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507492:7" version="1">
+							<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
+							<StopPlaceRef ref="ch:1:sloid:7492" version="1"/>
+							<QuayRef ref="ch:1:sloid:7492:0:460848" version="1"/>
 						</PassengerStopAssignment>
 					</stopAssignments>
+					<timingLinks>
+						<TimingLink id="ch:1:TimingLink:7483_0_90840-7493_0_470772" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:sloid:7483:0:90840" version="1"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:sloid:7493:0:470772" version="1"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:7493_0_470772-7492_0_460848" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:sloid:7493:0:470772" version="1"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:sloid:7492:0:460848" version="1"/>
+						</TimingLink>
+					</timingLinks>
 					<journeyPatterns>
-						<ServiceJourneyPattern id="sjp1" version="any">
-						<RouteView>
-							<LineRef ref="ch:1:slnid:1024440" version="any"/>
-						</RouteView>
-						<DirectionType>inbound</DirectionType>
+						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:1" version="1">
+							<Name>Spiez–Interlaken Ost</Name>
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1024440" version="1"/>
+							</RouteView>
+							<DirectionType>inbound</DirectionType>
 							<pointsInSequence>
-								<StopPointInJourneyPattern id="spijp1" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:90840" version="any"/>
+								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.1" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:90840" version="1"/>
+									<OnwardTimingLinkRef ref="ch:1:TimingLink:7483_0_90840-7493_0_470772" version="1"/>
 									<ForAlighting>false</ForAlighting>
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="spijp2" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="any"/>
+								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.2" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="1"/>
+									<OnwardTimingLinkRef ref="ch:1:TimingLink:7493_0_470772-7492_0_460848" version="1"/>
 									<ForAlighting>true</ForAlighting>
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="spijp3" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="any"/>
+								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.3" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
 									<ForAlighting>true</ForAlighting>
 									<ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
 						</ServiceJourneyPattern>
 					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="ch:1:TimeDemandType:1" version="1">
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1:1" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:7483_0_90840-7493_0_470772" version="1"/>
+									<RunTime>PT10M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1:2" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:7493_0_470772-7492_0_460848" version="1"/>
+									<RunTime>PT6M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+							<waitTimes>
+								<JourneyWaitTime id="ch:1:JourneyWaitTime:1:1" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="1"/>
+									<WaitTime>PT3M</WaitTime>
+								</JourneyWaitTime>
+							</waitTimes>
+						</TimeDemandType>
+					</timeDemandTypes>
 				</ServiceFrame>
-				<!-- Service Calendar Frame -->
-				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="any">
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:J26" version="1">
 					<validityConditions>
-						<AvailabilityCondition id="ch:1:AvailabilityCondition:j26" version="any">
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:J26" version="1">
 							<FromDate>2025-12-14T00:00:00</FromDate>
 							<ToDate>2026-12-13T23:59:59</ToDate>
 							<ValidDayBits>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000</ValidDayBits>
 						</AvailabilityCondition>
 					</validityConditions>
 				</ServiceCalendarFrame>
-				<!-- Timetable Frame -->
-				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="any">
+				<TimetableFrame id="ch:1:TimetableFrame:J26" version="1">
 					<vehicleJourneys>
-						<ServiceJourney id="ch:1:sjyid:100014:4208-003" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
+						<ServiceJourney id="ch:1:sjyid:100014:4208-003:_gen:_1231" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
 							<validityConditions>
-								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="any"/>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:J26" version="1"/>
 							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>SJYID</Key>
+									<Value>sjyid">ch:1:sjyid:100014:4208-003</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sjyid">ch:1:sjyid:100014:4208-003</PrivateCode>
+							</privateCodes>
 							<TransportMode>rail</TransportMode>
-							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:RE" version="any"/>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:RE" version="1"/>
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>10:35:00</DepartureTime>
 							<DepartureDayOffset>0</DepartureDayOffset>
-							<JourneyPatternRef ref="sjp1" version="any"/>
-							<OperatorRef ref="ch:1:Operator:33" version="any"/>
-							<LineRef ref="ch:1:slnid:1024440" version="any"/>
+							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" version="1"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:1" version="1"/>
+							<OperatorRef ref="ch:1:Operator:100015" version="1"/>
+							<LineRef ref="ch:1:slnid:1024440" version="1"/>
 							<DirectionType>inbound</DirectionType>
-							<passingTimes>
-								<TimetabledPassingTime id="tpt1" version="any">
-									<PointInJourneyPatternRef ref="spijp1" version="any"/>
-									<DepartureTime>10:35:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt2" version="any">
-									<PointInJourneyPatternRef ref="spijp2" version="any"/>
-									<ArrivalTime>10:45:00</ArrivalTime>
-									<DepartureTime>10:48:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt3" version="any">
-									<PointInJourneyPatternRef ref="spijp3" version="any"/>
-									<ArrivalTime>10:54:00</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:99999" version="1"/>
+							</trainNumbers>
 						</ServiceJourney>
 					</vehicleJourneys>
 					<trainNumbers>
-						<TrainNumber id="ch:1:TrainNumber:99999" version="any">
+						<TrainNumber id="ch:1:TrainNumber:99999" version="1">
 							<ForAdvertisement>99999</ForAdvertisement>
 						</TrainNumber>
 					</trainNumbers>

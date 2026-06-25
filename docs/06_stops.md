@@ -13,34 +13,28 @@ In this chapter:
 ### Purpose
 A `SiteFrame` contains the physical infrastructure model for public transport — `StopPlace`s, `Quay`s, and topographic context. It defines the spatial elements that passengers interact with and that other frames reference for stop assignments.
 
-```mermaid!
+```mermaid
 classDiagram
     %% Styles
-    classDef frame fill:#FFF8E1,stroke:#FFB300;
-    classDef contained fill:#E8F4FF,stroke:#1E90FF;
-    classDef external fill:#F6F6F6,stroke:#AAAAAA;
+    classDef frame fill:#FFF8E1,stroke:#FFB300
+    classDef contained fill:#E8F4FF,stroke:#1E90FF
+    classDef external fill:#F6F6F6,stroke:#AAAAAA
 
     %% Frame
-    class SiteFrame {
-    }
+    class SiteFrame:::frame
 
     %% Contained elements
-    class StopPlace {
+    class StopPlace:::contained {
         - centroid
         - quays []
-        
     }
-
-    class Quay {
+    class Quay:::contained {
         - centroid
-
     }
+    class TopographicPlace:::contained
+    class Centroid:::contained
 
-    class TopographicPlace {
-    }
-
-
-    %% Containment relations (only contained elements)
+    %% Containment relations
     SiteFrame "1" o-- "0..*" StopPlace : contains
     SiteFrame "1" o-- "0..*" TopographicPlace : contains
     StopPlace "1" o-- "0..*" Quay : contains
@@ -74,7 +68,7 @@ classDiagram
 
 ### Purpose
 A named physical or virtual location where passengers can board or alight from public transport, containing one or more `Quays`.
-Note that a `StopPlace` is a distinct concept from the representation of the stop in a timetable – the `ScheduledStopPoint`. The two can be connected using a `StopPointAssignment`. 
+Note that a `StopPlace` is a distinct concept from the representation of the stop in a timetable – the `ScheduledStopPoint`. The two can be connected using a `PassengerStopAssignment`. 
 
 
 ### Table
@@ -92,6 +86,7 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 - Foreign `StopPlace`s may be mapped to Swiss DIDOK codes. 
 - The main connection between DIDOK codes and the NeTEx export are the `ScheduledStopPoints`. They typically have the same `Id` (except for the <Element Name> in the identifier string) as the `StopPlace`. Exceptions are meta stations and local public transport already using assignment to “Haltekanten”. In such cases the `ScheduledStopPoint` is more refined than the DIDOK and UIC codes. 
 - Meta-stations will have their own codes. In some cases these are added for operational or searching reasons. 
+- id-attribute needs to be kept stable between exports.
 
 
 ## Quay
@@ -100,9 +95,8 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 ### Purpose
 A specific boarding or alighting position (platform, stand, bay) within a `StopPlace` where passengers physically meet vehicles. 
 
-
 ### Table
-- [Swiss profile NeTEx definition](../site/tables/StopPlace.md)
+- [Swiss profile NeTEx definition](../site/tables/Quai.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/StopPlace.html)*
 
@@ -116,12 +110,13 @@ A specific boarding or alighting position (platform, stand, bay) within a `StopP
 - A `Quay` may contain other sub `Quay`s. A child `Quay` must be physically contained within its parent `Quay`.  Furthermore: 
   - A nested `Quay` is always physically contiguous with its parent and so has the same accessibility characteristics 
 as it parents. 
-  - Nested `Quay`s should not be used to mark individual positions on a platform – `BoadingPosition` serve this function. 
+  - Nested `Quay`s should not be used to mark individual positions on a platform – `BoardingPosition` serve this function. 
   - Nested `Quay`s and `AccessSpace`s must always be on the same `Level` as their parent (not currently modelled).
 - If the SLOID for platforms is not unique, it will be formed according to the schema:
 {StopPlace SLOID}_gen:{Quay SLOID}_pf:{Platform Code*}.
 - If no platform SLOID is available {StopPlace SLOID}_gen:missingSLOID_pf:{Platform Code*} will be used instead.
 - 👉 Please note: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.
+- id-attribute needs to be kept stable between exports.
 
 
 In the table below you will find an overview of the possible cases. For more information on SLOID, see [Swiss Location Identification (SLOID) | öv-info.ch](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid "https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid")
@@ -130,7 +125,7 @@ In the table below you will find an overview of the possible cases. For more inf
 | -- | --|--|
 | Unique track sloid | ch:1:sloid:7000:6:32 | ch:1:sloid:7000:6:32 |
 | Non-unique track sloid | ch:1:sloid:7000_gen:ch:1:sloid:7000:0:349752_pf:2A-D | ch:1:sloid:7000:0:349752 |
-| Non-unique SLOID with special characters "11/12 | ch.1:sloid:6206_gen:ch:1:sloid:6206:0:11_pf:11.12 | ch:1:sloid:6206:0:11 |
+| Non-unique SLOID with special characters "11/12" | ch.1:sloid:6206_gen:ch:1:sloid:6206:0:11_pf:11.12 | ch:1:sloid:6206:0:11 |
 | non platform SLOID | ch:1:sloid:1102381_gen:missingSLOID_pf:1 | |
 | No Sloid (abroad) | 8029701_gen_missingSLOID_pf:1 | |
 
@@ -162,7 +157,8 @@ A named geographic area such as a city, municipality, county, or region - used t
 *→ [Template](../templates/TopographicPlace.xml)*
 
 ### Usage Notes
-The `TopographicPlace` represent the cantons and communes in Switzerland. Each `StopPlace` should reference the `TopographicPlace` representing its canton.  
+- The `TopographicPlace` represent the cantons and communes in Switzerland. Each `StopPlace` should reference the `TopographicPlace` representing its canton.  
+- id-attribute needs to be kept stable between exports.
 
 
 ## Centroid
@@ -182,9 +178,8 @@ It provides precise geographic coordinates (WGS84) of a central reference point 
 
 ### Usage Notes
 The `Centroid` always contains a location. 
-- The main coordinates are given as WSG84.
+- The main coordinates are given as WGS84.
 - Required accuracy 4+ decimal positions.
-- The Swiss coordinates are added as well, when available (see below) **TODO**
+- The Swiss coordinates are added as well, when available (for Swiss stops). The format is LV95. For imports they are not needed, however.
 - INFO+ will not use the master data from NeTEx imports, it will rely on the Atlas master data for all Swiss coordinates. INFO+ will, however, use the imported location data of foreign places without DIDOK numbers. 
-
-
+- no id-attribute

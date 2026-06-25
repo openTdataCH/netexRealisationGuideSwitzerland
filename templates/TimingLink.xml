@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="any">
+			<frames>
+				<ServiceFrame id="ch:1:ServiceFrame" version="any">
+					<directions>
+						<Direction id="notUsed" version="none"/>
+					</directions>
+					<lines>
+						<Line id="use swiss line id where possible" version="1" responsibilitySetRef="dsa">
+							<Name>Name is needed</Name>
+						</Line>
+					</lines>
+					<groupsOfLines>
+						<GroupOfLines id="notUsed" version="none">
+							<Name>NotUsed</Name>
+						</GroupOfLines>
+					</groupsOfLines>
+					<destinationDisplays>
+						<DestinationDisplay id="generated-id" version="1">
+						</DestinationDisplay>
+					</destinationDisplays>
+					<scheduledStopPoints>
+						<ScheduledStopPoint id="sloid_where_possible" version="1">
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+					<connections>
+						<Access id="notUsed" version="none">
+							<From/>
+							<To/>
+						</Access>
+						<SiteConnection id="generated" version="1">
+						</SiteConnection>
+						<DefaultConnection id="generated" version="1">
+						</DefaultConnection>
+					</connections>
+					<stopAssignments>
+						<PassengerStopAssignment id="generated" version="1">
+						</PassengerStopAssignment>
+					</stopAssignments>
+					<timingLinks>
+						<TimingLink id="generated" version="1">
+							<!-- ch-root -->
+							<!-- ch-usage: expected -->
+							<!-- ch-note: A timing link is basically defined between two ScheduledStopPoints. However, there may be different timing behaviours and then multiple TimingLinks between the same ScheduledStopPoint might be necessary -->
+							<FromPointRef ref="sloid1" versionRef="1">
+								<!-- ch-usage: mandatory -->
+							</FromPointRef>
+							<ToPointRef ref="sloid 2" versionRef="1">
+								<!-- ch-usage: mandatory -->		
+							</ToPointRef>
+							<OperationalContextRef ref="generated" versionRef="1">
+								<!-- ch-usage: optional -->
+								<!-- ch-note: This is "Betriebszweig". Switzerland does not use it currently, but it might become interesting at some point -->
+							</OperationalContextRef>
+						</TimingLink>
+					</timingLinks>							
+					<journeyPatterns>
+						<ServiceJourneyPattern id="generated" version="1">
+
+						</ServiceJourneyPattern>
+					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="generated" version="1">
+						<Description>high demand</Description>
+						<runTimes>
+							<JourneyRunTime id="generated" version="1">
+								<TimingLinkRef ref="generated" versionRef="1">
+								</TimingLinkRef>
+								<RunTime>PT5M</RunTime>
+							</JourneyRunTime>
+						</runTimes>
+						<waitTimes>
+							<JourneyWaitTime id="generated" version="1">
+								<ScheduledStopPointRef ref="sloid" versionRef="1">
+								</ScheduledStopPointRef>
+								<WaitTime>PT2M</WaitTime>
+							</JourneyWaitTime>
+						</waitTimes>
+						</TimeDemandType>
+					</timeDemandTypes>			
+					<notices>
+
+						<Notice id="generated" version="1">
+
+						</Notice>
+					</notices>
+				</ServiceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

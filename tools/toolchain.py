@@ -1,13 +1,12 @@
-
 import os
 import shutil
 from pathlib import Path
 
-from tools.configuration import DOCS_DIR, SITE_DIR, XSD_FILE_PATH, SITE_TABLES_DIR, TEMPLATES_DIR, JEKYLL_DIR, SITE_XML_SNIPPETS_DIR
+from tools.configuration import DOCS_DIR, SITE_DIR, XSD_FILE_PATH, SITE_TABLES_DIR, TEMPLATES_DIR, JEKYLL_DIR, \
+    SITE_XML_SNIPPETS_DIR, SITE_TEMPLATES_DIR
 from tools.expand_docs.expand_docs import expand_docs
 from tools.md_builder.md_builder import build_markdown_tables
 from tools.xml_snippets.build_xml_snippets import generate_all_snippets
-
 
 def clean(dir: str):
     dir_path = Path(dir)
@@ -18,6 +17,11 @@ def clean(dir: str):
 def copy_jekyll_files():
     src = Path(JEKYLL_DIR)
     dst = Path(SITE_DIR)
+    shutil.copytree(src, dst, dirs_exist_ok=True)
+
+def copy_templates():
+    src = Path(TEMPLATES_DIR)
+    dst = Path(SITE_TEMPLATES_DIR)
     shutil.copytree(src, dst, dirs_exist_ok=True)
 
 def generate_tables():
@@ -32,6 +36,7 @@ def generate_docs():
 def main():
     clean(SITE_DIR)
     copy_jekyll_files()
+    copy_templates()
     generate_tables()
     generate_xml_snippets()
     generate_docs()

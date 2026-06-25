@@ -12,7 +12,7 @@ In this chapter:
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendarframe)*
 
 ### Purpose
-Groups calendar definitions that describe when services operate - `DayType`s, [operating periods, **TODO** we don't define / use OperatingPeriod, do we?] and `DayTypeAssignment`s.
+Groups calendar definitions that describe when services operate - `DayType`s, [operating periods, **TODO** we don't define / use OperatingPeriod, do we?] and `DayTypeAssignment`s. Wilfried 10.6.
 
 See the following class diagram for the most important objects of the `ServiceCalendarFrame` and their relationships to the other frames.
 
@@ -123,12 +123,11 @@ Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 - The element ValidDayBits directly indicates the days on which some service is provided or not. They are similar to the HRDF bitfields. 
 - ValidDayBits is required whenever the `AvailabilityCondition` is of temporal nature (more often than not). Examples include:
   -	`ServiceJourney`
-  -	`JourneyMeeting`
   -	`NoticeAssignment`
   -	`ServiceFacilitySet`
   -	`ServiceJourneyInterchange`
-  -	`InterchangeRule`
 - Hint: The frames `TimetableFrame`, `ServiceFrame` and `ServiceCalendarFrame` and their elements must have the same validity.
+- id-attribute does not need to be kept stable between exports.
 
 ### ServiceCalendar
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendar)*
@@ -145,6 +144,9 @@ Long-term planning uses calendar days that are classified as specific DayTypes (
 - [Example snippet](../site/xml-snippets/ServiceCalendar.xml)
 
 *→ [Template](../templates/ServiceCalendar.xml)*
+
+#### Usage Note
+- id-attribute should to be kept stable between exports.
 
 
 ### DayType
@@ -164,6 +166,8 @@ A classification of days on which a specific set of transport services operates 
 
 *→ [Template](../templates/DayType.xml)*
 
+#### Usage Note
+- id-attribute needs to be kept stable between exports.
 
 ### Timeband
 *→ [Glossary definition](A4_annex_glossary.md#timeband)*
@@ -184,7 +188,8 @@ A period of time within a day, usually defined by a start and end time.
 
 
 #### Usage Notes
-Currently `Timeband` is used for `InterchangeRuleTiming`s, later also used for the opening hours in `StopPlace` models. 
+- Currently `Timeband` is used in RG 1.0 for `InterchangeRuleTiming`s, later also used for the opening hours in `StopPlace` models. 
+- id-attribute should be kept stable between exports.
 
 ## DayTypeAssignment
 *→ [Glossary definition](A4_annex_glossary.md#daytypeassignment)*
@@ -193,7 +198,7 @@ Currently `Timeband` is used for `InterchangeRuleTiming`s, later also used for t
 #### Purpose
 Assignment of a date to `DayType`. The `DayType`s of the Swiss profile represent national holidays.
 
-This assignment overrides the `DayType` specified for the day in the overall plan. (**TODO** should be stated more clearly / precisely)
+This assignment overrides the `DayType` specified for the day in the overall plan. (**TODO** should be stated more clearly / precisely) Wilfried 10.6.
 
 
 #### Table
@@ -208,6 +213,7 @@ This assignment overrides the `DayType` specified for the day in the overall pla
 
 
 #### Usage Notes
-We currently use `DayTypeAssignment` only for the national holidays.
+- We currently use `DayTypeAssignment` only for the national holidays.
+- id-attribute should be kept stable between exports.
 
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame" version="1">
+					<vehicleJourneys>
+						<ServiceJourney id="generated" version="1">
+							<validityConditions>
+								<AvailabilityCondition id="generated" version="1">
+									<FromDate>2026-05-17T00:00:00Z</FromDate>
+									<ToDate>2026-05-17T00:00:00Z</ToDate>
+									<ValidDayBits>01010111</ValidDayBits>
+									<timebands>
+										<TimebandRef ref="generated" versionRef="1"/>
+									</timebands>
+								</AvailabilityCondition>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>SJYID</Key>
+									<Value>ch:1:sjyid:100001:71707-003</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sjyid">
+									ch:1:sjyid:100001:71707-003
+								</PrivateCode>
+							</privateCodes>
+							<PrivateCode>1</PrivateCode>
+							<TransportMode>rail</TransportMode>
+							<DepartureTime>06:21:00</DepartureTime>
+							<DepartureDayOffset>0</DepartureDayOffset>
+							<TimeDemandTypeRef ref="generated" versionRef="1">
+
+							</TimeDemandTypeRef>
+							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1">
+							</LineRef>
+							<DirectionType>outbound</DirectionType>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1">
+								</TrainNumberRef>
+							</trainNumbers>
+							<checkConstraints>
+								<!-- ch-usage: optional -->
+								<CheckConstraint id="" version="1">
+									<!-- ch-root -->
+									<!-- ch-usage: optional -->
+									<!-- ch-note: CheckConstraints are used for different use cases -->
+									<CheckDirection><!-- ch-usage: optional --><!-- ch-note: We usually only use one direction. -->forwards</CheckDirection>
+									<CheckProcess><!-- ch-usage: optional --><!-- ch-note: Only a given subset is allowed --><!-- ch-allowed-enums: alighting boarding queue -->alighting</CheckProcess>
+									<delays>
+										<!-- ch-usage: expected -->
+										<CheckConstraintDelay id="generated" version="1">
+											<!-- ch-usage: expected -->
+											<AverageDelay><!-- ch-usage: expected -->PT4M</AverageDelay>
+											<MaximumLikelyDelay><!-- ch-usage: optional -->PT8M</MaximumLikelyDelay>
+										</CheckConstraintDelay>
+									</delays>
+								</CheckConstraint>
+							</checkConstraints>
+						</ServiceJourney>
+					</vehicleJourneys>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

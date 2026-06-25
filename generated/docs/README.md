@@ -13,9 +13,9 @@ The realisation specifications mainly concern:
 •	intentional deviations from the official standard within public transport in Switzerland.
 
 ## Supported NeTEx version
-This profile is based on [NeTEx 2.0 XSD](https://github.com/NeTEx-CEN/NeTEx/tree/v2.0).
+This profile is based on [NeTEx 2.1 XSD](https://github.com/TransmodelEcosystem/NeTEx/tree/v2.1-wip). It is still work in progess, therefore it might change.
 
->**TODO** we need to put the exact XSD on oev-info.ch including the DRT part
+We will have a copy of the XSD we really use in production on [oev-info.ch](https://www.oev-info.ch/de/branchenstandard/technische-ausfuehrungsbestimmungen/fahrplandaten)
 
 The relevant specification documents can be found in the appropriate stores with the number: CEN/TS 16614. eg. through [VSS](https://www.vss.ch/vss_de/)
 

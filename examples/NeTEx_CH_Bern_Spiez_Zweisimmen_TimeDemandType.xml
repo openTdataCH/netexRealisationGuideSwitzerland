@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Problems with this example **TODO**:
-- explanatory comment at the top missing 
-- should be JourneyMeeting shouldn't it
--->
+<!-- edited with XMLSpy v2025 rel. 2 (x64) (https://www.altova.com) by MENTZ GmbH (MENTZ GmbH) -->
+<!-- NeTEx Example: Flügelzug Bern - Spiez - Zweisimmen / Brig (RG 2.0) -->
 <PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
 	<ParticipantRef>TUXALP</ParticipantRef>
@@ -17,7 +15,8 @@
 			<frames>
 				<ResourceFrame id="ch:1:ResourceFrame:1" version="any">
 					<validityConditions>
-						<ValidityCondition id="ch:1:ValidityCondition:1" version="any">		
+						<ValidityCondition id="ch:1:ValidityCondition:1" version="any">
+							<Name>Fahrplanjahr 2025/26</Name>
 						</ValidityCondition>
 					</validityConditions>
 					<responsibilitySets>
@@ -88,10 +87,10 @@
 								</Location>
 							</Centroid>
 							<alternativeNames>
-								<AlternativeName id="ch:1:sloid:7000:it">
+								<AlternativeName id="ch:1:sloid:7000:it" version="any">
 									<Name lang="it">Berna</Name>
 								</AlternativeName>
-							</alternativeNames>		
+							</alternativeNames>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>
 								<Quay id="ch:1:sloid:7000:5:9" version="any">
@@ -122,7 +121,7 @@
 									<Value>ch:1:sloid:7100</Value>
 								</KeyValue>
 							</keyList>
-							<Name>Thun</Name>			
+							<Name>Thun</Name>
 							<PrivateCode>7100</PrivateCode>
 							<Centroid>
 								<Location>
@@ -271,7 +270,7 @@
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
-									<Value>8507290</Value>
+									<Value>8501609</Value>
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
@@ -342,7 +341,8 @@
 						</Line>
 					</lines>
 					<destinationDisplays>
-						<DestinationDisplay id="DestinationDisplay:1" version="any">
+						<DestinationDisplay id="ch:1:DestinationDisplay:1" version="any">
+							<Name lang="de">Brig / Zweisimmen</Name>
 						</DestinationDisplay>
 					</destinationDisplays>
 					<scheduledStopPoints>
@@ -410,11 +410,11 @@
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
-									<Value>8507290</Value>
+									<Value>8507478</Value>
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7290:0:930269</Value>
+									<Value>ch:1:sloid:7478:0:852180</Value>
 								</KeyValue>
 							</keyList>
 							<Name lang="de">Frutigen</Name>
@@ -438,63 +438,103 @@
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
 					<stopAssignments>
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:1" version="any" >
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:1" version="any">
 							<ScheduledStopPointRef ref="ch:1:sloid:7000:5:9" version="any"/>
 							<StopPlaceRef ref="ch:1:sloid:7000" version="any"/>
 							<QuayRef ref="ch:1:sloid:7000:5:9" version="any"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:2" version="any" >
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:2" version="any">
 							<ScheduledStopPointRef ref="ch:1:sloid:7100:1:1" version="any"/>
 							<StopPlaceRef ref="ch:1:sloid:7100" version="any"/>
 							<QuayRef ref="ch:1:sloid:7100:1:1" version="any"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:3" version="any" >
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:3" version="any">
 							<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
 							<StopPlaceRef ref="ch:1:sloid:7483" version="any"/>
 							<QuayRef ref="ch:1:sloid:7483:0:3AB" version="any"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:4" version="any" >
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:4" version="any">
 							<ScheduledStopPointRef ref="ch:1:sloid:7290:0:930269" version="any"/>
 							<StopPlaceRef ref="ch:1:sloid:7290" version="any"/>
 							<QuayRef ref="ch:1:sloid:7290:0:930269" version="any"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:5" version="any" >
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:5" version="any">
 							<ScheduledStopPointRef ref="ch:1:sloid:7478:0:852180" version="any"/>
 							<StopPlaceRef ref="ch:1:sloid:7478" version="any"/>
 							<QuayRef ref="ch:1:sloid:7478:0:852180" version="any"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:6" version="any" >
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:6" version="any">
 							<ScheduledStopPointRef ref="ch:1:sloid:1609:4:9" version="any"/>
 							<StopPlaceRef ref="ch:1:sloid:1609" version="any"/>
 							<QuayRef ref="ch:1:sloid:1609:4:9" version="any"/>
 						</PassengerStopAssignment>
-					</stopAssignments>		
-				
-					<journeyPatterns>					
-						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:1" version="any">
+					</stopAssignments>
+					<timingLinks>
+						<!-- JP ch:1:ServiceJourneyPattern:1 -->
+						<TimingLink id="ch:1:TimingLink:7000_5_9-7100_1_1" version="any">
+							<!-- Bern -> Thun -->
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="any" ref="ch:1:sloid:7000:5:9"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="any" ref="ch:1:sloid:7100:1:1"/>							
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:7100_1_1-7483_0_954324" version="any">
+							<!-- Thun -> Spiez -->
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="any" ref="ch:1:sloid:7100:1:1"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="any" ref="ch:1:sloid:7483:0:954324"/>							
+						</TimingLink>
+						<!-- JP ch:1:ServiceJourneyPattern:2 -->
+						<TimingLink id="ch:1:TimingLink:7483_0_954324-7290_0_930269" version="any">
+							<!-- Spiez -> Zweisimmen -->
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="any" ref="ch:1:sloid:7483:0:954324"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="any" ref="ch:1:sloid:7290:0:930269"/>							
+						</TimingLink>
+						<!-- JP ch:1:ServiceJourneyPattern:3 -->						
+						<TimingLink id="ch:1:TimingLink:7483_0_954324-7478_0_852180" version="any">
+							<!-- Spiez -> Frutigen -->
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="any" ref="ch:1:sloid:7483:0:954324"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="any" ref="ch:1:sloid:7478:0:852180"/>							
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:7478_0_852180-1609_4_9" version="any">
+							<!-- Frutigen -> Brig -->
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="any" ref="ch:1:sloid:7478:0:852180"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="any" ref="ch:1:sloid:1609:4:9"/>							
+						</TimingLink>																		
+					</timingLinks>
+					<journeyPatterns>
+						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:1" version="any">							
 							<Name>Bern-Spiez</Name>
 							<RouteView>
 								<LineRef ref="ch:1:slnid:1024437"/>
 							</RouteView>
-							<DirectionType>outbound</DirectionType>				
+							<DirectionType>outbound</DirectionType>							
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.1" version="any">
-								  <ScheduledStopPointRef ref="ch:1:sloid:7000:5:9"/>
-								  <ForAlighting>false</ForAlighting>
-								  <ForBoarding>true</ForBoarding>
-								  <DestinationDisplayRef ref="DestinationDisplay:1"/>
+									<ScheduledStopPointRef ref="ch:1:sloid:7000:5:9" version="any"/>
+									<OnwardTimingLinkRef ref="ch:1:TimingLink:7000_5_9-7100_1_1" version="any"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+									<DestinationDisplayRef ref="ch:1:DestinationDisplay:1"/>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.2" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:7100:1:1"/>
+								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.2" version="any">									
+									<ScheduledStopPointRef ref="ch:1:sloid:7100:1:1" version="any"/>
+									<OnwardTimingLinkRef ref="ch:1:TimingLink:7100_1_1-7483_0_954324" version="any"/>
+									<!-- Alternative für die Haltezeiten: Direkt im Pattern an der jew. Haltestelle -->
+									<!--
+									<waitTimes>
+										<JourneyPatternWaitTime id="ch:1:JourneyPatternWaitTime:1.2" version="any">
+										  <TimeDemandTypeRef ref="ch:1:TimeDemandType:1" version="any" />
+										  <WaitTime>PT1M</WaitTime>
+										</JourneyPatternWaitTime>
+									</waitTimes>
+									-->
 									<ForAlighting>true</ForAlighting>
-								    <ForBoarding>true</ForBoarding>
+									<ForBoarding>true</ForBoarding>									
 								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.3" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324"/>
+									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
 									<ForAlighting>true</ForAlighting>
-								    <ForBoarding>false</ForBoarding>
+									<ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
-							</pointsInSequence>
+							</pointsInSequence>							
 							<ServiceJourneyPatternType>passenger</ServiceJourneyPatternType>
 						</ServiceJourneyPattern>
 						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:2" version="any">
@@ -505,21 +545,22 @@
 							<DirectionType>outbound</DirectionType>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:2.1" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324"/>
+									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
+									<OnwardTimingLinkRef ref="ch:1:TimingLink:7483_0_954324-7290_0_930269" version="any"/>
 									<ForAlighting>false</ForAlighting>
-								    <ForBoarding>true</ForBoarding>
+									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:2.2" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:7290:0:930269"/>
+									<ScheduledStopPointRef ref="ch:1:sloid:7290:0:930269" version="any"/>
 									<ForAlighting>true</ForAlighting>
-								    <ForBoarding>false</ForBoarding>
+									<ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
 							<ServiceJourneyPatternType>passenger</ServiceJourneyPatternType>
 						</ServiceJourneyPattern>
 						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:3" version="any">
 							<validityConditions>
-								<ValidityConditionRef ref="ch:1:ValidityConditions:1"></ValidityConditionRef>
+								<ValidityConditionRef ref="ch:1:ValidityCondition:1"/>
 							</validityConditions>
 							<Name>Spiez-Brig</Name>
 							<RouteView>
@@ -528,26 +569,75 @@
 							<DirectionType>outbound</DirectionType>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:3.1" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324"/>
+									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
+									<OnwardTimingLinkRef ref="ch:1:TimingLink:7483_0_954324-7478_0_852180" version="any"/>
 									<ForAlighting>false</ForAlighting>
-								    <ForBoarding>true</ForBoarding>									
+									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:3.2" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:7478:0:852180"/>
+									<ScheduledStopPointRef ref="ch:1:sloid:7478:0:852180" version="any"/>
+									<OnwardTimingLinkRef ref="ch:1:TimingLink:7478_0_852180-1609_4_9" version="any"/>
 									<ForAlighting>true</ForAlighting>
-								    <ForBoarding>true</ForBoarding>
+									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:3.3" version="any">
-									<ScheduledStopPointRef ref="ch:1:sloid:1609:4:9"/>
+									<ScheduledStopPointRef ref="ch:1:sloid:1609:4:9" version="any"/>
 									<ForAlighting>true</ForAlighting>
-								    <ForBoarding>false</ForBoarding>
+									<ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
-							</pointsInSequence>
+							</pointsInSequence>							
 							<ServiceJourneyPatternType>passenger</ServiceJourneyPatternType>
 						</ServiceJourneyPattern>
 					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="ch:1:TimeDemandType:1" version="any">
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1:1" version="any">
+									<TimingLinkRef ref="ch:1:TimingLink:7000_5_9-7100_1_1" version="any"/>
+									<RunTime>PT21M</RunTime>									
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1:2" version="any">
+									<TimingLinkRef ref="ch:1:TimingLink:7100_1_1-7483_0_954324" version="any"/>
+									<RunTime>PT10M10S</RunTime>									
+								</JourneyRunTime>								
+							</runTimes>
+							<waitTimes>
+								<JourneyWaitTime id="ch:1:JourneyRunTime:1:1" version="any">
+									<!-- Haltezeit Thun -->
+									<ScheduledStopPointRef ref="ch:1:sloid:7100:1:1" version="any"/>
+									<WaitTime>PT1M</WaitTime>
+								</JourneyWaitTime>
+							</waitTimes>
+						</TimeDemandType>						
+						<TimeDemandType id="ch:1:TimeDemandType:2" version="any">
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:2:1" version="any">
+									<TimingLinkRef ref="ch:1:TimingLink:7483_0_954324-7290_0_930269" version="any"/>
+									<RunTime>PT47M</RunTime>									
+								</JourneyRunTime>
+							</runTimes>
+						</TimeDemandType>
+						<TimeDemandType id="ch:1:TimeDemandType:3" version="any">
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:3:1" version="any">
+									<TimingLinkRef ref="ch:1:TimingLink:7483_0_954324-7478_0_852180" version="any"/>
+									<RunTime>PT12M</RunTime>									
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:3:2" version="any">
+									<TimingLinkRef ref="ch:1:TimingLink:7478_0_852180-1609_4_9" version="any"/>
+									<RunTime>PT57M</RunTime>									
+								</JourneyRunTime>
+							</runTimes>
+							<waitTimes>
+								<JourneyWaitTime id="ch:1:JourneyRunTime:3:1" version="any">
+									<!-- Haltezeit Frutigen -->
+									<ScheduledStopPointRef ref="ch:1:sloid:7478:0:852180" version="any"/>
+									<WaitTime>PT1M</WaitTime>
+								</JourneyWaitTime>
+							</waitTimes>
+						</TimeDemandType>												
+					</timeDemandTypes>
 				</ServiceFrame>
-				
 				<!-- Service Calendar Frame -->
 				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="any">
 					<validityConditions>
@@ -558,12 +648,10 @@
 						</AvailabilityCondition>
 					</validityConditions>
 				</ServiceCalendarFrame>
-				
-				<!-- Timetable Frame -->				
+				<!-- Timetable Frame -->
 				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="any">
-					
 					<vehicleJourneys>
-						<ServiceJourney id="ch:1:ServiceJourney:1" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:1">
+						<ServiceJourney id="ch:1:ServiceJourney:1" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
 							<validityConditions>
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
 							</validityConditions>
@@ -581,29 +669,15 @@
 							<DepartureTime>14:39:00</DepartureTime>
 							<DepartureDayOffset>0</DepartureDayOffset>
 							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" version="any"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:1" version="any"/>
 							<OperatorRef ref="ch:1:sboid:100015" version="any"/>
 							<LineRef ref="ch:1:slnid:1024437" version="any"/>
 							<DirectionType>outbound</DirectionType>
 							<trainNumbers>
-								<TrainNumberRef ref="ch:1:TrainNumber:4179"/>
-							</trainNumbers>
-							<passingTimes>
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:1.1" version="any">
-									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:1.1"/>
-									<DepartureTime>14:39:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:1.2" version="any">
-									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:1.2"/>
-									<ArrivalTime>15:00:00</ArrivalTime>
-									<DepartureTime>15:01:00</DepartureTime>
-								</TimetabledPassingTime>								
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:1.3" version="any">
-									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:1.3"/>
-									<ArrivalTime>15:10:10</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
+								<TrainNumberRef ref="ch:1:TrainNumber:4175"/>
+							</trainNumbers>			
 						</ServiceJourney>
-						<ServiceJourney id="ch:1:ServiceJourney:2" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:1">
+						<ServiceJourney id="ch:1:ServiceJourney:2" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
 							<validityConditions>
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
 							</validityConditions>
@@ -621,24 +695,15 @@
 							<DepartureTime>08:30:00</DepartureTime>
 							<DepartureDayOffset>0</DepartureDayOffset>
 							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:2" version="any"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:2" version="any"/>
 							<OperatorRef ref="ch:1:sboid:100015" version="any"/>
 							<LineRef ref="ch:1:slnid:1024426" version="any"/>
 							<DirectionType>outbound</DirectionType>
 							<trainNumbers>
-								<TrainNumberRef ref="ch:1:TrainNumber:6831"/>
-							</trainNumbers>
-							<passingTimes>
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:2.1" version="any">
-									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:2.1"/>
-									<DepartureTime>15:12:00</DepartureTime>
-								</TimetabledPassingTime>							
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:2.3" version="any">
-									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:2.2"/>
-									<ArrivalTime>15:59:00</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
+								<TrainNumberRef ref="ch:1:TrainNumber:6829"/>
+							</trainNumbers>							
 						</ServiceJourney>
-						<ServiceJourney id="ch:1:ServiceJourney:3" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:1">
+						<ServiceJourney id="ch:1:ServiceJourney:3" version="any" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
 							<validityConditions>
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
 							</validityConditions>
@@ -656,77 +721,65 @@
 							<DepartureTime>15:12:00</DepartureTime>
 							<DepartureDayOffset>0</DepartureDayOffset>
 							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:3" version="any"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:3" version="any"/>
 							<OperatorRef ref="ch:1:sboid:100015" version="any"/>
 							<LineRef ref="ch:1:slnid:1024437" version="any"/>
 							<DirectionType>outbound</DirectionType>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:4179"/>
-							</trainNumbers>
-							<passingTimes>
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:3.1" version="any">
-									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:3.1"/>
-									<DepartureTime>15:12:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:3.2" version="any">
-									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:3.2"/>
-									<ArrivalTime>15:24:00</ArrivalTime>
-									<DepartureTime>15:25:00</DepartureTime>
-								</TimetabledPassingTime>							
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:3.3" version="any">
-									<StopPointInJourneyPatternRef ref="ch:1:PointInJourneyPattern:3.3"/>
-									<ArrivalTime>16:22:00</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
+							</trainNumbers>							
 						</ServiceJourney>
 					</vehicleJourneys>
 					<trainNumbers>
 						<TrainNumber id="ch:1:TrainNumber:4175" version="any">
-							<Description lang="de">Bern - Spiez - Kandersteg - Brig (- Domodossola)</Description>
+							<Description lang="de">RE1 4175 Bern - Spiez</Description>
+							<ForAdvertisement>4175</ForAdvertisement>
 						</TrainNumber>
 						<TrainNumber id="ch:1:TrainNumber:6829" version="any">
-							<Description lang="de">Spiez - Zweisimmen</Description>
+							<Description lang="de">R11 6829 Spiez - Zweisimmen</Description>
+							<ForAdvertisement>6829</ForAdvertisement>
+						</TrainNumber>
+						<TrainNumber id="ch:1:TrainNumber:4179" version="any">
+							<Description lang="de">RE1 4179 Spiez - Brig</Description>
+							<ForAdvertisement>4179</ForAdvertisement>
 						</TrainNumber>
 					</trainNumbers>
 					<typesOfService>
-						<TypeOfService id="ch:1:TypeOfService:1" version="any">
-						</TypeOfService>
+						<TypeOfService id="ch:1:TypeOfService:1" version="any"/>
 					</typesOfService>
-					<interchangeRules>
-						<InterchangeRule id="ch:1:InterchangeRule:1" version="any">
+					<journeyInterchanges>
+						<!-- Durchbindung Spiez: SJ1 (RE Bern→Spiez) → SJ2 (R Spiez→Zweisimmen) -->
+						<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:SJ1-SJ2-Spiez">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
+							</validityConditions>
 							<StaySeated>true</StaySeated>
+							<CrossBorder>false</CrossBorder>
 							<Planned>true</Planned>
-							<Advertised>true</Advertised>
-							<Controlled>true</Controlled>
-							<FeederFilter>
-								<StopPlaceRef ref="ch:1:sloid:7483:0:954324" versionRef="any"/>
-								<AllLines/>
-								<ServiceJourneyRef ref="ch:1:ServiceJourney:1" version="any"/>
-							</FeederFilter>
-							<DistributorFilter>
-								<StopPlaceRef ref="ch:1:sloid:7483:0:954324" versionRef="any"/>
-								<AllLines/>
-								<ServiceJourneyRef ref="ch:1:ServiceJourney:2" version="any"/>
-							</DistributorFilter>
-						</InterchangeRule>
-						<InterchangeRule id="ch:1:InterchangeRule:2" version="any">
-							<StaySeated>true</StaySeated>
+							<Guaranteed>true</Guaranteed>
+							<FromPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
+							<ToPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
+							<FromServiceJourneyRef ref="ch:1:ServiceJourney:1" version="any"/>
+							<ToServiceJourneyRef ref="ch:1:ServiceJourney:2" version="any"/>
+						</ServiceJourneyInterchange>
+						<!-- Flügelung Spiez: SJ1 (RE Bern→Spiez) → SJ3 (RE Spiez→Brig) -->
+						<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:SJ1-SJ3-Spiez">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
+							</validityConditions>
+							<StaySeated>false</StaySeated>
+							<CrossBorder>false</CrossBorder>
+							<!-- ChangeWithinVehicle>true</ChangeWithinVehicle -->
+							<!-- TODO: uncomment once NeTEx XSD is updated with PR commit 40c8f31 -->
 							<Planned>true</Planned>
-							<Advertised>true</Advertised>
-							<Controlled>true</Controlled>
-							<FeederFilter>
-								<StopPlaceRef ref="ch:1:sloid:7483:0:954324" versionRef="any"/>
-								<AllLines/>
-								<ServiceJourneyRef ref="ch:1:ServiceJourney:1" version="any"/>
-							</FeederFilter>
-							<DistributorFilter>
-								<StopPlaceRef ref="ch:1:sloid:7483:0:954324" versionRef="any"/>
-								<AllLines/>
-								<ServiceJourneyRef ref="ch:1:ServiceJourney:3" version="any"/>
-							</DistributorFilter>
-						</InterchangeRule>
-					</interchangeRules>
+							<Guaranteed>true</Guaranteed>
+							<FromPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
+							<ToPointRef ref="ch:1:sloid:7483:0:954324" version="any"/>
+							<FromServiceJourneyRef ref="ch:1:ServiceJourney:1" version="any"/>
+							<ToServiceJourneyRef ref="ch:1:ServiceJourney:3" version="any"/>
+						</ServiceJourneyInterchange>
+					</journeyInterchanges>
 				</TimetableFrame>
-				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:ts3" version="any"/>
 			</frames>
 		</CompositeFrame>
 	</dataObjects>

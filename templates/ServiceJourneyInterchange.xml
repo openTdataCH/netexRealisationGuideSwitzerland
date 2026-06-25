@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
 		<CompositeFrame id="ch:1:CompositeFrame" version="1">
 			<frames>
-				<TimetableFrame id="ch:1:TimetableFrame:" version="1">
+				<TimetableFrame id="ch:1:TimetableFrame:1" version="1">
 					<journeyInterchanges>
-						<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
+						<ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
 							<!-- ch-root -->
 							<!-- ch-attrs: id version -->
 							<!-- ch-usage: mandatory -->
@@ -20,6 +20,7 @@
 							<Description><!-- ch-usage: optional -->LineChange</Description>
 							<StaySeated><!-- ch-usage: mandatory -->true</StaySeated>
 							<CrossBorder><!-- ch-usage: optional -->false</CrossBorder>
+							<!-- after PR **TODO** <ChangeWithinVehicle> ch-usage: optional  ch-note: Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. false</ChangeWithinVehicle> -->
 							<Planned><!-- ch-usage: optional -->true</Planned>
 							<Guaranteed><!-- ch-usage: optional -->false</Guaranteed>
 							<MaximumWaitTime><!-- ch-usage: optional --><!-- ch-note: If not set or PT0M, it is guaranteed. -->PT9M</MaximumWaitTime>

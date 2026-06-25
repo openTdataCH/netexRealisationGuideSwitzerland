@@ -12,7 +12,7 @@ In this chapter:
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendarframe)*
 
 ### Purpose
-Groups calendar definitions that describe when services operate - `DayType`s, [operating periods, **TODO** we don't define / use OperatingPeriod, do we?] and `DayTypeAssignment`s.
+Groups calendar definitions that describe when services operate - `DayType`s, [operating periods, **TODO** we don't define / use OperatingPeriod, do we?] and `DayTypeAssignment`s. Wilfried 10.6.
 
 See the following class diagram for the most important objects of the `ServiceCalendarFrame` and their relationships to the other frames.
 
@@ -347,7 +347,7 @@ Currently `Timeband` is used for `InterchangeRuleTiming`s, later also used for t
 #### Purpose
 Assignment of a date to `DayType`. The `DayType`s of the Swiss profile represent national holidays.
 
-This assignment overrides the `DayType` specified for the day in the overall plan. (**TODO** should be stated more clearly / precisely)
+This assignment overrides the `DayType` specified for the day in the overall plan. (**TODO** should be stated more clearly / precisely) Wilfried 10.6.
 
 
 #### Table
