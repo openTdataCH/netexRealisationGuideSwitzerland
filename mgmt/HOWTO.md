@@ -15,7 +15,7 @@ This file is a collection of ways we want to do things in this repo to promote t
 We work here to create the next NeTEX realisation guide.
 
 When you clone this project, you will get an empty xsd directory. To complete the xsd download run:
-```
+```bash
 git submodule init
 git submodule update 
 ```
@@ -30,7 +30,7 @@ git submodule update
 
 ### General rules
 - Comments start with > best do it this way:
-  ```
+  ```md
   > [!CAUTION] 
   > **TODO** Must be revisited and updated.
   ```
