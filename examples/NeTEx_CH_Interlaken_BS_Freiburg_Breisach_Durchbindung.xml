@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
-<PublicationTimestamp>2026-02-19T10:00:00Z</PublicationTimestamp>
+	<PublicationTimestamp>2026-02-19T10:00:00Z</PublicationTimestamp>
 	<ParticipantRef>SBB</ParticipantRef>
 	<dataObjects>
 		<CompositeFrame id="ch:1:CompositeFrame:J26" version="1">
@@ -43,8 +43,8 @@
 						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
 							<Name>ProductCategories</Name>
 							<values>
-								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:IC" version="1">
-									<Name>InterCity</Name>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:ICE" version="1">
+									<Name>InterCityExpress</Name>
 								</TypeOfProductCategory>
 							</values>
 						</ValueSet>
@@ -235,9 +235,13 @@
 							<privateCodes>
 								<PrivateCode type="slnid">ch:1:slnid:1024337</PrivateCode>
 							</privateCodes>
-							<Name>Interlaken Ost-Basel SBB</Name>
+							<Name>ICE</Name>
 							<TransportMode>rail</TransportMode>
+							<TransportSubmode>
+								<RailSubmode>interregionalRail</RailSubmode>
+							</TransportSubmode>
 							<OperatorRef ref="ch:1:sboid:100001" version="1"/>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1"/>
 						</Line>
 						<Line id="ch:1:slnid:1024356" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:DB">
 							<keyList>
@@ -249,9 +253,13 @@
 							<privateCodes>
 								<PrivateCode type="slnid">ch:1:slnid:1024356</PrivateCode>
 							</privateCodes>
-							<Name>Basel Bad-Freiburg_in_Breisach</Name>
+							<Name>ICE</Name>
 							<TransportMode>rail</TransportMode>
+							<TransportSubmode>
+								<RailSubmode>interregionalRail</RailSubmode>
+							</TransportSubmode>
 							<OperatorRef ref="ch:1:sboid:100310" version="1"/>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1"/>
 						</Line>
 					</lines>
 					<scheduledStopPoints>
@@ -291,18 +299,18 @@
 					<timingLinks>
 						<TimingLink id="ch:1:TimingLink:1.1" version="1">
 							<Name>Interlaken Ost - Basel SBB</Name>
-							<FromPointRef ref="ch:1:sloid:7492:0:261628"/>
-							<ToPointRef ref="ch:1:sloid:10:1:1"/>
+							<FromPointRef ref="ch:1:sloid:7492:0:261628" version="1"/>
+							<ToPointRef ref="ch:1:sloid:10:1:1" version="1"/>
 						</TimingLink>
 						<TimingLink id="ch:1:TimingLink:1.2" version="1">
 							<Name>Basel SBB - Basel Bad</Name>
-							<FromPointRef ref="ch:1:sloid:10:1:1"/>
-							<ToPointRef ref="ch:1:sloid:90:0:529134"/>
+							<FromPointRef ref="ch:1:sloid:10:1:1" version="1"/>
+							<ToPointRef ref="ch:1:sloid:90:0:529134" version="1"/>
 						</TimingLink>
 						<TimingLink id="ch:1:TimingLink:2.1" version="1">
 							<Name>Basel Bad - Freiburg i. Br.</Name>
-							<FromPointRef ref="ch:1:sloid:10:1:1"/>
-							<ToPointRef ref="ch:1:sloid:18799"/>
+							<FromPointRef ref="ch:1:sloid:10:1:1" version="1"/>
+							<ToPointRef ref="ch:1:sloid:18799" version="1"/>
 						</TimingLink>
 					</timingLinks>
 					<journeyPatterns>
@@ -353,22 +361,21 @@
 					</validityConditions>
 				</ServiceCalendarFrame>
 				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="1">
-					<ServiceCalendarFrameRef ref="ch:1:ServiceCalendarFrame:j26" version="1"/>
 					<timeDemandTypes>
 						<TimeDemandType id="ch:1:TimeDemandType:1" version="1">
 							<runTimes>
 								<JourneyRunTime id="ch:1:JourneyRunTime:1.1" version="1">
-									<TimingLinkRef ref="ch:1:TimingLink:1.1"/>
+									<TimingLinkRef ref="ch:1:TimingLink:1.1" version="1"/>
 									<RunTime>PT1H30M</RunTime>
 								</JourneyRunTime>
 								<JourneyRunTime id="ch:1:JourneyRunTime:1.2" version="1">
-									<TimingLinkRef ref="ch:1:TimingLink:1.2"/>
+									<TimingLinkRef ref="ch:1:TimingLink:1.2" version="1"/>
 									<RunTime>PT5M</RunTime>
 								</JourneyRunTime>
 							</runTimes>
 							<waitTimes>
 								<JourneyWaitTime id="ch:1:WaitTime:1.1">
-									<ScheduledStopPointRef ref="ch:1:sloid:10:1:1"/>
+									<ScheduledStopPointRef ref="ch:1:sloid:10:1:1" version="1"/>
 									<WaitTime>PT10M</WaitTime>
 								</JourneyWaitTime>
 							</waitTimes>
@@ -376,7 +383,7 @@
 						<TimeDemandType id="ch:1:TimeDemandType:2" version="1">
 							<runTimes>
 								<JourneyRunTime id="ch:1:JourneyRunTime:2.1" version="1">
-									<TimingLinkRef ref="ch:1:TimingLink:2.1"/>
+									<TimingLinkRef ref="ch:1:TimingLink:2.1" version="1"/>
 									<RunTime>PT40M</RunTime>
 								</JourneyRunTime>
 							</runTimes>
@@ -406,7 +413,6 @@
 								<TrainNumberRef ref="ch:1:TrainNumber:7546" version="1"/>
 							</trainNumbers>
 						</ServiceJourney>
-						<!-- Basel Bad Depart New Number / New Transport Company -->
 						<ServiceJourney id="ch:1:sjyid:100014:4208-003B_DB" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
 							<validityConditions>
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="1"/>
