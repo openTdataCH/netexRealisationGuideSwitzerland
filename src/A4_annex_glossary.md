@@ -207,13 +207,20 @@ A planned transfer opportunity between two ServiceJourneys at a shared stop poin
 
 ## InterchangeRule
 
-An InterchangeRule defines the possibility of interchanging between two ServiceJourneys at the same or different ScheduledStopPoints - where at least one journey is specified indirectly via Direction, Line, or the VehicleJourney, rather than as an explicit journey pair. The rule specifies criteria (e.g. Mode, Line, Direction) that a candidate feeder or distributor journey must fulfil.
+An InterchangeRule defines the possibility of interchanging between two ServiceJourneys at the same or different 
+ScheduledStopPoints - where at least one journey is specified indirectly via Direction, Line, or the VehicleJourney, 
+rather than as an explicit journey pair. The rule specifies criteria (e.g. Mode, Line, Direction) that a candidate feeder 
+or distributor journey must fulfil.
 
-> **NeTEx XSD:** INTERCHANGE RULE specifies conditions governing the possibility of interchanging between two SERVICE JOURNEYs, stopping at the same or different SCHEDULED STOP POINTs, where at least one of the two SERVICE JOURNEYs is indicated indirectly by a DIRECTION, LINE or VEHICLE JOURNEY.
-> Such conditions may alternatively be specified directly, indicating the corresponding services. In this case, they are either a SERVICE JOURNEY PATTERN INTERCHANGE or a SERVICE JOURNEY INTERCHANGE.
+> **NeTEx XSD:** INTERCHANGE RULE specifies conditions governing the possibility of interchanging between two SERVICE JOURNEYs, 
+> stopping at the same or different SCHEDULED STOP POINTs, where at least one of the two SERVICE JOURNEYs is indicated 
+> indirectly by a DIRECTION, LINE or VEHICLE JOURNEY.
+> Such conditions may alternatively be specified directly, indicating the corresponding services. In this case, they are 
+> either a SERVICE JOURNEY PATTERN INTERCHANGE or a SERVICE JOURNEY INTERCHANGE.
 >
-> **Transmodel:** Conditions governing the possibility of interchanging between two SERVICE JOURNEYs, stopping at the same or different SCHEDULED STOP POINTs, where at least one of the two SERVICE</font>
-<font color="#f79646">JOURNEYs is indicated indirectly by a DIRECTION, LINE or VEHICLE JOURNEY.
+> **Transmodel:** Conditions governing the possibility of interchanging between two SERVICE JOURNEYs, stopping at the 
+> same or different SCHEDULED STOP POINTs, where at least one of the two SERVICE JOURNEYs is indicated indirectly by a 
+> DIRECTION, LINE or VEHICLE JOURNEY.
 
 → [Full documentation](09_timetable.md#InterchangeRule)
 
