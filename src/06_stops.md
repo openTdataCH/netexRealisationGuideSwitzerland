@@ -94,7 +94,7 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 
 
 ## Quay
-*→ [Glossary definition](A4_annex_glossary.md#Quay)*
+*→ [Glossary definition](A4_annex_glossary.md#quay)*
 
 ### Purpose
 A specific boarding or alighting position (platform, stand, bay) within a `StopPlace` where passengers physically meet vehicles. 
@@ -143,7 +143,7 @@ Further notes:
 - Atlas does model the hierarchy of the quays.
 
 ## TopographicPlace
-*→ [Glossary definition](A4_annex_glossary.md#TopographicPlace)*
+*→ [Glossary definition](A4_annex_glossary.md#topographicplace)*
 
 ### Purpose
 A named geographic area such as a city, municipality, county, or region - used to provide spatial context for `StopPlaces`, for example when interactively searching for the origin or destination of a trip.

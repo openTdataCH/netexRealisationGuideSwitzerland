@@ -53,7 +53,7 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 `TimetableFrame` depends on `ServiceFrame`for `JourneyPattern`s and `Line`s referenced by `ServiceJourney`s. It depends on `ResourceFrame` for `Operator` definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `TimetableFrame` is typically wrapped in a `CompositeFrame`within a `PublicationDelivery`.
 
 ## ServiceJourney
-*→ [Glossary definition](A4_annex_glossary.md#ServiceJourney)*
+*→ [Glossary definition](A4_annex_glossary.md#servicejourney)*
 
 ### Purpose
 A `ServiceJourney` represents a planned trip in the timetable operating on a recurring schedule. It defines the stop sequence via reference to a `JourneyPattern`, includes scheduled passing times, and specifies operational details such as operator and days of operation. Unlike `DatedServiceJourney`, which represents a concrete instance on a specific date, `ServiceJourney` is the reusable template used across multiple dates via `DayType` definitions

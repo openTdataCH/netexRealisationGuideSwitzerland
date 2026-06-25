@@ -5,7 +5,7 @@ In this chapter:
 - [CompositeFrame](#CompositeFrame)
 
 ## PublicationDelivery
-*→ [Glossary definition](A4_annex_glossary.md#PublicationDelivery)*
+*→ [Glossary definition](A4_annex_glossary.md#publicationdelivery)*
 
 ### Purpose
 Any valid XML document must start with one root element.

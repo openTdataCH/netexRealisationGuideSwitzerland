@@ -124,7 +124,7 @@ This means that the old two defined dirctions `ch:1:Direction:H` and `ch:1:Direc
 
 
 ## Line
-*→ [Glossary definition](A4_annex_glossary.md#Line)*
+*→ [Glossary definition](A4_annex_glossary.md#line)*
 ### Purpose
 A public transport service line, representing a marketed route with a `Name`, `TransportMode`, and `Operator`.
 
@@ -151,7 +151,7 @@ A public transport service line, representing a marketed route with a `Name`, `T
 - id-attribute needs to be kept stable between exports.
 
 ## DestinationDisplay
-*→ [Glossary definition](A4_annex_glossary.md#DestinationDisplay)*
+*→ [Glossary definition](A4_annex_glossary.md#destinationdisplay)*
 
 ### Purpose
 Showing the destination of a `ServiceJourney`. The text shown on the front or side of a public transport vehicle to indicate its destination, including via-points and variant labels.
@@ -176,7 +176,7 @@ Showing the destination of a `ServiceJourney`. The text shown on the front or si
 > **TODO** the rules for defining need to be clarified. #81
 
 ## ScheduledStopPoint
-*→ [Glossary definition](A4_annex_glossary.md#ScheduledStopPoint)*
+*→ [Glossary definition](A4_annex_glossary.md#scheduledstoppoint)*
 
 ### Purpose
 A logical point used in the timetable to indicate a stop of a service where passengers can board or alight. A `ScheduledStopPoint` is linked to a physical `Quay` or `StopPlace` via a [PassengerStopAssignment](#passengerstopassignment). 
@@ -201,7 +201,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 - id-attribute needs to be kept stable between exports.
 
 ## PassengerStopAssignment
-*→ [Glossary definition](A4_annex_glossary.md#PassengerStopAssignment)*
+*→ [Glossary definition](A4_annex_glossary.md#passengerstopassignment)*
 
 ### Purpose
 
@@ -229,7 +229,7 @@ https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/82
 
 
 ## DefaultConnection
-*→ [Glossary definition](A4_annex_glossary.md#DefaultConnection)*
+*→ [Glossary definition](A4_annex_glossary.md#defaultconnection)*
 
 ### Purpose
 `DefaultConnections` are used to transmit the connection times for the following constellations:
@@ -257,7 +257,7 @@ https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/82
 
 
 ## SiteConnection
-*→ [Glossary definition](A4_annex_glossary.md#SiteConnection)*
+*→ [Glossary definition](A4_annex_glossary.md#siteconnection)*
 
 ### Purpose
 - The `SiteConnection` describes the transfer times between two adjacent `StopPlace`s. 
@@ -281,7 +281,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
 
 
 ## TimingLink
-*→ [Glossary definition](A4_annex_glossary.md#TimingLink)*
+*→ [Glossary definition](A4_annex_glossary.md#timinglink)*
 
 ### Purpose
 `TimingLink`  is used to describe the run times and wait times of a given `ServiceJourney`. 
@@ -309,7 +309,7 @@ For more details see the [use case on transfers](uc03_transfers.md).
 > **TODO** Adrian/Wilfried
 
 ## ServiceJourneyPattern
-*→ [Glossary definition](A4_annex_glossary.md#ServiceJourneyPattern)*
+*→ [Glossary definition](A4_annex_glossary.md#servicejourneypattern)*
 
 ### Purpose
 `ServiceJourneyPattern` is used to describe the journey pattern (sequence and times of `ScheduledStopPoints`) of `ServiceJourney`.
@@ -355,7 +355,7 @@ ServiceJourneyPatterns are a common concept in the VDV interface world ("Linienf
 
 
 ## Notice
-*→ [Glossary definition](A4_annex_glossary.md#Notice)*
+*→ [Glossary definition](A4_annex_glossary.md#notice)*
 
 
 ### Purpose
@@ -379,7 +379,7 @@ Notice elements should only be used to convey information which cannot be transp
 
 
 ## NoticeAssignment
-*→ [Glossary definition](A4_annex_glossary.md#NoticeAssignment)*
+*→ [Glossary definition](A4_annex_glossary.md#noticeassignment)*
 
 ### Purpose
 Assign a `Notice` to an element. 
