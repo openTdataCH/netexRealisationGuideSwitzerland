@@ -234,7 +234,7 @@ Only the values defined below are allowed in Switzerland for `StakeholderRoleTyp
 id-attribute should be kept stable between exports.
 
 ## TypeOf... / ValueSet
-*→ [Glossary definition: TypeOf...](A4_annex_glossary.md#typeof...)*\
+*→ [Glossary definition: TypeOf...](A4_annex_glossary.md#typeof)*\
 *→ [Glossary definition: ValueSet](A4_annex_glossary.md#valueset)*
 
 ### Purpose
