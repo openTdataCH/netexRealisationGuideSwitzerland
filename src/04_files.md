@@ -1,3 +1,6 @@
+---
+mermaid: true
+---
 # Files
 
 NeTEx will be transfered as files.
