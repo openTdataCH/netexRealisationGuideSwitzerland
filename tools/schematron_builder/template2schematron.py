@@ -5,42 +5,25 @@ template2schematron.py
 Generates Schematron validation files from XML templates with special comment annotations.
 
 Requires lxml for robust XML processing and XPath support.
-Install: pip install lxml
 
-Usage:
-    python template2schematron.py \
-        -t TEMPLATE_FILE \
-        -x XSD_FILE \
-        -i INPUT_FOLDER \
-        -o OUTPUT_FILE \
-        [-v] \
-        [-r ROOT_ELEMENT]
+Print usage - run with option -h:
+uv run python template2schematron.py -h
 
 Examples:
     # Process a single ch-profile template
     python template2schematron.py \
-        -t templates/ch-profile_export-timetable_file.xml \
+        -t src/templates/ch-profile_export-timetable_file.xml \
         -x xsd/xsd/NeTEx_publication.xsd \
-        -i templates \
-        -o generated/schematrons/ch-profile_export_timetable_file.sch \
+        -i src/templates \
+        -o site/schematrons \
         -v
 
-    # Process all ch-profile templates (using shell loop)
-    for template in templates/ch-profile_*.xml; do
-        output="generated/schematrons/$(basename "$template" .xml).sch"
-        python template2schematron.py \
-            -t "$template" \
-            -x xsd/xsd/NeTEx_publication.xsd \
-            -i templates \
-            -o "$output"
-    done
+    # Process all ch-profile templates (using uv)
+    uv run python template2schematron.py
 
-    # Use a custom root element (default: PublicationDelivery)
-    python template2schematron.py \
+    # Process single template using custom root element (default: PublicationDelivery)
+    uv run python template2schematron.py \
         -t templates/custom_template.xml \
-        -x xsd/xsd/NeTEx_publication.xsd \
-        -i templates \
-        -o generated/schematrons/custom.sch \
         -r CustomRootElement
 """
 
@@ -847,7 +830,7 @@ def generate_schematron_from_template(template_path: str, input_folder: str, out
 
 def generate_all_schematrons(input_folder: str, output_folder: str, xsd_path: str, root_element: str):
     """
-     Generates a schematron files from all templates.
+     Generates schematron files from all templates.
 
      param: input_folder: path to the template folder
      param: output_path: path to the output (schematron) folder
@@ -899,8 +882,6 @@ def main():
         print(f'Warning: xsd file not found: {xsd_path}', file=sys.stderr)
     if not os.path.isdir(input_folder):
         print(f'Warning: input folder not found: {input_folder}', file=sys.stderr)
-
-
 
     if VERBOSE:
         print(f"Output folder: {output_folder}")
