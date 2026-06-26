@@ -9,15 +9,17 @@ This `jekyll` folder is used as a template for the site. It is copied to the `si
 
 ## Jekyll Adaptions 
 
-The following documents 
-- See [_config.yml](_config.yml) for the basic Jekyll configuration.
+The following documents have been adapted according to project needs:
+- The Jekyll configuration [_config.yml](_config.yml) 
 - The Gemfile
-- files in _`includes` folder
+- HTML files (header.html, footer.html, mermaid.html) in the _`includes` folder
 
 ### Mermaid
 
-The Java script in _includes/mermaid.html is included in _includes/footer.html, and consequently in the footer of 
-the generated html, if mermaid is enabled in the Markdown header:
+The Java script in `_includes/mermaid.html` is included in `_includes/footer.html`, and consequently, in the footer of 
+the generated HTML. 
+
+To use the mermaid Script for a particular page, it must be enabled in the Markdown header:
 
 ```markdown
 ---
