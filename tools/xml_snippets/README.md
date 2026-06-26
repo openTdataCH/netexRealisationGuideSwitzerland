@@ -34,10 +34,10 @@ python build_xml_snippets.py -i INPUT_FOLDER -o OUTPUT_FOLDER
 ### Example
 
 ```bash
-python build_xml_snippets.py -i ../../templates -o ../../generated/xml-snippets
+python build_xml_snippets.py -i ../../templates -o ../../site/xml-snippets
 ```
 
-This will process all XML files in the `templates` folder and generate cleaned XML snippets in the `generated/xml-snippets` folder.
+This will process all XML files in the `templates` folder and generate cleaned XML snippets in the `site/xml-snippets` folder.
 
 ### Batch Processing
 
@@ -46,12 +46,12 @@ To process all templates in a directory:
 ```bash
 # On Windows
 for %%f in (templates\*.xml) do (
-    python build_xml_snippets.py -i templates -o generated/xml-snippets
+    python build_xml_snippets.py -i templates -o site/xml-snippets
 )
 
 # On Linux/Mac
 for f in templates/*.xml; do
-    python build_xml_snippets.py -i templates -o generated/xml-snippets
+    python build_xml_snippets.py -i templates -o site/xml-snippets
  done
 ```
 
