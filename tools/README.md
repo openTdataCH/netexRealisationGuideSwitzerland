@@ -6,23 +6,23 @@
 
 The following validation tools are used to validate sources (links and xml):
 
-| Name                                           | Type   | Default Input | Description                                                                                                                                                 | 
-|------------------------------------------------|--------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------| 
-| [check_links](check_links/README.md)           | Python | `docs`        | **Checks relative links** in Markdown files and warns if the target files doesn't exist.                                                                    
-| [check_schematron](check_schematron/README.md) | Python | -             |  **Validates XML** files against Schematron schemas and reports validation issues.                                                                           |
-| [xml_validator](validation/README.md)          | Python | -             |  **Validates XML** files or folders against an XSD schema.                                                                                                   | 
+| Name                                           | Type   | Default Input | Description                                                                              | 
+|------------------------------------------------|--------|---------------|------------------------------------------------------------------------------------------| 
+| [check_links](check_links/README.md)           | Python | `src`         | **Checks relative links** in Markdown files and warns if the target files doesn't exist. |                                    
+| [check_schematron](check_schematron/README.md) | Python | -             | **Validates XML** files against Schematron schemas and reports validation issues.        |
+| [xml_validator](validation/README.md)          | Python | -             | **Validates XML** files or folders against an XSD schema.                                | 
 
 ### Docs Generation Tools
 
 The following tools are used to generate target files from sources:
 
-| Name                                               | Type   | Default Input | Default Output      | Description                                                                                                                                                 | 
-|----------------------------------------------------|--------|---------------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------| 
-| [expand_docs](expand_docs/README.md)               | Python | `docs`        | `site`              | **Expands Markdown** documentation: Includes XML snippets and Markdown tables directly in the Markdown and copies the media folder to the output location.  
-| [md_builder](md_builder/README.md)                 | Python | `templates`   | `site/tables`       | **Generates Markdown tables** from annotated NeTEx XML templates, using XSD schemas for type and cardinality information.                                   |
-| [schematron_builder](schematron_builder/README.md) | Python | -             | -                   | **Generates Schematron files** from XML templates with special comment annotations.                                                                         |
-| [xml_snippets](xml_snippets/README.md)             | Python | `templates`   | `site/xml-snippets` | **Extracts XML Snippets** from templates.                                                                                                                   |
-| [pycore](pycore/README.md)                         | xquery | -             | -                   | **Generates Markdown tables** from a XSD schema.                                                                                                            |
+| Name                      | Type   | Default Input   | Default Output      | Description                                                                                                                             | 
+|---------------------------|--------|-----------------|---------------------|-----------------------------------------------------------------------------------------------------------------------------------------| 
+| [expand_docs](expand_docs/README.md)        | Python | `src`           | `site`              | **Expands Markdown** documentation: Includes XML snippets and Markdown tables directly in the Markdown and copies the media folder to the output location. |
+| [md_builder](md_builder/README.md)         | Python | `src/templates` | `site/tables`       | **Generates Markdown tables** from annotated NeTEx XML templates, using XSD schemas for type and cardinality information.               |
+| [schematron_builder](schematron_builder/README.md) | Python | -               | -                   | **Generates Schematron files** from XML templates with special comment annotations.                                                     |
+| [xml_snippets](xml_snippets/README.md)       | Python | `src/templates` | `site/xml-snippets` | **Extracts XML Snippets** from templates.                                                                                               |
+| [pycore](pycore/README.md)             | xquery | -               | -                   | **Generates Markdown tables** from a XSD schema.                                                                                        |
 
 ## General rules applying to all tools
 
@@ -183,11 +183,12 @@ Components of the build automation:
     - here we can add tools to be run during the build.
 - The build writes all output to directory `site`, excluded from git
 
-### Github Action
+### Github Action pages.yaml
 
 The Github Action [pages.yaml](../.github/pages.yaml) runs the script [build.sh](./build.sh) (can also be tested locally) 
-  - triggered after commits to main branch (e.g. after the merge of a branch)
-  - runs the build via the `python -m build` mechanism 
-  - uploads generated docs to GitHub Pages
+  - Triggered after commits to main branch (e.g. after the merge of a branch)
+  - Runs the build via the `python -m build` mechanism 
+  - Generates static html pages with [Jekyll](../jekyll/JEKYLL-README.md)
+  - Uploads generated docs to GitHub Pages
 
 
