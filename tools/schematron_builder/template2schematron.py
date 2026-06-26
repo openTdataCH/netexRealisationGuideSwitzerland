@@ -48,7 +48,8 @@ import sys
 import os
 import re
 import argparse
-from pathlib import Path
+
+from tools.configuration import XSD_FILE_PATH, TEMPLATES_DIR, SITE_SCHEMATRON_DIR
 
 # Require lxml - it provides better XML handling and XPath support
 try:
@@ -86,17 +87,6 @@ RE_CH_COMMAND = re.compile(r'\b(ch-[a-zA-Z0-9_-]+)', re.IGNORECASE)
 
 # Verbose debug toggle (set via CLI)
 VERBOSE = False
-
-
-def usage():
-    print(
-        "Usage: python template2schematron.py "
-        "-t TEMPLATE_FILE -x XSD_FILE -i INPUT_FOLDER -o OUTPUT_FILE "
-        "[-v]",
-        file=sys.stderr,
-    )
-    sys.exit(2)
-
 
 def read_file(path):
     """Read file content with UTF-8 encoding."""
@@ -781,84 +771,39 @@ def _parent_of_abs_path(abs_path: str) -> str:
     return abs_path.rsplit('/', 1)[0]
 
 
-def parse_args(argv):
-    parser = argparse.ArgumentParser(
-        description="Generate Schematron from XML template and fragments."
-    )
-    parser.add_argument(
-        '-t', '--template',
-        required=True,
-        help='Template XML file containing ch-start/ch-stop regions.'
-    )
-    parser.add_argument(
-        '-x', '--xsd',
-        required=True,
-        help='XSD file (optional for validation, but path is stored).'
-    )
-    parser.add_argument(
-        '-i', '--input-folder',
-        required=True,
-        help='Folder with referenced XML fragment files.'
-    )
-    parser.add_argument(
-        '-o', '--output',
-        required=True,
-        help='Output Schematron (.sch) file.'
-    )
-    parser.add_argument(
-        '-v', '--verbose',
-        action='store_true',
-        help='Enable verbose logging.'
-    )
-    parser.add_argument(
-        '-r', '--root-element',
-        default='PublicationDelivery',
-        help='Root element to start processing from (default: PublicationDelivery).'
-    )
-    return parser.parse_args(argv)
+def generate_schematron_from_template(template_path: str, input_folder: str, output_folder: str, schematron_builder: SchematronBuilder, root_element: str):
+    """
+    Generates a schematron file from a template.
 
-
-def main(argv = None):
-    global VERBOSE
-    args = parse_args(argv)
-    template_path = args.template
-    xsd_path = args.xsd
-    input_folder = args.input_folder
-    output_path = args.output
-    VERBOSE = args.verbose
-    root_element = args.root_element
-
-    # Validate inputs
-    if not os.path.isfile(template_path):
-        print(f'Error: template file not found: {template_path}', file=sys.stderr)
-        sys.exit(1)
-    if not os.path.isfile(xsd_path):
-        print(f'Warning: xsd file not found: {xsd_path}', file=sys.stderr)
-    if not os.path.isdir(input_folder):
-        print(f'Warning: input folder not found: {input_folder}', file=sys.stderr)
-
+    param: template_path: path to the template file
+    param: input_folder: path to the template folder
+    param: output_path: path to the output (schematron) folder
+    param: schematron_builder: SchematronBuilder object
+    param: root_element: Schema root element, e.g. PublicationDelivery
+    """
     txt = read_file(template_path)
+    template_name = os.path.basename(template_path)
+    name = template_name.split('.')[0]
+    schematron_name = f"{name}.sch"
     regions = extract_regions(txt)
     if not regions:
         print(
-            'Warning: no regions found with root markers; attempting to process entire file',
+            f'Warning: no regions found with root in {template_name}; attempting to process entire file',
             file=sys.stderr
         )
         regions = [txt]
-
-    builder = SchematronBuilder(xsd_path)
 
     for region in regions:
         # Check if the region is already a complete XML element (starts with < and not <?xml)
         region_stripped = region.strip()
         is_complete_element = region_stripped.startswith('<') and not region_stripped.startswith('<?xml')
-        
+
         if is_complete_element:
             # Region is already a complete XML element, parse it directly
             try:
                 root = ET.fromstring(region.encode('utf-8'))
             except Exception as e:
-                print(f'Error parsing extracted region: {e}', file=sys.stderr)
+                print(f'Error parsing extracted region of {template_name}: {e}', file=sys.stderr)
                 continue
         else:
             # Region is a fragment, wrap it with root element
@@ -866,7 +811,7 @@ def main(argv = None):
             try:
                 root = ET.fromstring(wrapped.encode('utf-8'))
             except Exception as e:
-                print(f'Error parsing extracted region: {e}', file=sys.stderr)
+                print(f'Error parsing extracted region of {template_name}: {e}', file=sys.stderr)
                 continue
 
         # Check if the root element itself is the one we're looking for
@@ -876,7 +821,7 @@ def main(argv = None):
             # Process the root element directly
             process_element_tree(
                 root,
-                builder,
+                schematron_builder,
                 parent_context_path='',
                 input_folder=input_folder,
                 is_ref_root=False
@@ -887,17 +832,90 @@ def main(argv = None):
             # This is valid - process the element that was extracted (which contains the ch-root marker)
             process_element_tree(
                 root,
-                builder,
+                schematron_builder,
                 parent_context_path='',
                 input_folder=input_folder,
                 is_ref_root=False
             )
             root_element_found = True
 
-    out = builder.tostring()
-    write_file(output_path, out)
-    print(f'Wrote schematron to {output_path}. Rules created: {builder.rules_created}')
+    schematron_content = schematron_builder.tostring()
 
+    schematron_path = f'{output_folder}/{schematron_name}'
+    write_file(schematron_path, schematron_content)
+    print(f'Created {schematron_name}: {schematron_builder.rules_created} rules.')
+
+def generate_all_schematrons(input_folder: str, output_folder: str, xsd_path: str, root_element: str):
+    """
+     Generates a schematron files from all templates.
+
+     param: input_folder: path to the template folder
+     param: output_path: path to the output (schematron) folder
+     param: schematron_builder: SchematronBuilder object
+     param: root_element: Schema root element, e.g. PublicationDelivery
+     """
+    templates = [os.path.join(input_folder, f) for f in os.listdir(input_folder) if f.endswith('.xml')]
+
+    schematron_builder = SchematronBuilder(xsd_path)
+    for template_path in templates:
+        generate_schematron_from_template(template_path, input_folder, output_folder, schematron_builder, root_element)
+
+    print(f"Processed {len(templates)} templates.")
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description=f"Generates Schematrons from XML templates and fragments. Processes all templates in {TEMPLATES_DIR} or a single template if -t or --template is used."
+    )
+    parser.add_argument('-t', '--template', default=None, required=False,
+        help='Template XML file containing ch-start/ch-stop regions (Processes all templates in input folder if None).'
+    )
+    parser.add_argument('-x', '--xsd', default=XSD_FILE_PATH,
+                        help=f'XSD schema file for type information (Default = {XSD_FILE_PATH})')
+    parser.add_argument('-i', '--input', default=TEMPLATES_DIR,
+                        help=f'Input folder containing XML templates (Default = {TEMPLATES_DIR})')
+    parser.add_argument('-o', '--output', default=SITE_SCHEMATRON_DIR,
+                        help=f'Output folder for Schematron (.sch) files (Default = {SITE_SCHEMATRON_DIR})')
+    parser.add_argument(
+        '-r', '--root-element',
+        default='PublicationDelivery',
+        help='Root element to start processing from (default: PublicationDelivery).'
+    )
+    parser.add_argument('-v', '--verbose', action='store_true', help='Enable verbose logging.')
+    return parser.parse_args()
+
+
+def main():
+    global VERBOSE
+    args = parse_args()
+    template_path = args.template
+    xsd_path = args.xsd
+    input_folder = args.input
+    output_folder = args.output
+    VERBOSE = args.verbose
+    root_element = args.root_element
+
+    # Validate inputs
+    if not os.path.isfile(xsd_path):
+        print(f'Warning: xsd file not found: {xsd_path}', file=sys.stderr)
+    if not os.path.isdir(input_folder):
+        print(f'Warning: input folder not found: {input_folder}', file=sys.stderr)
+
+
+
+    if VERBOSE:
+        print(f"Output folder: {output_folder}")
+
+    # Create output folder if it doesn't exist
+    os.makedirs(output_folder, exist_ok=True)
+
+    if template_path:
+        if not os.path.isfile(template_path):
+            print(f'Error: Template file not found: {template_path}', file=sys.stderr)
+            sys.exit(1)
+        schematron_builder = SchematronBuilder(xsd_path)
+        generate_schematron_from_template(template_path, input_folder, output_folder, schematron_builder, root_element)
+    else:
+        generate_all_schematrons(input_folder, output_folder, xsd_path, root_element)
 
 if __name__ == '__main__':
-    main(sys.argv)
+    main()
