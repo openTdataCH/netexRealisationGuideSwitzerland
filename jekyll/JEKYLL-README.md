@@ -5,7 +5,7 @@ other source documents) in the `site` folder.
 
 See [Jekyll documentation](https://jekyllrb.com/docs/) for more info about Jekyll.
 
-This `jekyll` folder is used as a template for the site. It is copied to the `site` folder before during the build.
+This `jekyll` folder is used as a template for the site. It is copied to the `site` folder during the build.
 
 ## Jekyll Adaptions 
 
