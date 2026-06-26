@@ -9,24 +9,21 @@
 					<typesOfValue>
 						<ValueSet id="ch:1:ValueSet:TypesOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
 							<values>
-                                <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="any"><!-- ch-root -->
+                                <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="any">
+                                    <!-- ch-root -->
 									<!-- ch-usage: mandatory -->
 									<alternativeTexts>
-										<!-- ch-note: For each language an AlternativeText is needed -->
-										<!-- ch-usage: mandatory -->
+										<!-- ch-note: Is done with MultilanguageString now -->
+										<!-- ch-usage: forbidden -->
 										<AlternativeText attributeName="Name">
-											<!-- ch-usage: mandatory -->
 											<Text lang="it">Train Express Regional</Text>
-											<!-- ch-usage: mandatory -->
-										</AlternativeText>
-										<AlternativeText attributeName="Name">
-											<Text lang="en">Train Express Regional</Text>
-										</AlternativeText>
-										<AlternativeText attributeName="Name">
-											<Text lang="fr">Train Express Regional</Text>
 										</AlternativeText>
 									</alternativeTexts>
-									<Name lang="de"><!-- ch-usage: mandatory -->TER</Name>
+									<Name lang="de"><!-- ch-usage: mandatory -->TER
+                                    <Text lang="en"><!-- ch-usage: expected -->Train Express Regional</Text>
+                                    <Text lang="it">Train Express Regional</Text>
+                                    <Text lang="fr">Train Express Regional</Text>
+                                    </Name>
 									<ShortName><!-- ch-usage: mandatory -->TER</ShortName>
 								</TypeOfProductCategory>
 							</values>
