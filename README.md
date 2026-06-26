@@ -23,15 +23,15 @@ none
 
 Source folders added to git:
 
-| Folder            | Content                                                                                                                   |
-|-------------------|---------------------------------------------------------------------------------------------------------------------------|
-| docs              | The document sources of the realisation guide (with links)                                                                |
-| examples          | Valid XML examples based on use cases                                                                                     |
-| jekyll            | jekyll template folder (is copied to the site folder during the build). Jekyll is used to generate html for GitHub pages. |
-| mgmt              | governance and organisation                                                                                               |
-| templates         | template files to generade schematrons and elements in elements.md                                                        |
-| tools             | Python tools to build everything ([see](./tools/README.md))                                                               |
-| xsd               | the NeTEx 2.0 XSD                                                                                                         |
+| Folder        | Content                                                                                                                   |
+|---------------|---------------------------------------------------------------------------------------------------------------------------|
+| src           | The document sources of the realisation guide (with links)                                                                |
+| src/templates | Template files to generade schematrons and elements in elements.md                                                        |
+| src/examples  | Valid XML examples based on use cases                                                                                     |
+| jekyll        | jekyll template folder (is copied to the site folder during the build). Jekyll is used to generate html for GitHub pages. |
+| mgmt          | Governance and organisation                                                                                               |
+| tools         | Python tools to build everything ([see](./tools/README.md))                                                               |
+| xsd           | The NeTEx 2.0 XSD                                                                                                         |
 
 ### Generated Folders
 
@@ -45,6 +45,8 @@ These target documents are written to `site` and according subfolders, excluded 
 | site/xml-snippets | Simple element examples XML.                                                                  |
 | site/netex-html   | xcore documentation of the NeTEX XSD.                                                         |
 | site/tables       | markdown tables of the relevant elements                                                      |
+| site/templates    | Templates files to publish                                                                    |
+| site/examples     | Examples files to publish                                                                     |
 
 ## Governance of the realisation guide and this repository.
 [see here](mgmt/README.md)
