@@ -257,7 +257,7 @@ We use TypeOfValue references in various Frames in objects including:
 | 2           | ~~Zugname~~         | Name of the train. Is not used, as this is stored in ServiceJourneyName.                                                                                                                                                                                         |
 | 3           | ~~Gleis-Angabe~~    | Quay and Quay section information. Is no longer used. Is put into Quay.                                                                                                                                                                                          |
 | 10          | Angebot             | Most of the `ServiceFacilitySet` are also transmitted as `Notice`. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to `ServiceFacilitySets`. This `TypeOfNotice` is used to deliver those special cases as Notices. |
-| 11          | ~~Region~~          | Postauto is divided into several regions. Will be omitted. If anything this will be done with different constructs.                                                                                                                                              |
+| 11          | Region        | Postauto is divided into several regions. Will be omitted. If anything this will be done with different constructs.                                                                                                                                              |
 
 The following snippet is **all** that is defined for `TypeOfNotice`:
 ``` xml
