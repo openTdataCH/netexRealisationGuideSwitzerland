@@ -44,7 +44,7 @@
 							<Name>ProductCategories</Name>
 							<values>
 								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:ICE" version="1">
-									<Name>InterCityExpress</Name>
+									<Name lang="de">InterCityExpress</Name>
                                     <ShortName>ICE</ShortName>
 								</TypeOfProductCategory>
 							</values>
@@ -126,6 +126,13 @@
 										<PrivateCode type="sloid">ch:1:sloid:7492:0:460848</PrivateCode>
 									</privateCodes>
 									<PublicCode>1</PublicCode>
+							<Centroid>
+								<Location>
+									<Longitude>7.869000</Longitude>
+									<Latitude>46.6904999</Latitude>
+									<Altitude>567</Altitude>
+								</Location>
+							</Centroid>
 								</Quay>
 							</quays>
 						</StopPlace>
@@ -164,6 +171,13 @@
 										<PrivateCode type="sloid">ch:1:sloid:10:1:1</PrivateCode>
 									</privateCodes>
 									<PublicCode>1</PublicCode>
+                                    							<Centroid>
+								<Location>
+									<Longitude>7.589562</Longitude>
+									<Latitude>47.547412</Latitude>
+									<Altitude>276</Altitude>
+								</Location>
+							</Centroid>
 								</Quay>
 							</quays>
 						</StopPlace>
@@ -198,6 +212,15 @@
 											<Value>ch:1:sloid:90:0:529134</Value>
 										</KeyValue>
 									</keyList>
+							<Centroid>
+								<Location>
+									<Longitude>7.606920</Longitude>
+									<Latitude>47.567307</Latitude>
+									<Altitude>263</Altitude>
+								</Location>
+							</Centroid>
+                                    									<PublicCode>1</PublicCode>
+
 								</Quay>
 							</quays>
 						</StopPlace>
@@ -219,8 +242,28 @@
 									<Altitude>286</Altitude>
 								</Location>
 							</Centroid>
-							<!-- No Quay Available for Freiburg i. Br. -->
-                            <!-- **TODO** is this acceptable -->
+							<quays>
+								<Quay id="8018799:A" version="1">
+                                    <privateCodes>
+                                        <PrivateCode type="didok">8018799</PrivateCode>
+                                    </privateCodes>
+									<keyList>
+										<KeyValue>
+											<Key>DIDOK</Key>
+											<Value>8018799</Value>
+										</KeyValue>
+									</keyList>
+							<Centroid>
+								<Location>
+									<Longitude>7.606920</Longitude>
+									<Latitude>47.567307</Latitude>
+									<Altitude>263</Altitude>
+								</Location>
+							</Centroid>
+                                    									<PublicCode>A</PublicCode>
+
+								</Quay>
+							</quays>
 						</StopPlace>
 					</stopPlaces>
 				</SiteFrame>
@@ -241,6 +284,8 @@
 							<TransportSubmode>
 								<RailSubmode>interregionalRail</RailSubmode>
 							</TransportSubmode>
+                            <PublicCode>ICE</PublicCode>
+
 							<OperatorRef ref="ch:1:sboid:100001" version="1"/>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1"/>
 						</Line>
@@ -319,6 +364,10 @@
 					<journeyPatterns>
 						<ServiceJourneyPattern id="ch:1:J_SBB:1024337" version="1">
 							<Name>Interlaken_Ost_Basel_SBB_Basel_Bad</Name>
+                            <RouteView>
+                                <LineRef ref="ch:1:slnid:1024337" id="1"/>
+                            </RouteView>
+                            <DirectionType>outbound</DirectionType>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:SBB:JP:1024337:1" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:261628" version="1"/>
@@ -339,6 +388,10 @@
 						</ServiceJourneyPattern>
 						<ServiceJourneyPattern id="ch:1:J_DB:1024356" version="1">
 							<Name>Basel_Bad_Freiburg</Name>
+                            <RouteView>
+                                <LineRef ref="ch:1:slnid:1024356" id="1"/>
+                            </RouteView>
+                            <DirectionType>outbound</DirectionType>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:DB:JP:1024356:1_DB" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:90:0:529134" version="1"/>
@@ -411,7 +464,7 @@
                                 <RailSubmode>intercity</RailSubmode>
                             </TransportSubmode>
                             <TypeOfProductCategoryRef>ch:1:TypeOfProductCategory:ICE</TypeOfProductCategoryRef>
-                            <SerivceAlteration>planned</SerivceAlteration>
+                            <ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>08:00:00</DepartureTime>
 							<JourneyPatternRef ref="ch:1:J_SBB:1024337" version="1"/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:1" version="1"/>
@@ -440,7 +493,7 @@
                                 <RailSubmode>intercity</RailSubmode>
                             </TransportSubmode>
                             <TypeOfProductCategoryRef>ch:1:TypeOfProductCategory:ICE</TypeOfProductCategoryRef>
-                            <SerivceAlteration>planned</SerivceAlteration>
+                            <ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>09:50:00</DepartureTime>
 							<JourneyPatternRef ref="ch:1:J_DB:1024356" version="1"/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:2" version="1"/>
