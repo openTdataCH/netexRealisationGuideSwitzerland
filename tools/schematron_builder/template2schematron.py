@@ -73,6 +73,7 @@ VERBOSE = False
 
 def read_file(path):
     """Read file content with UTF-8 encoding."""
+    print (f'Reading file: ${path}')
     try:
         with open(path, 'r', encoding='utf-8') as f:
             return f.read()
@@ -615,8 +616,8 @@ def process_element_tree(elem, builder, parent_context_path='', input_folder='.'
     else:
         elem_abs_path = ns_join(builder, parent_context_path, tag_local)
         parent_abs_path = parent_context_path
-
-
+    if elem_abs_path == "netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame":
+        print("here")
     # Partition direct children
     nodes = list(elem)
     child_elements = []
@@ -644,6 +645,8 @@ def process_element_tree(elem, builder, parent_context_path='', input_folder='.'
 
         # Apply usage/deprecation about this element at its parent's context (direct child checks)
         if any(u == 'forbidden' for u in usages):
+            if tag_local == "ServiceFrame":
+                print ("here")
             builder.add_rule_absence(parent_abs_path, tag_local, note_text=note_text)
         if any(u == 'mandatory' for u in usages):
             builder.add_rule_presence(parent_abs_path, tag_local, note_text=note_text)
