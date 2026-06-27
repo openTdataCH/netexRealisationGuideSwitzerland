@@ -35,11 +35,11 @@ Luzern			  Keine weitere Fahrt möglich
 							<PrivateCode>BLS AG</PrivateCode>
 							<roles>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:1" version="1">
-									<StakeholderRoleType>entityLegalOwnership</StakeholderRoleType>
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
 									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:2" version="1">
-									<StakeholderRoleType>operation</StakeholderRoleType>
+									<StakeholderRoleType>Operation</StakeholderRoleType>
 									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
@@ -50,7 +50,8 @@ Luzern			  Keine weitere Fahrt möglich
 							<Name>ProductCategories</Name>
 							<values>
 								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:RE" version="1">
-									<Name>RegioExpress</Name>
+									<Name lang="de">RegioExpress</Name>
+                                    <ShortName>RE</ShortName>
 								</TypeOfProductCategory>
 							</values>
 						</ValueSet>
@@ -473,10 +474,12 @@ Luzern			  Keine weitere Fahrt möglich
 					</lines>
 					<destinationDisplays>
 						<DestinationDisplay id="DD_LUZERN" version="1">
+                            <Name lang="de">Luzern</Name>
 							<FrontText>Luzern</FrontText>
 						</DestinationDisplay>
 						<!-- the additional DestinationDisplay -->
 						<DestinationDisplay id="DD_WOLHUSEN" version="1">
+                            <Name lang="de">Wolhusen</Name>
 							<FrontText>Wolhusen</FrontText>
 						</DestinationDisplay>
 					</destinationDisplays>
