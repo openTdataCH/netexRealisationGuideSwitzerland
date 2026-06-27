@@ -45,6 +45,7 @@
 							<values>
 								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:ICE" version="1">
 									<Name>InterCityExpress</Name>
+                                    <ShortName>ICE</ShortName>
 								</TypeOfProductCategory>
 							</values>
 						</ValueSet>
@@ -201,14 +202,13 @@
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:18799" version="1">
+							<privateCodes>
+								<PrivateCode type="didok">8018799</PrivateCode>
+							</privateCodes>
 							<keyList>
 								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:18799</Value>
-								</KeyValue>
-								<KeyValue>
 									<Key>DIDOK</Key>
-									<Value>8518799</Value>
+									<Value>8018799</Value>
 								</KeyValue>
 							</keyList>
 							<Name>Freiburg in Breisgau</Name>
@@ -219,7 +219,8 @@
 									<Altitude>286</Altitude>
 								</Location>
 							</Centroid>
-							<!-- No Quay Avilable for Freiburg i. Br. -->
+							<!-- No Quay Available for Freiburg i. Br. -->
+                            <!-- **TODO** is this acceptable -->
 						</StopPlace>
 					</stopPlaces>
 				</SiteFrame>
@@ -258,6 +259,7 @@
 							<TransportSubmode>
 								<RailSubmode>interregionalRail</RailSubmode>
 							</TransportSubmode>
+                            <PublicCode>ICE</PublicCode>
 							<OperatorRef ref="ch:1:sboid:100310" version="1"/>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1"/>
 						</Line>
@@ -272,7 +274,7 @@
 						<ScheduledStopPoint id="ch:1:sloid:90:0:529134" version="1">
 							<Name>Basel Bad</Name>
 						</ScheduledStopPoint>
-						<ScheduledStopPoint id="ch:1:sloid:18799" version="1">
+						<ScheduledStopPoint id="8018799:011A" version="1">
 							<Name>Freiburg in Breisgau</Name>
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
@@ -293,6 +295,7 @@
 							<QuayRef ref="ch:1:sloid:90:0:529134" version="1"/>
 						</PassengerStopAssignment>
 						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8518799:1" version="1">
+                            <ScheduledStopPointRef ref="8018799:011A" version="1"/>
 							<StopPlaceRef ref="ch:1:sloid:18799" version="1"/>
 						</PassengerStopAssignment>
 					</stopAssignments>
@@ -314,7 +317,7 @@
 						</TimingLink>
 					</timingLinks>
 					<journeyPatterns>
-						<JourneyPattern id="ch:1:J_SBB:1024337" version="1">
+						<ServiceJourneyPattern id="ch:1:J_SBB:1024337" version="1">
 							<Name>Interlaken_Ost_Basel_SBB_Basel_Bad</Name>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:SBB:JP:1024337:1" version="1">
@@ -333,8 +336,8 @@
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
-						</JourneyPattern>
-						<JourneyPattern id="ch:1:J_DB:1024356" version="1">
+						</ServiceJourneyPattern>
+						<ServiceJourneyPattern id="ch:1:J_DB:1024356" version="1">
 							<Name>Basel_Bad_Freiburg</Name>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:DB:JP:1024356:1_DB" version="1">
@@ -348,7 +351,7 @@
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
-						</JourneyPattern>
+						</ServiceJourneyPattern>
 					</journeyPatterns>
 				</ServiceFrame>
 				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="1">
@@ -403,6 +406,12 @@
 							<privateCodes>
 								<PrivateCode type="sjyid">sjyid-1</PrivateCode>
 							</privateCodes>
+                            <TransportMode>rail</TransportMode>
+                            <TransportSubmode>
+                                <RailSubmode>intercity</RailSubmode>
+                            </TransportSubmode>
+                            <TypeOfProductCategoryRef>ch:1:TypeOfProductCategory:ICE</TypeOfProductCategoryRef>
+                            <SerivceAlteration>planned</SerivceAlteration>
 							<DepartureTime>08:00:00</DepartureTime>
 							<JourneyPatternRef ref="ch:1:J_SBB:1024337" version="1"/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:1" version="1"/>
@@ -426,6 +435,12 @@
 							<privateCodes>
 								<PrivateCode type="sjyid">sjyid-2</PrivateCode>
 							</privateCodes>
+                            <TransportMode>rail</TransportMode>
+                            <TransportSubmode>
+                                <RailSubmode>intercity</RailSubmode>
+                            </TransportSubmode>
+                            <TypeOfProductCategoryRef>ch:1:TypeOfProductCategory:ICE</TypeOfProductCategoryRef>
+                            <SerivceAlteration>planned</SerivceAlteration>
 							<DepartureTime>09:50:00</DepartureTime>
 							<JourneyPatternRef ref="ch:1:J_DB:1024356" version="1"/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:2" version="1"/>

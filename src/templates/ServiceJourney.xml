@@ -13,21 +13,10 @@
 							<validityConditions>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
-								<AvailabilityCondition id="generated" version="1">
+								<AvailabilityConditionRef ref="generated" version="1">
 									<!-- ch-usage: mandatory -->
 									<!-- ch-note: Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
-									<!-- ch-see -->
-									<FromDate><!-- ch-usage: mandatory --><!-- ch-note: Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.  -->2026-05-17T00:00:00Z</FromDate>
-									<ToDate><!-- ch-usage: mandatory --><!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->2026-05-17T00:00:00Z</ToDate>
-									<ValidDayBits>
-										<!-- ch-usage: mandatory-->
-										01010111
-								  	</ValidDayBits>
-									<timebands>
-										<!-- ch-usage: ignored-->
-										<TimebandRef ref="generated" versionRef="1"/>
-									</timebands>
-								</AvailabilityCondition>
+								</AvailabilityConditionRef>
 							</validityConditions>
 							<keyList>
 								<!-- ch-usage: expected -->
