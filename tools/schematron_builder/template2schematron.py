@@ -376,6 +376,7 @@ class SchematronBuilder:
         self.rules_created += 1
         return rule
 
+
     def add_assert_or_report(self, context_xpath, test_expr, message, kind='assert', note_text=None):
         """
         Add either an assert or a report to the rule for context_xpath.
@@ -384,14 +385,21 @@ class SchematronBuilder:
         message: text node for the assert/report
         """
         rule = self._get_or_create_rule(context_xpath, note_text=note_text)
-        
-        # Use proper namespace for assert/report elements
-        NSMAP = {SCH_PREFIX: SCHEMATRON_NS}
-        elem_name = '{' + SCHEMATRON_NS + '}' + kind
-        elem = Element(elem_name, nsmap=NSMAP)
-        elem.set('test', test_expr)
-        elem.text = message
-        rule.append(elem)
+        # Check for duplicate test expressions
+        existing_tests = set()
+        for child in rule:
+            if not isinstance(child, ET._Comment) and child.tag.endswith('}' + kind):
+                existing_tests.add(child.get('test'))
+
+        if test_expr not in existing_tests:
+            # Use proper namespace for assert/report elements
+            NSMAP = {SCH_PREFIX: SCHEMATRON_NS}
+            elem_name = '{' + SCHEMATRON_NS + '}' + kind
+            elem = Element(elem_name, nsmap=NSMAP)
+            elem.set('test', test_expr)
+            elem.text = message
+            rule.append(elem)
+
 
     def add_rule_presence(self, parent_context_xpath, element_name, note_text=None):
         """Add rule requiring element presence."""
@@ -492,7 +500,11 @@ def _process_fragment_root(rootfrag, builder, base_context_path, parent_context_
     - parent_context_path: absolute path to the element's parent (e.g., .../netex:organisations)
     - element_local_name: local name (e.g., Operator)
     
-    Top-level comments in the fragment are applied to the element (or its parent where relevant).
+    Only processes ch-see references from top-level comments in the fragment.
+    Element-specific annotations (ch-usage, ch-allowed-enums, etc.) are NOT processed here
+    to avoid duplication - they will be handled by process_element_tree() when elements
+    are encountered in their proper context.
+    
     The fragment's top-level element that matches element_local_name is treated as the SAME context
     (no extra /Operator appended), to avoid .../Operator/Operator.
     """
@@ -507,32 +519,11 @@ def _process_fragment_root(rootfrag, builder, base_context_path, parent_context_
                 location_desc=f"fragment for '{element_local_name}'"
             )
             parsed = parse_usage_and_notes_from_comments(ctext)
-            notes = parsed['notes']
-            usages = parsed['usages']
             referenced_names = parsed['referenced_names']
-            allowed_enums = parsed['allowed_enums']
-            deprecated = parsed['deprecated']
-            class_id_must_exist = parsed['class_id_must_exist']
-            required_attrs = parsed['required_attrs']
 
-            note_text = '; '.join(notes) if notes else None
-
-            # Apply usage/deprecation to the parent context about the element itself
-            if any(u == 'forbidden' for u in usages):
-                builder.add_rule_absence(parent_context_path, element_local_name, note_text=note_text)
-            if any(u == 'mandatory' for u in usages):
-                builder.add_rule_presence(parent_context_path, element_local_name, note_text=note_text)
-            if deprecated:
-                builder.add_rule_deprecated(parent_context_path, element_local_name, note_text=note_text)
-            # Allowed enums at the element itself (value check at element context)
-            if allowed_enums:
-                builder.add_rule_allowed_enums(base_context_path, '.', allowed_enums, note_text=note_text)
-            # Handle required attributes for this element
-            if required_attrs:
-                builder.add_rule_required_attrs(base_context_path, element_local_name, required_attrs, note_text=note_text)
-            # class-id-must-exist at fragment top-level: we don't have the id value here; skip
-
-            # referenced_names at fragment top-level: rare; if provided, treat as further inclusions under element context
+            # ONLY process ch-see references at fragment level.
+            # Skip ch-usage, ch-allowed-enums, ch-deprecated, etc. - these are processed
+            # when elements are encountered in their proper context via process_element_tree().
             if referenced_names:
                 tokens = []
                 if all(t == '__DEFAULT__' for t in referenced_names):
