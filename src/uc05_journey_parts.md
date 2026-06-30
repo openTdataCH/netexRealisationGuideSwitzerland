@@ -60,21 +60,15 @@ graph LR
 ```
 - [Example](./examples/NeTEX_CH_Bern_Olten_ZuerichHB_Winterthur_StGallen_with_Facilities.xml)
 
-### 2. Change of train number (`TrainNumberRef`)
+### 2. Change of train number — NOT USED in the Swiss profile
 
+**Status:** This use case is intentionally **not implemented** via `JourneyPart` in the Swiss profile.
+
+Although passenger displays may show a train number change as if it were a single continuous journey, 
+in the underlying data this is always modeled as **two separate `ServiceJourney`s linked via a 
+`ServiceJourneyInterchange`** (suppressed in passenger-facing presentation). See 
+[uc02 Joining and splitting](uc02_joining_splitting.md).
 **When to use:** When a train operates under different train numbers on different sections of the same `ServiceJourney`.
-
-> NOT TO BE USED: We have on the displays this kind of behaviour. However, in the data it is always two `ServiceJourney` and a `ServiceJourneyInterchange`, that is suppressed in the presenting to the passangers.
-```xml
-<JourneyPart id="ch:1:JourneyPart:4171-BernSpiez" version="1">
-  <TrainNumberRef ref="ch:1:TrainNumber:4171" version="1"/>
-  <FromStopPointRef ref="ch:1:ScheduledStopPoint:Bern" version="1"/>
-  <ToStopPointRef ref="ch:1:ScheduledStopPoint:Spiez" version="1"/>
-  <StartTime>12:39:00</StartTime>
-  <EndTime>13:12:00</EndTime>
-  <PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:TrainNumberChange" version="1"/>
-</JourneyPart>
-```
 
 ## Key Elements
 
