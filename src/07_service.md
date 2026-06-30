@@ -284,8 +284,13 @@ For more details see the [use case on transfers](uc03_transfers.md).
 *→ [Glossary definition](A4_annex_glossary.md#timinglink)*
 
 ### Purpose
-`TimingLink`  is used to describe the run times and wait times of a given `ServiceJourney`. 
-
+`TimingLink` defines the topological link between two `TimingPoint`s (in practice
+`ScheduledStopPoint`s, referenced via `FromPointRef`/`ToPointRef`) used within a
+`ServiceJourneyPattern`. `TimingLink` itself does **not** carry run or wait time
+values — these are defined per `TimeDemandType` via `JourneyRunTime` (referencing
+the `TimingLink` through `TimingLinkRef`) and `JourneyWaitTime` (referencing the
+`ScheduledStopPoint` directly through `TimingPointRef`, not via `TimingLink`).
+See [TimeDemandType](#timedemandtype).
 
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/TimingLink.md)
@@ -299,14 +304,17 @@ For more details see the [use case on transfers](uc03_transfers.md).
 *->[Template](./templates/TimingLink.xml)*
 
 ### Usage Notes
-* It must fit with the sequence defined in `ServiceJourneyPattern`.
-* `WaitTime`is only needed when >0..
-* It is between `ScheduledStopPoints for the time being`.
-* If there is maneuvering or change of quay, then a a timing link needs to be added for that too.
-* Multiple visits in the same `ServiceJourneyPattern` are currently a problem.
+- It must fit with the sequence defined in `ServiceJourneyPattern`.
+- `FromPointRef`/`ToPointRef` reference `ScheduledStopPoint`s (technically typed
+  as `TimingPointRef`, substituted by `ScheduledStopPointRef`).
+- If there is maneuvering or a change of quay, then a separate `TimingLink`
+  needs to be added for that too.
+- **TODO** Multiple visits of the same `ScheduledStopPoint` within a
+  `ServiceJourneyPattern` are currently not cleanly resolvable for `WaitTime`
+  differentiation; see open NeTEx PR
+  [#1031](https://github.com/TransmodelEcosystem/NeTEx/pull/1031), which adds
+  `StopPointInServiceJourneyPatternRef` to `JourneyWaitTime` for this case.
 - id-attribute needs to be kept stable between exports.
-
-> **TODO** Adrian/Wilfried
 
 ## ServiceJourneyPattern
 *→ [Glossary definition](A4_annex_glossary.md#servicejourneypattern)*
@@ -336,8 +344,13 @@ ServiceJourneyPatterns are a common concept in the VDV interface world ("Linienf
 *→ [Glossary definition](A4_annex_glossary.md#timedemandtype)*
 
 ### Purpose
-`TimeDemandType` is used to describe the timing pattern (run times and wait times) on a `ServiceJourneyPattern`. They currently work on `ScheduledStopPoints`.
-
+`TimeDemandType` describes the timing pattern of a `ServiceJourneyPattern`:
+`RunTime`s between consecutive `ScheduledStopPoint`s (via `JourneyRunTime`,
+referencing the relevant `TimingLink` through `TimingLinkRef`) and `WaitTime`s
+at a `ScheduledStopPoint` (via `JourneyWaitTime`, referencing the
+`ScheduledStopPoint` directly through `TimingPointRef`). Multiple
+`TimeDemandType`s can be defined per `ServiceJourneyPattern` to represent
+different traffic or dwell conditions (e.g. peak vs. off-peak).
 
 ### Table
 - [Swiss profile NeTEx definition](../generated/markdown-examples/TimeDemandType.md)
@@ -351,8 +364,14 @@ ServiceJourneyPatterns are a common concept in the VDV interface world ("Linienf
 *->[Template](./templates/TimeDemandType.xml)*
 
 ### Usage Notes
-> **TODO** Wilfried und Adrian
-
+- `WaitTime` is only needed when greater than 0.
+- `RunTime` references the relevant `TimingLink` via `TimingLinkRef`;
+  `WaitTime` references the relevant `ScheduledStopPoint` directly via
+  `TimingPointRef` — not via `TimingLink`.
+- **TODO** For stops visited multiple times within the same `ServiceJourneyPattern`
+  with different wait times, see open NeTEx PR
+  [#1031](https://github.com/TransmodelEcosystem/NeTEx/pull/1031).
+- id-attribute needs to be kept stable between exports.
 
 ## Notice
 *→ [Glossary definition](A4_annex_glossary.md#notice)*
