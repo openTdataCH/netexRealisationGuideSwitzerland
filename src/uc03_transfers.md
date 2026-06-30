@@ -14,7 +14,7 @@ The following table shows how we will map HRDF tables into NeTEX.
 | UMSTEIGB | `DefaultConnection` | `DefaultConnection`                                                                                            | Standardumsteigezeit pro Haltestelle       |
 | METABHF  | `SiteConnection`    | `SiteConnection`                                                                                               | Umsteigezeit zwischen Haltestellen         |
 | UMSTEIGV | `DefaultConnection` | `DefaultConnection`                                                                                            | Verwaltungsbezogene Umsteigezeit           |
-| DURCHBI  | `JourneyMeeting`    | `ServiceJourneyInterchange`<br>Alternativ für Flügelzug, Vereinigung: <br>JourneyParts, JourneyPartsCouple<br> | Durchbindung, Flügelzug, Vereinigung       |
+| DURCHBI  | `JourneyMeeting`    | `ServiceJourneyInterchange`                                                                                    | Durchbindung, Flügelzug, Vereinigung       |
 
 
 ## Transfer times at a given StopPlace (UMSTEIGB)
@@ -37,8 +37,8 @@ Defines transfer times between two specific operators at a stop place. The HRDF 
 - [Example](../site/xml-snippets/DefaultConnection_UMSTEIGV.xml)
 
 ## Line and Direction-oriented transfer times (UMSTEIGL)
-Defines transfer times between specific `lines` and `directions` at a stop place. Journeys are specified indirectly via Line and Direction, not as an explicit journey pair. The ! marker in HRDF indicates a guaranteed connection.
-> **TODO** Adrian we don't have Direction anymore. This should be solved by the PR.
+Defines transfer times between specific `Lines` and `Directions` at a stop place. Journeys are specified indirectly via `Line` and `DirectionType`, not as an explicit journey pair. The ! marker in HRDF indicates a guaranteed connection.
+> In the Swiss profile, only `DirectionType` (type `DirectionTypeEnumeration`) is used, not `DirectionRef`.
 
 **When to use:** When the transfer time applies to all journeys of a specific line/direction combination at a given stop place.
 
