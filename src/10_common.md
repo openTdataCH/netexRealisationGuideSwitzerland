@@ -51,6 +51,13 @@ All other defined attributes like `created`, `changed`, `modification` are not u
 We will use `version="1"` in Switzerland. In some cases we use `versionRef="1"` instead, when the referenced object is not in the same file in references (`XXXRef`-elements). We no longer use `any` and expect to remove that semantic if possible. Also, the version (or versionRef) always must be present.
 
 
+### FromDate and ToDate
+The dates we have are always operating days. Nevertheless, we use
+* `2026-01-01T00:00:00`
+* `2026-01-01T23:59:59`
+
+to describe a single day.
+
 ### MultilingualString
 *→ [Glossary definition](A4_annex_glossary.md#multilingualstring)*
 
@@ -257,7 +264,7 @@ We use TypeOfValue references in various Frames in objects including:
 | 2           | ~~Zugname~~         | Name of the train. Is not used, as this is stored in ServiceJourneyName.                                                                                                                                                                                         |
 | 3           | ~~Gleis-Angabe~~    | Quay and Quay section information. Is no longer used. Is put into Quay.                                                                                                                                                                                          |
 | 10          | Angebot             | Most of the `ServiceFacilitySet` are also transmitted as `Notice`. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to `ServiceFacilitySets`. This `TypeOfNotice` is used to deliver those special cases as Notices. |
-| 11          | Region        | Postauto is divided into several regions. Will be omitted. If anything this will be done with different constructs.                                                                                                                                              |
+| 11          | ~~Region~~          | Postauto is divided into several regions. Will be omitted. We will add a `privateCodes\PrivateCode` with `type="rn"` to the `ServiceJourney` or `TemplateServiceJourney`.                                                                                       |
 
 The following snippet is **all** that is defined for `TypeOfNotice`:
 ``` xml

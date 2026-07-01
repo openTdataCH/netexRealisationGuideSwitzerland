@@ -3,10 +3,10 @@ mermaid: true
 ---
 # Files
 
-NeTEx will be transfered as files.
+NeTEx will be transferred as files.
 
 We will have three different file types:
-* STOP_OFFER: stops, quays, transfer times and accessiblity related to sites at some point
+* STOP_OFFER: stops, quays, transfer times and accessibility related to sites at some point
 * NETWORK_OFFER:lines, routes, timetables
 * INTERCHANGE: interchange, "Durchbindungen"
 
@@ -14,7 +14,7 @@ The first two are valid according to the XSD. INTERCHANGE only as far as we use 
 
 NETWORK_OFFER is per operator and in some cases per area.
 
-This distinction leads to some redundancy.However, the files can still be transfered efficiently.
+This distinction leads to some redundancy.However, the files can still be transferred efficiently.
 
 ## Content of each file
 ```mermaid
@@ -132,7 +132,14 @@ Examples.: `test_zvv_2024_20231112_095217.zip`, `prod_tl_2024_20231114_152836.zi
 
 The file name must be agreed on between the data provider and SKI. Generally it is agreed that delivery can be on network, operator or line base.
 
->**TODO** handling of partial deliveries and mixed lines will be added later.
+### Partial deliveries
+No partial deliveries are accepted. They must contain:
+- all relevant lines
+- the whole timetable year
+
+No incremental updates are supported.
+
+> NB: We might reconsider some of those points for mixed lines. 
 
 ## File sent by SKI to data receivers 
 As the quantity of data is very large for a single XML-file, SKI provides the data a list of XML files. In addition to the XML files, SKI provides a README file listing the contents of each XML file. 

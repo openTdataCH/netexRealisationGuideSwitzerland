@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- edited with XMLSpy v2025 rel. 2 (x64) (https://www.altova.com) by MENTZ GmbH (MENTZ GmbH) -->
 <!-- NeTEx Example: Flügelzug Bern - Spiez - Zweisimmen / Brig (RG 2.0) -->
-<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
 	<ParticipantRef>TUXALP</ParticipantRef>
 	<Description lang="de">NeTEx Zweisimmen Example edited by Urs</Description>
@@ -749,7 +749,7 @@
 					</typesOfService>
 					<journeyInterchanges>
 						<!-- Durchbindung Spiez: SJ1 (RE Bern→Spiez) → SJ2 (R Spiez→Zweisimmen) -->
-						<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:SJ1-SJ2-Spiez">
+						<ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:SJ1-SJ2-Spiez">
 							<validityConditions>
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
 							</validityConditions>
@@ -763,7 +763,7 @@
 							<ToServiceJourneyRef ref="ch:1:ServiceJourney:2" version="any"/>
 						</ServiceJourneyInterchange>
 						<!-- Flügelung Spiez: SJ1 (RE Bern→Spiez) → SJ3 (RE Spiez→Brig) -->
-						<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:SJ1-SJ3-Spiez">
+						<ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:SJ1-SJ3-Spiez">
 							<validityConditions>
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1" version="any"/>
 							</validityConditions>

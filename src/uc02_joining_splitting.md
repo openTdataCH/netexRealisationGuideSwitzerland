@@ -81,7 +81,7 @@ splitting and joining.
 **Situation with Realisation Guide 2.0**
 
 ```xml
-<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:4171-4271-Spiez">
+<ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:4171-4271-Spiez">
   <validityConditions>
     <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c6300" version="any"/>
   </validityConditions>
@@ -96,7 +96,7 @@ splitting and joining.
   <ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4271-001_91001N.j26_777" version="any"/>
 </ServiceJourneyInterchange>
 
-<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:4171-6823-Spiez">
+<ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:4171-6823-Spiez">
   <validityConditions>
     <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:u7600" version="any"/>
   </validityConditions>

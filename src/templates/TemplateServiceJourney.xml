@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-04-10T12:00:00</PublicationTimestamp>
 	<ParticipantRef>CH:BLT</ParticipantRef>
 	<dataObjects>
@@ -42,10 +42,11 @@
 							</keyList>
 							<privateCodes>
 								<!-- ch-usage: expected -->
-								<!-- ch-note: Replaces the single PrivateCode. -->
+								<!-- ch-note: Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the used for the Postauto region  -->
 								<PrivateCode type="sjyid">
 									<!-- ch-usage: expected -->
 									ch:1:sjyid:100001:71707-003
+                                <PrivateCode type="rn">12</PrivateCode>
 								</PrivateCode>
 							</privateCodes>
 							<Extensions>

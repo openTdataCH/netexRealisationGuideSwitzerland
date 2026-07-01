@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
@@ -56,6 +56,29 @@
 								</TypeOfProductCategory>
 							</values>
 						</ValueSet>
+						<ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
+							<!-- ch-usage: mandatory -->
+							<values>
+								<!-- ch-usage: mandatory -->
+								<TypeOfPlace id="drtCollectionPoint" version="1">
+									<!-- ch-usage: mandatory -->
+									<alternativeTexts>
+										<!-- ch-usage: forbidden -->
+										<AlternativeText attributeName="Name">
+											<Text lang="it">Train Express Regional</Text>
+										</AlternativeText>
+									</alternativeTexts>
+									<Name lang="de"><!-- ch-usage: mandatory --><!--ch-attrs: lang-->Sammelpunkt
+                                       <Text lang="en"><!-- ch-usage: optional --><!--ch-attrs: lang-->Collection Point</Text>
+                                    </Name>
+								</TypeOfPlace>
+								<TypeOfPlace id="regularStop" version="1">
+									<Name lang="de"><!-- ch-usage: mandatory --><!--ch-attrs: lang-->Reguläre Haltestelle
+                                       <Text lang="en"><!-- ch-usage: optional --><!--ch-attrs: lang-->Regular Stop</Text>
+                                    </Name>
+								</TypeOfPlace>								
+							</values>
+						</ValueSet>						
 					</typesOfValue>
 					<organisations>
 						<!-- ch-note: ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD-->

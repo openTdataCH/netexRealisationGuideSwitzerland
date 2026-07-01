@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
@@ -13,7 +13,7 @@
 							<validityConditions>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
-								<AvailabilityConditionRef ref="generated" version="1">
+								<AvailabilityConditionRef ref="generated" versionRef="1">
 									<!-- ch-usage: mandatory -->
 									<!-- ch-note: Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
 								</AvailabilityConditionRef>
@@ -32,8 +32,10 @@
 								<!-- ch-usage: expected -->
 								<PrivateCode type="sjyid">
 									<!-- ch-usage: expected -->
+                                    <!-- ch-note: The following types are possible: sjyid and rn. rn is the used for the Postauto region -->
 									ch:1:sjyid:100001:71707-003
 								</PrivateCode>
+                                <PrivateCode type="rn">12</PrivateCode>
 							</privateCodes>
 							<Extensions>
 								<!-- ch-usage: optional -->
@@ -91,7 +93,7 @@
 							<ServiceAlteration>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-allowed-enums: planned -->
-								<!-- ch-note: Only the value planned is allowed. -->
+								<!-- ch-note: Only the value planned is allowed. We might add the others like cancelled later.-->
 								planned
 							</ServiceAlteration>
 							<DepartureTime><!-- ch-usage: expected -->06:21:00</DepartureTime>

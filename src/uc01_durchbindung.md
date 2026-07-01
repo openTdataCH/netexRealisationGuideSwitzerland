@@ -30,7 +30,7 @@ replacing the deprecated `JourneyMeeting` and `InterchangeRule` from RG 1.0.
 
 **Situation with Realisation Guide 2.0**
 ```xml
-<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
+<ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
 	<validityConditions>
     	<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" version="any"/>
   	</validityConditions>
