@@ -19,6 +19,7 @@ In this chapter:
   - [Organisation / Operator / Authority](#organisation--operator--authority)
   - [ServiceFacilitySet](#servicefacilityset)
   - [SiteFacilitySet](#servicefacilityset)
+  - [VehicleType](#vehicletype)
 
 ## Rules for common Attributes
 
@@ -405,6 +406,20 @@ referenced to define facilities of a site.
 ### Purpose
 A typified vehicle configuration (model or series) defining reusable characteristics such as capacity, dimensions, propulsion, and accessibility features.
 
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/VehicleType.md)
+
+*→ [General NeTEx definition](../generated/netex-html/VehicleType.html)*
+
+### Example
+- [XML Snippet](../site/xml-snippets/VehicleType.xml)
+
+*→ - [Template](./templates/VehicleType.xml)*
+
 ### Usage Notes
-We currently don't use `VehicleType` or `VehicleModel`. We will need those at some point.
+* We currently use `VehicleType` but not `VehicleModel`.
+* We express accessibility partially through it.
+* See **TODO** excel.
+
 

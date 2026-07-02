@@ -5,8 +5,8 @@
 	<dataObjects>
 		<CompositeFrame id="ch:1:CompositeFrame" version="any">
 			<frames>
-                <ResourceFrame id="ch:1:ResourceFrame" version="any">
-                    <!-- ch-root -->
+				<ResourceFrame id="ch:1:ResourceFrame" version="any">
+					<!-- ch-root -->
 					<!-- ch-usage: mandatory -->
 					<responsibilitySets>
 						<!-- ch-usage: mandatory -->
@@ -76,9 +76,9 @@
 									<Name lang="de"><!-- ch-usage: expected --><!--ch-attrs: lang-->Reguläre Haltestelle
                                        <Text lang="en"><!-- ch-usage: optional --><!--ch-attrs: lang-->Regular Stop</Text>
                                     </Name>
-								</TypeOfPlace>								
+								</TypeOfPlace>
 							</values>
-						</ValueSet>						
+						</ValueSet>
 					</typesOfValue>
 					<organisations>
 						<!-- ch-note: ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD-->
@@ -104,6 +104,13 @@
 							<!-- ch-see -->
 						</ServiceFacilitySet>
 					</serviceFacilitySets>
+					<vehicleTypes>
+						<!-- ch-usage: optional -->
+						<VehicleType id="tbd" version="1">
+							<!-- ch-usage: optional -->
+							<!-- ch-see -->
+						</VehicleType>
+					</vehicleTypes>
 				</ResourceFrame>
 			</frames>
 		</CompositeFrame>
