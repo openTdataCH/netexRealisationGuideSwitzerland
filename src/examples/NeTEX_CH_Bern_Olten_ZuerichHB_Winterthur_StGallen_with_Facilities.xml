@@ -7,7 +7,7 @@
 	 St. Gallen (8506302)   07:52
 with attributes
 -->
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
 	<ParticipantRef>SBB-Prod</ParticipantRef>
 	<dataObjects>
@@ -40,7 +40,7 @@ with attributes
 							<values>
 								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:IC" version="1">
 									<Name lang="de">Intercity</Name>
-                                    <ShortName>IC</ShortName>
+									<ShortName>IC</ShortName>
 								</TypeOfProductCategory>
 							</values>
 						</ValueSet>
@@ -119,6 +119,13 @@ with attributes
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:7000:4:7</PrivateCode>
 									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.4391308</Longitude>
+											<Latitude>46.9488322</Latitude>
+											<Altitude>540.2</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -157,6 +164,13 @@ with attributes
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:218:7</PrivateCode>
 									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.9084951</Longitude>
+											<Latitude>47.3526357</Latitude>
+											<Altitude>398</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -195,6 +209,13 @@ with attributes
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:3000:501:33</PrivateCode>
 									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>8.54021234910</Longitude>
+											<Latitude>47.3781766</Latitude>
+											<Altitude>407.7</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -233,6 +254,13 @@ with attributes
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:6000:5</PrivateCode>
 									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.558970</Longitude>
+											<Latitude>47.4464565</Latitude>
+											<Altitude>426</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -271,6 +299,13 @@ with attributes
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:6302</PrivateCode>
 									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>9.3698966</Longitude>
+											<Latitude>47.4231789</Latitude>
+											<Altitude>669.6</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -294,11 +329,13 @@ with attributes
 							<TransportSubmode>
 								<RailSubmode>highSpeedRail</RailSubmode>
 							</TransportSubmode>
+							<PublicCode>IC8</PublicCode>
 							<OperatorRef ref="ch:1:sboid:100001" version="1"/>
+							<LineType>fixed</LineType>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IC" version="1"/>
 						</Line>
 					</lines>
 					<scheduledStopPoints>
-						<!-- ***falsch müssen Gleise sein xxxx*** -->
 						<ScheduledStopPoint id="ch:1:sloid:7000:4:7" version="1">
 							<Name>Bern</Name>
 						</ScheduledStopPoint>
@@ -342,9 +379,31 @@ with attributes
 							<QuayRef ref="ch:1:sloid:6302:1" version="1"/>
 						</PassengerStopAssignment>
 					</stopAssignments>
+					<timingLinks>
+						<TimingLink id="generated_1_1" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:7000:4:7"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:218:7"/>
+						</TimingLink>
+						<TimingLink id="generated_1_2" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:218:7"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:3000:501:33"/>
+						</TimingLink>
+						<TimingLink id="generated_1_3" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:3000:501:33"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:6000:5"/>
+						</TimingLink>
+						<TimingLink id="generated_1_4" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:6000:5"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:6302:1"/>
+						</TimingLink>
+					</timingLinks>
 					<journeyPatterns>
-						<JourneyPattern id="ch:SBB:JourneyPattern:703-00" version="1">
+						<ServiceJourneyPattern id="ch:SBB:JourneyPattern:703-00" version="1">
 							<Name>Bern_Olten_Zurich_HB_Winterthur_St_Gallen</Name>
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1024329" version="1"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:SBB:JP:703-00:1" version="1" order="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:7000:4:7" version="1"/>
@@ -372,8 +431,44 @@ with attributes
 									<ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
-						</JourneyPattern>
+						</ServiceJourneyPattern>
 					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="ch:1:TDT:1" version="1">
+							<runTimes>
+								<JourneyRunTime id="jrt-1" version="1">
+									<TimingLinkRef ref="generated_1_1" version="1"/>
+									<RunTime>PT59M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="jrt-2" version="1">
+									<TimingLinkRef ref="generated_1_2" version="1"/>
+									<RunTime>PT18M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="jrt-3" version="1">
+									<TimingLinkRef ref="generated_1_3" version="1"/>
+									<RunTime>PT9M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="jrt-4" version="1">
+									<TimingLinkRef ref="generated_1_4" version="1"/>
+									<RunTime>PT44M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+							<waitTimes>
+								<JourneyWaitTime id="jwt-1" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:218:7" version="1"/>
+									<WaitTime>PT9M</WaitTime>
+								</JourneyWaitTime>
+								<JourneyWaitTime id="jwt-1" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:3000:501:33" version="1"/>
+									<WaitTime>PT2M</WaitTime>
+								</JourneyWaitTime>
+								<JourneyWaitTime id="jwt-1" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:6000:5" version="1"/>
+									<WaitTime>PT2M</WaitTime>
+								</JourneyWaitTime>
+							</waitTimes>
+						</TimeDemandType>
+					</timeDemandTypes>
 				</ServiceFrame>
 				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="1">
 					<validityConditions>
@@ -406,39 +501,18 @@ with attributes
 							<TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>05:29:00</DepartureTime>
+							<TimeDemandTypeRef ref="ch:1:TDT:1" version="1"/>
 							<OperatorRef ref="ch:1:sboid:100001" version="1"/>
 							<LineRef ref="ch:1:slnid:1024329" version="1"/>
 							<DirectionType>inbound</DirectionType>
-							<passingTimes>
-								<TimetabledPassingTime id="ch:SBB:TPT:703-001:1" version="1">
-									<StopPointInJourneyPatternRef ref="ch:SBB:JP:703-00:1" version="1"/>
-									<DepartureTime>05:29:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:SBB:TPT:703-001:2" version="1">
-									<StopPointInJourneyPatternRef ref="ch:SBB:JP:703-00:2" version="1"/>
-									<ArrivalTime>06:28:00</ArrivalTime>
-									<DepartureTime>06:37:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:SBB:TPT:703-001:3" version="1">
-									<StopPointInJourneyPatternRef ref="ch:SBB:JP:703-00:3" version="1"/>
-									<ArrivalTime>06:55:00</ArrivalTime>
-									<DepartureTime>06:57:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:SBB:TPT:703-001:4" version="1">
-									<StopPointInJourneyPatternRef ref="ch:SBB:JP:703-00:4" version="1"/>
-									<ArrivalTime>07:06:00</ArrivalTime>
-									<DepartureTime>07:08:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:SBB:TPT:703-001:5" version="1">
-									<StopPointInJourneyPatternRef ref="ch:SBB:JP:703-00:5" version="1"/>
-									<ArrivalTime>07:52:00</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:Train:703" version="1"/>
+							</trainNumbers>
 							<parts>
 								<JourneyPart id="generated-part-1" version="1">
-									<FromStopPointRef ref="ch:1:sloid:7000:4:7" version="1"/>
+									<FromStopPointRef ref="ch:1:sloid:7000:4:7" version="1" nameOfRefClass="ScheduledStopPoint"/>
 									<!--**TODO** not good that it can't be a StopPointInJourneyPattern -->
-									<ToStopPointRef ref="ch:1:sloid:218:7" version="1"/>
+									<ToStopPointRef ref="ch:1:sloid:218:7" version="1" nameOfRefClass="ScheduledStopPoint"/>
 									<StartTime>05:29:00</StartTime>
 									<StartTimeDayOffset>0</StartTimeDayOffset>
 									<EndTime>06:28:00</EndTime>
@@ -449,8 +523,8 @@ with attributes
 									</facilities>
 								</JourneyPart>
 								<JourneyPart id="generated-part-2" version="1">
-									<FromStopPointRef ref="ch:1:sloid:3000:501:33" version="1"/>
-									<ToStopPointRef ref="ch:1:sloid:6302:1" version="1"/>
+									<FromStopPointRef ref="ch:1:sloid:3000:501:33" version="1" nameOfRefClass="ScheduledStopPoint"/>
+									<ToStopPointRef ref="ch:1:sloid:6302:1" version="1" nameOfRefClass="ScheduledStopPoint"/>
 									<StartTime>06:57:00</StartTime>
 									<StartTimeDayOffset>0</StartTimeDayOffset>
 									<EndTime>07:52:00</EndTime>
