@@ -45,7 +45,7 @@
 							<values>
 								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:ICE" version="1">
 									<Name lang="de">InterCityExpress</Name>
-                                    <ShortName>ICE</ShortName>
+									<ShortName>ICE</ShortName>
 								</TypeOfProductCategory>
 							</values>
 						</ValueSet>
@@ -125,18 +125,22 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:7492:0:460848</PrivateCode>
 									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.869000</Longitude>
+											<Latitude>46.6904999</Latitude>
+											<Altitude>567</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>1</PublicCode>
-							<Centroid>
-								<Location>
-									<Longitude>7.869000</Longitude>
-									<Latitude>46.6904999</Latitude>
-									<Altitude>567</Altitude>
-								</Location>
-							</Centroid>
 								</Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:10" version="1">
+							<ValidBetween>
+								<FromDate>2025-12-14T00:00:00</FromDate>
+								<ToDate>2026-12-13T23:59:59</ToDate>
+							</ValidBetween>
 							<keyList>
 								<KeyValue>
 									<Key>SLOID</Key>
@@ -170,14 +174,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:10:1:1</PrivateCode>
 									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.589562</Longitude>
+											<Latitude>47.547412</Latitude>
+											<Altitude>276</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>1</PublicCode>
-                                    							<Centroid>
-								<Location>
-									<Longitude>7.589562</Longitude>
-									<Latitude>47.547412</Latitude>
-									<Altitude>276</Altitude>
-								</Location>
-							</Centroid>
 								</Quay>
 							</quays>
 						</StopPlace>
@@ -206,34 +210,37 @@
 							</Centroid>
 							<quays>
 								<Quay id="ch:1:sloid:90:0:529134" version="1">
+									<ValidBetween>
+										<FromDate>2025-12-14T00:00:00</FromDate>
+										<ToDate>2026-12-13T23:59:59</ToDate>
+									</ValidBetween>
 									<keyList>
 										<KeyValue>
 											<Key>SLOID</Key>
 											<Value>ch:1:sloid:90:0:529134</Value>
 										</KeyValue>
 									</keyList>
-							<Centroid>
-								<Location>
-									<Longitude>7.606920</Longitude>
-									<Latitude>47.567307</Latitude>
-									<Altitude>263</Altitude>
-								</Location>
-							</Centroid>
-                                    									<PublicCode>1</PublicCode>
-
+									<Centroid>
+										<Location>
+											<Longitude>7.606920</Longitude>
+											<Latitude>47.567307</Latitude>
+											<Altitude>263</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:18799" version="1">
-							<privateCodes>
-								<PrivateCode type="didok">8018799</PrivateCode>
-							</privateCodes>
 							<keyList>
 								<KeyValue>
 									<Key>DIDOK</Key>
 									<Value>8018799</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8018799</PrivateCode>
+							</privateCodes>
 							<Name>Freiburg in Breisgau</Name>
 							<Centroid>
 								<Location>
@@ -244,24 +251,23 @@
 							</Centroid>
 							<quays>
 								<Quay id="8018799:A" version="1">
-                                    <privateCodes>
-                                        <PrivateCode type="didok">8018799</PrivateCode>
-                                    </privateCodes>
 									<keyList>
 										<KeyValue>
 											<Key>DIDOK</Key>
 											<Value>8018799</Value>
 										</KeyValue>
 									</keyList>
-							<Centroid>
-								<Location>
-									<Longitude>7.606920</Longitude>
-									<Latitude>47.567307</Latitude>
-									<Altitude>263</Altitude>
-								</Location>
-							</Centroid>
-                                    									<PublicCode>A</PublicCode>
-
+									<privateCodes>
+										<PrivateCode type="didok">8018799</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.606920</Longitude>
+											<Latitude>47.567307</Latitude>
+											<Altitude>263</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>A</PublicCode>
 								</Quay>
 							</quays>
 						</StopPlace>
@@ -270,6 +276,10 @@
 				<ServiceFrame id="ch:1:ServiceFrame:j26" version="1">
 					<lines>
 						<Line id="ch:1:slnid:1024337" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
+							<ValidBetween>
+								<FromDate>2025-12-14T00:00:00</FromDate>
+								<ToDate>2026-12-13T23:59:59</ToDate>
+							</ValidBetween>
 							<keyList>
 								<KeyValue>
 									<Key>SLNID</Key>
@@ -284,8 +294,7 @@
 							<TransportSubmode>
 								<RailSubmode>interregionalRail</RailSubmode>
 							</TransportSubmode>
-                            <PublicCode>ICE</PublicCode>
-
+							<PublicCode>ICE</PublicCode>
 							<OperatorRef ref="ch:1:sboid:100001" version="1"/>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1"/>
 						</Line>
@@ -304,7 +313,7 @@
 							<TransportSubmode>
 								<RailSubmode>interregionalRail</RailSubmode>
 							</TransportSubmode>
-                            <PublicCode>ICE</PublicCode>
+							<PublicCode>ICE</PublicCode>
 							<OperatorRef ref="ch:1:sboid:100310" version="1"/>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1"/>
 						</Line>
@@ -340,34 +349,34 @@
 							<QuayRef ref="ch:1:sloid:90:0:529134" version="1"/>
 						</PassengerStopAssignment>
 						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8518799:1" version="1">
-                            <ScheduledStopPointRef ref="8018799:011A" version="1"/>
+							<ScheduledStopPointRef ref="8018799:011A" version="1"/>
 							<StopPlaceRef ref="ch:1:sloid:18799" version="1"/>
 						</PassengerStopAssignment>
 					</stopAssignments>
 					<timingLinks>
 						<TimingLink id="ch:1:TimingLink:1.1" version="1">
 							<Name>Interlaken Ost - Basel SBB</Name>
-							<FromPointRef ref="ch:1:sloid:7492:0:261628" version="1"/>
-							<ToPointRef ref="ch:1:sloid:10:1:1" version="1"/>
+							<FromPointRef ref="ch:1:sloid:7492:0:261628" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:10:1:1" version="1" nameOfRefClass="ScheduledStopPoint"/>
 						</TimingLink>
 						<TimingLink id="ch:1:TimingLink:1.2" version="1">
 							<Name>Basel SBB - Basel Bad</Name>
-							<FromPointRef ref="ch:1:sloid:10:1:1" version="1"/>
-							<ToPointRef ref="ch:1:sloid:90:0:529134" version="1"/>
+							<FromPointRef ref="ch:1:sloid:10:1:1" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:90:0:529134" version="1" nameOfRefClass="ScheduledStopPoint"/>
 						</TimingLink>
 						<TimingLink id="ch:1:TimingLink:2.1" version="1">
 							<Name>Basel Bad - Freiburg i. Br.</Name>
-							<FromPointRef ref="ch:1:sloid:10:1:1" version="1"/>
-							<ToPointRef ref="ch:1:sloid:18799" version="1"/>
+							<FromPointRef ref="ch:1:sloid:10:1:1" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="8018799:011A" version="1" nameOfRefClass="ScheduledStopPoint"/>
 						</TimingLink>
 					</timingLinks>
 					<journeyPatterns>
 						<ServiceJourneyPattern id="ch:1:J_SBB:1024337" version="1">
 							<Name>Interlaken_Ost_Basel_SBB_Basel_Bad</Name>
-                            <RouteView>
-                                <LineRef ref="ch:1:slnid:1024337" id="1"/>
-                            </RouteView>
-                            <DirectionType>outbound</DirectionType>
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1024337" version="1"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:SBB:JP:1024337:1" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:261628" version="1"/>
@@ -388,10 +397,10 @@
 						</ServiceJourneyPattern>
 						<ServiceJourneyPattern id="ch:1:J_DB:1024356" version="1">
 							<Name>Basel_Bad_Freiburg</Name>
-                            <RouteView>
-                                <LineRef ref="ch:1:slnid:1024356" id="1"/>
-                            </RouteView>
-                            <DirectionType>outbound</DirectionType>
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1024356" version="1"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:DB:JP:1024356:1_DB" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:90:0:529134" version="1"/>
@@ -399,7 +408,7 @@
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="ch:DB:JP:1024356:2_DB" version="1">
-									<ScheduledStopPointRef ref="ch:1:sloid:18799" version="1"/>
+									<ScheduledStopPointRef ref="8018799:011A" version="1"/>
 									<ForAlighting>true</ForAlighting>
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
@@ -459,12 +468,12 @@
 							<privateCodes>
 								<PrivateCode type="sjyid">sjyid-1</PrivateCode>
 							</privateCodes>
-                            <TransportMode>rail</TransportMode>
-                            <TransportSubmode>
-                                <RailSubmode>intercity</RailSubmode>
-                            </TransportSubmode>
-                            <TypeOfProductCategoryRef>ch:1:TypeOfProductCategory:ICE</TypeOfProductCategoryRef>
-                            <ServiceAlteration>planned</ServiceAlteration>
+							<TransportMode>rail</TransportMode>
+							<TransportSubmode>
+								<RailSubmode>highSpeedRail</RailSubmode>
+							</TransportSubmode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>08:00:00</DepartureTime>
 							<JourneyPatternRef ref="ch:1:J_SBB:1024337" version="1"/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:1" version="1"/>
@@ -488,12 +497,12 @@
 							<privateCodes>
 								<PrivateCode type="sjyid">sjyid-2</PrivateCode>
 							</privateCodes>
-                            <TransportMode>rail</TransportMode>
-                            <TransportSubmode>
-                                <RailSubmode>intercity</RailSubmode>
-                            </TransportSubmode>
-                            <TypeOfProductCategoryRef>ch:1:TypeOfProductCategory:ICE</TypeOfProductCategoryRef>
-                            <ServiceAlteration>planned</ServiceAlteration>
+							<TransportMode>rail</TransportMode>
+							<TransportSubmode>
+								<RailSubmode>highSpeedRail</RailSubmode>
+							</TransportSubmode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>09:50:00</DepartureTime>
 							<JourneyPatternRef ref="ch:1:J_DB:1024356" version="1"/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:2" version="1"/>
