@@ -44,31 +44,13 @@
 								<PrivateCode type="didok">
                                     <!-- ch-usage: mandatory -->
                                     <!-- ch-attrs: type -->
-                                    <!-- ch-note: In Switzerland to be filled with the didok number and the sloid -->7000</PrivateCode>
+                                    <!-- ch-note: In Switzerland to be filled with the didok number and the sloid. HafasPriority and HafasKMInfo are also types of PrivateCode. -->7000</PrivateCode>
 								<PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
+								<PrivateCode type="HafasPriority"><!-- ch-note: Special value for Hafas environments. -->4</PrivateCode>
+								<PrivateCode type="HafasKMInfo"><!-- ch-note: Special value for Hafas environments. -->1000</PrivateCode>
 							</privateCodes>
-							<Extensions>
-								<!-- ch-usage: optional -->
-								<HafasPriority>
-									<!-- ch-usage: optional -->
-									<!-- ch-note: Interchange priority if several alternative interchange possibilities exist. Integer allows for finer grained value than standard element Weighting. -->
-									<Value>
-                                        <!-- ch-usage: mandatory -->
-                                        4
-                                    </Value>
-								</HafasPriority>
-								<HafasKMInfo>
-									<!-- ch-usage: optional -->
-								    <!-- ch-note: Special value for Hafas environments. -->
-
-									<Value>
-                                        <!-- ch-usage: mandatory -->
-                                        <!-- ch-note: Special value for Hafas environments. -->
-                                        1000
-                                    </Value>
-								</HafasKMInfo>
-							</Extensions>
-							<Name><!-- ch-usage: mandatory -->Bern</Name>
+							<Name><!-- ch-usage: mandatory --><!-- ch-note: The official stop name. If you have different versions one needs to use AlternativeName -->Bern</Name>
+							<ShortName><!-- ch-usage: forbidden --><!-- ch-note: not used in Switzerland --></ShortName>
 							<PrivateCode>
 								<!-- ch-usage: forbidden -->
 								<!-- ch-note: Replaced by PublicCode nested within publicCodes, see above. -->

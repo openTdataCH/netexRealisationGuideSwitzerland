@@ -37,25 +37,6 @@
 								</PrivateCode>
                                 <PrivateCode type="rn">12</PrivateCode>
 							</privateCodes>
-							<Extensions>
-								<!-- ch-usage: optional -->
-								<!-- ch-note: Used to indicate Facility changes. -->
-								<facilities>
-									<!-- ch-usage: optional -->
-									<Facility id="ch:1:facility:f1" versionRef="1">
-										<!-- ch-usage: optional -->
-										<validityConditions>
-											<!-- ch-usage: optional -->
-											<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" versionRef="1">
-												<!-- ch-usage: optional -->
-											</AvailabilityConditionRef>
-										</validityConditions>
-										<ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A___1" versionRef="1">
-											<!-- ch-usage: mandatory -->
-										</ServiceFacilitySetRef>
-									</Facility>
-								</facilities>
-							</Extensions>
 							<PrivateCode>
 								<!-- ch-usage: forbidden -->
 								<!-- ch-note: Replaced by <privateCodes>-<PrivateCode>, see above. -->
@@ -105,6 +86,10 @@
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
 							</TimeDemandTypeRef>
+							<VehicleTypeRef ref="ch:1:VehicleType:NF" versionRef="1">
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Mostly used for accessibility information -->
+							</VehicleTypeRef>
 							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1">
 								<!--ch-usage: mandatory -->
 							</LineRef>
