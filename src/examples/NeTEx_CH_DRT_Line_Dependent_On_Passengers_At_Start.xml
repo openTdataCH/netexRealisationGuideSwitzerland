@@ -37,7 +37,7 @@
 						<ValueSet id="TypeOfProductCategory" version="1">
 							<values>
 								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:B" version="1">
-									<Name>Bus</Name>
+									<Name lang="de">Bus</Name>
 									<ShortName>B</ShortName>
 								</TypeOfProductCategory>
 							</values>
@@ -104,6 +104,13 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:72178:0:535942</PrivateCode>
 									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.84783</Longitude>
+											<Latitude>47.4367301</Latitude>
+											<Altitude>348</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -138,6 +145,13 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:72202:0:134953</PrivateCode>
 									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.5388974</Longitude>
+											<Latitude>47.4394421</Latitude>
+											<Altitude>341</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -176,6 +190,13 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:72203:0:404965</PrivateCode>
 									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.5489836</Longitude>
+											<Latitude>47.4448115</Latitude>
+											<Altitude>340</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -214,6 +235,13 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:673:0:688162</PrivateCode>
 									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.558970</Longitude>
+											<Latitude>47.4464565</Latitude>
+											<Altitude>426</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -248,6 +276,13 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:72204:0:352830</PrivateCode>
 									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.5619565</Longitude>
+											<Latitude>47.4476406</Latitude>
+											<Altitude>441</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>1</PublicCode>
 								</Quay>
 							</quays>
@@ -268,7 +303,9 @@
 							<TransportSubmode>
 								<BusSubmode>localBus</BusSubmode>
 							</TransportSubmode>
+							<PublicCode>119</PublicCode>
 							<OperatorRef ref="ch:1:sboid:100602" version="1"/>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
 							<TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
 						</Line>
 					</lines>
@@ -335,8 +372,12 @@
 						</TimingLink>
 					</timingLinks>
 					<journeyPatterns>
-						<JourneyPattern id="ch:PAG:JourneyPattern:50_119" version="1">
+						<ServiceJourneyPattern id="ch:PAG:JourneyPattern:50_119" version="1">
 							<Name>Special Early_Bird_Holiday_Service_50.110</Name>
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1026478" version="1"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:PAG:JP:50_119:1" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:72178:0:535942" version="1"/>
@@ -364,7 +405,7 @@
 									<ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
-						</JourneyPattern>
+						</ServiceJourneyPattern>
 					</journeyPatterns>
 					<timeDemandTypes>
 						<TimeDemandType id="ch:1:TimeDemandType:PAG:1" version="1">
@@ -404,7 +445,7 @@
 				</ServiceCalendarFrame>
 				<TimetableFrame id="ch:PAG:TimetableFrame:50_119" version="1">
 					<vehicleJourneys>
-						<ServiceJourney id="ch:PAG:SJ:50_119:Special" version="1">
+						<ServiceJourney id="ch:PAG:SJ:50_119:Special" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:PAG">
 							<validityConditions>
 								<AvailabilityConditionRef ref="generated" version="1"/>
 							</validityConditions>
@@ -440,6 +481,8 @@
 					</trainNumbers>
 					<typesOfService>
 						<TypeOfService id="ch:1:TypeOfService:1" version="1">
+							<Name lang="en">PublicJourney</Name>
+							<ShortName lang="en">PJ</ShortName>
 						</TypeOfService>
 					</typesOfService>
 					<!-- Notices for Group Reservations -->
