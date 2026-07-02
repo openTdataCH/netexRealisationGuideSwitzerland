@@ -5,7 +5,8 @@ This use case describes how transfer times and interchange connections between j
 
 ## Mapping between HRDF and NeTEx 
 
-The following table shows how we will map HRDF tables into NeTEX.
+The following table shows how we will map HRDF tables into NeTEX. 
+> NB: The UMSTEIG tables are curated by INFO+. So they are not delivered in NeTEx to INFO+, but are generated there. 
 
 | HRDF     | NeTEx RG1           | NeTEx RG2                                                                                                      | Use Case                                   |
 |----------|---------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------|
@@ -53,7 +54,7 @@ Connection between two services.
 
 The following situations exist: 
 - I.	The connection should not take place. (Prohibition) 
-- II.	The connection must take place, and the traveller must change vehicles
+- II.	The connection must take place, and the traveler must change vehicles
 - III.	The connection has to take place, and the passenger can stay in the vehicle
 
 The differences between the various situations are to be differentiated with the value in some attributes.

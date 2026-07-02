@@ -17,7 +17,7 @@ This profile is based on [NeTEx 2.1 XSD](https://github.com/TransmodelEcosystem/
 
 We will have a copy of the XSD we really use in production on [oev-info.ch](https://www.oev-info.ch/de/branchenstandard/technische-ausfuehrungsbestimmungen/fahrplandaten)
 
-The relevant specification documents can be found in the appropriate stores with the number: CEN/TS 16614. eg. through [VSS](https://www.vss.ch/vss_de/)
+The relevant specification documents can be found in the appropriate stores with the number: CEN/TS 16614. e.g. through [VSS](https://www.vss.ch/vss_de/)
 
 ## Binding nature
 This document describes the way in which the NeTEx standard is specifically applied and interpreted in Switzerland. It forms the basis for agreements concerning the connection between the individual public transport partners for exchanging timetables. 
@@ -64,7 +64,7 @@ This document describes the way in which the NeTEx standard is specifically appl
 We have a [set of examples](./examples/README.md) that show how to create use cases with the realisation guide.
 
 ## Impressum
-* Authors: Thomas Schäfer, Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Martin Bennett, Emeric Matthias Günter
+* Authors: Thomas Schäfer, Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Martin Bennett, Simon Freihart, Emeric Tapia-Almosnino, Matthias Günter
 * Status: Draft
 * Last change: **TODO**
 * Contact: info.fachbus@sbb.ch

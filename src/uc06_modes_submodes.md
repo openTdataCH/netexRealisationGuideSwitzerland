@@ -20,7 +20,7 @@ List for `TransportModeEnumeration`:
 
 In Switzerland the elements were standardised in chapter 6.2 of the ["Übergangsdokument Branchenstandard"](https://www.oev-info.ch/sites/default/files/2025-12/%C3%9Cbergangsdokument.pdf#page=26&zoom=100,91,541)
 
-The [mapping tables](media/Mappingtabellen_NeTEx_v2.0.xls) contain both transforms as far as we use them.
+The [mapping tables](media/Mappingtabellen_NeTEx_v2.0.xls) contain both transforms as far as we use them. Only use sub modes that are approved in the mapping!
 
 # ProductCategory
 The relevant marketing name as defined in 3.15 of the Swiss sector standard is put into the `ProductCategory`.

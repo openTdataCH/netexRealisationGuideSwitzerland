@@ -221,9 +221,6 @@ A `ScheduledStopPoint` can represent two types of stop points:
 *->[Template](./templates/PassengerStopAssignment.xml)*
 
 ### Usage Notes
-> **TODO** Suppose a vehicle arrives at quay 2A and departs on quay 2D. In this case we model only the SCHEDULED STOP POINT for QUAY 2 but assign this STOP POINT to both QUAYs by using two different PASSENGER STOP ASSIGNMENTS. #82
-https://github.com/openTdataCH/netexRealisationGuideSwitzerland/issues/82
-
 - id-attributes don't need to be stable.
 
 
