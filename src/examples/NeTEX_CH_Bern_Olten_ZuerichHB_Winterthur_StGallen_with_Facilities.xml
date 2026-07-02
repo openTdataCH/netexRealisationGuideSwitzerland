@@ -55,6 +55,10 @@ with attributes
 						<ValueSet id="ch:1:ValueSet:TypeOfNotice" version="1" nameOfClass="TypeOfNotice">
 							<Name>Type Of Notice</Name>
 							<values>
+								<TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
+									<Name>Allgemeiner Hinweis</Name>
+									<PrivateCode>1</PrivateCode>
+								</TypeOfNotice>
 								<TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
 									<Name>Angebot</Name>
 									<PrivateCode>10</PrivateCode>
@@ -381,6 +385,7 @@ with attributes
 					</stopAssignments>
 					<timingLinks>
 						<TimingLink id="generated_1_1" version="1">
+							<Name>Bahn-2000 Strecke</Name>
 							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:7000:4:7"/>
 							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:218:7"/>
 						</TimingLink>
@@ -501,6 +506,7 @@ with attributes
 							<TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>05:29:00</DepartureTime>
+							<JourneyPatternRef ref="ch:SBB:JourneyPattern:703-00" version="1" nameOfRefClass="ServiceJourneyPattern"/>
 							<TimeDemandTypeRef ref="ch:1:TDT:1" version="1"/>
 							<OperatorRef ref="ch:1:sboid:100001" version="1"/>
 							<LineRef ref="ch:1:slnid:1024329" version="1"/>

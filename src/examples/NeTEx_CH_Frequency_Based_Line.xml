@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-06-22T08:51:05+02:00</PublicationTimestamp>
+	<ParticipantRef>INTERMAPS</ParticipantRef>
+	<Description lang="de">NeTEx-Export INTERMAPS Version 1.0</Description>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame:intermaps" version="1">
+			<ValidBetween>
+				<FromDate>2025-12-14T00:00:00</FromDate>
+				<ToDate>2026-12-13T23:59:59</ToDate>
+			</ValidBetween>
+			<FrameDefaults>
+				<DefaultLocale>
+					<TimeZoneOffset>-1</TimeZoneOffset>
+					<TimeZone><!-- ch-usage: mandatory -->Europe/Berlin</TimeZone>
+					<SummerTimeZoneOffset>-2</SummerTimeZoneOffset>
+					<DefaultLanguage>de</DefaultLanguage>
+				</DefaultLocale>
+				<DefaultLocationSystem>EPSG:4326</DefaultLocationSystem>
+			</FrameDefaults>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame:1" version="1">
+					<responsibilitySets>
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:919" version="1">
+							<Name lang="de">Braunwald-Standseilbahn</Name>
+							<PrivateCode>919</PrivateCode>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:712:0" version="1">
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100080" version="1"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:712:1" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100080" version="1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:922" version="1">
+							<Name lang="de">Sportbahnen Braunwald</Name>
+							<PrivateCode>922</PrivateCode>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:1043:0" version="1">
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:101105" version="1"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:923:1" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:101105" version="1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+							<Name>ProductCategories</Name>
+							<values>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:GB" version="1">
+									<Name lang="de">Gondelbahn</Name>
+									<ShortName lang="de">GB</ShortName>
+								</TypeOfProductCategory>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:SL" version="1">
+									<Name lang="de">Sesselbahn</Name>
+									<ShortName lang="de">SL</ShortName>
+								</TypeOfProductCategory>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:FUN" version="1">
+									<Name lang="de">Standseilbahn</Name>
+									<ShortName lang="de">FUN</ShortName>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<Operator id="ch:1:sboid:100080" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>SBOID</Key>
+									<Value>ch:1:sboid:100080</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode>ch:1:sboid:100080</PrivateCode>
+							</privateCodes>
+							<PrivateCode>ch:1:sboid:100080</PrivateCode>
+							<Name lang="de">Braunwald-Standseilbahn</Name>
+							<ShortName lang="de">BRSB</ShortName>
+						</Operator>
+						<Operator id="ch:1:sboid:101105" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>SBOID</Key>
+									<Value>ch:1:sboid:101105</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode>ch:1:sboid:101105</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Sportbahnen Braunwald</Name>
+							<ShortName lang="de">SPBR</ShortName>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+				<SiteFrame id="ch:1:SiteFrame:1" version="1">
+					<stopPlaces>
+						<StopPlace id="ch:1:sloid:3261" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>85032607</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:3261</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:3261</PrivateCode>
+								<PrivateCode type="didok">85032607</PrivateCode>
+								<PrivateCode type="intermaps">920</PrivateCode>
+							</privateCodes>
+							<Name>Braunwald</Name>
+							<Centroid>
+								<Location>
+									<Longitude>8.998559117</Longitude>
+									<Latitude>46.938791853</Latitude>
+									<Altitude>1253</Altitude>
+								</Location>
+							</Centroid>
+							<StopPlaceType>liftStation</StopPlaceType>
+							<quays>
+								<Quay id="ch:1:sloid:3261:0:386512" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:3261:0:386512</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:3261:0:386512</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>8.998489380</Longitude>
+											<Latitude>46.938747900</Latitude>
+											<Altitude>1243</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>A</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:sloid:3645" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>85036459</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:3645</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:3645</PrivateCode>
+								<PrivateCode type="didok">85036459</PrivateCode>
+								<PrivateCode type="intermpas">925</PrivateCode>
+							</privateCodes>
+							<Name>Hüttenberg</Name>
+							<Centroid>
+								<Location>
+									<Longitude>8.990882635</Longitude>
+									<Latitude>46.939033591</Latitude>
+									<Altitude>1312</Altitude>
+								</Location>
+							</Centroid>
+							<StopPlaceType>liftStation</StopPlaceType>
+							<quays>
+								<Quay id="ch:1:sloid:3645:0:164477" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:3645:0:164477</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:3645:0:164477</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>8.990678787</Longitude>
+											<Latitude>46.938865107</Latitude>
+											<Altitude>1307</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>A</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:sloid:3260" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>85032607</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:3260</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:3260</PrivateCode>
+								<PrivateCode type="didok">85032607</PrivateCode>
+								<PrivateCode type="intermaps">927</PrivateCode>
+							</privateCodes>
+							<Name>Linthal Braunwaldbahn (Talst.)</Name>
+							<Centroid>
+								<Location>
+									<Longitude>8.990678787</Longitude>
+									<Latitude>46.938865107</Latitude>
+									<Altitude>1307</Altitude>
+								</Location>
+							</Centroid>
+							<StopPlaceType>liftStation</StopPlaceType>
+							<quays>
+								<Quay id="ch:1:sloid:3260:0:862838" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:3260:0:862838</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:3260:0:862838</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>8.990678787</Longitude>
+											<Latitude>46.938865107</Latitude>
+											<Altitude>1307</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>A</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:sloid:30956" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>85309567</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:30956</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:30956</PrivateCode>
+								<PrivateCode type="didok">85309567</PrivateCode>
+								<PrivateCode type="intermaps">1044</PrivateCode>
+							</privateCodes>
+							<Name>Grotzenbüel (Seblengrat)</Name>
+							<Centroid>
+								<Location>
+									<Longitude>8.992888927</Longitude>
+									<Latitude>46.949544499</Latitude>
+									<Altitude>1551</Altitude>
+								</Location>
+							</Centroid>
+							<StopPlaceType>liftStation</StopPlaceType>
+							<quays>
+								<Quay id="ch:1:sloid:30956:0:398660" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:30956:0:398660</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:30956:0:398660</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>8.992899656</Longitude>
+											<Latitude>46.949529851</Latitude>
+											<Altitude>1551</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>A</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:sloid:30978" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>85309781</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:30978</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:30978</PrivateCode>
+								<PrivateCode type="didok">85309781</PrivateCode>
+								<PrivateCode type="intermaps">1046</PrivateCode>
+							</privateCodes>
+							<Name>Seblengrat</Name>
+							<Centroid>
+								<Location>
+									<Longitude>8.991923332</Longitude>
+									<Latitude>46.959723829</Latitude>
+									<Altitude>1894</Altitude>
+								</Location>
+							</Centroid>
+							<StopPlaceType>liftStation</StopPlaceType>
+							<quays>
+								<Quay id="ch:1:sloid:30525:0:536841" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:30525:0:536841</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:30525:0:536841</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>8.992089629</Longitude>
+											<Latitude>46.959581039</Latitude>
+											<Altitude>1886</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>A</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:sloid:3269" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>85032698</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:3269</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:3269</PrivateCode>
+								<PrivateCode type="didok">85032698</PrivateCode>
+								<PrivateCode type="intermaps">4165</PrivateCode>
+							</privateCodes>
+							<Name>Kleiner Gumen</Name>
+							<Centroid>
+								<Location>
+									<Longitude>8.972089629</Longitude>
+									<Latitude>46.949581039</Latitude>
+									<Altitude>1886</Altitude>
+								</Location>
+							</Centroid>
+							<StopPlaceType>liftStation</StopPlaceType>
+							<quays>
+								<Quay id="ch:1:sloid:3269:0:476795" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:3269:0:476795</Value>
+										</KeyValue>
+									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:3269:0:476795</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>8.972089629</Longitude>
+											<Latitude>46.949581039</Latitude>
+											<Altitude>1886</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>A</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+					</stopPlaces>
+				</SiteFrame>
+				<ServiceFrame id="ch:1:ServiceFrame:ts3" version="1">
+					<lines>
+						<Line id="ch:1:slnid:1025132" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:922">
+							<keyList>
+								<KeyValue>
+									<Key>SLNID</Key>
+									<Value>ch:1:slnid:1025132</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="slnid">ch:1:slnid:1025132</PrivateCode>
+							</privateCodes>
+							<Name>Seblengrat</Name>
+							<ShortName>Seblengrat</ShortName>
+							<TransportMode>cableway</TransportMode>
+							<TransportSubmode>
+								<TelecabinSubmode>chairLift</TelecabinSubmode>
+							</TransportSubmode>
+							<PublicCode>XYZ</PublicCode>
+							<OperatorRef ref="ch:1:sboid:101105" version="1"/>
+							<LineType>seasonal</LineType>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:SL" version="1"/>
+						</Line>
+						<Line id="ch:1:slnid:1025129" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:919">
+							<keyList>
+								<KeyValue>
+									<Key>SLNID</Key>
+									<Value>ch:1:slnid:1025129</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="slnid">ch:1:slnid:1025129</PrivateCode>
+							</privateCodes>
+							<Name>Braunwald Standseilbahn (Zubringerbahn)</Name>
+							<ShortName>Standseilbahn Braunwald</ShortName>
+							<TransportMode>funicular</TransportMode>
+							<TransportSubmode>
+								<FunicularSubmode>funicular</FunicularSubmode>
+							</TransportSubmode>
+							<PublicCode>XYZ</PublicCode>
+							<OperatorRef ref="ch:1:sboid:100080" version="1"/>
+							<LineType>fixed</LineType>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:FUN" version="1"/>
+						</Line>
+					</lines>
+					<scheduledStopPoints>
+						<ScheduledStopPoint id="ch:1:sloid:3261:0:386512" version="1">
+							<Name lang="de">Braunwald</Name>
+							<StopType>liftStation</StopType>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:3260:0:862838" version="1">
+							<Name lang="de">Linthal Braunwaldbahn (Talst.)</Name>
+							<StopType>liftStation</StopType>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:30956:0:398660" version="1">
+							<Name lang="de">Grotzenbüel (Seblengrat)</Name>
+							<StopType>liftStation</StopType>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:30525:0:536841" version="1">
+							<Name lang="de">Seblengrat</Name>
+							<StopType>liftStation</StopType>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:3269:0:476795" version="1">
+							<Name lang="de">Kleiner Gumen</Name>
+							<StopType>liftStation</StopType>
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+					<stopAssignments>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:1044" version="1" order="1">
+							<ScheduledStopPointRef ref="ch:1:sloid:30956:0:398660" version="1"/>
+							<StopPlaceRef ref="ch:1:sloid:30956" version="1"/>
+							<QuayRef ref="ch:1:sloid:30956:0:398660" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:1046" version="1" order="1">
+							<ScheduledStopPointRef ref="ch:1:sloid:3260:0:862838" version="1"/>
+							<StopPlaceRef ref="ch:1:sloid:3260" version="1"/>
+							<QuayRef ref="ch:1:sloid:3260:0:862838" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:4165" version="1" order="1">
+							<ScheduledStopPointRef ref="ch:1:sloid:3261:0:386512" version="1"/>
+							<StopPlaceRef ref="ch:1:sloid:3261" version="1"/>
+							<QuayRef ref="ch:1:sloid:3261:0:386512" version="1"/>
+						</PassengerStopAssignment>
+					</stopAssignments>
+					<timingLinks>
+						<TimingLink id="tl-1" version="1">
+							<FromPointRef ref="ch:1:sloid:3260:0:862838" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:3261:0:386512" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="tl-2" version="1">
+							<FromPointRef ref="ch:1:sloid:3261:0:386512" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:3260:0:862838" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="tl-3" version="1">
+							<FromPointRef ref="ch:1:sloid:30525:0:536841" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:30956:0:398660" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+					</timingLinks>
+					<journeyPatterns>
+						<ServiceJourneyPattern id="sjp-1" version="1">
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1025129" version="1"/>
+							</RouteView>
+							<DirectionType>inbound</DirectionType>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="spijp-1" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:3260:0:862838" version="1"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp-2" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:3261:0:386512" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+						</ServiceJourneyPattern>
+						<ServiceJourneyPattern id="sjp-2" version="1">
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1025129" version="1"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="spijp-3" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:3261:0:386512" version="1"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp-4" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:3260:0:862838" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+						</ServiceJourneyPattern>
+						<ServiceJourneyPattern id="sjp-3" version="1">
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1025132" version="1"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="spijp-5" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:30525:0:536841" version="1"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp-6" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:30956:0:398660" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+						</ServiceJourneyPattern>
+					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="tdt-1" version="1">
+							<runTimes>
+								<JourneyRunTime id="jrt-1" version="1">
+									<TimingLinkRef ref="tl-1" version="1"/>
+									<RunTime>PT9M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+						</TimeDemandType>
+						<TimeDemandType id="tdt-2" version="1">
+							<runTimes>
+								<JourneyRunTime id="jrt-2" version="1">
+									<TimingLinkRef ref="tl-2" version="1"/>
+									<RunTime>PT9M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+						</TimeDemandType>
+						<TimeDemandType id="tdt-3" version="1">
+							<runTimes>
+								<JourneyRunTime id="jrt-3" version="1">
+									<TimingLinkRef ref="tl-3" version="1"/>
+									<RunTime>PT5M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+						</TimeDemandType>
+					</timeDemandTypes>
+				</ServiceFrame>
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:1" version="1">
+					<validityConditions>
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:712:86C257ED6F1D8A44FA786F61912CD3AAACE238C2" version="1">
+							<FromDate>2025-12-14T00:00:00</FromDate>
+							<ToDate>2026-12-13T23:59:59</ToDate>
+							<ValidDayBits>00000000000000000000000000000000000000000000000001111100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</ValidDayBits>
+						</AvailabilityCondition>
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:1043:57A2EDCAA0C637FADBA6F51C036757A30F8CEF29" version="1">
+							<FromDate>2025-12-14T00:00:00</FromDate>
+							<ToDate>2026-12-13T23:59:59</ToDate>
+							<ValidDayBits>00000011111111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000</ValidDayBits>
+						</AvailabilityCondition>
+					</validityConditions>
+				</ServiceCalendarFrame>
+				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:919">
+					<vehicleJourneys>
+						<TemplateServiceJourney id="ch:1:TemplateServiceJourney_inbound:712:86C257ED6F1D8A44FA786F61912CD3AAACE238C2" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:919">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:712:86C257ED6F1D8A44FA786F61912CD3AAACE238C2" version="1"/>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>SJYID</Key>
+									<Value>ch:1:TemplateServiceJourney_inbound:712:86C257ED6F1D8A44FA786F61912CD3AAACE238C2</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sjyid">ch:1:TemplateServiceJourney_inbound:712:86C257ED6F1D8A44FA786F61912CD3AAACE238C2</PrivateCode>
+							</privateCodes>
+							<TransportMode>funicular</TransportMode>
+							<TransportSubmode>
+								<FunicularSubmode>funicular</FunicularSubmode>
+							</TransportSubmode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:FUN" version="1"/>
+							<TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>05:25:00</DepartureTime>
+							<JourneyDuration>PT7M</JourneyDuration>
+							<JourneyPatternRef ref="sjp-1" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<TimeDemandTypeRef ref="tdt-1" version="1"/>
+							<LineRef ref="ch:1:slnid:1025129" version="1"/>
+							<DirectionType>inbound</DirectionType>
+							<trainNumbers>
+								<TrainNumberRef ref="tn-1" version="1"/>
+							</trainNumbers>
+							<frequencyGroups>
+								<HeadwayJourneyGroup id="ch:1:HeadwayJourneyGroup_inbound:712:86C257ED6F1D8A44FA786F61912CD3AAACE238C2" version="1">
+									<FirstDepartureTime>05:25:00</FirstDepartureTime>
+									<LastDepartureTime>06:25:00</LastDepartureTime>
+									<ScheduledHeadwayInterval>PT30M</ScheduledHeadwayInterval>
+								</HeadwayJourneyGroup>
+							</frequencyGroups>
+						</TemplateServiceJourney>
+						<TemplateServiceJourney id="ch:1:TemplateServiceJourney_outbound:712:86C257ED6F1D8A44FA786F61912CD3AAACE238C2" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:919">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:712:86C257ED6F1D8A44FA786F61912CD3AAACE238C2" version="1"/>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>sjyid</Key>
+									<Value>ch:1:TemplateServiceJourney_outbound:712:86C257ED6F1D8A44FA786F61912CD3AAACE238C2</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sjyid">ch:1:TemplateServiceJourney_outbound:712:86C257ED6F1D8A44FA786F61912CD3AAACE238C2</PrivateCode>
+							</privateCodes>
+							<TransportMode>funicular</TransportMode>
+							<TransportSubmode>
+								<FunicularSubmode>funicular</FunicularSubmode>
+							</TransportSubmode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:FUN" version="1"/>
+							<TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>05:25:00</DepartureTime>
+							<JourneyDuration>PT7M</JourneyDuration>
+							<JourneyPatternRef ref="sjp-2" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<TimeDemandTypeRef ref="tdt-2" version="1"/>
+							<LineRef ref="ch:1:slnid:1025129" version="1"/>
+							<trainNumbers>
+								<TrainNumberRef ref="tn-2" version="1"/>
+							</trainNumbers>
+							<frequencyGroups>
+								<HeadwayJourneyGroup id="ch:1:HeadwayJourneyGroup_outbound:712:86C257ED6F1D8A44FA786F61912CD3AAACE238C2" version="1">
+									<FirstDepartureTime>05:25:00</FirstDepartureTime>
+									<LastDepartureTime>06:25:00</LastDepartureTime>
+									<ScheduledHeadwayInterval>PT30M</ScheduledHeadwayInterval>
+								</HeadwayJourneyGroup>
+							</frequencyGroups>
+						</TemplateServiceJourney>
+						<TemplateServiceJourney id="ch:1:TemplateServiceJourney_outbound:1043:57A2EDCAA0C637FADBA6F51C036757A30F8CEF29" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:922">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1043:57A2EDCAA0C637FADBA6F51C036757A30F8CEF29" version="1"/>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>SJYID</Key>
+									<Value>ch:1:TemplateServiceJourney_outbound:1043:57A2EDCAA0C637FADBA6F51C036757A30F8CEF29</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sjyid">ch:1:TemplateServiceJourney_outbound:1043:57A2EDCAA0C637FADBA6F51C036757A30F8CEF29</PrivateCode>
+							</privateCodes>
+							<TransportMode>cableway</TransportMode>
+							<TransportSubmode>
+								<TelecabinSubmode>chairLift</TelecabinSubmode>
+							</TransportSubmode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:SL" version="1"/>
+							<TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>08:45:00</DepartureTime>
+							<JourneyDuration>PT5M</JourneyDuration>
+							<JourneyPatternRef ref="sjp-3" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<TimeDemandTypeRef ref="tdt-3" version="1"/>
+							<LineRef ref="ch:1:slnid:1025132" version="1"/>
+							<DirectionType>outbound</DirectionType>
+							<trainNumbers>
+								<TrainNumberRef ref="tn-3" version="1"/>
+							</trainNumbers>
+							<frequencyGroups>
+								<HeadwayJourneyGroup id="ch:1:HeadwayJourneyGroup_outbound:1043:57A2EDCAA0C637FADBA6F51C036757A30F8CEF29" version="1">
+									<FirstDepartureTime>08:45:00</FirstDepartureTime>
+									<LastDepartureTime>16:00:00</LastDepartureTime>
+									<ScheduledHeadwayInterval>PT1M</ScheduledHeadwayInterval>
+								</HeadwayJourneyGroup>
+							</frequencyGroups>
+						</TemplateServiceJourney>
+					</vehicleJourneys>
+					<trainNumbers>
+						<TrainNumber id="tn-1" version="1">
+							<ForAdvertisement>13123</ForAdvertisement>
+						</TrainNumber>
+						<TrainNumber id="tn-2" version="1">
+							<ForAdvertisement>13122</ForAdvertisement>
+						</TrainNumber>
+						<TrainNumber id="tn-3" version="1">
+							<ForAdvertisement>4341</ForAdvertisement>
+						</TrainNumber>
+					</trainNumbers>
+					<typesOfService>
+						<TypeOfService id="ch:1:TypeOfService:1" version="1">
+							<Name lang="de">PublicJourney</Name>
+							<ShortName lang="de">N</ShortName>
+							<PrivateCode>1</PrivateCode>
+						</TypeOfService>
+					</typesOfService>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

@@ -452,7 +452,7 @@ class SchematronBuilder:
         base_note = f'{element_name} with id="{id_value}" must exist somewhere in the document'
         full_note = f'{base_note}; {note_text}' if note_text else base_note
         ns_elem = self._ns_name(element_name)
-        test_expr = f"count(//{ns_elem}[@id='{id_value}']) > 0"
+        test_expr = f"not(//{ns_elem}[@id='{id_value}'])"
         self.add_assert_or_report(context_xpath, test_expr, f'An element {element_name} with id="{id_value}" must exist', kind='report', note_text=full_note)
 
     def add_rule_required_attrs(self, context_xpath, element_name, required_attrs, note_text=None):
