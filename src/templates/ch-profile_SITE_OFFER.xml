@@ -1,32 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd"><!-- ch-root -->
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<!-- ch-root -->
 	<!-- ch-usage: mandatory -->
 	<PublicationTimestamp><!-- ch-usage: mandatory -->2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef><!-- ch-usage: mandatory --><!-- ch-note: Use here a distinctive name -->SKI-Template</ParticipantRef>
 	<dataObjects>
-        <!-- ch-usage: mandatory -->
+		<!-- ch-usage: mandatory -->
 		<CompositeFrame id="ch:1:CompositeFrame" version="1">
-            <!-- ch-usage: mandatory -->
+			<!-- ch-usage: mandatory -->
+			<ValidBetween>
+				<!-- ch-usage: expected -->
+				<!-- ch-note: This defines which timetable year is meant. We don't support partial delivery. -->
+				<FromDate><!-- ch-usage: expected -->2026-01-01T00:00:00</FromDate>
+				<ToDate><!-- ch-usage: expected -->2026-12-31T00:00:00</ToDate>
+			</ValidBetween>
+			<Description><!-- ch-usage: optional --><!-- ch-note: A description of the delivery can be provided.--></Description>
 			<FrameDefaults>
 				<!-- ch-see -->
-                <!-- ch-usage: expected -->
+				<!-- ch-usage: expected -->
 			</FrameDefaults>
 			<frames>
-                <!-- ch-usage: mandatory -->
+				<!-- ch-usage: mandatory -->
 				<ResourceFrame id="ch:1:ResourceFrame" version="1">
 					<!-- ch-note: Only if we really need it -->
-                    <!-- ch-usage: expected -->
+					<!-- ch-usage: expected -->
 					<!-- ch-see -->
 				</ResourceFrame>
 				<SiteFrame id="ch:1:SiteFrame" version="1">
 					<!-- ch-usage: mandatory -->
 					<!-- ch-see -->
 				</SiteFrame>
-                <ServiceCalendarFrame id="ch:1:ServiceCalendarFrame" version="1">
-                    <!-- ch-usage: mandatory -->
-                    <!-- ch-note: Needed for the relevant AvailabilityConditions -->
-                    <!-- ch-see -->
-                </ServiceCalendarFrame>
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame" version="1">
+					<!-- ch-usage: mandatory -->
+					<!-- ch-note: Needed for the relevant AvailabilityConditions -->
+					<!-- ch-see -->
+				</ServiceCalendarFrame>
 				<ServiceFrame id="ch:1:ServiceFrame" version="1">
 					<!-- ch-see: ServiceFrame_SITE_OFFER.xml -->
 					<!-- ch-usage: expected -->

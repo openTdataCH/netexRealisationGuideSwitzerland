@@ -47,24 +47,24 @@ In RG 1.0, each branch required a separate `JourneyMeeting` at the splitting poi
 **Situation according to Realisation Guide 1.0**
 
 ```xml
-<JourneyMeeting id="ch:1:JourneyMeeting:91001N-BLS-439-1-45540_91001N-BLS-777-1-47520_..." version="any">
+<JourneyMeeting id="ch:1:JourneyMeeting:91001N-BLS-439-1-45540_91001N-BLS-777-1-47520_..." version="1">
   <validityConditions>
     <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c6300" versionRef="any"/>
   </validityConditions>
   <AtStopPointRef ref="ch:1:ScheduledStopPoint:8507483:3" versionRef="any"/>
-  <FromJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_439" version="any"/>
-  <ToJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4271-001_91001N.j26_777" version="any"/>
+  <FromJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_439" version="1"/>
+  <ToJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4271-001_91001N.j26_777" version="1"/>
   <EarliestTime>13:10:00</EarliestTime>
   <LatestTime>13:12:00</LatestTime>
 </JourneyMeeting>
 
-<JourneyMeeting id="ch:1:JourneyMeeting:91001N-BLS-440-1-45540_91011N-BLS-149-1-47520_..." version="any">
+<JourneyMeeting id="ch:1:JourneyMeeting:91001N-BLS-440-1-45540_91011N-BLS-149-1-47520_..." version="1">
   <validityConditions>
     <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:u7600" versionRef="any"/>
   </validityConditions>
   <AtStopPointRef ref="ch:1:ScheduledStopPoint:8507483:3" versionRef="any"/>
-  <FromJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_440" version="any"/>
-  <ToJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:6823-001_91011N.j26_149" version="any"/>
+  <FromJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_440" version="1"/>
+  <ToJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:6823-001_91011N.j26_149" version="1"/>
   <Description>LineChange</Description>
   <EarliestTime>13:10:00</EarliestTime>
   <LatestTime>13:12:00</LatestTime>
@@ -83,32 +83,32 @@ splitting and joining.
 ```xml
 <ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:4171-4271-Spiez">
   <validityConditions>
-    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c6300" version="any"/>
+    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c6300" version="1"/>
   </validityConditions>
   <Description>Flügelung Spiez → Brig</Description>
   <StaySeated>true</StaySeated>
   <CrossBorder>false</CrossBorder>
   <ChangeWithinVehicle>true</ChangeWithinVehicle>
   <MaximumWaitTime>PT2M</MaximumWaitTime>
-  <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="any"/>
-  <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="any"/>
-  <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_439" version="any"/>
-  <ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4271-001_91001N.j26_777" version="any"/>
+  <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1"/>
+  <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1"/>
+  <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_439" version="1"/>
+  <ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4271-001_91001N.j26_777" version="1"/>
 </ServiceJourneyInterchange>
 
 <ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:4171-6823-Spiez">
   <validityConditions>
-    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:u7600" version="any"/>
+    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:u7600" version="1"/>
   </validityConditions>
   <Description>Flügelung Spiez → Zweisimmen</Description>
   <StaySeated>true</StaySeated>
   <CrossBorder>false</CrossBorder>
   <ChangeWithinVehicle>true</ChangeWithinVehicle>
   <MaximumWaitTime>PT2M</MaximumWaitTime>
-  <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="any"/>
-  <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="any"/>
-  <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_440" version="any"/>
-  <ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:6823-001_91011N.j26_149" version="any"/>
+  <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1"/>
+  <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1"/>
+  <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_440" version="1"/>
+  <ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:6823-001_91011N.j26_149" version="1"/>
 </ServiceJourneyInterchange>
 ```
 
