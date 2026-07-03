@@ -15,6 +15,10 @@ The recommended way is to [build the tools with uv](../README.md#how-to-setup-an
 
 The tools build installs a wrapper script `expand-docs` to `.venv/bin`.
 
+### Individual Installation
+
+Requires python 3.6+.
+
 ## Usage
 
 In order to get a detailed usage message, Run the tool with option `-h` or `--help`:

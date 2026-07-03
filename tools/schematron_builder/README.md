@@ -24,6 +24,10 @@ f
 
 The recommended way is to [build the tools with uv](../README.md#how-to-setup-and-run-the-build).
 
+#### Tools script
+
+The tools build installs a wrapper script `schematron-builder` to `.venv/bin`.
+
 ### Individual installation
 
 Requires Python 3.6+ and lxml:
@@ -70,33 +74,6 @@ or, with uv:
 ```bash
 uv python -m schematron_builder \
     -t templates/ch-profile_export-timetable_file.xml
-```
-
-## Build Scripts
-
-### Tools script
-
-The tools build installs a wrapper script `schematron-builder` to `.venv/bin`.
-
-### build_schemas.sh
-
-The `build_schemas.sh` script can be used to build all schematron files:
-
-```bash
-# Basic usage (default settings)
-./build_schemas.sh
-
-# Clean output and build with logging
-./build_schemas.sh -c -l
-
-# Process specific template with validation
-./build_schemas.sh -t "templates/my_template.xml:my_output.sch" -v
-
-# Parallel processing (4 jobs)
-./build_schemas.sh -p 4
-
-# Custom paths
-./build_schemas.sh -i "my_templates" -o "my_output" -x "custom.xsd"
 ```
 
 ## Supported Comment Annotations
@@ -211,7 +188,6 @@ See [`test_templates/README.md`](test_templates/README.md) for detailed document
 
 - `check_schematron.py`: Validates XML files against generated schematron files
 - `md_builder.py`: Generates markdown documentation from the same templates
-- `build_schemas.sh`: Automates building multiple schematron files
 
 ## See Also
 
