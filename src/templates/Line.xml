@@ -12,7 +12,7 @@
 							<!-- ch-root -->
 							<!-- ch-usage: mandatory -->
 							<!-- ch-attrs: responsibilitySetRef -->
-							<!-- ch-note: We have a duplication with responsibilitySet and OperatorRef. AuthorityRef is not used. -->
+							<!-- ch-note: We have a duplication with responsibilitySet and OperatorRef. We duplicate this, so that different reading systems can work without adaption.-->
 							<ValidBetween>
 								<!-- ch-usage: expected -->
 								<!-- ch-note: Usually set to the whole timetable year -->
@@ -39,9 +39,15 @@
 							<PublicCode><!-- ch-usage: mandatory --><!-- ch-note: Contains LinieLangName (attribute LT from HRDF) -->3</PublicCode>
 							<OperatorRef ref="ch:1:Operator:11" versionRef="1">
 								<!-- ch-usage: expected -->
-								<!-- ch-note: The operator is the transport organisation that really will do the operation. If different from AuthorityRef -->
+								<!-- ch-note: The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney.  Is redundant to the responsibilitySetRef on purpose. -->
 							</OperatorRef>
+							<additionalOperators>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. -->
+								<OperatorRef ref="ch:1:Operator:33" versionRef="1"/>
+							</additionalOperators>
                             <LineType><!-- ch-usage: expected --><!-- ch-note: Willbe used especially, when not "fixed". Details in mapping excel. -->fixed</LineType>
+                            <TypeOfLineRef ref="forbidden" versionRef="notused"><!-- ch-usage: forbidden --><!-- ch-note: We use LineType only --></TypeOfLineRef>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:TER" versionRef="1">
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: Always aligned with BS KI oev-info.ch  -->

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Template</ParticipantRef>
 	<dataObjects>
@@ -50,11 +50,14 @@
 								<PrivateCode type="HafasKMInfo"><!-- ch-note: Special value for Hafas environments. -->1000</PrivateCode>
 							</privateCodes>
 							<Name><!-- ch-usage: mandatory --><!-- ch-note: The official stop name. If you have different versions one needs to use AlternativeName -->Bern</Name>
-							<ShortName><!-- ch-usage: forbidden --><!-- ch-note: not used in Switzerland --></ShortName>
+							<ShortName>
+								<!-- ch-usage: forbidden -->
+								<!-- ch-note: not used in Switzerland -->
+							</ShortName>
 							<PrivateCode>
 								<!-- ch-usage: forbidden -->
 								<!-- ch-note: Replaced by PublicCode nested within publicCodes, see above. -->
-							</PrivateCode>							
+							</PrivateCode>
 							<Centroid>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: Global or national location -->
@@ -69,9 +72,18 @@
 									<Altitude><!-- ch-usage: optional -->540.2</Altitude>
 								</Location>
 							</Centroid>
+							<gml:Polygon gml:id="a1231">
+								<!-- ch-usage: forbidden -->
+								<!-- ch-note: We might in future model StopPlace as polygons -->
+							</gml:Polygon>
 							<Url>
 								<!-- ch-usage: forbidden -->
 							</Url>
+							<AccessibilityAssessment id="generated" version="1">
+								<!-- ch-usage: ignored -->
+								<!-- ch-note: In the future the assessments might be used -->
+								<MobilityImpairedAccess>true</MobilityImpairedAccess>
+							</AccessibilityAssessment>
 							<alternativeNames>
 								<!-- ch-usage: optional -->
 								<!-- ch-note: Alternative names for the StopPlace. We will also use these for synonyms. From INFO+ the synonyms are used on the Stop-Place. -->
@@ -80,11 +92,24 @@
 									<Name lang="it">Berna</Name>
 								</AlternativeName>
 							</alternativeNames>
+							<PublicUse><!-- ch-usage: ignored --><!-- Might be added at some point -->all</PublicUse>
+							<Covered><!-- ch-usage: ignored --><!-- Might be added at some point -->covered</Covered>
+							<facilities>
+								<!-- ch-usage: ignored -->
+								<!-- ch-note: might be added in the future. Especially for accessibility.-->
+								<SiteFacilitySetRef ref="generated" versionRef="1"/>
+							</facilities>
 							<TopographicPlaceRef ref="BE-bern" versionRef="1">
 								<!-- ch-note: Id to the county, community, canton or country. -->
 								<!-- ch-usage: optional -->
 							</TopographicPlaceRef>
+							<localServices>
+								<!-- ch-usage: ignored -->
+								<!-- ch-note: might be added in the future. Especially for accessibility. -->
+								<AssistanceServiceRef ref="generated" versionRef="1"/>
+							</localServices>
 							<StopPlaceType><!-- ch-usage: optional -->railStation</StopPlaceType>
+							<LimitedUse><!-- ch-usage: optional --><!-- ch-note: For stops like Sagliains -->interchangeOnly</LimitedUse>
 							<Weighting><!-- ch-usage: optional --><!-- ch-note: Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. --><!-- ch-allowed-enums: noInterchange interchangeAllowed recommendedInterchange preferredInterchange -->preferredInterchange</Weighting>
 							<quays>
 								<!-- ch-usage: expected -->
