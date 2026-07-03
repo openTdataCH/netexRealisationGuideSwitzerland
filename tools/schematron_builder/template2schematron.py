@@ -31,6 +31,7 @@ import sys
 import os
 import re
 import argparse
+from contextlib import nullcontext
 
 from tools.configuration import XSD_FILE_PATH, TEMPLATES_DIR, SITE_SCHEMATRON_DIR
 
@@ -71,9 +72,12 @@ RE_CH_COMMAND = re.compile(r'\b(ch-[a-zA-Z0-9_-]+)', re.IGNORECASE)
 # Verbose debug toggle (set via CLI)
 VERBOSE = False
 
+DEFAULT_XML_FILE_PREFIX="ch-profile_"
+
 def read_file(path):
     """Read file content with UTF-8 encoding."""
-    print (f'Reading file: ${path}')
+    if VERBOSE:
+        print (f'Reading ${path}')
     try:
         with open(path, 'r', encoding='utf-8') as f:
             return f.read()
@@ -607,8 +611,6 @@ def process_element_tree(elem, builder, parent_context_path='', input_folder='.'
     else:
         elem_abs_path = ns_join(builder, parent_context_path, tag_local)
         parent_abs_path = parent_context_path
-    if elem_abs_path == "netex:PublicationDelivery/netex:dataObjects/netex:CompositeFrame/netex:frames/netex:ServiceFrame":
-        print("here")
     # Partition direct children
     nodes = list(elem)
     child_elements = []
@@ -763,6 +765,10 @@ def generate_schematron_from_template(template_path: str, input_folder: str, out
     name = template_name.split('.')[0]
     schematron_name = f"{name}.sch"
     regions = extract_regions(txt)
+
+    if VERBOSE:
+        print(f"Processing template {template_name} from {template_path}.")
+
     if not regions:
         print(
             f'Warning: no regions found with root in {template_name}; attempting to process entire file',
@@ -820,9 +826,20 @@ def generate_schematron_from_template(template_path: str, input_folder: str, out
 
     schematron_path = f'{output_folder}/{schematron_name}'
     write_file(schematron_path, schematron_content)
-    print(f'Created {schematron_name}: {schematron_builder.rules_created} rules.')
+    print(f'-> Created {schematron_name}: {schematron_builder.rules_created} rules.')
 
-def generate_all_schematrons(input_folder: str, output_folder: str, xsd_path: str, root_element: str):
+def template_file_filter(file_name: str, prefix: str, postfix: str) -> bool:
+    """
+    Filters template files according to prefix and postfix of file names.
+    """
+    filter = True;
+    if postfix:
+        filter = filter and file_name.endswith(postfix)
+    if prefix:
+        filter = filter and file_name.startswith(prefix)
+    return filter
+
+def generate_all_schematrons(input_folder: str, prefix: str, output_folder: str, xsd_path: str, root_element: str):
     """
      Generates schematron files from all templates.
 
@@ -831,17 +848,20 @@ def generate_all_schematrons(input_folder: str, output_folder: str, xsd_path: st
      param: schematron_builder: SchematronBuilder object
      param: root_element: Schema root element, e.g. PublicationDelivery
      """
-    templates = [os.path.join(input_folder, f) for f in os.listdir(input_folder) if f.endswith('.xml')]
+    print(f"Processing templates from {input_folder}.")
+
+    templates = [os.path.join(input_folder, f) for f in os.listdir(input_folder) if template_file_filter(f, prefix, '.xml')]
 
     schematron_builder = SchematronBuilder(xsd_path)
     for template_path in templates:
         generate_schematron_from_template(template_path, input_folder, output_folder, schematron_builder, root_element)
 
     print(f"Processed {len(templates)} templates.")
+    print(f"Schematrons written to {output_folder}.")
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description=f"Generates Schematrons from XML templates and fragments. Processes all templates in {TEMPLATES_DIR} or a single template if -t or --template is used."
+        description=f"Generates Schematrons from XML templates and fragments. Processes all templates in an input folder, or a single template if -t or --template is used."
     )
     parser.add_argument('-t', '--template', default=None, required=False,
         help='Template XML file containing ch-start/ch-stop regions (Processes all templates in input folder if None).'
@@ -852,6 +872,8 @@ def parse_args():
                         help=f'Input folder containing XML templates (Default = {TEMPLATES_DIR})')
     parser.add_argument('-o', '--output', default=SITE_SCHEMATRON_DIR,
                         help=f'Output folder for Schematron (.sch) files (Default = {SITE_SCHEMATRON_DIR})')
+    parser.add_argument('-p', '--prefix', default=DEFAULT_XML_FILE_PREFIX, help=f'Prefix for XML files (Default = {DEFAULT_XML_FILE_PREFIX}).')
+    parser.add_argument('-a', '--all', default=False, action='store_true', help='Build all - ignore XML file prefix (Default = False).')
     parser.add_argument(
         '-r', '--root-element',
         default='PublicationDelivery',
@@ -860,6 +882,11 @@ def parse_args():
     parser.add_argument('-v', '--verbose', action='store_true', help='Enable verbose logging.')
     return parser.parse_args()
 
+def evaluate_prefix(prefix: str, all: bool) -> str | None:
+    if all:
+        return None
+    else:
+        return prefix
 
 def main():
     global VERBOSE
@@ -890,7 +917,8 @@ def main():
         schematron_builder = SchematronBuilder(xsd_path)
         generate_schematron_from_template(template_path, input_folder, output_folder, schematron_builder, root_element)
     else:
-        generate_all_schematrons(input_folder, output_folder, xsd_path, root_element)
+        prefix = evaluate_prefix(args.prefix, args.all)
+        generate_all_schematrons(input_folder, prefix, output_folder, xsd_path, root_element)
 
 if __name__ == '__main__':
     main()
