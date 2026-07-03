@@ -6,8 +6,8 @@
 		<CompositeFrame id="CH:BLT:Composite:50_110" version="1">
 			<frames>
 				<TimetableFrame id="ch:1:TimetableFrame:j23" version="1">
-                    <!-- ch-root -->
-                    <!-- ch-usage: expected -->
+					<!-- ch-root -->
+					<!-- ch-usage: expected -->
 					<vehicleJourneys>
 						<!-- ch-usage: expected -->
 						<!-- ch-note: Contains the ServiceJourneys and TemplateServiceJourneys. -->
@@ -63,6 +63,7 @@
 					</journeyMeetings>
 					<journeyInterchanges>
 						<!-- ch-usage: optional -->
+						<!-- ch-note: In NETWORK_OFFER for splitting and joining. Otherwise mostly in INTERCHANGE -->
 						<ServiceJourneyInterchange id="ch:1:sji:generated-1" version="1">
 							<!-- ch-usage: expected -->
 							<!-- ch-note: For modeling many forms of interchanges -->
@@ -77,12 +78,10 @@
 							<FromJourneyPatternRef ref="pattern1" versionRef="1"/>
 							<ToJourneyPatternRef ref="pattern2" versionRef="1"/>
 						</ServiceJourneyPatternInterchange>
-					</journeyInterchanges>					
+					</journeyInterchanges>
 					<interchangeRules>
-						<!-- ch-usage: expected -->
+						<!-- ch-usage: forbidden -->
 						<InterchangeRule id="ch:1:InterchangeRule:1" version="1">
-							<!-- ch-usage: expected -->
-							<!-- ch-see -->
 						</InterchangeRule>
 					</interchangeRules>
 				</TimetableFrame>

@@ -21,4 +21,5 @@
 | 2026-07-01 | Die Definition für das Gewinnen des DestinationDisplay aus einem leeren *R muss fachlich definiert werden vor dem Review.                                                                                                                                                    |
 | 2026-07-01 | XXXRef ref and version: We always want to see the version so it needs to be added with ch-attrs. Exceptions are where versionRef is ok, then it is only done in the ch-note                                                                                                  |
 | 2026-07-02 | QuayType eingeführt                                                                                                                                                                                                                                                          |
-
+| 2026-07-02 | The annotations don't handle choice, but we leave it at that. If necessary addition schematron rules must be added. Many things are handled in the mapping excel |
+| 2026-07-03 | nameOfClass und nameOfClassRef primär für NoticedObjectRef und FromPoint und ToPoint |
