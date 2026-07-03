@@ -45,12 +45,12 @@ See [the tools README](../README.md#how-to-run-a-tool) about how to run a tool.
 #### Basic validation
 
 ```bash
-python check_schematron.py -i example.xml -s generated/schematrons/ch-profile_export_timetable_file.sch
+python check_schematron.py -i example.xml -s site/schematrons/ch-profile_export_timetable_file.sch
 ```
 
 #### Validation with XSLT dump
 ```bash
-python check_schematron.py -i example.xml -s generated/schematrons/ch-profile_export_timetable_file.sch --dump-xslt debug.xslt
+python check_schematron.py -i example.xml -s site/schematrons/ch-profile_export_timetable_file.sch --dump-xslt debug.xslt
 ```
 
 ## Output
@@ -61,8 +61,8 @@ The tool outputs:
 
 ## Typical Workflow
 
-1. Run `schematron_builder` tool to generate Schematron files in the `site/schematrons` directory
-2. Run `check_schematron` tool to validate your XML files
+1. Run `schematron_builder.py` to generate Schematron files in the `site/schematrons` directory
+2. Run `check_schematron.py` to validate your XML files
 3. For testing, use the test script:
    ```bash
    ./test_run.sh
