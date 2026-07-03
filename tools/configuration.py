@@ -5,6 +5,7 @@ PROJECT_DIR=files()
 # Source documents
 DOCS_DIR = PROJECT_DIR.joinpath("../src")
 TEMPLATES_DIR = DOCS_DIR.joinpath("templates")
+TEMPLATES_PREFIX =  "ch-profile-"
 
 JEKYLL_DIR = PROJECT_DIR.joinpath("../jekyll")
 
