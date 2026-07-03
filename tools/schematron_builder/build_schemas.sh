@@ -7,7 +7,7 @@
 INPUT_FOLDER="templates"
 OUTPUT_FOLDER="generated/schematrons"
 XSD_FILE="xsd/xsd/NeTEx_publication.xsd"
-PYTHON_SCRIPT="tools/schematron_builder/template2schematron.py"
+PYTHON_SCRIPT="tools/schematron_builder/schematron_builder.py"
 LOG_FILE="generated/schematrons/build.log"
 CLEAN_OUTPUT=false
 VALIDATE_OUTPUT=false

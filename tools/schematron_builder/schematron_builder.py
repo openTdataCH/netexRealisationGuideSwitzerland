@@ -1,37 +1,11 @@
 #!/usr/bin/env python3
 """
-template2schematron.py
-
 Generates Schematron validation files from XML templates with special comment annotations.
-
-Requires lxml for robust XML processing and XPath support.
-
-Print usage - run with option -h:
-uv run python template2schematron.py -h
-
-Examples:
-    # Process a single ch-profile template
-    python template2schematron.py \
-        -t src/templates/ch-profile_export-timetable_file.xml \
-        -x xsd/xsd/NeTEx_publication.xsd \
-        -i src/templates \
-        -o site/schematrons \
-        -v
-
-    # Process all ch-profile templates (using uv)
-    uv run python template2schematron.py
-
-    # Process single template using custom root element (default: PublicationDelivery)
-    uv run python template2schematron.py \
-        -t templates/custom_template.xml \
-        -r CustomRootElement
 """
-
 import sys
 import os
 import re
 import argparse
-from contextlib import nullcontext
 
 from tools.configuration import XSD_FILE_PATH, TEMPLATES_DIR, SITE_SCHEMATRON_DIR
 

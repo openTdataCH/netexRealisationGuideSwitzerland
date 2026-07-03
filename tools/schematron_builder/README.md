@@ -4,7 +4,7 @@ This tool generates Schematron validation files from XML templates with special 
 
 ## Overview
 
-The `template2schematron.py` script processes XML templates containing special comment markers and generates Schematron (.sch) files that enforce the Swiss NeTEX profile rules.
+The `schematron_builder.py` script processes XML templates containing special comment markers and generates Schematron (.sch) files that enforce the Swiss NeTEX profile rules.
 
 ## Features
 
@@ -44,7 +44,7 @@ input folder (templates folder) and creates schematron files from them.
 
 In order to get a detailed usage message, Run the tool with option `-h` or `--help`:
 ```bash
-python template2schematron.py -h
+python schematron_builder.py -h
 ```
 Or, with installed script:
 ```bash
@@ -58,7 +58,7 @@ See [the tools README](../README.md#how-to-run-a-tool) about how to run a tool.
 Build schematron from individual template:
 
 ```bash
-python template2schematron.py \
+python schematron_builder.py \
     -t templates/ch-profile_export-timetable_file.xml \
     -x xsd/xsd/NeTEx_publication.xsd \
     -i templates \
@@ -68,7 +68,7 @@ python template2schematron.py \
 or, with uv:
 
 ```bash
-uv python -m template2schematron \
+uv python -m schematron_builder \
     -t templates/ch-profile_export-timetable_file.xml
 ```
 

@@ -28,12 +28,12 @@ The following tools are used to generate target files from sources:
 
 Depending on your installation, a tool may be run in one of these ways:
 
-| Mode        | Command                                                                         |
-|-------------|---------------------------------------------------------------------------------|
-| Python      | `python template2schematron.py`                                                 |
-| uv (file)   | `uv run python template2schematron.py` |
-| uv (module) | `uv run python -m template2schematron` |
-| Script      | `schematron-builder`                                                            |
+| Mode        | Command                               |
+|-------------|---------------------------------------|
+| Python      | `python schematron_builder.py`        |
+| uv (file)   | `uv run python schematron_builder.py` |
+| uv (module) | `uv run python -m schematron_builder` |
+| Script      | `schematron-builder`                  |
 
 ## General rules applying to all tools
 
