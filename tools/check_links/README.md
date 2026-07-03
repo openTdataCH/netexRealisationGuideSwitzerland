@@ -2,10 +2,32 @@
 
 This tool checks all relative links in markdown files and warns if the target files don't exist.
 
+## Installation
+
+### Build tools with uv
+
+The recommended way is to [build the tools with uv](../README.md#how-to-setup-and-run-the-build).
+
+#### Tools script
+
+The tools build installs a wrapper script `check-links` to `.venv/bin`.
+
 ## Usage
 
+In order to get a detailed usage message, run the tool with option `-h` or `--help`:
 ```bash
-python check_links.py --docs docs --main .
+python check_links.py -h
+```
+Or, with installed script:
+```bash
+check-links -h
+```
+See [the tools README](../README.md#how-to-run-a-tool) about how to run a tool.
+
+### Usage Example
+
+```bash
+python check_links.py --docs src
 ```
 
 ## Features
@@ -15,11 +37,6 @@ python check_links.py --docs docs --main .
 - Handles links relative to the main folder (`../` paths)
 - Handles links relative to the current file
 - Provides detailed warnings for broken links
-
-## Parameters
-
-- `--docs`: Documentation folder to process (default: `docs`)
-- `--main`: Main project folder (default: current directory)
 
 ## Example Output
 

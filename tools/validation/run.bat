@@ -1,7 +1,0 @@
-@echo off
-
-:: Validate XML files in the templates folder
-python xml_validator.py --xml ..\..\templates --xsd ..\..\xsd\xsd\NeTEx_Publication.xsd
-
-:: Validate XML files in the examples folder
-python xml_validator.py --xml ..\..\examples --xsd ..\..\xsd\xsd\NeTEx_Publication.xsd

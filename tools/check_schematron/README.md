@@ -11,6 +11,16 @@ This tool validates XML files against Schematron schemas and reports validation 
 
 ## Installation
 
+### Build tools with uv
+
+The recommended way is to [build the tools with uv](../README.md#how-to-setup-and-run-the-build).
+
+#### Tools script
+
+The tools build installs a wrapper script `check-schematron` to `.venv/bin`.
+
+### Individual installation
+
 Requires Python 3.6+ and the following packages:
 
 ```bash
@@ -19,24 +29,26 @@ pip install lxml pyschematron
 
 ## Usage
 
+In order to get a detailed usage message, Run the tool with option `-h` or `--help`:
 ```bash
-python check_schematron.py -i <xmlfile> -s <schematronfile> [--dump-xslt <xslfile>]
+python check_schematron.py -h
+```
+Or, with installed script:
+```bash
+check-schematron -h
 ```
 
-### Parameters
+See [the tools README](../README.md#how-to-run-a-tool) about how to run a tool.
 
-- `-i, --input`: Input XML file to validate
-- `-s, --schematron`: Schematron file (ISO Schematron format)
-- `-d, --dump-xslt`: Optional - write the internal/generated XSLT to this file for debugging
+### Usage Examples
 
-## Examples
+#### Basic validation
 
-### Basic validation
 ```bash
 python check_schematron.py -i example.xml -s generated/schematrons/ch-profile_export_timetable_file.sch
 ```
 
-### Validation with XSLT dump
+#### Validation with XSLT dump
 ```bash
 python check_schematron.py -i example.xml -s generated/schematrons/ch-profile_export_timetable_file.sch --dump-xslt debug.xslt
 ```
@@ -49,11 +61,8 @@ The tool outputs:
 
 ## Typical Workflow
 
-1. Generate Schematron files in the `generated/schematrons` directory
-2. Run validation on your XML files:
-   ```bash
-   ./run.sh
-   ```
+1. Run `schematron_builder` tool to generate Schematron files in the `site/schematrons` directory
+2. Run `check_schematron` tool to validate your XML files
 3. For testing, use the test script:
    ```bash
    ./test_run.sh

@@ -22,7 +22,7 @@ f
 
 ### Build tools with uv
 
-The recommended way is to [build the tools with uv] (../README.md#how-to-setup-and-run-the-build).
+The recommended way is to [build the tools with uv](../README.md#how-to-setup-and-run-the-build).
 
 ### Individual installation
 
@@ -42,7 +42,7 @@ The tool can be run in two different modes:
 The default behavior is, that it looks for template files with prefix 'ch_profile_' in the 
 input folder (templates folder) and creates schematron files from them.
 
-In order to get a detailed usage message, Run the tool with option `-h` or `--help`:
+In order to get a detailed usage message, run the tool with option `-h` or `--help`:
 ```bash
 python schematron_builder.py -h
 ```
