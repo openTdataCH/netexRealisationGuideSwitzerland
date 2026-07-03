@@ -4,7 +4,10 @@ A tool for extracting XML snippets from NeTEx templates with special comment ann
 
 ## Overview
 
-The `build_xml_snippets.py` tool extracts XML snippets from templates that contain special comment markers (`<!-- ch-root -->`). It removes most ch-annotations while preserving important documentation and excluding elements marked as forbidden or ignored.
+The `xml_snippets.py` tool extracts XML snippets from templates that contain special comment markers (`<!-- ch-root -->`). 
+
+It removes most ch-annotations while preserving important documentation and excluding elements marked 
+as forbidden or ignored.
 
 ## Features
 
@@ -17,7 +20,17 @@ The `build_xml_snippets.py` tool extracts XML snippets from templates that conta
 
 ## Installation
 
-No special installation required. The tool requires Python 3 and the `lxml` library:
+### Build tools with uv
+
+The recommended way is to [build the tools with uv](../README.md#how-to-setup-and-run-the-build).
+
+#### Tools script
+
+The tools build installs a wrapper script `xml-snippets` to `.venv/bin`.
+
+### Individual installation
+
+The tool requires Python 3 and the `lxml` library:
 
 ```bash
 pip install lxml
@@ -25,40 +38,28 @@ pip install lxml
 
 ## Usage
 
-### Basic Usage
-
+In order to get a detailed usage message, run the tool with option `-h` or `--help`:
 ```bash
-python build_xml_snippets.py -i INPUT_FOLDER -o OUTPUT_FOLDER
+python xml_snippets.py -h
 ```
+Or, with installed script:
+```bash
+xml-snippets -h
+```
+See [the tools README](../README.md#how-to-run-a-tool) about how to run a tool.
 
-### Example
+### Usage Example
 
 ```bash
 python build_xml_snippets.py -i ../../templates -o ../../site/xml-snippets
 ```
 
-This will process all XML files in the `templates` folder and generate cleaned XML snippets in the `site/xml-snippets` folder.
-
-### Batch Processing
-
-To process all templates in a directory:
-
+Or, with installed tool script, just:
 ```bash
-# On Windows
-for %%f in (templates\*.xml) do (
-    python build_xml_snippets.py -i templates -o site/xml-snippets
-)
-
-# On Linux/Mac
-for f in templates/*.xml; do
-    python build_xml_snippets.py -i templates -o site/xml-snippets
- done
+xml-snippets
 ```
 
-## Command Line Arguments
-
-- `-i, --input` (required): Input folder containing XML templates
-- `-o, --output` (required): Output folder for XML snippet files
+This will process all XML files in the `templates` folder and generate cleaned XML snippets in the `site/xml-snippets` folder.
 
 ## Input Format
 
@@ -88,7 +89,7 @@ The tool generates cleaned XML snippets:
 </Element>
 ```
 
-## Example
+## Example Files
 
 **Input template:**
 ```xml
@@ -129,7 +130,7 @@ The tool provides informative error messages for:
 
 To modify the tool:
 
-1. Edit `build_xml_snippets.py`
+1. Edit `xml_snippets.py`
 2. Test with sample templates
 3. Add new features as needed
 

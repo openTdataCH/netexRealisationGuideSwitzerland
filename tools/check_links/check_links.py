@@ -5,8 +5,7 @@ Check relative links in markdown files and warn if target files don't exist.
 import os
 import re
 import argparse
-from tools.configuration import DOCS_DIR, PROJECT_DIR
-
+from tools.configuration import DOCS_DIR
 
 def check_markdown_links(docs_folder):
     """Check all relative links in markdown files."""
