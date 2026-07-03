@@ -3,10 +3,10 @@ import shutil
 from pathlib import Path
 
 from tools.configuration import DOCS_DIR, SITE_DIR, XSD_FILE_PATH, SITE_TABLES_DIR, TEMPLATES_DIR, JEKYLL_DIR, \
-    SITE_XML_SNIPPETS_DIR, SITE_TEMPLATES_DIR, SITE_SCHEMATRON_DIR
+    SITE_XML_SNIPPETS_DIR, SITE_TEMPLATES_DIR, SITE_SCHEMATRON_DIR, TEMPLATES_PREFIX
 from tools.expand_docs.expand_docs import expand_docs
 from tools.md_builder.md_builder import build_markdown_tables
-from tools.schematron_builder.template2schematron import generate_all_schematrons
+from tools.schematron_builder.schematron_builder import generate_all_schematrons
 from tools.xml_snippets.build_xml_snippets import generate_all_snippets
 
 def clean(dir: str):
@@ -32,7 +32,7 @@ def generate_xml_snippets():
     generate_all_snippets(TEMPLATES_DIR, SITE_XML_SNIPPETS_DIR)
 
 def generate_schematrons():
-    generate_all_schematrons(TEMPLATES_DIR, SITE_SCHEMATRON_DIR, XSD_FILE_PATH, 'PublicationDelivery')
+    generate_all_schematrons(TEMPLATES_DIR, TEMPLATES_PREFIX, SITE_SCHEMATRON_DIR, XSD_FILE_PATH, 'PublicationDelivery')
 
 def generate_docs():
     expand_docs(DOCS_DIR, SITE_DIR)

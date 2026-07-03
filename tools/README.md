@@ -24,6 +24,17 @@ The following tools are used to generate target files from sources:
 | [xml_snippets](xml_snippets/README.md)       | Python | `src/templates` | `site/xml-snippets` | **Extracts XML Snippets** from templates.                                                                                               |
 | [pycore](pycore/README.md)             | xquery | -               | -                   | **Generates Markdown tables** from a XSD schema.                                                                                        |
 
+## How to run a tool
+
+Depending on your installation, a tool may be run in one of these ways:
+
+| Mode        | Command                               |
+|-------------|---------------------------------------|
+| Python      | `python schematron_builder.py`        |
+| uv (file)   | `uv run python schematron_builder.py` |
+| uv (module) | `uv run python -m schematron_builder` |
+| Script      | `schematron-builder`                  |
+
 ## General rules applying to all tools
 
 - Default input folders and/or output folders are used if folders are not explicitly given (not all tools yet).
