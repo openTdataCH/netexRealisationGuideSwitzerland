@@ -13,7 +13,16 @@ This tool generates markdown documentation tables from annotated NeTEx XML templ
 
 ## Installation
 
-Requires Python 3.6+ and the following packages:
+### Build tools with uv
+
+The recommended way is to [build the tools with uv](../README.md#how-to-setup-and-run-the-build).
+
+#### Tools script
+
+The tools build installs a wrapper script `md-builder` to `.venv/bin`.
+
+### Individual installation
+Requires Python 3.6+ and `lxml`:
 
 ```bash
 pip install lxml
@@ -21,32 +30,22 @@ pip install lxml
 
 ## Usage
 
+In order to get a detailed usage message, run the tool with option `-h` or `--help`:
 ```bash
-python md_builder.py -i <input_folder> -o <output_folder> -x <xsd_file>
+python md_builder.py -h
+```
+Or, with installed script:
+```bash
+md-builder -h
 ```
 
-### Parameters
+See [the tools README](../README.md#how-to-run-a-tool) about how to run a tool.
 
-- `-i, --input`: Input folder containing XML template files
-- `-o, --output`: Output folder for generated markdown files
-- `-x, --xsd`: XSD schema file for type information
+### Usage Example
 
-### Convenience Scripts
-
-The tool includes convenience scripts for batch processing:
-
-**Windows:**
 ```bash
-run.bat
+python md_builder.py -i src -o site
 ```
-
-**Linux/Mac:**
-```bash
-./run.sh
-```
-
-These scripts process all XML templates in the templates directory and generate markdown files in the output directory.
-
 ## Template Annotation Tags
 
 The tool recognizes the following comment tags in XML templates:
@@ -70,7 +69,7 @@ The generated markdown files contain tables with the following columns:
 - **Description**: Description from template notes
 - **Note**: Additional notes from template
 
-## Example
+## Template Example
 
 Given a template like:
 

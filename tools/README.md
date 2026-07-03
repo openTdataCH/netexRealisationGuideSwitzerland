@@ -10,7 +10,7 @@ The following validation tools are used to validate sources (links and xml):
 |------------------------------------------------|--------|---------------|------------------------------------------------------------------------------------------| 
 | [check_links](check_links/README.md)           | Python | `src`         | **Checks relative links** in Markdown files and warns if the target files doesn't exist. |                                    
 | [check_schematron](check_schematron/README.md) | Python | -             | **Validates XML** files against Schematron schemas and reports validation issues.        |
-| [xml_validator](validation/README.md)          | Python | -             | **Validates XML** files or folders against an XSD schema.                                | 
+| [xml_validator](xml_validator/README.md)       | Python | -             | **Validates XML** files or folders against an XSD schema.                                | 
 
 ### Docs Generation Tools
 

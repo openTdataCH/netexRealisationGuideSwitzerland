@@ -7,7 +7,7 @@ from tools.configuration import DOCS_DIR, SITE_DIR, XSD_FILE_PATH, SITE_TABLES_D
 from tools.expand_docs.expand_docs import expand_docs
 from tools.md_builder.md_builder import build_markdown_tables
 from tools.schematron_builder.schematron_builder import generate_all_schematrons
-from tools.xml_snippets.build_xml_snippets import generate_all_snippets
+from tools.xml_snippets.xml_snippets import generate_all_snippets
 
 def clean(dir: str):
     dir_path = Path(dir)
