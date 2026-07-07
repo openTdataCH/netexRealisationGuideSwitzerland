@@ -45,7 +45,7 @@ classDiagram
     StopPlace "1" o-- "1" Centroid : contains
     Quay "1" o-- "1" Centroid : contains
 ```
-
+*Figure: Elements in SiteFrame*
 
 ### Contained Elements
 
@@ -119,11 +119,11 @@ as it parents.
 - If the SLOID for platforms is not unique, it will be formed according to the schema:
 {StopPlace SLOID}_gen:{Quay SLOID}_pf:{Platform Code*}.
 - If no platform SLOID is available {StopPlace SLOID}_gen:missingSLOID_pf:{Platform Code*} will be used instead.
-- 👉 Please note: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.
+- >NB: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.
 - id-attribute needs to be kept stable between exports.
 
 
-In the table below you will find an overview of the possible cases. For more information on SLOID, see [Swiss Location Identification (SLOID) | öv-info.ch](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid "https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid")
+In the table below you will find an overview of the possible cases. For more information on SLOID, see [Swiss Location Identification (SLOID)  öv-info.ch](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid "https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid").
 
 | Case | id | sloid in Key/Value, PrivateCode |
 | -- | --|--|
@@ -133,7 +133,9 @@ In the table below you will find an overview of the possible cases. For more inf
 | non platform SLOID | ch:1:sloid:1102381_gen:missingSLOID_pf:1 | |
 | No Sloid (abroad) | 8029701_gen_missingSLOID_pf:1 | |
 
-QUAYs are mapped with the following resolution: 
+*Table: SLOID and id in NeTEx*
+
+`Quay`s are mapped with the following resolution: 
 - No hierarchy between the different definitions of quays is foreseen at the moment 
 - All combinations between sectors of the same quay are considered as independent quays. 
 - Combinations of several quays are considered as independent quays. 
@@ -181,7 +183,7 @@ It provides precise geographic coordinates (WGS84) of a central reference point 
 *→ [Template](./templates/Centroid.xml)*
 
 ### Usage Notes
-The `Centroid` always contains a location. 
+- The `Centroid` always contains a location. 
 - The main coordinates are given as WGS84.
 - Required accuracy 4+ decimal positions.
 - The Swiss coordinates are added as well, when available (for Swiss stops). The format is LV95. For imports they are not needed, however.
