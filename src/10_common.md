@@ -13,7 +13,7 @@ In this chapter:
 - [AlternativeText](#alternativetext)
 - [ResourceFrame](#resourceframe)
   - [ResponsibilitySet](#responsibilityset)
-  - [TypeOfValue / Valuesets](#typeofvalue--valuesets)
+  - [TypeOfValue / Valuesets](#typeof--valueset)
     - [TypeOfProductCategory](#typeofproductcategory)
     - [TypeOfService](#typeofservice)
   - [Organisation / Operator / Authority](#organisation--operator--authority)
@@ -25,13 +25,13 @@ In this chapter:
 
 The following rules apply to common attributes:
 
-| Attribute              | Rule                                                        |
-|------------------------|-------------------------------------------------------------|
-| `id`                   | See description regarding [technical IDs](#ids) below       |
-| `version`              | is always set to `"1"`                                      |
-| `responsibilitySetRef` | We use `responsibilitySetRef` in the following elements xxx |
-| `nameOfClass`          | We use `nameOfClass` in the XXXRef elements.                |
-| `versionRef`| is always set to `"1"`. Is used, when the element can't be referenced directly, because it is in a different file. This is in our files true for the INTERCHANGE file. 
+| Attribute              | Rule                                                                                                                                                                   |
+|------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `id`                   | See description regarding [technical IDs](#ids) below                                                                                                                  |
+| `version`              | is always set to `"1"`                                                                                                                                                 |
+| `responsibilitySetRef` | We use `responsibilitySetRef` in the following elements xxx                                                                                                            |
+| `nameOfClass`          | We use `nameOfClass` in the XXXRef elements.                                                                                                                           |
+| `versionRef`           | is always set to `"1"`. Is used, when the element can't be referenced directly, because it is in a different file. This is in our files true for the INTERCHANGE file. |
 
 ### IDs
 IDs must be globally unique during importation (in the `id`-attribute). 
@@ -101,7 +101,7 @@ Holds default values for certain basic parameters.
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/FrameDefaults.md)
 
-*→ [General NeTEx definition](../generated/netex-html/FrameDefaults.html)*
+*→ [General NeTEx definition](../site/netex-html/FrameDefaults.html)*
 
 ### Example
 
@@ -126,7 +126,7 @@ For all other alternative texts use `AlternativeText`.
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/AlternativeName.md)
 
-*→ - [General NeTEx definition](../generated/netex-html/AlternativeName.html)*
+*→ - [General NeTEx definition](../site/netex-html/AlternativeName.html)*
  
 ### Example
 - [XML Snippet](../site/xml-snippets/AlternativeName.xml)
@@ -150,14 +150,14 @@ The `AlternativeText` is a generic way to provide an alternative text (translati
 
 
 ### Table
-- [Swiss profile NeTEx definition](../site/tables/AlternativeText.md)
+- [Swiss profile NeTEx definition](../site/tables/AlternativeText_deprecated.md)
 
-*→ - [General NeTEx definition](../generated/netex-html/AlternativeText.html)*
+*→ - [General NeTEx definition](../site/netex-html/AlternativeText.html)*
  
 ### Example
-- [XML Snippet](../site/xml-snippets/AlternativeText.xml)
+- [XML Snippet](../site/xml-snippets/AlternativeText_deprecated.xml)
 
-*→ - [Template](./templates/AlternativeText.xml)*
+*→ - [Template](./templates/AlternativeText_deprecated.xml)*
 
 ## Usage Notes
 
@@ -193,7 +193,7 @@ See the following class diagram for the most important objects of the RESOURCE F
 ## Table
 - [Swiss profile NeTEx definition](../site/tables/ResourceFrame.md)
 
-*→ - [General NeTEx definition](../generated/netex-html/ResourceFrame.html)*
+*→ - [General NeTEx definition](../site/netex-html/ResourceFrame.html)*
 
 ## Example
 - [XML Snippet](../site/xml-snippets/ResourceFrame.xml)
@@ -223,7 +223,7 @@ We use this element to  describe the different roles of the participating compan
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ResponsibilitySet.md)
 
-*→ - [General NeTEx definition](../generated/netex-html/ResponsibilitySet.html)*
+*→ - [General NeTEx definition](../site/netex-html/ResponsibilitySet.html)*
 
 ### Example
 - [XML Snippet](../site/xml-snippets/ResponsibilitySet.xml)

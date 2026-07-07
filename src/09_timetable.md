@@ -183,14 +183,14 @@ Actually there is only one allowed value that we use in the Swiss profile: Only 
 Long-term planned time data concerning public transport vehicles passing a particular `PointInJourneyPattern` on a specified vehicle journey for a certain `DayType`. 
 
 ### Table
-- [Swiss profile NeTEx definition](../site/tables/TimetabledPassingTime.md)
+- [Swiss profile NeTEx definition](../site/tables/TimetabledPassingTime_deprecated.md)
 
 *→ [General NeTEx definition ](../generated/netex-html/TimetabledPassingTime.html)*
 
 ### Example
-- [Example snippet](../site/xml-snippets/TimetabledPassingTime.xml)
+- [Example snippet](../site/xml-snippets/TimetabledPassingTime_deprecated.xml)
 
-*→ [Template](./templates/TimetabledPassingTime.xml)*
+*→ [Template](./templates/TimetabledPassingTime_deprecated.xml)*
 
 ### Usage Notes
 - Note that for journeys lasting more than one day, `DayOffset` is available.

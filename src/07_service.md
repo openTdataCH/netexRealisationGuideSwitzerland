@@ -8,7 +8,7 @@ In this chapter:
 - [DestinationDisplay](#destinationdisplay)
 - [ScheduledStopPoint](#scheduledstoppoint)
 - [PassengerStopAssignment](#passengerstopassignment)
-- [PassengerBoardingPositionAssignment](**TODO** #80)
+- LATER PassengerBoardingPositionAssignment
 - [DefaultConnection](#defaultconnection)
 - [SiteConnection](#siteconnection)
 - [TimingLink](#timinglink)
@@ -351,7 +351,7 @@ at a `ScheduledStopPoint` (via `JourneyWaitTime`, referencing the
 different traffic or dwell conditions (e.g. peak vs. off-peak).
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TimeDemandType.md)
+- [Swiss profile NeTEx definition](../site/tables/TimeDemandType.md)
 
 *-> [General NeTEx definition](../generated/netex-html/TimeDemandType.html)*
 

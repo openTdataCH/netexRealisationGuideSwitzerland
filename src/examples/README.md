@@ -2,9 +2,9 @@
 This  folder contains the relevant examples for the realisation guide 2.0 based on NeTEX 2.0.
 
 
-### Basic train with PassingTime
+### Basic train with TimeDemandType
 Example of a normal rail journey train Spiez - Interlaken Ost with various quay combinations.
-
+> **TODO** needs to be done
 [Link to example](NeTEx_Spiez_Interlaken_Ost_PassingTime.xml)
 
 ### Basic bus
@@ -46,7 +46,7 @@ This example shows the usage of ServiceFacilities. It also shows when the Servic
 - not available on all operating days
 - is restricted to a part of the journey (here the bistro is not open between Olten and Zürich)
 
-[Link to example](NeEX_CH_Bern_Olten_ZuerichHB_Winterthur_StGallen_with_Facilities.xml)
+[Link to example](NeTEX_CH_Bern_Olten_ZuerichHB_Winterthur_StGallen_with_Facilities.xml)
 
 
 ## Using a platform for a train

@@ -64,7 +64,6 @@ The build builds the tools and runs them to create the generated documents in th
 3. Install the [build module](#install-build-module)
 4. [Run the build]()
 
-For more information about the build framework, see [Build Automation](#build-automation).
 
 ### Install the uv package manager
 
@@ -196,7 +195,7 @@ Components of the build automation:
 
 ### Github Action pages.yaml
 
-The Github Action [pages.yaml](../.github/pages.yaml) runs the script [build.sh](./build.sh) (can also be tested locally) 
+The Github Action [pages.yaml](../.github/workflows/pages.yaml) runs the script [build.sh](./build.sh) (can also be tested locally) 
   - Triggered after commits to main branch (e.g. after the merge of a branch)
   - Runs the build via the `python -m build` mechanism 
   - Generates static html pages with [Jekyll](../jekyll/JEKYLL-README.md)
