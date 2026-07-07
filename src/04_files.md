@@ -57,6 +57,8 @@ class INTERCHANGE {
     ServiceJourneyInterchanges : ServiceJourneyInterchange
 }
 ```
+*Figure: Elements per file type*
+
 STOP_OFFER:
 * Contains everything related to stops
 * Later accessibility
