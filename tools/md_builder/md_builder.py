@@ -379,8 +379,7 @@ def parse_template_file(file_path, xsd_type_info):
                 break
         
         # If no ch-root found, check if this is a ch-profile template
-        # ch-profile templates may have comments at root level
-        has_ch_see = any('ch-see' in (comment.text.strip() if comment.text else '') 
+        has_ch_see = any('ch-see' in (comment.text.strip() if comment.text else '')
                                for comment in comments)
         
         if not root_element and has_ch_see is not None:
@@ -460,7 +459,7 @@ def parse_template_file(file_path, xsd_type_info):
             # Determine sub level markers - use + for indentation
             sub_markers = ''
             if level > 0:
-                sub_markers = '+' * level
+                sub_markers = '>' * level
             
             # Keep note separate from description
             # description = note  # REMOVED: This was incorrectly using note as description
