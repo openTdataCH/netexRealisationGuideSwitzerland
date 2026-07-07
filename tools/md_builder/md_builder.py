@@ -93,7 +93,8 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
                 if annotation is not None:
                     doc = annotation.find('xs:documentation', namespaces=ns)
                     if doc is not None and doc.text:
-                        type_info[name]['description'] = doc.text.strip()
+                        # Sanitize description to remove newlines
+                        type_info[name]['description'] = sanitize_for_markdown(doc.text)
                 
                 # Extract elements within this complex type
                 for element in complex_type.findall('.//xs:element', namespaces=ns):
@@ -109,7 +110,8 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
                         if elem_annotation is not None:
                             elem_doc = elem_annotation.find('xs:documentation', namespaces=ns)
                             if elem_doc is not None and elem_doc.text:
-                                elem_description = elem_doc.text.strip()
+                                # Sanitize description to remove newlines
+                                elem_description = sanitize_for_markdown(elem_doc.text)
                         
                         type_info[name]['elements'][elem_name] = {
                             'type': elem_type,
@@ -129,7 +131,8 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
                 if annotation is not None:
                     doc = annotation.find('xs:documentation', namespaces=ns)
                     if doc is not None and doc.text:
-                        type_info[name]['description'] = doc.text.strip()
+                        # Sanitize description to remove newlines
+                        type_info[name]['description'] = sanitize_for_markdown(doc.text)
         
         # Extract top-level elements
         for element in xsd_root.findall('.//xs:element', namespaces=ns):
@@ -145,7 +148,8 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
                 if annotation is not None:
                     doc = annotation.find('xs:documentation', namespaces=ns)
                     if doc is not None and doc.text:
-                        elem_description = doc.text.strip()
+                        # Sanitize description to remove newlines
+                        elem_description = sanitize_for_markdown(doc.text)
                 
                 type_info[name] = {
                     'type': elem_type,
@@ -163,6 +167,18 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
     except Exception as e:
         print(f"Error loading XSD: {e}")
         return {}
+
+
+def sanitize_for_markdown(text):
+    """Sanitize text for markdown table cells by replacing newlines with spaces"""
+    if text is None:
+        return ''
+    # Replace all newlines and carriage returns with spaces
+    # Also collapse multiple spaces into single space
+    text = text.replace('\r\n', ' ').replace('\n', ' ').replace('\r', ' ')
+    # Collapse multiple spaces into single space
+    text = ' '.join(text.split())
+    return text
 
 
 def get_cardinality(min_occurs, max_occurs):
@@ -276,10 +292,14 @@ def get_element_metadata(xsd_path, element_name):
                 complex_type = current_element.find('complexType')
                 
             if simple_type is not None:
-                element_type = "inline simpleType"
+                # Try to get the name of the simple type
+                simple_type_name = simple_type.get('name')
+                element_type = simple_type_name if simple_type_name else "inline simpleType"
                 break
             elif complex_type is not None:
-                element_type = "inline complexType"
+                # Try to get the name of the complex type
+                complex_type_name = complex_type.get('name')
+                element_type = complex_type_name if complex_type_name else element.get('name')
                 break
             
             # Follow substitution group
@@ -325,7 +345,7 @@ def get_element_metadata(xsd_path, element_name):
                     
                 if doc is not None and doc.text:
                     if description:
-                        description += " \n" + doc.text.strip()
+                        description += " " + doc.text.strip()
                     else:
                         description = doc.text.strip()
             
@@ -344,7 +364,7 @@ def get_element_metadata(xsd_path, element_name):
         return {
             'cardinality': cardinality,
             'type': element_type,
-            'description': description or ""
+            'description': sanitize_for_markdown(description or "")
         }
         
     except Exception as e:
@@ -382,7 +402,7 @@ def parse_template_file(file_path, xsd_type_info):
         has_ch_see = any('ch-see' in (comment.text.strip() if comment.text else '')
                                for comment in comments)
         
-        if not root_element and has_ch_see is not None:
+        if root_element is not None and has_ch_see is not None:
             # This is a ch-profile template, use root as the element
             root_element = root
         
@@ -425,11 +445,14 @@ def parse_template_file(file_path, xsd_type_info):
             child_comments = element.xpath('comment()')
             is_deprecated = False
             attrs_list = []
+            has_ch_root = False
             
             for comment in child_comments:
                 if comment.text:
                     comment_text = comment.text.strip()
-                    if comment_text.startswith('ch-usage:'):
+                    if comment_text == 'ch-root' or 'ch-root' in comment_text:
+                        has_ch_root = True
+                    elif comment_text.startswith('ch-usage:'):
                         usage = comment_text.replace('ch-usage:', '').strip()
                     elif comment_text.startswith('ch-note:'):
                         note = comment_text.replace('ch-note:', '').strip()
@@ -456,10 +479,10 @@ def parse_template_file(file_path, xsd_type_info):
                 card = get_cardinality(min_occurs, max_occurs)
                 xsd_type = xsd_info.get('type', 'unknown')
             
-            # Determine sub level markers - use + for indentation
+            # Determine sub level markers - use > for indentation
             sub_markers = ''
-            if level > 0:
-                sub_markers = '>' * level
+            if level > 1:
+                sub_markers = '>' * (level - 1)
             
             # Keep note separate from description
             # description = note  # REMOVED: This was incorrectly using note as description
@@ -473,7 +496,8 @@ def parse_template_file(file_path, xsd_type_info):
                     note = 'NOTE: DEPRECATED'
 
             # Skip forbidden and ignored elements from the output
-            if usage.lower() in ['forbidden', 'ignored']:
+            # But NEVER skip the root element (the one with ch-root)
+            if usage.lower() in ['forbidden', 'ignored'] and not has_ch_root:
                 # Process children anyway in case they have different usage
                 if not is_referenced:
                     for child in element:
@@ -537,12 +561,43 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
     # Maintain original document order instead of sorting
     # child_elements.sort(key=lambda x: (x['level'], x['element']))
     
+    # Extract root element name, ch-note, and attributes for caption and pre-table text
+    root_element_name = None
+    root_note = ""
+    root_attributes = []
+    for item in top_level_elements:
+        if item['level'] == 0:
+            root_element_name = item['element']
+            root_note = item.get('note', '')
+            root_attributes = item.get('attributes', [])
+            break
+    
     markdown = f"# {filename}\n\n"
+    
+    # Add root ch-note as text before the table
+    if root_note:
+        markdown += f"{root_note}\n\n"
+    
     markdown += "| Sub | Element | Usage | Card | Type | Description | Note |\n"
     markdown += "|-----|---------|-------|------|------|-------------|------|\n"
     
+    # Add root element attributes if present (they should appear at the top of the table)
+    if root_attributes:
+        for attr in root_attributes:
+            attr_usage = 'mandatory'  # Attributes from ch-attrs are always mandatory
+            attr_card = '1..1'
+            attr_type = 'xsd:string'  # Default type, could be enhanced with XSD lookup
+            attr_desc = f"Attribute {attr}"
+            # Sanitize description to prevent table breaks from newlines
+            attr_desc = sanitize_for_markdown(attr_desc)
+            markdown += f"|  | @{attr} | {attr_usage} | {attr_card} | {attr_type} | {attr_desc} | |\n"
+    
     # Process top-level elements first
     for item in top_level_elements:
+        # Skip root element (level 0) as it's now in the caption
+        if item['level'] == 0:
+            continue
+        
         sub = item['sub']
         element = item['element']
         usage = item['usage']
@@ -568,13 +623,13 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
             if 'type' in xsd_info:
                 xsd_type = xsd_info['type']
         
-        # Try enhanced metadata extraction if still unknown and we have XSD path
-        if xsd_type == 'unknown' and 'xsd_path' in globals():
+        # Try enhanced metadata extraction if we have XSD path
+        if xsd_path:
             metadata = get_element_metadata(xsd_path, element)
             if metadata:
                 if not card or card == '1..1':
                     card = metadata.get('cardinality', card)
-                if xsd_type == 'unknown':
+                if not xsd_type or xsd_type == 'unknown':
                     xsd_type = metadata.get('type', xsd_type)
                 if not description:
                     description = metadata.get('description', description)
@@ -593,6 +648,9 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         display_note = item.get('note', '')
         # Ensure xsd_type is never None
         display_type = xsd_type if xsd_type and xsd_type != 'None' else 'unknown'
+        # Sanitize description and note to prevent table breaks from newlines
+        description = sanitize_for_markdown(description)
+        display_note = sanitize_for_markdown(display_note)
         markdown += f"| {sub} | {element} | {usage} | {card} | {display_type} | {description} | {display_note} |\n"
     
     # Process attributes
@@ -606,6 +664,9 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         note = item.get('note', '')
         # Ensure xsd_type is never None for attributes
         display_type = xsd_type if xsd_type and xsd_type != 'None' else 'unknown'
+        # Sanitize description and note to prevent table breaks from newlines
+        description = sanitize_for_markdown(description)
+        note = sanitize_for_markdown(note)
         
         markdown += f"| {sub} | {element} | {usage} | {card} | {display_type} | {description} | {note} |\n"
     
@@ -636,6 +697,17 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
             if 'type' in xsd_info:
                 xsd_type = xsd_info['type']
         
+        # Try enhanced metadata extraction if we have XSD path
+        if xsd_path:
+            metadata = get_element_metadata(xsd_path, element)
+            if metadata:
+                if not card or card == '1..1':
+                    card = metadata.get('cardinality', card)
+                if not xsd_type or xsd_type == 'unknown':
+                    xsd_type = metadata.get('type', xsd_type)
+                if not description:
+                    description = metadata.get('description', description)
+        
         # Handle versionRef -> version conversion for display
         if element.endswith('Ref') and 'versionRef=' in description:
             # Replace versionRef with version in the description
@@ -650,6 +722,9 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         display_note = note if note else ''
         # Ensure xsd_type is never None for child elements
         display_type = xsd_type if xsd_type and xsd_type != 'None' else 'unknown'
+        # Sanitize description and note to prevent table breaks from newlines
+        description = sanitize_for_markdown(description)
+        display_note = sanitize_for_markdown(display_note)
         markdown += f"| {sub} | {element} | {usage} | {card} | {display_type} | {description} | {display_note} |\n"
         
         # Add attributes if present
@@ -659,8 +734,14 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                 attr_card = '1..1'
                 attr_type = 'xsd:string'  # Default type, could be enhanced with XSD lookup
                 attr_desc = f"Attribute {attr}"
+                # Sanitize attribute description to prevent table breaks from newlines
+                attr_desc = sanitize_for_markdown(attr_desc)
                 
                 markdown += f"| {sub} | @{attr} | {attr_usage} | {attr_card} | {attr_type} | {attr_desc} | |\n"
+    
+    # Add table caption below the table
+    if root_element_name:
+        markdown += f"\n*Table: {root_element_name}*\n"
     
     return markdown
 
