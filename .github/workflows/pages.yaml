@@ -32,7 +32,7 @@ jobs:
       # Builds tools and generates md docs under ./site
       - name: Build tools and generate md docs
         run: |
-          ./tools/build.sh
+          bash ./tools/build.sh
 
       # Builds static html web pages with jekyll under ./site
       - uses: ruby/setup-ruby@v1
