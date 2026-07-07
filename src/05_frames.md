@@ -44,6 +44,7 @@ We use the following frames in Switzerland:
 | [ServiceFrame](07_service.md#serviceframe)                           | Contains, among other, the network model with elements such as `Line` and `Route`, the service pattern model with `ScheduledStopPoint` and `JourneyPattern` and `Connection` elements for the topological model of interchanges.       |
 | [ServiceCalendarFrame](08_service_calendars.md#servicecalendarframe) | Contains calendar specific elements like `AvailabilityConditions`, `ServiceCalendar` and `DayType` that are referenced in other frames like the `TimetableFrame`.                                                                      |
 | [TimetableFrame](09_timetable.md#timetableframe)                     | Contains the operational journey definitions with elements like `ServiceJourney`, `PassingTimes`, `ServiceJourneyInterchange` and others.                                                                                              |
+
 *Table: Content of the frames*
 
 > The following frames are **not to be used** in Switzerland:

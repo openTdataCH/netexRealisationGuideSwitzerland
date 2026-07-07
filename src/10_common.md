@@ -33,6 +33,8 @@ The following rules apply to common attributes:
 | `nameOfClass`          | We use `nameOfClass` in the XXXRef elements.                                                                                                                           |
 | `versionRef`           | is always set to `"1"`. Is used, when the element can't be referenced directly, because it is in a different file. This is in our files true for the INTERCHANGE file. |
 
+*Table: Handling of the most used attributes for elements in NeTEx*
+
 ### IDs
 IDs must be globally unique during importation (in the `id`-attribute). 
 They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for "primary" objects we expect object permanence. This is mentioned in the usage note of each element.
@@ -218,6 +220,7 @@ We use this element to  describe the different roles of the participating compan
 |--------------------------------|------------------------------------------------------------------------------------|
 | `EntityLegalOwnership`         | Role of the **concession company** holding the concession for the original service |
 | `Operation`                    | role of the **operator company** responsible for providing the transport service   |
+
 *Table: Allowed StakeholderRoleType*
 
 ### Table
@@ -268,6 +271,7 @@ We use TypeOfValue references in various Frames in objects including:
 | 3           | ~~Gleis-Angabe~~    | Quay and Quay section information. Is no longer used. Is put into Quay.                                                                                                                                                                                          |
 | 10          | Angebot             | Most of the `ServiceFacilitySet` are also transmitted as `Notice`. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to `ServiceFacilitySets`. This `TypeOfNotice` is used to deliver those special cases as Notices. |
 | 11          | ~~Region~~          | Postauto is divided into several regions. Will be omitted. We will add a `privateCodes\PrivateCode` with `type="rn"` to the `ServiceJourney` or `TemplateServiceJourney`.                                                                                       |
+
 *Table: Allowed TypeOfNotice in Switzerland*
 
 The following snippet is **all** that is defined for `TypeOfNotice`:

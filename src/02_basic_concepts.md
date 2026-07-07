@@ -91,6 +91,8 @@ graph TD
 
 
 ```
+*Core elements for timetables in NeTEx*
+
 Notes:
 * Every `ServiceJourney` belongs to one Line and has one `Operator`. Some more information can be stored in associated `ResponsibilitySet`s (difference between operator and legal "owner"). 
 * The pattern of the stops is defined in a `ServiceJourneyPattern` with additional details about each stop.
