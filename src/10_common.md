@@ -31,6 +31,7 @@ The following rules apply to common attributes:
 | `version`              | is always set to `"1"`                                      |
 | `responsibilitySetRef` | We use `responsibilitySetRef` in the following elements xxx |
 | `nameOfClass`          | We use `nameOfClass` in the XXXRef elements.                |
+| `versionRef`| is always set to `"1"`. Is used, when the element can't be referenced directly, because it is in a different file. This is in our files true for the INTERCHANGE file. 
 
 ### IDs
 IDs must be globally unique during importation (in the `id`-attribute). 
@@ -174,7 +175,7 @@ Alternative names (translations or aliases) of a `StopPlace` or `Organisation` a
 *→ [Glossary definition](A4_annex_glossary.md#resourceframe)*
 
 ## Purpose
-Contains shared resources used / referenced in other frames - organisations (`Authoritiy`s and `Operator`s), `VehicleType`s, codespaces, and other common reference data.
+Contains shared resources used / referenced in other frames - organisations (`Operator`s), `VehicleType`s, codespaces, and other common reference data.
 
 See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
 
@@ -217,6 +218,7 @@ We use this element to  describe the different roles of the participating compan
 |--------------------------------|------------------------------------------------------------------------------------|
 | `EntityLegalOwnership`         | Role of the **concession company** holding the concession for the original service |
 | `Operation`                    | role of the **operator company** responsible for providing the transport service   |
+*Table: Allowed StakeholderRoleType*
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ResponsibilitySet.md)
@@ -234,10 +236,10 @@ Services (e.g. replacement services) can be associated with different roles. The
 Only the values defined below are allowed in Switzerland for `StakeholderRoleType` in `ResponsbilityRoleAssignment`:
 -	`Operation`
 -	`EntityLegalOwnership`
+
+We might add at some point:
 -	`FareManagement`
 -	`Planning`
-
-`FareManagement` and `Planning` are currently not used. Not all roles must be filled.
 
 id-attribute should be kept stable between exports.
 
@@ -266,6 +268,7 @@ We use TypeOfValue references in various Frames in objects including:
 | 3           | ~~Gleis-Angabe~~    | Quay and Quay section information. Is no longer used. Is put into Quay.                                                                                                                                                                                          |
 | 10          | Angebot             | Most of the `ServiceFacilitySet` are also transmitted as `Notice`. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to `ServiceFacilitySets`. This `TypeOfNotice` is used to deliver those special cases as Notices. |
 | 11          | ~~Region~~          | Postauto is divided into several regions. Will be omitted. We will add a `privateCodes\PrivateCode` with `type="rn"` to the `ServiceJourney` or `TemplateServiceJourney`.                                                                                       |
+*Table: Allowed TypeOfNotice in Switzerland*
 
 The following snippet is **all** that is defined for `TypeOfNotice`:
 ``` xml
@@ -420,6 +423,6 @@ A typified vehicle configuration (model or series) defining reusable characteris
 ### Usage Notes
 * We currently use `VehicleType` but not `VehicleModel`.
 * We express accessibility partially through it.
-* See **TODO** excel.
+* See more details in mapping excel.
 
 
