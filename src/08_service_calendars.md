@@ -16,7 +16,7 @@ In this chapter:
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendarframe)*
 
 ### Purpose
-Groups calendar definitions that describe when services operate - `DayType`s, [operating periods, **TODO** we don't define / use OperatingPeriod, do we?] and `DayTypeAssignment`s. Wilfried 10.6.
+Groups calendar definitions that describe **when** services operate. We do this with `AvailabilityCondition` and those are stored here. We also have `DayType`s and `DayTypeAssignment`s for the holidays.. 
 
 See the following class diagram for the most important objects of the `ServiceCalendarFrame` and their relationships to the other frames.
 
@@ -91,6 +91,8 @@ classDiagram
 
 
 ```
+*Figure: Elements of ServiceCalendar and elements with AvailabilityCondition*
+
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceCalendarFrame.md)
 
@@ -102,7 +104,7 @@ classDiagram
 *→ [Template](./templates/ServiceCalendarFrame.xml)*
 
 #### Usage Notes
-- Note that VALIDITY CONDITIONs could be combined and ANDed (all the conditions must be fullfiled at the same time) thanks to the WITH CONDITION REF attribute. We will work with FromDate/ToDate and ValidDayBits of AvailabilityCondition only.
+- Note that `AvailabilityCondition`s could be combined and ANDed (all the conditions must be fulfilled at the same time). We will work with `ValidBetween` and `ValidDayBits` of `AvailabilityCondition only. 
 
 ### AvailabilityCondition
 *→ [Glossary definition](A4_annex_glossary.md#availabilitycondition)*
@@ -121,7 +123,7 @@ Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 *→ [Template](./templates/AvailabilityCondition.xml)*
 
 #### Usage Notes
-- Examples of use of AVAILABILITY CONDITION include ENTRANCEs, EQUIPMENTs, STOP PLACEs, etc.
+- Examples of use of `AvailabilityCondition` include  `ServiceJourney`, `TemplateServiceJourney`, facilities.
 - AvailabilityCondition replaces OperatingDay and OperatingPeriod. Whenever a reference to a VP (“Verkehrsperiode” or operating period in english) is needed, we use an `AvailabilityConditionRef`:
 -	The referenced `AvailabilityCondition`s are centrally stored in the `ServiceCalendarFrame`.
 - The element ValidDayBits directly indicates the days on which some service is provided or not. They are similar to the HRDF bitfields. 

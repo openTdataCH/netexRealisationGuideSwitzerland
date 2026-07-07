@@ -30,7 +30,7 @@ This document describes the way in which the NeTEx standard is specifically appl
 - [Frames used in the profile](05_frames.md)
 - [Site model](06_stops.md)
 - [Service model](07_service.md)
-- [Service Calendar model](07_service.md)
+- [Service Calendar model](08_service_calendars.md)
 - [Timetables](09_timetable.md)
 - [Common building blocks](10_common.md)
 - Special use cases:
