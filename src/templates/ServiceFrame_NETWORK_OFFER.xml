@@ -51,24 +51,20 @@
 						<!-- ch-usage: mandatory -->
 						<ScheduledStopPoint id="sloid_where_possible" version="1">
 							<!-- ch-note: The id of the ScheduledStopPoint is a sloid, when one exists. Otherwisse it contains a gen part. -->
-							<!-- ch-see -->
+							<!-- ch-usage: mandatory -->
+                            <!-- ch-see -->
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
 					<connections>
+                        <!-- ch-usage: forbidden -->
 						<Access id="notUsed" version="none">
-							<!-- ch-usage: forbidden -->
 							<From/>
 							<To/>
 						</Access>
 						<SiteConnection id="generated" version="1">
-							<!-- ch-note: SiteConnection are used only in SITE_OFFER.-->
-							<!-- ch-usage: forbidden -->
-							<!-- ch-see -->
+
 						</SiteConnection>
 						<DefaultConnection id="generated" version="1">
-							<!-- ch-note: DefaultConnection is only used in the SITE_OFFER -->
-							<!-- ch-usage: forbidden-->
-							<!-- ch-see -->
 						</DefaultConnection>
 					</connections>
 					<stopAssignments>
@@ -81,7 +77,6 @@
 					</stopAssignments>
 					<timingLinks>
 						<!-- ch-usage: expected -->
-						<!-- ch-see -->
 						<!-- ch-note: We use TimingLink as the time behaviour between two ScheduledStopPoints -->
 						<TimingLink id="generated" version="1">
 							<!-- ch-note: every different handling of the link needs a different timing link e.g. bus vs tram -->

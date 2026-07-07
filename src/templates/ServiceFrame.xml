@@ -49,25 +49,27 @@
 					</destinationDisplays>
 					<scheduledStopPoints>
 						<!-- ch-note: Swiss ScheduledStopPoint are using the sloid in the id, when possible.-->
-						<!-- ch-usage: mandatory -->
+						<!-- ch-usage: expected -->
 						<ScheduledStopPoint id="sloid_where_possible" version="1">
 							<!-- ch-note: The id of the ScheduledStopPoint is a sloid, when one exists. Otherwisse it contains a gen part. -->
-							<!-- ch-see -->
+							<!-- ch-usage: mandatory -->
+                            <!-- ch-see -->
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
 					<connections>
+                        <!-- ch-usage: expected -->
 						<Access id="notUsed" version="none">
 							<!-- ch-usage: forbidden -->
 							<From/>
 							<To/>
 						</Access>
 						<SiteConnection id="generated" version="1">
-							<!-- ch-note: SiteConnection are used only in the main file and not in timetable files.-->
+							<!-- ch-note: SiteConnection are used only in the SITE_OFFER file and not in NETWORK_OFFER files.-->
 							<!-- ch-usage: expected -->
 							<!-- ch-see -->
 						</SiteConnection>
 						<DefaultConnection id="generated" version="1">
-							<!-- ch-note: DefaultConnection is only used in the site file -->
+							<!-- ch-note: DefaultConnection is only used in the SITE_OFFER file -->
 							<!-- ch-usage: expected-->
 							<!-- ch-see -->
 						</DefaultConnection>
@@ -82,7 +84,6 @@
 					</stopAssignments>
 					<timingLinks>
 						<!-- ch-usage: expected -->
-						<!-- ch-see -->
 						<!-- ch-note: We use TimingLink as the time behaviour between two ScheduledStopPoints -->
 						<TimingLink id="generated" version="1">
 							<!-- ch-note: every different handling of the link needs a different timing link e.g. bus vs tram -->
@@ -101,8 +102,11 @@
 					</journeyPatterns>
 					<timeDemandTypes>
 						<!-- ch-usage: expected -->
-						<!-- ch-see -->
-						<TimeDemandType id="generated" version="1"/>
+						<TimeDemandType id="generated" version="1">
+                            <!-- ch-usage: expected -->
+                            <!-- ch-see -->
+                            <!-- ch-note: TimeDemandType is now the core concept to use for the timing behaviour of ServiceJourney. -->
+                        </TimeDemandType>
 					</timeDemandTypes>
 					<timeDemandTypeAssignments>
 						<TimeDemandTypeAssignment id="generated" version="1"/>

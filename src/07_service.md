@@ -91,6 +91,7 @@ class ServiceJourney {
     PassengerStopAssignment "1" -- "0..1" Quay : references
     PassengerStopAssignment "1" -- "1" ScheduledStopPoint : references
 ```
+*Figure: Elements in service frame* 
 
 ### Contained Elements
 The `ServiceFrame` model comprises among others:
