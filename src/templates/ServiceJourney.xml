@@ -32,6 +32,7 @@
 								<!-- ch-usage: expected -->
 								<PrivateCode type="sjyid">
 									<!-- ch-usage: expected -->
+                                    <!-- ch-attrs: type -->
                                     <!-- ch-note: The following types are possible: sjyid and rn. rn is the used for the Postauto region -->
 									ch:1:sjyid:100001:71707-003
 								</PrivateCode>
@@ -48,13 +49,15 @@
 							</TransportMode>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1">
 								<!-- ch-usage: mandatory -->
+                                <!-- ch-note: relevant elements are defined in the mapping excel. -->
 							</TypeOfProductCategoryRef>
 							<TypeOfServiceRef ref="ch:1:TypeOfService:1" versionRef="1">
 								<!-- ch-usage: optional -->
+                                <!-- ch-note: Should always be ch:1:TypeOfService:1 -->
 							</TypeOfServiceRef>
 							<noticeAssignments>
 								<!-- ch-usage: optional -->
-								<!-- ch-note: The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. -->
+								<!-- ch-note: The complete set of all applicable notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop. -->
 								<NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
 									<!-- ch-usage: optional -->
 									<!-- ch-see -->
@@ -68,24 +71,26 @@
 								<!-- ch-usage: optional -->
 								<OccupancyView id="generated" version="1">
 									<!-- ch-usage: optional -->
+                                    <!-- ch-note: Currently not available -->
 									<!-- ch-see -->
 								</OccupancyView>
 							</occupancies>
 							<ServiceAlteration>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-allowed-enums: planned -->
-								<!-- ch-note: Only the value planned is allowed. We might add the others like cancelled later.-->
+								<!-- ch-note: Only the value planned is allowed. We might add the others like cancelled later. -->
 								planned
 							</ServiceAlteration>
 							<DepartureTime><!-- ch-usage: expected -->06:21:00</DepartureTime>
 							<DepartureDayOffset>
 								<!-- ch-usage: optional -->
+                                <!-- ch-note: 0 for current operating day. Could also be negative. -->
 								0
 							</DepartureDayOffset>
 							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" versionRef="1" nameOfRefClass="ServiceJourneyPattern">
 								<!-- ch-usage: mandatory -->
 								<!-- ch-attrs: nameOfRefClass -->
-								<!-- ch-note: The reference to the ServiceJourneyPattern -->
+								<!-- ch-note: The reference to the ServiceJourneyPattern. -->
 							</JourneyPatternRef>
 							<TimeDemandTypeRef ref="generated" versionRef="1">
 								<!-- ch-usage: mandatory -->
@@ -93,7 +98,7 @@
 							</TimeDemandTypeRef>
 							<VehicleTypeRef ref="ch:1:VehicleType:NF" versionRef="1">
 								<!-- ch-usage: expected -->
-								<!-- ch-note: Mostly used for accessibility information -->
+								<!-- ch-note: Mostly used for accessibility information like NF. Relevant definitions in the mapping excel.-->
 							</VehicleTypeRef>
 							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1">
 								<!--ch-usage: mandatory -->

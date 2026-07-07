@@ -135,7 +135,7 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 
 *→ [General NeTEx definition ](../generated/netex-html/TrainNumber.html)*
 
- ### Example
+### Example
 - [Example snippet](../site/xml-snippets/TrainNumber.xml)
 
 *→ [Template](./templates/TrainNumber.xml)*
@@ -236,7 +236,7 @@ The standard states: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an 
 - id-attribute should be kept stable between exports.
 
 ## InterchangeRule
-> ⚠️ **Deprecated** — `InterchangeRule` is replaced by `ServiceJourneyInterchange` in RG 2.0.  
+> **Deprecated** — `InterchangeRule` is replaced by `ServiceJourneyInterchange` in RG 2.0.  
 > See [uc03 Transfers](uc03_transfers.md) for the current modelling approach.
 
 *→ [Glossary definition](A4_annex_glossary.md#interchangerule)*
