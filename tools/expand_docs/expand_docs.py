@@ -66,8 +66,11 @@ def include_markdown_table(table_file_name: str, base_folder: str):
                     # correct md link target
                     line = TABLE_MD_LINK_TARGET_PATTERN.sub(TABLE_MD_LINK_TARGET_REPLACEMENT,line)
                     table_lines.append(line)
-                elif in_table:
-                    break
+                elif not line.startswith("#"):
+                    # we ignore heading, but keep the rest and add it.
+                    table_lines.append(line)
+                    in_table = False
+
             return '\n'.join(table_lines)
     return table_file_name
 
