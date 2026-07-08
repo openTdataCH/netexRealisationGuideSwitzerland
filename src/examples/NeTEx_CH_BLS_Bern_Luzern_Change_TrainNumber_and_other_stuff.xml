@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 We use a BLS train from Bern to Luzern.
-In Wolhusen it changes the train number to 4487 (was 4387 before)
-In a second modeling we want to model the change in the train number as also shown in the example.
-In this version the train goes to Luzern exactly as shown in the image.
+In Wolhusen it changes the train number to 4487 (was 4357 before).
+Modeled per CH RV 2.0 decision as two ServiceJourneys sharing one
+ServiceJourneyPattern, linked via ServiceJourneyInterchange at Wolhusen.
+The change of train number is NOT modeled via JourneyPart/TrainNumberChange
+(deprecated in the Swiss profile).
 
 VM Nr. 4357
 Bern                    20:36
@@ -19,7 +21,7 @@ Wolhusen		         21:45
 Malters		      21:52  21:52
 Luzern			  22:03       
 -->
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.09" xsi:schemaLocation="http://www.netex.org.uk/netex file:///C:/Users/ue71603/MG_Daten/github/NeTEx1/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
 	<ParticipantRef>BLS</ParticipantRef>
 	<dataObjects>
@@ -33,15 +35,14 @@ Luzern			  22:03
 					<responsibilitySets>
 						<ResponsibilitySet id="ch:1:ResponsibilitySet:BLS-bls-33" version="1">
 							<Name>BLS</Name>
-							<PrivateCode>BLS AG</PrivateCode>
 							<roles>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:1" version="1">
 									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:100015" version="1"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:2" version="1">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:100015" version="1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
@@ -58,7 +59,7 @@ Luzern			  22:03
 						</ValueSet>
 					</typesOfValue>
 					<organisations>
-						<Operator id="ch:1:Operator:33" version="1">
+						<Operator id="ch:1:Operator:100015" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>GO</Key>
@@ -69,7 +70,10 @@ Luzern			  22:03
 									<Value>ch:1:sboid:100015</Value>
 								</KeyValue>
 							</keyList>
-							<PrivateCode>33</PrivateCode>
+							<privateCodes>
+								<PrivateCode type="SBOID">ch:1:sboid:100015</PrivateCode>
+								<PrivateCode type="GO">33</PrivateCode>
+							</privateCodes>
 							<Name>BLS AG</Name>
 							<ShortName>BLS</ShortName>
 						</Operator>
@@ -91,6 +95,10 @@ Luzern			  22:03
 									<Value>ch:1:sloid:7000</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8507000</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<HafasPriority>
 									<Value>4</Value>
@@ -100,8 +108,6 @@ Luzern			  22:03
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Bern</Name>
-							<ShortName lang="de">8507000</ShortName>
-							<PrivateCode>8507000</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.4391308</Longitude>
@@ -123,7 +129,7 @@ Luzern			  22:03
 						</StopPlace>
 						<StopPlace id="ch:1:StopPlace:8202" version="1">
 							<ValidBetween>
-								<FromDate>20205-12-14T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
 							<keyList>
 								<KeyValue>
@@ -135,6 +141,10 @@ Luzern			  22:03
 									<Value>ch:1:sloid:8202</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8508202</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:8202</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<HafasPriority>
 									<Value>4</Value>
@@ -144,7 +154,6 @@ Luzern			  22:03
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Konolfingen</Name>
-							<PrivateCode>8508202</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.6213670</Longitude>
@@ -160,7 +169,7 @@ Luzern			  22:03
 						</StopPlace>
 						<StopPlace id="ch:1:StopPlace:8207" version="1">
 							<ValidBetween>
-								<FromDate>20205-12-14T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
 							<keyList>
 								<KeyValue>
@@ -172,6 +181,10 @@ Luzern			  22:03
 									<Value>ch:1:sloid:8207</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8508207</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:8207</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<HafasPriority>
 									<Value>4</Value>
@@ -181,7 +194,6 @@ Luzern			  22:03
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Langnau_i_Emmental</Name>
-							<PrivateCode>8508207</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.78419743</Longitude>
@@ -197,7 +209,7 @@ Luzern			  22:03
 						</StopPlace>
 						<StopPlace id="ch:1:StopPlace:8208" version="1">
 							<ValidBetween>
-								<FromDate>20205-12-14T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
 							<keyList>
 								<KeyValue>
@@ -209,6 +221,10 @@ Luzern			  22:03
 									<Value>ch:1:sloid:8208</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8508208</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:8208</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<HafasPriority>
 									<Value>4</Value>
@@ -218,7 +234,6 @@ Luzern			  22:03
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Trubschachen</Name>
-							<PrivateCode>8508208</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.78419743</Longitude>
@@ -234,7 +249,7 @@ Luzern			  22:03
 						</StopPlace>
 						<StopPlace id="ch:1:StopPlace:8210" version="1">
 							<ValidBetween>
-								<FromDate>20205-12-14T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
 							<keyList>
 								<KeyValue>
@@ -246,6 +261,10 @@ Luzern			  22:03
 									<Value>ch:1:sloid:8210</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8508210</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:8210</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<HafasPriority>
 									<Value>4</Value>
@@ -255,7 +274,6 @@ Luzern			  22:03
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Escholzmatt</Name>
-							<PrivateCode>8508210</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.9363779</Longitude>
@@ -271,7 +289,7 @@ Luzern			  22:03
 						</StopPlace>
 						<StopPlace id="ch:1:StopPlace:8211" version="1">
 							<ValidBetween>
-								<FromDate>20205-12-14T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
 							<keyList>
 								<KeyValue>
@@ -283,6 +301,10 @@ Luzern			  22:03
 									<Value>ch:1:sloid:8211</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8508211</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:8211</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<HafasPriority>
 									<Value>4</Value>
@@ -292,7 +314,6 @@ Luzern			  22:03
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Schüpfheim</Name>
-							<PrivateCode>88508211</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.78419743</Longitude>
@@ -308,7 +329,7 @@ Luzern			  22:03
 						</StopPlace>
 						<StopPlace id="ch:1:StopPlace:8213" version="1">
 							<ValidBetween>
-								<FromDate>20205-12-14T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
 							<keyList>
 								<KeyValue>
@@ -320,6 +341,10 @@ Luzern			  22:03
 									<Value>ch:1:sloid:8213</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8508213</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:8213</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<HafasPriority>
 									<Value>4</Value>
@@ -329,7 +354,6 @@ Luzern			  22:03
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Entlebuch</Name>
-							<PrivateCode>8508213</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>8.0622897</Longitude>
@@ -345,7 +369,7 @@ Luzern			  22:03
 						</StopPlace>
 						<StopPlace id="ch:1:StopPlace:8215" version="1">
 							<ValidBetween>
-								<FromDate>20205-12-14T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
 							<keyList>
 								<KeyValue>
@@ -357,6 +381,10 @@ Luzern			  22:03
 									<Value>ch:1:sloid:8215</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8508215</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:8215</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<HafasPriority>
 									<Value>4</Value>
@@ -366,7 +394,6 @@ Luzern			  22:03
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Wolhusen</Name>
-							<PrivateCode>8508215</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>8.0797541</Longitude>
@@ -382,7 +409,7 @@ Luzern			  22:03
 						</StopPlace>
 						<StopPlace id="ch:1:StopPlace:8218" version="1">
 							<ValidBetween>
-								<FromDate>20205-12-14T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
 							<keyList>
 								<KeyValue>
@@ -394,6 +421,10 @@ Luzern			  22:03
 									<Value>ch:1:sloid:8218</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8508218</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:8218</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<HafasPriority>
 									<Value>4</Value>
@@ -403,7 +434,6 @@ Luzern			  22:03
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Malters</Name>
-							<PrivateCode>8508218</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>8.1819719</Longitude>
@@ -419,7 +449,7 @@ Luzern			  22:03
 						</StopPlace>
 						<StopPlace id="ch:1:StopPlace:5000" version="1">
 							<ValidBetween>
-								<FromDate>20205-12-14T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
 							<keyList>
 								<KeyValue>
@@ -431,6 +461,10 @@ Luzern			  22:03
 									<Value>ch:1:sloid:5000</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8505000</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:5000</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<HafasPriority>
 									<Value>4</Value>
@@ -440,7 +474,6 @@ Luzern			  22:03
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Luzern</Name>
-							<PrivateCode>8505000</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>8.3101832</Longitude>
@@ -477,134 +510,33 @@ Luzern			  22:03
 					</lines>
 					<scheduledStopPoints>
 						<ScheduledStopPoint id="ch:1:SchedStopPoint:7000" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8507000</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7000</Value>
-								</KeyValue>
-							</keyList>
 							<Name lang="de">Bern</Name>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:SchedStopPoint:8202" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8508202</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:8202</Value>
-								</KeyValue>
-							</keyList>
 							<Name lang="de">Konolfingen</Name>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:SchedStopPoint:8207" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8508207</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:8207</Value>
-								</KeyValue>
-							</keyList>
 							<Name lang="de">Langnau_i_Emmental</Name>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:SchedStopPoint:8208" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8508208</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:8208</Value>
-								</KeyValue>
-							</keyList>
 							<Name lang="de">Trubschachen</Name>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:SchedStopPoint:8210" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8508210</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:8210</Value>
-								</KeyValue>
-							</keyList>
 							<Name lang="de">Escholzmatt</Name>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:SchedStopPoint:8211" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8508211</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:8211</Value>
-								</KeyValue>
-							</keyList>
 							<Name lang="de">Schüpfheim</Name>
-							<ShortName lang="de">1</ShortName>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:SchedStopPoint:8213" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8508213</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:8213</Value>
-								</KeyValue>
-							</keyList>
 							<Name lang="de">Entlebuch</Name>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:SchedStopPoint:8215" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8508215</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:8215</Value>
-								</KeyValue>
-							</keyList>
 							<Name lang="de">Wolhusen</Name>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:SchedStopPoint:8218" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8508218</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:8218</Value>
-								</KeyValue>
-							</keyList>
 							<Name lang="de">Malters</Name>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:SchedStopPoint:5000" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8505000</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:5000</Value>
-								</KeyValue>
-							</keyList>
 							<Name lang="de">Luzern</Name>
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
@@ -660,6 +592,47 @@ Luzern			  22:03
 							<QuayRef ref="ch:1:sloid:5000:3:6" version="1"/>
 						</PassengerStopAssignment>
 					</stopAssignments>
+					<timingLinks>
+						<!-- ch-note: Purely topological links between consecutive stops in the
+						     ServiceJourneyPattern. Carry no run/wait time themselves; times
+						     are attached via TimeDemandType/JourneyRunTime below. -->
+						<TimingLink id="ch:1:TimingLink:7000-8202" version="1">
+							<FromPointRef ref="ch:1:SchedStopPoint:7000" version="1"/>
+							<ToPointRef ref="ch:1:SchedStopPoint:8202" version="1"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:8202-8207" version="1">
+							<FromPointRef ref="ch:1:SchedStopPoint:8202" version="1"/>
+							<ToPointRef ref="ch:1:SchedStopPoint:8207" version="1"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:8207-8208" version="1">
+							<FromPointRef ref="ch:1:SchedStopPoint:8207" version="1"/>
+							<ToPointRef ref="ch:1:SchedStopPoint:8208" version="1"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:8208-8210" version="1">
+							<FromPointRef ref="ch:1:SchedStopPoint:8208" version="1"/>
+							<ToPointRef ref="ch:1:SchedStopPoint:8210" version="1"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:8210-8211" version="1">
+							<FromPointRef ref="ch:1:SchedStopPoint:8210" version="1"/>
+							<ToPointRef ref="ch:1:SchedStopPoint:8211" version="1"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:8211-8213" version="1">
+							<FromPointRef ref="ch:1:SchedStopPoint:8211" version="1"/>
+							<ToPointRef ref="ch:1:SchedStopPoint:8213" version="1"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:8213-8215" version="1">
+							<FromPointRef ref="ch:1:SchedStopPoint:8213" version="1"/>
+							<ToPointRef ref="ch:1:SchedStopPoint:8215" version="1"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:8215-8218" version="1">
+							<FromPointRef ref="ch:1:SchedStopPoint:8215" version="1"/>
+							<ToPointRef ref="ch:1:SchedStopPoint:8218" version="1"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:8218-5000" version="1">
+							<FromPointRef ref="ch:1:SchedStopPoint:8218" version="1"/>
+							<ToPointRef ref="ch:1:SchedStopPoint:5000" version="1"/>
+						</TimingLink>
+					</timingLinks>
 					<journeyPatterns>
 						<ServiceJourneyPattern id="sjp1" version="1">
 							<RouteView>
@@ -720,6 +693,71 @@ Luzern			  22:03
 							</pointsInSequence>
 						</ServiceJourneyPattern>
 					</journeyPatterns>
+					<timeDemandTypes>
+						<!-- ch-note: TimeDemandType for ServiceJourney Bern-Wolhusen (train 4357). -->
+						<TimeDemandType id="ch:1:TimeDemandType:Bern_Wolhusen" version="1">
+							<Name>Bern-Wolhusen 4357</Name>
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:Bern_Wolhusen:1" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:7000-8202" version="1"/>
+									<RunTime>PT16M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:Bern_Wolhusen:2" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:8202-8207" version="1"/>
+									<RunTime>PT13M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:Bern_Wolhusen:3" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:8207-8208" version="1"/>
+									<RunTime>PT6M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:Bern_Wolhusen:4" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:8208-8210" version="1"/>
+									<RunTime>PT7M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:Bern_Wolhusen:5" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:8210-8211" version="1"/>
+									<RunTime>PT7M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:Bern_Wolhusen:6" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:8211-8213" version="1"/>
+									<RunTime>PT6M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:Bern_Wolhusen:7" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:8213-8215" version="1"/>
+									<RunTime>PT9M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+							<waitTimes>
+								<!-- ch-note: WaitTime only where dwell > 0 (arrival != departure). -->
+								<JourneyWaitTime id="ch:1:JourneyWaitTime:Bern_Wolhusen:1" version="1">
+									<TimingPointRef ref="ch:1:SchedStopPoint:8207" version="1"/>
+									<WaitTime>PT1M</WaitTime>
+								</JourneyWaitTime>
+								<JourneyWaitTime id="ch:1:JourneyWaitTime:Bern_Wolhusen:2" version="1">
+									<TimingPointRef ref="ch:1:SchedStopPoint:8208" version="1"/>
+									<WaitTime>PT2M</WaitTime>
+								</JourneyWaitTime>
+								<JourneyWaitTime id="ch:1:JourneyWaitTime:Bern_Wolhusen:3" version="1">
+									<TimingPointRef ref="ch:1:SchedStopPoint:8211" version="1"/>
+									<WaitTime>PT1M</WaitTime>
+								</JourneyWaitTime>
+							</waitTimes>
+						</TimeDemandType>
+						<!-- ch-note: TimeDemandType for ServiceJourney Wolhusen-Luzern (train 4487). -->
+						<TimeDemandType id="ch:1:TimeDemandType:Wolhusen_Luzern" version="1">
+							<Name>Wolhusen-Luzern 4487</Name>
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:Wolhusen_Luzern:1" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:8215-8218" version="1"/>
+									<RunTime>PT7M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:Wolhusen_Luzern:2" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:8218-5000" version="1"/>
+									<RunTime>PT11M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+						</TimeDemandType>
+					</timeDemandTypes>
 				</ServiceFrame>
 				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="1">
 					<validityConditions>
@@ -740,7 +778,8 @@ Luzern			  22:03
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>20:36:00</DepartureTime>
 							<JourneyPatternRef ref="sjp1" version="1"/>
-							<OperatorRef ref="ch:1:Operator:33" version="1"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:Bern_Wolhusen" version="1"/>
+							<OperatorRef ref="ch:1:Operator:100015" version="1"/>
 							<LineRef ref="ch:1:slnid:1024438" version="1"/>
 							<DirectionType>inbound</DirectionType>
 							<trainNumbers>
@@ -749,55 +788,6 @@ Luzern			  22:03
 							<Destination>
 								<Name>Wolhusen</Name>
 							</Destination>
-							<passingTimes>
-								<TimetabledPassingTime id="tpt1" version="1">
-									<PointInJourneyPatternRef ref="spijp1" version="1"/>
-									<DepartureTime>20:36:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt2" version="1">
-									<PointInJourneyPatternRef ref="spijp2" version="1"/>
-									<ArrivalTime>20:52:00</ArrivalTime>
-									<DepartureTime>20:52:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt3" version="1">
-									<PointInJourneyPatternRef ref="spijp3" version="1"/>
-									<ArrivalTime>21:05:00</ArrivalTime>
-									<DepartureTime>21:06:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt4" version="1">
-									<PointInJourneyPatternRef ref="spijp4" version="1"/>
-									<ArrivalTime>21:12:00</ArrivalTime>
-									<DepartureTime>21:14:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt5" version="1">
-									<PointInJourneyPatternRef ref="spijp5" version="1"/>
-									<ArrivalTime>21:21:00</ArrivalTime>
-									<DepartureTime>21:21:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt6" version="1">
-									<PointInJourneyPatternRef ref="spijp6" version="1"/>
-									<ArrivalTime>21:28:00</ArrivalTime>
-									<DepartureTime>21:29:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt7" version="1">
-									<PointInJourneyPatternRef ref="spijp7" version="1"/>
-									<ArrivalTime>21:35:00</ArrivalTime>
-									<DepartureTime>21:35:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt8" version="1">
-									<PointInJourneyPatternRef ref="spijp8" version="1"/>
-									<ArrivalTime>21:44:00</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
-							<parts>
-								<JourneyPart id="jp1" version="1">
-									<!-- we communicate the new TrainNumber and the new Line -->
-									<TrainNumberRef ref="ch:1:TrainNumber:4487" version="1"/>
-									<StartTime>21:45:00</StartTime>
-									<!-- will be switched to PointInJourneyPattern -->
-									<EndTime>22:03:00</EndTime>
-								</JourneyPart>
-							</parts>
 						</ServiceJourney>
 						<ServiceJourney id="ch:1:sjyid:Wolhusen_Luzern:1" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
 							<validityConditions>
@@ -807,7 +797,8 @@ Luzern			  22:03
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>21:45:00</DepartureTime>
 							<JourneyPatternRef ref="sjp1" version="1"/>
-							<OperatorRef ref="ch:1:Operator:33" version="1"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:Wolhusen_Luzern" version="1"/>
+							<OperatorRef ref="ch:1:Operator:100015" version="1"/>
 							<LineRef ref="ch:1:slnid:1024438" version="1"/>
 							<DirectionType>inbound</DirectionType>
 							<trainNumbers>
@@ -816,21 +807,6 @@ Luzern			  22:03
 							<Destination>
 								<Name>Luzern</Name>
 							</Destination>
-							<passingTimes>
-								<TimetabledPassingTime id="tpt9" version="1">
-									<PointInJourneyPatternRef ref="spijp8" version="1"/>
-									<DepartureTime>21:45:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt10" version="1">
-									<PointInJourneyPatternRef ref="spijp9" version="1"/>
-									<ArrivalTime>21:52:00</ArrivalTime>
-									<DepartureTime>21:52:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt11" version="1">
-									<PointInJourneyPatternRef ref="spijp10" version="1"/>
-									<ArrivalTime>22:03:00</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
 						</ServiceJourney>
 					</vehicleJourneys>
 					<trainNumbers>
