@@ -91,7 +91,29 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 - The main connection between DIDOK codes and the NeTEx export are the `ScheduledStopPoints`. They typically have the same `Id` (except for the <Element Name> in the identifier string) as the `StopPlace`. Exceptions are meta stations and local public transport already using assignment to “Haltekanten”. In such cases the `ScheduledStopPoint` is more refined than the DIDOK and UIC codes. 
 - Meta-stations will have their own codes. In some cases these are added for operational or searching reasons. 
 - id-attribute needs to be kept stable between exports.
+- DIDOK number placement:** The DIDOK number is **not** transported as free text anywhere on `StopPlace`. It is placed in `privateCodes/PrivateCode` with `type="Didok"`, **and** the same value must additionally be listed in the `KeyList` (`KeyValue` with matching `Key`). Both are required — the `PrivateCode` for direct lookup, the `KeyList` entry for generic key/value tooling.
+- `ShortName` is not used on `StopPlace`.** In particular, the DIDOK number must **never** be placed in `ShortName` — this was common practice under Profile 1.0 / HRDF-based exports and is explicitly discontinued under RV 2.0.
+- `ValidBetween`:** Every `StopPlace` carries a `ValidBetween` with a `FromDate`. Since `StopPlace` is infrastructure master data (not a timetable-period object), **no `ToDate` is set** — validity is open-ended until a future change is published.
 
+#### Example: DIDOK number and validity on `StopPlace`
+```xml
+<StopPlace id="ch:1:StopPlace:8503000" version="1">
+  <ValidBetween>
+    <FromDate>2026-01-01T00:00:00</FromDate>
+  </ValidBetween>
+  <Name>Zürich HB</Name>
+  <privateCodes>
+    <PrivateCode type="Didok">8503000</PrivateCode>
+  </privateCodes>
+  <keyList>
+    <KeyValue>
+      <Key>Didok</Key>
+      <Value>8503000</Value>
+    </KeyValue>
+  </keyList>
+  <!-- Quays, Centroid, etc. -->
+</StopPlace>
+```
 
 ## Quay
 *→ [Glossary definition](A4_annex_glossary.md#quay)*
@@ -113,11 +135,11 @@ A specific boarding or alighting position (platform, stand, bay) within a `StopP
 - In standard NeTEx, a `Quay` may serve one or more `VehicleStoppingPlace`s and be associated with one or more `StopPoints`s. The Swiss profile does not currently model that.
 - A `Quay` may contain other sub `Quay`s. A child `Quay` must be physically contained within its parent `Quay`.  Furthermore: 
   - A nested `Quay` is always physically contiguous with its parent and so has the same accessibility characteristics 
-as it parents. 
+as its parent. 
   - Nested `Quay`s should not be used to mark individual positions on a platform – `BoardingPosition` serve this function. 
   - Nested `Quay`s and `AccessSpace`s must always be on the same `Level` as their parent (not currently modelled).
 - If the SLOID for platforms is not unique, it will be formed according to the schema:
-{StopPlace SLOID}_gen:{Quay SLOID}_pf:{Platform Code*}.
+{StopPlace SLOID}_gen:{Quay SLOID}_pf:{Platform Code}.
 - If no platform SLOID is available {StopPlace SLOID}_gen:missingSLOID_pf:{Platform Code*} will be used instead.
 - >NB: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.
 - id-attribute needs to be kept stable between exports.
@@ -129,9 +151,9 @@ In the table below you will find an overview of the possible cases. For more inf
 | -- | --|--|
 | Unique track sloid | ch:1:sloid:7000:6:32 | ch:1:sloid:7000:6:32 |
 | Non-unique track sloid | ch:1:sloid:7000_gen:ch:1:sloid:7000:0:349752_pf:2A-D | ch:1:sloid:7000:0:349752 |
-| Non-unique SLOID with special characters "11/12" | ch.1:sloid:6206_gen:ch:1:sloid:6206:0:11_pf:11.12 | ch:1:sloid:6206:0:11 |
+| Non-unique SLOID with special characters "11/12" | ch:1:sloid:6206_gen:ch:1:sloid:6206:0:11_pf:11.12 | ch:1:sloid:6206:0:11 |
 | non platform SLOID | ch:1:sloid:1102381_gen:missingSLOID_pf:1 | |
-| No Sloid (abroad) | 8029701_gen_missingSLOID_pf:1 | |
+| No Sloid (abroad) | 8029701_gen:missingSLOID_pf:1 | |
 
 *Table: SLOID and id in NeTEx*
 
