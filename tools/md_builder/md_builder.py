@@ -482,7 +482,7 @@ def parse_template_file(file_path, xsd_type_info):
             # Determine sub level markers - use > for indentation
             sub_markers = ''
             if level > 1:
-                sub_markers = '>' * (level - 1)
+                sub_markers = '+' * (level - 1)
             
             # Keep note separate from description
             # description = note  # REMOVED: This was incorrectly using note as description
