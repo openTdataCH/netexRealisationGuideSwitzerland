@@ -10,7 +10,7 @@ We will have three different file types:
 * NETWORK_OFFER: lines, routes, timetables
 * INTERCHANGE: interchanges, "Durchbindungen"
 
-The first two are valid according to the XSD. INTERCHANGE only as far as we use `versionRef` intead of `version`.
+The first two are valid according to the XSD. INTERCHANGE only as far as we use `versionRef` instead of `version`.
 
 NETWORK_OFFER is per operator and in some cases per area.
 
@@ -22,21 +22,20 @@ classDiagram
 class STOP_OFFER{
     SiteFrame: SiteFrame
     topographicPlaces: TopographicPlace
-    stopPlaces StopPlace
+    stopPlaces: StopPlace
     quays: Quay
     ServiceFrame: ServiceFrame
     defaultConnections: DefaultConnection
-    siteConnections: SiteConnections
+    siteConnection: SiteConnection
 } 
 
 class NETWORK_OFFER{
     ResourceFrame: ResourceFrame
     operators: Operators
     responsibilitySets: ResponsibilitySets
+    typeOfProductCategory:TypeOfProductCategory
     typesOfNotice: TypeOfNotice
-    typesOfProductCategory:TypesOfProductCategory
-    typesOfNotice: TypeOfNotice
-    ServoceCalendarFrame: ServiceCalendarFrame
+    ServiceCalendarFrame: ServiceCalendarFrame
     vehicleTypes: VehicleType
     dayTypes: DayType 
     ServiceCalendar: ServiceCalendar
@@ -44,12 +43,12 @@ class NETWORK_OFFER{
     detinationDisplays: DestinationDisplay
     ServiceFrame: ServiceFrame
     lines: Line
-    serviceJourneyPatterns: ServiceJourneyPattern
-    ScheduledStopPoint: ScheduldedStopPoint
+    serviceJourneyPattern: ServiceJourneyPattern
+    ScheduledStopPoint: ScheduledStopPoint
     passengerStopAssignments: PassengerStopAssignment
     notices: Notice
     TimetableFrame: TimetableFrame
-    serviceJourneys: ServiceJourneyPattern
+    serviceJourney: ServiceJourneyPattern
     serviceFacilitySets: ServiceFacilitySet
     trainNumbers : TrainNumber
 }
@@ -89,13 +88,13 @@ The name of each XML file is composed of the following information:
 | IT-Environment      | `TEST`                                        |     DEV,TEST,INT,PROD                                                                                                      |
 | Format of the file  | 	`NETEX`                                      | 	NETEX                                                                          |
 | Content of the file | 	`TT`                                         | 	Timetable                                                                                             |
-| Version             | 	 `2.0`                                       | 	Number of the version of the NeTEx .xsd schema                                                        |
+| Version             | 	 `2.1`                                       | 	Number of the version of the NeTEx .xsd schema                                                        |
 | Country	            | `CHE`                                         | ISO code of the country for which the file was produced                                                |
 | Provider	           | `SKI`	                                        | Name of the provider                                                                                   |
-| Time table year	    | `2026`                                        | 	period of he data (always a year for now)                                                             |
-| Name of Export	     | `oev-schweiz`	                                | Defines the scope of the timetable data (e.g. `bernmobil`or for the whole of Switzerland `oev-schweiz` |
+| Time table year	    | `2026`                                        | 	period of the data (always a year for now)                                                             |
+| Name of Export	     | `oev-schweiz`	                                | Defines the scope of the timetable data (e.g. `bernmobil` or for the whole of Switzerland `oev-schweiz` |
 | Type of file        | 	`STOP_OFFER`, `NETWORK_OFFER`, `INTERCHANGE` | 	Describes the content                                                                                 |
-| Date and Time       | `202606101200`                                | 		Datum und Zeit der Produktion des Files Format : YYYYMMDDHHMM                                        |
+| Date and Time       | `202606101200`                                | 		Date and time the file was produced, format: YYYYMMDDHHMM                                        |
 
 Example: `TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_STOP_OFFER_202301250401.xml`
 
@@ -106,16 +105,16 @@ All Files are embedded in a zip-File. The name of the zip-file is composed of th
 | IT-Environment	      | DEV,TEST,INT	 | In the production environment, the prefix PROD is not written in the name                              |
 | Format  of the file	 | `NETEX`	      | Describe the format (NETEX)                                                                            |
 | Content of the file	 | `TT`	         | Describe the content (TimeTable)                                                                       |
-| Version              | `2.0`         | 		Number of the version of the NeTEx .xsd schema                                                       | 
+| Version              | `2.1`         | 		Number of the version of the NeTEx .xsd schema                                                       | 
 | Country	             | `CHE`	        | ISO code of the country for which the file was produced                                                | 
 | Provider	            | `SKI`	        | Name of the provider                                                                                   | 
-| Time period	         | `2026`        | 	Time period of he data                                                                                | 
-| Name of Export	      | `oev-schweiz`	 | Defines the scope of the timetable data (e.g. `bernmobil`or for the whole of Switzerland `oev-schweiz` | 
-| Date and Time	       | `202606131500` | 	Datum und Zeit der Produktion des Files Format : YYYYMMDDHHMM                                         | 
+| Time period	         | `2026`        | 	Time period of the data                                                                                | 
+| Name of Export	      | `oev-schweiz`	 | Defines the scope of the timetable data (e.g. `bernmobil` or for the whole of Switzerland `oev-schweiz` | 
+| Date and Time	       | `202606131500` | 	Date and time the file was produced, format: YYYYMMDDHHMM                                         | 
 
-Example :`TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ__202602010402.zip`
+Example :`TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_202602010402.zip`
 
-# Zip structure
+## Zip structure
 All files in a delivery are zipped into a single one according to the name structure above.
 
 
@@ -130,7 +129,7 @@ The data transfer will be defined by INFO+. A version of the full swiss data wil
 ## File sent by data provider to SKI 
 We suggest that the partner name consists of the short name of the partner and necessary additions to identify the system. In addition, the number of the timetable period is to be indicated in the name, as well as the date and time of creation of the file
 
-Examples.: `test_zvv_2024_20231112_095217.zip`, `prod_tl_2024_20231114_152836.zip`
+Examples: `test_zvv_2024_20231112_095217.zip`, `prod_tl_2024_20231114_152836.zip`
 
 The file name must be agreed on between the data provider and SKI. Generally it is agreed that delivery can be on network, operator or line base.
 
