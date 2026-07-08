@@ -32,6 +32,8 @@ jobs:
       # Builds tools and generates md docs under ./site
       - name: Build tools and generate md docs
         run: |
+          git submodule init
+          git submodule update
           bash ./tools/build.sh
 
       # Builds static html web pages with jekyll under ./site
