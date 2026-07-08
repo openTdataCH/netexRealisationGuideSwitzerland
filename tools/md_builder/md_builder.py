@@ -170,9 +170,11 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
 
 
 def sanitize_for_markdown(text):
-    """Sanitize text for markdown table cells by replacing newlines with spaces"""
+    """Sanitize text for markdown table cells by escaping pipes and replacing newlines with spaces"""
     if text is None:
         return ''
+    # Escape pipe characters to prevent breaking markdown tables
+    text = text.replace('|', '\\|')
     # Replace all newlines and carriage returns with spaces
     # Also collapse multiple spaces into single space
     text = text.replace('\r\n', ' ').replace('\n', ' ').replace('\r', ' ')
@@ -479,7 +481,7 @@ def parse_template_file(file_path, xsd_type_info):
                 card = get_cardinality(min_occurs, max_occurs)
                 xsd_type = xsd_info.get('type', 'unknown')
             
-            # Determine sub level markers - use > for indentation
+            # Determine sub level markers - use + for indentation
             sub_markers = ''
             if level > 1:
                 sub_markers = '+' * (level - 1)
