@@ -1,16 +1,21 @@
-# Common Building Blocks
+# Common Elements and Rules
 
-This chapter deals with the elements, attributes, formats and types that are commonly used.
+This chapter has two parts. First, it states important rules to observe (e.g., regarding attributes and date / time formats). Second, it lists the "common" elements that are used by different frames. This in particular includes the `ResourceFrame` and all its elements as it is a container holding data that can be referred to from multiple other frames.
 
 In this chapter:
-- [Rules for common Attributes ](#rules-for-common-attributes)
-  - [Rules for IDs](#ids)
-- Common Types
-  - [MultilingualString](#multilingualstring)
-- [FrameDefaults](#framedefaults)
+
+[Rules to Observe](#rules-to-observe)
+- [Attributes](#attributes)
+  - [IDs](#ids)
+  - [Version](#version)
+- [FromDate and ToDate](#fromdate-and-todate)
 - [Time formatting and journey after midnight](#time-formatting-and-journey-after-midnight)
+
+[Common Elements and Types](#common-elements-and-types)
 - [AlternativeName](#alternativename)
 - [AlternativeText](#alternativetext)
+- [MultilingualString](#multilingualstring)
+- [FrameDefaults](#framedefaults)
 - [ResourceFrame](#resourceframe)
   - [ResponsibilitySet](#responsibilityset)
   - [TypeOfValue / Valuesets](#typeof--valueset)
@@ -21,7 +26,9 @@ In this chapter:
   - [SiteFacilitySet](#servicefacilityset)
   - [VehicleType](#vehicletype)
 
-## Rules for common Attributes
+## Rules to Observe
+
+###  Attributes
 
 The following rules apply to common attributes:
 
@@ -35,7 +42,7 @@ The following rules apply to common attributes:
 
 *Table: Handling of the most used attributes for elements in NeTEx*
 
-### IDs
+#### IDs
 IDs must be globally unique during importation (in the `id`-attribute). 
 They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for "primary" objects we expect object permanence. This is mentioned in the usage note of each element.
 Important business level keys are stored in elements (`KeyList`, `privateKeys/PrivateKey`)in addition to the IDs.
@@ -51,7 +58,7 @@ where the value of `ShortName` of the `TypeOfProductCategory` is used to build t
 
 All other defined attributes like `created`, `changed`, `modification` are not used. If we need one, we will inform about it in the table associated with the element.
 
-### Version
+#### Version
 We will use `version="1"` in Switzerland. In some cases we use `versionRef="1"` instead, when the referenced object is not in the same file in references (`XXXRef`-elements). We no longer use `any` and expect to remove that semantic if possible. Also, the version (or versionRef) always must be present.
 
 
@@ -62,106 +69,65 @@ The dates we have are always operating days. Nevertheless, we use
 
 to describe a single day.
 
-### MultilingualString
-*→ [Glossary definition](A4_annex_glossary.md#multilingualstring)*
 
-
-#### Example
-
-```xml
-<Name lang="de">Train Express Regional
-  <Text lang="it">Train Express Regional</Text>
-  <Text lang="en">Train Express Regional</Text>
-  <Text lang="fr">Train Express Regional</Text>
-</Name>
-```
-#### Purpose
-
-NeTEx uses the type `MultilingualString` for descriptive text elements (e.g. `Notice` text, `Name`, `ShortName` etc.).
-However, only one language can be set for a given element (e.g. `<MultilingualString lang=”fr”>`). 
-Additional languages are introduced through the [AlternativeName](#alternativename) and [AlternativeText](#alternativetext) element.
-
-
-#### Usage Notes
-
-- For [Organisations](#organisation--operator--authority) e.g. there are all languages present.
-- The `StopPlace` names in Switzerland are language-independent.
-
-## Time Formatting and Journey after Midnight
+### Time Formatting and Journey after Midnight
 
 The time format consists only of the hours, minutes (and seconds) of a 24-hour clock, e.g. `23:55:00`. 
 
 Times that pass midnight of the current `OperatingDay` are marked with a `DayOffset` element. 
 If a `ServiceJourney` (in a particular `Call`) runs over midnight, then `DayOffset` must be set to `1`.
 
-## FrameDefaults
-*→ [Glossary definition](A4_annex_glossary.md#framedefaults)*
 
-### Purpose
-Holds default values for certain basic parameters. 
+## Common Elements and Types
 
-### Table
-- [Swiss profile NeTEx definition](../site/tables/FrameDefaults.md)
-
-*→ [General NeTEx definition](../site/netex-html/FrameDefaults.html)*
-
-### Example
-
-- [XML Snippet](../site/xml-snippets/FrameDefaults.xml)
-
-*→ [Template](./templates/FrameDefaults.xml)*
-
-### Usage Notes
-For values not set in `FrameDefaults` we use the values as indicated in the table and example above.
-
-## AlternativeName
+### AlternativeName
 
 *→ [Glossary definition](A4_annex_glossary.md#alternativetext)*
 
-### Purpose
+#### Purpose
 
 `AlternativeName` is used to provide an alternative (alias or translation) of a name, e.g. of 
 a `StopPlace` or `Organisation`. 
 
 For all other alternative texts use `AlternativeText`.
 
-### Table
+#### Table
 - [Swiss profile NeTEx definition](../site/tables/AlternativeName.md)
 
 *→ - [General NeTEx definition](../site/netex-html/AlternativeName.html)*
  
-### Example
+#### Example
 - [XML Snippet](../site/xml-snippets/AlternativeName.xml)
 
 *→ - [Template](./templates/AlternativeName.xml)*
 
-### Usage Notes
+#### Usage Notes
 
 We only allow the following values for `NameType`: 
 - `alias`
 - `translation`
 
-## AlternativeText
+### AlternativeText
 > `AlternativeText` is not used. We will use `MultilingualString`. This means that there are multiple `<Text>` elements with different `lang`-attributes. 
 
 *→ [Glossary definition](A4_annex_glossary.md#alternativetext)*
 
-### Purpose
+#### Purpose
 The `AlternativeText` is a generic way to provide an alternative text (translation or alias).  For example, it can be used for the translation of `Notice` texts.
 
 
 
-### Table
+#### Table
 - [Swiss profile NeTEx definition](../site/tables/AlternativeText_deprecated.md)
 
 *→ - [General NeTEx definition](../site/netex-html/AlternativeText.html)*
  
-### Example
+#### Example
 - [XML Snippet](../site/xml-snippets/AlternativeText_deprecated.xml)
 
 *→ - [Template](./templates/AlternativeText_deprecated.xml)*
 
-## Usage Notes
+#### Usage Notes
 
 The `AlternativeText` is part of a `DataManagedObject` and references the name of the node, for which it provides an alternative. 
 It contains the alternative text as an attribute of type `MultilingualString` which indicates the language. 
@@ -172,16 +138,65 @@ of the string, but might be different.
 
 Alternative names (translations or aliases) of a `StopPlace` or `Organisation` are modelled with [AlternativeNames](#AlternativeName).
 
-# ResourceFrame
+### MultilingualString
+*→ [Glossary definition](A4_annex_glossary.md#multilingualstring)*
+
+
+#### Purpose
+
+NeTEx uses the type `MultilingualString` for descriptive text elements (e.g. `Notice` text, `Name`, `ShortName` etc.).
+However, only one language can be set for a given element (e.g. `<MultilingualString lang=”fr”>`). 
+Additional languages are introduced through the [AlternativeName](#alternativename) and [AlternativeText](#alternativetext) element.
+
+#### Example
+
+```xml
+<Name lang="de">Train Express Regional
+  <Text lang="it">Train Express Regional</Text>
+  <Text lang="en">Train Express Regional</Text>
+  <Text lang="fr">Train Express Regional</Text>
+</Name>
+```
+
+#### Usage Notes
+
+- For [Organisations](#organisation--operator--authority) e.g. there are all languages present.
+- The `StopPlace` names in Switzerland are language-independent.
+
+
+
+### FrameDefaults
+*→ [Glossary definition](A4_annex_glossary.md#framedefaults)*
+
+#### Purpose
+Holds default values for certain basic parameters. 
+
+#### Table
+- [Swiss profile NeTEx definition](../site/tables/FrameDefaults.md)
+
+*→ [General NeTEx definition](../site/netex-html/FrameDefaults.html)*
+
+#### Example
+
+- [XML Snippet](../site/xml-snippets/FrameDefaults.xml)
+
+*→ [Template](./templates/FrameDefaults.xml)*
+
+#### Usage Notes
+For values not set in `FrameDefaults` we use the values as indicated in the table and example above.
+
+
+
+### ResourceFrame
 
 *→ [Glossary definition](A4_annex_glossary.md#resourceframe)*
 
-## Purpose
+#### Purpose
 Contains shared resources used / referenced in other frames - organisations (`Operator`s), `VehicleType`s, codespaces, and other common reference data.
 
 See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
 
-## Contained Elements
+#### Contained Elements
 
 - ResponsabilitySet
 - TypeOfValue / ValueSets
@@ -192,26 +207,26 @@ See the following class diagram for the most important objects of the RESOURCE F
 - ServiceFacilitySet
 - SiteFacilitySet
 
-## Table
+#### Table
 - [Swiss profile NeTEx definition](../site/tables/ResourceFrame.md)
 
 *→ - [General NeTEx definition](../site/netex-html/ResourceFrame.html)*
 
-## Example
+#### Example
 - [XML Snippet](../site/xml-snippets/ResourceFrame.xml)
 
 *→ - [Template](./templates/ResourceFrame.xml)*
 
-## Frame Relationships
+#### Frame Relationships
 
 Elements of the `ResourceFrame` can be referenced in other frames like `SiteFrame`, `ServiceFrame`, `ServiceCalendarFrame` 
 and/or `TimetableFrame`.
 
-## ResponsibilitySet
+### ResponsibilitySet
 
 *→ [Glossary definition](A4_annex_glossary.md#responsibilityset)*
 
-### Purpose
+#### Purpose
 The set of roles and organisations responsible for managing data, operations, or contractual obligations within a defined scope.
 We use this element to  describe the different roles of the participating companies. For the most part, the company code is used to fully identify the provided services. 
 
@@ -223,17 +238,17 @@ We use this element to  describe the different roles of the participating compan
 
 *Table: Allowed StakeholderRoleType*
 
-### Table
+#### Table
 - [Swiss profile NeTEx definition](../site/tables/ResponsibilitySet.md)
 
 *→ - [General NeTEx definition](../site/netex-html/ResponsibilitySet.html)*
 
-### Example
+#### Example
 - [XML Snippet](../site/xml-snippets/ResponsibilitySet.xml)
 
 *→ - [Template](./templates/ResponsibilitySet.xml)*
 
-### Usage Notes
+#### Usage Notes
 Services (e.g. replacement services) can be associated with different roles. These roles can be defined inside the `ResponsibilitySet` element.
 
 Only the values defined below are allowed in Switzerland for `StakeholderRoleType` in `ResponsbilityRoleAssignment`:
@@ -246,22 +261,22 @@ We might add at some point:
 
 id-attribute should be kept stable between exports.
 
-## TypeOf... / ValueSet
+### TypeOf... / ValueSet
 *→ [Glossary definition: TypeOf...](A4_annex_glossary.md#typeof)*\
 *→ [Glossary definition: ValueSet](A4_annex_glossary.md#valueset)*
 
-### Purpose
+#### Purpose
 TypeOf... (examples: `TypeOfNotice`, `TypeOfProductCategory`, `TypeOfService`) are used for classification of NeTEx entities.  They are listed in `ValueSet`s as part of the `ResourceFrame`. 
 
-### Usage Notes
+#### Usage Notes
 We use TypeOfValue references in various Frames in objects including:
 -	`Notice`: references `TypeOfNotice`
 -	`Line` and `ServiceJourney`: references `TypeOfProductCategory`
 - id-attribute needs to be kept stable between exports.
 
-## TypeOfNotice
+### TypeOfNotice
 
-### Purpose
+#### Purpose
 `TypeOfNotice` is used within a [Notice](07_service.md#notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
 
 | PrivateCode | Name                | Description                                                                                                                                                                                                                                                      |
@@ -289,47 +304,47 @@ The following snippet is **all** that is defined for `TypeOfNotice`:
   </values>
 </ValueSet>
 ```
-## TypeOfProductCategory
+### TypeOfProductCategory
 
-### Purpose
+#### Purpose
 
 For the ServiceJourneys exclusively provided in Switzerland, only the ProductCategories defined in the document [06 Harmonisierung Verkehrsmittel](https://www.allianceswisspass.ch/de/tarife-vorschriften/uebersicht/V580/Produkte-der-V580-FIScommun-1) may be referenced. 
 For ServiceJourneys provided in other countries or partially in Switzerland, there are no restrictions, provided that the category does not overlap with the ProductCategories defined for Switzerland.
 
-### Table
+#### Table
 - [Swiss profile NeTEx definition](../site/tables/TypeOfProductCategory.md)
 
 *→ [General NeTEx definition](../generated/netex-html/TypeOfProductCategory.html)*
 
 
-###  Example
+####  Example
 - [XML Snippet](../site/xml-snippets/TypeOfProductCategory.xml)
 
 *→ [Template](./templates/TypeOfProductCategory.xml)*
 
-## TypeOfService
+### TypeOfService
 `TypeOfService` is to be found within `TimetableFrame`.
 
-## Organisation / Operator / Authority
+### Organisation / Operator / Authority
 
 *→ [Glossary definition: Operator](A4_annex_glossary.md#operator)*\
 *→ [Glossary definition: Authority](A4_annex_glossary.md#authority)*
 
-### Purpose
+#### Purpose
 A legally incorporated body associated with any aspect of public transportation. `Authority` and `Operator` are `Organisation`s. An `Operator` provides public transport services under contract with an `Authority`. We don't use `Authority`.
 
 
-### Table
+#### Table
 - [Swiss profile NeTEx definition](../site/tables/Operator.md)
 
 *→ [General NeTEx definition](../generated/netex-html/Operator.html)*
 
-### Example
+#### Example
 - [XML Snippet](../site/xml-snippets/Operator.xml)
 
 *→ - [Template](./templates/Operator.xml)*
 
-### Usage Notes
+#### Usage Notes
 * `Organisation`s located in Switzerland are identified by their [SBOIDs](https://transportdatamanagement.ch/content/uploads/2021/05/SwissBusinessOrganisationID_DE_1_2.pdf)  (earlier [GO-number](https://opentransportdata.swiss/de/dataset/didok/resource/d66259a0-a77c-4aee-b7bd-e4fba99dcbb1) ).
 in Switzerland. The TU-Code is to be used for operators of other countries. 
 * The SBOID and GO number shall always also be stored in the `KeyList` and in `privateCodes\PrivateCode`.
@@ -339,23 +354,23 @@ a different `OperatorRef`.
 * `Authority`  and `Organisation` are not used.
 - id-attribute needs to be kept stable between exports.
 
-## ServiceFacilitySet
+### ServiceFacilitySet
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
 
-### Purpose
+#### Purpose
 Set of `Facilitiy`s available for a `ServiceJourney` or a `JourneyPart`. 
 
-### Table
+#### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceFacilitySet.md)
 
 *→ [General NeTEx definition](../generated/netex-html/ServiceFacilitySet.html)*
 
-### Example
+#### Example
 - [XML Snippet](../site/xml-snippets/ServiceFacilitySet.xml)
 
 *→ - [Template](./templates/ServiceFacilitySet.xml)*
 
-### Usage Notes
+#### Usage Notes
 * SKI uses the following groups to classify `ServiceFacility`s:
   -	Accommodation facility
   -	Catering facility
@@ -379,26 +394,26 @@ separated list of elements.
 * See also [Use case on service facilities](uc04_service_facilities.md).
 - id-attribute should be kept stable between exports.
 
-## SiteFacilitySet
+### SiteFacilitySet
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
 
-### Purpose
+#### Purpose
 Set of `Facilitiy`s available at a `StopPlace`, `Quay` or other site elements.
 
 A `SiteFacilitySet` defines a set of facilities like sanitary facilities, ticket service, lockers etc. that can be 
 referenced to define facilities of a site.
 
-### Table
+#### Table
 - [Swiss profile NeTEx definition](../site/tables/SiteFacilitySet.md)
 
 *→ [General NeTEx definition](../generated/netex-html/SiteFacilitySet.html)*
 
-### Example
+#### Example
 - [XML Snippet](../site/xml-snippets/SiteFacilitySet.xml)
 
 *→ - [Template](./templates/SiteFacilitySet.xml)*
 
-### Usage Notes
+#### Usage Notes
 * Make sure to not generate identical SiteFacilitySets. Reuse them.
 * We currently don't have many `SiteFacilitySet` as this is not done in timetables yet. With accessibility and more information from Atlas, this may change. 
 * We will keep the list of relevant values updated in [mapping table for NeTEX 2.0](media/Mappingtabellen_NeTEx_v2.0.xlsx).
@@ -407,24 +422,24 @@ referenced to define facilities of a site.
 * In future also the use of `Equipment` and `EquipmentPlace` may become more important. These are then actual pieces of equipment. This also means that the `Vehicle` must be known and referenced. 
 - id-attribute should be kept stable between exports.
 
-## VehicleType
+### VehicleType
 *→ [Glossary definition](A4_annex_glossary.md#vehicletype)*
 
-### Purpose
+#### Purpose
 A typified vehicle configuration (model or series) defining reusable characteristics such as capacity, dimensions, propulsion, and accessibility features.
 
 
-### Table
+#### Table
 - [Swiss profile NeTEx definition](../site/tables/VehicleType.md)
 
 *→ [General NeTEx definition](../generated/netex-html/VehicleType.html)*
 
-### Example
+#### Example
 - [XML Snippet](../site/xml-snippets/VehicleType.xml)
 
 *→ - [Template](./templates/VehicleType.xml)*
 
-### Usage Notes
+#### Usage Notes
 * We currently use `VehicleType` but not `VehicleModel`.
 * We express accessibility partially through it.
 * See more details in mapping excel.
