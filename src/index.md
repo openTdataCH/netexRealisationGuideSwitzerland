@@ -8,9 +8,9 @@ The realisation specifications in this document will be agreed by the KIDS (“K
 The realisation specifications will be officially released by the National Commission Customer Information (Nationale Kommission Kundeninformation (KKI)) . 
 
 The realisation specifications mainly concern: 
-•	detailed clarifications about points which have abstract and open definitions in the standard. 
-•	detailed clarifications about points which have hitherto been handled inconsistently within public transport in Switzerland. 
-•	intentional deviations from the official standard within public transport in Switzerland.
+-	detailed clarifications about points which have abstract and open definitions in the standard. 
+-	detailed clarifications about points which have hitherto been handled inconsistently within public transport in Switzerland. 
+-	intentional deviations from the official standard within public transport in Switzerland.
 
 ## Supported NeTEx version
 This profile is based on [NeTEx 2.1 XSD](https://github.com/TransmodelEcosystem/NeTEx/tree/v2.1-wip). It is still work in progess, therefore it might change.
