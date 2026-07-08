@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Problems with this example **TODO**:
-- no description of content at the beginning
-- privateCodes not done correctly for StopPlace/Quay
-- Line needs slnid
--->
+<!-- Example of a dataset for the bus line 803 in Nyon (simplified version with 2 journeys of 3 stops each) -->
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd" version="2.1">
 	<PublicationTimestamp>2026-04-07T12:00:00+01:00</PublicationTimestamp>
 	<ParticipantRef>SKI-TEST</ParticipantRef>
@@ -126,9 +122,12 @@
 									<Value>ch:1:sloid:95598</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8595598</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:95598</PrivateCode>
+							</privateCodes>
 							<Name lang="de">Nyon, Petite Prairie</Name>
 							<ShortName lang="de">8595598</ShortName>
-							<PrivateCode>8595598</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>6.22168042329</Longitude>
@@ -145,6 +144,9 @@
 											<Value>ch:1:sloid:95598:0:2</Value>
 										</KeyValue>
 									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:95598:0:2</PrivateCode>
+									</privateCodes>
 									<Centroid>
 										<Location>
 											<Longitude>6.22166055023</Longitude>
@@ -166,9 +168,12 @@
 									<Value>ch:1:sloid:70000</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8570000</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:70000</PrivateCode>
+							</privateCodes>
 							<Name lang="de">Nyon, gare</Name>
 							<ShortName lang="de">8570000</ShortName>
-							<PrivateCode>8570000</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>6.23632549288</Longitude>
@@ -185,6 +190,9 @@
 											<Value>ch:1:sloid:70000:0:709805</Value>
 										</KeyValue>
 									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:70000:0:709805</PrivateCode>
+									</privateCodes>
 									<Centroid>
 										<Location>
 											<Longitude>6.2353067372</Longitude>
@@ -200,6 +208,9 @@
 											<Value>ch:1:sloid:70000:0:602</Value>
 										</KeyValue>
 									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:70000:0:602</PrivateCode>
+									</privateCodes>
 									<Centroid>
 										<Location>
 											<Longitude>6.2354975938</Longitude>
@@ -221,9 +232,12 @@
 									<Value>ch:1:sloid:88660</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8588660</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:88660</PrivateCode>
+							</privateCodes>
 							<Name lang="de">Nyon, Colovray</Name>
 							<ShortName lang="de">8588660</ShortName>
-							<PrivateCode>8588660</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>6.22788691756</Longitude>
@@ -240,6 +254,9 @@
 											<Value>ch:1:sloid:88660:0:3</Value>
 										</KeyValue>
 									</keyList>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:88660:0:3</PrivateCode>
+									</privateCodes>
 									<Centroid>
 										<Location>
 											<Longitude>6.22707595698</Longitude>
@@ -262,7 +279,13 @@
 						</Direction>
 					</directions>
 					<lines>
-						<Line id="ch:1:Line:738.B.803" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:TPN_738_TPN">
+						<Line id="ch:1:slnid:1025522" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:TPN_738_TPN">
+							<keyList>
+								<KeyValue>
+									<Key>SLNID</Key>
+									<Value>ch:1:slnid:1025522</Value>
+								</KeyValue>
+							</keyList>
 							<Name lang="de">803</Name>
 							<ShortName lang="de">803</ShortName>
 							<TransportMode>bus</TransportMode>
@@ -341,41 +364,59 @@
 							<QuayRef ref="ch:1:sloid:88660:0:3" version="1"/>
 						</PassengerStopAssignment>
 					</stopAssignments>
+					<timingLinks>
+						<TimingLink id="ch:1:TimingLink:88660_0_3-70000_0_709805" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:88660:0:3"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:70000:0:709805"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:70000_0_709805-95598_0_2" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:70000:0:709805"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:95598:0:2"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:95598_0_2-70000_0_602" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:95598:0:2"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:70000:0:602"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:70000_0_602-88660_0_3" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:70000:0:602"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:88660:0:3"/>
+						</TimingLink>
+					</timingLinks>
 					<journeyPatterns>
-						<JourneyPattern id="ch:1:JourneyPattern:738.B.803-1" version="1">
+						<JourneyPattern id="ch:1:JourneyPattern:1025522-1" version="1">
 							<pointsInSequence>
-								<StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:738.B.803-1-1" version="1" order="1">
+								<StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:1025522-1-1" version="1" order="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:88660:0:3" version="1"/>
 									<DestinationDisplayRef ref="ch:1:DestinationDisplay:8595598" version="1"/>
 									<RequestStop>false</RequestStop>
 									<StopUse>access</StopUse>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:738.B.803-1-2" version="1" order="2">
+								<StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:1025522-1-2" version="1" order="2">
 									<ScheduledStopPointRef ref="ch:1:sloid:70000:0:709805" version="1"/>
 									<RequestStop>false</RequestStop>
 									<StopUse>access</StopUse>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:738.B.803-1-3" version="1" order="3">
+								<StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:1025522-1-3" version="1" order="3">
 									<ScheduledStopPointRef ref="ch:1:sloid:95598:0:2" version="1"/>
 									<RequestStop>false</RequestStop>
 									<StopUse>access</StopUse>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
 						</JourneyPattern>
-						<JourneyPattern id="ch:1:JourneyPattern:738.B.803-2" version="1">
+						<JourneyPattern id="ch:1:JourneyPattern:1025522-2" version="1">
 							<pointsInSequence>
-								<StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:738.B.803-2-1" version="1" order="1">
+								<StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:1025522-2-1" version="1" order="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:95598:0:2" version="1"/>
 									<DestinationDisplayRef ref="ch:1:DestinationDisplay:8588660" version="1"/>
 									<RequestStop>false</RequestStop>
 									<StopUse>access</StopUse>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:738.B.803-2-2" version="1" order="2">
+								<StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:1025522-2-2" version="1" order="2">
 									<ScheduledStopPointRef ref="ch:1:sloid:70000:0:602" version="1"/>
 									<RequestStop>false</RequestStop>
 									<StopUse>access</StopUse>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:738.B.803-2-3" version="1" order="3">
+								<StopPointInJourneyPattern id="ch:1:StopPointInJourneyPattern:1025522-2-3" version="1" order="3">
 									<ScheduledStopPointRef ref="ch:1:sloid:88660:0:3" version="1"/>
 									<RequestStop>false</RequestStop>
 									<StopUse>access</StopUse>
@@ -383,6 +424,28 @@
 							</pointsInSequence>
 						</JourneyPattern>
 					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="ch:1:TimeDemandType:1" version="1">
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1:88660_0_3-70000_0_709805" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:88660_0_3-70000_0_709805" version="1"/>
+									<RunTime>PT7M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1:70000_0_709805-95598_0_2" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:70000_0_709805-95598_0_2" version="1"/>
+									<RunTime>PT6M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1:95598_0_2-70000_0_602" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:95598_0_2-70000_0_602" version="1"/>
+									<RunTime>PT8M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1:70000_0_602-88660_0_3" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:70000_0_602-88660_0_3" version="1"/>
+									<RunTime>PT7M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+						</TimeDemandType>
+					</timeDemandTypes>
 				</ServiceFrame>
 				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="1">
 					<validityConditions>
@@ -631,35 +694,34 @@
 									<Value>ch:1:sjyid:100540:plan:64400bea-e375-43df-96ae-41b5cdd0f97c</Value>
 								</KeyValue>
 							</keyList>
-							<PrivateCode>3001</PrivateCode>
+							<privateCodes>
+								<PrivateCode type="sjyid">ch:1:sjyid:100540:plan:64400bea-e375-43df-96ae-41b5cdd0f97c</PrivateCode>
+							</privateCodes>
+							<Extensions>
+								<facilities>
+									<Facility id="ch:1:Facility:NF" version="1">
+										<validityConditions>
+											<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:15" version="1"/>
+										</validityConditions>
+										<ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A__NF" version="1"/>
+									</Facility>
+								</facilities>
+							</Extensions>
 							<TransportMode>bus</TransportMode>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
 							<TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>05:58:00</DepartureTime>
-							<JourneyPatternRef ref="ch:1:JourneyPattern:738.B.803-1" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<DepartureDayOffset>0</DepartureDayOffset>
+							<JourneyPatternRef ref="ch:1:JourneyPattern:1025522-1" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:1" version="1" />
 							<VehicleTypeRef ref="ch:1:VehicleType:NF" version="1"/>
 							<OperatorRef ref="ch:1:sboid:100540" version="1"/>
-							<LineRef ref="ch:1:Line:738.B.803" version="1"/>
+							<LineRef ref="ch:1:slnid:1025522" version="1"/>
 							<DirectionType>outbound</DirectionType>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:3001" version="1"/>
 							</trainNumbers>
-							<passingTimes>
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:ch:1:sjyid:100540:plan:64400bea-e375-43df-96ae-41b5cdd0f97c.j26-1" version="1">
-									<StopPointInJourneyPatternRef ref="ch:1:StopPointInJourneyPattern:738.B.803-1-1" version="1"/>
-									<DepartureTime>05:58:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:ch:1:sjyid:100540:plan:64400bea-e375-43df-96ae-41b5cdd0f97c.j26-2" version="1">
-									<StopPointInJourneyPatternRef ref="ch:1:StopPointInJourneyPattern:738.B.803-1-2" version="1"/>
-									<ArrivalTime>06:05:00</ArrivalTime>
-									<DepartureTime>06:05:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:ch:1:sjyid:100540:plan:64400bea-e375-43df-96ae-41b5cdd0f97c.j26-3" version="1">
-									<StopPointInJourneyPatternRef ref="ch:1:StopPointInJourneyPattern:738.B.803-1-3" version="1"/>
-									<ArrivalTime>06:11:00</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
 						</ServiceJourney>
 						<ServiceJourney id="ch:1:ServiceJourney:ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27.j26" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:TPN_738_TPN">
 							<validityConditions>
@@ -671,6 +733,9 @@
 									<Value>ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="sjyid">ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<facilities>
 									<Facility id="ch:1:Facility:NF" version="1">
@@ -681,35 +746,20 @@
 									</Facility>
 								</facilities>
 							</Extensions>
-							<PrivateCode>3000</PrivateCode>
 							<TransportMode>bus</TransportMode>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
 							<TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>06:01:00</DepartureTime>
-							<JourneyPatternRef ref="ch:1:JourneyPattern:738.B.803-2" version="1"/>
+							<JourneyPatternRef ref="ch:1:JourneyPattern:1025522-2" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:1" version="1"/>
 							<VehicleTypeRef ref="ch:1:VehicleType:NF" version="1"/>
 							<OperatorRef ref="ch:1:sboid:100540" version="1"/>
-							<LineRef ref="ch:1:Line:738.B.803" version="1"/>
+							<LineRef ref="ch:1:slnid:1025522" version="1"/>
 							<DirectionType>inbound</DirectionType>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:3000" version="1"/>
 							</trainNumbers>
-							<passingTimes>
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27.j26-1" version="1">
-									<StopPointInJourneyPatternRef ref="ch:1:StopPointInJourneyPattern:738.B.803-2-1" version="1"/>
-									<DepartureTime>06:01:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27.j26-2" version="1">
-									<StopPointInJourneyPatternRef ref="ch:1:StopPointInJourneyPattern:738.B.803-2-2" version="1"/>
-									<ArrivalTime>06:09:00</ArrivalTime>
-									<DepartureTime>06:09:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:1:TimetabledPassingTime:ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27.j26-3" version="1">
-									<StopPointInJourneyPatternRef ref="ch:1:StopPointInJourneyPattern:738.B.803-2-3" version="1"/>
-									<ArrivalTime>06:16:00</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
 						</ServiceJourney>
 					</vehicleJourneys>
 					<trainNumbers>
@@ -743,8 +793,7 @@
 					</serviceFacilitySets>
 					<typesOfService>
 						<TypeOfService id="ch:1:TypeOfService:1" version="1">
-							<Name lang="en">PublicJourney</Name>
-							<ShortName lang="en">N</ShortName>
+							<Name>PublicJourney</Name>
 							<PrivateCode>1</PrivateCode>
 						</TypeOfService>
 					</typesOfService>
