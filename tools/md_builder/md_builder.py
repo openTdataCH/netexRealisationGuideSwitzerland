@@ -404,8 +404,8 @@ def parse_template_file(file_path, xsd_type_info):
         has_ch_see = any('ch-see' in (comment.text.strip() if comment.text else '')
                                for comment in comments)
         
-        if root_element is not None and has_ch_see is not None:
-            # This is a ch-profile template, use root as the element
+        if root_element is None and has_ch_see:
+            # If no ch-root found but has ch-see comments, use root as the element
             root_element = root
         
         if root_element is None:
@@ -576,9 +576,13 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
     
     markdown = f"# {filename}\n\n"
     
-    # Add root ch-note as text before the table
+    # Add root ch-note as text before the caption
     if root_note:
         markdown += f"{root_note}\n\n"
+    
+    # Add table caption before the table
+    if root_element_name:
+        markdown += f"*Table: {root_element_name}*\n\n"
     
     markdown += "| Sub | Element | Usage | Card | Type | Description | Note |\n"
     markdown += "|-----|---------|-------|------|------|-------------|------|\n"
@@ -740,10 +744,6 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                 attr_desc = sanitize_for_markdown(attr_desc)
                 
                 markdown += f"| {sub} | @{attr} | {attr_usage} | {attr_card} | {attr_type} | {attr_desc} | |\n"
-    
-    # Add table caption below the table
-    if root_element_name:
-        markdown += f"\n*Table: {root_element_name}*\n"
     
     return markdown
 

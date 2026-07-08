@@ -3,64 +3,64 @@ mermaid: true
 ---
 # Files
 
-NeTEx will be transferred as files.
+NeTEx data will be transferred as files.
 
 We will have three different file types:
 * STOP_OFFER: stops, quays, transfer times and accessibility related to sites at some point
-* NETWORK_OFFER:lines, routes, timetables
-* INTERCHANGE: interchange, "Durchbindungen"
+* NETWORK_OFFER: lines, routes, timetables
+* INTERCHANGE: interchanges, "Durchbindungen"
 
 The first two are valid according to the XSD. INTERCHANGE only as far as we use `versionRef` intead of `version`.
 
 NETWORK_OFFER is per operator and in some cases per area.
 
-This distinction leads to some redundancy.However, the files can still be transferred efficiently.
+This repartition of the data into different file leads to some redundancy. However, the files can still be transferred efficiently.
 
 ## Content of each file
 ```mermaid
 classDiagram
 class STOP_OFFER{
     SiteFrame: SiteFrame
-    TopographicPlaces: TopographicPlace
-    StopPlaces StopPlace
-    Quays: Quay
+    topographicPlaces: TopographicPlace
+    stopPlaces StopPlace
+    quays: Quay
     ServiceFrame: ServiceFrame
-    DefaultConnections: DefaultConnection
-    SiteConnections: SiteConnections
+    defaultConnections: DefaultConnection
+    siteConnections: SiteConnections
 } 
 
 class NETWORK_OFFER{
     ResourceFrame: ResourceFrame
-    Operators: Operators
-    ResponsibilitySets: ResponsibilitySets
-    TypesOfNotice: TypeOfNotice
-    TypesOfProductCategory:TypesOfProductCategory
-    TypesOfNotice: TypeOfNotice
+    operators: Operators
+    responsibilitySets: ResponsibilitySets
+    typesOfNotice: TypeOfNotice
+    typesOfProductCategory:TypesOfProductCategory
+    typesOfNotice: TypeOfNotice
     ServoceCalendarFrame: ServiceCalendarFrame
-    VehicleTypes: VehicleType
-    DayTypes: DayType 
+    vehicleTypes: VehicleType
+    dayTypes: DayType 
     ServiceCalendar: ServiceCalendar
-    DaytypeAssignments: DaytypeAssignment
-    DetinationDisplays: DestinationDisplay
+    daytypeAssignments: DaytypeAssignment
+    detinationDisplays: DestinationDisplay
     ServiceFrame: ServiceFrame
-    Lines: Line
-    ServiceJourneyPatterns: ServiceJourneyPattern
+    lines: Line
+    serviceJourneyPatterns: ServiceJourneyPattern
     ScheduledStopPoint: ScheduldedStopPoint
-    PassengerStopAssignments: PassengerStopAssignment
-    Notices: Notice
+    passengerStopAssignments: PassengerStopAssignment
+    notices: Notice
     TimetableFrame: TimetableFrame
-    ServiceJourneys: ServiceJourneyPattern
-    ServiceFacilitySets: ServiceFacilitySet
-    TrainNumbers : TrainNumber
+    serviceJourneys: ServiceJourneyPattern
+    serviceFacilitySets: ServiceFacilitySet
+    trainNumbers : TrainNumber
 }
 class INTERCHANGE {
-    ServiceJourneyInterchanges : ServiceJourneyInterchange
+    serviceJourneyInterchanges : ServiceJourneyInterchange
 }
 ```
 *Figure: Elements per file type*
 
 STOP_OFFER:
-* Contains everything related to stops
+* Contains everything related to (physical) stops
 * Later accessibility
 
 NETWORK_OFFER:
@@ -70,24 +70,24 @@ NETWORK_OFFER:
 * Eventually a reduced `StopPlace`, `Quay` could be added, but for the time being we won't do this.
 
 INTERCHANGE
-* Contains interchanges, Spliting, joining and "Durchbindungen".
+* Contains interchanges, spliting, joining and "Durchbindungen".
 * ref/id can't be checked by the schema. Therefore we use the attribute `versionRef` instead of `version`. 
 
-Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.  STOP_OFFER is only needed for data not stored in ATLAS. INFO+ will deliver a completed STOP_OFFER.
+Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.  STOP_OFFER is only needed for data not stored in ATLAS. INFO+ will deliver an aggregated, comprehensive STOP_OFFER.
 
 ## Naming conventions
 IT-Environments:
-- Development:	dev
-- Test:	test
-- Integration_	int
-- Production:	prod
+- Development:	DEV
+- Test:	TEST
+- Integration:	INT
+- Production:	PROD
 
 The name of each XML file is composed of the following information:
 
 | Content             | Example                                       | Description                                                                                            |
 |---------------------|-----------------------------------------------|--------------------------------------------------------------------------------------------------------|
 | IT-Environment      | `TEST`                                        |     DEV,TEST,INT,PROD                                                                                                      |
-| Format of the file  | 	`NETEX`                                      | 	(Describe the format (NETEX)                                                                          |
+| Format of the file  | 	`NETEX`                                      | 	NETEX                                                                          |
 | Content of the file | 	`TT`                                         | 	Timetable                                                                                             |
 | Version             | 	 `2.0`                                       | 	Number of the version of the NeTEx .xsd schema                                                        |
 | Country	            | `CHE`                                         | ISO code of the country for which the file was produced                                                |
@@ -99,7 +99,7 @@ The name of each XML file is composed of the following information:
 
 Example: `TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_STOP_OFFER_202301250401.xml`
 
-All Files are embedded in a zip-File. The name of the zip-file is composed of the following in-formation:
+All Files are embedded in a zip-File. The name of the zip-file is composed of the following information:
 
 | Content	             | Example	      | Description                                                                                            |
 |----------------------|---------------|--------------------------------------------------------------------------------------------------------|
@@ -144,4 +144,4 @@ No incremental updates are supported.
 > NB: We might reconsider some of those points for mixed lines. 
 
 ## File sent by SKI to data receivers 
-As the quantity of data is very large for a single XML-file, SKI provides the data a list of XML files. In addition to the XML files, SKI provides a README file listing the contents of each XML file. 
+As the quantity of the data is very large for a single XML-file, SKI provides the data a set of XML files. In addition to the XML files, SKI provides a README file listing the contents of each XML file. 

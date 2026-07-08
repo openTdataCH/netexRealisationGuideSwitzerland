@@ -94,13 +94,13 @@ graph TD
 *Core elements for timetables in NeTEx*
 
 Notes:
-* Every `ServiceJourney` belongs to one Line and has one `Operator`. Some more information can be stored in associated `ResponsibilitySet`s (difference between operator and legal "owner"). 
+* Every `ServiceJourney` belongs to one `Line` and has one `Operator`. Some more information can be stored in associated `ResponsibilitySet`s (difference between operator and legal "owner"). 
 * The pattern of the stops is defined in a `ServiceJourneyPattern` with additional details about each stop.
-* The timing behaviour is stored in `TimeDemandType`. They contain run times and where needed wait times. The relevant `TimingLink`s are mostly based on `ScheduledStopPoint`s and not individual to each `ServiceJourneyPattern`.
-* The physical stops are modeled as `StopPlace`e with `Quays`.
+* The timing behaviour is stored in `TimeDemandType`. They contain run times and where needed wait times. The `TimingLink`s are mostly based on `ScheduledStopPoint`s and may be used by multiple `ServiceJourneyPattern`.
+* The physical stops are modeled as `StopPlace`s with `Quays`.
 * `ScheduledStopPoint`s are the "logical" stops.
 * The `PassengerStopAssignment` associates the physical and the logical stops.
 * `DefaultConnection` and `SiteConnection` define transfers based on site elements.
-* `ServiceJourneyMeeting`s are used for splitting and joining of trains and "Durchbindungen".
+* `ServiceJourneyMeeting`s are used for splitting and joining of trains and for "Durchbindungen".
 * `Notice`, `ServiceFacility` and `SiteFacility` model almost everything else (especially offers).
 * The operating days are defined through `ValidDayBits` for the whole timetable year in `AvailabilityCondition`s.
