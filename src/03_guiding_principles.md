@@ -5,7 +5,7 @@ In providing NeTEx files we will follow some guiding principles.
 
 A delivery must always be complete: 
 -	in the time dimension : for the whole timetable year (from December to December), but only one timetable.
--	in the scale of the information exchanged : for all operators and all lines or sublines from each operator.
+-	in the scope of the information exchanged : for all operators and all lines or sublines from each operator in the file everything must be delivered.
 This allows the receiver to overwrite the old delivery with the new one without loss of data
 
 ## Base data
@@ -13,31 +13,29 @@ Some reference data are maintained by SKI. These data are identified by business
 These Business identifiers shall be used by the deliveries to enable their integration and homogenisation for the collection of timetable information. 
 If attributes of these reference data are transmitted in the deliveries, SKI does not adopt the values of these attributes. SKI takes these values from the reference system.
 
-The relevant reference data is:
--	Organisations
--	StopPlaces, Quays and the whole physical model
--	Lines (in a future phase)
--	Direction
--	Notices some specialised id and or types.
--	TypeOfValues
-  -	For Notice
-  -	For ProductCategory
-  - For Service
-- ValueSets
-- Facilities
+The relevant reference data that is already available/defined by SKI:
+-	Organisations - in Atlas
+-	StopPlaces, Quays and the whole physical model - in Atlas
+-	Lines (in a future phase) - in Atlas
+-	Direction - only inbound and outbound are allowed
+-	Notices some specialised id and or types - according to the mapping excel.
+-	TypeOfValues - according to the lists defined here (namely in [10_common.md](10_common.md)). E.g. ProductCategory - in the mappingexcel.
+- ValueSets - in [10_common.md](10_common.md)
+- Facilities - in mapping excel.
 
 ### Data supplier side
 The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality. Complete means all timetable data in the responsibility of the provider for the whole timetable period.
 
 ### SKI side
-The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality. Complete means all timetable data in the responsibility of the provider for the whole timetable period.
+SKI is responsible for the timely delivery of the complete timetable information with sufficient quality of all timetable data for open data and for the consumption by the data consumers.
 
 ## Limits to scope
-This realisation specification for public transport in Switzerland (NeTEx) is an addition to the official NeTEx standard. It contains the scope of NeTEx possibilities supported by SKI.
-Beside this document there will be an agreement with each partner about more technical and operational details of the delivery. In general there are no differences in the implementation to this reference document. Any necessary technical changes need to be discussed with SKI.
+This realisation specification for public transport in Switzerland (NeTEx) is an addition to the official NeTEx standard. It contains the subset of NeTEx possibilities supported by SKI for the passenger information use case.
+.
+Beside this document there can be an agreement from SKI with each data provider about more technical and operational details of the delivery of the timetable. In general there are no differences in the implementation to this reference document. Any necessary technical changes need to be discussed with SKI.
 
 ## Harmonisation
 Our profiles and data will try to converge on the 2028 new European profile, whenever possible.
 
 ## Easy for consumption
-The data and file structures should allow for easy consumption (as easy as it get with NeTEx).
+The data and file structures should allow for easy consumption. We do this by using a profile that adheres as much as possible to the future European profile. .
