@@ -8,88 +8,88 @@ NeTEx can support multiple use cases. Here we talk about the Swiss timetable del
 The following diagram shows the relevant core classes we will use. In the center is the ServiceJourney.
 
 ```mermaid
-graph TD
-  subgraph TimetableFrame["TimetableFrame"]
-    SJ[ServiceJourney]
-    DT[DirectionType]
-  end
+flowchart TD
+    %% Resources at the very top
+    subgraph Resources["Resources"]
+        direction LR
+        AN[AlternativeName]
+        O[Operator]
+    end
 
-  subgraph ServiceCalendarFrame["ServiceCalendarFrame"]
-    AC[AvailabilityCondition]
-    UOP[ValidDayBits]
-  end
+    %% Main content area
+    subgraph MainContent["Main Content"]
+        %% Timetable & Calendar
+        subgraph TimetableCalendar["Timetable & Calendar"]
+            direction LR
+            subgraph TimetableFrame["TimetableFrame"]
+                SJ[ServiceJourney]
+                DT[DirectionType]
+                TN[TrainNumber]
+                SI[ServiceJourneyInterchange]
+                JP[JourneyPart]
+            end
+            subgraph ServiceCalendarFrame["ServiceCalendarFrame"]
+                AC[AvailabilityCondition]
+                UOP[ValidDayBits]
+            end
+        end
 
-  subgraph ServiceFrame["ServiceFrame"]
-    L[Line]
-    O[Operator]
-    SSP[ScheduledStopPoint]
-    PSA[PassengerStopAssignment]
-    TL[TimingLink]
-    SJP[ServiceJourneyPattern]
-    TDT[TimeDemandType]
-    SPtJP[StopPointInJourneyPattern]
-  end
+        %% Service & Network
+        subgraph ServiceNetwork["Service & Network"]
+            direction LR
+            subgraph ServiceFrame["ServiceFrame"]
+                SJP[ServiceJourneyPattern]
+                TDT[TimeDemandType]
+                L[Line]
+                SPtJP[StopPointInJourneyPattern]
+                TL[TimingLink]
+                SSP[ScheduledStopPoint]
+                N[Notice]
+                F[ServiceFacilities]
+                PSA[PassengerStopAssignment]
+            end
+            subgraph SiteFrame["SiteFrame"]
+                SP[StopPlace]
+                CN[DefaultConnection]
+                Q[Quay]
+            end
+        end
+    end
 
-  subgraph SiteFrame["SiteFrame"]
-    SP[StopPlace]
-    Q[Quay]
-  end
+    %% Relationships
+    SJ --> DT
+    SJ --> L
+    SJ --> O
+    SJ --> SJP
+    SJ --> TDT
+    SJ --> SI
+    SJ --> JP
+    SJ --> TN
+    SJ --> AC
+    AC --> UOP
+    SJP --> L
+    SJP --> DT
+    SJP --> SPtJP
+    SPtJP --> SSP
+    TDT --> TL
+    TDT --> SSP
+    TDT --> SPtJP
+    PSA --> SP
+    PSA --> Q
+    PSA --> SSP
+    SP --> Q
+    O --> AN
 
-  subgraph OtherStuff["Other stuff"]
-    CN[DefaultConnection]
-    SI[ServiceJourneyInterchange]
-    JP[JourneyPart]
-    N[Notice]
-    AN[AlternativeName]
-    F[ServiceFacilities]
-     SJI[ServiceJourneyInterchange]
-   
-  end
-
-  %% ---------------------
-  %% Visible semantic relationships
-  SJ --> AC
-  SJ --> DT
-  SJ --> L
-  SJ --> O
-  SJ --> SJP
-  SJ --> TDT
-
-  TDT --> TL
-  TDT --> SSP
-  TDT --> SPtJP
-
-  SJP --> L
-  SJP --> SPtJP
-  SPtJP --> SSP
-
-  PSA ---> SP
-  PSA ---> Q
-  PSA ---> SSP
-
-  SP ---> Q
-
-  AC --> UOP
-
-
-  %% ---------------------
-  %% Layout hints to force rows and columns (dashed edges used only as hints)
-
-  %% ---------------------
-  %% Highlight central nodes in green
-  style SJ fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
-  style SJP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
-  style TDT fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
-  style PSA fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
-
-  %% Subgraph box styling (may be renderer-dependent)
-  style TimetableFrame stroke:#999,stroke-width:1px,fill:none
-  style ServiceCalendarFrame stroke:#999,stroke-width:1px,fill:none
-  style ServiceFrame stroke:#999,stroke-width:1px,fill:none
-  style SiteFrame stroke:#999,stroke-width:1px,fill:none
-  style OtherStuff stroke:#999,stroke-width:1px,fill:none
-
-
+    %% Styling
+    style SJ fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SJP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style TDT fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style PSA fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style TimetableFrame stroke:#999,stroke-width:1px,fill:none
+    style ServiceCalendarFrame stroke:#999,stroke-width:1px,fill:none
+    style ServiceFrame stroke:#999,stroke-width:1px,fill:none
+    style SiteFrame stroke:#999,stroke-width:1px,fill:none
+    style MainContent fill:none,stroke:none
 ```
 *Core elements for timetables in NeTEx*
 
