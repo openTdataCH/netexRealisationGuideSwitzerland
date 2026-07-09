@@ -199,6 +199,16 @@ def get_cardinality(min_occurs, max_occurs):
 
 def search_xsd_files_for_element(base_dir, element_name):
     """Search all XSD files in the directory structure for a specific element"""
+    return search_xsd_files_for_element_with_parent(base_dir, element_name, None)
+
+
+def search_xsd_files_for_element_with_parent(base_dir, element_name, parent_type=None):
+    """Search all XSD files in the directory structure for a specific element,
+    optionally within a parent complex type context
+    
+    If parent_type is specified, only returns files where the element is found
+    within a complex type containing that parent_type name.
+    """
     namespaces = {'xs': 'http://www.w3.org/2001/XMLSchema'}
     
     # Search through all XSD files in the directory tree
@@ -210,17 +220,33 @@ def search_xsd_files_for_element(base_dir, element_name):
                     parser = etree.XMLParser()
                     xsd_doc = etree.parse(file_path, parser)
                     
-                    # Look for the element - try both with and without namespace
-                    element_xpath = f"//xs:element[@name='{element_name}']"
-                    elements = xsd_doc.xpath(element_xpath, namespaces=namespaces)
+                    elements = []
                     
-                    # If not found, try without namespace
-                    if not elements:
-                        element_xpath_no_ns = f"//*[local-name()='element' and @name='{element_name}']"
-                        elements = xsd_doc.xpath(element_xpath_no_ns)
-                    
-                    if elements:
-                        return file_path  # Return the file path where element was found
+                    # If parent_type is specified, only look within that context
+                    if parent_type:
+                        # Try complex types containing parent_type
+                        complex_type_xpath = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
+                        elements = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
+                        if not elements:
+                            complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
+                            elements = xsd_doc.xpath(complex_type_xpath_no_ns)
+                        # Only return if found in parent context
+                        if elements:
+                            return file_path
+                        else:
+                            continue  # Skip this file, element not found in parent context
+                    else:
+                        # No parent_type, search all elements
+                        element_xpath = f"//xs:element[@name='{element_name}']"
+                        elements = xsd_doc.xpath(element_xpath, namespaces=namespaces)
+                        
+                        # If not found, try without namespace
+                        if not elements:
+                            element_xpath_no_ns = f"//*[local-name()='element' and @name='{element_name}']"
+                            elements = xsd_doc.xpath(element_xpath_no_ns)
+                        
+                        if elements:
+                            return file_path
                         
                 except Exception as e:
                     # Skip files that can't be parsed
@@ -229,22 +255,66 @@ def search_xsd_files_for_element(base_dir, element_name):
     return None
 
 
-def get_element_metadata(xsd_path, element_name):
-    """Extract detailed metadata for an element from XSD using XPath with substitution group support"""
+def get_element_metadata(xsd_path, element_name, parent_type=None):
+    """Extract detailed metadata for an element from XSD using XPath with substitution group support
+    
+    Args:
+        xsd_path: Path to the XSD file
+        element_name: Name of the element to find
+        parent_type: Optional. The name of the parent complex type to search within.
+                    If provided, will look for the element as a child of this type first.
+    """
     try:
         # First try to find the element in the main XSD file
         parser = etree.XMLParser()
         xsd_doc = etree.parse(xsd_path, parser)
         namespaces = {'xs': 'http://www.w3.org/2001/XMLSchema'}
         
-        # Try to find the element in the main file
-        element_xpath = f"//xs:element[@name='{element_name}']"
-        element = xsd_doc.xpath(element_xpath, namespaces=namespaces)
+        element = None
         
-        # If not found in main file, search all XSD files in the directory
+        # If parent_type is specified, try to find the element within that complex type first
+        if parent_type:
+            # Try exact match first
+            complex_type_xpath = f"//xs:complexType[@name='{parent_type}']//xs:element[@name='{element_name}']"
+            element = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
+            
+            # Also try without namespace prefix for broader compatibility
+            if not element:
+                complex_type_xpath_no_ns = f"//*[local-name()='complexType' and @name='{parent_type}']//*[local-name()='element' and @name='{element_name}']"
+                element = xsd_doc.xpath(complex_type_xpath_no_ns)
+            
+            # Try complex types that contain the parent_type name (e.g., StopPlace -> StopPlace_VersionStructure)
+            if not element:
+                complex_type_xpath_contains = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
+                element = xsd_doc.xpath(complex_type_xpath_contains, namespaces=namespaces)
+            
+            if not element:
+                complex_type_xpath_contains_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
+                element = xsd_doc.xpath(complex_type_xpath_contains_no_ns)
+        
+        # If still not found, try to find the element in the main file without parent context
+        if not element:
+            element_xpath = f"//xs:element[@name='{element_name}']"
+            element = xsd_doc.xpath(element_xpath, namespaces=namespaces)
+        
+        # If not found in main file, search all XSD files in the directory with parent_type context
+        if not element and parent_type:
+            base_dir = os.path.dirname(os.path.abspath(xsd_path))
+            found_in_file = search_xsd_files_for_element_with_parent(base_dir, element_name, parent_type)
+            if found_in_file is not None:
+                # Parse the file where the element was found
+                xsd_doc = etree.parse(found_in_file, parser)
+                # Find the element in this document using parent_type context
+                complex_type_xpath = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
+                element = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
+                if not element:
+                    complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
+                    element = xsd_doc.xpath(complex_type_xpath_no_ns)
+        
+        # If still not found, search all XSD files without parent_type context
         if not element:
             base_dir = os.path.dirname(os.path.abspath(xsd_path))
-            found_in_file = search_xsd_files_for_element(base_dir, element_name)
+            found_in_file = search_xsd_files_for_element_with_parent(base_dir, element_name, None)
             if found_in_file is not None:
                 # Parse the file where the element was found
                 xsd_doc = etree.parse(found_in_file, parser)
@@ -421,8 +491,14 @@ def parse_template_file(file_path, xsd_type_info):
         # Process elements in the range
         processed_elements = set()
         
-        def process_element(element, level=0):
-            """Recursively process an element and its children"""
+        def process_element(element, level=0, parent_type_context=None):
+            """Recursively process an element and its children
+            
+            Args:
+                element: The XML element to process
+                level: Indentation level for hierarchy
+                parent_type_context: The name of the parent complex type for XSD lookup context
+            """
             # Handle namespace properly
             if hasattr(element, 'tag'):
                 elem_name = etree.QName(element).localname
@@ -454,6 +530,9 @@ def parse_template_file(file_path, xsd_type_info):
                     comment_text = comment.text.strip()
                     if comment_text == 'ch-root' or 'ch-root' in comment_text:
                         has_ch_root = True
+                        # If this is the root element, use its name as the parent type context
+                        if parent_type_context is None:
+                            parent_type_context = elem_name
                     elif comment_text.startswith('ch-usage:'):
                         usage = comment_text.replace('ch-usage:', '').strip()
                     elif comment_text.startswith('ch-note:'):
@@ -504,7 +583,7 @@ def parse_template_file(file_path, xsd_type_info):
                 if not is_referenced:
                     for child in element:
                         if isinstance(child, etree._Element) and not isinstance(child, etree._Comment):
-                            process_element(child, level + 1)
+                            process_element(child, level + 1, parent_type_context)
                 return
             
             elements_data.append({
@@ -519,7 +598,8 @@ def parse_template_file(file_path, xsd_type_info):
                 'referenced_name': see_reference or elem_name,
                 'level': level,
                 'attributes': attrs_list,
-                'is_deprecated': is_deprecated
+                'is_deprecated': is_deprecated,
+                'parent_type': parent_type_context  # Add parent type context for XSD lookup
             })
             
             # Process children ONLY if not referenced
@@ -528,12 +608,17 @@ def parse_template_file(file_path, xsd_type_info):
                 for child in element:
                     # Only process actual elements, skip comments and text nodes
                     if isinstance(child, etree._Element) and not isinstance(child, etree._Comment):
-                        process_element(child, level + 1)
+                        process_element(child, level + 1, parent_type_context)
         
         # Start processing from the common ancestor
         # Process the common ancestor element itself
+        # Get the root element name for parent type context
+        root_element_name = None
+        if hasattr(root_element, 'tag') and not isinstance(root_element, etree._Comment):
+            root_element_name = etree.QName(root_element).localname
+        
         if hasattr(common_ancestor, 'tag') and not isinstance(common_ancestor, etree._Comment):
-            process_element(common_ancestor)
+            process_element(common_ancestor, parent_type_context=root_element_name)
         
         return elements_data
     
@@ -630,8 +715,10 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                 xsd_type = xsd_info['type']
         
         # Try enhanced metadata extraction if we have XSD path
+        # Pass parent_type to get context-specific element metadata
+        parent_type = item.get('parent_type')
         if xsd_path:
-            metadata = get_element_metadata(xsd_path, element)
+            metadata = get_element_metadata(xsd_path, element, parent_type)
             if metadata:
                 if not card or card == '1..1':
                     card = metadata.get('cardinality', card)
@@ -704,8 +791,10 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                 xsd_type = xsd_info['type']
         
         # Try enhanced metadata extraction if we have XSD path
+        # Pass parent_type to get context-specific element metadata
+        parent_type = item.get('parent_type')
         if xsd_path:
-            metadata = get_element_metadata(xsd_path, element)
+            metadata = get_element_metadata(xsd_path, element, parent_type)
             if metadata:
                 if not card or card == '1..1':
                     card = metadata.get('cardinality', card)
