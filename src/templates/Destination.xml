@@ -36,12 +36,13 @@
 							<Destination>
 								<!-- ch-root -->
 								<!-- ch-usage: expected -->
+								<!-- ch-note: We don't use the full Destination element, but only the DestinationDisplayRef within -->
 								<ScheduledStopPointRef versionRef="1" ref="ch:1:sloid:3412">
 									<!-- ch-usage: forbidden -->
 								</ScheduledStopPointRef>
 								<DestinationDisplayRef ref="the ref" versionRef="1">
 									<!-- ch-usage: expected -->
-									<!-- ch-note: We use a DestinationDiplayRef in such cases -->
+									<!-- ch-note: We use a DestinationDiplayRef in such cases and nothing else.-->
 								</DestinationDisplayRef>
 							</Destination>
 							<passingTimes>
