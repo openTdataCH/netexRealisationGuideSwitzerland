@@ -8,8 +8,8 @@ import argparse
 import re
 from tools.configuration import DOCS_DIR, SITE_DIR, SITE_TABLES_DIR, SITE_XML_SNIPPETS_DIR
 
-TABLE_MD_LINK_TARGET_PATTERN = re.compile(r'(\[.*])\((.*(\.)md).*\)')
-TABLE_MD_LINK_TARGET_REPLACEMENT = r'\1(./tables/\2)'
+TABLE_MD_LINK_TARGET_PATTERN = re.compile(r'(\[.*?\])(\((.*?\.md)[^)]*\))')
+TABLE_MD_LINK_TARGET_REPLACEMENT = r'\1(./tables/\3)'
 
 def copy_media_folder(input_folder, output_folder):
     """Copy media folder from input to output."""
