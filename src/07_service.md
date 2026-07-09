@@ -91,7 +91,7 @@ class ServiceJourney {
     PassengerStopAssignment "1" -- "0..1" Quay : references
     PassengerStopAssignment "1" -- "1" ScheduledStopPoint : references
 ```
-*Figure: Elements in service frame* 
+*Figure: Elements in ServiceFrame* 
 
 ### Contained Elements
 The `ServiceFrame` model comprises among others:
@@ -291,7 +291,8 @@ the `TimingLink` through `TimingLinkRef`) and `JourneyWaitTime` (referencing the
 See [TimeDemandType](#timedemandtype).
 
 ### Table
-- [Swiss profile NeTEx definition](../generated/markdown-examples/TimingLink.md)
+
+- [Swiss profile NeTEx definition](../site/tables/TimingLink.md)
 
 *-> [General NeTEx definition](../generated/netex-html/TimingLink.html)*
 
@@ -391,7 +392,7 @@ Informational or regulatory text associated with public transport services, disp
 *->[Template](./templates/Notice.xml)*
 
 ### Usage Notes
-Notice elements should only be used to convey information which cannot be transported using specific model elements. Do not use Notice when the information could be expressed by specific elements, e.g. FacilitySet, DayType, ForAlighting, ForBoarding. Notices can be used to provide further information on ServiceFacilities but not as a replacement for them. Ideally, the description of a Notice is translated into common languages of CH (DE, IT, FR).
+- Notice elements should only be used to convey information which cannot be transported using specific model elements. Do not use Notice when the information could be expressed by specific elements, e.g. FacilitySet, DayType, ForAlighting, ForBoarding. Notices can be used to provide further information on ServiceFacilities but not as a replacement for them. Ideally, the description of a Notice is translated into common languages of CH (DE, IT, FR).
 - id-attribute don't need to be kept stable between exports.
 
 

@@ -120,7 +120,7 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 *→ [Template](./templates/OccupancyView.xml)*
 
 ### Usage Notes
-We currently don't use OccupancyView.
+- We currently don't use OccupancyView.
 
 
 ## TrainNumber
