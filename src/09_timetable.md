@@ -122,7 +122,6 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 ### Usage Notes
 - We currently don't use OccupancyView.
 
-
 ## TrainNumber
 *→ [Glossary definition](A4_annex_glossary.md#trainnumber)*
 
