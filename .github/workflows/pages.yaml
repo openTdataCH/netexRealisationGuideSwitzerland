@@ -49,12 +49,6 @@ jobs:
           ls Gemfile
           bundle exec jekyll build
 
-      # Creates and uploads the build artifact from ./site
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: site/_site
-          name: ${{ github.ref_name }}
-
   # Deploys artifact to GitHub pages
   deploy:
     needs: build
@@ -64,7 +58,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./site/_site
           destination_dir: ${{ github.ref_name }}
           keep_files: true
 
