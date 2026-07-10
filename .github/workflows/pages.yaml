@@ -53,6 +53,10 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - name: Deploy to gh-pages/${{ github.ref_name }}
         uses: peaceiris/actions-gh-pages@v3
