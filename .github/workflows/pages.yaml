@@ -53,7 +53,7 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site/_site
-          name: ${{ github.ref.name }}
+          name: ${{ github.ref_name }}
 
   # Deploys artifact to GitHub pages
   deploy:
@@ -66,5 +66,5 @@ jobs:
       - id: deployment
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: ${{ github.ref.name }}
+          artifact_name: ${{ github.ref_name }}
 
