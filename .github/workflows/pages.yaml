@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}/${{ github.ref_name }}
+      url: ${{ steps.deployment.outputs.page_url }}${{ github.ref_name }}
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
