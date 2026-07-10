@@ -59,12 +59,12 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}${{ github.ref_name }}
     steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Deploy to gh-pages/${{ github.ref_name }}
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          artifact_name: ${{ github.ref_name }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+          destination_dir: ${{ github.ref_name }}
+          keep_files: true
 
