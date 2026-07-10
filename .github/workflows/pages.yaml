@@ -50,9 +50,10 @@ jobs:
           bundle exec jekyll build
 
       # Creates and uploads the build artifact from ./site
-      # - uses: actions/upload-pages-artifact@v3
-      #  with:
-      #    path: site/_site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/_site
+          name: ${{ github.ref.name }}
 
   # Deploys artifact to GitHub pages
   deploy:
@@ -63,8 +64,7 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: peaceiris/actions-gh-pages@v4
+        uses: actions/deploy-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site/_site
-          destination_dir: test
+          artifact_name: ${{ github.ref.name }}
+
