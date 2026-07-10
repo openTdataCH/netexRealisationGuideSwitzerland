@@ -38,8 +38,8 @@ replacing the deprecated `JourneyMeeting` and `InterchangeRule` from RG 1.0.
 	<StaySeated>true</StaySeated>
   	<CrossBorder>false</CrossBorder>
 	<MaximumWaitTime>PT9M</MaximumWaitTime>
-	<FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" version="1"/>
-  	<ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" version="1"/>
+	<FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" version="1" nameOfClass="ScheduledStopPoint"/>
+  	<ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" version="1" nameOfClass="ScheduledStopPoint"/>
 	<FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" version="1"/>
 	<ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" version="1"/>
 </ServiceJourneyInterchange>

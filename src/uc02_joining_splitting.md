@@ -90,8 +90,8 @@ splitting and joining.
   <CrossBorder>false</CrossBorder>
   <ChangeWithinVehicle>true</ChangeWithinVehicle>
   <MaximumWaitTime>PT2M</MaximumWaitTime>
-  <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1"/>
-  <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1"/>
+  <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1"  nameOfClass="ScheduledStopPoint"/>
+  <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1" nameOfClass="ScheduledStopPoint"/>
   <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_439" version="1"/>
   <ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4271-001_91001N.j26_777" version="1"/>
 </ServiceJourneyInterchange>
@@ -105,8 +105,8 @@ splitting and joining.
   <CrossBorder>false</CrossBorder>
   <ChangeWithinVehicle>true</ChangeWithinVehicle>
   <MaximumWaitTime>PT2M</MaximumWaitTime>
-  <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1"/>
-  <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1"/>
+  <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1" nameOfClass="ScheduledStopPoint"/>
+  <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1" nameOfClass="ScheduledStopPoint"/>
   <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_440" version="1"/>
   <ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:6823-001_91011N.j26_149" version="1"/>
 </ServiceJourneyInterchange>
