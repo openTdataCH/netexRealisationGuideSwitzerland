@@ -40,14 +40,18 @@ jobs:
           ruby-version: 3.1
       - name: Install bundler and gems for jekyll
         run: |
-          cd site
+          cd ${{ github.ref_name }}/site
           gem install bundler
           bundle install --jobs 4 --retry 3
       - name: Build static html web page with jekyll
         run: |
-          cd site
+          cd ${{ github.ref_name }}/site
           ls Gemfile
           bundle exec jekyll build
+      - name: Rename _site to ${{ github.ref_name }}
+        run: |
+          cd ./site
+          mv _site ${{ github.ref_name }}
 
   # Deploys artifact to GitHub pages
   deploy:
@@ -62,6 +66,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site/_site
+          publish_dir: ./site
           destination_dir: ${{ github.ref_name }}
 
