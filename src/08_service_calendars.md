@@ -204,8 +204,6 @@ A period of time within a day, usually defined by a start and end time.
 #### Purpose
 Assignment of a date to `DayType`. The `DayType`s of the Swiss profile represent national holidays.
 
-This assignment overrides the `DayType` specified for the day in the overall plan. (**TODO** should be stated more clearly / precisely) Wilfried 10.6.
-
 
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/DayTypeAssignment.md)

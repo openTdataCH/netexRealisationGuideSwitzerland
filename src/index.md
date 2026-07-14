@@ -66,7 +66,7 @@ We have a [set of examples](./examples/README.md) that show how to create use ca
 ## Impressum
 * Authors: Thomas Schäfer, Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Martin Bennett, Simon Freihart, Emeric Tapia-Almosnino, Matthias Günter
 * Status: Draft
-* Last change: **TODO**
+* Last change: 2026-07-31
 * Contact: info.fachbus@sbb.ch
 
 ## Copyright / License
