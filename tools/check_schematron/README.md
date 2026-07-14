@@ -24,7 +24,7 @@ The tools build installs a wrapper script `check-schematron` to `.venv/bin`.
 Requires Python 3.6+ and the following packages:
 
 ```bash
-pip install lxml pyschematron
+pip install lxml
 ```
 
 ## Usage
@@ -70,6 +70,14 @@ The tool outputs:
 
 ## Notes
 
-- The tool uses pyschematron library for validation
-- Schematron files should be in ISO Schematron format
+- The tool uses lxml's native Schematron support (`lxml.isoschematron`) for validation with pre-compilation and parallel processing
+- Schematron files should be in ISO Schematron format with `queryBinding="xslt"` (XSLT 1.0)
 - XML files should be well-formed before validation
+- XSLT 2.0 (`queryBinding="xslt2"`) is not supported by lxml.isoschematron
+
+## New Features
+
+- **Parallel processing**: Files are validated in parallel by default (uses CPU count as workers)
+- **Fail on first error**: Use `--fail-on-first-error` or `-f` to stop after the first validation failure
+- **Sequential mode**: Use `--sequential` to process files one at a time (for debugging)
+- **Worker control**: Use `-j N` to specify the number of parallel workers

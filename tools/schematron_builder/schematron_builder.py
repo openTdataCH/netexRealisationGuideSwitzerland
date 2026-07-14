@@ -275,28 +275,26 @@ class SchematronBuilder:
         self.rules_created = 0
         
         # Create root schema element with namespaces
-        # Use proper namespace handling for lxml
-        NSMAP = {
-            SCH_PREFIX: SCHEMATRON_NS,
-            'netex': NETEX_NS
-        }
+        # Use only Schematron namespace on the root element for ISO compliance
+        SCH_NSMAP = {SCH_PREFIX: SCHEMATRON_NS}
         
-        self.schema = Element('{' + SCHEMATRON_NS + '}schema', nsmap=NSMAP)
-        self.schema.set('queryBinding', 'xslt2')
+        self.schema = Element('{' + SCHEMATRON_NS + '}schema', nsmap=SCH_NSMAP)
+        self.schema.set('queryBinding', 'xslt')
         
-        # Add namespace declaration
-        self.ns = Element('{' + SCHEMATRON_NS + '}ns', nsmap=NSMAP)
+        # Add title - ISO Schematron expects title before ns for lxml.isoschematron compatibility
+        self.title = Element('{' + SCHEMATRON_NS + '}title', nsmap=SCH_NSMAP)
+        self.title.text = 'Generated schematron from template'
+        self.schema.append(self.title)
+        
+        # Add namespace declaration for netex
+        # Note: We don't include netex in the root nsmap to avoid extra namespace attributes
+        self.ns = Element('{' + SCHEMATRON_NS + '}ns')
         self.ns.set('prefix', 'netex')
         self.ns.set('uri', NETEX_NS)
         self.schema.append(self.ns)
         
-        # Add title
-        self.title = Element('{' + SCHEMATRON_NS + '}title', nsmap=NSMAP)
-        self.title.text = 'Generated schematron from template'
-        self.schema.append(self.title)
-        
         # Create pattern
-        self.pattern = Element('{' + SCHEMATRON_NS + '}pattern', nsmap=NSMAP)
+        self.pattern = Element('{' + SCHEMATRON_NS + '}pattern', nsmap=SCH_NSMAP)
         self.pattern.set('id', 'p1')
         self.schema.append(self.pattern)
         
@@ -320,13 +318,17 @@ class SchematronBuilder:
         """
         Normalize rule context:
         - Keep '.' as-is.
-        - If the context already starts with '/' or '//' or '.', return as-is.
+        - If the context already starts with '/' or '.', return as-is.
+        - Normalize '//' to '/' (single slash is sufficient and faster).
         - Otherwise, prefix '/' (absolute paths from root).
         """
         if not context_xpath or context_xpath == '.':
             return '.'
         ctx = context_xpath
-        if ctx.startswith('/') or ctx.startswith('//') or ctx.startswith('.'):
+        if ctx.startswith('//'):
+            # Normalize // to / for better performance
+            return ctx[1:]
+        if ctx.startswith('/') or ctx.startswith('.'):
             return ctx
         return f'/{ctx}'
 
