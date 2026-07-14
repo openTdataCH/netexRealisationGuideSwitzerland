@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NeTEx Example: Joint operation of route 722 by two operators PAG and BOS -->
+<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" version="2.1">
+	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
+	<ParticipantRef>TUXALP</ParticipantRef>
+	<Description lang="de">NeTEx Example: Joint operation of route 722 by two operators PAG and BOS</Description>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame:1" version="1">
+			<ValidBetween>
+				<!-- Fahrplanjahr 25/26 -->
+				<FromDate>2025-12-15T00:00:00</FromDate>
+				<ToDate>2026-12-12T23:59:59</ToDate>
+			</ValidBetween>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame:1" version="1">
+					<validityConditions>
+						<ValidityCondition id="ch:1:ValidityCondition:1" version="1">
+							<Name>Fahrplanjahr 2025/26</Name>
+						</ValidityCondition>
+					</validityConditions>
+					<responsibilitySets>
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:PAG-722-3" version="1">
+							<Name>Postauto Konzessionär und Betreiber</Name>
+							<PrivateCode>PAG</PrivateCode>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:100602-1" version="1">
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100602" version="1"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:100602-2" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100602" version="1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:BOS-722-4" version="1">
+							<Name>BOS Konzessionär und Betreiber</Name>
+							<PrivateCode>BOS</PrivateCode>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:100111-1" version="1">
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100111" version="1"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:100111-2" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100111" version="1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+							<Name>ProductCategories</Name>
+							<values>								
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:B" version="1">
+									<Name lang="de">Bus</Name>
+									<ShortName lang="de">B</ShortName>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>											
+					</typesOfValue>
+					<organisations>
+						<Operator id="ch:1:sboid:100602" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>SBOID</Key>
+									<Value>ch:1:sboid:100602</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sboid">ch:1:sboid:100602</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Postauto AG</Name>
+							<ShortName lang="de">PAG</ShortName>
+						</Operator>
+						<Operator id="ch:1:sboid:100111" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>SBOID</Key>
+									<Value>ch:1:sboid:100111</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sboid">ch:1:sboid:100111</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Bus Ostschweiz</Name>
+							<ShortName lang="de">BOS</ShortName>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+			
+				<ServiceFrame id="ch:1:ServiceFrame:1" version="1">
+					<lines>
+						<!-- Hauptlinie -->
+						<Line id="ch:1:slnid:1027553" version="1">
+							<validityConditions>
+								<ValidityConditionRef ref="ch:1:ValidityCondition:1"/>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>SLNID</Key>
+									<Value>ch:1:slnid:1027553</Value>
+								</KeyValue>
+							</keyList>
+							<Name>Wil SG,Bahnhof - Weinfelden, Bahnhof</Name>
+							<ShortName>722</ShortName>
+							<TransportMode>bus</TransportMode>
+							<PublicCode>722</PublicCode>							
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+						</Line>
+						<!-- Teillinie PAG -->
+						<Line id="ch:1:slnid:1027553:3" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:PAG-722-3">
+							<validityConditions>
+								<ValidityConditionRef ref="ch:1:ValidityCondition:1"/>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>SLNID</Key>
+									<Value>ch:1:slnid:1027553:3</Value>
+								</KeyValue>
+							</keyList>
+							<Name>Wil SG,Bahnhof - Weinfelden, Bahnhof</Name>
+							<ShortName>722</ShortName>
+							<TransportMode>bus</TransportMode>
+							<PublicCode>722</PublicCode>
+							<OperatorRef ref="ch:1:sboid:100602" version="1"/>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+						</Line>
+						<!-- Teillinie BOS -->
+						<Line id="ch:1:slnid:1027553:4" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BOS-722-4">
+							<validityConditions>
+								<ValidityConditionRef ref="ch:1:ValidityCondition:1"/>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>SLNID</Key>
+									<Value>ch:1:slnid:1027553:4</Value>
+								</KeyValue>
+							</keyList>
+							<Name>Wil SG,Bahnhof - Weinfelden, Bahnhof</Name>
+							<ShortName>722</ShortName>
+							<TransportMode>bus</TransportMode>
+							<PublicCode>722</PublicCode>
+							<OperatorRef ref="ch:1:sboid:100111" version="1"/>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+						</Line>							
+					</lines>
+					<groupsOfLines>
+						<GroupOfLines id="ch:1:GroupOfLines:1027553" version="1">
+							<members>
+								<LineRef ref="ch:1:slnid:1027553" version="1"></LineRef>
+								<LineRef ref="ch:1:slnid:1027553:3" version="1"></LineRef>
+								<LineRef ref="ch:1:slnid:1027553:4" version="1"></LineRef>
+							</members>
+							<MainLineRef ref="ch:1:slnid:1027553" version="1"/>
+							<GroupOfLinesType>administrative</GroupOfLinesType>
+						</GroupOfLines>
+					</groupsOfLines>					
+				</ServiceFrame>			
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
