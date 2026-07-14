@@ -320,16 +320,15 @@ class SchematronBuilder:
         """
         Normalize rule context:
         - Keep '.' as-is.
-        - If the context already starts with '//' or '.', return as-is.
-        - Otherwise, prefix '//' (the system expects double-slash absolute contexts).
+        - If the context already starts with '/' or '//' or '.', return as-is.
+        - Otherwise, prefix '/' (absolute paths from root).
         """
         if not context_xpath or context_xpath == '.':
             return '.'
-        # We assume callers pass fully-built element paths like 'netex:PublicationDelivery/netex:frames/...'
         ctx = context_xpath
-        if ctx.startswith('//') or ctx.startswith('.'):
+        if ctx.startswith('/') or ctx.startswith('//') or ctx.startswith('.'):
             return ctx
-        return f'//{ctx}'
+        return f'/{ctx}'
 
     def _get_or_create_rule(self, context_xpath, note_text=None):
         """
