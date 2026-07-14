@@ -8,23 +8,21 @@
 				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame" version="1">
 					<validityConditions>
 						<AvailabilityCondition id="ch:1:AvailabilityCondition:b7" version="1">
-
 						</AvailabilityCondition>
 					</validityConditions>
 					<ServiceCalendar id="ch:1:ServiceCalendar:j23" version="1">
-
 					</ServiceCalendar>
 					<dayTypes>
 						<!-- ch-usage: optional -->
 						<DayType id="ch:1:DayType:Bundesfeier" version="1">
 							<!-- ch-root -->
-							<!-- ch-usage: optional -->
 							<!-- ch-note: In Switzerland only used for holidays and the like -->
+							<!-- ch-attrs: id version -->
 							<alternativeTexts>
-								<!-- ch-usage: expected -->
+								<!-- ch-usage: forbidden -->
 								<AlternativeText attributeName="Name">
 									<!-- ch-usage: mandatory -->
-									<Text lang="it"><!-- ch-usage: mandatory --><!-- ch-attrs lang-->Festa nazionale</Text>
+									<Text lang="it">Festa nazionale</Text>
 								</AlternativeText>
 								<AlternativeText attributeName="Name">
 									<Text lang="en">National Day</Text>
@@ -33,7 +31,30 @@
 									<Text lang="fr">Fête nationale</Text>
 								</AlternativeText>
 							</alternativeTexts>
-							<Name><!-- ch-usage: mandatory -->Bundesfeier</Name>
+							<Name lang="de">
+								<!-- ch-usage: mandatory -->
+								<!-- ch-attrs: lang-->
+								<!-- ch-note: German or default text -->
+								Bundesfeier
+								<Text lang="it">
+									<!-- ch-usage: expected -->
+									<!-- ch-attrs: lang-->
+									<!-- ch-note: Italian -->
+									Festa nazionale
+								</Text>
+								<Text lang="fr">
+									<!-- ch-usage: expected -->
+									<!-- ch-attrs: lang-->
+									<!-- ch-note: French -->
+									Fête nationale
+								</Text>
+								<Text lang="en">
+									<!-- ch-usage: expected -->
+									<!-- ch-attrs: lang-->
+									<!-- ch-note: English -->
+									National Day
+								</Text>
+							</Name>
 							<properties>
 								<!-- ch-usage: expected -->
 								<PropertyOfDay>
