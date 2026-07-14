@@ -144,10 +144,9 @@ A public transport service line, representing a marketed route with a `Name`, `T
 - slnid will be integrated wherever possible. We currently think that - where it exists - it has the necessary properties to be used in the `id`-attribute.
 - For foreign lines and id might need to be generated.
 - We store the slnid whenever possible in `id`, `privateCodes/PrivateCode` and `KeyList`.
-- **TODO** link to migration concept slnid #48
-- **TODO** handling of mixed lines #48
-- Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
-- Note that there exist journeys in Switzerland and neighbouring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
+- Information about the Swiss line id (slnid) can be found [here](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-line-identification-slnid).
+- Handling of mixed lines is defined in its own [use case (uc017)](uc17_mixed_lines). The relevant factors are described in the Line element as well. We have a full [example](examples/NeTEx_CH_Linie_722_Mischbetrieb.xml) on it. - Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
+- Note that there exist journeys in Switzerland and neighboring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
 - For more information about SwissLineID: see https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf
 - id-attribute needs to be kept stable between exports.
 
@@ -308,11 +307,9 @@ See [TimeDemandType](#timedemandtype).
   as `TimingPointRef`, substituted by `ScheduledStopPointRef`).
 - If there is maneuvering or a change of quay, then a separate `TimingLink`
   needs to be added for that too.
-- **TODO** Multiple visits of the same `ScheduledStopPoint` within a
-  `ServiceJourneyPattern` are currently not cleanly resolvable for `WaitTime`
-  differentiation; see open NeTEx PR
-  [#1031](https://github.com/TransmodelEcosystem/NeTEx/pull/1031), which adds
-  `StopPointInServiceJourneyPatternRef` to `JourneyWaitTime` for this case.
+- Multiple visits of the same `ScheduledStopPoint` within a
+  `ServiceJourneyPattern` are addressed with a `JourneyWaitTime` that has a 
+  `StopPointInServiceJourneyPatternRef` instead of a `ScheduledStopPointRef` like the regular ones.
 - id-attribute needs to be kept stable between exports.
 
 ## ServiceJourneyPattern
@@ -367,10 +364,9 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).
 - `RunTime` references the relevant `TimingLink` via `TimingLinkRef`;
   `WaitTime` references the relevant `ScheduledStopPoint` directly via
   `TimingPointRef` — not via `TimingLink`.
-- **TODO** For stops visited multiple times within the same `ServiceJourneyPattern`
-  with different wait times, see open NeTEx PR
-  [#1031](https://github.com/TransmodelEcosystem/NeTEx/pull/1031).
-- id-attribute needs to be kept stable between exports.
+- Multiple visits of the same `ScheduledStopPoint` within a
+  `ServiceJourneyPattern` are addressed with a `JourneyWaitTime` that has a 
+  `StopPointInServiceJourneyPatternRef` instead of a `ScheduledStopPointRef` like the regular ones.
 
 ## Notice
 *→ [Glossary definition](A4_annex_glossary.md#notice)*
