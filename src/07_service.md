@@ -148,7 +148,31 @@ A public transport service line, representing a marketed route with a `Name`, `T
 - Handling of mixed lines is defined in its own [use case (uc017)](uc17_mixed_lines). The relevant factors are described in the Line element as well. We have a full [example](examples/NeTEx_CH_Linie_722_Mischbetrieb.xml) on it. - Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
 - Note that there exist journeys in Switzerland and neighboring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
 - For more information about SwissLineID: see https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf
+- We have in the slnid concept also "Dispositionslinie" and "Temporäre Linie". Those are modeled as regular `Line`. "Betriebliche Linie" is not used and modeled in NeTEx. If at some point we need to know this type. We will model it as a Key/Value-pair.
+- If there are partial lines, there is also a main line. The patterns and journeys are always attached to the partial lines.
 - id-attribute needs to be kept stable between exports.
+
+## GroupOfLines
+*→ [Glossary definition](A4_annex_glossary.md#groupoflines)*
+### Purpose
+A `GroupOfLines` is used to model mixed lines. Details you finde in [uc17](uc17_mixed_lines.md).
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/GroupOfLines.md)
+
+*-> [General NeTEx definition](../generated/netex-html/GroupOfLines.html)*
+
+### Example
+
+- [Example snippet](../site/xml-snippets/GroupOfLines.xml)
+
+*->[Template](./templates/GroupOfLines.xml)*
+
+### Usage Notes
+- Only mixed lines have a `GroupOfLines`.
+- All `ServiceJourneyPattern` and `ServiceJourney` are assigned to the partial lines.
+- In very rare cases the main line has two legal owners. We discuss the modeling in [uc17](uc17_mixed_lines.md).
+- The id-attribute should be the number of the main line.
 
 ## DestinationDisplay
 *→ [Glossary definition](A4_annex_glossary.md#destinationdisplay)*
