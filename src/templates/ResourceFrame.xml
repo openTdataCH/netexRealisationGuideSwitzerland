@@ -22,7 +22,10 @@
 						<!-- ch-usage: mandatory -->
 						<!-- ch-note: Sets of TYPE OF VALUE contained in the RESOURCE FRAME. -->
 						<ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
+                            <!-- ch-usage: expected -->
+                            <!-- ch-note: We need a TypeOfNotice ValueSet. -->
 							<values>
+                                <!-- ch-usage: expected -->
 								<TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
 									<!-- ch-class-id-must-exist -->
 									<Name>Allgemeiner Hinweis</Name>
@@ -36,7 +39,8 @@
 							</values>
 						</ValueSet>
 						<ValueSet id="ch:1:ValueSet:TypesOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
-							<!-- ch-usage: mandatory -->
+							<!-- ch-usage: expected -->
+                            <!-- ch-note: We need a TypeOfProductCategory ValueSet -->
 							<values>
 								<!-- ch-usage: mandatory -->
 								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
@@ -59,6 +63,7 @@
 						</ValueSet>
 						<ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
 							<!-- ch-usage: expected -->
+                            <!-- ch-usage: We expect a TypsOfPlace Valueset -->
 							<values>
 								<!-- ch-usage: expected -->
 								<TypeOfPlace id="drtCollectionPoint" version="1">
