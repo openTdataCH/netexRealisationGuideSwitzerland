@@ -75,7 +75,7 @@ to describe a single day.
 The time format consists only of the hours, minutes (and seconds) of a 24-hour clock, e.g. `23:55:00`. 
 
 Times that pass midnight of the current `OperatingDay` are marked with a `DayOffset` element. 
-If a `ServiceJourney` runs over midnight, `DepartureDayOffset` (or the corresponding `DayOffset` within `TimeDemandType`) must be incremented accordingly.
+If a `ServiceJourney` runs over midnight, `DepartureDayOffset` (on `ServiceJourney`) is used for the start of the journey. Since `TimeDemandType` only holds relative durations (`RunTime`/`WaitTime`), there is no separate `DayOffset` element within `TimeDemandType` — any midnight crossing during the journey follows implicitly from cumulating `DepartureTime` with the `RunTime`/`WaitTime` values.
 
 ## Common Elements and Types
 
@@ -357,7 +357,7 @@ a different `OperatorRef`.
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
 
 #### Purpose
-Set of `Facilitiy` available for a `ServiceJourney` or a `JourneyPart`. 
+Set of `Facility`'s available for a `ServiceJourney` or a `JourneyPart`. 
 
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceFacilitySet.md)
@@ -397,7 +397,7 @@ separated list of elements.
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
 
 #### Purpose
-Set of `Facilitiy`s available at a `StopPlace`, `Quay` or other site elements.
+Set of `Facility`s available at a `StopPlace`, `Quay` or other site elements.
 
 A `SiteFacilitySet` defines a set of facilities like sanitary facilities, ticket service, lockers etc. that can be 
 referenced to define facilities of a site.
