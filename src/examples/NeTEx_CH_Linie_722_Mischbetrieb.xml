@@ -91,8 +91,8 @@
 			
 				<ServiceFrame id="ch:1:ServiceFrame:1" version="1">
 					<lines>
-						<!-- Hauptlinie -->
-						<Line id="ch:1:slnid:1027553" version="1">
+						<!-- Hauptlinie. The ResponsibilitySet has only one EntityLegalOwnership. This is the one from ATLAS. However, in such a case the different EntityLegalOwnership of the partial lines must be noted and aggregated by the importation process (is possible). -->
+						<Line id="ch:1:slnid:1027553" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:PAG-722-3">
 							<validityConditions>
 								<ValidityConditionRef ref="ch:1:ValidityCondition:1"/>
 							</validityConditions>
@@ -155,8 +155,11 @@
 							<MainLineRef ref="ch:1:slnid:1027553" version="1"/>
 							<GroupOfLinesType>administrative</GroupOfLinesType>
 						</GroupOfLines>
-					</groupsOfLines>					
-				</ServiceFrame>			
+					</groupsOfLines>
+					<journeyPatterns>
+						<ServiceJourneyPattern id="generated" version="1"></ServiceJourneyPattern>
+					</journeyPatterns>					
+				</ServiceFrame>	
 			</frames>
 		</CompositeFrame>
 	</dataObjects>

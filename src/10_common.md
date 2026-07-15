@@ -23,7 +23,7 @@ In this chapter:
     - [TypeOfService](#typeofservice)
   - [Organisation / Operator / Authority](#organisation--operator--authority)
   - [ServiceFacilitySet](#servicefacilityset)
-  - [SiteFacilitySet](#servicefacilityset)
+  - [SiteFacilitySet](#sitefacilityset)
   - [VehicleType](#vehicletype)
 
 ## Rules to Observe
@@ -36,8 +36,8 @@ The following rules apply to common attributes:
 |------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `id`                   | See description regarding [technical IDs](#ids) below                                                                                                                  |
 | `version`              | is always set to `"1"`                                                                                                                                                 |
-| `responsibilitySetRef` | We use `responsibilitySetRef` in the following elements xxx                                                                                                            |
-| `nameOfClass`          | We use `nameOfClass` in the XXXRef elements.                                                                                                                           |
+| `responsibilitySetRef` | We use `responsibilitySetRef` on `ServiceJourney` and `TemplateServiceJourney`.                                                                                        |
+| `nameOfRefClass`       | We use `nameOfRefClass` explicitly where a reference target is ambiguous, e.g. on `JourneyPatternRef` (which may resolve to `JourneyPattern` or `ServiceJourneyPattern`). |
 | `versionRef`           | is always set to `"1"`. Is used, when the element can't be referenced directly, because it is in a different file. This is in our files true for the INTERCHANGE file. |
 
 *Table: Handling of the most used attributes for elements in NeTEx*
@@ -45,12 +45,12 @@ The following rules apply to common attributes:
 #### IDs
 IDs must be globally unique during importation (in the `id`-attribute). 
 They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for "primary" objects we expect object permanence. This is mentioned in the usage note of each element.
-Important business level keys are stored in elements (`KeyList`, `privateKeys/PrivateKey`)in addition to the IDs.
+Important business level keys are stored in elements (`KeyList`, `privateCodes/PrivateCode`) in addition to the IDs.
 
 It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available. 
 
 For readability and easy referencing, we will use the following principles:
--	We use the class of the object to prefix the technical ID like `ch:1:TypeOfNotice:3"` for a `TypeOfNotice` element.
+-	We use the class of the object to prefix the technical ID like `ch:1:TypeOfNotice:3` for a `TypeOfNotice` element.
 -   We use appropriate business values to build technical IDs where available, e.g. `ch:1:TypeOfProductCategory:TER` 
 where the value of `ShortName` of the `TypeOfProductCategory` is used to build the ID, or `ch:1:Operator:11`.
 -	Where there is a compelling need for global stability, the ID will be a global ID. 
@@ -75,8 +75,7 @@ to describe a single day.
 The time format consists only of the hours, minutes (and seconds) of a 24-hour clock, e.g. `23:55:00`. 
 
 Times that pass midnight of the current `OperatingDay` are marked with a `DayOffset` element. 
-If a `ServiceJourney` (in a particular `Call`) runs over midnight, then `DayOffset` must be set to `1`.
-
+If a `ServiceJourney` runs over midnight, `DepartureDayOffset` (on `ServiceJourney`) is used for the start of the journey. Since `TimeDemandType` only holds relative durations (`RunTime`/`WaitTime`), there is no separate `DayOffset` element within `TimeDemandType` — any midnight crossing during the journey follows implicitly from cumulating `DepartureTime` with the `RunTime`/`WaitTime` values.
 
 ## Common Elements and Types
 
@@ -89,7 +88,7 @@ If a `ServiceJourney` (in a particular `Call`) runs over midnight, then `DayOffs
 `AlternativeName` is used to provide an alternative (alias or translation) of a name, e.g. of 
 a `StopPlace` or `Organisation`. 
 
-For all other alternative texts use `AlternativeText`.
+For all other alternative texts use `MultilingualString`.
 
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/AlternativeName.md)
@@ -198,7 +197,7 @@ See the following class diagram for the most important objects of the RESOURCE F
 
 #### Contained Elements
 
-- ResponsabilitySet
+- ResponsibilitySet
 - TypeOfValue / ValueSets
   - TypeOfNotice
   - TypeOfProductCategory
@@ -282,10 +281,10 @@ We use TypeOfValue references in various Frames in objects including:
 | PrivateCode | Name                | Description                                                                                                                                                                                                                                                      |
 |-------------|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1           | Allgemeiner Hinweis | General information text                                                                                                                                                                                                                                         |
-| 2           | ~~Zugname~~         | Name of the train. Is not used, as this is stored in ServiceJourneyName.                                                                                                                                                                                         |
+| 2           | ~~Zugname~~         | Name of the train. Is not used, as this is stored in `ServiceJourney`/`Name`.                                                                                                                                                                                        |
 | 3           | ~~Gleis-Angabe~~    | Quay and Quay section information. Is no longer used. Is put into Quay.                                                                                                                                                                                          |
 | 10          | Angebot             | Most of the `ServiceFacilitySet` are also transmitted as `Notice`. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to `ServiceFacilitySets`. This `TypeOfNotice` is used to deliver those special cases as Notices. |
-| 11          | ~~Region~~          | Postauto is divided into several regions. Will be omitted. We will add a `privateCodes\PrivateCode` with `type="rn"` to the `ServiceJourney` or `TemplateServiceJourney`.                                                                                       |
+| 11          | ~~Region~~          | Postauto is divided into several regions. Will be omitted. We will add a `privateCodes/PrivateCode` with `type="rn"` to the `ServiceJourney` or `TemplateServiceJourney`.                                                                                       |
 
 *Table: Allowed TypeOfNotice in Switzerland*
 
@@ -347,8 +346,8 @@ A legally incorporated body associated with any aspect of public transportation.
 #### Usage Notes
 * `Organisation`s located in Switzerland are identified by their [SBOIDs](https://transportdatamanagement.ch/content/uploads/2021/05/SwissBusinessOrganisationID_DE_1_2.pdf)  (earlier [GO-number](https://opentransportdata.swiss/de/dataset/didok/resource/d66259a0-a77c-4aee-b7bd-e4fba99dcbb1) ).
 in Switzerland. The TU-Code is to be used for operators of other countries. 
-* The SBOID and GO number shall always also be stored in the `KeyList` and in `privateCodes\PrivateCode`.
-`* OperatorRef` on a `Line` is always the "Konzessionär". 
+* The SBOID and GO number shall always also be stored in the `KeyList` and in `privateCodes/PrivateCode`.
+* `OperatorRef` on a `Line` is always the "Konzessionär". 
 * If a different `Operator` is running a given `ServiceJourney`, then this is reflected in the `ServiceJourney` having 
 a different `OperatorRef`.
 * `Authority`  and `Organisation` are not used.
@@ -358,7 +357,7 @@ a different `OperatorRef`.
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
 
 #### Purpose
-Set of `Facilitiy`s available for a `ServiceJourney` or a `JourneyPart`. 
+Set of `Facility`'s available for a `ServiceJourney` or a `JourneyPart`. 
 
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceFacilitySet.md)
@@ -384,7 +383,7 @@ Set of `Facilitiy`s available for a `ServiceJourney` or a `JourneyPart`.
   -	Ticketing facility
   -	Uic train rate
 
-* The list is fromtime to time revised. The values and lists from the NeTEx standard are not updated.
+* The list is from time to time revised. The values and lists from the NeTEx standard are not updated.
 * This means that a given Facility (e.g. restaurant or diaper changing table) is shown in the appropriate 
 subcategory `MealFacilityList` or `FamilyFacilityList`, and a passenger information system can show these categories in 
 a reasonable order. The categories themselves are from type `xsd:list`, meaning that the values of a category are a 
@@ -398,7 +397,7 @@ separated list of elements.
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
 
 #### Purpose
-Set of `Facilitiy`s available at a `StopPlace`, `Quay` or other site elements.
+Set of `Facility`s available at a `StopPlace`, `Quay` or other site elements.
 
 A `SiteFacilitySet` defines a set of facilities like sanitary facilities, ticket service, lockers etc. that can be 
 referenced to define facilities of a site.

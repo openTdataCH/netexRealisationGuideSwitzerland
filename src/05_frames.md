@@ -25,9 +25,8 @@ participant's identifier.
 *→ [Template](./templates/PublicationDelivery.xml)*
 
 ### Usage Notes
-TODO Cannot make sense of the two sentences. Should be more clearly expressed if needed at all...
-* TODO Basically, the containers could be defined arbitrarily. We are using the most common used version.
-* TODO Be aware that what should be in a Frame in a given file is defined by the organisation of files that are defined in chapter on the [files](04_files.md).
+* We use the standard `frames` of NeTEx
+* Which file needs to contain what `Frame` and with what content is defined in the  [files](04_files.md) chapter.
  
 ## Frames
 

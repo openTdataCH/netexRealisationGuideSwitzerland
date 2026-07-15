@@ -9,7 +9,7 @@
 					<!-- ch-root -->
                     <!-- ch-usage: expected -->
    					<!-- ch-note: A minimal ServiceFrame must be present in all timetable files.-->
-
+					<!-- ch-attrs: id version -->
 					<directions>
 						<!-- ch-note: We don't use directions, but only direction type -->
 						<!-- ch-usage: forbidden -->
@@ -32,10 +32,12 @@
 						</FlexibleLine>
 					</lines>
 					<groupsOfLines>
-						<!-- ch-usage: forbidden-->
-						<GroupOfLines id="notUsed" version="none">
-							<!-- ch-usage: forbidden -->
-							<Name>NotUsed</Name>
+						<!-- ch-usage: expected-->
+						<GroupOfLines id="generated" version="1">
+							<!-- ch-usage: expected -->
+                            <!-- ch-see -->
+                            <!-- ch-note: We use GroupOfLine for the modeling of mixed lines -->
+							<Name>Group_name</Name>
 						</GroupOfLines>
 					</groupsOfLines>
 					<destinationDisplays>
