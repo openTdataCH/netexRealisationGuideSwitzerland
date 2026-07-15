@@ -88,7 +88,7 @@ If a `ServiceJourney` runs over midnight, `DepartureDayOffset` (on `ServiceJourn
 `AlternativeName` is used to provide an alternative (alias or translation) of a name, e.g. of 
 a `StopPlace` or `Organisation`. 
 
-For all other alternative texts use `AlternativeText`.
+For all other alternative texts use `MultilingualString`.
 
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/AlternativeName.md)
