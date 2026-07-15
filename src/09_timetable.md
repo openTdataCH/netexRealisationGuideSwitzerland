@@ -81,7 +81,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - **Stop Times:** Each stop in the referenced `JourneyPattern` must have exactly one `TimetabledPassingTimes` entry with `ArrivalTime` and/or `DepartureTime`.
 - **Day Governance:** Operating days are controlled via `AvailabilityConditionRef` (`ValidDayBits`), not via `DayType`. `DayType`/`DayTypeAssignment` are reserved for flagging national holidays only (see [ServiceCalendarFrame](08_service_calendars.md#daytype)). `DatedServiceJourney` is not used in the Swiss profile.
 - **Validation:** Ensure `JourneyPatternRef`, `LineRef`, and `OperatorRef` are consistent and reference existing objects.
-- We assume that a swiss journey exists for almost every `ServiceJourney`. In those cases the `id` is also set to the `sjyid`. Possible problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `id` will contain a `_gen`
+- We assume that a Swiss Journey ID exists for almost every `ServiceJourney`. In those cases the `id` is also set to the `sjyid`. Possible problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `id` will contain a `_gen`
 - substring.
 - A `ServiceJourney`can be associated with exactly one `ServiceJourneyPattern` and `TimeDemandType`.
 - id-attribute needs to be kept stable between exports.
