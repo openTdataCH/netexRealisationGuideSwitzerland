@@ -16,7 +16,7 @@ In this chapter:
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendarframe)*
 
 ### Purpose
-Groups calendar definitions that describe **when** services operate. We do this with `AvailabilityCondition` and those are stored here. We also have `DayType`s and `DayTypeAssignment`s for the holidays.
+Groups calendar definitions that describe **when** services operate. We do this with `AvailabilityCondition`s stored in this frame. We also have `DayType`s and `DayTypeAssignment`s for the holidays.
 
 See the following class diagram for the most important objects of the `ServiceCalendarFrame` and their relationships to the other frames.
 
@@ -126,8 +126,8 @@ Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 - Examples of use of `AvailabilityCondition` include  `ServiceJourney`, `TemplateServiceJourney`, facilities.
 - AvailabilityCondition replaces OperatingDay and OperatingPeriod. Whenever a reference to a VP (“Verkehrsperiode” or "operating period" in english) is needed, we use an `AvailabilityConditionRef`:
 -	The referenced `AvailabilityCondition`s are centrally stored in the `ServiceCalendarFrame`.
-- The element ValidDayBits directly indicates the days on which some service is provided or not. They are similar to the HRDF bitfields. 
-- ValidDayBits is required whenever the `AvailabilityCondition` is of temporal nature (more often than not). Examples include:
+- The element `ValidDayBits` directly indicates the days on which some service is provided or not. They are similar to the HRDF bitfields. 
+- `ValidDayBits` is required whenever the `AvailabilityCondition` is of temporal nature (more often than not). Examples include:
   -	`ServiceJourney`
   -	`NoticeAssignment`
   -	`ServiceFacilitySet`
@@ -139,7 +139,7 @@ Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendar)*
 
 #### Purpose
-Long-term planning uses calendar days that are classified as specific DayTypes (example: weekday in school holidays). In the general NeTEx model, a ServiceCalendar defines a mapping between DayTypes and OperatingDays; in the Swiss profile, this mapping via OperatingDays is not used — ServiceCalendar serves only as a container for DayTypes and DayTypeAssignments. 
+Long-term planning uses calendar days that are classified as specific `DayType`s (example: weekday in school holidays). In the general NeTEx model, a `ServiceCalendar` defines a mapping between `DayType`s and OperatingDays; in the Swiss profile, this mapping via OperatingDays is not used — `ServiceCalendar` serves only as a container for `DayType`s and `DayTypeAssignment`s, defining a mapping of `DayType`s to dates. 
 
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceCalendar.md)
