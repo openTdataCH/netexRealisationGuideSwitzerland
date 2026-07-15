@@ -9,7 +9,7 @@ In this chapter:
 - [DestinationDisplay](#destinationdisplay)
 - [ScheduledStopPoint](#scheduledstoppoint)
 - [PassengerStopAssignment](#passengerstopassignment)
-- LATER PassengerBoardingPositionAssignment
+- **LATER** PassengerBoardingPositionAssignment
 - [DefaultConnection](#defaultconnection)
 - [SiteConnection](#siteconnection)
 - [TimingLink](#timinglink)
@@ -198,7 +198,7 @@ Showing the destination of a `ServiceJourney`. The text shown on the front or si
 - See also the [use case on changes in destination](uc13_changes_in_destination.md) 
 - id-attribute needs to be kept stable between exports.
 
-> **TODO** the rules for defining need to be clarified. #81
+> **LATER**: We will clarify the rules how this is done.
 
 ## ScheduledStopPoint
 *→ [Glossary definition](A4_annex_glossary.md#scheduledstoppoint)*

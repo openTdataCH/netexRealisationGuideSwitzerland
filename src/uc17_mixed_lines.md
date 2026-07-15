@@ -35,7 +35,7 @@ However, this is such a special case, that outside the Swiss ecosystem this is n
 So we do it as follows:
 > NB: If partial lines have different `EntityLegalOwner` in the partial lines, then those are co-owners. This is NOT reflected in the main line, where only one can (and must be mentioned). The owners must agree on which one there is in Atlas and that's the one that gets written into the main line.
 
-LATER: We have to define how we obtain the information (currently through HRDF) to do this correctly.
+>**LATER**: We have to define how we obtain the information (currently through HRDF) to do this correctly.
 
 ## Delivery of partial lines
 * It is currently NOT allowed to send anything but the full timetable year. A change here would need detailed discussions in AG Solldaten.

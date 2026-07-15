@@ -2,7 +2,7 @@
 
 ## Overview
 
-A `JourneyPart` is a sub-section of a `ServiceJourney` that differs from the rest of the journey in at least one relevant characteristic — such as a different train number, operator, or on-board facilities. The `ServiceJourney` as a whole still runs from start to finish; `JourneyPart`s subdivide it into meaningful segments for passenger information or operational purposes.
+A `JourneyPart` is a subsection of a `ServiceJourney` that differs from the rest of the journey in at least one relevant characteristic — such as a different train number, operator, or on-board facilities. The `ServiceJourney` as a whole still runs from start to finish; `JourneyPart`s subdivide it into meaningful segments for passenger information or operational purposes.
 
 **When to use:** When a `ServiceJourney` changes its train number, operator, or on-board service (e.g. bistro available only on part of the route).
 
@@ -69,6 +69,14 @@ in the underlying data this is always modeled as **two separate `ServiceJourney`
 `ServiceJourneyInterchange`** (suppressed in passenger-facing presentation). See 
 [uc02 Joining and splitting](uc02_joining_splitting.md).
 **When to use:** When a train operates under different train numbers on different sections of the same `ServiceJourney`.
+
+### 3. Splitting and Joining
+`JourneyPart` together with `CoupledJourney`could be used for a different modeling of joining and splitting (see [relevant use case](uc02_joining_splitting.md).
+However, we currently won't do that.
+
+### 4. Integrating data from different sources to have something to load into a trip planner in international travel
+
+A `ServiceJourney` may exist in the Swiss system only up to the first commerical stop abroad and completly but with less information in the Austrian system. To make sure that real-time data is easily applied the aggregated NeTEx timetable may still wish to keep the original delivered `ServiceJourney`. The relevant parts are then also modeled with `JourneyPart` and `CoupledJourney`. We won't do this either. But we study this for some international projects we have on aggregation of timetables. 
 
 ## Key Elements
 

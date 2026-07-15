@@ -44,14 +44,12 @@ This document describes the way in which the NeTEx standard is specifically appl
   - [Direct carriages ("Kurswagen")](uc08_kurswagen.md)
   - [Accessibility](uc09_accessibility.md)
   - [Journeys passing midnight](uc10_midnight_passing.md)
-  - Later: [Touristic offers](uc11_touristic_offers.md)
-  - Later: [Car transport rail](uc12_carTransportRail.md)
-  - Later: [Changes in the destination](uc13_changes_in_destination.md)
+  - **LATER**: [Touristic offers](uc11_touristic_offers.md)
+  - **LATER**: [Car transport rail](uc12_carTransportRail.md)
+  - **LATER**: [Changes in the destination](uc13_changes_in_destination.md)
   - [Frequency based ServiceJourney](uc14_frequencies.md)
-  - Later: [Formations](uc15_formations.md)
-- Mapping tables
-  - Modes
-  - ServiceAttribute 
+  - **LATER**: [Formations](uc15_formations.md)
+- Mapping tables are defined in an [Excel](media/myexcel.xlsx)
 - Annexes:
   - [Resources and references](A1_annex_resources_references.md)
   - [Differences between Swiss profile and EPIP/EPIAP and how they could be amended](A2_annex_comparison_EPIP_EPIAP.md)

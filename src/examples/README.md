@@ -4,7 +4,6 @@ This  folder contains the relevant examples for the realisation guide 2.0 based 
 
 ### Basic train with TimeDemandType
 Example of a normal rail journey train Spiez - Interlaken Ost with various quay combinations.
-> **TODO** needs to be done
 [Link to example](01_NeTEx_Spiez_Interlaken_Ost_PassingTime.xml)
 
 ### Basic bus
@@ -63,12 +62,13 @@ We model a train that has the following stops Fribourg - Bern - Zürich. Zürich
 [Link to example](09_NeTEx_CH_Fribourg_Bern_Zuerich_Perron.xml)
 
 ## SITE OFFER Example
-
-**TODO**
+Including
+Umsteigebeziehungen und Metastations
+**LATER**
 
 ## INTERCHANGES Example
 
-**TODO**
+**LATER**
 
 ## Special case: Destination changed
 We use a BLS train from Bern to Luzern. Due to construction it is terminated at Wolhusen.
@@ -90,32 +90,29 @@ In a second modeling we want to model the change in the train number as also sho
 
 ## Special case: Destination display in a round trip
 
->**TODO** LATER
+>**LATER** 
 
 
 ## Journey relationships
 
->**TODO** Examples from Adrian
+>**LATER** 
 
-## Special case: Umsteigebeziehungen und Metastations
-
->**TODO** by Adrian
 
 ## Postauto with Anhänger
 
->**TODO** PAG needed
+>**LATER**
 
 ## Formation for trains
 
->LATER **TODO** 
+>**LATER**
 
 ## carTransportRail
 
->LATER **TODO** 
+>**LATER**
 
 ### rail replacement
 
->LATER **TODO**
+>**LATER**
 
 ## Frequency based traffic
 The following examples shows two `TemplateServiceJourney`s with frequencies. If there is continuous operation, then 1 minute is set as the interval.
@@ -127,7 +124,7 @@ Swiss NeTEx 2.0 replaces Call-based, order-dependent modeling with a flat, Passi
 
 We already have seen line-based DRT. Here we deal with area based DRT.
 
->LATER **TODO** 
+>**LATER** 
 
 ## Accessibility
 For NeTEx 2.0 EPIAP (European Passsenger accessibility Profile, NeTEx Part 6) Chur was used as an example. 
