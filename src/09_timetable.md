@@ -33,7 +33,8 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
   -  `TemplateServiceJourney`- describes a set of journeys repeating at a certain frequency
   -  The Swiss profile only models journeys that are available to the passengers
 - `TrainNumber`- each `ServiceJourney` and `TemplateServiceJourney` is mapped one-to-one to exactly one train number
-- `passingTimes`- describe the times of vehicles at points in their journey
+- Each `ServiceJourney`/`TemplateServiceJourney` in the `TimetableFrame` carries a `TimeDemandTypeRef` element pointing to exactly one `TimeDemandType`. The referenced `TimeDemandType` object itself — together with the `TimingLink`s it builds on — is defined in the `ServiceFrame`, not in the `TimetableFrame`. 
+  It holds the `RunTime`s (`JourneyRunTime`, per `TimingLink`) and `WaitTime`s (`JourneyWaitTime`, per stop) that together replace the deprecated `passingTimes`/`TimetabledPassingTime` mechanism (see below).
 - `journeyInterchanges` – collection of ServiceJourneyInterchanges describing planned connections and through-services between journeys
 - `NoticeAssignment`s- link `Notice`s to specific journeys or stop points within journeys
 - `ServiceFacilitySet`s- describe the various services and facilities offered by the vehicles of a journey
@@ -103,11 +104,56 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 - For sjyid see information about [frequencies](uc14_frequencies.md).
 - id-attribute needs to be kept stable between exports.
 
+## TimeDemandType
+*→ [Glossary definition](A4_annex_glossary.md#timedemandtype)*
+
+### Purpose
+A `TimeDemandType` describes the timing pattern of a `ServiceJourneyPattern`: `RunTime`s between consecutive `ScheduledStopPoint`s (via `JourneyRunTime`, referencing the relevant `TimingLink` through `TimingLinkRef`) and `WaitTime`s at a `ScheduledStopPoint` (via `JourneyWaitTime`, referencing the `ScheduledStopPoint` directly through `TimingPointRef` — not the `TimingLink`). Several `TimeDemandType`s can be defined for the same `ServiceJourneyPattern`, for example to represent peak vs. off-peak traffic conditions. `TimeDemandType` — together with the `TimingLink`s it builds on — is defined in the `ServiceFrame`. It replaces the deprecated `passingTimes`/`TimetabledPassingTime` mechanism (see below): instead of every journey carrying its own arrival/departure times, journeys in the `TimetableFrame` reference a shared `TimeDemandType` via `TimeDemandTypeRef`.
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/TimeDemandType.md)
+
+*→ [General NeTEx definition](../generated/netex-html/TimeDemandType.html)*
+
+### Example
+- [Example snippet](../site/xml-snippets/TimeDemandType.xml)
+
+*→ [Template](./templates/TimeDemandType.xml)*
+
+### Usage Notes
+- `RunTime` references the relevant `TimingLink` via `TimingLinkRef`; `WaitTime` references the relevant `ScheduledStopPoint` directly via `TimingPointRef` — not via `TimingLink`. See [TimingLink](#timinglink).
+- `WaitTime` is only needed when greater than 0; it can be omitted where arrival and departure times coincide.
+- A `ServiceJourney`/`TemplateServiceJourney` in the `TimetableFrame` references exactly one `TimeDemandType` via `TimeDemandTypeRef`.
+- For stops visited multiple times within the same `ServiceJourneyPattern` with different wait times, see open NeTEx PR [#1031](https://github.com/TransmodelEcosystem/NeTEx/pull/1031), which adds `StopPointInServiceJourneyPatternRef` to `JourneyWaitTime` for this case.
+- id-attribute needs to be kept stable between exports.
+
+## TimingLink
+*→ [Glossary definition](A4_annex_glossary.md#timinglink)*
+
+### Purpose
+A `TimingLink` defines the topological link between two consecutive `ScheduledStopPoint`s used within a `ServiceJourneyPattern` (`FromPointRef`/`ToPointRef`, technically typed as `TimingPointRef` and substituted by `ScheduledStopPointRef`). `TimingLink` itself does **not** carry any run or wait time value — these are attached per `TimeDemandType` (see above). `TimingLink` is defined in the `ServiceFrame`, alongside `ScheduledStopPoint` and `ServiceJourneyPattern`.
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/TimingLink.md)
+
+*→ [General NeTEx definition](../generated/netex-html/TimingLink.html)*
+
+### Example
+- [Example snippet](../site/xml-snippets/TimingLink.xml)
+
+*→ [Template](./templates/TimingLink.xml)*
+
+### Usage Notes
+- `TimingLink` must fit the stop sequence defined in the `ServiceJourneyPattern`; one `TimingLink` per consecutive stop pair.
+- If there is maneuvering or a change of quay between two stops, a separate `TimingLink` needs to be added for that as well.
+- `TimingLink` is purely topological — for the actual `RunTime`/`WaitTime` values, see [TimeDemandType](#timedemandtype).
+- Within the `ServiceFrame`, `TimingLink`s must be declared before the `ServiceJourneyPattern`s that use them, and `TimeDemandType`s must come after the `ServiceJourneyPattern`s (fixed XSD sequence order: `scheduledStopPoints` → `timingLinks` → `journeyPatterns` → `timeDemandTypes`).
+- id-attribute needs to be kept stable between exports.
 
 ## OccupancyView
 
 ### Purpose
-`OccupancyView`can be used on the `Journey`, `JourneyPart`, and `TimetabledPassingTime` elements. Used for predicted and planned occupancies of vehicles.
+`OccupancyView`can be used on the `Journey` and `JourneyPart` elements. Used for predicted and planned occupancies of vehicles.
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/OccupancyView.md)
@@ -174,32 +220,7 @@ Actually there is only one allowed value that we use in the Swiss profile: Only 
 
 
 ## TimetabledPassingTime
-*→ [Glossary definition](A4_annex_glossary.md#timetabledpassingtime)*
-> We don't use TimetabledPassingTime. We will remove this. We use TimeDemandType now.
-
-### Purpose
-
-Long-term planned time data concerning public transport vehicles passing a particular `PointInJourneyPattern` on a specified vehicle journey for a certain `DayType`. 
-
-### Table
-- [Swiss profile NeTEx definition](../site/tables/TimetabledPassingTime_deprecated.md)
-
-*→ [General NeTEx definition ](../generated/netex-html/TimetabledPassingTime.html)*
-
-### Example
-- [Example snippet](../site/xml-snippets/TimetabledPassingTime_deprecated.xml)
-
-*→ [Template](./templates/TimetabledPassingTime_deprecated.xml)*
-
-### Usage Notes
-- Note that for journeys lasting more than one day, `DayOffset` is available.
-- If `DepartureTime` is not on the same day as `ArrivalTime` this information will be provided using `WaitingTime`.
-- We use sjyid whenever possible as the attribute. However, there are different types of `ServiceJourney`s that don't have one:
-  - foreign `ServiceJourney`s
-  - perhaps some touristic offers
-  - frequency-based journeys that are wrongly modeled in HRDF (will be removed)
-- We store the sjyid in different places `id`, `privateCodes/PrivateCode`, `KeyList`. This allows different importing systems to find the sjyid.
-
+> **Deprecated** - We don't use TimetabledPassingTime in RG2.0. We use TimeDemandType now.
 
 ## ServiceJourneyInterchange
 *→ [Glossary definition](A4_annex_glossary.md#servicejourneyinterchange)*
@@ -222,7 +243,7 @@ The standard states: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an 
 
 ### Usage Notes
 - `ServiceJourneyInterchange` is placed in the `TimetableFrame` within the `journeyInterchanges` collection.
-- `StaySeated=true` indicates that the passenger remains in the vehicle — typically used for through-services (Durchbindung), splitting (Flügelzug) and joining (Vereinigung). See [uc01 Durchbindung](uc01_durchbindung.md).
+- `StaySeated=true` indicates that the passenger remains in the vehicle — typically used for through-services (Durchbindung) and joining (Vereinigung). See [uc01 Durchbindung](uc01_durchbindung.md).
 - `StaySeated=false` indicates that the passenger must change vehicles. This covers guaranteed and non-guaranteed connections. See [uc03 Transfers](uc03_transfers.md).
 - `Guaranteed=true` explicitly marks the connection as guaranteed. 
 - `MaximumWaitTime` defines how long the distributor waits — if absent, no explicit wait time is defined.
