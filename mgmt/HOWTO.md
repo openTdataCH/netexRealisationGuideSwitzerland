@@ -77,7 +77,6 @@ In the Example portion first the link to the snippet is formed  `[Example snippe
 - we use mermaid: https://mermaid.js.org/intro/syntax-reference.html in githu
 - When other things are needed they are to be stored in the docs/media folder
 - The sources for drawings are to be stored in docs/media as well
-> **TODO** expand on how to do diagrams
 
 ### Links
 - When using links between docs, and to other structures we need to add the file and the anchor. E.g. `./10_common.md#CompositeFrame`
