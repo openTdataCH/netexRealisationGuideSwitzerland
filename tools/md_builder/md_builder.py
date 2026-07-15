@@ -99,9 +99,14 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
                 # Extract elements within this complex type
                 for element in complex_type.findall('.//xs:element', namespaces=ns):
                     elem_name = element.get('name')
+                    elem_ref = element.get('ref')
                     elem_type = element.get('type')
                     min_occurs = element.get('minOccurs', '1')
                     max_occurs = element.get('maxOccurs', '1')
+                    
+                    # Use ref if name is not available (for referenced elements)
+                    if not elem_name:
+                        elem_name = elem_ref.split(':')[-1] if elem_ref else None
                     
                     if elem_name:
                         # Get element description
@@ -137,9 +142,14 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
         # Extract top-level elements
         for element in xsd_root.findall('.//xs:element', namespaces=ns):
             name = element.get('name')
+            ref = element.get('ref')
             elem_type = element.get('type')
             min_occurs = element.get('minOccurs', '1')
             max_occurs = element.get('maxOccurs', '1')
+            
+            # Use ref if name is not available
+            if not name:
+                name = ref.split(':')[-1] if ref else None
             
             if name:
                 # Get element description
@@ -228,6 +238,14 @@ def search_xsd_files_for_element_with_parent(base_dir, element_name, parent_type
                         complex_type_xpath = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
                         elements = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
                         if not elements:
+                            # Also try with ref attribute
+                            complex_type_xpath_ref = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@ref='{element_name}']"
+                            elements = xsd_doc.xpath(complex_type_xpath_ref, namespaces=namespaces)
+                            if not elements:
+                                # Try with namespace prefix in ref
+                                complex_type_xpath_ref_ns = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[contains(@ref, ':{element_name}')]"
+                                elements = xsd_doc.xpath(complex_type_xpath_ref_ns, namespaces=namespaces)
+                        if not elements:
                             complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
                             elements = xsd_doc.xpath(complex_type_xpath_no_ns)
                         # Only return if found in parent context
@@ -239,6 +257,15 @@ def search_xsd_files_for_element_with_parent(base_dir, element_name, parent_type
                         # No parent_type, search all elements
                         element_xpath = f"//xs:element[@name='{element_name}']"
                         elements = xsd_doc.xpath(element_xpath, namespaces=namespaces)
+                        
+                        # Also try with ref attribute
+                        if not elements:
+                            element_xpath_ref = f"//xs:element[@ref='{element_name}']"
+                            elements = xsd_doc.xpath(element_xpath_ref, namespaces=namespaces)
+                            if not elements:
+                                # Try with namespace prefix in ref
+                                element_xpath_ref_ns = f"//xs:element[contains(@ref, ':{element_name}')]"
+                                elements = xsd_doc.xpath(element_xpath_ref_ns, namespaces=namespaces)
                         
                         # If not found, try without namespace
                         if not elements:
@@ -278,6 +305,15 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
             complex_type_xpath = f"//xs:complexType[@name='{parent_type}']//xs:element[@name='{element_name}']"
             element = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
             
+            # Also try with ref attribute (for referenced elements)
+            if not element:
+                complex_type_xpath_ref = f"//xs:complexType[@name='{parent_type}']//xs:element[@ref='{element_name}']"
+                element = xsd_doc.xpath(complex_type_xpath_ref, namespaces=namespaces)
+                if not element:
+                    # Try with namespace prefix in ref
+                    complex_type_xpath_ref_ns = f"//xs:complexType[@name='{parent_type}']//xs:element[contains(@ref, ':{element_name}')]"
+                    element = xsd_doc.xpath(complex_type_xpath_ref_ns, namespaces=namespaces)
+            
             # Also try without namespace prefix for broader compatibility
             if not element:
                 complex_type_xpath_no_ns = f"//*[local-name()='complexType' and @name='{parent_type}']//*[local-name()='element' and @name='{element_name}']"
@@ -287,6 +323,11 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
             if not element:
                 complex_type_xpath_contains = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
                 element = xsd_doc.xpath(complex_type_xpath_contains, namespaces=namespaces)
+                
+                # Also try with ref attribute for contains case
+                if not element:
+                    complex_type_xpath_contains_ref = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@ref='{element_name}']"
+                    element = xsd_doc.xpath(complex_type_xpath_contains_ref, namespaces=namespaces)
             
             if not element:
                 complex_type_xpath_contains_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
@@ -296,6 +337,15 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
         if not element:
             element_xpath = f"//xs:element[@name='{element_name}']"
             element = xsd_doc.xpath(element_xpath, namespaces=namespaces)
+            
+            # Also try with ref attribute
+            if not element:
+                element_xpath_ref = f"//xs:element[@ref='{element_name}']"
+                element = xsd_doc.xpath(element_xpath_ref, namespaces=namespaces)
+                if not element:
+                    # Try with namespace prefix in ref
+                    element_xpath_ref_ns = f"//xs:element[contains(@ref, ':{element_name}')]"
+                    element = xsd_doc.xpath(element_xpath_ref_ns, namespaces=namespaces)
         
         # If not found in main file, search all XSD files in the directory with parent_type context
         if not element and parent_type:
@@ -307,6 +357,14 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
                 # Find the element in this document using parent_type context
                 complex_type_xpath = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
                 element = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
+                if not element:
+                    # Also try with ref attribute
+                    complex_type_xpath_ref = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@ref='{element_name}']"
+                    element = xsd_doc.xpath(complex_type_xpath_ref, namespaces=namespaces)
+                    if not element:
+                        # Try with namespace prefix in ref
+                        complex_type_xpath_ref_ns = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[contains(@ref, ':{element_name}')]"
+                        element = xsd_doc.xpath(complex_type_xpath_ref_ns, namespaces=namespaces)
                 if not element:
                     complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
                     element = xsd_doc.xpath(complex_type_xpath_no_ns)
@@ -321,6 +379,15 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
                 # Find the element in this document
                 element_xpath = f"//xs:element[@name='{element_name}']"
                 element = xsd_doc.xpath(element_xpath, namespaces=namespaces)
+                
+                # Also try with ref attribute
+                if not element:
+                    element_xpath_ref = f"//xs:element[@ref='{element_name}']"
+                    element = xsd_doc.xpath(element_xpath_ref, namespaces=namespaces)
+                    if not element:
+                        # Try with namespace prefix in ref
+                        element_xpath_ref_ns = f"//xs:element[contains(@ref, ':{element_name}')]"
+                        element = xsd_doc.xpath(element_xpath_ref_ns, namespaces=namespaces)
                 
                 # If not found, try without namespace
                 if not element:
