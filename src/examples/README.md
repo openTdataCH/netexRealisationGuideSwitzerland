@@ -59,6 +59,11 @@ We model a train that has the following stops Fribourg - Bern - Zürich. Zürich
 
 [Link to example](NeTEx_CH_Fribourg_Bern_Zuerich_Perron.xml)
 
+## SITE OFFER Example
+
+## INTERCHANGES Example
+
+
 ## Special case: Destination changed
 We use a BLS train from Bern to Luzern. Due to construction it is terminated at Wolhusen.
 We assume that in Bern, Konolfingen and Langnau i.E. we want to show Destination Luzern. On the ServiceJourney we want to show Wolhusen. And in the stops after Langnau i.E. we show Wolhusen as destination.
@@ -70,6 +75,7 @@ We assume that in Bern, Konolfingen and Langnau i.E. we want to show Destination
 In a second modeling we want to model the change in the train number as also shown in the example. In this version the train goes to Luzern exactly as shown in the image.
 
 [Link to example](NeTEx_CH_BLS_Bern_Luzern_Change_TrainNumber_and_other_stuff.xml)
+
 
 
 ## Special case: Destination display in a round trip
@@ -101,7 +107,7 @@ In a second modeling we want to model the change in the train number as also sho
 
 >LATER **TODO**
 
-### Frequency based traffic
+## Frequency based traffic
 The following examples shows two `TemplateServiceJourney`s with frequencies. If there is continuous operation, then 1 minute is set as the interval.
 
 [Link to example](NeTEx_CH_Frequency_Based_Line.xml)
