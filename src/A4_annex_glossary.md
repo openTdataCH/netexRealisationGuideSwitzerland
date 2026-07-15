@@ -195,6 +195,16 @@ A logical grouping of multiple Line objects for common management, branding, dis
 
 ---
 
+## ServiceJourneyInterchange
+
+A planned interchange between two ServiceJourneys — feeder and distributor — including whether the passenger stays seated, must change vehicle within the same train, or is guaranteed a connection.
+
+> **NeTEx XSD:** In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle.
+
+→ [Full documentation](09_timetable.md#servicejourneyinterchange)
+
+---
+
 ## Interchange
 
 A planned transfer opportunity between two ServiceJourneys at a shared stop point, modelled as `ServiceJourneyInterchange` in XML.
@@ -206,6 +216,8 @@ A planned transfer opportunity between two ServiceJourneys at a shared stop poin
 ---
 
 ## InterchangeRule
+
+> **Not used in the Swiss profile** — replaced by `ServiceJourneyInterchange` (see [uc03 Transfers](uc03_transfers.md)).
 
 An InterchangeRule defines the possibility of interchanging between two ServiceJourneys at the same or different 
 ScheduledStopPoints - where at least one journey is specified indirectly via Direction, Line, or the VehicleJourney, 
@@ -292,6 +304,8 @@ validity of the NOTICE starts and ends respectively.
 ---
 
 ## OperatingDay
+
+> **Not used in the Swiss profile** — replaced by `AvailabilityCondition` (see [AvailabilityCondition](08_service_calendars.md#availabilitycondition)).
 
 A specific calendar date on which transport services operate, referenced by DatedServiceJourney to anchor a journey to a concrete day.
 
