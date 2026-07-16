@@ -359,6 +359,14 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
         max_occurs = element.get('maxOccurs', '1')
         cardinality = get_cardinality(min_occurs, max_occurs)
         
+        # Check if parent is a _RelStructure type - if so, elements should be 1..n
+        # This handles the case where elements are within a choice that we don't explicitly model
+        if parent_type and '_RelStructure' in parent_type:
+            # For _RelStructure types, the contained elements should have cardinality 1..*
+            # This is because _RelStructure types contain sequences with maxOccurs="unbounded"
+            # even if the individual element declaration has minOccurs="1" maxOccurs="1"
+            cardinality = '1..*'
+        
         # Get type - check substitution group chain recursively
         element_type = "unknown"
         current_element = element
