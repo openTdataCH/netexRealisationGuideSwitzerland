@@ -104,7 +104,7 @@ classDiagram
 *→ [Template](./templates/ServiceCalendarFrame.xml)*
 
 #### Usage Notes
-- Note that `AvailabilityCondition`s could be combined and ANDed (all the conditions must be fulfilled at the same time). We will work with `ValidBetween` and `ValidDayBits` of `AvailabilityCondition only. 
+- Note that `AvailabilityCondition`s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are `FromDate`/ `ToDate`, `ValidDayBits`, and `timebands`. 
 
 ### AvailabilityCondition
 *→ [Glossary definition](A4_annex_glossary.md#availabilitycondition)*
@@ -132,6 +132,7 @@ Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
   -	`NoticeAssignment`
   -	`ServiceFacilitySet`
   -	`ServiceJourneyInterchange`
+- `AvailabilityCondition`s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are `FromDate`/ `ToDate`, `ValidDayBits`, and `timebands`. **TODO** *Still not completely clear to me (AM) - suppose AvailabilityConditions "only summer" (FromDate/ToDate), "only school holiday period" (timebands), "only sunday" (ValidDayBits) - is each of them obliged to have ValidDayBits?*
 - Hint: The frames `TimetableFrame`, `ServiceFrame` and `ServiceCalendarFrame` and their elements must have the same validity.
 - id-attribute does not need to be kept stable between exports.
 
