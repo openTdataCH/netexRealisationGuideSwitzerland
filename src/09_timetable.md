@@ -3,8 +3,6 @@ In this chapter:
 - [TimetableFrame](09_timetable.md#timetableframe)
 - [ServiceJourney](09_timetable.md#servicejourney)
 - [TemplateServiceJourney](09_timetable.md#templateservicejourney)
-- [TimeDemandType](09_timetable.md#timedemandtype)
-- [TimingLink](09_timetable.md#timinglink)
 - [OccupancyView](09_timetable.md#occupancyview)
 - [TrainNumber](09_timetable.md#trainnumber)
 - [TypeOfService](#typeofservice)
@@ -112,51 +110,8 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 ## TimeDemandType
 *→ [Glossary definition](A4_annex_glossary.md#timedemandtype)*
 
-### Purpose
-A `TimeDemandType` describes the timing pattern of a `ServiceJourneyPattern`: `RunTime`s between consecutive `ScheduledStopPoint`s (via `JourneyRunTime`, referencing the relevant `TimingLink` through `TimingLinkRef`) and `WaitTime`s at a `ScheduledStopPoint` (via `JourneyWaitTime`, referencing the
-`ScheduledStopPoint` directly through `TimingPointRef` — not the `TimingLink`). Several `TimeDemandType`s can be defined for the same `ServiceJourneyPattern`, for example to represent peak vs. off-peak traffic conditions. `TimeDemandType` — together with the `TimingLink`s it builds on — is defined in the
-`ServiceFrame`. It replaces the deprecated `passingTimes`/`TimetabledPassingTime` mechanism (see below): instead of every journey carrying its own arrival/departure times, journeys in the `TimetableFrame` reference a shared `TimeDemandType` via `TimeDemandTypeRef`.
-
-### Table
-- [Swiss profile NeTEx definition](../site/tables/TimeDemandType.md)
-
-*→ [General NeTEx definition](../generated/netex-html/TimeDemandType.html)*
-
-### Example
-- [Example snippet](../site/xml-snippets/TimeDemandType.xml)
-
-*→ [Template](./templates/TimeDemandType.xml)*
-
-### Usage Notes
-- `RunTime` references the relevant `TimingLink` via `TimingLinkRef`; `WaitTime` references the relevant `ScheduledStopPoint` directly via `TimingPointRef` — not via `TimingLink`. See [TimingLink](#timinglink).
-- `WaitTime` is only needed when greater than 0; it can be omitted where arrival and departure times coincide.
-- A `ServiceJourney`/`TemplateServiceJourney` in the `TimetableFrame` references exactly one `TimeDemandType` via `TimeDemandTypeRef`.
-- For stops visited multiple times within the same `ServiceJourneyPattern` with different wait times, see open NeTEx PR [#1031](https://github.com/TransmodelEcosystem/NeTEx/pull/1031), which adds `StopPointInServiceJourneyPatternRef` to `JourneyWaitTime` for this case.
-- id-attribute needs to be kept stable between exports.
-
 ## TimingLink
 *→ [Glossary definition](A4_annex_glossary.md#timinglink)*
-
-### Purpose
-A `TimingLink` defines the topological link between two consecutive `ScheduledStopPoint`s used within a `ServiceJourneyPattern` (`FromPointRef`/`ToPointRef`, technically typed as `TimingPointRef` and substituted by `ScheduledStopPointRef`). `TimingLink` itself does **not** carry any run or wait time value — these are
-attached per `TimeDemandType` (see above). `TimingLink` is defined in the `ServiceFrame`, alongside `ScheduledStopPoint` and `ServiceJourneyPattern`.
-
-### Table
-- [Swiss profile NeTEx definition](../site/tables/TimingLink.md)
-
-*→ [General NeTEx definition](../generated/netex-html/TimingLink.html)*
-
-### Example
-- [Example snippet](../site/xml-snippets/TimingLink.xml)
-
-*→ [Template](./templates/TimingLink.xml)*
-
-### Usage Notes
-- `TimingLink` must fit the stop sequence defined in the `ServiceJourneyPattern`; one `TimingLink` per consecutive stop pair.
-- If there is maneuvering or a change of quay between two stops, a separate `TimingLink` needs to be added for that as well.
-- `TimingLink` is purely topological — for the actual `RunTime`/`WaitTime` values, see [TimeDemandType](#timedemandtype).
-- Within the `ServiceFrame`, `TimingLink`s must be declared before the `ServiceJourneyPattern`s that use them, and `TimeDemandType`s must come after the `ServiceJourneyPattern`s (fixed XSD sequence order: `scheduledStopPoints` → `timingLinks` → `journeyPatterns` → `timeDemandTypes`).
-- id-attribute needs to be kept stable between exports.
 
 ## OccupancyView
 
