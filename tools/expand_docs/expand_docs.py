@@ -8,8 +8,8 @@ import argparse
 import re
 from tools.configuration import DOCS_DIR, SITE_DIR, SITE_TABLES_DIR, SITE_XML_SNIPPETS_DIR
 
-TABLE_MD_LINK_TARGET_PATTERN = re.compile(r'(\[.*])\((.*(\.)md).*\)')
-TABLE_MD_LINK_TARGET_REPLACEMENT = r'\1(./tables/\2)'
+TABLE_MD_LINK_TARGET_PATTERN = re.compile(r'(\[.*?\])(\((.*?\.md)[^)]*\))')
+TABLE_MD_LINK_TARGET_REPLACEMENT = r'\1(./tables/\3)'
 
 def copy_media_folder(input_folder, output_folder):
     """Copy media folder from input to output."""
@@ -66,8 +66,14 @@ def include_markdown_table(table_file_name: str, base_folder: str):
                     # correct md link target
                     line = TABLE_MD_LINK_TARGET_PATTERN.sub(TABLE_MD_LINK_TARGET_REPLACEMENT,line)
                     table_lines.append(line)
-                elif in_table:
-                    break
+                elif line.startswith("#"):
+                    # we ignore heading
+                    continue
+                else:
+                    # just add everything else
+                    table_lines.append(line)
+                    in_table = False
+
             return '\n'.join(table_lines)
     return table_file_name
 

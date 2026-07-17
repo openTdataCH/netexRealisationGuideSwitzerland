@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
@@ -8,11 +8,10 @@
 				<ServiceFrame id="ch:1:ServiceFrame" version="1">
 					<lines>
 						<Line id="use swiss line id where possible" version="1" responsibilitySetRef="dsa">
-						
 							<!-- ch-root -->
 							<!-- ch-usage: mandatory -->
-							<!-- ch-attrs: responsibilitySetRef -->
-							<!-- ch-note: We have a duplication with responsibilitySet and OperatorRef. AuthorityRef is not used. -->
+							<!-- ch-attrs: id version responsibilitySetRef -->
+							<!-- ch-note: For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `OperatorRef`. This is to maintain compatibility with different data consumers. -->
 							<ValidBetween>
 								<!-- ch-usage: expected -->
 								<!-- ch-note: Usually set to the whole timetable year -->
@@ -28,17 +27,31 @@
 									<Value><!-- ch-usage: expected -->ch:1:slnid:102846</Value>
 								</KeyValue>
 							</keyList>
+                            <privateCodes>
+                                <!-- ch-usage: expected -->
+									<!-- ch-note: The SLNID is mandatory, when it exists -->
+                                <PrivateCode type="slnid"><!-- ch-attrs: type -->ch:1:slnid:102846</PrivateCode>
+                            </privateCodes>
 							<Name><!-- ch-usage: mandatory --><!-- ch-note: contains attribute D T from HRDF. Is not translated on purpose.-->3</Name>
 							<ShortName><!-- ch-usage: expected--><!-- ch-note: contains the LinieKurzName (attribut N T in HRDF) -->3</ShortName>
 							<TransportMode><!-- ch-usage: mandatory -->rail</TransportMode>
 							<TransportSubmode>
-								<RailSubmode><!-- ch-usage: expected -->suburbanRailway</RailSubmode>
+                                <!-- ch-usage: optional -->
+                                <!-- ch-note: the mapping excel describe how to use the TransportSubmode -->
+								<RailSubmode><!-- ch-usage: optional--><!-- ch-note: Here an example for rail. Be aware that other XXXSubmode are used for other mode. -->suburbanRailway</RailSubmode>
 							</TransportSubmode>
 							<PublicCode><!-- ch-usage: mandatory --><!-- ch-note: Contains LinieLangName (attribute LT from HRDF) -->3</PublicCode>
 							<OperatorRef ref="ch:1:Operator:11" versionRef="1">
-								<!-- ch-usage: optional -->
-								<!-- ch-note: The operator is the transport organisation that really will do the operation. If different from AuthorityRef -->
+								<!-- ch-usage: expected -->
+								<!-- ch-note: The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney.  Is redundant to the responsibilitySetRef on purpose. -->
 							</OperatorRef>
+							<additionalOperators>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined. -->
+								<OperatorRef ref="ch:1:Operator:33" versionRef="1"/>
+							</additionalOperators>
+                            <LineType><!-- ch-usage: expected --><!-- ch-note: Will be used especially, when not "fixed". Details in mapping excel. -->fixed</LineType>
+                            <TypeOfLineRef ref="forbidden" versionRef="notused"><!-- ch-usage: forbidden --><!-- ch-note: We use LineType only --></TypeOfLineRef>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:TER" versionRef="1">
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: Always aligned with BS KI oev-info.ch  -->

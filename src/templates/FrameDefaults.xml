@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="ch:1:CompositeFrame" version="any">
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
 			<FrameDefaults>
 				<!-- ch-root -->
 				<!-- ch-usage: expected -->
 				<DefaultLocale>
-					<!-- ch-note: The default locale is German (de) for SBB and Swiss public transport. -->
+					<!-- ch-note: The default locale is German (de) for Swiss public transport. -->
 					<!-- ch-usage: mandatory -->
-					<TimeZoneOffset><!-- ch-usage: mandatory --><!-- ch-note: We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+2) and SummerTimeZoneOffset (+1) -->1</TimeZoneOffset>
+					<TimeZoneOffset><!-- ch-usage: mandatory --><!-- ch-note: We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) -->1</TimeZoneOffset>
 					<TimeZone><!-- ch-usage: mandatory -->Europe/Berlin</TimeZone>
-					<SummerTimeZoneOffset><!-- ch-usage: mandatory --><!-- ch-note: We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+2) and SummerTimeZoneOffset (+1)-->2</SummerTimeZoneOffset>
-					<DefaultLanguage><!-- ch-usage: mandatory --><!-- ch-note: Is always set to “de” for SKI and Swiss public transport.-->de</DefaultLanguage>
+					<SummerTimeZoneOffset><!-- ch-usage: mandatory --><!-- ch-note: We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2)-->2</SummerTimeZoneOffset>
+					<DefaultLanguage><!-- ch-usage: mandatory --><!-- ch-note: Is always set to “de” for Swiss public transport.-->de</DefaultLanguage>
 				</DefaultLocale>
 				<DefaultLocationSystem><!-- ch-usage: mandatory -->urn:ogc:def:crs:EPSG::4326</DefaultLocationSystem>
 			</FrameDefaults>
 			<frames>
-				<ResourceFrame id="ch:1:ResourceFrame" version="any">
+				<ResourceFrame id="ch:1:ResourceFrame" version="1">
 				</ResourceFrame>
 			</frames>
 		</CompositeFrame>

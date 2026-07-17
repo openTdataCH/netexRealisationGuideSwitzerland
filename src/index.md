@@ -8,16 +8,16 @@ The realisation specifications in this document will be agreed by the KIDS (“K
 The realisation specifications will be officially released by the National Commission Customer Information (Nationale Kommission Kundeninformation (KKI)) . 
 
 The realisation specifications mainly concern: 
-•	detailed clarifications about points which have abstract and open definitions in the standard. 
-•	detailed clarifications about points which have hitherto been handled inconsistently within public transport in Switzerland. 
-•	intentional deviations from the official standard within public transport in Switzerland.
+-	detailed clarifications about points which have abstract and open definitions in the standard. 
+-	detailed clarifications about points which have hitherto been handled inconsistently within public transport in Switzerland. 
+-	intentional deviations from the official standard within public transport in Switzerland.
 
 ## Supported NeTEx version
 This profile is based on [NeTEx 2.1 XSD](https://github.com/TransmodelEcosystem/NeTEx/tree/v2.1-wip). It is still work in progess, therefore it might change.
 
 We will have a copy of the XSD we really use in production on [oev-info.ch](https://www.oev-info.ch/de/branchenstandard/technische-ausfuehrungsbestimmungen/fahrplandaten)
 
-The relevant specification documents can be found in the appropriate stores with the number: CEN/TS 16614. eg. through [VSS](https://www.vss.ch/vss_de/)
+The relevant specification documents can be found in the appropriate stores with the number: CEN/TS 16614. e.g. through [VSS](https://www.vss.ch/vss_de/)
 
 ## Binding nature
 This document describes the way in which the NeTEx standard is specifically applied and interpreted in Switzerland. It forms the basis for agreements concerning the connection between the individual public transport partners for exchanging timetables. 
@@ -30,7 +30,7 @@ This document describes the way in which the NeTEx standard is specifically appl
 - [Frames used in the profile](05_frames.md)
 - [Site model](06_stops.md)
 - [Service model](07_service.md)
-- [Service Calendar model](07_service.md)
+- [Service Calendar model](08_service_calendars.md)
 - [Timetables](09_timetable.md)
 - [Common building blocks](10_common.md)
 - Special use cases:
@@ -44,14 +44,12 @@ This document describes the way in which the NeTEx standard is specifically appl
   - [Direct carriages ("Kurswagen")](uc08_kurswagen.md)
   - [Accessibility](uc09_accessibility.md)
   - [Journeys passing midnight](uc10_midnight_passing.md)
-  - Later: [Touristic offers](uc11_touristic_offers.md)
-  - Later: [Car transport rail](uc12_carTransportRail.md)
-  - Later: [Changes in the destination](uc13_changes_in_destination.md)
+  - **LATER**: [Touristic offers](uc11_touristic_offers.md)
+  - **LATER**: [Car transport rail](uc12_carTransportRail.md)
+  - **LATER**: [Changes in the destination](uc13_changes_in_destination.md)
   - [Frequency based ServiceJourney](uc14_frequencies.md)
-  - Later: [Formations](uc15_formations.md)
-- Mapping tables
-  - Modes
-  - ServiceAttribute 
+  - **LATER**: [Formations](uc15_formations.md)
+- Mapping tables are defined in an [Excel](media/myexcel.xlsx)
 - Annexes:
   - [Resources and references](A1_annex_resources_references.md)
   - [Differences between Swiss profile and EPIP/EPIAP and how they could be amended](A2_annex_comparison_EPIP_EPIAP.md)
@@ -64,9 +62,9 @@ This document describes the way in which the NeTEx standard is specifically appl
 We have a [set of examples](./examples/README.md) that show how to create use cases with the realisation guide.
 
 ## Impressum
-* Authors: Thomas Schäfer, Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Martin Bennett, Emeric Matthias Günter
+* Authors: Thomas Schäfer, Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Martin Bennett, Simon Freihart, Emeric Tapia-Almosnino, Matthias Günter
 * Status: Draft
-* Last change: **TODO**
+* Last change: 2026-07-31
 * Contact: info.fachbus@sbb.ch
 
 ## Copyright / License

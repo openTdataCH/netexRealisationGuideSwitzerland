@@ -14,7 +14,7 @@ In Service:
 - [NoticeAssignment](07_service.md#noticeassignment)
 - [ServiceFacilitySet](10_common.md#servicefacilityset)
 
-In ServiceCalender:
+In ServiceCalendar:
 - [AvailabilityCondition](08_service_calendars.md#availabilitycondition)
 - [Timeband](08_service_calendars.md#timeband)
 
@@ -33,7 +33,8 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
   -  `TemplateServiceJourney`- describes a set of journeys repeating at a certain frequency
   -  The Swiss profile only models journeys that are available to the passengers
 - `TrainNumber`- each `ServiceJourney` and `TemplateServiceJourney` is mapped one-to-one to exactly one train number
-- `passingTimes`- describe the times of vehicles at points in their journey
+- Each `ServiceJourney`/`TemplateServiceJourney` in the `TimetableFrame` carries a `TimeDemandTypeRef` element pointing to exactly one `TimeDemandType`. The referenced `TimeDemandType` object itself — together with the `TimingLink`s it builds on — is defined in the `ServiceFrame`, not in the `TimetableFrame`. 
+  It holds the `RunTime`s (`JourneyRunTime`, per `TimingLink`) and `WaitTime`s (`JourneyWaitTime`, per stop) that together replace the deprecated `passingTimes`/`TimetabledPassingTime` mechanism (see below).
 - `journeyInterchanges` – collection of ServiceJourneyInterchanges describing planned connections and through-services between journeys
 - `NoticeAssignment`s- link `Notice`s to specific journeys or stop points within journeys
 - `ServiceFacilitySet`s- describe the various services and facilities offered by the vehicles of a journey
@@ -50,13 +51,15 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 *→ [Template](./templates/TimetableFrame.xml)*
 
 ### Frame Relationships
-`TimetableFrame` depends on `ServiceFrame`for `JourneyPattern`s and `Line`s referenced by `ServiceJourney`s. It depends on `ResourceFrame` for `Operator` definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `TimetableFrame` is typically wrapped in a `CompositeFrame`within a `PublicationDelivery`.
+`TimetableFrame` depends on `ServiceFrame` for `JourneyPattern`s, `Line`s, `TimeDemandType`s and `TimingLink`s referenced by `ServiceJourney`s. It depends on `ResourceFrame` for `Operator` definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `TimetableFrame` is
+typically wrapped in a `CompositeFrame` within a `PublicationDelivery`.
 
 ## ServiceJourney
 *→ [Glossary definition](A4_annex_glossary.md#servicejourney)*
 
 ### Purpose
-A `ServiceJourney` represents a planned trip in the timetable operating on a recurring schedule. It defines the stop sequence via reference to a `JourneyPattern`, includes scheduled passing times, and specifies operational details such as operator and days of operation. Unlike `DatedServiceJourney`, which represents a concrete instance on a specific date, `ServiceJourney` is the reusable template used across multiple dates via `DayType` definitions
+A `ServiceJourney` represents a planned trip in the timetable operating on a recurring schedule. It defines the stop sequence via reference to a `JourneyPattern`, includes scheduled timing via `TimeDemandTypeRef`, and specifies operational details such as operator. Its operating days are controlled via
+`AvailabilityConditionRef` (`ValidDayBits`), not via `DayType` — see [AvailabilityCondition](08_service_calendars.md#availabilitycondition). `DatedServiceJourney` is **not used** in the Swiss profile.
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceJourney.md)
@@ -71,12 +74,13 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 
 ### Usage Notes
 
-- **Template vs. Instance:** `ServiceJourney` is the template; `DatedServiceJourney` represents concrete daily instances.
+- **Template vs. Instance:** `ServiceJourney` directly carries its validity via `AvailabilityConditionRef`. `DatedServiceJourney` is not used in the Swiss profile.
 - **Consistency:** A `ServiceJourney` must reference exactly one `JourneyPattern`. The pattern's stop sequence is authoritative.
 - **Stop Times:** Each stop in the referenced `JourneyPattern` must have exactly one `TimetabledPassingTimes` entry with `ArrivalTime` and/or `DepartureTime`.
-- **Day Governance:** `DayType` references control on which days the journey operates; per-date deviations belong to `DatedServiceJourney`.
+- **Day Governance:** Operating days are controlled via `AvailabilityConditionRef` (`ValidDayBits`), not via `DayType`. `DayType`/`DayTypeAssignment` are reserved for flagging national holidays only (see [ServiceCalendarFrame](08_service_calendars.md#daytype)). `DatedServiceJourney` is not used in the Swiss profile.
 - **Validation:** Ensure `JourneyPatternRef`, `LineRef`, and `OperatorRef` are consistent and reference existing objects.
-- We assume that a swiss journey exists for almost every `ServiceJourney`. In those cases the `id` is also set to the `sjyid`. Possible problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `id` will contain a `_gen` substring.
+- We assume that a Swiss Journey ID exists for almost every `ServiceJourney`. In those cases the `id` is also set to the `sjyid`. Possible problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `id` will contain a `_gen`
+- substring.
 - A `ServiceJourney`can be associated with exactly one `ServiceJourneyPattern` and `TimeDemandType`.
 - id-attribute needs to be kept stable between exports.
 
@@ -103,11 +107,16 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 - For sjyid see information about [frequencies](uc14_frequencies.md).
 - id-attribute needs to be kept stable between exports.
 
+## TimeDemandType
+*→ [Glossary definition](A4_annex_glossary.md#timedemandtype)*
+
+## TimingLink
+*→ [Glossary definition](A4_annex_glossary.md#timinglink)*
 
 ## OccupancyView
 
 ### Purpose
-`OccupancyView`can be used on the `Journey`, `JourneyPart`, and `TimetabledPassingTime` elements. Used for predicted and planned occupancies of vehicles.
+`OccupancyView`can be used on the `Journey` and `JourneyPart` elements. Used for predicted and planned occupancies of vehicles.
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/OccupancyView.md)
@@ -120,8 +129,7 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 *→ [Template](./templates/OccupancyView.xml)*
 
 ### Usage Notes
-We currently don't use OccupancyView.
-
+- We currently don't use OccupancyView.
 
 ## TrainNumber
 *→ [Glossary definition](A4_annex_glossary.md#trainnumber)*
@@ -135,7 +143,7 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 
 *→ [General NeTEx definition ](../generated/netex-html/TrainNumber.html)*
 
- ### Example
+### Example
 - [Example snippet](../site/xml-snippets/TrainNumber.xml)
 
 *→ [Template](./templates/TrainNumber.xml)*
@@ -175,6 +183,7 @@ Actually there is only one allowed value that we use in the Swiss profile: Only 
 
 
 ## TimetabledPassingTime
+<<<<<<< HEAD
 *→ [Glossary definition](A4_annex_glossary.md#timetabledpassingtime)*
 > We don't use TimetabledPassingTime. We will remove this. We use TimeDemandType now.
 
@@ -201,14 +210,19 @@ Long-term planned time data concerning public transport vehicles passing a parti
   - frequency-based journeys that are wrongly modeled in HRDF (will be removed)
 - We store the sjyid in different places `id`, `privateCodes/PrivateCode`, `KeyList`. This allows different importing systems to find the sjyid.
 
+=======
+> **Deprecated** - We don't use TimetabledPassingTime in RG2.0. We use TimeDemandType now.
+>>>>>>> upstream/main
 
 ## ServiceJourneyInterchange
 *→ [Glossary definition](A4_annex_glossary.md#servicejourneyinterchange)*
 
 ### Purpose
-The standard states: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle. This concept is for instance used for circular lines and coupled journeys. This means that passenger information should be adapted to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also important that operation control staff is aware of the consequences to passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs."
+The standard states: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle. This concept is for instance used for circular lines and coupled journeys. This means that passenger information should be adapted
+to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also important that operation control staff is aware of the consequences to passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs."
 
-`StaySeated=true` should be used for through-services (Durchbindung) and joining (Vereinigung). While splitting (Flügelzug) technically involves different vehicle parts, the passenger does not leave the train — however, they may need to move to the correct coach. For splitting, `StaySeated=false` combined with `ChangeWithinVehicle=true` is therefore the correct modelling. See [uc02 Joining and splitting](uc02_joining_splitting.md).
+`StaySeated=true` should be used for through-services (Durchbindung) and joining (Vereinigung). While splitting (Flügelzug) technically involves different vehicle parts, the passenger does not leave the train — however, they may need to move to the correct coach. For splitting, `StaySeated=false` combined with
+`ChangeWithinVehicle=true` is therefore the correct modelling. See [uc02 Joining and splitting](uc02_joining_splitting.md).
 
 ### Table
 
@@ -223,7 +237,7 @@ The standard states: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an 
 
 ### Usage Notes
 - `ServiceJourneyInterchange` is placed in the `TimetableFrame` within the `journeyInterchanges` collection.
-- `StaySeated=true` indicates that the passenger remains in the vehicle — typically used for through-services (Durchbindung), splitting (Flügelzug) and joining (Vereinigung). See [uc01 Durchbindung](uc01_durchbindung.md).
+- `StaySeated=true` indicates that the passenger remains in the vehicle — typically used for through-services (Durchbindung) and joining (Vereinigung). See [uc01 Durchbindung](uc01_durchbindung.md).
 - `StaySeated=false` indicates that the passenger must change vehicles. This covers guaranteed and non-guaranteed connections. See [uc03 Transfers](uc03_transfers.md).
 - `Guaranteed=true` explicitly marks the connection as guaranteed. 
 - `MaximumWaitTime` defines how long the distributor waits — if absent, no explicit wait time is defined.
@@ -236,16 +250,23 @@ The standard states: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an 
 - id-attribute should be kept stable between exports.
 
 ## InterchangeRule
-> ⚠️ **Deprecated** — `InterchangeRule` is replaced by `ServiceJourneyInterchange` in RG 2.0.  
+> **Deprecated** — `InterchangeRule` is replaced by `ServiceJourneyInterchange` in RG 2.0.  
 > See [uc03 Transfers](uc03_transfers.md) for the current modelling approach.
 
 *→ [Glossary definition](A4_annex_glossary.md#interchangerule)*
 
 ## AvailabilityCondition 
+<<<<<<< HEAD
 *→ [see ServiceCalenderFrame](./08_service_calendars.md#availabilitycondition)*
 
 ## Timeband 
 *→ [see ServiceCalenderFrame](./08_service_calendars.md#timeband)*
+=======
+*→ [see ServiceCalendarFrame](./08_service_calendars.md#availabilitycondition)*
+
+## Timeband 
+*→ [see ServiceCalendarFrame](./08_service_calendars.md#timeband)*
+>>>>>>> upstream/main
 
 
 ## NoticeAssignment

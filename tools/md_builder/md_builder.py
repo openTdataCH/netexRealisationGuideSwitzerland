@@ -93,7 +93,8 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
                 if annotation is not None:
                     doc = annotation.find('xs:documentation', namespaces=ns)
                     if doc is not None and doc.text:
-                        type_info[name]['description'] = doc.text.strip()
+                        # Sanitize description to remove newlines
+                        type_info[name]['description'] = sanitize_for_markdown(doc.text)
                 
                 # Extract elements within this complex type
                 for element in complex_type.findall('.//xs:element', namespaces=ns):
@@ -109,7 +110,8 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
                         if elem_annotation is not None:
                             elem_doc = elem_annotation.find('xs:documentation', namespaces=ns)
                             if elem_doc is not None and elem_doc.text:
-                                elem_description = elem_doc.text.strip()
+                                # Sanitize description to remove newlines
+                                elem_description = sanitize_for_markdown(elem_doc.text)
                         
                         type_info[name]['elements'][elem_name] = {
                             'type': elem_type,
@@ -129,7 +131,8 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
                 if annotation is not None:
                     doc = annotation.find('xs:documentation', namespaces=ns)
                     if doc is not None and doc.text:
-                        type_info[name]['description'] = doc.text.strip()
+                        # Sanitize description to remove newlines
+                        type_info[name]['description'] = sanitize_for_markdown(doc.text)
         
         # Extract top-level elements
         for element in xsd_root.findall('.//xs:element', namespaces=ns):
@@ -145,7 +148,8 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
                 if annotation is not None:
                     doc = annotation.find('xs:documentation', namespaces=ns)
                     if doc is not None and doc.text:
-                        elem_description = doc.text.strip()
+                        # Sanitize description to remove newlines
+                        elem_description = sanitize_for_markdown(doc.text)
                 
                 type_info[name] = {
                     'type': elem_type,
@@ -165,6 +169,20 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
         return {}
 
 
+def sanitize_for_markdown(text):
+    """Sanitize text for markdown table cells by escaping pipes and replacing newlines with spaces"""
+    if text is None:
+        return ''
+    # Escape pipe characters to prevent breaking markdown tables
+    text = text.replace('|', '\\|')
+    # Replace all newlines and carriage returns with spaces
+    # Also collapse multiple spaces into single space
+    text = text.replace('\r\n', ' ').replace('\n', ' ').replace('\r', ' ')
+    # Collapse multiple spaces into single space
+    text = ' '.join(text.split())
+    return text
+
+
 def get_cardinality(min_occurs, max_occurs):
     """Convert min/max occurs to cardinality string"""
     if min_occurs == '0' and max_occurs == '1':
@@ -181,6 +199,16 @@ def get_cardinality(min_occurs, max_occurs):
 
 def search_xsd_files_for_element(base_dir, element_name):
     """Search all XSD files in the directory structure for a specific element"""
+    return search_xsd_files_for_element_with_parent(base_dir, element_name, None)
+
+
+def search_xsd_files_for_element_with_parent(base_dir, element_name, parent_type=None):
+    """Search all XSD files in the directory structure for a specific element,
+    optionally within a parent complex type context
+    
+    If parent_type is specified, only returns files where the element is found
+    within a complex type containing that parent_type name.
+    """
     namespaces = {'xs': 'http://www.w3.org/2001/XMLSchema'}
     
     # Search through all XSD files in the directory tree
@@ -192,17 +220,33 @@ def search_xsd_files_for_element(base_dir, element_name):
                     parser = etree.XMLParser()
                     xsd_doc = etree.parse(file_path, parser)
                     
-                    # Look for the element - try both with and without namespace
-                    element_xpath = f"//xs:element[@name='{element_name}']"
-                    elements = xsd_doc.xpath(element_xpath, namespaces=namespaces)
+                    elements = []
                     
-                    # If not found, try without namespace
-                    if not elements:
-                        element_xpath_no_ns = f"//*[local-name()='element' and @name='{element_name}']"
-                        elements = xsd_doc.xpath(element_xpath_no_ns)
-                    
-                    if elements:
-                        return file_path  # Return the file path where element was found
+                    # If parent_type is specified, only look within that context
+                    if parent_type:
+                        # Try complex types containing parent_type
+                        complex_type_xpath = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
+                        elements = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
+                        if not elements:
+                            complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
+                            elements = xsd_doc.xpath(complex_type_xpath_no_ns)
+                        # Only return if found in parent context
+                        if elements:
+                            return file_path
+                        else:
+                            continue  # Skip this file, element not found in parent context
+                    else:
+                        # No parent_type, search all elements
+                        element_xpath = f"//xs:element[@name='{element_name}']"
+                        elements = xsd_doc.xpath(element_xpath, namespaces=namespaces)
+                        
+                        # If not found, try without namespace
+                        if not elements:
+                            element_xpath_no_ns = f"//*[local-name()='element' and @name='{element_name}']"
+                            elements = xsd_doc.xpath(element_xpath_no_ns)
+                        
+                        if elements:
+                            return file_path
                         
                 except Exception as e:
                     # Skip files that can't be parsed
@@ -211,22 +255,85 @@ def search_xsd_files_for_element(base_dir, element_name):
     return None
 
 
-def get_element_metadata(xsd_path, element_name):
-    """Extract detailed metadata for an element from XSD using XPath with substitution group support"""
+def get_element_metadata(xsd_path, element_name, parent_type=None):
+    """Extract detailed metadata for an element from XSD using XPath with substitution group support
+    
+    Args:
+        xsd_path: Path to the XSD file
+        element_name: Name of the element to find
+        parent_type: Optional. The name of the parent complex type to search within.
+                    If provided, will look for the element as a child of this type first.
+    """
     try:
         # First try to find the element in the main XSD file
         parser = etree.XMLParser()
         xsd_doc = etree.parse(xsd_path, parser)
         namespaces = {'xs': 'http://www.w3.org/2001/XMLSchema'}
         
-        # Try to find the element in the main file
-        element_xpath = f"//xs:element[@name='{element_name}']"
-        element = xsd_doc.xpath(element_xpath, namespaces=namespaces)
+        element = None
         
-        # If not found in main file, search all XSD files in the directory
+        # If parent_type is specified, try to find the element within that complex type first
+        if parent_type:
+            # Try exact match first
+            complex_type_xpath = f"//xs:complexType[@name='{parent_type}']//xs:element[@name='{element_name}']"
+            element = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
+            
+            # Also try with ref attribute (for referenced elements)
+            if not element:
+                complex_type_xpath_ref = f"//xs:complexType[@name='{parent_type}']//xs:element[@ref='{element_name}']"
+                element = xsd_doc.xpath(complex_type_xpath_ref, namespaces=namespaces)
+                if not element:
+                    # Try with namespace prefix in ref (e.g., netex:PrivateCode)
+                    complex_type_xpath_ref_ns = f"//xs:complexType[@name='{parent_type}']//xs:element[contains(@ref, ':{element_name}')]"
+                    element = xsd_doc.xpath(complex_type_xpath_ref_ns, namespaces=namespaces)
+            
+            # Also try without namespace prefix for broader compatibility
+            if not element:
+                complex_type_xpath_no_ns = f"//*[local-name()='complexType' and @name='{parent_type}']//*[local-name()='element' and @name='{element_name}']"
+                element = xsd_doc.xpath(complex_type_xpath_no_ns)
+                
+                # Also try with ref attribute for no-namespace case
+                if not element:
+                    complex_type_xpath_no_ns_ref = f"//*[local-name()='complexType' and @name='{parent_type}']//*[local-name()='element' and @ref='{element_name}']"
+                    element = xsd_doc.xpath(complex_type_xpath_no_ns_ref)
+            
+            # Try complex types that contain the parent_type name (e.g., StopPlace -> StopPlace_VersionStructure)
+            if not element:
+                complex_type_xpath_contains = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
+                element = xsd_doc.xpath(complex_type_xpath_contains, namespaces=namespaces)
+                
+                # Also try with ref attribute for contains case
+                if not element:
+                    complex_type_xpath_contains_ref = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@ref='{element_name}']"
+                    element = xsd_doc.xpath(complex_type_xpath_contains_ref, namespaces=namespaces)
+            
+            if not element:
+                complex_type_xpath_contains_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
+                element = xsd_doc.xpath(complex_type_xpath_contains_no_ns)
+        
+        # If still not found, try to find the element in the main file without parent context
+        if not element:
+            element_xpath = f"//xs:element[@name='{element_name}']"
+            element = xsd_doc.xpath(element_xpath, namespaces=namespaces)
+        
+        # If not found in main file, search all XSD files in the directory with parent_type context
+        if not element and parent_type:
+            base_dir = os.path.dirname(os.path.abspath(xsd_path))
+            found_in_file = search_xsd_files_for_element_with_parent(base_dir, element_name, parent_type)
+            if found_in_file is not None:
+                # Parse the file where the element was found
+                xsd_doc = etree.parse(found_in_file, parser)
+                # Find the element in this document using parent_type context
+                complex_type_xpath = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
+                element = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
+                if not element:
+                    complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
+                    element = xsd_doc.xpath(complex_type_xpath_no_ns)
+        
+        # If still not found, search all XSD files without parent_type context
         if not element:
             base_dir = os.path.dirname(os.path.abspath(xsd_path))
-            found_in_file = search_xsd_files_for_element(base_dir, element_name)
+            found_in_file = search_xsd_files_for_element_with_parent(base_dir, element_name, None)
             if found_in_file is not None:
                 # Parse the file where the element was found
                 xsd_doc = etree.parse(found_in_file, parser)
@@ -252,10 +359,30 @@ def get_element_metadata(xsd_path, element_name):
         max_occurs = element.get('maxOccurs', '1')
         cardinality = get_cardinality(min_occurs, max_occurs)
         
+        # Check if parent is a _RelStructure type - if so, elements should be 1..n
+        # This handles the case where elements are within a choice that we don't explicitly model
+        if parent_type and '_RelStructure' in parent_type:
+            # For _RelStructure types, the contained elements should have cardinality 1..*
+            # This is because _RelStructure types contain sequences with maxOccurs="unbounded"
+            # even if the individual element declaration has minOccurs="1" maxOccurs="1"
+            cardinality = '1..*'
+        
         # Get type - check substitution group chain recursively
         element_type = "unknown"
         current_element = element
         visited_elements = set()  # Prevent infinite loops
+        
+        # Handle elements with ref attribute - resolve to actual element for type extraction
+        if current_element.get('ref') and not current_element.get('type'):
+            ref_name = current_element.get('ref').split(':')[-1]  # Remove namespace prefix
+            ref_element_xpath = f"//xs:element[@name='{ref_name}']"
+            ref_element = xsd_doc.xpath(ref_element_xpath, namespaces=namespaces)
+            if not ref_element:
+                # Try without namespace
+                ref_element_xpath_no_ns = f"//*[local-name()='element' and @name='{ref_name}']"
+                ref_element = xsd_doc.xpath(ref_element_xpath_no_ns)
+            if ref_element:
+                current_element = ref_element[0]
         
         while current_element is not None and current_element.get('name') not in visited_elements:
             visited_elements.add(current_element.get('name'))
@@ -276,10 +403,14 @@ def get_element_metadata(xsd_path, element_name):
                 complex_type = current_element.find('complexType')
                 
             if simple_type is not None:
-                element_type = "inline simpleType"
+                # Try to get the name of the simple type
+                simple_type_name = simple_type.get('name')
+                element_type = simple_type_name if simple_type_name else "inline simpleType"
                 break
             elif complex_type is not None:
-                element_type = "inline complexType"
+                # Try to get the name of the complex type
+                complex_type_name = complex_type.get('name')
+                element_type = complex_type_name if complex_type_name else element.get('name')
                 break
             
             # Follow substitution group
@@ -325,7 +456,7 @@ def get_element_metadata(xsd_path, element_name):
                     
                 if doc is not None and doc.text:
                     if description:
-                        description += " \n" + doc.text.strip()
+                        description += " " + doc.text.strip()
                     else:
                         description = doc.text.strip()
             
@@ -344,7 +475,7 @@ def get_element_metadata(xsd_path, element_name):
         return {
             'cardinality': cardinality,
             'type': element_type,
-            'description': description or ""
+            'description': sanitize_for_markdown(description or "")
         }
         
     except Exception as e:
@@ -379,12 +510,11 @@ def parse_template_file(file_path, xsd_type_info):
                 break
         
         # If no ch-root found, check if this is a ch-profile template
-        # ch-profile templates may have comments at root level
-        has_ch_see = any('ch-see' in (comment.text.strip() if comment.text else '') 
+        has_ch_see = any('ch-see' in (comment.text.strip() if comment.text else '')
                                for comment in comments)
         
-        if not root_element and has_ch_see is not None:
-            # This is a ch-profile template, use root as the element
+        if root_element is None and has_ch_see:
+            # If no ch-root found but has ch-see comments, use root as the element
             root_element = root
         
         if root_element is None:
@@ -400,8 +530,14 @@ def parse_template_file(file_path, xsd_type_info):
         # Process elements in the range
         processed_elements = set()
         
-        def process_element(element, level=0):
-            """Recursively process an element and its children"""
+        def process_element(element, level=0, parent_type_context=None):
+            """Recursively process an element and its children
+            
+            Args:
+                element: The XML element to process
+                level: Indentation level for hierarchy
+                parent_type_context: The name of the parent complex type for XSD lookup context
+            """
             # Handle namespace properly
             if hasattr(element, 'tag'):
                 elem_name = etree.QName(element).localname
@@ -426,11 +562,17 @@ def parse_template_file(file_path, xsd_type_info):
             child_comments = element.xpath('comment()')
             is_deprecated = False
             attrs_list = []
+            has_ch_root = False
             
             for comment in child_comments:
                 if comment.text:
                     comment_text = comment.text.strip()
-                    if comment_text.startswith('ch-usage:'):
+                    if comment_text == 'ch-root' or 'ch-root' in comment_text:
+                        has_ch_root = True
+                        # If this is the root element, use its name as the parent type context
+                        if parent_type_context is None:
+                            parent_type_context = elem_name
+                    elif comment_text.startswith('ch-usage:'):
                         usage = comment_text.replace('ch-usage:', '').strip()
                     elif comment_text.startswith('ch-note:'):
                         note = comment_text.replace('ch-note:', '').strip()
@@ -459,8 +601,8 @@ def parse_template_file(file_path, xsd_type_info):
             
             # Determine sub level markers - use + for indentation
             sub_markers = ''
-            if level > 0:
-                sub_markers = '+' * level
+            if level > 1:
+                sub_markers = '+' * (level - 1)
             
             # Keep note separate from description
             # description = note  # REMOVED: This was incorrectly using note as description
@@ -474,12 +616,13 @@ def parse_template_file(file_path, xsd_type_info):
                     note = 'NOTE: DEPRECATED'
 
             # Skip forbidden and ignored elements from the output
-            if usage.lower() in ['forbidden', 'ignored']:
+            # But NEVER skip the root element (the one with ch-root)
+            if usage.lower() in ['forbidden', 'ignored'] and not has_ch_root:
                 # Process children anyway in case they have different usage
                 if not is_referenced:
                     for child in element:
                         if isinstance(child, etree._Element) and not isinstance(child, etree._Comment):
-                            process_element(child, level + 1)
+                            process_element(child, level + 1, parent_type_context)
                 return
             
             elements_data.append({
@@ -494,21 +637,33 @@ def parse_template_file(file_path, xsd_type_info):
                 'referenced_name': see_reference or elem_name,
                 'level': level,
                 'attributes': attrs_list,
-                'is_deprecated': is_deprecated
+                'is_deprecated': is_deprecated,
+                'parent_type': parent_type_context  # Add parent type context for XSD lookup
             })
             
             # Process children ONLY if not referenced
             # When an element is referenced, its children are in a separate template file
             if not is_referenced:
+                # Update parent_type_context for children based on current element's type
+                child_parent_type = parent_type_context
+                if xsd_info and 'type' in xsd_info:
+                    # Use the XSD type of current element as context for children
+                    child_parent_type = xsd_info['type']
+                
                 for child in element:
                     # Only process actual elements, skip comments and text nodes
                     if isinstance(child, etree._Element) and not isinstance(child, etree._Comment):
-                        process_element(child, level + 1)
+                        process_element(child, level + 1, child_parent_type)
         
         # Start processing from the common ancestor
         # Process the common ancestor element itself
+        # Get the root element name for parent type context
+        root_element_name = None
+        if hasattr(root_element, 'tag') and not isinstance(root_element, etree._Comment):
+            root_element_name = etree.QName(root_element).localname
+        
         if hasattr(common_ancestor, 'tag') and not isinstance(common_ancestor, etree._Comment):
-            process_element(common_ancestor)
+            process_element(common_ancestor, parent_type_context=root_element_name)
         
         return elements_data
     
@@ -538,12 +693,47 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
     # Maintain original document order instead of sorting
     # child_elements.sort(key=lambda x: (x['level'], x['element']))
     
+    # Extract root element name, ch-note, and attributes for caption and pre-table text
+    root_element_name = None
+    root_note = ""
+    root_attributes = []
+    for item in top_level_elements:
+        if item['level'] == 0:
+            root_element_name = item['element']
+            root_note = item.get('note', '')
+            root_attributes = item.get('attributes', [])
+            break
+    
     markdown = f"# {filename}\n\n"
+    
+    # Add root ch-note as text before the caption
+    if root_note:
+        markdown += f"{root_note}\n\n"
+    
+    # Add table caption before the table
+    if root_element_name:
+        markdown += f"*Table: {root_element_name}*\n\n"
+    
     markdown += "| Sub | Element | Usage | Card | Type | Description | Note |\n"
     markdown += "|-----|---------|-------|------|------|-------------|------|\n"
     
+    # Add root element attributes if present (they should appear at the top of the table)
+    if root_attributes:
+        for attr in root_attributes:
+            attr_usage = 'mandatory'  # Attributes from ch-attrs are always mandatory
+            attr_card = '1..1'
+            attr_type = 'xsd:string'  # Default type, could be enhanced with XSD lookup
+            attr_desc = f"Attribute {attr}"
+            # Sanitize description to prevent table breaks from newlines
+            attr_desc = sanitize_for_markdown(attr_desc)
+            markdown += f"|  | @{attr} | {attr_usage} | {attr_card} | {attr_type} | {attr_desc} | |\n"
+    
     # Process top-level elements first
     for item in top_level_elements:
+        # Skip root element (level 0) as it's now in the caption
+        if item['level'] == 0:
+            continue
+        
         sub = item['sub']
         element = item['element']
         usage = item['usage']
@@ -569,13 +759,15 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
             if 'type' in xsd_info:
                 xsd_type = xsd_info['type']
         
-        # Try enhanced metadata extraction if still unknown and we have XSD path
-        if xsd_type == 'unknown' and 'xsd_path' in globals():
-            metadata = get_element_metadata(xsd_path, element)
+        # Try enhanced metadata extraction if we have XSD path
+        # Pass parent_type to get context-specific element metadata
+        parent_type = item.get('parent_type')
+        if xsd_path:
+            metadata = get_element_metadata(xsd_path, element, parent_type)
             if metadata:
                 if not card or card == '1..1':
                     card = metadata.get('cardinality', card)
-                if xsd_type == 'unknown':
+                if not xsd_type or xsd_type == 'unknown':
                     xsd_type = metadata.get('type', xsd_type)
                 if not description:
                     description = metadata.get('description', description)
@@ -594,6 +786,9 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         display_note = item.get('note', '')
         # Ensure xsd_type is never None
         display_type = xsd_type if xsd_type and xsd_type != 'None' else 'unknown'
+        # Sanitize description and note to prevent table breaks from newlines
+        description = sanitize_for_markdown(description)
+        display_note = sanitize_for_markdown(display_note)
         markdown += f"| {sub} | {element} | {usage} | {card} | {display_type} | {description} | {display_note} |\n"
     
     # Process attributes
@@ -607,6 +802,9 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         note = item.get('note', '')
         # Ensure xsd_type is never None for attributes
         display_type = xsd_type if xsd_type and xsd_type != 'None' else 'unknown'
+        # Sanitize description and note to prevent table breaks from newlines
+        description = sanitize_for_markdown(description)
+        note = sanitize_for_markdown(note)
         
         markdown += f"| {sub} | {element} | {usage} | {card} | {display_type} | {description} | {note} |\n"
     
@@ -637,6 +835,19 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
             if 'type' in xsd_info:
                 xsd_type = xsd_info['type']
         
+        # Try enhanced metadata extraction if we have XSD path
+        # Pass parent_type to get context-specific element metadata
+        parent_type = item.get('parent_type')
+        if xsd_path:
+            metadata = get_element_metadata(xsd_path, element, parent_type)
+            if metadata:
+                if not card or card == '1..1':
+                    card = metadata.get('cardinality', card)
+                if not xsd_type or xsd_type == 'unknown':
+                    xsd_type = metadata.get('type', xsd_type)
+                if not description:
+                    description = metadata.get('description', description)
+        
         # Handle versionRef -> version conversion for display
         if element.endswith('Ref') and 'versionRef=' in description:
             # Replace versionRef with version in the description
@@ -651,6 +862,9 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         display_note = note if note else ''
         # Ensure xsd_type is never None for child elements
         display_type = xsd_type if xsd_type and xsd_type != 'None' else 'unknown'
+        # Sanitize description and note to prevent table breaks from newlines
+        description = sanitize_for_markdown(description)
+        display_note = sanitize_for_markdown(display_note)
         markdown += f"| {sub} | {element} | {usage} | {card} | {display_type} | {description} | {display_note} |\n"
         
         # Add attributes if present
@@ -660,6 +874,8 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                 attr_card = '1..1'
                 attr_type = 'xsd:string'  # Default type, could be enhanced with XSD lookup
                 attr_desc = f"Attribute {attr}"
+                # Sanitize attribute description to prevent table breaks from newlines
+                attr_desc = sanitize_for_markdown(attr_desc)
                 
                 markdown += f"| {sub} | @{attr} | {attr_usage} | {attr_card} | {attr_type} | {attr_desc} | |\n"
     

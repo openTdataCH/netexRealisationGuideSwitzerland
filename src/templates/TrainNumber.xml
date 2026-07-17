@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
@@ -10,19 +10,19 @@
 						<TrainNumber id="71707" version="1">
 							<!-- ch-root -->
 							<!-- ch-attrs: id version -->
-							<!-- ch-note: The TRAIN NUMBERs are currently a maximum of 6 digits long. TRAIN NUMBERs for advertisment und production are identical. -->
+							<!-- ch-note: The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advertisment und production are identical. It is the number from *Z in HRDF. Must be unique per operating day in Switzerland. -->
 							<Description>
-								<!-- ch-usage: optional -->
+								<!-- ch-usage: ignored -->
 								Information about the train
 							</Description>
 							<ForAdvertisement>
-								<!-- ch-usage: optional -->
-								<!-- ch-note: TRAIN NUMBER to use for advertisement to public. Use iff different from ID. -->
+								<!-- ch-usage: expected -->
+								<!-- ch-note: TrainNumber to use for advertisement to public. Use if different from ID. -->
 								12311A
 							</ForAdvertisement>
 							<ForProduction>
 								<!-- ch-usage: optional -->
-								<!-- ch-note: TRAIN NUMBER to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID. -->
+								<!-- ch-note: TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID. -->
 								12311A
 							</ForProduction>
 						</TrainNumber>

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="ch:1:CompositeFrame" version="any">
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
 			<frames>
-				<ResourceFrame id="ch:1:ResourceFrame" version="any">
+				<ResourceFrame id="ch:1:ResourceFrame" version="1">
 					<siteFacilitySets>
 						<SiteFacilitySet id="generated" version="1">
 							<!-- ch-root -->
 							<!-- ch-usage: mandatory -->
 							<!-- ch-note: List of SiteFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical SiteFacilitySets. Reuse them. There might be an overlap to ServiceFacilitySet, but they are used for different purposes.-->
+							<!-- ch-attrs: id version -->
 							<validityConditions>
 								<!-- ch-usage: optional -->
 								<AvailabilityCondition id="generated" version="1">

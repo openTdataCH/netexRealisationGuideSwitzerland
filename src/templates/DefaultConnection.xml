@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
@@ -10,7 +10,8 @@
 						<DefaultConnection id="11-11" version="1">
 							<!-- ch-root -->
 							<!-- ch-usage: expected -->
-							<!-- ch-note:  Be aware only some combinations areallowed  mode - mode, operator/type of product category - operator/type of  product category. -->
+							<!-- ch-note:  Be aware only some combinations are allowed: from mode A to mode B without operators taken into account; from operator A and product category A  to operator B and product category B. -->
+							<!-- ch-attrs: id version -->
 							<Extensions>
 								<!-- ch-usage: optional -->
 								<!-- ch-note: When also ProductCategory is relevant, then this extension must be used -->
@@ -34,7 +35,7 @@
 								<DefaultDuration><!-- ch-usage: mandatory -->PT2M</DefaultDuration>
 								<MobilityRestrictedTravellerDuration><!-- ch-usage: expected -->PT4M</MobilityRestrictedTravellerDuration>
 							</WalkTransferDuration>
-							<BothWays><!-- ch-usage: optional--><!-- ch-note: We always intend to use only one way, because the behaviour may not be the same.-->false</BothWays>
+							<BothWays><!-- ch-usage: optional --><!-- ch-note: Should be false - we always intend to use only one way because the behaviour may not be the same.-->false</BothWays>
 							<From>
 								<!-- ch-usage: mandatory -->
 								<TransportMode><!-- ch-usage: optional -->all</TransportMode>
@@ -57,7 +58,7 @@
 							</To>
 							<StopPlaceRef ref="ch:1:sloid:19231" versionRef="1">
 								<!-- ch-usage: optional -->
-								<!-- ch-note: Is a sloid usually. Not set, means whole network. -->
+								<!-- ch-note: Usually a SLOID. Not set means whole network. -->
 							</StopPlaceRef>
 						</DefaultConnection>
 					</connections>

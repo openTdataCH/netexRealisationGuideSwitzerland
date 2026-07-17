@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
@@ -18,6 +19,30 @@
 									<!-- ch-note: We expect a DIDOK key and a SLOID, whereever possible. -->
 									<Key><!-- ch-usage: mandatory -->DIDOK</Key>
 									<Value><!-- ch-usage: mandatory -->8504128</Value>
+=======
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ServiceFrame id="ch:1:ServiceFrame" version="1">
+					<scheduledStopPoints>
+						<ScheduledStopPoint id="ch:1:sloid:4128:1:1" version="1">
+       						<!-- ch-root -->
+
+							<!-- ch-note: Swiss ScheduledStopPoint are using the sloid in the id if possible. We keep the ScheduledStopPoint very minimalistic. The information is stored in the SiteFrame.-->
+
+							<!-- ch-usage: mandatory -->
+							<!-- ch-attrs: id version -->
+							<keyList>
+								<!-- ch-usage: optional -->
+								<KeyValue>
+									<!-- ch-usage: optional -->
+									<!-- ch-note: Can contain a DIDOK key and a SLOID. We don't need it really. -->
+									<Key><!-- ch-usage: optional -->DIDOK</Key>
+									<Value><!-- ch-usage: optional -->8504128</Value>
+>>>>>>> upstream/main
 								</KeyValue>
 								<KeyValue>
 									<Key>SLOID</Key>
@@ -25,15 +50,28 @@
 								</KeyValue>
 							</keyList>
                             <privateCodes>
+<<<<<<< HEAD
                                 <!-- ch-usage: mandatory -->
                                 <PrivateCode type="sloid"><!-- ch-usage: mandatory -->ch:1:sloid:4128:1:1</PrivateCode>
                             </privateCodes>
 							<Name lang="de"><!-- ch-usage: mandatory --><!-- ch-note: The names are the same in all languages. -->Murten/Morat</Name>
 							<ShortName lang="de"><!-- ch-usage: mandatory --><!-- ch-note: StopPlace : Name of the Place, Quay : ShortName of the Quay -->1</ShortName>
+=======
+                                <!-- ch-usage: expected -->
+                                <PrivateCode type="sloid"><!-- ch-usage: expected --><!-- ch-note: when the id is not a sloid, then if a sloid is relevant it can be added here -->ch:1:sloid:4128:1:1</PrivateCode>
+                            </privateCodes>
+							<Name lang="de"><!-- ch-usage: optional --><!-- ch-note: The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay-->Murten/Morat</Name>
+							<ShortName lang="de"><!-- ch-usage: forbidden -->1</ShortName>
+							<PublicCode><!-- ch-usage: optional --><!-- ch-note: For Quay contains the plattform number/letter. -->1</PublicCode>
+>>>>>>> upstream/main
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
 				</ServiceFrame>
 			</frames>
 		</CompositeFrame>
 	</dataObjects>
+<<<<<<< HEAD
 </PublicationDelivery>
+=======
+</PublicationDelivery>
+>>>>>>> upstream/main

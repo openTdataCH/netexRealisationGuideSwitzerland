@@ -12,11 +12,11 @@ In this chapter:
 - [Timeband](#timeband)
 - [DayTypeAssignment](#daytypeassignment)
 
-##  ServiceCalendarFrame
+## ServiceCalendarFrame
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendarframe)*
 
 ### Purpose
-Groups calendar definitions that describe when services operate - `DayType`s, [operating periods, **TODO** we don't define / use OperatingPeriod, do we?] and `DayTypeAssignment`s. Wilfried 10.6.
+Groups calendar definitions that describe **when** services operate. We do this with `AvailabilityCondition`s stored in this frame. We also have `DayType`s and `DayTypeAssignment`s for the holidays.
 
 See the following class diagram for the most important objects of the `ServiceCalendarFrame` and their relationships to the other frames.
 
@@ -91,6 +91,8 @@ classDiagram
 
 
 ```
+*Figure: Elements of ServiceCalendar and elements with AvailabilityCondition*
+
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceCalendarFrame.md)
 
@@ -102,7 +104,7 @@ classDiagram
 *→ [Template](./templates/ServiceCalendarFrame.xml)*
 
 #### Usage Notes
-- Note that VALIDITY CONDITIONs could be combined and ANDed (all the conditions must be fullfiled at the same time) thanks to the WITH CONDITION REF attribute. We will work with FromDate/ToDate and ValidDayBits of AvailabilityCondition only.
+- Note that `AvailabilityCondition`s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are `FromDate`/ `ToDate`, `ValidDayBits`, and `timebands`. 
 
 ### AvailabilityCondition
 *→ [Glossary definition](A4_annex_glossary.md#availabilitycondition)*
@@ -111,7 +113,7 @@ classDiagram
 Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 
 #### Table
--[Swiss profile NeTEx definition](../site/tables/AvailabilityCondition.md)
+- [Swiss profile NeTEx definition](../site/tables/AvailabilityCondition.md)
 
 *→ [General NeTEx definition](../generated/netex-html/AvailabilityCondition.html)*
 
@@ -121,15 +123,16 @@ Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 *→ [Template](./templates/AvailabilityCondition.xml)*
 
 #### Usage Notes
-- Examples of use of AVAILABILITY CONDITION include ENTRANCEs, EQUIPMENTs, STOP PLACEs, etc.
-- AvailabilityCondition replaces OperatingDay and OperatingPeriod. Whenever a reference to a VP (“Verkehrsperiode” or operating period in english) is needed, we use an `AvailabilityConditionRef`:
+- Examples of use of `AvailabilityCondition` include  `ServiceJourney`, `TemplateServiceJourney`, facilities.
+- AvailabilityCondition replaces OperatingDay and OperatingPeriod. Whenever a reference to a VP (“Verkehrsperiode” or "operating period" in english) is needed, we use an `AvailabilityConditionRef`:
 -	The referenced `AvailabilityCondition`s are centrally stored in the `ServiceCalendarFrame`.
-- The element ValidDayBits directly indicates the days on which some service is provided or not. They are similar to the HRDF bitfields. 
-- ValidDayBits is required whenever the `AvailabilityCondition` is of temporal nature (more often than not). Examples include:
+- The element `ValidDayBits` directly indicates the days on which some service is provided or not. They are similar to the HRDF bitfields. 
+- `ValidDayBits` is required whenever the `AvailabilityCondition` is of temporal nature (more often than not). Examples include:
   -	`ServiceJourney`
   -	`NoticeAssignment`
   -	`ServiceFacilitySet`
   -	`ServiceJourneyInterchange`
+- `AvailabilityCondition`s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are `FromDate`/ `ToDate`, `ValidDayBits`, and `timebands`. **TODO** *Still not completely clear to me (AM) - suppose AvailabilityConditions "only summer" (FromDate/ToDate), "only school holiday period" (timebands), "only sunday" (ValidDayBits) - is each of them obliged to have ValidDayBits?*
 - Hint: The frames `TimetableFrame`, `ServiceFrame` and `ServiceCalendarFrame` and their elements must have the same validity.
 - id-attribute does not need to be kept stable between exports.
 
@@ -137,7 +140,7 @@ Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendar)*
 
 #### Purpose
-Long-term planning uses calendar days that are classified as specific DayTypes (example: weekday in school holidays). A ServiceCalendar defines a mapping between DayTypes and OperatingDays.
+Long-term planning uses calendar days that are classified as specific `DayType`s (example: weekday in school holidays). In the general NeTEx model, a `ServiceCalendar` defines a mapping between `DayType`s and OperatingDays; in the Swiss profile, this mapping via OperatingDays is not used — `ServiceCalendar` serves only as a container for `DayType`s and `DayTypeAssignment`s, defining a mapping of `DayType`s to dates. 
 
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceCalendar.md)
@@ -195,14 +198,12 @@ A period of time within a day, usually defined by a start and end time.
 - Currently `Timeband` is used in RG 1.0 for `InterchangeRuleTiming`s, later also used for the opening hours in `StopPlace` models. 
 - id-attribute should be kept stable between exports.
 
-## DayTypeAssignment
+### DayTypeAssignment
 *→ [Glossary definition](A4_annex_glossary.md#daytypeassignment)*
 
 
 #### Purpose
 Assignment of a date to `DayType`. The `DayType`s of the Swiss profile represent national holidays.
-
-This assignment overrides the `DayType` specified for the day in the overall plan. (**TODO** should be stated more clearly / precisely) Wilfried 10.6.
 
 
 #### Table

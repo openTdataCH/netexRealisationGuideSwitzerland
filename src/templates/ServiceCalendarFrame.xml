@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
@@ -9,21 +9,25 @@
 					<!-- ch-root -->
 					<!-- ch-usage: expected -->
 					<!-- ch-note: A minimal ServiceCalendarFrame must be present in all timetable files.-->
+					<!-- ch-attrs: id version -->
 					<validityConditions>
 						<!-- ch-usage: mandatory -->
 						<AvailabilityCondition id="ch:1:AvailabilityCondition:b7" version="1">
 							<!-- ch-usage: mandatory -->
+                            <!-- ch-note: Our main mechanism for validity and operating days -->
 							<!-- ch-see -->
 						</AvailabilityCondition>
 					</validityConditions>
 					<ServiceCalendar id="ch:1:ServiceCalendar:j23" version="1">
 						<!-- ch-usage: expected -->
+                        <!-- ch-note:  We only have one ServiceCalendar for the whole timetable year. It is not referenced. -->
 						<!-- ch-see -->
 					</ServiceCalendar>
 					<dayTypes>
 						<!-- ch-usage: optional -->
 						<DayType id="ch:1:DayType:ycy10_1" version="1">
 							<!-- ch-usage: optional -->
+                            <!-- ch-note: Used for holidays only -->
 							<!-- ch-see -->
 						</DayType>
 					</dayTypes>
@@ -31,17 +35,26 @@
 						<!-- ch-usage: expected -->
 						<Timeband id="ch:1:Timeband:1140:1260" version="1">
 							<!-- ch-usage: expected -->
+                            <!-- ch-note: Mainly used for frequency-based lines. -->
+                            <!-- ch-see -->
 						</Timeband>
 					</timebands>
-					<dayTypeAssignments>
+					<operatingPeriods>
 						<!-- ch-usage: forbidden -->
+						<OperatingPeriod id="generated" version="notUsed">
+							<FromDate>2026-01-01T00:00:00</FromDate>
+						</OperatingPeriod>
+					</operatingPeriods>
+					<dayTypeAssignments>
+						<!-- ch-usage: optional -->
 						<DayTypeAssignment id="none" version="not">
+                            <!-- ch-usage: optional -->
+                            <!-- ch-note: Used for holidays only -->
+                            <!-- ch-see -->
 							<OperatingPeriodRef ref="generated" versionRef="1"/>
 							<DayTypeRef ref="ch:1:DayType:ycy10_1" version="1"/>
 						</DayTypeAssignment>
 					</dayTypeAssignments>
-					
-
 				</ServiceCalendarFrame>
 			</frames>
 		</CompositeFrame>

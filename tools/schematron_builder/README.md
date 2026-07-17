@@ -4,7 +4,7 @@ This tool generates Schematron validation files from XML templates with special 
 
 ## Overview
 
-The `template2schematron.py` script processes XML templates containing special comment markers and generates Schematron (.sch) files that enforce the Swiss NeTEX profile rules.
+The `schematron_builder.py` script processes XML templates containing special comment markers and generates Schematron (.sch) files that enforce the Swiss NeTEX profile rules.
 
 ## Features
 
@@ -17,7 +17,18 @@ The `template2schematron.py` script processes XML templates containing special c
 ## Supported functionality
 For details on the functionality read [the documentation in the templates folder](../../templates/README.md).
 f
+
 ## Installation
+
+### Build tools with uv
+
+The recommended way is to [build the tools with uv](../README.md#how-to-setup-and-run-the-build).
+
+#### Tools script
+
+The tools build installs a wrapper script `schematron-builder` to `.venv/bin`.
+
+### Individual installation
 
 Requires Python 3.6+ and lxml:
 
@@ -27,53 +38,42 @@ pip install lxml
 
 ## Usage
 
+The tool can be run in two different modes:
+
+- Create schematron file from single template file
+- Create schematron files from all templates in input directory
+
+The default behavior is, that it looks for template files with prefix 'ch_profile_' in the 
+input folder (templates folder) and creates schematron files from them.
+
+In order to get a detailed usage message, run the tool with option `-h` or `--help`:
 ```bash
-python template2schematron.py \
-    -t TEMPLATE_FILE \
-    -x XSD_FILE \
-    -i INPUT_FOLDER \
-    -o OUTPUT_FILE \
-    [-v]
+python schematron_builder.py -h
+```
+Or, with installed script:
+```bash
+schematron-builder -h
 ```
 
-### Parameters
+See [the tools README](../README.md#how-to-run-a-tool) about how to run a tool.
 
-- `-t, --template`: Template XML file containing ch-root regions
-- `-x, --xsd`: XSD file (path is stored but not currently used for validation)
-- `-i, --input-folder`: Folder with referenced XML fragment files
-- `-o, --output`: Output Schematron (.sch) file
-- `-v, --verbose`: Enable verbose logging
+### Usage Examples
 
-### Example
+Build schematron from individual template:
 
 ```bash
-python template2schematron.py \
+python schematron_builder.py \
     -t templates/ch-profile_export-timetable_file.xml \
     -x xsd/xsd/NeTEx_publication.xsd \
     -i templates \
     -o generated/schematrons/ch-profile_export_timetable_file.sch \
     -v
 ```
-
-## Build Script
-
-The `build_schemas.sh` script automates building all schematron files:
+or, with uv:
 
 ```bash
-# Basic usage (default settings)
-./build_schemas.sh
-
-# Clean output and build with logging
-./build_schemas.sh -c -l
-
-# Process specific template with validation
-./build_schemas.sh -t "templates/my_template.xml:my_output.sch" -v
-
-# Parallel processing (4 jobs)
-./build_schemas.sh -p 4
-
-# Custom paths
-./build_schemas.sh -i "my_templates" -o "my_output" -x "custom.xsd"
+uv python -m schematron_builder \
+    -t templates/ch-profile_export-timetable_file.xml
 ```
 
 ## Supported Comment Annotations
@@ -188,7 +188,6 @@ See [`test_templates/README.md`](test_templates/README.md) for detailed document
 
 - `check_schematron.py`: Validates XML files against generated schematron files
 - `md_builder.py`: Generates markdown documentation from the same templates
-- `build_schemas.sh`: Automates building multiple schematron files
 
 ## See Also
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
@@ -24,12 +24,14 @@
 							<Planned><!-- ch-usage: optional -->true</Planned>
 							<Guaranteed><!-- ch-usage: optional -->false</Guaranteed>
 							<MaximumWaitTime><!-- ch-usage: optional --><!-- ch-note: If not set or PT0M, it is guaranteed. -->PT9M</MaximumWaitTime>
-							<FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="1">
+							<FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="1" nameOfRefClass="ScheduledStopPoint">
 								<!-- ch-usage: mandatory -->
+								<!-- ch-attrs: nameOfRefClass -->
 							</FromPointRef>
 							<FromVisitNumber><!-- ch-usage: optional -->1</FromVisitNumber>
-							<ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="1">
+							<ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="1" nameOfRefClass="ScheduledStopPoint">
 								<!-- ch-usage: mandatory -->
+								<!-- ch-attrs: nameOfRefClass -->
 							</ToPointRef>
 							<FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" versionRef="1">
 								<!-- ch-usage: mandatory -->

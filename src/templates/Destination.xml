@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
@@ -36,23 +36,21 @@
 							<Destination>
 								<!-- ch-root -->
 								<!-- ch-usage: expected -->
+								<!-- ch-note: We don't use the full Destination element, but only the DestinationDisplayRef within -->
 								<ScheduledStopPointRef versionRef="1" ref="ch:1:sloid:3412">
 									<!-- ch-usage: forbidden -->
 								</ScheduledStopPointRef>
 								<DestinationDisplayRef ref="the ref" versionRef="1">
 									<!-- ch-usage: expected -->
-									<!-- ch-note: We use a DestinationDiplayRef in such cases -->
+									<!-- ch-note: We use a DestinationDiplayRef in such cases and nothing else.-->
 								</DestinationDisplayRef>
 							</Destination>
 							<passingTimes>
 								<TimetabledPassingTime id="generated" version="1">
-									<!-- ch-usage: expected -->
-									<!-- ch-see -->
 									<PointInJourneyPatternRef ref="generated" versionRef="1"/>
 								</TimetabledPassingTime>
 							</passingTimes>
 							<calls>
-								<!-- ch-usage: forbidden -->
 								<Call id="c1" version="1">
 									<ScheduledStopPointRef ref="notused1" versionRef="1"/>
 								</Call>

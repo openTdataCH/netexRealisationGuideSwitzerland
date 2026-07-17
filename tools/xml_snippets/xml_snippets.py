@@ -21,9 +21,6 @@ import re
 from lxml import etree
 
 
-
-
-
 def remove_ch_annotations(text):
     """Remove ch-annotations except for ch-note and ch-notice content"""
     if not isinstance(text, str):

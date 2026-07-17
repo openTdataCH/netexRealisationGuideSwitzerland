@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-04-10T12:00:00</PublicationTimestamp>
 	<ParticipantRef>CH:BLT</ParticipantRef>
 	<dataObjects>
@@ -12,23 +12,12 @@
 							<!-- ch-note: TemplateServiceJourney is used for journeys repeating at a certain frequency. -->
 							<!-- ch-attrs: id version responsibilitySetRef -->
 							<validityConditions>
-								<!-- ch-usage: expected -->
-								<!-- ch-note: Used to specify a set of temporal conditions that can be associated with the TemplateServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
-								<AvailabilityCondition id="generated" version="1">
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+								<AvailabilityConditionRef ref="generated" versionRef="1">
 									<!-- ch-usage: mandatory -->
-									<!-- ch-note: More spacific requirements than standard AvailabilityCondition. Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
-									<!-- ch-see -->
-									<FromDate><!-- ch-usage: mandatory --><!-- ch-note: Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.  -->2026-05-17T00:00:00Z</FromDate>
-									<ToDate><!-- ch-usage: mandatory --><!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->2026-05-17T00:00:00Z</ToDate>
-									<ValidDayBits>
-										<!-- ch-usage: mandatory-->
-										01010111
-								  	</ValidDayBits>
-									<timebands>
-										<!-- ch-usage: ignored-->
-										<TimebandRef ref="generated" versionRef="1"/>
-									</timebands>
-								</AvailabilityCondition>
+									<!-- ch-note: Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. **TODO**: this comment needs to be corrected, more information needed -->
+								</AvailabilityConditionRef>
 							</validityConditions>
 							<keyList>
 								<!-- ch-usage: mandatory -->
@@ -42,11 +31,12 @@
 							</keyList>
 							<privateCodes>
 								<!-- ch-usage: expected -->
-								<!-- ch-note: Replaces the single PrivateCode. -->
+								<!-- ch-note: Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region  -->
 								<PrivateCode type="sjyid">
 									<!-- ch-usage: expected -->
 									ch:1:sjyid:100001:71707-003
-								</PrivateCode>
+									</PrivateCode>
+								<PrivateCode type="rn">12</PrivateCode>
 							</privateCodes>
 							<PrivateCode>
 								<!-- ch-usage: forbidden -->
@@ -91,6 +81,19 @@
                 				<!-- ch-note: DayOffset if relevant. -->
 								0
 							</DepartureDayOffset>
+							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" versionRef="1" nameOfRefClass="ServiceJourneyPattern">
+								<!-- ch-usage: mandatory -->
+								<!-- ch-attrs: nameOfRefClass -->
+								<!-- ch-note: The reference to the ServiceJourneyPattern -->
+							</JourneyPatternRef>
+							<TimeDemandTypeRef ref="generated" versionRef="1">
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
+							</TimeDemandTypeRef>
+							<VehicleTypeRef ref="ch:1:VehicleType:NF" versionRef="1">
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Mostly used for accessibility information -->
+							</VehicleTypeRef>
 							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1">
 								<!--ch-usage: mandatory -->
 							</LineRef>
@@ -104,10 +107,7 @@
 							<Destination>
 								<!-- ch-usage: expected -->
 								<!-- ch-see -->
-								<Name lang="de">Wollishofen</Name>
-								<ScheduledStopPointRef versionRef="1" ref="ch:1:sloid:3412"/>
 								<DestinationDisplayRef ref="generated" versionRef="1"/>
-								<PlaceRef ref="ch:1:sloid:3412" version="1"/>
 							</Destination>
 							<passingTimes>
 								<!-- ch-usage: forbidden-->
@@ -120,9 +120,8 @@
 								<!-- ch-note: For some use cases e.g. change of Facilities during ServiceJourney -->
 								<JourneyPartRef ref="generated" versionRef="1">
 									<!-- ch-usage: expected -->
-									<!-- ch-see -->
 								</JourneyPartRef>
-							</parts>							
+							</parts>
 							<calls>
 								<!-- ch-usage: forbidden -->
 								<Call id="c1" version="1">

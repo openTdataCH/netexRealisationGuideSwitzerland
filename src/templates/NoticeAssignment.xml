@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
@@ -19,7 +19,7 @@
 								<NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
 									<!-- ch-root -->
 									<!-- ch-attrs: id version -->
-									<!-- ch-note: Attribute `id` must be unique. -->
+									<!-- ch-note: NoticeAssignment connects a Notice to an element. The attribute `id` must be unique. -->
 									<validityConditions>
 										<!-- ch-usage: optional -->
 										<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" versionRef="1">
@@ -29,6 +29,11 @@
 									<NoticeRef ref="ch:1:Notice:Hin-1229900" versionRef="1">
 										<!-- ch-usage: expected -->
 									</NoticeRef>
+									<NoticedObjectRef ref="generated" versionRef="1" nameOfRefClass="ScheduledStopPoint">
+										<!-- ch-usage: optional -->
+										<!-- ch-attrs: nameOfRefClass -->
+										<!-- ch-note: We currently have not plan of using it this way. We do it through embeddingt the NoticeAssignment within the relevant element. -->
+									</NoticedObjectRef>
 									<StartPointInPatternRef ref="generated" versionRef="1">
 										<!-- ch-usage: optional -->
 										<!-- ch-note: If the notice is valid only on a part of a ServiceJourney then this can be marked with StartPointInPatternRef and EndPointInPatternRef. -->

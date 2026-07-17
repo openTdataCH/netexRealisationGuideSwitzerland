@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
 	<ParticipantRef>SKI-Templates</ParticipantRef>
 	<dataObjects>
@@ -11,16 +11,17 @@
 							<!-- ch-root -->
 							<!-- ch-note: We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
 							<!-- ch-usage: mandatory -->
+							<!-- ch-attrs: id version -->
 							<keyList>
 								<!-- ch-usage: expected -->
 								<KeyValue>
 									<!-- ch-usage: expected -->
-									<Key>GO</Key>
-									<Value>801</Value>
+									<Key><!-- ch-usage: expected -->GO</Key>
+									<Value><!-- ch-usage: expected -->801</Value>
 								</KeyValue>
 								<KeyValue>
-									<Key><!-- ch-usage: expected -->SBOID</Key>
-									<Value><!-- ch-usage: expected -->ch:1:sboid:100602</Value>
+									<Key>SBOID</Key>
+									<Value>ch:1:sboid:100602</Value>
 								</KeyValue>
 							</keyList>
 							<privateCodes>

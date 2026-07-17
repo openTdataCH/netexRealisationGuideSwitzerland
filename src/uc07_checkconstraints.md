@@ -8,4 +8,4 @@ In Switzerland, we use the following use cases:
 
 CheckConstraints can apply while boarding or alighting.
 
-We can have `CheckConstraint`s on [`ServiceJourney`](09_timetable#servicejourney) and [`ServiceJourneyPattern`](07_service.md#servicejourneypattern)
+We can have `CheckConstraint`s on [`ServiceJourney`](09_timetable.md#servicejourney) and [`ServiceJourneyPattern`](07_service.md#servicejourneypattern)

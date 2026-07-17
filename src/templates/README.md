@@ -259,15 +259,15 @@ To deprecate an element:
 ## Test Templates
 
 Comprehensive test templates demonstrating all annotations have been moved to the schematron_builder tool:
-- [`../tools/schematron_builder/test_templates/`](../tools/schematron_builder/test_templates/)
+- [`../tools/schematron_builder/test_templates/`](../../tools/schematron_builder/test_templates/)
 
 These templates show examples of all supported comment annotations and provide a complete testing framework. See the [test documentation](../tools/schematron_builder/test_templates/README.md) for details.
 
 ## Related Tools
 
-- **Schematron Builder**: [`../tools/schematron_builder/README.md`](../tools/schematron_builder/README.md)
-- **Markdown Builder**: [`../tools/md_builder/README.md`](../tools/md_builder/README.md)
-- **Schematron Validator**: [`../tools/check_schematron/README.md`](../tools/check_schematron/README.md)
+- **Schematron Builder**: [`../tools/schematron_builder/README.md`](../../tools/schematron_builder/README.md)
+- **Markdown Builder**: [`../tools/md_builder/README.md`](../../tools/md_builder/README.md)
+- **Schematron Validator**: [`../tools/check_schematron/README.md`](../../tools/check_schematron/README.md)
 
 ## Profile Evolution
 

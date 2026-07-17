@@ -1,11 +1,10 @@
 # Introduction
 The task performed by the NeTEx interface in Switzerland is the transmission of timetable data to one or more partners. The data transmitted via this interface is also required for the provision of timetable data in information systems. 
-This document sets out the Swiss-wide standard for the implementation of the NeTEx inter-face and of individual data structures with regard to the mutual exchange of timetable information for modes of transport ( e.g. train, bus ) between public transport companies. This information is then made available on the OpenData platform.
+This document sets out the Swiss-wide standard for the implementation of the NeTEx interface and of individual data structures with regard to the mutual exchange of timetable information for modes of transport ( e.g. train, bus ) between public transport companies. This information is then made available on the OpenData platform.
 
 The document specifically describes:
 -	which data may be exchanged between public transport partners
 -	which NeTEx elements are supported within public transport in Switzerland
--	explicit deviations from the corresponding NeTEx
 -	the format of individual data elements
 -	the data flows in terms of content and time
 -	what agreements are necessary with respect to metadata
@@ -14,14 +13,15 @@ The document specifically describes:
 
 
 # How to use the document
-This document shows all elements of the norm that are deemed necessary for data exchange for public transport timetables in Switzerland. Each description is based on the text in the standard. However, we tried to enrich the information to simplify implementation. We use fol-lowing sections:
--	Business Requirements: Telling the business story of the element and how it is used in public transportation in Switzerland
--	Structure: Contains the detailed physical structure of the element with examples and more information about the business level 
--	Example: A detailed XML example
+This document shows all elements of the norm that are deemed necessary for data exchange for public transport timetables in Switzerland. Each description is based on the text in the standard. However, we tried to enrich the information to simplify implementation. We use the following sections:
+- A link to the definition in official NeTEx and Transmodel terminology.
+- **Purpose**: Introducing the element, its purpose and how it relates to other elements
+- **Table**: Basicaly the XSD definition of the element in tabular form, tailored to the Swiss profile and enriched by profile-specific notes.
+- **Example**: A detailed XML example.
 
-The tables in the structure section are based on the original XSD schema documentation and/or descriptions from the standard (whenever the XSD documentation is insufficient), but also adapted to the needs of public transport in Switzerland. In some cases the cardinality may change and fields may become mandatory or optional. An additional row is introduced for the specification of such business requirements. Elements that are not used/important, are not shown.
+The **Table** sections are based on the original XSD schema documentation and/or descriptions from the standard (whenever the XSD documentation is insufficient), but also adapted to the needs of public transport in Switzerland. In some cases the cardinality may change and fields may become mandatory or optional. A column **Usage** tells whether a contained element is mandatory, almost always expected, or optional, while a column **Notes** provides profile-specific additions. Elements that are not used/important, are not shown.
 
-The business requirement row also specifies value transformations and mapping tables in some cases. Only the provided functions and values are to be used, no deviations are al-lowed.
+The **Notes** column also specifies value transformations and mapping tables in some cases. Only the provided functions and values are to be used, no deviations are allowed.
 
 In some cases there are references to the HRDF format currently used in the data exchange of timetables in Switzerland. This is also to help implementers to understand how to work with it.
 
