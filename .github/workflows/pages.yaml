@@ -34,6 +34,8 @@ jobs:
         run: |
           git submodule init
           git submodule update
+          repo_name="$(echo ${{ github.repository }} | cut -d'/' -f2)"
+          export BASE_URL=${repo_name}/${{ github.ref_name }}
           ./tools/build.sh
 
       # Builds static html web pages with jekyll under ./site
