@@ -183,36 +183,8 @@ Actually there is only one allowed value that we use in the Swiss profile: Only 
 
 
 ## TimetabledPassingTime
-<<<<<<< HEAD
-*→ [Glossary definition](A4_annex_glossary.md#timetabledpassingtime)*
-> We don't use TimetabledPassingTime. We will remove this. We use TimeDemandType now.
 
-### Purpose
-
-Long-term planned time data concerning public transport vehicles passing a particular `PointInJourneyPattern` on a specified vehicle journey for a certain `DayType`. 
-
-### Table
-- [Swiss profile NeTEx definition](../site/tables/TimetabledPassingTime.md)
-
-*→ [General NeTEx definition ](../generated/netex-html/TimetabledPassingTime.html)*
-
-### Example
-- [Example snippet](../site/xml-snippets/TimetabledPassingTime.xml)
-
-*→ [Template](./templates/TimetabledPassingTime.xml)*
-
-### Usage Notes
-- Note that for journeys lasting more than one day, `DayOffset` is available.
-- If `DepartureTime` is not on the same day as `ArrivalTime` this information will be provided using `WaitingTime`.
-- We use sjyid whenever possible as the attribute. However, there are different types of `ServiceJourney`s that don't have one:
-  - foreign `ServiceJourney`s
-  - perhaps some touristic offers
-  - frequency-based journeys that are wrongly modeled in HRDF (will be removed)
-- We store the sjyid in different places `id`, `privateCodes/PrivateCode`, `KeyList`. This allows different importing systems to find the sjyid.
-
-=======
 > **Deprecated** - We don't use TimetabledPassingTime in RG2.0. We use TimeDemandType now.
->>>>>>> upstream/main
 
 ## ServiceJourneyInterchange
 *→ [Glossary definition](A4_annex_glossary.md#servicejourneyinterchange)*
@@ -255,19 +227,11 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 
 *→ [Glossary definition](A4_annex_glossary.md#interchangerule)*
 
-## AvailabilityCondition 
-<<<<<<< HEAD
-*→ [see ServiceCalenderFrame](./08_service_calendars.md#availabilitycondition)*
-
-## Timeband 
-*→ [see ServiceCalenderFrame](./08_service_calendars.md#timeband)*
-=======
+## AvailabilityCondition
 *→ [see ServiceCalendarFrame](./08_service_calendars.md#availabilitycondition)*
 
 ## Timeband 
 *→ [see ServiceCalendarFrame](./08_service_calendars.md#timeband)*
->>>>>>> upstream/main
-
 
 ## NoticeAssignment
 *→ [see Common elements](./07_service.md#noticeassignment)*

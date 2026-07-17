@@ -34,17 +34,6 @@ NeTEx is divided into [frames](#frames), containers for elements of a specific d
 
 We use the following frames in Switzerland:
 
-<<<<<<< HEAD
-| Frame                                                                | Description                                                                                                                                                                                                                            |
-|----------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [CompositeFrame](#CompositeFrame)                                    | Container for the `FrameDefaults` and the other frames.                                                                                                                                                                                |
-| [ResourceFrame](10_common.md#resourceframe)                          | General purpose elements such as `ResponsibilitySet`, `Organisation`, `Operator`, `SiteFacilitySet` and `ServiceFacilitySet`. `TypeOfProductCategory` and `TypeOfNotice` are to be defined in a `ValueSet`. `VehicleType` is not used. |
-|                                                                      |                                                                                                                                                                                                                                        |
-| [SiteFrame](06_stops.md#siteframe)                                   | Contains the physical infrastructure model: Encloses elements describing locations like `Site`, `StopPlace`, `Quay` and `TopographicPlace`.                                                                                            |
-| [ServiceFrame](07_service.md#serviceframe)                           | Contains, among other, the network model with elements such as `Line` and `Route`, the service pattern model with `ScheduledStopPoint` and `JourneyPattern` and `Connection` elements for the topological model of interchanges.       |
-| [ServiceCalendarFrame](08_service_calendars.md#servicecalendarframe) | Contains calendar specific elements like `AvailabilityConditions`, `ServiceCalendar` and `DayType` that are referenced in other frames like the `TimetableFrame`.                                                                      |
-| [TimetableFrame](09_timetable.md#timetableframe)                     | Contains the operational journey definitions with elements like `ServiceJourney`, `PassingTimes`, `ServiceJourneyInterchange` and others.                                                                                              |
-=======
 | Frame                                                                | Description                                                                                                                                                                                                                                                                    |
 |----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [CompositeFrame](#CompositeFrame)                                    | Container for the `FrameDefaults` and the other frames.                                                                                                                                                                                                                        |
@@ -55,7 +44,6 @@ We use the following frames in Switzerland:
 | [TimetableFrame](09_timetable.md#timetableframe)                     | Contains the operational journey definitions with elements like `ServiceJourney`, `TimeDemandType`, `ServiceJourneyInterchange` and others.                                                                                                                                    |
 
 *Table: Content of the frames*
->>>>>>> upstream/main
 
 > The following frames are **not to be used** in Switzerland:
 > - `GeneralFrame`
@@ -82,15 +70,4 @@ Their full documentation can be found here: [ResourceFrame](10_common.md#resourc
 - [Example snippet](../site/xml-snippets/CompositeFrame.xml)
 
 *→ [Template](./templates/CompositeFrame.xml)*
-<<<<<<< HEAD
 
-
-
-
-
-
-
-
-
-=======
->>>>>>> upstream/main

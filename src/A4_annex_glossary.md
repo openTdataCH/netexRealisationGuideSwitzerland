@@ -217,13 +217,6 @@ A planned transfer opportunity between two ServiceJourneys at a shared stop poin
 
 ## InterchangeRule
 
-<<<<<<< HEAD
-An InterchangeRule defines the possibility of interchanging between two ServiceJourneys at the same or different 
-ScheduledStopPoints - where at least one journey is specified indirectly via Direction, Line, or the VehicleJourney, 
-rather than as an explicit journey pair. The rule specifies criteria (e.g. Mode, Line, Direction) that a candidate feeder 
-or distributor journey must fulfil.
-
-=======
 > **Not used in the Swiss profile** — replaced by `ServiceJourneyInterchange` (see [uc03 Transfers](uc03_transfers.md)).
 
 An InterchangeRule defines the possibility of interchanging between two ServiceJourneys at the same or different 
@@ -231,7 +224,6 @@ ScheduledStopPoints - where at least one journey is specified indirectly via Dir
 rather than as an explicit journey pair. The rule specifies criteria (e.g. Mode, Line, Direction) that a candidate feeder 
 or distributor journey must fulfil.
 
->>>>>>> upstream/main
 > **NeTEx XSD:** INTERCHANGE RULE specifies conditions governing the possibility of interchanging between two SERVICE JOURNEYs, 
 > stopping at the same or different SCHEDULED STOP POINTs, where at least one of the two SERVICE JOURNEYs is indicated 
 > indirectly by a DIRECTION, LINE or VEHICLE JOURNEY.

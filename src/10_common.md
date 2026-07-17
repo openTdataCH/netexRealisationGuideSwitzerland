@@ -69,33 +69,7 @@ The dates we have are always operating days. Nevertheless, we use
 
 to describe a single day.
 
-
-<<<<<<< HEAD
-#### Example
-
-```xml
-<Name lang="de">Train Express Regional
-  <Text lang="it">Train Express Regional</Text>
-  <Text lang="en">Train Express Regional</Text>
-  <Text lang="fr">Train Express Regional</Text>
-</Name>
-```
-#### Purpose
-
-NeTEx uses the type `MultilingualString` for descriptive text elements (e.g. `Notice` text, `Name`, `ShortName` etc.).
-However, only one language can be set for a given element (e.g. `<MultilingualString lang=”fr”>`). 
-Additional languages are introduced through the [AlternativeName](#alternativename) and [AlternativeText](#alternativetext) element.
-
-
-#### Usage Notes
-
-- For [Organisations](#organisation--operator--authority) e.g. there are all languages present.
-- The `StopPlace` names in Switzerland are language-independent.
-
-## Time Formatting and Journey after Midnight
-=======
 ### Time Formatting and Journey after Midnight
->>>>>>> upstream/main
 
 The time format consists only of the hours, minutes (and seconds) of a 24-hour clock, e.g. `23:55:00`. 
 
@@ -104,28 +78,7 @@ If a `ServiceJourney` runs over midnight, `DepartureDayOffset` (on `ServiceJourn
 
 ## Common Elements and Types
 
-<<<<<<< HEAD
-### Purpose
-Holds default values for certain basic parameters. 
-
-### Table
-- [Swiss profile NeTEx definition](../site/tables/FrameDefaults.md)
-
-*→ [General NeTEx definition](../generated/netex-html/FrameDefaults.html)*
-
-### Example
-
-- [XML Snippet](../site/xml-snippets/FrameDefaults.xml)
-
-*→ [Template](./templates/FrameDefaults.xml)*
-
-### Usage Notes
-For values not set in `FrameDefaults` we use the values as indicated in the table and example above.
-
-## AlternativeName
-=======
 ### AlternativeName
->>>>>>> upstream/main
 
 *→ [Glossary definition](A4_annex_glossary.md#alternativetext)*
 
@@ -170,11 +123,7 @@ The `AlternativeText` is a generic way to provide an alternative text (translati
 #### Example
 - [XML Snippet](../site/xml-snippets/AlternativeText_deprecated.xml)
 
-<<<<<<< HEAD
-*→ - [Template](./templates/AlternativeText.xml)*
-=======
 *→ - [Template](./templates/AlternativeText_deprecated.xml)*
->>>>>>> upstream/main
 
 #### Usage Notes
 
@@ -310,11 +259,8 @@ We might add at some point:
 
 id-attribute should be kept stable between exports.
 
-<<<<<<< HEAD
-## TypeOf... / ValueSet
-=======
 ### TypeOf... / ValueSet
->>>>>>> upstream/main
+
 *→ [Glossary definition: TypeOf...](A4_annex_glossary.md#typeof)*\
 *→ [Glossary definition: ValueSet](A4_annex_glossary.md#valueset)*
 

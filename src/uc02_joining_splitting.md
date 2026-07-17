@@ -118,11 +118,7 @@ splitting and joining.
 The detailed handling is described for the element [ServiceJourneyInterchange](09_timetable.md#servicejourneyinterchange).
 
 - [Example](../site/xml-snippets/ServiceJourneyInterchange.xml)
-<<<<<<< HEAD
-- [Example Splitting (Flügelzug Bern–Spiez–Brig/Zweisimmen)](./examples/NeTEx_CH_Bern_Spiez_Zweisimmen_Passingtime.xml)
-=======
 - [Example Splitting (Flügelzug Bern–Spiez–Brig/Zweisimmen)](./examples/NeTEx_CH_Bern_Spiez_Zweisimmen_TimeDemandType.xml)
->>>>>>> upstream/main
 
 ## Related use cases
 

@@ -15,11 +15,7 @@ replacing the deprecated `JourneyMeeting` and `InterchangeRule` from RG 1.0.
 		
 **Situation according to Realisation Guide 1.0**
 ```xml
-<<<<<<< HEAD
-<JourneyMeeting id="ch:1:JourneyMeeting:91014I-THU-17-1-5100_91030L-THU-80-1-7200_1642236775_1642209284_6660_7200" version="any">
-=======
 <JourneyMeeting id="ch:1:JourneyMeeting:91014I-THU-17-1-5100_91030L-THU-80-1-7200_1642236775_1642209284_6660_7200" version="1">
->>>>>>> upstream/main
   <validityConditions>
     <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" versionRef="any" />
   </validityConditions>
@@ -34,11 +30,7 @@ replacing the deprecated `JourneyMeeting` and `InterchangeRule` from RG 1.0.
 
 **Situation with Realisation Guide 2.0**
 ```xml
-<<<<<<< HEAD
-<ServiceJourneyInterchange version="2.0" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
-=======
 <ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
->>>>>>> upstream/main
 	<validityConditions>
     	<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" version="1"/>
   	</validityConditions>
