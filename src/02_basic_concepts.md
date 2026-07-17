@@ -102,6 +102,5 @@ Notes:
 * The `PassengerStopAssignment` associates the physical and the logical stops.
 * `DefaultConnection` and `SiteConnection` define transfers based on site elements.
 * `ServiceJourneyInterchange`s are used for splitting, joining and connecting trains and for "Durchbindungen".
-
 * `Notice`, `ServiceFacility` and `SiteFacility` model almost everything else (especially offers).
 * The operating days are defined through `ValidDayBits` for the whole timetable year in `AvailabilityCondition`s.

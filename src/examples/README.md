@@ -2,20 +2,27 @@
 This  folder contains the relevant examples for the realisation guide 2.0 based on NeTEX 2.0.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ### Basic train with PassingTime
 Example of a normal rail journey train Spiez - Interlaken Ost with various quay combinations.
 
 [Link to example](NeTEx_Spiez_Interlaken_Ost_PassingTime.xml)
 =======
+=======
+>>>>>>> upstream/main
 
 ### Basic train with TimeDemandType
 Example of a normal rail journey train Spiez - Interlaken Ost with various quay combinations.
 [Link to example](01_NeTEx_Spiez_Interlaken_Ost_PassingTime.xml)
+<<<<<<< HEAD
+>>>>>>> upstream/main
+=======
 >>>>>>> upstream/main
 
 ### Basic bus
 Swiss NeTEx 2.0 models repeated stops within a journey using PassingTimes and JourneyPattern references, enabling quay-level differentiation (e.g. opposite sides of the road) without duplicating journeys or introducing additional segmentation structures
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 [Link to example](NeTEx_CH_PAG_11929.xml)
 
@@ -53,6 +60,8 @@ This example shows the usage of ServiceFacilities. It also shows when the Servic
 
 [Link to example](NeEX_CH_Bern_Olten_ZuerichHB_Winterthur_StGallen_with_Facilities.xml)
 =======
+=======
+>>>>>>> upstream/main
 [Link to example](02_NeTEx_CH_PAG_11929.xml)
 
 Another bus is an example from Nyon.
@@ -94,6 +103,9 @@ This example shows the usage of ServiceFacilities. It also shows when the Servic
 
 [Link to example](08_NeTEX_CH_Bern_Olten_ZuerichHB_Winterthur_StGallen_with_Facilities.xml)
 
+<<<<<<< HEAD
+>>>>>>> upstream/main
+=======
 >>>>>>> upstream/main
 
 ## Using a platform for a train
@@ -105,8 +117,11 @@ We model a train that has the following stops Fribourg - Bern - Zürich. Zürich
 ![img.png](media/fribourg_zuerich.png)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 [Link to example](NeTEx_CH_Fribourg_Bern_Zuerich_Perron.xml)
 =======
+=======
+>>>>>>> upstream/main
 [Link to example](09_NeTEx_CH_Fribourg_Bern_Zuerich_Perron.xml)
 
 ## SITE OFFER Example
@@ -117,6 +132,9 @@ Umsteigebeziehungen und Metastations
 ## INTERCHANGES Example
 
 **LATER**
+<<<<<<< HEAD
+>>>>>>> upstream/main
+=======
 >>>>>>> upstream/main
 
 ## Special case: Destination changed
@@ -125,6 +143,7 @@ We assume that in Bern, Konolfingen and Langnau i.E. we want to show Destination
 
 ![img.png](media/DestinationChange_Bern_Luzern.png)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 [Link to example](NeTEx_CH_BLS_Bern_Luzern_DestinationChange.xml)
 
@@ -178,6 +197,8 @@ We already have seen line-based DRT. Here we deal with area based DRT.
 
 > **TODO** Later
 =======
+=======
+>>>>>>> upstream/main
 [Link to example](10_NeTEx_CH_BLS_Bern_Luzern_DestinationChange.xml)
 
 In a second modeling we want to model the change in the train number as also shown in the example. In this version the train goes to Luzern exactly as shown in the image.
@@ -227,6 +248,9 @@ Swiss NeTEx 2.0 replaces Call-based, order-dependent modeling with a flat, Passi
 We already have seen line-based DRT. Here we deal with area based DRT.
 
 >**LATER** 
+<<<<<<< HEAD
+>>>>>>> upstream/main
+=======
 >>>>>>> upstream/main
 
 ## Accessibility
@@ -236,6 +260,7 @@ We don't do accessibility modeling in NeTEx even for RG 2.0
 [Accessibility example in the main NeTEx repo](https://github.com/NeTEx-CEN/NeTEx/tree/v2.0/examples/standards/epiap)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ## Experimental
 The following examples are experimental. They are NOT to be used as of now as good templates for modeling stuff
 
@@ -244,6 +269,8 @@ We consider to use a minimalistic version for importation in INFO+. All basic da
 
 [Minimal Template Journey](Experimental_Minimal_TemplateJourney_Passingtime.xml)
 
+=======
+>>>>>>> upstream/main
 =======
 >>>>>>> upstream/main
 

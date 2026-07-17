@@ -66,7 +66,6 @@ We will use `version="1"` in Switzerland. In some cases we use `versionRef="1"` 
 The dates we have are always operating days. Nevertheless, we use
 * `2026-01-01T00:00:00`
 * `2026-01-01T23:59:59`
-
 to describe a single day.
 
 ### Time Formatting and Journey after Midnight
@@ -260,7 +259,10 @@ We might add at some point:
 id-attribute should be kept stable between exports.
 
 ### TypeOf... / ValueSet
+<<<<<<< HEAD
 
+=======
+>>>>>>> upstream/main
 *→ [Glossary definition: TypeOf...](A4_annex_glossary.md#typeof)*\
 *→ [Glossary definition: ValueSet](A4_annex_glossary.md#valueset)*
 

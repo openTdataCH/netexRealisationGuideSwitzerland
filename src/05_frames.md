@@ -70,4 +70,3 @@ Their full documentation can be found here: [ResourceFrame](10_common.md#resourc
 - [Example snippet](../site/xml-snippets/CompositeFrame.xml)
 
 *→ [Template](./templates/CompositeFrame.xml)*
-

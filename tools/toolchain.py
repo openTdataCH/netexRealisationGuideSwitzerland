@@ -4,8 +4,12 @@ import shutil
 from pathlib import Path
 
 from tools.configuration import DOCS_DIR, SITE_DIR, XSD_FILE_PATH, SITE_TABLES_DIR, TEMPLATES_DIR, JEKYLL_DIR, \
+<<<<<<< HEAD
     SITE_XML_SNIPPETS_DIR, SITE_TEMPLATES_DIR, SITE_SCHEMATRON_DIR, TEMPLATES_PREFIX, JEKYLL_DEFAULT_BASE_URL, \
     JEKYLL_CONFIG
+=======
+    SITE_XML_SNIPPETS_DIR, SITE_TEMPLATES_DIR, SITE_SCHEMATRON_DIR, TEMPLATES_PREFIX
+>>>>>>> upstream/main
 from tools.expand_docs.expand_docs import expand_docs
 from tools.md_builder.md_builder import build_markdown_tables
 from tools.schematron_builder.schematron_builder import generate_all_schematrons

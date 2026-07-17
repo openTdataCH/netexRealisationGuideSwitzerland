@@ -36,8 +36,12 @@ Do it as mermaid so that it can be done directly in the markdown.
 ### General rules
 - Comments start with > best do it this way:
 <<<<<<< HEAD
+<<<<<<< HEAD
   ```md
   > [!CAUTION] 
+=======
+  ```md 
+>>>>>>> upstream/main
 =======
   ```md 
 >>>>>>> upstream/main

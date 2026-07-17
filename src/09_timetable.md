@@ -183,7 +183,6 @@ Actually there is only one allowed value that we use in the Swiss profile: Only 
 
 
 ## TimetabledPassingTime
-
 > **Deprecated** - We don't use TimetabledPassingTime in RG2.0. We use TimeDemandType now.
 
 ## ServiceJourneyInterchange
@@ -235,7 +234,6 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 
 ## NoticeAssignment
 *→ [see Common elements](./07_service.md#noticeassignment)*
-
 
 ## ServiceFacilitySet
 *→ [see Common elements](./10_common.md#servicefacilityset)*
