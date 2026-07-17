@@ -14,6 +14,16 @@ The following documents have been adapted according to project needs:
 - The Gemfile
 - HTML files (header.html, footer.html, mermaid.html) in the _`includes` folder
 
+### Deployment to Branch Subdirectories
+
+Pages are deployed to a subdirectory according to the branch name, e.g. `main` or `next`. For the hyperlinks to work, 
+the `baseurl` variable of the Jekyll configuration is overwritten during build.
+
+E.g., after push to the `next` branch:
+- Pages workflow is triggered
+- During build, `baseurl` is set `/netexRealisationGuideSwitzerland/next`
+- The workflow deploys contents from `site/_site` to the `next` directory of `gh-pages`
+
 ### Mermaid
 
 The Java script in `_includes/mermaid.html` is included in `_includes/footer.html`, and consequently, in the footer of 
