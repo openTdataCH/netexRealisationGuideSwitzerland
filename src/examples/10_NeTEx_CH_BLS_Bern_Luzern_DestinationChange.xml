@@ -958,8 +958,20 @@ Luzern			  Keine weitere Fahrt möglich
 					</trainNumbers>
 					<notices>
 						<Notice id="ch:1:Notice:construction_wolhusen" version="1">
-							<Text lang="de"> Dieser Zug endet in Wolhusen wegen Bauarbeiten. Keine Weiterfahrt nach Luzern möglich.</Text>
+							<Text lang="de">Dieser Zug endet in Wolhusen wegen Bauarbeiten. Keine Weiterfahrt nach Luzern möglich.</Text>
+							<Text lang="en">This train terminates in Wolhusen due to construction work. It is not possible to continue on to Lucerne.</Text>
+							<Text lang="fr">En raison de travaux, ce train s'arrête à Wolhusen. Il n'est pas possible de poursuivre le trajet jusqu'à Lucerne.</Text>
+							<Text lang="it">Questo treno termina la corsa a Wolhusen a causa di lavori in corso. Non è possibile proseguire fino a Lucerna.</Text>
 							<PrivateCode>construction_wolhusen</PrivateCode>
+							<TypeOfNoticeRef ref="ch:1:TypeOfNotice:construction"/>
+							<CanBeAdvertised>true</CanBeAdvertised>
+						</Notice>
+						<Notice id="ch:1:Notice:construction_wolhusen_luzern" version="1">
+							<Text lang="de">Dieser Zug endet in Wolhusen wegen Bauarbeiten. Für Passagiere nach Luzern steht in Langnau ein Ersatzverkehr bereit.</Text>
+							<Text lang="en">This train terminates in Wolhusen due to construction work. A replacement service is available in Langnau for passengers travelling to Lucerne.</Text>
+							<Text lang="fr">En raison de travaux, ce train s'arrête à Wolhusen. Un service de remplacement est mis en place à Langnau pour les voyageurs à destination de Lucerne.</Text>
+							<Text lang="it">Questo treno termina la corsa a Wolhusen a causa di lavori in corso. Per i passeggeri diretti a Lucerna è disponibile un servizio sostitutivo a Langnau.</Text>
+							<PrivateCode>construction_wolhusen_luzern</PrivateCode>
 							<TypeOfNoticeRef ref="ch:1:TypeOfNotice:construction"/>
 							<CanBeAdvertised>true</CanBeAdvertised>
 						</Notice>
@@ -969,6 +981,12 @@ Luzern			  Keine weitere Fahrt möglich
 							<NoticeRef ref="ch:1:Notice:construction_wolhusen" version="1"/>
 							<ServiceJourneyRef ref="ch:1:sjyid:Bern_Wolhusen:1" version="1"/>
 							<StartPointInPatternRef ref="spijp4" version="1"/>
+						</NoticeAssignment>
+						<NoticeAssignment id="ch:1:NoticeAssignment:2" version="1">
+							<NoticeRef ref="ch:1:Notice:construction_wolhusen_luzern" version="1"/>
+							<ServiceJourneyRef ref="ch:1:sjyid:Bern_Wolhusen:1" version="1"/>
+							<StartPointInPatternRef ref="spijp1" version="1"/>
+							<EndPointInPatternRef ref="spijp4" version="1"/>
 						</NoticeAssignment>
 					</noticeAssignments>
 				</TimetableFrame>
