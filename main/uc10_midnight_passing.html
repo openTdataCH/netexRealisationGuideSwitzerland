@@ -41,10 +41,22 @@
   </header>
 
   <div class="post-content">
-    <p>The time format consists only of the hour, minutes (and seconds) of a 24-hour clock, e.g. ‘23:55:00’. 
-Times that pass midnight of the current OperatingDay are marked with a <code class="language-plaintext highlighter-rouge">DepartureDayOffset</code> element. 
-If a ServiceJourney (in a particular Call) starts after midnight, then <code class="language-plaintext highlighter-rouge">DepartureDayOffset</code> must be set to ‘1’. 
-E.g. when the S1 departs at 00:11 and it belongs to the previous operating day, then <code class="language-plaintext highlighter-rouge">DepartureDayOffset</code> is 1.</p>
+    <h2 id="case-1-journey-start-belongs-to-the-previous-operatingday">Case 1: Journey start belongs to the previous OperatingDay</h2>
+
+<p>The time format consists only of the hour, minutes (and seconds) of a 24-hour
+clock, e.g. ‘23:55:00’. If a <code class="language-plaintext highlighter-rouge">ServiceJourney</code>’s <code class="language-plaintext highlighter-rouge">DepartureTime</code> falls after
+midnight but the journey still belongs to the previous day’s schedule (e.g.
+the last-mile S1 departing at 00:11, counted as part of yesterday’s service),
+<code class="language-plaintext highlighter-rouge">DepartureDayOffset</code> must be set to <code class="language-plaintext highlighter-rouge">1</code>.</p>
+
+<h2 id="case-2-journey-crosses-midnight-during-its-course">Case 2: Journey crosses midnight during its course</h2>
+
+<p><code class="language-plaintext highlighter-rouge">TimeDemandType</code>/<code class="language-plaintext highlighter-rouge">TimingLink</code> hold only relative durations (<code class="language-plaintext highlighter-rouge">RunTime</code>,
+<code class="language-plaintext highlighter-rouge">WaitTime</code>) — there is no per-stop <code class="language-plaintext highlighter-rouge">DayOffset</code> element in this model. Consequently, a midnight
+crossing partway through a journey is not explicitly flagged anywhere — it
+follows implicitly from cumulating <code class="language-plaintext highlighter-rouge">DepartureTime</code> with the <code class="language-plaintext highlighter-rouge">RunTime</code>/<code class="language-plaintext highlighter-rouge">WaitTime</code>
+values of the <code class="language-plaintext highlighter-rouge">TimeDemandType</code>. No additional element is needed or available
+for this case.</p>
 
   </div>
 
