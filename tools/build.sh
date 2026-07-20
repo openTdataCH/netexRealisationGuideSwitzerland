@@ -11,6 +11,7 @@ VENV_DIR="${VENV_DIR:-.venv-build}"      # ephemeral venv only for build tools
 OUTDIR="${OUTDIR:-dist}"                 # where artifacts go
 EXTRA_BUILD_ARGS="${EXTRA_BUILD_ARGS:-}" # e.g. "--no-isolation" (not recommended)
 TEST_INSTALL="${TEST_INSTALL:-1}"        # 1 to smoke-test installing the wheel
+BASE_URL="${BASE_URL:-/netexRealisationGuideSwitzerland/main}" # The base url for Jekyll page generation
 
 # --- Move to repo root ---
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"

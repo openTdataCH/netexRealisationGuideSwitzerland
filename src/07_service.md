@@ -156,7 +156,7 @@ A public transport service line, representing a marketed route with a `Name`, `T
 ## GroupOfLines
 *→ [Glossary definition](A4_annex_glossary.md#groupoflines)*
 ### Purpose
-A `GroupOfLines` is used to model mixed lines. Details you finde in [uc17](uc17_mixed_lines.md).
+A `GroupOfLines` is used to model mixed lines. For details see [uc17](uc17_mixed_lines.md).
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/GroupOfLines.md)
@@ -232,7 +232,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 
 `PassengerStopAssignment`s bring the Site model and the Service model in alignment. We have two general cases:
 -	A `ScheduledStopPoint` in a `ServiceJourneyPattern` is linked to a `StopPlace` for arrival and departure.
--	A `ScheduledStopPoint` in a `ServiceJourneyPattern` is linked to a `Quay` for arrival and departure.
+-	A `ScheduledStopPoint` in a `ServiceJourneyPattern` is linked to a `Quay` for arrival and departure. In that case, both `Quay` and `StopPlace` have to be referenced. 
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/PassengerStopAssignment.md)

@@ -278,15 +278,34 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
             complex_type_xpath = f"//xs:complexType[@name='{parent_type}']//xs:element[@name='{element_name}']"
             element = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
             
+            # Also try with ref attribute (for referenced elements)
+            if not element:
+                complex_type_xpath_ref = f"//xs:complexType[@name='{parent_type}']//xs:element[@ref='{element_name}']"
+                element = xsd_doc.xpath(complex_type_xpath_ref, namespaces=namespaces)
+                if not element:
+                    # Try with namespace prefix in ref (e.g., netex:PrivateCode)
+                    complex_type_xpath_ref_ns = f"//xs:complexType[@name='{parent_type}']//xs:element[contains(@ref, ':{element_name}')]"
+                    element = xsd_doc.xpath(complex_type_xpath_ref_ns, namespaces=namespaces)
+            
             # Also try without namespace prefix for broader compatibility
             if not element:
                 complex_type_xpath_no_ns = f"//*[local-name()='complexType' and @name='{parent_type}']//*[local-name()='element' and @name='{element_name}']"
                 element = xsd_doc.xpath(complex_type_xpath_no_ns)
+                
+                # Also try with ref attribute for no-namespace case
+                if not element:
+                    complex_type_xpath_no_ns_ref = f"//*[local-name()='complexType' and @name='{parent_type}']//*[local-name()='element' and @ref='{element_name}']"
+                    element = xsd_doc.xpath(complex_type_xpath_no_ns_ref)
             
             # Try complex types that contain the parent_type name (e.g., StopPlace -> StopPlace_VersionStructure)
             if not element:
                 complex_type_xpath_contains = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
                 element = xsd_doc.xpath(complex_type_xpath_contains, namespaces=namespaces)
+                
+                # Also try with ref attribute for contains case
+                if not element:
+                    complex_type_xpath_contains_ref = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@ref='{element_name}']"
+                    element = xsd_doc.xpath(complex_type_xpath_contains_ref, namespaces=namespaces)
             
             if not element:
                 complex_type_xpath_contains_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
@@ -340,10 +359,30 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
         max_occurs = element.get('maxOccurs', '1')
         cardinality = get_cardinality(min_occurs, max_occurs)
         
+        # Check if parent is a _RelStructure type - if so, elements should be 1..n
+        # This handles the case where elements are within a choice that we don't explicitly model
+        if parent_type and '_RelStructure' in parent_type:
+            # For _RelStructure types, the contained elements should have cardinality 1..*
+            # This is because _RelStructure types contain sequences with maxOccurs="unbounded"
+            # even if the individual element declaration has minOccurs="1" maxOccurs="1"
+            cardinality = '1..*'
+        
         # Get type - check substitution group chain recursively
         element_type = "unknown"
         current_element = element
         visited_elements = set()  # Prevent infinite loops
+        
+        # Handle elements with ref attribute - resolve to actual element for type extraction
+        if current_element.get('ref') and not current_element.get('type'):
+            ref_name = current_element.get('ref').split(':')[-1]  # Remove namespace prefix
+            ref_element_xpath = f"//xs:element[@name='{ref_name}']"
+            ref_element = xsd_doc.xpath(ref_element_xpath, namespaces=namespaces)
+            if not ref_element:
+                # Try without namespace
+                ref_element_xpath_no_ns = f"//*[local-name()='element' and @name='{ref_name}']"
+                ref_element = xsd_doc.xpath(ref_element_xpath_no_ns)
+            if ref_element:
+                current_element = ref_element[0]
         
         while current_element is not None and current_element.get('name') not in visited_elements:
             visited_elements.add(current_element.get('name'))
@@ -605,10 +644,16 @@ def parse_template_file(file_path, xsd_type_info):
             # Process children ONLY if not referenced
             # When an element is referenced, its children are in a separate template file
             if not is_referenced:
+                # Update parent_type_context for children based on current element's type
+                child_parent_type = parent_type_context
+                if xsd_info and 'type' in xsd_info:
+                    # Use the XSD type of current element as context for children
+                    child_parent_type = xsd_info['type']
+                
                 for child in element:
                     # Only process actual elements, skip comments and text nodes
                     if isinstance(child, etree._Element) and not isinstance(child, etree._Comment):
-                        process_element(child, level + 1, parent_type_context)
+                        process_element(child, level + 1, child_parent_type)
         
         # Start processing from the common ancestor
         # Process the common ancestor element itself
