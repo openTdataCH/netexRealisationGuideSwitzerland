@@ -49,6 +49,8 @@ This document describes the way in which the NeTEx standard is specifically appl
   - **LATER**: [Changes in the destination](uc13_changes_in_destination.md)
   - [Frequency based ServiceJourney](uc14_frequencies.md)
   - **LATER**: [Formations](uc15_formations.md)
+  - **LATER**: [Demand Responsive Traffic](uc16_drt.md)
+  - [Mixed Lines](uc17_mixed_lines.md)
 - Mapping tables are defined in an [Excel](media/myexcel.xlsx)
 - Annexes:
   - [Resources and references](A1_annex_resources_references.md)
@@ -62,7 +64,7 @@ This document describes the way in which the NeTEx standard is specifically appl
 We have a [set of examples](./examples/README.md) that show how to create use cases with the realisation guide.
 
 ## Impressum
-* Authors: Thomas Schäfer, Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Martin Bennett, Simon Freihart, Emeric Tapia-Almosnino, Matthias Günter
+* Authors: Matthias Günter,  Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Thomas Schäfer, Simon Freihart, Emeric Tapia-Almosnino, 
 * Status: Draft
 * Last change: 2026-07-31
 * Contact: info.fachbus@sbb.ch
