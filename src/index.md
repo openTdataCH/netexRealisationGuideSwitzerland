@@ -64,7 +64,7 @@ This document describes the way in which the NeTEx standard is specifically appl
 We have a [set of examples](./examples/README.md) that show how to create use cases with the realisation guide.
 
 ## Impressum
-* Authors: Thomas Schäfer, Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Martin Bennett, Simon Freihart, Emeric Tapia-Almosnino, Matthias Günter
+* Authors: Matthias Günter,  Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Thomas Schäfer, Simon Freihart, Emeric Tapia-Almosnino, 
 * Status: Draft
 * Last change: 2026-07-31
 * Contact: info.fachbus@sbb.ch

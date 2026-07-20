@@ -4,7 +4,7 @@ This  folder contains the relevant examples for the realisation guide 2.0 based 
 
 ### Basic train with TimeDemandType
 Example of a normal rail journey train Spiez - Interlaken Ost with various quay combinations.
-[Link to example](01_NeTEx_Spiez_Interlaken_Ost_PassingTime.xml)
+[Link to example](01_NeTEx_Spiez_Interlaken_Ost.xml)
 
 ### Basic bus
 Swiss NeTEx 2.0 models repeated stops within a journey using PassingTimes and JourneyPattern references, enabling quay-level differentiation (e.g. opposite sides of the road) without duplicating journeys or introducing additional segmentation structures

@@ -27,11 +27,11 @@
 							<PrivateCode>BLS AG</PrivateCode>
 							<roles>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:1" version="1">
-									<StakeholderRoleType>entityLegalOwnership</StakeholderRoleType>
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
 									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:2" version="1">
-									<StakeholderRoleType>operation</StakeholderRoleType>
+									<StakeholderRoleType>Operation</StakeholderRoleType>
 									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
@@ -42,7 +42,8 @@
 							<Name>ProductCategories</Name>
 							<values>
 								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:RE" version="1">
-									<Name>RegioExpress</Name>
+									<Name lang="de">RegioExpress</Name>
+									<ShortName>RE</ShortName>
 								</TypeOfProductCategory>
 							</values>
 						</ValueSet>
@@ -87,6 +88,10 @@
 									<Value>ch:1:sloid:7483</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8507483</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:7483</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<HafasPriority>
 									<Value>4</Value>
@@ -96,8 +101,6 @@
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Bern</Name>
-							<ShortName lang="de">8507483</ShortName>
-							<PrivateCode>8507483</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.680103</Longitude>
@@ -131,6 +134,13 @@
 											<Value>ch:1:sloid:7483:0:90840</Value>
 										</KeyValue>
 									</keyList>
+									<Centroid>
+										<Location>
+											<Longitude>7.680103</Longitude>
+											<Latitude>46.686395</Latitude>
+											<Altitude>627</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>8</PublicCode>
 								</Quay>
 							</quays>
@@ -155,6 +165,10 @@
 									<Value>ch:1:sloid:71310</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8507493</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:71310</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<HafasPriority>
 									<Value>4</Value>
@@ -164,8 +178,6 @@
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Interlaken West</Name>
-							<ShortName lang="de">8507493</ShortName>
-							<PrivateCode>8507493</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.851453</Longitude>
@@ -193,6 +205,13 @@
 							<Weighting>preferredInterchange</Weighting>
 							<quays>
 								<Quay id="ch:1:sloid:71310:0:304706" version="1">
+									<Centroid>
+										<Location>
+											<Longitude>7.851453</Longitude>
+											<Latitude>46.682627</Latitude>
+											<Altitude>563</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>8</PublicCode>
 								</Quay>
 							</quays>
@@ -217,6 +236,10 @@
 									<Value>ch:1:sloid:7492:0:470772</Value>
 								</KeyValue>
 							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8507492</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:7492:0:470772</PrivateCode>
+							</privateCodes>
 							<Extensions>
 								<HafasPriority>
 									<Value>4</Value>
@@ -226,8 +249,6 @@
 								</HafasKMInfo>
 							</Extensions>
 							<Name>Interlaken Ost</Name>
-							<ShortName lang="de">8507492</ShortName>
-							<PrivateCode>8507492</PrivateCode>
 							<Centroid>
 								<Location>
 									<Longitude>7.869000</Longitude>
@@ -255,6 +276,13 @@
 							<Weighting>preferredInterchange</Weighting>
 							<quays>
 								<Quay id="ch:1:sloid:7492:0:460848" version="1">
+									<Centroid>
+										<Location>
+											<Longitude>7.869000</Longitude>
+											<Latitude>46.6904999</Latitude>
+											<Altitude>567</Altitude>
+										</Location>
+									</Centroid>
 									<PublicCode>8</PublicCode>
 								</Quay>
 							</quays>
@@ -278,6 +306,12 @@
 							</keyList>
 							<Name>BLS AG</Name>
 							<ShortName>BLS</ShortName>
+							<TransportMode>rail</TransportMode>
+							<TransportSubmode>
+								<RailSubmode>interregionalRail</RailSubmode>
+							</TransportSubmode>
+							<PublicCode>RE</PublicCode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:RE" version="1"/>
 						</Line>
 					</lines>
 					<scheduledStopPoints>
@@ -293,7 +327,6 @@
 								</KeyValue>
 							</keyList>
 							<Name lang="de">Spiez</Name>
-							<ShortName lang="de">1</ShortName>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:sloid:7493:0:470772" version="1">
 							<keyList>
@@ -307,7 +340,6 @@
 								</KeyValue>
 							</keyList>
 							<Name lang="de">Interlaken West</Name>
-							<ShortName lang="de">1</ShortName>
 						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:sloid:7492:0:460848" version="1">
 							<keyList>
@@ -321,7 +353,6 @@
 								</KeyValue>
 							</keyList>
 							<Name lang="de">Interlaken Ost</Name>
-							<ShortName lang="de">1</ShortName>
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
 					<stopAssignments>
@@ -341,12 +372,22 @@
 							<QuayRef ref="ch:1:sloid:7492:0:460848" version="1"/>
 						</PassengerStopAssignment>
 					</stopAssignments>
+					<timingLinks>
+						<TimingLink id="tl-1" version="1">
+							<FromPointRef ref="ch:1:sloid:7483:0:90840" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:7493:0:470772" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="tl-2" version="1">
+							<FromPointRef ref="ch:1:sloid:7493:0:470772" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:7492:0:460848" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+					</timingLinks>
 					<journeyPatterns>
 						<ServiceJourneyPattern id="sjp1" version="1">
-						<RouteView>
-							<LineRef ref="ch:1:slnid:1024440" version="1"/>
-						</RouteView>
-						<DirectionType>inbound</DirectionType>
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1024440" version="1"/>
+							</RouteView>
+							<DirectionType>inbound</DirectionType>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="spijp1" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:90840" version="1"/>
@@ -366,6 +407,26 @@
 							</pointsInSequence>
 						</ServiceJourneyPattern>
 					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="tdt-1" version="1">
+							<runTimes>
+								<JourneyRunTime id="jrt-1" version="1">
+									<TimingLinkRef ref="tl-1" version="1"/>
+									<RunTime>PT10M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="jrt-2" version="1">
+									<TimingLinkRef ref="tl-2" version="1"/>
+									<RunTime>PT6M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+							<waitTimes>
+								<JourneyWaitTime id="jwt-1" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="1"/>
+									<WaitTime>PT3M</WaitTime>
+								</JourneyWaitTime>
+							</waitTimes>
+						</TimeDemandType>
+					</timeDemandTypes>
 				</ServiceFrame>
 				<!-- Service Calendar Frame -->
 				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="1">
@@ -377,7 +438,6 @@
 						</AvailabilityCondition>
 					</validityConditions>
 				</ServiceCalendarFrame>
-				<!-- Timetable Frame -->
 				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="1">
 					<vehicleJourneys>
 						<ServiceJourney id="ch:1:sjyid:100014:4208-003" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
@@ -389,25 +449,14 @@
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>10:35:00</DepartureTime>
 							<DepartureDayOffset>0</DepartureDayOffset>
-							<JourneyPatternRef ref="sjp1" version="1"/>
+							<JourneyPatternRef ref="sjp1" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<TimeDemandTypeRef ref="tdt-1" version="1"/>
 							<OperatorRef ref="ch:1:Operator:33" version="1"/>
 							<LineRef ref="ch:1:slnid:1024440" version="1"/>
 							<DirectionType>inbound</DirectionType>
-							<passingTimes>
-								<TimetabledPassingTime id="tpt1" version="1">
-									<PointInJourneyPatternRef ref="spijp1" version="1"/>
-									<DepartureTime>10:35:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt2" version="1">
-									<PointInJourneyPatternRef ref="spijp2" version="1"/>
-									<ArrivalTime>10:45:00</ArrivalTime>
-									<DepartureTime>10:48:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="tpt3" version="1">
-									<PointInJourneyPatternRef ref="spijp3" version="1"/>
-									<ArrivalTime>10:54:00</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:99999" version="1"/>
+							</trainNumbers>
 						</ServiceJourney>
 					</vehicleJourneys>
 					<trainNumbers>
