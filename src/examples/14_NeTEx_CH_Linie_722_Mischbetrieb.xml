@@ -21,29 +21,27 @@
 					<responsibilitySets>
 						<ResponsibilitySet id="ch:1:ResponsibilitySet:PAG-722-3" version="1">
 							<Name>Postauto Konzessionär und Betreiber</Name>
-							<PrivateCode>PAG</PrivateCode>
 							<roles>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:100602-1" version="1">
 									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:sboid:100602" version="1"/>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:100602" version="1"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:100602-2" version="1">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:sboid:100602" version="1"/>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:100602" version="1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
 						<ResponsibilitySet id="ch:1:ResponsibilitySet:BOS-722-4" version="1">
 							<Name>BOS Konzessionär und Betreiber</Name>
-							<PrivateCode>BOS</PrivateCode>
 							<roles>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:100111-1" version="1">
 									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:sboid:100111" version="1"/>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:100111" version="1"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:100111-2" version="1">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:sboid:100111" version="1"/>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:100111" version="1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
@@ -60,7 +58,7 @@
 						</ValueSet>											
 					</typesOfValue>
 					<organisations>
-						<Operator id="ch:1:sboid:100602" version="1">
+						<Operator id="ch:1:Operator:100602" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>SBOID</Key>
@@ -73,7 +71,7 @@
 							<Name lang="de">Postauto AG</Name>
 							<ShortName lang="de">PAG</ShortName>
 						</Operator>
-						<Operator id="ch:1:sboid:100111" version="1">
+						<Operator id="ch:1:Operator:100111" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>SBOID</Key>
@@ -123,7 +121,7 @@
 							<ShortName>722</ShortName>
 							<TransportMode>bus</TransportMode>
 							<PublicCode>722</PublicCode>
-							<OperatorRef ref="ch:1:sboid:100602" version="1"/>
+							<OperatorRef ref="ch:1:Operator:100602" version="1"/>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
 						</Line>
 						<!-- Teillinie BOS -->
@@ -141,7 +139,7 @@
 							<ShortName>722</ShortName>
 							<TransportMode>bus</TransportMode>
 							<PublicCode>722</PublicCode>
-							<OperatorRef ref="ch:1:sboid:100111" version="1"/>
+							<OperatorRef ref="ch:1:Operator:100111" version="1"/>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
 						</Line>							
 					</lines>
@@ -156,10 +154,111 @@
 							<GroupOfLinesType>administrative</GroupOfLinesType>
 						</GroupOfLines>
 					</groupsOfLines>
+					<scheduledStopPoints>
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:8514421" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:8514421</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Wil SG, Bahnhof</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:8506302" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:8506302</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Weinfelden, Bahnhof</Name>
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+					<timingLinks>
+						<TimingLink id="ch:1:TimingLink:8514421-8506302" version="1">
+							<FromPointRef ref="ch:1:SchedStopPoint:8514421" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:SchedStopPoint:8506302" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+					</timingLinks>
 					<journeyPatterns>
-						<ServiceJourneyPattern id="generated" version="1"></ServiceJourneyPattern>
-					</journeyPatterns>					
+						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:722" version="1">
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1027553" version="1"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:722:1" version="1" order="1">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8514421" version="1"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:722:2" version="1" order="2">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:8506302" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+						</ServiceJourneyPattern>
+					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="ch:1:TimeDemandType:722" version="1">
+							<Name>Wil SG - Weinfelden</Name>
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:722-1" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:8514421-8506302" version="1"/>
+									<RunTime>PT25M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+						</TimeDemandType>
+					</timeDemandTypes>					
 				</ServiceFrame>	
+
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:1" version="1">
+					<validityConditions>
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:722" version="1">
+							<FromDate>2025-12-15T00:00:00</FromDate>
+							<ToDate>2026-12-12T23:59:59</ToDate>
+							<ValidDayBits>1111100</ValidDayBits>
+						</AvailabilityCondition>
+					</validityConditions>
+				</ServiceCalendarFrame>
+
+				<TimetableFrame id="ch:1:TimetableFrame:722" version="1">
+					<vehicleJourneys>
+						<!-- Kurs am Vormittag: PAG bedient die Teillinie -->
+						<ServiceJourney id="ch:1:sjyid:722-PAG:1" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:PAG-722-3">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:722" version="1"/>
+							</validityConditions>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>08:00:00</DepartureTime>
+							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:722" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:722" version="1"/>
+							<OperatorRef ref="ch:1:Operator:100602" version="1"/>
+							<LineRef ref="ch:1:slnid:1027553:3" version="1"/>
+							<DirectionType>outbound</DirectionType>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:722-1" version="1"/>
+							</trainNumbers>
+						</ServiceJourney>
+						<!-- Kurs am Nachmittag: BOS bedient dieselbe Teilstrecke im Mischbetrieb -->
+						<ServiceJourney id="ch:1:sjyid:722-BOS:1" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BOS-722-4">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:722" version="1"/>
+							</validityConditions>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>14:00:00</DepartureTime>
+							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:722" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:722" version="1"/>
+							<OperatorRef ref="ch:1:Operator:100111" version="1"/>
+							<LineRef ref="ch:1:slnid:1027553:4" version="1"/>
+							<DirectionType>outbound</DirectionType>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:722-2" version="1"/>
+							</trainNumbers>
+						</ServiceJourney>
+					</vehicleJourneys>
+					<trainNumbers>
+						<TrainNumber id="ch:1:TrainNumber:722-1" version="1"/>
+						<TrainNumber id="ch:1:TrainNumber:722-2" version="1"/>
+					</trainNumbers>
+				</TimetableFrame>
 			</frames>
 		</CompositeFrame>
 	</dataObjects>
