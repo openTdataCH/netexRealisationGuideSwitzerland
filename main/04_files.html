@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Files | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Files" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/04_files.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/04_files.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Files" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Files","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/04_files.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Files</h1>
+  </header>
+
+  <div class="post-content">
+    <p>NeTEx data will be transferred as files.</p>
+
+<p>We will have three different file types:</p>
+<ul>
+  <li>STOP_OFFER: stops, quays, transfer times and accessibility related to sites at some point</li>
+  <li>NETWORK_OFFER: lines, routes, timetables</li>
+  <li>INTERCHANGE: interchanges, “Durchbindungen”</li>
+</ul>
+
+<p>The first two are valid according to the XSD. INTERCHANGE only as far as we use <code class="language-plaintext highlighter-rouge">versionRef</code> instead of <code class="language-plaintext highlighter-rouge">version</code>.</p>
+
+<p>NETWORK_OFFER is per operator and in some cases per area.</p>
+
+<p>This repartition of the data into different file leads to some redundancy. However, the files can still be transferred efficiently.</p>
+
+<h2 id="content-of-each-file">Content of each file</h2>
+<pre><code class="language-mermaid">classDiagram
+class STOP_OFFER{
+    SiteFrame: SiteFrame
+    topographicPlaces: TopographicPlace
+    stopPlaces: StopPlace
+    quays: Quay
+    ServiceFrame: ServiceFrame
+    defaultConnections: DefaultConnection
+    siteConnection: SiteConnection
+} 
+
+class NETWORK_OFFER{
+    ResourceFrame: ResourceFrame
+    operators: Operators
+    responsibilitySets: ResponsibilitySets
+    typeOfProductCategory:TypeOfProductCategory
+    typesOfNotice: TypeOfNotice
+    ServiceCalendarFrame: ServiceCalendarFrame
+    vehicleTypes: VehicleType
+    dayTypes: DayType 
+    ServiceCalendar: ServiceCalendar
+    daytypeAssignments: DaytypeAssignment
+    detinationDisplays: DestinationDisplay
+    ServiceFrame: ServiceFrame
+    lines: Line
+    serviceJourneyPattern: ServiceJourneyPattern
+    ScheduledStopPoint: ScheduledStopPoint
+    passengerStopAssignments: PassengerStopAssignment
+    notices: Notice
+    TimetableFrame: TimetableFrame
+    serviceJourney: ServiceJourneyPattern
+    serviceFacilitySets: ServiceFacilitySet
+    trainNumbers : TrainNumber
+}
+class INTERCHANGE {
+    serviceJourneyInterchanges : ServiceJourneyInterchange
+}
+</code></pre>
+<p><em>Figure: Elements per file type</em></p>
+
+<p>STOP_OFFER:</p>
+<ul>
+  <li>Contains everything related to (physical) stops</li>
+  <li>Accessibility will be added in the future</li>
+</ul>
+
+<p>NETWORK_OFFER:</p>
+<ul>
+  <li>By operator (legal) and sometimes region (e.g. canton)</li>
+  <li>Contains the <code class="language-plaintext highlighter-rouge">ResourceFrame</code>, <code class="language-plaintext highlighter-rouge">CalendarFrame</code>, <code class="language-plaintext highlighter-rouge">ServiceFrame</code>, <code class="language-plaintext highlighter-rouge">TimetableFrame</code></li>
+  <li>Is self-sufficient from ref/id side</li>
+  <li>Eventually a reduced <code class="language-plaintext highlighter-rouge">StopPlace</code>, <code class="language-plaintext highlighter-rouge">Quay</code> could be added, but for the time being we won’t do this.</li>
+</ul>
+
+<p>INTERCHANGE</p>
+<ul>
+  <li>Contains interchanges, spliting, joining and “Durchbindungen”.</li>
+  <li>ref/id can’t be checked by the schema. Therefore we use the attribute <code class="language-plaintext highlighter-rouge">versionRef</code> instead of <code class="language-plaintext highlighter-rouge">version</code>.</li>
+</ul>
+
+<p>Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.  STOP_OFFER is only needed for data not stored in ATLAS. INFO+ will deliver an aggregated, comprehensive STOP_OFFER.</p>
+
+<h2 id="naming-conventions">Naming conventions</h2>
+<p>IT-Environments:</p>
+<ul>
+  <li>Development:	DEV</li>
+  <li>Test:	TEST</li>
+  <li>Integration:	INT</li>
+  <li>Production:	PROD</li>
+</ul>
+
+<p>The name of each XML file is composed of the following information:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Example</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IT-Environment</td>
+      <td><code class="language-plaintext highlighter-rouge">TEST</code></td>
+      <td>DEV,TEST,INT,PROD</td>
+    </tr>
+    <tr>
+      <td>Format of the file</td>
+      <td><code class="language-plaintext highlighter-rouge">NETEX</code></td>
+      <td>NETEX</td>
+    </tr>
+    <tr>
+      <td>Content of the file</td>
+      <td><code class="language-plaintext highlighter-rouge">TT</code></td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>Version</td>
+      <td><code class="language-plaintext highlighter-rouge">2.1</code></td>
+      <td>Number of the version of the NeTEx .xsd schema</td>
+    </tr>
+    <tr>
+      <td>Country</td>
+      <td><code class="language-plaintext highlighter-rouge">CHE</code></td>
+      <td>ISO code of the country for which the file was produced</td>
+    </tr>
+    <tr>
+      <td>Provider</td>
+      <td><code class="language-plaintext highlighter-rouge">SKI</code></td>
+      <td>Name of the provider</td>
+    </tr>
+    <tr>
+      <td>Time table year</td>
+      <td><code class="language-plaintext highlighter-rouge">2026</code></td>
+      <td>period of the data (always a year for now)</td>
+    </tr>
+    <tr>
+      <td>Name of Export</td>
+      <td><code class="language-plaintext highlighter-rouge">oev-schweiz</code></td>
+      <td>Defines the scope of the timetable data (e.g. <code class="language-plaintext highlighter-rouge">bernmobil</code> or for the whole of Switzerland <code class="language-plaintext highlighter-rouge">oev-schweiz</code></td>
+    </tr>
+    <tr>
+      <td>Type of file</td>
+      <td><code class="language-plaintext highlighter-rouge">STOP_OFFER</code>, <code class="language-plaintext highlighter-rouge">NETWORK_OFFER</code>, <code class="language-plaintext highlighter-rouge">INTERCHANGE</code></td>
+      <td>Describes the content</td>
+    </tr>
+    <tr>
+      <td>Date and Time</td>
+      <td><code class="language-plaintext highlighter-rouge">202606101200</code></td>
+      <td>Date and time the file was produced, format: YYYYMMDDHHMM</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Example: <code class="language-plaintext highlighter-rouge">TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_STOP_OFFER_202301250401.xml</code></p>
+
+<p>All Files are embedded in a zip-File. The name of the zip-file is composed of the following information:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Example</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IT-Environment</td>
+      <td>DEV,TEST,INT</td>
+      <td>In the production environment, the prefix PROD is not written in the name</td>
+    </tr>
+    <tr>
+      <td>Format  of the file</td>
+      <td><code class="language-plaintext highlighter-rouge">NETEX</code></td>
+      <td>Describe the format (NETEX)</td>
+    </tr>
+    <tr>
+      <td>Content of the file</td>
+      <td><code class="language-plaintext highlighter-rouge">TT</code></td>
+      <td>Describe the content (TimeTable)</td>
+    </tr>
+    <tr>
+      <td>Version</td>
+      <td><code class="language-plaintext highlighter-rouge">2.1</code></td>
+      <td>Number of the version of the NeTEx .xsd schema</td>
+    </tr>
+    <tr>
+      <td>Country</td>
+      <td><code class="language-plaintext highlighter-rouge">CHE</code></td>
+      <td>ISO code of the country for which the file was produced</td>
+    </tr>
+    <tr>
+      <td>Provider</td>
+      <td><code class="language-plaintext highlighter-rouge">SKI</code></td>
+      <td>Name of the provider</td>
+    </tr>
+    <tr>
+      <td>Time period</td>
+      <td><code class="language-plaintext highlighter-rouge">2026</code></td>
+      <td>Time period of the data</td>
+    </tr>
+    <tr>
+      <td>Name of Export</td>
+      <td><code class="language-plaintext highlighter-rouge">oev-schweiz</code></td>
+      <td>Defines the scope of the timetable data (e.g. <code class="language-plaintext highlighter-rouge">bernmobil</code> or for the whole of Switzerland <code class="language-plaintext highlighter-rouge">oev-schweiz</code></td>
+    </tr>
+    <tr>
+      <td>Date and Time</td>
+      <td><code class="language-plaintext highlighter-rouge">202606131500</code></td>
+      <td>Date and time the file was produced, format: YYYYMMDDHHMM</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Example :<code class="language-plaintext highlighter-rouge">TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_202602010402.zip</code></p>
+
+<h2 id="zip-structure">Zip structure</h2>
+<p>All files in a delivery are zipped into a single one according to the name structure above.</p>
+
+<h2 id="encoding">Encoding</h2>
+<p>All data is encoded as UTF-8 without BOM.</p>
+
+<h2 id="data-transfer">Data transfer</h2>
+<p>The data transfer will be defined by INFO+. A version of the full swiss data will be available on https://opentransportdata.swiss/ for download.</p>
+
+<h2 id="file-sent-by-data-provider-to-ski">File sent by data provider to SKI</h2>
+<p>We suggest that the partner name consists of the short name of the partner and necessary additions to identify the system. In addition, the number of the timetable period is to be indicated in the name, as well as the date and time of creation of the file</p>
+
+<p>Examples: <code class="language-plaintext highlighter-rouge">test_zvv_2024_20231112_095217.zip</code>, <code class="language-plaintext highlighter-rouge">prod_tl_2024_20231114_152836.zip</code></p>
+
+<p>The file name must be agreed on between the data provider and SKI. Generally it is agreed that delivery can be on network, operator or line base.</p>
+
+<h3 id="partial-deliveries">Partial deliveries</h3>
+<p>No partial deliveries are accepted. They must contain:</p>
+<ul>
+  <li>all relevant lines</li>
+  <li>the whole timetable year</li>
+</ul>
+
+<p>No incremental updates are supported.</p>
+
+<blockquote>
+  <p>NB: We might reconsider some of those points for mixed lines.</p>
+</blockquote>
+
+<h2 id="file-sent-by-ski-to-data-receivers">File sent by SKI to data receivers</h2>
+<p>As the quantity of the data is very large for a single XML-file, SKI provides the data a set of XML files. In addition to the XML files, SKI provides a README file listing the contents of each XML file.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer><script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    // Render code fences like ```mermaid (Jekyll outputs <pre><code class="language-mermaid">...</code></pre>)
+    mermaid.run({ querySelector: 'pre > code.language-mermaid' });
+</script></body>
+
+</html>

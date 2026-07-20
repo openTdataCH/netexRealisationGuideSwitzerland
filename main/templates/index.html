@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Swiss NeTEx Profile Templates | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Swiss NeTEx Profile Templates" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/templates/" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/templates/" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Swiss NeTEx Profile Templates" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Swiss NeTEx Profile Templates","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/templates/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Swiss NeTEx Profile Templates</h1>
+  </header>
+
+  <div class="post-content">
+    <p>This folder contains XML templates used to generate documentation, schematron validation files, and examples for the Swiss NeTEx profile.</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>The templates use special comment annotations to define the Swiss profile requirements. These annotations are processed by various tools to generate:</p>
+
+<ol>
+  <li><strong>Markdown documentation tables</strong> (via <code class="language-plaintext highlighter-rouge">md_builder.py</code>)</li>
+  <li><strong>Schematron validation files</strong> (via <code class="language-plaintext highlighter-rouge">template2schematron.py</code>)</li>
+  <li><strong>Example XML files</strong> (directly usable templates)</li>
+</ol>
+
+<h2 id="template-structure">Template Structure</h2>
+
+<p>Each template is a valid NeTEx XML file with special comment annotations that define profile-specific requirements.</p>
+
+<h3 id="basic-structure">Basic Structure</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;RootElement</span> <span class="na">xmlns=</span><span class="s">"http://www.netex.org.uk/netex"</span><span class="nt">&gt;</span><span class="c">&lt;!-- ch-root --&gt;</span>
+    <span class="c">&lt;!-- ch-note: Description of the template --&gt;</span>
+    <span class="nt">&lt;ChildElement&gt;</span>
+        <span class="c">&lt;!-- ch-usage: mandatory|forbidden|optional|ignored|expected --&gt;</span>
+        <span class="c">&lt;!-- ch-note: Profile-specific notes about the element --&gt;</span>
+        <span class="c">&lt;!-- Other annotations... --&gt;</span>
+        Content
+    <span class="nt">&lt;/ChildElement&gt;</span>
+<span class="nt">&lt;/RootElement&gt;</span>
+</code></pre></div></div>
+
+<h2 id="annotation-reference">Annotation Reference</h2>
+
+<h3 id="region-markers">Region Markers</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-root --&gt;</code>: Marks the element to process (placed within the element)</li>
+</ul>
+
+<h3 id="documentation-annotations">Documentation Annotations</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-note: text --&gt;</code>: Adds descriptive notes (appears in documentation and schematron comments)</li>
+</ul>
+
+<h3 id="usage-control-annotations">Usage Control Annotations</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-usage: mandatory --&gt;</code>: Element must be present in valid documents</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-usage: forbidden --&gt;</code>: Element must not be present in valid documents</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-usage: expected --&gt;</code>: Element is expected but not strictly required (i.e, element should be included - unless there are good reasons or justifications not to do so in that particular situation)</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-usage: optional --&gt;</code>: Element is optional</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-usage: deprecated --&gt;</code>: Element is deprecated (technically, the element is optional but will become forbidden or ignored in a forthcoming release)</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-usage: ignored --&gt;</code>: Element is ignored (not processed) and does not appear in the documentation</li>
+  <li><code class="language-plaintext highlighter-rouge">ch-usage</code> tag not used: Similar to ignored, but element remains visible in XML code template</li>
+</ul>
+
+<h3 id="advanced-annotations">Advanced Annotations</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-see --&gt;</code>: References another template with the same name</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-see: filename.xml --&gt;</code>: References a specific template file</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-allowed-enums: value1 value2 value3 --&gt;</code>: Restricts element to specific enumeration values</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-deprecated --&gt;</code>: Marks element as deprecated</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-class-id-must-exist --&gt;</code>: Requires that referenced element with ID exists in document</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;!-- ch-attrs: attr1 attr2 attr3 --&gt;</code>: Specifies which attributes are mandatory</li>
+</ul>
+
+<h2 id="attribute-handling">Attribute Handling</h2>
+
+<h3 id="versionref-vs-version">versionRef vs version</h3>
+
+<p>In NeTEX, reference elements often use <code class="language-plaintext highlighter-rouge">versionRef</code> instead of <code class="language-plaintext highlighter-rouge">version</code> attributes. The documentation and example generation tools automatically convert these:</p>
+
+<ul>
+  <li><strong>Input</strong>: <code class="language-plaintext highlighter-rouge">&lt;ElementRef versionRef="1"&gt;</code></li>
+  <li><strong>Output</strong>: <code class="language-plaintext highlighter-rouge">&lt;ElementRef version="1"&gt;</code></li>
+</ul>
+
+<p>This conversion happens in both the markdown documentation and XML snippet generation tools.</p>
+
+<h2 id="template-types">Template Types</h2>
+
+<h3 id="top-level-templates">Top-Level Templates</h3>
+
+<p>These are the main entry points for processing different aspects of the Swiss profile:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ch-profile_export-timetable_file.xml</code>: Timetable data export profile</li>
+  <li><code class="language-plaintext highlighter-rouge">ch-profile_export_resource_file.xml</code>: Resource data export profile</li>
+  <li><code class="language-plaintext highlighter-rouge">ch-profile_import-*.xml</code>: Import profiles (various types)</li>
+  <li><code class="language-plaintext highlighter-rouge">ch-profile_psa_file.xml</code>: Passenger Stop Assignments</li>
+  <li><code class="language-plaintext highlighter-rouge">ch-profile_interactions_file.xml</code>: Journey Meetings and Interchange Rules</li>
+</ul>
+
+<h3 id="component-templates">Component Templates</h3>
+
+<p>These are referenced by top-level templates and define specific elements:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Operator.xml</code>, <code class="language-plaintext highlighter-rouge">ResponsibilitySet.xml</code>, <code class="language-plaintext highlighter-rouge">SiteFacilitySet.xml</code>, etc.</li>
+  <li>Type definitions like <code class="language-plaintext highlighter-rouge">TypeOfNotice.xml</code>, <code class="language-plaintext highlighter-rouge">TypeOfProductCategory.xml</code></li>
+  <li>Complex elements that are reused across multiple contexts</li>
+</ul>
+
+<h2 id="creating-new-templates">Creating New Templates</h2>
+
+<h3 id="best-practices">Best Practices</h3>
+
+<ol>
+  <li><strong>Start with valid NeTEx XML</strong>: Ensure your template is valid according to the NeTEX schema</li>
+  <li><strong>Use clear region markers</strong>: Mark processing regions with <code class="language-plaintext highlighter-rouge">ch-start</code> and <code class="language-plaintext highlighter-rouge">ch-stop</code></li>
+  <li><strong>Document thoroughly</strong>: Use <code class="language-plaintext highlighter-rouge">ch-note</code> to explain profile decisions</li>
+  <li><strong>Be consistent</strong>: Apply usage annotations consistently across similar elements</li>
+  <li><strong>Modular design</strong>: Break complex structures into separate templates using <code class="language-plaintext highlighter-rouge">ch-see</code></li>
+  <li><strong>Test thoroughly</strong>: Validate generated output with real data</li>
+</ol>
+
+<h3 id="example-simple-template">Example: Simple Template</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;SimpleElement</span> <span class="na">xmlns=</span><span class="s">"http://www.netex.org.uk/netex"</span> <span class="na">id=</span><span class="s">"ch:example:Simple:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span><span class="c">&lt;!-- ch-root --&gt;</span>
+    
+    <span class="c">&lt;!-- Mandatory child element --&gt;</span>
+    <span class="nt">&lt;RequiredChild&gt;</span>
+        <span class="c">&lt;!-- ch-usage: mandatory --&gt;</span>
+        <span class="c">&lt;!-- ch-note: This child element is required --&gt;</span>
+        Required content
+    <span class="nt">&lt;/RequiredChild&gt;</span>
+    
+    <span class="c">&lt;!-- Optional child element --&gt;</span>
+    <span class="nt">&lt;OptionalChild&gt;</span>
+        <span class="c">&lt;!-- ch-usage: optional --&gt;</span>
+        <span class="c">&lt;!-- ch-note: This child element is optional --&gt;</span>
+        Optional content
+    <span class="nt">&lt;/OptionalChild&gt;</span>
+    
+    <span class="c">&lt;!-- Forbidden element (should not appear in valid documents) --&gt;</span>
+    <span class="nt">&lt;ForbiddenChild&gt;</span>
+        <span class="c">&lt;!-- ch-usage: forbidden --&gt;</span>
+        <span class="c">&lt;!-- ch-note: This element should not be used --&gt;</span>
+        Forbidden content
+    <span class="nt">&lt;/ForbiddenChild&gt;</span>
+    
+<span class="nt">&lt;/SimpleElement&gt;</span>
+</code></pre></div></div>
+
+<h2 id="processing-templates">Processing Templates</h2>
+
+<h3 id="generating-schematron-files">Generating Schematron Files</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Process a single template</span>
+python tools/schematron_builder/template2schematron.py <span class="se">\</span>
+    <span class="nt">-t</span> templates/template_name.xml <span class="se">\</span>
+    <span class="nt">-x</span> xsd/xsd/NeTEx_publication.xsd <span class="se">\</span>
+    <span class="nt">-i</span> templates <span class="se">\</span>
+    <span class="nt">-o</span> generated/schematrons/output.sch <span class="se">\</span>
+    <span class="nt">-v</span>
+
+<span class="c"># Process all templates</span>
+./tools/schematron_builder/build_schemas.sh
+</code></pre></div></div>
+
+<h3 id="generating-markdown-documentation">Generating Markdown Documentation</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Generate markdown tables from templates</span>
+python tools/md_builder/md_builder.py <span class="se">\</span>
+    <span class="nt">-i</span> templates <span class="se">\</span>
+    <span class="nt">-o</span> generated/markdown <span class="se">\</span>
+    <span class="nt">-x</span> xsd/xsd/NeTEx_publication.xsd
+</code></pre></div></div>
+
+<h2 id="validation">Validation</h2>
+
+<h3 id="validating-templates">Validating Templates</h3>
+
+<p>Templates should be valid NeTEx XML files. You can validate them using:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Validate against NeTEx schema</span>
+xmllint <span class="nt">--schema</span> xsd/xsd/NeTEx_publication.xsd <span class="nt">--noout</span> templates/template_name.xml
+
+<span class="c"># Validate generated schematron output</span>
+python tools/check_schematron/check_schematron.py <span class="se">\</span>
+    <span class="nt">-i</span> test_data.xml <span class="se">\</span>
+    <span class="nt">-s</span> generated/schematrons/output.sch
+</code></pre></div></div>
+
+<h2 id="template-maintenance">Template Maintenance</h2>
+
+<h3 id="adding-new-elements">Adding New Elements</h3>
+
+<p>When adding new elements to the profile:</p>
+
+<ol>
+  <li><strong>Identify the appropriate template</strong>: Find where the element should be defined</li>
+  <li><strong>Add the element with annotations</strong>: Include usage, notes, and other relevant annotations</li>
+  <li><strong>Update references</strong>: If the element is referenced elsewhere, update those templates</li>
+  <li><strong>Test the changes</strong>: Generate output and validate with test data</li>
+</ol>
+
+<h3 id="deprecating-elements">Deprecating Elements</h3>
+
+<p>To deprecate an element:</p>
+
+<ol>
+  <li><strong>Add deprecated annotation</strong>: <code class="language-plaintext highlighter-rouge">&lt;!-- ch-deprecated --&gt;</code></li>
+  <li><strong>Update usage if needed</strong>: Often set to <code class="language-plaintext highlighter-rouge">optional</code> if not already</li>
+  <li><strong>Add deprecation note</strong>: Explain when and why it was deprecated</li>
+  <li><strong>Document alternatives</strong>: If available, mention replacement elements</li>
+</ol>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;DeprecatedElement&gt;</span>
+    <span class="c">&lt;!-- ch-usage: optional --&gt;</span>
+    <span class="c">&lt;!-- ch-deprecated --&gt;</span>
+    <span class="c">&lt;!-- ch-note: Deprecated since v2.1, use NewElement instead --&gt;</span>
+    Content
+<span class="nt">&lt;/DeprecatedElement&gt;</span>
+</code></pre></div></div>
+
+<h2 id="common-patterns">Common Patterns</h2>
+
+<h3 id="mandatory-elements-with-specific-content">Mandatory Elements with Specific Content</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ElementWithSpecificContent&gt;</span>
+    <span class="c">&lt;!-- ch-usage: mandatory --&gt;</span>
+    <span class="c">&lt;!-- ch-allowed-enums: value1 value2 value3 --&gt;</span>
+    <span class="c">&lt;!-- ch-note: Must be one of the allowed values --&gt;</span>
+    value1
+<span class="nt">&lt;/ElementWithSpecificContent&gt;</span>
+</code></pre></div></div>
+
+<h3 id="referenced-elements">Referenced Elements</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ComplexElement&gt;</span>
+    <span class="c">&lt;!-- ch-usage: mandatory --&gt;</span>
+    <span class="c">&lt;!-- ch-see --&gt;</span>
+    <span class="c">&lt;!-- ch-note: See ComplexElement.xml for full definition --&gt;</span>
+    <span class="nt">&lt;SimpleChild&gt;</span>content<span class="nt">&lt;/SimpleChild&gt;</span>
+<span class="nt">&lt;/ComplexElement&gt;</span>
+</code></pre></div></div>
+
+<h3 id="elements-with-attribute-control">Elements with Attribute Control</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ElementWithAttributes</span> <span class="na">id=</span><span class="s">"required-id"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">optionalAttr=</span><span class="s">"value"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- ch-usage: mandatory --&gt;</span>
+    <span class="c">&lt;!-- ch-attrs: id version optionalAttr --&gt;</span>
+    <span class="c">&lt;!-- ch-note: Only specified attributes are allowed --&gt;</span>
+    Content
+<span class="nt">&lt;/ElementWithAttributes&gt;</span>
+</code></pre></div></div>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<h3 id="common-issues">Common Issues</h3>
+
+<ol>
+  <li><strong>Template not found</strong>: Ensure the template exists in the templates folder</li>
+  <li><strong>Invalid XML</strong>: Validate your template against the NeTEX schema</li>
+  <li><strong>Missing annotations</strong>: All processed elements need usage annotations</li>
+  <li><strong>Circular references</strong>: Avoid templates that reference each other circularly</li>
+  <li><strong>Namespace issues</strong>: Ensure proper namespace declarations</li>
+</ol>
+
+<h3 id="debugging-tips">Debugging Tips</h3>
+
+<ul>
+  <li>Use <code class="language-plaintext highlighter-rouge">-v</code> flag for verbose output</li>
+  <li>Check the generated schematron/markdown files</li>
+  <li>Validate intermediate XML files</li>
+  <li>Test with small, simple templates first</li>
+</ul>
+
+<h2 id="test-templates">Test Templates</h2>
+
+<p>Comprehensive test templates demonstrating all annotations have been moved to the schematron_builder tool:</p>
+<ul>
+  <li><a href="../../tools/schematron_builder/test_templates/"><code class="language-plaintext highlighter-rouge">../tools/schematron_builder/test_templates/</code></a></li>
+</ul>
+
+<p>These templates show examples of all supported comment annotations and provide a complete testing framework. See the <a href="../tools/schematron_builder/test_templates/README.md">test documentation</a> for details.</p>
+
+<h2 id="related-tools">Related Tools</h2>
+
+<ul>
+  <li><strong>Schematron Builder</strong>: <a href="../../tools/schematron_builder/README.md"><code class="language-plaintext highlighter-rouge">../tools/schematron_builder/README.md</code></a></li>
+  <li><strong>Markdown Builder</strong>: <a href="../../tools/md_builder/README.md"><code class="language-plaintext highlighter-rouge">../tools/md_builder/README.md</code></a></li>
+  <li><strong>Schematron Validator</strong>: <a href="../../tools/check_schematron/README.md"><code class="language-plaintext highlighter-rouge">../tools/check_schematron/README.md</code></a></li>
+</ul>
+
+<h2 id="profile-evolution">Profile Evolution</h2>
+
+<p>The Swiss NeTEx profile evolves over time. When making changes:</p>
+
+<ol>
+  <li><strong>Document changes</strong>: Update the change log</li>
+  <li><strong>Maintain backward compatibility</strong>: Where possible</li>
+  <li><strong>Deprecate, don’t delete</strong>: Mark old elements as deprecated rather than removing them</li>
+  <li><strong>Version templates</strong>: Include version information in templates</li>
+  <li><strong>Test thoroughly</strong>: Validate changes with existing data</li>
+</ol>
+
+<h2 id="contributing">Contributing</h2>
+
+<p>When contributing new templates or modifications:</p>
+
+<ol>
+  <li><strong>Follow existing patterns</strong>: Use the same style and conventions</li>
+  <li><strong>Document thoroughly</strong>: Add comprehensive notes and explanations</li>
+  <li><strong>Test your changes</strong>: Generate and validate output</li>
+  <li><strong>Update documentation</strong>: Keep README files current</li>
+  <li><strong>Add examples</strong>: Include sample data where helpful</li>
+</ol>
+
+<h2 id="license">License</h2>
+
+<p>The templates and associated tools are licensed under the same terms as the main project. See the project’s LICENSE file for details.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

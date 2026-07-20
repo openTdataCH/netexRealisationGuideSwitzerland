@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<!-- ch-root -->
+	<!-- ch-usage: mandatory -->
+    <!-- ch-attrs: xmlns xlmns:xsi version xsi:schemaLocation xmlns:gml xmlns:siri-->
+    <!-- ch-note:  For PublicationDelivery have a good look at how the attributes must be done in the provided examples. -->
+	<PublicationTimestamp><!-- ch-usage: mandatory -->2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef><!-- ch-usage: mandatory -->SKI-Templates</ParticipantRef>
+    <Description><!-- ch-usage: optional -->Standard export 2027-06-02 for Bernmobil.</Description>
+	<dataObjects>
+		<!-- ch-usage: mandatory -->
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<!-- ch-usage: mandatory -->
+			<!-- ch-see -->
+			<FrameDefaults>
+                <!-- ch-usage: expected -->
+                <!-- ch-see -->
+			</FrameDefaults>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame" version="1"/>
+				<SiteFrame id="ch:1:SiteFrame" version="1"/>
+				<ServiceFrame id="ch:1:ServiceFrame" version="1"/>
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame" version="1"/>
+				<TimetableFrame id="ch:1:TimetableFrame:j23" version="1"/>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

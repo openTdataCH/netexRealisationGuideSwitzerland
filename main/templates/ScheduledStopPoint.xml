@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ServiceFrame id="ch:1:ServiceFrame" version="1">
+					<scheduledStopPoints>
+						<ScheduledStopPoint id="ch:1:sloid:4128:1:1" version="1">
+       						<!-- ch-root -->
+
+							<!-- ch-note: Swiss ScheduledStopPoint are using the sloid in the id if possible. We keep the ScheduledStopPoint very minimalistic. The information is stored in the SiteFrame.-->
+
+							<!-- ch-usage: mandatory -->
+							<!-- ch-attrs: id version -->
+							<keyList>
+								<!-- ch-usage: optional -->
+								<KeyValue>
+									<!-- ch-usage: optional -->
+									<!-- ch-note: Can contain a DIDOK key and a SLOID. We don't need it really. -->
+									<Key><!-- ch-usage: optional -->DIDOK</Key>
+									<Value><!-- ch-usage: optional -->8504128</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:4128:1:1</Value>
+								</KeyValue>
+							</keyList>
+                            <privateCodes>
+                                <!-- ch-usage: expected -->
+                                <PrivateCode type="sloid"><!-- ch-usage: expected --><!-- ch-note: when the id is not a sloid, then if a sloid is relevant it can be added here -->ch:1:sloid:4128:1:1</PrivateCode>
+                            </privateCodes>
+							<Name lang="de"><!-- ch-usage: optional --><!-- ch-note: The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay-->Murten/Morat</Name>
+							<ShortName lang="de"><!-- ch-usage: forbidden -->1</ShortName>
+							<PublicCode><!-- ch-usage: optional --><!-- ch-note: For Quay contains the plattform number/letter. -->1</PublicCode>
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+				</ServiceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Swiss profile 2.0 for NeTEx 2.0 - Realisation directive for public transport in Switzerland | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Swiss profile 2.0 for NeTEx 2.0 - Realisation directive for public transport in Switzerland" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Swiss profile 2.0 for NeTEx 2.0 - Realisation directive for public transport in Switzerland" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Swiss profile 2.0 for NeTEx 2.0 - Realisation directive for public transport in Switzerland","name":"DRAFT Swiss profile 2.0 for NeTEx 2.0","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="home"><h1 class="page-heading">Swiss profile 2.0 for NeTEx 2.0 - Realisation directive for public transport in Switzerland</h1><p>This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.
+It provides detailed clarifications and describes deviations from the official standard, with the aim of achieving consistent use throughout public transport in Switzerland.</p>
+
+<p>The realisation specifications in this document will be agreed by the KIDS (“Kundeninformationsdaten-Schnittstellen im öV-Schweiz”) working group.</p>
+
+<p>The realisation specifications will be officially released by the National Commission Customer Information (Nationale Kommission Kundeninformation (KKI)) .</p>
+
+<p>The realisation specifications mainly concern:</p>
+<ul>
+  <li>detailed clarifications about points which have abstract and open definitions in the standard.</li>
+  <li>detailed clarifications about points which have hitherto been handled inconsistently within public transport in Switzerland.</li>
+  <li>intentional deviations from the official standard within public transport in Switzerland.</li>
+</ul>
+
+<h2 id="supported-netex-version">Supported NeTEx version</h2>
+<p>This profile is based on <a href="https://github.com/TransmodelEcosystem/NeTEx/tree/v2.1-wip">NeTEx 2.1 XSD</a>. It is still work in progess, therefore it might change.</p>
+
+<p>We will have a copy of the XSD we really use in production on <a href="https://www.oev-info.ch/de/branchenstandard/technische-ausfuehrungsbestimmungen/fahrplandaten">oev-info.ch</a></p>
+
+<p>The relevant specification documents can be found in the appropriate stores with the number: CEN/TS 16614. e.g. through <a href="https://www.vss.ch/vss_de/">VSS</a></p>
+
+<h2 id="binding-nature">Binding nature</h2>
+<p>This document describes the way in which the NeTEx standard is specifically applied and interpreted in Switzerland. It forms the basis for agreements concerning the connection between the individual public transport partners for exchanging timetables.</p>
+
+<h2 id="chapters">Chapters</h2>
+<ul>
+  <li><a href="/netexRealisationGuideSwitzerland/main/01_intro_roadmap.html">Introduction &amp; Roadmap</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/02_basic_concepts.html">Basic concepts of NeTEx</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/03_guiding_principles.html">Guiding principles for the profile</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/04_files.html">File structure, encoding etc</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/05_frames.html">Frames used in the profile</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/06_stops.html">Site model</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/07_service.html">Service model</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html">Service Calendar model</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html">Timetables</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/10_common.html">Common building blocks</a></li>
+  <li>Special use cases:
+    <ul>
+      <li><a href="/netexRealisationGuideSwitzerland/main/uc01_durchbindung.html">“Durchbindung”</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">Joining / splitting</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/uc03_transfers.html">Transfers</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/uc04_service_facilities.html">Service facilities</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/uc05_journey_parts.html">Usage of JourneyParts</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/uc06_modes_submodes.html">Modes and the “KI Branchenstandard”</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/uc07_checkconstraints.html">Check constraints</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/uc08_kurswagen.html">Direct carriages (“Kurswagen”)</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/uc09_accessibility.html">Accessibility</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/uc10_midnight_passing.html">Journeys passing midnight</a></li>
+      <li><strong>LATER</strong>: <a href="/netexRealisationGuideSwitzerland/main/uc11_touristic_offers.html">Touristic offers</a></li>
+      <li><strong>LATER</strong>: <a href="/netexRealisationGuideSwitzerland/main/uc12_carTransportRail.html">Car transport rail</a></li>
+      <li><strong>LATER</strong>: <a href="/netexRealisationGuideSwitzerland/main/uc13_changes_in_destination.html">Changes in the destination</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/uc14_frequencies.html">Frequency based ServiceJourney</a></li>
+      <li><strong>LATER</strong>: <a href="/netexRealisationGuideSwitzerland/main/uc15_formations.html">Formations</a></li>
+    </ul>
+  </li>
+  <li>Mapping tables are defined in an <a href="media/myexcel.xlsx">Excel</a></li>
+  <li>Annexes:
+    <ul>
+      <li><a href="/netexRealisationGuideSwitzerland/main/A1_annex_resources_references.html">Resources and references</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/A2_annex_comparison_EPIP_EPIAP.html">Differences between Swiss profile and EPIP/EPIAP and how they could be amended</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/A3_annex_comparison_France_Norway.html">Differences to the French and nordic profile</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html">Glossary</a></li>
+      <li><a href="/netexRealisationGuideSwitzerland/main/A5_changelog_migration.html">Changelog and migration from Swiss profile 1.0 to 2.0)</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="examples">Examples</h2>
+<p>We have a <a href="./examples/README.md">set of examples</a> that show how to create use cases with the realisation guide.</p>
+
+<h2 id="impressum">Impressum</h2>
+<ul>
+  <li>Authors: Thomas Schäfer, Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Martin Bennett, Simon Freihart, Emeric Tapia-Almosnino, Matthias Günter</li>
+  <li>Status: Draft</li>
+  <li>Last change: 2026-07-31</li>
+  <li>Contact: info.fachbus@sbb.ch</li>
+</ul>
+
+<h2 id="copyright--license">Copyright / License</h2>
+<p>The document is free. Proliferation in unchanged form is explicitly supported.
+All tools are - when nothing else is mentioned - available as AGPL 3.0.</p>
+<h2 class="post-list-heading">Posts</h2>
+    <ul class="post-list"><li><span class="post-meta">Jun 1, 2026</span>
+        <h3>
+          <a class="post-link" href="/netexRealisationGuideSwitzerland/main/netex/2026/06/01/Welcome-NeTEx-RG-ch-2.0.html">
+            Welcome to first draft documentation generated with Jekyll
+          </a>
+        </h3></li><li><span class="post-meta">May 29, 2026</span>
+        <h3>
+          <a class="post-link" href="/netexRealisationGuideSwitzerland/main/jekyll/update/2026/05/29/welcome-to-jekyll.html">
+            Welcome to Jekyll!
+          </a>
+        </h3></li></ul>
+
+    <p class="rss-subscribe">subscribe <a href="/netexRealisationGuideSwitzerland/main/feed.xml">via RSS</a></p></div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

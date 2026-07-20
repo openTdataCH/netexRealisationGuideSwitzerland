@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ServiceFrame  id="ch:1:ServiceFrame" version="1">
+  <!-- A minimal ServiceFrame must be present in all timetable files. -->
+  <directions>
+    <!-- We don't use directions, but only direction type -->
+  </directions>
+  <lines>
+    <!-- Only Line is used and not FlexibleLine -->
+    <Line id="use swiss line id where possible" version="1" responsibilitySetRef="dsa">
+      <Name>Name is needed</Name>
+    </Line>
+    <FlexibleLine id="notUsed" version="none">
+      <!-- We work with Line only. -->
+    </FlexibleLine>
+  </lines>
+  <groupsOfLines>
+    <GroupOfLines id="generated" version="1">
+      <!-- We use GroupOfLine for the modeling of mixed lines -->
+      <Name>Group_name</Name>
+    </GroupOfLines>
+  </groupsOfLines>
+  <destinationDisplays>
+    <!-- We only allow fully formed content of destinationDisplays -->
+    <DestinationDisplay id="generated-id" version="1">
+      <!-- We only allow fully formed content of destinationDisplays -->
+    </DestinationDisplay>
+  </destinationDisplays>
+  <scheduledStopPoints>
+    <!-- Swiss ScheduledStopPoint are using the SLOID in the id if possible. -->
+    <ScheduledStopPoint id="sloid_where_possible" version="1">
+      <!-- The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part. -->
+    </ScheduledStopPoint>
+  </scheduledStopPoints>
+  <stopAssignments>
+    <PassengerStopAssignment id="generated" version="1">
+      <!-- are only used in a special PSA file in the export. -->
+    </PassengerStopAssignment>
+  </stopAssignments>
+  <timingLinks>
+    <!-- We use TimingLink as the time behaviour between two ScheduledStopPoints -->
+    <TimingLink id="generated" version="1">
+      <!-- every different handling of the link needs a different timing link e.g. bus vs tram -->
+      <FromPointRef ref="sloid1" version="1"/>
+      <ToPointRef ref="sloid 2" version="1"/>
+    </TimingLink>
+  </timingLinks>
+  <journeyPatterns>
+    <ServiceJourneyPattern id="generated" version="1"/>
+  </journeyPatterns>
+  <timeDemandTypes>
+    <TimeDemandType id="generated" version="1"/>
+  </timeDemandTypes>
+  <notices>
+    <!-- notices may be present or not -->
+    <Notice id="generated" version="1">
+      <!-- if notices are present, one Notice must be. -->
+    </Notice>
+  </notices>
+</ServiceFrame>

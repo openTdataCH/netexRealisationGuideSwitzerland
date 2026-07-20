@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Timetables | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Timetables" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/09_timetable.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/09_timetable.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Timetables" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Timetables","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/09_timetable.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Timetables</h1>
+  </header>
+
+  <div class="post-content">
+    <p>In this chapter:</p>
+<ul>
+  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#timetableframe">TimetableFrame</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#servicejourney">ServiceJourney</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#templateservicejourney">TemplateServiceJourney</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#occupancyview">OccupancyView</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#trainnumber">TrainNumber</a></li>
+  <li><a href="#typeofservice">TypeOfService</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#timetabledpassingtime">TimetabledPassingTime</a></li>
+  <li><a href="#servicejourneyinterchange">ServiceJourneyInterchange</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#interchangerule">InterchangeRule</a></li>
+</ul>
+
+<p>In Service:</p>
+<ul>
+  <li><a href="/netexRealisationGuideSwitzerland/main/07_service.html#noticeassignment">NoticeAssignment</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/10_common.html#servicefacilityset">ServiceFacilitySet</a></li>
+</ul>
+
+<p>In ServiceCalendar:</p>
+<ul>
+  <li><a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#availabilitycondition">AvailabilityCondition</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#timeband">Timeband</a></li>
+</ul>
+
+<h2 id="timetableframe">TimetableFrame</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#timetableframe">Glossary definition</a></em></p>
+
+<h3 id="purpose">Purpose</h3>
+
+<p>A <code class="language-plaintext highlighter-rouge">TimetableFrame</code> contains the operational journey definitions — the actual trips that run on the network. It groups <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s, <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code>s, and <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> that together describe the timetabled service offering.</p>
+
+<h3 id="contained-elements">Contained Elements</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">vehicleJourneys</code>– collection of journey types:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">ServiceJourney</code>- describes an individual timetabled journey</li>
+      <li><code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code>- describes a set of journeys repeating at a certain frequency</li>
+      <li>The Swiss profile only models journeys that are available to the passengers</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">TrainNumber</code>- each <code class="language-plaintext highlighter-rouge">ServiceJourney</code> and <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code> is mapped one-to-one to exactly one train number</li>
+  <li>Each <code class="language-plaintext highlighter-rouge">ServiceJourney</code>/<code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code> in the <code class="language-plaintext highlighter-rouge">TimetableFrame</code> carries a <code class="language-plaintext highlighter-rouge">TimeDemandTypeRef</code> element pointing to exactly one <code class="language-plaintext highlighter-rouge">TimeDemandType</code>. The referenced <code class="language-plaintext highlighter-rouge">TimeDemandType</code> object itself — together with the <code class="language-plaintext highlighter-rouge">TimingLink</code>s it builds on — is defined in the <code class="language-plaintext highlighter-rouge">ServiceFrame</code>, not in the <code class="language-plaintext highlighter-rouge">TimetableFrame</code>. 
+It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s (<code class="language-plaintext highlighter-rouge">JourneyRunTime</code>, per <code class="language-plaintext highlighter-rouge">TimingLink</code>) and <code class="language-plaintext highlighter-rouge">WaitTime</code>s (<code class="language-plaintext highlighter-rouge">JourneyWaitTime</code>, per stop) that together replace the deprecated <code class="language-plaintext highlighter-rouge">passingTimes</code>/<code class="language-plaintext highlighter-rouge">TimetabledPassingTime</code> mechanism (see below).</li>
+  <li><code class="language-plaintext highlighter-rouge">journeyInterchanges</code> – collection of ServiceJourneyInterchanges describing planned connections and through-services between journeys</li>
+  <li><code class="language-plaintext highlighter-rouge">NoticeAssignment</code>s- link <code class="language-plaintext highlighter-rouge">Notice</code>s to specific journeys or stop points within journeys</li>
+  <li><code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code>s- describe the various services and facilities offered by the vehicles of a journey</li>
+</ul>
+
+<h3 id="table">Table</h3>
+
+<p><em>Table: TimetableFrame</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>vehicleJourneys</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>journeysInFrame_RelStructure</td>
+      <td>VEHICLE JOURNEYs in frame.</td>
+      <td>Contains the ServiceJourneys and TemplateServiceJourneys.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceJourney.html">ServiceJourney</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>ServiceJourney</td>
+      <td>A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN. The VIEW includes derived ancillary data from referenced entities.</td>
+      <td>ServiceJourney is used for common Journeys.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/TemplateServiceJourney.html">TemplateServiceJourney</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>TemplateServiceJourney</td>
+      <td>A VEHICLE JOURNEY with a set of frequencies that may be used to represent a set of similar journeys differing only by their time of departure.</td>
+      <td>TemplateServiceJourney is only to be used if a line is serviced at a certain frequency.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>trainNumbers</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>trainNumbersInFrame_RelStructure</td>
+      <td>TRAIN NUMBERs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/TrainNumber.html">TrainNumber</a></td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>TrainNumber</td>
+      <td>Specification of codes assigned to particular VEHICLE JOURNEYs when operated by TRAINs of COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>serviceFacilitySets</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>serviceFacilitySetsInFrame_RelStructure</td>
+      <td>SERVICE FACILITies in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>ServiceFacilitySet</td>
+      <td>Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>typesOfService</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>typesOfServiceInFrame_RelStructure</td>
+      <td>TYPEs of SERVICE in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TypeOfService</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>TypeOfService</td>
+      <td>Classification of a Service.</td>
+      <td>This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceJourneyInterchange.html">ServiceJourneyInterchange</a></td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>ServiceJourneyInterchange</td>
+      <td>The scheduled possibility for transfer of passengers between two SERVICE JOURNEYs at the same or different STOP POINTs.</td>
+      <td>For modeling many forms of interchanges</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/TimetableFrame.html">General NeTEx definition </a></em></p>
+
+<h3 id="example">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;TimetableFrame</span>  <span class="na">id=</span><span class="s">"ch:1:TimetableFrame:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;vehicleJourneys&gt;</span>
+    <span class="c">&lt;!-- Contains the ServiceJourneys and TemplateServiceJourneys. --&gt;</span>
+    <span class="nt">&lt;ServiceJourney</span> <span class="na">id=</span><span class="s">"generatedOrsjyid"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- ServiceJourney is used for common Journeys. --&gt;</span>
+    <span class="nt">&lt;/ServiceJourney&gt;</span>
+    <span class="nt">&lt;TemplateServiceJourney</span> <span class="na">id=</span><span class="s">"generatedOrsjyid1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- TemplateServiceJourney is only to be used if a line is serviced at a certain frequency. --&gt;</span>
+    <span class="nt">&lt;/TemplateServiceJourney&gt;</span>
+    <span class="nt">&lt;TemplateServiceJourney</span> <span class="na">id=</span><span class="s">"generated2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/vehicleJourneys&gt;</span>
+  <span class="nt">&lt;trainNumbers&gt;</span>
+    <span class="nt">&lt;TrainNumber</span> <span class="na">id=</span><span class="s">"2123"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/trainNumbers&gt;</span>
+  <span class="nt">&lt;serviceFacilitySets&gt;</span>
+    <span class="nt">&lt;ServiceFacilitySet</span> <span class="na">id=</span><span class="s">"86558"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/serviceFacilitySets&gt;</span>
+  <span class="nt">&lt;typesOfService&gt;</span>
+    <span class="nt">&lt;TypeOfService</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfService:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. --&gt;</span>
+      <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>PublicJourney<span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;ShortName</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>PJ<span class="nt">&lt;/ShortName&gt;</span>
+      <span class="nt">&lt;PrivateCode&gt;</span>1<span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="nt">&lt;/TypeOfService&gt;</span>
+  <span class="nt">&lt;/typesOfService&gt;</span>
+  <span class="nt">&lt;journeyInterchanges&gt;</span>
+    <span class="c">&lt;!-- In NETWORK_OFFER for splitting and joining. Otherwise mostly in INTERCHANGE --&gt;</span>
+    <span class="nt">&lt;ServiceJourneyInterchange</span> <span class="na">id=</span><span class="s">"ch:1:sji:generated-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- For modeling many forms of interchanges --&gt;</span>
+      <span class="nt">&lt;FromJourneyRef</span> <span class="na">ref=</span><span class="s">"sjyid-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ToJourneyRef</span> <span class="na">ref=</span><span class="s">"sjyid-2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
+  <span class="nt">&lt;/journeyInterchanges&gt;</span>
+<span class="nt">&lt;/TimetableFrame&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/TimetableFrame.xml">Template</a></em></p>
+
+<h3 id="frame-relationships">Frame Relationships</h3>
+<p><code class="language-plaintext highlighter-rouge">TimetableFrame</code> depends on <code class="language-plaintext highlighter-rouge">ServiceFrame</code> for <code class="language-plaintext highlighter-rouge">JourneyPattern</code>s, <code class="language-plaintext highlighter-rouge">Line</code>s, <code class="language-plaintext highlighter-rouge">TimeDemandType</code>s and <code class="language-plaintext highlighter-rouge">TimingLink</code>s referenced by <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s. It depends on <code class="language-plaintext highlighter-rouge">ResourceFrame</code> for <code class="language-plaintext highlighter-rouge">Operator</code> definitions. <code class="language-plaintext highlighter-rouge">VehicleScheduleFrame</code> may reference journeys defined here for block and duty scheduling. <code class="language-plaintext highlighter-rouge">TimetableFrame</code> is
+typically wrapped in a <code class="language-plaintext highlighter-rouge">CompositeFrame</code> within a <code class="language-plaintext highlighter-rouge">PublicationDelivery</code>.</p>
+
+<h2 id="servicejourney">ServiceJourney</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#servicejourney">Glossary definition</a></em></p>
+
+<h3 id="purpose-1">Purpose</h3>
+<p>A <code class="language-plaintext highlighter-rouge">ServiceJourney</code> represents a planned trip in the timetable operating on a recurring schedule. It defines the stop sequence via reference to a <code class="language-plaintext highlighter-rouge">JourneyPattern</code>, includes scheduled timing via <code class="language-plaintext highlighter-rouge">TimeDemandTypeRef</code>, and specifies operational details such as operator. Its operating days are controlled via
+<code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code> (<code class="language-plaintext highlighter-rouge">ValidDayBits</code>), not via <code class="language-plaintext highlighter-rouge">DayType</code> — see <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#availabilitycondition">AvailabilityCondition</a>. <code class="language-plaintext highlighter-rouge">DatedServiceJourney</code> is <strong>not used</strong> in the Swiss profile.</p>
+
+<h3 id="table-1">Table</h3>
+
+<p><em>Table: ServiceJourney</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@responsibilitySetRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute responsibilitySetRef</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>validityConditions</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>validityConditions_RelStructure</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td>Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”).</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AvailabilityConditionRef</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>AvailabilityConditionRefStructure</td>
+      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td>Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. <strong>TODO</strong>: this comment needs to be corrected, more information needed</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>keyList</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>KeyListStructure</td>
+      <td>A list of alternative Key values for an element.</td>
+      <td>KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>KeyValue</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>KeyValueStructure</td>
+      <td>Key value pair for Entity.</td>
+      <td>A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Key</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Value</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:anyType</td>
+      <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>privateCodes</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodesStructure</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>The following types are possible: sjyid and rn. rn is the type used for the Postauto region.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TransportMode</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AllModesEnumeration</td>
+      <td>MODE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TypeOfProductCategoryRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>TypeOfProductCategoryRefStructure</td>
+      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
+      <td>Relevant elements are defined in the mapping excel.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TypeOfServiceRef</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>TypeOfServiceRefStructure</td>
+      <td>Reference to a TYPE OF SERVICE.</td>
+      <td>Should always be ch:1:TypeOfService:1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>noticeAssignments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>noticeAssignments_RelStructure</td>
+      <td>NOTICEs relevant for the whole GROUP OF SINGLE JOURNEYs.</td>
+      <td>The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop).</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/NoticeAssignment.html">NoticeAssignment</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>NoticeAssignment</td>
+      <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>occupancies</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>OccupancyView_RelStructure</td>
+      <td>OCCUPANCYs associated with this journey. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/OccupancyView.html">OccupancyView</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>OccupancyView_VersionStructure</td>
+      <td> </td>
+      <td>Currently not available</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ServiceAlteration</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ServiceAlterationEnumeration</td>
+      <td>Whether journey is as planned, a cancellation or an extra journey. Default is as Planned.</td>
+      <td>Only the value planned is allowed. We might add the others, like cancelled, later.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DepartureTime</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:time</td>
+      <td>Departure time.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DepartureDayOffset</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>DayOffsetType</td>
+      <td>Departure Time Day Offset.</td>
+      <td>0 for current operating day. Could also be negative.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>JourneyPatternRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>JourneyPatternRefStructure</td>
+      <td>Reference to a JOURNEY PATTERN.</td>
+      <td>The reference to the ServiceJourneyPattern.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@nameOfRefClass</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute nameOfRefClass</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TimeDemandTypeRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>TimeDemandTypeRefStructure</td>
+      <td>Reference to a TIME DEMAND TYPE used at start of JOURNEY.</td>
+      <td>The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>VehicleTypeRef</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>VehicleTypeRefStructure</td>
+      <td>Reference to a VEHICLE TYPE.</td>
+      <td>Mostly used for accessibility information like NF. Relevant definitions in the mapping excel.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LineRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LineRefStructure</td>
+      <td>Reference to a LINE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DirectionType</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>RelativeDirectionEnumeration</td>
+      <td>For fares for DISTANCE MATRIXE LEMENTs, DIRECTION in which price applies.</td>
+      <td>Allowed are: inbound, outbound</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>trainNumbers</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>trainNumbersInFrame_RelStructure</td>
+      <td>TRAIN NUMBERs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TrainNumberRef</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>TrainNumberRefStructure</td>
+      <td>Reference to a TRAIN NUMBER.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/Destination.html">Destination</a></td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>TravelSpecificationSummaryEndpointStructure</td>
+      <td>Destination of Travel. Note that for a point-to-point TARIFF the origin is assigned with a DISTANCE MATRIX ELEMENT.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>parts</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>blockParts_RelStructure</td>
+      <td>BLOCK PARTs which make up COMPOUND BLOCK.</td>
+      <td>For some use cases e.g. change of Facilities during ServiceJourney</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>JourneyPartRef</td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>JourneyPartRefStructure</td>
+      <td>Reference to a JOURNEY PART.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>checkConstraints</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>checkConstraints_RelStructure</td>
+      <td>CHECK CONSTRAINTs which apply to SERVICE JOURNEY, e.g. check in time, security time. These are advisory only and not for use in journey planning.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>CheckConstraint</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>CheckConstraint</td>
+      <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
+      <td>CheckConstraints are used for different use cases</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/ServiceJourney.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-1">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ServiceJourney</span>  <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="c">&lt;!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). --&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. **TODO**: this comment needs to be corrected, more information needed --&gt;</span>
+    <span class="nt">&lt;/AvailabilityConditionRef&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;keyList&gt;</span>
+    <span class="c">&lt;!-- KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. --&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="c">&lt;!-- A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. --&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>SJYID<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>ch:1:sjyid:100001:71707-003<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;/keyList&gt;</span>
+  <span class="nt">&lt;privateCodes&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sjyid"</span><span class="nt">&gt;</span>ch:1:sjyid:100001:71707-003<span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="c">&lt;!-- The following types are possible: sjyid and rn. rn is the type used for the Postauto region. --&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"rn"</span><span class="nt">&gt;</span>12<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/privateCodes&gt;</span>
+  <span class="nt">&lt;TransportMode&gt;</span>rail<span class="nt">&lt;/TransportMode&gt;</span>
+  <span class="nt">&lt;TypeOfProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:IR"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Relevant elements are defined in the mapping excel. --&gt;</span>
+  <span class="nt">&lt;/TypeOfProductCategoryRef&gt;</span>
+  <span class="nt">&lt;TypeOfServiceRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfService:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Should always be ch:1:TypeOfService:1 --&gt;</span>
+  <span class="nt">&lt;/TypeOfServiceRef&gt;</span>
+  <span class="nt">&lt;noticeAssignments&gt;</span>
+    <span class="c">&lt;!-- The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop). --&gt;</span>
+    <span class="nt">&lt;NoticeAssignment</span> <span class="na">id=</span><span class="s">"ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;validityConditions&gt;</span>
+        <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:c3"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/validityConditions&gt;</span>
+      <span class="nt">&lt;NoticeRef</span> <span class="na">ref=</span><span class="s">"ch:1:Notice:A___1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/NoticeAssignment&gt;</span>
+  <span class="nt">&lt;/noticeAssignments&gt;</span>
+  <span class="nt">&lt;occupancies&gt;</span>
+    <span class="nt">&lt;OccupancyView</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Currently not available --&gt;</span>
+    <span class="nt">&lt;/OccupancyView&gt;</span>
+  <span class="nt">&lt;/occupancies&gt;</span>
+  <span class="nt">&lt;ServiceAlteration&gt;</span>planned<span class="nt">&lt;/ServiceAlteration&gt;</span>
+  <span class="c">&lt;!-- Only the value planned is allowed. We might add the others, like cancelled, later. --&gt;</span>
+  <span class="nt">&lt;DepartureTime&gt;</span>06:21:00<span class="nt">&lt;/DepartureTime&gt;</span>
+  <span class="nt">&lt;DepartureDayOffset&gt;</span>0<span class="nt">&lt;/DepartureDayOffset&gt;</span>
+  <span class="c">&lt;!-- 0 for current operating day. Could also be negative. --&gt;</span>
+  <span class="nt">&lt;JourneyPatternRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourneyPattern:1"</span> <span class="na">nameOfRefClass=</span><span class="s">"ServiceJourneyPattern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- The reference to the ServiceJourneyPattern. --&gt;</span>
+  <span class="nt">&lt;/JourneyPatternRef&gt;</span>
+  <span class="nt">&lt;TimeDemandTypeRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. --&gt;</span>
+  <span class="nt">&lt;/TimeDemandTypeRef&gt;</span>
+  <span class="nt">&lt;VehicleTypeRef</span> <span class="na">ref=</span><span class="s">"ch:1:VehicleType:NF"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Mostly used for accessibility information like NF. Relevant definitions in the mapping excel. --&gt;</span>
+  <span class="nt">&lt;/VehicleTypeRef&gt;</span>
+  <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:2:Line:11.IR.90"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;DirectionType&gt;</span>outbound<span class="nt">&lt;/DirectionType&gt;</span>
+  <span class="c">&lt;!-- Allowed are: inbound, outbound --&gt;</span>
+  <span class="nt">&lt;trainNumbers&gt;</span>
+    <span class="nt">&lt;TrainNumberRef</span> <span class="na">ref=</span><span class="s">"ch:1:TrainNumber:71707"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/trainNumbers&gt;</span>
+  <span class="nt">&lt;Destination&gt;</span>
+    <span class="nt">&lt;DestinationsDisplayRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/Destination&gt;</span>
+  <span class="nt">&lt;parts&gt;</span>
+    <span class="c">&lt;!-- For some use cases e.g. change of Facilities during ServiceJourney --&gt;</span>
+    <span class="nt">&lt;JourneyPartRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/parts&gt;</span>
+  <span class="nt">&lt;checkConstraints&gt;</span>
+    <span class="nt">&lt;CheckConstraint</span> <span class="na">id=</span><span class="s">""</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- CheckConstraints are used for different use cases --&gt;</span>
+    <span class="nt">&lt;/CheckConstraint&gt;</span>
+  <span class="nt">&lt;/checkConstraints&gt;</span>
+<span class="nt">&lt;/ServiceJourney&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/ServiceJourney.xml">Template</a></em></p>
+
+<h3 id="usage-notes">Usage Notes</h3>
+
+<ul>
+  <li><strong>Template vs. Instance:</strong> <code class="language-plaintext highlighter-rouge">ServiceJourney</code> directly carries its validity via <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code>. <code class="language-plaintext highlighter-rouge">DatedServiceJourney</code> is not used in the Swiss profile.</li>
+  <li><strong>Consistency:</strong> A <code class="language-plaintext highlighter-rouge">ServiceJourney</code> must reference exactly one <code class="language-plaintext highlighter-rouge">JourneyPattern</code>. The pattern’s stop sequence is authoritative.</li>
+  <li><strong>Stop Times:</strong> Each stop in the referenced <code class="language-plaintext highlighter-rouge">JourneyPattern</code> must have exactly one <code class="language-plaintext highlighter-rouge">TimetabledPassingTimes</code> entry with <code class="language-plaintext highlighter-rouge">ArrivalTime</code> and/or <code class="language-plaintext highlighter-rouge">DepartureTime</code>.</li>
+  <li><strong>Day Governance:</strong> Operating days are controlled via <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code> (<code class="language-plaintext highlighter-rouge">ValidDayBits</code>), not via <code class="language-plaintext highlighter-rouge">DayType</code>. <code class="language-plaintext highlighter-rouge">DayType</code>/<code class="language-plaintext highlighter-rouge">DayTypeAssignment</code> are reserved for flagging national holidays only (see <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#daytype">ServiceCalendarFrame</a>). <code class="language-plaintext highlighter-rouge">DatedServiceJourney</code> is not used in the Swiss profile.</li>
+  <li><strong>Validation:</strong> Ensure <code class="language-plaintext highlighter-rouge">JourneyPatternRef</code>, <code class="language-plaintext highlighter-rouge">LineRef</code>, and <code class="language-plaintext highlighter-rouge">OperatorRef</code> are consistent and reference existing objects.</li>
+  <li>We assume that a Swiss Journey ID exists for almost every <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. In those cases the <code class="language-plaintext highlighter-rouge">id</code> is also set to the <code class="language-plaintext highlighter-rouge">sjyid</code>. Possible problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the <code class="language-plaintext highlighter-rouge">id</code> will contain a <code class="language-plaintext highlighter-rouge">_gen</code></li>
+  <li>substring.</li>
+  <li>A <code class="language-plaintext highlighter-rouge">ServiceJourney</code>can be associated with exactly one <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and <code class="language-plaintext highlighter-rouge">TimeDemandType</code>.</li>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<h2 id="templateservicejourney">TemplateServiceJourney</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#templateservicejourney">Glossary definition</a></em></p>
+<h3 id="purpose-2">Purpose</h3>
+<p>A <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code> represents a sequence of planned trips. It is similar to the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>, but it is used if there is a frequency defined at which the trips are scheduled on an operating day.</p>
+
+<p>A frequency is specified in a <code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code> (e.g. every 20 minutes). The <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code> may thus represent multiple journeys or it could be used simply as a template for adding extra date journeys after the planning phase.</p>
+
+<h3 id="table-2">Table</h3>
+
+<p>TemplateServiceJourney is used for journeys repeating at a certain frequency.</p>
+
+<p><em>Table: TemplateServiceJourney</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@responsibilitySetRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute responsibilitySetRef</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>validityConditions</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>validityConditions_RelStructure</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td>Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”).</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AvailabilityConditionRef</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>AvailabilityConditionRefStructure</td>
+      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td>Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. <strong>TODO</strong>: this comment needs to be corrected, more information needed</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>keyList</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>KeyListStructure</td>
+      <td>A list of alternative Key values for an element.</td>
+      <td>Key list for the repeating journeys. Contains the SJYID.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>KeyValue</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>KeyValueStructure</td>
+      <td>Key value pair for Entity.</td>
+      <td>A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Key</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Value</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:anyType</td>
+      <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>privateCodes</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodesStructure</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td>Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TransportMode</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AllModesEnumeration</td>
+      <td>MODE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TypeOfProductCategoryRef</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>TypeOfProductCategoryRefStructure</td>
+      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TypeOfServiceRef</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>TypeOfServiceRefStructure</td>
+      <td>Reference to a TYPE OF SERVICE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>noticeAssignments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>noticeAssignments_RelStructure</td>
+      <td>NOTICEs relevant for the whole GROUP OF SINGLE JOURNEYs.</td>
+      <td>The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/NoticeAssignment.html">NoticeAssignment</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>NoticeAssignment</td>
+      <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>occupancies</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>OccupancyView_RelStructure</td>
+      <td>OCCUPANCYs associated with this journey. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/OccupancyView.html">OccupancyView</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>OccupancyView_VersionStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ServiceAlteration</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ServiceAlterationEnumeration</td>
+      <td>Whether journey is as planned, a cancellation or an extra journey. Default is as Planned.</td>
+      <td>Only the value planned is allowed.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DepartureTime</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:time</td>
+      <td>Departure time.</td>
+      <td>Departure of the first journey.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DepartureDayOffset</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>DayOffsetType</td>
+      <td>Departure Time Day Offset.</td>
+      <td>DayOffset if relevant.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>JourneyPatternRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>JourneyPatternRefStructure</td>
+      <td>Reference to a JOURNEY PATTERN.</td>
+      <td>The reference to the ServiceJourneyPattern</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@nameOfRefClass</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute nameOfRefClass</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TimeDemandTypeRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>TimeDemandTypeRefStructure</td>
+      <td>Reference to a TIME DEMAND TYPE used at start of JOURNEY.</td>
+      <td>The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>VehicleTypeRef</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>VehicleTypeRefStructure</td>
+      <td>Reference to a VEHICLE TYPE.</td>
+      <td>Mostly used for accessibility information</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LineRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LineRefStructure</td>
+      <td>Reference to a LINE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DirectionType</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>RelativeDirectionEnumeration</td>
+      <td>For fares for DISTANCE MATRIXE LEMENTs, DIRECTION in which price applies.</td>
+      <td>Allowed are: inbound, outbound</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>trainNumbers</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>trainNumbersInFrame_RelStructure</td>
+      <td>TRAIN NUMBERs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TrainNumberRef</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>TrainNumberRefStructure</td>
+      <td>Reference to a TRAIN NUMBER.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/Destination.html">Destination</a></td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>TravelSpecificationSummaryEndpointStructure</td>
+      <td>Destination of Travel. Note that for a point-to-point TARIFF the origin is assigned with a DISTANCE MATRIX ELEMENT.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>parts</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>blockParts_RelStructure</td>
+      <td>BLOCK PARTs which make up COMPOUND BLOCK.</td>
+      <td>For some use cases e.g. change of Facilities during ServiceJourney</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>JourneyPartRef</td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>JourneyPartRefStructure</td>
+      <td>Reference to a JOURNEY PART.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TemplateVehicleJourneyType</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>TemplateVehicleJourneyTypeEnumeration</td>
+      <td>Type of TEMPLATE VEHICLE JOURNEY.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>frequencyGroups</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>frequencyGroupsInFrame_RelStructure</td>
+      <td>FREQUENCY GROUPs In frame. Can be used to template VEHICLE JOURNEYs.</td>
+      <td>We strictly map one frequency to the TemplateServiceJourney.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>HeadwayJourneyGroup</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>HeadwayJourneyGroup</td>
+      <td>A group of VEHICLE JOURNEYs following the same JOURNEY PATTERN and having the same headway interval between a specified start and end time (for example, ‘every 10 minutes’). This is especially useful for presenting passenger information.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ScheduledHeadwayInterval</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:duration</td>
+      <td>Scheduled normal headway interval.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>HeadwayDisplay</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>HeadwayUseEnumeration</td>
+      <td>How headway value should be displayed to public.</td>
+      <td>Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/TemplateServiceJourney.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-2">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;TemplateServiceJourney</span>  <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- TemplateServiceJourney is used for journeys repeating at a certain frequency. --&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="c">&lt;!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). --&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. **TODO**: this comment needs to be corrected, more information needed --&gt;</span>
+    <span class="nt">&lt;/AvailabilityConditionRef&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;keyList&gt;</span>
+    <span class="c">&lt;!-- Key list for the repeating journeys. Contains the SJYID. --&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="c">&lt;!-- A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. --&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>SJYID<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>ch:1:sjyid:100001:71707-003<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;/keyList&gt;</span>
+  <span class="nt">&lt;privateCodes&gt;</span>
+    <span class="c">&lt;!-- Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region --&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sjyid"</span><span class="nt">&gt;</span>ch:1:sjyid:100001:71707-003<span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"rn"</span><span class="nt">&gt;</span>12<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/privateCodes&gt;</span>
+  <span class="nt">&lt;TransportMode&gt;</span>rail<span class="nt">&lt;/TransportMode&gt;</span>
+  <span class="nt">&lt;TypeOfProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:IR"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;TypeOfServiceRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfService:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;noticeAssignments&gt;</span>
+    <span class="c">&lt;!-- The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. --&gt;</span>
+    <span class="nt">&lt;NoticeAssignment</span> <span class="na">id=</span><span class="s">"ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;validityConditions&gt;</span>
+        <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:c3"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/validityConditions&gt;</span>
+      <span class="nt">&lt;NoticeRef</span> <span class="na">ref=</span><span class="s">"ch:1:Notice:A___1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/NoticeAssignment&gt;</span>
+  <span class="nt">&lt;/noticeAssignments&gt;</span>
+  <span class="nt">&lt;occupancies&gt;</span>
+    <span class="nt">&lt;OccupancyView</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/occupancies&gt;</span>
+  <span class="nt">&lt;ServiceAlteration&gt;</span>planned<span class="nt">&lt;/ServiceAlteration&gt;</span>
+  <span class="c">&lt;!-- Only the value planned is allowed. --&gt;</span>
+  <span class="nt">&lt;DepartureTime&gt;</span>06:21:00<span class="nt">&lt;/DepartureTime&gt;</span>
+  <span class="c">&lt;!-- Departure of the first journey. --&gt;</span>
+  <span class="nt">&lt;DepartureDayOffset&gt;</span>0<span class="nt">&lt;/DepartureDayOffset&gt;</span>
+  <span class="c">&lt;!-- DayOffset if relevant. --&gt;</span>
+  <span class="nt">&lt;JourneyPatternRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourneyPattern:1"</span> <span class="na">nameOfRefClass=</span><span class="s">"ServiceJourneyPattern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- The reference to the ServiceJourneyPattern --&gt;</span>
+  <span class="nt">&lt;/JourneyPatternRef&gt;</span>
+  <span class="nt">&lt;TimeDemandTypeRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. --&gt;</span>
+  <span class="nt">&lt;/TimeDemandTypeRef&gt;</span>
+  <span class="nt">&lt;VehicleTypeRef</span> <span class="na">ref=</span><span class="s">"ch:1:VehicleType:NF"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Mostly used for accessibility information --&gt;</span>
+  <span class="nt">&lt;/VehicleTypeRef&gt;</span>
+  <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:2:Line:11.IR.90"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;DirectionType&gt;</span>inbound<span class="nt">&lt;/DirectionType&gt;</span>
+  <span class="c">&lt;!-- Allowed are: inbound, outbound --&gt;</span>
+  <span class="nt">&lt;trainNumbers&gt;</span>
+    <span class="nt">&lt;TrainNumberRef</span> <span class="na">ref=</span><span class="s">"ch:1:TrainNumber:71707"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/trainNumbers&gt;</span>
+  <span class="nt">&lt;Destination&gt;</span>
+    <span class="nt">&lt;DestinationDisplayRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/Destination&gt;</span>
+  <span class="nt">&lt;parts&gt;</span>
+    <span class="c">&lt;!-- For some use cases e.g. change of Facilities during ServiceJourney --&gt;</span>
+    <span class="nt">&lt;JourneyPartRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/parts&gt;</span>
+  <span class="nt">&lt;TemplateVehicleJourneyType&gt;</span>headway<span class="nt">&lt;/TemplateVehicleJourneyType&gt;</span>
+  <span class="nt">&lt;frequencyGroups&gt;</span>
+    <span class="c">&lt;!-- We strictly map one frequency to the TemplateServiceJourney. --&gt;</span>
+    <span class="nt">&lt;HeadwayJourneyGroup</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">id=</span><span class="s">"ch:1:HeadwayJourneyGroup:432"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Regular Interval service between 12am and 18:00 pm<span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;Description&gt;</span>About every 20 minutes<span class="nt">&lt;/Description&gt;</span>
+      <span class="nt">&lt;FirstDepartureTime&gt;</span>12:00:00<span class="nt">&lt;/FirstDepartureTime&gt;</span>
+      <span class="nt">&lt;FirstDayOffset&gt;</span>0<span class="nt">&lt;/FirstDayOffset&gt;</span>
+      <span class="nt">&lt;LastDepartureTime&gt;</span>18:00:00<span class="nt">&lt;/LastDepartureTime&gt;</span>
+      <span class="nt">&lt;LastDayOffset&gt;</span>0<span class="nt">&lt;/LastDayOffset&gt;</span>
+      <span class="nt">&lt;ScheduledHeadwayInterval&gt;</span>PT20M<span class="nt">&lt;/ScheduledHeadwayInterval&gt;</span>
+      <span class="nt">&lt;HeadwayDisplay&gt;</span>DisplayInsteadOfPassingTimes<span class="nt">&lt;/HeadwayDisplay&gt;</span>
+      <span class="c">&lt;!-- Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly. --&gt;</span>
+    <span class="nt">&lt;/HeadwayJourneyGroup&gt;</span>
+  <span class="nt">&lt;/frequencyGroups&gt;</span>
+<span class="nt">&lt;/TemplateServiceJourney&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/TemplateServiceJourney.xml">Template</a></em></p>
+
+<h3 id="usage-notes-1">Usage Notes</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code> holds all the frequency-based information of the journey, as for example when the stops of the journey are serviced the first/last time and in what interval (or at which frequency, respectively).</li>
+  <li>Note that in addition to <code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code>, standard NeTEx also features <code class="language-plaintext highlighter-rouge">RhythmicalJourneyGroup</code> to specifiy, e.g., departures at 15, 27 and 40 minutes past the hour - this is not used in the Swiss profile.</li>
+  <li>For sjyid see information about <a href="/netexRealisationGuideSwitzerland/main/uc14_frequencies.html">frequencies</a>.</li>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<h2 id="timedemandtype">TimeDemandType</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#timedemandtype">Glossary definition</a></em></p>
+
+<h2 id="timinglink">TimingLink</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#timinglink">Glossary definition</a></em></p>
+
+<h2 id="occupancyview">OccupancyView</h2>
+
+<h3 id="purpose-3">Purpose</h3>
+<p><code class="language-plaintext highlighter-rouge">OccupancyView</code>can be used on the <code class="language-plaintext highlighter-rouge">Journey</code> and <code class="language-plaintext highlighter-rouge">JourneyPart</code> elements. Used for predicted and planned occupancies of vehicles.</p>
+
+<h3 id="table-3">Table</h3>
+
+<p><em>Table: OccupancyView</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>dayTypeRefs</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>dayTypeRefs</td>
+      <td>DAY TYPEs for BLOCK.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>DayTypeRef</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>DayTypeRefStructure</td>
+      <td>The DAY TYPE of all the services in this group.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>dayTypes</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>dayTypeRefs_RelStructure</td>
+      <td>DAY TYPEs for BLOCK.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/DayType.html">DayType</a></td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>DayType</td>
+      <td>A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>FareClass</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>FareClassEnumeration</td>
+      <td>Fare class in VEHICLE for which occupancy or capacities are specified.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>OccupancyLevel</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>OccupancyEnumeration</td>
+      <td>An approximate figure of how occupied or full a VEHICLE and its parts are, e.g. ‘manySeatsAvailable’ or ‘standingRoomOnly’. More accurate data can be provided by the individual occupancies or capacities below.</td>
+      <td>Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>GroupReservation</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>GroupReservationStructure</td>
+      <td>Reservations of travel groups, i.e., name of group and number of seats booked.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>NameOfGroup</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>MultilingualString</td>
+      <td>Name for which the travel group has made the reservation.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>NumberOfReservedSeats</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>NumberOfPassengers</td>
+      <td>Number of seats that the group has booked.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/OccupancyView.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-3">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;OccupancyView</span>  <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;dayTypeRefs&gt;</span>
+    <span class="nt">&lt;DayTypeRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/dayTypeRefs&gt;</span>
+  <span class="nt">&lt;dayTypes&gt;</span>
+    <span class="nt">&lt;DayType</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/dayTypes&gt;</span>
+  <span class="nt">&lt;FareClass&gt;</span>firstClass<span class="nt">&lt;/FareClass&gt;</span>
+  <span class="nt">&lt;OccupancyLevel&gt;</span>seatsAvailable<span class="nt">&lt;/OccupancyLevel&gt;</span>
+  <span class="c">&lt;!-- Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable --&gt;</span>
+  <span class="nt">&lt;GroupReservation&gt;</span>
+    <span class="nt">&lt;NameOfGroup</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Gymnase français de Bienne<span class="ni">&amp;gt;</span><span class="nt">&lt;/NameOfGroup&gt;</span>
+    <span class="nt">&lt;NumberOfReservedSeats&gt;</span>21<span class="nt">&lt;/NumberOfReservedSeats&gt;</span>
+  <span class="nt">&lt;/GroupReservation&gt;</span>
+<span class="nt">&lt;/OccupancyView&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/OccupancyView.xml">Template</a></em></p>
+
+<h3 id="usage-notes-2">Usage Notes</h3>
+<ul>
+  <li>We currently don’t use OccupancyView.</li>
+</ul>
+
+<h2 id="trainnumber">TrainNumber</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#trainnumber">Glossary definition</a></em></p>
+
+<h3 id="purpose-4">Purpose</h3>
+
+<p>Codes assigned to particular journeys (<code class="language-plaintext highlighter-rouge">ServiceJourney</code>, <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code>) when operated by trains. <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s can in principle have multiple different <code class="language-plaintext highlighter-rouge">TrainNumber</code>s whereas a <code class="language-plaintext highlighter-rouge">JourneyPart</code> can only reference a single one.</p>
+
+<h3 id="table-4">Table</h3>
+
+<p>The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advertisment und production are identical. It is the number from *Z in HRDF. Must be unique per operating day in Switzerland.</p>
+
+<p><em>Table: TrainNumber</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ForAdvertisement</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:normalizedString</td>
+      <td>TRAIN NUMBER to use when advertising Train -If different from Id.</td>
+      <td>TrainNumber to use for advertisement to public. Use if different from ID.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ForProduction</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:normalizedString</td>
+      <td>TRAIN NUMBER to use for production -If different from Id.</td>
+      <td>TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/TrainNumber.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-4">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;TrainNumber</span>  <span class="na">id=</span><span class="s">"71707"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advertisment und production are identical. It is the number from *Z in HRDF. Must be unique per operating day in Switzerland. --&gt;</span>
+  <span class="nt">&lt;ForAdvertisement&gt;</span>12311A<span class="nt">&lt;/ForAdvertisement&gt;</span>
+  <span class="c">&lt;!-- TrainNumber to use for advertisement to public. Use if different from ID. --&gt;</span>
+  <span class="nt">&lt;ForProduction&gt;</span>12311A<span class="nt">&lt;/ForProduction&gt;</span>
+  <span class="c">&lt;!-- TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID. --&gt;</span>
+<span class="nt">&lt;/TrainNumber&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/TrainNumber.xml">Template</a></em></p>
+
+<h3 id="usage-note">Usage Note</h3>
+<ul>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<h2 id="typeofservice">TypeOfService</h2>
+
+<h3 id="purpose-5">Purpose</h3>
+
+<p><code class="language-plaintext highlighter-rouge">TypeOfService</code> indicates the purpose of a <code class="language-plaintext highlighter-rouge">ServiceJourney</code>, for example, whether if it is a passenger transport or a garage run-in. We only use <code class="language-plaintext highlighter-rouge">ch:1:TypeOfService:1</code></p>
+
+<h3 id="table-5">Table</h3>
+
+<p><em>Table: TypeOfService</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of Traveller</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ShortName</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Short Name for service</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/TypeOfService.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-5">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;TypeOfService</span>  <span class="na">id=</span><span class="s">"ch:1:TypeOfService:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>PublicJourney<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;ShortName</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>N<span class="nt">&lt;/ShortName&gt;</span>
+  <span class="nt">&lt;PrivateCode&gt;</span>1<span class="nt">&lt;/PrivateCode&gt;</span>
+<span class="nt">&lt;/TypeOfService&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/TypeOfService.xml">Template</a></em></p>
+
+<h3 id="usage-notes-3">Usage Notes</h3>
+<ul>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<p>The following types are currently used:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>PublicJourney</td>
+      <td>A public passenger transport</td>
+    </tr>
+    <tr>
+      <td><del>GarageRunOut</del></td>
+      <td>A garage run-out</td>
+    </tr>
+    <tr>
+      <td><del>GarageRunIn</del></td>
+      <td>A garage run-in</td>
+    </tr>
+    <tr>
+      <td><del>ThroughCoach</del></td>
+      <td>A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Actually there is only one allowed value that we use in the Swiss profile: Only the <code class="language-plaintext highlighter-rouge">PublicJourney</code> is to be exchanged.</p>
+
+<h2 id="timetabledpassingtime">TimetabledPassingTime</h2>
+<blockquote>
+  <p><strong>Deprecated</strong> - We don’t use TimetabledPassingTime in RG2.0. We use TimeDemandType now.</p>
+</blockquote>
+
+<h2 id="servicejourneyinterchange">ServiceJourneyInterchange</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#servicejourneyinterchange">Glossary definition</a></em></p>
+
+<h3 id="purpose-6">Purpose</h3>
+<p>The standard states: “In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle. This concept is for instance used for circular lines and coupled journeys. This means that passenger information should be adapted
+to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also important that operation control staff is aware of the consequences to passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs.”</p>
+
+<p><code class="language-plaintext highlighter-rouge">StaySeated=true</code> should be used for through-services (Durchbindung) and joining (Vereinigung). While splitting (Flügelzug) technically involves different vehicle parts, the passenger does not leave the train — however, they may need to move to the correct coach. For splitting, <code class="language-plaintext highlighter-rouge">StaySeated=false</code> combined with
+<code class="language-plaintext highlighter-rouge">ChangeWithinVehicle=true</code> is therefore the correct modelling. See <a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">uc02 Joining and splitting</a>.</p>
+
+<h3 id="table-6">Table</h3>
+
+<p><em>Table: ServiceJourneyInterchange</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>validityConditions</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>validityConditions_RelStructure</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AvailabilityConditionRef</td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>AvailabilityConditionRefStructure</td>
+      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Description</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Description of contents.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>StaySeated</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether the passenger can remain in vehicle (i.e. block linking). Default is false: the passenger must change vehicles for this INTERCHANGE. Default is false.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>CrossBorder</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether interchanging crosses a border.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Planned</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether INTERCHANGE is planned in a timetable. Default is true.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Guaranteed</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether INTERCHANGE is guaranteed. Default is false.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>MaximumWaitTime</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:duration</td>
+      <td>Maximum wait time for JOURNEY MEETING.</td>
+      <td>If not set or PT0M, it is guaranteed.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>FromPointRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>VehicleMeetingPointRefStructure</td>
+      <td>Identifier of VEHICLE MEETING POINT from which Link starts.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@nameOfRefClass</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute nameOfRefClass</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>FromVisitNumber</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:nonNegativeInteger</td>
+      <td>Visit number to distinguish which visit to FROM SCHEDULED STOP POINT this is. Default is one. Only needed for circular routes with connections at the same stop on different visits.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ToPointRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>VehicleMeetingPointRefStructure</td>
+      <td>Identifier of VEHICLE MEETING POINT at which Link ends.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@nameOfRefClass</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute nameOfRefClass</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>FromServiceJourneyRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>ServiceJourneyRefStructure</td>
+      <td>SERVICE JOURNEY that feeds the INTERCHANGE. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ToServiceJourneyRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>ServiceJourneyRefStructure</td>
+      <td>SERVICE JOURNEY that distributes from the INTERCHANGE. +v2.0</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/ServiceJourneyInterchange.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-6">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ServiceJourneyInterchange</span>  <span class="na">version=</span><span class="s">"1"</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:2K"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;Description&gt;</span>LineChange<span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;StaySeated&gt;</span>true<span class="nt">&lt;/StaySeated&gt;</span>
+  <span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
+  <span class="nt">&lt;Planned&gt;</span>true<span class="nt">&lt;/Planned&gt;</span>
+  <span class="nt">&lt;Guaranteed&gt;</span>false<span class="nt">&lt;/Guaranteed&gt;</span>
+  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT9M<span class="nt">&lt;/MaximumWaitTime&gt;</span>
+  <span class="c">&lt;!-- If not set or PT0M, it is guaranteed. --&gt;</span>
+  <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;FromVisitNumber&gt;</span>1<span class="nt">&lt;/FromVisitNumber&gt;</span>
+  <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/ServiceJourneyInterchange.xml">Template</a></em></p>
+
+<h3 id="usage-notes-4">Usage Notes</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> is placed in the <code class="language-plaintext highlighter-rouge">TimetableFrame</code> within the <code class="language-plaintext highlighter-rouge">journeyInterchanges</code> collection.</li>
+  <li><code class="language-plaintext highlighter-rouge">StaySeated=true</code> indicates that the passenger remains in the vehicle — typically used for through-services (Durchbindung) and joining (Vereinigung). See <a href="/netexRealisationGuideSwitzerland/main/uc01_durchbindung.html">uc01 Durchbindung</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">StaySeated=false</code> indicates that the passenger must change vehicles. This covers guaranteed and non-guaranteed connections. See <a href="/netexRealisationGuideSwitzerland/main/uc03_transfers.html">uc03 Transfers</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Guaranteed=true</code> explicitly marks the connection as guaranteed.</li>
+  <li><code class="language-plaintext highlighter-rouge">MaximumWaitTime</code> defines how long the distributor waits — if absent, no explicit wait time is defined.</li>
+  <li><code class="language-plaintext highlighter-rouge">CrossBorder=true</code> must be set if the interchange crosses a national border.</li>
+  <li><code class="language-plaintext highlighter-rouge">ChangeWithinVehicle=true</code> indicates that in case of train splitting, the passenger may have to move to a different part of the train. Default is <code class="language-plaintext highlighter-rouge">false</code>. See <a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">uc02 Joining and splitting</a></li>
+  <li><code class="language-plaintext highlighter-rouge">FromPointRef</code> and <code class="language-plaintext highlighter-rouge">ToPointRef</code> reference the <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> at which the interchange takes place. For a line change at the same stop, both refs point to the same <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">FromServiceJourneyRef</code> references the feeder journey; <code class="language-plaintext highlighter-rouge">ToServiceJourneyRef</code> references the distributor journey. Note: the deprecated elements <code class="language-plaintext highlighter-rouge">FromJourneyRef</code> / <code class="language-plaintext highlighter-rouge">ToJourneyRef</code> from RG 1.0 (<code class="language-plaintext highlighter-rouge">JourneyMeeting</code>) must not be used.</li>
+  <li>Element order must follow the XSD sequence: <code class="language-plaintext highlighter-rouge">StaySeated</code> → <code class="language-plaintext highlighter-rouge">CrossBorder</code> → <code class="language-plaintext highlighter-rouge">ChangeWithinVehicle</code> → <code class="language-plaintext highlighter-rouge">MaximumWaitTime</code> → <code class="language-plaintext highlighter-rouge">FromPointRef</code> / <code class="language-plaintext highlighter-rouge">ToPointRef</code> → <code class="language-plaintext highlighter-rouge">FromServiceJourneyRef</code> / <code class="language-plaintext highlighter-rouge">ToServiceJourneyRef</code>.</li>
+  <li>Make sure not to generate identical <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code>s. Reuse them where possible.</li>
+  <li>id-attribute should be kept stable between exports.</li>
+</ul>
+
+<h2 id="interchangerule">InterchangeRule</h2>
+<blockquote>
+  <p><strong>Deprecated</strong> — <code class="language-plaintext highlighter-rouge">InterchangeRule</code> is replaced by <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> in RG 2.0.<br />
+See <a href="/netexRealisationGuideSwitzerland/main/uc03_transfers.html">uc03 Transfers</a> for the current modelling approach.</p>
+</blockquote>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#interchangerule">Glossary definition</a></em></p>
+
+<h2 id="availabilitycondition">AvailabilityCondition</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#availabilitycondition">see ServiceCalendarFrame</a></em></p>
+
+<h2 id="timeband">Timeband</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#timeband">see ServiceCalendarFrame</a></em></p>
+
+<h2 id="noticeassignment">NoticeAssignment</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#noticeassignment">see Common elements</a></em></p>
+
+<h2 id="servicefacilityset">ServiceFacilitySet</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#servicefacilityset">see Common elements</a></em></p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

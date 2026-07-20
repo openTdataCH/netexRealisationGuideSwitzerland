@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ServiceFrame id="ch:1:ServiceFrame" version="1">
+					<connections>
+						<DefaultConnection id="11-11" version="1">
+							<!-- ch-root -->
+							<!-- ch-usage: expected -->
+							<!-- ch-note:  Connection between two operators on the whole network or on a defined STOP PLACE. -->
+							<Extensions>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: When also ProductCategory is relevant, then this extension must be used -->
+								<FromProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1">
+									<!-- ch-usage: mandatory -->
+								</FromProductCategoryRef>
+								<ToProductCategoryRef ref="ch:1:TypeOfProductCategory:TE2" version="1">
+									<!-- ch-usage: mandatory -->
+								</ToProductCategoryRef>
+							</Extensions>
+							<WalkTransferDuration>
+								<!-- ch-usage: mandatory -->
+								<DefaultDuration><!-- ch-usage: mandatory -->PT2M</DefaultDuration>
+							</WalkTransferDuration>
+							<From>
+								<!-- ch-usage: mandatory -->
+								<OperatorView>
+									<!-- ch-usage: mandatory -->
+									<OperatorRef ref="ch:1:Operator:11" versionRef="1">
+										<!-- ch-usage: mandatory -->
+									</OperatorRef>
+								</OperatorView>
+							</From>
+							<To>
+								<!-- ch-usage: mandatory -->
+								<OperatorView>
+									<!-- ch-usage: mandatory -->
+									<OperatorRef ref="ch:1:Operator:11" versionRef="1">
+										<!-- ch-usage: mandatory -->
+									</OperatorRef>
+								</OperatorView>
+							</To>
+							<StopPlaceRef ref="ch:1:sloid:19231" versionRef="1">
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Usually a SLOID. Not set means whole network. -->
+							</StopPlaceRef>
+						</DefaultConnection>
+					</connections>
+				</ServiceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

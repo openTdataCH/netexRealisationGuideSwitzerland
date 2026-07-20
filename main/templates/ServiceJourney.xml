@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame" version="1">
+					<vehicleJourneys>
+						<ServiceJourney id="generated" version="1">
+							<!-- ch-root -->
+							<!-- ch-attrs: id version responsibilitySetRef-->
+							<validityConditions>
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+								<AvailabilityConditionRef ref="generated" versionRef="1">
+									<!-- ch-usage: mandatory -->
+									<!-- ch-note: Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. **TODO**: this comment needs to be corrected, more information needed -->
+								</AvailabilityConditionRef>
+							</validityConditions>
+							<keyList>
+								<!-- ch-usage: expected -->
+								<!-- ch-note: KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. -->
+								<KeyValue>
+									<!-- ch-usage: mandatory -->
+									<!-- ch-note: A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. -->
+									<Key><!-- ch-usage: mandatory -->SJYID</Key>
+									<Value><!-- ch-usage: mandatory -->ch:1:sjyid:100001:71707-003</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<!-- ch-usage: expected -->
+								<PrivateCode type="sjyid">
+									<!-- ch-usage: expected -->
+                                    <!-- ch-attrs: type -->
+                                    <!-- ch-note: The following types are possible: sjyid and rn. rn is the type used for the Postauto region. -->
+									ch:1:sjyid:100001:71707-003
+								</PrivateCode>
+								<PrivateCode type="rn">12</PrivateCode>
+							</privateCodes>
+							<PrivateCode>
+								<!-- ch-usage: forbidden -->
+								<!-- ch-note: Replaced by <privateCodes>-<PrivateCode>, see above. -->
+								1
+							</PrivateCode>
+							<TransportMode>
+								<!-- ch-usage: optional -->
+								rail
+							</TransportMode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1">
+								<!-- ch-usage: mandatory -->
+                                <!-- ch-note: Relevant elements are defined in the mapping excel. -->
+							</TypeOfProductCategoryRef>
+							<TypeOfServiceRef ref="ch:1:TypeOfService:1" versionRef="1">
+								<!-- ch-usage: optional -->
+                                <!-- ch-note: Should always be ch:1:TypeOfService:1 -->
+							</TypeOfServiceRef>
+							<noticeAssignments>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop). -->
+								<NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
+									<!-- ch-usage: optional -->
+									<!-- ch-see -->
+									<validityConditions>
+										<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" versionRef="1"/>
+									</validityConditions>
+									<NoticeRef ref="ch:1:Notice:A___1" versionRef="1"/>
+								</NoticeAssignment>
+							</noticeAssignments>
+							<occupancies>
+								<!-- ch-usage: optional -->
+								<OccupancyView id="generated" version="1">
+									<!-- ch-usage: optional -->
+                                    <!-- ch-note: Currently not available -->
+									<!-- ch-see -->
+								</OccupancyView>
+							</occupancies>
+							<ServiceAlteration>
+								<!-- ch-usage: mandatory -->
+								<!-- ch-allowed-enums: planned -->
+								<!-- ch-note: Only the value planned is allowed. We might add the others, like cancelled, later. -->
+								planned
+							</ServiceAlteration>
+							<DepartureTime><!-- ch-usage: expected -->06:21:00</DepartureTime>
+							<DepartureDayOffset>
+								<!-- ch-usage: optional -->
+                                <!-- ch-note: 0 for current operating day. Could also be negative. -->
+								0
+							</DepartureDayOffset>
+							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" versionRef="1" nameOfRefClass="ServiceJourneyPattern">
+								<!-- ch-usage: mandatory -->
+								<!-- ch-attrs: nameOfRefClass -->
+								<!-- ch-note: The reference to the ServiceJourneyPattern. -->
+							</JourneyPatternRef>
+							<TimeDemandTypeRef ref="generated" versionRef="1">
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
+							</TimeDemandTypeRef>
+							<VehicleTypeRef ref="ch:1:VehicleType:NF" versionRef="1">
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Mostly used for accessibility information like NF. Relevant definitions in the mapping excel.-->
+							</VehicleTypeRef>
+							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1">
+								<!--ch-usage: mandatory -->
+							</LineRef>
+							<DirectionType><!-- ch-usage: mandatory --><!-- ch-allowed-enums: inbound outbound --><!-- ch-note: Allowed are: inbound, outbound -->outbound</DirectionType>
+							<trainNumbers>
+								<!-- ch-usage: mandatory -->
+								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1">
+									<!-- ch-usage: mandatory -->
+								</TrainNumberRef>
+							</trainNumbers>
+							<Destination>
+								<!-- ch-usage: expected -->
+								<!-- ch-see -->
+                                <DestinationsDisplayRef versionRef="1" ref="generated"/>
+							</Destination>
+							<passingTimes>
+								<!-- ch-usage: forbidden -->
+								<TimetabledPassingTime id="generated" version="1">
+									<PointInJourneyPatternRef ref="generated" versionRef="1"/>
+								</TimetabledPassingTime>
+							</passingTimes>
+							<parts>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: For some use cases e.g. change of Facilities during ServiceJourney -->
+								<JourneyPartRef ref="generated" versionRef="1">
+									<!-- ch-usage: expected -->
+								</JourneyPartRef>
+							</parts>
+							<calls>
+								<!-- ch-usage: forbidden -->
+								<Call id="c1" version="1">
+									<ScheduledStopPointRef ref="notused1" versionRef="1"/>
+								</Call>
+								<Call id="c2" version="1">
+									<ScheduledStopPointRef ref="notused2" versionRef="1"/>
+								</Call>
+							</calls>
+							<checkConstraints>
+								<!-- ch-usage: optional -->
+								<CheckConstraint id="" version="1">
+									<!-- ch-usage: optional -->
+									<!-- ch-note: CheckConstraints are used for different use cases -->
+								</CheckConstraint>
+							</checkConstraints>
+						</ServiceJourney>
+					</vehicleJourneys>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame" version="1">
+					<!-- ch-root -->
+					<!-- ch-usage: mandatory -->
+					<!-- ch-attrs: id version -->
+					<responsibilitySets>
+						<!-- ch-usage: mandatory -->
+						<!-- ch-note: RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
+						<ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
+							<!-- ch-note: Each combination of Authority and Operator needs a ResponsibilitySet. -->
+							<!-- ch-usage: mandatory -->
+							<!-- ch-see -->
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<!-- ch-usage: mandatory -->
+						<!-- ch-note: Sets of TYPE OF VALUE contained in the RESOURCE FRAME. -->
+						<ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
+                            <!-- ch-usage: expected -->
+                            <!-- ch-note: We need a TypeOfNotice ValueSet. -->
+							<values>
+                                <!-- ch-usage: expected -->
+								<TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
+									<!-- ch-class-id-must-exist -->
+									<Name>Allgemeiner Hinweis</Name>
+									<PrivateCode>1</PrivateCode>
+								</TypeOfNotice>
+								<TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
+									<!-- ch-class-id-must-exist -->
+									<Name>Angebot</Name>
+									<PrivateCode>10</PrivateCode>
+								</TypeOfNotice>
+							</values>
+						</ValueSet>
+						<ValueSet id="ch:1:ValueSet:TypesOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+							<!-- ch-usage: expected -->
+                            <!-- ch-note: We need a TypeOfProductCategory ValueSet -->
+							<values>
+								<!-- ch-usage: mandatory -->
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
+									<!-- ch-usage: expected -->
+									<!-- ch-see -->
+									<alternativeTexts>
+										<!-- ch-usage: forbidden -->
+										<AlternativeText attributeName="Name">
+											<Text lang="it">Train Express Regional</Text>
+										</AlternativeText>
+									</alternativeTexts>
+									<Name lang="de"><!-- ch-usage: mandatory --><!--ch-attrs: lang-->Train Express Regional
+                                       <Text lang="it"><!-- ch-usage: optional --><!--ch-attrs: lang-->Train Express Regional</Text>
+  									   <Text lang="en">Train Express Regional</Text>
+                                       <Text lang="fr">Train Express Regional</Text>
+                                    </Name>
+									<ShortName><!-- ch-usage: mandatory -->TER</ShortName>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+						<ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
+							<!-- ch-usage: expected -->
+                            <!-- ch-usage: We expect a TypsOfPlace Valueset -->
+							<values>
+								<!-- ch-usage: expected -->
+								<TypeOfPlace id="drtCollectionPoint" version="1">
+									<!-- ch-usage: expected -->
+									<alternativeTexts>
+										<!-- ch-usage: forbidden -->
+										<AlternativeText attributeName="Name">
+											<Text lang="it">Train Express Regional</Text>
+										</AlternativeText>
+									</alternativeTexts>
+									<Name lang="de"><!-- ch-usage: expected --><!--ch-attrs: lang-->Sammelpunkt
+                                       <Text lang="en"><!-- ch-usage: expected --><!--ch-attrs: lang-->Collection Point</Text>
+                                    </Name>
+								</TypeOfPlace>
+								<TypeOfPlace id="regularStop" version="1">
+									<Name lang="de"><!-- ch-usage: expected --><!--ch-attrs: lang-->Reguläre Haltestelle
+                                       <Text lang="en"><!-- ch-usage: optional --><!--ch-attrs: lang-->Regular Stop</Text>
+                                    </Name>
+								</TypeOfPlace>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<!-- ch-note: ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD-->
+						<!-- ch-usage: mandatory -->
+						<Operator id="sboid" version="1">
+							<!-- ch-note: We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
+							<!-- ch-see -->
+							<!-- ch-usage: mandatory -->
+						</Operator>
+					</organisations>
+					<siteFacilitySets>
+						<!-- ch-note: Depending on the export/import part, there will be SiteFacilitySets to be included or not. -->
+						<!-- ch-usage: optional -->
+						<SiteFacilitySet id="generated" version="1">
+							<!-- ch-usage: optional -->
+							<!-- ch-see -->
+						</SiteFacilitySet>
+					</siteFacilitySets>
+					<serviceFacilitySets>
+						<!-- ch-note: Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. -->
+                        <!-- ch-usage: optional -->
+						<ServiceFacilitySet id="generated" version="1">
+							<!-- ch-usage: optional -->
+							<!-- ch-see -->
+						</ServiceFacilitySet>
+					</serviceFacilitySets>
+					<vehicleTypes>
+						<!-- ch-usage: optional -->
+						<VehicleType id="tbd" version="1">
+							<!-- ch-usage: optional -->
+							<!-- ch-see -->
+						</VehicleType>
+					</vehicleTypes>
+				</ResourceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

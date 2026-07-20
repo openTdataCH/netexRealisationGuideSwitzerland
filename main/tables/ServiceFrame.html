@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ServiceFrame | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="ServiceFrame" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/ServiceFrame.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/ServiceFrame.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ServiceFrame" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"ServiceFrame","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/ServiceFrame.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">ServiceFrame</h1>
+  </header>
+
+  <div class="post-content">
+    <p>A minimal ServiceFrame must be present in all timetable files.</p>
+
+<p><em>Table: ServiceFrame</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ServiceCalendarFrameRef</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>ServiceCalendarFrameRef</td>
+      <td>Reference to a SERVICE CALENDAR FRAME.</td>
+      <td>We can have a reference to other Frames if necessary. However, we believe that the id/version (together with the NameOfClass) should always be unique. If they are the same, it is the same “object”).</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>lines</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>lineRefs_RelStructure</td>
+      <td>Lines for FLEXIBLE STOP PLACE.</td>
+      <td>Only Line is used and not FlexibleLine</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/Line.html">Line</a></td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>Line</td>
+      <td>A group of ROUTEs which is generally known to the public by a similar name or number.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>groupsOfLines</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>groupsOfLinesInFrame_RelStructure</td>
+      <td>Groups of LINEs in NETWORK.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/GroupOfLines.html">GroupOfLines</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>GroupOfLines</td>
+      <td>A grouping of LINEs which will be commonly referenced for a specific purpose.</td>
+      <td>We use GroupOfLine for the modeling of mixed lines</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>destinationDisplays</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>destinationDisplayRefs_RelStructure</td>
+      <td>Destinations associated with this GROUP OF SERVICEs, including via points.</td>
+      <td>We only allow fully formed content of destinationDisplays</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/DestinationDisplay.html">DestinationDisplay</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>DestinationDisplay</td>
+      <td>An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations.</td>
+      <td>We only allow fully formed content of destinationDisplays</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>scheduledStopPoints</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>scheduledStopPointsInFrame_RelStructure</td>
+      <td>SCHEDULED STOP POINTs in frame.</td>
+      <td>Swiss ScheduledStopPoint are using the SLOID in the id, when possible.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/ScheduledStopPoint.html">ScheduledStopPoint</a></td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>ScheduledStopPoint</td>
+      <td>A POINT where passengers can board or alight from vehicles. It is open, which hierarchical level such a point has. It can represent a single door (BoardingPosition) or a whole ZONE. The association to the physical model is done with STOP ASSIGNMENTs.</td>
+      <td>The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>connections</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>transfersInFrame_RelStructure</td>
+      <td>CONNECTIONs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteConnection.html">SiteConnection</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>SiteConnection</td>
+      <td>The physical (spatial) possibility to connect from one point to another in a SITE.</td>
+      <td>SiteConnection are used only in the SITE_OFFER file and not in NETWORK_OFFER files.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/DefaultConnection.html">DefaultConnection</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>DefaultConnection</td>
+      <td>Specifies the default transfer times to transfer between MODEs and / or OPERATORs within a region.</td>
+      <td>DefaultConnection is only used in the SITE_OFFER file</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>stopAssignments</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>stopAssignmentsInFrame_RelStructure</td>
+      <td>STOP ASSIGNMENTs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/PassengerStopAssignment.html">PassengerStopAssignment</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>PassengerStopAssignment</td>
+      <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION.</td>
+      <td>are only used in a special PSA file in the export.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>timingLinks</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>timingLinksInFrame_RelStructure</td>
+      <td>TIMING LINKs in frame.</td>
+      <td>We use TimingLink as the time behaviour between two ScheduledStopPoints</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/TimingLink.html">TimingLink</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>TimingLink</td>
+      <td>An ordered pair of TIMING POINTs for which run times may be recorded. Timing links are directional - there will be separate links for each direction of a route.</td>
+      <td>every different handling of the link needs a different timing link e.g. bus vs tram</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>journeyPatterns</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>journeyPatternRefs_RelStructure</td>
+      <td>JourneyPatternsequivalent to the series.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceJourneyPattern.html">ServiceJourneyPattern</a></td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>ServiceJourneyPattern</td>
+      <td>The JOURNEY PATTERN for a (passenger carrying) SERVICE JOURNEY.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>timeDemandTypes</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>timeDemandTypeRefs_RelStructure</td>
+      <td>Other TIME DEMAND TYPEs used in journey.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/TimeDemandType.html">TimeDemandType</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>TimeDemandType</td>
+      <td>An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.</td>
+      <td>TimeDemandType is now the core concept to use for the timing behaviour of ServiceJourney.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>notices</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>noticesInFrame_RelStructure</td>
+      <td>NOTICEs in frame.</td>
+      <td>notices may be present or not</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/Notice.html">Notice</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>Notice</td>
+      <td>A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media.</td>
+      <td>if notices are present, one Notice must be.</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

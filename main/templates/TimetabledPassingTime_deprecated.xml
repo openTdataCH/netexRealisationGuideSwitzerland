@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>CH:BLT</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="CH:BLT:Composite:50_110" version="1">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame:j23" version="1">
+					<vehicleJourneys>
+						<ServiceJourney id="generated" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>SJYID</Key>
+									<Value>ch:1:sjyid:100001:71707-003</Value>
+								</KeyValue>
+							</keyList>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1"/>
+							<DepartureTime>06:21:00</DepartureTime>
+							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1"/>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1">
+								</TrainNumberRef>
+							</trainNumbers>
+							<passingTimes>
+								<TimetabledPassingTime id="generated" version="1">
+									<!-- ch-root -->
+									<!-- ch-attrs: id version -->
+									<!-- ch-note: Long-term planned time data concerning public transport vehicles passing a particular POINT IN JOURNEY PATTERN on a specified VEHICLE JOURNEY for a certain DAY TYPE. -->
+									<Extensions>
+										<CheckConstraint id="generated" version="1">
+											<!-- ch-usage: optional -->
+											<!-- ch-note: **TODO - Planned for V2.1** Allows for specifying delays due to longer boarding times. -->
+										</CheckConstraint>
+										<IsFlexible>
+										<!-- ch-usage: optional -->
+										<!-- ch-note: **TODO - Planned for V2.1** Stop is only served upon prior request (e.g., booking by phone). -->
+										false
+									</IsFlexible>
+									</Extensions>
+									<AlightAndReboard><!-- ch-usage: optional -->false</AlightAndReboard>
+									<StopPointInJourneyPatternRef ref="generated" versionRef="1">
+										<!-- ch-usage: mandatory -->
+									</StopPointInJourneyPatternRef>
+									<ArrivalTime><!-- ch-usage: expected --><!-- ch-note: Not used if departure only. -->08:00:00</ArrivalTime>
+									<ArrivalDayOffset><!-- ch-usage: optional -->0</ArrivalDayOffset>
+									<DepartureTime><!-- ch-usage: expected --><!-- ch-note: Not used if arrival only. -->08:01:00</DepartureTime>
+									<DepartureDayOffset><!-- ch-usage: optional -->0</DepartureDayOffset>
+									<WaitingTime><!-- ch-usage: optional -->PT1M</WaitingTime>
+									<LatestArrivalTime><!-- ch-usage: optional -->08:05:00</LatestArrivalTime>
+									<LatestArrivalDayOffset><!-- ch-usage: optional -->0</LatestArrivalDayOffset>
+									<EarliestDepartureTime><!-- ch-usage: optional -->07:58:00</EarliestDepartureTime>
+									<EarliestDepartureDayOffset><!-- ch-usage: optional -->0</EarliestDepartureDayOffset>
+									<occupancies>
+										<!-- ch-usage: forbidden -->
+										<OccupancyView id="generated" version="1">
+										</OccupancyView>
+									</occupancies>
+								</TimetabledPassingTime>
+							</passingTimes>
+						</ServiceJourney>
+					</vehicleJourneys>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

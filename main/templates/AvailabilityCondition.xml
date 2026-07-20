@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-04-10T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame" version="1">
+					
+					<validityConditions>
+						<AvailabilityCondition id="generated" version="1">
+							<!-- ch-root -->
+							<!-- ch-attrs: id version -->
+							<Description><!-- ch-usage: ignored --><!-- ch-note: We could use this to have the standard VP like 17 mentioned, but we do not -->Not used</Description>
+							<FromDate><!-- ch-usage: optional --><!-- ch-note: Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.  -->2026-05-17T00:00:00Z</FromDate>
+							<ToDate><!-- ch-usage: optional --><!-- ch-note: Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->2026-05-17T00:00:00Z</ToDate>
+							<IsAvailable><!-- ch-usage: ignored --><!-- ch-note: It is always assumed true. -->true</IsAvailable>
+							<ValidDayBits><!-- ch-usage: mandatory-->01010010111</ValidDayBits>
+							<timebands>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Can also be referenced -->
+								<Timeband id="ch:1:Timeband:4937" version="1">
+									<!-- ch-usage: optional -->
+									<!-- ch-see -->
+									<StartTime>06:00:00</StartTime>
+									<EndTime>06:01:00</EndTime>
+								</Timeband>
+								<TimebandRef ref="ch:1:Timeband:4937-2" versionRef="1">
+									<!-- ch-usage: optional -->
+								</TimebandRef>
+						  </timebands>
+						</AvailabilityCondition>
+					</validityConditions>
+				</ServiceCalendarFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

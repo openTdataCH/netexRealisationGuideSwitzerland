@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CheckConstraint  id="" version="1">
+  <!-- CheckConstraints are used for different use cases -->
+  <CheckDirection>forwards</CheckDirection>
+  <!-- We usually only use one direction. -->
+  <CheckProcess>alighting</CheckProcess>
+  <!-- Only a given subset is allowed -->
+  <delays>
+    <CheckConstraintDelay id="generated" version="1">
+      <AverageDelay>PT4M</AverageDelay>
+      <MaximumLikelyDelay>PT8M</MaximumLikelyDelay>
+    </CheckConstraintDelay>
+  </delays>
+</CheckConstraint>

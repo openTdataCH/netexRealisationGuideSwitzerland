@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Guiding principles | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Guiding principles" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/03_guiding_principles.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/03_guiding_principles.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Guiding principles" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Guiding principles","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/03_guiding_principles.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Guiding principles</h1>
+  </header>
+
+  <div class="post-content">
+    <p>In providing NeTEx files we will follow some guiding principles.</p>
+
+<h2 id="completeness">Completeness</h2>
+
+<p>A delivery must always be complete:</p>
+<ul>
+  <li>in the time dimension : for the whole timetable year (from December to December), but only one timetable.</li>
+  <li>in the scope of the information exchanged : for all operators and all their lines or sublines — the file must always contain everything.
+This allows the receiver to overwrite the old delivery with the new one without loss of data</li>
+</ul>
+
+<h2 id="base-data">Base data</h2>
+<p>Some reference data are maintained by SKI. These data are identified by business values (Abbreviation, Number, ID, …).
+These Business identifiers shall be used by the deliveries to enable their integration and homogenisation for the collection of timetable information. 
+If attributes of these reference data are transmitted in the deliveries, SKI does not adopt the values of these attributes. SKI takes these values from the reference system.</p>
+
+<p>The relevant reference data that is already available/defined by SKI:</p>
+<ul>
+  <li>Organisations - in Atlas</li>
+  <li>StopPlaces, Quays and the whole physical model - in Atlas</li>
+  <li>Lines (in a future phase) - in Atlas</li>
+  <li>Direction - only inbound and outbound are allowed</li>
+  <li>Notices – some specialised IDs and/or types, according to the mapping-excel.</li>
+  <li>TypeOfValues - according to the lists defined here (namely in <a href="/netexRealisationGuideSwitzerland/main/10_common.html">10_common.md</a>). E.g. ProductCategory - in the mapping-excel.</li>
+  <li>ValueSets - in <a href="/netexRealisationGuideSwitzerland/main/10_common.html">10_common.md</a></li>
+  <li>Facilities - in mapping-excel.</li>
+</ul>
+
+<h3 id="data-supplier-side">Data supplier side</h3>
+<p>The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality. Complete means all timetable data in the responsibility of the provider for the whole timetable period.</p>
+
+<h3 id="ski-side">SKI side</h3>
+<p>SKI is responsible for the timely delivery of the complete timetable information with sufficient quality of all timetable data for open data and for the consumption by the data consumers.</p>
+
+<h2 id="limits-to-scope">Limits to scope</h2>
+<p>This realisation specification for public transport in Switzerland (NeTEx) is an addition to the official NeTEx standard. It contains the subset of NeTEx possibilities supported by SKI for the passenger information use case.</p>
+
+<p>Beside this document there can be an agreement from SKI with each data provider about more technical and operational details of the delivery of the timetable. In general there are no differences in the implementation to this reference document. Any necessary technical changes need to be discussed with SKI.</p>
+
+<h2 id="harmonisation">Harmonisation</h2>
+<p>Our profiles and data will try to converge on the 2028 new European profile, whenever possible.</p>
+
+<h2 id="easy-for-consumption">Easy for consumption</h2>
+<p>The data and file structures should allow for easy consumption. We do this by using a profile that adheres as much as possible to the future European profile.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

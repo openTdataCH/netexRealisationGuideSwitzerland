@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Journey Parts | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Journey Parts" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc05_journey_parts.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc05_journey_parts.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Journey Parts" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Journey Parts","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc05_journey_parts.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Journey Parts</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="overview">Overview</h2>
+
+<p>A <code class="language-plaintext highlighter-rouge">JourneyPart</code> is a subsection of a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> that differs from the rest of the journey in at least one relevant characteristic — such as a different train number, operator, or on-board facilities. The <code class="language-plaintext highlighter-rouge">ServiceJourney</code> as a whole still runs from start to finish; <code class="language-plaintext highlighter-rouge">JourneyPart</code>s subdivide it into meaningful segments for passenger information or operational purposes.</p>
+
+<p><strong>When to use:</strong> When a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> changes its train number, operator, or on-board service (e.g. bistro available only on part of the route).</p>
+
+<pre><code class="language-mermaid">graph LR
+  Bern --&gt;|"IC 703 — bistro open"| Zürich
+  Zürich --&gt;|"IC 703 — no bistro"| StGallen["St. Gallen"]
+  Bern --&gt;|"ServiceJourney IC 703"| StGallen
+</code></pre>
+
+<h2 id="mapping-between-hrdf-and-netex">Mapping between HRDF and NeTEx</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>HRDF</th>
+      <th>NeTEx RG1</th>
+      <th>NeTEx RG2</th>
+      <th>Use Case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[attribut]</code> per Teilstrecke</td>
+      <td><code class="language-plaintext highlighter-rouge">JourneyPart</code></td>
+      <td><code class="language-plaintext highlighter-rouge">JourneyPart</code></td>
+      <td>Change of train number, operator, or on-board facilities</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="use-cases-in-the-swiss-profile">Use Cases in the Swiss Profile</h2>
+
+<h3 id="1-change-of-on-board-facilities-purposeofjourneypartitionfacilitychange">1. Change of on-board facilities (<code class="language-plaintext highlighter-rouge">PurposeOfJourneyPartition:FacilityChange</code>)</h3>
+
+<p><strong>When to use:</strong> When a service (e.g. bistro, wifi) is only available on part of the route.</p>
+
+<blockquote>
+  <p>In the example <strong>IC 703 Bern – St. Gallen</strong>, the bistro is open between Bern and Zürich (05:29–06:28) and again between Zürich and Wil SG (06:57–07:52), but not on the full journey.</p>
+</blockquote>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ServiceJourney</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourney:703"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- ... passingTimes ... --&gt;</span>
+  <span class="nt">&lt;parts&gt;</span>
+    <span class="nt">&lt;JourneyPart</span> <span class="na">id=</span><span class="s">"ch:1:JourneyPart:703-bistro-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;FromStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7000:4:7"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ToStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:218:7"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;StartTime&gt;</span>05:29:00<span class="nt">&lt;/StartTime&gt;</span>
+      <span class="nt">&lt;StartTimeDayOffset&gt;</span>0<span class="nt">&lt;/StartTimeDayOffset&gt;</span>
+      <span class="nt">&lt;EndTime&gt;</span>06:28:00<span class="nt">&lt;/EndTime&gt;</span>
+      <span class="nt">&lt;EndTimeDayOffset&gt;</span>0<span class="nt">&lt;/EndTimeDayOffset&gt;</span>
+      <span class="nt">&lt;PurposeOfJourneyPartitionRef</span> <span class="na">ref=</span><span class="s">"ch:1:PurposeOfJourneyPartition:FacilityChange"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;facilities&gt;</span>
+        <span class="nt">&lt;ServiceFacilitySetRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceFacilitySet:bistro-open"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/facilities&gt;</span>
+    <span class="nt">&lt;/JourneyPart&gt;</span>
+    <span class="nt">&lt;JourneyPart</span> <span class="na">id=</span><span class="s">"ch:1:JourneyPart:703-bistro-2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;FromStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000:501:33"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ToStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:6302:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;StartTime&gt;</span>06:57:00<span class="nt">&lt;/StartTime&gt;</span>
+      <span class="nt">&lt;StartTimeDayOffset&gt;</span>0<span class="nt">&lt;/StartTimeDayOffset&gt;</span>
+      <span class="nt">&lt;EndTime&gt;</span>07:52:00<span class="nt">&lt;/EndTime&gt;</span>
+      <span class="nt">&lt;EndTimeDayOffset&gt;</span>0<span class="nt">&lt;/EndTimeDayOffset&gt;</span>
+      <span class="nt">&lt;PurposeOfJourneyPartitionRef</span> <span class="na">ref=</span><span class="s">"ch:1:PurposeOfJourneyPartition:FacilityChange"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;facilities&gt;</span>
+        <span class="nt">&lt;ServiceFacilitySetRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceFacilitySet:bistro-open"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/facilities&gt;</span>
+    <span class="nt">&lt;/JourneyPart&gt;</span>
+  <span class="nt">&lt;/parts&gt;</span>
+<span class="nt">&lt;/ServiceJourney&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li><a href="./examples/NeTEX_CH_Bern_Olten_ZuerichHB_Winterthur_StGallen_with_Facilities.xml">Example</a></li>
+</ul>
+
+<h3 id="2-change-of-train-number--not-used-in-the-swiss-profile">2. Change of train number — NOT USED in the Swiss profile</h3>
+
+<p><strong>Status:</strong> This use case is intentionally <strong>not implemented</strong> via <code class="language-plaintext highlighter-rouge">JourneyPart</code> in the Swiss profile.</p>
+
+<p>Although passenger displays may show a train number change as if it were a single continuous journey, 
+in the underlying data this is always modeled as <strong>two separate <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s linked via a 
+<code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code></strong> (suppressed in passenger-facing presentation). See 
+<a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">uc02 Joining and splitting</a>.
+<strong>When to use:</strong> When a train operates under different train numbers on different sections of the same <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</p>
+
+<h3 id="3-splitting-and-joining">3. Splitting and Joining</h3>
+<p><code class="language-plaintext highlighter-rouge">JourneyPart</code> together with <code class="language-plaintext highlighter-rouge">CoupledJourney</code>could be used for a different modeling of joining and splitting (see <a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">relevant use case</a>.
+However, we currently won’t do that.</p>
+
+<h3 id="4-integrating-data-from-different-sources-to-have-something-to-load-into-a-trip-planner-in-international-travel">4. Integrating data from different sources to have something to load into a trip planner in international travel</h3>
+
+<p>A <code class="language-plaintext highlighter-rouge">ServiceJourney</code> may exist in the Swiss system only up to the first commerical stop abroad and completly but with less information in the Austrian system. To make sure that real-time data is easily applied the aggregated NeTEx timetable may still wish to keep the original delivered <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. The relevant parts are then also modeled with <code class="language-plaintext highlighter-rouge">JourneyPart</code> and <code class="language-plaintext highlighter-rouge">CoupledJourney</code>. We won’t do this either. But we study this for some international projects we have on aggregation of timetables.</p>
+
+<h2 id="key-elements">Key Elements</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FromStopPointRef</code></td>
+      <td>mandatory</td>
+      <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part begins</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ToStopPointRef</code></td>
+      <td>mandatory</td>
+      <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part ends</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StartTime</code> / <code class="language-plaintext highlighter-rouge">EndTime</code></td>
+      <td>mandatory</td>
+      <td>Time bounds of the part</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PurposeOfJourneyPartitionRef</code></td>
+      <td>expected</td>
+      <td>Reason for the partition (e.g. <code class="language-plaintext highlighter-rouge">FacilityChange</code>, <code class="language-plaintext highlighter-rouge">TrainNumberChange</code>)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TrainNumberRef</code></td>
+      <td>optional</td>
+      <td>Train number valid for this part</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">facilities</code></td>
+      <td>optional</td>
+      <td><code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code> valid for this part only</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">JourneyPartCoupleRef</code></td>
+      <td>optional</td>
+      <td>Links to a coupled section (Flügelzug) — not used in Swiss profile</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="usage-notes">Usage Notes</h2>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">JourneyPart</code>s are nested directly within the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> under <code class="language-plaintext highlighter-rouge">&lt;parts&gt;</code>.</li>
+  <li>A <code class="language-plaintext highlighter-rouge">JourneyPart</code> always references the same <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s as the parent <code class="language-plaintext highlighter-rouge">ServiceJourney</code> — it cannot introduce new stops.</li>
+  <li><code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code> defined on a <code class="language-plaintext highlighter-rouge">JourneyPart</code> overrides the one on the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> for that section.</li>
+  <li><code class="language-plaintext highlighter-rouge">JourneyPartCouple</code> is <strong>not used</strong> in the Swiss profile for splitting and joining — use <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> instead. See <a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">uc02 Joining and splitting</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">JourneyPart</code> may become relevant for train composition (Wagenreihung) data in a future version of the profile. See <a href="/netexRealisationGuideSwitzerland/main/uc15_formations.html">uc15 Formations</a>.</li>
+</ul>
+
+<h2 id="related-use-cases">Related use cases</h2>
+
+<ul>
+  <li><a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">uc02 Joining and splitting</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/uc03_transfers.html">uc03 Transfers</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/uc15_formations.html">uc15 Formations</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

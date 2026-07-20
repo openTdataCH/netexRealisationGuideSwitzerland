@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ServiceJourneyInterchange | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="ServiceJourneyInterchange" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc01_durchbindung.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc01_durchbindung.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ServiceJourneyInterchange" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"ServiceJourneyInterchange","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc01_durchbindung.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">ServiceJourneyInterchange</h1>
+  </header>
+
+  <div class="post-content">
+    <p><strong>Durchbindung, splitting and joining</strong></p>
+
+<p>A “Durchbindung” (through-service) describes a planned operational connection between two <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s where the same physical vehicle continues under a new service identity — typically with a new line, operator, or train number. 
+From the passenger’s perspective, no vehicle change is required (<code class="language-plaintext highlighter-rouge">StaySeated=true</code>).</p>
+
+<p>This use case also covers splitting (Flügelzug) and joining (Vereinigung) of trains.  Be aware that in this case <code class="language-plaintext highlighter-rouge">ChangeWithinVehicle</code> might be necessary and we discuss it in <a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">use case 2</a>.</p>
+
+<p>All three cases are modeled using <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> in NeTEx RG 2.0, 
+replacing the deprecated <code class="language-plaintext highlighter-rouge">JourneyMeeting</code> and <code class="language-plaintext highlighter-rouge">InterchangeRule</code> from RG 1.0.</p>
+
+<p><strong>Situation</strong></p>
+<blockquote>
+  <p>The feeder train IR 17 (Thurbo/SBB, line 91014I) arrives at Weinfelden platform 3, where it continues as regional train R 80 (line 91030L) towards Wil SG or Winterthur. The passenger remains seated (StaySeated=true) — this is a through-service where the train changes its line identity at Weinfelden without the passenger needing to change vehicles. Maximum wait time is 9 minutes (PT9M).</p>
+</blockquote>
+
+<p><strong>Situation according to Realisation Guide 1.0</strong></p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;JourneyMeeting</span> <span class="na">id=</span><span class="s">"ch:1:JourneyMeeting:91014I-THU-17-1-5100_91030L-THU-80-1-7200_1642236775_1642209284_6660_7200"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:2K"</span> <span class="na">versionRef=</span><span class="s">"any"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;AtStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">versionRef=</span><span class="s">"any"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;FromJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;Description&gt;</span>LineChange<span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;EarliestTime&gt;</span>01:51:00<span class="nt">&lt;/EarliestTime&gt;</span>
+  <span class="nt">&lt;LatestTime&gt;</span>02:00:00<span class="nt">&lt;/LatestTime&gt;</span>
+<span class="nt">&lt;/JourneyMeeting&gt;</span>
+</code></pre></div></div>
+
+<p><strong>Situation with Realisation Guide 2.0</strong></p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ServiceJourneyInterchange</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200"</span><span class="nt">&gt;</span>
+	<span class="nt">&lt;validityConditions&gt;</span>
+    	<span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:2K"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  	<span class="nt">&lt;/validityConditions&gt;</span>
+  	<span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>LineChange<span class="nt">&lt;/Description&gt;</span>
+	<span class="nt">&lt;StaySeated&gt;</span>true<span class="nt">&lt;/StaySeated&gt;</span>
+  	<span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
+	<span class="nt">&lt;MaximumWaitTime&gt;</span>PT9M<span class="nt">&lt;/MaximumWaitTime&gt;</span>
+	<span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
+  	<span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+	<span class="nt">&lt;ToServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
+</code></pre></div></div>
+<p>The detailed handling is described for the element <a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#servicejourneyinterchange">ServiceJourneyInterchange</a>.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

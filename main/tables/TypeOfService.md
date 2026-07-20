@@ -1,0 +1,9 @@
+# TypeOfService
+
+*Table: TypeOfService*
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | Name | expected | 0..1 | MultilingualString | Name of Traveller |  |
+|  | ShortName | expected | 0..1 | MultilingualString | Short Name for service |  |
+|  | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |

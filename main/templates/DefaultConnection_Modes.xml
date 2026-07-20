@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ServiceFrame id="ch:1:ServiceFrame" version="1">
+					<connections>
+						<DefaultConnection id="ch:1:DefaultConnection:9999999-1" version="1">
+							<!-- ch-root -->
+							<!-- ch-note: General connection between two modes in the whole network, when not StopPlaceRef is mentioned. Most exist for each mode pair. -->
+							<!-- ch-usage: expected -->
+							<WalkTransferDuration>
+								<!-- ch-usage: mandatory -->
+								<DefaultDuration><!-- ch-usage: mandatory -->PT2M</DefaultDuration>
+							</WalkTransferDuration>
+							<From>
+								<!-- ch-usage: mandatory -->
+								<TransportMode><!-- ch-usage: mandatory -->tram</TransportMode>
+							</From>
+							<To>
+								<!-- ch-usage: mandatory -->
+								<TransportMode><!-- ch-usage: mandatory -->tram</TransportMode>
+							</To>
+							<StopPlaceRef ref="ch:1:sloid:19231" versionRef="1">
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Usually a SLOID. Not set means whole network. -->
+							</StopPlaceRef>
+						</DefaultConnection>
+					</connections>
+				</ServiceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

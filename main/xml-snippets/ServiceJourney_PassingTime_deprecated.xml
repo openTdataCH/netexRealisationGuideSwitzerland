@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ServiceJourney  id="generated" version="1">
+  <validityConditions>
+    <!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+    <AvailabilityCondition id="generated" version="1">
+      <!-- Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
+      <FromDate>2026-05-17T00:00:00Z</FromDate>
+      <!-- Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
+      <ToDate>2026-05-17T00:00:00Z</ToDate>
+      <!-- Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
+      <ValidDayBits>01010111</ValidDayBits>
+    </AvailabilityCondition>
+  </validityConditions>
+  <keyList>
+    <!-- KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. -->
+    <KeyValue>
+      <!-- A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. -->
+      <Key>SJYID</Key>
+      <Value>ch:1:sjyid:100001:71707-003</Value>
+    </KeyValue>
+  </keyList>
+  <privateCodes>
+    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
+  </privateCodes>
+  <TransportMode>rail</TransportMode>
+  <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1"/>
+  <TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
+  <noticeAssignments>
+    <!-- The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. -->
+    <NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
+      <validityConditions>
+        <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
+      </validityConditions>
+      <NoticeRef ref="ch:1:Notice:A___1" version="1"/>
+    </NoticeAssignment>
+  </noticeAssignments>
+  <occupancies>
+    <OccupancyView id="generated" version="1"/>
+  </occupancies>
+  <ServiceAlteration>planned</ServiceAlteration>
+  <!-- Only the value planned is allowed. -->
+  <DepartureTime>06:21:00</DepartureTime>
+  <DepartureDayOffset>0</DepartureDayOffset>
+  <LineRef ref="ch:2:Line:11.IR.90" version="1"/>
+  <DirectionType>outbound</DirectionType>
+  <!-- Allowed are: inbound, outbound -->
+  <trainNumbers>
+    <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
+  </trainNumbers>
+  <Destination>
+    <ScheduledStopPointRef ref="ch:1:sloid:3412" version="1"/>
+  </Destination>
+  <passingTimes>
+    <TimetabledPassingTime id="generated" version="1">
+      <PointInJourneyPatternRef ref="generated" version="1"/>
+    </TimetabledPassingTime>
+  </passingTimes>
+</ServiceJourney>

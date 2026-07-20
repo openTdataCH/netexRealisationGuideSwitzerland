@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TimetableFrame  id="ch:1:TimetableFrame:j23" version="1">
+  <vehicleJourneys>
+    <!-- Contains the ServiceJourneys and TemplateServiceJourneys. -->
+    <ServiceJourney id="generatedOrsjyid" version="1">
+      <!-- ServiceJourney is used for common Journeys. -->
+    </ServiceJourney>
+    <TemplateServiceJourney id="generatedOrsjyid1" version="1">
+      <!-- TemplateServiceJourney is only to be used if a line is serviced at a certain frequency. -->
+    </TemplateServiceJourney>
+    <TemplateServiceJourney id="generated2" version="1"/>
+  </vehicleJourneys>
+  <trainNumbers>
+    <TrainNumber id="2123" version="1"/>
+  </trainNumbers>
+  <serviceFacilitySets>
+    <ServiceFacilitySet id="86558" version="1"/>
+  </serviceFacilitySets>
+  <typesOfService>
+    <TypeOfService id="ch:1:TypeOfService:1" version="1">
+      <!-- This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. -->
+      <Name lang="en">PublicJourney</Name>
+      <ShortName lang="en">PJ</ShortName>
+      <PrivateCode>1</PrivateCode>
+    </TypeOfService>
+  </typesOfService>
+  <journeyInterchanges>
+    <!-- In NETWORK_OFFER for splitting and joining. Otherwise mostly in INTERCHANGE -->
+    <ServiceJourneyInterchange id="ch:1:sji:generated-1" version="1">
+      <!-- For modeling many forms of interchanges -->
+      <FromJourneyRef ref="sjyid-1" version="1"/>
+      <ToJourneyRef ref="sjyid-2" version="1"/>
+    </ServiceJourneyInterchange>
+  </journeyInterchanges>
+</TimetableFrame>

@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Stop Modelling | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Stop Modelling" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/06_stops.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/06_stops.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Stop Modelling" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Stop Modelling","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/06_stops.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Stop Modelling</h1>
+  </header>
+
+  <div class="post-content">
+    <p>In this chapter:</p>
+
+<ul>
+  <li><a href="#siteframe">SiteFrame</a></li>
+  <li><a href="#stopplace">StopPlace</a></li>
+  <li><a href="#quay">Quay</a></li>
+  <li><a href="#topographicplace">TopographicPlace</a></li>
+  <li><a href="#centroid">Centroid</a></li>
+</ul>
+
+<h2 id="siteframe">SiteFrame</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#siteframe">Glossary definition</a></em></p>
+
+<h3 id="purpose">Purpose</h3>
+<p>A <code class="language-plaintext highlighter-rouge">SiteFrame</code> contains the physical infrastructure model for public transport — <code class="language-plaintext highlighter-rouge">StopPlace</code>s, <code class="language-plaintext highlighter-rouge">Quay</code>s, and topographic context. It defines the spatial elements that passengers interact with and that other frames reference for stop assignments.</p>
+
+<pre><code class="language-mermaid">classDiagram
+    %% Styles
+    classDef frame fill:#FFF8E1,stroke:#FFB300
+    classDef contained fill:#E8F4FF,stroke:#1E90FF
+    classDef external fill:#F6F6F6,stroke:#AAAAAA
+
+    %% Frame
+    class SiteFrame:::frame
+
+    %% Contained elements
+    class StopPlace:::contained {
+        - centroid
+        - quays []
+    }
+    class Quay:::contained {
+        - centroid
+    }
+    class TopographicPlace:::contained
+    class Centroid:::contained
+
+    %% Containment relations
+    SiteFrame "1" o-- "0..*" StopPlace : contains
+    SiteFrame "1" o-- "0..*" TopographicPlace : contains
+    StopPlace "1" o-- "0..*" Quay : contains
+    StopPlace "1" o-- "1" Centroid : contains
+    Quay "1" o-- "1" Centroid : contains
+</code></pre>
+<p><em>Figure: Elements in SiteFrame</em></p>
+
+<h3 id="contained-elements">Contained Elements</h3>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">StopPlace</code>s – stations and stops
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">Quay</code>s - platforms where passengers can board or alight from a vehicle</li>
+    </ul>
+  </li>
+  <li><code class="language-plaintext highlighter-rouge">TopographicPlace</code>s - geographical and administrative area context for stops</li>
+  <li>Not currently modelled: entrances, levels, equipments, paths, accessibility properties, points of interest</li>
+</ul>
+
+<h3 id="table">Table</h3>
+
+<p><em>Table: SiteFrame</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>topographicPlaces</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>topographicPlacesInFrame_RelStructure</td>
+      <td>PLACEs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/TopographicPlace.html">TopographicPlace</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>TopographicPlace</td>
+      <td>A town, city, village, suburb, quarter or other name settlement within a country. Provides a Gazetteer of Transport related place names.</td>
+      <td>Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>stopPlaces</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>stopPlacesInFrame_RelStructure</td>
+      <td>STOP PLACEs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/StopPlace.html">StopPlace</a></td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>StopPlace</td>
+      <td>Version of a named place where public transport may be accessed. May be a building complex (e.g. a station) or an on-street location. Can be a STOP PLACE, VEHICLE MEETING POINT, TAXI RANK. Note: If a master id exists for a StopPlace (must be stable and globally unique), then it is best used in the id. Optimally it would be built according IFOPT. It can also be put into one of the privateCodes in addition. If it is stored in KeyValue, then it should be documented well, so that importing systems know, which id is the relevant one.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>siteFacilitySets</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>siteFacilitySetsInFrame_RelStructure</td>
+      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>We expect the SiteFacilitySet in the ResourceFrame</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>SiteFacilitySet</td>
+      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/SiteFrame.html">General NeTEx definition </a></em></p>
+
+<h3 id="example">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;SiteFrame</span>  <span class="na">id=</span><span class="s">"ch:1:SiteFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;topographicPlaces&gt;</span>
+    <span class="nt">&lt;TopographicPlace</span> <span class="na">id=</span><span class="s">"ch:1:TopoGraphicPlace:CH-BE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces. --&gt;</span>
+      <span class="nt">&lt;Descriptor&gt;</span>
+        <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;/Descriptor&gt;</span>
+    <span class="nt">&lt;/TopographicPlace&gt;</span>
+  <span class="nt">&lt;/topographicPlaces&gt;</span>
+  <span class="nt">&lt;stopPlaces&gt;</span>
+    <span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/stopPlaces&gt;</span>
+  <span class="nt">&lt;siteFacilitySets&gt;</span>
+    <span class="c">&lt;!-- We expect the SiteFacilitySet in the ResourceFrame --&gt;</span>
+    <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/siteFacilitySets&gt;</span>
+<span class="nt">&lt;/SiteFrame&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/SiteFrame.xml">Template</a></em></p>
+
+<h3 id="frame-relationships">Frame Relationships</h3>
+<p><code class="language-plaintext highlighter-rouge">SiteFrame</code> is independent of other frames but provides the physical stop infrastructure that <code class="language-plaintext highlighter-rouge">ServiceFrame</code> references through <code class="language-plaintext highlighter-rouge">PassengerStopAssignments</code>. <code class="language-plaintext highlighter-rouge">TimetableFrame</code> indirectly depends on <code class="language-plaintext highlighter-rouge">SiteFrame</code> through the <code class="language-plaintext highlighter-rouge">JourneyPattern</code> stop sequence. <code class="language-plaintext highlighter-rouge">SiteFrame</code> is typically wrapped in a <code class="language-plaintext highlighter-rouge">CompositeFrame</code> within a <code class="language-plaintext highlighter-rouge">PublicationDelivery</code>.</p>
+
+<h2 id="stopplace">StopPlace</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#stopplace">Glossary definition</a></em></p>
+
+<h3 id="purpose-1">Purpose</h3>
+<p>A named physical or virtual location where passengers can board or alight from public transport, containing one or more <code class="language-plaintext highlighter-rouge">Quay</code>s.
+Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> is a distinct concept from the representation of the stop in a timetable – the <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>. The two can be connected using a <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>.</p>
+
+<h3 id="table-1">Table</h3>
+
+<p>In some cases the id of a StopPlace is not a SLOID.</p>
+
+<p><em>Table: StopPlace</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ValidBetween</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>ValidBetween</td>
+      <td>OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT.</td>
+      <td>This can be used to show, when the StopPlace can be used.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>FromDate</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:dateTime</td>
+      <td>Start date of AVAILABILITY CONDITION.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ToDate</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:dateTime</td>
+      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>keyList</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>KeyListStructure</td>
+      <td>A list of alternative Key values for an element.</td>
+      <td>Key value pairs for DIDOK number and SLOID</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>KeyValue</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>KeyValueStructure</td>
+      <td>Key value pair for Entity.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Key</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Value</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:anyType</td>
+      <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>privateCodes</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PrivateCodesStructure</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PrivateCode</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of Traveller</td>
+      <td>The official stop name. If you have different versions one needs to use AlternativeName</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Centroid</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>SimplePoint_VersionStructure</td>
+      <td>Centre Coordinates of GROUP of STOP PLACEs.</td>
+      <td>Global or national location</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Location</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>LocationStructure</td>
+      <td>Absolute location of EQUIPMENT.</td>
+      <td>Note concerning coordinates - The main coordinates are given as <strong>WSG84</strong>.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Longitude</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LongitudeType</td>
+      <td>Longitude from Greenwich Meridian. -180 (East) to +180 (West).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Latitude</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LatitudeType</td>
+      <td>Latitude from equator. -90 (South) to +90 (North).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Altitude</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AltitudeType</td>
+      <td>Altitude.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>alternativeNames</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>alternativeNames_RelStructure</td>
+      <td>ALTERNATIVE NAMES for MACHINE READABILITY.</td>
+      <td>Alternative names for the StopPlace. We will also use these for synonyms.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TopographicPlaceRef</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>TopographicPlaceRefStructure</td>
+      <td>Reference to the identifier of a TOPOGRAPHIC PLACE.</td>
+      <td>Id to the county, community, canton or country.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>StopPlaceType</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>StopTypeEnumeration</td>
+      <td>Type of STOP PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LimitedUse</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>LimitedUseTypeEnumeration</td>
+      <td>Further categorisation of stop as having topographic limitations.</td>
+      <td>For stops like Sagliains</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Weighting</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>InterchangeWeightingEnumeration</td>
+      <td>Default rating of the STOP PLACE for making interchanges.</td>
+      <td>Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>quays</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>quays_RelStructure</td>
+      <td>QUAYs within the STOP PLACE.</td>
+      <td>The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/Quay.html">Quay</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>Quay</td>
+      <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/StopPlace.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-1">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;StopPlace</span>  <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- In some cases the id of a StopPlace is not a SLOID. --&gt;</span>
+  <span class="nt">&lt;ValidBetween&gt;</span>
+    <span class="c">&lt;!-- This can be used to show, when the StopPlace can be used. --&gt;</span>
+    <span class="nt">&lt;FromDate&gt;</span>2026-01-01T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
+    <span class="nt">&lt;ToDate&gt;</span>2026-12-31T00:00:00<span class="nt">&lt;/ToDate&gt;</span>
+  <span class="nt">&lt;/ValidBetween&gt;</span>
+  <span class="nt">&lt;keyList&gt;</span>
+    <span class="c">&lt;!-- Key value pairs for DIDOK number and SLOID --&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>DIDOK<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>7000<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>SLOID<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>ch:1:sloid:7000<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;/keyList&gt;</span>
+  <span class="nt">&lt;privateCodes&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"didok"</span><span class="nt">&gt;</span>7000<span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="c">&lt;!-- In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments. --&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000<span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"HafasPriority"</span><span class="nt">&gt;</span>4<span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="c">&lt;!-- Special value for Hafas environments. --&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"HafasKMInfo"</span><span class="nt">&gt;</span>1000<span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="c">&lt;!-- Special value for Hafas environments. --&gt;</span>
+  <span class="nt">&lt;/privateCodes&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
+  <span class="c">&lt;!-- The official stop name. If you have different versions one needs to use AlternativeName --&gt;</span>
+  <span class="nt">&lt;Centroid&gt;</span>
+    <span class="c">&lt;!-- Global or national location --&gt;</span>
+    <span class="nt">&lt;Name/&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="c">&lt;!-- Note concerning coordinates - The main coordinates are given as **WSG84**. --&gt;</span>
+      <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
+      <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
+      <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;/Centroid&gt;</span>
+  <span class="nt">&lt;alternativeNames&gt;</span>
+    <span class="c">&lt;!-- Alternative names for the StopPlace. We will also use these for synonyms. --&gt;</span>
+    <span class="nt">&lt;AlternativeName</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:it"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Berna<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;/AlternativeName&gt;</span>
+  <span class="nt">&lt;/alternativeNames&gt;</span>
+  <span class="nt">&lt;TopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"BE-bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Id to the county, community, canton or country. --&gt;</span>
+  <span class="nt">&lt;/TopographicPlaceRef&gt;</span>
+  <span class="nt">&lt;StopPlaceType&gt;</span>railStation<span class="nt">&lt;/StopPlaceType&gt;</span>
+  <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly<span class="nt">&lt;/LimitedUse&gt;</span>
+  <span class="c">&lt;!-- For stops like Sagliains --&gt;</span>
+  <span class="nt">&lt;Weighting&gt;</span>preferredInterchange<span class="nt">&lt;/Weighting&gt;</span>
+  <span class="c">&lt;!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. --&gt;</span>
+  <span class="nt">&lt;quays&gt;</span>
+    <span class="c">&lt;!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. --&gt;</span>
+    <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/quays&gt;</span>
+<span class="nt">&lt;/StopPlace&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/StopPlace.xml">Template</a></em></p>
+
+<h3 id="usage-notes">Usage Notes</h3>
+<ul>
+  <li>All <code class="language-plaintext highlighter-rouge">StopPlace</code>s in Switzerland are identifiable by both a DIDOK number and a SLOID. DIDOK number are under the responsability of the Department of Transport (BAV). It is possible that in the future the BAV will also regulate “Haltepunkte” and “Haltekanten” and, therefore, the identifiers of <code class="language-plaintext highlighter-rouge">Quay</code>s.</li>
+  <li>Foreign <code class="language-plaintext highlighter-rouge">StopPlace</code>s may be mapped to Swiss DIDOK codes.</li>
+  <li>Meta-stations will have their own codes. In some cases these are added for operational or searching reasons.</li>
+  <li>id-attribute needs to be kept stable between exports.</li>
+  <li>DIDOK number placement: The DIDOK number is <strong>not</strong> transported as free text anywhere on <code class="language-plaintext highlighter-rouge">StopPlace</code>. It is placed in <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> with <code class="language-plaintext highlighter-rouge">type="didok"</code>, <strong>and</strong> the same value must additionally be listed in the <code class="language-plaintext highlighter-rouge">KeyList</code> (<code class="language-plaintext highlighter-rouge">KeyValue</code> with matching <code class="language-plaintext highlighter-rouge">Key</code>). Both are required — the <code class="language-plaintext highlighter-rouge">PrivateCode</code> for direct lookup, the <code class="language-plaintext highlighter-rouge">KeyList</code> entry for generic key/value tooling.</li>
+  <li><code class="language-plaintext highlighter-rouge">ShortName</code> is not used on <code class="language-plaintext highlighter-rouge">StopPlace</code>. In particular, the DIDOK number must <strong>never</strong> be placed in <code class="language-plaintext highlighter-rouge">ShortName</code> — this was common practice under Profile 1.0 / HRDF-based exports and is explicitly discontinued under RV 2.0.</li>
+  <li><code class="language-plaintext highlighter-rouge">ValidBetween</code>: Every <code class="language-plaintext highlighter-rouge">StopPlace</code> carries a <code class="language-plaintext highlighter-rouge">ValidBetween</code> with a <code class="language-plaintext highlighter-rouge">FromDate</code>. Since <code class="language-plaintext highlighter-rouge">StopPlace</code> is infrastructure master data (not a timetable-period object), <strong>no <code class="language-plaintext highlighter-rouge">ToDate</code> is set</strong> — validity is open-ended until a future change is published.</li>
+</ul>
+
+<h4 id="example-didok-number-and-validity-on-stopplace">Example: DIDOK number and validity on <code class="language-plaintext highlighter-rouge">StopPlace</code></h4>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:StopPlace:8503000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ValidBetween&gt;</span>
+    <span class="nt">&lt;FromDate&gt;</span>2026-01-01T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
+  <span class="nt">&lt;/ValidBetween&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Zürich HB<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;privateCodes&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"didok"</span><span class="nt">&gt;</span>8503000<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/privateCodes&gt;</span>
+  <span class="nt">&lt;keyList&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>didok<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>8503000<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;/keyList&gt;</span>
+  <span class="c">&lt;!-- Quays, Centroid, etc. --&gt;</span>
+<span class="nt">&lt;/StopPlace&gt;</span>
+</code></pre></div></div>
+
+<h2 id="quay">Quay</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#quay">Glossary definition</a></em></p>
+
+<h3 id="purpose-2">Purpose</h3>
+<p>A specific boarding or alighting position (platform, stand, bay) within a <code class="language-plaintext highlighter-rouge">StopPlace</code> where passengers physically meet vehicles.</p>
+
+<h3 id="table-2">Table</h3>
+
+<p>Can be a platform, track, sector group or sector. id is a SLOID whenever possible or generated.</p>
+
+<p><em>Table: Quay</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>keyList</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>KeyListStructure</td>
+      <td>A list of alternative Key values for an element.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>KeyValue</td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>KeyValueStructure</td>
+      <td>Key value pair for Entity.</td>
+      <td>When no SLOID is possible it may be omitted.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Key</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
+      <td>SLOID is mandatory key</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Value</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:anyType</td>
+      <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>privateCodes</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodesStructure</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/Centroid.html">Centroid</a></td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>SimplePoint_VersionStructure</td>
+      <td>Centre Coordinates of GROUP of STOP PLACEs.</td>
+      <td>Location of Quay.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>SiteRef</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>SiteRefStructure</td>
+      <td>Reference to parent of SITE, if any.</td>
+      <td>Can reference the parent Quay or StopPlace</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>PublicCode</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>PublicCodeStructure</td>
+      <td>Public code for JOURNEY.</td>
+      <td>Code used to identify the Quay to the public</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/Quay.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-2">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;Quay</span>  <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Can be a platform, track, sector group or sector. id is a SLOID whenever possible or generated. --&gt;</span>
+  <span class="nt">&lt;keyList&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="c">&lt;!-- When no SLOID is possible it may be omitted. --&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>SLOID<span class="nt">&lt;/Key&gt;</span>
+      <span class="c">&lt;!-- SLOID is mandatory key --&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>ch:1:sloid:7000:5:9<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;/keyList&gt;</span>
+  <span class="nt">&lt;privateCodes&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000:5:9<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/privateCodes&gt;</span>
+  <span class="nt">&lt;Centroid&gt;</span>
+    <span class="c">&lt;!-- Location of Quay. --&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
+      <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
+      <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;/Centroid&gt;</span>
+  <span class="nt">&lt;SiteRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7000"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Can reference the parent Quay or StopPlace --&gt;</span>
+  <span class="nt">&lt;/SiteRef&gt;</span>
+  <span class="nt">&lt;PublicCode&gt;</span>9<span class="nt">&lt;/PublicCode&gt;</span>
+  <span class="c">&lt;!-- Code used to identify the Quay to the public --&gt;</span>
+<span class="nt">&lt;/Quay&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/Quay.xml">Template</a></em></p>
+
+<h3 id="usage-notes-1">Usage Notes</h3>
+<ul>
+  <li>In standard NeTEx, a <code class="language-plaintext highlighter-rouge">Quay</code> may serve one or more <code class="language-plaintext highlighter-rouge">VehicleStoppingPlace</code>s and be associated with one or more <code class="language-plaintext highlighter-rouge">StopPoint</code>s. The Swiss profile does not currently model that.</li>
+  <li>A <code class="language-plaintext highlighter-rouge">Quay</code> may contain other sub <code class="language-plaintext highlighter-rouge">Quay</code>s. A child <code class="language-plaintext highlighter-rouge">Quay</code> must be physically contained within its parent <code class="language-plaintext highlighter-rouge">Quay</code>.  Furthermore:
+    <ul>
+      <li>A nested <code class="language-plaintext highlighter-rouge">Quay</code> is always physically contiguous with its parent and so has the same accessibility characteristics 
+as its parent.</li>
+      <li>Nested <code class="language-plaintext highlighter-rouge">Quay</code>s should not be used to mark individual positions on a platform – <code class="language-plaintext highlighter-rouge">BoardingPosition</code> serve this function.</li>
+      <li>Nested <code class="language-plaintext highlighter-rouge">Quay</code>s and <code class="language-plaintext highlighter-rouge">AccessSpace</code>s must always be on the same <code class="language-plaintext highlighter-rouge">Level</code> as their parent (not currently modelled).</li>
+    </ul>
+  </li>
+  <li>If the SLOID for platforms is not unique, it will be formed according to the schema:
+{StopPlace SLOID}_gen:{Quay SLOID}_pf:{Platform Code}.</li>
+  <li>If no platform SLOID is available {StopPlace SLOID}_gen:missingSLOID_pf:{Platform Code*} will be used instead.</li>
+  <li>
+    <blockquote>
+      <p>NB: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.</p>
+    </blockquote>
+  </li>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<p>In the table below you will find an overview of the possible cases. For more information on SLOID, see <a href="https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid" title="https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid">Swiss Location Identification (SLOID)  öv-info.ch</a>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Case</th>
+      <th>id</th>
+      <th>sloid in Key/Value, PrivateCode</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Unique track sloid</td>
+      <td>ch:1:sloid:7000:6:32</td>
+      <td>ch:1:sloid:7000:6:32</td>
+    </tr>
+    <tr>
+      <td>Non-unique track sloid</td>
+      <td>ch:1:sloid:7000_gen:ch:1:sloid:7000:0:349752_pf:2A-D</td>
+      <td>ch:1:sloid:7000:0:349752</td>
+    </tr>
+    <tr>
+      <td>Non-unique SLOID with special characters “11/12”</td>
+      <td>ch:1:sloid:6206_gen:ch:1:sloid:6206:0:11_pf:11.12</td>
+      <td>ch:1:sloid:6206:0:11</td>
+    </tr>
+    <tr>
+      <td>non platform SLOID</td>
+      <td>ch:1:sloid:1102381_gen:missingSLOID_pf:1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>No SLOID (abroad)</td>
+      <td>8029701_gen:missingSLOID_pf:1</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Table: SLOID and id in NeTEx</em></p>
+
+<p><code class="language-plaintext highlighter-rouge">Quay</code>s are mapped with the following resolution:</p>
+<ul>
+  <li>No hierarchy between the different definitions of quays is foreseen at the moment</li>
+  <li>All combinations between sectors of the same quay are considered as independent quays.</li>
+  <li>Combinations of several quays are considered as independent quays.</li>
+</ul>
+
+<p>Further notes:</p>
+<ul>
+  <li>In the future we intend to also include <code class="language-plaintext highlighter-rouge">Quay</code>s that remain unused by the regular timetable - this will alllow to properly handle real-time data that may refer to such “unused” <code class="language-plaintext highlighter-rouge">Quay</code>s.</li>
+  <li>Atlas does model the hierarchy of the quays.</li>
+</ul>
+
+<h2 id="topographicplace">TopographicPlace</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#topographicplace">Glossary definition</a></em></p>
+
+<h3 id="purpose-3">Purpose</h3>
+<p>A named geographic area such as a city, municipality, county, or region - used to provide spatial context for <code class="language-plaintext highlighter-rouge">StopPlace</code>s, for example when interactively searching for the origin or destination of a trip.</p>
+
+<h3 id="table-3">Table</h3>
+
+<p><em>Table: TopographicPlace</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Descriptor</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>TopographicPlaceDescriptor_VersionedChildStructure</td>
+      <td>Structured text descriptor of TOPOGRAPHIC PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of Traveller</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ShortName</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Short Name for service</td>
+      <td>Abbreviation of the canton (leave empty if TopographicPlaceType is country)</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TopographicPlaceType</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>TopographicPlaceTypeEnumeration</td>
+      <td>Classification of the TOPOGRAPHIC PLACE as a settlement. Enumerated value.</td>
+      <td>Allowed values: country, county</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ParentTopographicPlaceRef</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>TopographicPlaceRefStructure</td>
+      <td>Parent TOPOGRAPHIC PLACE. Reference to another TOPOGRAPHIC PLACE that contains the child TOPOGRAPHIC PLACE completely. Must not be cyclic.</td>
+      <td>Parent topographic place when it exists.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/TopographicPlace.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-3">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;TopographicPlace</span>  <span class="na">id=</span><span class="s">"ch:1:TopoGraphicPlace:CH-BE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Descriptor&gt;</span>
+    <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;ShortName&gt;</span>BE<span class="nt">&lt;/ShortName&gt;</span>
+    <span class="c">&lt;!-- Abbreviation of the canton (leave empty if TopographicPlaceType is country) --&gt;</span>
+  <span class="nt">&lt;/Descriptor&gt;</span>
+  <span class="nt">&lt;TopographicPlaceType&gt;</span>county<span class="nt">&lt;/TopographicPlaceType&gt;</span>
+  <span class="c">&lt;!-- Allowed values: country, county --&gt;</span>
+  <span class="nt">&lt;ParentTopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:TopoGraphicPlace:CH-BE-Bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Parent topographic place when it exists. --&gt;</span>
+  <span class="nt">&lt;/ParentTopographicPlaceRef&gt;</span>
+<span class="nt">&lt;/TopographicPlace&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/TopographicPlace.xml">Template</a></em></p>
+
+<h3 id="usage-notes-2">Usage Notes</h3>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">TopographicPlace</code> represent the cantons and communes in Switzerland. Each <code class="language-plaintext highlighter-rouge">StopPlace</code> should reference the <code class="language-plaintext highlighter-rouge">TopographicPlace</code> representing its canton.</li>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<h2 id="centroid">Centroid</h2>
+
+<h3 id="purpose-4">Purpose</h3>
+<p>It provides precise geographic coordinates (WGS84) of a central reference point representing a single point or an area such as a <code class="language-plaintext highlighter-rouge">Quay</code>or a <code class="language-plaintext highlighter-rouge">StopPlace</code>.</p>
+
+<h3 id="table-4">Table</h3>
+
+<p>Global or national location</p>
+
+<p><em>Table: Centroid</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>Location</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>LocationStructure</td>
+      <td>Absolute location of EQUIPMENT.</td>
+      <td>Note concerning coordinates - The main coordinates are given as <strong>WSG84</strong>.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Longitude</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LongitudeType</td>
+      <td>Longitude from Greenwich Meridian. -180 (East) to +180 (West).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Latitude</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LatitudeType</td>
+      <td>Latitude from equator. -90 (South) to +90 (North).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Altitude</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AltitudeType</td>
+      <td>Altitude.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>pos</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>gml:DirectPositionType</td>
+      <td> </td>
+      <td>EPSG:2056 is LV95. We use it in the INFO+ export.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@srsName</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute srsName</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/Centroid.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-4">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;Centroid</span> <span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Global or national location --&gt;</span>
+  <span class="nt">&lt;Location&gt;</span>
+    <span class="c">&lt;!-- Note concerning coordinates - The main coordinates are given as **WSG84**. --&gt;</span>
+    <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
+    <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
+    <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
+    <span class="nt">&lt;pos</span> <span class="na">xmlns:ns0=</span><span class="s">"http://www.opengis.net/gml/3.2"</span> <span class="na">srsName=</span><span class="s">"EPSG:2056"</span><span class="nt">&gt;</span>2600037.945 1199749.812<span class="nt">&lt;/pos&gt;</span>
+    <span class="c">&lt;!-- EPSG:2056 is LV95. We use it in the INFO+ export. --&gt;</span>
+  <span class="nt">&lt;/Location&gt;</span>
+<span class="nt">&lt;/Centroid&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/Centroid.xml">Template</a></em></p>
+
+<h3 id="usage-notes-3">Usage Notes</h3>
+<ul>
+  <li>The <code class="language-plaintext highlighter-rouge">Centroid</code> always contains a location.</li>
+  <li>The main coordinates are given as WGS84.</li>
+  <li>Required accuracy 4+ decimal positions.</li>
+  <li>The Swiss coordinates are added as well, when available (for Swiss stops). The format is LV95. For imports they are not needed, however.</li>
+  <li>INFO+ will not use the master data from NeTEx imports, it will rely on the Atlas master data for all Swiss coordinates. INFO+ will, however, use the imported location data of foreign places without DIDOK numbers.</li>
+  <li>no id-attribute</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer><script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    // Render code fences like ```mermaid (Jekyll outputs <pre><code class="language-mermaid">...</code></pre>)
+    mermaid.run({ querySelector: 'pre > code.language-mermaid' });
+</script></body>
+
+</html>

@@ -1,0 +1,1793 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Common Elements and Rules | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Common Elements and Rules" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/10_common.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/10_common.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Common Elements and Rules" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Common Elements and Rules","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/10_common.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Common Elements and Rules</h1>
+  </header>
+
+  <div class="post-content">
+    <p>This chapter has two parts. First, it states important rules to observe (e.g., regarding attributes and date / time formats). Second, it lists the “common” elements that are used by different frames. This in particular includes the <code class="language-plaintext highlighter-rouge">ResourceFrame</code> and all its elements as it is a container holding data that can be referred to from multiple other frames.</p>
+
+<p>In this chapter:</p>
+
+<p><a href="#rules-to-observe">Rules to Observe</a></p>
+<ul>
+  <li><a href="#attributes">Attributes</a>
+    <ul>
+      <li><a href="#ids">IDs</a></li>
+      <li><a href="#version">Version</a></li>
+    </ul>
+  </li>
+  <li><a href="#fromdate-and-todate">FromDate and ToDate</a></li>
+  <li><a href="#time-formatting-and-journey-after-midnight">Time formatting and journey after midnight</a></li>
+</ul>
+
+<p><a href="#common-elements-and-types">Common Elements and Types</a></p>
+<ul>
+  <li><a href="#alternativename">AlternativeName</a></li>
+  <li><a href="#alternativetext">AlternativeText</a></li>
+  <li><a href="#multilingualstring">MultilingualString</a></li>
+  <li><a href="#framedefaults">FrameDefaults</a></li>
+  <li><a href="#resourceframe">ResourceFrame</a>
+    <ul>
+      <li><a href="#responsibilityset">ResponsibilitySet</a></li>
+      <li><a href="#typeof--valueset">TypeOfValue / Valuesets</a>
+        <ul>
+          <li><a href="#typeofproductcategory">TypeOfProductCategory</a></li>
+          <li><a href="#typeofservice">TypeOfService</a></li>
+        </ul>
+      </li>
+      <li><a href="#organisation--operator--authority">Organisation / Operator / Authority</a></li>
+      <li><a href="#servicefacilityset">ServiceFacilitySet</a></li>
+      <li><a href="#sitefacilityset">SiteFacilitySet</a></li>
+      <li><a href="#vehicletype">VehicleType</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="rules-to-observe">Rules to Observe</h2>
+
+<h3 id="attributes">Attributes</h3>
+
+<p>The following rules apply to common attributes:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attribute</th>
+      <th>Rule</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">id</code></td>
+      <td>See description regarding <a href="#ids">technical IDs</a> below</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">version</code></td>
+      <td>is always set to <code class="language-plaintext highlighter-rouge">"1"</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">responsibilitySetRef</code></td>
+      <td>We use <code class="language-plaintext highlighter-rouge">responsibilitySetRef</code> on <code class="language-plaintext highlighter-rouge">ServiceJourney</code> and <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">nameOfRefClass</code></td>
+      <td>We use <code class="language-plaintext highlighter-rouge">nameOfRefClass</code> explicitly where a reference target is ambiguous, e.g. on <code class="language-plaintext highlighter-rouge">JourneyPatternRef</code> (which may resolve to <code class="language-plaintext highlighter-rouge">JourneyPattern</code> or <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">versionRef</code></td>
+      <td>is always set to <code class="language-plaintext highlighter-rouge">"1"</code>. Is used, when the element can’t be referenced directly, because it is in a different file. This is in our files true for the INTERCHANGE file.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Table: Handling of the most used attributes for elements in NeTEx</em></p>
+
+<h4 id="ids">IDs</h4>
+<p>IDs must be globally unique during importation (in the <code class="language-plaintext highlighter-rouge">id</code>-attribute). 
+They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for “primary” objects we expect object permanence. This is mentioned in the usage note of each element.
+Important business level keys are stored in elements (<code class="language-plaintext highlighter-rouge">KeyList</code>, <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code>) in addition to the IDs.</p>
+
+<p>It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available.</p>
+
+<p>For readability and easy referencing, we will use the following principles:</p>
+<ul>
+  <li>We use the class of the object to prefix the technical ID like <code class="language-plaintext highlighter-rouge">ch:1:TypeOfNotice:3</code> for a <code class="language-plaintext highlighter-rouge">TypeOfNotice</code> element.</li>
+  <li>We use appropriate business values to build technical IDs where available, e.g. <code class="language-plaintext highlighter-rouge">ch:1:TypeOfProductCategory:TER</code> 
+where the value of <code class="language-plaintext highlighter-rouge">ShortName</code> of the <code class="language-plaintext highlighter-rouge">TypeOfProductCategory</code> is used to build the ID, or <code class="language-plaintext highlighter-rouge">ch:1:Operator:11</code>.</li>
+  <li>Where there is a compelling need for global stability, the ID will be a global ID.</li>
+</ul>
+
+<p>All other defined attributes like <code class="language-plaintext highlighter-rouge">created</code>, <code class="language-plaintext highlighter-rouge">changed</code>, <code class="language-plaintext highlighter-rouge">modification</code> are not used. If we need one, we will inform about it in the table associated with the element.</p>
+
+<h4 id="version">Version</h4>
+<p>We will use <code class="language-plaintext highlighter-rouge">version="1"</code> in Switzerland. In some cases we use <code class="language-plaintext highlighter-rouge">versionRef="1"</code> instead, when the referenced object is not in the same file in references (<code class="language-plaintext highlighter-rouge">XXXRef</code>-elements). We no longer use <code class="language-plaintext highlighter-rouge">any</code> and expect to remove that semantic if possible. Also, the version (or versionRef) always must be present.</p>
+
+<h3 id="fromdate-and-todate">FromDate and ToDate</h3>
+<p>The dates we have are always operating days. Nevertheless, we use</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">2026-01-01T00:00:00</code></li>
+  <li><code class="language-plaintext highlighter-rouge">2026-01-01T23:59:59</code></li>
+</ul>
+
+<p>to describe a single day.</p>
+
+<h3 id="time-formatting-and-journey-after-midnight">Time Formatting and Journey after Midnight</h3>
+
+<p>The time format consists only of the hours, minutes (and seconds) of a 24-hour clock, e.g. <code class="language-plaintext highlighter-rouge">23:55:00</code>.</p>
+
+<p>Times that pass midnight of the current <code class="language-plaintext highlighter-rouge">OperatingDay</code> are marked with a <code class="language-plaintext highlighter-rouge">DayOffset</code> element. 
+If a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> runs over midnight, <code class="language-plaintext highlighter-rouge">DepartureDayOffset</code> (on <code class="language-plaintext highlighter-rouge">ServiceJourney</code>) is used for the start of the journey. Since <code class="language-plaintext highlighter-rouge">TimeDemandType</code> only holds relative durations (<code class="language-plaintext highlighter-rouge">RunTime</code>/<code class="language-plaintext highlighter-rouge">WaitTime</code>), there is no separate <code class="language-plaintext highlighter-rouge">DayOffset</code> element within <code class="language-plaintext highlighter-rouge">TimeDemandType</code> — any midnight crossing during the journey follows implicitly from cumulating <code class="language-plaintext highlighter-rouge">DepartureTime</code> with the <code class="language-plaintext highlighter-rouge">RunTime</code>/<code class="language-plaintext highlighter-rouge">WaitTime</code> values.</p>
+
+<h2 id="common-elements-and-types">Common Elements and Types</h2>
+
+<h3 id="alternativename">AlternativeName</h3>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#alternativetext">Glossary definition</a></em></p>
+
+<h4 id="purpose">Purpose</h4>
+
+<p><code class="language-plaintext highlighter-rouge">AlternativeName</code> is used to provide an alternative (alias or translation) of a name, e.g. of 
+a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code class="language-plaintext highlighter-rouge">Organisation</code>.</p>
+
+<p>For all other alternative texts use <code class="language-plaintext highlighter-rouge">MultilingualString</code>.</p>
+
+<h4 id="table">Table</h4>
+
+<p>In some cases we need translations or alias of the Name element. This is done with AlternativeName.</p>
+
+<p><em>Table: AlternativeName</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>TypeOfName</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Type of Name - open value.</td>
+      <td>For StopPlace official is used for the official name</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of Traveller</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ - <a href="../site/netex-html/AlternativeName.html">General NeTEx definition</a></em></p>
+
+<h4 id="example">Example</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;AlternativeName</span> <span class="nt">&gt;</span>
+  <span class="c">&lt;!-- In some cases we need translations or alias of the Name element. This is done with AlternativeName. --&gt;</span>
+  <span class="nt">&lt;NameType&gt;</span>alias<span class="nt">&lt;/NameType&gt;</span>
+  <span class="c">&lt;!-- alias or translation allowed for StoopPlace. --&gt;</span>
+  <span class="nt">&lt;TypeOfName&gt;</span>offical<span class="nt">&lt;/TypeOfName&gt;</span>
+  <span class="c">&lt;!-- For StopPlace official is used for the official name --&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Die Übersetzung des Namens.<span class="nt">&lt;/Name&gt;</span>
+<span class="nt">&lt;/AlternativeName&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/AlternativeName.xml">Template</a></em></p>
+
+<h4 id="usage-notes">Usage Notes</h4>
+
+<p>We only allow the following values for <code class="language-plaintext highlighter-rouge">NameType</code>:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">alias</code></li>
+  <li><code class="language-plaintext highlighter-rouge">translation</code></li>
+</ul>
+
+<h3 id="alternativetext">AlternativeText</h3>
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">AlternativeText</code> is not used. We will use <code class="language-plaintext highlighter-rouge">MultilingualString</code>. This means that there are multiple <code class="language-plaintext highlighter-rouge">&lt;Text&gt;</code> elements with different <code class="language-plaintext highlighter-rouge">lang</code>-attributes.</p>
+</blockquote>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#alternativetext">Glossary definition</a></em></p>
+
+<h4 id="purpose-1">Purpose</h4>
+<p>The <code class="language-plaintext highlighter-rouge">AlternativeText</code> is a generic way to provide an alternative text (translation or alias).  For example, it can be used for the translation of <code class="language-plaintext highlighter-rouge">Notice</code> texts.</p>
+
+<h4 id="table-1">Table</h4>
+
+<p><em>Table: AlternativeText</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@attributeName</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute attributeName</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@useForLanguage</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute useForLanguage</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Text</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Text content of NOTICe.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ - <a href="../site/netex-html/AlternativeText.html">General NeTEx definition</a></em></p>
+
+<h4 id="example-1">Example</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;AlternativeText</span>  <span class="na">id=</span><span class="s">"ch:1:AlternativeText:Notice-Hin_1229900-fr"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">attributeName=</span><span class="s">"Text"</span> <span class="na">useForLanguage=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!--  --&gt;</span>
+  <span class="nt">&lt;Text&gt;</span>Départ de la voie 2.<span class="nt">&lt;/Text&gt;</span>
+<span class="nt">&lt;/AlternativeText&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/AlternativeText_deprecated.xml">Template</a></em></p>
+
+<h4 id="usage-notes-1">Usage Notes</h4>
+
+<p>The <code class="language-plaintext highlighter-rouge">AlternativeText</code> is part of a <code class="language-plaintext highlighter-rouge">DataManagedObject</code> and references the name of the node, for which it provides an alternative. 
+It contains the alternative text as an attribute of type <code class="language-plaintext highlighter-rouge">MultilingualString</code> which indicates the language.</p>
+
+<p>In addition, the <code class="language-plaintext highlighter-rouge">AlternativeText</code> element may have a <code class="language-plaintext highlighter-rouge">useForLanguage</code> attribute to indicate a second language for which it may be used as 
+an acceptable presentation, if there is no native language alternative; normally this will be the same as the language 
+of the string, but might be different.</p>
+
+<p>Alternative names (translations or aliases) of a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code class="language-plaintext highlighter-rouge">Organisation</code> are modelled with <a href="#AlternativeName">AlternativeNames</a>.</p>
+
+<h3 id="multilingualstring">MultilingualString</h3>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#multilingualstring">Glossary definition</a></em></p>
+
+<h4 id="purpose-2">Purpose</h4>
+
+<p>NeTEx uses the type <code class="language-plaintext highlighter-rouge">MultilingualString</code> for descriptive text elements (e.g. <code class="language-plaintext highlighter-rouge">Notice</code> text, <code class="language-plaintext highlighter-rouge">Name</code>, <code class="language-plaintext highlighter-rouge">ShortName</code> etc.).
+However, only one language can be set for a given element (e.g. <code class="language-plaintext highlighter-rouge">&lt;MultilingualString lang=”fr”&gt;</code>). 
+Additional languages are introduced through the <a href="#alternativename">AlternativeName</a> and <a href="#alternativetext">AlternativeText</a> element.</p>
+
+<h4 id="example-2">Example</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Train Express Regional
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;</span>
+<span class="nt">&lt;/Name&gt;</span>
+</code></pre></div></div>
+
+<h4 id="usage-notes-2">Usage Notes</h4>
+
+<ul>
+  <li>For <a href="#organisation--operator--authority">Organisations</a> e.g. there are all languages present.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">StopPlace</code> names in Switzerland are language-independent.</li>
+</ul>
+
+<h3 id="framedefaults">FrameDefaults</h3>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#framedefaults">Glossary definition</a></em></p>
+
+<h4 id="purpose-3">Purpose</h4>
+<p>Holds default values for certain basic parameters.</p>
+
+<h4 id="table-2">Table</h4>
+
+<p><em>Table: FrameDefaults</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>DefaultLocale</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>LocaleStructure</td>
+      <td>Default LOCAL for frame elements. Assume this value for timezone and language of elements if not specified on individual elements.</td>
+      <td>The default locale is German (de) for Swiss public transport.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TimeZoneOffset</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>TimeZoneOffsetType</td>
+      <td>Timezone offset from Greenwich at LOCALE.</td>
+      <td>We prefer times without the suf-fix “+hh:mm”. Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2)</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TimeZone</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Timezone name at LOCALE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>SummerTimeZoneOffset</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>TimeZoneOffsetType</td>
+      <td>Summer timezone offset if different from Time zone offset.</td>
+      <td>We prefer times without the suf-fix “+hh:mm”. Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2)</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>DefaultLanguage</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:language</td>
+      <td>Default Language for LOCALE. Assume language use is “normally used”</td>
+      <td>Is always set to “de” for Swiss public transport.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DefaultLocationSystem</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Default spatial coordinate system (srsName). E.g. WGS84 Value to use for location elements using coordinates if not specified on individual elements.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../site/netex-html/FrameDefaults.html">General NeTEx definition</a></em></p>
+
+<h4 id="example-3">Example</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;FrameDefaults</span> <span class="nt">&gt;</span>
+  <span class="nt">&lt;DefaultLocale&gt;</span>
+    <span class="c">&lt;!-- The default locale is German (de) for Swiss public transport. --&gt;</span>
+    <span class="nt">&lt;TimeZoneOffset&gt;</span>1<span class="nt">&lt;/TimeZoneOffset&gt;</span>
+    <span class="c">&lt;!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) --&gt;</span>
+    <span class="nt">&lt;TimeZone&gt;</span>Europe/Berlin<span class="nt">&lt;/TimeZone&gt;</span>
+    <span class="nt">&lt;SummerTimeZoneOffset&gt;</span>2<span class="nt">&lt;/SummerTimeZoneOffset&gt;</span>
+    <span class="c">&lt;!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) --&gt;</span>
+    <span class="nt">&lt;DefaultLanguage&gt;</span>de<span class="nt">&lt;/DefaultLanguage&gt;</span>
+    <span class="c">&lt;!-- Is always set to “de” for Swiss public transport. --&gt;</span>
+  <span class="nt">&lt;/DefaultLocale&gt;</span>
+  <span class="nt">&lt;DefaultLocationSystem&gt;</span>urn:ogc:def:crs:EPSG::4326<span class="nt">&lt;/DefaultLocationSystem&gt;</span>
+<span class="nt">&lt;/FrameDefaults&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/FrameDefaults.xml">Template</a></em></p>
+
+<h4 id="usage-notes-3">Usage Notes</h4>
+<p>For values not set in <code class="language-plaintext highlighter-rouge">FrameDefaults</code> we use the values as indicated in the table and example above.</p>
+
+<h3 id="resourceframe">ResourceFrame</h3>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#resourceframe">Glossary definition</a></em></p>
+
+<h4 id="purpose-4">Purpose</h4>
+<p>Contains shared resources used / referenced in other frames - organisations (<code class="language-plaintext highlighter-rouge">Operator</code>s), <code class="language-plaintext highlighter-rouge">VehicleType</code>s, codespaces, and other common reference data.</p>
+
+<p>See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.</p>
+
+<h4 id="contained-elements">Contained Elements</h4>
+
+<ul>
+  <li>ResponsibilitySet</li>
+  <li>TypeOfValue / ValueSets
+    <ul>
+      <li>TypeOfNotice</li>
+      <li>TypeOfProductCategory</li>
+      <li>TypeOfService</li>
+    </ul>
+  </li>
+  <li>Organisation / Operator / Authority</li>
+  <li>ServiceFacilitySet</li>
+  <li>SiteFacilitySet</li>
+</ul>
+
+<h4 id="table-3">Table</h4>
+
+<p><em>Table: ResourceFrame</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>responsibilitySets</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>responsibilitySetsInFrame_RelStructure</td>
+      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/ResponsibilitySet.html">ResponsibilitySet</a></td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>ResponsibilitySet</td>
+      <td>A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent.</td>
+      <td>Each combination of Authority and Operator needs a ResponsibilitySet.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>typesOfValue</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>typesOfValueInFrame_RelStructure</td>
+      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>Sets of TYPE OF VALUE contained in the RESOURCE FRAME.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ValueSet</td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>ValueSet</td>
+      <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
+      <td>We need a TypeOfNotice ValueSet.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>values</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>typesOfValue_RelStructure</td>
+      <td>Values in Set.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ValueSet</td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>ValueSet</td>
+      <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
+      <td>We need a TypeOfProductCategory ValueSet</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ValueSet</td>
+      <td>We expect a TypsOfPlace Valueset</td>
+      <td>1..*</td>
+      <td>ValueSet</td>
+      <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>organisations</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>organisationsInFrame_RelStructure</td>
+      <td>ORGANISATIONs in frame.</td>
+      <td>ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/Operator.html">Operator</a></td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>Operator</td>
+      <td>A company providing public transport services.</td>
+      <td>We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>siteFacilitySets</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>siteFacilitySetsInFrame_RelStructure</td>
+      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>Depending on the export/import part, there will be SiteFacilitySets to be included or not.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>SiteFacilitySet</td>
+      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>serviceFacilitySets</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>serviceFacilitySetsInFrame_RelStructure</td>
+      <td>SERVICE FACILITies in frame.</td>
+      <td>Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>ServiceFacilitySet</td>
+      <td>Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>vehicleTypes</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>transportTypeRefs_RelStructure</td>
+      <td>Opnen specifcation of VEHICLE TYPEs + v1.1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/VehicleType.html">VehicleType</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>VehicleType</td>
+      <td>A classification of public transport vehicles according to the vehicle scheduling requirements in mode and capacity (e.g. standard bus, double-deck, …).</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ - <a href="../site/netex-html/ResourceFrame.html">General NeTEx definition</a></em></p>
+
+<h4 id="example-4">Example</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ResourceFrame</span>  <span class="na">id=</span><span class="s">"ch:1:ResourceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;responsibilitySets&gt;</span>
+    <span class="c">&lt;!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. --&gt;</span>
+    <span class="nt">&lt;ResponsibilitySet</span> <span class="na">id=</span><span class="s">"ch:1:ResponsbilitySet-gen"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Each combination of Authority and Operator needs a ResponsibilitySet. --&gt;</span>
+    <span class="nt">&lt;/ResponsibilitySet&gt;</span>
+  <span class="nt">&lt;/responsibilitySets&gt;</span>
+  <span class="nt">&lt;typesOfValue&gt;</span>
+    <span class="c">&lt;!-- Sets of TYPE OF VALUE contained in the RESOURCE FRAME. --&gt;</span>
+    <span class="nt">&lt;ValueSet</span> <span class="na">id=</span><span class="s">"ch:1:ValueSet:notices"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"TypeOfNotice"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- We need a TypeOfNotice ValueSet. --&gt;</span>
+      <span class="nt">&lt;values&gt;</span>
+        <span class="nt">&lt;TypeOfNotice</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfNotice:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Name&gt;</span>Allgemeiner Hinweis<span class="nt">&lt;/Name&gt;</span>
+          <span class="nt">&lt;PrivateCode&gt;</span>1<span class="nt">&lt;/PrivateCode&gt;</span>
+        <span class="nt">&lt;/TypeOfNotice&gt;</span>
+        <span class="nt">&lt;TypeOfNotice</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfNotice:10"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Name&gt;</span>Angebot<span class="nt">&lt;/Name&gt;</span>
+          <span class="nt">&lt;PrivateCode&gt;</span>10<span class="nt">&lt;/PrivateCode&gt;</span>
+        <span class="nt">&lt;/TypeOfNotice&gt;</span>
+      <span class="nt">&lt;/values&gt;</span>
+    <span class="nt">&lt;/ValueSet&gt;</span>
+    <span class="nt">&lt;ValueSet</span> <span class="na">id=</span><span class="s">"ch:1:ValueSet:TypesOfProductCategory"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"TypeOfProductCategory"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- We need a TypeOfProductCategory ValueSet --&gt;</span>
+      <span class="nt">&lt;values&gt;</span>
+        <span class="nt">&lt;TypeOfProductCategory</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfProductCategory:TER"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;&lt;/Name&gt;</span>
+          <span class="nt">&lt;ShortName&gt;</span>TER<span class="nt">&lt;/ShortName&gt;</span>
+        <span class="nt">&lt;/TypeOfProductCategory&gt;</span>
+      <span class="nt">&lt;/values&gt;</span>
+    <span class="nt">&lt;/ValueSet&gt;</span>
+    <span class="nt">&lt;ValueSet</span> <span class="na">id=</span><span class="s">"ch:1:ValueSet:TypesOfPlace"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"TypeOfPlace"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;values&gt;</span>
+        <span class="nt">&lt;TypeOfPlace</span> <span class="na">id=</span><span class="s">"drtCollectionPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Sammelpunkt<span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Collection Point<span class="nt">&lt;/Text&gt;&lt;/Name&gt;</span>
+        <span class="nt">&lt;/TypeOfPlace&gt;</span>
+        <span class="nt">&lt;TypeOfPlace</span> <span class="na">id=</span><span class="s">"regularStop"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Reguläre Haltestelle<span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Regular Stop<span class="nt">&lt;/Text&gt;&lt;/Name&gt;</span>
+        <span class="nt">&lt;/TypeOfPlace&gt;</span>
+      <span class="nt">&lt;/values&gt;</span>
+    <span class="nt">&lt;/ValueSet&gt;</span>
+  <span class="nt">&lt;/typesOfValue&gt;</span>
+  <span class="nt">&lt;organisations&gt;</span>
+    <span class="c">&lt;!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD --&gt;</span>
+    <span class="nt">&lt;Operator</span> <span class="na">id=</span><span class="s">"sboid"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. --&gt;</span>
+    <span class="nt">&lt;/Operator&gt;</span>
+  <span class="nt">&lt;/organisations&gt;</span>
+  <span class="nt">&lt;siteFacilitySets&gt;</span>
+    <span class="c">&lt;!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. --&gt;</span>
+    <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/siteFacilitySets&gt;</span>
+  <span class="nt">&lt;serviceFacilitySets&gt;</span>
+    <span class="c">&lt;!-- Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. --&gt;</span>
+    <span class="nt">&lt;ServiceFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/serviceFacilitySets&gt;</span>
+  <span class="nt">&lt;vehicleTypes&gt;</span>
+    <span class="nt">&lt;VehicleType</span> <span class="na">id=</span><span class="s">"tbd"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/vehicleTypes&gt;</span>
+<span class="nt">&lt;/ResourceFrame&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/ResourceFrame.xml">Template</a></em></p>
+
+<h4 id="frame-relationships">Frame Relationships</h4>
+
+<p>Elements of the <code class="language-plaintext highlighter-rouge">ResourceFrame</code> can be referenced in other frames like <code class="language-plaintext highlighter-rouge">SiteFrame</code>, <code class="language-plaintext highlighter-rouge">ServiceFrame</code>, <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code> 
+and/or <code class="language-plaintext highlighter-rouge">TimetableFrame</code>.</p>
+
+<h3 id="responsibilityset">ResponsibilitySet</h3>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#responsibilityset">Glossary definition</a></em></p>
+
+<h4 id="purpose-5">Purpose</h4>
+<p>The set of roles and organisations responsible for managing data, operations, or contractual obligations within a defined scope.
+We use this element to  describe the different roles of the participating companies. For the most part, the company code is used to fully identify the provided services.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>value of <code class="language-plaintext highlighter-rouge">StakeholderRoleType</code></th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EntityLegalOwnership</code></td>
+      <td>Role of the <strong>concession company</strong> holding the concession for the original service</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Operation</code></td>
+      <td>role of the <strong>operator company</strong> responsible for providing the transport service</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Table: Allowed StakeholderRoleType</em></p>
+
+<h4 id="table-4">Table</h4>
+
+<p>Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line.</p>
+
+<p><em>Table: ResponsibilitySet</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of Traveller</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>roles</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>responsibilityRoleAssignments_RelStructure</td>
+      <td>Roles defined by this RESPONSIBILITY SET.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ResponsibilityRoleAssignment</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>ResponsibilityRoleAssignment</td>
+      <td>Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>StakeholderRoleType</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>StakeholderRoleTypeListOfEnumerations</td>
+      <td>Stakeholder roles which this assignment assigns.</td>
+      <td>“EntityLegalOwnership” must be defined once and “Operator” should be too.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ResponsibleOrganisationRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>OrganisationRefStructure</td>
+      <td>Responsible ORGANISATION.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ - <a href="../site/netex-html/ResponsibilitySet.html">General NeTEx definition</a></em></p>
+
+<h4 id="example-5">Example</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ResponsibilitySet</span>  <span class="na">id=</span><span class="s">"ch:1:ResponsbilitySet-gen"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line. --&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Basler Verkehrsbetriebe<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;PrivateCode&gt;</span>BVB<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;roles&gt;</span>
+    <span class="nt">&lt;ResponsibilityRoleAssignment</span> <span class="na">id=</span><span class="s">"ch:1:ResponsibilityRoleAssignment:823_823:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;StakeholderRoleType&gt;</span>EntityLegalOwnership<span class="nt">&lt;/StakeholderRoleType&gt;</span>
+      <span class="c">&lt;!-- "EntityLegalOwnership" must be defined once and "Operator" should be too. --&gt;</span>
+      <span class="nt">&lt;ResponsibleOrganisationRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100622"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/ResponsibilityRoleAssignment&gt;</span>
+    <span class="nt">&lt;ResponsibilityRoleAssignment</span> <span class="na">id=</span><span class="s">"ch:1:ResponsibilityRoleAssignment:823_823:2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;StakeholderRoleType&gt;</span>Operation<span class="nt">&lt;/StakeholderRoleType&gt;</span>
+      <span class="nt">&lt;ResponsibleOrganisationRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100622"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/ResponsibilityRoleAssignment&gt;</span>
+  <span class="nt">&lt;/roles&gt;</span>
+<span class="nt">&lt;/ResponsibilitySet&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/ResponsibilitySet.xml">Template</a></em></p>
+
+<h4 id="usage-notes-4">Usage Notes</h4>
+<p>Services (e.g. replacement services) can be associated with different roles. These roles can be defined inside the <code class="language-plaintext highlighter-rouge">ResponsibilitySet</code> element.</p>
+
+<p>Only the values defined below are allowed in Switzerland for <code class="language-plaintext highlighter-rouge">StakeholderRoleType</code> in <code class="language-plaintext highlighter-rouge">ResponsbilityRoleAssignment</code>:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Operation</code></li>
+  <li><code class="language-plaintext highlighter-rouge">EntityLegalOwnership</code></li>
+</ul>
+
+<p>We might add at some point:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">FareManagement</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Planning</code></li>
+</ul>
+
+<p>id-attribute should be kept stable between exports.</p>
+
+<h3 id="typeof--valueset">TypeOf… / ValueSet</h3>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#typeof">Glossary definition: TypeOf…</a></em><br />
+<em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#valueset">Glossary definition: ValueSet</a></em></p>
+
+<h4 id="purpose-6">Purpose</h4>
+<p>TypeOf… (examples: <code class="language-plaintext highlighter-rouge">TypeOfNotice</code>, <code class="language-plaintext highlighter-rouge">TypeOfProductCategory</code>, <code class="language-plaintext highlighter-rouge">TypeOfService</code>) are used for classification of NeTEx entities.  They are listed in <code class="language-plaintext highlighter-rouge">ValueSet</code>s as part of the <code class="language-plaintext highlighter-rouge">ResourceFrame</code>.</p>
+
+<h4 id="usage-notes-5">Usage Notes</h4>
+<p>We use TypeOfValue references in various Frames in objects including:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Notice</code>: references <code class="language-plaintext highlighter-rouge">TypeOfNotice</code></li>
+  <li><code class="language-plaintext highlighter-rouge">Line</code> and <code class="language-plaintext highlighter-rouge">ServiceJourney</code>: references <code class="language-plaintext highlighter-rouge">TypeOfProductCategory</code></li>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<h3 id="typeofnotice">TypeOfNotice</h3>
+
+<h4 id="purpose-7">Purpose</h4>
+<p><code class="language-plaintext highlighter-rouge">TypeOfNotice</code> is used within a <a href="/netexRealisationGuideSwitzerland/main/07_service.html#notice">Notice</a> to give information, what it is about. The table below shows the <code class="language-plaintext highlighter-rouge">TypeOfNotice</code> we use in Switzerland.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>PrivateCode</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Allgemeiner Hinweis</td>
+      <td>General information text</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><del>Zugname</del></td>
+      <td>Name of the train. Is not used, as this is stored in <code class="language-plaintext highlighter-rouge">ServiceJourney</code>/<code class="language-plaintext highlighter-rouge">Name</code>.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><del>Gleis-Angabe</del></td>
+      <td>Quay and Quay section information. Is no longer used. Is put into Quay.</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Angebot</td>
+      <td>Most of the <code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code> are also transmitted as <code class="language-plaintext highlighter-rouge">Notice</code>. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to <code class="language-plaintext highlighter-rouge">ServiceFacilitySets</code>. This <code class="language-plaintext highlighter-rouge">TypeOfNotice</code> is used to deliver those special cases as Notices.</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td><del>Region</del></td>
+      <td>Postauto is divided into several regions. Will be omitted. We will add a <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> with <code class="language-plaintext highlighter-rouge">type="rn"</code> to the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> or <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Table: Allowed TypeOfNotice in Switzerland</em></p>
+
+<p>The following snippet is <strong>all</strong> that is defined for <code class="language-plaintext highlighter-rouge">TypeOfNotice</code>:</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ValueSet</span> <span class="na">id=</span><span class="s">"ch:1:ValueSet:notices"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"TypeOfNotice"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;values&gt;</span>
+    <span class="nt">&lt;TypeOfNotice</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfNotice:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Allgemeiner Hinweis<span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;PrivateCode&gt;</span>1<span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="nt">&lt;/TypeOfNotice&gt;</span>
+    <span class="nt">&lt;TypeOfNotice</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfNotice:10"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Angebot<span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;PrivateCode&gt;</span>10<span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="nt">&lt;/TypeOfNotice&gt;</span>
+  <span class="nt">&lt;/values&gt;</span>
+<span class="nt">&lt;/ValueSet&gt;</span>
+</code></pre></div></div>
+<h3 id="typeofproductcategory">TypeOfProductCategory</h3>
+
+<h4 id="purpose-8">Purpose</h4>
+
+<p>For the ServiceJourneys exclusively provided in Switzerland, only the ProductCategories defined in the document <a href="https://www.allianceswisspass.ch/de/tarife-vorschriften/uebersicht/V580/Produkte-der-V580-FIScommun-1">06 Harmonisierung Verkehrsmittel</a> may be referenced. 
+For ServiceJourneys provided in other countries or partially in Switzerland, there are no restrictions, provided that the category does not overlap with the ProductCategories defined for Switzerland.</p>
+
+<h4 id="table-5">Table</h4>
+
+<p><em>Table: TypeOfProductCategory</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of Traveller</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ShortName</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Short Name for service</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/TypeOfProductCategory.html">General NeTEx definition</a></em></p>
+
+<h4 id="example-6">Example</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;TypeOfProductCategory</span>  <span class="na">id=</span><span class="s">"ch:1:TypeOfProductCategory:TER"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;alternativeTexts&gt;</span>
+    <span class="c">&lt;!-- Is done with MultilanguageString now --&gt;</span>
+  <span class="nt">&lt;/alternativeTexts&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>TER<span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;&lt;/Name&gt;</span>
+  <span class="nt">&lt;ShortName&gt;</span>TER<span class="nt">&lt;/ShortName&gt;</span>
+<span class="nt">&lt;/TypeOfProductCategory&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/TypeOfProductCategory.xml">Template</a></em></p>
+
+<h3 id="typeofservice">TypeOfService</h3>
+<p><code class="language-plaintext highlighter-rouge">TypeOfService</code> is to be found within <code class="language-plaintext highlighter-rouge">TimetableFrame</code>.</p>
+
+<h3 id="organisation--operator--authority">Organisation / Operator / Authority</h3>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#operator">Glossary definition: Operator</a></em><br />
+<em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#authority">Glossary definition: Authority</a></em></p>
+
+<h4 id="purpose-9">Purpose</h4>
+<p>A legally incorporated body associated with any aspect of public transportation. <code class="language-plaintext highlighter-rouge">Authority</code> and <code class="language-plaintext highlighter-rouge">Operator</code> are <code class="language-plaintext highlighter-rouge">Organisation</code>s. An <code class="language-plaintext highlighter-rouge">Operator</code> provides public transport services under contract with an <code class="language-plaintext highlighter-rouge">Authority</code>. We don’t use <code class="language-plaintext highlighter-rouge">Authority</code>.</p>
+
+<h4 id="table-6">Table</h4>
+
+<p>We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once.</p>
+
+<p><em>Table: Operator</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>keyList</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>KeyListStructure</td>
+      <td>A list of alternative Key values for an element.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>KeyValue</td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>KeyValueStructure</td>
+      <td>Key value pair for Entity.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Key</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Value</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:anyType</td>
+      <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>privateCodes</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodesStructure</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>Busines organisation</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of Traveller</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ShortName</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Short Name for service</td>
+      <td>there may be cases, when it can’t be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>parts</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>blockParts_RelStructure</td>
+      <td>BLOCK PARTs which make up COMPOUND BLOCK.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>administrativeZones</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>administrativeZones_RelStructure</td>
+      <td>Zones managed by ORGANISATION PART.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>TransportAdministrativeZone</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>TransportAdministrativeZone</td>
+      <td>A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/Operator.html">General NeTEx definition</a></em></p>
+
+<h4 id="example-7">Example</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;Operator</span>  <span class="na">id=</span><span class="s">"ch:1:sboid:100602"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. --&gt;</span>
+  <span class="nt">&lt;keyList&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>GO<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>801<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>SBOID<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>ch:1:sboid:100602<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;/keyList&gt;</span>
+  <span class="nt">&lt;privateCodes&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"GO"</span><span class="nt">&gt;</span>801<span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="c">&lt;!-- Busines organisation --&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sboid"</span><span class="nt">&gt;</span>ch:1:sboid:100602<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/privateCodes&gt;</span>
+  <span class="nt">&lt;PrivateCode&gt;</span>801<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>PostAuto AG<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;ShortName&gt;</span>PAG<span class="nt">&lt;/ShortName&gt;</span>
+  <span class="c">&lt;!-- there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. --&gt;</span>
+  <span class="nt">&lt;parts&gt;</span>
+    <span class="nt">&lt;OrganisationPart</span> <span class="na">id=</span><span class="s">"ch:1:OrganisationPart:801-5678"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;administrativeZones&gt;</span>
+        <span class="nt">&lt;TransportAdministrativeZone</span> <span class="na">id=</span><span class="s">"ch:1:TransportAdministrativeZone:801-5678"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;PrivateCode&gt;</span>5678<span class="nt">&lt;/PrivateCode&gt;</span>
+        <span class="nt">&lt;/TransportAdministrativeZone&gt;</span>
+      <span class="nt">&lt;/administrativeZones&gt;</span>
+    <span class="nt">&lt;/OrganisationPart&gt;</span>
+  <span class="nt">&lt;/parts&gt;</span>
+<span class="nt">&lt;/Operator&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/Operator.xml">Template</a></em></p>
+
+<h4 id="usage-notes-6">Usage Notes</h4>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Organisation</code>s located in Switzerland are identified by their <a href="https://transportdatamanagement.ch/content/uploads/2021/05/SwissBusinessOrganisationID_DE_1_2.pdf">SBOIDs</a>  (earlier <a href="https://opentransportdata.swiss/de/dataset/didok/resource/d66259a0-a77c-4aee-b7bd-e4fba99dcbb1">GO-number</a> ).
+in Switzerland. The TU-Code is to be used for operators of other countries.</li>
+  <li>The SBOID and GO number shall always also be stored in the <code class="language-plaintext highlighter-rouge">KeyList</code> and in <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">OperatorRef</code> on a <code class="language-plaintext highlighter-rouge">Line</code> is always the “Konzessionär”.</li>
+  <li>If a different <code class="language-plaintext highlighter-rouge">Operator</code> is running a given <code class="language-plaintext highlighter-rouge">ServiceJourney</code>, then this is reflected in the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> having 
+a different <code class="language-plaintext highlighter-rouge">OperatorRef</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Authority</code>  and <code class="language-plaintext highlighter-rouge">Organisation</code> are not used.</li>
+  <li>id-attribute needs to be kept stable between exports.</li>
+</ul>
+
+<h3 id="servicefacilityset">ServiceFacilitySet</h3>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#servicefacilityset">Glossary definition</a></em></p>
+
+<h4 id="purpose-10">Purpose</h4>
+<p>Set of <code class="language-plaintext highlighter-rouge">Facility</code>’s available for a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> or a <code class="language-plaintext highlighter-rouge">JourneyPart</code>.</p>
+
+<h4 id="table-7">Table</h4>
+
+<p>List of ServiceFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical ServiceFacilitySets. Reuse them. Details in the mapping excel.</p>
+
+<p><em>Table: ServiceFacilitySet</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Extensions</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>ExtensionsStructure</td>
+      <td>User defined Extensions to ENTITY in schema. (Wrapper tag used to avoid problems with handling of optional ‘any’ by some validators).</td>
+      <td>Two elements used in HRDF for ordering facilities</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Priority</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>InterchangePriorityType</td>
+      <td>Priority to assign to this INTERCHANGE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Description</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Description of contents.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Text</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Text content of NOTICe.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>FareClasses</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>FareClassListOfEnumerations</td>
+      <td>List of FARE CLASSes.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>MobilityFacilityList</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>MobilityFacilityListOfEnumerations</td>
+      <td>List of MOBILITY FACILITies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>NuisanceFacilityList</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>NuisanceFacilityListOfEnumerations</td>
+      <td>List of NUISANCE FACILITies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>PassengerCommsFacilityList</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>PassengerCommsFacilityListOfEnumerations</td>
+      <td>List of PASSENGER COMMS FACILITies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>SanitaryFacilityList</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>SanitaryFacilityListOfEnumerations</td>
+      <td>List of SANITARY FACILITies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>CouchetteFacilityList</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>CouchetteFacilityListOfEnumerations</td>
+      <td>List of COUCHETTE FACILITies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>GroupBookingFacility</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>GroupBookingEnumeration</td>
+      <td>Classification of GROUP FACILITY type - TPEG pti23.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/ServiceFacilitySet.html">General NeTEx definition</a></em></p>
+
+<h4 id="example-8">Example</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ServiceFacilitySet</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceFacilitySet:A___2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- List of ServiceFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical ServiceFacilitySets. Reuse them. Details in the mapping excel. --&gt;</span>
+  <span class="nt">&lt;Extensions&gt;</span>
+    <span class="c">&lt;!-- Two elements used in HRDF for ordering facilities --&gt;</span>
+    <span class="nt">&lt;Priority&gt;</span>1<span class="nt">&lt;/Priority&gt;</span>
+    <span class="nt">&lt;Condition&gt;</span>4<span class="nt">&lt;/Condition&gt;</span>
+  <span class="nt">&lt;/Extensions&gt;</span>
+  <span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Nur 2. Klasse<span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>2nd class only<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Seulement 2e classe<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Solo 2a classe<span class="nt">&lt;/Text&gt;&lt;/Description&gt;</span>
+  <span class="nt">&lt;FareClasses&gt;</span>secondClass<span class="nt">&lt;/FareClasses&gt;</span>
+  <span class="nt">&lt;MobilityFacilityList&gt;</span>stepFreeAccess lowFloor<span class="nt">&lt;/MobilityFacilityList&gt;</span>
+  <span class="nt">&lt;NuisanceFacilityList&gt;</span>animalsAllowed<span class="nt">&lt;/NuisanceFacilityList&gt;</span>
+  <span class="nt">&lt;PassengerCommsFacilityList&gt;</span>publicWifi<span class="nt">&lt;/PassengerCommsFacilityList&gt;</span>
+  <span class="nt">&lt;SanitaryFacilityList&gt;</span>toilet<span class="nt">&lt;/SanitaryFacilityList&gt;</span>
+  <span class="nt">&lt;CouchetteFacilityList&gt;</span>wheelchair<span class="nt">&lt;/CouchetteFacilityList&gt;</span>
+  <span class="nt">&lt;GroupBookingFacility&gt;</span>groupsAllowed<span class="nt">&lt;/GroupBookingFacility&gt;</span>
+<span class="nt">&lt;/ServiceFacilitySet&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/ServiceFacilitySet.xml">Template</a></em></p>
+
+<h4 id="usage-notes-7">Usage Notes</h4>
+<ul>
+  <li>SKI uses the following groups to classify <code class="language-plaintext highlighter-rouge">ServiceFacility</code>s:
+    <ul>
+      <li>Accommodation facility</li>
+      <li>Catering facility</li>
+      <li>Fare classes</li>
+      <li>Group booking facility</li>
+      <li>Luggage carriage facility</li>
+      <li>Mobility facility</li>
+      <li>Nuisance facility</li>
+      <li>Passenger communications facility</li>
+      <li>Service reservation facility</li>
+      <li>Ticketing facility</li>
+      <li>Uic train rate</li>
+    </ul>
+  </li>
+  <li>The list is from time to time revised. The values and lists from the NeTEx standard are not updated.</li>
+  <li>This means that a given Facility (e.g. restaurant or diaper changing table) is shown in the appropriate 
+subcategory <code class="language-plaintext highlighter-rouge">MealFacilityList</code> or <code class="language-plaintext highlighter-rouge">FamilyFacilityList</code>, and a passenger information system can show these categories in 
+a reasonable order. The categories themselves are from type <code class="language-plaintext highlighter-rouge">xsd:list</code>, meaning that the values of a category are a 
+separated list of elements.</li>
+  <li>When transforming from HRDF to NeTEx. The <code class="language-plaintext highlighter-rouge">Facility</code> is often also copied as a <code class="language-plaintext highlighter-rouge">Notice</code> in textual form.</li>
+  <li>The details of the usage are defined in the <a href="media/Mappingtabellen_NeTEx_v2.0.xlsx">mapping table for NeTEX 2.0</a>.</li>
+  <li>See also <a href="/netexRealisationGuideSwitzerland/main/uc04_service_facilities.html">Use case on service facilities</a>.</li>
+  <li>id-attribute should be kept stable between exports.</li>
+</ul>
+
+<h3 id="sitefacilityset">SiteFacilitySet</h3>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#servicefacilityset">Glossary definition</a></em></p>
+
+<h4 id="purpose-11">Purpose</h4>
+<p>Set of <code class="language-plaintext highlighter-rouge">Facility</code>s available at a <code class="language-plaintext highlighter-rouge">StopPlace</code>, <code class="language-plaintext highlighter-rouge">Quay</code> or other site elements.</p>
+
+<p>A <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code> defines a set of facilities like sanitary facilities, ticket service, lockers etc. that can be 
+referenced to define facilities of a site.</p>
+
+<h4 id="table-8">Table</h4>
+
+<p>List of SiteFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical SiteFacilitySets. Reuse them. There might be an overlap to ServiceFacilitySet, but they are used for different purposes.</p>
+
+<p><em>Table: SiteFacilitySet</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>validityConditions</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>validityConditions_RelStructure</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/AvailabilityCondition.html">AvailabilityCondition</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>AvailabilityCondition</td>
+      <td>VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Description</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Description of contents.</td>
+      <td>Description is optional</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Text</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Text content of NOTICe.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AssistanceFacilityList</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>AssistanceFacilityListOfEnumerations</td>
+      <td>List of ASSISTANCE FACILITies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AccessibilityToolList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessibilityToolListOfEnumerations</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>SanitaryFacilityList</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>SanitaryFacilityListOfEnumerations</td>
+      <td>List of SANITARY FACILITies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TicketingServiceFacilityList</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>TicketingServiceFacilityListOfEnumerations</td>
+      <td>List of TICKETING SERVICE FACILITies, e.g. purchase, collection. top up.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>EmergencyServiceList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>EmergencyServiceListOfEnumerations</td>
+      <td>Emergency service assistance available.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LuggageLockerFacilityList</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>LuggageLockerFacilityListOfEnumerations</td>
+      <td>List of LUGGAGE LOCKER FACILITies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ParkingFacilityList</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>ParkingFacilityListOfEnumerations</td>
+      <td>List of PARKING FACILITies.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/SiteFacilitySet.html">General NeTEx definition</a></em></p>
+
+<h4 id="example-9">Example</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;SiteFacilitySet</span>  <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- List of SiteFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical SiteFacilitySets. Reuse them. There might be an overlap to ServiceFacilitySet, but they are used for different purposes. --&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;FromDate&gt;</span>2026-03-30T12:00:00<span class="nt">&lt;/FromDate&gt;</span>
+      <span class="nt">&lt;ToDate&gt;</span>2026-04-01T12:00:00<span class="nt">&lt;/ToDate&gt;</span>
+      <span class="nt">&lt;ValidDayBits&gt;</span>01<span class="nt">&lt;/ValidDayBits&gt;</span>
+    <span class="nt">&lt;/AvailabilityCondition&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>SiteFacilitySet Solothurn<span class="c">&lt;!-- Description is optional --&gt;</span><span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>SiteFacilitySet Solothurn<span class="nt">&lt;/Text&gt;&lt;/Description&gt;</span>
+  <span class="nt">&lt;AssistanceFacilityList&gt;</span>personalAssistance information boardingAssistance<span class="nt">&lt;/AssistanceFacilityList&gt;</span>
+  <span class="nt">&lt;AccessibilityToolList&gt;</span>audioNavigator<span class="nt">&lt;/AccessibilityToolList&gt;</span>
+  <span class="nt">&lt;SanitaryFacilityList&gt;</span>toilet babyChange<span class="nt">&lt;/SanitaryFacilityList&gt;</span>
+  <span class="nt">&lt;TicketingServiceFacilityList&gt;</span>all reservations<span class="nt">&lt;/TicketingServiceFacilityList&gt;</span>
+  <span class="nt">&lt;EmergencyServiceList&gt;</span>police firstAid<span class="nt">&lt;/EmergencyServiceList&gt;</span>
+  <span class="nt">&lt;LuggageLockerFacilityList&gt;</span>lockers<span class="nt">&lt;/LuggageLockerFacilityList&gt;</span>
+  <span class="nt">&lt;ParkingFacilityList&gt;</span>parkAndRidePark<span class="nt">&lt;/ParkingFacilityList&gt;</span>
+<span class="nt">&lt;/SiteFacilitySet&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/SiteFacilitySet.xml">Template</a></em></p>
+
+<h4 id="usage-notes-8">Usage Notes</h4>
+<ul>
+  <li>Make sure to not generate identical SiteFacilitySets. Reuse them.</li>
+  <li>We currently don’t have many <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code> as this is not done in timetables yet. With accessibility and more information from Atlas, this may change.</li>
+  <li>We will keep the list of relevant values updated in <a href="media/Mappingtabellen_NeTEx_v2.0.xlsx">mapping table for NeTEX 2.0</a>.</li>
+  <li>There may be an overlap between <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code> and <code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code>. However, they reference very different things: site elements and vehicles.</li>
+  <li>Sometimes “capabilities”/”limitations” are defined through combinations of what a stop and what a vehicle can do.</li>
+  <li>In future also the use of <code class="language-plaintext highlighter-rouge">Equipment</code> and <code class="language-plaintext highlighter-rouge">EquipmentPlace</code> may become more important. These are then actual pieces of equipment. This also means that the <code class="language-plaintext highlighter-rouge">Vehicle</code> must be known and referenced.</li>
+  <li>id-attribute should be kept stable between exports.</li>
+</ul>
+
+<h3 id="vehicletype">VehicleType</h3>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#vehicletype">Glossary definition</a></em></p>
+
+<h4 id="purpose-12">Purpose</h4>
+<p>A typified vehicle configuration (model or series) defining reusable characteristics such as capacity, dimensions, propulsion, and accessibility features.</p>
+
+<h4 id="table-9">Table</h4>
+
+<p>Used currently mainly for the relevant accessibility elements that can be expressed currently</p>
+
+<p><em>Table: VehicleType</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ShortName</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Short Name for service</td>
+      <td>Will be defined in mapping excel</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LowFloor</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether Vehicle is low floor to facilitate access by the mobility impaired.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>HasLiftOrRamp</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether vehicle has lift or ramp to facilitate wheelchair access.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>HasHoist</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether vehicle has hoist for wheelchair access.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../generated/netex-html/VehicleType.html">General NeTEx definition</a></em></p>
+
+<h4 id="example-10">Example</h4>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;VehicleType</span>  <span class="na">id=</span><span class="s">"ch:1:VehicleType:NF"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Used currently mainly for the relevant accessibility elements that can be expressed currently --&gt;</span>
+  <span class="nt">&lt;ShortName&gt;</span>NF<span class="nt">&lt;/ShortName&gt;</span>
+  <span class="c">&lt;!-- Will be defined in mapping excel --&gt;</span>
+  <span class="nt">&lt;LowFloor&gt;</span>true<span class="nt">&lt;/LowFloor&gt;</span>
+  <span class="nt">&lt;HasLiftOrRamp&gt;</span>false<span class="nt">&lt;/HasLiftOrRamp&gt;</span>
+  <span class="nt">&lt;HasHoist&gt;</span>true<span class="nt">&lt;/HasHoist&gt;</span>
+<span class="nt">&lt;/VehicleType&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/VehicleType.xml">Template</a></em></p>
+
+<h4 id="usage-notes-9">Usage Notes</h4>
+<ul>
+  <li>We currently use <code class="language-plaintext highlighter-rouge">VehicleType</code> but not <code class="language-plaintext highlighter-rouge">VehicleModel</code>.</li>
+  <li>We express accessibility partially through it.</li>
+  <li>See more details in mapping excel.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

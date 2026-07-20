@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame" version="1">
+					<vehicleJourneys>
+						<ServiceJourney id="generated" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>SJYID</Key>
+									<Value>ch:1:sjyid:100001:71707-003</Value>
+								</KeyValue>
+							</keyList>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1"/>
+							<DepartureTime>06:21:00</DepartureTime>
+							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1"/>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1">
+								</TrainNumberRef>
+							</trainNumbers>
+							<passingTimes>
+								<TimetabledPassingTime id="generated" version="1">
+									<PointInJourneyPatternRef ref="generated" versionRef="1">
+									</PointInJourneyPatternRef>
+									<DepartureTime>08:45:00</DepartureTime>
+									<occupancies>
+										<OccupancyView id="generated" version="1">
+											<!-- ch-root -->
+											<!-- ch-attrs: id version -->
+											<dayTypeRefs>
+												<!-- ch-usage: optional -->
+												<DayTypeRef ref="generated" versionRef="1">
+													<!-- ch-usage: optional -->
+												</DayTypeRef>
+											</dayTypeRefs>
+											<dayTypes>
+												<!-- ch-usage: expected -->
+												<DayType id="generated" version="1">
+													<!-- ch-usage: expected -->
+													<!-- ch-see -->
+												</DayType>
+											</dayTypes>
+											<FareClass><!-- ch-usage: expected --><!-- ch-allowed-enums: firstClass secondClass unknown -->firstClass</FareClass>
+											<OccupancyLevel><!-- ch-usage: expected --><!-- ch-allowed-enums: unknown empty manySeatsAvailable fewSeatsAvailable standingRoomOnly crushedStandingRoomOnly full notAcceptingPassengers undefined --><!-- ch-note: Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable -->seatsAvailable</OccupancyLevel>
+											<GroupReservation>
+												<!-- ch-usage: optional -->
+												<NameOfGroup lang="fr"><!-- ch-usage: expected -->Gymnase français de Bienne></NameOfGroup>
+												<NumberOfReservedSeats><!-- ch-usage: expected -->21</NumberOfReservedSeats>
+											</GroupReservation>
+										</OccupancyView>
+									</occupancies>
+								</TimetabledPassingTime>
+							</passingTimes>
+						</ServiceJourney>
+					</vehicleJourneys>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

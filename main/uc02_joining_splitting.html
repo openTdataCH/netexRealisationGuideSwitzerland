@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Joining and splitting of trains | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Joining and splitting of trains" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Joining and splitting of trains" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Joining and splitting of trains","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Joining and splitting of trains</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="overview">Overview</h2>
+
+<p>Splitting (Flügelzug) and joining (Vereinigung) describe operational patterns where a
+single coupled train separates into two independent trains at an intermediate stop, or
+two trains merge into one.<br />
+The Swiss example used throughout this use case is the
+<strong>RE1 4171 Bern – Spiez – Brig / Zweisimmen</strong>: the coupled train runs from Bern to
+Spiez (Flügelungspunkt), then splits into two branches — RE1 4271 towards Brig (via
+Lötschberg) and R11 6823 towards Zweisimmen (via Simmental).</p>
+
+<pre><code class="language-mermaid">graph LR
+  Bern --&gt;|"RE1 4171 (Stammfahrt)"| Spiez
+  Spiez --&gt;|"RE1 4271 → Brig"| Brig
+  Spiez --&gt;|"R11 6823 → Zweisimmen"| Zweisimmen
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> <code class="language-plaintext highlighter-rouge">ChangeWithinVehicle</code> should be set to <code class="language-plaintext highlighter-rouge">true</code> when a passenger may need
+to move to a different part of the train at the splitting point to continue their
+journey.
+See also <a href="/netexRealisationGuideSwitzerland/main/uc01_durchbindung.html">uc01 Durchbindung</a>.</p>
+</blockquote>
+
+<h2 id="mapping-between-hrdf-and-netex">Mapping between HRDF and NeTEx</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>HRDF</th>
+      <th>NeTEx RG1</th>
+      <th>NeTEx RG2</th>
+      <th>Use Case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[durchbi]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">JourneyMeeting</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> with <code class="language-plaintext highlighter-rouge">StaySeated=true</code> and <code class="language-plaintext highlighter-rouge">ChangeWithinVehicle=true</code></td>
+      <td>Splitting / Joining at splitting- / joining point</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>HRDF example (Bern – Spiez – Brig/Zweisimmen):</strong></p>
+
+<p>Two <code class="language-plaintext highlighter-rouge">[durchbi]</code> records are needed — one per branch (Brig and Zweisimmen).</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>004171  000033  8507483  004271  000033  000000  8507483  %
+004171  000033  8507483  006823  000033  000000  8507483  %
+</code></pre></div></div>
+
+<p>The coupling on the Bern–Spiez section is expressed via two <code class="language-plaintext highlighter-rouge">[durchbi]</code> records,
+linking the feeder journey 4171 to each of the branch journeys (4271 and 6823) at
+Spiez (DIDOK 8507483).</p>
+
+<h2 id="modelling-with-netex-rg-10-journeymeeting">Modelling with NeTEx RG 1.0 (<code class="language-plaintext highlighter-rouge">JourneyMeeting</code>)</h2>
+
+<p>In RG 1.0, each branch required a separate <code class="language-plaintext highlighter-rouge">JourneyMeeting</code> at the splitting point.</p>
+
+<p><strong>Situation according to Realisation Guide 1.0</strong></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;JourneyMeeting</span> <span class="na">id=</span><span class="s">"ch:1:JourneyMeeting:91001N-BLS-439-1-45540_91001N-BLS-777-1-47520_..."</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:c6300"</span> <span class="na">versionRef=</span><span class="s">"any"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;AtStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">versionRef=</span><span class="s">"any"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;FromJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_439"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100015:4271-001_91001N.j26_777"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;EarliestTime&gt;</span>13:10:00<span class="nt">&lt;/EarliestTime&gt;</span>
+  <span class="nt">&lt;LatestTime&gt;</span>13:12:00<span class="nt">&lt;/LatestTime&gt;</span>
+<span class="nt">&lt;/JourneyMeeting&gt;</span>
+
+<span class="nt">&lt;JourneyMeeting</span> <span class="na">id=</span><span class="s">"ch:1:JourneyMeeting:91001N-BLS-440-1-45540_91011N-BLS-149-1-47520_..."</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:u7600"</span> <span class="na">versionRef=</span><span class="s">"any"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;AtStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">versionRef=</span><span class="s">"any"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;FromJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_440"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100015:6823-001_91011N.j26_149"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Description&gt;</span>LineChange<span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;EarliestTime&gt;</span>13:10:00<span class="nt">&lt;/EarliestTime&gt;</span>
+  <span class="nt">&lt;LatestTime&gt;</span>13:12:00<span class="nt">&lt;/LatestTime&gt;</span>
+<span class="nt">&lt;/JourneyMeeting&gt;</span>
+</code></pre></div></div>
+
+<h2 id="modelling-with-netex-rg-20-servicejourneyinterchange">Modelling with NeTEx RG 2.0 (<code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code>)</h2>
+
+<p>In RG 2.0, splitting and joining are modelled exclusively using <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code>. One interchange per branch is required.</p>
+
+<p><code class="language-plaintext highlighter-rouge">JourneyPart</code> and <code class="language-plaintext highlighter-rouge">JourneyPartCouple</code> are <strong>not used</strong> in the RG 2.0 for
+splitting and joining.</p>
+
+<p><strong>Situation with Realisation Guide 2.0</strong></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ServiceJourneyInterchange</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:4171-4271-Spiez"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:c6300"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;Description&gt;</span>Flügelung Spiez → Brig<span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;StaySeated&gt;</span>true<span class="nt">&lt;/StaySeated&gt;</span>
+  <span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
+  <span class="nt">&lt;ChangeWithinVehicle&gt;</span>true<span class="nt">&lt;/ChangeWithinVehicle&gt;</span>
+  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT2M<span class="nt">&lt;/MaximumWaitTime&gt;</span>
+  <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">version=</span><span class="s">"1"</span>  <span class="na">nameOfClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_439"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100015:4271-001_91001N.j26_777"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
+
+<span class="nt">&lt;ServiceJourneyInterchange</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:4171-6823-Spiez"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:u7600"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;Description&gt;</span>Flügelung Spiez → Zweisimmen<span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;StaySeated&gt;</span>true<span class="nt">&lt;/StaySeated&gt;</span>
+  <span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
+  <span class="nt">&lt;ChangeWithinVehicle&gt;</span>true<span class="nt">&lt;/ChangeWithinVehicle&gt;</span>
+  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT2M<span class="nt">&lt;/MaximumWaitTime&gt;</span>
+  <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_440"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100015:6823-001_91011N.j26_149"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">StaySeated=true</code> indicates that the passenger does not need to leave the vehicle — the train continues physically as one unit until the splitting point.</li>
+    <li><code class="language-plaintext highlighter-rouge">ChangeWithinVehicle=true</code> indicates that passengers must move to the correct coach within the train before the split, as each coach continues to a different destination after the splitting point.</li>
+  </ul>
+</blockquote>
+
+<p>The detailed handling is described for the element <a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#servicejourneyinterchange">ServiceJourneyInterchange</a>.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ServiceJourneyInterchange</span>  <span class="na">version=</span><span class="s">"1"</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:2K"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;Description&gt;</span>LineChange<span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;StaySeated&gt;</span>true<span class="nt">&lt;/StaySeated&gt;</span>
+  <span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
+  <span class="nt">&lt;Planned&gt;</span>true<span class="nt">&lt;/Planned&gt;</span>
+  <span class="nt">&lt;Guaranteed&gt;</span>false<span class="nt">&lt;/Guaranteed&gt;</span>
+  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT9M<span class="nt">&lt;/MaximumWaitTime&gt;</span>
+  <span class="c">&lt;!-- If not set or PT0M, it is guaranteed. --&gt;</span>
+  <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;FromVisitNumber&gt;</span>1<span class="nt">&lt;/FromVisitNumber&gt;</span>
+  <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
+
+</code></pre></div></div>
+
+<ul>
+  <li><a href="./examples/NeTEx_CH_Bern_Spiez_Zweisimmen_TimeDemandType.xml">Example Splitting (Flügelzug Bern–Spiez–Brig/Zweisimmen)</a></li>
+</ul>
+
+<h2 id="related-use-cases">Related use cases</h2>
+
+<ul>
+  <li><a href="/netexRealisationGuideSwitzerland/main/uc01_durchbindung.html">uc01 Durchbindung</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/uc03_transfers.html">uc03 Transfers</a></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Use Case: Formations | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Use Case: Formations" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc15_formations.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc15_formations.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Use Case: Formations" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Use Case: Formations","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc15_formations.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Use Case: Formations</h1>
+  </header>
+
+  <div class="post-content">
+    <blockquote>
+  <p>NOTE: We currently don’t import or export formations. Currently, this is an experimental use case that defines how we might do it. It is still work in progress.</p>
+</blockquote>
+
+<p>Most important elements:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Train</code></li>
+  <li><code class="language-plaintext highlighter-rouge">TrainComponent</code></li>
+  <li><code class="language-plaintext highlighter-rouge">TrainElement</code></li>
+</ul>
+
+<blockquote>
+  <p><strong>TODO</strong> LATER: Add template for these elements.</p>
+</blockquote>
+
+<pre><code class="language-mermaid">classDiagram
+
+
+    class Train {
+        SelfPropelled: boolean
+        components: TrainComponents[]
+    }
+
+    %% Contained elements
+    class TrainComponent {
+        Label: Text
+        TrainElement
+        TrainElementRef
+
+        
+    }
+
+    class TrainElement {
+        TrainElementType
+        FareClasses
+
+    }
+
+class CompoundTrain {
+    SelfPropelled : boolean
+    components[]
+
+    }
+
+class TrainInCompoundTrain {
+    TrainRef
+    Label 
+}
+    class TrainBlock {
+        TrainRef
+        StartPointRef
+        EndPointRef
+        blockParts
+    }
+
+    class TrainBlockPart {
+        Description
+        CompoundTrainRef
+        JourneyPartCoupleRef
+    }
+
+    class ServiceJourney {
+        TrainRef
+        BlockRef
+        parts : JourneyPart[]
+        passingTimes[]
+        ServiceJourneyPatternRef
+    }
+
+    class ServiceJourneyPattern {
+        stopPointInJourneyPattern []
+    }
+
+    class StopPointInJourneyPattern {
+        ScheduledStopPointRef
+    }
+
+
+    class JourneyPart {
+        ParentJourneyRef
+        MainPartRef
+        JourneyPartCoupleRef
+        TrainNumberRef
+        TrainBlockPartRef
+        FromStopPointRef
+        ToStopPointRef
+    }
+
+    class PassengerStopAssignment {
+        ScheduledStopPointRef
+        ArrivesForwards:boolean
+        DepartsForwards: boolean
+        StopPlaceRef
+        QuayRef
+        passengerBoardingPositionsAssignments
+    }
+
+    class PassengerBoardingPositionAssignment  {
+     BoardingUse : boolean
+     AlightingUse: boolean
+     TrainComponentRef
+     IsAllowed: boolean
+    }
+
+    %% Containment relations (only contained elements)
+    Train "1" o-- "0..*" TrainComponent : contains
+    TrainComponent "0" o-- "1" TrainElement : contains or references
+    TrainBlock "1" o-- "0..*" TrainBlockPart : contains
+    TrainBlock "1" --&gt; "0..*" Train : references
+    TrainBlockPart "1" --&gt; "0..*" CompoundTrain : references
+    CompoundTrain "1" --&gt; "0..*" TrainInCompoundTrain : contains
+    TrainInCompoundTrain "1" -- "1" Train : references
+    ServiceJourney "1" o-- "0..1" Train : references
+    ServiceJourney "1" o-- "0..1" TrainBlock : references
+    ServiceJourney "1"  o-- "0..*" JourneyPart: contains
+    JourneyPart  "1" o-- "0..1"  TrainBlock : references
+    PassengerStopAssignment "0"  o-- "0..*" PassengerBoardingPositionAssignment : contains
+    PassengerBoardingPositionAssignment "1" o-- "0..1"  TrainComponent : references
+    ServiceJourney "1"  --&gt; "1" ServiceJourneyPattern : references
+    ServiceJourneyPattern "1" o-- "0..*" StopPointInJourneyPattern : contains
+    StopPointInJourneyPattern "1"  --&gt; "1" ScheduledStopPoint : references
+    PassengerStopAssignment "1" --&gt; "1" ScheduledStopPoint: references
+    PassengerBoardingPositionAssignment "1" --&gt; "0..1" ScheduledStopPoint: references
+</code></pre>
+
+<h2 id="example">Example</h2>
+<p><strong>TODO</strong> Needs to be defined with passingtime</p>
+
+<h2 id="usage-notes">Usage Notes</h2>
+<ul>
+  <li>We intend to use a version without <code class="language-plaintext highlighter-rouge">Block</code> and <code class="language-plaintext highlighter-rouge">CompoundTrain</code>.</li>
+  <li>We are unsure how to map to sectors as we don’t want to have to invent new ScheduledStopPoints (especially as this would need new pseudo-sloid). <strong>TODO</strong></li>
+  <li>We have a special example for when the platform is too short on a given stop: <strong>TODO</strong></li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer><script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    // Render code fences like ```mermaid (Jekyll outputs <pre><code class="language-mermaid">...</code></pre>)
+    mermaid.run({ querySelector: 'pre > code.language-mermaid' });
+</script></body>
+
+</html>

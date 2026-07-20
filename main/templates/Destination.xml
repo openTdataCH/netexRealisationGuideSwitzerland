@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame" version="1">
+					<vehicleJourneys>
+						<ServiceJourney id="generated" version="1">
+							<validityConditions>
+								<AvailabilityCondition id="generated" version="1">
+									<FromDate>2026-05-17T00:00:00Z</FromDate>
+									<ToDate>2026-05-17T00:00:00Z</ToDate>
+									<IsAvailable>true</IsAvailable>
+									<ValidDayBits>01010111</ValidDayBits>
+								</AvailabilityCondition>
+							</validityConditions>
+							<PrivateCode>1</PrivateCode>
+							<TransportMode>rail</TransportMode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1">
+							</TypeOfProductCategoryRef>
+							<TypeOfServiceRef ref="ch:1:TypeOfService:1" versionRef="1">
+
+							</TypeOfServiceRef>
+							<DepartureTime>06:21:00</DepartureTime>
+							<DepartureDayOffset>0</DepartureDayOffset>
+							<LineRef ref="ch:2:Line:11.IR.90" versionRef="1">
+
+							</LineRef>
+							<DirectionType>outbound</DirectionType>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1">
+								</TrainNumberRef>
+							</trainNumbers>
+							<Destination>
+								<!-- ch-root -->
+								<!-- ch-usage: expected -->
+								<!-- ch-note: We don't use the full Destination element, but only the DestinationDisplayRef within -->
+								<ScheduledStopPointRef versionRef="1" ref="ch:1:sloid:3412">
+									<!-- ch-usage: forbidden -->
+								</ScheduledStopPointRef>
+								<DestinationDisplayRef ref="the ref" versionRef="1">
+									<!-- ch-usage: expected -->
+									<!-- ch-note: We use a DestinationDiplayRef in such cases and nothing else.-->
+								</DestinationDisplayRef>
+							</Destination>
+							<passingTimes>
+								<TimetabledPassingTime id="generated" version="1">
+									<PointInJourneyPatternRef ref="generated" versionRef="1"/>
+								</TimetabledPassingTime>
+							</passingTimes>
+							<calls>
+								<Call id="c1" version="1">
+									<ScheduledStopPointRef ref="notused1" versionRef="1"/>
+								</Call>
+								<Call id="c2" version="1">
+									<ScheduledStopPointRef ref="notused2" versionRef="1"/>
+								</Call>
+							</calls>
+						</ServiceJourney>
+					</vehicleJourneys>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

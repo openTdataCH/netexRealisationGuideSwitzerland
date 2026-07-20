@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Line  id="use swiss line id where possible" version="1" responsibilitySetRef="dsa">
+  <!-- For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `OperatorRef`. This is to maintain compatibility with different data consumers. -->
+  <ValidBetween>
+    <!-- Usually set to the whole timetable year -->
+    <FromDate>2022-12-11T00:00:00</FromDate>
+    <ToDate>2023-12-09T23:59:59</ToDate>
+  </ValidBetween>
+  <keyList>
+    <KeyValue>
+      <!-- The SLNID is mandatory, when it exists -->
+      <Key>SLNID</Key>
+      <Value>ch:1:slnid:102846</Value>
+    </KeyValue>
+  </keyList>
+  <privateCodes>
+    <!-- The SLNID is mandatory, when it exists -->
+    <PrivateCode type="slnid">ch:1:slnid:102846</PrivateCode>
+  </privateCodes>
+  <Name>3</Name>
+  <!-- contains attribute D T from HRDF. Is not translated on purpose. -->
+  <ShortName>3</ShortName>
+  <!-- contains the LinieKurzName (attribut N T in HRDF) -->
+  <TransportMode>rail</TransportMode>
+  <TransportSubmode>
+    <!-- the mapping excel describe how to use the TransportSubmode -->
+    <RailSubmode>suburbanRailway</RailSubmode>
+    <!-- Here an example for rail. Be aware that other XXXSubmode are used for other mode. -->
+  </TransportSubmode>
+  <PublicCode>3</PublicCode>
+  <!-- Contains LinieLangName (attribute LT from HRDF) -->
+  <OperatorRef ref="ch:1:Operator:11" version="1">
+    <!-- The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney.  Is redundant to the responsibilitySetRef on purpose. -->
+  </OperatorRef>
+  <additionalOperators>
+    <!-- Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined. -->
+    <OperatorRef ref="ch:1:Operator:33" version="1"/>
+  </additionalOperators>
+  <LineType>fixed</LineType>
+  <!-- Will be used especially, when not "fixed". Details in mapping excel. -->
+  <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:TER" version="1">
+    <!-- Always aligned with BS KI oev-info.ch -->
+  </TypeOfProductCategoryRef>
+</Line>

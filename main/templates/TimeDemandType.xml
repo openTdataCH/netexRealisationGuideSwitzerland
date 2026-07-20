@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ServiceFrame id="ch:1:ServiceFrame" version="1">
+					<directions>
+						<Direction id="notUsed" version="none"/>
+					</directions>
+					<lines>
+						<Line id="use swiss line id where possible" version="1" responsibilitySetRef="dsa">
+							<Name>Name is needed</Name>
+						</Line>
+					</lines>
+					<groupsOfLines>
+						<GroupOfLines id="notUsed" version="none">
+							<Name>NotUsed</Name>
+						</GroupOfLines>
+					</groupsOfLines>
+					<destinationDisplays>
+						<DestinationDisplay id="generated-id" version="1">
+						</DestinationDisplay>
+					</destinationDisplays>
+					<scheduledStopPoints>
+						<ScheduledStopPoint id="sloid_where_possible" version="1">
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+					<connections>
+						<Access id="notUsed" version="none">
+							<From/>
+							<To/>
+						</Access>
+						<SiteConnection id="generated" version="1">
+						</SiteConnection>
+						<DefaultConnection id="generated" version="1">
+						</DefaultConnection>
+					</connections>
+					<stopAssignments>
+						<PassengerStopAssignment id="generated" version="1">
+						</PassengerStopAssignment>
+					</stopAssignments>
+					<timingLinks>
+						<TimingLink id="generated" version="1">
+							<FromPointRef ref="sloid1" versionRef="1"/>
+							<ToPointRef ref="sloid 2" versionRef="1"/>
+						</TimingLink>
+					</timingLinks>							
+					<journeyPatterns>
+						<ServiceJourneyPattern id="generated" version="1">
+						</ServiceJourneyPattern>
+					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="generated" version="1">
+							<!-- ch-root -->
+							<!-- ch-usage: expected -->
+							<!-- ch-note: TimeDemandType assigns a timing behaviour to a ServiceJourney -->
+							<!-- ch-attrs: id version -->
+							<Description><!-- ch-usage: optional --><!-- ch-note: Can be used if there exists a decription of the pattern. -->high demand</Description>
+							<runTimes>
+								<!-- ch-usage: expected -->
+								<!-- ch-note: The run time on the TimingLinks -->
+								<JourneyRunTime id="generated" version="1">
+									<!-- ch-usage: expected -->
+									<TimingLinkRef ref="generated" versionRef="1">
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: The timing link that is ued here and that that does have a given run time -->
+									</TimingLinkRef>
+									<RunTime><!-- ch-usage: mandatory -->PT5M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+							<waitTimes>
+								<!-- ch-usage: expected -->
+								<!-- ch-note: We only need wait times if greater than 0. -->
+								<JourneyWaitTime id="generated" version="1">
+									<!-- ch-usage: expected -->
+									<!-- ch-note: Relevant waiting times at the stop -->
+									<ScheduledStopPointRef ref="sloid" versionRef="1">
+										<!-- ch-usage: expected -->
+										<!-- ch-note: Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice). -->
+									</ScheduledStopPointRef>
+									<WaitTime><!-- ch-usage: mandatory -->PT2M</WaitTime>
+								</JourneyWaitTime>
+							</waitTimes>
+						</TimeDemandType>
+					</timeDemandTypes>
+					<notices>
+						<Notice id="generated" version="1">
+						</Notice>
+					</notices>
+				</ServiceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

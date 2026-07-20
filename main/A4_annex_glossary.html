@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Glossary | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Glossary" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Glossary" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Glossary","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Glossary</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Core terms used in this NeTEx profile, organised alphabetically.
+Each entry includes the definition (adapted to the context of the profile), the official NeTEx XSD annotation, and (where applicable) the Transmodel (EN 12896) definition.</p>
+
+<p>Note that not all elements are used in the profile. Where the element exists and is documented, a link (→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#alternativename">Full documentation</a>) points to the appropriate section in the realisation guide.</p>
+
+<!-- entur-terms-ready: format maps to SKOS prefLabel + definition -->
+
+<hr />
+
+<h2 id="alternativename">AlternativeName</h2>
+
+<p>Additional name variant for a NeTEx object - such as an official registration, translation, or abbreviation.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> Alternative Name.</p>
+
+  <p><strong>Transmodel:</strong> Alternative name for an ENTITY.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#alternativename">Full documentation</a></p>
+
+<hr />
+
+<h2 id="alternativetext">AlternativeText</h2>
+
+<p>Supplementary textual description attached to any NeTEx object.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> Alternative Text.</p>
+
+  <p><strong>Transmodel:</strong> Alternative text for any textual attribute of an ENTITY.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#alternativetext">Full documentation</a></p>
+
+<hr />
+
+<h2 id="authority">Authority</h2>
+
+<p>A public transport organisation responsible for planning, organising, and managing public transport services within a specific geographical area.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> The ORGANISATION under which the responsibility of organising the transport service in a certain area is placed.</p>
+
+  <p><strong>Transmodel:</strong> The ORGANISATION on which the responsibility of organising the transport service in a certain area is placed.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#organisation--operator--authority">Full documentation</a></p>
+
+<hr />
+
+<h2 id="availabilitycondition">AvailabilityCondition</h2>
+
+<p>Temporal availability in terms of, e.g., Dates, Timebands, ValidDayBits.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A specific type of VALIDITY CONDITION used to specify a set of temporal conditions that can be associated with an ENTITY, for example that a STOP PLACE is open on a particular DAY TYPE.</p>
+
+  <p><strong>Transmodel:</strong> A VALIDITY CONDITION expressed in terms of temporal parameters and referring to DAY TYPEs.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#availabilitycondition">Full documentation</a></p>
+
+<hr />
+
+<h2 id="codespace">Codespace</h2>
+
+<p>The namespace definition used for all NeTEx <code class="language-plaintext highlighter-rouge">@id</code> and <code class="language-plaintext highlighter-rouge">@ref</code> values within a dataset, ensuring identifier uniqueness across producers.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A system for uniquely identifying objects of a given type. Used for the distributed management of objects from many different sources.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="compositeframe">CompositeFrame</h2>
+
+<p>A container frame that groups multiple typed frames (ServiceFrame, TimetableFrame, etc.) into a single coherent delivery.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A container VERSION FRAME that groups a set of content VERSION FRAMEs to which the same VALIDITY CONDITIONs have been assigned.</p>
+
+  <p><strong>Transmodel:</strong> A set of VERSION FRAMEs to which the same VALIDITY CONDITIONs have been assigned.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/05_frames.html#compositeframe">Full documentation</a></p>
+
+<hr />
+
+<h2 id="contract">Contract</h2>
+
+<p>A legal or commercial agreement governing responsibilities between an Authority (contractee) and an Operator (contractor) for providing public transport services.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A CONTRACT between ORGANISATIONs to supply services or goods.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="datedservicejourney">DatedServiceJourney</h2>
+
+<p>A specific operational instance of a ServiceJourney on a particular calendar day, including day-specific modifications such as cancellations, replacements, or reinforcements. DatedServiceJourney is a NeTEx specialisation of the Transmodel concept DATED VEHICLE JOURNEY.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A particular SERVICE JOURNEY of a vehicle on a particular OPERATING DAY including all modifications possibly decided by the control staff.</p>
+
+  <p><strong>Transmodel:</strong> A particular journey of a vehicle on a particular OPERATING DAY including all modifications possibly decided by the control staff. <em>(Transmodel: DATED VEHICLE JOURNEY)</em></p>
+</blockquote>
+
+<hr />
+
+<h2 id="daytype">DayType</h2>
+
+<p>A classification of days on which a specific set of transport services operates (e.g., Weekdays, Saturdays, Public Holidays).</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays.</p>
+
+  <p><strong>Transmodel:</strong> A type of day characterised by one or more properties which affect public transport operation (for example: working day, sunday, weekday in school holidays, etc.).</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#daytype">Full documentation</a></p>
+
+<hr />
+
+<h2 id="daytypeassignment">DayTypeAssignment</h2>
+
+<p>The binding between a DayType and a specific date or date range (OperatingPeriod), determining when that DayType is active - including exception handling via <code class="language-plaintext highlighter-rouge">isAvailable=false</code>.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> Associates a DAY TYPE with an OPERATING DAY within a specific Calendar. A specification of a particular DAY TYPE which will be valid during a TIME BAND on an OPERATING DAY.</p>
+
+  <p><strong>Transmodel:</strong> The assignment of operational characteristics, expressed by DAY TYPEs, to particular OPERATING DAYs within a SERVICE CALENDAR.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#daytypeassignment">Full documentation</a></p>
+
+<hr />
+
+<h2 id="defaultconnection">DefaultConnection</h2>
+
+<p>Specifies default times for various transfer situations (within a StopPlace, between different Operators, between different ProductCategorys, etc.).</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> Specifies default times to be used to change from one mode of transport or another at an area or national level as specified by a TOPOGRAPHIC PLACE or SITE. May be restricted to a specific MODE or OPERATOR or only apply in a particular direction of transfer, e.g. bus to rail may have a different time as rail to bus.</p>
+
+  <p><strong>Transmodel:</strong> The physical (spatial) possibility for a passenger to change from one public transport vehicle to another to continue the trip. NOTE1: It specifies default times to be used to change from one mode of transport to another at an area or national level as specified by a TOPOGRAPHIC PLACE, STOP AREA or SITE
+ELEMENT. NOTE2: It may be further restricted to a specific MODE or OPERATOR or only apply in a particular direction of transfer, e.g., bus to rail may have a different time for rail to bus.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#defaultconnection">Full documentation</a></p>
+
+<hr />
+
+<h2 id="destinationdisplay">DestinationDisplay</h2>
+
+<p>The text shown on the front or side of a public transport vehicle to indicate its destination, including via-points and variant labels.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> An advertised destination of a specific JOURNEY PATTERN, usually displayed on a headsign or at other on-board locations.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#destinationdisplay">Full documentation</a></p>
+
+<hr />
+
+<h2 id="farecontract">FareContract</h2>
+
+<p>A customer-facing agreement for the right to travel and consume fare products, defined within a SalesTransactionFrame (NeTEx Part 3 - Sales).</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A contract with a particular (but possibly anonymous) customer, ruling the consumption of transport services (and joint services). A FARE CONTRACT may be designed for a fixed SALES OFFER PACKAGE (e.g. ticket) or to allow successive purchases of SALES OFFER PACKAGEs.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="fareframe">FareFrame</h2>
+
+<p>Contains fare data, products, and pricing rules - tariffs, validable elements, preassigned fare products, and sales offer packages.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A coherent set of Fare data to which the same VALIDITY CONDITIONs have been assigned.</p>
+
+  <hr />
+</blockquote>
+
+<h2 id="farezone">FareZone</h2>
+
+<p>A geographic zone used to determine ticket prices in public transport, grouping stop points for fare calculation.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A specialization of TARIFF ZONE to include FARE SECTIONs.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="flexibleserviceproperties">FlexibleServiceProperties</h2>
+
+<p>The scheduling and operational characteristics of a flexible (demand-responsive) transport service, attached to a ServiceJourney.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> FLEXIBLE SERVICE PROPERTIES in frame.</p>
+
+  <p><strong>Transmodel:</strong> Flexibility characteristics of a SERVICE JOURNEY, e.g., cancelled unless ordered and/or timing may be adjusted at time of booking or even later for service optimisation purposes.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="framedefaults">FrameDefaults</h2>
+
+<p>Holds default values for certain basic parameters.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> The FrameDefaults element specifies default values for certain common properties of elements in the frame, such as DATA SOURCE, time-zone etc., to be applied to elements in the frame for which an explicit value has not been specifed. The use of defaults can both simplify export and reduce the size of documents.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#framedefaults">Full documentation</a></p>
+
+<hr />
+
+<h2 id="groupoflines">GroupOfLines</h2>
+
+<p>A logical grouping of multiple Line objects for common management, branding, distribution, or filtering.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A grouping of LINEs which will be commonly referenced for a specific purpose.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="servicejourneyinterchange">ServiceJourneyInterchange</h2>
+
+<p>A planned interchange between two ServiceJourneys — feeder and distributor — including whether the passenger stays seated, must change vehicle within the same train, or is guaranteed a connection.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#servicejourneyinterchange">Full documentation</a></p>
+
+<hr />
+
+<h2 id="interchange">Interchange</h2>
+
+<p>A planned transfer opportunity between two ServiceJourneys at a shared stop point, modelled as <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> in XML.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> The scheduled possibility for transfer of passengers between two SERVICE JOURNEYs at the same or different STOP POINTs.</p>
+
+  <p><strong>Transmodel:</strong> The scheduled possibility for transfer of passengers between two SERVICE JOURNEYs at the same or different SCHEDULED STOP POINTs.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="interchangerule">InterchangeRule</h2>
+
+<blockquote>
+  <p><strong>Not used in the Swiss profile</strong> — replaced by <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> (see <a href="/netexRealisationGuideSwitzerland/main/uc03_transfers.html">uc03 Transfers</a>).</p>
+</blockquote>
+
+<p>An InterchangeRule defines the possibility of interchanging between two ServiceJourneys at the same or different 
+ScheduledStopPoints - where at least one journey is specified indirectly via Direction, Line, or the VehicleJourney, 
+rather than as an explicit journey pair. The rule specifies criteria (e.g. Mode, Line, Direction) that a candidate feeder 
+or distributor journey must fulfil.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> INTERCHANGE RULE specifies conditions governing the possibility of interchanging between two SERVICE JOURNEYs, 
+stopping at the same or different SCHEDULED STOP POINTs, where at least one of the two SERVICE JOURNEYs is indicated 
+indirectly by a DIRECTION, LINE or VEHICLE JOURNEY.
+Such conditions may alternatively be specified directly, indicating the corresponding services. In this case, they are 
+either a SERVICE JOURNEY PATTERN INTERCHANGE or a SERVICE JOURNEY INTERCHANGE.</p>
+
+  <p><strong>Transmodel:</strong> Conditions governing the possibility of interchanging between two SERVICE JOURNEYs, stopping at the 
+same or different SCHEDULED STOP POINTs, where at least one of the two SERVICE JOURNEYs is indicated indirectly by a 
+DIRECTION, LINE or VEHICLE JOURNEY.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#interchangerule">Full documentation</a></p>
+
+<hr />
+
+<h2 id="journeypattern">JourneyPattern</h2>
+
+<p>The ordered sequence of ScheduledStopPoints that a transport service follows for a specific variant of a Route.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> An ordered list of SCHEDULED STOP POINTs and TIMING POINTs on a single ROUTE, describing the pattern of working for public transport vehicles. A JOURNEY PATTERN may pass through the same POINT more than once. The first point of a JOURNEY PATTERN is the origin. The last point is the destination.</p>
+
+  <p><strong>Transmodel:</strong> An ordered list of SCHEDULED STOP POINTs and TIMING POINTs on a single ROUTE, describing the pattern of working for public transport vehicles.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#servicejourneypattern">Full documentation</a></p>
+
+<hr />
+
+<h2 id="line">Line</h2>
+
+<p>A public transport service line, representing a marketed route with a name, transport mode, and operator.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A group of ROUTEs which is generally known to the public by a similar name or number.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#line">Full documentation</a></p>
+
+<hr />
+
+<h2 id="linksequenceprojection">LinkSequenceProjection</h2>
+
+<p>The geographic representation of a ServiceLink, carrying GML geometry (typically a LineString) describing the spatial path between two consecutive ScheduledStopPoints.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A Projection of a whole LINK SEQUENCE as an ordered series of POINTs.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="multilingualstring">MultilingualString</h2>
+
+<p>NeTEx type used to define a string in one or more natural languages.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> <code class="language-plaintext highlighter-rouge">MultilingualString</code> allows the definition of a string in one or more natural languages.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#multilingualstring">Full documentation</a></p>
+
+<hr />
+
+<h2 id="notice">Notice</h2>
+
+<p>Informational or regulatory text associated with public transport services, displayed to passengers.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media.</p>
+
+  <p><strong>Transmodel:</strong> A text for informational purposes on exceptions in a LINE, a JOURNEY PATTERN, etc. The information may be usable for passenger or driver information.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#notice">Full documentation</a></p>
+
+<hr />
+
+<h2 id="noticeassignment">NoticeAssignment</h2>
+
+<p>Assign a <code class="language-plaintext highlighter-rouge">Notice</code> to an element.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> The assignment of a NOTICE to any model element. Can be used in particular to show an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</p>
+
+  <p><strong>Transmodel:</strong> The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the
+validity of the NOTICE starts and ends respectively.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#noticeassignment">Full documentation</a></p>
+
+<hr />
+
+<h2 id="operatingday">OperatingDay</h2>
+
+<blockquote>
+  <p><strong>Not used in the Swiss profile</strong> — replaced by <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> (see <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#availabilitycondition">AvailabilityCondition</a>).</p>
+</blockquote>
+
+<p>A specific calendar date on which transport services operate, referenced by DatedServiceJourney to anchor a journey to a concrete day.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A day of public transport operation in a specific calendar. An OPERATING DAY may last more than 24 hours.</p>
+
+  <p><strong>Transmodel:</strong> A day of public transport operation of which the characteristics are defined within in a specific SERVICE CALENDAR. An OPERATING DAY may last more than 24 hours.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="operatingperiod">OperatingPeriod</h2>
+
+<blockquote>
+  <p><strong>Not used in the Swiss profile</strong> — replaced by <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> (see <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#availabilitycondition">AvailabilityCondition</a>).
+A continuous date range (FromDate-ToDate) during which a set of transport services may operate, used by DayTypeAssignment.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A continuous interval of time between two OPERATING DAYs which will be used to define validities.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="operator">Operator</h2>
+
+<p>An organisation that provides public transport services under contract with an Authority.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A company providing public transport services.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#organisation--operator--authority">Full documentation</a></p>
+
+<hr />
+
+<h2 id="organisation">Organisation</h2>
+
+<p>A legally incorporated body associated with any aspect of public transportation. Authority and Operator are Organisations.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A legally incorporated body associated with any aspect of public transportation.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#organisation--operator--authority">Full documentation</a></p>
+
+<hr />
+
+<h2 id="parking">Parking</h2>
+
+<p>A parking facility associated with public transport - such as a park-and-ride lot, bike parking, or car park at a station.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A named place where Parking may be accessed. May be a building complex (e.g. a station) or an on-street location.</p>
+
+  <p><strong>Transmodel:</strong> Designated locations for leaving vehicles such as cars, motorcycles and bicycles.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="passengerstopassignment">PassengerStopAssignment</h2>
+
+<p>The bridge linking a logical ScheduledStopPoint to a physical Quay within a StopPlace, connecting timetable planning with physical infrastructure.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION.</p>
+
+  <p><strong>Transmodel:</strong> The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#passengerstopassignment">Full documentation</a></p>
+
+<hr />
+
+<h2 id="placeequipments">placeEquipments</h2>
+
+<p>A container within a StopPlace or Quay holding equipment items (shelters, waiting rooms, sanitary facilities, ticketing machines) that describe the physical amenities at the stop.</p>
+
+<hr />
+
+<h2 id="publicationdelivery">PublicationDelivery</h2>
+
+<p>The root element of every NeTEx XML document, wrapping one or more frames with metadata (timestamp, participant, description).</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A set of NeTEx objects as assembled by a publication request or other service. Provides a general purpose wrapper for NeTEx data content.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/05_frames.html#publicationdelivery">Full documentation</a></p>
+
+<hr />
+
+<h2 id="purposeofgrouping">PurposeOfGrouping</h2>
+
+<p>A classifier for the reason why NeTEx objects are grouped together (e.g., for presentation, regulation, or contract scope).</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> Functional purpose for which GROUPs of elements are defined. The PURPOSE OF GROUPING may be restricted to one or more types of the given object.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="quay">Quay</h2>
+
+<p>A specific boarding or alighting position (platform, stand, bay) within a StopPlace where passengers physically meet vehicles.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</p>
+
+  <p><strong>Transmodel:</strong> A place such as platform, stance, or quay side where passengers have access to PT vehicles, Taxis, cars or other means of transportation.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/06_stops.html#quay">Full documentation</a></p>
+
+<hr />
+
+<h2 id="responsibilityset">ResponsibilitySet</h2>
+
+<p>The set of roles and organisations responsible for managing data, operations, or contractual obligations within a defined scope.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent.</p>
+
+  <p><strong>Transmodel:</strong> A list of possible responsibilities over one or more ENTITies IN VERSION, resulting from the process of the assignment of RESPONSIBILITY ROLEs (such as data origination, ownership, etc.) on specific data (instances) to ORGANISATIONs or ORGANISATION PARTs.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#responsibilityset">Full documentation</a></p>
+
+<hr />
+
+<h2 id="resourceframe">ResourceFrame</h2>
+
+<p>Contains shared resources used across other frames - organisations (Authorities and Operators), vehicle types, vehicles, codespaces, and other common reference data.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A coherent set of reference values for TYPE OF VALUEs, ORGANISATIONs, VEHICLE TYPEs etc that have a common validity. Used to define common resources that will be referenced by other types of FRAME.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#resourceframe">Full documentation</a></p>
+
+<hr />
+
+<h2 id="route">Route</h2>
+
+<p>The logical geographic path definition for a Line with a specific direction.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> An ordered list of located POINTs defining one single path through the road (or rail) network. A ROUTE may pass through the same POINT more than once.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="salestransactionframe">SalesTransactionFrame</h2>
+
+<p>Contains sales-related data including fare contracts and their entries, representing the commercial agreements between passengers and transport providers.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A coherent set of Sales Transaction data to which the same VALIDITY CONDITIONs have been assigned.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="sanitaryequipment">SanitaryEquipment</h2>
+
+<p>Sanitary facilities (toilets, washrooms) available at a stop place, station, or onboard a vehicle.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A SANITARY FACILITY, e.g. WC, Shower, baby change.</p>
+
+  <p><strong>Transmodel:</strong> Specialisation of PASSENGER EQUIPMENT describing sanitary facilities (WC, shower, etc.).</p>
+</blockquote>
+
+<hr />
+
+<h2 id="scheduledstoppoint">ScheduledStopPoint</h2>
+
+<p>A logical stopping point in the timetable, used by JourneyPatterns and ServiceJourneys to define where vehicles stop.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A POINT where passengers can board or alight from vehicles.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#scheduledstoppoint">Full documentation</a></p>
+
+<hr />
+
+<h2 id="servicealteration">ServiceAlteration</h2>
+
+<p>An enumeration on DatedServiceJourney indicating the deviation type. Allowed values: <code class="language-plaintext highlighter-rouge">planned</code>, <code class="language-plaintext highlighter-rouge">cancellation</code>, <code class="language-plaintext highlighter-rouge">provisional</code>, <code class="language-plaintext highlighter-rouge">replaced</code>, <code class="language-plaintext highlighter-rouge">extraJourney</code>. Omitted implies <code class="language-plaintext highlighter-rouge">planned</code>.</p>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#servicejourney">DatedServiceJourney table</a></p>
+
+<hr />
+
+<h2 id="servicecalendar">ServiceCalendar</h2>
+
+<p>In the general NeTEx model, a ServiceCalendar defines a mapping between DayTypes and OperatingDays. In the Swiss profile, OperatingDay is not used — ServiceCalendar serves only as a container for DayTypes and DayTypeAssignments.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A collection of assignments of OPERATING DAYs to DAY TYPEs.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#servicecalendar">Full documentation</a></p>
+
+<hr />
+
+<h2 id="servicecalendarframe">ServiceCalendarFrame</h2>
+
+<p>Groups calendar definitions that describe when services operate - day types, operating periods, and day-type assignments.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar, used to state the temporal VALIDITY of other NeTEx entities such as Timetables and STOP PLACEs.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#servicecalendarframe">Full documentation</a></p>
+
+<hr />
+
+<h2 id="servicefacilityset">ServiceFacilitySet</h2>
+
+<p>Set of facilities available for a ServiceJourney or a JourneyPart.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> Set of FACILITies available for a SERVICE JOURNEY or a JOURNEY PART. The set may be available only for a specific VEHICLE TYPE within the SERVICE (e.g. carriage equipped with low floor).</p>
+
+  <p><strong>Transmodel:</strong> Set of FACILITies available for a specific VEHICLE TYPE (e.g., carriage equipped with low floor) possibly only for a service (or for a SERVICE JOURNEY or a JOURNEY).</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#servicefacilityset">Full documentation</a></p>
+
+<hr />
+
+<h2 id="serviceframe">ServiceFrame</h2>
+
+<p>Contains the network and route definitions - Lines, Routes, JourneyPatterns, ScheduledStopPoints, DestinationDisplays, and PassengerStopAssignments.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#serviceframe">Full documentation</a></p>
+
+<hr />
+
+<h2 id="servicejourney">ServiceJourney</h2>
+
+<p>A planned trip in the timetable operating on a recurring schedule, defining the stop sequence via a JourneyPattern, passing times, operator, and days of operation.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#servicejourney">Full documentation</a></p>
+
+<hr />
+
+<h2 id="servicejourneypattern">ServiceJourneyPattern</h2>
+
+<p>ServiceJourneyPattern is used to describe the journey pattern (sequence and times of ScheduledStopPoints) of ServiceJourney.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> The JOURNEY PATTERN for a (passenger carrying) SERVICE JOURNEY.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#servicejourneypattern">Full documentation</a></p>
+
+<hr />
+
+<h2 id="shelterequipment">ShelterEquipment</h2>
+
+<p>Weather shelter facilities available at a stop place or quay, with properties such as seating, step-free access, and enclosure.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> Specialisation of WAITING EQUIPMENT for a SHELTER.</p>
+
+  <p><strong>Transmodel:</strong> Specialisation of WAITING EQUIPMENT describing a shelter.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="siteconnection">SiteConnection</h2>
+
+<p>The physical (spatial) possibility for a passenger to change from one public transport vehicle to another at a shared location, expressed as default transfer times between two SiteElements (StopPlace, Quay, TopographicPlace).</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> The physical (spatial) possibility for a passenger to change from one public transport vehicle to another to continue the trip. The ends of connection can be specified as SCHEDULED STOP POINT or STOP AREA. Optionally this may be additionally qualified with physical STOP PLACE. Different times may be necessary to cover this link, depending on the kind of passenger.</p>
+
+  <p><strong>Transmodel:</strong> The physical (spatial) possibility for a passenger to change from one public transport vehicle to another to continue the trip, determined by physical locations, such as SITEs and/or its
+components and/or ENTRANCEs, in particular STOP PLACEs and/or its components. NOTE: Different times may be necessary to cover the resulting distance, depending on the kind of passenger.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#siteconnection">Full documentation</a></p>
+
+<hr />
+
+<h2 id="sitefacilityset">SiteFacilitySet</h2>
+
+<p>Set of facilities available at a StopPlace, Quay or other site elements.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> Set of FACILITies available for a SITE or SITE ELEMENT.</p>
+
+  <p><strong>Transmodel:</strong> Set of FACILITies available for a SITE ELEMENT.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#sitefacilityset">Full documentation</a></p>
+
+<hr />
+
+<h2 id="siteframe">SiteFrame</h2>
+
+<p>Contains the physical infrastructure model for public transport - stop places, quays, entrances, parking facilities, and topographic context.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A coherent set of SITE data to which the same frame VALIDITY CONDITIONs have been assigned.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/06_stops.html#siteframe">Full documentation</a></p>
+
+<hr />
+
+<h2 id="stopplace">StopPlace</h2>
+
+<p>A named physical or virtual location where passengers can board or alight from public transport, containing one or more Quays.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A named place where public transport may be accessed. May be a building complex (e.g. a station) or an on-street location.</p>
+
+  <p><strong>Transmodel:</strong> A place comprising one or more locations where vehicles may stop and where passengers may board or leave vehicles or prepare their trip. A STOP PLACE will usually have one or more well-known names.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/06_stops.html#stopplace">Full documentation</a></p>
+
+<hr />
+
+<h2 id="tariffzone">TariffZone</h2>
+
+<p>A geographic fare zone used for ticketing and pricing, grouping stops and areas into zones that determine ticket prices.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A ZONE used to define a zonal fare structure in a zone-counting or zone-matrix system.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="templateservicejourney">TemplateServiceJourney</h2>
+
+<p>A TemplateServiceJourney represents a sequence of planned trips. It is similar to the ServiceJourney, but it is used if there is a frequency or a rhythmical pattern defined at which the trips are scheduled on an operating day.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A repeating SERVICE JOURNEY for which a frequency has been specified, either as a HEADWAY JOURNEY GROUP (e.g. every 20 minutes) or a RHYTHMICAL JOURNEY GROUP (e.g. at 15, 27 and 40 minutes past the hour). It may thus represent multiple journeys or it could be used simply as a template for adding single extra DATED VEHICLE JOURNEYs after the planning phase.</p>
+
+  <p><strong>Transmodel:</strong> A passenger carrying TEMPLATE VEHICLE JOURNEY. NOTE: It may represent multiple journeys.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#templateservicejourney">Full documentation</a></p>
+
+<hr />
+
+<h2 id="ticketingequipment">TicketingEquipment</h2>
+
+<p>Ticket machines, validators, or other ticketing infrastructure available at a stop place or station.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> Specialisation of PASSENGER EQUIPMENT for ticketing.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="timeband">Timeband</h2>
+
+<p>A period of time within a day, usually defined by a start and end time.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#timeband">Full documentation</a></p>
+
+<hr />
+
+<h2 id="timedemandtype">TimeDemandType</h2>
+
+<p>An indicator of traffic conditions or other factors which may affect vehicle run or wait times.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#timedemandtype">Full documentation</a></p>
+
+<hr />
+
+<h2 id="timetabledpassingtime">TimetabledPassingTime</h2>
+
+<p>Long-term planned time data concerning public transport vehicles passing a particular PointInJourneyPattern on a specified vehicle journey for a certain DayType.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> PASSING TIME indicates the time of a vehicle at a point in a journey pattern. There can be different types of time (arrival, departure, estimated, observed, etc.). TIMETABLED PASSING TIME represents  scheduled information.</p>
+
+  <p><strong>Transmodel:</strong> Long-term planned time data concerning public transport vehicles passing a particular POINT IN JOURNEY PATTERN on a specified VEHICLE JOURNEY for a certain DAY TYPE.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#timetabledpassingtime">Full documentation</a></p>
+
+<hr />
+
+<h2 id="timetableframe">TimetableFrame</h2>
+
+<p>Contains operational journey definitions - ServiceJourneys, TemplateServiceJourneys, dead runs, and journey interchanges (via ServiceJourneyInterchange).</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#timetableframe">Full documentation</a></p>
+
+<hr />
+
+<h2 id="timinglink">TimingLink</h2>
+
+<p>An ordered pair of TimingPoints for which run times may be recorded.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> An ordered pair of TIMING POINTs for which run times may be recorded.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#timinglink">Full documentation</a></p>
+
+<hr />
+
+<h2 id="timingpoint">TimingPoint</h2>
+
+<p>A (geographic) point against which the timing information necessary to build schedules may be recorded.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A POINT against which the timing information necessary to build schedules may be recorded.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#timinglink">Full documentation</a></p>
+
+<hr />
+
+<h2 id="topographicplace">TopographicPlace</h2>
+
+<p>A named geographic area such as a city, municipality, county, or region - used to provide spatial context for StopPlaces.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A town, city, village, suburb, quarter or other name settlement within a country. Provides a Gazetteer of Transport related place names.</p>
+
+  <p><strong>Transmodel:</strong> A type of PLACE providing the topographical context when searching for or presenting travel information, for example as the origin or destination of a trip.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/06_stops.html#topographicplace">Full documentation</a></p>
+
+<hr />
+
+<h2 id="trainblock">TrainBlock</h2>
+
+<p>A rail-specific specialisation of Block that represents an operational grouping for a single train on a given operating day.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> The vehicle work required by a train-based JOURNEY or sequence of JOURNEYs, from the time it leaves a PARKING POINT after parking until its next return to park at a PARKING POINT.</p>
+
+  <p><strong>Transmodel:</strong> The work required to be done by a vehicle from the time it leaves a PARKING POINT after parking until its next return to park at a PARKING POINT. <em>(Transmodel: BLOCK)</em></p>
+</blockquote>
+
+<hr />
+
+<h2 id="trainnumber">TrainNumber</h2>
+
+<p>Codes assigned to particular journeys (ServiceJourney, TemplateServiceJourney) when operated by trains.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> Specification of codes assigned to particular VEHICLE JOURNEYs when operated by TRAINs or COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc.).</p>
+
+  <p><strong>Transmodel:</strong> A specification of codes assigned to particular VEHICLE JOURNEYs or JOURNEY PARTs when operated by TRAINs or COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc.)</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#trainnumber">Full documentation</a></p>
+
+<hr />
+
+<h2 id="typeof">TypeOf…</h2>
+
+<p>Used for classification of NeTEx entities.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> Classification of ENTITies, for instance according to the domain in which they are defined or used.</p>
+
+  <p><strong>Transmodel:</strong> TYPE OF VALUE - an ENTITY that serves to classify another entry, using as a list of simple code values, each with a name.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#typeof--valueset">Full documentation</a></p>
+
+<hr />
+
+<h2 id="valueset">ValueSet</h2>
+
+<p>A collection of classification codes of a particular NeTEx entity (e.g., a list of TypeOfNotice values).</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A grouping of instances of a specific TYPE OF VALUE instances for the purposes of exchange (i.e. a list of codes).</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#valueset">Full documentation</a></p>
+
+<hr />
+
+<h2 id="vehicle">Vehicle</h2>
+
+<p>A specific physical vehicle in the fleet used to operate public transport services.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A public transport vehicle used for carrying passengers.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="vehiclescheduleframe">VehicleScheduleFrame</h2>
+
+<p>Contains operational vehicle schedules - blocks, vehicle services, and duty assignments defining how vehicles are allocated to journeys.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A coherent set of Vehicle Scheduling data to which the same VALIDITY CONDITIONs have been assigned.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="vehicletype">VehicleType</h2>
+
+<p>A typified vehicle configuration (model or series) defining reusable characteristics such as capacity, dimensions, propulsion, and accessibility features.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A classification of public transport vehicles according to the vehicle scheduling requirements in mode and capacity (e.g. standard bus, double-deck).</p>
+
+  <p><strong>Transmodel:</strong> A classification of public transport vehicles according to the vehicle scheduling requirements in mode and capacity (e.g., standard bus, double-decker, etc.).</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#vehicletype">Full documentation</a></p>
+
+<hr />
+
+<h2 id="waitingroomequipment">WaitingRoomEquipment</h2>
+
+<p>Enclosed indoor waiting room facilities available at a stop place or station, with properties such as seating, step-free access, and heating.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> Specialisation of WAITING EQUIPMENT for WAITING ROOMs, classified by TYPE OF WAITING ROOM.</p>
+
+  <p><strong>Transmodel:</strong> Specialisation of WAITING EQUIPMENT describing waiting rooms (number of seats, type, FACILITIEs, etc.).</p>
+</blockquote>
+
+<hr />
+
+<h2 id="view">View</h2>
+
+<p>In this profile, “View” is used in two complementary senses:</p>
+
+<ol>
+  <li><strong>Publication view</strong> - The way data is selected and packaged inside a NeTEx PublicationDelivery for a specific purpose or audience (e.g., a Timetable publication view).</li>
+  <li><strong>Thematic view</strong> - A conceptual grouping used in the profile to scope content and requirements (e.g., Timetable, Network, Fares).</li>
+</ol>
+
+<p>Clarifications:</p>
+<ul>
+  <li>DatedCalls are not a separate “view” - they are child elements of a DatedServiceJourney within a TimetableFrame.</li>
+  <li>When in doubt, prefer the precise NeTEx model terms (PublicationDelivery, TimetableFrame, DatedServiceJourney).</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

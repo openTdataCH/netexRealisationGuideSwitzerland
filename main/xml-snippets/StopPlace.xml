@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StopPlace  id="ch:1:sloid:7000" version="1">
+  <!-- In some cases the id of a StopPlace is not a SLOID. -->
+  <ValidBetween>
+    <!-- This can be used to show, when the StopPlace can be used. -->
+    <FromDate>2026-01-01T00:00:00</FromDate>
+    <ToDate>2026-12-31T00:00:00</ToDate>
+  </ValidBetween>
+  <keyList>
+    <!-- Key value pairs for DIDOK number and SLOID -->
+    <KeyValue>
+      <Key>DIDOK</Key>
+      <Value>7000</Value>
+    </KeyValue>
+    <KeyValue>
+      <Key>SLOID</Key>
+      <Value>ch:1:sloid:7000</Value>
+    </KeyValue>
+  </keyList>
+  <privateCodes>
+    <PrivateCode type="didok">7000</PrivateCode>
+    <!-- In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments. -->
+    <PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
+    <PrivateCode type="HafasPriority">4</PrivateCode>
+    <!-- Special value for Hafas environments. -->
+    <PrivateCode type="HafasKMInfo">1000</PrivateCode>
+    <!-- Special value for Hafas environments. -->
+  </privateCodes>
+  <Name>Bern</Name>
+  <!-- The official stop name. If you have different versions one needs to use AlternativeName -->
+  <Centroid>
+    <!-- Global or national location -->
+    <Name/>
+    <Location>
+      <!-- Note concerning coordinates - The main coordinates are given as **WSG84**. -->
+      <Longitude>7.43913088992</Longitude>
+      <Latitude>46.94883228914</Latitude>
+      <Altitude>540.2</Altitude>
+    </Location>
+  </Centroid>
+  <alternativeNames>
+    <!-- Alternative names for the StopPlace. We will also use these for synonyms. -->
+    <AlternativeName id="ch:1:sloid:7000:it" version="1">
+      <Name lang="it">Berna</Name>
+    </AlternativeName>
+  </alternativeNames>
+  <TopographicPlaceRef ref="BE-bern" version="1">
+    <!-- Id to the county, community, canton or country. -->
+  </TopographicPlaceRef>
+  <StopPlaceType>railStation</StopPlaceType>
+  <LimitedUse>interchangeOnly</LimitedUse>
+  <!-- For stops like Sagliains -->
+  <Weighting>preferredInterchange</Weighting>
+  <!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. -->
+  <quays>
+    <!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. -->
+    <Quay id="ch:1:sloid:7000:5:9" version="1"/>
+  </quays>
+</StopPlace>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ServiceJourney | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="ServiceJourney" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/ServiceJourney.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/ServiceJourney.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ServiceJourney" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"ServiceJourney","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/ServiceJourney.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">ServiceJourney</h1>
+  </header>
+
+  <div class="post-content">
+    <p><em>Table: ServiceJourney</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@responsibilitySetRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute responsibilitySetRef</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>validityConditions</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>validityConditions_RelStructure</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td>Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”).</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AvailabilityConditionRef</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>AvailabilityConditionRefStructure</td>
+      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td>Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. <strong>TODO</strong>: this comment needs to be corrected, more information needed</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>keyList</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>KeyListStructure</td>
+      <td>A list of alternative Key values for an element.</td>
+      <td>KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>KeyValue</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>KeyValueStructure</td>
+      <td>Key value pair for Entity.</td>
+      <td>A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Key</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Value</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:anyType</td>
+      <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>privateCodes</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodesStructure</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>The following types are possible: sjyid and rn. rn is the type used for the Postauto region.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TransportMode</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AllModesEnumeration</td>
+      <td>MODE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TypeOfProductCategoryRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>TypeOfProductCategoryRefStructure</td>
+      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
+      <td>Relevant elements are defined in the mapping excel.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TypeOfServiceRef</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>TypeOfServiceRefStructure</td>
+      <td>Reference to a TYPE OF SERVICE.</td>
+      <td>Should always be ch:1:TypeOfService:1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>noticeAssignments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>noticeAssignments_RelStructure</td>
+      <td>NOTICEs relevant for the whole GROUP OF SINGLE JOURNEYs.</td>
+      <td>The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop).</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/NoticeAssignment.html">NoticeAssignment</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>NoticeAssignment</td>
+      <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>occupancies</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>OccupancyView_RelStructure</td>
+      <td>OCCUPANCYs associated with this journey. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/OccupancyView.html">OccupancyView</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>OccupancyView_VersionStructure</td>
+      <td> </td>
+      <td>Currently not available</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ServiceAlteration</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ServiceAlterationEnumeration</td>
+      <td>Whether journey is as planned, a cancellation or an extra journey. Default is as Planned.</td>
+      <td>Only the value planned is allowed. We might add the others, like cancelled, later.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DepartureTime</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:time</td>
+      <td>Departure time.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DepartureDayOffset</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>DayOffsetType</td>
+      <td>Departure Time Day Offset.</td>
+      <td>0 for current operating day. Could also be negative.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>JourneyPatternRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>JourneyPatternRefStructure</td>
+      <td>Reference to a JOURNEY PATTERN.</td>
+      <td>The reference to the ServiceJourneyPattern.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@nameOfRefClass</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute nameOfRefClass</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TimeDemandTypeRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>TimeDemandTypeRefStructure</td>
+      <td>Reference to a TIME DEMAND TYPE used at start of JOURNEY.</td>
+      <td>The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>VehicleTypeRef</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>VehicleTypeRefStructure</td>
+      <td>Reference to a VEHICLE TYPE.</td>
+      <td>Mostly used for accessibility information like NF. Relevant definitions in the mapping excel.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LineRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LineRefStructure</td>
+      <td>Reference to a LINE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DirectionType</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>RelativeDirectionEnumeration</td>
+      <td>For fares for DISTANCE MATRIXE LEMENTs, DIRECTION in which price applies.</td>
+      <td>Allowed are: inbound, outbound</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>trainNumbers</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>trainNumbersInFrame_RelStructure</td>
+      <td>TRAIN NUMBERs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TrainNumberRef</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>TrainNumberRefStructure</td>
+      <td>Reference to a TRAIN NUMBER.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/Destination.html">Destination</a></td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>TravelSpecificationSummaryEndpointStructure</td>
+      <td>Destination of Travel. Note that for a point-to-point TARIFF the origin is assigned with a DISTANCE MATRIX ELEMENT.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>parts</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>blockParts_RelStructure</td>
+      <td>BLOCK PARTs which make up COMPOUND BLOCK.</td>
+      <td>For some use cases e.g. change of Facilities during ServiceJourney</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>JourneyPartRef</td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>JourneyPartRefStructure</td>
+      <td>Reference to a JOURNEY PART.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>checkConstraints</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>checkConstraints_RelStructure</td>
+      <td>CHECK CONSTRAINTs which apply to SERVICE JOURNEY, e.g. check in time, security time. These are advisory only and not for use in journey planning.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>CheckConstraint</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>CheckConstraint</td>
+      <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
+      <td>CheckConstraints are used for different use cases</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

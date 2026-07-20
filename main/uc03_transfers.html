@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Transfers | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Transfers" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc03_transfers.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc03_transfers.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Transfers" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Transfers","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/uc03_transfers.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/main/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Transfers</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="overview">Overview</h2>
+<p>This use case describes how transfer times and interchange connections between journeys are modelled in the Swiss NeTEx profile. Depending on the granularity and type of connection, different elements are used.</p>
+
+<h2 id="mapping-between-hrdf-and-netex">Mapping between HRDF and NeTEx</h2>
+
+<p>The following table shows how we will map HRDF tables into NeTEX.</p>
+<blockquote>
+  <p>NB: The UMSTEIG tables are curated by INFO+. So they are not delivered in NeTEx to INFO+, but are generated there.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>HRDF</th>
+      <th>NeTEx RG1</th>
+      <th>NeTEx RG2</th>
+      <th>Use Case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>UMSTEIGZ</td>
+      <td><code class="language-plaintext highlighter-rouge">InterchangeRule</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code></td>
+      <td>Fahrtbezogene Umsteigezeit</td>
+    </tr>
+    <tr>
+      <td>UMSTEIGL</td>
+      <td><code class="language-plaintext highlighter-rouge">InterchangeRule</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code></td>
+      <td>Linien- und Richtungsbezogene Umsteigezeit</td>
+    </tr>
+    <tr>
+      <td>UMSTEIGB</td>
+      <td><code class="language-plaintext highlighter-rouge">DefaultConnection</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DefaultConnection</code></td>
+      <td>Standardumsteigezeit pro Haltestelle</td>
+    </tr>
+    <tr>
+      <td>METABHF</td>
+      <td><code class="language-plaintext highlighter-rouge">SiteConnection</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SiteConnection</code></td>
+      <td>Umsteigezeit zwischen Haltestellen</td>
+    </tr>
+    <tr>
+      <td>UMSTEIGV</td>
+      <td><code class="language-plaintext highlighter-rouge">DefaultConnection</code></td>
+      <td><code class="language-plaintext highlighter-rouge">DefaultConnection</code></td>
+      <td>Verwaltungsbezogene Umsteigezeit</td>
+    </tr>
+    <tr>
+      <td>DURCHBI</td>
+      <td><code class="language-plaintext highlighter-rouge">JourneyMeeting</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code></td>
+      <td>Durchbindung, Flügelzug, Vereinigung</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="transfer-times-at-a-given-stopplace-umsteigb">Transfer times at a given StopPlace (UMSTEIGB)</h2>
+<p>Defines the default transfer time at a specific stop place, regardless of operator or line.</p>
+
+<p><strong>When to use:</strong> When a particular stop place has a transfer time that differs from the network-wide default.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;DefaultConnection</span>  <span class="na">id=</span><span class="s">"ch:1:DefaultConnection:8506302"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Be aware only some combinations are allowed: from mode A to mode B without operators taken into account; from operator A and product category A  to operator B and product category B. --&gt;</span>
+  <span class="nt">&lt;WalkTransferDuration&gt;</span>
+    <span class="nt">&lt;DefaultDuration&gt;</span>PT3M<span class="nt">&lt;/DefaultDuration&gt;</span>
+  <span class="nt">&lt;/WalkTransferDuration&gt;</span>
+  <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8506302"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/DefaultConnection&gt;</span>
+
+</code></pre></div></div>
+
+<blockquote>
+  <p>Note: If no StopPlaceRef is set, the DefaultConnection applies network-wide for the given mode combination. A separate DefaultConnection must be defined for each relevant mode pair.</p>
+</blockquote>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;DefaultConnection</span>  <span class="na">id=</span><span class="s">"ch:1:DefaultConnection:9999999-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- General connection between two modes in the whole network, when not StopPlaceRef is mentioned. Most exist for each mode pair. --&gt;</span>
+  <span class="nt">&lt;WalkTransferDuration&gt;</span>
+    <span class="nt">&lt;DefaultDuration&gt;</span>PT2M<span class="nt">&lt;/DefaultDuration&gt;</span>
+  <span class="nt">&lt;/WalkTransferDuration&gt;</span>
+  <span class="nt">&lt;From&gt;</span>
+    <span class="nt">&lt;TransportMode&gt;</span>tram<span class="nt">&lt;/TransportMode&gt;</span>
+  <span class="nt">&lt;/From&gt;</span>
+  <span class="nt">&lt;To&gt;</span>
+    <span class="nt">&lt;TransportMode&gt;</span>tram<span class="nt">&lt;/TransportMode&gt;</span>
+  <span class="nt">&lt;/To&gt;</span>
+  <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:19231"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Usually a SLOID. Not set means whole network. --&gt;</span>
+  <span class="nt">&lt;/StopPlaceRef&gt;</span>
+<span class="nt">&lt;/DefaultConnection&gt;</span>
+
+</code></pre></div></div>
+
+<h2 id="operator-related-transfer-times-umsteigv">Operator related transfer times (UMSTEIGV)</h2>
+<p>Defines transfer times between two specific operators at a stop place. The HRDF UMSTEIGV record specifies the default transfer time between two administrations (operators).</p>
+
+<p><strong>When to use:</strong> When the transfer time depends on the operator combination at a given stop place.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;DefaultConnection</span>  <span class="na">id=</span><span class="s">"11-11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Extensions&gt;</span>
+    <span class="c">&lt;!-- When also ProductCategory is relevant, then this extension must be used --&gt;</span>
+    <span class="nt">&lt;FromProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:ICE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. --&gt;</span>
+    <span class="nt">&lt;/FromProductCategoryRef&gt;</span>
+    <span class="nt">&lt;ToProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:TE2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. --&gt;</span>
+    <span class="nt">&lt;/ToProductCategoryRef&gt;</span>
+  <span class="nt">&lt;/Extensions&gt;</span>
+  <span class="nt">&lt;WalkTransferDuration&gt;</span>
+    <span class="nt">&lt;DefaultDuration&gt;</span>PT2M<span class="nt">&lt;/DefaultDuration&gt;</span>
+  <span class="nt">&lt;/WalkTransferDuration&gt;</span>
+  <span class="nt">&lt;BothWays&gt;</span>false<span class="nt">&lt;/BothWays&gt;</span>
+  <span class="c">&lt;!-- We don't use BothWays true, as it might differ. --&gt;</span>
+  <span class="nt">&lt;From&gt;</span>
+    <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
+    <span class="nt">&lt;OperatorView&gt;</span>
+      <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/OperatorView&gt;</span>
+  <span class="nt">&lt;/From&gt;</span>
+  <span class="nt">&lt;To&gt;</span>
+    <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
+    <span class="nt">&lt;OperatorView&gt;</span>
+      <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/OperatorView&gt;</span>
+  <span class="nt">&lt;/To&gt;</span>
+  <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:19231"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Usually a SLOID. Not set means whole network. --&gt;</span>
+  <span class="nt">&lt;/StopPlaceRef&gt;</span>
+<span class="nt">&lt;/DefaultConnection&gt;</span>
+
+</code></pre></div></div>
+
+<h2 id="line-and-direction-oriented-transfer-times-umsteigl">Line and Direction-oriented transfer times (UMSTEIGL)</h2>
+<p>Defines transfer times between specific <code class="language-plaintext highlighter-rouge">Lines</code> and <code class="language-plaintext highlighter-rouge">Directions</code> at a stop place. Journeys are specified indirectly via <code class="language-plaintext highlighter-rouge">Line</code> and <code class="language-plaintext highlighter-rouge">DirectionType</code>, not as an explicit journey pair. The ! marker in HRDF indicates a guaranteed connection.</p>
+<blockquote>
+  <p>In the Swiss profile, only <code class="language-plaintext highlighter-rouge">DirectionType</code> (type <code class="language-plaintext highlighter-rouge">DirectionTypeEnumeration</code>) is used, not <code class="language-plaintext highlighter-rouge">DirectionRef</code>.</p>
+</blockquote>
+
+<p><strong>When to use:</strong> When the transfer time applies to all journeys of a specific line/direction combination at a given stop place.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ServiceJourneyInterchange</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:1696906_TA"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Transfer times between specific ServiceJourneys at a given stop (UMSTEIGL). StaySeated=false: passenger must change vehicles. One ServiceJourneyInterchange per journey pair. Replaces InterchangeRule in RG 2.0. --&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:TA"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;Description&gt;</span>UMSTEIGL: transfer at Spiez, line 33.PE.GPX → line 11.IC.IC81<span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;StaySeated&gt;</span>false<span class="nt">&lt;/StaySeated&gt;</span>
+  <span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
+  <span class="c">&lt;!-- ChangeWithinVehicle is not applicable when StaySeated=false --&gt;</span>
+  <span class="nt">&lt;Planned&gt;</span>true<span class="nt">&lt;/Planned&gt;</span>
+  <span class="nt">&lt;Guaranteed&gt;</span>false<span class="nt">&lt;/Guaranteed&gt;</span>
+  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT2M<span class="nt">&lt;/MaximumWaitTime&gt;</span>
+  <span class="c">&lt;!-- If not set or PT0M, connection is considered guaranteed. --&gt;</span>
+  <span class="nt">&lt;MinimumTransferTime&gt;</span>PT2M<span class="nt">&lt;/MinimumTransferTime&gt;</span>
+  <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. --&gt;</span>
+  <span class="nt">&lt;/FromPointRef&gt;</span>
+  <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. --&gt;</span>
+  <span class="nt">&lt;/ToPointRef&gt;</span>
+  <span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100033:XXXX-001_33PE.j26_YYY"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Reference to the specific feeder ServiceJourney. Replaces FeederFilter/LineInDirectionRef from InterchangeRule. One element per journey pair required. --&gt;</span>
+  <span class="nt">&lt;/FromServiceJourneyRef&gt;</span>
+  <span class="nt">&lt;ToServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100011:XXXX-001_11IC.j26_ZZZ"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/LineInDirectionRef from InterchangeRule. --&gt;</span>
+  <span class="nt">&lt;/ToServiceJourneyRef&gt;</span>
+<span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
+
+</code></pre></div></div>
+
+<h2 id="servicejourney-related-transfer-times-umsteigz">ServiceJourney related transfer times (UMSTEIGZ)</h2>
+<p>Defines transfer times between two specific <code class="language-plaintext highlighter-rouge">ServiceJourneys</code> at a given stop place. Unlike UMSTEIGL, journeys are referenced directly via <code class="language-plaintext highlighter-rouge">ServiceJourneyRef</code>. The ! marker in HRDF indicates a guaranteed connection; an optional <code class="language-plaintext highlighter-rouge">Verkehrstagebitfeldnummer</code> restricts validity to specific days.</p>
+
+<p><strong>When to use</strong>: When the transfer time applies to a specific feeder/distributor journey pair.</p>
+
+<p>Connection between two services.</p>
+
+<p>The following situations exist:</p>
+<ul>
+  <li>I.	The connection should not take place. (Prohibition)</li>
+  <li>II.	The connection must take place, and the traveler must change vehicles</li>
+  <li>III.	The connection has to take place, and the passenger can stay in the vehicle</li>
+</ul>
+
+<p>The differences between the various situations are to be differentiated with the value in some attributes.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Situation</th>
+      <th><code class="language-plaintext highlighter-rouge">StaySeated</code></th>
+      <th><code class="language-plaintext highlighter-rouge">Guaranteed</code></th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Connection prohibited</td>
+      <td>—</td>
+      <td>—</td>
+      <td><code class="language-plaintext highlighter-rouge">InterchangeRule</code> explicitly forbidding the connection</td>
+    </tr>
+    <tr>
+      <td>Transfer required</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+      <td><code class="language-plaintext highlighter-rouge">false</code> / <code class="language-plaintext highlighter-rouge">true</code></td>
+      <td>Passenger must change vehicles</td>
+    </tr>
+    <tr>
+      <td>Through-service (stay seated)</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td>Passenger remains in vehicle → see <a href="/netexRealisationGuideSwitzerland/main/uc01_durchbindung.html">uc01_durchbindung</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ServiceJourneyInterchange</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:1692675_80600_18840_18960"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Transfer time between two specific ServiceJourneys at a given stop (UMSTEIGZ). StaySeated=false: passenger must change vehicles. Replaces InterchangeRule in RG 2.0. One element per journey pair required. --&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:80600"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;Description&gt;</span>UMSTEIGZ: transfer at stop 8506131, S1 → IR75<span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;StaySeated&gt;</span>false<span class="nt">&lt;/StaySeated&gt;</span>
+  <span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
+  <span class="nt">&lt;Planned&gt;</span>true<span class="nt">&lt;/Planned&gt;</span>
+  <span class="nt">&lt;Guaranteed&gt;</span>false<span class="nt">&lt;/Guaranteed&gt;</span>
+  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT2M<span class="nt">&lt;/MaximumWaitTime&gt;</span>
+  <span class="c">&lt;!-- If not set or PT0M, connection is considered guaranteed. --&gt;</span>
+  <span class="nt">&lt;MinimumTransferTime&gt;</span>PT1M<span class="nt">&lt;/MinimumTransferTime&gt;</span>
+  <span class="nt">&lt;MaximumTransferTime&gt;</span>PT2M<span class="nt">&lt;/MaximumTransferTime&gt;</span>
+  <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506131:1"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. --&gt;</span>
+  <span class="nt">&lt;/FromPointRef&gt;</span>
+  <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506131:1"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. --&gt;</span>
+  <span class="nt">&lt;/ToPointRef&gt;</span>
+  <span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:11111-001_91001C.j26_1012"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Reference to the specific feeder ServiceJourney. Replaces FeederFilter/ServiceJourneyRef from InterchangeRule. --&gt;</span>
+  <span class="nt">&lt;/FromServiceJourneyRef&gt;</span>
+  <span class="nt">&lt;ToServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100001:2106-001_91075_.j26_802"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/ServiceJourneyRef from InterchangeRule. --&gt;</span>
+  <span class="nt">&lt;/ToServiceJourneyRef&gt;</span>
+<span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
+
+</code></pre></div></div>
+
+<h2 id="transfer-times-between-different-stopplaces-metabhf">Transfer times between different StopPlaces (METABHF)</h2>
+<p>Describes the walking time between two adjacent <code class="language-plaintext highlighter-rouge">StopPlaces</code> (e.g. main station A → tram stop B). Used only in the master data file, not in timetable files.<br />
+<strong>When to use:</strong> When passengers need to transfer between two physically separate stop places.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;SiteConnection</span>  <span class="na">id=</span><span class="s">"ch:1:SiteConnection:8506302-8589913"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- SiteConnection are used only in the main file and not in timetable files. --&gt;</span>
+  <span class="nt">&lt;WalkTransferDuration&gt;</span>
+    <span class="nt">&lt;DefaultDuration&gt;</span>PT13M<span class="nt">&lt;/DefaultDuration&gt;</span>
+  <span class="nt">&lt;/WalkTransferDuration&gt;</span>
+  <span class="nt">&lt;BothWays&gt;</span>false<span class="nt">&lt;/BothWays&gt;</span>
+  <span class="nt">&lt;From&gt;</span>
+    <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. --&gt;</span>
+    <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8506302"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/From&gt;</span>
+  <span class="nt">&lt;To&gt;</span>
+    <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. --&gt;</span>
+    <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8589913"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/To&gt;</span>
+<span class="nt">&lt;/SiteConnection&gt;</span>
+
+</code></pre></div></div>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/main/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

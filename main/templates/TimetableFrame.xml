@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>CH:BLT</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="CH:BLT:Composite:50_110" version="1">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame:j23" version="1">
+					<!-- ch-root -->
+					<!-- ch-usage: expected -->
+					<!-- ch-attrs: id version -->
+					<vehicleJourneys>
+						<!-- ch-usage: expected -->
+						<!-- ch-note: Contains the ServiceJourneys and TemplateServiceJourneys. -->
+						<ServiceJourney id="generatedOrsjyid" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-note: ServiceJourney is used for common Journeys. -->
+							<!-- ch-see -->
+						</ServiceJourney>
+						<TemplateServiceJourney id="generatedOrsjyid1" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-note: TemplateServiceJourney is only to be used if a line is serviced at a certain frequency. -->
+							<!-- ch-see -->
+						</TemplateServiceJourney>
+						<TemplateServiceJourney id="generated2" version="1">
+						</TemplateServiceJourney>
+					</vehicleJourneys>
+					<trainNumbers>
+						<!-- ch-usage: expected -->
+						<TrainNumber id="2123" version="1">
+							<!-- ch-usage: mandatory -->
+							<!-- ch-see -->
+						</TrainNumber>
+					</trainNumbers>
+					<serviceFacilitySets>
+						<!-- ch-usage: optional -->
+						<ServiceFacilitySet id="86558" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-see -->
+						</ServiceFacilitySet>
+					</serviceFacilitySets>
+					<typesOfService>
+						<!-- ch-usage: expected -->
+						<TypeOfService id="ch:1:TypeOfService:1" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-class-id-must-exist -->
+							<!-- ch-note: This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. -->
+							<Name lang="en">PublicJourney</Name>
+							<!-- ch-usage: expected -->
+							<ShortName lang="en">PJ</ShortName>
+							<!-- ch-usage: optional -->
+							<PrivateCode>1</PrivateCode>
+							<!-- ch-usage: optional -->
+						</TypeOfService>
+					</typesOfService>
+					<journeyMeetings>
+						<!-- ch-usage: forbidden -->
+						<JourneyMeeting id="ch:1:JourneyMeeting:1" version="1">
+							<!-- ch-usage: forbidden -->
+							<!-- ch-note: For splitting and joining we use ServiceJourneyInterchange -->
+							<FromJourneyRef ref="sjyid1" versionRef="1"/>
+							<ToJourneyRef ref="sjyid2" versionRef="1"/>
+						</JourneyMeeting>
+					</journeyMeetings>
+					<journeyInterchanges>
+						<!-- ch-note: In NETWORK_OFFER for splitting and joining. Otherwise mostly in INTERCHANGE -->
+						<ServiceJourneyInterchange id="ch:1:sji:generated-1" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-note: For modeling many forms of interchanges -->
+							<!-- ch-see -->
+							<FromJourneyRef ref="sjyid-1" versionRef="1"/>
+							<ToJourneyRef ref="sjyid-2" versionRef="1"/>
+						</ServiceJourneyInterchange>
+						<ServiceJourneyPatternInterchange id="ch:1:ServiceJourneyPatt" version="1">
+							<!-- ch-usage: forbidden -->
+							<FromPointRef ref="point1" versionRef="1"/>
+							<ToPointRef ref="point2" versionRef="1"/>
+							<FromJourneyPatternRef ref="pattern1" versionRef="1"/>
+							<ToJourneyPatternRef ref="pattern2" versionRef="1"/>
+						</ServiceJourneyPatternInterchange>
+					</journeyInterchanges>
+					<interchangeRules>
+						<!-- ch-usage: forbidden -->
+						<InterchangeRule id="ch:1:InterchangeRule:1" version="1">
+						</InterchangeRule>
+					</interchangeRules>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
