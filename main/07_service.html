@@ -909,7 +909,7 @@ class ServiceJourney {
       <td>Is always language neutral. The data is taken from the Des-tination or from the reference in *R (HRDF). If DURCHBI is used then the destination display shows the final destination.</td>
     </tr>
     <tr>
-      <td> </td>
+      <td>+</td>
       <td>@lang</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -1509,7 +1509,7 @@ class ServiceJourney {
       <td>0..1</td>
       <td>ConnectionEndStructure</td>
       <td>Origin end of CONNECTION.</td>
-      <td>Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs.</td>
+      <td>Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -1527,7 +1527,7 @@ class ServiceJourney {
       <td>0..1</td>
       <td>ConnectionEndStructure</td>
       <td>Destination end of CONNECTION.</td>
-      <td>Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs.</td>
+      <td>Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs.</td>
     </tr>
   </tbody>
 </table>
@@ -1544,11 +1544,11 @@ class ServiceJourney {
   <span class="nt">&lt;/WalkTransferDuration&gt;</span>
   <span class="nt">&lt;BothWays&gt;</span>false<span class="nt">&lt;/BothWays&gt;</span>
   <span class="nt">&lt;From&gt;</span>
-    <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. --&gt;</span>
+    <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. --&gt;</span>
     <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8506302"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/From&gt;</span>
   <span class="nt">&lt;To&gt;</span>
-    <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. --&gt;</span>
+    <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. --&gt;</span>
     <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8589913"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/To&gt;</span>
 <span class="nt">&lt;/SiteConnection&gt;</span>
@@ -1628,7 +1628,7 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
       <td>DIDOK code of the virtual stop</td>
     </tr>
     <tr>
-      <td>+</td>
+      <td>++</td>
       <td>@type</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -1655,7 +1655,7 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
       <td>We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this</td>
     </tr>
     <tr>
-      <td> </td>
+      <td>+</td>
       <td>@nameOfRefClass</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -1673,7 +1673,7 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
       <td>We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this</td>
     </tr>
     <tr>
-      <td> </td>
+      <td>+</td>
       <td>@nameOfRefClass</td>
       <td>mandatory</td>
       <td>1..1</td>
@@ -2356,7 +2356,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>We currently have not plan of using it this way. We do it through embeddingt the NoticeAssignment within the relevant element.</td>
     </tr>
     <tr>
-      <td> </td>
+      <td>+</td>
       <td>@nameOfRefClass</td>
       <td>mandatory</td>
       <td>1..1</td>

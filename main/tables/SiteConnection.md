@@ -11,6 +11,6 @@ SiteConnection are used only in the main file and not in timetable files.
 |  | WalkTransferDuration | mandatory | 0..1 | TransferDurationStructure | Timings for walking over TRANSFER if different from the JOURNEY PATTERN transfer duration, |  |
 | + | DefaultDuration | mandatory | 0..1 | xsd:duration | Default time needed for a traveller to make a TRANSFER. |  |
 |  | BothWays | mandatory | 0..1 | xsd:boolean | Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER. |  |
-|  | From | mandatory | 0..1 | ConnectionEndStructure | Origin end of CONNECTION. | Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. |
+|  | From | mandatory | 0..1 | ConnectionEndStructure | Origin end of CONNECTION. | Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. |
 | + | StopPlaceRef | mandatory | 0..1 | StopPlaceRefStructure | System identifier of a STOP PLACE. May be omitted if given by context. |  |
-|  | To | mandatory | 0..1 | ConnectionEndStructure | Destination end of CONNECTION. | Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. |
+|  | To | mandatory | 0..1 | ConnectionEndStructure | Destination end of CONNECTION. | Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. |

@@ -28,7 +28,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | DepartureTime | optional | 0..1 | xsd:time | Departure time. | Departure of the first journey. |
 |  | DepartureDayOffset | optional | 0..1 | DayOffsetType | Departure Time Day Offset. | DayOffset if relevant. |
 |  | JourneyPatternRef | mandatory | 1..1 | JourneyPatternRefStructure | Reference to a JOURNEY PATTERN. | The reference to the ServiceJourneyPattern |
-|  | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
+| + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
 |  | TimeDemandTypeRef | mandatory | 0..1 | TimeDemandTypeRefStructure | Reference to a TIME DEMAND TYPE used at start of JOURNEY. | The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. |
 |  | VehicleTypeRef | expected | 1..1 | VehicleTypeRefStructure | Reference to a VEHICLE TYPE. | Mostly used for accessibility information |
 |  | LineRef | mandatory | 1..1 | LineRefStructure | Reference to a LINE. |  |

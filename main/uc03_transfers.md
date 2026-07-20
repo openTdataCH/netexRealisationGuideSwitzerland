@@ -225,11 +225,11 @@ Describes the walking time between two adjacent `StopPlaces` (e.g. main station 
   </WalkTransferDuration>
   <BothWays>false</BothWays>
   <From>
-    <!-- Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. -->
+    <!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. -->
     <StopPlaceRef ref="ch:2:StopPlace:8506302" version="1"/>
   </From>
   <To>
-    <!-- Could also refer to a Quay or a different SiteElement. Currently we only transfer StopPlaceRefs. -->
+    <!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. -->
     <StopPlaceRef ref="ch:2:StopPlace:8589913" version="1"/>
   </To>
 </SiteConnection>

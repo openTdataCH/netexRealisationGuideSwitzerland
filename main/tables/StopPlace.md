@@ -17,7 +17,7 @@ In some cases the id of a StopPlace is not a SLOID.
 | ++ | Value | mandatory | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
 |  | privateCodes | mandatory | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
 | + | PrivateCode | mandatory | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments. |
-| + | @type | mandatory | 1..1 | xsd:string | Attribute type | |
+| ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
 |  | Name | mandatory | 0..1 | MultilingualString | Name of Traveller | The official stop name. If you have different versions one needs to use AlternativeName |
 |  | Centroid | mandatory | 0..1 | SimplePoint_VersionStructure | Centre Coordinates of GROUP of STOP PLACEs. | Global or national location |
 | + | Location | mandatory | 0..1 | LocationStructure | Absolute location of EQUIPMENT. | Note concerning coordinates - The main coordinates are given as **WSG84**. |

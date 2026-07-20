@@ -142,7 +142,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 | ++ | Value | mandatory | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
 |  | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
 | + | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | The following types are possible: sjyid and rn. rn is the type used for the Postauto region. |
-| + | @type | mandatory | 1..1 | xsd:string | Attribute type | |
+| ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
 |  | TransportMode | optional | 0..1 | AllModesEnumeration | MODE. |  |
 |  | TypeOfProductCategoryRef | mandatory | 1..1 | TypeOfProductCategoryRefStructure | Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code. | Relevant elements are defined in the mapping excel. |
 |  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure | Reference to a TYPE OF SERVICE. | Should always be ch:1:TypeOfService:1 |
@@ -154,7 +154,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 |  | DepartureTime | expected | 0..1 | xsd:time | Departure time. |  |
 |  | DepartureDayOffset | optional | 0..1 | DayOffsetType | Departure Time Day Offset. | 0 for current operating day. Could also be negative. |
 |  | JourneyPatternRef | mandatory | 1..1 | JourneyPatternRefStructure | Reference to a JOURNEY PATTERN. | The reference to the ServiceJourneyPattern. |
-|  | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
+| + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
 |  | TimeDemandTypeRef | mandatory | 0..1 | TimeDemandTypeRefStructure | Reference to a TIME DEMAND TYPE used at start of JOURNEY. | The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. |
 |  | VehicleTypeRef | expected | 1..1 | VehicleTypeRefStructure | Reference to a VEHICLE TYPE. | Mostly used for accessibility information like NF. Relevant definitions in the mapping excel. |
 |  | LineRef | mandatory | 1..1 | LineRefStructure | Reference to a LINE. |  |
@@ -310,7 +310,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | DepartureTime | optional | 0..1 | xsd:time | Departure time. | Departure of the first journey. |
 |  | DepartureDayOffset | optional | 0..1 | DayOffsetType | Departure Time Day Offset. | DayOffset if relevant. |
 |  | JourneyPatternRef | mandatory | 1..1 | JourneyPatternRefStructure | Reference to a JOURNEY PATTERN. | The reference to the ServiceJourneyPattern |
-|  | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
+| + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
 |  | TimeDemandTypeRef | mandatory | 0..1 | TimeDemandTypeRefStructure | Reference to a TIME DEMAND TYPE used at start of JOURNEY. | The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. |
 |  | VehicleTypeRef | expected | 1..1 | VehicleTypeRefStructure | Reference to a VEHICLE TYPE. | Mostly used for accessibility information |
 |  | LineRef | mandatory | 1..1 | LineRefStructure | Reference to a LINE. |  |
@@ -632,10 +632,10 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 |  | Guaranteed | optional | 0..1 | xsd:boolean | Whether INTERCHANGE is guaranteed. Default is false. |  |
 |  | MaximumWaitTime | optional | 0..1 | xsd:duration | Maximum wait time for JOURNEY MEETING. | If not set or PT0M, it is guaranteed. |
 |  | FromPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure | Identifier of VEHICLE MEETING POINT from which Link starts. |  |
-|  | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
+| + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
 |  | FromVisitNumber | optional | 0..1 | xsd:nonNegativeInteger | Visit number to distinguish which visit to FROM SCHEDULED STOP POINT this is. Default is one. Only needed for circular routes with connections at the same stop on different visits. |  |
 |  | ToPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure | Identifier of VEHICLE MEETING POINT at which Link ends. |  |
-|  | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
+| + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
 |  | FromServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure | SERVICE JOURNEY that feeds the INTERCHANGE. +v2.0 |  |
 |  | ToServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure | SERVICE JOURNEY that distributes from the INTERCHANGE. +v2.0 |  |
 
