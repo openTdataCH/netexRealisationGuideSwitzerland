@@ -49,6 +49,8 @@ This document describes the way in which the NeTEx standard is specifically appl
   - **LATER**: [Changes in the destination](uc13_changes_in_destination.md)
   - [Frequency based ServiceJourney](uc14_frequencies.md)
   - **LATER**: [Formations](uc15_formations.md)
+  - **LATER**: [Demand Responsive Traffic](uc16_drt.md)
+  - [Mixed Lines](uc17_mixed_lines.md)
 - Mapping tables are defined in an [Excel](media/myexcel.xlsx)
 - Annexes:
   - [Resources and references](A1_annex_resources_references.md)
