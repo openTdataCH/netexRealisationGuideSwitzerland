@@ -877,7 +877,7 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                 # Sanitize attribute description to prevent table breaks from newlines
                 attr_desc = sanitize_for_markdown(attr_desc)
                 
-                markdown += f"| {sub} | @{attr} | {attr_usage} | {attr_card} | {attr_type} | {attr_desc} | |\n"
+                markdown += f"| {sub}+ | @{attr} | {attr_usage} | {attr_card} | {attr_type} | {attr_desc} | |\n"
     
     return markdown
 
