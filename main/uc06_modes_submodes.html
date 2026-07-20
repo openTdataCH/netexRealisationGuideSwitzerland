@@ -41,9 +41,9 @@
   </header>
 
   <div class="post-content">
-    <p>NeTEx definies the physical Model for reusable transport mode. It is normally implemented as a<code class="language-plaintext highlighter-rouge">TransportMode</code>together with a <code class="language-plaintext highlighter-rouge">XXXSubmode</code>. Both values area standardised.</p>
+    <p>NeTEx defines the physical concept for reusable transport mode. It is normally implemented as a <code class="language-plaintext highlighter-rouge">TransportMode</code>together with a <code class="language-plaintext highlighter-rouge">XXXSubmode</code>. Both values are standardised.</p>
 
-<p>List for <code class="language-plaintext highlighter-rouge">TransportModeEnumeration</code>:</p>
+<p>List for <code class="language-plaintext highlighter-rouge">AllPublicTransportModesEnumeration</code>:</p>
 
 <table>
   <thead>
@@ -51,73 +51,146 @@
       <th>Name</th>
       <th>Description</th>
       <th>Part of the data</th>
+      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td> </td>
       <td>air</td>
       <td>Air</td>
       <td>n/a</td>
     </tr>
     <tr>
+      <td> </td>
+      <td>all</td>
+      <td>All (wildcard)</td>
+      <td>not used</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>anyMode</td>
+      <td>Any Mode (wildcard)</td>
+      <td>not used</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>bus</td>
       <td>Bus</td>
       <td>yes</td>
     </tr>
     <tr>
-      <td>coach</td>
-      <td>Coach</td>
-      <td>special file</td>
-    </tr>
-    <tr>
-      <td>funicular</td>
-      <td>Funicular</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <td>metro</td>
-      <td>Metro</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <td>rail</td>
-      <td>Rail</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <td>trolleyBus</td>
-      <td>Trolley Bus</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <td>tram</td>
-      <td>Tram</td>
-      <td>yes</td>
-    </tr>
-    <tr>
-      <td>water</td>
-      <td>Water</td>
-      <td>yes</td>
-    </tr>
-    <tr>
+      <td> </td>
       <td>cableway</td>
       <td>Cableway</td>
       <td>yes</td>
     </tr>
     <tr>
+      <td> </td>
+      <td>coach</td>
+      <td>Coach</td>
+      <td>special file</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ferry</td>
+      <td>Ferry</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>funicular</td>
+      <td>Funicular</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>intercityRail</td>
+      <td>Intercity Rail</td>
+      <td>not used</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>lift</td>
+      <td>Lift</td>
+      <td>not used</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>metro</td>
+      <td>Metro</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>other</td>
       <td>Other mode</td>
       <td>n/a</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>rail</td>
+      <td>Rail</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>selfDrive</td>
+      <td>Self-Drive</td>
+      <td>not used</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>snowAndIce</td>
+      <td>Snow and Ice Vehicle</td>
+      <td>not used</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>taxi</td>
+      <td>Taxi</td>
+      <td>not used</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>tram</td>
+      <td>Tram</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>trolleyBus</td>
+      <td>Trolley Bus</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>unknown</td>
+      <td>Unknown</td>
+      <td>not used</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>urbanRail</td>
+      <td>Urban Rail</td>
+      <td>not used</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>water</td>
+      <td>Water</td>
+      <td>yes</td>
     </tr>
   </tbody>
 </table>
 
 <p>In Switzerland the elements were standardised in chapter 6.2 of the <a href="https://www.oev-info.ch/sites/default/files/2025-12/%C3%9Cbergangsdokument.pdf#page=26&amp;zoom=100,91,541">“Übergangsdokument Branchenstandard”</a></p>
 
-<p>The <a href="media/Mappingtabellen_NeTEx_v2.0.xls">mapping tables</a> contain both transforms as far as we use them. Only use sub modes that are approved in the mapping!</p>
+<p>The <a href="src/examples/media/Mappingtabellen_NeTEx_v2.0.xlsx">mapping tables</a> contain both transforms as far as we use them. Only use sub modes that are approved in the mapping!</p>
 
 <h1 id="productcategory">ProductCategory</h1>
-<p>The relevant marketing name as defined in 3.15 of the Swiss sector standard is put into the <code class="language-plaintext highlighter-rouge">ProductCategory</code>.</p>
+<p>The relevant marketing name as defined in 3.15 of the Swiss sector standard is put into the <code class="language-plaintext highlighter-rouge">ProductCategory</code>. 
+<a href="https://www.oev-info.ch/sites/default/files/2025-12/%C3%9Cbergangsdokument.pdf#page=176">“Übergangsdokument Branchenstandard”</a></p>
 
   </div>
 
