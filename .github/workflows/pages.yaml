@@ -5,13 +5,13 @@ name: Build and deploy to Github Pages
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: [ "main", "next" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -19,7 +19,7 @@ permissions:
 jobs:
 
   # Builds and uploads artifact for GitHib pages
-  build:
+  build_and_deploy:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -30,11 +30,14 @@ jobs:
       - uses: actions/checkout@v4
 
       # Builds tools and generates md docs under ./site
+      # - The BASE_URL env variable sets the baseurl for the Jekyll configuration
       - name: Build tools and generate md docs
         run: |
           git submodule init
           git submodule update
-          bash ./tools/build.sh
+          repo_name="$(echo ${{ github.repository }} | cut -d'/' -f2)"
+          export BASE_URL=${repo_name}/${{ github.ref_name }}
+          ./tools/build.sh
 
       # Builds static html web pages with jekyll under ./site
       - uses: ruby/setup-ruby@v1
@@ -51,18 +54,11 @@ jobs:
           ls Gemfile
           bundle exec jekyll build
 
-      # Creates and uploads the build artifact from ./site
-      - uses: actions/upload-pages-artifact@v3
+      # Deploys to branch subdirectory
+      - name: Deploy to gh-pages/${{ github.ref_name }}
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: site/_site
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site/_site
+          destination_dir: ${{ github.ref_name }}
 
-  # Deploys artifact to GitHub pages
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v5

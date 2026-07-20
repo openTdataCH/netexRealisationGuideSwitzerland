@@ -21,11 +21,13 @@ class build_docs(Command):
 
     def run(self):
 
-        cmd = [sys.executable, "-m", "tools.toolchain", "--target", "docs"]
+        env = dict(os.environ)
+        base_url = env.get("BASE_URL", "")
+        cmd = [sys.executable, "-m", "tools.toolchain", "--base-url", base_url]
 
         self.announce(f"Running: {' '.join(cmd)}", level=2)
         # Build environment variables to pass context
-        env = dict(os.environ)
+
         env.setdefault("PYTHONHASHSEED", "0")
         subprocess.check_call(cmd, env=env)  # fails the build on nonzero exit
         self.announce(f"Docs generated.", level=2)
