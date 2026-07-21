@@ -65,7 +65,7 @@ classDiagram
 *→ [Template](./templates/SiteFrame.xml)*
 
 ### Frame Relationships
-`SiteFrame` is independent of other frames but provides the physical stop infrastructure that `ServiceFrame` references through `PassengerStopAssignments`. `TimetableFrame` indirectly depends on `SiteFrame` through the `JourneyPattern` stop sequence. `SiteFrame` is typically wrapped in a `CompositeFrame` within a `PublicationDelivery`.
+`SiteFrame` is independent of other frames but provides the physical stop infrastructure that `ServiceFrame` references through `PassengerStopAssignments`. `TimetableFrame` indirectly depends on `SiteFrame` through the `ServiceJourneyPattern` stop sequence. `SiteFrame` is typically wrapped in a `CompositeFrame` within a `PublicationDelivery`.
 
 ## StopPlace
 *→ [Glossary definition](A4_annex_glossary.md#stopplace)*
@@ -86,7 +86,7 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 *→ [Template](./templates/StopPlace.xml)*
 
 ### Usage Notes
-- All `StopPlace`s in Switzerland are identifiable by both a DIDOK number and a SLOID. DIDOK number are under the responsability of the Department of Transport (BAV). It is possible that in the future the BAV will also regulate “Haltepunkte” and “Haltekanten” and, therefore, the identifiers of `Quay`s.
+- All `StopPlace`s in Switzerland are identifiable by both a DIDOK number and a SLOID. DIDOK number are under the responsibility of the Department of Transport (BAV). It is possible that in the future the BAV will also regulate “Haltepunkte” and “Haltekanten” and, therefore, the identifiers of `Quay`s.
 - Foreign `StopPlace`s may be mapped to Swiss DIDOK codes. 
 - Meta-stations will have their own codes. In some cases these are added for operational or searching reasons. 
 - id-attribute needs to be kept stable between exports.
