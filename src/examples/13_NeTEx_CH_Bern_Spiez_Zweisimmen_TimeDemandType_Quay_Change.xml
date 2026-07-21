@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2025 rel. 2 (x64) (https://www.altova.com) by MENTZ GmbH (MENTZ GmbH) -->
 <PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" version="2.1">
 	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
 	<ParticipantRef>TUXALP</ParticipantRef>
@@ -46,6 +45,19 @@
 									<Name lang="de">Regionalzug</Name>
 									<ShortName lang="de">R</ShortName>
 								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+						<ValueSet id="ch:1:ValueSet:TypeOfNotice" version="1" nameOfClass="TypeOfNotice">
+							<Name>Type Of Notice</Name>
+							<values>
+								<TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
+									<Name>Allgemeiner Hinweis</Name>
+									<PrivateCode>1</PrivateCode>
+								</TypeOfNotice>
+								<TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
+									<Name>Angebot</Name>
+									<PrivateCode>10</PrivateCode>
+								</TypeOfNotice>
 							</values>
 						</ValueSet>
 					</typesOfValue>
@@ -568,7 +580,7 @@
 							<!-- Spiez track 3 -> Spiez track 5 -->
 							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:7483:0:954324"/>
 							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:7483:0:792557"/>
-						</TimingLink>						
+						</TimingLink>
 						<!-- JP ch:1:ServiceJourneyPattern:2 -->
 						<TimingLink id="ch:1:TimingLink:7483_0_954324-7290_0_930269" version="1">
 							<!-- Spiez -> Zweisimmen -->
@@ -647,7 +659,6 @@
 							</RouteView>
 							<DirectionType>outbound</DirectionType>
 							<pointsInSequence>
-													
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:3.1" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" version="1"/>
 									<OnwardTimingLinkRef ref="ch:1:TimingLink:in_Spiez" version="1"/>
@@ -659,7 +670,7 @@
 									<OnwardTimingLinkRef ref="ch:1:TimingLink:7483_0_954324-7478_0_852180" version="1"/>
 									<ForAlighting>false</ForAlighting>
 									<ForBoarding>true</ForBoarding>
-								</StopPointInJourneyPattern>									
+								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:3.2" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:7478:0:852180" version="1"/>
 									<OnwardTimingLinkRef ref="ch:1:TimingLink:7478_0_852180-1609_4_9" version="1"/>
@@ -712,7 +723,7 @@
 								<JourneyRunTime id="ch:1:JourneyRunTime:3:1:1" version="1">
 									<TimingLinkRef ref="ch:1:TimingLink:7483_0_954324-7478_0_852180" version="1"/>
 									<RunTime>PT12M</RunTime>
-								</JourneyRunTime>								
+								</JourneyRunTime>
 								<JourneyRunTime id="ch:1:JourneyRunTime:3:2" version="1">
 									<TimingLinkRef ref="ch:1:TimingLink:7478_0_852180-1609_4_9" version="1"/>
 									<RunTime>PT57M</RunTime>
