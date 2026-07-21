@@ -718,24 +718,14 @@ def parse_template_file(file_path, xsd_type_info):
             # description = note  # REMOVED: This was incorrectly using note as description
             description = ''  # Start with empty description, will be filled from XSD or other sources
             
-            # NEW: For Text elements, capture the direct text content as description
+            # For multilingual elements (Text, Description, Name, etc.), description should be empty
+            # and note should contain ch-note content if it exists
+            # The text content of the element itself should not be in description
             if elem_name in multilingual_element_names:
-                # Get the direct text content of this element
-                direct_text = element.text
-                if direct_text and direct_text.strip():
-                    description = direct_text.strip()
-                else:
-                    # If no direct text, check for text in child comments' tails
-                    # In XML like <Text lang="de"><!-- comment -->Content</Text>, the "Content" is in the tail of the comment
-                    for child in element:
-                        if isinstance(child, etree._Comment):
-                            if child.tail and child.tail.strip():
-                                description = child.tail.strip()
-                                break
-                        elif hasattr(child, 'text') and child.text and child.text.strip():
-                            # This shouldn't happen for comments, but just in case
-                            description = child.text.strip()
-                            break
+                # Clear description for multilingual elements
+                description = ''
+                # Text content is NOT stored in description for multilingual elements
+                # Instead, the lang attribute will be added to note
             
             # Add deprecated notice if needed
             if is_deprecated:
@@ -752,20 +742,25 @@ def parse_template_file(file_path, xsd_type_info):
             
 
             
-            # NEW: Also consider elements that are known MultilingualString types based on element name
-            # Even if they don't have both text and child Text elements, they should be treated as multilingual
+            # For multilingual elements, we only want to show them if they have explicit ch-usage
+            # (optional, expected, or mandatory). Elements with usage='ignored' (default) should be skipped.
+            is_multilingual_with_usage = elem_name in multilingual_element_names and usage.lower() in ['optional', 'expected', 'mandatory']
+            
+            # For nested Text elements (Text inside Text), mark them as multilingual children
+            # But still only show them if they have explicit ch-usage
             if elem_name in multilingual_element_names:
-                # Check if parent is also a multilingual element (nested Text case)
                 parent = element.getparent()
                 if parent is not None:
                     parent_name = etree.QName(parent).localname
                     if parent_name in multilingual_element_names:
-                        # This is a nested Text element (e.g., Text inside Text)
-                        is_multilingual = True
+                        # This is a nested Text element, but only show if it has explicit ch-usage
+                        # Don't mark as multilingual here since we want to respect the usage
+                        pass
             
-            is_multilingual_element = elem_name in multilingual_element_names and element.get('lang')
-            
-            if usage.lower() in ['forbidden', 'ignored'] and not has_ch_root and not is_multilingual and not is_multilingual_child and not is_multilingual_element:
+            # Skip elements with usage='ignored' or 'forbidden' unless:
+            # - It's the root element (has_ch_root)
+            # - It's a multilingual element with explicit usage (optional, expected, mandatory)
+            if usage.lower() in ['forbidden', 'ignored'] and not has_ch_root and not is_multilingual_with_usage:
                 # Process children anyway in case they have different usage
                 if not is_referenced:
                     for child in element:
@@ -773,13 +768,12 @@ def parse_template_file(file_path, xsd_type_info):
                             process_element(child, level + 1, parent_type_context)
                 return
             
-            # NEW: For multilingual elements with lang attribute, include lang in the element name
+            # For multilingual elements, keep the element name simple without lang in parentheses
             display_element_name = elem_name
-            if elem_name in multilingual_element_names and element.get('lang'):
-                display_element_name = f"{elem_name} ({element.get('lang')})"
-            # NEW: For nested Text elements (Text inside Text), show the lang attribute
-            elif elem_name == 'Text' and element.get('lang'):
-                display_element_name = f"Text ({element.get('lang')})"
+            
+            # For multilingual elements, Note should only contain ch-note content, not lang info
+            # The lang attribute is already shown in the attributes section
+            # So we don't need to add it to the note
             
             elements_data.append({
                 'sub': sub_markers,
