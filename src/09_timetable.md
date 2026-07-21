@@ -136,7 +136,7 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 
 ### Purpose
 
-Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney`) when operated by trains. `ServiceJourney`s can in principle have multiple different `TrainNumber`s whereas a `JourneyPart` can only reference a single one.
+Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney`) when operated by trains. `ServiceJourney`s can in principle have multiple different `TrainNumber`s whereas a `JourneyPart` can only reference a single one — however, `JourneyPart` is **not used** for modelling train number changes in the Swiss profile; use two `ServiceJourney`s linked via `ServiceJourneyInterchange` instead (see [uc05 Journey Parts](uc05_journey_parts.md)).
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/TrainNumber.md)
