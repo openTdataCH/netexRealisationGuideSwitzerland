@@ -530,6 +530,34 @@ def parse_template_file(file_path, xsd_type_info):
         # Process elements in the range
         processed_elements = set()
         
+        def get_preceding_comments(element):
+            """Get comments that appear immediately before this element (sibling comments)"""
+            parent = element.getparent()
+            if parent is None:
+                return []
+            
+            comments = []
+            # Get all children of parent
+            children = list(parent)
+            # Find the index of this element
+            elem_index = -1
+            for i, child in enumerate(children):
+                if child is element:
+                    elem_index = i
+                    break
+            
+            # Collect comments immediately before this element
+            if elem_index > 0:
+                for i in range(elem_index - 1, -1, -1):
+                    child = children[i]
+                    if isinstance(child, etree._Comment):
+                        comments.insert(0, child)
+                    else:
+                        # Stop if we hit a non-comment
+                        break
+            
+            return comments
+        
         def process_element(element, level=0, parent_type_context=None):
             """Recursively process an element and its children
             
@@ -545,8 +573,19 @@ def parse_template_file(file_path, xsd_type_info):
                 return  # Skip non-element nodes
             elem_id = element.get('id')
             
+            # Define multilingual element names early so we can use it in key generation
+            multilingual_element_names = ['Text', 'Description', 'Name', 'ShortName', 'Label', 'Title', 'Subtitle']
+            
             # Skip if already processed (avoid duplicates)
-            elem_key = f"{elem_name}_{elem_id}" if elem_id else elem_name
+            # Include lang attribute in key for Text elements to avoid duplicates
+            if elem_name in multilingual_element_names and element.get('lang'):
+                elem_key = f"{elem_name}_{element.get('lang')}_{elem_id}" if elem_id else f"{elem_name}_{element.get('lang')}"
+            else:
+                elem_key = f"{elem_name}_{elem_id}" if elem_id else elem_name
+            
+            # Also include level in key to ensure uniqueness for nested elements
+            elem_key = f"{elem_key}_L{level}"
+            
             if elem_key in processed_elements:
                 return
             processed_elements.add(elem_key)
@@ -557,13 +596,27 @@ def parse_template_file(file_path, xsd_type_info):
             is_referenced = False
             see_reference = None
             
+            # Check if this element is a child of a MultilingualString parent
+            is_multilingual_child = 'MULTILINGUAL_PARENT' in (parent_type_context or '')
+            
             # Get comments that are direct children of this element (before any child elements)
             # These are the comments that describe the element itself
             child_comments = element.xpath('comment()')
+            
+            # NEW: Get preceding comments (sibling comments before this element)
+            # This is important for elements like Text that may have ch-usage comments before them
+            preceding_comments = get_preceding_comments(element)
+            
             is_deprecated = False
             attrs_list = []
             has_ch_root = False
             
+            # For Text and Description elements, also extract lang attribute from the element itself
+            # Also check for other MultilingualString indicators
+            if elem_name in multilingual_element_names and element.get('lang'):
+                attrs_list.append('lang')
+            
+            # Process child comments first
             for comment in child_comments:
                 if comment.text:
                     comment_text = comment.text.strip()
@@ -588,6 +641,63 @@ def parse_template_file(file_path, xsd_type_info):
                         attrs_str = comment_text.replace('ch-attrs:', '').strip()
                         attrs_list = [attr.strip() for attr in attrs_str.split()]
             
+            # NEW: Process preceding comments (for ch-usage, ch-note, etc. that appear before the element)
+            # This is especially important for Text elements in MultilingualString contexts
+            for comment in preceding_comments:
+                if comment.text:
+                    comment_text = comment.text.strip()
+                    # Only process if we haven't already found a usage from child comments
+                    if usage == 'ignored' or usage == '':
+                        if comment_text.startswith('ch-usage:'):
+                            usage = comment_text.replace('ch-usage:', '').strip()
+                        elif comment_text.startswith('ch-note:'):
+                            if note:
+                                note = f"{comment_text.replace('ch-note:', '').strip()} {note}"
+                            else:
+                                note = comment_text.replace('ch-note:', '').strip()
+                        elif comment_text == 'ch-see':
+                            is_referenced = True
+                        elif comment_text.startswith('ch-see:'):
+                            is_referenced = True
+                            see_reference = comment_text.replace('ch-see:', '').strip()
+                        elif comment_text == 'ch-deprecated':
+                            is_deprecated = True
+                        elif comment_text.startswith('ch-attrs:'):
+                            # Extract attribute list and merge with existing
+                            attrs_str = comment_text.replace('ch-attrs:', '').strip()
+                            new_attrs = [attr.strip() for attr in attrs_str.split()]
+                            for attr in new_attrs:
+                                if attr not in attrs_list:
+                                    attrs_list.append(attr)
+            
+            # Check if this element is a MultilingualString (has text content + child Text elements)
+            is_multilingual = False
+            has_child_text_elements = False
+            has_text_content = False
+            for child in element:
+                if isinstance(child, etree._Comment):
+                    continue
+                if isinstance(child, etree._Element):
+                    child_name = etree.QName(child).localname
+                    if child_name == 'Text':
+                        has_child_text_elements = True
+                else:
+                    # This is a text node
+                    if hasattr(child, 'strip') and child.strip():
+                        has_text_content = True
+            is_multilingual = has_text_content and has_child_text_elements
+            
+            # NEW: Also consider elements that are known MultilingualString types based on element name
+            # Even if they don't have both text and child Text elements, they should be treated as multilingual
+            if elem_name in multilingual_element_names:
+                # Check if parent is also a multilingual element (nested Text case)
+                parent = element.getparent()
+                if parent is not None:
+                    parent_name = etree.QName(parent).localname
+                    if parent_name in multilingual_element_names:
+                        # This is a nested Text element (e.g., Text inside Text)
+                        is_multilingual = True
+            
             # Get XSD type info
             xsd_info = xsd_type_info.get(elem_name, {})
             card = '1..1'
@@ -608,6 +718,25 @@ def parse_template_file(file_path, xsd_type_info):
             # description = note  # REMOVED: This was incorrectly using note as description
             description = ''  # Start with empty description, will be filled from XSD or other sources
             
+            # NEW: For Text elements, capture the direct text content as description
+            if elem_name in multilingual_element_names:
+                # Get the direct text content of this element
+                direct_text = element.text
+                if direct_text and direct_text.strip():
+                    description = direct_text.strip()
+                else:
+                    # If no direct text, check for text in child comments' tails
+                    # In XML like <Text lang="de"><!-- comment -->Content</Text>, the "Content" is in the tail of the comment
+                    for child in element:
+                        if isinstance(child, etree._Comment):
+                            if child.tail and child.tail.strip():
+                                description = child.tail.strip()
+                                break
+                        elif hasattr(child, 'text') and child.text and child.text.strip():
+                            # This shouldn't happen for comments, but just in case
+                            description = child.text.strip()
+                            break
+            
             # Add deprecated notice if needed
             if is_deprecated:
                 if note:
@@ -617,7 +746,26 @@ def parse_template_file(file_path, xsd_type_info):
 
             # Skip forbidden and ignored elements from the output
             # But NEVER skip the root element (the one with ch-root)
-            if usage.lower() in ['forbidden', 'ignored'] and not has_ch_root:
+            # Also never skip MultilingualString elements or their child Text elements
+            # Also never skip elements with lang attribute that are part of multilingual content
+            is_multilingual_element = elem_name in multilingual_element_names and element.get('lang')
+            
+
+            
+            # NEW: Also consider elements that are known MultilingualString types based on element name
+            # Even if they don't have both text and child Text elements, they should be treated as multilingual
+            if elem_name in multilingual_element_names:
+                # Check if parent is also a multilingual element (nested Text case)
+                parent = element.getparent()
+                if parent is not None:
+                    parent_name = etree.QName(parent).localname
+                    if parent_name in multilingual_element_names:
+                        # This is a nested Text element (e.g., Text inside Text)
+                        is_multilingual = True
+            
+            is_multilingual_element = elem_name in multilingual_element_names and element.get('lang')
+            
+            if usage.lower() in ['forbidden', 'ignored'] and not has_ch_root and not is_multilingual and not is_multilingual_child and not is_multilingual_element:
                 # Process children anyway in case they have different usage
                 if not is_referenced:
                     for child in element:
@@ -625,9 +773,17 @@ def parse_template_file(file_path, xsd_type_info):
                             process_element(child, level + 1, parent_type_context)
                 return
             
+            # NEW: For multilingual elements with lang attribute, include lang in the element name
+            display_element_name = elem_name
+            if elem_name in multilingual_element_names and element.get('lang'):
+                display_element_name = f"{elem_name} ({element.get('lang')})"
+            # NEW: For nested Text elements (Text inside Text), show the lang attribute
+            elif elem_name == 'Text' and element.get('lang'):
+                display_element_name = f"Text ({element.get('lang')})"
+            
             elements_data.append({
                 'sub': sub_markers,
-                'element': elem_name,
+                'element': display_element_name,
                 'usage': usage,
                 'card': card,
                 'type': xsd_type,
@@ -650,10 +806,32 @@ def parse_template_file(file_path, xsd_type_info):
                     # Use the XSD type of current element as context for children
                     child_parent_type = xsd_info['type']
                 
+                # NEW: Check if current element is a multilingual element (Text with lang attribute)
+                # If so, mark it as a multilingual parent for its children
+                is_current_multilingual_parent = elem_name in multilingual_element_names and element.get('lang')
+                
                 for child in element:
-                    # Only process actual elements, skip comments and text nodes
-                    if isinstance(child, etree._Element) and not isinstance(child, etree._Comment):
-                        process_element(child, level + 1, child_parent_type)
+                    # Skip comments and text nodes, only process element nodes
+                    if isinstance(child, etree._Comment):
+                        continue
+                    if not isinstance(child, etree._Element):
+                        continue
+                    
+                    # For MultilingualString parents, force child Text elements to be included
+                    child_name = etree.QName(child).localname
+                    child_is_text = (child_name == 'Text')
+                    child_is_multilingual_child = (is_multilingual or is_current_multilingual_parent) and child_is_text
+                    
+                    # NEW: Also mark as multilingual child if parent is a multilingual element name
+                    if child_is_text and elem_name in multilingual_element_names:
+                        child_is_multilingual_child = True
+                    
+                    # Pass parent multilingual status to child via parent_type_context
+                    # We'll use a special marker to indicate this
+                    if child_is_multilingual_child:
+                        child_parent_type = f"{child_parent_type}|MULTILINGUAL_PARENT" if child_parent_type else "MULTILINGUAL_PARENT"
+                    
+                    process_element(child, level + 1, child_parent_type)
         
         # Start processing from the common ancestor
         # Process the common ancestor element itself
