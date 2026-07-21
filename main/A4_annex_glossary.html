@@ -650,7 +650,7 @@ A continuous date range (FromDate-ToDate) during which a set of transport servic
 
 <h2 id="servicejourney">ServiceJourney</h2>
 
-<p>A planned trip in the timetable operating on a recurring schedule, defining the stop sequence via a JourneyPattern, passing times, operator, and days of operation.</p>
+<p>A planned trip in the timetable operating on a recurring schedule, defining the stop sequence via a JourneyPattern, TimeDemandType, operator, and days of operation.</p>
 
 <blockquote>
   <p><strong>NeTEx XSD / Transmodel:</strong> A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN.</p>
@@ -787,7 +787,7 @@ components and/or ENTRANCEs, in particular STOP PLACEs and/or its components. NO
 
 <h2 id="timedemandtype">TimeDemandType</h2>
 
-<p>An indicator of traffic conditions or other factors which may affect vehicle run or wait times.</p>
+<p>TimeDemandType describes the timing pattern of a ServiceJourneyPattern: run times between consecutive ScheduledStopPoints  and wait times at a ScheduledStopPoint. Multiple TimeDemandTypes can be defined per ServiceJourneyPattern to represent different traffic or dwell conditions (e.g. peak vs. off-peak). We use TimeDemandType to completely replace TimetabledPassingTimes.</p>
 
 <blockquote>
   <p><strong>NeTEx XSD / Transmodel:</strong> An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.</p>
