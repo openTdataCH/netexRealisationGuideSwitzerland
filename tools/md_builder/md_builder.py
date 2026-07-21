@@ -581,9 +581,13 @@ def parse_template_file(file_path, xsd_type_info):
             if elem_name in multilingual_element_names and element.get('lang'):
                 elem_key = f"{elem_name}_{element.get('lang')}_{elem_id}" if elem_id else f"{elem_name}_{element.get('lang')}"
             else:
+                # For elements without id, include ref or other attributes to make key unique
                 elem_key = f"{elem_name}_{elem_id}" if elem_id else elem_name
             
             # Also include level in key to ensure uniqueness for nested elements
+            # And include ref attribute if present (for StopPlaceRef, etc.)
+            if element.get('ref'):
+                elem_key = f"{elem_key}_ref={element.get('ref')}"
             elem_key = f"{elem_key}_L{level}"
             
             if elem_key in processed_elements:
