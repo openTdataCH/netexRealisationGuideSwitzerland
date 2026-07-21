@@ -1051,7 +1051,7 @@ class ServiceJourney {
     <tr>
       <td> </td>
       <td>privateCodes</td>
-      <td>expected</td>
+      <td>optional</td>
       <td>1..1</td>
       <td>PrivateCodesStructure</td>
       <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
@@ -1060,11 +1060,11 @@ class ServiceJourney {
     <tr>
       <td>+</td>
       <td>PrivateCode</td>
-      <td>expected</td>
+      <td>optional</td>
       <td>1..1</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
-      <td>when the id is not a sloid, then if a sloid is relevant it can be added here</td>
+      <td>If the id is not a SLOID then the SLOID must be added here.</td>
     </tr>
     <tr>
       <td> </td>
@@ -1073,7 +1073,7 @@ class ServiceJourney {
       <td>0..1</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
-      <td>The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay</td>
+      <td>The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay.</td>
     </tr>
     <tr>
       <td> </td>
@@ -1107,10 +1107,10 @@ class ServiceJourney {
   <span class="nt">&lt;/keyList&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
     <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:4128:1:1<span class="nt">&lt;/PrivateCode&gt;</span>
-    <span class="c">&lt;!-- when the id is not a sloid, then if a sloid is relevant it can be added here --&gt;</span>
+    <span class="c">&lt;!-- If the id is not a SLOID then the SLOID must be added here. --&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
   <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Murten/Morat<span class="nt">&lt;/Name&gt;</span>
-  <span class="c">&lt;!-- The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay --&gt;</span>
+  <span class="c">&lt;!-- The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay. --&gt;</span>
   <span class="nt">&lt;PublicCode&gt;</span>1<span class="nt">&lt;/PublicCode&gt;</span>
   <span class="c">&lt;!-- For Quay contains the plattform number/letter. --&gt;</span>
 <span class="nt">&lt;/ScheduledStopPoint&gt;</span>

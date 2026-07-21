@@ -115,7 +115,7 @@
     <tr>
       <td> </td>
       <td>privateCodes</td>
-      <td>expected</td>
+      <td>optional</td>
       <td>1..1</td>
       <td>PrivateCodesStructure</td>
       <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
@@ -124,11 +124,11 @@
     <tr>
       <td>+</td>
       <td>PrivateCode</td>
-      <td>expected</td>
+      <td>optional</td>
       <td>1..1</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
-      <td>when the id is not a sloid, then if a sloid is relevant it can be added here</td>
+      <td>If the id is not a SLOID then the SLOID must be added here.</td>
     </tr>
     <tr>
       <td> </td>
@@ -137,7 +137,7 @@
       <td>0..1</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
-      <td>The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay</td>
+      <td>The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay.</td>
     </tr>
     <tr>
       <td> </td>
