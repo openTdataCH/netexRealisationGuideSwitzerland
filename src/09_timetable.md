@@ -51,8 +51,7 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 *→ [Template](./templates/TimetableFrame.xml)*
 
 ### Frame Relationships
-`TimetableFrame` depends on `ServiceFrame` for `JourneyPattern`s, `Line`s, `TimeDemandType`s and `TimingLink`s referenced by `ServiceJourney`s. It depends on `ResourceFrame` for `Operator` definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `TimetableFrame` is
-typically wrapped in a `CompositeFrame` within a `PublicationDelivery`.
+`TimetableFrame` depends on `ServiceFrame` for `JourneyPattern`s, `Line`s, `TimeDemandType`s and `TimingLink`s referenced by `ServiceJourney`s. It depends on `ResourceFrame` for `Operator` definitions. `TimetableFrame` is typically wrapped in a `CompositeFrame` within a `PublicationDelivery`.
 
 ## ServiceJourney
 *→ [Glossary definition](A4_annex_glossary.md#servicejourney)*
