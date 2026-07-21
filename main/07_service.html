@@ -120,7 +120,6 @@ class ServiceJourney {
     ServiceFrame "1" o-- "0..*" SiteConnection : contains
     ServiceFrame "1" o-- "0..*" Notice : contains
     ServiceFrame "1" o-- "0..*" NoticeAssignment : contains
-    Line "1" -- "1" DestinationDisplay : references
 
     %% external references
     ServiceJourney "1" -- "1" Line : references
@@ -145,7 +144,7 @@ class ServiceJourney {
 <ul>
   <li><code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>s and <code class="language-plaintext highlighter-rouge">PassengerBoardingPositionAssignment</code> which model the relationship between stops in the timetable and the physical platforms of an actual station or other stop.</li>
   <li>Connections (<code class="language-plaintext highlighter-rouge">DefaultConnection</code>, <code class="language-plaintext highlighter-rouge">SiteConnection</code>, <code class="language-plaintext highlighter-rouge">TimingLink</code>) as the topological model of interchanges. They model the possibility of a transfer between two <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s.</li>
-  <li><code class="language-plaintext highlighter-rouge">Notice</code>s which are then assigned to <code class="language-plaintext highlighter-rouge">Journey</code> and <code class="language-plaintext highlighter-rouge">TimetabledPassingTime</code> of the <code class="language-plaintext highlighter-rouge">TimetableFrame</code> through <code class="language-plaintext highlighter-rouge">NoticeAssignment</code>s. They model the association of footnotes and passenger information content such as stop announcements and the network.</li>
+  <li><code class="language-plaintext highlighter-rouge">Notice</code>s which are then assigned to <code class="language-plaintext highlighter-rouge">ServiceJourney</code> (in the <code class="language-plaintext highlighter-rouge">TimetableFrame</code>) and <code class="language-plaintext highlighter-rouge">StopPointInJourneyPattern</code> (in the <code class="language-plaintext highlighter-rouge">ServiceFrame</code>) through <code class="language-plaintext highlighter-rouge">NoticeAssignment</code>s. They model the association of footnotes and passenger information content such as stop announcements and the network.</li>
 </ul>
 
 <h3 id="table">Table</h3>
@@ -471,7 +470,7 @@ class ServiceJourney {
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/ServiceFrame.xml">Template</a></em></p>
 
 <h3 id="frame-relationships">Frame Relationships</h3>
-<p><code class="language-plaintext highlighter-rouge">ServiceFrame</code> depends on <code class="language-plaintext highlighter-rouge">ResourceFrame</code> for <code class="language-plaintext highlighter-rouge">Operator</code> definitions. <code class="language-plaintext highlighter-rouge">VehicleScheduleFrame</code> may reference journeys defined here for block and duty scheduling. <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>s build the connection between <code class="language-plaintext highlighter-rouge">ScheduledStopPoints</code> and the physical model in <code class="language-plaintext highlighter-rouge">SiteFrame</code>. <code class="language-plaintext highlighter-rouge">ServiceFrame</code> is typically wrapped in a <code class="language-plaintext highlighter-rouge">CompositeFrame</code> within a <code class="language-plaintext highlighter-rouge">PublicationDelivery</code>.</p>
+<p><code class="language-plaintext highlighter-rouge">ServiceFrame</code> depends on <code class="language-plaintext highlighter-rouge">ResourceFrame</code> for <code class="language-plaintext highlighter-rouge">Operator</code> definitions. <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>s build the connection between <code class="language-plaintext highlighter-rouge">ScheduledStopPoints</code> and the physical model in <code class="language-plaintext highlighter-rouge">SiteFrame</code>. <code class="language-plaintext highlighter-rouge">ServiceFrame</code> is typically wrapped in a <code class="language-plaintext highlighter-rouge">CompositeFrame</code> within a <code class="language-plaintext highlighter-rouge">PublicationDelivery</code>.</p>
 
 <h2 id="direction">Direction</h2>
 <p>We don’t use <code class="language-plaintext highlighter-rouge">Direction</code> but only <code class="language-plaintext highlighter-rouge">DirectionType</code>. For this we need NeTEx 2.1.</p>
@@ -862,6 +861,14 @@ class ServiceJourney {
 <h3 id="purpose-3">Purpose</h3>
 <p>Showing the destination of a <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. The text shown on the front or side of a public transport vehicle to indicate its destination, including via-points and variant labels.</p>
 
+<p><code class="language-plaintext highlighter-rouge">DestinationDisplay</code> is a standalone, reusable object — defined once in the <code class="language-plaintext highlighter-rouge">ServiceFrame</code> and referenced from wherever the destination text is needed. This is preferred over an inline <code class="language-plaintext highlighter-rouge">Destination/Name</code> on <code class="language-plaintext highlighter-rouge">ServiceJourney</code>, for several reasons:</p>
+<ul>
+  <li>An inline <code class="language-plaintext highlighter-rouge">Name</code> on <code class="language-plaintext highlighter-rouge">Destination</code> duplicates the display text (once in <code class="language-plaintext highlighter-rouge">Name</code>, once in the referenced <code class="language-plaintext highlighter-rouge">DestinationDisplay</code>) and can become inconsistent between the two.</li>
+  <li><code class="language-plaintext highlighter-rouge">DestinationDisplay</code> is reusable across arbitrarily many journeys, instead of repeating the text per journey.</li>
+  <li>Only <code class="language-plaintext highlighter-rouge">DestinationDisplay</code> offers the complete set of display attributes: <code class="language-plaintext highlighter-rouge">FrontText</code>, <code class="language-plaintext highlighter-rouge">SideText</code>, <code class="language-plaintext highlighter-rouge">ShortName</code>, <code class="language-plaintext highlighter-rouge">vias</code>, and language variants — <code class="language-plaintext highlighter-rouge">Destination</code> only knows a single <code class="language-plaintext highlighter-rouge">Name</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">DestinationDisplay</code> can additionally be set directly on <code class="language-plaintext highlighter-rouge">StopPointInJourneyPattern</code>, allowing the displayed destination to change at individual stops (e.g. for through-services / Durchbindung). This is not possible with <code class="language-plaintext highlighter-rouge">Destination</code> at the journey level.</li>
+</ul>
+
 <h3 id="table-3">Table</h3>
 
 <p>We only allow fully formed content of destinationDisplays</p>
@@ -950,14 +957,11 @@ class ServiceJourney {
 <h3 id="usage-notes-2">Usage Notes</h3>
 <ul>
   <li>In HRDF sometimes the destination is not set (<code class="language-plaintext highlighter-rouge">*R</code>). This results in NeTEX in a calculated destination definition.</li>
-  <li>The <code class="language-plaintext highlighter-rouge">DestinationDisplay</code> is usually set on the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. If it changes during the run, it needs to be changed in the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>. If it changes on that, then the new destination should be used. In our output, we will fill all remaining <code class="language-plaintext highlighter-rouge">PointsInJourneyPattern</code>with the relevant change.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">DestinationDisplay</code> is set on the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> via <code class="language-plaintext highlighter-rouge">Destination/DestinationDisplayRef</code>. If it changes during the run, it needs to be changed on the relevant <code class="language-plaintext highlighter-rouge">StopPointInJourneyPattern</code> via <code class="language-plaintext highlighter-rouge">DestinationDisplayRef</code>. If it changes there, the new destination applies from that point onward — in our output, we fill all remaining <code class="language-plaintext highlighter-rouge">PointsInJourneyPattern</code> with the relevant change.</li>
+  <li><code class="language-plaintext highlighter-rouge">Destination</code> must <strong>not</strong> carry a redundant inline <code class="language-plaintext highlighter-rouge">Name</code> alongside <code class="language-plaintext highlighter-rouge">DestinationDisplayRef</code> — the display text lives exclusively in the referenced <code class="language-plaintext highlighter-rouge">DestinationDisplay</code> object, to avoid inconsistency between the two sources. Only <code class="language-plaintext highlighter-rouge">ScheduledStopPointRef</code> and <code class="language-plaintext highlighter-rouge">DestinationDisplayRef</code> should be set on <code class="language-plaintext highlighter-rouge">Destination</code>.</li>
   <li>See also the <a href="/netexRealisationGuideSwitzerland/main/uc13_changes_in_destination.html">use case on changes in destination</a></li>
   <li>id-attribute needs to be kept stable between exports.</li>
 </ul>
-
-<blockquote>
-  <p><strong>LATER</strong>: We will clarify the rules how this is done.</p>
-</blockquote>
 
 <h2 id="scheduledstoppoint">ScheduledStopPoint</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#scheduledstoppoint">Glossary definition</a></em></p>
