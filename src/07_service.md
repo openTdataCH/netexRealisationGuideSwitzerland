@@ -81,7 +81,6 @@ class ServiceJourney {
     ServiceFrame "1" o-- "0..*" SiteConnection : contains
     ServiceFrame "1" o-- "0..*" Notice : contains
     ServiceFrame "1" o-- "0..*" NoticeAssignment : contains
-    Line "1" -- "1" DestinationDisplay : references
 
     %% external references
     ServiceJourney "1" -- "1" Line : references
@@ -103,7 +102,7 @@ The `ServiceFrame` model comprises among others:
 Other important classes of the `ServiceFrame` include:
 -	`PassengerStopAssignment`s and `PassengerBoardingPositionAssignment` which model the relationship between stops in the timetable and the physical platforms of an actual station or other stop.
 -	Connections (`DefaultConnection`, `SiteConnection`, `TimingLink`) as the topological model of interchanges. They model the possibility of a transfer between two `ScheduledStopPoint`s.
--	`Notice`s which are then assigned to `Journey` and `TimetabledPassingTime` of the `TimetableFrame` through `NoticeAssignment`s. They model the association of footnotes and passenger information content such as stop announcements and the network.
+-	`Notice`s which are then assigned to `ServiceJourney` (in the `TimetableFrame`) and `StopPointInJourneyPattern` (in the `ServiceFrame`) through `NoticeAssignment`s. They model the association of footnotes and passenger information content such as stop announcements and the network.
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceFrame.md)
@@ -116,7 +115,7 @@ Other important classes of the `ServiceFrame` include:
 *→ [Template](./templates/ServiceFrame.xml)*
 
 ### Frame Relationships
-`ServiceFrame` depends on `ResourceFrame` for `Operator` definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `PassengerStopAssignment`s build the connection between `ScheduledStopPoints` and the physical model in `SiteFrame`. `ServiceFrame` is typically wrapped in a `CompositeFrame` within a `PublicationDelivery`.
+`ServiceFrame` depends on `ResourceFrame` for `Operator` definitions. `PassengerStopAssignment`s build the connection between `ScheduledStopPoints` and the physical model in `SiteFrame`. `ServiceFrame` is typically wrapped in a `CompositeFrame` within a `PublicationDelivery`.
 
 
 ## Direction
@@ -181,6 +180,12 @@ A `GroupOfLines` is used to model mixed lines. For details see [uc17](uc17_mixed
 ### Purpose
 Showing the destination of a `ServiceJourney`. The text shown on the front or side of a public transport vehicle to indicate its destination, including via-points and variant labels.
 
+`DestinationDisplay` is a standalone, reusable object — defined once in the `ServiceFrame` and referenced from wherever the destination text is needed. This is preferred over an inline `Destination/Name` on `ServiceJourney`, for several reasons:
+- An inline `Name` on `Destination` duplicates the display text (once in `Name`, once in the referenced `DestinationDisplay`) and can become inconsistent between the two.
+- `DestinationDisplay` is reusable across arbitrarily many journeys, instead of repeating the text per journey.
+- Only `DestinationDisplay` offers the complete set of display attributes: `FrontText`, `SideText`, `ShortName`, `vias`, and language variants — `Destination` only knows a single `Name`.
+- `DestinationDisplay` can additionally be set directly on `StopPointInJourneyPattern`, allowing the displayed destination to change at individual stops (e.g. for through-services / Durchbindung). This is not possible with `Destination` at the journey level.
+
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/DestinationDisplay.md)
 
@@ -193,12 +198,11 @@ Showing the destination of a `ServiceJourney`. The text shown on the front or si
 *->[Template](./templates/DestinationDisplay.xml)*
 
 ### Usage Notes
-- In HRDF sometimes the destination is not set (`*R`). This results in NeTEX in a calculated destination definition. 
-- The `DestinationDisplay` is usually set on the `ServiceJourney`. If it changes during the run, it needs to be changed in the `ServiceJourneyPattern`. If it changes on that, then the new destination should be used. In our output, we will fill all remaining `PointsInJourneyPattern`with the relevant change.
-- See also the [use case on changes in destination](uc13_changes_in_destination.md) 
+- In HRDF sometimes the destination is not set (`*R`). This results in NeTEX in a calculated destination definition.
+- The `DestinationDisplay` is set on the `ServiceJourney` via `Destination/DestinationDisplayRef`. If it changes during the run, it needs to be changed on the relevant `StopPointInJourneyPattern` via `DestinationDisplayRef`. If it changes there, the new destination applies from that point onward — in our output, we fill all remaining `PointsInJourneyPattern` with the relevant change.
+- `Destination` must **not** carry a redundant inline `Name` alongside `DestinationDisplayRef` — the display text lives exclusively in the referenced `DestinationDisplay` object, to avoid inconsistency between the two sources. Only `ScheduledStopPointRef` and `DestinationDisplayRef` should be set on `Destination`.
+- See also the [use case on changes in destination](uc13_changes_in_destination.md)
 - id-attribute needs to be kept stable between exports.
-
-> **LATER**: We will clarify the rules how this is done.
 
 ## ScheduledStopPoint
 *→ [Glossary definition](A4_annex_glossary.md#scheduledstoppoint)*
