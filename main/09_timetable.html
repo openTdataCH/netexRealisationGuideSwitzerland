@@ -1331,7 +1331,7 @@ typically wrapped in a <code class="language-plaintext highlighter-rouge">Compos
 
 <h3 id="purpose-4">Purpose</h3>
 
-<p>Codes assigned to particular journeys (<code class="language-plaintext highlighter-rouge">ServiceJourney</code>, <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code>) when operated by trains. <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s can in principle have multiple different <code class="language-plaintext highlighter-rouge">TrainNumber</code>s whereas a <code class="language-plaintext highlighter-rouge">JourneyPart</code> can only reference a single one.</p>
+<p>Codes assigned to particular journeys (<code class="language-plaintext highlighter-rouge">ServiceJourney</code>, <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code>) when operated by trains. <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s can in principle have multiple different <code class="language-plaintext highlighter-rouge">TrainNumber</code>s whereas a <code class="language-plaintext highlighter-rouge">JourneyPart</code> can only reference a single one — however, <code class="language-plaintext highlighter-rouge">JourneyPart</code> is <strong>not used</strong> for modelling train number changes in the Swiss profile; use two <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s linked via <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> instead (see <a href="/netexRealisationGuideSwitzerland/main/uc05_journey_parts.html">uc05 Journey Parts</a>).</p>
 
 <h3 id="table-4">Table</h3>
 
