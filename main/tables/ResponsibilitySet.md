@@ -9,6 +9,7 @@ Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLeg
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
+| + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 |  | roles | mandatory | 0..1 | responsibilityRoleAssignments_RelStructure | Roles defined by this RESPONSIBILITY SET. |  |
 | + | ResponsibilityRoleAssignment | mandatory | 1..* | ResponsibilityRoleAssignment | Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision. |  |

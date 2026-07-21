@@ -207,6 +207,51 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file.</td>
     </tr>
     <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of Traveller</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ShortName</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Short Name for service</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>PrivateCode</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceJourneyInterchange.html">ServiceJourneyInterchange</a></td>
       <td>expected</td>
@@ -1447,12 +1492,30 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td> </td>
     </tr>
     <tr>
+      <td>+</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td> </td>
       <td>ShortName</td>
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
       <td>Short Name for service</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
       <td> </td>
     </tr>
     <tr>

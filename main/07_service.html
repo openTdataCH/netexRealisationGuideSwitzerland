@@ -601,6 +601,24 @@ class ServiceJourney {
       <td>The SLNID is mandatory, when it exists</td>
     </tr>
     <tr>
+      <td>+</td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td> </td>
       <td>Name</td>
       <td>mandatory</td>
@@ -671,6 +689,15 @@ class ServiceJourney {
       <td>transportOrganisationRefs_RelStructure</td>
       <td>Additional OPERATORs for LINE.</td>
       <td>Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>OperatorRef</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>OperatorRefStructure</td>
+      <td>Reference to an OPERATOR.</td>
+      <td> </td>
     </tr>
     <tr>
       <td> </td>
@@ -1074,6 +1101,15 @@ class ServiceJourney {
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td>The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
     </tr>
     <tr>
       <td> </td>
@@ -1916,6 +1952,15 @@ needs to be added for that too.</li>
       <td> </td>
     </tr>
     <tr>
+      <td>++++</td>
+      <td>BookingMethods</td>
+      <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
+      <td>0..1</td>
+      <td>BookingMethodListOfEnumerations</td>
+      <td>Booking methods allowed. +v1.2.2</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td> </td>
       <td>ServiceJourneyPatternType</td>
       <td>expected</td>
@@ -2199,6 +2244,42 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>1..1</td>
       <td>xsd:string</td>
       <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Text</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Text content of NOTICe.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Text</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Text content of NOTICe.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
       <td> </td>
     </tr>
     <tr>

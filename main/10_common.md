@@ -100,6 +100,7 @@ In some cases we need translations or alias of the Name element. This is done wi
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
+|  | NameType | mandatory | 0..1 | NameTypeEnumeration | Type of Name - fixed value. Default is alias. | In some cases we need translations or alias of the Name element. This is done with AlternativeName. alias or translation allowed for StoopPlace. |
 |  | TypeOfName | optional | 0..1 | xsd:normalizedString | Type of Name - open value. | For StopPlace official is used for the official name |
 |  | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
@@ -310,6 +311,7 @@ See the following class diagram for the most important objects of the RESOURCE F
 |  | typesOfValue | mandatory | 0..1 | typesOfValueInFrame_RelStructure | VALUE SETs and TYPE OF VALUEs in frame. | Sets of TYPE OF VALUE contained in the RESOURCE FRAME. |
 | + | ValueSet | expected | 1..* | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfNotice ValueSet. |
 | ++ | values | expected | 0..1 | typesOfValue_RelStructure | Values in Set. |  |
+| +++ | TypeOfNotice | expected | 1..* | TypeOfNotice | A classification of a NOTICE according to its functional purpose. |  |
 | + | ValueSet | expected | 1..* | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfProductCategory ValueSet |
 | + | ValueSet | We expect a TypsOfPlace Valueset | 1..* | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. |  |
 |  | organisations | mandatory | 0..1 | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD |
@@ -432,6 +434,7 @@ Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLeg
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
+| + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 |  | roles | mandatory | 0..1 | responsibilityRoleAssignments_RelStructure | Roles defined by this RESPONSIBILITY SET. |  |
 | + | ResponsibilityRoleAssignment | mandatory | 1..* | ResponsibilityRoleAssignment | Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision. |  |
@@ -545,6 +548,9 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
+| + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
+| + | Text | optional | 0..1 | MultilingualString | Text content of NOTICe. |  |
+| ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | ShortName | mandatory | 0..1 | MultilingualString | Short Name for service |  |
 
 
@@ -602,11 +608,13 @@ We will use this organisation also in AuthorityRef. The problem is that the sboi
 | ++ | Value | expected | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
 |  | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
 | + | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | Busines organisation |
+|  | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 |  | Name | expected | 0..1 | MultilingualString | Name of Traveller |  |
 |  | ShortName | expected | 0..1 | MultilingualString | Short Name for service | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
 |  | parts | optional | 0..1 | blockParts_RelStructure | BLOCK PARTs which make up COMPOUND BLOCK. |  |
 | ++ | administrativeZones | optional | 0..1 | administrativeZones_RelStructure | Zones managed by ORGANISATION PART. |  |
 | +++ | TransportAdministrativeZone | optional | 1..* | TransportAdministrativeZone | A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region. |  |
+| ++++ | PrivateCode | optional | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 
 
 
@@ -687,7 +695,9 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 |  | Extensions | expected | 1..1 | ExtensionsStructure | User defined Extensions to ENTITY in schema. (Wrapper tag used to avoid problems with handling of optional 'any' by some validators). | Two elements used in HRDF for ordering facilities |
 | + | Priority | expected | 0..1 | InterchangePriorityType | Priority to assign to this INTERCHANGE. |  |
 |  | Description | expected | 0..1 | MultilingualString | Description of contents. |  |
+| + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | + | Text | optional | 0..1 | MultilingualString | Text content of NOTICe. |  |
+| ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | FareClasses | optional | 1..1 | FareClassListOfEnumerations | List of FARE CLASSes. |  |
 |  | MobilityFacilityList | optional | 1..1 | MobilityFacilityListOfEnumerations | List of MOBILITY FACILITies. |  |
 |  | NuisanceFacilityList | optional | 1..1 | NuisanceFacilityListOfEnumerations | List of NUISANCE FACILITies. |  |
@@ -777,7 +787,9 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 |  | validityConditions | optional | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. |  |
 | + | [AvailabilityCondition](./tables/AvailabilityCondition.md) | optional | 1..* | AvailabilityCondition | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. |  |
 |  | Description | optional | 0..1 | MultilingualString | Description of contents. | Description is optional |
+| + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | + | Text | optional | 0..1 | MultilingualString | Text content of NOTICe. |  |
+| ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | AssistanceFacilityList | optional | 1..1 | AssistanceFacilityListOfEnumerations | List of ASSISTANCE FACILITies. |  |
 |  | AccessibilityToolList | optional | 0..1 | AccessibilityToolListOfEnumerations |  |  |
 |  | SanitaryFacilityList | optional | 1..1 | SanitaryFacilityListOfEnumerations | List of SANITARY FACILITies. |  |

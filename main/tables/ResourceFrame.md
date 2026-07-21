@@ -11,6 +11,7 @@
 |  | typesOfValue | mandatory | 0..1 | typesOfValueInFrame_RelStructure | VALUE SETs and TYPE OF VALUEs in frame. | Sets of TYPE OF VALUE contained in the RESOURCE FRAME. |
 | + | ValueSet | expected | 1..* | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfNotice ValueSet. |
 | ++ | values | expected | 0..1 | typesOfValue_RelStructure | Values in Set. |  |
+| +++ | TypeOfNotice | expected | 1..* | TypeOfNotice | A classification of a NOTICE according to its functional purpose. |  |
 | + | ValueSet | expected | 1..* | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfProductCategory ValueSet |
 | + | ValueSet | We expect a TypsOfPlace Valueset | 1..* | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. |  |
 |  | organisations | mandatory | 0..1 | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD |

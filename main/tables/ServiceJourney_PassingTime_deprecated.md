@@ -32,3 +32,4 @@
 |  | [Destination](Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure | Destination of Travel. Note that for a point-to-point TARIFF the origin is assigned with a DISTANCE MATRIX ELEMENT. |  |
 |  | passingTimes | mandatory | 0..1 | timetabledPassingTimes_RelStructure | PASSING TIMEs for VEHICLE JOURNEY. |  |
 | + | TimetabledPassingTime | expected | 1..* | TimetabledPassingTime | TIMETABLED PASSING TIME at TIMING POINT. |  |
+| ++ | PointInJourneyPatternRef | expected | 0..1 | PointInJourneyPatternRefStructure | Point in JOURNEY PATTERN upon which this DEAD RUN CALL is based. Can be used to obtain full association sets. |  |

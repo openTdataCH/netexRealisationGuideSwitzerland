@@ -189,6 +189,15 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
   <tbody>
     <tr>
       <td> </td>
+      <td>NameType</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>NameTypeEnumeration</td>
+      <td>Type of Name - fixed value. Default is alias.</td>
+      <td>In some cases we need translations or alias of the Name element. This is done with AlternativeName. alias or translation allowed for StoopPlace.</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>TypeOfName</td>
       <td>optional</td>
       <td>0..1</td>
@@ -580,6 +589,15 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td> </td>
     </tr>
     <tr>
+      <td>+++</td>
+      <td>TypeOfNotice</td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>TypeOfNotice</td>
+      <td>A classification of a NOTICE according to its functional purpose.</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td>+</td>
       <td>ValueSet</td>
       <td>expected</td>
@@ -823,6 +841,15 @@ We use this element to  describe the different roles of the participating compan
       <td> </td>
     </tr>
     <tr>
+      <td>+</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td> </td>
       <td>PrivateCode</td>
       <td>expected</td>
@@ -1038,6 +1065,33 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td> </td>
     </tr>
     <tr>
+      <td>+</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Text</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Text content of NOTICe.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td> </td>
       <td>ShortName</td>
       <td>mandatory</td>
@@ -1170,6 +1224,15 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
     </tr>
     <tr>
       <td> </td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>Name</td>
       <td>expected</td>
       <td>0..1</td>
@@ -1211,6 +1274,15 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>1..*</td>
       <td>TransportAdministrativeZone</td>
       <td>A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++++</td>
+      <td>PrivateCode</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -1341,11 +1413,29 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
     </tr>
     <tr>
       <td>+</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
       <td>Text</td>
       <td>optional</td>
       <td>0..1</td>
       <td>MultilingualString</td>
       <td>Text content of NOTICe.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
       <td> </td>
     </tr>
     <tr>
@@ -1543,11 +1633,29 @@ referenced to define facilities of a site.</p>
     </tr>
     <tr>
       <td>+</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
       <td>Text</td>
       <td>optional</td>
       <td>0..1</td>
       <td>MultilingualString</td>
       <td>Text content of NOTICe.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
       <td> </td>
     </tr>
     <tr>

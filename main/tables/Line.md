@@ -17,6 +17,8 @@ For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `Oper
 | ++ | Key | expected | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
 | ++ | Value | expected | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
 |  | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | The SLNID is mandatory, when it exists |
+| + | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+| ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
 |  | Name | mandatory | 0..1 | MultilingualString | Name of Traveller | contains attribute D T from HRDF. Is not translated on purpose. |
 |  | ShortName | expected | 0..1 | MultilingualString | Short Name for service | contains the LinieKurzName (attribut N T in HRDF) |
 |  | TransportMode | mandatory | 0..1 | AllModesEnumeration | MODE. |  |
@@ -25,5 +27,6 @@ For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `Oper
 |  | PublicCode | mandatory | 0..1 | PublicCodeStructure | Public code for JOURNEY. | Contains LinieLangName (attribute LT from HRDF) |
 |  | OperatorRef | expected | 1..1 | OperatorRefStructure | Reference to an OPERATOR. | The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney. Is redundant to the responsibilitySetRef on purpose. |
 |  | additionalOperators | optional | 0..1 | transportOrganisationRefs_RelStructure | Additional OPERATORs for LINE. | Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined. |
+| + | OperatorRef | optional | 1..* | OperatorRefStructure | Reference to an OPERATOR. |  |
 |  | LineType | expected | 0..1 | LineTypeEnumeration | Classification of LINE, including flexible options. +v2.0. | Will be used especially, when not "fixed". Details in mapping excel. |
 |  | TypeOfProductCategoryRef | mandatory | 1..1 | TypeOfProductCategoryRefStructure | Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code. | Always aligned with BS KI oev-info.ch |

@@ -59,6 +59,11 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 | + | [ServiceFacilitySet](./tables/ServiceFacilitySet.md) | expected | 1..* | ServiceFacilitySet | Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.). |  |
 |  | typesOfService | expected | 0..1 | typesOfServiceInFrame_RelStructure | TYPEs of SERVICE in frame. |  |
 | + | TypeOfService | optional | 1..* | TypeOfService | Classification of a Service. | This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. |
+| ++ | Name | expected | 0..1 | MultilingualString | Name of Traveller |  |
+| +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
+| ++ | ShortName | expected | 0..1 | MultilingualString | Short Name for service |  |
+| +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
+| ++ | PrivateCode | optional | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 | + | [ServiceJourneyInterchange](./tables/ServiceJourneyInterchange.md) | expected | 1..1 | ServiceJourneyInterchange | The scheduled possibility for transfer of passengers between two SERVICE JOURNEYs at the same or different STOP POINTs. | For modeling many forms of interchanges |
 
 
@@ -560,7 +565,9 @@ The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advert
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
 |  | Name | expected | 0..1 | MultilingualString | Name of Traveller |  |
+| + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | ShortName | expected | 0..1 | MultilingualString | Short Name for service |  |
+| + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 
 

@@ -158,6 +158,24 @@
       <td>The SLNID is mandatory, when it exists</td>
     </tr>
     <tr>
+      <td>+</td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td> </td>
       <td>Name</td>
       <td>mandatory</td>
@@ -228,6 +246,15 @@
       <td>transportOrganisationRefs_RelStructure</td>
       <td>Additional OPERATORs for LINE.</td>
       <td>Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>OperatorRef</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>OperatorRefStructure</td>
+      <td>Reference to an OPERATOR.</td>
+      <td> </td>
     </tr>
     <tr>
       <td> </td>
