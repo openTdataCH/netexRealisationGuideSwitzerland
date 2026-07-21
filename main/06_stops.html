@@ -218,7 +218,7 @@
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/SiteFrame.xml">Template</a></em></p>
 
 <h3 id="frame-relationships">Frame Relationships</h3>
-<p><code class="language-plaintext highlighter-rouge">SiteFrame</code> is independent of other frames but provides the physical stop infrastructure that <code class="language-plaintext highlighter-rouge">ServiceFrame</code> references through <code class="language-plaintext highlighter-rouge">PassengerStopAssignments</code>. <code class="language-plaintext highlighter-rouge">TimetableFrame</code> indirectly depends on <code class="language-plaintext highlighter-rouge">SiteFrame</code> through the <code class="language-plaintext highlighter-rouge">JourneyPattern</code> stop sequence. <code class="language-plaintext highlighter-rouge">SiteFrame</code> is typically wrapped in a <code class="language-plaintext highlighter-rouge">CompositeFrame</code> within a <code class="language-plaintext highlighter-rouge">PublicationDelivery</code>.</p>
+<p><code class="language-plaintext highlighter-rouge">SiteFrame</code> is independent of other frames but provides the physical stop infrastructure that <code class="language-plaintext highlighter-rouge">ServiceFrame</code> references through <code class="language-plaintext highlighter-rouge">PassengerStopAssignments</code>. <code class="language-plaintext highlighter-rouge">TimetableFrame</code> indirectly depends on <code class="language-plaintext highlighter-rouge">SiteFrame</code> through the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> stop sequence. <code class="language-plaintext highlighter-rouge">SiteFrame</code> is typically wrapped in a <code class="language-plaintext highlighter-rouge">CompositeFrame</code> within a <code class="language-plaintext highlighter-rouge">PublicationDelivery</code>.</p>
 
 <h2 id="stopplace">StopPlace</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#stopplace">Glossary definition</a></em></p>
@@ -544,7 +544,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
 
 <h3 id="usage-notes">Usage Notes</h3>
 <ul>
-  <li>All <code class="language-plaintext highlighter-rouge">StopPlace</code>s in Switzerland are identifiable by both a DIDOK number and a SLOID. DIDOK number are under the responsability of the Department of Transport (BAV). It is possible that in the future the BAV will also regulate “Haltepunkte” and “Haltekanten” and, therefore, the identifiers of <code class="language-plaintext highlighter-rouge">Quay</code>s.</li>
+  <li>All <code class="language-plaintext highlighter-rouge">StopPlace</code>s in Switzerland are identifiable by both a DIDOK number and a SLOID. DIDOK number are under the responsibility of the Department of Transport (BAV). It is possible that in the future the BAV will also regulate “Haltepunkte” and “Haltekanten” and, therefore, the identifiers of <code class="language-plaintext highlighter-rouge">Quay</code>s.</li>
   <li>Foreign <code class="language-plaintext highlighter-rouge">StopPlace</code>s may be mapped to Swiss DIDOK codes.</li>
   <li>Meta-stations will have their own codes. In some cases these are added for operational or searching reasons.</li>
   <li>id-attribute needs to be kept stable between exports.</li>
