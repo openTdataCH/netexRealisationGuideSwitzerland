@@ -393,6 +393,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
     <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
   </trainNumbers>
   <Destination>
+    <ScheduledStopPointRef ref="generated" version="1"/>
     <DestinationDisplayRef ref="generated" version="1"/>
   </Destination>
   <parts>
