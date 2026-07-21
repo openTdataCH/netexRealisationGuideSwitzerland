@@ -513,7 +513,7 @@ Contains the network and route definitions - Lines, Routes, JourneyPatterns, Sch
 
 ## ServiceJourney
 
-A planned trip in the timetable operating on a recurring schedule, defining the stop sequence via a JourneyPattern, passing times, operator, and days of operation.
+A planned trip in the timetable operating on a recurring schedule, defining the stop sequence via a JourneyPattern, TimeDemandType, operator, and days of operation.
 
 > **NeTEx XSD / Transmodel:** A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN.
 
@@ -628,7 +628,7 @@ A period of time within a day, usually defined by a start and end time.
 
 ## TimeDemandType
 
-An indicator of traffic conditions or other factors which may affect vehicle run or wait times.
+TimeDemandType describes the timing pattern of a ServiceJourneyPattern: run times between consecutive ScheduledStopPoints  and wait times at a ScheduledStopPoint. Multiple TimeDemandTypes can be defined per ServiceJourneyPattern to represent different traffic or dwell conditions (e.g. peak vs. off-peak). We use TimeDemandType to completely replace TimetabledPassingTimes.
 
 > **NeTEx XSD / Transmodel:** An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.
 
