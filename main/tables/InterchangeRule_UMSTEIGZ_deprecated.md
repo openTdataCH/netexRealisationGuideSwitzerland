@@ -23,3 +23,5 @@ transfer times between ServiceJourneys (UMSTEIGZ)
 | ++ | DirectionRef | expected | 1..1 | DirectionRefStructure | Reference to a DIRECTION. |  |
 | + | AdjacentStopPlaceRef | expected | 0..1 | StopPlaceRefStructure | Prior (feeder) or onwards (distributor) SCHEDULED STOP PLACE before/after CONNECTION. |  |
 | + | ServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure | Reference to a connecting VEHICLE JOURNEY to whom INTERCHANGE RULE applies. If absent applies to all journeys. |  |
+| + | AdjacentStopPlaceRef | expected | 0..1 | StopPlaceRefStructure | Prior (feeder) or onwards (distributor) SCHEDULED STOP PLACE before/after CONNECTION. |  |
+| + | ServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure | Reference to a connecting VEHICLE JOURNEY to whom INTERCHANGE RULE applies. If absent applies to all journeys. |  |

@@ -24,3 +24,4 @@ transfer times between Line/Directions at a given stop (UMSTEIGL)
 | + | AdjacentStopPlaceRef | optional | 0..1 | StopPlaceRefStructure | Prior (feeder) or onwards (distributor) SCHEDULED STOP PLACE before/after CONNECTION. |  |
 | + | ServiceJourneyRef | optional | 1..1 | ServiceJourneyRefStructure | Reference to a connecting VEHICLE JOURNEY to whom INTERCHANGE RULE applies. If absent applies to all journeys. |  |
 |  | DistributorFilter | mandatory | 0..1 | InterchangeRuleParameterStructure | Distributor end of INTERCHANGE RULE. |  |
+| + | ServiceJourneyRef | optional | 1..1 | ServiceJourneyRefStructure | Reference to a connecting VEHICLE JOURNEY to whom INTERCHANGE RULE applies. If absent applies to all journeys. |  |
