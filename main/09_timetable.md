@@ -238,7 +238,8 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
     <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
   </trainNumbers>
   <Destination>
-    <DestinationsDisplayRef ref="generated" version="1"/>
+    <ScheduledStopPointRef ref="generated" version="1"/>
+    <DestinationDisplayRef ref="generated" version="1"/>
   </Destination>
   <parts>
     <!-- For some use cases e.g. change of Facilities during ServiceJourney -->
