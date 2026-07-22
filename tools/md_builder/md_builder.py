@@ -712,6 +712,57 @@ def parse_template_file(file_path, xsd_type_info):
                 max_occurs = xsd_info.get('max_occurs', '1')
                 card = get_cardinality(min_occurs, max_occurs)
                 xsd_type = xsd_info.get('type', 'unknown')
+            else:
+                # NEW: Check for container patterns when XSD info is not available
+                # First, get the actual parent element name from the parent_type_context
+                # The parent_type_context can contain markers like "MULTILINGUAL_PARENT"
+                actual_parent_name = None
+                if parent_type_context:
+                    # Split by | and get the first non-marker part
+                    parts = parent_type_context.split('|')
+                    for part in parts:
+                        if part and not part.startswith('MULTILINGUAL_'):
+                            actual_parent_name = part
+                            break
+                
+                # Check if current element contains multilingual children
+                is_container_of_multilingual = False
+                if elem_name in multilingual_element_names:
+                    # Check if this element has child Text/Description/Name elements
+                    for child in element:
+                        if hasattr(child, 'tag'):
+                            try:
+                                child_name = etree.QName(child).localname
+                                if child_name in multilingual_element_names:
+                                    is_container_of_multilingual = True
+                                    break
+                            except:
+                                pass
+                
+                # 1. Nested multilingual elements (Text inside Text, etc.) should be 0..*
+                # Also, multilingual elements that are containers should have 0..* cardinality
+                if elem_name in multilingual_element_names and (is_container_of_multilingual or (actual_parent_name and actual_parent_name in multilingual_element_names)):
+                    # This is a multilingual element that either:
+                    # - contains nested multilingual elements (container)
+                    # - is nested inside another multilingual element
+                    card = '0..*'
+                
+                # 2. Elements inside container elements (e.g., PrivateCode inside privateCodes)
+                if actual_parent_name:
+                    # Simple heuristic: if parent ends with 's' and is similar to child, it's likely a container
+                    if actual_parent_name and elem_name and len(actual_parent_name) > len(elem_name):
+                        # Check for common container patterns
+                        container_patterns = [
+                            ('privateCodes', 'PrivateCode'),
+                            ('alternativeTexts', 'AlternativeText'),
+                            ('names', 'Name'),
+                            ('descriptions', 'Description'),
+                            ('texts', 'Text'),
+                        ]
+                        for container, child_type in container_patterns:
+                            if actual_parent_name == container and elem_name == child_type:
+                                card = '0..*'
+                                break
             
             # Determine sub level markers - use + for indentation
             sub_markers = ''
@@ -799,7 +850,8 @@ def parse_template_file(file_path, xsd_type_info):
             # When an element is referenced, its children are in a separate template file
             if not is_referenced:
                 # Update parent_type_context for children based on current element's type
-                child_parent_type = parent_type_context
+                # Use the current element's name as the base, not the parent's parent_type_context
+                child_parent_type = elem_name
                 if xsd_info and 'type' in xsd_info:
                     # Use the XSD type of current element as context for children
                     child_parent_type = xsd_info['type']
