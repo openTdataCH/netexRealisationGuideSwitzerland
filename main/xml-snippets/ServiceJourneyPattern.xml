@@ -16,6 +16,9 @@
       <RequestStop>false</RequestStop>
       <StopUse>access</StopUse>
       <!-- All values possible. passthrough is used for Durchfahrt, if such data is delivered. -->
+      <checkConstraints>
+        <CheckConstraint id="generated" version="1"/>
+      </checkConstraints>
       <bookingArrangements>
         <BookingArrangementRef ref="generated" version="1">
           <!-- Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information. -->

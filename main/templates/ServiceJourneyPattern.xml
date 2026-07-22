@@ -34,6 +34,13 @@
 									</DestinationDisplayRef>
 									<RequestStop><!-- ch-usage: optional -->false</RequestStop>
 									<StopUse><!-- ch-usage: optional --><!-- ch-note: All values possible. passthrough is used for Durchfahrt, if such data is delivered. -->access</StopUse>
+									<checkConstraints>
+										<!-- ch-usage: optional -->
+										<CheckConstraint id="generated" version="1">
+											<!-- ch-usage: optional -->
+											<!-- ch-see -->
+										</CheckConstraint>
+									</checkConstraints>
 									<bookingArrangements>
 										<!-- ch-usage: optional -->
 										<BookingArrangementRef ref="generated" versionRef="1">
@@ -48,7 +55,6 @@
 											<BookingNote>You have to press the button at the stop at the latest 5 minutes before arrival.</BookingNote>
 										</BookingArrangement>
 									</bookingArrangements>
-									<!-- **TODO** we will add checkConstraints here too -->
 								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.2" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:7100:1:1" versionRef="1"/>

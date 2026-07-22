@@ -45,13 +45,142 @@
 In Switzerland, we use the following use cases:</p>
 <ul>
   <li>Special delays in alighting or boarding.</li>
-  <li>Doors closed already before departure.</li>
+  <li>Doors closed already before departure (e.g. for TGV).</li>
   <li>Waiting times (e.g. for carTransportRail and touristic offers)</li>
 </ul>
 
 <p>CheckConstraints can apply while boarding or alighting.</p>
 
-<p>We can have <code class="language-plaintext highlighter-rouge">CheckConstraint</code>s on <a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#servicejourney"><code class="language-plaintext highlighter-rouge">ServiceJourney</code></a> and <a href="/netexRealisationGuideSwitzerland/main/07_service.html#servicejourneypattern"><code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code></a></p>
+<p>We can have <code class="language-plaintext highlighter-rouge">CheckConstraint</code>s on <a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#servicejourney"><code class="language-plaintext highlighter-rouge">ServiceJourney</code></a> and <a href="/netexRealisationGuideSwitzerland/main/07_service.html#servicejourneypattern"><code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code></a>.</p>
+
+<p>We don’t reference <code class="language-plaintext highlighter-rouge">CheckConstriants</code> but they are always instantiated in the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> or <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>.</p>
+
+<h2 id="checkconstraint">CheckConstraint</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#checkconstraint">Glossary definition</a></em></p>
+
+<h3 id="purpose">Purpose</h3>
+<p><code class="language-plaintext highlighter-rouge">CheckConstraint</code>s can be used for a lot of different obstacles and delays in alighting/boarding or within sites.</p>
+
+<h3 id="table">Table</h3>
+
+<p>CheckConstraints are used for different use cases</p>
+
+<p><em>Table: CheckConstraint</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>CheckDirection</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>CheckDirectionEnumeration</td>
+      <td>For CHECK CONSTRAINTs associated with PATH LINKs, the direction in which the check applies. Forwards = from/to, backwards = to/from. For Check constraints associated with an external ENTRANCE, forwards is into the SITE, backwards is out of the SITE.</td>
+      <td>We usually only use one direction.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>CheckProcess</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>CheckProcessTypeEnumeration</td>
+      <td>Type of process that may occur at CHECK CONSTRAINT.</td>
+      <td>Only a given subset is allowed</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Congestion</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>CongestionEnumeration</td>
+      <td>Type of crowding that may slow use of CHECK CONSTRAINT.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>delays</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>delays</td>
+      <td>Delays for CHECK CONSTRAINT .process.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>CheckConstraintDelay</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>CheckConstraintDelay</td>
+      <td>Time penalty associated with a CHECK CONSTRAINT.</td>
+      <td>We currently only model delays</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AverageDelay</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:duration</td>
+      <td>Average duration expected to pass through Check.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>MaximumLikelyDelay</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:duration</td>
+      <td>Maximum duration expected to pass through CHECK CONSTRAINT.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>-&gt; <a href="../generated/netex-html/CheckConstraint.html">General NeTEx definition</a></em></p>
+
+<h3 id="example">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;CheckConstraint</span>  <span class="na">id=</span><span class="s">""</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- CheckConstraints are used for different use cases --&gt;</span>
+  <span class="nt">&lt;CheckDirection&gt;</span>forwards<span class="nt">&lt;/CheckDirection&gt;</span>
+  <span class="c">&lt;!-- We usually only use one direction. --&gt;</span>
+  <span class="nt">&lt;CheckProcess&gt;</span>alighting<span class="nt">&lt;/CheckProcess&gt;</span>
+  <span class="c">&lt;!-- Only a given subset is allowed --&gt;</span>
+  <span class="nt">&lt;Congestion&gt;</span>queue<span class="nt">&lt;/Congestion&gt;</span>
+  <span class="nt">&lt;delays&gt;</span>
+    <span class="nt">&lt;CheckConstraintDelay</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- We currently only model delays --&gt;</span>
+      <span class="nt">&lt;AverageDelay&gt;</span>PT4M<span class="nt">&lt;/AverageDelay&gt;</span>
+      <span class="nt">&lt;MaximumLikelyDelay&gt;</span>PT8M<span class="nt">&lt;/MaximumLikelyDelay&gt;</span>
+    <span class="nt">&lt;/CheckConstraintDelay&gt;</span>
+  <span class="nt">&lt;/delays&gt;</span>
+<span class="nt">&lt;/CheckConstraint&gt;</span>
+
+</code></pre></div></div>
+
+<p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/CheckConstraint.xml">Template</a></em></p>
+
+<h3 id="usage-notes">Usage Notes</h3>
+<ul>
+  <li>We prefer the <code class="language-plaintext highlighter-rouge">CheckConstraint</code> on the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>.</li>
+  <li>A main usage is the waiting time at carTransportRail.</li>
+  <li>It is important to mention if a CheckConstraint applies to alighting or boarding.</li>
+  <li><code class="language-plaintext highlighter-rouge">CheckConstraint</code> can also cover congestion, which we don’t do for the moment.</li>
+  <li>The CI / CO times from HRDF can be conveyed as a <code class="language-plaintext highlighter-rouge">CheckConstraint</code> each.</li>
+  <li><code class="language-plaintext highlighter-rouge">CheckConstraint</code> can also be associated with equipment, we don’t do this either.</li>
+  <li>id-attribute can be generated.</li>
+</ul>
 
   </div>
 

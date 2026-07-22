@@ -1923,6 +1923,24 @@ needs to be added for that too.</li>
     </tr>
     <tr>
       <td>++</td>
+      <td>checkConstraints</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>checkConstraints_RelStructure</td>
+      <td>CHECK CONSTRAINTs which apply to SERVICE JOURNEY, e.g. check in time, security time. These are advisory only and not for use in journey planning.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/CheckConstraint.html">CheckConstraint</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>CheckConstraint</td>
+      <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
       <td>bookingArrangements</td>
       <td>optional</td>
       <td>0..1</td>
@@ -1991,6 +2009,9 @@ needs to be added for that too.</li>
       <span class="nt">&lt;RequestStop&gt;</span>false<span class="nt">&lt;/RequestStop&gt;</span>
       <span class="nt">&lt;StopUse&gt;</span>access<span class="nt">&lt;/StopUse&gt;</span>
       <span class="c">&lt;!-- All values possible. passthrough is used for Durchfahrt, if such data is delivered. --&gt;</span>
+      <span class="nt">&lt;checkConstraints&gt;</span>
+        <span class="nt">&lt;CheckConstraint</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/checkConstraints&gt;</span>
       <span class="nt">&lt;bookingArrangements&gt;</span>
         <span class="nt">&lt;BookingArrangementRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
           <span class="c">&lt;!-- Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information. --&gt;</span>
