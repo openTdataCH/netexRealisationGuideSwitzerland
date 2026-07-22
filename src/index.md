@@ -51,7 +51,7 @@ This document describes the way in which the NeTEx standard is specifically appl
   - **LATER**: [Formations](uc15_formations.md)
   - **LATER**: [Demand Responsive Traffic](uc16_drt.md)
   - [Mixed Lines](uc17_mixed_lines.md)
-- Mapping tables are defined in an [Excel](media/myexcel.xlsx)
+- Mapping tables are defined in an [Excel](media/Mappingtabellen_NeTEx_v2.0.xlsx)
 - Annexes:
   - [Resources and references](A1_annex_resources_references.md)
   - [Differences between Swiss profile and EPIP/EPIAP and how they could be amended](A2_annex_comparison_EPIP_EPIAP.md)

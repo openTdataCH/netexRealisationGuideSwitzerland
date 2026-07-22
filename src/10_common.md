@@ -441,6 +441,6 @@ A typified vehicle configuration (model or series) defining reusable characteris
 #### Usage Notes
 * We currently use `VehicleType` but not `VehicleModel`.
 * We express accessibility partially through it.
-* See more details in mapping excel.
+* See more details in the [mapping excel](media/Mappingtabellen_NeTEx_v2.0.xlsx).
 
 
