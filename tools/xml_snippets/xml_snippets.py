@@ -124,41 +124,59 @@ def process_element_with_cleanup(element, parent_excluded=False):
         new_element.text = element.text.strip()
 
     # Process children
+    children_to_add = []
+    pending_ch_notes = []  # ch-note comments that should appear before the next element
+    
     for child in element:
         if isinstance(child, etree._Comment):
-            # Handle comments - keep only ch-note content
+            # Handle comments - keep only ch-note content as comment elements
             if child.text:
                 comment_text = child.text.strip()
                 if comment_text.startswith('ch-note:'):
-                    # Convert to regular comment
+                    # Extract the note content (remove ch-note: prefix)
                     content = re.sub(r'ch-note:\s*', '', comment_text)
-                    new_comment = etree.Comment(f' {content} ')
-                    new_element.append(new_comment)
-                # Preserve tail text of ALL comments (not just ch-note)
-                if child.tail and child.tail.strip():
-                    # Add the tail text as text content of the new element
-                    if new_element.text:
-                        new_element.text += ' ' + child.tail.strip()
-                    else:
-                        new_element.text = child.tail.strip()
+                    pending_ch_notes.append(content)
+            # Preserve tail text of ALL comments (not just ch-note)
+            if child.tail and child.tail.strip():
+                # This tail text belongs to the parent element's text content
+                # Add it to new_element.text
+                if new_element.text:
+                    new_element.text += ' ' + child.tail.strip()
+                else:
+                    new_element.text = child.tail.strip()
             continue
         elif isinstance(child, etree._Element):
+            # If we have pending ch-note comments, add them as comment elements before this child
+            for note_content in pending_ch_notes:
+                comment_elem = etree.Comment(f' {note_content} ')
+                children_to_add.append(comment_elem)
+            pending_ch_notes = []
+            
             processed_child = process_element_with_cleanup(child, parent_excluded=False)
             if processed_child is not None:
-                new_element.append(processed_child)
+                children_to_add.append(processed_child)
         else:
-            # Preserve text content from text nodes
+            # Text nodes - preserve their content
             if child.text and child.text.strip():
                 if new_element.text:
                     new_element.text += ' ' + child.text.strip()
                 else:
                     new_element.text = child.text.strip()
             if child.tail and child.tail.strip():
-                if len(new_element) > 0 and hasattr(new_element[-1], 'tail'):
-                    if new_element[-1].tail:
-                        new_element[-1].tail += ' ' + child.tail.strip()
-                    else:
-                        new_element[-1].tail = child.tail.strip()
+                if new_element.text:
+                    new_element.text += ' ' + child.tail.strip()
+                else:
+                    new_element.text = child.tail.strip()
+    
+    # Handle any remaining ch-note comments (these belong to the parent element itself)
+    if pending_ch_notes:
+        for note_content in pending_ch_notes:
+            comment_elem = etree.Comment(f' {note_content} ')
+            children_to_add.append(comment_elem)
+
+    # Add all collected children to the new element
+    for child_to_add in children_to_add:
+        new_element.append(child_to_add)
 
     # Preserve the element's own tail text (text after the element's closing tag)
     if hasattr(element, 'tail') and element.tail and element.tail.strip():
@@ -167,57 +185,139 @@ def process_element_with_cleanup(element, parent_excluded=False):
     return new_element
 
 
-def customize_xml_serialization(element, default_ns=None):
-    """Custom XML serialization that handles ch-note comments appropriately"""
-    # First get the standard pretty-printed XML
-    xml_string = etree.tostring(element, encoding='unicode', pretty_print=True)
+def has_element_children(element):
+    """Check if an element has any child elements (not just text or comments)"""
+    for child in element:
+        if isinstance(child, etree._Element):
+            return True
+    return False
 
-    # Remove namespace declarations
+
+def get_tag_name(tag):
+    """Extract the tag name without namespace"""
+    if '}' in tag:
+        return tag.split('}')[1]
+    return tag
+
+
+def format_element_with_mixed_content(element, indent='', default_ns=None):
+    """Format an element that has both text content and child elements"""
+    lines = []
+    child_indent = indent + '  '
+    
+    # Get tag name without namespace
+    tag_name = get_tag_name(element.tag)
+    
+    # Opening tag with text content
+    tag_str = f'<{tag_name}'
+    if element.attrib:
+        tag_str += ' ' + ' '.join(f'{k}="{v}"' for k, v in element.attrib.items())
+    tag_str += '>'
+    
+    if element.text and element.text.strip():
+        # Add text content on the same line as opening tag
+        lines.append(f'{indent}{tag_str}{element.text.strip()}')
+    else:
+        lines.append(f'{indent}{tag_str}')
+    
+    # Handle children
+    for child in element:
+        if isinstance(child, etree._Comment):
+            # Comments on their own line
+            lines.append(f'{child_indent}{etree.tostring(child, encoding="unicode").strip()}')
+        elif isinstance(child, etree._Element):
+            # Recursively format child elements using serialize_element_tree
+            child_str = serialize_element_tree(child, indent_level=len(indent.split('  ')), default_ns=default_ns)
+            # Add proper indentation to each line
+            for line in child_str.split('\n'):
+                if line.strip():
+                    lines.append(f'{child_indent}{line.strip()}')
+                else:
+                    lines.append(line)
+        else:
+            # Text nodes
+            text = child.text if child.text else ''
+            if text.strip():
+                lines.append(f'{child_indent}{text.strip()}')
+    
+    # Closing tag
+    lines.append(f'{indent}</{tag_name}>')
+    
+    return '\n'.join(lines)
+
+
+def serialize_element_tree(element, indent_level=0, default_ns=None):
+    """Recursively serialize element tree with custom formatting"""
+    indent = '  ' * indent_level
+    
+    # Get tag name without namespace
+    tag_name = get_tag_name(element.tag) if hasattr(element, 'tag') else str(type(element))
+    
+    # Check if this element has both text and child elements
+    has_text = element.text and element.text.strip()
+    has_children = has_element_children(element)
+    
+    if has_text and has_children:
+        # Special formatting for elements with both text and children
+        return format_element_with_mixed_content(element, indent, default_ns)
+    
+    # Use standard pretty print but with recursive handling of children
+    # Build the serialization manually
+    lines = []
+    
+    # Opening tag
+    tag_str = f'<{tag_name}'
+    if element.attrib:
+        tag_str += ' ' + ' '.join(f'{k}="{v}"' for k, v in element.attrib.items())
+    
+    if has_children:
+        # Element has children
+        tag_str += '>'
+        lines.append(f'{indent}{tag_str}')
+        
+        # Process children
+        child_indent = indent + '  '
+        for child in element:
+            if isinstance(child, etree._Comment):
+                # Comments
+                comment_str = etree.tostring(child, encoding='unicode').strip()
+                lines.append(f'{child_indent}{comment_str}')
+            elif isinstance(child, etree._Element):
+                # Recursively serialize child elements
+                child_xml = serialize_element_tree(child, indent_level + 1, default_ns)
+                for line in child_xml.split('\n'):
+                    if line.strip():
+                        lines.append(f'{child_indent}{line.strip()}')
+                    else:
+                        lines.append(line)
+            else:
+                # Text nodes - shouldn't happen at this level
+                pass
+        
+        # Closing tag
+        lines.append(f'{indent}</{tag_name}>')
+    else:
+        # Self-closing or empty element
+        if element.text and element.text.strip():
+            tag_str += '>' + element.text.strip() + f'</{tag_name}>'
+            lines.append(f'{indent}{tag_str}')
+        else:
+            tag_str += '/>'
+            lines.append(f'{indent}{tag_str}')
+    
+    # Remove namespace declarations from the serialized string
+    xml_string = '\n'.join(lines)
     if default_ns:
         xml_string = xml_string.replace(f'ns0:', '')
         xml_string = xml_string.replace(f'xmlns:ns0="{default_ns}"', '')
         xml_string = xml_string.replace(f'xmlns="{default_ns}"', '')
+    
+    return xml_string
 
-    # Post-process to move inline comments to separate lines for simple elements
-    lines = xml_string.split('\n')
-    processed_lines = []
 
-    for line in lines:
-        # Check if this line has an inline comment in a simple element
-        # Pattern: <Element>content<!-- comment --></Element>
-        if '<!--' in line and '-->' in line and '<' in line and '>' in line:
-            # Try to match the pattern
-            pattern = r'^(\s*)<([^>\s]+)([^>]*)>([^<]*)<!--\s*(.*?)\s*-->([^<]*)</\2>\s*$'
-            match = re.match(pattern, line)
-
-            if match:
-                indent = match.group(1)
-                element_name = match.group(2)
-                element_attrs = match.group(3)
-                text_content = match.group(4).strip()
-                comment_content = match.group(5).strip()
-                trailing = match.group(6).strip()
-
-                # Reconstruct the element without inline comment
-                if text_content or trailing:
-                    element_content = text_content
-                    if trailing:
-                        element_content += ' ' + trailing
-                    element_line = f'{indent}<{element_name}{element_attrs}>{element_content}</{element_name}>'
-                else:
-                    element_line = f'{indent}<{element_name}{element_attrs}/>'
-
-                # Add comment on separate line
-                comment_line = f'{indent}<!-- {comment_content} -->'
-
-                # Add both lines
-                processed_lines.append(element_line)
-                processed_lines.append(comment_line)
-                continue
-
-        processed_lines.append(line)
-
-    return '\n'.join(processed_lines)
+def customize_xml_serialization(element, default_ns=None):
+    """Custom XML serialization that handles ch-note comments appropriately"""
+    return serialize_element_tree(element, default_ns=default_ns)
 
 
 def extract_snippet_from_template(file_path):
