@@ -8,7 +8,6 @@ A minimal ServiceFrame must be present in all timetable files.
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | ServiceCalendarFrameRef | optional | 1..1 | ServiceCalendarFrameRef | Reference to a SERVICE CALENDAR FRAME. | We can have a reference to other Frames if necessary. However, we believe that the id/version (together with the NameOfClass) should always be unique. If they are the same, it is the same "object"). |
 |  | lines | mandatory | 0..1 | lineRefs_RelStructure | Lines for FLEXIBLE STOP PLACE. | Only Line is used and not FlexibleLine |
 | + | [Line](Line.md) | mandatory | 1..* | Line | A group of ROUTEs which is generally known to the public by a similar name or number. |  |
 |  | groupsOfLines | expected | 0..1 | groupsOfLinesInFrame_RelStructure | Groups of LINEs in NETWORK. |  |

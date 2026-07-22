@@ -377,7 +377,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>1..*</td>
       <td>AvailabilityConditionRefStructure</td>
       <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
-      <td>Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. <strong>TODO</strong>: this comment needs to be corrected, more information needed</td>
+      <td>Only a single AvailabilityConditionRef is allowed.</td>
     </tr>
     <tr>
       <td> </td>
@@ -661,7 +661,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <span class="nt">&lt;validityConditions&gt;</span>
     <span class="c">&lt;!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). --&gt;</span>
     <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. **TODO**: this comment needs to be corrected, more information needed --&gt;</span>
+      <span class="c">&lt;!-- Only a single AvailabilityConditionRef is allowed. --&gt;</span>
     <span class="nt">&lt;/AvailabilityConditionRef&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
   <span class="nt">&lt;keyList&gt;</span>
@@ -820,7 +820,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>1..*</td>
       <td>AvailabilityConditionRefStructure</td>
       <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
-      <td>Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. <strong>TODO</strong>: this comment needs to be corrected, more information needed</td>
+      <td>Only a single AvailabilityConditionRef is allowed.</td>
     </tr>
     <tr>
       <td> </td>
@@ -1123,7 +1123,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <span class="nt">&lt;validityConditions&gt;</span>
     <span class="c">&lt;!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). --&gt;</span>
     <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. **TODO**: this comment needs to be corrected, more information needed --&gt;</span>
+      <span class="c">&lt;!-- Only a single AvailabilityConditionRef is allowed. --&gt;</span>
     <span class="nt">&lt;/AvailabilityConditionRef&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
   <span class="nt">&lt;keyList&gt;</span>
@@ -1678,6 +1678,15 @@ to the fact that the passenger should not change vehicle as the transfer is impl
     </tr>
     <tr>
       <td> </td>
+      <td>ChangeWithinVehicle</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>In case of train splitting, the passenger may have to change to a different part of the train to continue the journey. Default is false. +v2.1</td>
+      <td>Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false.</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>Planned</td>
       <td>optional</td>
       <td>0..1</td>
@@ -1781,6 +1790,8 @@ to the fact that the passenger should not change vehicle as the transfer is impl
   <span class="nt">&lt;Description&gt;</span>LineChange<span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;StaySeated&gt;</span>true<span class="nt">&lt;/StaySeated&gt;</span>
   <span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
+  <span class="nt">&lt;ChangeWithinVehicle&gt;</span>false<span class="nt">&lt;/ChangeWithinVehicle&gt;</span>
+  <span class="c">&lt;!-- Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. --&gt;</span>
   <span class="nt">&lt;Planned&gt;</span>true<span class="nt">&lt;/Planned&gt;</span>
   <span class="nt">&lt;Guaranteed&gt;</span>false<span class="nt">&lt;/Guaranteed&gt;</span>
   <span class="nt">&lt;MaximumWaitTime&gt;</span>PT9M<span class="nt">&lt;/MaximumWaitTime&gt;</span>

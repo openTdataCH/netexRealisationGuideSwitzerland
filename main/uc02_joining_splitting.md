@@ -128,6 +128,8 @@ The detailed handling is described for the element [ServiceJourneyInterchange](0
   <Description>LineChange</Description>
   <StaySeated>true</StaySeated>
   <CrossBorder>false</CrossBorder>
+  <ChangeWithinVehicle>false</ChangeWithinVehicle>
+  <!-- Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. -->
   <Planned>true</Planned>
   <Guaranteed>false</Guaranteed>
   <MaximumWaitTime>PT9M</MaximumWaitTime>

@@ -186,15 +186,6 @@ class ServiceJourney {
     </tr>
     <tr>
       <td> </td>
-      <td>ServiceCalendarFrameRef</td>
-      <td>optional</td>
-      <td>1..1</td>
-      <td>ServiceCalendarFrameRef</td>
-      <td>Reference to a SERVICE CALENDAR FRAME.</td>
-      <td>We can have a reference to other Frames if necessary. However, we believe that the id/version (together with the NameOfClass) should always be unique. If they are the same, it is the same “object”).</td>
-    </tr>
-    <tr>
-      <td> </td>
       <td>lines</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -392,9 +383,6 @@ class ServiceJourney {
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;ServiceFrame</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- A minimal ServiceFrame must be present in all timetable files. --&gt;</span>
-  <span class="nt">&lt;ServiceCalendarFrameRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceCalendarFrame:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- We can have a reference to other Frames if necessary. However, we believe that the id/version (together with the NameOfClass) should always be unique. If they are the same, it is the same "object"). --&gt;</span>
-  <span class="nt">&lt;/ServiceCalendarFrameRef&gt;</span>
   <span class="nt">&lt;directions&gt;</span>
     <span class="c">&lt;!-- We don't use directions, but only direction type --&gt;</span>
   <span class="nt">&lt;/directions&gt;</span>

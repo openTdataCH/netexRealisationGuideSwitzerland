@@ -139,7 +139,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
 |  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
-| + | AvailabilityConditionRef | mandatory | 1..* | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. | Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. **TODO**: this comment needs to be corrected, more information needed |
+| + | AvailabilityConditionRef | mandatory | 1..* | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. | Only a single AvailabilityConditionRef is allowed. |
 |  | keyList | expected | 1..1 | KeyListStructure | A list of alternative Key values for an element. | KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. |
 | + | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. | A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. |
 | ++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
@@ -185,7 +185,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
   <validityConditions>
     <!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
     <AvailabilityConditionRef ref="generated" version="1">
-      <!-- Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. **TODO**: this comment needs to be corrected, more information needed -->
+      <!-- Only a single AvailabilityConditionRef is allowed. -->
     </AvailabilityConditionRef>
   </validityConditions>
   <keyList>
@@ -297,7 +297,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
 |  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
-| + | AvailabilityConditionRef | mandatory | 1..* | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. | Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. **TODO**: this comment needs to be corrected, more information needed |
+| + | AvailabilityConditionRef | mandatory | 1..* | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. | Only a single AvailabilityConditionRef is allowed. |
 |  | keyList | mandatory | 1..1 | KeyListStructure | A list of alternative Key values for an element. | Key list for the repeating journeys. Contains the SJYID. |
 | + | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. | A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. |
 | ++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
@@ -346,7 +346,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
   <validityConditions>
     <!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
     <AvailabilityConditionRef ref="generated" version="1">
-      <!-- Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. **TODO**: this comment needs to be corrected, more information needed -->
+      <!-- Only a single AvailabilityConditionRef is allowed. -->
     </AvailabilityConditionRef>
   </validityConditions>
   <keyList>
@@ -636,6 +636,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 |  | Description | optional | 0..1 | MultilingualString | Description of contents. |  |
 |  | StaySeated | mandatory | 0..1 | xsd:boolean | Whether the passenger can remain in vehicle (i.e. block linking). Default is false: the passenger must change vehicles for this INTERCHANGE. Default is false. |  |
 |  | CrossBorder | optional | 0..1 | xsd:boolean | Whether interchanging crosses a border. |  |
+|  | ChangeWithinVehicle | optional | 0..1 | xsd:boolean | In case of train splitting, the passenger may have to change to a different part of the train to continue the journey. Default is false. +v2.1 | Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. |
 |  | Planned | optional | 0..1 | xsd:boolean | Whether INTERCHANGE is planned in a timetable. Default is true. |  |
 |  | Guaranteed | optional | 0..1 | xsd:boolean | Whether INTERCHANGE is guaranteed. Default is false. |  |
 |  | MaximumWaitTime | optional | 0..1 | xsd:duration | Maximum wait time for JOURNEY MEETING. | If not set or PT0M, it is guaranteed. |
@@ -664,6 +665,8 @@ to the fact that the passenger should not change vehicle as the transfer is impl
   <Description>LineChange</Description>
   <StaySeated>true</StaySeated>
   <CrossBorder>false</CrossBorder>
+  <ChangeWithinVehicle>false</ChangeWithinVehicle>
+  <!-- Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. -->
   <Planned>true</Planned>
   <Guaranteed>false</Guaranteed>
   <MaximumWaitTime>PT9M</MaximumWaitTime>
