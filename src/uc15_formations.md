@@ -130,4 +130,4 @@ class TrainInCompoundTrain {
 ## Usage Notes
 - We intend to use a version without `Block` and `CompoundTrain`.
 - We are unsure how to map to sectors as we don't want to have to invent new ScheduledStopPoints (especially as this would need new pseudo-sloid). **LATER**
-- We have a special example for when the platform is too short on a given stop: **TODO**
+- We have a special example for when the platform is too short on a given stop: **LATER**
