@@ -850,11 +850,13 @@ def parse_template_file(file_path, xsd_type_info):
             # When an element is referenced, its children are in a separate template file
             if not is_referenced:
                 # Update parent_type_context for children based on current element's type
-                # Use the current element's name as the base, not the parent's parent_type_context
+                # Use the current element's name as the base for parent type context
+                # This ensures that children have the correct parent element name for container detection
                 child_parent_type = elem_name
-                if xsd_info and 'type' in xsd_info:
-                    # Use the XSD type of current element as context for children
-                    child_parent_type = xsd_info['type']
+                # Note: We used to use XSD type here, but that breaks container detection
+                # So we only use XSD type as fallback if element name is not useful
+                # if xsd_info and 'type' in xsd_info:
+                #     child_parent_type = xsd_info['type']
                 
                 # NEW: Check if current element is a multilingual element (Text with lang attribute)
                 # If so, mark it as a multilingual parent for its children
@@ -1000,6 +1002,48 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                 if not description:
                     description = metadata.get('description', description)
         
+        # NEW: Override cardinality for container elements based on parent_type and element type
+        # This handles cases where XSD says 0..1 but we need 0..* for multilingual/container elements
+        multilingual_element_names = ['Text', 'Description', 'Name', 'ShortName', 'Label', 'Title', 'Subtitle']
+        
+        # Check for multilingual container patterns
+        if element in multilingual_element_names:
+            # Extract parent name from parent_type
+            actual_parent_name = None
+            if parent_type:
+                parts = parent_type.split('|')
+                for part in parts:
+                    if part and not part.startswith('MULTILINGUAL_'):
+                        actual_parent_name = part
+                        break
+            
+            # If parent is a multilingual element or if this is a MultilingualString type from XSD
+            if actual_parent_name in multilingual_element_names or xsd_type == 'MultilingualString':
+                # This is a nested or container multilingual element, should be 0..*
+                card = '0..*'
+        
+        # Check for known container patterns
+        if parent_type:
+            actual_parent_name = None
+            parts = parent_type.split('|')
+            for part in parts:
+                if part and not part.startswith('MULTILINGUAL_'):
+                    actual_parent_name = part
+                    break
+            
+            if actual_parent_name:
+                container_patterns = [
+                    ('privateCodes', 'PrivateCode'),
+                    ('alternativeTexts', 'AlternativeText'),
+                    ('names', 'Name'),
+                    ('descriptions', 'Description'),
+                    ('texts', 'Text'),
+                ]
+                for container, child_type in container_patterns:
+                    if actual_parent_name == container and element == child_type:
+                        card = '0..*'
+                        break
+        
         # Handle versionRef -> version conversion for display
         if element.endswith('Ref') and 'versionRef=' in description:
             # Replace versionRef with version in the description
@@ -1075,6 +1119,48 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                     xsd_type = metadata.get('type', xsd_type)
                 if not description:
                     description = metadata.get('description', description)
+        
+        # NEW: Override cardinality for container elements based on parent_type and element type
+        # This handles cases where XSD says 0..1 but we need 0..* for multilingual/container elements
+        multilingual_element_names = ['Text', 'Description', 'Name', 'ShortName', 'Label', 'Title', 'Subtitle']
+        
+        # Check for multilingual container patterns
+        if element in multilingual_element_names:
+            # Extract parent name from parent_type
+            actual_parent_name = None
+            if parent_type:
+                parts = parent_type.split('|')
+                for part in parts:
+                    if part and not part.startswith('MULTILINGUAL_'):
+                        actual_parent_name = part
+                        break
+            
+            # If parent is a multilingual element or if this is a MultilingualString type from XSD
+            if actual_parent_name in multilingual_element_names or xsd_type == 'MultilingualString':
+                # This is a nested or container multilingual element, should be 0..*
+                card = '0..*'
+        
+        # Check for known container patterns
+        if parent_type:
+            actual_parent_name = None
+            parts = parent_type.split('|')
+            for part in parts:
+                if part and not part.startswith('MULTILINGUAL_'):
+                    actual_parent_name = part
+                    break
+            
+            if actual_parent_name:
+                container_patterns = [
+                    ('privateCodes', 'PrivateCode'),
+                    ('alternativeTexts', 'AlternativeText'),
+                    ('names', 'Name'),
+                    ('descriptions', 'Description'),
+                    ('texts', 'Text'),
+                ]
+                for container, child_type in container_patterns:
+                    if actual_parent_name == container and element == child_type:
+                        card = '0..*'
+                        break
         
         # Handle versionRef -> version conversion for display
         if element.endswith('Ref') and 'versionRef=' in description:
