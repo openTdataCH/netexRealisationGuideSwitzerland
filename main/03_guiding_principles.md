@@ -18,10 +18,10 @@ The relevant reference data that is already available/defined by SKI:
 - StopPlaces, Quays and the whole physical model - in Atlas
 - Lines (in a future phase) - in Atlas
 - Direction - only inbound and outbound are allowed
-- Notices – some specialised IDs and/or types, according to the mapping-excel.
-- TypeOfValues - according to the lists defined here (namely in [10_common.md](10_common.md)). E.g. ProductCategory - in the mapping-excel.
+- Notices – some specialised IDs and/or types, according to the [mapping excel](media/Mappingtabellen_NeTEx_v2.0.xlsx).
+- TypeOfValues - according to the lists defined here (namely in [10_common.md](10_common.md)). E.g. ProductCategory - in the [mappingexcel](media/Mappingtabellen_NeTEx_v2.0.xlsx).
 - ValueSets - in [10_common.md](10_common.md)
-- Facilities - in mapping-excel.
+- Facilities - in [mapping excel](media/Mappingtabellen_NeTEx_v2.0.xlsx).
 
 ### Data supplier side
 The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality. Complete means all timetable data in the responsibility of the provider for the whole timetable period.

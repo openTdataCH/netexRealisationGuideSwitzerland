@@ -894,6 +894,6 @@ Used currently mainly for the relevant accessibility elements that can be expres
 #### Usage Notes
 * We currently use `VehicleType` but not `VehicleModel`.
 * We express accessibility partially through it.
-* See more details in mapping excel.
+* See more details in the [mapping excel](media/Mappingtabellen_NeTEx_v2.0.xlsx).
 
 
