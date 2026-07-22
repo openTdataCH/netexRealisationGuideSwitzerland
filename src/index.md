@@ -57,7 +57,8 @@ This document describes the way in which the NeTEx standard is specifically appl
   - [Differences between Swiss profile and EPIP/EPIAP and how they could be amended](A2_annex_comparison_EPIP_EPIAP.md)
   - [Differences to the French and nordic profile](A3_annex_comparison_France_Norway.md)
   - [Glossary](A4_annex_glossary.md)
-  - [Changelog and migration from Swiss profile 1.0 to 2.0)](A5_changelog_migration.md)
+  - [Index](A5_index.md)
+  - [Changelog and migration from Swiss profile 1.0 to 2.0)](A6_changelog_migration.md)
 
 
 ## Examples
