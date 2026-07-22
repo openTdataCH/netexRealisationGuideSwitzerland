@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ServiceCalendarFrame  id="ch:1:ServiceCalendarFrame" version="1">
+<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame" version="1">
   <!-- A minimal ServiceCalendarFrame must be present in all timetable files. -->
   <validityConditions>
-    <AvailabilityCondition id="ch:1:AvailabilityCondition:b7" version="1">
-      <!-- Our main mechanism for validity and operating days -->
-    </AvailabilityCondition>
+  <AvailabilityCondition id="ch:1:AvailabilityCondition:b7" version="1">
+  <!-- Our main mechanism for validity and operating days -->
+  </AvailabilityCondition>
   </validityConditions>
   <ServiceCalendar id="ch:1:ServiceCalendar:j23" version="1">
-    <!-- We only have one ServiceCalendar for the whole timetable year. It is not referenced. -->
+  <!-- We only have one ServiceCalendar for the whole timetable year. It is not referenced. -->
   </ServiceCalendar>
   <dayTypes>
-    <DayType id="ch:1:DayType:ycy10_1" version="1">
-      <!-- Used for holidays only -->
-    </DayType>
+  <DayType id="ch:1:DayType:ycy10_1" version="1">
+  <!-- Used for holidays only -->
+  </DayType>
   </dayTypes>
   <timebands>
-    <Timeband id="ch:1:Timeband:1140:1260" version="1">
-      <!-- Mainly used for frequency-based lines. -->
-    </Timeband>
+  <Timeband id="ch:1:Timeband:1140:1260" version="1">
+  <!-- Mainly used for frequency-based lines. -->
+  </Timeband>
   </timebands>
   <dayTypeAssignments>
-    <DayTypeAssignment id="none" version="not">
-      <!-- Used for holidays only -->
-      <OperatingPeriodRef ref="generated" version="1"/>
-      <DayTypeRef ref="ch:1:DayType:ycy10_1" version="1"/>
-    </DayTypeAssignment>
+  <DayTypeAssignment id="none" version="not">
+  <!-- Used for holidays only -->
+  <OperatingPeriodRef ref="generated" version="1"/>
+  <DayTypeRef ref="ch:1:DayType:ycy10_1" version="1"/>
+  </DayTypeAssignment>
   </dayTypeAssignments>
 </ServiceCalendarFrame>

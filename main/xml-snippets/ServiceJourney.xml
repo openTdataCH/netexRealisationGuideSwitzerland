@@ -1,76 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ServiceJourney  id="generated" version="1">
+<ServiceJourney id="generated" version="1">
   <validityConditions>
-    <!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
-    <AvailabilityConditionRef ref="generated" version="1">
-      <!-- Only a single AvailabilityConditionRef is allowed. -->
-    </AvailabilityConditionRef>
+  <!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+  <AvailabilityConditionRef ref="generated" version="1">
+  <!-- Only a single AvailabilityConditionRef is allowed. -->
+  </AvailabilityConditionRef>
   </validityConditions>
   <keyList>
-    <!-- KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. -->
-    <KeyValue>
-      <!-- A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. -->
-      <Key>SJYID</Key>
-      <Value>ch:1:sjyid:100001:71707-003</Value>
-    </KeyValue>
+  <!-- KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. -->
+  <KeyValue>
+  <!-- A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. -->
+  <Key>SJYID</Key>
+  <Value>ch:1:sjyid:100001:71707-003</Value>
+  </KeyValue>
   </keyList>
   <privateCodes>
-    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
-    <!-- The following types are possible: sjyid and rn. rn is the type used for the Postauto region. -->
-    <PrivateCode type="rn">12</PrivateCode>
+  <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003
+  <!-- The following types are possible: sjyid and rn. rn is the type used for the Postauto region. -->
+  </PrivateCode>
+  <PrivateCode type="rn">12</PrivateCode>
   </privateCodes>
   <TransportMode>rail</TransportMode>
   <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1">
-    <!-- Relevant elements are defined in the mapping excel. -->
+  <!-- Relevant elements are defined in the mapping excel. -->
   </TypeOfProductCategoryRef>
   <TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1">
-    <!-- Should always be ch:1:TypeOfService:1 -->
+  <!-- Should always be ch:1:TypeOfService:1 -->
   </TypeOfServiceRef>
   <noticeAssignments>
-    <!-- The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop). -->
-    <NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
-      <validityConditions>
-        <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
-      </validityConditions>
-      <NoticeRef ref="ch:1:Notice:A___1" version="1"/>
-    </NoticeAssignment>
+  <!-- The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop). -->
+  <NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
+  <validityConditions>
+  <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
+  </validityConditions>
+  <NoticeRef ref="ch:1:Notice:A___1" version="1"/>
+  </NoticeAssignment>
   </noticeAssignments>
   <occupancies>
-    <OccupancyView id="generated" version="1">
-      <!-- Currently not available -->
-    </OccupancyView>
+  <OccupancyView id="generated" version="1">
+  <!-- Currently not available -->
+  </OccupancyView>
   </occupancies>
-  <ServiceAlteration>planned</ServiceAlteration>
+  <ServiceAlteration>planned
   <!-- Only the value planned is allowed. We might add the others, like cancelled, later. -->
+  </ServiceAlteration>
   <DepartureTime>06:21:00</DepartureTime>
-  <DepartureDayOffset>0</DepartureDayOffset>
+  <DepartureDayOffset>0
   <!-- 0 for current operating day. Could also be negative. -->
+  </DepartureDayOffset>
   <JourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" nameOfRefClass="ServiceJourneyPattern" version="1">
-    <!-- The reference to the ServiceJourneyPattern. -->
+  <!-- The reference to the ServiceJourneyPattern. -->
   </JourneyPatternRef>
   <TimeDemandTypeRef ref="generated" version="1">
-    <!-- The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
+  <!-- The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
   </TimeDemandTypeRef>
   <VehicleTypeRef ref="ch:1:VehicleType:NF" version="1">
-    <!-- Mostly used for accessibility information like NF. Relevant definitions in the mapping excel. -->
+  <!-- Mostly used for accessibility information like NF. Relevant definitions in the mapping excel. -->
   </VehicleTypeRef>
   <LineRef ref="ch:2:Line:11.IR.90" version="1"/>
-  <DirectionType>outbound</DirectionType>
+  <DirectionType>outbound
   <!-- Allowed are: inbound, outbound -->
+  </DirectionType>
   <trainNumbers>
-    <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
+  <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
   </trainNumbers>
   <Destination>
-    <ScheduledStopPointRef ref="generated" version="1"/>
-    <DestinationDisplayRef ref="generated" version="1"/>
+  <ScheduledStopPointRef ref="generated" version="1"/>
+  <DestinationDisplayRef ref="generated" version="1"/>
   </Destination>
   <parts>
-    <!-- For some use cases e.g. change of Facilities during ServiceJourney -->
-    <JourneyPartRef ref="generated" version="1"/>
+  <!-- For some use cases e.g. change of Facilities during ServiceJourney -->
+  <JourneyPartRef ref="generated" version="1"/>
   </parts>
   <checkConstraints>
-    <CheckConstraint id="" version="1">
-      <!-- CheckConstraints are used for different use cases -->
-    </CheckConstraint>
+  <CheckConstraint id="" version="1">
+  <!-- CheckConstraints are used for different use cases -->
+  </CheckConstraint>
   </checkConstraints>
 </ServiceJourney>

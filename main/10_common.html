@@ -209,7 +209,7 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
       <td> </td>
       <td>Name</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td> </td>
@@ -231,15 +231,16 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
 <h4 id="example">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;AlternativeName</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;AlternativeName&gt;</span>
   <span class="c">&lt;!-- In some cases we need translations or alias of the Name element. This is done with AlternativeName. --&gt;</span>
-  <span class="nt">&lt;NameType&gt;</span>alias<span class="nt">&lt;/NameType&gt;</span>
+  <span class="nt">&lt;NameType&gt;</span>alias
   <span class="c">&lt;!-- alias or translation allowed for StoopPlace. --&gt;</span>
-  <span class="nt">&lt;TypeOfName&gt;</span>offical<span class="nt">&lt;/TypeOfName&gt;</span>
+  <span class="nt">&lt;/NameType&gt;</span>
+  <span class="nt">&lt;TypeOfName&gt;</span>offical
   <span class="c">&lt;!-- For StopPlace official is used for the official name --&gt;</span>
+  <span class="nt">&lt;/TypeOfName&gt;</span>
   <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Die Übersetzung des Namens.<span class="nt">&lt;/Name&gt;</span>
 <span class="nt">&lt;/AlternativeName&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/AlternativeName.xml">Template</a></em></p>
@@ -319,7 +320,7 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
       <td> </td>
       <td>Text</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Text content of NOTICe.</td>
       <td> </td>
@@ -332,11 +333,10 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
 <h4 id="example-1">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;AlternativeText</span>  <span class="na">id=</span><span class="s">"ch:1:AlternativeText:Notice-Hin_1229900-fr"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">attributeName=</span><span class="s">"Text"</span> <span class="na">useForLanguage=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;AlternativeText</span> <span class="na">id=</span><span class="s">"ch:1:AlternativeText:Notice-Hin_1229900-fr"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">attributeName=</span><span class="s">"Text"</span> <span class="na">useForLanguage=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!--  --&gt;</span>
   <span class="nt">&lt;Text&gt;</span>Départ de la voie 2.<span class="nt">&lt;/Text&gt;</span>
 <span class="nt">&lt;/AlternativeText&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/AlternativeText_deprecated.xml">Template</a></em></p>
@@ -462,20 +462,22 @@ Additional languages are introduced through the <a href="#alternativename">Alter
 <h4 id="example-3">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;FrameDefaults</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;FrameDefaults&gt;</span>
   <span class="nt">&lt;DefaultLocale&gt;</span>
-    <span class="c">&lt;!-- The default locale is German (de) for Swiss public transport. --&gt;</span>
-    <span class="nt">&lt;TimeZoneOffset&gt;</span>1<span class="nt">&lt;/TimeZoneOffset&gt;</span>
-    <span class="c">&lt;!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) --&gt;</span>
-    <span class="nt">&lt;TimeZone&gt;</span>Europe/Berlin<span class="nt">&lt;/TimeZone&gt;</span>
-    <span class="nt">&lt;SummerTimeZoneOffset&gt;</span>2<span class="nt">&lt;/SummerTimeZoneOffset&gt;</span>
-    <span class="c">&lt;!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) --&gt;</span>
-    <span class="nt">&lt;DefaultLanguage&gt;</span>de<span class="nt">&lt;/DefaultLanguage&gt;</span>
-    <span class="c">&lt;!-- Is always set to “de” for Swiss public transport. --&gt;</span>
+  <span class="c">&lt;!-- The default locale is German (de) for Swiss public transport. --&gt;</span>
+  <span class="nt">&lt;TimeZoneOffset&gt;</span>1
+  <span class="c">&lt;!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) --&gt;</span>
+  <span class="nt">&lt;/TimeZoneOffset&gt;</span>
+  <span class="nt">&lt;TimeZone&gt;</span>Europe/Berlin<span class="nt">&lt;/TimeZone&gt;</span>
+  <span class="nt">&lt;SummerTimeZoneOffset&gt;</span>2
+  <span class="c">&lt;!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) --&gt;</span>
+  <span class="nt">&lt;/SummerTimeZoneOffset&gt;</span>
+  <span class="nt">&lt;DefaultLanguage&gt;</span>de
+  <span class="c">&lt;!-- Is always set to “de” for Swiss public transport. --&gt;</span>
+  <span class="nt">&lt;/DefaultLanguage&gt;</span>
   <span class="nt">&lt;/DefaultLocale&gt;</span>
   <span class="nt">&lt;DefaultLocationSystem&gt;</span>urn:ogc:def:crs:EPSG::4326<span class="nt">&lt;/DefaultLocationSystem&gt;</span>
 <span class="nt">&lt;/FrameDefaults&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/FrameDefaults.xml">Template</a></em></p>
@@ -556,7 +558,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ResponsibilitySet.html">ResponsibilitySet</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ResponsibilitySet</td>
       <td>A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent.</td>
       <td>Each combination of Authority and Operator needs a ResponsibilitySet.</td>
@@ -574,7 +576,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td>+</td>
       <td>ValueSet</td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ValueSet</td>
       <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
       <td>We need a TypeOfNotice ValueSet.</td>
@@ -592,7 +594,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td>+++</td>
       <td>TypeOfNotice</td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TypeOfNotice</td>
       <td>A classification of a NOTICE according to its functional purpose.</td>
       <td> </td>
@@ -601,7 +603,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td>+</td>
       <td>ValueSet</td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ValueSet</td>
       <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
       <td>We need a TypeOfProductCategory ValueSet</td>
@@ -610,7 +612,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td>+</td>
       <td>ValueSet</td>
       <td>We expect a TypsOfPlace Valueset</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ValueSet</td>
       <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
       <td> </td>
@@ -628,7 +630,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Operator.html">Operator</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>Operator</td>
       <td>A company providing public transport services.</td>
       <td>We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once.</td>
@@ -646,7 +648,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>SiteFacilitySet</td>
       <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
@@ -664,7 +666,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ServiceFacilitySet</td>
       <td>Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
@@ -682,7 +684,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/VehicleType.html">VehicleType</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>VehicleType</td>
       <td>A classification of public transport vehicles according to the vehicle scheduling requirements in mode and capacity (e.g. standard bus, double-deck, …).</td>
       <td> </td>
@@ -695,67 +697,74 @@ Additional languages are introduced through the <a href="#alternativename">Alter
 <h4 id="example-4">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;ResourceFrame</span>  <span class="na">id=</span><span class="s">"ch:1:ResourceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ResourceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ResourceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;responsibilitySets&gt;</span>
-    <span class="c">&lt;!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. --&gt;</span>
-    <span class="nt">&lt;ResponsibilitySet</span> <span class="na">id=</span><span class="s">"ch:1:ResponsbilitySet-gen"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Each combination of Authority and Operator needs a ResponsibilitySet. --&gt;</span>
-    <span class="nt">&lt;/ResponsibilitySet&gt;</span>
+  <span class="c">&lt;!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. --&gt;</span>
+  <span class="nt">&lt;ResponsibilitySet</span> <span class="na">id=</span><span class="s">"ch:1:ResponsbilitySet-gen"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Each combination of Authority and Operator needs a ResponsibilitySet. --&gt;</span>
+  <span class="nt">&lt;/ResponsibilitySet&gt;</span>
   <span class="nt">&lt;/responsibilitySets&gt;</span>
   <span class="nt">&lt;typesOfValue&gt;</span>
-    <span class="c">&lt;!-- Sets of TYPE OF VALUE contained in the RESOURCE FRAME. --&gt;</span>
-    <span class="nt">&lt;ValueSet</span> <span class="na">id=</span><span class="s">"ch:1:ValueSet:notices"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"TypeOfNotice"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- We need a TypeOfNotice ValueSet. --&gt;</span>
-      <span class="nt">&lt;values&gt;</span>
-        <span class="nt">&lt;TypeOfNotice</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfNotice:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Name&gt;</span>Allgemeiner Hinweis<span class="nt">&lt;/Name&gt;</span>
-          <span class="nt">&lt;PrivateCode&gt;</span>1<span class="nt">&lt;/PrivateCode&gt;</span>
-        <span class="nt">&lt;/TypeOfNotice&gt;</span>
-        <span class="nt">&lt;TypeOfNotice</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfNotice:10"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Name&gt;</span>Angebot<span class="nt">&lt;/Name&gt;</span>
-          <span class="nt">&lt;PrivateCode&gt;</span>10<span class="nt">&lt;/PrivateCode&gt;</span>
-        <span class="nt">&lt;/TypeOfNotice&gt;</span>
-      <span class="nt">&lt;/values&gt;</span>
-    <span class="nt">&lt;/ValueSet&gt;</span>
-    <span class="nt">&lt;ValueSet</span> <span class="na">id=</span><span class="s">"ch:1:ValueSet:TypesOfProductCategory"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"TypeOfProductCategory"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- We need a TypeOfProductCategory ValueSet --&gt;</span>
-      <span class="nt">&lt;values&gt;</span>
-        <span class="nt">&lt;TypeOfProductCategory</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfProductCategory:TER"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;&lt;/Name&gt;</span>
-          <span class="nt">&lt;ShortName&gt;</span>TER<span class="nt">&lt;/ShortName&gt;</span>
-        <span class="nt">&lt;/TypeOfProductCategory&gt;</span>
-      <span class="nt">&lt;/values&gt;</span>
-    <span class="nt">&lt;/ValueSet&gt;</span>
-    <span class="nt">&lt;ValueSet</span> <span class="na">id=</span><span class="s">"ch:1:ValueSet:TypesOfPlace"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"TypeOfPlace"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;values&gt;</span>
-        <span class="nt">&lt;TypeOfPlace</span> <span class="na">id=</span><span class="s">"drtCollectionPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Sammelpunkt<span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Collection Point<span class="nt">&lt;/Text&gt;&lt;/Name&gt;</span>
-        <span class="nt">&lt;/TypeOfPlace&gt;</span>
-        <span class="nt">&lt;TypeOfPlace</span> <span class="na">id=</span><span class="s">"regularStop"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Reguläre Haltestelle<span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Regular Stop<span class="nt">&lt;/Text&gt;&lt;/Name&gt;</span>
-        <span class="nt">&lt;/TypeOfPlace&gt;</span>
-      <span class="nt">&lt;/values&gt;</span>
-    <span class="nt">&lt;/ValueSet&gt;</span>
+  <span class="c">&lt;!-- Sets of TYPE OF VALUE contained in the RESOURCE FRAME. --&gt;</span>
+  <span class="nt">&lt;ValueSet</span> <span class="na">id=</span><span class="s">"ch:1:ValueSet:notices"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"TypeOfNotice"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- We need a TypeOfNotice ValueSet. --&gt;</span>
+  <span class="nt">&lt;values&gt;</span>
+  <span class="nt">&lt;TypeOfNotice</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfNotice:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Allgemeiner Hinweis<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;PrivateCode&gt;</span>1<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/TypeOfNotice&gt;</span>
+  <span class="nt">&lt;TypeOfNotice</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfNotice:10"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Angebot<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;PrivateCode&gt;</span>10<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/TypeOfNotice&gt;</span>
+  <span class="nt">&lt;/values&gt;</span>
+  <span class="nt">&lt;/ValueSet&gt;</span>
+  <span class="nt">&lt;ValueSet</span> <span class="na">id=</span><span class="s">"ch:1:ValueSet:TypesOfProductCategory"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"TypeOfProductCategory"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- We need a TypeOfProductCategory ValueSet --&gt;</span>
+  <span class="nt">&lt;values&gt;</span>
+  <span class="nt">&lt;TypeOfProductCategory</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfProductCategory:TER"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Train Express Regional
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;ShortName&gt;</span>TER<span class="nt">&lt;/ShortName&gt;</span>
+  <span class="nt">&lt;/TypeOfProductCategory&gt;</span>
+  <span class="nt">&lt;/values&gt;</span>
+  <span class="nt">&lt;/ValueSet&gt;</span>
+  <span class="nt">&lt;ValueSet</span> <span class="na">id=</span><span class="s">"ch:1:ValueSet:TypesOfPlace"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"TypeOfPlace"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;values&gt;</span>
+  <span class="nt">&lt;TypeOfPlace</span> <span class="na">id=</span><span class="s">"drtCollectionPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Sammelpunkt
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Collection Point<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;/TypeOfPlace&gt;</span>
+  <span class="nt">&lt;TypeOfPlace</span> <span class="na">id=</span><span class="s">"regularStop"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Reguläre Haltestelle
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Regular Stop<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;/TypeOfPlace&gt;</span>
+  <span class="nt">&lt;/values&gt;</span>
+  <span class="nt">&lt;/ValueSet&gt;</span>
   <span class="nt">&lt;/typesOfValue&gt;</span>
   <span class="nt">&lt;organisations&gt;</span>
-    <span class="c">&lt;!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD --&gt;</span>
-    <span class="nt">&lt;Operator</span> <span class="na">id=</span><span class="s">"sboid"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. --&gt;</span>
-    <span class="nt">&lt;/Operator&gt;</span>
+  <span class="c">&lt;!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD --&gt;</span>
+  <span class="nt">&lt;Operator</span> <span class="na">id=</span><span class="s">"sboid"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. --&gt;</span>
+  <span class="nt">&lt;/Operator&gt;</span>
   <span class="nt">&lt;/organisations&gt;</span>
   <span class="nt">&lt;siteFacilitySets&gt;</span>
-    <span class="c">&lt;!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. --&gt;</span>
-    <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. --&gt;</span>
+  <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/siteFacilitySets&gt;</span>
   <span class="nt">&lt;serviceFacilitySets&gt;</span>
-    <span class="c">&lt;!-- Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. --&gt;</span>
-    <span class="nt">&lt;ServiceFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. --&gt;</span>
+  <span class="nt">&lt;ServiceFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/serviceFacilitySets&gt;</span>
   <span class="nt">&lt;vehicleTypes&gt;</span>
-    <span class="nt">&lt;VehicleType</span> <span class="na">id=</span><span class="s">"tbd"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;VehicleType</span> <span class="na">id=</span><span class="s">"tbd"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/vehicleTypes&gt;</span>
 <span class="nt">&lt;/ResourceFrame&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/ResourceFrame.xml">Template</a></em></p>
@@ -835,7 +844,7 @@ We use this element to  describe the different roles of the participating compan
       <td> </td>
       <td>Name</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td> </td>
@@ -871,7 +880,7 @@ We use this element to  describe the different roles of the participating compan
       <td>+</td>
       <td>ResponsibilityRoleAssignment</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ResponsibilityRoleAssignment</td>
       <td>Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision.</td>
       <td> </td>
@@ -902,23 +911,23 @@ We use this element to  describe the different roles of the participating compan
 <h4 id="example-5">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;ResponsibilitySet</span>  <span class="na">id=</span><span class="s">"ch:1:ResponsbilitySet-gen"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ResponsibilitySet</span> <span class="na">id=</span><span class="s">"ch:1:ResponsbilitySet-gen"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line. --&gt;</span>
   <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Basler Verkehrsbetriebe<span class="nt">&lt;/Name&gt;</span>
   <span class="nt">&lt;PrivateCode&gt;</span>BVB<span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;roles&gt;</span>
-    <span class="nt">&lt;ResponsibilityRoleAssignment</span> <span class="na">id=</span><span class="s">"ch:1:ResponsibilityRoleAssignment:823_823:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;StakeholderRoleType&gt;</span>EntityLegalOwnership<span class="nt">&lt;/StakeholderRoleType&gt;</span>
-      <span class="c">&lt;!-- "EntityLegalOwnership" must be defined once and "Operator" should be too. --&gt;</span>
-      <span class="nt">&lt;ResponsibleOrganisationRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100622"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/ResponsibilityRoleAssignment&gt;</span>
-    <span class="nt">&lt;ResponsibilityRoleAssignment</span> <span class="na">id=</span><span class="s">"ch:1:ResponsibilityRoleAssignment:823_823:2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;StakeholderRoleType&gt;</span>Operation<span class="nt">&lt;/StakeholderRoleType&gt;</span>
-      <span class="nt">&lt;ResponsibleOrganisationRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100622"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/ResponsibilityRoleAssignment&gt;</span>
+  <span class="nt">&lt;ResponsibilityRoleAssignment</span> <span class="na">id=</span><span class="s">"ch:1:ResponsibilityRoleAssignment:823_823:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;StakeholderRoleType&gt;</span>EntityLegalOwnership
+  <span class="c">&lt;!-- "EntityLegalOwnership" must be defined once and "Operator" should be too. --&gt;</span>
+  <span class="nt">&lt;/StakeholderRoleType&gt;</span>
+  <span class="nt">&lt;ResponsibleOrganisationRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100622"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/ResponsibilityRoleAssignment&gt;</span>
+  <span class="nt">&lt;ResponsibilityRoleAssignment</span> <span class="na">id=</span><span class="s">"ch:1:ResponsibilityRoleAssignment:823_823:2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;StakeholderRoleType&gt;</span>Operation<span class="nt">&lt;/StakeholderRoleType&gt;</span>
+  <span class="nt">&lt;ResponsibleOrganisationRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100622"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/ResponsibilityRoleAssignment&gt;</span>
   <span class="nt">&lt;/roles&gt;</span>
 <span class="nt">&lt;/ResponsibilitySet&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/ResponsibilitySet.xml">Template</a></em></p>
@@ -1059,7 +1068,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td> </td>
       <td>Name</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td> </td>
@@ -1077,7 +1086,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>+</td>
       <td>Text</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Text content of NOTICe.</td>
       <td> </td>
@@ -1095,7 +1104,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td> </td>
       <td>ShortName</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Short Name for service</td>
       <td> </td>
@@ -1108,14 +1117,17 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 <h4 id="example-6">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;TypeOfProductCategory</span>  <span class="na">id=</span><span class="s">"ch:1:TypeOfProductCategory:TER"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;TypeOfProductCategory</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfProductCategory:TER"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;alternativeTexts&gt;</span>
-    <span class="c">&lt;!-- Is done with MultilanguageString now --&gt;</span>
+  <span class="c">&lt;!-- Is done with MultilanguageString now --&gt;</span>
   <span class="nt">&lt;/alternativeTexts&gt;</span>
-  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>TER<span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;&lt;/Name&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>TER
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;/Name&gt;</span>
   <span class="nt">&lt;ShortName&gt;</span>TER<span class="nt">&lt;/ShortName&gt;</span>
 <span class="nt">&lt;/TypeOfProductCategory&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/TypeOfProductCategory.xml">Template</a></em></p>
@@ -1217,7 +1229,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>+</td>
       <td>PrivateCode</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td>Busines organisation</td>
@@ -1235,7 +1247,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td> </td>
       <td>Name</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td> </td>
@@ -1244,7 +1256,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td> </td>
       <td>ShortName</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Short Name for service</td>
       <td>there may be cases, when it can’t be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators.</td>
@@ -1271,7 +1283,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>+++</td>
       <td>TransportAdministrativeZone</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TransportAdministrativeZone</td>
       <td>A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region.</td>
       <td> </td>
@@ -1293,38 +1305,39 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 <h4 id="example-7">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;Operator</span>  <span class="na">id=</span><span class="s">"ch:1:sboid:100602"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;Operator</span> <span class="na">id=</span><span class="s">"ch:1:sboid:100602"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. --&gt;</span>
   <span class="nt">&lt;keyList&gt;</span>
-    <span class="nt">&lt;KeyValue&gt;</span>
-      <span class="nt">&lt;Key&gt;</span>GO<span class="nt">&lt;/Key&gt;</span>
-      <span class="nt">&lt;Value&gt;</span>801<span class="nt">&lt;/Value&gt;</span>
-    <span class="nt">&lt;/KeyValue&gt;</span>
-    <span class="nt">&lt;KeyValue&gt;</span>
-      <span class="nt">&lt;Key&gt;</span>SBOID<span class="nt">&lt;/Key&gt;</span>
-      <span class="nt">&lt;Value&gt;</span>ch:1:sboid:100602<span class="nt">&lt;/Value&gt;</span>
-    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;KeyValue&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>GO<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>801<span class="nt">&lt;/Value&gt;</span>
+  <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;KeyValue&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>SBOID<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>ch:1:sboid:100602<span class="nt">&lt;/Value&gt;</span>
+  <span class="nt">&lt;/KeyValue&gt;</span>
   <span class="nt">&lt;/keyList&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
-    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"GO"</span><span class="nt">&gt;</span>801<span class="nt">&lt;/PrivateCode&gt;</span>
-    <span class="c">&lt;!-- Busines organisation --&gt;</span>
-    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sboid"</span><span class="nt">&gt;</span>ch:1:sboid:100602<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"GO"</span><span class="nt">&gt;</span>801
+  <span class="c">&lt;!-- Busines organisation --&gt;</span>
+  <span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sboid"</span><span class="nt">&gt;</span>ch:1:sboid:100602<span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
   <span class="nt">&lt;PrivateCode&gt;</span>801<span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;Name&gt;</span>PostAuto AG<span class="nt">&lt;/Name&gt;</span>
-  <span class="nt">&lt;ShortName&gt;</span>PAG<span class="nt">&lt;/ShortName&gt;</span>
+  <span class="nt">&lt;ShortName&gt;</span>PAG
   <span class="c">&lt;!-- there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. --&gt;</span>
+  <span class="nt">&lt;/ShortName&gt;</span>
   <span class="nt">&lt;parts&gt;</span>
-    <span class="nt">&lt;OrganisationPart</span> <span class="na">id=</span><span class="s">"ch:1:OrganisationPart:801-5678"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;administrativeZones&gt;</span>
-        <span class="nt">&lt;TransportAdministrativeZone</span> <span class="na">id=</span><span class="s">"ch:1:TransportAdministrativeZone:801-5678"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-          <span class="nt">&lt;PrivateCode&gt;</span>5678<span class="nt">&lt;/PrivateCode&gt;</span>
-        <span class="nt">&lt;/TransportAdministrativeZone&gt;</span>
-      <span class="nt">&lt;/administrativeZones&gt;</span>
-    <span class="nt">&lt;/OrganisationPart&gt;</span>
+  <span class="nt">&lt;OrganisationPart</span> <span class="na">id=</span><span class="s">"ch:1:OrganisationPart:801-5678"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;administrativeZones&gt;</span>
+  <span class="nt">&lt;TransportAdministrativeZone</span> <span class="na">id=</span><span class="s">"ch:1:TransportAdministrativeZone:801-5678"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;PrivateCode&gt;</span>5678<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/TransportAdministrativeZone&gt;</span>
+  <span class="nt">&lt;/administrativeZones&gt;</span>
+  <span class="nt">&lt;/OrganisationPart&gt;</span>
   <span class="nt">&lt;/parts&gt;</span>
 <span class="nt">&lt;/Operator&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/Operator.xml">Template</a></em></p>
@@ -1406,7 +1419,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td> </td>
       <td>Description</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Description of contents.</td>
       <td> </td>
@@ -1424,7 +1437,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>+</td>
       <td>Text</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Text content of NOTICe.</td>
       <td> </td>
@@ -1509,14 +1522,18 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
 <h4 id="example-8">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;ServiceFacilitySet</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceFacilitySet:A___2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ServiceFacilitySet</span> <span class="na">id=</span><span class="s">"ch:1:ServiceFacilitySet:A___2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- List of ServiceFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical ServiceFacilitySets. Reuse them. Details in the mapping excel. --&gt;</span>
   <span class="nt">&lt;Extensions&gt;</span>
-    <span class="c">&lt;!-- Two elements used in HRDF for ordering facilities --&gt;</span>
-    <span class="nt">&lt;Priority&gt;</span>1<span class="nt">&lt;/Priority&gt;</span>
-    <span class="nt">&lt;Condition&gt;</span>4<span class="nt">&lt;/Condition&gt;</span>
+  <span class="c">&lt;!-- Two elements used in HRDF for ordering facilities --&gt;</span>
+  <span class="nt">&lt;Priority&gt;</span>1<span class="nt">&lt;/Priority&gt;</span>
+  <span class="nt">&lt;Condition&gt;</span>4<span class="nt">&lt;/Condition&gt;</span>
   <span class="nt">&lt;/Extensions&gt;</span>
-  <span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Nur 2. Klasse<span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>2nd class only<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Seulement 2e classe<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Solo 2a classe<span class="nt">&lt;/Text&gt;&lt;/Description&gt;</span>
+  <span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Nur 2. Klasse
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>2nd class only<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Seulement 2e classe<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Solo 2a classe<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;FareClasses&gt;</span>secondClass<span class="nt">&lt;/FareClasses&gt;</span>
   <span class="nt">&lt;MobilityFacilityList&gt;</span>stepFreeAccess lowFloor<span class="nt">&lt;/MobilityFacilityList&gt;</span>
   <span class="nt">&lt;NuisanceFacilityList&gt;</span>animalsAllowed<span class="nt">&lt;/NuisanceFacilityList&gt;</span>
@@ -1525,7 +1542,6 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
   <span class="nt">&lt;CouchetteFacilityList&gt;</span>wheelchair<span class="nt">&lt;/CouchetteFacilityList&gt;</span>
   <span class="nt">&lt;GroupBookingFacility&gt;</span>groupsAllowed<span class="nt">&lt;/GroupBookingFacility&gt;</span>
 <span class="nt">&lt;/ServiceFacilitySet&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/ServiceFacilitySet.xml">Template</a></em></p>
@@ -1617,7 +1633,7 @@ referenced to define facilities of a site.</p>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/AvailabilityCondition.html">AvailabilityCondition</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>AvailabilityCondition</td>
       <td>VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs.</td>
       <td> </td>
@@ -1626,7 +1642,7 @@ referenced to define facilities of a site.</p>
       <td> </td>
       <td>Description</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Description of contents.</td>
       <td>Description is optional</td>
@@ -1644,7 +1660,7 @@ referenced to define facilities of a site.</p>
       <td>+</td>
       <td>Text</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Text content of NOTICe.</td>
       <td> </td>
@@ -1729,16 +1745,19 @@ referenced to define facilities of a site.</p>
 <h4 id="example-9">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;SiteFacilitySet</span>  <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- List of SiteFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical SiteFacilitySets. Reuse them. There might be an overlap to ServiceFacilitySet, but they are used for different purposes. --&gt;</span>
   <span class="nt">&lt;validityConditions&gt;</span>
-    <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;FromDate&gt;</span>2026-03-30T12:00:00<span class="nt">&lt;/FromDate&gt;</span>
-      <span class="nt">&lt;ToDate&gt;</span>2026-04-01T12:00:00<span class="nt">&lt;/ToDate&gt;</span>
-      <span class="nt">&lt;ValidDayBits&gt;</span>01<span class="nt">&lt;/ValidDayBits&gt;</span>
-    <span class="nt">&lt;/AvailabilityCondition&gt;</span>
+  <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;FromDate&gt;</span>2026-03-30T12:00:00<span class="nt">&lt;/FromDate&gt;</span>
+  <span class="nt">&lt;ToDate&gt;</span>2026-04-01T12:00:00<span class="nt">&lt;/ToDate&gt;</span>
+  <span class="nt">&lt;ValidDayBits&gt;</span>01<span class="nt">&lt;/ValidDayBits&gt;</span>
+  <span class="nt">&lt;/AvailabilityCondition&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
-  <span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>SiteFacilitySet Solothurn<span class="c">&lt;!-- Description is optional --&gt;</span><span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>SiteFacilitySet Solothurn<span class="nt">&lt;/Text&gt;&lt;/Description&gt;</span>
+  <span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>SiteFacilitySet Solothurn
+  <span class="c">&lt;!-- Description is optional --&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>SiteFacilitySet Solothurn<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;AssistanceFacilityList&gt;</span>personalAssistance information boardingAssistance<span class="nt">&lt;/AssistanceFacilityList&gt;</span>
   <span class="nt">&lt;AccessibilityToolList&gt;</span>audioNavigator<span class="nt">&lt;/AccessibilityToolList&gt;</span>
   <span class="nt">&lt;SanitaryFacilityList&gt;</span>toilet babyChange<span class="nt">&lt;/SanitaryFacilityList&gt;</span>
@@ -1747,7 +1766,6 @@ referenced to define facilities of a site.</p>
   <span class="nt">&lt;LuggageLockerFacilityList&gt;</span>lockers<span class="nt">&lt;/LuggageLockerFacilityList&gt;</span>
   <span class="nt">&lt;ParkingFacilityList&gt;</span>parkAndRidePark<span class="nt">&lt;/ParkingFacilityList&gt;</span>
 <span class="nt">&lt;/SiteFacilitySet&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/SiteFacilitySet.xml">Template</a></em></p>
@@ -1810,7 +1828,7 @@ referenced to define facilities of a site.</p>
       <td> </td>
       <td>ShortName</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Short Name for service</td>
       <td>Will be defined in mapping excel</td>
@@ -1850,15 +1868,15 @@ referenced to define facilities of a site.</p>
 <h4 id="example-10">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;VehicleType</span>  <span class="na">id=</span><span class="s">"ch:1:VehicleType:NF"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;VehicleType</span> <span class="na">id=</span><span class="s">"ch:1:VehicleType:NF"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- Used currently mainly for the relevant accessibility elements that can be expressed currently --&gt;</span>
-  <span class="nt">&lt;ShortName&gt;</span>NF<span class="nt">&lt;/ShortName&gt;</span>
+  <span class="nt">&lt;ShortName&gt;</span>NF
   <span class="c">&lt;!-- Will be defined in mapping excel --&gt;</span>
+  <span class="nt">&lt;/ShortName&gt;</span>
   <span class="nt">&lt;LowFloor&gt;</span>true<span class="nt">&lt;/LowFloor&gt;</span>
   <span class="nt">&lt;HasLiftOrRamp&gt;</span>false<span class="nt">&lt;/HasLiftOrRamp&gt;</span>
   <span class="nt">&lt;HasHoist&gt;</span>true<span class="nt">&lt;/HasHoist&gt;</span>
 <span class="nt">&lt;/VehicleType&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/VehicleType.xml">Template</a></em></p>

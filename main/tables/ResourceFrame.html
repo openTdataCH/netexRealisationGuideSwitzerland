@@ -87,7 +87,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ResponsibilitySet.html">ResponsibilitySet</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ResponsibilitySet</td>
       <td>A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent.</td>
       <td>Each combination of Authority and Operator needs a ResponsibilitySet.</td>
@@ -105,7 +105,7 @@
       <td>+</td>
       <td>ValueSet</td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ValueSet</td>
       <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
       <td>We need a TypeOfNotice ValueSet.</td>
@@ -123,7 +123,7 @@
       <td>+++</td>
       <td>TypeOfNotice</td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TypeOfNotice</td>
       <td>A classification of a NOTICE according to its functional purpose.</td>
       <td> </td>
@@ -132,7 +132,7 @@
       <td>+</td>
       <td>ValueSet</td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ValueSet</td>
       <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
       <td>We need a TypeOfProductCategory ValueSet</td>
@@ -141,7 +141,7 @@
       <td>+</td>
       <td>ValueSet</td>
       <td>We expect a TypsOfPlace Valueset</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ValueSet</td>
       <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
       <td> </td>
@@ -159,7 +159,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Operator.html">Operator</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>Operator</td>
       <td>A company providing public transport services.</td>
       <td>We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once.</td>
@@ -177,7 +177,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>SiteFacilitySet</td>
       <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
@@ -195,7 +195,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ServiceFacilitySet</td>
       <td>Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
@@ -213,7 +213,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/VehicleType.html">VehicleType</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>VehicleType</td>
       <td>A classification of public transport vehicles according to the vehicle scheduling requirements in mode and capacity (e.g. standard bus, double-deck, …).</td>
       <td> </td>

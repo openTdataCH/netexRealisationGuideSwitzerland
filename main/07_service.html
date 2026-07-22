@@ -197,7 +197,7 @@ class ServiceJourney {
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Line.html">Line</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>Line</td>
       <td>A group of ROUTEs which is generally known to the public by a similar name or number.</td>
       <td> </td>
@@ -215,7 +215,7 @@ class ServiceJourney {
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/GroupOfLines.html">GroupOfLines</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>GroupOfLines</td>
       <td>A grouping of LINEs which will be commonly referenced for a specific purpose.</td>
       <td>We use GroupOfLine for the modeling of mixed lines</td>
@@ -233,7 +233,7 @@ class ServiceJourney {
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/DestinationDisplay.html">DestinationDisplay</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>DestinationDisplay</td>
       <td>An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations.</td>
       <td>We only allow fully formed content of destinationDisplays</td>
@@ -251,7 +251,7 @@ class ServiceJourney {
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ScheduledStopPoint.html">ScheduledStopPoint</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ScheduledStopPoint</td>
       <td>A POINT where passengers can board or alight from vehicles. It is open, which hierarchical level such a point has. It can represent a single door (BoardingPosition) or a whole ZONE. The association to the physical model is done with STOP ASSIGNMENTs.</td>
       <td>The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part.</td>
@@ -269,7 +269,7 @@ class ServiceJourney {
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteConnection.html">SiteConnection</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>SiteConnection</td>
       <td>The physical (spatial) possibility to connect from one point to another in a SITE.</td>
       <td>SiteConnection are used only in the SITE_OFFER file and not in NETWORK_OFFER files.</td>
@@ -278,7 +278,7 @@ class ServiceJourney {
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/DefaultConnection.html">DefaultConnection</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>DefaultConnection</td>
       <td>Specifies the default transfer times to transfer between MODEs and / or OPERATORs within a region.</td>
       <td>DefaultConnection is only used in the SITE_OFFER file</td>
@@ -296,7 +296,7 @@ class ServiceJourney {
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/PassengerStopAssignment.html">PassengerStopAssignment</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>PassengerStopAssignment</td>
       <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION.</td>
       <td>are only used in a special PSA file in the export.</td>
@@ -314,7 +314,7 @@ class ServiceJourney {
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TimingLink.html">TimingLink</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TimingLink</td>
       <td>An ordered pair of TIMING POINTs for which run times may be recorded. Timing links are directional - there will be separate links for each direction of a route.</td>
       <td>every different handling of the link needs a different timing link e.g. bus vs tram</td>
@@ -332,7 +332,7 @@ class ServiceJourney {
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceJourneyPattern.html">ServiceJourneyPattern</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ServiceJourneyPattern</td>
       <td>The JOURNEY PATTERN for a (passenger carrying) SERVICE JOURNEY.</td>
       <td> </td>
@@ -350,7 +350,7 @@ class ServiceJourney {
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TimeDemandType.html">TimeDemandType</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TimeDemandType</td>
       <td>An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.</td>
       <td>TimeDemandType is now the core concept to use for the timing behaviour of ServiceJourney.</td>
@@ -368,7 +368,7 @@ class ServiceJourney {
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Notice.html">Notice</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>Notice</td>
       <td>A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media.</td>
       <td>if notices are present, one Notice must be.</td>
@@ -381,78 +381,77 @@ class ServiceJourney {
 <h3 id="example">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;ServiceFrame</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ServiceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- A minimal ServiceFrame must be present in all timetable files. --&gt;</span>
   <span class="nt">&lt;directions&gt;</span>
-    <span class="c">&lt;!-- We don't use directions, but only direction type --&gt;</span>
+  <span class="c">&lt;!-- We don't use directions, but only direction type --&gt;</span>
   <span class="nt">&lt;/directions&gt;</span>
   <span class="nt">&lt;lines&gt;</span>
-    <span class="c">&lt;!-- Only Line is used and not FlexibleLine --&gt;</span>
-    <span class="nt">&lt;Line</span> <span class="na">id=</span><span class="s">"use swiss line id where possible"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">responsibilitySetRef=</span><span class="s">"dsa"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;Name&gt;</span>Name is needed<span class="nt">&lt;/Name&gt;</span>
-    <span class="nt">&lt;/Line&gt;</span>
-    <span class="nt">&lt;FlexibleLine</span> <span class="na">id=</span><span class="s">"notUsed"</span> <span class="na">version=</span><span class="s">"none"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- We work with Line only. --&gt;</span>
-    <span class="nt">&lt;/FlexibleLine&gt;</span>
+  <span class="c">&lt;!-- Only Line is used and not FlexibleLine --&gt;</span>
+  <span class="nt">&lt;Line</span> <span class="na">id=</span><span class="s">"use swiss line id where possible"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">responsibilitySetRef=</span><span class="s">"dsa"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Name is needed<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;/Line&gt;</span>
+  <span class="nt">&lt;FlexibleLine</span> <span class="na">id=</span><span class="s">"notUsed"</span> <span class="na">version=</span><span class="s">"none"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- We work with Line only. --&gt;</span>
+  <span class="nt">&lt;/FlexibleLine&gt;</span>
   <span class="nt">&lt;/lines&gt;</span>
   <span class="nt">&lt;groupsOfLines&gt;</span>
-    <span class="nt">&lt;GroupOfLines</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- We use GroupOfLine for the modeling of mixed lines --&gt;</span>
-      <span class="nt">&lt;Name&gt;</span>Group_name<span class="nt">&lt;/Name&gt;</span>
-    <span class="nt">&lt;/GroupOfLines&gt;</span>
+  <span class="nt">&lt;GroupOfLines</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- We use GroupOfLine for the modeling of mixed lines --&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Group_name<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;/GroupOfLines&gt;</span>
   <span class="nt">&lt;/groupsOfLines&gt;</span>
   <span class="nt">&lt;destinationDisplays&gt;</span>
-    <span class="c">&lt;!-- We only allow fully formed content of destinationDisplays --&gt;</span>
-    <span class="nt">&lt;DestinationDisplay</span> <span class="na">id=</span><span class="s">"generated-id"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- We only allow fully formed content of destinationDisplays --&gt;</span>
-    <span class="nt">&lt;/DestinationDisplay&gt;</span>
+  <span class="c">&lt;!-- We only allow fully formed content of destinationDisplays --&gt;</span>
+  <span class="nt">&lt;DestinationDisplay</span> <span class="na">id=</span><span class="s">"generated-id"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- We only allow fully formed content of destinationDisplays --&gt;</span>
+  <span class="nt">&lt;/DestinationDisplay&gt;</span>
   <span class="nt">&lt;/destinationDisplays&gt;</span>
   <span class="nt">&lt;scheduledStopPoints&gt;</span>
-    <span class="c">&lt;!-- Swiss ScheduledStopPoint are using the SLOID in the id, when possible. --&gt;</span>
-    <span class="nt">&lt;ScheduledStopPoint</span> <span class="na">id=</span><span class="s">"sloid_where_possible"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part. --&gt;</span>
-    <span class="nt">&lt;/ScheduledStopPoint&gt;</span>
+  <span class="c">&lt;!-- Swiss ScheduledStopPoint are using the SLOID in the id, when possible. --&gt;</span>
+  <span class="nt">&lt;ScheduledStopPoint</span> <span class="na">id=</span><span class="s">"sloid_where_possible"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part. --&gt;</span>
+  <span class="nt">&lt;/ScheduledStopPoint&gt;</span>
   <span class="nt">&lt;/scheduledStopPoints&gt;</span>
   <span class="nt">&lt;connections&gt;</span>
-    <span class="nt">&lt;SiteConnection</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- SiteConnection are used only in the SITE_OFFER file and not in NETWORK_OFFER files. --&gt;</span>
-    <span class="nt">&lt;/SiteConnection&gt;</span>
-    <span class="nt">&lt;DefaultConnection</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- DefaultConnection is only used in the SITE_OFFER file --&gt;</span>
-    <span class="nt">&lt;/DefaultConnection&gt;</span>
+  <span class="nt">&lt;SiteConnection</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- SiteConnection are used only in the SITE_OFFER file and not in NETWORK_OFFER files. --&gt;</span>
+  <span class="nt">&lt;/SiteConnection&gt;</span>
+  <span class="nt">&lt;DefaultConnection</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- DefaultConnection is only used in the SITE_OFFER file --&gt;</span>
+  <span class="nt">&lt;/DefaultConnection&gt;</span>
   <span class="nt">&lt;/connections&gt;</span>
   <span class="nt">&lt;stopAssignments&gt;</span>
-    <span class="nt">&lt;PassengerStopAssignment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- are only used in a special PSA file in the export. --&gt;</span>
-    <span class="nt">&lt;/PassengerStopAssignment&gt;</span>
+  <span class="nt">&lt;PassengerStopAssignment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- are only used in a special PSA file in the export. --&gt;</span>
+  <span class="nt">&lt;/PassengerStopAssignment&gt;</span>
   <span class="nt">&lt;/stopAssignments&gt;</span>
   <span class="nt">&lt;timingLinks&gt;</span>
-    <span class="c">&lt;!-- We use TimingLink as the time behaviour between two ScheduledStopPoints --&gt;</span>
-    <span class="nt">&lt;TimingLink</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- every different handling of the link needs a different timing link e.g. bus vs tram --&gt;</span>
-      <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"sloid1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"sloid 2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/TimingLink&gt;</span>
+  <span class="c">&lt;!-- We use TimingLink as the time behaviour between two ScheduledStopPoints --&gt;</span>
+  <span class="nt">&lt;TimingLink</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- every different handling of the link needs a different timing link e.g. bus vs tram --&gt;</span>
+  <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"sloid1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"sloid 2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/TimingLink&gt;</span>
   <span class="nt">&lt;/timingLinks&gt;</span>
   <span class="nt">&lt;journeyPatterns&gt;</span>
-    <span class="nt">&lt;ServiceJourneyPattern</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ServiceJourneyPattern</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/journeyPatterns&gt;</span>
   <span class="nt">&lt;timeDemandTypes&gt;</span>
-    <span class="nt">&lt;TimeDemandType</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- TimeDemandType is now the core concept to use for the timing behaviour of ServiceJourney. --&gt;</span>
-    <span class="nt">&lt;/TimeDemandType&gt;</span>
+  <span class="nt">&lt;TimeDemandType</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- TimeDemandType is now the core concept to use for the timing behaviour of ServiceJourney. --&gt;</span>
+  <span class="nt">&lt;/TimeDemandType&gt;</span>
   <span class="nt">&lt;/timeDemandTypes&gt;</span>
   <span class="nt">&lt;timeDemandTypeAssignments&gt;</span>
-    <span class="nt">&lt;TimeDemandTypeAssignment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;TimeDemandTypeAssignment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/timeDemandTypeAssignments&gt;</span>
   <span class="nt">&lt;notices&gt;</span>
-    <span class="c">&lt;!-- notices may be present or not --&gt;</span>
-    <span class="nt">&lt;Notice</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- if notices are present, one Notice must be. --&gt;</span>
-    <span class="nt">&lt;/Notice&gt;</span>
+  <span class="c">&lt;!-- notices may be present or not --&gt;</span>
+  <span class="nt">&lt;Notice</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- if notices are present, one Notice must be. --&gt;</span>
+  <span class="nt">&lt;/Notice&gt;</span>
   <span class="nt">&lt;/notices&gt;</span>
 <span class="nt">&lt;/ServiceFrame&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/ServiceFrame.xml">Template</a></em></p>
@@ -592,7 +591,7 @@ class ServiceJourney {
       <td>+</td>
       <td>PrivateCode</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
@@ -610,7 +609,7 @@ class ServiceJourney {
       <td> </td>
       <td>Name</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td>contains attribute D T from HRDF. Is not translated on purpose.</td>
@@ -619,7 +618,7 @@ class ServiceJourney {
       <td> </td>
       <td>ShortName</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Short Name for service</td>
       <td>contains the LinieKurzName (attribut N T in HRDF)</td>
@@ -682,7 +681,7 @@ class ServiceJourney {
       <td>+</td>
       <td>OperatorRef</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>OperatorRefStructure</td>
       <td>Reference to an OPERATOR.</td>
       <td> </td>
@@ -713,50 +712,54 @@ class ServiceJourney {
 <h3 id="example-1">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;Line</span>  <span class="na">id=</span><span class="s">"use swiss line id where possible"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">responsibilitySetRef=</span><span class="s">"dsa"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;Line</span> <span class="na">id=</span><span class="s">"use swiss line id where possible"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">responsibilitySetRef=</span><span class="s">"dsa"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `OperatorRef`. This is to maintain compatibility with different data consumers. --&gt;</span>
   <span class="nt">&lt;ValidBetween&gt;</span>
-    <span class="c">&lt;!-- Usually set to the whole timetable year --&gt;</span>
-    <span class="nt">&lt;FromDate&gt;</span>2022-12-11T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
-    <span class="nt">&lt;ToDate&gt;</span>2023-12-09T23:59:59<span class="nt">&lt;/ToDate&gt;</span>
+  <span class="c">&lt;!-- Usually set to the whole timetable year --&gt;</span>
+  <span class="nt">&lt;FromDate&gt;</span>2022-12-11T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
+  <span class="nt">&lt;ToDate&gt;</span>2023-12-09T23:59:59<span class="nt">&lt;/ToDate&gt;</span>
   <span class="nt">&lt;/ValidBetween&gt;</span>
   <span class="nt">&lt;keyList&gt;</span>
-    <span class="nt">&lt;KeyValue&gt;</span>
-      <span class="c">&lt;!-- The SLNID is mandatory, when it exists --&gt;</span>
-      <span class="nt">&lt;Key&gt;</span>SLNID<span class="nt">&lt;/Key&gt;</span>
-      <span class="nt">&lt;Value&gt;</span>ch:1:slnid:102846<span class="nt">&lt;/Value&gt;</span>
-    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;KeyValue&gt;</span>
+  <span class="c">&lt;!-- The SLNID is mandatory, when it exists --&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>SLNID<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>ch:1:slnid:102846<span class="nt">&lt;/Value&gt;</span>
+  <span class="nt">&lt;/KeyValue&gt;</span>
   <span class="nt">&lt;/keyList&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
-    <span class="c">&lt;!-- The SLNID is mandatory, when it exists --&gt;</span>
-    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"slnid"</span><span class="nt">&gt;</span>ch:1:slnid:102846<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="c">&lt;!-- The SLNID is mandatory, when it exists --&gt;</span>
+  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"slnid"</span><span class="nt">&gt;</span>ch:1:slnid:102846<span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
-  <span class="nt">&lt;Name&gt;</span>3<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>3
   <span class="c">&lt;!-- contains attribute D T from HRDF. Is not translated on purpose. --&gt;</span>
-  <span class="nt">&lt;ShortName&gt;</span>3<span class="nt">&lt;/ShortName&gt;</span>
+  <span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;ShortName&gt;</span>3
   <span class="c">&lt;!-- contains the LinieKurzName (attribut N T in HRDF) --&gt;</span>
+  <span class="nt">&lt;/ShortName&gt;</span>
   <span class="nt">&lt;TransportMode&gt;</span>rail<span class="nt">&lt;/TransportMode&gt;</span>
   <span class="nt">&lt;TransportSubmode&gt;</span>
-    <span class="c">&lt;!-- the mapping excel describe how to use the TransportSubmode --&gt;</span>
-    <span class="nt">&lt;RailSubmode&gt;</span>suburbanRailway<span class="nt">&lt;/RailSubmode&gt;</span>
-    <span class="c">&lt;!-- Here an example for rail. Be aware that other XXXSubmode are used for other mode. --&gt;</span>
+  <span class="c">&lt;!-- the mapping excel describe how to use the TransportSubmode --&gt;</span>
+  <span class="nt">&lt;RailSubmode&gt;</span>suburbanRailway
+  <span class="c">&lt;!-- Here an example for rail. Be aware that other XXXSubmode are used for other mode. --&gt;</span>
+  <span class="nt">&lt;/RailSubmode&gt;</span>
   <span class="nt">&lt;/TransportSubmode&gt;</span>
-  <span class="nt">&lt;PublicCode&gt;</span>3<span class="nt">&lt;/PublicCode&gt;</span>
+  <span class="nt">&lt;PublicCode&gt;</span>3
   <span class="c">&lt;!-- Contains LinieLangName (attribute LT from HRDF) --&gt;</span>
+  <span class="nt">&lt;/PublicCode&gt;</span>
   <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney.  Is redundant to the responsibilitySetRef on purpose. --&gt;</span>
+  <span class="c">&lt;!-- The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney.  Is redundant to the responsibilitySetRef on purpose. --&gt;</span>
   <span class="nt">&lt;/OperatorRef&gt;</span>
   <span class="nt">&lt;additionalOperators&gt;</span>
-    <span class="c">&lt;!-- Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined. --&gt;</span>
-    <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:33"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined. --&gt;</span>
+  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:33"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/additionalOperators&gt;</span>
-  <span class="nt">&lt;LineType&gt;</span>fixed<span class="nt">&lt;/LineType&gt;</span>
+  <span class="nt">&lt;LineType&gt;</span>fixed
   <span class="c">&lt;!-- Will be used especially, when not "fixed". Details in mapping excel. --&gt;</span>
+  <span class="nt">&lt;/LineType&gt;</span>
   <span class="nt">&lt;TypeOfProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:TER"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Always aligned with BS KI oev-info.ch --&gt;</span>
+  <span class="c">&lt;!-- Always aligned with BS KI oev-info.ch --&gt;</span>
   <span class="nt">&lt;/TypeOfProductCategoryRef&gt;</span>
 <span class="nt">&lt;/Line&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/Line.xml">Template</a></em></p>
@@ -812,7 +815,7 @@ class ServiceJourney {
       <td>+</td>
       <td>LineRef</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>LineRefStructure</td>
       <td>Reference to a LINE.</td>
       <td>one must be the main line</td>
@@ -843,21 +846,20 @@ class ServiceJourney {
 <h3 id="example-2">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;GroupOfLines</span>  <span class="na">id=</span><span class="s">"ch:1:GroupOfLines:1027553"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;GroupOfLines</span> <span class="na">id=</span><span class="s">"ch:1:GroupOfLines:1027553"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- We use GroupOfLine for the modeling of mixed lines. Only mixed lines have a GroupOfLines. --&gt;</span>
   <span class="nt">&lt;members&gt;</span>
-    <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:1027553"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- one must be the main line --&gt;</span>
-    <span class="nt">&lt;/LineRef&gt;</span>
-    <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:1027553:3"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:1027553:4"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:1027553"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- one must be the main line --&gt;</span>
+  <span class="nt">&lt;/LineRef&gt;</span>
+  <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:1027553:3"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:1027553:4"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/members&gt;</span>
   <span class="nt">&lt;MainLineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:1027553"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- The main line must exist. It hasn't any ServiceJourneyPattern or ServiceJourneys. Those are all on the partial lines. --&gt;</span>
+  <span class="c">&lt;!-- The main line must exist. It hasn't any ServiceJourneyPattern or ServiceJourneys. Those are all on the partial lines. --&gt;</span>
   <span class="nt">&lt;/MainLineRef&gt;</span>
   <span class="nt">&lt;GroupOfLinesType&gt;</span>administrative<span class="nt">&lt;/GroupOfLinesType&gt;</span>
 <span class="nt">&lt;/GroupOfLines&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/GroupOfLines.xml">Template</a></em></p>
@@ -925,7 +927,7 @@ class ServiceJourney {
       <td> </td>
       <td>Name</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td>Is always language neutral. The data is taken from the Des-tination or from the reference in *R (HRDF). If DURCHBI is used then the destination display shows the final destination.</td>
@@ -956,15 +958,16 @@ class ServiceJourney {
 <h3 id="example-3">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;DestinationDisplay</span>  <span class="na">id=</span><span class="s">"generated-id"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;DestinationDisplay</span> <span class="na">id=</span><span class="s">"generated-id"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- We only allow fully formed content of destinationDisplays --&gt;</span>
-  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Porrentruy<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Porrentruy
   <span class="c">&lt;!-- Is always language neutral. The data is taken from the Des-tination or from the reference in *R (HRDF). If DURCHBI is used then the destination display shows the final destination. --&gt;</span>
-  <span class="nt">&lt;DriverDisplayText&gt;</span>Porrentruy<span class="nt">&lt;/DriverDisplayText&gt;</span>
+  <span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;DriverDisplayText&gt;</span>Porrentruy
   <span class="c">&lt;!-- Text to display to DRIVER. --&gt;</span>
+  <span class="nt">&lt;/DriverDisplayText&gt;</span>
   <span class="nt">&lt;Presentation/&gt;</span>
 <span class="nt">&lt;/DestinationDisplay&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/DestinationDisplay.xml">Template</a></em></p>
@@ -1076,7 +1079,7 @@ class ServiceJourney {
       <td>+</td>
       <td>PrivateCode</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td>If the id is not a SLOID then the SLOID must be added here.</td>
@@ -1085,7 +1088,7 @@ class ServiceJourney {
       <td> </td>
       <td>Name</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td>The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay.</td>
@@ -1116,29 +1119,31 @@ class ServiceJourney {
 <h3 id="example-4">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;ScheduledStopPoint</span>  <span class="na">id=</span><span class="s">"ch:1:sloid:4128:1:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ScheduledStopPoint</span> <span class="na">id=</span><span class="s">"ch:1:sloid:4128:1:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- Swiss ScheduledStopPoint are using the sloid in the id if possible. We keep the ScheduledStopPoint very minimalistic. The information is stored in the SiteFrame. --&gt;</span>
   <span class="nt">&lt;keyList&gt;</span>
-    <span class="nt">&lt;KeyValue&gt;</span>
-      <span class="c">&lt;!-- Can contain a DIDOK key and a SLOID. We don't need it really. --&gt;</span>
-      <span class="nt">&lt;Key&gt;</span>DIDOK<span class="nt">&lt;/Key&gt;</span>
-      <span class="nt">&lt;Value&gt;</span>8504128<span class="nt">&lt;/Value&gt;</span>
-    <span class="nt">&lt;/KeyValue&gt;</span>
-    <span class="nt">&lt;KeyValue&gt;</span>
-      <span class="nt">&lt;Key&gt;</span>SLOID<span class="nt">&lt;/Key&gt;</span>
-      <span class="nt">&lt;Value&gt;</span>ch:1:sloid:4128:1:1<span class="nt">&lt;/Value&gt;</span>
-    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;KeyValue&gt;</span>
+  <span class="c">&lt;!-- Can contain a DIDOK key and a SLOID. We don't need it really. --&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>DIDOK<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>8504128<span class="nt">&lt;/Value&gt;</span>
+  <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;KeyValue&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>SLOID<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>ch:1:sloid:4128:1:1<span class="nt">&lt;/Value&gt;</span>
+  <span class="nt">&lt;/KeyValue&gt;</span>
   <span class="nt">&lt;/keyList&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
-    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:4128:1:1<span class="nt">&lt;/PrivateCode&gt;</span>
-    <span class="c">&lt;!-- If the id is not a SLOID then the SLOID must be added here. --&gt;</span>
+  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:4128:1:1
+  <span class="c">&lt;!-- If the id is not a SLOID then the SLOID must be added here. --&gt;</span>
+  <span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
-  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Murten/Morat<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Murten/Morat
   <span class="c">&lt;!-- The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay. --&gt;</span>
-  <span class="nt">&lt;PublicCode&gt;</span>1<span class="nt">&lt;/PublicCode&gt;</span>
+  <span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;PublicCode&gt;</span>1
   <span class="c">&lt;!-- For Quay contains the plattform number/letter. --&gt;</span>
+  <span class="nt">&lt;/PublicCode&gt;</span>
 <span class="nt">&lt;/ScheduledStopPoint&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/ScheduledStopPoint.xml">Template</a></em></p>
@@ -1229,14 +1234,13 @@ class ServiceJourney {
 <h3 id="example-5">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;PassengerStopAssignment</span>  <span class="na">id=</span><span class="s">"generated-85003000-12"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;PassengerStopAssignment</span> <span class="na">id=</span><span class="s">"generated-85003000-12"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000:503:12"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;QuayRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000:503:12"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Not having the track may be problematic, but it can happen --&gt;</span>
+  <span class="c">&lt;!-- Not having the track may be problematic, but it can happen --&gt;</span>
   <span class="nt">&lt;/QuayRef&gt;</span>
 <span class="nt">&lt;/PassengerStopAssignment&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/PassengerStopAssignment.xml">Template</a></em></p>
@@ -1412,41 +1416,41 @@ class ServiceJourney {
 <h3 id="example-6">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;DefaultConnection</span>  <span class="na">id=</span><span class="s">"11-11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;DefaultConnection</span> <span class="na">id=</span><span class="s">"11-11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- Be aware only some combinations are allowed: from mode A to mode B without operators taken into account; from operator A and product category A  to operator B and product category B. --&gt;</span>
   <span class="nt">&lt;Extensions&gt;</span>
-    <span class="c">&lt;!-- When also ProductCategory is relevant, then this extension must be used --&gt;</span>
-    <span class="nt">&lt;FromProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:ICE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. --&gt;</span>
-    <span class="nt">&lt;/FromProductCategoryRef&gt;</span>
-    <span class="nt">&lt;ToProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:TE2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. --&gt;</span>
-    <span class="nt">&lt;/ToProductCategoryRef&gt;</span>
+  <span class="c">&lt;!-- When also ProductCategory is relevant, then this extension must be used --&gt;</span>
+  <span class="nt">&lt;FromProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:ICE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. --&gt;</span>
+  <span class="nt">&lt;/FromProductCategoryRef&gt;</span>
+  <span class="nt">&lt;ToProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:TE2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. --&gt;</span>
+  <span class="nt">&lt;/ToProductCategoryRef&gt;</span>
   <span class="nt">&lt;/Extensions&gt;</span>
   <span class="nt">&lt;WalkTransferDuration&gt;</span>
-    <span class="c">&lt;!-- We use WalkTransferDuration. At some point we need a solution for bicyle duration too (TSI telemetics) --&gt;</span>
-    <span class="nt">&lt;DefaultDuration&gt;</span>PT2M<span class="nt">&lt;/DefaultDuration&gt;</span>
-    <span class="nt">&lt;MobilityRestrictedTravellerDuration&gt;</span>PT4M<span class="nt">&lt;/MobilityRestrictedTravellerDuration&gt;</span>
+  <span class="c">&lt;!-- We use WalkTransferDuration. At some point we need a solution for bicyle duration too (TSI telemetics) --&gt;</span>
+  <span class="nt">&lt;DefaultDuration&gt;</span>PT2M<span class="nt">&lt;/DefaultDuration&gt;</span>
+  <span class="nt">&lt;MobilityRestrictedTravellerDuration&gt;</span>PT4M<span class="nt">&lt;/MobilityRestrictedTravellerDuration&gt;</span>
   <span class="nt">&lt;/WalkTransferDuration&gt;</span>
-  <span class="nt">&lt;BothWays&gt;</span>false<span class="nt">&lt;/BothWays&gt;</span>
+  <span class="nt">&lt;BothWays&gt;</span>false
   <span class="c">&lt;!-- Should be false - we always intend to use only one way because the behaviour may not be the same. --&gt;</span>
+  <span class="nt">&lt;/BothWays&gt;</span>
   <span class="nt">&lt;From&gt;</span>
-    <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
-    <span class="nt">&lt;OperatorView&gt;</span>
-      <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/OperatorView&gt;</span>
+  <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
+  <span class="nt">&lt;OperatorView&gt;</span>
+  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/OperatorView&gt;</span>
   <span class="nt">&lt;/From&gt;</span>
   <span class="nt">&lt;To&gt;</span>
-    <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
-    <span class="nt">&lt;OperatorView&gt;</span>
-      <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/OperatorView&gt;</span>
+  <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
+  <span class="nt">&lt;OperatorView&gt;</span>
+  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/OperatorView&gt;</span>
   <span class="nt">&lt;/To&gt;</span>
   <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:19231"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Usually a SLOID. Not set means whole network. --&gt;</span>
+  <span class="c">&lt;!-- Usually a SLOID. Not set means whole network. --&gt;</span>
   <span class="nt">&lt;/StopPlaceRef&gt;</span>
 <span class="nt">&lt;/DefaultConnection&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/DefaultConnection.xml">Template</a></em></p>
@@ -1574,22 +1578,21 @@ class ServiceJourney {
 <h3 id="example-7">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;SiteConnection</span>  <span class="na">id=</span><span class="s">"ch:1:SiteConnection:8506302-8589913"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;SiteConnection</span> <span class="na">id=</span><span class="s">"ch:1:SiteConnection:8506302-8589913"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- SiteConnection are used only in the main file and not in timetable files. --&gt;</span>
   <span class="nt">&lt;WalkTransferDuration&gt;</span>
-    <span class="nt">&lt;DefaultDuration&gt;</span>PT13M<span class="nt">&lt;/DefaultDuration&gt;</span>
+  <span class="nt">&lt;DefaultDuration&gt;</span>PT13M<span class="nt">&lt;/DefaultDuration&gt;</span>
   <span class="nt">&lt;/WalkTransferDuration&gt;</span>
   <span class="nt">&lt;BothWays&gt;</span>false<span class="nt">&lt;/BothWays&gt;</span>
   <span class="nt">&lt;From&gt;</span>
-    <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. --&gt;</span>
-    <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8506302"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. --&gt;</span>
+  <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8506302"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/From&gt;</span>
   <span class="nt">&lt;To&gt;</span>
-    <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. --&gt;</span>
-    <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8589913"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. --&gt;</span>
+  <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8589913"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/To&gt;</span>
 <span class="nt">&lt;/SiteConnection&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/SiteConnection.xml">Template</a></em></p>
@@ -1659,7 +1662,7 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
       <td>+</td>
       <td>PrivateCode</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td>DIDOK code of the virtual stop</td>
@@ -1677,7 +1680,7 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
       <td> </td>
       <td>Name</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td>Can be used to express “Neubaustrecke”, “Lötschbergbasistunnel” and the like.</td>
@@ -1704,7 +1707,7 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
       <td> </td>
       <td>ToPointRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>VehicleMeetingPointRefStructure</td>
       <td>Identifier of VEHICLE MEETING POINT at which Link ends.</td>
       <td>We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this</td>
@@ -1735,26 +1738,27 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
 <h3 id="example-8">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;TimingLink</span>  <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;TimingLink</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- A timing link is basically defined between two ScheduledStopPoints. However, there may be different timing behaviours and then multiple TimingLinks between the same ScheduledStopPoint might be necessary --&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
-    <span class="c">&lt;!-- only for the "virtual" stops like Bahn2000 --&gt;</span>
-    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"virtualStops"</span><span class="nt">&gt;</span>00000001<span class="nt">&lt;/PrivateCode&gt;</span>
-    <span class="c">&lt;!-- DIDOK code of the virtual stop --&gt;</span>
+  <span class="c">&lt;!-- only for the "virtual" stops like Bahn2000 --&gt;</span>
+  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"virtualStops"</span><span class="nt">&gt;</span>00000001
+  <span class="c">&lt;!-- DIDOK code of the virtual stop --&gt;</span>
+  <span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
-  <span class="nt">&lt;Name&gt;</span>Neubaustrecke<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Neubaustrecke
   <span class="c">&lt;!-- Can be used to express "Neubaustrecke", "Lötschbergbasistunnel" and the like. --&gt;</span>
+  <span class="nt">&lt;/Name&gt;</span>
   <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"sloid1"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this --&gt;</span>
+  <span class="c">&lt;!-- We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this --&gt;</span>
   <span class="nt">&lt;/FromPointRef&gt;</span>
   <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"sloid 2"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this --&gt;</span>
+  <span class="c">&lt;!-- We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this --&gt;</span>
   <span class="nt">&lt;/ToPointRef&gt;</span>
   <span class="nt">&lt;OperationalContextRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- This is "Betriebszweig". Switzerland does not use it currently, but it might become interesting at some point --&gt;</span>
+  <span class="c">&lt;!-- This is "Betriebszweig". Switzerland does not use it currently, but it might become interesting at some point --&gt;</span>
   <span class="nt">&lt;/OperationalContextRef&gt;</span>
 <span class="nt">&lt;/TimingLink&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/TimingLink.xml">Template</a></em></p>
@@ -1817,7 +1821,7 @@ needs to be added for that too.</li>
       <td> </td>
       <td>Name</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td> </td>
@@ -1862,7 +1866,7 @@ needs to be added for that too.</li>
       <td>+</td>
       <td>StopPointInJourneyPattern</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>StopPointInJourneyPattern</td>
       <td>The use of a SCHEDULED STOP POINT in a specified order. within a JOURNEY PATTERN or SERVICE PATTERN.</td>
       <td> </td>
@@ -1934,7 +1938,7 @@ needs to be added for that too.</li>
       <td>+++</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/CheckConstraint.html">CheckConstraint</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>CheckConstraint</td>
       <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
       <td> </td>
@@ -1952,7 +1956,7 @@ needs to be added for that too.</li>
       <td>+++</td>
       <td>BookingArrangementRef</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>BookingArrangementRefStructure</td>
       <td>Reference to a BOOKING ARRANGEMENT.</td>
       <td>Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information.</td>
@@ -1961,7 +1965,7 @@ needs to be added for that too.</li>
       <td>+++</td>
       <td>BookingArrangement</td>
       <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>BookingArrangement</td>
       <td>Details of the booking arrangements for a given LINE, STOP, SERVICE etc.</td>
       <td> </td>
@@ -1992,46 +1996,46 @@ needs to be added for that too.</li>
 <h3 id="example-9">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;ServiceJourneyPattern</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyPattern:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ServiceJourneyPattern</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyPattern:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;Name&gt;</span>Bern-Spiez<span class="nt">&lt;/Name&gt;</span>
   <span class="nt">&lt;RouteView&gt;</span>
-    <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:1024437"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:1024437"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/RouteView&gt;</span>
   <span class="nt">&lt;DirectionType&gt;</span>outbound<span class="nt">&lt;/DirectionType&gt;</span>
   <span class="nt">&lt;pointsInSequence&gt;</span>
-    <span class="nt">&lt;StopPointInJourneyPattern</span> <span class="na">id=</span><span class="s">"ch:1:PointInJourneyPattern:1.1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;ForAlighting&gt;</span>false<span class="nt">&lt;/ForAlighting&gt;</span>
-      <span class="nt">&lt;ForBoarding&gt;</span>true<span class="nt">&lt;/ForBoarding&gt;</span>
-      <span class="nt">&lt;DestinationDisplayRef</span> <span class="na">ref=</span><span class="s">"DestinationDisplay:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-        <span class="c">&lt;!-- Indicates that the destination has changed. Superseeds Line or ServiceJourney --&gt;</span>
-      <span class="nt">&lt;/DestinationDisplayRef&gt;</span>
-      <span class="nt">&lt;RequestStop&gt;</span>false<span class="nt">&lt;/RequestStop&gt;</span>
-      <span class="nt">&lt;StopUse&gt;</span>access<span class="nt">&lt;/StopUse&gt;</span>
-      <span class="c">&lt;!-- All values possible. passthrough is used for Durchfahrt, if such data is delivered. --&gt;</span>
-      <span class="nt">&lt;checkConstraints&gt;</span>
-        <span class="nt">&lt;CheckConstraint</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/checkConstraints&gt;</span>
-      <span class="nt">&lt;bookingArrangements&gt;</span>
-        <span class="nt">&lt;BookingArrangementRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-          <span class="c">&lt;!-- Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information. --&gt;</span>
-        <span class="nt">&lt;/BookingArrangementRef&gt;</span>
-      <span class="nt">&lt;/bookingArrangements&gt;</span>
-    <span class="nt">&lt;/StopPointInJourneyPattern&gt;</span>
-    <span class="nt">&lt;StopPointInJourneyPattern</span> <span class="na">id=</span><span class="s">"ch:1:PointInJourneyPattern:1.2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7100:1:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;ForAlighting&gt;</span>true<span class="nt">&lt;/ForAlighting&gt;</span>
-      <span class="nt">&lt;ForBoarding&gt;</span>true<span class="nt">&lt;/ForBoarding&gt;</span>
-    <span class="nt">&lt;/StopPointInJourneyPattern&gt;</span>
-    <span class="nt">&lt;StopPointInJourneyPattern</span> <span class="na">id=</span><span class="s">"ch:1:PointInJourneyPattern:1.3"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7483:0:954324"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;ForAlighting&gt;</span>true<span class="nt">&lt;/ForAlighting&gt;</span>
-      <span class="nt">&lt;ForBoarding&gt;</span>false<span class="nt">&lt;/ForBoarding&gt;</span>
-    <span class="nt">&lt;/StopPointInJourneyPattern&gt;</span>
+  <span class="nt">&lt;StopPointInJourneyPattern</span> <span class="na">id=</span><span class="s">"ch:1:PointInJourneyPattern:1.1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ForAlighting&gt;</span>false<span class="nt">&lt;/ForAlighting&gt;</span>
+  <span class="nt">&lt;ForBoarding&gt;</span>true<span class="nt">&lt;/ForBoarding&gt;</span>
+  <span class="nt">&lt;DestinationDisplayRef</span> <span class="na">ref=</span><span class="s">"DestinationDisplay:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Indicates that the destination has changed. Superseeds Line or ServiceJourney --&gt;</span>
+  <span class="nt">&lt;/DestinationDisplayRef&gt;</span>
+  <span class="nt">&lt;RequestStop&gt;</span>false<span class="nt">&lt;/RequestStop&gt;</span>
+  <span class="nt">&lt;StopUse&gt;</span>access
+  <span class="c">&lt;!-- All values possible. passthrough is used for Durchfahrt, if such data is delivered. --&gt;</span>
+  <span class="nt">&lt;/StopUse&gt;</span>
+  <span class="nt">&lt;checkConstraints&gt;</span>
+  <span class="nt">&lt;CheckConstraint</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/checkConstraints&gt;</span>
+  <span class="nt">&lt;bookingArrangements&gt;</span>
+  <span class="nt">&lt;BookingArrangementRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information. --&gt;</span>
+  <span class="nt">&lt;/BookingArrangementRef&gt;</span>
+  <span class="nt">&lt;/bookingArrangements&gt;</span>
+  <span class="nt">&lt;/StopPointInJourneyPattern&gt;</span>
+  <span class="nt">&lt;StopPointInJourneyPattern</span> <span class="na">id=</span><span class="s">"ch:1:PointInJourneyPattern:1.2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7100:1:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ForAlighting&gt;</span>true<span class="nt">&lt;/ForAlighting&gt;</span>
+  <span class="nt">&lt;ForBoarding&gt;</span>true<span class="nt">&lt;/ForBoarding&gt;</span>
+  <span class="nt">&lt;/StopPointInJourneyPattern&gt;</span>
+  <span class="nt">&lt;StopPointInJourneyPattern</span> <span class="na">id=</span><span class="s">"ch:1:PointInJourneyPattern:1.3"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7483:0:954324"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ForAlighting&gt;</span>true<span class="nt">&lt;/ForAlighting&gt;</span>
+  <span class="nt">&lt;ForBoarding&gt;</span>false<span class="nt">&lt;/ForBoarding&gt;</span>
+  <span class="nt">&lt;/StopPointInJourneyPattern&gt;</span>
   <span class="nt">&lt;/pointsInSequence&gt;</span>
   <span class="nt">&lt;ServiceJourneyPatternType&gt;</span>passenger<span class="nt">&lt;/ServiceJourneyPatternType&gt;</span>
 <span class="nt">&lt;/ServiceJourneyPattern&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/ServiceJourneyPattern.xml">Template</a></em></p>
@@ -2098,7 +2102,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td> </td>
       <td>Description</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Description of contents.</td>
       <td>Can be used if there exists a decription of the pattern.</td>
@@ -2116,7 +2120,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>+</td>
       <td>JourneyRunTime</td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>JourneyRunTime</td>
       <td>The time taken to traverse a TIMING LINK in a particular JOURNEY PATTERN, for a specified TIME DEMAND TYPE. If it exists, it will override the DEFAULT SERVICE JOURNEY RUN TIME and DEFAULT DEAD RUN RUN TIME.</td>
       <td> </td>
@@ -2152,7 +2156,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>+</td>
       <td>JourneyWaitTime</td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>JourneyWaitTime</td>
       <td>The time a vehicle has to wait at a specific TIMING POINT IN JOURNEY PATTERN, for a specified TIME DEMAND TYPE. This wait time can be superseded by a VEHICLE JOURNEY WAIT TIME.</td>
       <td>Relevant waiting times at the stop</td>
@@ -2183,31 +2187,31 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
 <h3 id="example-10">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;TimeDemandType</span>  <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;TimeDemandType</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- TimeDemandType assigns a timing behaviour to a ServiceJourney --&gt;</span>
-  <span class="nt">&lt;Description&gt;</span>high demand<span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;Description&gt;</span>high demand
   <span class="c">&lt;!-- Can be used if there exists a decription of the pattern. --&gt;</span>
+  <span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;runTimes&gt;</span>
-    <span class="c">&lt;!-- The run time on the TimingLinks --&gt;</span>
-    <span class="nt">&lt;JourneyRunTime</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;TimingLinkRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-        <span class="c">&lt;!-- The timing link that is ued here and that that does have a given run time --&gt;</span>
-      <span class="nt">&lt;/TimingLinkRef&gt;</span>
-      <span class="nt">&lt;RunTime&gt;</span>PT5M<span class="nt">&lt;/RunTime&gt;</span>
-    <span class="nt">&lt;/JourneyRunTime&gt;</span>
+  <span class="c">&lt;!-- The run time on the TimingLinks --&gt;</span>
+  <span class="nt">&lt;JourneyRunTime</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;TimingLinkRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- The timing link that is ued here and that that does have a given run time --&gt;</span>
+  <span class="nt">&lt;/TimingLinkRef&gt;</span>
+  <span class="nt">&lt;RunTime&gt;</span>PT5M<span class="nt">&lt;/RunTime&gt;</span>
+  <span class="nt">&lt;/JourneyRunTime&gt;</span>
   <span class="nt">&lt;/runTimes&gt;</span>
   <span class="nt">&lt;waitTimes&gt;</span>
-    <span class="c">&lt;!-- We only need wait times if greater than 0. --&gt;</span>
-    <span class="nt">&lt;JourneyWaitTime</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Relevant waiting times at the stop --&gt;</span>
-      <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"sloid"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-        <span class="c">&lt;!-- Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice). --&gt;</span>
-      <span class="nt">&lt;/ScheduledStopPointRef&gt;</span>
-      <span class="nt">&lt;WaitTime&gt;</span>PT2M<span class="nt">&lt;/WaitTime&gt;</span>
-    <span class="nt">&lt;/JourneyWaitTime&gt;</span>
+  <span class="c">&lt;!-- We only need wait times if greater than 0. --&gt;</span>
+  <span class="nt">&lt;JourneyWaitTime</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Relevant waiting times at the stop --&gt;</span>
+  <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"sloid"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice). --&gt;</span>
+  <span class="nt">&lt;/ScheduledStopPointRef&gt;</span>
+  <span class="nt">&lt;WaitTime&gt;</span>PT2M<span class="nt">&lt;/WaitTime&gt;</span>
+  <span class="nt">&lt;/JourneyWaitTime&gt;</span>
   <span class="nt">&lt;/waitTimes&gt;</span>
 <span class="nt">&lt;/TimeDemandType&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/TimeDemandType.xml">Template</a></em></p>
@@ -2268,7 +2272,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td> </td>
       <td>Text</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Text content of NOTICe.</td>
       <td> </td>
@@ -2286,7 +2290,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>+</td>
       <td>Text</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Text content of NOTICe.</td>
       <td> </td>
@@ -2353,22 +2357,28 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
 <h3 id="example-11">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;Notice</span>  <span class="na">id=</span><span class="s">"ch:1:Notice:generated-1229900"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Cateringzone / Automaten<span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Catering zone / Vending machine<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Zone catering / Distributeur<span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Zona catering / Distributore<span class="nt">&lt;/Text&gt;&lt;/Text&gt;</span>
+<span class="nt">&lt;Notice</span> <span class="na">id=</span><span class="s">"ch:1:Notice:generated-1229900"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Cateringzone / Automaten
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Catering zone / Vending machine<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Zone catering / Distributeur<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Zona catering / Distributore<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;/Text&gt;</span>
   <span class="nt">&lt;PublicCode&gt;</span>
-    <span class="c">&lt;!-- The public code is transmitted when it is to be published and when it is the type of notice 10. Only 1 and 10 aree allowed. --&gt;</span>
+  <span class="c">&lt;!-- The public code is transmitted when it is to be published and when it is the type of notice 10. Only 1 and 10 aree allowed. --&gt;</span>
   <span class="nt">&lt;/PublicCode&gt;</span>
-  <span class="nt">&lt;ShortCode&gt;</span>A__SN<span class="nt">&lt;/ShortCode&gt;</span>
+  <span class="nt">&lt;ShortCode&gt;</span>A__SN
   <span class="c">&lt;!-- A duplication, but we want it. "A__" indicates an offer based on BS KI --&gt;</span>
-  <span class="nt">&lt;PrivateCode&gt;</span>A__SN<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/ShortCode&gt;</span>
+  <span class="nt">&lt;PrivateCode&gt;</span>A__SN
   <span class="c">&lt;!-- A duplication, but we want it. --&gt;</span>
+  <span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;TypeOfNoticeRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfNotice:10"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- allowed are ch:1:TypeOfNotice:1 for general notice, ch:1:TypeOfNotice:10 for offer, ch:1:TypeOfNotice:11 for region code (only PAG) --&gt;</span>
+  <span class="c">&lt;!-- allowed are ch:1:TypeOfNotice:1 for general notice, ch:1:TypeOfNotice:10 for offer, ch:1:TypeOfNotice:11 for region code (only PAG) --&gt;</span>
   <span class="nt">&lt;/TypeOfNoticeRef&gt;</span>
-  <span class="nt">&lt;CanBeAdvertised&gt;</span>true<span class="nt">&lt;/CanBeAdvertised&gt;</span>
+  <span class="nt">&lt;CanBeAdvertised&gt;</span>true
   <span class="c">&lt;!-- Whether the NOTICE is advertised. --&gt;</span>
+  <span class="nt">&lt;/CanBeAdvertised&gt;</span>
 <span class="nt">&lt;/Notice&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/Notice.xml">Template</a></em></p>
@@ -2435,7 +2445,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>+</td>
       <td>AvailabilityConditionRef</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>AvailabilityConditionRefStructure</td>
       <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
       <td> </td>
@@ -2493,21 +2503,20 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
 <h3 id="example-12">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;NoticeAssignment</span>  <span class="na">id=</span><span class="s">"ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;NoticeAssignment</span> <span class="na">id=</span><span class="s">"ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- NoticeAssignment connects a Notice to an element. The attribute `id` must be unique. --&gt;</span>
   <span class="nt">&lt;validityConditions&gt;</span>
-    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:c3"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:c3"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
   <span class="nt">&lt;NoticeRef</span> <span class="na">ref=</span><span class="s">"ch:1:Notice:Hin-1229900"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;NoticedObjectRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- We currently have not plan of using it this way. We do it through embeddingt the NoticeAssignment within the relevant element. --&gt;</span>
+  <span class="c">&lt;!-- We currently have not plan of using it this way. We do it through embeddingt the NoticeAssignment within the relevant element. --&gt;</span>
   <span class="nt">&lt;/NoticedObjectRef&gt;</span>
   <span class="nt">&lt;StartPointInPatternRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- If the notice is valid only on a part of a ServiceJourney then this can be marked with StartPointInPatternRef and EndPointInPatternRef. --&gt;</span>
+  <span class="c">&lt;!-- If the notice is valid only on a part of a ServiceJourney then this can be marked with StartPointInPatternRef and EndPointInPatternRef. --&gt;</span>
   <span class="nt">&lt;/StartPointInPatternRef&gt;</span>
   <span class="nt">&lt;EndPointInPatternRef</span> <span class="na">ref=</span><span class="s">"generated-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/NoticeAssignment&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/NoticeAssignment.xml">Template</a></em></p>

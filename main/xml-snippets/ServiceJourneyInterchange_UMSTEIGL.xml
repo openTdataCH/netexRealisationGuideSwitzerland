@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ServiceJourneyInterchange  id="ch:1:ServiceJourneyInterchange:1696906_TA" version="1">
+<ServiceJourneyInterchange id="ch:1:ServiceJourneyInterchange:1696906_TA" version="1">
   <!-- Transfer times between specific ServiceJourneys at a given stop (UMSTEIGL). StaySeated=false: passenger must change vehicles. One ServiceJourneyInterchange per journey pair. Replaces InterchangeRule in RG 2.0. -->
   <validityConditions>
-    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:TA" version="1"/>
+  <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:TA" version="1"/>
   </validityConditions>
   <Description>UMSTEIGL: transfer at Spiez, line 33.PE.GPX → line 11.IC.IC81</Description>
   <StaySeated>false</StaySeated>
@@ -10,19 +10,20 @@
   <!-- ChangeWithinVehicle is not applicable when StaySeated=false -->
   <Planned>true</Planned>
   <Guaranteed>false</Guaranteed>
-  <MaximumWaitTime>PT2M</MaximumWaitTime>
+  <MaximumWaitTime>PT2M
   <!-- If not set or PT0M, connection is considered guaranteed. -->
+  </MaximumWaitTime>
   <MinimumTransferTime>PT2M</MinimumTransferTime>
   <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" nameOfRefClass="ScheduledStopPoint" version="1">
-    <!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. -->
+  <!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. -->
   </FromPointRef>
   <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" nameOfRefClass="ScheduledStopPoint" version="1">
-    <!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. -->
+  <!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. -->
   </ToPointRef>
   <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100033:XXXX-001_33PE.j26_YYY" version="1">
-    <!-- Reference to the specific feeder ServiceJourney. Replaces FeederFilter/LineInDirectionRef from InterchangeRule. One element per journey pair required. -->
+  <!-- Reference to the specific feeder ServiceJourney. Replaces FeederFilter/LineInDirectionRef from InterchangeRule. One element per journey pair required. -->
   </FromServiceJourneyRef>
   <ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100011:XXXX-001_11IC.j26_ZZZ" version="1">
-    <!-- Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/LineInDirectionRef from InterchangeRule. -->
+  <!-- Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/LineInDirectionRef from InterchangeRule. -->
   </ToServiceJourneyRef>
 </ServiceJourneyInterchange>

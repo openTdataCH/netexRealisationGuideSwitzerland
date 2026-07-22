@@ -152,7 +152,7 @@
       <td>+</td>
       <td>PrivateCode</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td>In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments.</td>
@@ -170,7 +170,7 @@
       <td> </td>
       <td>Name</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td>The official stop name. If you have different versions one needs to use AlternativeName</td>
@@ -188,7 +188,7 @@
       <td>+</td>
       <td>Name</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td> </td>
@@ -242,7 +242,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/AlternativeName.html">AlternativeName</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>AlternativeName</td>
       <td>Alternative Name.</td>
       <td> </td>
@@ -296,7 +296,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Quay.html">Quay</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>Quay</td>
       <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
       <td> </td>

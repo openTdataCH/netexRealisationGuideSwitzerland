@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<DefaultConnection  id="11-11" version="1">
+<DefaultConnection id="11-11" version="1">
   <!-- Be aware only some combinations are allowed: from mode A to mode B without operators taken into account; from operator A and product category A  to operator B and product category B. -->
   <Extensions>
-    <!-- When also ProductCategory is relevant, then this extension must be used -->
-    <FromProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1">
-      <!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
-    </FromProductCategoryRef>
-    <ToProductCategoryRef ref="ch:1:TypeOfProductCategory:TE2" version="1">
-      <!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
-    </ToProductCategoryRef>
+  <!-- When also ProductCategory is relevant, then this extension must be used -->
+  <FromProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1">
+  <!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
+  </FromProductCategoryRef>
+  <ToProductCategoryRef ref="ch:1:TypeOfProductCategory:TE2" version="1">
+  <!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
+  </ToProductCategoryRef>
   </Extensions>
   <WalkTransferDuration>
-    <!-- We use WalkTransferDuration. At some point we need a solution for bicyle duration too (TSI telemetics) -->
-    <DefaultDuration>PT2M</DefaultDuration>
-    <MobilityRestrictedTravellerDuration>PT4M</MobilityRestrictedTravellerDuration>
+  <!-- We use WalkTransferDuration. At some point we need a solution for bicyle duration too (TSI telemetics) -->
+  <DefaultDuration>PT2M</DefaultDuration>
+  <MobilityRestrictedTravellerDuration>PT4M</MobilityRestrictedTravellerDuration>
   </WalkTransferDuration>
-  <BothWays>false</BothWays>
+  <BothWays>false
   <!-- Should be false - we always intend to use only one way because the behaviour may not be the same. -->
+  </BothWays>
   <From>
-    <TransportMode>all</TransportMode>
-    <OperatorView>
-      <OperatorRef ref="ch:1:Operator:11" version="1"/>
-    </OperatorView>
+  <TransportMode>all</TransportMode>
+  <OperatorView>
+  <OperatorRef ref="ch:1:Operator:11" version="1"/>
+  </OperatorView>
   </From>
   <To>
-    <TransportMode>all</TransportMode>
-    <OperatorView>
-      <OperatorRef ref="ch:1:Operator:11" version="1"/>
-    </OperatorView>
+  <TransportMode>all</TransportMode>
+  <OperatorView>
+  <OperatorRef ref="ch:1:Operator:11" version="1"/>
+  </OperatorView>
   </To>
   <StopPlaceRef ref="ch:1:sloid:19231" version="1">
-    <!-- Usually a SLOID. Not set means whole network. -->
+  <!-- Usually a SLOID. Not set means whole network. -->
   </StopPlaceRef>
 </DefaultConnection>

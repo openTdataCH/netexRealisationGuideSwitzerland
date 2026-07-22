@@ -80,7 +80,7 @@
       <td> </td>
       <td>Description</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Description of contents.</td>
       <td>Can be used if there exists a decription of the pattern.</td>
@@ -98,7 +98,7 @@
       <td>+</td>
       <td>JourneyRunTime</td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>JourneyRunTime</td>
       <td>The time taken to traverse a TIMING LINK in a particular JOURNEY PATTERN, for a specified TIME DEMAND TYPE. If it exists, it will override the DEFAULT SERVICE JOURNEY RUN TIME and DEFAULT DEAD RUN RUN TIME.</td>
       <td> </td>
@@ -134,7 +134,7 @@
       <td>+</td>
       <td>JourneyWaitTime</td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>JourneyWaitTime</td>
       <td>The time a vehicle has to wait at a specific TIMING POINT IN JOURNEY PATTERN, for a specified TIME DEMAND TYPE. This wait time can be superseded by a VEHICLE JOURNEY WAIT TIME.</td>
       <td>Relevant waiting times at the stop</td>

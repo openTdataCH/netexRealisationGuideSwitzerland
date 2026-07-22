@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PublicationDelivery  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+<PublicationDelivery version="2.1" {http://www.w3.org/2001/XMLSchema-instance}schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
   <PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
   <ParticipantRef>SKI-Template</ParticipantRef>
   <dataObjects>
-    <CompositeFrame id="ch:1:CompositeFrmae" version="1">
-      <ValidBetween>
-        <!-- This defines which timetable year is meant. We don't support partial delivery. -->
-        <FromDate>2026-01-01T00:00:00</FromDate>
-        <ToDate>2026-12-31T00:00:00</ToDate>
-      </ValidBetween>
-      <Description>
-        <!-- A description of the delivery can be provided. -->
-      </Description>
-      <FrameDefaults/>
-      <frames>
-        <ServiceCalendarFrame id="ch:1:ServiceCalendarFrame" version="1">
-          <!-- Needed for the relevant AvailabilityConditions -->
-        </ServiceCalendarFrame>
-        <TimetableFrame id="ch:1:TimetableFrame" version="1">
-          <journeyInterchanges>
-            <ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
-              <FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" version="1"/>
-              <FromVisitNumber>1</FromVisitNumber>
-              <ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" version="1"/>
-              <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" version="1"/>
-              <ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" version="1"/>
-            </ServiceJourneyInterchange>
-          </journeyInterchanges>
-        </TimetableFrame>
-      </frames>
-    </CompositeFrame>
+  <CompositeFrame id="ch:1:CompositeFrmae" version="1">
+  <ValidBetween>
+  <!-- This defines which timetable year is meant. We don't support partial delivery. -->
+  <FromDate>2026-01-01T00:00:00</FromDate>
+  <ToDate>2026-12-31T00:00:00</ToDate>
+  </ValidBetween>
+  <Description>
+  <!-- A description of the delivery can be provided. -->
+  </Description>
+  <FrameDefaults/>
+  <frames>
+  <ServiceCalendarFrame id="ch:1:ServiceCalendarFrame" version="1">
+  <!-- Needed for the relevant AvailabilityConditions -->
+  </ServiceCalendarFrame>
+  <TimetableFrame id="ch:1:TimetableFrame" version="1">
+  <journeyInterchanges>
+  <ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
+  <FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" version="1"/>
+  <FromVisitNumber>1</FromVisitNumber>
+  <ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" version="1"/>
+  <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" version="1"/>
+  <ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" version="1"/>
+  </ServiceJourneyInterchange>
+  </journeyInterchanges>
+  </TimetableFrame>
+  </frames>
+  </CompositeFrame>
   </dataObjects>
 </PublicationDelivery>

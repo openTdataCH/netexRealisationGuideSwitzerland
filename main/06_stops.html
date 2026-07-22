@@ -146,7 +146,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TopographicPlace.html">TopographicPlace</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TopographicPlace</td>
       <td>A town, city, village, suburb, quarter or other name settlement within a country. Provides a Gazetteer of Transport related place names.</td>
       <td>Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces.</td>
@@ -164,7 +164,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/StopPlace.html">StopPlace</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>StopPlace</td>
       <td>Version of a named place where public transport may be accessed. May be a building complex (e.g. a station) or an on-street location. Can be a STOP PLACE, VEHICLE MEETING POINT, TAXI RANK. Note: If a master id exists for a StopPlace (must be stable and globally unique), then it is best used in the id. Optimally it would be built according IFOPT. It can also be put into one of the privateCodes in addition. If it is stored in KeyValue, then it should be documented well, so that importing systems know, which id is the relevant one.</td>
       <td> </td>
@@ -182,7 +182,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>SiteFacilitySet</td>
       <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
@@ -195,24 +195,23 @@
 <h3 id="example">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;SiteFrame</span>  <span class="na">id=</span><span class="s">"ch:1:SiteFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;SiteFrame</span> <span class="na">id=</span><span class="s">"ch:1:SiteFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;topographicPlaces&gt;</span>
-    <span class="nt">&lt;TopographicPlace</span> <span class="na">id=</span><span class="s">"ch:1:TopoGraphicPlace:CH-BE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces. --&gt;</span>
-      <span class="nt">&lt;Descriptor&gt;</span>
-        <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
-      <span class="nt">&lt;/Descriptor&gt;</span>
-    <span class="nt">&lt;/TopographicPlace&gt;</span>
+  <span class="nt">&lt;TopographicPlace</span> <span class="na">id=</span><span class="s">"ch:1:TopoGraphicPlace:CH-BE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces. --&gt;</span>
+  <span class="nt">&lt;Descriptor&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;/Descriptor&gt;</span>
+  <span class="nt">&lt;/TopographicPlace&gt;</span>
   <span class="nt">&lt;/topographicPlaces&gt;</span>
   <span class="nt">&lt;stopPlaces&gt;</span>
-    <span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/stopPlaces&gt;</span>
   <span class="nt">&lt;siteFacilitySets&gt;</span>
-    <span class="c">&lt;!-- We expect the SiteFacilitySet in the ResourceFrame --&gt;</span>
-    <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- We expect the SiteFacilitySet in the ResourceFrame --&gt;</span>
+  <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/siteFacilitySets&gt;</span>
 <span class="nt">&lt;/SiteFrame&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/SiteFrame.xml">Template</a></em></p>
@@ -340,7 +339,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>+</td>
       <td>PrivateCode</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td>In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments.</td>
@@ -358,7 +357,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td> </td>
       <td>Name</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td>The official stop name. If you have different versions one needs to use AlternativeName</td>
@@ -376,7 +375,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>+</td>
       <td>Name</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td> </td>
@@ -430,7 +429,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/AlternativeName.html">AlternativeName</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>AlternativeName</td>
       <td>Alternative Name.</td>
       <td> </td>
@@ -484,7 +483,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Quay.html">Quay</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>Quay</td>
       <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
       <td> </td>
@@ -497,65 +496,70 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
 <h3 id="example-1">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;StopPlace</span>  <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- In some cases the id of a StopPlace is not a SLOID. --&gt;</span>
   <span class="nt">&lt;ValidBetween&gt;</span>
-    <span class="c">&lt;!-- This can be used to show, when the StopPlace can be used. --&gt;</span>
-    <span class="nt">&lt;FromDate&gt;</span>2026-01-01T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
-    <span class="nt">&lt;ToDate&gt;</span>2026-12-31T00:00:00<span class="nt">&lt;/ToDate&gt;</span>
+  <span class="c">&lt;!-- This can be used to show, when the StopPlace can be used. --&gt;</span>
+  <span class="nt">&lt;FromDate&gt;</span>2026-01-01T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
+  <span class="nt">&lt;ToDate&gt;</span>2026-12-31T00:00:00<span class="nt">&lt;/ToDate&gt;</span>
   <span class="nt">&lt;/ValidBetween&gt;</span>
   <span class="nt">&lt;keyList&gt;</span>
-    <span class="c">&lt;!-- Key value pairs for DIDOK number and SLOID --&gt;</span>
-    <span class="nt">&lt;KeyValue&gt;</span>
-      <span class="nt">&lt;Key&gt;</span>DIDOK<span class="nt">&lt;/Key&gt;</span>
-      <span class="nt">&lt;Value&gt;</span>7000<span class="nt">&lt;/Value&gt;</span>
-    <span class="nt">&lt;/KeyValue&gt;</span>
-    <span class="nt">&lt;KeyValue&gt;</span>
-      <span class="nt">&lt;Key&gt;</span>SLOID<span class="nt">&lt;/Key&gt;</span>
-      <span class="nt">&lt;Value&gt;</span>ch:1:sloid:7000<span class="nt">&lt;/Value&gt;</span>
-    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="c">&lt;!-- Key value pairs for DIDOK number and SLOID --&gt;</span>
+  <span class="nt">&lt;KeyValue&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>DIDOK<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>7000<span class="nt">&lt;/Value&gt;</span>
+  <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;KeyValue&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>SLOID<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>ch:1:sloid:7000<span class="nt">&lt;/Value&gt;</span>
+  <span class="nt">&lt;/KeyValue&gt;</span>
   <span class="nt">&lt;/keyList&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
-    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"didok"</span><span class="nt">&gt;</span>7000<span class="nt">&lt;/PrivateCode&gt;</span>
-    <span class="c">&lt;!-- In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments. --&gt;</span>
-    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000<span class="nt">&lt;/PrivateCode&gt;</span>
-    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"HafasPriority"</span><span class="nt">&gt;</span>4<span class="nt">&lt;/PrivateCode&gt;</span>
-    <span class="c">&lt;!-- Special value for Hafas environments. --&gt;</span>
-    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"HafasKMInfo"</span><span class="nt">&gt;</span>1000<span class="nt">&lt;/PrivateCode&gt;</span>
-    <span class="c">&lt;!-- Special value for Hafas environments. --&gt;</span>
+  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"didok"</span><span class="nt">&gt;</span>7000
+  <span class="c">&lt;!-- In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments. --&gt;</span>
+  <span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"HafasPriority"</span><span class="nt">&gt;</span>4
+  <span class="c">&lt;!-- Special value for Hafas environments. --&gt;</span>
+  <span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"HafasKMInfo"</span><span class="nt">&gt;</span>1000
+  <span class="c">&lt;!-- Special value for Hafas environments. --&gt;</span>
+  <span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
-  <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Bern
   <span class="c">&lt;!-- The official stop name. If you have different versions one needs to use AlternativeName --&gt;</span>
+  <span class="nt">&lt;/Name&gt;</span>
   <span class="nt">&lt;Centroid&gt;</span>
-    <span class="c">&lt;!-- Global or national location --&gt;</span>
-    <span class="nt">&lt;Name/&gt;</span>
-    <span class="nt">&lt;Location&gt;</span>
-      <span class="c">&lt;!-- Note concerning coordinates - The main coordinates are given as **WSG84**. --&gt;</span>
-      <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
-      <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
-      <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
-    <span class="nt">&lt;/Location&gt;</span>
+  <span class="c">&lt;!-- Global or national location --&gt;</span>
+  <span class="nt">&lt;Name/&gt;</span>
+  <span class="nt">&lt;Location&gt;</span>
+  <span class="c">&lt;!-- Note concerning coordinates - The main coordinates are given as **WSG84**. --&gt;</span>
+  <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
+  <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
+  <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
+  <span class="nt">&lt;/Location&gt;</span>
   <span class="nt">&lt;/Centroid&gt;</span>
   <span class="nt">&lt;alternativeNames&gt;</span>
-    <span class="c">&lt;!-- Alternative names for the StopPlace. We will also use these for synonyms. --&gt;</span>
-    <span class="nt">&lt;AlternativeName</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:it"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Berna<span class="nt">&lt;/Name&gt;</span>
-    <span class="nt">&lt;/AlternativeName&gt;</span>
+  <span class="c">&lt;!-- Alternative names for the StopPlace. We will also use these for synonyms. --&gt;</span>
+  <span class="nt">&lt;AlternativeName</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:it"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Berna<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;/AlternativeName&gt;</span>
   <span class="nt">&lt;/alternativeNames&gt;</span>
   <span class="nt">&lt;TopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"BE-bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Id to the county, community, canton or country. --&gt;</span>
+  <span class="c">&lt;!-- Id to the county, community, canton or country. --&gt;</span>
   <span class="nt">&lt;/TopographicPlaceRef&gt;</span>
   <span class="nt">&lt;StopPlaceType&gt;</span>railStation<span class="nt">&lt;/StopPlaceType&gt;</span>
-  <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly<span class="nt">&lt;/LimitedUse&gt;</span>
+  <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly
   <span class="c">&lt;!-- For stops like Sagliains --&gt;</span>
-  <span class="nt">&lt;Weighting&gt;</span>preferredInterchange<span class="nt">&lt;/Weighting&gt;</span>
+  <span class="nt">&lt;/LimitedUse&gt;</span>
+  <span class="nt">&lt;Weighting&gt;</span>preferredInterchange
   <span class="c">&lt;!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. --&gt;</span>
+  <span class="nt">&lt;/Weighting&gt;</span>
   <span class="nt">&lt;quays&gt;</span>
-    <span class="c">&lt;!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. --&gt;</span>
-    <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. --&gt;</span>
+  <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/quays&gt;</span>
 <span class="nt">&lt;/StopPlace&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/StopPlace.xml">Template</a></em></p>
@@ -682,7 +686,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>+</td>
       <td>PrivateCode</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
@@ -731,34 +735,35 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
 <h3 id="example-2">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;Quay</span>  <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- Can be a platform, track, sector group or sector. id is a SLOID whenever possible or generated. --&gt;</span>
   <span class="nt">&lt;keyList&gt;</span>
-    <span class="nt">&lt;KeyValue&gt;</span>
-      <span class="c">&lt;!-- When no SLOID is possible it may be omitted. --&gt;</span>
-      <span class="nt">&lt;Key&gt;</span>SLOID<span class="nt">&lt;/Key&gt;</span>
-      <span class="c">&lt;!-- SLOID is mandatory key --&gt;</span>
-      <span class="nt">&lt;Value&gt;</span>ch:1:sloid:7000:5:9<span class="nt">&lt;/Value&gt;</span>
-    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;KeyValue&gt;</span>
+  <span class="c">&lt;!-- When no SLOID is possible it may be omitted. --&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>SLOID
+  <span class="c">&lt;!-- SLOID is mandatory key --&gt;</span>
+  <span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>ch:1:sloid:7000:5:9<span class="nt">&lt;/Value&gt;</span>
+  <span class="nt">&lt;/KeyValue&gt;</span>
   <span class="nt">&lt;/keyList&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
-    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000:5:9<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000:5:9<span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
   <span class="nt">&lt;Centroid&gt;</span>
-    <span class="c">&lt;!-- Location of Quay. --&gt;</span>
-    <span class="nt">&lt;Location&gt;</span>
-      <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
-      <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
-      <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
-    <span class="nt">&lt;/Location&gt;</span>
+  <span class="c">&lt;!-- Location of Quay. --&gt;</span>
+  <span class="nt">&lt;Location&gt;</span>
+  <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
+  <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
+  <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
+  <span class="nt">&lt;/Location&gt;</span>
   <span class="nt">&lt;/Centroid&gt;</span>
   <span class="nt">&lt;SiteRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7000"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Can reference the parent Quay or StopPlace --&gt;</span>
+  <span class="c">&lt;!-- Can reference the parent Quay or StopPlace --&gt;</span>
   <span class="nt">&lt;/SiteRef&gt;</span>
-  <span class="nt">&lt;PublicCode&gt;</span>9<span class="nt">&lt;/PublicCode&gt;</span>
+  <span class="nt">&lt;PublicCode&gt;</span>9
   <span class="c">&lt;!-- Code used to identify the Quay to the public --&gt;</span>
+  <span class="nt">&lt;/PublicCode&gt;</span>
 <span class="nt">&lt;/Quay&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/Quay.xml">Template</a></em></p>
@@ -893,7 +898,7 @@ as its parent.</li>
       <td>+</td>
       <td>Name</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td> </td>
@@ -902,7 +907,7 @@ as its parent.</li>
       <td>+</td>
       <td>ShortName</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Short Name for service</td>
       <td>Abbreviation of the canton (leave empty if TopographicPlaceType is country)</td>
@@ -933,19 +938,20 @@ as its parent.</li>
 <h3 id="example-3">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;TopographicPlace</span>  <span class="na">id=</span><span class="s">"ch:1:TopoGraphicPlace:CH-BE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;TopographicPlace</span> <span class="na">id=</span><span class="s">"ch:1:TopoGraphicPlace:CH-BE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;Descriptor&gt;</span>
-    <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
-    <span class="nt">&lt;ShortName&gt;</span>BE<span class="nt">&lt;/ShortName&gt;</span>
-    <span class="c">&lt;!-- Abbreviation of the canton (leave empty if TopographicPlaceType is country) --&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;ShortName&gt;</span>BE
+  <span class="c">&lt;!-- Abbreviation of the canton (leave empty if TopographicPlaceType is country) --&gt;</span>
+  <span class="nt">&lt;/ShortName&gt;</span>
   <span class="nt">&lt;/Descriptor&gt;</span>
-  <span class="nt">&lt;TopographicPlaceType&gt;</span>county<span class="nt">&lt;/TopographicPlaceType&gt;</span>
+  <span class="nt">&lt;TopographicPlaceType&gt;</span>county
   <span class="c">&lt;!-- Allowed values: country, county --&gt;</span>
+  <span class="nt">&lt;/TopographicPlaceType&gt;</span>
   <span class="nt">&lt;ParentTopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:TopoGraphicPlace:CH-BE-Bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Parent topographic place when it exists. --&gt;</span>
+  <span class="c">&lt;!-- Parent topographic place when it exists. --&gt;</span>
   <span class="nt">&lt;/ParentTopographicPlaceRef&gt;</span>
 <span class="nt">&lt;/TopographicPlace&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/TopographicPlace.xml">Template</a></em></p>
@@ -984,7 +990,7 @@ as its parent.</li>
       <td> </td>
       <td>Name</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td>Global or national location</td>
@@ -1051,18 +1057,18 @@ as its parent.</li>
 <h3 id="example-4">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;Centroid</span> <span class="nt">&gt;</span>
+<span class="nt">&lt;Centroid&gt;</span>
   <span class="c">&lt;!-- Global or national location --&gt;</span>
   <span class="nt">&lt;Location&gt;</span>
-    <span class="c">&lt;!-- Note concerning coordinates - The main coordinates are given as **WSG84**. --&gt;</span>
-    <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
-    <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
-    <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
-    <span class="nt">&lt;pos</span> <span class="na">xmlns:ns0=</span><span class="s">"http://www.opengis.net/gml/3.2"</span> <span class="na">srsName=</span><span class="s">"EPSG:2056"</span><span class="nt">&gt;</span>2600037.945 1199749.812<span class="nt">&lt;/pos&gt;</span>
-    <span class="c">&lt;!-- EPSG:2056 is LV95. We use it in the INFO+ export. --&gt;</span>
+  <span class="c">&lt;!-- Note concerning coordinates - The main coordinates are given as **WSG84**. --&gt;</span>
+  <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
+  <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
+  <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
+  <span class="nt">&lt;pos</span> <span class="na">srsName=</span><span class="s">"EPSG:2056"</span><span class="nt">&gt;</span>2600037.945 1199749.812
+  <span class="c">&lt;!-- EPSG:2056 is LV95. We use it in the INFO+ export. --&gt;</span>
+  <span class="nt">&lt;/pos&gt;</span>
   <span class="nt">&lt;/Location&gt;</span>
 <span class="nt">&lt;/Centroid&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/Centroid.xml">Template</a></em></p>

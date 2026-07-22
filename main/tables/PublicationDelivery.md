@@ -14,6 +14,6 @@ For PublicationDelivery have a good look at how the attributes must be done in t
 |  | @xmlns:siri | mandatory | 1..1 | xsd:string | Attribute xmlns:siri | |
 |  | PublicationTimestamp | mandatory | 1..1 | xsd:dateTime | Time of output of data. |  |
 |  | ParticipantRef | mandatory | 1..1 | siri:ParticipantCodeType | Identifier of system requesting Data. |  |
-|  | Description | optional | 0..1 | MultilingualString | Description of contents. |  |
+|  | Description | optional | 0..* | MultilingualString | Description of contents. |  |
 |  | dataObjects | mandatory | 0..1 | dataObjects | NeTEx Entities of any type. |  |
 | + | [CompositeFrame](CompositeFrame.md) | mandatory | 1..1 | CompositeFrame | A container VERSION FRAME that groups a set of content VERSION FRAMsE to which the same VALIDITY CONDITIONs have been assigned. |  |

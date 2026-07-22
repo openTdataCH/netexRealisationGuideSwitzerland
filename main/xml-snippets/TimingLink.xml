@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TimingLink  id="generated" version="1">
+<TimingLink id="generated" version="1">
   <!-- A timing link is basically defined between two ScheduledStopPoints. However, there may be different timing behaviours and then multiple TimingLinks between the same ScheduledStopPoint might be necessary -->
   <privateCodes>
-    <!-- only for the "virtual" stops like Bahn2000 -->
-    <PrivateCode type="virtualStops">00000001</PrivateCode>
-    <!-- DIDOK code of the virtual stop -->
+  <!-- only for the "virtual" stops like Bahn2000 -->
+  <PrivateCode type="virtualStops">00000001
+  <!-- DIDOK code of the virtual stop -->
+  </PrivateCode>
   </privateCodes>
-  <Name>Neubaustrecke</Name>
+  <Name>Neubaustrecke
   <!-- Can be used to express "Neubaustrecke", "Lötschbergbasistunnel" and the like. -->
+  </Name>
   <FromPointRef ref="sloid1" nameOfRefClass="ScheduledStopPoint" version="1">
-    <!-- We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this -->
+  <!-- We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this -->
   </FromPointRef>
   <ToPointRef ref="sloid 2" nameOfRefClass="ScheduledStopPoint" version="1">
-    <!-- We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this -->
+  <!-- We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this -->
   </ToPointRef>
   <OperationalContextRef ref="generated" version="1">
-    <!-- This is "Betriebszweig". Switzerland does not use it currently, but it might become interesting at some point -->
+  <!-- This is "Betriebszweig". Switzerland does not use it currently, but it might become interesting at some point -->
   </OperationalContextRef>
 </TimingLink>

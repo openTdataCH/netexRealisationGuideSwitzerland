@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<NoticeAssignment  id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
+<NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
   <!-- NoticeAssignment connects a Notice to an element. The attribute `id` must be unique. -->
   <validityConditions>
-    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
+  <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
   </validityConditions>
   <NoticeRef ref="ch:1:Notice:Hin-1229900" version="1"/>
   <NoticedObjectRef ref="generated" nameOfRefClass="ScheduledStopPoint" version="1">
-    <!-- We currently have not plan of using it this way. We do it through embeddingt the NoticeAssignment within the relevant element. -->
+  <!-- We currently have not plan of using it this way. We do it through embeddingt the NoticeAssignment within the relevant element. -->
   </NoticedObjectRef>
   <StartPointInPatternRef ref="generated" version="1">
-    <!-- If the notice is valid only on a part of a ServiceJourney then this can be marked with StartPointInPatternRef and EndPointInPatternRef. -->
+  <!-- If the notice is valid only on a part of a ServiceJourney then this can be marked with StartPointInPatternRef and EndPointInPatternRef. -->
   </StartPointInPatternRef>
   <EndPointInPatternRef ref="generated-1" version="1"/>
 </NoticeAssignment>

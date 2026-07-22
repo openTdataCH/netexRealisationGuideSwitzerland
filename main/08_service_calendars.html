@@ -181,7 +181,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/AvailabilityCondition.html">AvailabilityCondition</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>AvailabilityCondition</td>
       <td>VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs.</td>
       <td>Our main mechanism for validity and operating days</td>
@@ -226,7 +226,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Timeband.html">Timeband</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>Timeband_VersionedChildStructure</td>
       <td>A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category.</td>
       <td>Mainly used for frequency-based lines.</td>
@@ -244,7 +244,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/DayTypeAssignment.html">DayTypeAssignment</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>DayTypeAssignment</td>
       <td>Associates a DAY TYPE with an OPERATING DAY within a specific Calendar. A specification of a particular DAY TYPE which will be valid during a TIME BAND on an OPERATING DAY.</td>
       <td>Used for holidays only</td>
@@ -257,35 +257,34 @@
 <h4 id="example">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;ServiceCalendarFrame</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceCalendarFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ServiceCalendarFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCalendarFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- A minimal ServiceCalendarFrame must be present in all timetable files. --&gt;</span>
   <span class="nt">&lt;validityConditions&gt;</span>
-    <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"ch:1:AvailabilityCondition:b7"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Our main mechanism for validity and operating days --&gt;</span>
-    <span class="nt">&lt;/AvailabilityCondition&gt;</span>
+  <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"ch:1:AvailabilityCondition:b7"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Our main mechanism for validity and operating days --&gt;</span>
+  <span class="nt">&lt;/AvailabilityCondition&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
   <span class="nt">&lt;ServiceCalendar</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCalendar:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- We only have one ServiceCalendar for the whole timetable year. It is not referenced. --&gt;</span>
+  <span class="c">&lt;!-- We only have one ServiceCalendar for the whole timetable year. It is not referenced. --&gt;</span>
   <span class="nt">&lt;/ServiceCalendar&gt;</span>
   <span class="nt">&lt;dayTypes&gt;</span>
-    <span class="nt">&lt;DayType</span> <span class="na">id=</span><span class="s">"ch:1:DayType:ycy10_1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Used for holidays only --&gt;</span>
-    <span class="nt">&lt;/DayType&gt;</span>
+  <span class="nt">&lt;DayType</span> <span class="na">id=</span><span class="s">"ch:1:DayType:ycy10_1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Used for holidays only --&gt;</span>
+  <span class="nt">&lt;/DayType&gt;</span>
   <span class="nt">&lt;/dayTypes&gt;</span>
   <span class="nt">&lt;timebands&gt;</span>
-    <span class="nt">&lt;Timeband</span> <span class="na">id=</span><span class="s">"ch:1:Timeband:1140:1260"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Mainly used for frequency-based lines. --&gt;</span>
-    <span class="nt">&lt;/Timeband&gt;</span>
+  <span class="nt">&lt;Timeband</span> <span class="na">id=</span><span class="s">"ch:1:Timeband:1140:1260"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Mainly used for frequency-based lines. --&gt;</span>
+  <span class="nt">&lt;/Timeband&gt;</span>
   <span class="nt">&lt;/timebands&gt;</span>
   <span class="nt">&lt;dayTypeAssignments&gt;</span>
-    <span class="nt">&lt;DayTypeAssignment</span> <span class="na">id=</span><span class="s">"none"</span> <span class="na">version=</span><span class="s">"not"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Used for holidays only --&gt;</span>
-      <span class="nt">&lt;OperatingPeriodRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;DayTypeRef</span> <span class="na">ref=</span><span class="s">"ch:1:DayType:ycy10_1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/DayTypeAssignment&gt;</span>
+  <span class="nt">&lt;DayTypeAssignment</span> <span class="na">id=</span><span class="s">"none"</span> <span class="na">version=</span><span class="s">"not"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Used for holidays only --&gt;</span>
+  <span class="nt">&lt;OperatingPeriodRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;DayTypeRef</span> <span class="na">ref=</span><span class="s">"ch:1:DayType:ycy10_1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/DayTypeAssignment&gt;</span>
   <span class="nt">&lt;/dayTypeAssignments&gt;</span>
 <span class="nt">&lt;/ServiceCalendarFrame&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/ServiceCalendarFrame.xml">Template</a></em></p>
@@ -376,7 +375,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Timeband.html">Timeband</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>Timeband_VersionedChildStructure</td>
       <td>A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category.</td>
       <td> </td>
@@ -385,7 +384,7 @@
       <td>+</td>
       <td>TimebandRef</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TimebandRefStructure</td>
       <td>Reference to a TIME BAND.</td>
       <td> </td>
@@ -398,22 +397,23 @@
 <h4 id="example-1">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;AvailabilityCondition</span>  <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;FromDate&gt;</span>2026-05-17T00:00:00Z<span class="nt">&lt;/FromDate&gt;</span>
+<span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;FromDate&gt;</span>2026-05-17T00:00:00Z
   <span class="c">&lt;!-- Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. --&gt;</span>
-  <span class="nt">&lt;ToDate&gt;</span>2026-05-17T00:00:00Z<span class="nt">&lt;/ToDate&gt;</span>
+  <span class="nt">&lt;/FromDate&gt;</span>
+  <span class="nt">&lt;ToDate&gt;</span>2026-05-17T00:00:00Z
   <span class="c">&lt;!-- Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. --&gt;</span>
+  <span class="nt">&lt;/ToDate&gt;</span>
   <span class="nt">&lt;ValidDayBits&gt;</span>01010010111<span class="nt">&lt;/ValidDayBits&gt;</span>
   <span class="nt">&lt;timebands&gt;</span>
-    <span class="c">&lt;!-- Can also be referenced --&gt;</span>
-    <span class="nt">&lt;Timeband</span> <span class="na">id=</span><span class="s">"ch:1:Timeband:4937"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;StartTime&gt;</span>06:00:00<span class="nt">&lt;/StartTime&gt;</span>
-      <span class="nt">&lt;EndTime&gt;</span>06:01:00<span class="nt">&lt;/EndTime&gt;</span>
-    <span class="nt">&lt;/Timeband&gt;</span>
-    <span class="nt">&lt;TimebandRef</span> <span class="na">ref=</span><span class="s">"ch:1:Timeband:4937-2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- Can also be referenced --&gt;</span>
+  <span class="nt">&lt;Timeband</span> <span class="na">id=</span><span class="s">"ch:1:Timeband:4937"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;StartTime&gt;</span>06:00:00<span class="nt">&lt;/StartTime&gt;</span>
+  <span class="nt">&lt;EndTime&gt;</span>06:01:00<span class="nt">&lt;/EndTime&gt;</span>
+  <span class="nt">&lt;/Timeband&gt;</span>
+  <span class="nt">&lt;TimebandRef</span> <span class="na">ref=</span><span class="s">"ch:1:Timeband:4937-2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/timebands&gt;</span>
 <span class="nt">&lt;/AvailabilityCondition&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/AvailabilityCondition.xml">Template</a></em></p>
@@ -483,7 +483,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td> </td>
       <td>Name</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td>timetable year</td>
@@ -514,15 +514,17 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
 <h4 id="example-2">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;ServiceCalendar</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceCalendar:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;Name&gt;</span>Fahrplan 2018<span class="nt">&lt;/Name&gt;</span>
+<span class="nt">&lt;ServiceCalendar</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCalendar:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Fahrplan 2018
   <span class="c">&lt;!-- timetable year --&gt;</span>
-  <span class="nt">&lt;FromDate&gt;</span>2017-12-10<span class="nt">&lt;/FromDate&gt;</span>
+  <span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;FromDate&gt;</span>2017-12-10
   <span class="c">&lt;!-- Beginning of timetable year --&gt;</span>
-  <span class="nt">&lt;ToDate&gt;</span>2018-12-08<span class="nt">&lt;/ToDate&gt;</span>
+  <span class="nt">&lt;/FromDate&gt;</span>
+  <span class="nt">&lt;ToDate&gt;</span>2018-12-08
   <span class="c">&lt;!-- End of timetable year --&gt;</span>
+  <span class="nt">&lt;/ToDate&gt;</span>
 <span class="nt">&lt;/ServiceCalendar&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/ServiceCalendar.xml">Template</a></em></p>
@@ -588,7 +590,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>++</td>
       <td>Text</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Text content of NOTICe.</td>
       <td> </td>
@@ -606,7 +608,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td> </td>
       <td>Name</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td>German or default text</td>
@@ -624,7 +626,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>+</td>
       <td>Text</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Text content of NOTICe.</td>
       <td>Italian</td>
@@ -642,7 +644,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>+</td>
       <td>Text</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Text content of NOTICe.</td>
       <td>French</td>
@@ -660,7 +662,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>+</td>
       <td>Text</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Text content of NOTICe.</td>
       <td>English</td>
@@ -687,7 +689,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>+</td>
       <td>PropertyOfDay</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>PropertyOfDay</td>
       <td>A property which a day may possess, such as school holiday, weekday, summer, winter etc.</td>
       <td>Holidays only</td>
@@ -718,18 +720,28 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
 <h4 id="example-3">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;DayType</span>  <span class="na">id=</span><span class="s">"ch:1:DayType:Bundesfeier"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;DayType</span> <span class="na">id=</span><span class="s">"ch:1:DayType:Bundesfeier"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- In Switzerland only used for holidays and the like --&gt;</span>
-  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Bundesfeier<span class="c">&lt;!-- German or default text --&gt;</span><span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Festa nazionale<span class="c">&lt;!-- Italian --&gt;</span><span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Fête nationale<span class="c">&lt;!-- French --&gt;</span><span class="nt">&lt;/Text&gt;&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>National Day<span class="c">&lt;!-- English --&gt;</span><span class="nt">&lt;/Text&gt;&lt;/Name&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Bundesfeier
+  <span class="c">&lt;!-- German or default text --&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Festa nazionale
+  <span class="c">&lt;!-- Italian --&gt;</span>
+  <span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Fête nationale
+  <span class="c">&lt;!-- French --&gt;</span>
+  <span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>National Day
+  <span class="c">&lt;!-- English --&gt;</span>
+  <span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;/Name&gt;</span>
   <span class="nt">&lt;properties&gt;</span>
-    <span class="nt">&lt;PropertyOfDay&gt;</span>
-      <span class="c">&lt;!-- Holidays only --&gt;</span>
-      <span class="nt">&lt;HolidayTypes&gt;</span>NationalHoliday<span class="nt">&lt;/HolidayTypes&gt;</span>
-      <span class="nt">&lt;DayEvent&gt;</span>normalDay<span class="nt">&lt;/DayEvent&gt;</span>
-    <span class="nt">&lt;/PropertyOfDay&gt;</span>
+  <span class="nt">&lt;PropertyOfDay&gt;</span>
+  <span class="c">&lt;!-- Holidays only --&gt;</span>
+  <span class="nt">&lt;HolidayTypes&gt;</span>NationalHoliday<span class="nt">&lt;/HolidayTypes&gt;</span>
+  <span class="nt">&lt;DayEvent&gt;</span>normalDay<span class="nt">&lt;/DayEvent&gt;</span>
+  <span class="nt">&lt;/PropertyOfDay&gt;</span>
   <span class="nt">&lt;/properties&gt;</span>
 <span class="nt">&lt;/DayType&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/DayType.xml">Template</a></em></p>
@@ -806,13 +818,14 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
 <h4 id="example-4">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;Timeband</span>  <span class="na">id=</span><span class="s">"ch:1:Timeband:4937"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;StartTime&gt;</span>06:00:00<span class="nt">&lt;/StartTime&gt;</span>
+<span class="nt">&lt;Timeband</span> <span class="na">id=</span><span class="s">"ch:1:Timeband:4937"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;StartTime&gt;</span>06:00:00
   <span class="c">&lt;!-- Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used. --&gt;</span>
-  <span class="nt">&lt;EndTime&gt;</span>06:01:00<span class="nt">&lt;/EndTime&gt;</span>
+  <span class="nt">&lt;/StartTime&gt;</span>
+  <span class="nt">&lt;EndTime&gt;</span>06:01:00
   <span class="c">&lt;!-- Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used. --&gt;</span>
+  <span class="nt">&lt;/EndTime&gt;</span>
 <span class="nt">&lt;/Timeband&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/Timeband.xml">Template</a></em></p>
@@ -892,12 +905,11 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
 <h4 id="example-5">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;DayTypeAssignment</span>  <span class="na">id=</span><span class="s">"BundesfeierAssignment"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;DayTypeAssignment</span> <span class="na">id=</span><span class="s">"BundesfeierAssignment"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- We currently use DayType to store the national holidays. --&gt;</span>
   <span class="nt">&lt;Date&gt;</span>2023-08-01<span class="nt">&lt;/Date&gt;</span>
   <span class="nt">&lt;DayTypeRef</span> <span class="na">ref=</span><span class="s">"ch:1:DayType:Bundesfeier"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/DayTypeAssignment&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/DayTypeAssignment.xml">Template</a></em></p>

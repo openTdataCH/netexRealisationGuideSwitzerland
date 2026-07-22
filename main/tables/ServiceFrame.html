@@ -89,7 +89,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Line.html">Line</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>Line</td>
       <td>A group of ROUTEs which is generally known to the public by a similar name or number.</td>
       <td> </td>
@@ -107,7 +107,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/GroupOfLines.html">GroupOfLines</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>GroupOfLines</td>
       <td>A grouping of LINEs which will be commonly referenced for a specific purpose.</td>
       <td>We use GroupOfLine for the modeling of mixed lines</td>
@@ -125,7 +125,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/DestinationDisplay.html">DestinationDisplay</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>DestinationDisplay</td>
       <td>An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations.</td>
       <td>We only allow fully formed content of destinationDisplays</td>
@@ -143,7 +143,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ScheduledStopPoint.html">ScheduledStopPoint</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ScheduledStopPoint</td>
       <td>A POINT where passengers can board or alight from vehicles. It is open, which hierarchical level such a point has. It can represent a single door (BoardingPosition) or a whole ZONE. The association to the physical model is done with STOP ASSIGNMENTs.</td>
       <td>The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part.</td>
@@ -161,7 +161,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteConnection.html">SiteConnection</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>SiteConnection</td>
       <td>The physical (spatial) possibility to connect from one point to another in a SITE.</td>
       <td>SiteConnection are used only in the SITE_OFFER file and not in NETWORK_OFFER files.</td>
@@ -170,7 +170,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/DefaultConnection.html">DefaultConnection</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>DefaultConnection</td>
       <td>Specifies the default transfer times to transfer between MODEs and / or OPERATORs within a region.</td>
       <td>DefaultConnection is only used in the SITE_OFFER file</td>
@@ -188,7 +188,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/PassengerStopAssignment.html">PassengerStopAssignment</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>PassengerStopAssignment</td>
       <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION.</td>
       <td>are only used in a special PSA file in the export.</td>
@@ -206,7 +206,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TimingLink.html">TimingLink</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TimingLink</td>
       <td>An ordered pair of TIMING POINTs for which run times may be recorded. Timing links are directional - there will be separate links for each direction of a route.</td>
       <td>every different handling of the link needs a different timing link e.g. bus vs tram</td>
@@ -224,7 +224,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceJourneyPattern.html">ServiceJourneyPattern</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ServiceJourneyPattern</td>
       <td>The JOURNEY PATTERN for a (passenger carrying) SERVICE JOURNEY.</td>
       <td> </td>
@@ -242,7 +242,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TimeDemandType.html">TimeDemandType</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TimeDemandType</td>
       <td>An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.</td>
       <td>TimeDemandType is now the core concept to use for the timing behaviour of ServiceJourney.</td>
@@ -260,7 +260,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Notice.html">Notice</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>Notice</td>
       <td>A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media.</td>
       <td>if notices are present, one Notice must be.</td>

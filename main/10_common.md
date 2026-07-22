@@ -102,7 +102,7 @@ In some cases we need translations or alias of the Name element. This is done wi
 |-----|---------|-------|------|------|-------------|------|
 |  | NameType | mandatory | 0..1 | NameTypeEnumeration | Type of Name - fixed value. Default is alias. | In some cases we need translations or alias of the Name element. This is done with AlternativeName. alias or translation allowed for StoopPlace. |
 |  | TypeOfName | optional | 0..1 | xsd:normalizedString | Type of Name - open value. | For StopPlace official is used for the official name |
-|  | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
+|  | Name | mandatory | 0..* | MultilingualString | Name of Traveller |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 
 
@@ -115,15 +115,16 @@ In some cases we need translations or alias of the Name element. This is done wi
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<AlternativeName >
+<AlternativeName>
   <!-- In some cases we need translations or alias of the Name element. This is done with AlternativeName. -->
-  <NameType>alias</NameType>
+  <NameType>alias
   <!-- alias or translation allowed for StoopPlace. -->
-  <TypeOfName>offical</TypeOfName>
+  </NameType>
+  <TypeOfName>offical
   <!-- For StopPlace official is used for the official name -->
+  </TypeOfName>
   <Name lang="de">Die Übersetzung des Namens.</Name>
 </AlternativeName>
-
 ```
 
 
@@ -158,7 +159,7 @@ The `AlternativeText` is a generic way to provide an alternative text (translati
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | @attributeName | mandatory | 1..1 | xsd:string | Attribute attributeName | |
 |  | @useForLanguage | mandatory | 1..1 | xsd:string | Attribute useForLanguage | |
-|  | Text | mandatory | 0..1 | MultilingualString | Text content of NOTICe. |  |
+|  | Text | mandatory | 0..* | MultilingualString | Text content of NOTICe. |  |
 
 
 
@@ -170,11 +171,10 @@ The `AlternativeText` is a generic way to provide an alternative text (translati
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<AlternativeText  id="ch:1:AlternativeText:Notice-Hin_1229900-fr" version="1" attributeName="Text" useForLanguage="fr">
+<AlternativeText id="ch:1:AlternativeText:Notice-Hin_1229900-fr" version="1" attributeName="Text" useForLanguage="fr">
   <!--  -->
   <Text>Départ de la voie 2.</Text>
 </AlternativeText>
-
 ```
 
 
@@ -251,20 +251,22 @@ Holds default values for certain basic parameters.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<FrameDefaults >
+<FrameDefaults>
   <DefaultLocale>
-    <!-- The default locale is German (de) for Swiss public transport. -->
-    <TimeZoneOffset>1</TimeZoneOffset>
-    <!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) -->
-    <TimeZone>Europe/Berlin</TimeZone>
-    <SummerTimeZoneOffset>2</SummerTimeZoneOffset>
-    <!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) -->
-    <DefaultLanguage>de</DefaultLanguage>
-    <!-- Is always set to “de” for Swiss public transport. -->
+  <!-- The default locale is German (de) for Swiss public transport. -->
+  <TimeZoneOffset>1
+  <!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) -->
+  </TimeZoneOffset>
+  <TimeZone>Europe/Berlin</TimeZone>
+  <SummerTimeZoneOffset>2
+  <!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) -->
+  </SummerTimeZoneOffset>
+  <DefaultLanguage>de
+  <!-- Is always set to “de” for Swiss public transport. -->
+  </DefaultLanguage>
   </DefaultLocale>
   <DefaultLocationSystem>urn:ogc:def:crs:EPSG::4326</DefaultLocationSystem>
 </FrameDefaults>
-
 ```
 
 
@@ -307,21 +309,21 @@ See the following class diagram for the most important objects of the RESOURCE F
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | responsibilitySets | mandatory | 0..1 | responsibilitySetsInFrame_RelStructure | RESPONSIBILITY SETs used in frame. | RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. |
-| + | [ResponsibilitySet](./tables/ResponsibilitySet.md) | mandatory | 1..* | ResponsibilitySet | A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent. | Each combination of Authority and Operator needs a ResponsibilitySet. |
+| + | [ResponsibilitySet](./tables/ResponsibilitySet.md) | mandatory | 1..1 | ResponsibilitySet | A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent. | Each combination of Authority and Operator needs a ResponsibilitySet. |
 |  | typesOfValue | mandatory | 0..1 | typesOfValueInFrame_RelStructure | VALUE SETs and TYPE OF VALUEs in frame. | Sets of TYPE OF VALUE contained in the RESOURCE FRAME. |
-| + | ValueSet | expected | 1..* | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfNotice ValueSet. |
+| + | ValueSet | expected | 1..1 | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfNotice ValueSet. |
 | ++ | values | expected | 0..1 | typesOfValue_RelStructure | Values in Set. |  |
-| +++ | TypeOfNotice | expected | 1..* | TypeOfNotice | A classification of a NOTICE according to its functional purpose. |  |
-| + | ValueSet | expected | 1..* | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfProductCategory ValueSet |
-| + | ValueSet | We expect a TypsOfPlace Valueset | 1..* | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. |  |
+| +++ | TypeOfNotice | expected | 1..1 | TypeOfNotice | A classification of a NOTICE according to its functional purpose. |  |
+| + | ValueSet | expected | 1..1 | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfProductCategory ValueSet |
+| + | ValueSet | We expect a TypsOfPlace Valueset | 1..1 | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. |  |
 |  | organisations | mandatory | 0..1 | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD |
-| + | [Operator](./tables/Operator.md) | mandatory | 1..* | Operator | A company providing public transport services. | We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. |
+| + | [Operator](./tables/Operator.md) | mandatory | 1..1 | Operator | A company providing public transport services. | We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. |
 |  | siteFacilitySets | optional | 0..1 | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 | Depending on the export/import part, there will be SiteFacilitySets to be included or not. |
-| + | [SiteFacilitySet](./tables/SiteFacilitySet.md) | optional | 1..* | SiteFacilitySet | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). |  |
+| + | [SiteFacilitySet](./tables/SiteFacilitySet.md) | optional | 1..1 | SiteFacilitySet | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). |  |
 |  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITies in frame. | Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. |
-| + | [ServiceFacilitySet](./tables/ServiceFacilitySet.md) | optional | 1..* | ServiceFacilitySet | Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.). |  |
+| + | [ServiceFacilitySet](./tables/ServiceFacilitySet.md) | optional | 1..1 | ServiceFacilitySet | Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.). |  |
 |  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure | Opnen specifcation of VEHICLE TYPEs + v1.1 |  |
-| + | [VehicleType](./tables/VehicleType.md) | optional | 1..* | VehicleType | A classification of public transport vehicles according to the vehicle scheduling requirements in mode and capacity (e.g. standard bus, double-deck, ...). |  |
+| + | [VehicleType](./tables/VehicleType.md) | optional | 1..1 | VehicleType | A classification of public transport vehicles according to the vehicle scheduling requirements in mode and capacity (e.g. standard bus, double-deck, ...). |  |
 
 
 
@@ -333,67 +335,74 @@ See the following class diagram for the most important objects of the RESOURCE F
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<ResourceFrame  id="ch:1:ResourceFrame" version="1">
+<ResourceFrame id="ch:1:ResourceFrame" version="1">
   <responsibilitySets>
-    <!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
-    <ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
-      <!-- Each combination of Authority and Operator needs a ResponsibilitySet. -->
-    </ResponsibilitySet>
+  <!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
+  <ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
+  <!-- Each combination of Authority and Operator needs a ResponsibilitySet. -->
+  </ResponsibilitySet>
   </responsibilitySets>
   <typesOfValue>
-    <!-- Sets of TYPE OF VALUE contained in the RESOURCE FRAME. -->
-    <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
-      <!-- We need a TypeOfNotice ValueSet. -->
-      <values>
-        <TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
-          <Name>Allgemeiner Hinweis</Name>
-          <PrivateCode>1</PrivateCode>
-        </TypeOfNotice>
-        <TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
-          <Name>Angebot</Name>
-          <PrivateCode>10</PrivateCode>
-        </TypeOfNotice>
-      </values>
-    </ValueSet>
-    <ValueSet id="ch:1:ValueSet:TypesOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
-      <!-- We need a TypeOfProductCategory ValueSet -->
-      <values>
-        <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
-          <Name lang="de">Train Express Regional<Text lang="it">Train Express Regional</Text><Text lang="en">Train Express Regional</Text><Text lang="fr">Train Express Regional</Text></Name>
-          <ShortName>TER</ShortName>
-        </TypeOfProductCategory>
-      </values>
-    </ValueSet>
-    <ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
-      <values>
-        <TypeOfPlace id="drtCollectionPoint" version="1">
-          <Name lang="de">Sammelpunkt<Text lang="en">Collection Point</Text></Name>
-        </TypeOfPlace>
-        <TypeOfPlace id="regularStop" version="1">
-          <Name lang="de">Reguläre Haltestelle<Text lang="en">Regular Stop</Text></Name>
-        </TypeOfPlace>
-      </values>
-    </ValueSet>
+  <!-- Sets of TYPE OF VALUE contained in the RESOURCE FRAME. -->
+  <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
+  <!-- We need a TypeOfNotice ValueSet. -->
+  <values>
+  <TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
+  <Name>Allgemeiner Hinweis</Name>
+  <PrivateCode>1</PrivateCode>
+  </TypeOfNotice>
+  <TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
+  <Name>Angebot</Name>
+  <PrivateCode>10</PrivateCode>
+  </TypeOfNotice>
+  </values>
+  </ValueSet>
+  <ValueSet id="ch:1:ValueSet:TypesOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+  <!-- We need a TypeOfProductCategory ValueSet -->
+  <values>
+  <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
+  <Name lang="de">Train Express Regional
+  <Text lang="it">Train Express Regional</Text>
+  <Text lang="en">Train Express Regional</Text>
+  <Text lang="fr">Train Express Regional</Text>
+  </Name>
+  <ShortName>TER</ShortName>
+  </TypeOfProductCategory>
+  </values>
+  </ValueSet>
+  <ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
+  <values>
+  <TypeOfPlace id="drtCollectionPoint" version="1">
+  <Name lang="de">Sammelpunkt
+  <Text lang="en">Collection Point</Text>
+  </Name>
+  </TypeOfPlace>
+  <TypeOfPlace id="regularStop" version="1">
+  <Name lang="de">Reguläre Haltestelle
+  <Text lang="en">Regular Stop</Text>
+  </Name>
+  </TypeOfPlace>
+  </values>
+  </ValueSet>
   </typesOfValue>
   <organisations>
-    <!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD -->
-    <Operator id="sboid" version="1">
-      <!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
-    </Operator>
+  <!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD -->
+  <Operator id="sboid" version="1">
+  <!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
+  </Operator>
   </organisations>
   <siteFacilitySets>
-    <!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. -->
-    <SiteFacilitySet id="generated" version="1"/>
+  <!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. -->
+  <SiteFacilitySet id="generated" version="1"/>
   </siteFacilitySets>
   <serviceFacilitySets>
-    <!-- Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. -->
-    <ServiceFacilitySet id="generated" version="1"/>
+  <!-- Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. -->
+  <ServiceFacilitySet id="generated" version="1"/>
   </serviceFacilitySets>
   <vehicleTypes>
-    <VehicleType id="tbd" version="1"/>
+  <VehicleType id="tbd" version="1"/>
   </vehicleTypes>
 </ResourceFrame>
-
 ```
 
 
@@ -433,11 +442,11 @@ Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLeg
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
+|  | Name | mandatory | 0..* | MultilingualString | Name of Traveller |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 |  | roles | mandatory | 0..1 | responsibilityRoleAssignments_RelStructure | Roles defined by this RESPONSIBILITY SET. |  |
-| + | ResponsibilityRoleAssignment | mandatory | 1..* | ResponsibilityRoleAssignment | Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision. |  |
+| + | ResponsibilityRoleAssignment | mandatory | 1..1 | ResponsibilityRoleAssignment | Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision. |  |
 | ++ | StakeholderRoleType | mandatory | 0..1 | StakeholderRoleTypeListOfEnumerations | Stakeholder roles which this assignment assigns. | "EntityLegalOwnership" must be defined once and "Operator" should be too. |
 | ++ | ResponsibleOrganisationRef | mandatory | 0..1 | OrganisationRefStructure | Responsible ORGANISATION. |  |
 
@@ -451,23 +460,23 @@ Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLeg
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<ResponsibilitySet  id="ch:1:ResponsbilitySet-gen" version="1">
+<ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
   <!-- Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line. -->
   <Name lang="de">Basler Verkehrsbetriebe</Name>
   <PrivateCode>BVB</PrivateCode>
   <roles>
-    <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:1" version="1">
-      <StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
-      <!-- "EntityLegalOwnership" must be defined once and "Operator" should be too. -->
-      <ResponsibleOrganisationRef ref="ch:1:sboid:100622" version="1"/>
-    </ResponsibilityRoleAssignment>
-    <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:2" version="1">
-      <StakeholderRoleType>Operation</StakeholderRoleType>
-      <ResponsibleOrganisationRef ref="ch:1:sboid:100622" version="1"/>
-    </ResponsibilityRoleAssignment>
+  <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:1" version="1">
+  <StakeholderRoleType>EntityLegalOwnership
+  <!-- "EntityLegalOwnership" must be defined once and "Operator" should be too. -->
+  </StakeholderRoleType>
+  <ResponsibleOrganisationRef ref="ch:1:sboid:100622" version="1"/>
+  </ResponsibilityRoleAssignment>
+  <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:2" version="1">
+  <StakeholderRoleType>Operation</StakeholderRoleType>
+  <ResponsibleOrganisationRef ref="ch:1:sboid:100622" version="1"/>
+  </ResponsibilityRoleAssignment>
   </roles>
 </ResponsibilitySet>
-
 ```
 
 
@@ -547,11 +556,11 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Name | mandatory | 0..1 | MultilingualString | Name of Traveller |  |
+|  | Name | mandatory | 0..* | MultilingualString | Name of Traveller |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | optional | 0..1 | MultilingualString | Text content of NOTICe. |  |
+| + | Text | optional | 0..* | MultilingualString | Text content of NOTICe. |  |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | ShortName | mandatory | 0..1 | MultilingualString | Short Name for service |  |
+|  | ShortName | mandatory | 0..* | MultilingualString | Short Name for service |  |
 
 
 
@@ -564,14 +573,17 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<TypeOfProductCategory  id="ch:1:TypeOfProductCategory:TER" version="1">
+<TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
   <alternativeTexts>
-    <!-- Is done with MultilanguageString now -->
+  <!-- Is done with MultilanguageString now -->
   </alternativeTexts>
-  <Name lang="de">TER<Text lang="en">Train Express Regional</Text><Text lang="it">Train Express Regional</Text><Text lang="fr">Train Express Regional</Text></Name>
+  <Name lang="de">TER
+  <Text lang="en">Train Express Regional</Text>
+  <Text lang="it">Train Express Regional</Text>
+  <Text lang="fr">Train Express Regional</Text>
+  </Name>
   <ShortName>TER</ShortName>
 </TypeOfProductCategory>
-
 ```
 
 
@@ -607,13 +619,13 @@ We will use this organisation also in AuthorityRef. The problem is that the sboi
 | ++ | Key | expected | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
 | ++ | Value | expected | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
 |  | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
-| + | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | Busines organisation |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | Busines organisation |
 |  | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
-|  | Name | expected | 0..1 | MultilingualString | Name of Traveller |  |
-|  | ShortName | expected | 0..1 | MultilingualString | Short Name for service | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
+|  | Name | expected | 0..* | MultilingualString | Name of Traveller |  |
+|  | ShortName | expected | 0..* | MultilingualString | Short Name for service | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
 |  | parts | optional | 0..1 | blockParts_RelStructure | BLOCK PARTs which make up COMPOUND BLOCK. |  |
 | ++ | administrativeZones | optional | 0..1 | administrativeZones_RelStructure | Zones managed by ORGANISATION PART. |  |
-| +++ | TransportAdministrativeZone | optional | 1..* | TransportAdministrativeZone | A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region. |  |
+| +++ | TransportAdministrativeZone | optional | 1..1 | TransportAdministrativeZone | A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region. |  |
 | ++++ | PrivateCode | optional | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 
 
@@ -626,38 +638,39 @@ We will use this organisation also in AuthorityRef. The problem is that the sboi
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<Operator  id="ch:1:sboid:100602" version="1">
+<Operator id="ch:1:sboid:100602" version="1">
   <!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
   <keyList>
-    <KeyValue>
-      <Key>GO</Key>
-      <Value>801</Value>
-    </KeyValue>
-    <KeyValue>
-      <Key>SBOID</Key>
-      <Value>ch:1:sboid:100602</Value>
-    </KeyValue>
+  <KeyValue>
+  <Key>GO</Key>
+  <Value>801</Value>
+  </KeyValue>
+  <KeyValue>
+  <Key>SBOID</Key>
+  <Value>ch:1:sboid:100602</Value>
+  </KeyValue>
   </keyList>
   <privateCodes>
-    <PrivateCode type="GO">801</PrivateCode>
-    <!-- Busines organisation -->
-    <PrivateCode type="sboid">ch:1:sboid:100602</PrivateCode>
+  <PrivateCode type="GO">801
+  <!-- Busines organisation -->
+  </PrivateCode>
+  <PrivateCode type="sboid">ch:1:sboid:100602</PrivateCode>
   </privateCodes>
   <PrivateCode>801</PrivateCode>
   <Name>PostAuto AG</Name>
-  <ShortName>PAG</ShortName>
+  <ShortName>PAG
   <!-- there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. -->
+  </ShortName>
   <parts>
-    <OrganisationPart id="ch:1:OrganisationPart:801-5678" version="1">
-      <administrativeZones>
-        <TransportAdministrativeZone id="ch:1:TransportAdministrativeZone:801-5678" version="1">
-          <PrivateCode>5678</PrivateCode>
-        </TransportAdministrativeZone>
-      </administrativeZones>
-    </OrganisationPart>
+  <OrganisationPart id="ch:1:OrganisationPart:801-5678" version="1">
+  <administrativeZones>
+  <TransportAdministrativeZone id="ch:1:TransportAdministrativeZone:801-5678" version="1">
+  <PrivateCode>5678</PrivateCode>
+  </TransportAdministrativeZone>
+  </administrativeZones>
+  </OrganisationPart>
   </parts>
 </Operator>
-
 ```
 
 
@@ -694,9 +707,9 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | Extensions | expected | 1..1 | ExtensionsStructure | User defined Extensions to ENTITY in schema. (Wrapper tag used to avoid problems with handling of optional 'any' by some validators). | Two elements used in HRDF for ordering facilities |
 | + | Priority | expected | 0..1 | InterchangePriorityType | Priority to assign to this INTERCHANGE. |  |
-|  | Description | expected | 0..1 | MultilingualString | Description of contents. |  |
+|  | Description | expected | 0..* | MultilingualString | Description of contents. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | optional | 0..1 | MultilingualString | Text content of NOTICe. |  |
+| + | Text | optional | 0..* | MultilingualString | Text content of NOTICe. |  |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | FareClasses | optional | 1..1 | FareClassListOfEnumerations | List of FARE CLASSes. |  |
 |  | MobilityFacilityList | optional | 1..1 | MobilityFacilityListOfEnumerations | List of MOBILITY FACILITies. |  |
@@ -716,14 +729,18 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<ServiceFacilitySet  id="ch:1:ServiceFacilitySet:A___2" version="1">
+<ServiceFacilitySet id="ch:1:ServiceFacilitySet:A___2" version="1">
   <!-- List of ServiceFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical ServiceFacilitySets. Reuse them. Details in the mapping excel. -->
   <Extensions>
-    <!-- Two elements used in HRDF for ordering facilities -->
-    <Priority>1</Priority>
-    <Condition>4</Condition>
+  <!-- Two elements used in HRDF for ordering facilities -->
+  <Priority>1</Priority>
+  <Condition>4</Condition>
   </Extensions>
-  <Description lang="de">Nur 2. Klasse<Text lang="en">2nd class only</Text><Text lang="fr">Seulement 2e classe</Text><Text lang="it">Solo 2a classe</Text></Description>
+  <Description lang="de">Nur 2. Klasse
+  <Text lang="en">2nd class only</Text>
+  <Text lang="fr">Seulement 2e classe</Text>
+  <Text lang="it">Solo 2a classe</Text>
+  </Description>
   <FareClasses>secondClass</FareClasses>
   <MobilityFacilityList>stepFreeAccess lowFloor</MobilityFacilityList>
   <NuisanceFacilityList>animalsAllowed</NuisanceFacilityList>
@@ -732,7 +749,6 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
   <CouchetteFacilityList>wheelchair</CouchetteFacilityList>
   <GroupBookingFacility>groupsAllowed</GroupBookingFacility>
 </ServiceFacilitySet>
-
 ```
 
 
@@ -785,10 +801,10 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | validityConditions | optional | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. |  |
-| + | [AvailabilityCondition](./tables/AvailabilityCondition.md) | optional | 1..* | AvailabilityCondition | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. |  |
-|  | Description | optional | 0..1 | MultilingualString | Description of contents. | Description is optional |
+| + | [AvailabilityCondition](./tables/AvailabilityCondition.md) | optional | 1..1 | AvailabilityCondition | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. |  |
+|  | Description | optional | 0..* | MultilingualString | Description of contents. | Description is optional |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | optional | 0..1 | MultilingualString | Text content of NOTICe. |  |
+| + | Text | optional | 0..* | MultilingualString | Text content of NOTICe. |  |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | AssistanceFacilityList | optional | 1..1 | AssistanceFacilityListOfEnumerations | List of ASSISTANCE FACILITies. |  |
 |  | AccessibilityToolList | optional | 0..1 | AccessibilityToolListOfEnumerations |  |  |
@@ -808,16 +824,19 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<SiteFacilitySet  id="generated" version="1">
+<SiteFacilitySet id="generated" version="1">
   <!-- List of SiteFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical SiteFacilitySets. Reuse them. There might be an overlap to ServiceFacilitySet, but they are used for different purposes. -->
   <validityConditions>
-    <AvailabilityCondition id="generated" version="1">
-      <FromDate>2026-03-30T12:00:00</FromDate>
-      <ToDate>2026-04-01T12:00:00</ToDate>
-      <ValidDayBits>01</ValidDayBits>
-    </AvailabilityCondition>
+  <AvailabilityCondition id="generated" version="1">
+  <FromDate>2026-03-30T12:00:00</FromDate>
+  <ToDate>2026-04-01T12:00:00</ToDate>
+  <ValidDayBits>01</ValidDayBits>
+  </AvailabilityCondition>
   </validityConditions>
-  <Description lang="de">SiteFacilitySet Solothurn<!-- Description is optional --><Text lang="en">SiteFacilitySet Solothurn</Text></Description>
+  <Description lang="de">SiteFacilitySet Solothurn
+  <!-- Description is optional -->
+  <Text lang="en">SiteFacilitySet Solothurn</Text>
+  </Description>
   <AssistanceFacilityList>personalAssistance information boardingAssistance</AssistanceFacilityList>
   <AccessibilityToolList>audioNavigator</AccessibilityToolList>
   <SanitaryFacilityList>toilet babyChange</SanitaryFacilityList>
@@ -826,7 +845,6 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
   <LuggageLockerFacilityList>lockers</LuggageLockerFacilityList>
   <ParkingFacilityList>parkAndRidePark</ParkingFacilityList>
 </SiteFacilitySet>
-
 ```
 
 
@@ -861,7 +879,7 @@ Used currently mainly for the relevant accessibility elements that can be expres
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | ShortName | expected | 0..1 | MultilingualString | Short Name for service | Will be defined in mapping excel |
+|  | ShortName | expected | 0..* | MultilingualString | Short Name for service | Will be defined in mapping excel |
 |  | LowFloor | optional | 0..1 | xsd:boolean | Whether Vehicle is low floor to facilitate access by the mobility impaired. |  |
 |  | HasLiftOrRamp | optional | 0..1 | xsd:boolean | Whether vehicle has lift or ramp to facilitate wheelchair access. |  |
 |  | HasHoist | optional | 0..1 | xsd:boolean | Whether vehicle has hoist for wheelchair access. |  |
@@ -876,15 +894,15 @@ Used currently mainly for the relevant accessibility elements that can be expres
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<VehicleType  id="ch:1:VehicleType:NF" version="1">
+<VehicleType id="ch:1:VehicleType:NF" version="1">
   <!-- Used currently mainly for the relevant accessibility elements that can be expressed currently -->
-  <ShortName>NF</ShortName>
+  <ShortName>NF
   <!-- Will be defined in mapping excel -->
+  </ShortName>
   <LowFloor>true</LowFloor>
   <HasLiftOrRamp>false</HasLiftOrRamp>
   <HasHoist>true</HasHoist>
 </VehicleType>
-
 ```
 
 

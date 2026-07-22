@@ -96,7 +96,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/AvailabilityCondition.html">AvailabilityCondition</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>AvailabilityCondition</td>
       <td>VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs.</td>
       <td>Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored.</td>
@@ -150,7 +150,7 @@
       <td>+</td>
       <td>PrivateCode</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
@@ -195,7 +195,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/NoticeAssignment.html">NoticeAssignment</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>NoticeAssignment</td>
       <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
       <td> </td>
@@ -213,9 +213,9 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/OccupancyView.html">OccupancyView</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>OccupancyView_VersionStructure</td>
-      <td> </td>
+      <td>A simple VIEW of OCCUPANCY as a first implementation without full support of DECK PLAN.</td>
       <td> </td>
     </tr>
     <tr>
@@ -276,7 +276,7 @@
       <td>+</td>
       <td>TrainNumberRef</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TrainNumberRefStructure</td>
       <td>Reference to a TRAIN NUMBER.</td>
       <td> </td>
@@ -303,7 +303,7 @@
       <td>+</td>
       <td>TimetabledPassingTime</td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TimetabledPassingTime</td>
       <td>TIMETABLED PASSING TIME at TIMING POINT.</td>
       <td> </td>

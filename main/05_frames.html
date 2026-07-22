@@ -153,7 +153,7 @@ participant’s identifier.</p>
       <td> </td>
       <td>Description</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Description of contents.</td>
       <td> </td>
@@ -184,25 +184,24 @@ participant’s identifier.</p>
 <h3 id="example">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;PublicationDelivery</span>  <span class="na">xmlns:xsi=</span><span class="s">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="na">version=</span><span class="s">"2.1"</span> <span class="na">xsi:schemaLocation=</span><span class="s">"http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;PublicationDelivery</span> <span class="na">version=</span><span class="s">"2.1"</span> <span class="err">{http://www.w3.org/2001/XMLSchema-instance}</span><span class="na">schemaLocation=</span><span class="s">"http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- For PublicationDelivery have a good look at how the attributes must be done in the provided examples. --&gt;</span>
   <span class="nt">&lt;PublicationTimestamp&gt;</span>2026-03-30T12:00:00<span class="nt">&lt;/PublicationTimestamp&gt;</span>
   <span class="nt">&lt;ParticipantRef&gt;</span>SKI-Templates<span class="nt">&lt;/ParticipantRef&gt;</span>
   <span class="nt">&lt;Description&gt;</span>Standard export 2027-06-02 for Bernmobil.<span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;dataObjects&gt;</span>
-    <span class="nt">&lt;CompositeFrame</span> <span class="na">id=</span><span class="s">"ch:1:CompositeFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="nt">&lt;FrameDefaults/&gt;</span>
-      <span class="nt">&lt;frames&gt;</span>
-        <span class="nt">&lt;ResourceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ResourceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;SiteFrame</span> <span class="na">id=</span><span class="s">"ch:1:SiteFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;ServiceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;ServiceCalendarFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCalendarFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-        <span class="nt">&lt;TimetableFrame</span> <span class="na">id=</span><span class="s">"ch:1:TimetableFrame:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-      <span class="nt">&lt;/frames&gt;</span>
-    <span class="nt">&lt;/CompositeFrame&gt;</span>
+  <span class="nt">&lt;CompositeFrame</span> <span class="na">id=</span><span class="s">"ch:1:CompositeFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;FrameDefaults/&gt;</span>
+  <span class="nt">&lt;frames&gt;</span>
+  <span class="nt">&lt;ResourceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ResourceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;SiteFrame</span> <span class="na">id=</span><span class="s">"ch:1:SiteFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ServiceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ServiceCalendarFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCalendarFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;TimetableFrame</span> <span class="na">id=</span><span class="s">"ch:1:TimetableFrame:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/frames&gt;</span>
+  <span class="nt">&lt;/CompositeFrame&gt;</span>
   <span class="nt">&lt;/dataObjects&gt;</span>
 <span class="nt">&lt;/PublicationDelivery&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/PublicationDelivery.xml">Template</a></em></p>
@@ -324,7 +323,7 @@ appearing in this order.</p>
       <td> </td>
       <td>Description</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Description of contents.</td>
       <td>A description of the delivery can be provided.</td>
@@ -351,7 +350,7 @@ appearing in this order.</p>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ResourceFrame.html">ResourceFrame</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ResourceFrame</td>
       <td>A coherent set of reference values for TYPE OF VALUEs , ORGANISATIONs, VEHICLE TYPEs etc that have a common validity, as specified by a set of frame VALIDITY CONDITIONs. Used to define common resources that will be referenced by other types of FRAME.</td>
       <td> </td>
@@ -360,7 +359,7 @@ appearing in this order.</p>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteFrame.html">SiteFrame</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>SiteFrame</td>
       <td>A coherent set of SITE data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
@@ -369,7 +368,7 @@ appearing in this order.</p>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceFrame.html">ServiceFrame</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ServiceFrame</td>
       <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
@@ -378,7 +377,7 @@ appearing in this order.</p>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceCalendarFrame.html">ServiceCalendarFrame</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ServiceCalendarFrame</td>
       <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
       <td> </td>
@@ -387,7 +386,7 @@ appearing in this order.</p>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TimetableFrame.html">TimetableFrame</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TimetableFrame</td>
       <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
@@ -400,33 +399,32 @@ appearing in this order.</p>
 <h3 id="example-1">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;CompositeFrame</span>  <span class="na">id=</span><span class="s">"ch:1:CompositeFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;CompositeFrame</span> <span class="na">id=</span><span class="s">"ch:1:CompositeFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ValidBetween&gt;</span>
-    <span class="c">&lt;!-- This defines which timetable year is meant. We don't support partial delivery. --&gt;</span>
-    <span class="nt">&lt;FromDate&gt;</span>2026-01-01T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
-    <span class="nt">&lt;ToDate&gt;</span>2026-12-31T00:00:00<span class="nt">&lt;/ToDate&gt;</span>
+  <span class="c">&lt;!-- This defines which timetable year is meant. We don't support partial delivery. --&gt;</span>
+  <span class="nt">&lt;FromDate&gt;</span>2026-01-01T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
+  <span class="nt">&lt;ToDate&gt;</span>2026-12-31T00:00:00<span class="nt">&lt;/ToDate&gt;</span>
   <span class="nt">&lt;/ValidBetween&gt;</span>
   <span class="nt">&lt;Description&gt;</span>
-    <span class="c">&lt;!-- A description of the delivery can be provided. --&gt;</span>
+  <span class="c">&lt;!-- A description of the delivery can be provided. --&gt;</span>
   <span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;FrameDefaults&gt;</span>
-    <span class="nt">&lt;DefaultLocale&gt;</span>
-      <span class="nt">&lt;TimeZoneOffset&gt;</span>1<span class="nt">&lt;/TimeZoneOffset&gt;</span>
-      <span class="nt">&lt;TimeZone&gt;</span>Europe/Berlin<span class="nt">&lt;/TimeZone&gt;</span>
-      <span class="nt">&lt;SummerTimeZoneOffset&gt;</span>2<span class="nt">&lt;/SummerTimeZoneOffset&gt;</span>
-      <span class="nt">&lt;DefaultLanguage&gt;</span>de<span class="nt">&lt;/DefaultLanguage&gt;</span>
-    <span class="nt">&lt;/DefaultLocale&gt;</span>
-    <span class="nt">&lt;DefaultLocationSystem&gt;</span>urn:ogc:def:crs:EPSG::4326<span class="nt">&lt;/DefaultLocationSystem&gt;</span>
+  <span class="nt">&lt;DefaultLocale&gt;</span>
+  <span class="nt">&lt;TimeZoneOffset&gt;</span>1<span class="nt">&lt;/TimeZoneOffset&gt;</span>
+  <span class="nt">&lt;TimeZone&gt;</span>Europe/Berlin<span class="nt">&lt;/TimeZone&gt;</span>
+  <span class="nt">&lt;SummerTimeZoneOffset&gt;</span>2<span class="nt">&lt;/SummerTimeZoneOffset&gt;</span>
+  <span class="nt">&lt;DefaultLanguage&gt;</span>de<span class="nt">&lt;/DefaultLanguage&gt;</span>
+  <span class="nt">&lt;/DefaultLocale&gt;</span>
+  <span class="nt">&lt;DefaultLocationSystem&gt;</span>urn:ogc:def:crs:EPSG::4326<span class="nt">&lt;/DefaultLocationSystem&gt;</span>
   <span class="nt">&lt;/FrameDefaults&gt;</span>
   <span class="nt">&lt;frames&gt;</span>
-    <span class="nt">&lt;ResourceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ResourceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;SiteFrame</span> <span class="na">id=</span><span class="s">"ch:1:SiteFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;ServiceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;ServiceCalendarFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCalendarFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;TimetableFrame</span> <span class="na">id=</span><span class="s">"ch:1:TimetableFrame:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ResourceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ResourceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;SiteFrame</span> <span class="na">id=</span><span class="s">"ch:1:SiteFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ServiceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ServiceCalendarFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCalendarFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;TimetableFrame</span> <span class="na">id=</span><span class="s">"ch:1:TimetableFrame:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/frames&gt;</span>
 <span class="nt">&lt;/CompositeFrame&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/CompositeFrame.xml">Template</a></em></p>

@@ -106,14 +106,13 @@
 <p><strong>When to use:</strong> When a particular stop place has a transfer time that differs from the network-wide default.</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;DefaultConnection</span>  <span class="na">id=</span><span class="s">"ch:1:DefaultConnection:8506302"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;DefaultConnection</span> <span class="na">id=</span><span class="s">"ch:1:DefaultConnection:8506302"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- Be aware only some combinations are allowed: from mode A to mode B without operators taken into account; from operator A and product category A  to operator B and product category B. --&gt;</span>
   <span class="nt">&lt;WalkTransferDuration&gt;</span>
-    <span class="nt">&lt;DefaultDuration&gt;</span>PT3M<span class="nt">&lt;/DefaultDuration&gt;</span>
+  <span class="nt">&lt;DefaultDuration&gt;</span>PT3M<span class="nt">&lt;/DefaultDuration&gt;</span>
   <span class="nt">&lt;/WalkTransferDuration&gt;</span>
   <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8506302"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/DefaultConnection&gt;</span>
-
 </code></pre></div></div>
 
 <blockquote>
@@ -121,22 +120,21 @@
 </blockquote>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;DefaultConnection</span>  <span class="na">id=</span><span class="s">"ch:1:DefaultConnection:9999999-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;DefaultConnection</span> <span class="na">id=</span><span class="s">"ch:1:DefaultConnection:9999999-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- General connection between two modes in the whole network, when not StopPlaceRef is mentioned. Most exist for each mode pair. --&gt;</span>
   <span class="nt">&lt;WalkTransferDuration&gt;</span>
-    <span class="nt">&lt;DefaultDuration&gt;</span>PT2M<span class="nt">&lt;/DefaultDuration&gt;</span>
+  <span class="nt">&lt;DefaultDuration&gt;</span>PT2M<span class="nt">&lt;/DefaultDuration&gt;</span>
   <span class="nt">&lt;/WalkTransferDuration&gt;</span>
   <span class="nt">&lt;From&gt;</span>
-    <span class="nt">&lt;TransportMode&gt;</span>tram<span class="nt">&lt;/TransportMode&gt;</span>
+  <span class="nt">&lt;TransportMode&gt;</span>tram<span class="nt">&lt;/TransportMode&gt;</span>
   <span class="nt">&lt;/From&gt;</span>
   <span class="nt">&lt;To&gt;</span>
-    <span class="nt">&lt;TransportMode&gt;</span>tram<span class="nt">&lt;/TransportMode&gt;</span>
+  <span class="nt">&lt;TransportMode&gt;</span>tram<span class="nt">&lt;/TransportMode&gt;</span>
   <span class="nt">&lt;/To&gt;</span>
   <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:19231"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Usually a SLOID. Not set means whole network. --&gt;</span>
+  <span class="c">&lt;!-- Usually a SLOID. Not set means whole network. --&gt;</span>
   <span class="nt">&lt;/StopPlaceRef&gt;</span>
 <span class="nt">&lt;/DefaultConnection&gt;</span>
-
 </code></pre></div></div>
 
 <h2 id="operator-related-transfer-times-umsteigv">Operator related transfer times (UMSTEIGV)</h2>
@@ -145,38 +143,38 @@
 <p><strong>When to use:</strong> When the transfer time depends on the operator combination at a given stop place.</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;DefaultConnection</span>  <span class="na">id=</span><span class="s">"11-11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;DefaultConnection</span> <span class="na">id=</span><span class="s">"11-11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;Extensions&gt;</span>
-    <span class="c">&lt;!-- When also ProductCategory is relevant, then this extension must be used --&gt;</span>
-    <span class="nt">&lt;FromProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:ICE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. --&gt;</span>
-    <span class="nt">&lt;/FromProductCategoryRef&gt;</span>
-    <span class="nt">&lt;ToProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:TE2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. --&gt;</span>
-    <span class="nt">&lt;/ToProductCategoryRef&gt;</span>
+  <span class="c">&lt;!-- When also ProductCategory is relevant, then this extension must be used --&gt;</span>
+  <span class="nt">&lt;FromProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:ICE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. --&gt;</span>
+  <span class="nt">&lt;/FromProductCategoryRef&gt;</span>
+  <span class="nt">&lt;ToProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:TE2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. --&gt;</span>
+  <span class="nt">&lt;/ToProductCategoryRef&gt;</span>
   <span class="nt">&lt;/Extensions&gt;</span>
   <span class="nt">&lt;WalkTransferDuration&gt;</span>
-    <span class="nt">&lt;DefaultDuration&gt;</span>PT2M<span class="nt">&lt;/DefaultDuration&gt;</span>
+  <span class="nt">&lt;DefaultDuration&gt;</span>PT2M<span class="nt">&lt;/DefaultDuration&gt;</span>
   <span class="nt">&lt;/WalkTransferDuration&gt;</span>
-  <span class="nt">&lt;BothWays&gt;</span>false<span class="nt">&lt;/BothWays&gt;</span>
+  <span class="nt">&lt;BothWays&gt;</span>false
   <span class="c">&lt;!-- We don't use BothWays true, as it might differ. --&gt;</span>
+  <span class="nt">&lt;/BothWays&gt;</span>
   <span class="nt">&lt;From&gt;</span>
-    <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
-    <span class="nt">&lt;OperatorView&gt;</span>
-      <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/OperatorView&gt;</span>
+  <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
+  <span class="nt">&lt;OperatorView&gt;</span>
+  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/OperatorView&gt;</span>
   <span class="nt">&lt;/From&gt;</span>
   <span class="nt">&lt;To&gt;</span>
-    <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
-    <span class="nt">&lt;OperatorView&gt;</span>
-      <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/OperatorView&gt;</span>
+  <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
+  <span class="nt">&lt;OperatorView&gt;</span>
+  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/OperatorView&gt;</span>
   <span class="nt">&lt;/To&gt;</span>
   <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:19231"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Usually a SLOID. Not set means whole network. --&gt;</span>
+  <span class="c">&lt;!-- Usually a SLOID. Not set means whole network. --&gt;</span>
   <span class="nt">&lt;/StopPlaceRef&gt;</span>
 <span class="nt">&lt;/DefaultConnection&gt;</span>
-
 </code></pre></div></div>
 
 <h2 id="line-and-direction-oriented-transfer-times-umsteigl">Line and Direction-oriented transfer times (UMSTEIGL)</h2>
@@ -188,10 +186,10 @@
 <p><strong>When to use:</strong> When the transfer time applies to all journeys of a specific line/direction combination at a given stop place.</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;ServiceJourneyInterchange</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:1696906_TA"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ServiceJourneyInterchange</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:1696906_TA"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- Transfer times between specific ServiceJourneys at a given stop (UMSTEIGL). StaySeated=false: passenger must change vehicles. One ServiceJourneyInterchange per journey pair. Replaces InterchangeRule in RG 2.0. --&gt;</span>
   <span class="nt">&lt;validityConditions&gt;</span>
-    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:TA"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:TA"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
   <span class="nt">&lt;Description&gt;</span>UMSTEIGL: transfer at Spiez, line 33.PE.GPX → line 11.IC.IC81<span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;StaySeated&gt;</span>false<span class="nt">&lt;/StaySeated&gt;</span>
@@ -199,23 +197,23 @@
   <span class="c">&lt;!-- ChangeWithinVehicle is not applicable when StaySeated=false --&gt;</span>
   <span class="nt">&lt;Planned&gt;</span>true<span class="nt">&lt;/Planned&gt;</span>
   <span class="nt">&lt;Guaranteed&gt;</span>false<span class="nt">&lt;/Guaranteed&gt;</span>
-  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT2M<span class="nt">&lt;/MaximumWaitTime&gt;</span>
+  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT2M
   <span class="c">&lt;!-- If not set or PT0M, connection is considered guaranteed. --&gt;</span>
+  <span class="nt">&lt;/MaximumWaitTime&gt;</span>
   <span class="nt">&lt;MinimumTransferTime&gt;</span>PT2M<span class="nt">&lt;/MinimumTransferTime&gt;</span>
   <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. --&gt;</span>
+  <span class="c">&lt;!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. --&gt;</span>
   <span class="nt">&lt;/FromPointRef&gt;</span>
   <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. --&gt;</span>
+  <span class="c">&lt;!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. --&gt;</span>
   <span class="nt">&lt;/ToPointRef&gt;</span>
   <span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100033:XXXX-001_33PE.j26_YYY"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Reference to the specific feeder ServiceJourney. Replaces FeederFilter/LineInDirectionRef from InterchangeRule. One element per journey pair required. --&gt;</span>
+  <span class="c">&lt;!-- Reference to the specific feeder ServiceJourney. Replaces FeederFilter/LineInDirectionRef from InterchangeRule. One element per journey pair required. --&gt;</span>
   <span class="nt">&lt;/FromServiceJourneyRef&gt;</span>
   <span class="nt">&lt;ToServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100011:XXXX-001_11IC.j26_ZZZ"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/LineInDirectionRef from InterchangeRule. --&gt;</span>
+  <span class="c">&lt;!-- Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/LineInDirectionRef from InterchangeRule. --&gt;</span>
   <span class="nt">&lt;/ToServiceJourneyRef&gt;</span>
 <span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
-
 </code></pre></div></div>
 
 <h2 id="servicejourney-related-transfer-times-umsteigz">ServiceJourney related transfer times (UMSTEIGZ)</h2>
@@ -266,34 +264,34 @@
 </table>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;ServiceJourneyInterchange</span>  <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:1692675_80600_18840_18960"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ServiceJourneyInterchange</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:1692675_80600_18840_18960"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- Transfer time between two specific ServiceJourneys at a given stop (UMSTEIGZ). StaySeated=false: passenger must change vehicles. Replaces InterchangeRule in RG 2.0. One element per journey pair required. --&gt;</span>
   <span class="nt">&lt;validityConditions&gt;</span>
-    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:80600"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:80600"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
   <span class="nt">&lt;Description&gt;</span>UMSTEIGZ: transfer at stop 8506131, S1 → IR75<span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;StaySeated&gt;</span>false<span class="nt">&lt;/StaySeated&gt;</span>
   <span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
   <span class="nt">&lt;Planned&gt;</span>true<span class="nt">&lt;/Planned&gt;</span>
   <span class="nt">&lt;Guaranteed&gt;</span>false<span class="nt">&lt;/Guaranteed&gt;</span>
-  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT2M<span class="nt">&lt;/MaximumWaitTime&gt;</span>
+  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT2M
   <span class="c">&lt;!-- If not set or PT0M, connection is considered guaranteed. --&gt;</span>
+  <span class="nt">&lt;/MaximumWaitTime&gt;</span>
   <span class="nt">&lt;MinimumTransferTime&gt;</span>PT1M<span class="nt">&lt;/MinimumTransferTime&gt;</span>
   <span class="nt">&lt;MaximumTransferTime&gt;</span>PT2M<span class="nt">&lt;/MaximumTransferTime&gt;</span>
   <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506131:1"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. --&gt;</span>
+  <span class="c">&lt;!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. --&gt;</span>
   <span class="nt">&lt;/FromPointRef&gt;</span>
   <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506131:1"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. --&gt;</span>
+  <span class="c">&lt;!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. --&gt;</span>
   <span class="nt">&lt;/ToPointRef&gt;</span>
   <span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:11111-001_91001C.j26_1012"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Reference to the specific feeder ServiceJourney. Replaces FeederFilter/ServiceJourneyRef from InterchangeRule. --&gt;</span>
+  <span class="c">&lt;!-- Reference to the specific feeder ServiceJourney. Replaces FeederFilter/ServiceJourneyRef from InterchangeRule. --&gt;</span>
   <span class="nt">&lt;/FromServiceJourneyRef&gt;</span>
   <span class="nt">&lt;ToServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100001:2106-001_91075_.j26_802"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/ServiceJourneyRef from InterchangeRule. --&gt;</span>
+  <span class="c">&lt;!-- Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/ServiceJourneyRef from InterchangeRule. --&gt;</span>
   <span class="nt">&lt;/ToServiceJourneyRef&gt;</span>
 <span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
-
 </code></pre></div></div>
 
 <h2 id="transfer-times-between-different-stopplaces-metabhf">Transfer times between different StopPlaces (METABHF)</h2>
@@ -301,22 +299,21 @@
 <strong>When to use:</strong> When passengers need to transfer between two physically separate stop places.</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;SiteConnection</span>  <span class="na">id=</span><span class="s">"ch:1:SiteConnection:8506302-8589913"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;SiteConnection</span> <span class="na">id=</span><span class="s">"ch:1:SiteConnection:8506302-8589913"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- SiteConnection are used only in the main file and not in timetable files. --&gt;</span>
   <span class="nt">&lt;WalkTransferDuration&gt;</span>
-    <span class="nt">&lt;DefaultDuration&gt;</span>PT13M<span class="nt">&lt;/DefaultDuration&gt;</span>
+  <span class="nt">&lt;DefaultDuration&gt;</span>PT13M<span class="nt">&lt;/DefaultDuration&gt;</span>
   <span class="nt">&lt;/WalkTransferDuration&gt;</span>
   <span class="nt">&lt;BothWays&gt;</span>false<span class="nt">&lt;/BothWays&gt;</span>
   <span class="nt">&lt;From&gt;</span>
-    <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. --&gt;</span>
-    <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8506302"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. --&gt;</span>
+  <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8506302"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/From&gt;</span>
   <span class="nt">&lt;To&gt;</span>
-    <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. --&gt;</span>
-    <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8589913"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. --&gt;</span>
+  <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:2:StopPlace:8589913"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/To&gt;</span>
 <span class="nt">&lt;/SiteConnection&gt;</span>
-
 </code></pre></div></div>
 
   </div>

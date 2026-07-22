@@ -176,26 +176,27 @@ splitting and joining.</p>
 <p>The detailed handling is described for the element <a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#servicejourneyinterchange">ServiceJourneyInterchange</a>.</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;ServiceJourneyInterchange</span>  <span class="na">version=</span><span class="s">"1"</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ServiceJourneyInterchange</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;validityConditions&gt;</span>
-    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:2K"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:2K"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
   <span class="nt">&lt;Description&gt;</span>LineChange<span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;StaySeated&gt;</span>true<span class="nt">&lt;/StaySeated&gt;</span>
   <span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
-  <span class="nt">&lt;ChangeWithinVehicle&gt;</span>false<span class="nt">&lt;/ChangeWithinVehicle&gt;</span>
+  <span class="nt">&lt;ChangeWithinVehicle&gt;</span>false
   <span class="c">&lt;!-- Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. --&gt;</span>
+  <span class="nt">&lt;/ChangeWithinVehicle&gt;</span>
   <span class="nt">&lt;Planned&gt;</span>true<span class="nt">&lt;/Planned&gt;</span>
   <span class="nt">&lt;Guaranteed&gt;</span>false<span class="nt">&lt;/Guaranteed&gt;</span>
-  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT9M<span class="nt">&lt;/MaximumWaitTime&gt;</span>
+  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT9M
   <span class="c">&lt;!-- If not set or PT0M, it is guaranteed. --&gt;</span>
+  <span class="nt">&lt;/MaximumWaitTime&gt;</span>
   <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;FromVisitNumber&gt;</span>1<span class="nt">&lt;/FromVisitNumber&gt;</span>
   <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;ToServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
 <span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
-
 </code></pre></div></div>
 
 <ul>

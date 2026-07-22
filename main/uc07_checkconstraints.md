@@ -49,22 +49,23 @@ CheckConstraints are used for different use cases
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<CheckConstraint  id="" version="1">
+<CheckConstraint id="" version="1">
   <!-- CheckConstraints are used for different use cases -->
-  <CheckDirection>forwards</CheckDirection>
+  <CheckDirection>forwards
   <!-- We usually only use one direction. -->
-  <CheckProcess>alighting</CheckProcess>
+  </CheckDirection>
+  <CheckProcess>alighting
   <!-- Only a given subset is allowed -->
+  </CheckProcess>
   <Congestion>queue</Congestion>
   <delays>
-    <CheckConstraintDelay id="generated" version="1">
-      <!-- We currently only model delays -->
-      <AverageDelay>PT4M</AverageDelay>
-      <MaximumLikelyDelay>PT8M</MaximumLikelyDelay>
-    </CheckConstraintDelay>
+  <CheckConstraintDelay id="generated" version="1">
+  <!-- We currently only model delays -->
+  <AverageDelay>PT4M</AverageDelay>
+  <MaximumLikelyDelay>PT8M</MaximumLikelyDelay>
+  </CheckConstraintDelay>
   </delays>
 </CheckConstraint>
-
 ```
 
 

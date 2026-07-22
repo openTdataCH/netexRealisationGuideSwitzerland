@@ -151,22 +151,23 @@ In Switzerland, we use the following use cases:</p>
 <h3 id="example">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;CheckConstraint</span>  <span class="na">id=</span><span class="s">""</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;CheckConstraint</span> <span class="na">id=</span><span class="s">""</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- CheckConstraints are used for different use cases --&gt;</span>
-  <span class="nt">&lt;CheckDirection&gt;</span>forwards<span class="nt">&lt;/CheckDirection&gt;</span>
+  <span class="nt">&lt;CheckDirection&gt;</span>forwards
   <span class="c">&lt;!-- We usually only use one direction. --&gt;</span>
-  <span class="nt">&lt;CheckProcess&gt;</span>alighting<span class="nt">&lt;/CheckProcess&gt;</span>
+  <span class="nt">&lt;/CheckDirection&gt;</span>
+  <span class="nt">&lt;CheckProcess&gt;</span>alighting
   <span class="c">&lt;!-- Only a given subset is allowed --&gt;</span>
+  <span class="nt">&lt;/CheckProcess&gt;</span>
   <span class="nt">&lt;Congestion&gt;</span>queue<span class="nt">&lt;/Congestion&gt;</span>
   <span class="nt">&lt;delays&gt;</span>
-    <span class="nt">&lt;CheckConstraintDelay</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- We currently only model delays --&gt;</span>
-      <span class="nt">&lt;AverageDelay&gt;</span>PT4M<span class="nt">&lt;/AverageDelay&gt;</span>
-      <span class="nt">&lt;MaximumLikelyDelay&gt;</span>PT8M<span class="nt">&lt;/MaximumLikelyDelay&gt;</span>
-    <span class="nt">&lt;/CheckConstraintDelay&gt;</span>
+  <span class="nt">&lt;CheckConstraintDelay</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- We currently only model delays --&gt;</span>
+  <span class="nt">&lt;AverageDelay&gt;</span>PT4M<span class="nt">&lt;/AverageDelay&gt;</span>
+  <span class="nt">&lt;MaximumLikelyDelay&gt;</span>PT8M<span class="nt">&lt;/MaximumLikelyDelay&gt;</span>
+  <span class="nt">&lt;/CheckConstraintDelay&gt;</span>
   <span class="nt">&lt;/delays&gt;</span>
 <span class="nt">&lt;/CheckConstraint&gt;</span>
-
 </code></pre></div></div>
 
 <p><em>-&gt;<a href="/netexRealisationGuideSwitzerland/main/templates/CheckConstraint.xml">Template</a></em></p>

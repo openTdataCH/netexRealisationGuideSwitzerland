@@ -8,4 +8,4 @@
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | @attributeName | mandatory | 1..1 | xsd:string | Attribute attributeName | |
 |  | @useForLanguage | mandatory | 1..1 | xsd:string | Attribute useForLanguage | |
-|  | Text | mandatory | 0..1 | MultilingualString | Text content of NOTICe. |  |
+|  | Text | mandatory | 0..* | MultilingualString | Text content of NOTICe. |  |

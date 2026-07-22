@@ -87,7 +87,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceJourney.html">ServiceJourney</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ServiceJourney</td>
       <td>A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN. The VIEW includes derived ancillary data from referenced entities.</td>
       <td>ServiceJourney is used for common Journeys.</td>
@@ -96,7 +96,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TemplateServiceJourney.html">TemplateServiceJourney</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TemplateServiceJourney</td>
       <td>A VEHICLE JOURNEY with a set of frequencies that may be used to represent a set of similar journeys differing only by their time of departure.</td>
       <td>TemplateServiceJourney is only to be used if a line is serviced at a certain frequency.</td>
@@ -114,7 +114,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TrainNumber.html">TrainNumber</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TrainNumber</td>
       <td>Specification of codes assigned to particular VEHICLE JOURNEYs when operated by TRAINs of COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc).</td>
       <td> </td>
@@ -132,7 +132,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ServiceFacilitySet</td>
       <td>Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
@@ -150,7 +150,7 @@
       <td>+</td>
       <td>TypeOfService</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TypeOfService</td>
       <td>Classification of a Service.</td>
       <td>This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file.</td>
@@ -159,7 +159,7 @@
       <td>++</td>
       <td>Name</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td> </td>
@@ -177,7 +177,7 @@
       <td>++</td>
       <td>ShortName</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Short Name for service</td>
       <td> </td>

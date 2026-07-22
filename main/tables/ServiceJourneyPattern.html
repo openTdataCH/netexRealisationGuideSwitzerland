@@ -78,7 +78,7 @@
       <td> </td>
       <td>Name</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
       <td> </td>
@@ -123,7 +123,7 @@
       <td>+</td>
       <td>StopPointInJourneyPattern</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>StopPointInJourneyPattern</td>
       <td>The use of a SCHEDULED STOP POINT in a specified order. within a JOURNEY PATTERN or SERVICE PATTERN.</td>
       <td> </td>
@@ -195,7 +195,7 @@
       <td>+++</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/CheckConstraint.html">CheckConstraint</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>CheckConstraint</td>
       <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
       <td> </td>
@@ -213,7 +213,7 @@
       <td>+++</td>
       <td>BookingArrangementRef</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>BookingArrangementRefStructure</td>
       <td>Reference to a BOOKING ARRANGEMENT.</td>
       <td>Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information.</td>
@@ -222,7 +222,7 @@
       <td>+++</td>
       <td>BookingArrangement</td>
       <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>BookingArrangement</td>
       <td>Details of the booking arrangements for a given LINE, STOP, SERVICE etc.</td>
       <td> </td>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<InterchangeRule  id="ch:1:InterchangeRule:1696906_TA_0_86400" version="1">
+<InterchangeRule id="ch:1:InterchangeRule:1696906_TA_0_86400" version="1">
   <!-- transfer times between Line/Directions at a given stop (UMSTEIGL) -->
   <validityConditions>
-    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:TA" version="1"/>
+  <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:TA" version="1"/>
   </validityConditions>
   <StaySeated>false</StaySeated>
   <Planned>true</Planned>
@@ -10,28 +10,28 @@
   <MinimumTransferTime>PT2M</MinimumTransferTime>
   <MaximumTransferTime>PT2M</MaximumTransferTime>
   <timings>
-    <InterchangeRuleTiming id="ch:1:InterchangeRuleTiming:1696906:0:86400" version="1">
-      <TimebandRef ref="ch:1:Timeband:0:0" version="1">
-        <!-- Timeband defined in ServiceCalendarFrame -->
-      </TimebandRef>
-    </InterchangeRuleTiming>
+  <InterchangeRuleTiming id="ch:1:InterchangeRuleTiming:1696906:0:86400" version="1">
+  <TimebandRef ref="ch:1:Timeband:0:0" version="1">
+  <!-- Timeband defined in ServiceCalendarFrame -->
+  </TimebandRef>
+  </InterchangeRuleTiming>
   </timings>
   <FeederFilter>
-    <StopPlaceRef ref="ch:generated:StopPlace:8507483" version="1"/>
-    <LineInDirectionRef>
-      <LineRef ref="ch:generated:Line:33.PE.GPX" version="1"/>
-      <DirectionRef ref="ch:1:Direction:R" version="1"/>
-    </LineInDirectionRef>
-    <AdjacentStopPlaceRef ref="ch:generated:StopPlace:8507493" version="1"/>
-    <ServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:11111-001_91001C.j26_1012" version="1"/>
+  <StopPlaceRef ref="ch:generated:StopPlace:8507483" version="1"/>
+  <LineInDirectionRef>
+  <LineRef ref="ch:generated:Line:33.PE.GPX" version="1"/>
+  <DirectionRef ref="ch:1:Direction:R" version="1"/>
+  </LineInDirectionRef>
+  <AdjacentStopPlaceRef ref="ch:generated:StopPlace:8507493" version="1"/>
+  <ServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:11111-001_91001C.j26_1012" version="1"/>
   </FeederFilter>
   <DistributorFilter>
-    <StopPlaceRef ref="ch:generated:StopPlace:8507483" version="1"/>
-    <LineInDirectionRef>
-      <LineRef ref="ch:generated:Line:11.IC.IC81" version="1"/>
-      <DirectionRef ref="ch:1:Direction:R" version="1"/>
-    </LineInDirectionRef>
-    <AdjacentStopPlaceRef ref="ch:generated:StopPlace:8507493" version="1"/>
-    <ServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100001:2106-001_91075_.j26_802" version="1"/>
+  <StopPlaceRef ref="ch:generated:StopPlace:8507483" version="1"/>
+  <LineInDirectionRef>
+  <LineRef ref="ch:generated:Line:11.IC.IC81" version="1"/>
+  <DirectionRef ref="ch:1:Direction:R" version="1"/>
+  </LineInDirectionRef>
+  <AdjacentStopPlaceRef ref="ch:generated:StopPlace:8507493" version="1"/>
+  <ServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100001:2106-001_91075_.j26_802" version="1"/>
   </DistributorFilter>
 </InterchangeRule>

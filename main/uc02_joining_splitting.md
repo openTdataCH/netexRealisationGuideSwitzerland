@@ -121,26 +121,27 @@ The detailed handling is described for the element [ServiceJourneyInterchange](0
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<ServiceJourneyInterchange  version="1" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
+<ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
   <validityConditions>
-    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" version="1"/>
+  <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" version="1"/>
   </validityConditions>
   <Description>LineChange</Description>
   <StaySeated>true</StaySeated>
   <CrossBorder>false</CrossBorder>
-  <ChangeWithinVehicle>false</ChangeWithinVehicle>
+  <ChangeWithinVehicle>false
   <!-- Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. -->
+  </ChangeWithinVehicle>
   <Planned>true</Planned>
   <Guaranteed>false</Guaranteed>
-  <MaximumWaitTime>PT9M</MaximumWaitTime>
+  <MaximumWaitTime>PT9M
   <!-- If not set or PT0M, it is guaranteed. -->
+  </MaximumWaitTime>
   <FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" nameOfRefClass="ScheduledStopPoint" version="1"/>
   <FromVisitNumber>1</FromVisitNumber>
   <ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" nameOfRefClass="ScheduledStopPoint" version="1"/>
   <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" version="1"/>
   <ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" version="1"/>
 </ServiceJourneyInterchange>
-
 ```
 
 

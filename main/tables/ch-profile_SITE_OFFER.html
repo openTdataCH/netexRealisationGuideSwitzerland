@@ -123,7 +123,7 @@
       <td>++</td>
       <td>Description</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>0..*</td>
       <td>MultilingualString</td>
       <td>Description of contents.</td>
       <td>A description of the delivery can be provided.</td>
@@ -150,7 +150,7 @@
       <td>+++</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ResourceFrame.html">ResourceFrame</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ResourceFrame</td>
       <td>A coherent set of reference values for TYPE OF VALUEs , ORGANISATIONs, VEHICLE TYPEs etc that have a common validity, as specified by a set of frame VALIDITY CONDITIONs. Used to define common resources that will be referenced by other types of FRAME.</td>
       <td>Only if we really need it</td>
@@ -159,7 +159,7 @@
       <td>+++</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteFrame.html">SiteFrame</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>SiteFrame</td>
       <td>A coherent set of SITE data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
@@ -168,7 +168,7 @@
       <td>+++</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceCalendarFrame.html">ServiceCalendarFrame</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ServiceCalendarFrame</td>
       <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
       <td>Needed for the relevant AvailabilityConditions</td>
@@ -177,7 +177,7 @@
       <td>+++</td>
       <td><a href="ServiceFrame_SITE_OFFER.xml.md">ServiceFrame</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>ServiceFrame</td>
       <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>Used for DefaultConnections and SiteConnections</td>
