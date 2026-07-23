@@ -104,3 +104,47 @@ Notes:
 * `ServiceJourneyInterchange`s are used for splitting, joining and connecting trains and for "Durchbindungen".
 * `Notice`, `ServiceFacility` and `SiteFacility` model almost everything else (especially offers).
 * The operating days are defined through `ValidDayBits` for the whole timetable year in `AvailabilityCondition`s.
+
+## 
+
+```
+StopPlace SP
+  * Quay Q1
+  * Quay Q2
+  
+ScheduledStopPoint SPS
+
+PassengerStopAssignment PSA
+  -> ScheduledStopPoint SPS
+  -> Quay Q1
+  -> StopPlace SP 
+
+TimingLink TL
+  -> ScheduledStopPoint X
+  -> ScheduledStopPoint y
+  * some properties
+  
+ ServiceJourneyPattern SJP
+   * StopPointInJourneyPattern
+        -> ScheduledStopPoint X
+        * multiple properties
+   * lots of properties
+        
+  TimeDemandType TDT
+    runTimes
+      ServiceJourneyRunTime
+        -> TimingLink TL
+        * Duration
+    waitTimes
+       ServiceJourneyWaitTime
+         -> ScheduledStopPoint A
+         * Duration
+         
+  ServiceJourney
+    -> ServiceJourneyPattern SJP
+    -> TimeDemandType TDT
+    * lots of properties
+        
+   
+  
+```

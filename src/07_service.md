@@ -227,7 +227,10 @@ A `ScheduledStopPoint` can represent two types of stop points:
 *->[Template](./templates/ScheduledStopPoint.xml)*
 
 ### Usage Notes
-- id-attribute needs to be kept stable between exports.
+- We don't keep much information  in `ScheduledStopPoint`s. The are assigned by `PassengerStopAssignnment`s to the site part (`StopPlace`, `Quay`).
+- `ScheduledStopPoints that are used in `TimingLinks`and `ServiceJourneyPatterns` should be on the quay level.
+- We use the sloid as id-attribute for `ScheduledStopPoint`s whener they exist. id-attribute needs to be kept stable between exports.
+- `TimingLink`s use `ScheduledStopPoint`s as well. This means that the timing between two logical stops is the important measure. 
 
 ## PassengerStopAssignment
 *→ [Glossary definition](A4_annex_glossary.md#passengerstopassignment)*
