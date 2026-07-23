@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Train4 4231 Interlaken Ost -> Spiez. Modeling of formation
+
+-->
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.09" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
+	<ParticipantRef>SKIExamples</ParticipantRef>
+	<Description lang="de">Example of Train Formation first draft.</Description>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame:J26" version="1">
+			<ValidBetween>
+				<FromDate>2025-12-15T00:00:00</FromDate>
+				<ToDate>2026-12-12T23:59:59</ToDate>
+			</ValidBetween>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame:j26" version="1">
+					<responsibilitySets>
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:BLS-bls-33" version="1">
+							<Name>BLS</Name>
+							<PrivateCode>BLS AG</PrivateCode>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:1" version="1">
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:2" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+							<Name>ProductCategories</Name>
+							<values>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:RE" version="1">
+									<Name lang="de">RegioExpress</Name>
+									<ShortName>RE</ShortName>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<Operator id="ch:1:Operator:33" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>GO</Key>
+									<Value>33</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SBOID</Key>
+									<Value>ch:1:sboid:100015</Value>
+								</KeyValue>
+							</keyList>
+							<PrivateCode>33</PrivateCode>
+							<Name>BLS AG</Name>
+							<ShortName>BLS</ShortName>
+						</Operator>
+					</organisations>
+					<serviceFacilitySets>
+						<ServiceFacilitySet id="wheelchairspace" version="1">
+							<AccessibilityToolList>wheelchair</AccessibilityToolList>
+						</ServiceFacilitySet>
+						<ServiceFacilitySet id="strollerplattform" version="1">
+							<AccessibilityToolList>buggy</AccessibilityToolList>
+						</ServiceFacilitySet>
+						<ServiceFacilitySet id="nf" version="1">
+							<MobilityFacilityList>lowFloor</MobilityFacilityList>
+						</ServiceFacilitySet>
+						<ServiceFacilitySet id="bikehooks" version="1">
+							<LuggageCarriageFacilityList>cyclesAllowed</LuggageCarriageFacilityList>
+						</ServiceFacilitySet>
+					</serviceFacilitySets>
+				</ResourceFrame>
+				<SiteFrame id="ch:1:SiteFrame:j26" version="1">
+					<stopPlaces>
+						<StopPlace id="ch:1:sloid:7483" version="1">
+							<ValidBetween>
+								<FromDate>20205-12-14T00:00:00</FromDate>
+							</ValidBetween>
+							<alternativeTexts>
+								<AlternativeText attributeName="Text">
+									<Text lang="de">Spiez</Text>
+								</AlternativeText>
+							</alternativeTexts>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507483</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:7483</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8507483</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:7483</PrivateCode>
+							</privateCodes>
+							<Extensions>
+								<HafasPriority>
+									<Value>4</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>1</Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Bern</Name>
+							<Centroid>
+								<Location>
+									<Longitude>7.680103</Longitude>
+									<Latitude>46.686395</Latitude>
+									<Altitude>627</Altitude>
+								</Location>
+							</Centroid>
+							<alternativeNames>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483_4" version="1">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="de">Spiez</Name>
+								</AlternativeName>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483_5" version="1">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="it">Spiezeria</Name>
+								</AlternativeName>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507483_6" version="1">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="fr">Spieze (CH)</Name>
+								</AlternativeName>
+							</alternativeNames>
+							<Weighting>preferredInterchange</Weighting>
+							<quays>
+								<Quay id="ch:1:sloid:7483:0:90840" version="1">
+									<keyList>
+										<KeyValue>
+											<Key>SLOID</Key>
+											<Value>ch:1:sloid:7483:0:90840</Value>
+										</KeyValue>
+									</keyList>
+									<Centroid>
+										<Location>
+											<Longitude>7.680103</Longitude>
+											<Latitude>46.686395</Latitude>
+											<Altitude>627</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>8</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:sloid:71310" version="1">
+							<ValidBetween>
+								<FromDate>20205-12-14T00:00:00</FromDate>
+							</ValidBetween>
+							<alternativeTexts>
+								<AlternativeText attributeName="Text">
+									<Text lang="de">Interlaken West</Text>
+								</AlternativeText>
+							</alternativeTexts>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507493</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:71310</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8507493</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:71310</PrivateCode>
+							</privateCodes>
+							<Extensions>
+								<HafasPriority>
+									<Value>4</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>14</Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Interlaken West</Name>
+							<Centroid>
+								<Location>
+									<Longitude>7.851453</Longitude>
+									<Latitude>46.682627</Latitude>
+									<Altitude>563</Altitude>
+								</Location>
+							</Centroid>
+							<alternativeNames>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_4" version="1">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="de">Interlaken West</Name>
+								</AlternativeName>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_5" version="1">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="it">Interlaken West </Name>
+								</AlternativeName>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507493_6" version="1">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="fr">Interlaken West (CH)</Name>
+								</AlternativeName>
+							</alternativeNames>
+							<Weighting>preferredInterchange</Weighting>
+							<quays>
+								<Quay id="ch:1:sloid:71310:0:304706" version="1">
+									<Centroid>
+										<Location>
+											<Longitude>7.851453</Longitude>
+											<Latitude>46.682627</Latitude>
+											<Altitude>563</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>8</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:sloid:7492" version="1">
+							<ValidBetween>
+								<FromDate>20205-12-14T00:00:00</FromDate>
+							</ValidBetween>
+							<alternativeTexts>
+								<AlternativeText attributeName="Text">
+									<Text lang="de">Interlaken Ost</Text>
+								</AlternativeText>
+							</alternativeTexts>
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507492</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:7492:0:470772</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">8507492</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:7492:0:470772</PrivateCode>
+							</privateCodes>
+							<Extensions>
+								<HafasPriority>
+									<Value>4</Value>
+								</HafasPriority>
+								<HafasKMInfo>
+									<Value>15</Value>
+								</HafasKMInfo>
+							</Extensions>
+							<Name>Interlaken Ost</Name>
+							<Centroid>
+								<Location>
+									<Longitude>7.869000</Longitude>
+									<Latitude>46.6904999</Latitude>
+									<Altitude>567</Altitude>
+								</Location>
+							</Centroid>
+							<alternativeNames>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492_4" version="1">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="de">Interlaken Ost</Name>
+								</AlternativeName>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492_5" version="1">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="it">Interlaken Ost</Name>
+								</AlternativeName>
+								<AlternativeName id="ch:1:AlternativeName:StopPlace:8507492_6" version="1">
+									<NameType>alias</NameType>
+									<TypeOfName>offical</TypeOfName>
+									<Name lang="fr">Interlaken Ost (CH)</Name>
+								</AlternativeName>
+							</alternativeNames>
+							<Weighting>preferredInterchange</Weighting>
+							<quays>
+								<Quay id="ch:1:sloid:7492:0:460848" version="1">
+									<Centroid>
+										<Location>
+											<Longitude>7.869000</Longitude>
+											<Latitude>46.6904999</Latitude>
+											<Altitude>567</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>8</PublicCode>									<QuayType>railPlatform</QuayType>
+
+								</Quay>
+								<Quay id="ch:1:sloid:7492:0:460848sectorA" version="1">
+									<Centroid>
+										<Location>
+											<Longitude>7.869000</Longitude>
+											<Latitude>46.6904999</Latitude>
+											<Altitude>567</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>8A</PublicCode>									<QuayType>railPlatformSector</QuayType>
+
+								</Quay>
+								<Quay id="ch:1:sloid:7492:0:460848sectorB" version="1">
+									<Centroid>
+										<Location>
+											<Longitude>7.869000</Longitude>
+											<Latitude>46.6904999</Latitude>
+											<Altitude>567</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>8B</PublicCode>									<QuayType>railPlatformSector</QuayType>
+
+								</Quay>
+							</quays>
+						</StopPlace>
+					</stopPlaces>
+				</SiteFrame>
+				<ServiceFrame id="ch:1:ServiceFrame:j26" version="1">
+					<lines>
+						<Line id="ch:1:slnid:1024440" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
+							<ValidBetween>
+								<FromDate>2025-12-14T00:00:00</FromDate>
+								<ToDate>2026-12-13T23:59:59</ToDate>
+							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>SLNID</Key>
+									<Value>ch:1:slnid:1024440</Value>
+								</KeyValue>
+							</keyList>
+							<Name>BLS AG</Name>
+							<ShortName>BLS</ShortName>
+							<TransportMode>rail</TransportMode>
+							<TransportSubmode>
+								<RailSubmode>interregionalRail</RailSubmode>
+							</TransportSubmode>
+							<PublicCode>RE</PublicCode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:RE" version="1"/>
+						</Line>
+					</lines>
+					<scheduledStopPoints>
+						<ScheduledStopPoint id="ch:1:sloid:7483:0:90840" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507483</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:7483:0:90840</Value>
+								</KeyValue>
+							</keyList>
+							<Name lang="de">Spiez</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:7493:0:470772" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507493</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:7493:0:470772</Value>
+								</KeyValue>
+							</keyList>
+							<Name lang="de">Interlaken West</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:7492:0:460848" version="1">
+							<keyList>
+								<KeyValue>
+									<Key>DIDOK</Key>
+									<Value>8507492</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>SLOID</Key>
+									<Value>ch:1:sloid:7492:0:460848</Value>
+								</KeyValue>
+							</keyList>
+							<Name lang="de">Interlaken Ost</Name>
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+					<stopAssignments>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507483:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:sloid:7483:0:90840" version="1"/>
+							<StopPlaceRef ref="ch:1:sloid:7483" version="1"/>
+							<QuayRef ref="ch:1:sloid:7483:0:90840" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507493:1" version="1">
+							<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="1"/>
+							<StopPlaceRef ref="ch:1:sloid:71310" version="1"/>
+							<QuayRef ref="ch:1:sloid:71310:0:304706" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507492:7" version="1">
+							<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
+							<StopPlaceRef ref="ch:1:sloid:7492" version="1"/>
+							<QuayRef ref="ch:1:sloid:7492:0:460848" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="psa_with_formation_1" version="1">
+							<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
+							<StopPlaceRef ref="ch:1:sloid:7492" version="1"/>
+							<QuayRef ref="ch:1:sloid:7492:0:460848" version="1"/>
+							<passengerBoardingPositionAssignments>
+								<PassengerBoardingPositionAssignment id="pbpa1" version="1">
+									<Description>Assign coach 1 to sector A</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorA"/>
+									<TrainComponentRef version="1" ref="bbd:trncmp_447_01"/>
+								</PassengerBoardingPositionAssignment>
+								<PassengerBoardingPositionAssignment id="pbpa2" version="1">
+									<Description>Assign coach 2 to sector A</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorA"/>
+									<TrainComponentRef version="1" ref="bbd:trncmp_447_02"/>
+								</PassengerBoardingPositionAssignment>
+								<PassengerBoardingPositionAssignment id="pbpa3" version="1">
+									<Description>Assign coach 3 to sector A</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorA"/>
+									<TrainComponentRef version="1" ref="bbd:trncmp_447_03"/>
+								</PassengerBoardingPositionAssignment>
+								<PassengerBoardingPositionAssignment id="pbpa4" version="1">
+									<Description>Assign coach 4 to sector B</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorB"/>
+									<TrainComponentRef version="1" ref="bbd:trncmp_447_04"/>
+								</PassengerBoardingPositionAssignment>
+								<PassengerBoardingPositionAssignment id="pbpa5" version="1">
+									<Description>Assign coach 5 to sector B</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorB"/>
+									<TrainComponentRef version="1" ref="bbd:trncmp_448_01"/>
+								</PassengerBoardingPositionAssignment>
+								<PassengerBoardingPositionAssignment id="pbpa6" version="1">
+									<Description>Assign coach 6 to sector B</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorB"/>
+									<TrainComponentRef version="1" ref="bbd:trncmp_448_02"/>
+								</PassengerBoardingPositionAssignment>
+								<PassengerBoardingPositionAssignment id="pbpa7" version="1">
+									<Description>Assign coach 7 to sector B</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorB"/>
+									<TrainComponentRef version="1" ref="bbd:trncmp_448_03"/>
+								</PassengerBoardingPositionAssignment>
+								<PassengerBoardingPositionAssignment id="pbpa8" version="1">
+									<Description>Assign coach 8 to sector B</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorB"/>
+									<TrainComponentRef version="1" ref="bbd:trncmp_448_04"/>
+								</PassengerBoardingPositionAssignment>
+							</passengerBoardingPositionAssignments>
+						</PassengerStopAssignment>
+					</stopAssignments>
+					<timingLinks>
+						<TimingLink id="tl-1" version="1">
+							<FromPointRef ref="ch:1:sloid:7493:0:470772" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:7483:0:90840" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="tl-2" version="1">
+							<FromPointRef ref="ch:1:sloid:7492:0:460848" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:7493:0:470772" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+					</timingLinks>
+					<journeyPatterns>
+						<ServiceJourneyPattern id="sjp1" version="1">
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1024440" version="1"/>
+							</RouteView>
+							<DirectionType>inbound</DirectionType>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="spijp3" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+									<PassengerStopAssignmentRef ref="psa_with_formation_1" version="1"/>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp2" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+									<AlightingSideInDirectionOfTravel>left</AlightingSideInDirectionOfTravel>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="spijp1" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:90840" version="1"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+									<AlightingSideInDirectionOfTravel>left</AlightingSideInDirectionOfTravel>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+						</ServiceJourneyPattern>
+					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="tdt-1" version="1">
+							<runTimes>
+								<JourneyRunTime id="jrt-1" version="1">
+									<TimingLinkRef ref="tl-2" version="1"/>
+									<RunTime>PT16M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="jrt-2" version="1">
+									<TimingLinkRef ref="tl-1" version="1"/>
+									<RunTime>PT10M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+							<waitTimes>
+								<JourneyWaitTime id="jwt-1" version="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="1"/>
+									<WaitTime>PT3M</WaitTime>
+								</JourneyWaitTime>
+							</waitTimes>
+						</TimeDemandType>
+					</timeDemandTypes>
+				</ServiceFrame>
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="1">
+					<validityConditions>
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:j26" version="1">
+							<FromDate>2025-12-14T00:00:00</FromDate>
+							<ToDate>2026-12-13T23:59:59</ToDate>
+							<ValidDayBits>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000</ValidDayBits>
+						</AvailabilityCondition>
+					</validityConditions>
+				</ServiceCalendarFrame>
+				<TimetableFrame id="ch:1:TimetableFrame:ts3" version="1">
+					<vehicleJourneys>
+						<ServiceJourney id="ch:1:sjyid:100014:4208-003" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BLS-bls-33">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="1"/>
+							</validityConditions>
+							<TransportMode>rail</TransportMode>
+
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:RE" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>10:35:00</DepartureTime>
+							<DepartureDayOffset>0</DepartureDayOffset>
+							<JourneyPatternRef ref="sjp1" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<TimeDemandTypeRef ref="tdt-1" version="1"/>
+														<TrainRef ref="compoundtrain" version="1" />
+							<!-- assigning the train -->
+							<OperatorRef ref="ch:1:Operator:33" version="1"/>
+							<LineRef ref="ch:1:slnid:1024440" version="1"/>
+							<DirectionType>inbound</DirectionType>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:99999" version="1"/>
+							</trainNumbers>
+						</ServiceJourney>
+					</vehicleJourneys>
+					<trainNumbers>
+						<TrainNumber id="ch:1:TrainNumber:99999" version="1">
+							<ForAdvertisement>99999</ForAdvertisement>
+						</TrainNumber>
+					</trainNumbers>
+					<vehicleTypes>
+					</Train>
+						<CompoundTrain version="1" id="compoundtrain">
+							<Name>4231</Name>
+							<Description>2212 - 2122</Description>
+							<SelfPropelled> true</SelfPropelled>
+							<components>
+								<TrainInCompoundTrain version="1" id="TICT1">
+									<TrainRef version="1" ref="Train1"/>
+									<Label>40447</Label>
+								</TrainInCompoundTrain>
+								<TrainInCompoundTrain version="1" id="TICT2">
+									<TrainRef version="1" ref="Train2"/>
+									<Label>457</Label>
+								</TrainInCompoundTrain>
+							</components>
+						</CompoundTrain>
+						<Train version="1" id="Train1">
+							<Name>blabla</Name>
+							<Description>2212</Description>
+							<SelfPropelled> true</SelfPropelled>
+							<components>
+								<TrainComponent version="1" id="bbd:trncmp_447_01" order="1">
+									<Label>1</Label>
+									<TrainElement version="1" id="bbd:trne_447_01">
+										<Name/>
+										<TrainElementType>carriage</TrainElementType>
+										<FareClasses>secondClass</FareClasses>
+										<LowFloor>true</LowFloor>
+										<facilities>
+											<ServiceFacilitySetRef ref="nf" version="1"/>
+											<ServiceFacilitySetRef ref="bikehooks" version="1"/>
+											<ServiceFacilitySetRef ref="strollerplattform" version="1"/>
+										</facilities>
+									</TrainElement>
+								</TrainComponent>
+								<TrainComponent version="1" id="bbd:trncmp_447_02" order="2">
+									<Label>2</Label>
+									<TrainElement version="1" id="bbd:trne_447_02">
+										<Name/>
+										<TrainElementType>carriage</TrainElementType>
+										<FareClasses>secondClass</FareClasses>
+										<LowFloor>true</LowFloor>
+										<facilities>
+											<ServiceFacilitySetRef ref="nf" version="1"/>
+											<ServiceFacilitySetRef ref="bikehooks" version="1"/>
+											<ServiceFacilitySetRef ref="strollerplattform" version="1"/>
+										</facilities>
+									</TrainElement>
+									<ForwardCoupling>
+										<Splittable>false</Splittable>
+										<ThroughAccess>openEntrance</ThroughAccess>
+									</ForwardCoupling>
+								</TrainComponent>
+								<TrainComponent version="1" id="bbd:trncmp_447_03" order="3">
+									<Label>3</Label>
+									<TrainElement version="1" id="bbd:trne_447_03">
+										<Name/>
+										<TrainElementType>carriage</TrainElementType>
+										<FareClasses>firstClass</FareClasses>
+										<LowFloor>true</LowFloor>
+										<facilities>
+											<ServiceFacilitySetRef ref="nf" version="1"/>
+										</facilities>
+									</TrainElement>
+									<ForwardCoupling>
+										<Splittable>false</Splittable>
+										<ThroughAccess>openEntrance</ThroughAccess>
+									</ForwardCoupling>
+								</TrainComponent>
+								<TrainComponent version="1" id="bbd:trncmp_447_04" order="4">
+									<Label>4</Label>
+									<TrainElement version="1" id="bbd:trne_447_04">
+										<Name/>
+										<TrainElementType>carriage</TrainElementType>
+										<FareClasses>secondClass</FareClasses>
+										<LowFloor>true</LowFloor>
+										<facilities>
+											<ServiceFacilitySetRef ref="nf" version="1"/>
+											<ServiceFacilitySetRef ref="bikehooks" version="1"/>
+											<ServiceFacilitySetRef ref="wheelchairspace" version="1"/>
+										</facilities>
+									</TrainElement>
+									<ForwardCoupling>
+										<Splittable>false</Splittable>
+										<ThroughAccess>openEntrance</ThroughAccess>
+									</ForwardCoupling>
+								</TrainComponent>
+							</components>
+						</Train>
+						<Train version="1" id="Train2">
+							<Name>blabla </Name>
+							<Description>blabla</Description>
+							<SelfPropelled> true</SelfPropelled>
+							<components>
+								<TrainComponent version="1" id="bbd:trncmp_448_01" order="1">
+									<Label>5</Label>
+									<TrainElement version="1" id="bbd:trne_448_01">
+										<Name/>
+										<TrainElementType>carriage</TrainElementType>
+										<FareClasses>secondClass</FareClasses>
+										<LowFloor>true</LowFloor>
+										<facilities>
+											<ServiceFacilitySetRef ref="nf" version="1"/>
+											<ServiceFacilitySetRef ref="bikehooks" version="1"/>
+											<ServiceFacilitySetRef ref="wheelchairspace" version="1"/>
+										</facilities>
+									</TrainElement>
+									<ForwardCoupling>
+										<Splittable>true</Splittable>
+										<ThroughAccess>noThroughAccess</ThroughAccess>
+									</ForwardCoupling>
+								</TrainComponent>
+								<TrainComponent version="1" id="bbd:trncmp_448_02" order="2">
+									<Label>6</Label>
+									<TrainElement version="1" id="bbd:trne_448_02">
+										<Name/>
+										<TrainElementType>carriage</TrainElementType>
+										<FareClasses>firstClass</FareClasses>
+										<LowFloor>true</LowFloor>
+										<facilities>
+											<ServiceFacilitySetRef ref="nf" version="1"/>
+										</facilities>
+									</TrainElement>
+									<ForwardCoupling>
+										<Splittable>false</Splittable>
+										<ThroughAccess>openEntrance</ThroughAccess>
+									</ForwardCoupling>
+								</TrainComponent>
+								<TrainComponent version="1" id="bbd:trncmp_448_03" order="3">
+									<Label>7</Label>
+									<TrainElement version="1" id="bbd:trne_448_03">
+										<Name/>
+										<TrainElementType>restaurantCarriage</TrainElementType>
+										<FareClasses>secondClass</FareClasses>
+										<LowFloor>true</LowFloor>
+										<facilities>
+											<ServiceFacilitySetRef ref="nf" version="1"/>
+											<ServiceFacilitySetRef ref="bikehooks" version="1"/>
+											<ServiceFacilitySetRef ref="strollerplattform" version="1"/>
+										</facilities>
+									</TrainElement>
+									<ForwardCoupling>
+										<Splittable>false</Splittable>
+										<ThroughAccess>openEntrance</ThroughAccess>
+									</ForwardCoupling>
+								</TrainComponent>
+								<TrainComponent version="1" id="bbd:trncmp_448_04" order="4">
+									<Label>8</Label>
+									<TrainElement version="1" id="bbd:trne_448_04">
+										<Name/>
+										<TrainElementType>carriage</TrainElementType>
+										<FareClasses>secondClass</FareClasses>
+										<LowFloor>true</LowFloor>
+										<facilities>
+											<ServiceFacilitySetRef ref="nf" version="1"/>
+											<ServiceFacilitySetRef ref="bikehooks" version="1"/>
+											<ServiceFacilitySetRef ref="strollerplattform" version="1"/>
+										</facilities>
+									</TrainElement>
+									<ForwardCoupling>
+										<Splittable>false</Splittable>
+										<ThroughAccess>openEntrance</ThroughAccess>
+									</ForwardCoupling>
+								</TrainComponent>
+							</components>
+						</Train>
+					</vehicleTypes>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
