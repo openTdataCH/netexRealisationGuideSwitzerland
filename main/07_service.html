@@ -1150,7 +1150,10 @@ class ServiceJourney {
 
 <h3 id="usage-notes-3">Usage Notes</h3>
 <ul>
-  <li>id-attribute needs to be kept stable between exports.</li>
+  <li>We don’t keep much information  in <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s. The are assigned by <code class="language-plaintext highlighter-rouge">PassengerStopAssignnment</code>s to the site part (<code class="language-plaintext highlighter-rouge">StopPlace</code>, <code class="language-plaintext highlighter-rouge">Quay</code>).</li>
+  <li><code class="language-plaintext highlighter-rouge">ScheduledStopPoints that are used in </code>TimingLinks<code class="language-plaintext highlighter-rouge">and </code>ServiceJourneyPatterns` should be on the quay level.</li>
+  <li>We use the sloid as id-attribute for <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s whener they exist. id-attribute needs to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">TimingLink</code>s use <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s as well. This means that the timing between two logical stops is the important measure.</li>
 </ul>
 
 <h2 id="passengerstopassignment">PassengerStopAssignment</h2>

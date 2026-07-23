@@ -144,6 +144,49 @@
   <li>The operating days are defined through <code class="language-plaintext highlighter-rouge">ValidDayBits</code> for the whole timetable year in <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s.</li>
 </ul>
 
+<p>##</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>StopPlace SP
+  * Quay Q1
+  * Quay Q2
+  
+ScheduledStopPoint SPS
+
+PassengerStopAssignment PSA
+  -&gt; ScheduledStopPoint SPS
+  -&gt; Quay Q1
+  -&gt; StopPlace SP 
+
+TimingLink TL
+  -&gt; ScheduledStopPoint X
+  -&gt; ScheduledStopPoint y
+  * some properties
+  
+ ServiceJourneyPattern SJP
+   * StopPointInJourneyPattern
+        -&gt; ScheduledStopPoint X
+        * multiple properties
+   * lots of properties
+        
+  TimeDemandType TDT
+    runTimes
+      ServiceJourneyRunTime
+        -&gt; TimingLink TL
+        * Duration
+    waitTimes
+       ServiceJourneyWaitTime
+         -&gt; ScheduledStopPoint A
+         * Duration
+         
+  ServiceJourney
+    -&gt; ServiceJourneyPattern SJP
+    -&gt; TimeDemandType TDT
+    * lots of properties
+        
+   
+  
+</code></pre></div></div>
+
   </div>
 
 </article>
