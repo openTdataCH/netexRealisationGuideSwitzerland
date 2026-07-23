@@ -182,7 +182,8 @@ Holds default values for certain basic parameters.
 *→ [Template](./templates/FrameDefaults.xml)*
 
 #### Usage Notes
-For values not set in `FrameDefaults` we use the values as indicated in the table and example above.
+- For values not set in `FrameDefaults` we use the values as indicated in the table and example above.
+- We know that the use of the TimezoneOffset are redundant to the TimeZone, but we believe it may make consumption easier and the additional two lines are not really expensive.
 
 
 
