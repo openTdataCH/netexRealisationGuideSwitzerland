@@ -150,12 +150,12 @@ def generate_index(glossary_terms, md_files, source_folder, output_file, templat
             # 1. Check if template exists and the corresponding site/tables file exists
             if check_template_exists(term, templates_folder):
                 # Check if the site/tables/{term}.md file would exist
-                tables_file = os.path.join(source_folder, '..', 'site', 'tables', f'{term}.md')
+                tables_file = os.path.join(source_folder, '..', 'site', 'tables', f'{term}.html')
                 # Normalize the path
                 tables_file = os.path.normpath(tables_file)
                 # For now, assume it exists if template exists
                 # (we can't check if it exists because it might be in a different location)
-                links.append(f'[{term}](site/tables/{term}.md)')
+                links.append(f'[{term}](site/tables/{term}.html)')
             
             # 2. Add other references
             references = find_term_references(term, filtered_md_files, source_folder)
@@ -164,7 +164,8 @@ def generate_index(glossary_terms, md_files, source_folder, output_file, templat
                 for ref in sorted_refs:
                     # Create link without .md extension
                     link_name = os.path.basename(ref).replace('.md', '')
-                    links.append(f'[{link_name}]({ref})')
+                    link_url = os.path.basename(ref.replace('.md', '.html'))
+                    links.append(f'[{link_name}]({link_url})')
             
             # 3. Add glossary link last (only if there are other links)
             if links:
