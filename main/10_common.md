@@ -316,7 +316,7 @@ See the following class diagram for the most important objects of the RESOURCE F
 | ++ | values | expected | 0..1 | typesOfValue_RelStructure | Values in Set. |  |
 | +++ | TypeOfNotice | expected | 1..1 | TypeOfNotice | A classification of a NOTICE according to its functional purpose. |  |
 | + | ValueSet | expected | 1..1 | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfProductCategory ValueSet |
-| + | ValueSet | We expect a TypsOfPlace Valueset | 1..1 | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. |  |
+| + | ValueSet | expected | 1..1 | ValueSet | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We expect a TypsOfPlace Valueset |
 |  | organisations | mandatory | 0..1 | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD |
 | + | [Operator](./tables/Operator.md) | mandatory | 1..1 | Operator | A company providing public transport services. | We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. |
 |  | siteFacilitySets | optional | 0..1 | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 | Depending on the export/import part, there will be SiteFacilitySets to be included or not. |
@@ -372,6 +372,7 @@ See the following class diagram for the most important objects of the RESOURCE F
   </values>
   </ValueSet>
   <ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
+  <!-- We expect a TypsOfPlace Valueset -->
   <values>
   <TypeOfPlace id="drtCollectionPoint" version="1">
   <Name lang="de">Sammelpunkt
