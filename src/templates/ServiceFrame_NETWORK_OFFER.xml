@@ -31,10 +31,12 @@
 						</FlexibleLine>
 					</lines>
 					<groupsOfLines>
-						<!-- ch-usage: forbidden-->
-						<GroupOfLines id="notUsed" version="none">
-							<!-- ch-usage: forbidden -->
-							<Name>NotUsed</Name>
+						<!-- ch-usage: expected-->
+						<GroupOfLines id="generated" version="1">
+							<!-- ch-usage: expected -->
+                            <!-- ch-see -->
+                            <!-- ch-note: We use GroupOfLine for the modeling of mixed lines -->
+							<Name>Group_name</Name>
 						</GroupOfLines>
 					</groupsOfLines>
 					<destinationDisplays>
@@ -47,10 +49,10 @@
 						</DestinationDisplay>
 					</destinationDisplays>
 					<scheduledStopPoints>
-						<!-- ch-note: Swiss ScheduledStopPoint are using the sloid in the id, when possible.-->
+						<!-- ch-note: Swiss ScheduledStopPoint are using the SLOID in the id if possible.-->
 						<!-- ch-usage: mandatory -->
 						<ScheduledStopPoint id="sloid_where_possible" version="1">
-							<!-- ch-note: The id of the ScheduledStopPoint is a sloid, when one exists. Otherwisse it contains a gen part. -->
+							<!-- ch-note: The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part. -->
 							<!-- ch-usage: mandatory -->
                             <!-- ch-see -->
 						</ScheduledStopPoint>

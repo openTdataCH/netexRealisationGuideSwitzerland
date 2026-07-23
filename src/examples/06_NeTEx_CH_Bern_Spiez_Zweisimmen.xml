@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2025 rel. 2 (x64) (https://www.altova.com) by MENTZ GmbH (MENTZ GmbH) -->
+<!-- NeTEx Example: Flügelzug Bern - Spiez - Zweisimmen / Brig (RG 2.0) -->
 <PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" version="2.1">
 	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
 	<ParticipantRef>TUXALP</ParticipantRef>
-	<Description lang="de">NeTEx Zweisimmen Example</Description>
+	<Description lang="de">NeTEx Zweisimmen Example edited by Urs</Description>
 	<dataObjects>
 		<CompositeFrame id="ch:1:CompositeFrame:1" version="1">
 			<ValidBetween>
@@ -48,6 +48,27 @@
 								</TypeOfProductCategory>
 							</values>
 						</ValueSet>
+						<ValueSet id="ch:1:ValueSet:PurposeOfJourneyPartition" version="1" nameOfClass="PurposeOfJourneyPartition">
+							<Name>Usage of JourneyPart</Name>
+							<values>
+								<PurposeOfJourneyPartition id="ch:1:PurposeOfJourneyPartition:FacilityChange" version="1">
+									<Name>Facility change</Name>
+								</PurposeOfJourneyPartition>
+							</values>
+						</ValueSet>
+						<ValueSet id="ch:1:ValueSet:TypeOfNotice" version="1" nameOfClass="TypeOfNotice">
+							<Name>Type Of Notice</Name>
+							<values>
+								<TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
+									<Name>Allgemeiner Hinweis</Name>
+									<PrivateCode>1</PrivateCode>
+								</TypeOfNotice>
+								<TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
+									<Name>Angebot</Name>
+									<PrivateCode>10</PrivateCode>
+								</TypeOfNotice>
+							</values>
+						</ValueSet>						
 					</typesOfValue>
 					<organisations>
 						<Operator id="ch:1:sboid:100015" version="1">
@@ -188,39 +209,20 @@
 							</Centroid>
 							<StopPlaceType>railStation</StopPlaceType>
 							<quays>
-								<Quay id="ch:1:sloid:7483:0:954324" version="1">
+								<Quay id="ch:1:sloid:7483:0:3AB" version="1">
 									<keyList>
 										<KeyValue>
 											<Key>SLOID</Key>
-											<Value>ch:1:sloid:7483:0:954324</Value>
+											<Value>ch:1:sloid:7483:0:3AB</Value>
 										</KeyValue>
 									</keyList>
 									<privateCodes>
-										<PrivateCode type="sloid">ch:1:sloid:7483:0:954324</PrivateCode>
+										<PrivateCode type="sloid">ch:1:sloid:7483:0:3AB</PrivateCode>
 									</privateCodes>
 									<Centroid>
 										<Location>
 											<Longitude>7.68010305780</Longitude>
 											<Latitude>46.68639566696</Latitude>
-											<Altitude>627.82</Altitude>
-										</Location>
-									</Centroid>
-									<PublicCode>1</PublicCode>
-								</Quay>
-								<Quay id="ch:1:sloid:7483:0:792557" version="1">
-									<keyList>
-										<KeyValue>
-											<Key>SLOID</Key>
-											<Value>ch:1:sloid:7483:0:792557</Value>
-										</KeyValue>
-									</keyList>
-									<privateCodes>
-										<PrivateCode type="sloid">ch:1:sloid:7483:0:792557</PrivateCode>
-									</privateCodes>
-									<Centroid>
-										<Location>
-											<Longitude>7.6794</Longitude>
-											<Latitude>46.6864</Latitude>
 											<Altitude>627.82</Altitude>
 										</Location>
 									</Centroid>
@@ -453,21 +455,6 @@
 							<PublicCode>3</PublicCode>
 							<StopType>railStation</StopType>
 						</ScheduledStopPoint>
-						<ScheduledStopPoint id="ch:1:sloid:7483:0:792557" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>DIDOK</Key>
-									<Value>8507483</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7483:0:792557</Value>
-								</KeyValue>
-							</keyList>
-							<Name lang="de">Spiez</Name>
-							<PublicCode>5</PublicCode>
-							<StopType>railStation</StopType>
-						</ScheduledStopPoint>
 						<ScheduledStopPoint id="ch:1:sloid:7290:0:930269" version="1">
 							<keyList>
 								<KeyValue>
@@ -528,13 +515,7 @@
 						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:3" version="1">
 							<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" version="1"/>
 							<StopPlaceRef ref="ch:1:sloid:7483" version="1"/>
-							<QuayRef ref="ch:1:sloid:7483:0:954324" version="1"/>
-						</PassengerStopAssignment>
-						<!-- additional PSA for Quay change-->
-						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:3:1" version="1">
-							<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" version="1"/>
-							<StopPlaceRef ref="ch:1:sloid:7483" version="1"/>
-							<QuayRef ref="ch:1:sloid:7483:0:792557" version="1"/>
+							<QuayRef ref="ch:1:sloid:7483:0:3AB" version="1"/>
 						</PassengerStopAssignment>
 						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:4" version="1">
 							<ScheduledStopPointRef ref="ch:1:sloid:7290:0:930269" version="1"/>
@@ -564,15 +545,10 @@
 							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:7100:1:1"/>
 							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:7483:0:954324"/>
 						</TimingLink>
-						<TimingLink id="ch:1:TimingLink:in_Spiez" version="1">
-							<!-- Spiez track 3 -> Spiez track 5 -->
-							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:7483:0:954324"/>
-							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:7483:0:792557"/>
-						</TimingLink>						
 						<!-- JP ch:1:ServiceJourneyPattern:2 -->
 						<TimingLink id="ch:1:TimingLink:7483_0_954324-7290_0_930269" version="1">
 							<!-- Spiez -> Zweisimmen -->
-							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:7483:0:792557"/>
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:7483:0:954324"/>
 							<ToPointRef nameOfRefClass="ScheduledStopPoint" version="1" ref="ch:1:sloid:7290:0:930269"/>
 						</TimingLink>
 						<!-- JP ch:1:ServiceJourneyPattern:3 -->
@@ -605,6 +581,15 @@
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:1.2" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:7100:1:1" version="1"/>
 									<OnwardTimingLinkRef ref="ch:1:TimingLink:7100_1_1-7483_0_954324" version="1"/>
+									<!-- Alternative für die Haltezeiten: Direkt im Pattern an der jew. Haltestelle -->
+									<!--
+									<waitTimes>
+										<JourneyPatternWaitTime id="ch:1:JourneyPatternWaitTime:1.2" version="1">
+										  <TimeDemandTypeRef ref="ch:1:TimeDemandType:1" version="1" />
+										  <WaitTime>PT1M</WaitTime>
+										</JourneyPatternWaitTime>
+									</waitTimes>
+									-->
 									<ForAlighting>true</ForAlighting>
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
@@ -647,19 +632,12 @@
 							</RouteView>
 							<DirectionType>outbound</DirectionType>
 							<pointsInSequence>
-													
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:3.1" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:954324" version="1"/>
-									<OnwardTimingLinkRef ref="ch:1:TimingLink:in_Spiez" version="1"/>
-									<ForAlighting>true</ForAlighting>
-									<ForBoarding>false</ForBoarding>
-								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:3.1.1" version="1">
-									<ScheduledStopPointRef ref="ch:1:sloid:7483:0:792557" version="1"/>
 									<OnwardTimingLinkRef ref="ch:1:TimingLink:7483_0_954324-7478_0_852180" version="1"/>
 									<ForAlighting>false</ForAlighting>
 									<ForBoarding>true</ForBoarding>
-								</StopPointInJourneyPattern>									
+								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="ch:1:PointInJourneyPattern:3.2" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:7478:0:852180" version="1"/>
 									<OnwardTimingLinkRef ref="ch:1:TimingLink:7478_0_852180-1609_4_9" version="1"/>
@@ -706,13 +684,9 @@
 						<TimeDemandType id="ch:1:TimeDemandType:3" version="1">
 							<runTimes>
 								<JourneyRunTime id="ch:1:JourneyRunTime:3:1" version="1">
-									<TimingLinkRef ref="ch:1:TimingLink:in_Spiez" version="1"/>
-									<RunTime>PT0M</RunTime>
-								</JourneyRunTime>
-								<JourneyRunTime id="ch:1:JourneyRunTime:3:1:1" version="1">
 									<TimingLinkRef ref="ch:1:TimingLink:7483_0_954324-7478_0_852180" version="1"/>
 									<RunTime>PT12M</RunTime>
-								</JourneyRunTime>								
+								</JourneyRunTime>
 								<JourneyRunTime id="ch:1:JourneyRunTime:3:2" version="1">
 									<TimingLinkRef ref="ch:1:TimingLink:7478_0_852180-1609_4_9" version="1"/>
 									<RunTime>PT57M</RunTime>
@@ -867,13 +841,11 @@
 							</validityConditions>
 							<StaySeated>false</StaySeated>
 							<CrossBorder>false</CrossBorder>
-							<!-- ChangeWithinVehicle>true</ChangeWithinVehicle -->
-							<!-- TODO: uncomment once NeTEx XSD is updated with PR commit 40c8f31 -->
+                            <ChangeWithinVehicle>true</ChangeWithinVehicle>
 							<Planned>true</Planned>
 							<Guaranteed>true</Guaranteed>
 							<FromPointRef ref="ch:1:sloid:7483:0:954324" version="1" nameOfRefClass="ScheduledStopPoint"/>
 							<ToPointRef ref="ch:1:sloid:7483:0:954324" version="1" nameOfRefClass="ScheduledStopPoint"/>
-							<!-- we do the change of the track of the beginning of ServiceJourney:3 -->
 							<FromServiceJourneyRef ref="ch:1:ServiceJourney:1" version="1"/>
 							<ToServiceJourneyRef ref="ch:1:ServiceJourney:3" version="1"/>
 						</ServiceJourneyInterchange>

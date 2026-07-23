@@ -4,11 +4,12 @@ mermaid: true
 
 # Services
 In this chapter:
+- [ServiceFrame](#serviceframe)
 - [Line](#line)
 - [DestinationDisplay](#destinationdisplay)
 - [ScheduledStopPoint](#scheduledstoppoint)
 - [PassengerStopAssignment](#passengerstopassignment)
-- LATER PassengerBoardingPositionAssignment
+- **LATER** PassengerBoardingPositionAssignment
 - [DefaultConnection](#defaultconnection)
 - [SiteConnection](#siteconnection)
 - [TimingLink](#timinglink)
@@ -80,7 +81,6 @@ class ServiceJourney {
     ServiceFrame "1" o-- "0..*" SiteConnection : contains
     ServiceFrame "1" o-- "0..*" Notice : contains
     ServiceFrame "1" o-- "0..*" NoticeAssignment : contains
-    Line "1" -- "1" DestinationDisplay : references
 
     %% external references
     ServiceJourney "1" -- "1" Line : references
@@ -101,8 +101,8 @@ The `ServiceFrame` model comprises among others:
 
 Other important classes of the `ServiceFrame` include:
 -	`PassengerStopAssignment`s and `PassengerBoardingPositionAssignment` which model the relationship between stops in the timetable and the physical platforms of an actual station or other stop.
--	`Connection`s as the topological model of interchanges. They model the possibility of a transfer between two `ScheduledStopPoints`.
--	`Notice`s which are then assigned to `Journey` and `Passingtime` of the `TimetableFrame` through `NoticeAssignment`s. They model the association of footnotes and passenger information content such as stop announcements and the network.
+-	Connections (`DefaultConnection`, `SiteConnection`, `TimingLink`) as the topological model of interchanges. They model the possibility of a transfer between two `ScheduledStopPoint`s.
+-	`Notice`s which are then assigned to `ServiceJourney` (in the `TimetableFrame`) and `StopPointInJourneyPattern` (in the `ServiceFrame`) through `NoticeAssignment`s. They model the association of footnotes and passenger information content such as stop announcements and the network.
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceFrame.md)
@@ -115,7 +115,7 @@ Other important classes of the `ServiceFrame` include:
 *→ [Template](./templates/ServiceFrame.xml)*
 
 ### Frame Relationships
-`ServiceFrame` depends on `ResourceFrame` for `Operator` definitions. `VehicleScheduleFrame` may reference journeys defined here for block and duty scheduling. `PassengerStopAssignment`s build the connection between `ScheduledStopPoints` and the physical model in `SiteFrame`. ServiceFrame` is typically wrapped in a `CompositeFrame`within a `PublicationDelivery`.
+`ServiceFrame` depends on `ResourceFrame` for `Operator` definitions. `PassengerStopAssignment`s build the connection between `ScheduledStopPoints` and the physical model in `SiteFrame`. `ServiceFrame` is typically wrapped in a `CompositeFrame` within a `PublicationDelivery`.
 
 
 ## Direction
@@ -142,20 +142,49 @@ A public transport service line, representing a marketed route with a `Name`, `T
 
 ### Usage Notes
 - slnid will be integrated wherever possible. We currently think that - where it exists - it has the necessary properties to be used in the `id`-attribute.
-- For foreign lines and id might need to be generated.
+- For foreign lines an `id` might need to be generated.
 - We store the slnid whenever possible in `id`, `privateCodes/PrivateCode` and `KeyList`.
-- **TODO** link to migration concept slnid #48
-- **TODO** handling of mixed lines #48
-- Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
-- Note that there exist journeys in Switzerland and neighbouring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
-- For more information about SwissLineID: see https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf
+- Information about the Swiss line id (slnid) can be found [here](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-line-identification-slnid).
+- Handling of mixed lines is defined in its own [use case (uc017)](uc17_mixed_lines). The relevant factors are described in the Line element as well. We have a full [example](examples/NeTEx_CH_Linie_722_Mischbetrieb.xml) on it. - Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
+- Note that there exist journeys in Switzerland and neighboring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
+- For more information about SwissLineID: see [here](https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf).
+- We have in the slnid concept also "Dispositionslinie" and "Temporäre Linie". Those are modeled as regular `Line`. "Betriebliche Linie" is not used and modeled in NeTEx. If at some point we need to know this type. We will model it as a Key/Value pair.
+- If there are partial lines, there is also a main line. The patterns and journeys are always attached to the partial lines.
 - id-attribute needs to be kept stable between exports.
+
+## GroupOfLines
+*→ [Glossary definition](A4_annex_glossary.md#groupoflines)*
+### Purpose
+A `GroupOfLines` is used to model mixed lines. For details see [uc17](uc17_mixed_lines.md).
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/GroupOfLines.md)
+
+*-> [General NeTEx definition](../generated/netex-html/GroupOfLines.html)*
+
+### Example
+
+- [Example snippet](../site/xml-snippets/GroupOfLines.xml)
+
+*->[Template](./templates/GroupOfLines.xml)*
+
+### Usage Notes
+- Only mixed lines have a `GroupOfLines`.
+- All `ServiceJourneyPattern` and `ServiceJourney` are assigned to the partial lines.
+- In very rare cases the main line has two legal owners. We discuss the modeling in [uc17](uc17_mixed_lines.md).
+- The id-attribute should be the number of the main line.
 
 ## DestinationDisplay
 *→ [Glossary definition](A4_annex_glossary.md#destinationdisplay)*
 
 ### Purpose
 Showing the destination of a `ServiceJourney`. The text shown on the front or side of a public transport vehicle to indicate its destination, including via-points and variant labels.
+
+`DestinationDisplay` is a standalone, reusable object — defined once in the `ServiceFrame` and referenced from wherever the destination text is needed. This is preferred over an inline `Destination/Name` on `ServiceJourney`, for several reasons:
+- An inline `Name` on `Destination` duplicates the display text (once in `Name`, once in the referenced `DestinationDisplay`) and can become inconsistent between the two.
+- `DestinationDisplay` is reusable across arbitrarily many journeys, instead of repeating the text per journey.
+- Only `DestinationDisplay` offers the complete set of display attributes: `FrontText`, `SideText`, `ShortName`, `vias`, and language variants — `Destination` only knows a single `Name`.
+- `DestinationDisplay` can additionally be set directly on `StopPointInJourneyPattern`, allowing the displayed destination to change at individual stops (e.g. for through-services / Durchbindung). This is not possible with `Destination` at the journey level.
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/DestinationDisplay.md)
@@ -169,12 +198,11 @@ Showing the destination of a `ServiceJourney`. The text shown on the front or si
 *->[Template](./templates/DestinationDisplay.xml)*
 
 ### Usage Notes
-- In HRDF sometimes the destination is not set (`*R`). This results in NeTEX in a calculated destination definition. 
-- The `DestinationDisplay` is usually set on the `ServiceJourney`. If it changes during the run, it needs to be changed in the `ServiceJourneyPattern`. If it changes on that, then the new destination should be used. In our output, we will fill all remaining `PointsInJourneyPattern`with the relevant change.
-- See also the [use case on changes in destination](uc13_changes_in_destination.md) 
+- In HRDF sometimes the destination is not set (`*R`). This results in NeTEX in a calculated destination definition.
+- The `DestinationDisplay` is set on the `ServiceJourney` via `Destination/DestinationDisplayRef`. If it changes during the run, it needs to be changed on the relevant `StopPointInJourneyPattern` via `DestinationDisplayRef`. If it changes there, the new destination applies from that point onward — in our output, we fill all remaining `PointsInJourneyPattern` with the relevant change.
+- `Destination` must **not** carry a redundant inline `Name` alongside `DestinationDisplayRef` — the display text lives exclusively in the referenced `DestinationDisplay` object, to avoid inconsistency between the two sources. Only `ScheduledStopPointRef` and `DestinationDisplayRef` should be set on `Destination`.
+- See also the [use case on changes in destination](uc13_changes_in_destination.md)
 - id-attribute needs to be kept stable between exports.
-
-> **TODO** the rules for defining need to be clarified. #81
 
 ## ScheduledStopPoint
 *→ [Glossary definition](A4_annex_glossary.md#scheduledstoppoint)*
@@ -199,7 +227,10 @@ A `ScheduledStopPoint` can represent two types of stop points:
 *->[Template](./templates/ScheduledStopPoint.xml)*
 
 ### Usage Notes
-- id-attribute needs to be kept stable between exports.
+- We don't keep much information  in `ScheduledStopPoint`s. The are assigned by `PassengerStopAssignnment`s to the site part (`StopPlace`, `Quay`).
+- `ScheduledStopPoints that are used in `TimingLinks`and `ServiceJourneyPatterns` should be on the quay level.
+- We use the sloid as id-attribute for `ScheduledStopPoint`s whener they exist. id-attribute needs to be kept stable between exports.
+- `TimingLink`s use `ScheduledStopPoint`s as well. This means that the timing between two logical stops is the important measure. 
 
 ## PassengerStopAssignment
 *→ [Glossary definition](A4_annex_glossary.md#passengerstopassignment)*
@@ -208,7 +239,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 
 `PassengerStopAssignment`s bring the Site model and the Service model in alignment. We have two general cases:
 -	A `ScheduledStopPoint` in a `ServiceJourneyPattern` is linked to a `StopPlace` for arrival and departure.
--	A `ScheduledStopPoint` in a `ServiceJourneyPattern` is linked to a `Quay` for arrival and departure.
+-	A `ScheduledStopPoint` in a `ServiceJourneyPattern` is linked to a `Quay` for arrival and departure. In that case, both `Quay` and `StopPlace` have to be referenced. 
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/PassengerStopAssignment.md)
@@ -308,11 +339,9 @@ See [TimeDemandType](#timedemandtype).
   as `TimingPointRef`, substituted by `ScheduledStopPointRef`).
 - If there is maneuvering or a change of quay, then a separate `TimingLink`
   needs to be added for that too.
-- **TODO** Multiple visits of the same `ScheduledStopPoint` within a
-  `ServiceJourneyPattern` are currently not cleanly resolvable for `WaitTime`
-  differentiation; see open NeTEx PR
-  [#1031](https://github.com/TransmodelEcosystem/NeTEx/pull/1031), which adds
-  `StopPointInServiceJourneyPatternRef` to `JourneyWaitTime` for this case.
+- Multiple visits of the same `ScheduledStopPoint` within a
+  `ServiceJourneyPattern` are addressed with a `JourneyWaitTime` that has a 
+  `StopPointInServiceJourneyPatternRef` instead of a `ScheduledStopPointRef` like the regular ones.
 - id-attribute needs to be kept stable between exports.
 
 ## ServiceJourneyPattern
@@ -335,7 +364,9 @@ See [TimeDemandType](#timedemandtype).
 
 ### Usage Notes
 
-ServiceJourneyPatterns are a common concept in the VDV interface world ("Linienfahrweg"). In order to model ServiceJourneys effictiently and to reduce overall file size, ServiceJourneys sharing the same stop sequence and the same boarding/alighting options should use the same ServiceJourneyPattern. Do not just generate one ServiceJourneyPattern for each ServiceJourney.
+ServiceJourneyPatterns are a common concept in the VDV interface world ("Linienfahrweg"). In order to model ServiceJourneys efficiently and to reduce overall file size, use the concept wisely: 
+- `ServiceJourney`s sharing the same stop sequence and the same boarding/alighting options should use the same `ServiceJourneyPattern`.
+- Do not just generate one `ServiceJourneyPattern` for each `ServiceJourney`.
 - id-attribute should be kept stable between exports.
 
 
@@ -367,10 +398,9 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).
 - `RunTime` references the relevant `TimingLink` via `TimingLinkRef`;
   `WaitTime` references the relevant `ScheduledStopPoint` directly via
   `TimingPointRef` — not via `TimingLink`.
-- **TODO** For stops visited multiple times within the same `ServiceJourneyPattern`
-  with different wait times, see open NeTEx PR
-  [#1031](https://github.com/TransmodelEcosystem/NeTEx/pull/1031).
-- id-attribute needs to be kept stable between exports.
+- Multiple visits of the same `ScheduledStopPoint` within a
+  `ServiceJourneyPattern` are addressed with a `JourneyWaitTime` that has a 
+  `StopPointInServiceJourneyPatternRef` instead of a `ScheduledStopPointRef` like the regular ones.
 
 ## Notice
 *→ [Glossary definition](A4_annex_glossary.md#notice)*
@@ -392,8 +422,8 @@ Informational or regulatory text associated with public transport services, disp
 *->[Template](./templates/Notice.xml)*
 
 ### Usage Notes
-- Notice elements should only be used to convey information which cannot be transported using specific model elements. Do not use Notice when the information could be expressed by specific elements, e.g. FacilitySet, DayType, ForAlighting, ForBoarding. Notices can be used to provide further information on ServiceFacilities but not as a replacement for them. Ideally, the description of a Notice is translated into common languages of CH (DE, IT, FR).
-- id-attribute don't need to be kept stable between exports.
+- Notice elements should only be used to convey information which cannot be transported using specific model elements. Do not use `Notice` when the information could be expressed by specific elements, e.g., `FacilitySet`, `DayType`, `ForAlighting`, `ForBoarding`. `Notice`s can be used to provide further information on `ServiceFacility`s but not as a replacement for them. Ideally, the description of a `Notice` is translated to the three official languages (DE, IT, FR), and possibly E.
+- id-attribute doesn't need to be kept stable between exports.
 
 
 ## NoticeAssignment
@@ -414,4 +444,4 @@ Assign a `Notice` to an element.
 *->[Template](./templates/NoticeAssignment.xml)*
 
 ### Usage Notes
-- id-attribute does not to be kept stable.
+- id-attribute doesn't need to be kept stable between exports.

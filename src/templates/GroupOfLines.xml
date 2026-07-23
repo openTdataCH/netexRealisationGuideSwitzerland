@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ServiceFrame id="ch:1:ServiceFrame" version="1">
+					<groupsOfLines>
+						<GroupOfLines id="ch:1:GroupOfLines:1027553" version="1">
+							<!-- ch-root -->
+							<!-- ch-usage: expected -->
+							<!-- ch-note: We use GroupOfLine for the modeling of mixed lines. Only mixed lines have a GroupOfLines. -->
+							<members>
+								<!-- ch-usage:mandatory -->
+								<LineRef ref="ch:1:slnid:1027553" versionRef="1">
+									<!-- ch-usage: mandatory -->
+									<!-- ch-note: one must be the main line -->
+								</LineRef>
+								<LineRef ref="ch:1:slnid:1027553:3" versionRef="1"/>
+								<LineRef ref="ch:1:slnid:1027553:4" versionRef="1"/>
+							</members>
+							<MainLineRef ref="ch:1:slnid:1027553" versionRef="1">
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: The main line must exist. It hasn't any ServiceJourneyPattern or ServiceJourneys. Those are all on the partial lines. -->
+							</MainLineRef>
+							<GroupOfLinesType><!-- ch-usage: mandatory --><!-- ch-allowed-enums: administrative -->administrative</GroupOfLinesType>
+						</GroupOfLines>
+					</groupsOfLines>
+				</ServiceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

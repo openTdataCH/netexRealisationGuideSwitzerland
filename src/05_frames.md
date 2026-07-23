@@ -25,9 +25,8 @@ participant's identifier.
 *→ [Template](./templates/PublicationDelivery.xml)*
 
 ### Usage Notes
-TODO Cannot make sense of the two sentences. Should be more clearly expressed if needed at all...
-* TODO Basically, the containers could be defined arbitrarily. We are using the most common used version.
-* TODO Be aware that what should be in a Frame in a given file is defined by the organisation of files that are defined in chapter on the [files](04_files.md).
+* We use the standard `frames` of NeTEx
+* Which file needs to contain what `Frame` and with what content is defined in the  [files](04_files.md) chapter.
  
 ## Frames
 
@@ -40,7 +39,7 @@ We use the following frames in Switzerland:
 | [CompositeFrame](#CompositeFrame)                                    | Container for the `FrameDefaults` and the other frames.                                                                                                                                                                                                                        |
 | [ResourceFrame](10_common.md#resourceframe)                          | General purpose elements such as `ResponsibilitySet`, `Organisation`, `Operator`, `SiteFacilitySet` and `ServiceFacilitySet`. `TypeOfProductCategory` and `TypeOfNotice` are to be defined in a `ValueSet`.                                                                    |
 | [SiteFrame](06_stops.md#siteframe)                                   | Contains the physical infrastructure model: Encloses elements describing locations like `Site`, `StopPlace`, `Quay` and `TopographicPlace`.                                                                                                                                    |
-| [ServiceFrame](07_service.md#serviceframe)                           | Contains, among other, the network model with elements such as `Line` and `Route`, the service pattern model with `ScheduledStopPoint` and `ServiceJourneyPattern` and `DefaultConnection`, `SiteConnection`, `TimingLink` elements for the topological model of interchanges. |
+| [ServiceFrame](07_service.md#serviceframe)                           | Contains, among other, the network model with elements such as `Line` and `Route`, the service pattern model with `ScheduledStopPoint`, `ServiceJourneyPattern` and `TimingLink`, and the topological model of interchanges with `DefaultConnection`,                                                                          `SiteConnection`. |
 | [ServiceCalendarFrame](08_service_calendars.md#servicecalendarframe) | Contains calendar specific elements like `AvailabilityConditions`, `ServiceCalendar` and `DayType` that are referenced in other frames like the `TimetableFrame`.                                                                                                              |
 | [TimetableFrame](09_timetable.md#timetableframe)                     | Contains the operational journey definitions with elements like `ServiceJourney`, `TimeDemandType`, `ServiceJourneyInterchange` and others.                                                                                                                                    |
 
@@ -57,7 +56,7 @@ We use the following frames in Switzerland:
 *→ [Glossary definition](A4_annex_glossary.md#compositeframe)*
 
 ### Purpose
-The `CompositeFrame` is the container for the `FrameDefaults` and the other frames like `ResourceFrame`, `SiteFrame`, `ServiceFrame`, `ServiceCalendarFrame` and `TimeTableFrame`, 
+The `CompositeFrame` is the container for the `FrameDefaults` and the other frames like `ResourceFrame`, `SiteFrame`, `ServiceFrame`, `ServiceCalendarFrame` and `TimetableFrame`, 
 appearing in this order.
 
 Their full documentation can be found here: [ResourceFrame](10_common.md#resourceframe), [SiteFrame](06_stops.md#siteframe), [ServiceFrame](07_service.md#serviceframe), [ServiceCalendarFrame](08_service_calendars.md#servicecalendarframe), [TimetableFrame](09_timetable.md#timetableframe)  

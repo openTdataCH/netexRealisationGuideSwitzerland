@@ -14,8 +14,6 @@
      Zwingen_Nenzlingematten   16:14     boarding and alighting allowed
      Grellingen_Martisackerweg 16:18     boarding and alighting allowed
      Grellingen_Bahnhof        16:21     boarding and alighting allowed      
-
-
      
  -->
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
@@ -28,15 +26,14 @@
 					<responsibilitySets>
 						<ResponsibilitySet id="ch:1:ResponsibilitySet:PAG" version="1">
 							<Name>PAG PostAuto AG</Name>
-							<PrivateCode>PAG</PrivateCode>
 							<roles>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:PAG:1" version="1">
 									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:sboid:100602" version="1"/>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:100602" version="1"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:PAG:2" version="1">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:sboid:100602" version="1"/>
+									<ResponsibleOrganisationRef ref="ch:1:Operator:100602" version="1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
@@ -46,13 +43,22 @@
 							<Name>Service Types</Name>
 							<values>
 								<TypeOfService id="ch:PAG:TypeOfService:Normal" version="1">
-									<Name/>
+									<Name>Normal</Name>
 								</TypeOfService>
+							</values>
+						</ValueSet>
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+							<Name>ProductCategories</Name>
+							<values>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:B" version="1">
+									<Name lang="de">Bus</Name>
+									<ShortName>B</ShortName>
+								</TypeOfProductCategory>
 							</values>
 						</ValueSet>
 					</typesOfValue>
 					<organisations>
-						<Operator id="ch:1:sboid:100602" version="1">
+						<Operator id="ch:1:Operator:100602" version="1">
 							<keyList>
 								<KeyValue>
 									<Key>GO</Key>
@@ -108,8 +114,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:72113:0:949313</PrivateCode>
 									</privateCodes>
-									<PublicCode>1</PublicCode>
-								</Quay>
+									<Centroid>
+										<Location>
+											<Longitude>7.5022053</Longitude>
+											<Latitude>47.4190062</Latitude>
+											<Altitude>354</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>1</PublicCode></Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:81849" version="1">
@@ -146,8 +158,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:81849:0:827177</PrivateCode>
 									</privateCodes>
-									<PublicCode>1</PublicCode>
-								</Quay>
+									<Centroid>
+										<Location>
+											<Longitude>7.5012167</Longitude>
+											<Latitude>47.4236117</Latitude>
+											<Altitude>352</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>1</PublicCode></Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:72176" version="1">
@@ -184,8 +202,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:72176:0:622963</PrivateCode>
 									</privateCodes>
-									<PublicCode>1</PublicCode>
-								</Quay>
+									<Centroid>
+										<Location>
+											<Longitude>7.5074193</Longitude>
+											<Latitude>47.423788</Latitude>
+											<Altitude>351</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>1</PublicCode></Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:72177" version="1">
@@ -222,8 +246,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:72177:0:311938</PrivateCode>
 									</privateCodes>
-									<PublicCode>1</PublicCode>
-								</Quay>
+									<Centroid>
+										<Location>
+											<Longitude>7.5100257</Longitude>
+											<Latitude>47.4305232</Latitude>
+											<Altitude>348</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>1</PublicCode></Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:72178" version="1">
@@ -234,7 +264,7 @@
 								</KeyValue>
 								<KeyValue>
 									<Key>DIDOK</Key>
-									<Value/>
+									<Value>8572178</Value>
 								</KeyValue>
 							</keyList>
 							<privateCodes>
@@ -260,8 +290,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:72178:0:535942</PrivateCode>
 									</privateCodes>
-									<PublicCode>1</PublicCode>
-								</Quay>
+									<Centroid>
+										<Location>
+											<Longitude>7.84783</Longitude>
+											<Latitude>47.4367301</Latitude>
+											<Altitude>348</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>1</PublicCode></Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:72202" version="1">
@@ -298,8 +334,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:72202:0:134953</PrivateCode>
 									</privateCodes>
-									<PublicCode>1</PublicCode>
-								</Quay>
+									<Centroid>
+										<Location>
+											<Longitude>7.5388974</Longitude>
+											<Latitude>47.4394421</Latitude>
+											<Altitude>341</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>1</PublicCode></Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:72203" version="1">
@@ -336,8 +378,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:72203:0:404965</PrivateCode>
 									</privateCodes>
-									<PublicCode>A</PublicCode>
-								</Quay>
+									<Centroid>
+										<Location>
+											<Longitude>7.5489836</Longitude>
+											<Latitude>47.4448115</Latitude>
+											<Altitude>340</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>A</PublicCode></Quay>
 								<Quay id="ch:1:sloid:72203:0:171897" version="1">
 									<keyList>
 										<KeyValue>
@@ -348,8 +396,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:72203:0:171897</PrivateCode>
 									</privateCodes>
-									<PublicCode>B</PublicCode>
-								</Quay>
+									<Centroid>
+										<Location>
+											<Longitude>7.5489836</Longitude>
+											<Latitude>47.4448115</Latitude>
+											<Altitude>340</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>B</PublicCode></Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:673" version="1">
@@ -386,8 +440,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:673:0:688162</PrivateCode>
 									</privateCodes>
-									<PublicCode>1</PublicCode>
-								</Quay>
+									<Centroid>
+										<Location>
+											<Longitude>7.558970</Longitude>
+											<Latitude>47.4464565</Latitude>
+											<Altitude>426</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>1</PublicCode></Quay>
 								<Quay id="ch:1:sloid:673:0:849549" version="1">
 									<keyList>
 										<KeyValue>
@@ -398,8 +458,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:673:0:849549</PrivateCode>
 									</privateCodes>
-									<PublicCode>12</PublicCode>
-								</Quay>
+									<Centroid>
+										<Location>
+											<Longitude>7.558970</Longitude>
+											<Latitude>47.4464565</Latitude>
+											<Altitude>426</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>12</PublicCode></Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:72204" version="1">
@@ -436,8 +502,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:72204:0:352830</PrivateCode>
 									</privateCodes>
-									<PublicCode>1</PublicCode>
-								</Quay>
+									<Centroid>
+										<Location>
+											<Longitude>7.5619565</Longitude>
+											<Latitude>47.4476406</Latitude>
+											<Altitude>441</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>1</PublicCode></Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:11656" version="1">
@@ -474,8 +546,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:11656:0:118</PrivateCode>
 									</privateCodes>
-									<PublicCode>1</PublicCode>
-								</Quay>
+									<Centroid>
+										<Location>
+											<Longitude>7.58507653</Longitude>
+											<Latitude>47.4413590</Latitude>
+											<Altitude>326</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>1</PublicCode></Quay>
 							</quays>
 						</StopPlace>
 						<StopPlace id="ch:1:sloid:72132" version="1">
@@ -491,7 +569,7 @@
 							</keyList>
 							<privateCodes>
 								<PrivateCode type="sloid">ch:1:sloid:72132</PrivateCode>
-								<PrivateCode>8572132</PrivateCode>
+								<PrivateCode type="didok">8572132</PrivateCode>
 							</privateCodes>
 							<Name>Grellingen_Bahnhof</Name>
 							<Centroid>
@@ -512,8 +590,14 @@
 									<privateCodes>
 										<PrivateCode type="sloid">ch:1:sloid:72132:0:60364</PrivateCode>
 									</privateCodes>
-									<PublicCode>1</PublicCode>
-								</Quay>
+									<Centroid>
+										<Location>
+											<Longitude>7.5919698</Longitude>
+											<Latitude>47.441426017</Latitude>
+											<Altitude>324</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>1</PublicCode></Quay>
 							</quays>
 						</StopPlace>
 					</stopPlaces>
@@ -535,7 +619,9 @@
 							<TransportSubmode>
 								<BusSubmode>localBus</BusSubmode>
 							</TransportSubmode>
-							<OperatorRef ref="ch:1:sboid:100602" version="1"/>
+							<PublicCode>50.119</PublicCode>
+							<OperatorRef ref="ch:1:Operator:100602" version="1"/>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
 						</Line>
 					</lines>
 					<scheduledStopPoints>
@@ -646,9 +732,63 @@
 							<QuayRef ref="ch:1:sloid:72132:0:60364" version="1"/>
 						</PassengerStopAssignment>
 					</stopAssignments>
+					<timingLinks>
+						<TimingLink id="ch:PAG:TimingLink:50_119:1" version="1">
+							<FromPointRef ref="ch:1:sloid:72113:0:949313" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:81849:0:827177" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:PAG:TimingLink:50_119:2" version="1">
+							<FromPointRef ref="ch:1:sloid:81849:0:827177" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:72176:0:622963" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:PAG:TimingLink:50_119:3" version="1">
+							<FromPointRef ref="ch:1:sloid:72176:0:622963" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:72177:0:311938" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:PAG:TimingLink:50_119:4" version="1">
+							<FromPointRef ref="ch:1:sloid:72177:0:311938" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:72178:0:535942" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:PAG:TimingLink:50_119:5" version="1">
+							<FromPointRef ref="ch:1:sloid:72178:0:535942" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:72202:0:134953" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:PAG:TimingLink:50_119:6" version="1">
+							<FromPointRef ref="ch:1:sloid:72202:0:134953" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:72203:0:404965" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:PAG:TimingLink:50_119:7" version="1">
+							<FromPointRef ref="ch:1:sloid:72203:0:404965" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:673:0:688162" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:PAG:TimingLink:50_119:8" version="1">
+							<FromPointRef ref="ch:1:sloid:673:0:688162" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:72204:0:352830" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:PAG:TimingLink:50_119:9" version="1">
+							<FromPointRef ref="ch:1:sloid:72204:0:352830" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:673:0:849549" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:PAG:TimingLink:50_119:10" version="1">
+							<FromPointRef ref="ch:1:sloid:673:0:849549" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:72203:0:171897" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:PAG:TimingLink:50_119:11" version="1">
+							<FromPointRef ref="ch:1:sloid:72203:0:171897" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:11656:0:118" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:PAG:TimingLink:50_119:12" version="1">
+							<FromPointRef ref="ch:1:sloid:11656:0:118" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:72132:0:60364" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+					</timingLinks>
 					<journeyPatterns>
-						<JourneyPattern id="ch:PAG:JourneyPattern:50_119" version="1">
+						<ServiceJourneyPattern id="ch:PAG:JourneyPattern:50_119" version="1">
 							<Name>NORMAL_SERVICE_LAUFEN_BAHNHOF_GRELLINGEN_BAHNHOF</Name>
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1026478" version="1"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
 							<pointsInSequence>
 								<StopPointInJourneyPattern id="ch:PAG:JP:50_119:1" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:72113:0:949313" version="1"/>
@@ -718,8 +858,69 @@
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
-						</JourneyPattern>
+						</ServiceJourneyPattern>
 					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="ch:PAG:TimeDemandType:50_119" version="1">
+							<Name>Laufen Bahnhof - Grellingen Bahnhof</Name>
+							<runTimes>
+								<JourneyRunTime id="ch:PAG:JourneyRunTime:50_119:1" version="1">
+									<TimingLinkRef ref="ch:PAG:TimingLink:50_119:1" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:PAG:JourneyRunTime:50_119:2" version="1">
+									<TimingLinkRef ref="ch:PAG:TimingLink:50_119:2" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:PAG:JourneyRunTime:50_119:3" version="1">
+									<TimingLinkRef ref="ch:PAG:TimingLink:50_119:3" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:PAG:JourneyRunTime:50_119:4" version="1">
+									<TimingLinkRef ref="ch:PAG:TimingLink:50_119:4" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:PAG:JourneyRunTime:50_119:5" version="1">
+									<TimingLinkRef ref="ch:PAG:TimingLink:50_119:5" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:PAG:JourneyRunTime:50_119:6" version="1">
+									<TimingLinkRef ref="ch:PAG:TimingLink:50_119:6" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:PAG:JourneyRunTime:50_119:7" version="1">
+									<TimingLinkRef ref="ch:PAG:TimingLink:50_119:7" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:PAG:JourneyRunTime:50_119:8" version="1">
+									<TimingLinkRef ref="ch:PAG:TimingLink:50_119:8" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:PAG:JourneyRunTime:50_119:9" version="1">
+									<TimingLinkRef ref="ch:PAG:TimingLink:50_119:9" version="1"/>
+									<RunTime>PT0M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:PAG:JourneyRunTime:50_119:10" version="1">
+									<TimingLinkRef ref="ch:PAG:TimingLink:50_119:10" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:PAG:JourneyRunTime:50_119:11" version="1">
+									<TimingLinkRef ref="ch:PAG:TimingLink:50_119:11" version="1"/>
+									<RunTime>PT4M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:PAG:JourneyRunTime:50_119:12" version="1">
+									<TimingLinkRef ref="ch:PAG:TimingLink:50_119:12" version="1"/>
+									<RunTime>PT3M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+							<waitTimes>
+								<JourneyWaitTime id="ch:PAG:JourneyWaitTime:50_119:1" version="1">
+									<TimingPointRef ref="ch:1:sloid:72204:0:352830" version="1" nameOfRefClass="ScheduledStopPoint"/>
+									<WaitTime>PT1M</WaitTime>
+								</JourneyWaitTime>
+							</waitTimes>
+						</TimeDemandType>
+					</timeDemandTypes>
 				</ServiceFrame>
 				<ServiceCalendarFrame id="ch:PAG:ServiceCalendarFrame:50_119" version="1">
 					<validityConditions>
@@ -733,7 +934,7 @@
 				<TimetableFrame id="ch:PAG:TimetableFrame:50_119" version="1">
 					<ServiceCalendarFrameRef ref="ch:PAG:ServiceCalendarFrame:50_119" version="1"/>
 					<vehicleJourneys>
-						<ServiceJourney id="ch:PAG:SJ:50_119:Special" version="1">
+						<ServiceJourney id="ch:PAG:SJ:50_119:Special" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:PAG">
 							<validityConditions>
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:j26" version="1"/>
 							</validityConditions>
@@ -746,68 +947,17 @@
 							<privateCodes>
 								<PrivateCode type="sjyid">sjyid-1</PrivateCode>
 							</privateCodes>
-							<JourneyPatternRef ref="ch:PAG:JourneyPattern:50_119" version="1"/>
-							<OperatorRef ref="ch:1:sboid:100602" version="1"/>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>15:59:00</DepartureTime>
+							<JourneyPatternRef ref="ch:PAG:JourneyPattern:50_119" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<TimeDemandTypeRef ref="ch:PAG:TimeDemandType:50_119" version="1"/>
+							<OperatorRef ref="ch:1:Operator:100602" version="1"/>
 							<LineRef ref="ch:1:slnid:1026478" version="1"/>
 							<DirectionType>outbound</DirectionType>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:11929" version="1"/>
 							</trainNumbers>
-							<passingTimes>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:1" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:1" version="1"/>
-									<DepartureTime>15:59:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:2" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:2" version="1"/>
-									<DepartureTime>16:00:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:3" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:3" version="1"/>
-									<DepartureTime>16:01:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:4" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:4" version="1"/>
-									<ArrivalTime>16:02:00</ArrivalTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:5" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:5" version="1"/>
-									<ArrivalTime>16:04:00</ArrivalTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:6" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:6" version="1"/>
-									<ArrivalTime>16:06:00</ArrivalTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:7" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:7" version="1"/>
-									<ArrivalTime>16:07:00</ArrivalTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:8" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:8" version="1"/>
-									<ArrivalTime>16:09:00</ArrivalTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:9" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:9" version="1"/>
-									<ArrivalTime>16:11:00</ArrivalTime>
-									<DepartureTime>16:12:00</DepartureTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:10" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:10" version="1"/>
-									<ArrivalTime>16:12:00</ArrivalTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:11" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:7" version="1"/>
-									<ArrivalTime>16:14:00</ArrivalTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:12" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:12" version="1"/>
-									<ArrivalTime>16:18:00</ArrivalTime>
-								</TimetabledPassingTime>
-								<TimetabledPassingTime id="ch:PAG:TPT:50_119:13" version="1">
-									<StopPointInJourneyPatternRef ref="ch:PAG:JP:50_119:13" version="1"/>
-									<ArrivalTime>16:21:00</ArrivalTime>
-								</TimetabledPassingTime>
-							</passingTimes>
 							<facilities>
 								<ServiceFacilitySet id="facility-1" version="1">
 									<GroupBookingFacility>groupBookingsRestricted</GroupBookingFacility>
@@ -822,13 +972,13 @@
 					</trainNumbers>
 					<!-- **TODO Do we need A__GR notice Gruppen: Reservation obligatorisch -->
 					<notices>
-						<Notice id="ch:PAG:Notice:GroupBooking" version="1">
+						<Notice id="ch:1:Notice:A__GR" version="1">
 							<Text>Reservations required 24 hours in advance for groups of 10 or more https://www.postauto.ch/gruppen oder Tel. +41 58 667 13 60.</Text>
 						</Notice>
 					</notices>
 					<noticeAssignments>
 						<NoticeAssignment id="ch:PAG:NoticeAssignment:SJ_50_119_GroupBooking" version="1" order="1">
-							<NoticeRef ref="ch:PAG:Notice:GroupBooking" version="1"/>
+							<NoticeRef ref="ch:1:Notice:A__GR" version="1"/>
 							<ServiceJourneyRef ref="ch:PAG:SJ:50_119:Special" version="1"/>
 						</NoticeAssignment>
 					</noticeAssignments>

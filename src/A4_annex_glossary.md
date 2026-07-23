@@ -195,6 +195,16 @@ A logical grouping of multiple Line objects for common management, branding, dis
 
 ---
 
+## ServiceJourneyInterchange
+
+A planned interchange between two ServiceJourneys — feeder and distributor — including whether the passenger stays seated, must change vehicle within the same train, or is guaranteed a connection.
+
+> **NeTEx XSD:** In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle.
+
+→ [Full documentation](09_timetable.md#servicejourneyinterchange)
+
+---
+
 ## Interchange
 
 A planned transfer opportunity between two ServiceJourneys at a shared stop point, modelled as `ServiceJourneyInterchange` in XML.
@@ -206,6 +216,8 @@ A planned transfer opportunity between two ServiceJourneys at a shared stop poin
 ---
 
 ## InterchangeRule
+
+> **Not used in the Swiss profile** — replaced by `ServiceJourneyInterchange` (see [uc03 Transfers](uc03_transfers.md)).
 
 An InterchangeRule defines the possibility of interchanging between two ServiceJourneys at the same or different 
 ScheduledStopPoints - where at least one journey is specified indirectly via Direction, Line, or the VehicleJourney, 
@@ -293,6 +305,8 @@ validity of the NOTICE starts and ends respectively.
 
 ## OperatingDay
 
+> **Not used in the Swiss profile** — replaced by `AvailabilityCondition` (see [AvailabilityCondition](08_service_calendars.md#availabilitycondition)).
+
 A specific calendar date on which transport services operate, referenced by DatedServiceJourney to anchor a journey to a concrete day.
 
 > **NeTEx XSD:** A day of public transport operation in a specific calendar. An OPERATING DAY may last more than 24 hours.
@@ -303,6 +317,7 @@ A specific calendar date on which transport services operate, referenced by Date
 
 ## OperatingPeriod
 
+> **Not used in the Swiss profile** — replaced by `AvailabilityCondition` (see [AvailabilityCondition](08_service_calendars.md#availabilitycondition)).
 A continuous date range (FromDate-ToDate) during which a set of transport services may operate, used by DayTypeAssignment.
 
 > **NeTEx XSD / Transmodel:** A continuous interval of time between two OPERATING DAYs which will be used to define validities.
@@ -448,7 +463,7 @@ A logical stopping point in the timetable, used by JourneyPatterns and ServiceJo
 
 ## ServiceAlteration
 
-An enumeration on DatedServiceJourney indicating the deviation type. Allowed values: `planned`, `cancellation`, `replaced`, `extraJourney`. Omitted implies `planned`.
+An enumeration on DatedServiceJourney indicating the deviation type. Allowed values: `planned`, `cancellation`, `provisional`, `replaced`, `extraJourney`. Omitted implies `planned`.
 
 → [DatedServiceJourney table](09_timetable.md#servicejourney)
 
@@ -456,7 +471,7 @@ An enumeration on DatedServiceJourney indicating the deviation type. Allowed val
 
 ## ServiceCalendar
 
-Long-term planning uses calendar days that are classified as specific DayTypes (example: weekday in school holidays). A ServiceCalendar defines a mapping between DayTypes and OperatingDays
+In the general NeTEx model, a ServiceCalendar defines a mapping between DayTypes and OperatingDays. In the Swiss profile, OperatingDay is not used — ServiceCalendar serves only as a container for DayTypes and DayTypeAssignments.
 
 > **NeTEx XSD:** A collection of assignments of OPERATING DAYs to DAY TYPEs.
 
@@ -498,7 +513,7 @@ Contains the network and route definitions - Lines, Routes, JourneyPatterns, Sch
 
 ## ServiceJourney
 
-A planned trip in the timetable operating on a recurring schedule, defining the stop sequence via a JourneyPattern, passing times, operator, and days of operation.
+A planned trip in the timetable operating on a recurring schedule, defining the stop sequence via a JourneyPattern, TimeDemandType, operator, and days of operation.
 
 > **NeTEx XSD / Transmodel:** A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN.
 
@@ -528,7 +543,7 @@ Weather shelter facilities available at a stop place or quay, with properties su
 
 ## SiteConnection
 
-Sanitary facilities (toilets, washrooms) available at a stop place, station, or onboard a vehicle.
+The physical (spatial) possibility for a passenger to change from one public transport vehicle to another at a shared location, expressed as default transfer times between two SiteElements (StopPlace, Quay, TopographicPlace).
 
 > **NeTEx XSD:** The physical (spatial) possibility for a passenger to change from one public transport vehicle to another to continue the trip. The ends of connection can be specified as SCHEDULED STOP POINT or STOP AREA. Optionally this may be additionally qualified with physical STOP PLACE. Different times may be necessary to cover this link, depending on the kind of passenger.
 >
@@ -613,7 +628,7 @@ A period of time within a day, usually defined by a start and end time.
 
 ## TimeDemandType
 
-An indicator of traffic conditions or other factors which may affect vehicle run or wait times.
+TimeDemandType describes the timing pattern of a ServiceJourneyPattern: run times between consecutive ScheduledStopPoints  and wait times at a ScheduledStopPoint. Multiple TimeDemandTypes can be defined per ServiceJourneyPattern to represent different traffic or dwell conditions (e.g. peak vs. off-peak). We use TimeDemandType to completely replace TimetabledPassingTimes.
 
 > **NeTEx XSD / Transmodel:** An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.
 
@@ -635,7 +650,8 @@ Long-term planned time data concerning public transport vehicles passing a parti
 
 ## TimetableFrame
 
-Contains operational journey definitions - ServiceJourneys, DatedServiceJourneys, dead runs, coupled journeys, and interchange rules.
+Contains operational journey definitions - ServiceJourneys, TemplateServiceJourneys, dead runs, and journey interchanges (via ServiceJourneyInterchange).
+
 
 > **NeTEx XSD:** A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.
 

@@ -49,48 +49,44 @@
 					</timingLinks>							
 					<journeyPatterns>
 						<ServiceJourneyPattern id="generated" version="1">
-
 						</ServiceJourneyPattern>
 					</journeyPatterns>
 					<timeDemandTypes>
 						<TimeDemandType id="generated" version="1">
-												<!-- ch-root -->
-						<!-- ch-usage: expected -->
-						<!-- ch-note: TimeDemandType assigns a timing behaviour to a ServiceJourney -->
-						<Description><!-- ch-usage: optional --><!-- ch-note: Can be used, if a decription exists what this pattern doe -->high demand</Description>
-						<runTimes>
+							<!-- ch-root -->
 							<!-- ch-usage: expected -->
-							<!-- ch-note: The run time on the TimingLinks -->
-							<JourneyRunTime id="generated" version="1">
+							<!-- ch-note: TimeDemandType assigns a timing behaviour to a ServiceJourney -->
+							<!-- ch-attrs: id version -->
+							<Description><!-- ch-usage: optional --><!-- ch-note: Can be used if there exists a decription of the pattern. -->high demand</Description>
+							<runTimes>
 								<!-- ch-usage: expected -->
-								<TimingLinkRef ref="generated" versionRef="1">
-									<!-- ch-usage: mandatory -->
-									<!-- ch-note: The timing link that is ued here and that that does have a given run time -->
-								</TimingLinkRef>
-								<RunTime><!-- ch-usage: mandatory --><!-- ch-usage: the run time -->PT5M</RunTime>
-							</JourneyRunTime>
-						</runTimes>
-						<waitTimes>
-							<!-- ch-usage: expected -->
-							<!-- ch-note: we only need the wait times, when they are >0 -->
-							<JourneyWaitTime id="generated" version="1">
-								<!-- ch-usage: expected -->
-								<!-- ch-note: Relevant waiting times at the stop -->
-								<ScheduledStopPointRef ref="sloid" versionRef="1">
+								<!-- ch-note: The run time on the TimingLinks -->
+								<JourneyRunTime id="generated" version="1">
 									<!-- ch-usage: expected -->
-									<!-- ch-note: Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice). -->
-								</ScheduledStopPointRef>
-								<WaitTime><!-- ch-usage: mandatory -->PT2M</WaitTime>
-							</JourneyWaitTime>
-						</waitTimes>
+									<TimingLinkRef ref="generated" versionRef="1">
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: The timing link that is ued here and that that does have a given run time -->
+									</TimingLinkRef>
+									<RunTime><!-- ch-usage: mandatory -->PT5M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+							<waitTimes>
+								<!-- ch-usage: expected -->
+								<!-- ch-note: We only need wait times if greater than 0. -->
+								<JourneyWaitTime id="generated" version="1">
+									<!-- ch-usage: expected -->
+									<!-- ch-note: Relevant waiting times at the stop -->
+									<ScheduledStopPointRef ref="sloid" versionRef="1">
+										<!-- ch-usage: expected -->
+										<!-- ch-note: Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice). -->
+									</ScheduledStopPointRef>
+									<WaitTime><!-- ch-usage: mandatory -->PT2M</WaitTime>
+								</JourneyWaitTime>
+							</waitTimes>
 						</TimeDemandType>
 					</timeDemandTypes>
-						<!-- ch-usage: forbidden -->
-			
 					<notices>
-
 						<Notice id="generated" version="1">
-
 						</Notice>
 					</notices>
 				</ServiceFrame>

@@ -60,7 +60,7 @@ class INTERCHANGE {
 
 STOP_OFFER:
 * Contains everything related to (physical) stops
-* Later accessibility
+* Accessibility will be added in the future
 
 NETWORK_OFFER:
 * By operator (legal) and sometimes region (e.g. canton)

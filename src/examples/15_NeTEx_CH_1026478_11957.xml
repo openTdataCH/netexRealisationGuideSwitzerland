@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+TimetableCode:  50.119
+Journey:        11957
+URL:            https://widgets.oev-info.ch/publikation/jahresfpl/50.119.pdf
+
+-->
+<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" version="2.1">
+	<PublicationTimestamp>2026-09-01T00:00:01</PublicationTimestamp>
+	<ParticipantRef>PAG</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame:1" version="1">
+			<ValidBetween>
+				<FromDate>2025-12-15T00:00:00</FromDate>
+				<ToDate>2026-12-12T23:59:59</ToDate>
+			</ValidBetween>
+			<Description>This is a short description of this xml</Description>
+			<FrameDefaults>
+				<DefaultLocale>
+					<TimeZoneOffset>1</TimeZoneOffset>
+					<TimeZone>Europe/Zurich</TimeZone>
+					<SummerTimeZoneOffset>2</SummerTimeZoneOffset>
+					<DefaultLanguage>de</DefaultLanguage>
+				</DefaultLocale>
+				<DefaultLocationSystem>urn:ogc:def:crs:EPSG::4326</DefaultLocationSystem>
+			</FrameDefaults>
+			<frames>
+				<!-- RESOURCE FRAME -->
+				<ResourceFrame id="ch:1:ResourceFrame:PAG:1" version="1">
+					<responsibilitySets>
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:PAG:Standard" version="1">
+							<Name>Standard responsability set for PostAuto AG</Name>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:PAG:entityLegalOwnership" version="1">
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100602" version="1"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:PAG:operation" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100602" version="1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+							<Name>ProductCategories</Name>
+							<values>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:B" version="1">
+									<Name lang="de">Bus</Name>
+									<ShortName lang="de">B</ShortName>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+						<ValueSet id="ch:1:ValueSet:TypeOfNotice" version="1" nameOfClass="TypeOfNotice">
+							<Name>Type Of Notice</Name>
+							<values>
+								<TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
+									<Name>Allgemeiner Hinweis</Name>
+									<PrivateCode>1</PrivateCode>
+								</TypeOfNotice>
+								<TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
+									<Name>Angebot</Name>
+									<PrivateCode>10</PrivateCode>
+								</TypeOfNotice>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<Operator id="ch:1:sboid:100602" version="1">
+							<privateCodes>
+								<PrivateCode type="sboid">ch:1:sboid:100602</PrivateCode>
+								<PrivateCode type="go">801</PrivateCode>
+							</privateCodes>
+							<Name>PostAuto AG</Name>
+							<ShortName>PAG</ShortName>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+				<!-- SITE FRAME -->
+				<SiteFrame id="ch:1:SiteFrame:PAG:1" version="1">
+					<stopPlaces>
+						<!-- StopPlace and Quay should have their sloid as id -->
+						<StopPlace id="ch:1:StopPlace:PAG:72178" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:72178</PrivateCode>
+								<PrivateCode type="didok">8572178</PrivateCode>
+							</privateCodes>
+							<Name>Zwingen, Laufenstrasse</Name>
+							<Centroid>
+								<Location>
+									<Longitude>7.52208374720</Longitude>
+									<Latitude>47.43673017182</Latitude>
+									<Altitude>348</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+								<Quay id="ch:1:Quay:PAG:72178:0:273135" version="1">
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:72178:0:273135</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.52253815533</Longitude>
+											<Latitude>47.43691936326</Latitude>
+											<Altitude>343.6</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>01</PublicCode>
+								</Quay>
+								<Quay id="ch:1:Quay:PAG:72178:0:535942" version="1">
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:72178:0:535942</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.52184493000</Longitude>
+											<Latitude>47.43659543072</Latitude>
+											<Altitude>349</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>02</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:StopPlace:PAG:72202" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:72202</PrivateCode>
+								<PrivateCode type="didok">8572202</PrivateCode>
+							</privateCodes>
+							<Name>Zwingen, Strengenfeld</Name>
+							<Centroid>
+								<Location>
+									<Longitude>7.53889747997</Longitude>
+									<Latitude>47.43944215387</Latitude>
+									<Altitude>341</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+								<Quay id="ch:1:Quay:PAG:72202:0:134953" version="1">
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:72202:0:134953</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.53865872527</Longitude>
+											<Latitude>47.43937040743</Latitude>
+											<Altitude>341</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>01</PublicCode>
+								</Quay>
+								<Quay id="ch:1:Quay:PAG:72202:0:195259" version="1">
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:72202:0:195259</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.53865872527</Longitude>
+											<Latitude>47.43937040743</Latitude>
+											<Altitude>341</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>02</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:StopPlace:PAG:72203:1" version="1">
+							<ValidBetween>
+								<FromDate>2022-07-26T00:00:00</FromDate>
+								<ToDate>2026-12-12T23:59:59</ToDate>
+							</ValidBetween>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:72203</PrivateCode>
+								<PrivateCode type="didok">8572203</PrivateCode>
+							</privateCodes>
+							<Name>Zwingen, Nenzlingenmatten</Name>
+							<Centroid>
+								<Location>
+									<Longitude>7.54898363546</Longitude>
+									<Latitude>47.44481150470</Latitude>
+									<Altitude>340</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+								<Quay id="ch:1:Quay:PAG:72203:0:404965:1" version="1">
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:72203:0:404965</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.54932893837</Longitude>
+											<Latitude>47.44509898758</Latitude>
+											<Altitude>345</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>01</PublicCode>
+								</Quay>
+								<Quay id="ch:1:Quay:PAG:72203:0:171897:1" version="1">
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:72203:0:171897</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.54862482018</Longitude>
+											<Latitude>47.44439811652</Latitude>
+											<Altitude>334</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>02</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:StopPlace:PAG:72203:2" version="1">
+							<ValidBetween>
+								<FromDate>2026-12-13T00:00:00</FromDate>
+							</ValidBetween>
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:72203</PrivateCode>
+								<PrivateCode type="didok">8572203</PrivateCode>
+							</privateCodes>
+							<Name>Nenzlingen, Matten</Name>
+							<Centroid>
+								<Location>
+									<Longitude>7.54898363546</Longitude>
+									<Latitude>47.44481150601</Latitude>
+									<Altitude>340</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+								<Quay id="ch:1:Quay:PAG:72203:0:404965:2" version="1">
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:72203:0:404965</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.54932893837</Longitude>
+											<Latitude>47.44509898758</Latitude>
+											<Altitude>345</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>01</PublicCode>
+								</Quay>
+								<Quay id="ch:1:Quay:PAG:72203:0:171897:2" version="1">
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:72203:0:171897</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.54862482018</Longitude>
+											<Latitude>47.44439811652</Latitude>
+											<Altitude>334</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>02</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:StopPlace:PAG:673" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:673</PrivateCode>
+								<PrivateCode type="didok">8500673</PrivateCode>
+							</privateCodes>
+							<Name>Nenzlingen, Unterdorf</Name>
+							<Centroid>
+								<Location>
+									<Longitude>7.55897065317</Longitude>
+									<Latitude>47.44645652869</Latitude>
+									<Altitude>426</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+								<Quay id="ch:1:Quay:PAG:673:0:849549" version="1">
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:673:0:849549</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.55974023243</Longitude>
+											<Latitude>47.44671655914</Latitude>
+											<Altitude>429</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>01</PublicCode>
+								</Quay>
+								<Quay id="ch:1:Quay:PAG:673:0:688162" version="1">
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:673:0:688162</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.55841321559</Longitude>
+											<Latitude>47.44619627519</Latitude>
+											<Altitude>429</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>02</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+						<StopPlace id="ch:1:StopPlace:PAG:72204" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:72204</PrivateCode>
+								<PrivateCode type="didok">8572204</PrivateCode>
+							</privateCodes>
+							<Name>Nenzlingen, Dorfplatz</Name>
+							<Centroid>
+								<Location>
+									<Longitude>7.56195653551</Longitude>
+									<Latitude>47.44764062259</Latitude>
+									<Altitude>441</Altitude>
+								</Location>
+							</Centroid>
+							<quays>
+								<Quay id="ch:1:Quay:PAG:72204:0:352830" version="1">
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:72204:0:352830</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.56195653551</Longitude>
+											<Latitude>47.44764062259</Latitude>
+											<Altitude>441</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>01</PublicCode>
+								</Quay>
+							</quays>
+						</StopPlace>
+					</stopPlaces>
+				</SiteFrame>
+				<!-- SERVICE CALENDAR FRAME -->
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:PAG:1" version="1">
+					<validityConditions>
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:FrSaSaSoHolidayNightsCH" version="1">
+							<FromDate>2025-12-15T00:00:00</FromDate>
+							<ToDate>2026-12-12T23:59:59</ToDate>
+							<ValidDayBits>000011000001100010110000011000001100000110000011000001100000110000011000000100000110000011000001100000110000111000001100000110000011000011100000110001011000001100000110000011000001100000110000011000001100000110000011000001100000110000011000001100000110000011000001100000110000011000001100000110000011000001100000110000011000001100000110000011000001100000110000010</ValidDayBits>
+						</AvailabilityCondition>
+					</validityConditions>
+				</ServiceCalendarFrame>
+				<!-- SERVICE FRAME -->
+				<ServiceFrame id="ch:1:ServiceFrame:1" version="1">
+					<lines>
+						<!-- a Line should have its slnid as id -->
+						<Line id="ch:1:Line:PAG:1026478" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:PAG:Standard">
+							<privateCodes>
+								<PrivateCode type="SLNID">ch:1:slnid:1026478</PrivateCode>
+							</privateCodes>
+							<Name>Laufen - Zwingen - Nenzlingen - Grellingen</Name>
+							<ShortName>119</ShortName>
+							<TransportMode>bus</TransportMode>
+							<!-- the public code is not that -->
+							<PublicCode>Laufen - Zwingen - Nenzlingen - Grellingen</PublicCode>
+							<OperatorRef ref="ch:1:sboid:100602" version="1"/>
+							<LineType>fixed</LineType>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+						</Line>
+					</lines>
+					<scheduledStopPoints>
+						<!-- all SSP should have their sloid as id -->
+						<ScheduledStopPoint id="ch:1:ScheduledStopPoint:PAG:72178:01" version="1"/>
+						<ScheduledStopPoint id="ch:1:ScheduledStopPoint:PAG:72178:02" version="1"/>
+						<ScheduledStopPoint id="ch:1:ScheduledStopPoint:PAG:72202:01" version="1"/>
+						<ScheduledStopPoint id="ch:1:ScheduledStopPoint:PAG:72202:02" version="1"/>
+						<ScheduledStopPoint id="ch:1:ScheduledStopPoint:PAG:72203:01" version="1"/>
+						<ScheduledStopPoint id="ch:1:ScheduledStopPoint:PAG:72203:02" version="1"/>
+						<ScheduledStopPoint id="ch:1:ScheduledStopPoint:PAG:673:01" version="1"/>
+						<ScheduledStopPoint id="ch:1:ScheduledStopPoint:PAG:673:02" version="1"/>
+						<ScheduledStopPoint id="ch:1:ScheduledStopPoint:PAG:72204:01" version="1"/>
+					</scheduledStopPoints>
+					<stopAssignments>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:PAG:1026478:72178:01" version="1">
+							<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:72178:01" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:PAG:72178" version="1"/>
+							<QuayRef ref="ch:1:Quay:PAG:72178:0:273135" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:PAG:1026478:72178:02" version="1">
+							<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:72178:02" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:PAG:72178" version="1"/>
+							<QuayRef ref="ch:1:Quay:PAG:72178:0:535942" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:PAG:1026478:72202:01" version="1">
+							<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:72202:01" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:PAG:72202" version="1"/>
+							<QuayRef ref="ch:1:Quay:PAG:72202:0:134953" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:PAG:1026478:72202:02" version="1">
+							<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:72202:02" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:PAG:72202" version="1"/>
+							<QuayRef ref="ch:1:Quay:PAG:72202:0:195259" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:PAG:1026478:72203:01" version="1">
+							<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:72203:01" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:PAG:72203:1" version="1"/>
+							<QuayRef ref="ch:1:Quay:PAG:72203:0:404965:1" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:PAG:1026478:72203:02" version="1">
+							<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:72203:02" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:PAG:72203:1" version="1"/>
+							<QuayRef ref="ch:1:Quay:PAG:72203:0:171897:1" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:PAG:1026478:673:01" version="1">
+							<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:673:01" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:PAG:673" version="1"/>
+							<QuayRef ref="ch:1:Quay:PAG:673:0:849549" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:PAG:1026478:673:02" version="1">
+							<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:673:02" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:PAG:673" version="1"/>
+							<QuayRef ref="ch:1:Quay:PAG:673:0:688162" version="1"/>
+						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:PAG:1026478:72204:01" version="1">
+							<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:72204:01" version="1"/>
+							<StopPlaceRef ref="ch:1:StopPlace:PAG:72204" version="1"/>
+							<QuayRef ref="ch:1:Quay:PAG:72204:0:352830" version="1"/>
+						</PassengerStopAssignment>
+					</stopAssignments>
+					<timingLinks>
+						<TimingLink id="ch:1:TimingLink:PAG:1026478:11957:1" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:ScheduledStopPoint:PAG:72178:01" version="1"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:ScheduledStopPoint:PAG:72202:01" version="1"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:PAG:1026478:11957:2" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:ScheduledStopPoint:PAG:72202:01" version="1"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:ScheduledStopPoint:PAG:72203:01" version="1"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:PAG:1026478:11957:3" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:ScheduledStopPoint:PAG:72203:01" version="1"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:ScheduledStopPoint:PAG:673:01" version="1"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:PAG:1026478:11957:4" version="1">
+							<FromPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:ScheduledStopPoint:PAG:673:01" version="1"/>
+							<ToPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:ScheduledStopPoint:PAG:72204:01" version="1"/>
+						</TimingLink>
+					</timingLinks>
+					<journeyPatterns>
+						<ServiceJourneyPattern id="ch:1:ServiceJourney:PAG:1026478:11957" version="1">
+							<Name>Journey 11957</Name>
+							<RouteView>
+								<LineRef ref="ch:1:Line:PAG:1026478" version="1"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
+							<noticeAssignments>
+								<NoticeAssignment id="ch:1:NoticeAssignment:PAG:1026478:11957" version="1">
+									<NoticeRef ref="ch:1:Notice:A__GR"/>
+								</NoticeAssignment>
+							</noticeAssignments>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="ch:1:spijp:PAG:1026478:11957:1" version="1">
+									<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:72178:01"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:spijp:PAG:1026478:11957:2" version="1">
+									<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:72202:01"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:spijp:PAG:1026478:11957:3" version="1">
+									<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:72203:01"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:spijp:PAG:1026478:11957:4" version="1">
+									<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:673:01"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:spijp:PAG:1026478:11957:5" version="1">
+									<ScheduledStopPointRef ref="ch:1:ScheduledStopPoint:PAG:72204:01"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+							<ServiceJourneyPatternType>passenger</ServiceJourneyPatternType>
+						</ServiceJourneyPattern>
+					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="ch:1:TimeDemandType:PAG:1026478:11957:1" version="1">
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:PAG:1026478:11957:1" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:PAG:1026478:11957:1" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:PAG:1026478:11957:2" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:PAG:1026478:11957:2" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:PAG:1026478:11957:3" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:PAG:1026478:11957:3" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:PAG:1026478:11957:4" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:PAG:1026478:11957:4" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+						</TimeDemandType>
+					</timeDemandTypes>
+					<notices>
+						<!-- This is an Angebot. So it should be named with the A__GR label -->
+						<Notice id="ch:1:Notice:A__GR" version="1">
+							<Text lang="de">Gruppenreservation obligatorisch</Text>
+							<PublicCode>1</PublicCode>
+							<TypeOfNoticeRef ref="ch:1:TypeOfNotice:1" version="1"/>
+							<CanBeAdvertised>true</CanBeAdvertised>
+						</Notice>
+					</notices>
+				</ServiceFrame>
+				<!-- TIMETABLE FRAME -->
+				<TimetableFrame id="ch:1:TimetableFrame:PAG:1" version="1">
+					<vehicleJourneys>
+						<ServiceJourney id="ch:1:ServiceJourney:PAG:1026478:11957:1" responsibilitySetRef="ch:1:ResponsibilitySet:PAG:Standard" version="1">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:FrSaSaSoHolidayNightsCH" version="1"/>
+							</validityConditions>
+							<privateCodes>
+								<PrivateCode type="SJYID">ch:1:sjyid:generated-01</PrivateCode>
+							</privateCodes>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>04:34:00</DepartureTime>
+							<DepartureDayOffset>1</DepartureDayOffset>
+							<JourneyPatternRef ref="ch:1:ServiceJourney:PAG:1026478:11957" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:PAG:1026478:11957:1" version="1"/>
+							<LineRef ref="ch:1:Line:PAG:1026478" version="1"/>
+							<DirectionType>outbound</DirectionType>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:PAG:1026478:1" version="1"/>
+							</trainNumbers>
+						</ServiceJourney>
+					</vehicleJourneys>
+					<trainNumbers>
+						<TrainNumber id="ch:1:TrainNumber:PAG:1026478:1" version="1">
+							<!-- this we need to discuss: This should be exactly the content of the Z* part one -->
+							<ForAdvertisement>1026478</ForAdvertisement>
+						</TrainNumber>
+					</trainNumbers>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

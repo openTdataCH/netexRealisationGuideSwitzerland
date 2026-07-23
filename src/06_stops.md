@@ -50,7 +50,7 @@ classDiagram
 ### Contained Elements
 
 - `StopPlace`s – stations and stops 
-  - `Quay`s - platforms where passengers can board a vehicle
+  - `Quay`s - platforms where passengers can board or alight from a vehicle
 - `TopographicPlace`s - geographical and administrative area context for stops
 - Not currently modelled: entrances, levels, equipments, paths, accessibility properties, points of interest
 
@@ -65,13 +65,13 @@ classDiagram
 *→ [Template](./templates/SiteFrame.xml)*
 
 ### Frame Relationships
-`SiteFrame` is independent of other frames but provides the physical stop infrastructure that `ServiceFrame` references through `PassengerStopAssignments`. `TimetableFrame` indirectly depends on `SiteFrame` through the `JourneyPattern` stop sequence. `SiteFrame` is typically wrapped in a `CompositeFrame` within a `PublicationDelivery`.
+`SiteFrame` is independent of other frames but provides the physical stop infrastructure that `ServiceFrame` references through `PassengerStopAssignments`. `TimetableFrame` indirectly depends on `SiteFrame` through the `ServiceJourneyPattern` stop sequence. `SiteFrame` is typically wrapped in a `CompositeFrame` within a `PublicationDelivery`.
 
 ## StopPlace
 *→ [Glossary definition](A4_annex_glossary.md#stopplace)*
 
 ### Purpose
-A named physical or virtual location where passengers can board or alight from public transport, containing one or more `Quays`.
+A named physical or virtual location where passengers can board or alight from public transport, containing one or more `Quay`s.
 Note that a `StopPlace` is a distinct concept from the representation of the stop in a timetable – the `ScheduledStopPoint`. The two can be connected using a `PassengerStopAssignment`. 
 
 
@@ -86,13 +86,13 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 *→ [Template](./templates/StopPlace.xml)*
 
 ### Usage Notes
-- All `StopPlace`s in Switzerland are identifiable by both a DIDOK number and a SLOID. DIDOK number are under the responsability of the Department of Transport (BAV). It is possible that in the future the BAV will also regulate “Haltepunkte” and “Haltekanten” and, therefore, the identifiers of `Quays`.
+- All `StopPlace`s in Switzerland are identifiable by both a DIDOK number and a SLOID. DIDOK number are under the responsibility of the Department of Transport (BAV). It is possible that in the future the BAV will also regulate “Haltepunkte” and “Haltekanten” and, therefore, the identifiers of `Quay`s.
 - Foreign `StopPlace`s may be mapped to Swiss DIDOK codes. 
 - Meta-stations will have their own codes. In some cases these are added for operational or searching reasons. 
 - id-attribute needs to be kept stable between exports.
-- DIDOK number placement:** The DIDOK number is **not** transported as free text anywhere on `StopPlace`. It is placed in `privateCodes/PrivateCode` with `type="Didok"`, **and** the same value must additionally be listed in the `KeyList` (`KeyValue` with matching `Key`). Both are required — the `PrivateCode` for direct lookup, the `KeyList` entry for generic key/value tooling.
-- `ShortName` is not used on `StopPlace`.** In particular, the DIDOK number must **never** be placed in `ShortName` — this was common practice under Profile 1.0 / HRDF-based exports and is explicitly discontinued under RV 2.0.
-- `ValidBetween`:** Every `StopPlace` carries a `ValidBetween` with a `FromDate`. Since `StopPlace` is infrastructure master data (not a timetable-period object), **no `ToDate` is set** — validity is open-ended until a future change is published.
+- DIDOK number placement: The DIDOK number is **not** transported as free text anywhere on `StopPlace`. It is placed in `privateCodes/PrivateCode` with `type="didok"`, **and** the same value must additionally be listed in the `KeyList` (`KeyValue` with matching `Key`). Both are required — the `PrivateCode` for direct lookup, the `KeyList` entry for generic key/value tooling.
+- `ShortName` is not used on `StopPlace`. In particular, the DIDOK number must **never** be placed in `ShortName` — this was common practice under Profile 1.0 / HRDF-based exports and is explicitly discontinued under RV 2.0.
+- `ValidBetween`: Every `StopPlace` carries a `ValidBetween` with a `FromDate`. Since `StopPlace` is infrastructure master data (not a timetable-period object), **no `ToDate` is set** — validity is open-ended until a future change is published.
 
 #### Example: DIDOK number and validity on `StopPlace`
 ```xml
@@ -102,11 +102,11 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
   </ValidBetween>
   <Name>Zürich HB</Name>
   <privateCodes>
-    <PrivateCode type="Didok">8503000</PrivateCode>
+    <PrivateCode type="didok">8503000</PrivateCode>
   </privateCodes>
   <keyList>
     <KeyValue>
-      <Key>Didok</Key>
+      <Key>didok</Key>
       <Value>8503000</Value>
     </KeyValue>
   </keyList>
@@ -131,7 +131,7 @@ A specific boarding or alighting position (platform, stand, bay) within a `StopP
 *→ [Template](./templates/Quay.xml)*
 
 ### Usage Notes
-- In standard NeTEx, a `Quay` may serve one or more `VehicleStoppingPlace`s and be associated with one or more `StopPoints`s. The Swiss profile does not currently model that.
+- In standard NeTEx, a `Quay` may serve one or more `VehicleStoppingPlace`s and be associated with one or more `StopPoint`s. The Swiss profile does not currently model that.
 - A `Quay` may contain other sub `Quay`s. A child `Quay` must be physically contained within its parent `Quay`.  Furthermore: 
   - A nested `Quay` is always physically contiguous with its parent and so has the same accessibility characteristics 
 as its parent. 
@@ -152,7 +152,7 @@ In the table below you will find an overview of the possible cases. For more inf
 | Non-unique track sloid | ch:1:sloid:7000_gen:ch:1:sloid:7000:0:349752_pf:2A-D | ch:1:sloid:7000:0:349752 |
 | Non-unique SLOID with special characters "11/12" | ch:1:sloid:6206_gen:ch:1:sloid:6206:0:11_pf:11.12 | ch:1:sloid:6206:0:11 |
 | non platform SLOID | ch:1:sloid:1102381_gen:missingSLOID_pf:1 | |
-| No Sloid (abroad) | 8029701_gen:missingSLOID_pf:1 | |
+| No SLOID (abroad) | 8029701_gen:missingSLOID_pf:1 | |
 
 *Table: SLOID and id in NeTEx*
 
@@ -162,14 +162,14 @@ In the table below you will find an overview of the possible cases. For more inf
 - Combinations of several quays are considered as independent quays. 
 
 Further notes:
-- We will at some point include also `Quay`s that are not used actually to have the base data, if they are needed in real-time.
+- In the future we intend to also include `Quay`s that remain unused by the regular timetable - this will alllow to properly handle real-time data that may refer to such "unused" `Quay`s.
 - Atlas does model the hierarchy of the quays.
 
 ## TopographicPlace
 *→ [Glossary definition](A4_annex_glossary.md#topographicplace)*
 
 ### Purpose
-A named geographic area such as a city, municipality, county, or region - used to provide spatial context for `StopPlaces`, for example when interactively searching for the origin or destination of a trip.
+A named geographic area such as a city, municipality, county, or region - used to provide spatial context for `StopPlace`s, for example when interactively searching for the origin or destination of a trip.
 
 
 ### Table

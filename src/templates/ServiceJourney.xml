@@ -15,7 +15,7 @@
 								<!-- ch-note: Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
 								<AvailabilityConditionRef ref="generated" versionRef="1">
 									<!-- ch-usage: mandatory -->
-									<!-- ch-note: Only a single occurrence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored. -->
+									<!-- ch-note: Only a single AvailabilityConditionRef is allowed. -->
 								</AvailabilityConditionRef>
 							</validityConditions>
 							<keyList>
@@ -33,7 +33,7 @@
 								<PrivateCode type="sjyid">
 									<!-- ch-usage: expected -->
                                     <!-- ch-attrs: type -->
-                                    <!-- ch-note: The following types are possible: sjyid and rn. rn is the used for the Postauto region -->
+                                    <!-- ch-note: The following types are possible: sjyid and rn. rn is the type used for the Postauto region. -->
 									ch:1:sjyid:100001:71707-003
 								</PrivateCode>
 								<PrivateCode type="rn">12</PrivateCode>
@@ -49,7 +49,7 @@
 							</TransportMode>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1">
 								<!-- ch-usage: mandatory -->
-                                <!-- ch-note: relevant elements are defined in the mapping excel. -->
+                                <!-- ch-note: Relevant elements are defined in the mapping excel. -->
 							</TypeOfProductCategoryRef>
 							<TypeOfServiceRef ref="ch:1:TypeOfService:1" versionRef="1">
 								<!-- ch-usage: optional -->
@@ -57,7 +57,7 @@
 							</TypeOfServiceRef>
 							<noticeAssignments>
 								<!-- ch-usage: optional -->
-								<!-- ch-note: The complete set of all applicable notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop. -->
+								<!-- ch-note: The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop). -->
 								<NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
 									<!-- ch-usage: optional -->
 									<!-- ch-see -->
@@ -78,7 +78,7 @@
 							<ServiceAlteration>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-allowed-enums: planned -->
-								<!-- ch-note: Only the value planned is allowed. We might add the others like cancelled later. -->
+								<!-- ch-note: Only the value planned is allowed. We might add the others, like cancelled, later. -->
 								planned
 							</ServiceAlteration>
 							<DepartureTime><!-- ch-usage: expected -->06:21:00</DepartureTime>
@@ -113,7 +113,8 @@
 							<Destination>
 								<!-- ch-usage: expected -->
 								<!-- ch-see -->
-								<ScheduledStopPointRef versionRef="1" ref="ch:1:sloid:3412"/>
+							    <ScheduledStopPointRef ref="generated" versionRef="1"/>
+                                <DestinationDisplayRef versionRef="1" ref="generated"/>
 							</Destination>
 							<passingTimes>
 								<!-- ch-usage: forbidden -->

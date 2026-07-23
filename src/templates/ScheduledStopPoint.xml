@@ -9,8 +9,9 @@
 					<scheduledStopPoints>
 						<ScheduledStopPoint id="ch:1:sloid:4128:1:1" version="1">
        						<!-- ch-root -->
-							<!-- ch-note: Swiss ScheduledStopPoint are using the sloid in the id, when possible.-->
+							<!-- ch-note: Swiss ScheduledStopPoint are using the sloid in the id if possible. We keep the ScheduledStopPoint very minimalistic. The information is stored in the SiteFrame.-->
 							<!-- ch-usage: mandatory -->
+							<!-- ch-attrs: id version -->
 							<keyList>
 								<!-- ch-usage: optional -->
 								<KeyValue>
@@ -25,10 +26,10 @@
 								</KeyValue>
 							</keyList>
                             <privateCodes>
-                                <!-- ch-usage: mandatory -->
-                                <PrivateCode type="sloid"><!-- ch-usage: mandatory -->ch:1:sloid:4128:1:1</PrivateCode>
+                                <!-- ch-usage: optional -->
+                                <PrivateCode type="sloid"><!-- ch-usage: optional --><!-- ch-note: If the id is not a SLOID then the SLOID must be added here. -->ch:1:sloid:4128:1:1</PrivateCode>
                             </privateCodes>
-							<Name lang="de"><!-- ch-usage: optional --><!-- ch-note: The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay-->Murten/Morat</Name>
+							<Name lang="de"><!-- ch-usage: optional --><!-- ch-note: The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay. -->Murten/Morat</Name>
 							<ShortName lang="de"><!-- ch-usage: forbidden -->1</ShortName>
 							<PublicCode><!-- ch-usage: optional --><!-- ch-note: For Quay contains the plattform number/letter. -->1</PublicCode>
 						</ScheduledStopPoint>

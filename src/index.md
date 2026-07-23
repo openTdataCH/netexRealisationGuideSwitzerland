@@ -44,29 +44,30 @@ This document describes the way in which the NeTEx standard is specifically appl
   - [Direct carriages ("Kurswagen")](uc08_kurswagen.md)
   - [Accessibility](uc09_accessibility.md)
   - [Journeys passing midnight](uc10_midnight_passing.md)
-  - Later: [Touristic offers](uc11_touristic_offers.md)
-  - Later: [Car transport rail](uc12_carTransportRail.md)
-  - Later: [Changes in the destination](uc13_changes_in_destination.md)
+  - **LATER**: [Touristic offers](uc11_touristic_offers.md)
+  - **LATER**: [Car transport rail](uc12_carTransportRail.md)
+  - **LATER**: [Changes in the destination](uc13_changes_in_destination.md)
   - [Frequency based ServiceJourney](uc14_frequencies.md)
-  - Later: [Formations](uc15_formations.md)
-- Mapping tables
-  - Modes
-  - ServiceAttribute 
+  - **LATER**: [Formations](uc15_formations.md)
+  - **LATER**: [Demand Responsive Traffic](uc16_drt.md)
+  - [Mixed Lines](uc17_mixed_lines.md)
+- Mapping tables are defined in an [Excel](media/Mappingtabellen_NeTEx_v2.0.xlsx)
 - Annexes:
   - [Resources and references](A1_annex_resources_references.md)
   - [Differences between Swiss profile and EPIP/EPIAP and how they could be amended](A2_annex_comparison_EPIP_EPIAP.md)
   - [Differences to the French and nordic profile](A3_annex_comparison_France_Norway.md)
   - [Glossary](A4_annex_glossary.md)
-  - [Changelog and migration from Swiss profile 1.0 to 2.0)](A5_changelog_migration.md)
+  - [Index](A5_index.md)
+  - [Changelog and migration from Swiss profile 1.0 to 2.0)](A6_changelog_migration.md)
 
 
 ## Examples
 We have a [set of examples](./examples/README.md) that show how to create use cases with the realisation guide.
 
 ## Impressum
-* Authors: Thomas Schäfer, Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Martin Bennett, Simon Freihart, Emeric Tapia-Almosnino, Matthias Günter
+* Authors: Matthias Günter,  Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Thomas Schäfer, Simon Freihart, Emeric Tapia-Almosnino, 
 * Status: Draft
-* Last change: **TODO**
+* Last change: 2026-07-31
 * Contact: info.fachbus@sbb.ch
 
 ## Copyright / License

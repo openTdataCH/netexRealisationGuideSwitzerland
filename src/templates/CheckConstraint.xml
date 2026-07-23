@@ -49,10 +49,12 @@
 									<!-- ch-note: CheckConstraints are used for different use cases -->
 									<CheckDirection><!-- ch-usage: optional --><!-- ch-note: We usually only use one direction. -->forwards</CheckDirection>
 									<CheckProcess><!-- ch-usage: optional --><!-- ch-note: Only a given subset is allowed --><!-- ch-allowed-enums: alighting boarding queue -->alighting</CheckProcess>
+									<Congestion><!-- ch-usage: optional --><!-- ch:note: Currently not used, but may be in future -->queue</Congestion>
 									<delays>
 										<!-- ch-usage: expected -->
 										<CheckConstraintDelay id="generated" version="1">
 											<!-- ch-usage: expected -->
+											<!-- ch-note: We currently only model delays -->
 											<AverageDelay><!-- ch-usage: expected -->PT4M</AverageDelay>
 											<MaximumLikelyDelay><!-- ch-usage: optional -->PT8M</MaximumLikelyDelay>
 										</CheckConstraintDelay>
