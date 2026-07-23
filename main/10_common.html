@@ -468,7 +468,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
   <span class="nt">&lt;TimeZoneOffset&gt;</span>1
   <span class="c">&lt;!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) --&gt;</span>
   <span class="nt">&lt;/TimeZoneOffset&gt;</span>
-  <span class="nt">&lt;TimeZone&gt;</span>Europe/Berlin<span class="nt">&lt;/TimeZone&gt;</span>
+  <span class="nt">&lt;TimeZone&gt;</span>Europe/Zurich<span class="nt">&lt;/TimeZone&gt;</span>
   <span class="nt">&lt;SummerTimeZoneOffset&gt;</span>2
   <span class="c">&lt;!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) --&gt;</span>
   <span class="nt">&lt;/SummerTimeZoneOffset&gt;</span>
@@ -483,7 +483,10 @@ Additional languages are introduced through the <a href="#alternativename">Alter
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/FrameDefaults.xml">Template</a></em></p>
 
 <h4 id="usage-notes-3">Usage Notes</h4>
-<p>For values not set in <code class="language-plaintext highlighter-rouge">FrameDefaults</code> we use the values as indicated in the table and example above.</p>
+<ul>
+  <li>For values not set in <code class="language-plaintext highlighter-rouge">FrameDefaults</code> we use the values as indicated in the table and example above.</li>
+  <li>We know that the use of the TimezoneOffset are redundant to the TimeZone, but we believe it may make consumption easier and the additional two lines are not really expensive.</li>
+</ul>
 
 <h3 id="resourceframe">ResourceFrame</h3>
 

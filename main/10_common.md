@@ -257,7 +257,7 @@ Holds default values for certain basic parameters.
   <TimeZoneOffset>1
   <!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) -->
   </TimeZoneOffset>
-  <TimeZone>Europe/Berlin</TimeZone>
+  <TimeZone>Europe/Zurich</TimeZone>
   <SummerTimeZoneOffset>2
   <!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) -->
   </SummerTimeZoneOffset>
@@ -274,7 +274,8 @@ Holds default values for certain basic parameters.
 *→ [Template](./templates/FrameDefaults.xml)*
 
 #### Usage Notes
-For values not set in `FrameDefaults` we use the values as indicated in the table and example above.
+- For values not set in `FrameDefaults` we use the values as indicated in the table and example above.
+- We know that the use of the TimezoneOffset are redundant to the TimeZone, but we believe it may make consumption easier and the additional two lines are not really expensive.
 
 
 
