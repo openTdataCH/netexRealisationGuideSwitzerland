@@ -73,12 +73,17 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 
 - **Template vs. Instance:** `ServiceJourney` is the template; `DatedServiceJourney` represents concrete daily instances.
 - **Consistency:** A `ServiceJourney` must reference exactly one `JourneyPattern`. The pattern's stop sequence is authoritative.
-- **Stop Times:** Each stop in the referenced `JourneyPattern` must have exactly one `TimetabledPassingTimes` entry with `ArrivalTime` and/or `DepartureTime`.
 - **Day Governance:** `DayType` references control on which days the journey operates; per-date deviations belong to `DatedServiceJourney`.
 - **Validation:** Ensure `JourneyPatternRef`, `LineRef`, and `OperatorRef` are consistent and reference existing objects.
 - We assume that a swiss journey exists for almost every `ServiceJourney`. In those cases the `id` is also set to the `sjyid`. Possible problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `id` will contain a `_gen` substring.
 - A `ServiceJourney`can be associated with exactly one `ServiceJourneyPattern` and `TimeDemandType`.
 - id-attribute needs to be kept stable between exports.
+
+
+### Calculation of passing times at stops
+The departure and arrival times of a `ServiceJourney` are determined by the `ServiceJourneyPattern` and the `TimeDemandType` referenced by the `ServiceJourney`.
+Element `ServiceJourney/DepartureTime` contains the departure time at the first `ScheduledStopPoint` indicated by  `ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern[1]`. The arrival time at all subsequent `ScheduledStopPoint`s is calculated by adding the run time between the previous `ScheduledStopPoint` and the current `ScheduledStopPoint` of the `ServiceJourneyPattern`. The correct run time is obtained by searching `TimeDemandType/runTimes/JourneyRunTime/Runtime` with the `TimingLink` corresponding to the previous and current `ScheduledStopPoint`. The `TimingLink` to be used is indicated by `ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern/OnwardTimingLinkRef`.
+The departure time at each `ScheduledStopPoint` is obtained by adding `TimeDemandType/waitTimes/JourneyWaitTime/Waitime` for the `ScheduledStopPoint`. Please observe that a `ScheduledStopPoint` may be visited more than once within a `ServiceJourneyPattern` and may have different waiting times at each visit. In this case, `TimeDemandType/waitTimes/StopPointInJourneyPatternRef` will be used to override `TimeDemandType/waitTimes/ScheduledStopPointRef`. 
 
 ## TemplateServiceJourney
 *→ [Glossary definition](A4_annex_glossary.md#templateservicejourney)*
