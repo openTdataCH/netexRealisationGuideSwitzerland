@@ -23,7 +23,7 @@ We don't reference `CheckConstriants` but they are always instantiated in the `S
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/CheckConstraint.md)
 
-*-> [General NeTEx definition](../generated/netex-html/CheckConstraint.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/CheckConstraint.html)*
 
 ### Example
 

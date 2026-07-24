@@ -314,7 +314,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/TypeOfProductCategory.md)
 
-*→ [General NeTEx definition](../generated/netex-html/TypeOfProductCategory.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/TypeOfProductCategory.html)*
 
 
 ####  Example
@@ -337,7 +337,7 @@ A legally incorporated body associated with any aspect of public transportation.
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/Operator.md)
 
-*→ [General NeTEx definition](../generated/netex-html/Operator.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/Operator.html)*
 
 #### Example
 - [XML Snippet](../site/xml-snippets/Operator.xml)
@@ -363,7 +363,7 @@ Set of `Facility`'s available for a `ServiceJourney` or a `JourneyPart`.
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceFacilitySet.md)
 
-*→ [General NeTEx definition](../generated/netex-html/ServiceFacilitySet.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/ServiceFacilitySet.html)*
 
 #### Example
 - [XML Snippet](../site/xml-snippets/ServiceFacilitySet.xml)
@@ -406,7 +406,7 @@ referenced to define facilities of a site.
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/SiteFacilitySet.md)
 
-*→ [General NeTEx definition](../generated/netex-html/SiteFacilitySet.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/SiteFacilitySet.html)*
 
 #### Example
 - [XML Snippet](../site/xml-snippets/SiteFacilitySet.xml)
@@ -432,7 +432,7 @@ A typified vehicle configuration (model or series) defining reusable characteris
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/VehicleType.md)
 
-*→ [General NeTEx definition](../generated/netex-html/VehicleType.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/VehicleType.html)*
 
 #### Example
 - [XML Snippet](../site/xml-snippets/VehicleType.xml)
