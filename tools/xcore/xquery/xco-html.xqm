@@ -71,13 +71,13 @@ declare function hl:contabReport($report as element()?,
                 for $domain in $domains/domain
                 let $_DEBUG := trace($domain/@name, '*** Create report for domain: ')
                 let $domainReport := 
-                    if ($report) then $report/z:domain[@z:id eq $domain/@id]
+                    if (($report) and($report/z:domain[@z:id eq $domain/@id])) then $report/z:domain[@z:id eq $domain/@id]
                     else 
                         let $inputPath := dm:getInputReportPath('edesc', $reportDir, $domain, $options)
                         return doc($inputPath)/*
                 return ( 
-                    $domainReport/hl:contabReport_domain(., $domain, $options),
-                    $domainReport/hl:enumDict_domain(., $domain, $options)[$withEnumDict]
+                    hl:contabReport_domain($domainReport, $domain, $options),
+                    hl:enumDict_domain($domainReport, $domain, $options)[$withEnumDict]
                 ),
                 hl:contabReportIndex($domains/domain, $options)
             )
@@ -159,12 +159,12 @@ declare function hl:contabReport_domain(
             
     let $title := ($domain/processing/title/<h1>{node()}</h1>, <h1>API Content</h1>)[1]
     let $htmlReport := hl:create_html_with_toc($head, $xsdDivs, $title, $toc)
-    | hu:finalizeHtmlReport(., $options)
-    | u:prettyNode(.)
+    let $finalizedHtmlReport := hu:finalizeHtmlReport($htmlReport, $options)
+    let $prettyHtmlReport := u:prettyNode($finalizedHtmlReport)
     let $_WRITE :=
         let $reportPath := dm:getReportPath('contab', $domain, $options)
         where ($reportPath)
-        return u:writeXhtmlDoc($reportPath, $htmlReport)
+        return u:writeXhtmlDoc($reportPath, $prettyHtmlReport)
     return $htmlReport       
 };
 
@@ -182,7 +182,7 @@ declare function hl:create_html($head as element(), $content as element()) as el
       }</html>
 };
 
-declare function hl:create_html_with_toc($head as element(), $content as element(), $title as element(), $toc as element()) as element() {
+declare function hl:create_html_with_toc($head as element(), $content, $title as element(), $toc as element()) as element() {
       <html lang="en" xml:lang="en"> {
             $head,
             <body>{
