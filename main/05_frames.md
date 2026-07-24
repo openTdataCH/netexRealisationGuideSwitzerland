@@ -39,7 +39,7 @@ For PublicationDelivery have a good look at how the attributes must be done in t
 
 
 
-*→ [Original NeTEx table](../generated/netex-html/PublicationDelivery.html)*
+*→ [Original NeTEx table](../xcore/netex/elements/PublicationDelivery.html)*
 
 ### Example
 
@@ -130,7 +130,7 @@ Their full documentation can be found here: [ResourceFrame](10_common.md#resourc
 
 
 
-*→ [General NeTEx definition](../generated/netex-html/CompositeFrame.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/CompositeFrame.html)*
 
 ### Example
 

@@ -567,7 +567,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 
 
 
-*→ [General NeTEx definition](../generated/netex-html/TypeOfProductCategory.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/TypeOfProductCategory.html)*
 
 
 ####  Example
@@ -633,7 +633,7 @@ We will use this organisation also in AuthorityRef. The problem is that the sboi
 
 
 
-*→ [General NeTEx definition](../generated/netex-html/Operator.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/Operator.html)*
 
 #### Example
 
@@ -724,7 +724,7 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 
 
 
-*→ [General NeTEx definition](../generated/netex-html/ServiceFacilitySet.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/ServiceFacilitySet.html)*
 
 #### Example
 
@@ -819,7 +819,7 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 
 
 
-*→ [General NeTEx definition](../generated/netex-html/SiteFacilitySet.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/SiteFacilitySet.html)*
 
 #### Example
 
@@ -889,7 +889,7 @@ Used currently mainly for the relevant accessibility elements that can be expres
 
 
 
-*→ [General NeTEx definition](../generated/netex-html/VehicleType.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/VehicleType.html)*
 
 #### Example
 

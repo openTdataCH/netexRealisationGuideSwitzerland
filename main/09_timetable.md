@@ -69,7 +69,7 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 
 
 
-*→ [General NeTEx definition ](../generated/netex-html/TimetableFrame.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/TimetableFrame.html)*
 
 ### Example
 
@@ -173,7 +173,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 
 
 
-*→ [General NeTEx definition ](../generated/netex-html/ServiceJourney.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/ServiceJourney.html)*
 
 ### Example
 
@@ -341,7 +341,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 
 
 
-*→ [General NeTEx definition ](../generated/netex-html/TemplateServiceJourney.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/TemplateServiceJourney.html)*
 
 ### Example
 
@@ -480,7 +480,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 
 
 
-*→ [General NeTEx definition ](../generated/netex-html/OccupancyView.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/OccupancyView.html)*
 
 ### Example
 
@@ -537,7 +537,7 @@ The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advert
 
 
 
-*→ [General NeTEx definition ](../generated/netex-html/TrainNumber.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/TrainNumber.html)*
 
 ### Example
 
@@ -585,7 +585,7 @@ The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advert
 
 
 
-*→ [General NeTEx definition](../generated/netex-html/TypeOfService.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/TypeOfService.html)*
 
 ### Example
 
@@ -662,7 +662,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 
 
 
-*→ [General NeTEx definition ](../generated/netex-html/ServiceJourneyInterchange.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/ServiceJourneyInterchange.html)*
 
 ### Example
 

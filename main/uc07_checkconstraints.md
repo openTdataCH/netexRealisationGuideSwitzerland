@@ -41,7 +41,7 @@ CheckConstraints are used for different use cases
 
 
 
-*-> [General NeTEx definition](../generated/netex-html/CheckConstraint.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/CheckConstraint.html)*
 
 ### Example
 
