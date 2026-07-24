@@ -1,8 +1,8 @@
 # The Frames Structure
 In this chapter:
-- [PublicationDelivery](#PublicationDelivery)
-- [Frames](#Frames)
-- [CompositeFrame](#CompositeFrame)
+- [PublicationDelivery](#publicationdelivery)
+- [Frames](#frames)
+- [CompositeFrame](#compositeframe)
 
 ## PublicationDelivery
 *→ [Glossary definition](A4_annex_glossary.md#publicationdelivery)*
@@ -36,7 +36,7 @@ We use the following frames in Switzerland:
 
 | Frame                                                                | Description                                                                                                                                                                                                                                                                    |
 |----------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [CompositeFrame](#CompositeFrame)                                    | Container for the `FrameDefaults` and the other frames.                                                                                                                                                                                                                        |
+| [CompositeFrame](#compositeframe)                                    | Container for the `FrameDefaults` and the other frames.                                                                                                                                                                                                                        |
 | [ResourceFrame](10_common.md#resourceframe)                          | General purpose elements such as `ResponsibilitySet`, `Organisation`, `Operator`, `SiteFacilitySet` and `ServiceFacilitySet`. `TypeOfProductCategory` and `TypeOfNotice` are to be defined in a `ValueSet`.                                                                    |
 | [SiteFrame](06_stops.md#siteframe)                                   | Contains the physical infrastructure model: Encloses elements describing locations like `Site`, `StopPlace`, `Quay` and `TopographicPlace`.                                                                                                                                    |
 | [ServiceFrame](07_service.md#serviceframe)                           | Contains, among other, the network model with elements such as `Line` and `Route`, the service pattern model with `ScheduledStopPoint`, `ServiceJourneyPattern` and `TimingLink`, and the topological model of interchanges with `DefaultConnection`,                                                                          `SiteConnection`. |

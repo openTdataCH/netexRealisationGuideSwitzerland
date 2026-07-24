@@ -15,8 +15,8 @@ In this chapter:
 - [TimingLink](#timinglink)
 - [ServiceJourneyPattern](#servicejourneypattern)
 - [TimeDemandType](#timedemandtype)
-- [Notice](#Notice)
-- [NoticeAssignment](#NoticeAssignment)
+- [Notice](#notice)
+- [NoticeAssignment](#noticeassignment)
 
 ## ServiceFrame
 *→ [Glossary definition](A4_annex_glossary.md#serviceframe)*
