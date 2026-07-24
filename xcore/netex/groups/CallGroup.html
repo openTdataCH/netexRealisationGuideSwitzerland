@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en"> <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>NeTEx</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../../asciidoc.css"/>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="content">
+      <div class="sect2" id="group.netex:CallGroup">
+        <h3>231.3. The group <code>netex:CallGroup</code></h3>
+        <div class="sectionbody">
+          <table class="tableblock frame-all grid-all spread">
+            <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+            <tbody>
+              <tr>
+                <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:CallGroup</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock anno-text">Elements describing the CALL.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="9" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/StopPointInJourneyPatternViewPropertiesGroup.html" title="netex:StopPointInJourneyPatternViewPropertiesGroup">netex:StopPointInJourneyPatternViewPropertiesGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:VisitNumber</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>xs:positiveInteger</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Count of number of visits to this stop - as per SIRI use. Default is 1</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock">The element contains <em>one</em> of the following elements (a-b)</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>a</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>→‍<a shape="rect" href="../../netex/elements/ScheduledStopPointRef.html" title="netex:ScheduledStopPointRef">netex:ScheduledStopPointRef</a></strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/ScheduledStopPointRefStructure.html" title="netex:ScheduledStopPointRefStructure">netex:ScheduledStopPointRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a SCHEDULED STOP POINT.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>b</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>→‍<a shape="rect" href="../../netex/elements/ScheduledStopPointView.html" title="netex:ScheduledStopPointView">netex:ScheduledStopPointView</a></strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/ScheduledStopPoint_DerivedViewStructure.html" title="netex:ScheduledStopPoint_DerivedViewStructure">netex:ScheduledStopPoint_DerivedViewStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Simplified view of SCHEDULED STOP POINT. Includes derived some propertries of a stop.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/OnwardTimingLinkView.html" title="netex:OnwardTimingLinkView">netex:OnwardTimingLinkView</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-58.7" title="local-type: typedef-58.7">local-type: typedef-58.7</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Information about onwards TIMING LINK.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock">The element contains <em>none or one</em> of the following elements (a-b)</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>a</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>netex:OnwardServiceLinkRef</strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/ServiceLinkRefStructure.html" title="netex:ServiceLinkRefStructure">netex:ServiceLinkRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">reference to onwards SERVICE LINK.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>b</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>→‍<a shape="rect" href="../../netex/elements/OnwardServiceLinkView.html" title="netex:OnwardServiceLinkView">netex:OnwardServiceLinkView</a></strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-51.9" title="local-type: typedef-51.9">local-type: typedef-51.9</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Information about an onwards SERVICE LINK.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:TimingPointStatus</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../netex/complexTypes/TimingPointStatusEnumeration.html" title="netex:TimingPointStatusEnumeration">netex:TimingPointStatusEnumeration</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Nature of TIMING POINT. Default is primary.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="2" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/CallGroup.html" title="netex:CallGroup">netex:CallGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/ServiceJourneyRef.html" title="netex:ServiceJourneyRef">netex:ServiceJourneyRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/ServiceJourneyRefStructure.html" title="netex:ServiceJourneyRefStructure">netex:ServiceJourneyRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a SERVICE JOURNEY.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:PointInJourneyPatternRef</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/PointInJourneyPatternRefStructure.html" title="netex:PointInJourneyPatternRefStructure">netex:PointInJourneyPatternRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Point in JOURNEY PATTERN upon which this call is based. Can be used to obtain full association sets.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="3" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/CallTimingGroup.html" title="netex:CallTimingGroup">netex:CallTimingGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:Arrival</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/ArrivalStructure.html" title="netex:ArrivalStructure">netex:ArrivalStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Arrival at CALL.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:Departure</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/DepartureStructure.html" title="netex:DepartureStructure">netex:DepartureStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Departure from a CALL.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:Frequency</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/FrequencyStructure.html" title="netex:FrequencyStructure">netex:FrequencyStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Frequency of service at CALL.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock">The element contains <em>none or one</em> of the following elements (a-b)</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="3" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/DestinationViaGroup.html" title="netex:DestinationViaGroup">netex:DestinationViaGroup</a></td>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>a</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>→‍<a shape="rect" href="../../netex/elements/DestinationDisplayRef.html" title="netex:DestinationDisplayRef">netex:DestinationDisplayRef</a></strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/DestinationDisplayRefStructure.html" title="netex:DestinationDisplayRefStructure">netex:DestinationDisplayRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a DESTINATION DISPLAY.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>b</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>→‍<a shape="rect" href="../../netex/elements/DestinationDisplayView.html" title="netex:DestinationDisplayView">netex:DestinationDisplayView</a></strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-372.10" title="local-type: typedef-372.10">local-type: typedef-372.10</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Simplified view of a DESTINATION DISPLAY. Includes derived properties of the DESTINATION DISPLAY.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:vias</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/vias_RelStructure.html" title="netex:vias_RelStructure">netex:vias_RelStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Destinations that the SERVICE goes via.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="4" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/PointInPatternPropertiesGroup.html" title="netex:PointInPatternPropertiesGroup">netex:PointInPatternPropertiesGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/FlexiblePointProperties.html" title="netex:FlexiblePointProperties">netex:FlexiblePointProperties</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-233.4" title="local-type: typedef-233.4">local-type: typedef-233.4</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Flexible properties of a POINT.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:ChangeOfDestinationDisplay</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>xs:boolean</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Whether DESTINATION DISPLAY should be updated at this point. If DESTINATION NAME value is different from Previous stop this is implicit.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:ChangeOfServiceRequirements</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>xs:boolean</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Whether Service Requirements Change at this point.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:noticeAssignments</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-41.4" title="local-type: typedef-41.4">local-type: typedef-41.4</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">NOTICEs for POINT IN JOURNEY PATTERN.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="5" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/StopPointInPatternPropertiesGroup.html" title="netex:StopPointInPatternPropertiesGroup">netex:StopPointInPatternPropertiesGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:RequestStop</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>xs:boolean</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Whether stop is a request stop for this journey. Default is false.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:RequestMethod</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../netex/complexTypes/RequestMethodTypeEnumeration.html" title="netex:RequestMethodTypeEnumeration">netex:RequestMethodTypeEnumeration</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Method to Request Stop in this particular service pattern; if none specified, as as per stop. DEPRECATED: USE BoardingRquestMethod OR AlightingRequestMethod INSTEAD. -v2.0</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:BoardingRequestMethod</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../netex/complexTypes/RequestMethodTypeListOfEnumerations.html" title="netex:RequestMethodTypeListOfEnumerations">netex:RequestMethodTypeListOfEnumerations</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Methods to Request Stop for boarding in this particular service pattern; Default is noneRequired. +v2.0</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:AlightingRequestMethod</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../netex/complexTypes/RequestMethodTypeListOfEnumerations.html" title="netex:RequestMethodTypeListOfEnumerations">netex:RequestMethodTypeListOfEnumerations</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Methods to Request Stop for alighting in this particular service pattern; Default is noneRequired. +v2.0</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:StopUse</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../netex/complexTypes/StopUseEnumeration.html" title="netex:StopUseEnumeration">netex:StopUseEnumeration</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Nature of use of stop, e.g. access, interchange only, or pass through. Default is Access.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock">The element contains <em>one</em> of the following elements (a-b)</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="3" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/QuayAssignmentGroup.html" title="netex:QuayAssignmentGroup">netex:QuayAssignmentGroup</a></td>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>a</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/PassengerStopAssignmentRef.html" title="netex:PassengerStopAssignmentRef">netex:PassengerStopAssignmentRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single, part of a choice">-0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/PassengerStopAssignmentRefStructure.html" title="netex:PassengerStopAssignmentRefStructure">netex:PassengerStopAssignmentRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a PASSENGER STOP ASSIGNMENT.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>b</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/QuayAssignmentView.html" title="netex:QuayAssignmentView">netex:QuayAssignmentView</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single, part of a choice">-0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-235.5" title="local-type: typedef-235.5">local-type: typedef-235.5</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Assignment to a specific QUAY within the STOP PLACE.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/DynamicStopAssignment.html" title="netex:DynamicStopAssignment">netex:DynamicStopAssignment</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-235.4" title="local-type: typedef-235.4">local-type: typedef-235.4</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Change to a PASSENGER STOP ASSIGNMENT.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="5" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/StopPointInPatternPropertiesGroup.html" title="netex:StopPointInPatternPropertiesGroup">netex:StopPointInPatternPropertiesGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/AccessibilityAssessment.html" title="netex:AccessibilityAssessment">netex:AccessibilityAssessment</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-354.2" title="local-type: typedef-354.2">local-type: typedef-354.2</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">The accessibility characteristics of an entity used by passengers such as a STOP PLACE, or a STOP PLACE COMPONENT. Described by ACCESSIBILITY LIMITATIONs, and/or a set of SUITABILITies.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:checkConstraints</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/checkConstraints_RelStructure.html" title="netex:checkConstraints_RelStructure">netex:checkConstraints_RelStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Implements the navigation from processes or barriers that the travellers will be facing (e.g., security check, check-in, etc.). +v2.1</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock">The element contains <em>one</em> of the following elements (a-b)</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>a</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:bookingArrangements</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single, part of a choice">-0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/bookingArrangements_RelStructure.html" title="netex:bookingArrangements_RelStructure">netex:bookingArrangements_RelStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Set of possible Booking Arrangements for stop if different from those for SERVICE JOURNEY. +v2.0</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>b</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:BookingArrangements</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single, part of a choice">-0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/BookingArrangementsStructure.html" title="netex:BookingArrangementsStructure">netex:BookingArrangementsStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Booking Arrangements for stop if different from those for SERVICE JOURNEY. DEPRECATED: use bookingArrangements instead</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="2" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/StopPointInPatternAdvertisementGroup.html" title="netex:StopPointInPatternAdvertisementGroup">netex:StopPointInPatternAdvertisementGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:Print</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>xs:boolean</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Whether the stop is included in printed media. Default is true. +v1.1</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:Dynamic</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../netex/complexTypes/DynamicAdvertisementEnumeration.html" title="netex:DynamicAdvertisementEnumeration">netex:DynamicAdvertisementEnumeration</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">When STOP POINT IN JOURNEY PATTERN is to be publicised in dynamic media. Default is always. +v1.1</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock">The element contains <em>none or one</em> of the following elements (a-b)</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="4" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/ServiceRequirementTypeGroup.html" title="netex:ServiceRequirementTypeGroup">netex:ServiceRequirementTypeGroup</a></td>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>a</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>→‍<a shape="rect" href="../../netex/elements/PassengerCarryingRequirementRef.html" title="netex:PassengerCarryingRequirementRef">netex:PassengerCarryingRequirementRef</a></strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/PassengerCarryingRequirementRefStructure.html" title="netex:PassengerCarryingRequirementRefStructure">netex:PassengerCarryingRequirementRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a PASSENGER CARRYING REQUIREMENT.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>b</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>→‍<a shape="rect" href="../../netex/elements/PassengerCarryingRequirementsView.html" title="netex:PassengerCarryingRequirementsView">netex:PassengerCarryingRequirementsView</a></strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-206.8" title="local-type: typedef-206.8">local-type: typedef-206.8</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Requirements for carrying passengers.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/TrainSize.html" title="netex:TrainSize">netex:TrainSize</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/TrainSizeStructure.html" title="netex:TrainSizeStructure">netex:TrainSizeStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Requirements for TRAIN SIZe.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:equipments</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/vehicleEquipments_RelStructure.html" title="netex:vehicleEquipments_RelStructure">netex:vehicleEquipments_RelStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">VEHICLE EQUIPMENT available on service.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/CallGroup.html" title="netex:CallGroup">netex:CallGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:Note</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/MultilingualString.html" title="netex:MultilingualString">netex:MultilingualString</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Text annotation that applies to this CALL. This is for internal use. Customer facing should be added to footnote.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><script type="text/javascript" src="../footer.js"></script></body>
+</html>

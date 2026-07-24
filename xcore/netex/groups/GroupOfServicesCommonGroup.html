@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en"> <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>NeTEx</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../../asciidoc.css"/>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="content">
+      <div class="sect2" id="group.netex:GroupOfServicesCommonGroup">
+        <h3>256.11. The group <code>netex:GroupOfServicesCommonGroup</code></h3>
+        <div class="sectionbody">
+          <table class="tableblock frame-all grid-all spread">
+            <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+            <tbody>
+              <tr>
+                <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:GroupOfServicesCommonGroup</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock anno-text">Elements for common properties a GROUP OF SERVICEs.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="8" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/GroupOfServicesCommonGroup.html" title="netex:GroupOfServicesCommonGroup">netex:GroupOfServicesCommonGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:dayTypes</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-267.5" title="local-type: typedef-267.5">local-type: typedef-267.5</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">The DAY TYPEs of all the services in this group.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/DirectionType.html" title="netex:DirectionType">netex:DirectionType</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../netex/complexTypes/DirectionTypeEnumeration.html" title="netex:DirectionTypeEnumeration">netex:DirectionTypeEnumeration</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">A Direction of a ROUTE. One of a restricted set of values. Default is "Outbound"</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock">The element contains <em>none or one</em> of the following elements (a-b)</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>a</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>→‍<a shape="rect" href="../../netex/elements/DirectionRef.html" title="netex:DirectionRef">netex:DirectionRef</a></strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/DirectionRefStructure.html" title="netex:DirectionRefStructure">netex:DirectionRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a DIRECTION.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>b</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>→‍<a shape="rect" href="../../netex/elements/DirectionView.html" title="netex:DirectionView">netex:DirectionView</a></strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-226.8" title="local-type: typedef-226.8">local-type: typedef-226.8</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Simplified View of DIRECTION.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:Origin</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/GroupOfServicesEndPoint_DerivedViewStructure.html" title="netex:GroupOfServicesEndPoint_DerivedViewStructure">netex:GroupOfServicesEndPoint_DerivedViewStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Origin associated with this GROUP OF SERVICEs.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:Destination</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/GroupOfServicesEndPoint_DerivedViewStructure.html" title="netex:GroupOfServicesEndPoint_DerivedViewStructure">netex:GroupOfServicesEndPoint_DerivedViewStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Destination associated with this GROUP OF SERVICEs.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:destinationDisplays</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/destinationDisplayRefs_RelStructure.html" title="netex:destinationDisplayRefs_RelStructure">netex:destinationDisplayRefs_RelStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Destinations associated with this GROUP OF SERVICEs, including via points.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><script type="text/javascript" src="../footer.js"></script></body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en"> <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>NeTEx</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../../asciidoc.css"/>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="content">
+      <div class="sect2" id="group.netex:PassengerSpotAllocationGroup">
+        <h3>353.4. The group <code>netex:PassengerSpotAllocationGroup</code></h3>
+        <div class="sectionbody">
+          <table class="tableblock frame-all grid-all spread">
+            <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+            <tbody>
+              <tr>
+                <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:PassengerSpotAllocationGroup</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock anno-text">Elements for PASSENGER SPOT ALLOCATION.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/PassengerSpotAllocationGroup.html" title="netex:PassengerSpotAllocationGroup">netex:PassengerSpotAllocationGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>netex:LastUpdated</strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single">1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>xs:dateTime</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Time that allocations were last updated.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="5" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/SpotGroup.html" title="netex:SpotGroup">netex:SpotGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/DeckRef.html" title="netex:DeckRef">netex:DeckRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/DeckRefStructure.html" title="netex:DeckRefStructure">netex:DeckRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a DECK. +v2.0</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/DeckSpaceRef.html" title="netex:DeckSpaceRef">netex:DeckSpaceRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/DeckSpaceRefStructure.html" title="netex:DeckSpaceRefStructure">netex:DeckSpaceRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a DECK SPACE. +v2.0</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>→‍<a shape="rect" href="../../netex/elements/LocatableSpotRef.html" title="netex:LocatableSpotRef">netex:LocatableSpotRef</a></strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single">1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/LocatableSpotRefStructure.html" title="netex:LocatableSpotRefStructure">netex:LocatableSpotRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a LOCATABLE SPOT. +v2.0</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>netex:Label</strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single">1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/MultilingualString.html" title="netex:MultilingualString">netex:MultilingualString</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Label of SPOT</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:Description</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../netex/complexTypes/MultilingualString.html" title="netex:MultilingualString">netex:MultilingualString</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Description of PASSENGER SPOT ALLOCATION.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="2" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/PassengerSpotAllocationGroup.html" title="netex:PassengerSpotAllocationGroup">netex:PassengerSpotAllocationGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/FacilitySetRef.html" title="netex:FacilitySetRef">netex:FacilitySetRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/FacilitySetRefStructure.html" title="netex:FacilitySetRefStructure">netex:FacilitySetRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a FACILITY SET.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:PrimaryOrientation</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../netex/complexTypes/ComponentOrientationEnumeration.html" title="netex:ComponentOrientationEnumeration">netex:ComponentOrientationEnumeration</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Notional orientation of seat to travel (e.g. forwards facing, backwards facing, etc.); may not necessarily hold for all parts of journey. See allowed values.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="5" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/AllocatedToPassengerGroup.html" title="netex:AllocatedToPassengerGroup">netex:AllocatedToPassengerGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:StartStopPointRef</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/ScheduledStopPointRefStructure.html" title="netex:ScheduledStopPointRefStructure">netex:ScheduledStopPointRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Start Stop Point for SPOT ALLOCATION</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:EndStopPointRef</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/ScheduledStopPointRefStructure.html" title="netex:ScheduledStopPointRefStructure">netex:ScheduledStopPointRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">End Stop Point for SPOT ALLOCATION</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/CustomerRef.html" title="netex:CustomerRef">netex:CustomerRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/CustomerRefStructure.html" title="netex:CustomerRefStructure">netex:CustomerRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a CUSTOMER.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:SpotAvailabilityStatus</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../netex/complexTypes/SpotAvailabilityStatusEnumeration.html" title="netex:SpotAvailabilityStatusEnumeration">netex:SpotAvailabilityStatusEnumeration</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Availability status of spot. Default is free</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:SeatAllocationMethod</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../netex/complexTypes/SeatAllocationMethodEnumeration.html" title="netex:SeatAllocationMethodEnumeration">netex:SeatAllocationMethodEnumeration</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Method used to allocate seat. Default is autoassigned</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><script type="text/javascript" src="../footer.js"></script></body>
+</html>

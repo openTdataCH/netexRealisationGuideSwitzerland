@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en"> <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>NeTEx (SIRI)</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../../asciidoc.css"/>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="content">
+      <div class="sect2" id="group.siri:ReferenceContextGroup">
+        <h3>2.23. The group <code>siri:ReferenceContextGroup</code></h3>
+        <div class="sectionbody">
+          <table class="tableblock frame-all grid-all spread">
+            <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+            <tbody>
+              <tr>
+                <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>siri:ReferenceContextGroup</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock anno-text">Namespace related elements in Request Context.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="7" class="tableblock halign-left valign-top"><a shape="rect" href="../../siri/groups/ReferenceContextGroup.html" title="siri:ReferenceContextGroup">siri:ReferenceContextGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>siri:DataNameSpaces</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="../../siri/complexTypes/DataNameSpacesStructure.html" title="siri:DataNameSpacesStructure">siri:DataNameSpacesStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Default names pace used to scope data identifiers.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>siri:Language</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>xs:language</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Preferred language in which to return text values.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock">The element contains <em>none or one</em> of the following elements (a-b)</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>a</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>siri:WgsDecimalDegrees</strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../siri/complexTypes/EmptyType.html" title="siri:EmptyType">siri:EmptyType</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Geospatial coordinates are given as Wgs 84 Latiude and longitude, decimial degrees of arc.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>b</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>siri:GmlCoordinateFormat</strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../siri/complexTypes/SrsNameType.html" title="siri:SrsNameType">siri:SrsNameType</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Name of GML Coordinate format used for Geospatial points in responses.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>siri:DistanceUnits</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>xs:normalizedString</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Units for Distance Type. Default is metres. +SIRI v2.0</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>siri:VelocityUnits</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>xs:normalizedString</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Units for Distance Type. Default is metres per second. +SIRI v2.0</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><script type="text/javascript" src="../footer.js"></script></body>
+</html>

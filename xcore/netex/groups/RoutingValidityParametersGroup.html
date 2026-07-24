@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en"> <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>NeTEx</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../../asciidoc.css"/>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="content">
+      <div class="sect2" id="group.netex:RoutingValidityParametersGroup">
+        <h3>276.26. The group <code>netex:RoutingValidityParametersGroup</code></h3>
+        <div class="sectionbody">
+          <table class="tableblock frame-all grid-all spread">
+            <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+            <tbody>
+              <tr>
+                <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:RoutingValidityParametersGroup</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock anno-text">Routing validity parameters for ACCESS RIGHT PARAMETER ASSIGNMENT.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="9" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/RoutingValidityParametersGroup.html" title="netex:RoutingValidityParametersGroup">netex:RoutingValidityParametersGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:RoutingType</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../netex/complexTypes/RoutingTypeEnumeration.html" title="netex:RoutingTypeEnumeration">netex:RoutingTypeEnumeration</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Whether this is a direct i.e. no changes required point to point or indirect.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:Directions</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../netex/complexTypes/RelativeDirectionEnumeration.html" title="netex:RelativeDirectionEnumeration">netex:RelativeDirectionEnumeration</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Whether use SERIES, or FARE SECTION in forwards, backwards or both directions.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/BorderPointRef.html" title="netex:BorderPointRef">netex:BorderPointRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/BorderPointRefStructure.html" title="netex:BorderPointRefStructure">netex:BorderPointRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a BORDER POINT. (TAP TSI B.1.3 Border Boint Code).</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/SeriesConstraintRef.html" title="netex:SeriesConstraintRef">netex:SeriesConstraintRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-296.1" title="local-type: typedef-296.1">local-type: typedef-296.1</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a SERIES CONSTRAINT.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/ServiceJourneyPatternRef.html" title="netex:ServiceJourneyPatternRef">netex:ServiceJourneyPatternRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/ServiceJourneyPatternRefStructure.html" title="netex:ServiceJourneyPatternRefStructure">netex:ServiceJourneyPatternRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a SERVICE JOURNEY PATTERN.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/SingleJourneyPathRef.html" title="netex:SingleJourneyPathRef">netex:SingleJourneyPathRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/SingleJourneyPathRefStructure.html" title="netex:SingleJourneyPathRefStructure">netex:SingleJourneyPathRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a SINGLE JOURNEY PATH. +v1.2.2</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/TransferRestrictionRef.html" title="netex:TransferRestrictionRef">netex:TransferRestrictionRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/TransferRestrictionRefStructure.html" title="netex:TransferRestrictionRefStructure">netex:TransferRestrictionRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a TRANSFER RESTRICTION.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/RoutingConstraintZoneRef.html" title="netex:RoutingConstraintZoneRef">netex:RoutingConstraintZoneRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/RoutingConstraintZoneRefStructure.html" title="netex:RoutingConstraintZoneRefStructure">netex:RoutingConstraintZoneRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a ROUTING CONSTRAINT ZONE.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/ServiceExclusionRef.html" title="netex:ServiceExclusionRef">netex:ServiceExclusionRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/ServiceExclusionRefStructure.html" title="netex:ServiceExclusionRefStructure">netex:ServiceExclusionRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a SERVICE EXCLUSION.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><script type="text/javascript" src="../footer.js"></script></body>
+</html>

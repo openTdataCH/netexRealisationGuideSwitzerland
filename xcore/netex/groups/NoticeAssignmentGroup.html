@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en"> <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>NeTEx</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="../../../asciidoc.css"/>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="content">
+      <div class="sect2" id="group.netex:NoticeAssignmentGroup">
+        <h3>100.4. The group <code>netex:NoticeAssignmentGroup</code></h3>
+        <div class="sectionbody">
+          <table class="tableblock frame-all grid-all spread">
+            <colgroup span="1">
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:11.9047619047619%"/>
+        <col span="1" style="width:1.19047619047619%"/>
+        <col span="1" style="width:23.8095238095238%"/>
+        <col span="1" style="width:35.7142857142857%"/>
+    </colgroup>
+            <tbody>
+              <tr>
+                <td colspan="4" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:NoticeAssignmentGroup</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock anno-text">Elements for a NOTICE ASSIGNMENT.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock">The element contains <em>one</em> of the following elements (a-c)</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="4" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/NoticeAssignmentGroup.html" title="netex:NoticeAssignmentGroup">netex:NoticeAssignmentGroup</a></td>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>a</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>→‍<a shape="rect" href="../../netex/elements/NoticeRef.html" title="netex:NoticeRef">netex:NoticeRef</a></strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/NoticeRefStructure.html" title="netex:NoticeRefStructure">netex:NoticeRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a NOTICE i.e. footnote, note, announcement or other informational text element.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>b</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>netex:GroupOfNoticesRef</strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/GeneralGroupOfEntitiesRefStructure.html" title="netex:GeneralGroupOfEntitiesRefStructure">netex:GeneralGroupOfEntitiesRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">A group of Notiices.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="" rowspan="" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>c</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code><strong>→‍<a shape="rect" href="../../netex/elements/Notice.html" title="netex:Notice">netex:Notice</a></strong></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><strong title="mandatory, single, part of a choice">-1:1</strong></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>+<a shape="rect" href="#local-type.typedef-190.1" title="local-type: typedef-190.1">local-type: typedef-190.1</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:NoticedObjectRef</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/VersionOfObjectRefStructure.html" title="netex:VersionOfObjectRefStructure">netex:VersionOfObjectRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Object with which NOTICE is associated. If given by context can be omitted.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="4" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/NoticeLinkAssignmentGroup.html" title="netex:NoticeLinkAssignmentGroup">netex:NoticeLinkAssignmentGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/LinkSequenceRef.html" title="netex:LinkSequenceRef">netex:LinkSequenceRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/LinkSequenceRefStructure.html" title="netex:LinkSequenceRefStructure">netex:LinkSequenceRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a LINK SEQUENCE.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>→‍<a shape="rect" href="../../netex/elements/SectionRef.html" title="netex:SectionRef">netex:SectionRef</a></code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/SectionRefStructure.html" title="netex:SectionRefStructure">netex:SectionRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Reference to a SECTION.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:StartPointInPatternRef</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/PointInSequenceRefStructure.html" title="netex:PointInSequenceRefStructure">netex:PointInSequenceRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">POINT at which applicability of NOTICE starts.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:EndPointInPatternRef</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>&gt;<a shape="rect" href="../../netex/complexTypes/PointInSequenceRefStructure.html" title="netex:PointInSequenceRefStructure">netex:PointInSequenceRefStructure</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">POINT at which applicabiity of NOTICE endsIf absent same as Start Point.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="1" rowspan="4" class="tableblock halign-left valign-top"><a shape="rect" href="../../netex/groups/NoticeAssignmentPropertiesGroup.html" title="netex:NoticeAssignmentPropertiesGroup">netex:NoticeAssignmentPropertiesGroup</a></td>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:Mark</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>xs:string</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Mark associated with NOTICE.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:MarkUrl</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>xs:anyURI</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">URL for image associated with NOTICE.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:PublicityChannel</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em><a shape="rect" href="../../netex/complexTypes/PublicityChannelEnumeration.html" title="netex:PublicityChannelEnumeration">netex:PublicityChannelEnumeration</a></em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">How NOTICE is to be publicised. Default is all.</p>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><code>netex:Advertised</code></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><span title="optional, single">0:1</span></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock"><em>xs:boolean</em></p>
+                </td>
+                <td colspan="1" rowspan="1" class="tableblock halign-left valign-top">
+                  <p class="tableblock darkbrown">Whether NOTICE is advertised to public.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div><script type="text/javascript" src="../footer.js"></script></body>
+</html>
