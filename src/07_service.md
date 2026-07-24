@@ -107,7 +107,7 @@ Other important classes of the `ServiceFrame` include:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceFrame.md)
 
-*→ [General NeTEx definition ](../generated/netex-html/ServiceFrame.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/ServiceFrame.html)*
 
 ### Example
 - [Example snippet](../site/xml-snippets/ServiceFrame.xml)
@@ -132,7 +132,7 @@ A public transport service line, representing a marketed route with a `Name`, `T
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/Line.md)
 
-*-> [General NeTEx definition](../generated/netex-html/Line.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/Line.html)*
 
 ### Example
 
@@ -160,7 +160,7 @@ A `GroupOfLines` is used to model mixed lines. For details see [uc17](uc17_mixed
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/GroupOfLines.md)
 
-*-> [General NeTEx definition](../generated/netex-html/GroupOfLines.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/GroupOfLines.html)*
 
 ### Example
 
@@ -189,7 +189,7 @@ Showing the destination of a `ServiceJourney`. The text shown on the front or si
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/DestinationDisplay.md)
 
-*-> [General NeTEx definition](../generated/netex-html/DestinationDisplay.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/DestinationDisplay.html)*
 
 ### Example
 
@@ -218,7 +218,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ScheduledStopPoint.md)
 
-*-> [General NeTEx definition](../generated/netex-html/ScheduledStopPoint.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/ScheduledStopPoint.html)*
 
 ### Example
 
@@ -244,7 +244,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/PassengerStopAssignment.md)
 
-*-> [General NeTEx definition](../generated/netex-html/PassengerStopAssignment.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/PassengerStopAssignment.html)*
 
 ### Example
 
@@ -272,7 +272,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/DefaultConnection.md)
 
-*-> [General NeTEx definition](../generated/netex-html/DefaultConnection.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/DefaultConnection.html)*
 
 ### Example
 
@@ -296,7 +296,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/SiteConnection.md)
 
-*-> [General NeTEx definition](../generated/netex-html/SiteConnection.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/SiteConnection.html)*
 
 ### Example
 
@@ -325,7 +325,7 @@ See [TimeDemandType](#timedemandtype).
 
 - [Swiss profile NeTEx definition](../site/tables/TimingLink.md)
 
-*-> [General NeTEx definition](../generated/netex-html/TimingLink.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/TimingLink.html)*
 
 ### Example
 
@@ -354,7 +354,7 @@ See [TimeDemandType](#timedemandtype).
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceJourneyPattern.md)
 
-*-> [General NeTEx definition](../generated/netex-html/ServiceJourneyPattern.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/ServiceJourneyPattern.html)*
 
 ### Example
 
@@ -385,7 +385,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/TimeDemandType.md)
 
-*-> [General NeTEx definition](../generated/netex-html/TimeDemandType.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/TimeDemandType.html)*
 
 ### Example
 
@@ -413,7 +413,7 @@ Informational or regulatory text associated with public transport services, disp
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/Notice.md)
 
-*-> [General NeTEx definition](../generated/netex-html/Notice.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/Notice.html)*
 
 ### Example
 
@@ -435,7 +435,7 @@ Assign a `Notice` to an element.
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/NoticeAssignment.md)
 
-*-> [General NeTEx definition](../generated/netex-html/NoticeAssignment.html)*
+*-> [General NeTEx definition](../xcore/netex/elements/NoticeAssignment.html)*
 
 ### Example
 

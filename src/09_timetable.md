@@ -43,7 +43,7 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/TimetableFrame.md)
 
-*→ [General NeTEx definition ](../generated/netex-html/TimetableFrame.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/TimetableFrame.html)*
 
 ### Example
 - [Example snippet](../site/xml-snippets/TimetableFrame.xml)
@@ -63,7 +63,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceJourney.md)
 
-*→ [General NeTEx definition ](../generated/netex-html/ServiceJourney.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/ServiceJourney.html)*
 
 ### Example
 - [Example snippet](../site/xml-snippets/ServiceJourney.xml)
@@ -98,7 +98,7 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/TemplateServiceJourney.md)
 
-*→ [General NeTEx definition ](../generated/netex-html/TemplateServiceJourney.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/TemplateServiceJourney.html)*
 
 ### Example
 - [Example snippet](../site/xml-snippets/TemplateServiceJourney.xml)
@@ -125,7 +125,7 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/OccupancyView.md)
 
-*→ [General NeTEx definition ](../generated/netex-html/OccupancyView.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/OccupancyView.html)*
 
 ### Example
 - [Example snippet](../site/xml-snippets/OccupancyView.xml)
@@ -145,7 +145,7 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/TrainNumber.md)
 
-*→ [General NeTEx definition ](../generated/netex-html/TrainNumber.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/TrainNumber.html)*
 
 ### Example
 - [Example snippet](../site/xml-snippets/TrainNumber.xml)
@@ -164,7 +164,7 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/TypeOfService.md)
 
-*→ [General NeTEx definition](../generated/netex-html/TypeOfService.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/TypeOfService.html)*
 
 ### Example
 - [XML Snippet](../site/xml-snippets/TypeOfService.xml)
@@ -203,7 +203,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 
 - [Swiss profile NeTEx definition](../site/tables/ServiceJourneyInterchange.md)
 
-*→ [General NeTEx definition ](../generated/netex-html/ServiceJourneyInterchange.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/ServiceJourneyInterchange.html)*
 
 ### Example
 - [Example snippet](../site/xml-snippets/ServiceJourneyInterchange.xml)

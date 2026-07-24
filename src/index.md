@@ -9,13 +9,13 @@ The realisation specifications will be officially released by the National Commi
 
 The realisation specifications mainly concern: 
 -	detailed clarifications about points which have abstract and open definitions in the standard. 
--	detailed clarifications about points which have hitherto been handled inconsistently within public transport in Switzerland. 
+-	detailed clarifications about points which have previously been handled inconsistently within public transport in Switzerland. 
 -	intentional deviations from the official standard within public transport in Switzerland.
 
 ## Supported NeTEx version
-This profile is based on [NeTEx 2.1 XSD](https://github.com/TransmodelEcosystem/NeTEx/tree/v2.1-wip). It is still work in progess, therefore it might change.
+This profile is based on [NeTEx 2.1 XSD](https://github.com/TransmodelEcosystem/NeTEx/tree/v2.1-wip). It is still work in progress, therefore it might change in detail.
 
-We will have a copy of the XSD we really use in production on [oev-info.ch](https://www.oev-info.ch/de/branchenstandard/technische-ausfuehrungsbestimmungen/fahrplandaten)
+We will provide a copy of the XSD used in production on [oev-info.ch](https://www.oev-info.ch/de/branchenstandard/technische-ausfuehrungsbestimmungen/fahrplandaten)
 
 The relevant specification documents can be found in the appropriate stores with the number: CEN/TS 16614. e.g. through [VSS](https://www.vss.ch/vss_de/)
 
@@ -64,13 +64,13 @@ This document describes the way in which the NeTEx standard is specifically appl
 ## Examples
 We have a [set of examples](./examples/README.md) that show how to create use cases with the realisation guide.
 
-## Impressum
+## Imprint
 * Authors: Matthias Günter,  Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Thomas Schäfer, Simon Freihart, Emeric Tapia-Almosnino, 
 * Status: Draft
 * Last change: 2026-07-31
 * Contact: info.fachbus@sbb.ch
 
 ## Copyright / License
-The document is free. Proliferation in unchanged form is explicitly supported.
-All tools are - when nothing else is mentioned - available as AGPL 3.0.
+The document is free. Redistribution in unchanged form is explicitly supported.
+All tools are available as AGPL 3.0 unless stated otherwise.
 

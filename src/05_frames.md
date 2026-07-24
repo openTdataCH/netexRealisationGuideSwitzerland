@@ -17,7 +17,7 @@ participant's identifier.
 ### Table
 - [Swiss profile tables](../site/tables/PublicationDelivery.md)
 
-*→ [Original NeTEx table](../generated/netex-html/PublicationDelivery.html)*
+*→ [Original NeTEx table](../xcore/netex/elements/PublicationDelivery.html)*
 
 ### Example
 - [XML Snippet](../site/xml-snippets/PublicationDelivery.xml)
@@ -64,7 +64,7 @@ Their full documentation can be found here: [ResourceFrame](10_common.md#resourc
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/CompositeFrame.md)
 
-*→ [General NeTEx definition](../generated/netex-html/CompositeFrame.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/CompositeFrame.html)*
 
 ### Example
 - [Example snippet](../site/xml-snippets/CompositeFrame.xml)

@@ -57,7 +57,7 @@ classDiagram
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/SiteFrame.md)
 
-*→ [General NeTEx definition ](../generated/netex-html/SiteFrame.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/SiteFrame.html)*
 
 ### Example
 - [Example snippet](../site/xml-snippets/SiteFrame.xml)
@@ -78,7 +78,7 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/StopPlace.md)
 
-*→ [General NeTEx definition ](../generated/netex-html/StopPlace.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/StopPlace.html)*
 
 ### Example
 - [Example snippet](../site/xml-snippets/StopPlace.xml)
@@ -123,7 +123,7 @@ A specific boarding or alighting position (platform, stand, bay) within a `StopP
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/Quay.md)
 
-*→ [General NeTEx definition ](../generated/netex-html/Quay.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/Quay.html)*
 
 ### Example
 - [Example snippet](../site/xml-snippets/Quay.xml)
@@ -175,7 +175,7 @@ A named geographic area such as a city, municipality, county, or region - used t
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/TopographicPlace.md)
 
-*→ [General NeTEx definition ](../generated/netex-html/TopographicPlace.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/TopographicPlace.html)*
 
 
 ### Example
@@ -196,7 +196,7 @@ It provides precise geographic coordinates (WGS84) of a central reference point 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/Centroid.md)
 
-*→ [General NeTEx definition ](../generated/netex-html/Centroid.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/Centroid.html)*
 
 ### Example
 - [Example snippet](../site/xml-snippets/Centroid.xml)

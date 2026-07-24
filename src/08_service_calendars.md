@@ -96,7 +96,7 @@ classDiagram
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceCalendarFrame.md)
 
-*→ [General NeTEx definition](../generated/netex-html/ServiceCalendarFrame.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/ServiceCalendarFrame.html)*
 
 #### Example
 - [Example snippet](../site/xml-snippets/ServiceCalendarFrame.xml)
@@ -115,7 +115,7 @@ Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/AvailabilityCondition.md)
 
-*→ [General NeTEx definition](../generated/netex-html/AvailabilityCondition.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/AvailabilityCondition.html)*
 
 #### Example
 - [Example snippet](../site/xml-snippets/AvailabilityCondition.xml)
@@ -146,7 +146,7 @@ Long-term planning uses calendar days that are classified as specific `DayType`s
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceCalendar.md)
 
-*→ [General NeTEx definition](../generated/netex-html/ServiceCalendar.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/ServiceCalendar.html)*
 
 #### Example
 - [Example snippet](../site/xml-snippets/ServiceCalendar.xml)
@@ -167,7 +167,7 @@ A classification of days on which a specific set of transport services operates 
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/DayType.md)
 
-*→ [General NeTEx definition](../generated/netex-html/DayType.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/DayType.html)*
 
 #### Example
 - [Example snippet](../site/xml-snippets/DayType.xml)
@@ -187,7 +187,7 @@ A period of time within a day, usually defined by a start and end time.
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/Timeband.md)
 
-*→ [General NeTEx definition](../generated/netex-html/Timeband.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/Timeband.html)*
 
 #### Example
 - [Example snippet](../site/xml-snippets/Timeband.xml)
@@ -210,7 +210,7 @@ Assignment of a date to `DayType`. The `DayType`s of the Swiss profile represent
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/DayTypeAssignment.md)
 
-*→ [General NeTEx definition](../generated/netex-html/DayTypeAssignment.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/DayTypeAssignment.html)*
 
 #### Example
 [Example snippet](../site/xml-snippets/DayTypeAssignment.xml)
