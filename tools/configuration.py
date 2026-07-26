@@ -20,3 +20,6 @@ SITE_XML_SNIPPETS_DIR = SITE_DIR.joinpath("xml-snippets")
 SITE_TEMPLATES_DIR = SITE_DIR.joinpath("templates")
 SITE_SCHEMATRON_DIR = SITE_DIR.joinpath("schematron")
 
+# Generated NeTEx HTML
+NETEX_SITE_DIR = PROJECT_DIR.joinpath("../netex-site")
+
