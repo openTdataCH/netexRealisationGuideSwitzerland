@@ -18,6 +18,6 @@ We will use this organisation also in AuthorityRef. The problem is that the sboi
 |  | Name | expected | 0..1 | MultilingualString |  |  |
 |  | ShortName | expected | 0..1 | MultilingualString |  | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
 |  | parts | optional | 0..1 | blockParts_RelStructure |  |  |
-| ++ | administrativeZones | optional | 0..1 | administrativeZones_RelStructure |  |  |
-| +++ | TransportAdministrativeZone | optional | 1..1 | unknown |  |  |
+| ++ | administrativeZones | optional | 0..* | administrativeZones_RelStructure |  |  |
+| +++ | TransportAdministrativeZone | optional | 0..* | unknown |  |  |
 | ++++ | PrivateCode | optional | 1..1 | PrivateCodeStructure |  |  |

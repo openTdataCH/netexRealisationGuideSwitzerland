@@ -9,7 +9,7 @@ NoticeAssignment connects a Notice to an element. The attribute `id` must be uni
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | validityConditions | optional | 1..1 | validityConditions_RelStructure |  |  |
-| + | AvailabilityConditionRef | optional | 1..1 | AvailabilityConditionRefStructure |  |  |
+| + | AvailabilityConditionRef | optional | 0..* | AvailabilityConditionRefStructure |  |  |
 |  | NoticeRef | expected | 0..1 | NoticeRefStructure |  |  |
 |  | NoticedObjectRef | optional | 0..1 | VersionOfObjectRefStructure |  | We currently have not plan of using it this way. We do it through embeddingt the NoticeAssignment within the relevant element. |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |

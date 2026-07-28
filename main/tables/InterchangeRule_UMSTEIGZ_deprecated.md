@@ -7,14 +7,14 @@ transfer times between ServiceJourneys (UMSTEIGZ)
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
 |  | validityConditions | expected | 1..1 | validityConditions_RelStructure |  |  |
-| + | AvailabilityConditionRef | expected | 1..1 | AvailabilityConditionRefStructure |  |  |
+| + | AvailabilityConditionRef | expected | 0..* | AvailabilityConditionRefStructure |  |  |
 |  | StaySeated | mandatory | 0..1 | xsd:boolean |  |  |
 |  | Planned | mandatory | 0..1 | xsd:boolean |  |  |
 |  | Guaranteed | optional | 0..1 | xsd:boolean |  |  |
 |  | MinimumTransferTime | expected | 0..1 | xsd:duration |  |  |
 |  | MaximumTransferTime | expected | 0..1 | xsd:duration |  |  |
 |  | timings | expected | 0..1 | interchangeRuleTimings_RelStructure |  |  |
-| + | InterchangeRuleTiming | expected | 1..1 | unknown |  |  |
+| + | InterchangeRuleTiming | expected | 0..* | unknown | Timings for an INTERCHANGE RULE for a given TIME DEMAND TYPE. |  |
 | ++ | TimebandRef | mandatory | 1..1 | TimebandRefStructure |  |  |
 |  | FeederFilter | mandatory | 0..1 | InterchangeRuleParameterStructure |  |  |
 | + | StopPlaceRef | mandatory | 0..1 | StopPlaceRefStructure |  |  |

@@ -16,4 +16,4 @@ For PublicationDelivery have a good look at how the attributes must be done in t
 |  | ParticipantRef | mandatory | 1..1 | siri:ParticipantCodeType |  |  |
 |  | Description | optional | 0..1 | MultilingualString |  |  |
 |  | dataObjects | mandatory | 0..1 | dataObjects |  |  |
-| + | [CompositeFrame](CompositeFrame.md) | mandatory | 1..* | unknown |  |  |
+| + | [CompositeFrame](CompositeFrame.md) | mandatory | 0..* | unknown |  |  |

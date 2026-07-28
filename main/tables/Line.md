@@ -22,11 +22,11 @@ For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `Oper
 |  | Name | mandatory | 0..1 | MultilingualString | Name of LINE. | contains attribute D T from HRDF. Is not translated on purpose. |
 |  | ShortName | expected | 0..1 | MultilingualString | Short name of LINE. | contains the LinieKurzName (attribut N T in HRDF) |
 |  | TransportMode | mandatory | 0..1 | AllModesEnumeration | PUBLIC TRANSPORT MODE of LINE. |  |
-|  | TransportSubmode | optional | 1..* | TransportSubmodeStructure |  | the mapping excel describe how to use the TransportSubmode |
+|  | TransportSubmode | optional | 0..* | TransportSubmodeStructure |  | the mapping excel describe how to use the TransportSubmode |
 | + | RailSubmode | optional | 1..1 | RailSubmodeEnumeration |  | Here an example for rail. Be aware that other XXXSubmode are used for other mode. |
 |  | PublicCode | mandatory | 0..1 | PublicCodeStructure | Identifier of LINE. | Contains LinieLangName (attribute LT from HRDF) |
-|  | OperatorRef | expected | 1..* | OperatorRefStructure |  | The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney. Is redundant to the responsibilitySetRef on purpose. |
+|  | OperatorRef | expected | 0..* | OperatorRefStructure |  | The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney. Is redundant to the responsibilitySetRef on purpose. |
 |  | additionalOperators | optional | 0..1 | transportOrganisationRefs_RelStructure |  | Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined. |
-| + | OperatorRef | optional | 1..1 | OperatorRefStructure |  |  |
+| + | OperatorRef | optional | 0..* | OperatorRefStructure |  |  |
 |  | LineType | expected | 0..1 | LineTypeEnumeration |  | Will be used especially, when not "fixed". Details in mapping excel. |
 |  | TypeOfProductCategoryRef | mandatory | 1..1 | TypeOfProductCategoryRefStructure |  | Always aligned with BS KI oev-info.ch |

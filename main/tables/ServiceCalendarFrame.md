@@ -9,11 +9,11 @@ A minimal ServiceCalendarFrame must be present in all timetable files.
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure |  |  |
-| + | [AvailabilityCondition](AvailabilityCondition.md) | mandatory | 1..1 | unknown |  | Our main mechanism for validity and operating days |
+| + | [AvailabilityCondition](AvailabilityCondition.md) | mandatory | 0..* | unknown |  | Our main mechanism for validity and operating days |
 |  | [ServiceCalendar](ServiceCalendar.md) | expected | 1..1 | unknown |  | We only have one ServiceCalendar for the whole timetable year. It is not referenced. |
 |  | dayTypes | optional | 0..1 | unknown |  |  |
 | + | [DayType](DayType.md) | optional | 1..1 | unknown |  | Used for holidays only |
 |  | timebands | expected | 0..1 | timebandRefs_RelStructure |  |  |
-| + | [Timeband](Timeband.md) | expected | 1..* | Timeband_VersionedChildStructure | A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category. | Mainly used for frequency-based lines. |
+| + | [Timeband](Timeband.md) | expected | 0..* | unknown |  | Mainly used for frequency-based lines. |
 |  | dayTypeAssignments | optional | 0..1 | dayTypeAssignments_RelStructure |  |  |
-| + | [DayTypeAssignment](DayTypeAssignment.md) | optional | 1..* | unknown |  | Used for holidays only |
+| + | [DayTypeAssignment](DayTypeAssignment.md) | optional | 0..* | unknown | An operating period. | Used for holidays only |

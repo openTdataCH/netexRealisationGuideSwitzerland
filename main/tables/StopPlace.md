@@ -26,10 +26,10 @@ In some cases the id of a StopPlace is not a SLOID.
 | ++ | Latitude | mandatory | 1..1 | LatitudeType | Latitude from equator. -90 (South) to +90 (North). Decimal degrees. eg 56.356 |  |
 | ++ | Altitude | optional | 0..1 | AltitudeType | Altitude (metres) Above sea level. |  |
 |  | alternativeNames | optional | 0..1 | alternativeNames_RelStructure |  | Alternative names for the StopPlace. We will also use these for synonyms. |
-| + | [AlternativeName](AlternativeName.md) | optional | 1..* | unknown | ALTERNATIVE NAME for Element. |  |
+| + | [AlternativeName](AlternativeName.md) | optional | 0..* | unknown | ALTERNATIVE NAME for Element. |  |
 |  | TopographicPlaceRef | optional | 1..* | TopographicPlaceRefStructure |  | Id to the county, community, canton or country. |
 |  | StopPlaceType | optional | 0..1 | StopTypeEnumeration | Type of STOP PLACE. |  |
 |  | LimitedUse | optional | 0..1 | LimitedUseTypeEnumeration |  | For stops like Sagliains |
 |  | Weighting | optional | 0..1 | InterchangeWeightingEnumeration |  | Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. |
 |  | quays | expected | 1..1 | quays_RelStructure |  | The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. |
-| + | [Quay](Quay.md) | expected | 1..* | unknown |  |  |
+| + | [Quay](Quay.md) | expected | 0..* | unknown |  |  |

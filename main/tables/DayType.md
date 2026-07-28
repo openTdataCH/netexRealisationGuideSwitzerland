@@ -20,6 +20,6 @@ In Switzerland only used for holidays and the like
 | + | Text | expected | 0..* | MultilingualString |  | English |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | properties | expected | 0..1 | propertiesOfDay_RelStructure |  |  |
-| + | PropertyOfDay | mandatory | 1..* | unknown |  | Holidays only |
+| + | PropertyOfDay | mandatory | 0..* | unknown |  | Holidays only |
 | ++ | HolidayTypes | expected | 0..1 | HolidayTypesListOfEnumerations |  |  |
 | ++ | DayEvent | optional | 0..1 | DayEventEnumeration |  |  |

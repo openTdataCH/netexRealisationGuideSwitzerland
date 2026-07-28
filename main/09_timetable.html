@@ -138,7 +138,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceJourney.html">ServiceJourney</a></td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>unknown</td>
       <td> </td>
       <td>ServiceJourney is used for common Journeys.</td>
@@ -147,9 +147,9 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TemplateServiceJourney.html">TemplateServiceJourney</a></td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>unknown</td>
-      <td> </td>
+      <td>A VEHICLE JOURNEY with a set of frequencies that may be used to represent a set of similar journeys differing only by their time of departure.</td>
       <td>TemplateServiceJourney is only to be used if a line is serviced at a certain frequency.</td>
     </tr>
     <tr>
@@ -165,7 +165,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TrainNumber.html">TrainNumber</a></td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>unknown</td>
       <td> </td>
       <td> </td>
@@ -183,7 +183,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>unknown</td>
       <td> </td>
       <td> </td>
@@ -201,7 +201,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>+</td>
       <td>TypeOfService</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>unknown</td>
       <td> </td>
       <td>This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file.</td>
@@ -273,7 +273,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>+</td>
       <td>CompoundTrain</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>unknown</td>
       <td> </td>
       <td> </td>
@@ -396,7 +396,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>+</td>
       <td>AvailabilityConditionRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
       <td> </td>
       <td>Only a single AvailabilityConditionRef is allowed.</td>
@@ -504,7 +504,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/NoticeAssignment.html">NoticeAssignment</a></td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>unknown</td>
       <td> </td>
       <td> </td>
@@ -522,7 +522,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/OccupancyView.html">OccupancyView</a></td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>OccupancyView_VersionStructure</td>
       <td> </td>
       <td>Currently not available</td>
@@ -558,7 +558,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td> </td>
       <td>JourneyPatternRef</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>JourneyPatternRefStructure</td>
       <td>Reference to a JOURNEY PATTERN.</td>
       <td>The reference to the ServiceJourneyPattern.</td>
@@ -621,7 +621,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>+</td>
       <td>TrainNumberRef</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>TrainNumberRefStructure</td>
       <td> </td>
       <td> </td>
@@ -648,7 +648,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>+</td>
       <td>JourneyPartRef</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>JourneyPartRefStructure</td>
       <td> </td>
       <td> </td>
@@ -666,7 +666,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>+</td>
       <td>CheckConstraint</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>unknown</td>
       <td>Process associated with a Place, typically giving rise to a delay to the traveller.</td>
       <td>CheckConstraints are used for different use cases</td>
@@ -845,7 +845,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>+</td>
       <td>AvailabilityConditionRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
       <td> </td>
       <td>Only a single AvailabilityConditionRef is allowed.</td>
@@ -944,7 +944,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/NoticeAssignment.html">NoticeAssignment</a></td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>unknown</td>
       <td> </td>
       <td> </td>
@@ -962,7 +962,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/OccupancyView.html">OccupancyView</a></td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>OccupancyView_VersionStructure</td>
       <td> </td>
       <td> </td>
@@ -1061,7 +1061,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>+</td>
       <td>TrainNumberRef</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>TrainNumberRefStructure</td>
       <td> </td>
       <td> </td>
@@ -1088,7 +1088,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>+</td>
       <td>JourneyPartRef</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>JourneyPartRefStructure</td>
       <td> </td>
       <td> </td>
@@ -1115,7 +1115,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>+</td>
       <td>HeadwayJourneyGroup</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>unknown</td>
       <td> </td>
       <td> </td>
@@ -1676,7 +1676,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>+</td>
       <td>AvailabilityConditionRef</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
       <td> </td>
       <td> </td>

@@ -10,8 +10,8 @@
 |  | Description | optional | 0..1 | MultilingualString |  | A description of the delivery can be provided. |
 |  | [FrameDefaults](FrameDefaults.md) | expected | 0..1 | VersionFrameDefaultsStructure |  |  |
 |  | frames | mandatory | 0..1 | frames_RelStructure |  |  |
-| + | [ResourceFrame](ResourceFrame.md) | expected | 1..1 | unknown |  |  |
-| + | [SiteFrame](SiteFrame.md) | expected | 1..1 | unknown |  |  |
-| + | [ServiceFrame](ServiceFrame.md) | expected | 1..1 | unknown |  |  |
-| + | [ServiceCalendarFrame](ServiceCalendarFrame.md) | expected | 1..1 | unknown |  |  |
-| + | [TimetableFrame](TimetableFrame.md) | expected | 1..1 | unknown |  |  |
+| + | [ResourceFrame](ResourceFrame.md) | expected | 0..* | unknown |  |  |
+| + | [SiteFrame](SiteFrame.md) | expected | 0..* | unknown |  |  |
+| + | [ServiceFrame](ServiceFrame.md) | expected | 0..* | unknown |  |  |
+| + | [ServiceCalendarFrame](ServiceCalendarFrame.md) | expected | 0..* | unknown |  |  |
+| + | [TimetableFrame](TimetableFrame.md) | expected | 0..* | unknown |  |  |

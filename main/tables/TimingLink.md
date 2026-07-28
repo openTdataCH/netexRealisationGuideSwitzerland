@@ -14,6 +14,6 @@ A timing link is basically defined between two ScheduledStopPoints. However, the
 |  | Name | optional | 0..1 | MultilingualString |  | Can be used to express "Neubaustrecke", "Lötschbergbasistunnel" and the like. |
 |  | FromPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure |  | We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
-|  | ToPointRef | mandatory | 1..* | VehicleMeetingPointRefStructure | Identifier of POINT at which LINK ends. | We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this |
+|  | ToPointRef | mandatory | 0..* | VehicleMeetingPointRefStructure | Identifier of POINT at which LINK ends. | We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
 |  | OperationalContextRef | optional | 1..1 | OperationalContextRefStructure |  | This is "Betriebszweig". Switzerland does not use it currently, but it might become interesting at some point |

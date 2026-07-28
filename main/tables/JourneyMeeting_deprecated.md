@@ -9,7 +9,7 @@ Used for joining and splitting of trains. Check latest policy - InterchangeRule 
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | validityConditions | expected | 1..1 | validityConditions_RelStructure |  | A specific type of VALIDITY CON-DITION used to specify a set of temporal conditions that can be associated with the JOURNEY MEETING, for example that the corresponding connections only apply on particular days of a period (indicated by ValidDayBits “Verkehrstagebitfeld”). |
-| + | AvailabilityConditionRef | expected | 1..1 | AvailabilityConditionRefStructure |  |  |
+| + | AvailabilityConditionRef | expected | 0..* | AvailabilityConditionRefStructure |  |  |
 |  | AtStopPointRef | mandatory | 0..1 | ScheduledStopPointRefStructure |  |  |
 |  | FromJourneyRef | mandatory | 1..1 | JourneyRefStructure |  |  |
 |  | ToJourneyRef | mandatory | 1..1 | JourneyRefStructure |  |  |

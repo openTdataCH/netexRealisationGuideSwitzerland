@@ -51,14 +51,14 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | vehicleJourneys | expected | 0..1 | journeysInFrame_RelStructure |  | Contains the ServiceJourneys and TemplateServiceJourneys. |
-| + | [ServiceJourney](./tables/ServiceJourney.md) | expected | 1..1 | unknown |  | ServiceJourney is used for common Journeys. |
-| + | [TemplateServiceJourney](./tables/TemplateServiceJourney.md) | expected | 1..1 | unknown |  | TemplateServiceJourney is only to be used if a line is serviced at a certain frequency. |
+| + | [ServiceJourney](./tables/ServiceJourney.md) | expected | 0..* | unknown |  | ServiceJourney is used for common Journeys. |
+| + | [TemplateServiceJourney](./tables/TemplateServiceJourney.md) | expected | 0..* | unknown | A VEHICLE JOURNEY with a set of frequencies that may be used to represent a set of similar journeys differing only by their time of departure. | TemplateServiceJourney is only to be used if a line is serviced at a certain frequency. |
 |  | trainNumbers | expected | 0..1 | trainNumbersInFrame_RelStructure |  |  |
-| + | [TrainNumber](./tables/TrainNumber.md) | mandatory | 1..* | unknown |  |  |
+| + | [TrainNumber](./tables/TrainNumber.md) | mandatory | 0..* | unknown |  |  |
 |  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure |  |  |
-| + | [ServiceFacilitySet](./tables/ServiceFacilitySet.md) | expected | 1..* | unknown |  |  |
+| + | [ServiceFacilitySet](./tables/ServiceFacilitySet.md) | expected | 0..* | unknown |  |  |
 |  | typesOfService | expected | 0..1 | typesOfServiceInFrame_RelStructure |  |  |
-| + | TypeOfService | optional | 1..* | unknown |  | This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. |
+| + | TypeOfService | optional | 0..* | unknown |  | This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. |
 | ++ | Name | expected | 0..1 | MultilingualString |  |  |
 | +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | ++ | ShortName | expected | 0..1 | MultilingualString |  |  |
@@ -66,7 +66,7 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 | ++ | PrivateCode | optional | 1..1 | PrivateCodeStructure |  |  |
 | + | [ServiceJourneyInterchange](./tables/ServiceJourneyInterchange.md) | expected | 1..1 | unknown |  | For modeling many forms of interchanges |
 |  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure |  | We will use this place to store Train and CompoundTrain information, when we will do formation. Not detailed at the moment |
-| + | CompoundTrain | optional | 1..1 | unknown |  |  |
+| + | CompoundTrain | optional | 0..* | unknown |  |  |
 
 
 
@@ -145,7 +145,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
 |  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure |  | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
-| + | AvailabilityConditionRef | mandatory | 1..1 | AvailabilityConditionRefStructure |  | Only a single AvailabilityConditionRef is allowed. |
+| + | AvailabilityConditionRef | mandatory | 0..* | AvailabilityConditionRefStructure |  | Only a single AvailabilityConditionRef is allowed. |
 |  | keyList | expected | 1..1 | KeyListStructure |  | KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. |
 | + | KeyValue | mandatory | 1..* | KeyValueStructure |  | A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. |
 | ++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
@@ -157,25 +157,25 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 |  | TypeOfProductCategoryRef | mandatory | 1..1 | TypeOfProductCategoryRefStructure |  | Relevant elements are defined in the mapping excel. |
 |  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure |  | Should always be ch:1:TypeOfService:1 |
 |  | noticeAssignments | optional | 0..1 | noticeAssignments_RelStructure | NOTICEs of an interchange. | The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop). |
-| + | [NoticeAssignment](./tables/NoticeAssignment.md) | optional | 1..1 | unknown |  |  |
+| + | [NoticeAssignment](./tables/NoticeAssignment.md) | optional | 0..* | unknown |  |  |
 |  | occupancies | optional | 0..1 | OccupancyView_RelStructure |  |  |
-| + | [OccupancyView](./tables/OccupancyView.md) | optional | 1..1 | OccupancyView_VersionStructure |  | Currently not available |
+| + | [OccupancyView](./tables/OccupancyView.md) | optional | 0..* | OccupancyView_VersionStructure |  | Currently not available |
 |  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration |  | Only the value planned is allowed. We might add the others, like cancelled, later. |
 |  | DepartureTime | expected | 0..1 | xsd:time | Time of Departure. |  |
 |  | DepartureDayOffset | optional | 0..1 | DayOffsetType |  | 0 for current operating day. Could also be negative. |
-|  | JourneyPatternRef | mandatory | 1..* | JourneyPatternRefStructure | Reference to a JOURNEY PATTERN. | The reference to the ServiceJourneyPattern. |
+|  | JourneyPatternRef | mandatory | 0..* | JourneyPatternRefStructure | Reference to a JOURNEY PATTERN. | The reference to the ServiceJourneyPattern. |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
 |  | TimeDemandTypeRef | mandatory | 0..1 | TimeDemandTypeRefStructure |  | The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. |
 |  | VehicleTypeRef | expected | 1..1 | VehicleTypeRefStructure |  | Mostly used for accessibility information like NF. Relevant definitions in the mapping excel. |
 |  | LineRef | mandatory | 1..1 | LineRefStructure |  |  |
 |  | DirectionType | mandatory | 0..1 | RelativeDirectionEnumeration |  | Allowed are: inbound, outbound |
 |  | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure |  |  |
-| + | TrainNumberRef | mandatory | 1..* | TrainNumberRefStructure |  |  |
+| + | TrainNumberRef | mandatory | 0..* | TrainNumberRefStructure |  |  |
 |  | [Destination](./tables/Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure |  |  |
 |  | parts | optional | 0..1 | blockParts_RelStructure |  | For some use cases e.g. change of Facilities during ServiceJourney |
-| + | JourneyPartRef | expected | 1..1 | JourneyPartRefStructure |  |  |
+| + | JourneyPartRef | expected | 0..* | JourneyPartRefStructure |  |  |
 |  | checkConstraints | optional | 0..1 | checkConstraints_RelStructure |  |  |
-| + | CheckConstraint | optional | 1..* | unknown | Process associated with a Place, typically giving rise to a delay to the traveller. | CheckConstraints are used for different use cases |
+| + | CheckConstraint | optional | 0..* | unknown | Process associated with a Place, typically giving rise to a delay to the traveller. | CheckConstraints are used for different use cases |
 
 
 
@@ -310,7 +310,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
 |  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure |  | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
-| + | AvailabilityConditionRef | mandatory | 1..1 | AvailabilityConditionRefStructure |  | Only a single AvailabilityConditionRef is allowed. |
+| + | AvailabilityConditionRef | mandatory | 0..* | AvailabilityConditionRefStructure |  | Only a single AvailabilityConditionRef is allowed. |
 |  | keyList | optional | 1..1 | KeyListStructure |  | Key list for the repeating journeys. Contains the SJYID. |
 | + | KeyValue | optional | 1..* | KeyValueStructure |  | A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. |
 | ++ | Key | optional | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
@@ -321,9 +321,9 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | TypeOfProductCategoryRef | expected | 1..1 | TypeOfProductCategoryRefStructure |  |  |
 |  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure |  |  |
 |  | noticeAssignments | optional | 0..1 | noticeAssignments_RelStructure |  | The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. |
-| + | [NoticeAssignment](./tables/NoticeAssignment.md) | optional | 1..1 | unknown |  |  |
+| + | [NoticeAssignment](./tables/NoticeAssignment.md) | optional | 0..* | unknown |  |  |
 |  | occupancies | optional | 0..1 | OccupancyView_RelStructure |  |  |
-| + | [OccupancyView](./tables/OccupancyView.md) | optional | 1..1 | OccupancyView_VersionStructure |  |  |
+| + | [OccupancyView](./tables/OccupancyView.md) | optional | 0..* | OccupancyView_VersionStructure |  |  |
 |  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration |  | Only the value planned is allowed. |
 |  | DepartureTime | optional | 0..1 | xsd:time |  | Departure of the first journey. |
 |  | DepartureDayOffset | optional | 0..1 | DayOffsetType |  | DayOffset if relevant. |
@@ -334,13 +334,13 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | LineRef | mandatory | 1..1 | LineRefStructure |  |  |
 |  | DirectionType | optional | 0..1 | RelativeDirectionEnumeration |  | Allowed are: inbound, outbound |
 |  | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure |  |  |
-| + | TrainNumberRef | mandatory | 1..* | TrainNumberRefStructure |  |  |
+| + | TrainNumberRef | mandatory | 0..* | TrainNumberRefStructure |  |  |
 |  | [Destination](./tables/Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure |  |  |
 |  | parts | optional | 0..1 | blockParts_RelStructure |  | For some use cases e.g. change of Facilities during ServiceJourney |
-| + | JourneyPartRef | expected | 1..1 | JourneyPartRefStructure |  |  |
+| + | JourneyPartRef | expected | 0..* | JourneyPartRefStructure |  |  |
 |  | TemplateVehicleJourneyType | expected | 0..1 | TemplateVehicleJourneyTypeEnumeration |  |  |
 |  | frequencyGroups | mandatory | 0..1 | frequencyGroupsInFrame_RelStructure |  | We strictly map one frequency to the TemplateServiceJourney. |
-| + | HeadwayJourneyGroup | mandatory | 1..* | unknown |  |  |
+| + | HeadwayJourneyGroup | mandatory | 0..* | unknown |  |  |
 | ++ | ScheduledHeadwayInterval | mandatory | 0..1 | xsd:duration |  |  |
 | ++ | HeadwayDisplay | optional | 0..1 | HeadwayUseEnumeration |  | Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly. |
 
@@ -649,7 +649,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | validityConditions | expected | 1..1 | validityConditions_RelStructure |  |  |
-| + | AvailabilityConditionRef | expected | 1..1 | AvailabilityConditionRefStructure |  |  |
+| + | AvailabilityConditionRef | expected | 0..* | AvailabilityConditionRefStructure |  |  |
 |  | Description | optional | 0..1 | MultilingualString | Description of SCHEDULED STOP POINT feeding INTERCHANGE. |  |
 |  | StaySeated | mandatory | 0..1 | xsd:boolean |  |  |
 |  | CrossBorder | optional | 0..1 | xsd:boolean |  |  |

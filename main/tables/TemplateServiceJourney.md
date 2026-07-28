@@ -10,7 +10,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
 |  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure |  | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
-| + | AvailabilityConditionRef | mandatory | 1..1 | AvailabilityConditionRefStructure |  | Only a single AvailabilityConditionRef is allowed. |
+| + | AvailabilityConditionRef | mandatory | 0..* | AvailabilityConditionRefStructure |  | Only a single AvailabilityConditionRef is allowed. |
 |  | keyList | optional | 1..1 | KeyListStructure |  | Key list for the repeating journeys. Contains the SJYID. |
 | + | KeyValue | optional | 1..* | KeyValueStructure |  | A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. |
 | ++ | Key | optional | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
@@ -21,9 +21,9 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | TypeOfProductCategoryRef | expected | 1..1 | TypeOfProductCategoryRefStructure |  |  |
 |  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure |  |  |
 |  | noticeAssignments | optional | 0..1 | noticeAssignments_RelStructure |  | The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. |
-| + | [NoticeAssignment](NoticeAssignment.md) | optional | 1..1 | unknown |  |  |
+| + | [NoticeAssignment](NoticeAssignment.md) | optional | 0..* | unknown |  |  |
 |  | occupancies | optional | 0..1 | OccupancyView_RelStructure |  |  |
-| + | [OccupancyView](OccupancyView.md) | optional | 1..1 | OccupancyView_VersionStructure |  |  |
+| + | [OccupancyView](OccupancyView.md) | optional | 0..* | OccupancyView_VersionStructure |  |  |
 |  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration |  | Only the value planned is allowed. |
 |  | DepartureTime | optional | 0..1 | xsd:time |  | Departure of the first journey. |
 |  | DepartureDayOffset | optional | 0..1 | DayOffsetType |  | DayOffset if relevant. |
@@ -34,12 +34,12 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | LineRef | mandatory | 1..1 | LineRefStructure |  |  |
 |  | DirectionType | optional | 0..1 | RelativeDirectionEnumeration |  | Allowed are: inbound, outbound |
 |  | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure |  |  |
-| + | TrainNumberRef | mandatory | 1..* | TrainNumberRefStructure |  |  |
+| + | TrainNumberRef | mandatory | 0..* | TrainNumberRefStructure |  |  |
 |  | [Destination](Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure |  |  |
 |  | parts | optional | 0..1 | blockParts_RelStructure |  | For some use cases e.g. change of Facilities during ServiceJourney |
-| + | JourneyPartRef | expected | 1..1 | JourneyPartRefStructure |  |  |
+| + | JourneyPartRef | expected | 0..* | JourneyPartRefStructure |  |  |
 |  | TemplateVehicleJourneyType | expected | 0..1 | TemplateVehicleJourneyTypeEnumeration |  |  |
 |  | frequencyGroups | mandatory | 0..1 | frequencyGroupsInFrame_RelStructure |  | We strictly map one frequency to the TemplateServiceJourney. |
-| + | HeadwayJourneyGroup | mandatory | 1..* | unknown |  |  |
+| + | HeadwayJourneyGroup | mandatory | 0..* | unknown |  |  |
 | ++ | ScheduledHeadwayInterval | mandatory | 0..1 | xsd:duration |  |  |
 | ++ | HeadwayDisplay | optional | 0..1 | HeadwayUseEnumeration |  | Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly. |

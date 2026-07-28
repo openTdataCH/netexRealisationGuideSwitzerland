@@ -34,7 +34,7 @@ For PublicationDelivery have a good look at how the attributes must be done in t
 |  | ParticipantRef | mandatory | 1..1 | siri:ParticipantCodeType |  |  |
 |  | Description | optional | 0..1 | MultilingualString |  |  |
 |  | dataObjects | mandatory | 0..1 | dataObjects |  |  |
-| + | [CompositeFrame](./tables/CompositeFrame.md) | mandatory | 1..* | unknown |  |  |
+| + | [CompositeFrame](./tables/CompositeFrame.md) | mandatory | 0..* | unknown |  |  |
 
 
 
@@ -121,11 +121,11 @@ Their full documentation can be found here: [ResourceFrame](10_common.md#resourc
 |  | Description | optional | 0..1 | MultilingualString |  | A description of the delivery can be provided. |
 |  | [FrameDefaults](./tables/FrameDefaults.md) | expected | 0..1 | VersionFrameDefaultsStructure |  |  |
 |  | frames | mandatory | 0..1 | frames_RelStructure |  |  |
-| + | [ResourceFrame](./tables/ResourceFrame.md) | expected | 1..1 | unknown |  |  |
-| + | [SiteFrame](./tables/SiteFrame.md) | expected | 1..1 | unknown |  |  |
-| + | [ServiceFrame](./tables/ServiceFrame.md) | expected | 1..1 | unknown |  |  |
-| + | [ServiceCalendarFrame](./tables/ServiceCalendarFrame.md) | expected | 1..1 | unknown |  |  |
-| + | [TimetableFrame](./tables/TimetableFrame.md) | expected | 1..1 | unknown |  |  |
+| + | [ResourceFrame](./tables/ResourceFrame.md) | expected | 0..* | unknown |  |  |
+| + | [SiteFrame](./tables/SiteFrame.md) | expected | 0..* | unknown |  |  |
+| + | [ServiceFrame](./tables/ServiceFrame.md) | expected | 0..* | unknown |  |  |
+| + | [ServiceCalendarFrame](./tables/ServiceCalendarFrame.md) | expected | 0..* | unknown |  |  |
+| + | [TimetableFrame](./tables/TimetableFrame.md) | expected | 0..* | unknown |  |  |
 
 
 

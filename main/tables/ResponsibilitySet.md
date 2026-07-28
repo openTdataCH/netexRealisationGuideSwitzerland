@@ -12,6 +12,6 @@ Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLeg
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | PrivateCode | expected | 1..1 | PrivateCodeStructure |  |  |
 |  | roles | mandatory | 0..1 | responsibilityRoleAssignments_RelStructure |  |  |
-| + | ResponsibilityRoleAssignment | mandatory | 1..1 | unknown |  |  |
+| + | ResponsibilityRoleAssignment | mandatory | 0..* | unknown |  |  |
 | ++ | StakeholderRoleType | mandatory | 0..1 | StakeholderRoleTypeListOfEnumerations |  | "EntityLegalOwnership" must be defined once and "Operator" should be too. |
 | ++ | ResponsibleOrganisationRef | mandatory | 0..1 | OrganisationRefStructure |  |  |

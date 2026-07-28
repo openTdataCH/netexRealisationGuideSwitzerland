@@ -7,7 +7,7 @@
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | validityConditions | expected | 1..1 | validityConditions_RelStructure |  |  |
-| + | AvailabilityConditionRef | expected | 1..1 | AvailabilityConditionRefStructure |  |  |
+| + | AvailabilityConditionRef | expected | 0..* | AvailabilityConditionRefStructure |  |  |
 |  | Description | optional | 0..1 | MultilingualString | Description of SCHEDULED STOP POINT feeding INTERCHANGE. |  |
 |  | StaySeated | mandatory | 0..1 | xsd:boolean |  |  |
 |  | CrossBorder | optional | 0..1 | xsd:boolean |  |  |
