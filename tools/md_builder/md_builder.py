@@ -336,6 +336,46 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
                 if not element:
                     complex_type_xpath_contains_ref = f"//xs:complexType[contains(@name, '{clean_parent_type}')]//xs:element[@ref='{element_name}']"
                     element = xsd_doc.xpath(complex_type_xpath_contains_ref, namespaces=namespaces)
+                
+            # Try common version structure patterns
+            if not element:
+                # Try parent_type + _VersionStructure pattern (e.g., StopPlace -> StopPlace_VersionStructure)
+                version_patterns = [
+                    f"{clean_parent_type}_VersionStructure",
+                    f"{clean_parent_type}VesionStructure",  # Handle typo if present
+                    f"{clean_parent_type}_Structure",
+                    f"{clean_parent_type}_Type"
+                ]
+                for pattern in version_patterns:
+                    if not element:
+                        complex_type_xpath_pattern = f"//xs:complexType[@name='{pattern}']//xs:element[@name='{element_name}']"
+                        element = xsd_doc.xpath(complex_type_xpath_pattern, namespaces=namespaces)
+                        if not element:
+                            complex_type_xpath_pattern_ref = f"//xs:complexType[@name='{pattern}']//xs:element[@ref='{element_name}']"
+                            element = xsd_doc.xpath(complex_type_xpath_pattern_ref, namespaces=namespaces)
+                        if element:
+                            break
+            
+            # NEW: Try _RelStructure pattern for parent_type
+            # This handles containers like quays -> quays_RelStructure, stopPlaces -> stopPlaces_RelStructure
+            if not element:
+                rel_structure_parent = f"{clean_parent_type}_RelStructure"
+                complex_type_xpath_rel = f"//xs:complexType[@name='{rel_structure_parent}']//xs:element[@ref='{element_name}']"
+                element = xsd_doc.xpath(complex_type_xpath_rel, namespaces=namespaces)
+                
+                # Also try without exact name match (contains pattern)
+                if not element:
+                    complex_type_xpath_rel_contains = f"//xs:complexType[contains(@name, '{rel_structure_parent}')]//xs:element[@ref='{element_name}']"
+                    element = xsd_doc.xpath(complex_type_xpath_rel_contains, namespaces=namespaces)
+                    
+                # Try with @name attribute as well
+                if not element:
+                    complex_type_xpath_rel_name = f"//xs:complexType[@name='{rel_structure_parent}']//xs:element[@name='{element_name}']"
+                    element = xsd_doc.xpath(complex_type_xpath_rel_name, namespaces=namespaces)
+                    
+                if not element:
+                    complex_type_xpath_rel_name_contains = f"//xs:complexType[contains(@name, '{rel_structure_parent}')]//xs:element[@name='{element_name}']"
+                    element = xsd_doc.xpath(complex_type_xpath_rel_name_contains, namespaces=namespaces)
             
             if not element:
                 complex_type_xpath_contains_no_ns = f"//*[local-name()='complexType' and contains(@name, '{clean_parent_type}')]//*[local-name()='element' and @name='{element_name}']"
@@ -440,17 +480,17 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
         # Check in order of preference:
         # 1. parent_type parameter contains _RelStructure
         if parent_type and '_RelStructure' in parent_type:
-            cardinality = '1..*'
+            cardinality = '0..*'
         # 2. actual parent complex type contains _RelStructure
         elif actual_parent_complex_type and '_RelStructure' in actual_parent_complex_type:
-            cardinality = '1..*'
+            cardinality = '0..*'
         # 3. Check if there's a complex type matching parent_type that has _RelStructure
         elif parent_type:
             # For cases where parent_type is "quays" but the actual type is "quays_RelStructure"
             # Search for complex types containing parent_type and _RelStructure in current xsd_doc
             complex_types_with_pattern = xsd_doc.xpath(f"//xs:complexType[contains(@name, '{parent_type}') and contains(@name, '_RelStructure')]", namespaces=namespaces)
             if complex_types_with_pattern:
-                cardinality = '1..*'
+                cardinality = '0..*'
             else:
                 # Also search all XSD files for matching complex type
                 base_dir = os.path.dirname(os.path.abspath(xsd_path))
@@ -462,7 +502,7 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
                                 doc = etree.parse(file_path, parser)
                                 ct_match = doc.xpath(f"//xs:complexType[contains(@name, '{parent_type}') and contains(@name, '_RelStructure')]", namespaces=namespaces)
                                 if ct_match:
-                                    cardinality = '1..*'
+                                    cardinality = '0..*'
                                     break
                             except:
                                 continue
@@ -955,10 +995,18 @@ def parse_template_file(file_path, xsd_type_info):
                 # Use the current element's name as the base for parent type context
                 # This ensures that children have the correct parent element name for container detection
                 child_parent_type = elem_name
-                # Note: We used to use XSD type here, but that breaks container detection
-                # So we only use XSD type as fallback if element name is not useful
-                # if xsd_info and 'type' in xsd_info:
-                #     child_parent_type = xsd_info['type']
+                # Try to enhance with XSD type if available, especially for _RelStructure containers
+                if xsd_info and 'type' in xsd_info and xsd_info['type']:
+                    xsd_type_name = xsd_info['type']
+                    # If the XSD type ends with _RelStructure, use that as it helps with container detection
+                    if xsd_type_name.endswith('_RelStructure'):
+                        child_parent_type = xsd_type_name
+                    # Also try to find the corresponding _RelStructure type for container elements
+                    elif elem_name and elem_name[0].islower() and xsd_type_name:
+                        # For container elements, try to find the _RelStructure variant
+                        potential_rel_type = f"{elem_name}_RelStructure"
+                        if potential_rel_type in xsd_type_info:
+                            child_parent_type = potential_rel_type
                 
                 # NEW: Check if current element is a multilingual element (Text with lang attribute)
                 # If so, mark it as a multilingual parent for its children
@@ -995,7 +1043,15 @@ def parse_template_file(file_path, xsd_type_info):
             root_element_name = etree.QName(root_element).localname
         
         if hasattr(common_ancestor, 'tag') and not isinstance(common_ancestor, etree._Comment):
-            process_element(common_ancestor, parent_type_context=root_element_name)
+            # Try to enhance root element name with XSD type if available
+            enhanced_root_context = root_element_name
+            if root_element_name:
+                # Check if there's an XSD type for this root element
+                root_xsd_info = xsd_type_info.get(root_element_name, {})
+                if root_xsd_info and 'type' in root_xsd_info and root_xsd_info['type']:
+                    # Use the XSD type as parent context for more accurate metadata lookup
+                    enhanced_root_context = root_xsd_info['type']
+            process_element(common_ancestor, parent_type_context=enhanced_root_context)
         
         return elements_data
     
@@ -1093,7 +1149,8 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                     description = metadata.get('description', description)
         
         # Only use generic xsd_type_info if we didn't get metadata from context-specific lookup
-        # OR if parent_type was not specified (for top-level elements)
+        # AND parent_type was not specified (for top-level elements)
+        # If we have a parent_type but no metadata, don't use generic xsd_info to avoid wrong context
         if not parent_type:
             # For elements without parent context, use generic xsd_info
             if xsd_info:
@@ -1172,7 +1229,7 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                 if not (card.startswith('0..*') or card.startswith('1..*')):
                     # Check if there's a complex type matching parent_type with _RelStructure
                     # This handles containers like quays, stopPlaces, etc.
-                    if actual_parent_name.endswith('_RelStructure') or '_RelStructure' in actual_parent_name:
+                    if (parent_type and '_RelStructure' in parent_type) or (actual_parent_name and ('_RelStructure' in actual_parent_name or actual_parent_name.endswith('_RelStructure'))):
                         card = '0..*'
                     else:
                         # Also check if parent_type + _RelStructure exists as a complex type
@@ -1256,7 +1313,8 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         xsd_info = xsd_type_info.get(element, {})
         
         # Only use generic xsd_type_info if we didn't get metadata from context-specific lookup
-        # OR if parent_type was not specified (for top-level elements)
+        # AND parent_type was not specified (for top-level elements)
+        # If we have a parent_type but no metadata, don't use generic xsd_info to avoid wrong context
         if not parent_type:
             # For elements without parent context, use generic xsd_info
             if xsd_info:
@@ -1334,7 +1392,7 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                 if not (card.startswith('0..*') or card.startswith('1..*')):
                     # Check if there's a complex type matching parent_type with _RelStructure
                     # This handles containers like quays, stopPlaces, etc.
-                    if actual_parent_name.endswith('_RelStructure') or '_RelStructure' in actual_parent_name:
+                    if (parent_type and '_RelStructure' in parent_type) or (actual_parent_name and ('_RelStructure' in actual_parent_name or actual_parent_name.endswith('_RelStructure'))):
                         card = '0..*'
                     else:
                         # Also check if parent_type + _RelStructure exists as a complex type
