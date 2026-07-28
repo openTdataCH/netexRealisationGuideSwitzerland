@@ -11,10 +11,10 @@ In some cases the id of a StopPlace is not a SLOID.
 |  | ValidBetween | optional | 1..1 | ValidBetween | OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT. | This can be used to show, when the StopPlace can be used. |
 | + | FromDate | optional | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. |  |
 | + | ToDate | optional | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. |  |
-|  | keyList | mandatory | 1..1 | KeyListStructure | A list of alternative Key values for an element. | Key value pairs for DIDOK number and SLOID |
-| + | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. |  |
-| ++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
-| ++ | Value | mandatory | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
+|  | keyList | expected | 1..1 | KeyListStructure | A list of alternative Key values for an element. | Key value pairs for DIDOK number and SLOID and special values. Prefered is privateCodes. |
+| + | KeyValue | optional | 1..* | KeyValueStructure | Key value pair for Entity. |  |
+| ++ | Key | optional | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
+| ++ | Value | optional | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
 |  | privateCodes | mandatory | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
 | + | PrivateCode | mandatory | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments. |
 | ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |

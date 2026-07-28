@@ -293,16 +293,16 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     <tr>
       <td> </td>
       <td>keyList</td>
-      <td>mandatory</td>
+      <td>expected</td>
       <td>1..1</td>
       <td>KeyListStructure</td>
       <td>A list of alternative Key values for an element.</td>
-      <td>Key value pairs for DIDOK number and SLOID</td>
+      <td>Key value pairs for DIDOK number and SLOID and special values. Prefered is privateCodes.</td>
     </tr>
     <tr>
       <td>+</td>
       <td>KeyValue</td>
-      <td>mandatory</td>
+      <td>optional</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
       <td>Key value pair for Entity.</td>
@@ -311,7 +311,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     <tr>
       <td>++</td>
       <td>Key</td>
-      <td>mandatory</td>
+      <td>optional</td>
       <td>1..1</td>
       <td>xsd:normalizedString</td>
       <td>Identifier of value e.g. System.</td>
@@ -320,7 +320,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     <tr>
       <td>++</td>
       <td>Value</td>
-      <td>mandatory</td>
+      <td>optional</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
       <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
@@ -504,7 +504,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
   <span class="nt">&lt;ToDate&gt;</span>2026-12-31T00:00:00<span class="nt">&lt;/ToDate&gt;</span>
   <span class="nt">&lt;/ValidBetween&gt;</span>
   <span class="nt">&lt;keyList&gt;</span>
-  <span class="c">&lt;!-- Key value pairs for DIDOK number and SLOID --&gt;</span>
+  <span class="c">&lt;!-- Key value pairs for DIDOK number and SLOID and special values. Prefered is privateCodes. --&gt;</span>
   <span class="nt">&lt;KeyValue&gt;</span>
   <span class="nt">&lt;Key&gt;</span>DIDOK<span class="nt">&lt;/Key&gt;</span>
   <span class="nt">&lt;Value&gt;</span>7000<span class="nt">&lt;/Value&gt;</span>
@@ -513,18 +513,22 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
   <span class="nt">&lt;Key&gt;</span>SLOID<span class="nt">&lt;/Key&gt;</span>
   <span class="nt">&lt;Value&gt;</span>ch:1:sloid:7000<span class="nt">&lt;/Value&gt;</span>
   <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;KeyValue&gt;</span>
+  <span class="c">&lt;!-- Special value for Hafas environments. --&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>HafasPriority<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>4<span class="nt">&lt;/Value&gt;</span>
+  <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;KeyValue&gt;</span>
+  <span class="c">&lt;!-- Special value for Hafas environments. --&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>HafasKMInfo<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>1000<span class="nt">&lt;/Value&gt;</span>
+  <span class="nt">&lt;/KeyValue&gt;</span>
   <span class="nt">&lt;/keyList&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
   <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"didok"</span><span class="nt">&gt;</span>7000
   <span class="c">&lt;!-- In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments. --&gt;</span>
   <span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000<span class="nt">&lt;/PrivateCode&gt;</span>
-  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"HafasPriority"</span><span class="nt">&gt;</span>4
-  <span class="c">&lt;!-- Special value for Hafas environments. --&gt;</span>
-  <span class="nt">&lt;/PrivateCode&gt;</span>
-  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"HafasKMInfo"</span><span class="nt">&gt;</span>1000
-  <span class="c">&lt;!-- Special value for Hafas environments. --&gt;</span>
-  <span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
   <span class="nt">&lt;Name&gt;</span>Bern
   <span class="c">&lt;!-- The official stop name. If you have different versions one needs to use AlternativeName --&gt;</span>
