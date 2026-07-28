@@ -19,8 +19,8 @@ transfer times between Line/Directions at a given stop (UMSTEIGL)
 |  | FeederFilter | mandatory | 0..1 | InterchangeRuleParameterStructure | Feeder end of INTERCHANGE RULE. |  |
 | + | StopPlaceRef | mandatory | 0..1 | StopPlaceRefStructure | System identifier of a STOP PLACE. May be omitted if given by context. |  |
 | + | LineInDirectionRef | expected | 1..1 | LineInDirectionRef_Structure | Reference to LINEs in a specific DIRECTION |  |
-| ++ | LineRef | mandatory | 1..1 | LineRefStructure | Reference to a LINE. |  |
-| ++ | DirectionRef | optional | 1..1 | DirectionRefStructure | Reference to a DIRECTION. |  |
+| ++ | LineRef | mandatory | 0..1 | LineRefStructure | Reference to a LINE. |  |
+| ++ | DirectionRef | optional | 0..1 | DirectionRefStructure | Reference to a DIRECTION. |  |
 | + | AdjacentStopPlaceRef | optional | 0..1 | StopPlaceRefStructure | Prior (feeder) or onwards (distributor) SCHEDULED STOP PLACE before/after CONNECTION. |  |
 | + | ServiceJourneyRef | optional | 1..1 | ServiceJourneyRefStructure | Reference to a connecting VEHICLE JOURNEY to whom INTERCHANGE RULE applies. If absent applies to all journeys. |  |
 |  | DistributorFilter | mandatory | 0..1 | InterchangeRuleParameterStructure | Distributor end of INTERCHANGE RULE. |  |

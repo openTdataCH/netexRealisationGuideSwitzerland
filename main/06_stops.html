@@ -150,7 +150,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TopographicPlace.html">TopographicPlace</a></td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>unknown</td>
       <td>A town, city, village, suburb, quarter or other name settlement within a country. Provides a Gazetteer of Transport related place names.</td>
       <td>Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces.</td>
@@ -168,7 +168,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/StopPlace.html">StopPlace</a></td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>unknown</td>
       <td>Version of a named place where public transport may be accessed. May be a building complex (e.g. a station) or an on-street location. Can be a STOP PLACE, VEHICLE MEETING POINT, TAXI RANK. Note: If a master id exists for a StopPlace (must be stable and globally unique), then it is best used in the id. Optimally it would be built according IFOPT. It can also be put into one of the privateCodes in addition. If it is stored in KeyValue, then it should be documented well, so that importing systems know, which id is the relevant one.</td>
       <td> </td>
@@ -186,7 +186,7 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>unknown</td>
       <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
@@ -433,7 +433,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/AlternativeName.html">AlternativeName</a></td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>unknown</td>
       <td>Alternative Name.</td>
       <td> </td>
@@ -487,7 +487,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Quay.html">Quay</a></td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>unknown</td>
       <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
       <td> </td>
@@ -1043,7 +1043,7 @@ as its parent.</li>
       <td>+</td>
       <td>pos</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>gml:DirectPositionType</td>
       <td> </td>
       <td>EPSG:2056 is LV95. We use it in the INFO+ export.</td>

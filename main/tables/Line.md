@@ -22,10 +22,10 @@ For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `Oper
 |  | Name | mandatory | 0..* | MultilingualString | Name of Traveller | contains attribute D T from HRDF. Is not translated on purpose. |
 |  | ShortName | expected | 0..* | MultilingualString | Short Name for service | contains the LinieKurzName (attribut N T in HRDF) |
 |  | TransportMode | mandatory | 0..1 | AllModesEnumeration | MODE. |  |
-|  | TransportSubmode | optional | 1..1 | TransportSubmodeStructure | A submode of a public or private TRANSPORT MODE. | the mapping excel describe how to use the TransportSubmode |
+|  | TransportSubmode | optional | 1..* | TransportSubmodeStructure | A submode of a public or private TRANSPORT MODE. | the mapping excel describe how to use the TransportSubmode |
 | + | RailSubmode | optional | 1..1 | RailSubmodeEnumeration | TPEG pti02 Rail submodes loc13. See also See ERA B.4.7009 - Name: Item description code. | Here an example for rail. Be aware that other XXXSubmode are used for other mode. |
 |  | PublicCode | mandatory | 0..1 | PublicCodeStructure | Public code for JOURNEY. | Contains LinieLangName (attribute LT from HRDF) |
-|  | OperatorRef | expected | 1..1 | OperatorRefStructure | Reference to an OPERATOR. | The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney. Is redundant to the responsibilitySetRef on purpose. |
+|  | OperatorRef | expected | 1..* | OperatorRefStructure | Reference to an OPERATOR. | The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney. Is redundant to the responsibilitySetRef on purpose. |
 |  | additionalOperators | optional | 0..1 | transportOrganisationRefs_RelStructure | Additional OPERATORs for LINE. | Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined. |
 | + | OperatorRef | optional | 1..1 | OperatorRefStructure | Reference to an OPERATOR. |  |
 |  | LineType | expected | 0..1 | LineTypeEnumeration | Classification of LINE, including flexible options. +v2.0. | Will be used especially, when not "fixed". Details in mapping excel. |

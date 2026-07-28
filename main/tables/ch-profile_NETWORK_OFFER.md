@@ -7,7 +7,7 @@
 |  | PublicationTimestamp | mandatory | 1..1 | xsd:dateTime | Time of output of data. |  |
 |  | ParticipantRef | mandatory | 1..1 | siri:ParticipantCodeType | Identifier of system requesting Data. |  |
 |  | dataObjects | mandatory | 0..1 | dataObjects | NeTEx Entities of any type. |  |
-| + | CompositeFrame | mandatory | 1..1 | unknown | A container VERSION FRAME that groups a set of content VERSION FRAMsE to which the same VALIDITY CONDITIONs have been assigned. |  |
+| + | CompositeFrame | mandatory | 1..* | unknown | A container VERSION FRAME that groups a set of content VERSION FRAMsE to which the same VALIDITY CONDITIONs have been assigned. |  |
 | ++ | ValidBetween | expected | 1..1 | unknown | OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT. | This defines which timetable year is meant. We don't support partial delivery. |
 | +++ | FromDate | expected | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. |  |
 | +++ | ToDate | expected | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. |  |

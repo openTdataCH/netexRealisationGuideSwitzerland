@@ -14,6 +14,6 @@ A minimal ServiceCalendarFrame must be present in all timetable files.
 |  | dayTypes | optional | 0..1 | unknown | DAY TYPEs for BLOCK. |  |
 | + | [DayType](DayType.md) | optional | 1..1 | unknown | A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays. | Used for holidays only |
 |  | timebands | expected | 0..1 | timebandRefs_RelStructure | TIMEBANDS associated with JOURNEY FREQUENCY GROUP. |  |
-| + | [Timeband](Timeband.md) | expected | 1..1 | Timeband_VersionedChildStructure | A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category. | Mainly used for frequency-based lines. |
+| + | [Timeband](Timeband.md) | expected | 1..* | Timeband_VersionedChildStructure | A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category. | Mainly used for frequency-based lines. |
 |  | dayTypeAssignments | optional | 0..1 | dayTypeAssignments_RelStructure | Assignments of DAY TYPEs to specific OPERATING DAYs. The same DAY TYPE may be assigned to multiple Operating dates, and vice versa. |  |
-| + | [DayTypeAssignment](DayTypeAssignment.md) | optional | 1..1 | unknown | Associates a DAY TYPE with an OPERATING DAY within a specific Calendar. A specification of a particular DAY TYPE which will be valid during a TIME BAND on an OPERATING DAY. | Used for holidays only |
+| + | [DayTypeAssignment](DayTypeAssignment.md) | optional | 1..* | unknown | Associates a DAY TYPE with an OPERATING DAY within a specific Calendar. A specification of a particular DAY TYPE which will be valid during a TIME BAND on an OPERATING DAY. | Used for holidays only |
