@@ -274,80 +274,107 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
         
         # If parent_type is specified, try to find the element within that complex type first
         if parent_type:
+            # Clean parent_type by removing any special markers (e.g., "MULTILINGUAL_PARENT")
+            # Split by | and get the first non-marker part
+            clean_parent_type = None
+            if parent_type:
+                parts = parent_type.split('|')
+                for part in parts:
+                    if part and not part.startswith('MULTILINGUAL_'):
+                        clean_parent_type = part
+                        break
+            if not clean_parent_type:
+                clean_parent_type = parent_type
+            
             # Try exact match first
-            complex_type_xpath = f"//xs:complexType[@name='{parent_type}']//xs:element[@name='{element_name}']"
+            complex_type_xpath = f"//xs:complexType[@name='{clean_parent_type}']//xs:element[@name='{element_name}']"
             element = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
             
             # Also try with ref attribute (for referenced elements)
             if not element:
-                complex_type_xpath_ref = f"//xs:complexType[@name='{parent_type}']//xs:element[@ref='{element_name}']"
+                complex_type_xpath_ref = f"//xs:complexType[@name='{clean_parent_type}']//xs:element[@ref='{element_name}']"
                 element = xsd_doc.xpath(complex_type_xpath_ref, namespaces=namespaces)
                 if not element:
                     # Try with namespace prefix in ref (e.g., netex:PrivateCode)
-                    complex_type_xpath_ref_ns = f"//xs:complexType[@name='{parent_type}']//xs:element[contains(@ref, ':{element_name}')]"
+                    complex_type_xpath_ref_ns = f"//xs:complexType[@name='{clean_parent_type}']//xs:element[contains(@ref, ':{element_name}')]"
                     element = xsd_doc.xpath(complex_type_xpath_ref_ns, namespaces=namespaces)
             
             # Also try without namespace prefix for broader compatibility
             if not element:
-                complex_type_xpath_no_ns = f"//*[local-name()='complexType' and @name='{parent_type}']//*[local-name()='element' and @name='{element_name}']"
+                complex_type_xpath_no_ns = f"//*[local-name()='complexType' and @name='{clean_parent_type}']//*[local-name()='element' and @name='{element_name}']"
                 element = xsd_doc.xpath(complex_type_xpath_no_ns)
                 
                 # Also try with ref attribute for no-namespace case
                 if not element:
-                    complex_type_xpath_no_ns_ref = f"//*[local-name()='complexType' and @name='{parent_type}']//*[local-name()='element' and @ref='{element_name}']"
+                    complex_type_xpath_no_ns_ref = f"//*[local-name()='complexType' and @name='{clean_parent_type}']//*[local-name()='element' and @ref='{element_name}']"
                     element = xsd_doc.xpath(complex_type_xpath_no_ns_ref)
             
             # Try complex types that contain the parent_type name (e.g., StopPlace -> StopPlace_VersionStructure)
             if not element:
-                complex_type_xpath_contains = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
+                complex_type_xpath_contains = f"//xs:complexType[contains(@name, '{clean_parent_type}')]//xs:element[@name='{element_name}']"
                 element = xsd_doc.xpath(complex_type_xpath_contains, namespaces=namespaces)
                 
                 # Also try with ref attribute for contains case
                 if not element:
-                    complex_type_xpath_contains_ref = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@ref='{element_name}']"
+                    complex_type_xpath_contains_ref = f"//xs:complexType[contains(@name, '{clean_parent_type}')]//xs:element[@ref='{element_name}']"
                     element = xsd_doc.xpath(complex_type_xpath_contains_ref, namespaces=namespaces)
             
             if not element:
-                complex_type_xpath_contains_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
+                complex_type_xpath_contains_no_ns = f"//*[local-name()='complexType' and contains(@name, '{clean_parent_type}')]//*[local-name()='element' and @name='{element_name}']"
                 element = xsd_doc.xpath(complex_type_xpath_contains_no_ns)
-        
-        # If still not found, try to find the element in the main file without parent context
-        if not element:
+            
+            # If we have a parent_type but still haven't found the element, 
+            # search in other XSD files with the parent context
+            if not element:
+                base_dir = os.path.dirname(os.path.abspath(xsd_path))
+                found_in_file = search_xsd_files_for_element_with_parent(base_dir, element_name, clean_parent_type)
+                if found_in_file is not None:
+                    # Parse the file where the element was found
+                    xsd_doc = etree.parse(found_in_file, parser)
+                    namespaces = {'xs': 'http://www.w3.org/2001/XMLSchema'}
+                    # Find the element in this document using parent_type context
+                    complex_type_xpath = f"//xs:complexType[contains(@name, '{clean_parent_type}')]//xs:element[@name='{element_name}']"
+                    element = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
+                    if not element:
+                        complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{clean_parent_type}')]//*[local-name()='element' and @name='{element_name}']"
+                        element = xsd_doc.xpath(complex_type_xpath_no_ns)
+                    # If found in parent context, use it
+                    if element:
+                        xsd_path = found_in_file  # Update xsd_path for later use
+                        
+            # IMPORTANT: If parent_type was specified but we still haven't found the element in that context,
+            # DO NOT fall back to a generic search. Return None to avoid using the wrong element's metadata.
+            # This prevents issues where e.g. StopPlace/Name gets the description from Traveller/Name.
+            if not element:
+                return None
+        else:
+            # No parent_type specified, do a generic search
+            # Try to find the element in the main file first
             element_xpath = f"//xs:element[@name='{element_name}']"
             element = xsd_doc.xpath(element_xpath, namespaces=namespaces)
-        
-        # If not found in main file, search all XSD files in the directory with parent_type context
-        if not element and parent_type:
-            base_dir = os.path.dirname(os.path.abspath(xsd_path))
-            found_in_file = search_xsd_files_for_element_with_parent(base_dir, element_name, parent_type)
-            if found_in_file is not None:
-                # Parse the file where the element was found
-                xsd_doc = etree.parse(found_in_file, parser)
-                # Find the element in this document using parent_type context
-                complex_type_xpath = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
-                element = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
-                if not element:
-                    complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
-                    element = xsd_doc.xpath(complex_type_xpath_no_ns)
-        
-        # If still not found, search all XSD files without parent_type context
-        if not element:
-            base_dir = os.path.dirname(os.path.abspath(xsd_path))
-            found_in_file = search_xsd_files_for_element_with_parent(base_dir, element_name, None)
-            if found_in_file is not None:
-                # Parse the file where the element was found
-                xsd_doc = etree.parse(found_in_file, parser)
-                # Find the element in this document
-                element_xpath = f"//xs:element[@name='{element_name}']"
-                element = xsd_doc.xpath(element_xpath, namespaces=namespaces)
-                
-                # If not found, try without namespace
-                if not element:
-                    element_xpath_no_ns = f"//*[local-name()='element' and @name='{element_name}']"
-                    element = xsd_doc.xpath(element_xpath_no_ns)
-        
-        if not element:
-            return None
+            
+            # If not found in main file, search all XSD files
+            if not element:
+                base_dir = os.path.dirname(os.path.abspath(xsd_path))
+                found_in_file = search_xsd_files_for_element_with_parent(base_dir, element_name, None)
+                if found_in_file is not None:
+                    # Parse the file where the element was found
+                    xsd_doc = etree.parse(found_in_file, parser)
+                    namespaces = {'xs': 'http://www.w3.org/2001/XMLSchema'}
+                    # Find the element in this document
+                    element_xpath = f"//xs:element[@name='{element_name}']"
+                    element = xsd_doc.xpath(element_xpath, namespaces=namespaces)
+                    
+                    # If not found, try without namespace
+                    if not element:
+                        element_xpath_no_ns = f"//*[local-name()='element' and @name='{element_name}']"
+                        element = xsd_doc.xpath(element_xpath_no_ns)
+                    # If found, update xsd_doc for later use
+                    if element:
+                        xsd_path = found_in_file
+            
+            if not element:
+                return None
         
         element = element[0]
         
