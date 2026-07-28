@@ -1076,24 +1076,12 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         
         # Get XSD info for the element
         xsd_info = xsd_type_info.get(element, {})
-        if xsd_info:
-            # Use XSD description if available
-            xsd_description = xsd_info.get('description', '')
-            if xsd_description and not description:
-                description = xsd_description
-                note = xsd_description
-            
-            # Use XSD cardinality if available
-            if 'min_occurs' in xsd_info and 'max_occurs' in xsd_info:
-                card = get_cardinality(xsd_info['min_occurs'], xsd_info['max_occurs'])
-            
-            # Use XSD type if available
-            if 'type' in xsd_info:
-                xsd_type = xsd_info['type']
         
-        # Try enhanced metadata extraction if we have XSD path
-        # Pass parent_type to get context-specific element metadata
+        # Get parent_type for context-aware metadata lookup
         parent_type = item.get('parent_type')
+        
+        # Try enhanced metadata extraction first if we have XSD path and parent_type
+        # This ensures we get context-specific metadata before falling back to generic info
         if xsd_path:
             metadata = get_element_metadata(xsd_path, element, parent_type)
             if metadata:
@@ -1103,6 +1091,37 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                     xsd_type = metadata.get('type', xsd_type)
                 if not description:
                     description = metadata.get('description', description)
+        
+        # Only use generic xsd_type_info if we didn't get metadata from context-specific lookup
+        # OR if parent_type was not specified (for top-level elements)
+        if not parent_type:
+            # For elements without parent context, use generic xsd_info
+            if xsd_info:
+                # Use XSD description if available
+                xsd_description = xsd_info.get('description', '')
+                if xsd_description and not description:
+                    description = xsd_description
+                    note = xsd_description
+                
+                # Use XSD cardinality if available
+                if 'min_occurs' in xsd_info and 'max_occurs' in xsd_info:
+                    if card == '1..1' or not card:  # Only use if we don't have better info
+                        card = get_cardinality(xsd_info['min_occurs'], xsd_info['max_occurs'])
+                
+                # Use XSD type if available
+                if 'type' in xsd_info and (not xsd_type or xsd_type == 'unknown'):
+                    xsd_type = xsd_info['type']
+        # If we have parent_type but didn't get metadata from get_element_metadata,
+        # and description is still empty, try generic xsd_info as fallback
+        # BUT only for type, NOT for description (to avoid wrong context descriptions)
+        elif not metadata and xsd_info:
+            # Don't use xsd_info description for elements with parent_type to avoid wrong context
+            # Only use type and cardinality from xsd_info
+            if 'min_occurs' in xsd_info and 'max_occurs' in xsd_info:
+                if card == '1..1' or not card:
+                    card = get_cardinality(xsd_info['min_occurs'], xsd_info['max_occurs'])
+            if 'type' in xsd_info and (not xsd_type or xsd_type == 'unknown'):
+                xsd_type = xsd_info['type']
         
         # NEW: Override cardinality for container elements based on parent_type and element type
         # This handles cases where XSD says 0..1 but we need 0..* for multilingual/container elements
@@ -1119,9 +1138,10 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                         actual_parent_name = part
                         break
             
-            # If parent is a multilingual element or if this is a MultilingualString type from XSD
-            if actual_parent_name in multilingual_element_names or xsd_type == 'MultilingualString':
-                # This is a nested or container multilingual element, should be 0..*
+            # Only set to 0..* if the parent is ALSO a multilingual element (nested Text, etc.)
+            # NOT if xsd_type is MultilingualString - the cardinality should come from the XSD declaration
+            if actual_parent_name in multilingual_element_names:
+                # This is a nested multilingual element (e.g., Text inside Text), should be 0..*
                 card = '0..*'
         
         # Check for known container patterns
@@ -1165,8 +1185,9 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                             if actual_parent_name.endswith('s') and element == actual_parent_name[:-1]:
                                 card = '0..*'
                             # Also handle irregular plurals or other patterns
+                            # Note: 'names' removed because Name should have its own cardinality from XSD
                             elif actual_parent_name in ['quays', 'stopPlaces', 'facilities', 'privateCodes', 
-                                                        'alternativeNames', 'alternativeTexts', 'names', 
+                                                        'alternativeNames', 'alternativeTexts',
                                                         'descriptions', 'texts', 'localServices']:
                                 card = '0..*'
         
@@ -1216,26 +1237,11 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         description = item['description']
         note = item.get('note', '')
         
-        # Get XSD info for the element
-        xsd_info = xsd_type_info.get(element, {})
-        if xsd_info:
-            # Use XSD description if available
-            xsd_description = xsd_info.get('description', '')
-            if xsd_description and not description:
-                description = xsd_description
-                # Don't overwrite note with XSD description - keep the ch-note content
-            
-            # Use XSD cardinality if available
-            if 'min_occurs' in xsd_info and 'max_occurs' in xsd_info:
-                card = get_cardinality(xsd_info['min_occurs'], xsd_info['max_occurs'])
-            
-            # Use XSD type if available
-            if 'type' in xsd_info:
-                xsd_type = xsd_info['type']
-        
-        # Try enhanced metadata extraction if we have XSD path
-        # Pass parent_type to get context-specific element metadata
+        # Get parent_type for context-aware metadata lookup
         parent_type = item.get('parent_type')
+        
+        # Try enhanced metadata extraction first if we have XSD path and parent_type
+        # This ensures we get context-specific metadata before falling back to generic info
         if xsd_path:
             metadata = get_element_metadata(xsd_path, element, parent_type)
             if metadata:
@@ -1245,6 +1251,39 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                     xsd_type = metadata.get('type', xsd_type)
                 if not description:
                     description = metadata.get('description', description)
+        
+        # Get XSD info for the element
+        xsd_info = xsd_type_info.get(element, {})
+        
+        # Only use generic xsd_type_info if we didn't get metadata from context-specific lookup
+        # OR if parent_type was not specified (for top-level elements)
+        if not parent_type:
+            # For elements without parent context, use generic xsd_info
+            if xsd_info:
+                # Use XSD description if available
+                xsd_description = xsd_info.get('description', '')
+                if xsd_description and not description:
+                    description = xsd_description
+                
+                # Use XSD cardinality if available
+                if 'min_occurs' in xsd_info and 'max_occurs' in xsd_info:
+                    if card == '1..1' or not card:
+                        card = get_cardinality(xsd_info['min_occurs'], xsd_info['max_occurs'])
+                
+                # Use XSD type if available
+                if 'type' in xsd_info and (not xsd_type or xsd_type == 'unknown'):
+                    xsd_type = xsd_info['type']
+        # If we have parent_type but didn't get metadata from get_element_metadata,
+        # and description is still empty, try generic xsd_info as fallback
+        # BUT only for type, NOT for description (to avoid wrong context descriptions)
+        elif not metadata and xsd_info:
+            # Don't use xsd_info description for elements with parent_type to avoid wrong context
+            # Only use type and cardinality from xsd_info
+            if 'min_occurs' in xsd_info and 'max_occurs' in xsd_info:
+                if card == '1..1' or not card:
+                    card = get_cardinality(xsd_info['min_occurs'], xsd_info['max_occurs'])
+            if 'type' in xsd_info and (not xsd_type or xsd_type == 'unknown'):
+                xsd_type = xsd_info['type']
         
         # NEW: Override cardinality for container elements based on parent_type and element type
         # This handles cases where XSD says 0..1 but we need 0..* for multilingual/container elements
@@ -1261,9 +1300,10 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                         actual_parent_name = part
                         break
             
-            # If parent is a multilingual element or if this is a MultilingualString type from XSD
-            if actual_parent_name in multilingual_element_names or xsd_type == 'MultilingualString':
-                # This is a nested or container multilingual element, should be 0..*
+            # Only set to 0..* if the parent is ALSO a multilingual element (nested Text, etc.)
+            # NOT if xsd_type is MultilingualString - the cardinality should come from the XSD declaration
+            if actual_parent_name in multilingual_element_names:
+                # This is a nested multilingual element (e.g., Text inside Text), should be 0..*
                 card = '0..*'
         
         # Check for known container patterns
@@ -1307,8 +1347,9 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                             if actual_parent_name.endswith('s') and element == actual_parent_name[:-1]:
                                 card = '0..*'
                             # Also handle irregular plurals or other patterns
+                            # Note: 'names' removed because Name should have its own cardinality from XSD
                             elif actual_parent_name in ['quays', 'stopPlaces', 'facilities', 'privateCodes', 
-                                                        'alternativeNames', 'alternativeTexts', 'names', 
+                                                        'alternativeNames', 'alternativeTexts',
                                                         'descriptions', 'texts', 'localServices']:
                                 card = '0..*'
         
