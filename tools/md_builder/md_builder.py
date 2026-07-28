@@ -224,12 +224,30 @@ def search_xsd_files_for_element_with_parent(base_dir, element_name, parent_type
                     
                     # If parent_type is specified, only look within that context
                     if parent_type:
-                        # Try complex types containing parent_type
+                        # Try complex types containing parent_type with element by name
                         complex_type_xpath = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
                         elements = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
+                        
+                        # Also try with @ref attribute (for referenced elements)
+                        if not elements:
+                            complex_type_xpath_ref = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@ref='{element_name}']"
+                            elements = xsd_doc.xpath(complex_type_xpath_ref, namespaces=namespaces)
+                            
+                            # Also try with namespace prefix in ref
+                            if not elements:
+                                complex_type_xpath_ref_ns = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[contains(@ref, ':{element_name}')]"
+                                elements = xsd_doc.xpath(complex_type_xpath_ref_ns, namespaces=namespaces)
+                        
+                        # Try without namespace for broader compatibility
                         if not elements:
                             complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
                             elements = xsd_doc.xpath(complex_type_xpath_no_ns)
+                            
+                            # Also try with @ref for no-namespace case
+                            if not elements:
+                                complex_type_xpath_no_ns_ref = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @ref='{element_name}']"
+                                elements = xsd_doc.xpath(complex_type_xpath_no_ns_ref)
+                        
                         # Only return if found in parent context
                         if elements:
                             return file_path
@@ -333,11 +351,29 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
                     xsd_doc = etree.parse(found_in_file, parser)
                     namespaces = {'xs': 'http://www.w3.org/2001/XMLSchema'}
                     # Find the element in this document using parent_type context
+                    # Try with @name first
                     complex_type_xpath = f"//xs:complexType[contains(@name, '{clean_parent_type}')]//xs:element[@name='{element_name}']"
                     element = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
+                    
+                    # Also try with @ref attribute
+                    if not element:
+                        complex_type_xpath_ref = f"//xs:complexType[contains(@name, '{clean_parent_type}')]//xs:element[@ref='{element_name}']"
+                        element = xsd_doc.xpath(complex_type_xpath_ref, namespaces=namespaces)
+                        
+                        # Also try with namespace prefix in ref
+                        if not element:
+                            complex_type_xpath_ref_ns = f"//xs:complexType[contains(@name, '{clean_parent_type}')]//xs:element[contains(@ref, ':{element_name}')]"
+                            element = xsd_doc.xpath(complex_type_xpath_ref_ns, namespaces=namespaces)
+                    
+                    # Try without namespace for broader compatibility
                     if not element:
                         complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{clean_parent_type}')]//*[local-name()='element' and @name='{element_name}']"
                         element = xsd_doc.xpath(complex_type_xpath_no_ns)
+                        
+                        # Also try with @ref for no-namespace case
+                        if not element:
+                            complex_type_xpath_no_ns_ref = f"//*[local-name()='complexType' and contains(@name, '{clean_parent_type}')]//*[local-name()='element' and @ref='{element_name}']"
+                            element = xsd_doc.xpath(complex_type_xpath_no_ns_ref)
                     # If found in parent context, use it
                     if element:
                         xsd_path = found_in_file  # Update xsd_path for later use
@@ -386,13 +422,52 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
         max_occurs = element.get('maxOccurs', '1')
         cardinality = get_cardinality(min_occurs, max_occurs)
         
-        # Check if parent is a _RelStructure type - if so, elements should be 1..n
+        # Check if parent is a _RelStructure type or has unbounded maxOccurs
         # This handles the case where elements are within a choice that we don't explicitly model
+        # Check both the parent_type parameter and the actual parent complex type
+        actual_parent_complex_type = None
+        parent_elem = element.getparent()
+        if parent_elem is not None:
+            # Check if parent is a choice or sequence with maxOccurs="unbounded"
+            parent_max_occurs = parent_elem.get('maxOccurs')
+            if parent_max_occurs == 'unbounded':
+                cardinality = '0..*'
+            # Also check if parent is a complexType
+            elif parent_elem.tag.endswith('complexType') or etree.QName(parent_elem).localname == 'complexType':
+                # Get the name of the parent complex type
+                actual_parent_complex_type = parent_elem.get('name')
+        
+        # Check in order of preference:
+        # 1. parent_type parameter contains _RelStructure
         if parent_type and '_RelStructure' in parent_type:
-            # For _RelStructure types, the contained elements should have cardinality 1..*
-            # This is because _RelStructure types contain sequences with maxOccurs="unbounded"
-            # even if the individual element declaration has minOccurs="1" maxOccurs="1"
             cardinality = '1..*'
+        # 2. actual parent complex type contains _RelStructure
+        elif actual_parent_complex_type and '_RelStructure' in actual_parent_complex_type:
+            cardinality = '1..*'
+        # 3. Check if there's a complex type matching parent_type that has _RelStructure
+        elif parent_type:
+            # For cases where parent_type is "quays" but the actual type is "quays_RelStructure"
+            # Search for complex types containing parent_type and _RelStructure in current xsd_doc
+            complex_types_with_pattern = xsd_doc.xpath(f"//xs:complexType[contains(@name, '{parent_type}') and contains(@name, '_RelStructure')]", namespaces=namespaces)
+            if complex_types_with_pattern:
+                cardinality = '1..*'
+            else:
+                # Also search all XSD files for matching complex type
+                base_dir = os.path.dirname(os.path.abspath(xsd_path))
+                for root, dirs, files in os.walk(base_dir):
+                    for file in files:
+                        if file.endswith('.xsd'):
+                            file_path = os.path.join(root, file)
+                            try:
+                                doc = etree.parse(file_path, parser)
+                                ct_match = doc.xpath(f"//xs:complexType[contains(@name, '{parent_type}') and contains(@name, '_RelStructure')]", namespaces=namespaces)
+                                if ct_match:
+                                    cardinality = '1..*'
+                                    break
+                            except:
+                                continue
+                    if cardinality == '1..*':
+                        break
         
         # Get type - check substitution group chain recursively
         element_type = "unknown"
@@ -1070,6 +1145,30 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                     if actual_parent_name == container and element == child_type:
                         card = '0..*'
                         break
+                
+                # NEW: Check if parent corresponds to a _RelStructure type
+                # Containers like quays, stopPlaces, etc. have types like quays_RelStructure, stopPlaces_RelStructure
+                # All such containers should have 0..* or 1..* cardinality for their child elements
+                if not (card.startswith('0..*') or card.startswith('1..*')):
+                    # Check if there's a complex type matching parent_type with _RelStructure
+                    # This handles containers like quays, stopPlaces, etc.
+                    if actual_parent_name.endswith('_RelStructure') or '_RelStructure' in actual_parent_name:
+                        card = '0..*'
+                    else:
+                        # Also check if parent_type + _RelStructure exists as a complex type
+                        # For example, parent_type="quays" should match complex type "quays_RelStructure"
+                        # We'll do a simple string check - if parent_type looks like a container (lowercase first letter)
+                        # and the element matches the singular form, assume it's a container
+                        if actual_parent_name and actual_parent_name[0].islower():
+                            # Check if element is the singular form of parent (e.g., quays -> Quay)
+                            # Simple heuristic: parent ends with 's' and element is parent without 's'
+                            if actual_parent_name.endswith('s') and element == actual_parent_name[:-1]:
+                                card = '0..*'
+                            # Also handle irregular plurals or other patterns
+                            elif actual_parent_name in ['quays', 'stopPlaces', 'facilities', 'privateCodes', 
+                                                        'alternativeNames', 'alternativeTexts', 'names', 
+                                                        'descriptions', 'texts', 'localServices']:
+                                card = '0..*'
         
         # Handle versionRef -> version conversion for display
         if element.endswith('Ref') and 'versionRef=' in description:
@@ -1188,6 +1287,30 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                     if actual_parent_name == container and element == child_type:
                         card = '0..*'
                         break
+                
+                # NEW: Check if parent corresponds to a _RelStructure type
+                # Containers like quays, stopPlaces, etc. have types like quays_RelStructure, stopPlaces_RelStructure
+                # All such containers should have 0..* or 1..* cardinality for their child elements
+                if not (card.startswith('0..*') or card.startswith('1..*')):
+                    # Check if there's a complex type matching parent_type with _RelStructure
+                    # This handles containers like quays, stopPlaces, etc.
+                    if actual_parent_name.endswith('_RelStructure') or '_RelStructure' in actual_parent_name:
+                        card = '0..*'
+                    else:
+                        # Also check if parent_type + _RelStructure exists as a complex type
+                        # For example, parent_type="quays" should match complex type "quays_RelStructure"
+                        # We'll do a simple string check - if parent_type looks like a container (lowercase first letter)
+                        # and the element matches the singular form, assume it's a container
+                        if actual_parent_name and actual_parent_name[0].islower():
+                            # Check if element is the singular form of parent (e.g., quays -> Quay)
+                            # Simple heuristic: parent ends with 's' and element is parent without 's'
+                            if actual_parent_name.endswith('s') and element == actual_parent_name[:-1]:
+                                card = '0..*'
+                            # Also handle irregular plurals or other patterns
+                            elif actual_parent_name in ['quays', 'stopPlaces', 'facilities', 'privateCodes', 
+                                                        'alternativeNames', 'alternativeTexts', 'names', 
+                                                        'descriptions', 'texts', 'localServices']:
+                                card = '0..*'
         
         # Handle versionRef -> version conversion for display
         if element.endswith('Ref') and 'versionRef=' in description:
