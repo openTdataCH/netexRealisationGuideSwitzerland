@@ -44,6 +44,10 @@ classDiagram
     StopPlace "1" o-- "0..*" Quay : contains
     StopPlace "1" o-- "1" Centroid : contains
     Quay "1" o-- "1" Centroid : contains
+
+    %% Foreign Key relations
+    StopPlace --> TopographicPlace
+
 ```
 *Figure: Elements in SiteFrame*
 
