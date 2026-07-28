@@ -8,16 +8,16 @@ Long-term planned time data concerning public transport vehicles passing a parti
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-| + | CheckConstraint | optional | 1..1 | unknown | Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges. |  |
-| + | IsFlexible | optional | 0..1 | xsd:boolean | Whether use of stop is flexible, i.e. requires phoning to arrange. Must be a FLEXIBLE LINE. Default is false. |  |
-|  | AlightAndReboard | optional | 0..1 | xsd:boolean | Whether can alight and reboard at stop. |  |
-|  | StopPointInJourneyPatternRef | mandatory | 1..1 | StopPointInJourneyPatternRefStructure | Reference to a STOP POINT IN SEQUENCE. If given by context does not need to be stated. |  |
+| + | CheckConstraint | optional | 1..1 | unknown |  |  |
+| + | IsFlexible | optional | 0..1 | xsd:boolean |  |  |
+|  | AlightAndReboard | optional | 0..1 | xsd:boolean |  |  |
+|  | StopPointInJourneyPatternRef | mandatory | 1..1 | StopPointInJourneyPatternRefStructure |  |  |
 |  | ArrivalTime | expected | 0..1 | xsd:time | Timetabled Arrival time. | Not used if departure only. |
-|  | ArrivalDayOffset | optional | 0..1 | DayOffsetType | Arrival Day Offset from start of JOURNEY. +v1.1 |  |
-|  | DepartureTime | expected | 0..1 | xsd:time | Departure time. | Not used if arrival only. |
-|  | DepartureDayOffset | optional | 0..1 | DayOffsetType | Departure Time Day Offset. |  |
+|  | ArrivalDayOffset | optional | 0..1 | DayOffsetType | Arrival Day Offset from Start of Journey. |  |
+|  | DepartureTime | expected | 0..1 | xsd:time | Timetabled departure time. | Not used if arrival only. |
+|  | DepartureDayOffset | optional | 0..1 | DayOffsetType | Number of days after the starting departure time of the journey if not same calendar day. Default is 0 for same day. |  |
 |  | WaitingTime | optional | 0..1 | xsd:duration | Timetabled waiting interval. |  |
-|  | LatestArrivalTime | optional | 0..1 | xsd:time | Latest Arrival Time. |  |
-|  | LatestArrivalDayOffset | optional | 0..1 | DayOffsetType | Number of days after the starting time of the journey if not same calendar day. Default is 0 for same day. |  |
-|  | EarliestDepartureTime | optional | 0..1 | xsd:time | Earliest Timetabled departure time. |  |
-|  | EarliestDepartureDayOffset | optional | 0..1 | DayOffsetType | Number of days after the starting time of the journey if not same calendar day. Default is 0 for same day. |  |
+|  | LatestArrivalTime | optional | 0..1 | xsd:time |  |  |
+|  | LatestArrivalDayOffset | optional | 0..1 | DayOffsetType |  |  |
+|  | EarliestDepartureTime | optional | 0..1 | xsd:time |  |  |
+|  | EarliestDepartureDayOffset | optional | 0..1 | DayOffsetType |  |  |

@@ -80,9 +80,9 @@
       <td> </td>
       <td>Description</td>
       <td>optional</td>
-      <td>0..*</td>
+      <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Description of contents.</td>
+      <td> </td>
       <td>Can be used if there exists a decription of the pattern.</td>
     </tr>
     <tr>
@@ -91,7 +91,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>vehicleJourneyRunTimes_RelStructure</td>
-      <td>Run times for VEHICLE JOURNEY over different TIMING LINKs.</td>
+      <td> </td>
       <td>The run time on the TimingLinks</td>
     </tr>
     <tr>
@@ -100,7 +100,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>The time taken to traverse a TIMING LINK in a particular JOURNEY PATTERN, for a specified TIME DEMAND TYPE. If it exists, it will override the DEFAULT SERVICE JOURNEY RUN TIME and DEFAULT DEAD RUN RUN TIME.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -109,7 +109,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>TimingLinkRefStructure</td>
-      <td>Reference to a TIMING LINK.</td>
+      <td> </td>
       <td>The timing link that is ued here and that that does have a given run time</td>
     </tr>
     <tr>
@@ -118,7 +118,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>xsd:duration</td>
-      <td>Run time as interval.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -127,7 +127,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>vehicleJourneyWaitTimes_RelStructure</td>
-      <td>WAIT TIMEs for VEHICLE JOURNEY at different TIMING POINTs.</td>
+      <td> </td>
       <td>We only need wait times if greater than 0.</td>
     </tr>
     <tr>
@@ -136,7 +136,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>The time a vehicle has to wait at a specific TIMING POINT IN JOURNEY PATTERN, for a specified TIME DEMAND TYPE. This wait time can be superseded by a VEHICLE JOURNEY WAIT TIME.</td>
+      <td> </td>
       <td>Relevant waiting times at the stop</td>
     </tr>
     <tr>
@@ -145,7 +145,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>Specific SCHEDULED STOP POINT at end of CONNECTION.</td>
+      <td> </td>
       <td>Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice).</td>
     </tr>
     <tr>
@@ -154,7 +154,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:duration</td>
-      <td>Timetabled waiting interval.</td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>

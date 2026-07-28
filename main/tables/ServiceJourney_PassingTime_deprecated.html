@@ -89,7 +89,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td>Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”).</td>
     </tr>
     <tr>
@@ -98,7 +98,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs.</td>
+      <td> </td>
       <td>Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored.</td>
     </tr>
     <tr>
@@ -107,7 +107,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>KeyListStructure</td>
-      <td>A list of alternative Key values for an element.</td>
+      <td> </td>
       <td>KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID.</td>
     </tr>
     <tr>
@@ -116,7 +116,7 @@
       <td>mandatory</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
-      <td>Key value pair for Entity.</td>
+      <td> </td>
       <td>A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID.</td>
     </tr>
     <tr>
@@ -134,7 +134,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
+      <td>Value for alternative key.</td>
       <td> </td>
     </tr>
     <tr>
@@ -143,7 +143,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>PrivateCodesStructure</td>
-      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -152,7 +152,7 @@
       <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -161,7 +161,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>AllModesEnumeration</td>
-      <td>MODE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -170,7 +170,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>TypeOfProductCategoryRefStructure</td>
-      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -179,7 +179,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>TypeOfServiceRefStructure</td>
-      <td>Reference to a TYPE OF SERVICE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -188,7 +188,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>noticeAssignments_RelStructure</td>
-      <td>NOTICEs relevant for the whole GROUP OF SINGLE JOURNEYs.</td>
+      <td>NOTICEs of an interchange.</td>
       <td>The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops.</td>
     </tr>
     <tr>
@@ -197,7 +197,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -206,7 +206,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>OccupancyView_RelStructure</td>
-      <td>OCCUPANCYs associated with this journey. +v2.0</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -224,7 +224,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>ServiceAlterationEnumeration</td>
-      <td>Whether journey is as planned, a cancellation or an extra journey. Default is as Planned.</td>
+      <td> </td>
       <td>Only the value planned is allowed.</td>
     </tr>
     <tr>
@@ -233,7 +233,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:time</td>
-      <td>Departure time.</td>
+      <td>Time of Departure.</td>
       <td> </td>
     </tr>
     <tr>
@@ -242,7 +242,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>DayOffsetType</td>
-      <td>Departure Time Day Offset.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -251,7 +251,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>LineRefStructure</td>
-      <td>Reference to a LINE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -260,7 +260,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>RelativeDirectionEnumeration</td>
-      <td>For fares for DISTANCE MATRIXE LEMENTs, DIRECTION in which price applies.</td>
+      <td> </td>
       <td>Allowed are: inbound, outbound</td>
     </tr>
     <tr>
@@ -269,7 +269,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>trainNumbersInFrame_RelStructure</td>
-      <td>TRAIN NUMBERs in frame.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -278,7 +278,7 @@
       <td>mandatory</td>
       <td>1..*</td>
       <td>TrainNumberRefStructure</td>
-      <td>Reference to a TRAIN NUMBER.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -287,7 +287,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>TravelSpecificationSummaryEndpointStructure</td>
-      <td>Destination of Travel. Note that for a point-to-point TARIFF the origin is assigned with a DISTANCE MATRIX ELEMENT.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -296,7 +296,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>timetabledPassingTimes_RelStructure</td>
-      <td>PASSING TIMEs for VEHICLE JOURNEY.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -305,7 +305,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>TIMETABLED PASSING TIME at TIMING POINT.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -314,7 +314,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>PointInJourneyPatternRefStructure</td>
-      <td>Point in JOURNEY PATTERN upon which this DEAD RUN CALL is based. Can be used to obtain full association sets.</td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>

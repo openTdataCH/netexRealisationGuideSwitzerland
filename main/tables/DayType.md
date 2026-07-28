@@ -8,18 +8,18 @@ In Switzerland only used for holidays and the like
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-| + | AlternativeText | mandatory | 1..1 | unknown | Alternative Text. +v1.1 |  |
-| ++ | Text | mandatory | 0..* | MultilingualString | Text content of NOTICe. |  |
+| + | AlternativeText | mandatory | 1..1 | unknown |  |  |
+| ++ | Text | mandatory | 0..1 | MultilingualString | Name of the entity. |  |
 | +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | Name | mandatory | 0..* | MultilingualString | Name of Traveller | German or default text |
+|  | Name | mandatory | 0..1 | MultilingualString |  | German or default text |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | expected | 0..* | MultilingualString | Text content of NOTICe. | Italian |
+| + | Text | expected | 0..* | MultilingualString |  | Italian |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | expected | 0..* | MultilingualString | Text content of NOTICe. | French |
+| + | Text | expected | 0..* | MultilingualString |  | French |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | expected | 0..* | MultilingualString | Text content of NOTICe. | English |
+| + | Text | expected | 0..* | MultilingualString |  | English |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | properties | expected | 0..1 | propertiesOfDay_RelStructure | Properties of the DAY TYPE. |  |
-| + | PropertyOfDay | mandatory | 1..* | unknown | A property which a day may possess, such as school holiday, weekday, summer, winter etc. | Holidays only |
-| ++ | HolidayTypes | expected | 0..1 | HolidayTypesListOfEnumerations | Type of holiday. Default is Any day. |  |
-| ++ | DayEvent | optional | 0..1 | DayEventEnumeration | Events happening on day. |  |
+|  | properties | expected | 0..1 | propertiesOfDay_RelStructure |  |  |
+| + | PropertyOfDay | mandatory | 1..* | unknown |  | Holidays only |
+| ++ | HolidayTypes | expected | 0..1 | HolidayTypesListOfEnumerations |  |  |
+| ++ | DayEvent | optional | 0..1 | DayEventEnumeration |  |  |

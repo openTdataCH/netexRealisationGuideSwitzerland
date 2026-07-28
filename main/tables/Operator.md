@@ -8,16 +8,16 @@ We will use this organisation also in AuthorityRef. The problem is that the sboi
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | keyList | expected | 1..1 | KeyListStructure | A list of alternative Key values for an element. |  |
-| + | KeyValue | expected | 1..* | KeyValueStructure | Key value pair for Entity. |  |
+|  | keyList | expected | 1..1 | KeyListStructure |  |  |
+| + | KeyValue | expected | 1..* | KeyValueStructure |  |  |
 | ++ | Key | expected | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
-| ++ | Value | expected | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
-|  | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
-| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | Busines organisation |
-|  | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
-|  | Name | expected | 0..* | MultilingualString | Name of Traveller |  |
-|  | ShortName | expected | 0..* | MultilingualString | Short Name for service | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
-|  | parts | optional | 0..1 | blockParts_RelStructure | BLOCK PARTs which make up COMPOUND BLOCK. |  |
-| ++ | administrativeZones | optional | 0..1 | administrativeZones_RelStructure | Zones managed by ORGANISATION PART. |  |
-| +++ | TransportAdministrativeZone | optional | 1..1 | unknown | A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region. |  |
-| ++++ | PrivateCode | optional | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+| ++ | Value | expected | 0..1 | xsd:anyType | Value for alternative key. |  |
+|  | privateCodes | expected | 1..1 | PrivateCodesStructure |  |  |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure |  | Busines organisation |
+|  | PrivateCode | expected | 1..1 | PrivateCodeStructure |  |  |
+|  | Name | expected | 0..1 | MultilingualString |  |  |
+|  | ShortName | expected | 0..1 | MultilingualString |  | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
+|  | parts | optional | 0..1 | blockParts_RelStructure |  |  |
+| ++ | administrativeZones | optional | 0..1 | administrativeZones_RelStructure |  |  |
+| +++ | TransportAdministrativeZone | optional | 1..1 | unknown |  |  |
+| ++++ | PrivateCode | optional | 1..1 | PrivateCodeStructure |  |  |

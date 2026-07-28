@@ -78,9 +78,9 @@
       <td> </td>
       <td>Name</td>
       <td>optional</td>
-      <td>0..*</td>
+      <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of Traveller</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -89,7 +89,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>Annotated reference to a ROUTE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -98,7 +98,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>LineRefStructure</td>
-      <td>Reference to a LINE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -107,7 +107,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>RelativeDirectionEnumeration</td>
-      <td>For fares for DISTANCE MATRIXE LEMENTs, DIRECTION in which price applies.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -125,7 +125,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>The use of a SCHEDULED STOP POINT in a specified order. within a JOURNEY PATTERN or SERVICE PATTERN.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -134,7 +134,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>Specific SCHEDULED STOP POINT at end of CONNECTION.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -143,7 +143,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>Whether alighting is allowed at the stop Default is true.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -152,7 +152,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>Whether boarding is allowed at the stop. Default is true.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -161,7 +161,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>DestinationDisplayRefStructure</td>
-      <td>Reference to a DESTINATION DISPLAY.</td>
+      <td> </td>
       <td>Indicates that the destination has changed. Superseeds Line or ServiceJourney</td>
     </tr>
     <tr>
@@ -170,7 +170,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>Whether stop is a request stop for this journey. Default is false.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -179,7 +179,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>StopUseEnumeration</td>
-      <td>Nature of use of stop, e.g. access, interchange only, or pass through. Default is Access.</td>
+      <td> </td>
       <td>All values possible. passthrough is used for Durchfahrt, if such data is delivered.</td>
     </tr>
     <tr>
@@ -188,7 +188,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>checkConstraints_RelStructure</td>
-      <td>CHECK CONSTRAINTs which apply to SERVICE JOURNEY, e.g. check in time, security time. These are advisory only and not for use in journey planning.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -197,7 +197,7 @@
       <td>optional</td>
       <td>1..*</td>
       <td>unknown</td>
-      <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
+      <td>Process associated with a Place, typically giving rise to a delay to the traveller.</td>
       <td> </td>
     </tr>
     <tr>
@@ -206,7 +206,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>bookingArrangements_RelStructure</td>
-      <td>Set of possible Booking Arrangements for Cancellations. +v2.0</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -215,7 +215,7 @@
       <td>optional</td>
       <td>1..*</td>
       <td>BookingArrangementRefStructure</td>
-      <td>Reference to a BOOKING ARRANGEMENT.</td>
+      <td> </td>
       <td>Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information.</td>
     </tr>
     <tr>
@@ -224,7 +224,7 @@
       <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
       <td>1..*</td>
       <td>unknown</td>
-      <td>Details of the booking arrangements for a given LINE, STOP, SERVICE etc.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -233,7 +233,7 @@
       <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
       <td>0..1</td>
       <td>BookingMethodListOfEnumerations</td>
-      <td>Booking methods allowed. +v1.2.2</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -242,7 +242,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>ServiceJourneyPatternTypeEnumeration</td>
-      <td>Type of SERVICE JOURNEY PATTERN.</td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>

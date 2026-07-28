@@ -78,9 +78,9 @@
       <td> </td>
       <td>Text</td>
       <td>expected</td>
-      <td>0..*</td>
+      <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Text content of NOTICe.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -98,7 +98,7 @@
       <td>expected</td>
       <td>0..*</td>
       <td>MultilingualString</td>
-      <td>Text content of NOTICe.</td>
+      <td>Name of the entity.</td>
       <td> </td>
     </tr>
     <tr>
@@ -116,7 +116,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>PublicCodeStructure</td>
-      <td>Public code for JOURNEY.</td>
+      <td> </td>
       <td>The public code is transmitted when it is to be published and when it is the type of notice 10. Only 1 and 10 aree allowed.</td>
     </tr>
     <tr>
@@ -125,7 +125,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>CleardownCodeType</td>
-      <td>A 20 bit number used for wireless cleardown of stop displays by some AVL systems.</td>
+      <td> </td>
       <td>A duplication, but we want it. “A__” indicates an offer based on BS KI</td>
     </tr>
     <tr>
@@ -134,7 +134,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
       <td>A duplication, but we want it.</td>
     </tr>
     <tr>
@@ -143,7 +143,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>TypeOfNoticeRefStructure</td>
-      <td>Reference to a TYPE OF NOTICE.</td>
+      <td> </td>
       <td>allowed are ch:1:TypeOfNotice:1 for general notice, ch:1:TypeOfNotice:10 for offer, ch:1:TypeOfNotice:11 for region code (only PAG)</td>
     </tr>
     <tr>
@@ -152,7 +152,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>Whether NOTICE is advertised to public. This may be overridden on an assignment.</td>
+      <td> </td>
       <td>Whether the NOTICE is advertised.</td>
     </tr>
   </tbody>

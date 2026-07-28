@@ -82,7 +82,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>ExtensionsStructure</td>
-      <td>User defined Extensions to ENTITY in schema. (Wrapper tag used to avoid problems with handling of optional ‘any’ by some validators).</td>
+      <td> </td>
       <td>When also ProductCategory is relevant, then this extension must be used</td>
     </tr>
     <tr>
@@ -109,7 +109,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>TransferDurationStructure</td>
-      <td>Timings for walking over TRANSFER if different from the JOURNEY PATTERN transfer duration,</td>
+      <td> </td>
       <td>We use WalkTransferDuration. At some point we need a solution for bicyle duration too (TSI telemetics)</td>
     </tr>
     <tr>
@@ -118,7 +118,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:duration</td>
-      <td>Time for a Mobility Restricted traveller to make a TRANSFER.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -127,7 +127,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER.</td>
+      <td> </td>
       <td>Should be false - we always intend to use only one way because the behaviour may not be the same.</td>
     </tr>
     <tr>
@@ -136,7 +136,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>ConnectionEndStructure</td>
-      <td>Origin end of CONNECTION.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -145,7 +145,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>AllModesEnumeration</td>
-      <td>MODE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -154,7 +154,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>Simplified view of OPERATOR. All data except the identifier will be derived through the relationship.</td>
+      <td> </td>
       <td>Should be a sboid whenever possible.</td>
     </tr>
     <tr>
@@ -163,7 +163,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>OperatorRefStructure</td>
-      <td>Reference to an OPERATOR.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -172,7 +172,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>ConnectionEndStructure</td>
-      <td>Destination end of CONNECTION.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -181,7 +181,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>StopPlaceRefStructure</td>
-      <td>System identifier of a STOP PLACE. May be omitted if given by context.</td>
+      <td> </td>
       <td>Usually a SLOID. Not set means whole network.</td>
     </tr>
   </tbody>

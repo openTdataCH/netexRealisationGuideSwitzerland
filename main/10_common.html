@@ -200,9 +200,9 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
       <td> </td>
       <td>Name</td>
       <td>mandatory</td>
-      <td>0..*</td>
+      <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of Traveller</td>
+      <td>ALTERNATIVE NAME of the ENTITY.</td>
       <td> </td>
     </tr>
     <tr>
@@ -314,7 +314,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td>mandatory</td>
       <td>0..1</td>
       <td>TimeZoneOffsetType</td>
-      <td>Timezone offset from Greenwich at LOCALE.</td>
+      <td> </td>
       <td>We prefer times without the suf-fix “+hh:mm”. Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2)</td>
     </tr>
     <tr>
@@ -323,7 +323,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:normalizedString</td>
-      <td>Timezone name at LOCALE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -332,7 +332,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td>mandatory</td>
       <td>0..1</td>
       <td>TimeZoneOffsetType</td>
-      <td>Summer timezone offset if different from Time zone offset.</td>
+      <td> </td>
       <td>We prefer times without the suf-fix “+hh:mm”. Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2)</td>
     </tr>
     <tr>
@@ -341,7 +341,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:language</td>
-      <td>Default Language for LOCALE. Assume language use is “normally used”</td>
+      <td> </td>
       <td>Is always set to “de” for Swiss public transport.</td>
     </tr>
     <tr>

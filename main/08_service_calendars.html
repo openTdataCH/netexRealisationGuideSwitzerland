@@ -174,7 +174,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -183,7 +183,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs.</td>
+      <td> </td>
       <td>Our main mechanism for validity and operating days</td>
     </tr>
     <tr>
@@ -192,7 +192,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>A SERVICE CALENDAR. A collection of DAY TYPE ASSIGNMENTs.</td>
+      <td> </td>
       <td>We only have one ServiceCalendar for the whole timetable year. It is not referenced.</td>
     </tr>
     <tr>
@@ -201,7 +201,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>unknown</td>
-      <td>DAY TYPEs for BLOCK.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -210,7 +210,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays.</td>
+      <td> </td>
       <td>Used for holidays only</td>
     </tr>
     <tr>
@@ -219,7 +219,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>timebandRefs_RelStructure</td>
-      <td>TIMEBANDS associated with JOURNEY FREQUENCY GROUP.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -237,7 +237,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>dayTypeAssignments_RelStructure</td>
-      <td>Assignments of DAY TYPEs to specific OPERATING DAYs. The same DAY TYPE may be assigned to multiple Operating dates, and vice versa.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -246,7 +246,7 @@
       <td>optional</td>
       <td>1..*</td>
       <td>unknown</td>
-      <td>Associates a DAY TYPE with an OPERATING DAY within a specific Calendar. A specification of a particular DAY TYPE which will be valid during a TIME BAND on an OPERATING DAY.</td>
+      <td> </td>
       <td>Used for holidays only</td>
     </tr>
   </tbody>
@@ -341,7 +341,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:dateTime</td>
-      <td>Start date of AVAILABILITY CONDITION.</td>
+      <td> </td>
       <td>Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
     </tr>
     <tr>
@@ -350,7 +350,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:dateTime</td>
-      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td> </td>
       <td>Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
     </tr>
     <tr>
@@ -359,7 +359,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:normalizedString</td>
-      <td>For UIC style encoding of day types String of bits, one for each day in period: whether valid or not valid on the day. Normally there will be a bit for every day between start and end date. If bit is missing, assume available.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -368,7 +368,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>timebandRefs_RelStructure</td>
-      <td>TIMEBANDS associated with JOURNEY FREQUENCY GROUP.</td>
+      <td> </td>
       <td>Can also be referenced</td>
     </tr>
     <tr>
@@ -386,7 +386,7 @@
       <td>optional</td>
       <td>1..*</td>
       <td>TimebandRefStructure</td>
-      <td>Reference to a TIME BAND.</td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>
@@ -483,9 +483,9 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td> </td>
       <td>Name</td>
       <td>expected</td>
-      <td>0..*</td>
+      <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of Traveller</td>
+      <td> </td>
       <td>timetable year</td>
     </tr>
     <tr>
@@ -494,7 +494,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:dateTime</td>
-      <td>Start date of AVAILABILITY CONDITION.</td>
+      <td> </td>
       <td>Beginning of timetable year</td>
     </tr>
     <tr>
@@ -503,7 +503,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:dateTime</td>
-      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td> </td>
       <td>End of timetable year</td>
     </tr>
   </tbody>
@@ -583,16 +583,16 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>mandatory</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>Alternative Text. +v1.1</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
       <td>++</td>
       <td>Text</td>
       <td>mandatory</td>
-      <td>0..*</td>
+      <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Text content of NOTICe.</td>
+      <td>Name of the entity.</td>
       <td> </td>
     </tr>
     <tr>
@@ -608,9 +608,9 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td> </td>
       <td>Name</td>
       <td>mandatory</td>
-      <td>0..*</td>
+      <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of Traveller</td>
+      <td> </td>
       <td>German or default text</td>
     </tr>
     <tr>
@@ -628,7 +628,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>expected</td>
       <td>0..*</td>
       <td>MultilingualString</td>
-      <td>Text content of NOTICe.</td>
+      <td> </td>
       <td>Italian</td>
     </tr>
     <tr>
@@ -646,7 +646,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>expected</td>
       <td>0..*</td>
       <td>MultilingualString</td>
-      <td>Text content of NOTICe.</td>
+      <td> </td>
       <td>French</td>
     </tr>
     <tr>
@@ -664,7 +664,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>expected</td>
       <td>0..*</td>
       <td>MultilingualString</td>
-      <td>Text content of NOTICe.</td>
+      <td> </td>
       <td>English</td>
     </tr>
     <tr>
@@ -682,7 +682,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>expected</td>
       <td>0..1</td>
       <td>propertiesOfDay_RelStructure</td>
-      <td>Properties of the DAY TYPE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -691,7 +691,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>mandatory</td>
       <td>1..*</td>
       <td>unknown</td>
-      <td>A property which a day may possess, such as school holiday, weekday, summer, winter etc.</td>
+      <td> </td>
       <td>Holidays only</td>
     </tr>
     <tr>
@@ -700,7 +700,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>expected</td>
       <td>0..1</td>
       <td>HolidayTypesListOfEnumerations</td>
-      <td>Type of holiday. Default is Any day.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -709,7 +709,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>optional</td>
       <td>0..1</td>
       <td>DayEventEnumeration</td>
-      <td>Events happening on day.</td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>
@@ -798,7 +798,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:time</td>
-      <td>Start time of USAGE VALIDITY PERIOD.</td>
+      <td> </td>
       <td>Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used.</td>
     </tr>
     <tr>
@@ -807,7 +807,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:time</td>
-      <td>End time of USAGE VALIDITY PERIOD.</td>
+      <td> </td>
       <td>Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used.</td>
     </tr>
   </tbody>
@@ -885,7 +885,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:date</td>
-      <td>Date of the review</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -894,7 +894,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>mandatory</td>
       <td>1..*</td>
       <td>DayTypeRefStructure</td>
-      <td>The DAY TYPE of all the services in this group.</td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>

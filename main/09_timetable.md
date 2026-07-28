@@ -50,23 +50,23 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | vehicleJourneys | expected | 0..1 | journeysInFrame_RelStructure | VEHICLE JOURNEYs in frame. | Contains the ServiceJourneys and TemplateServiceJourneys. |
-| + | [ServiceJourney](./tables/ServiceJourney.md) | expected | 1..1 | unknown | A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN. The VIEW includes derived ancillary data from referenced entities. | ServiceJourney is used for common Journeys. |
-| + | [TemplateServiceJourney](./tables/TemplateServiceJourney.md) | expected | 1..1 | unknown | A VEHICLE JOURNEY with a set of frequencies that may be used to represent a set of similar journeys differing only by their time of departure. | TemplateServiceJourney is only to be used if a line is serviced at a certain frequency. |
-|  | trainNumbers | expected | 0..1 | trainNumbersInFrame_RelStructure | TRAIN NUMBERs in frame. |  |
-| + | [TrainNumber](./tables/TrainNumber.md) | mandatory | 1..* | unknown | Specification of codes assigned to particular VEHICLE JOURNEYs when operated by TRAINs of COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc). |  |
-|  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITies in frame. |  |
-| + | [ServiceFacilitySet](./tables/ServiceFacilitySet.md) | expected | 1..* | unknown | Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.). |  |
-|  | typesOfService | expected | 0..1 | typesOfServiceInFrame_RelStructure | TYPEs of SERVICE in frame. |  |
-| + | TypeOfService | optional | 1..* | unknown | Classification of a Service. | This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. |
-| ++ | Name | expected | 0..* | MultilingualString | Name of Traveller |  |
+|  | vehicleJourneys | expected | 0..1 | journeysInFrame_RelStructure |  | Contains the ServiceJourneys and TemplateServiceJourneys. |
+| + | [ServiceJourney](./tables/ServiceJourney.md) | expected | 1..1 | unknown |  | ServiceJourney is used for common Journeys. |
+| + | [TemplateServiceJourney](./tables/TemplateServiceJourney.md) | expected | 1..1 | unknown |  | TemplateServiceJourney is only to be used if a line is serviced at a certain frequency. |
+|  | trainNumbers | expected | 0..1 | trainNumbersInFrame_RelStructure |  |  |
+| + | [TrainNumber](./tables/TrainNumber.md) | mandatory | 1..* | unknown |  |  |
+|  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure |  |  |
+| + | [ServiceFacilitySet](./tables/ServiceFacilitySet.md) | expected | 1..* | unknown |  |  |
+|  | typesOfService | expected | 0..1 | typesOfServiceInFrame_RelStructure |  |  |
+| + | TypeOfService | optional | 1..* | unknown |  | This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. |
+| ++ | Name | expected | 0..1 | MultilingualString |  |  |
 | +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| ++ | ShortName | expected | 0..* | MultilingualString | Short Name for service |  |
+| ++ | ShortName | expected | 0..1 | MultilingualString |  |  |
 | +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| ++ | PrivateCode | optional | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
-| + | [ServiceJourneyInterchange](./tables/ServiceJourneyInterchange.md) | expected | 1..1 | unknown | The scheduled possibility for transfer of passengers between two SERVICE JOURNEYs at the same or different STOP POINTs. | For modeling many forms of interchanges |
-|  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure | Opnen specifcation of VEHICLE TYPEs + v1.1 | We will use this place to store Train and CompoundTrain information, when we will do formation. Not detailed at the moment |
-| + | CompoundTrain | optional | 1..1 | unknown | A vehicle composed of COMPOUND TRAIN ELEMENTs in a certain order, i.e. of wagons assembled together and propelled by a locomotive or one of the wagons. |  |
+| ++ | PrivateCode | optional | 1..1 | PrivateCodeStructure |  |  |
+| + | [ServiceJourneyInterchange](./tables/ServiceJourneyInterchange.md) | expected | 1..1 | unknown |  | For modeling many forms of interchanges |
+|  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure |  | We will use this place to store Train and CompoundTrain information, when we will do formation. Not detailed at the moment |
+| + | CompoundTrain | optional | 1..1 | unknown |  |  |
 
 
 
@@ -144,38 +144,38 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
-|  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
-| + | AvailabilityConditionRef | mandatory | 1..1 | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. | Only a single AvailabilityConditionRef is allowed. |
-|  | keyList | expected | 1..1 | KeyListStructure | A list of alternative Key values for an element. | KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. |
-| + | KeyValue | mandatory | 1..* | KeyValueStructure | Key value pair for Entity. | A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. |
+|  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure |  | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
+| + | AvailabilityConditionRef | mandatory | 1..1 | AvailabilityConditionRefStructure |  | Only a single AvailabilityConditionRef is allowed. |
+|  | keyList | expected | 1..1 | KeyListStructure |  | KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. |
+| + | KeyValue | mandatory | 1..* | KeyValueStructure |  | A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. |
 | ++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
-| ++ | Value | mandatory | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
-|  | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
-| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | The following types are possible: sjyid and rn. rn is the type used for the Postauto region. |
+| ++ | Value | mandatory | 0..1 | xsd:anyType | Value for alternative key. |  |
+|  | privateCodes | expected | 1..1 | PrivateCodesStructure |  |  |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure |  | The following types are possible: sjyid and rn. rn is the type used for the Postauto region. |
 | ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
-|  | TransportMode | optional | 0..1 | AllModesEnumeration | MODE. |  |
-|  | TypeOfProductCategoryRef | mandatory | 1..1 | TypeOfProductCategoryRefStructure | Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code. | Relevant elements are defined in the mapping excel. |
-|  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure | Reference to a TYPE OF SERVICE. | Should always be ch:1:TypeOfService:1 |
-|  | noticeAssignments | optional | 0..1 | noticeAssignments_RelStructure | NOTICEs relevant for the whole GROUP OF SINGLE JOURNEYs. | The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop). |
-| + | [NoticeAssignment](./tables/NoticeAssignment.md) | optional | 1..1 | unknown | The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively. |  |
-|  | occupancies | optional | 0..1 | OccupancyView_RelStructure | OCCUPANCYs associated with this journey. +v2.0 |  |
+|  | TransportMode | optional | 0..1 | AllModesEnumeration |  |  |
+|  | TypeOfProductCategoryRef | mandatory | 1..1 | TypeOfProductCategoryRefStructure |  | Relevant elements are defined in the mapping excel. |
+|  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure |  | Should always be ch:1:TypeOfService:1 |
+|  | noticeAssignments | optional | 0..1 | noticeAssignments_RelStructure | NOTICEs of an interchange. | The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop). |
+| + | [NoticeAssignment](./tables/NoticeAssignment.md) | optional | 1..1 | unknown |  |  |
+|  | occupancies | optional | 0..1 | OccupancyView_RelStructure |  |  |
 | + | [OccupancyView](./tables/OccupancyView.md) | optional | 1..1 | OccupancyView_VersionStructure |  | Currently not available |
-|  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration | Whether journey is as planned, a cancellation or an extra journey. Default is as Planned. | Only the value planned is allowed. We might add the others, like cancelled, later. |
-|  | DepartureTime | expected | 0..1 | xsd:time | Departure time. |  |
-|  | DepartureDayOffset | optional | 0..1 | DayOffsetType | Departure Time Day Offset. | 0 for current operating day. Could also be negative. |
+|  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration |  | Only the value planned is allowed. We might add the others, like cancelled, later. |
+|  | DepartureTime | expected | 0..1 | xsd:time | Time of Departure. |  |
+|  | DepartureDayOffset | optional | 0..1 | DayOffsetType |  | 0 for current operating day. Could also be negative. |
 |  | JourneyPatternRef | mandatory | 1..* | JourneyPatternRefStructure | Reference to a JOURNEY PATTERN. | The reference to the ServiceJourneyPattern. |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
-|  | TimeDemandTypeRef | mandatory | 0..1 | TimeDemandTypeRefStructure | Reference to a TIME DEMAND TYPE used at start of JOURNEY. | The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. |
-|  | VehicleTypeRef | expected | 1..1 | VehicleTypeRefStructure | Reference to a VEHICLE TYPE. | Mostly used for accessibility information like NF. Relevant definitions in the mapping excel. |
-|  | LineRef | mandatory | 1..1 | LineRefStructure | Reference to a LINE. |  |
-|  | DirectionType | mandatory | 0..1 | RelativeDirectionEnumeration | For fares for DISTANCE MATRIXE LEMENTs, DIRECTION in which price applies. | Allowed are: inbound, outbound |
-|  | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure | TRAIN NUMBERs in frame. |  |
-| + | TrainNumberRef | mandatory | 1..* | TrainNumberRefStructure | Reference to a TRAIN NUMBER. |  |
-|  | [Destination](./tables/Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure | Destination of Travel. Note that for a point-to-point TARIFF the origin is assigned with a DISTANCE MATRIX ELEMENT. |  |
-|  | parts | optional | 0..1 | blockParts_RelStructure | BLOCK PARTs which make up COMPOUND BLOCK. | For some use cases e.g. change of Facilities during ServiceJourney |
-| + | JourneyPartRef | expected | 1..1 | JourneyPartRefStructure | Reference to a JOURNEY PART. |  |
-|  | checkConstraints | optional | 0..1 | checkConstraints_RelStructure | CHECK CONSTRAINTs which apply to SERVICE JOURNEY, e.g. check in time, security time. These are advisory only and not for use in journey planning. |  |
-| + | CheckConstraint | optional | 1..* | unknown | Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges. | CheckConstraints are used for different use cases |
+|  | TimeDemandTypeRef | mandatory | 0..1 | TimeDemandTypeRefStructure |  | The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. |
+|  | VehicleTypeRef | expected | 1..1 | VehicleTypeRefStructure |  | Mostly used for accessibility information like NF. Relevant definitions in the mapping excel. |
+|  | LineRef | mandatory | 1..1 | LineRefStructure |  |  |
+|  | DirectionType | mandatory | 0..1 | RelativeDirectionEnumeration |  | Allowed are: inbound, outbound |
+|  | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure |  |  |
+| + | TrainNumberRef | mandatory | 1..* | TrainNumberRefStructure |  |  |
+|  | [Destination](./tables/Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure |  |  |
+|  | parts | optional | 0..1 | blockParts_RelStructure |  | For some use cases e.g. change of Facilities during ServiceJourney |
+| + | JourneyPartRef | expected | 1..1 | JourneyPartRefStructure |  |  |
+|  | checkConstraints | optional | 0..1 | checkConstraints_RelStructure |  |  |
+| + | CheckConstraint | optional | 1..* | unknown | Process associated with a Place, typically giving rise to a delay to the traveller. | CheckConstraints are used for different use cases |
 
 
 
@@ -309,40 +309,40 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
-|  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
-| + | AvailabilityConditionRef | mandatory | 1..1 | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. | Only a single AvailabilityConditionRef is allowed. |
-|  | keyList | optional | 1..1 | KeyListStructure | A list of alternative Key values for an element. | Key list for the repeating journeys. Contains the SJYID. |
-| + | KeyValue | optional | 1..* | KeyValueStructure | Key value pair for Entity. | A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. |
+|  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure |  | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
+| + | AvailabilityConditionRef | mandatory | 1..1 | AvailabilityConditionRefStructure |  | Only a single AvailabilityConditionRef is allowed. |
+|  | keyList | optional | 1..1 | KeyListStructure |  | Key list for the repeating journeys. Contains the SJYID. |
+| + | KeyValue | optional | 1..* | KeyValueStructure |  | A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. |
 | ++ | Key | optional | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
-| ++ | Value | optional | 0..1 | xsd:anyType | Value associated with QUALITY STRUCTURE FACTOR. |  |
-|  | privateCodes | expected | 1..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region |
-| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
-|  | TransportMode | optional | 0..1 | AllModesEnumeration | MODE. |  |
-|  | TypeOfProductCategoryRef | expected | 1..1 | TypeOfProductCategoryRefStructure | Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code. |  |
-|  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure | Reference to a TYPE OF SERVICE. |  |
-|  | noticeAssignments | optional | 0..1 | noticeAssignments_RelStructure | NOTICEs relevant for the whole GROUP OF SINGLE JOURNEYs. | The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. |
-| + | [NoticeAssignment](./tables/NoticeAssignment.md) | optional | 1..1 | unknown | The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively. |  |
-|  | occupancies | optional | 0..1 | OccupancyView_RelStructure | OCCUPANCYs associated with this journey. +v2.0 |  |
+| ++ | Value | optional | 0..1 | xsd:anyType | Value for alternative key. |  |
+|  | privateCodes | expected | 1..1 | PrivateCodesStructure |  | Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure |  |  |
+|  | TransportMode | optional | 0..1 | AllModesEnumeration |  |  |
+|  | TypeOfProductCategoryRef | expected | 1..1 | TypeOfProductCategoryRefStructure |  |  |
+|  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure |  |  |
+|  | noticeAssignments | optional | 0..1 | noticeAssignments_RelStructure |  | The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. |
+| + | [NoticeAssignment](./tables/NoticeAssignment.md) | optional | 1..1 | unknown |  |  |
+|  | occupancies | optional | 0..1 | OccupancyView_RelStructure |  |  |
 | + | [OccupancyView](./tables/OccupancyView.md) | optional | 1..1 | OccupancyView_VersionStructure |  |  |
-|  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration | Whether journey is as planned, a cancellation or an extra journey. Default is as Planned. | Only the value planned is allowed. |
-|  | DepartureTime | optional | 0..1 | xsd:time | Departure time. | Departure of the first journey. |
-|  | DepartureDayOffset | optional | 0..1 | DayOffsetType | Departure Time Day Offset. | DayOffset if relevant. |
-|  | JourneyPatternRef | mandatory | 1..1 | JourneyPatternRefStructure | Reference to a JOURNEY PATTERN. | The reference to the ServiceJourneyPattern |
+|  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration |  | Only the value planned is allowed. |
+|  | DepartureTime | optional | 0..1 | xsd:time |  | Departure of the first journey. |
+|  | DepartureDayOffset | optional | 0..1 | DayOffsetType |  | DayOffset if relevant. |
+|  | JourneyPatternRef | mandatory | 1..1 | JourneyPatternRefStructure |  | The reference to the ServiceJourneyPattern |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
-|  | TimeDemandTypeRef | mandatory | 0..1 | TimeDemandTypeRefStructure | Reference to a TIME DEMAND TYPE used at start of JOURNEY. | The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. |
-|  | VehicleTypeRef | expected | 1..1 | VehicleTypeRefStructure | Reference to a VEHICLE TYPE. | Mostly used for accessibility information |
-|  | LineRef | mandatory | 1..1 | LineRefStructure | Reference to a LINE. |  |
-|  | DirectionType | optional | 0..1 | RelativeDirectionEnumeration | For fares for DISTANCE MATRIXE LEMENTs, DIRECTION in which price applies. | Allowed are: inbound, outbound |
-|  | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure | TRAIN NUMBERs in frame. |  |
-| + | TrainNumberRef | mandatory | 1..* | TrainNumberRefStructure | Reference to a TRAIN NUMBER. |  |
-|  | [Destination](./tables/Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure | Destination of Travel. Note that for a point-to-point TARIFF the origin is assigned with a DISTANCE MATRIX ELEMENT. |  |
-|  | parts | optional | 0..1 | blockParts_RelStructure | BLOCK PARTs which make up COMPOUND BLOCK. | For some use cases e.g. change of Facilities during ServiceJourney |
-| + | JourneyPartRef | expected | 1..1 | JourneyPartRefStructure | Reference to a JOURNEY PART. |  |
-|  | TemplateVehicleJourneyType | expected | 0..1 | TemplateVehicleJourneyTypeEnumeration | Type of TEMPLATE VEHICLE JOURNEY. |  |
-|  | frequencyGroups | mandatory | 0..1 | frequencyGroupsInFrame_RelStructure | FREQUENCY GROUPs In frame. Can be used to template VEHICLE JOURNEYs. | We strictly map one frequency to the TemplateServiceJourney. |
-| + | HeadwayJourneyGroup | mandatory | 1..* | unknown | A group of VEHICLE JOURNEYs following the same JOURNEY PATTERN and having the same headway interval between a specified start and end time (for example, ‘every 10 minutes’). This is especially useful for presenting passenger information. |  |
-| ++ | ScheduledHeadwayInterval | mandatory | 0..1 | xsd:duration | Scheduled normal headway interval. |  |
-| ++ | HeadwayDisplay | optional | 0..1 | HeadwayUseEnumeration | How headway value should be displayed to public. | Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly. |
+|  | TimeDemandTypeRef | mandatory | 0..1 | TimeDemandTypeRefStructure |  | The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. |
+|  | VehicleTypeRef | expected | 1..1 | VehicleTypeRefStructure |  | Mostly used for accessibility information |
+|  | LineRef | mandatory | 1..1 | LineRefStructure |  |  |
+|  | DirectionType | optional | 0..1 | RelativeDirectionEnumeration |  | Allowed are: inbound, outbound |
+|  | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure |  |  |
+| + | TrainNumberRef | mandatory | 1..* | TrainNumberRefStructure |  |  |
+|  | [Destination](./tables/Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure |  |  |
+|  | parts | optional | 0..1 | blockParts_RelStructure |  | For some use cases e.g. change of Facilities during ServiceJourney |
+| + | JourneyPartRef | expected | 1..1 | JourneyPartRefStructure |  |  |
+|  | TemplateVehicleJourneyType | expected | 0..1 | TemplateVehicleJourneyTypeEnumeration |  |  |
+|  | frequencyGroups | mandatory | 0..1 | frequencyGroupsInFrame_RelStructure |  | We strictly map one frequency to the TemplateServiceJourney. |
+| + | HeadwayJourneyGroup | mandatory | 1..* | unknown |  |  |
+| ++ | ScheduledHeadwayInterval | mandatory | 0..1 | xsd:duration |  |  |
+| ++ | HeadwayDisplay | optional | 0..1 | HeadwayUseEnumeration |  | Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly. |
 
 
 
@@ -473,13 +473,13 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | dayTypeRefs | optional | 0..1 | unknown | DAY TYPEs for BLOCK. |  |
-| + | DayTypeRef | optional | 1..* | DayTypeRefStructure | The DAY TYPE of all the services in this group. |  |
-|  | dayTypes | expected | 0..1 | unknown | DAY TYPEs for BLOCK. |  |
-| + | [DayType](./tables/DayType.md) | expected | 1..1 | unknown | A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays. |  |
-|  | FareClass | expected | 0..1 | FareClassEnumeration | Fare class in VEHICLE for which occupancy or capacities are specified. |  |
-|  | OccupancyLevel | expected | 0..1 | OccupancyEnumeration | An approximate figure of how occupied or full a VEHICLE and its parts are, e.g. 'manySeatsAvailable' or 'standingRoomOnly'. More accurate data can be provided by the individual occupancies or capacities below. | Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable |
-|  | GroupReservation | optional | 0..* | GroupReservationStructure | Reservations of travel groups, i.e., name of group and number of seats booked. |  |
+|  | dayTypeRefs | optional | 0..1 | unknown |  |  |
+| + | DayTypeRef | optional | 1..* | DayTypeRefStructure |  |  |
+|  | dayTypes | expected | 0..1 | unknown |  |  |
+| + | [DayType](./tables/DayType.md) | expected | 1..1 | unknown |  |  |
+|  | FareClass | expected | 0..1 | FareClassEnumeration |  |  |
+|  | OccupancyLevel | expected | 0..1 | OccupancyEnumeration |  | Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable |
+|  | GroupReservation | optional | 0..* | GroupReservationStructure |  |  |
 | + | NameOfGroup | expected | 1..1 | MultilingualString | Name for which the travel group has made the reservation. |  |
 | + | NumberOfReservedSeats | expected | 1..1 | NumberOfPassengers | Number of seats that the group has booked. |  |
 
@@ -537,8 +537,8 @@ The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advert
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | ForAdvertisement | expected | 0..1 | xsd:normalizedString | TRAIN NUMBER to use when advertising Train -If different from Id. | TrainNumber to use for advertisement to public. Use if different from ID. |
-|  | ForProduction | optional | 0..1 | xsd:normalizedString | TRAIN NUMBER to use for production -If different from Id. | TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID. |
+|  | ForAdvertisement | expected | 0..1 | xsd:normalizedString |  | TrainNumber to use for advertisement to public. Use if different from ID. |
+|  | ForProduction | optional | 0..1 | xsd:normalizedString |  | TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID. |
 
 
 
@@ -582,11 +582,11 @@ The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advert
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | Name | expected | 0..* | MultilingualString | Name of Traveller |  |
+|  | Name | expected | 0..1 | MultilingualString |  |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | ShortName | expected | 0..* | MultilingualString | Short Name for service |  |
+|  | ShortName | expected | 0..1 | MultilingualString |  |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+|  | PrivateCode | expected | 1..1 | PrivateCodeStructure |  |  |
 
 
 
@@ -648,22 +648,22 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | validityConditions | expected | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. |  |
-| + | AvailabilityConditionRef | expected | 1..1 | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. |  |
-|  | Description | optional | 0..* | MultilingualString | Description of contents. |  |
-|  | StaySeated | mandatory | 0..1 | xsd:boolean | Whether the passenger can remain in vehicle (i.e. block linking). Default is false: the passenger must change vehicles for this INTERCHANGE. Default is false. |  |
-|  | CrossBorder | optional | 0..1 | xsd:boolean | Whether interchanging crosses a border. |  |
-|  | ChangeWithinVehicle | optional | 0..1 | xsd:boolean | In case of train splitting, the passenger may have to change to a different part of the train to continue the journey. Default is false. +v2.1 | Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. |
-|  | Planned | optional | 0..1 | xsd:boolean | Whether INTERCHANGE is planned in a timetable. Default is true. |  |
-|  | Guaranteed | optional | 0..1 | xsd:boolean | Whether INTERCHANGE is guaranteed. Default is false. |  |
-|  | MaximumWaitTime | optional | 0..1 | xsd:duration | Maximum wait time for JOURNEY MEETING. | If not set or PT0M, it is guaranteed. |
-|  | FromPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure | Identifier of VEHICLE MEETING POINT from which Link starts. |  |
+|  | validityConditions | expected | 1..1 | validityConditions_RelStructure |  |  |
+| + | AvailabilityConditionRef | expected | 1..1 | AvailabilityConditionRefStructure |  |  |
+|  | Description | optional | 0..1 | MultilingualString | Description of SCHEDULED STOP POINT feeding INTERCHANGE. |  |
+|  | StaySeated | mandatory | 0..1 | xsd:boolean |  |  |
+|  | CrossBorder | optional | 0..1 | xsd:boolean |  |  |
+|  | ChangeWithinVehicle | optional | 0..1 | xsd:boolean |  | Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. |
+|  | Planned | optional | 0..1 | xsd:boolean |  |  |
+|  | Guaranteed | optional | 0..1 | xsd:boolean |  |  |
+|  | MaximumWaitTime | optional | 0..1 | xsd:duration |  | If not set or PT0M, it is guaranteed. |
+|  | FromPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure |  |  |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
-|  | FromVisitNumber | optional | 0..1 | xsd:nonNegativeInteger | Visit number to distinguish which visit to FROM SCHEDULED STOP POINT this is. Default is one. Only needed for circular routes with connections at the same stop on different visits. |  |
-|  | ToPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure | Identifier of VEHICLE MEETING POINT at which Link ends. |  |
+|  | FromVisitNumber | optional | 0..1 | xsd:nonNegativeInteger |  |  |
+|  | ToPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure |  |  |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
-|  | FromServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure | SERVICE JOURNEY that feeds the INTERCHANGE. +v2.0 |  |
-|  | ToServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure | SERVICE JOURNEY that distributes from the INTERCHANGE. +v2.0 |  |
+|  | FromServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure |  |  |
+|  | ToServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure |  |  |
 
 
 

@@ -62,9 +62,9 @@
       <td> </td>
       <td>Name</td>
       <td>expected</td>
-      <td>0..*</td>
+      <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of Traveller</td>
+      <td> </td>
       <td>Global or national location</td>
     </tr>
     <tr>
@@ -73,7 +73,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>LocationStructure</td>
-      <td>Absolute location of EQUIPMENT.</td>
+      <td> </td>
       <td>Note concerning coordinates - The main coordinates are given as <strong>WSG84</strong>.</td>
     </tr>
     <tr>
@@ -82,7 +82,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>LongitudeType</td>
-      <td>Longitude from Greenwich Meridian. -180 (East) to +180 (West).</td>
+      <td>Longitude from Greenwich Meridian. -180 (West) to +180 (East). Decimal degrees. eg 2.356</td>
       <td> </td>
     </tr>
     <tr>
@@ -91,7 +91,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>LatitudeType</td>
-      <td>Latitude from equator. -90 (South) to +90 (North).</td>
+      <td>Latitude from equator. -90 (South) to +90 (North). Decimal degrees. eg 56.356</td>
       <td> </td>
     </tr>
     <tr>
@@ -100,7 +100,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>AltitudeType</td>
-      <td>Altitude.</td>
+      <td>Altitude (metres) Above sea level.</td>
       <td> </td>
     </tr>
     <tr>

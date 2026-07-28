@@ -91,7 +91,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td>Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”).</td>
     </tr>
     <tr>
@@ -100,7 +100,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td> </td>
       <td>Only a single AvailabilityConditionRef is allowed.</td>
     </tr>
     <tr>
@@ -109,7 +109,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>KeyListStructure</td>
-      <td>A list of alternative Key values for an element.</td>
+      <td> </td>
       <td>Key list for the repeating journeys. Contains the SJYID.</td>
     </tr>
     <tr>
@@ -118,7 +118,7 @@
       <td>optional</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
-      <td>Key value pair for Entity.</td>
+      <td> </td>
       <td>A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID.</td>
     </tr>
     <tr>
@@ -136,7 +136,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
+      <td>Value for alternative key.</td>
       <td> </td>
     </tr>
     <tr>
@@ -145,7 +145,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>PrivateCodesStructure</td>
-      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
       <td>Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region</td>
     </tr>
     <tr>
@@ -154,7 +154,7 @@
       <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -163,7 +163,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>AllModesEnumeration</td>
-      <td>MODE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -172,7 +172,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>TypeOfProductCategoryRefStructure</td>
-      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -181,7 +181,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>TypeOfServiceRefStructure</td>
-      <td>Reference to a TYPE OF SERVICE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -190,7 +190,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>noticeAssignments_RelStructure</td>
-      <td>NOTICEs relevant for the whole GROUP OF SINGLE JOURNEYs.</td>
+      <td> </td>
       <td>The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops.</td>
     </tr>
     <tr>
@@ -199,7 +199,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -208,7 +208,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>OccupancyView_RelStructure</td>
-      <td>OCCUPANCYs associated with this journey. +v2.0</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -226,7 +226,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>ServiceAlterationEnumeration</td>
-      <td>Whether journey is as planned, a cancellation or an extra journey. Default is as Planned.</td>
+      <td> </td>
       <td>Only the value planned is allowed.</td>
     </tr>
     <tr>
@@ -235,7 +235,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:time</td>
-      <td>Departure time.</td>
+      <td> </td>
       <td>Departure of the first journey.</td>
     </tr>
     <tr>
@@ -244,7 +244,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>DayOffsetType</td>
-      <td>Departure Time Day Offset.</td>
+      <td> </td>
       <td>DayOffset if relevant.</td>
     </tr>
     <tr>
@@ -253,7 +253,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>JourneyPatternRefStructure</td>
-      <td>Reference to a JOURNEY PATTERN.</td>
+      <td> </td>
       <td>The reference to the ServiceJourneyPattern</td>
     </tr>
     <tr>
@@ -271,7 +271,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>TimeDemandTypeRefStructure</td>
-      <td>Reference to a TIME DEMAND TYPE used at start of JOURNEY.</td>
+      <td> </td>
       <td>The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney.</td>
     </tr>
     <tr>
@@ -280,7 +280,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>VehicleTypeRefStructure</td>
-      <td>Reference to a VEHICLE TYPE.</td>
+      <td> </td>
       <td>Mostly used for accessibility information</td>
     </tr>
     <tr>
@@ -289,7 +289,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>LineRefStructure</td>
-      <td>Reference to a LINE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -298,7 +298,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>RelativeDirectionEnumeration</td>
-      <td>For fares for DISTANCE MATRIXE LEMENTs, DIRECTION in which price applies.</td>
+      <td> </td>
       <td>Allowed are: inbound, outbound</td>
     </tr>
     <tr>
@@ -307,7 +307,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>trainNumbersInFrame_RelStructure</td>
-      <td>TRAIN NUMBERs in frame.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -316,7 +316,7 @@
       <td>mandatory</td>
       <td>1..*</td>
       <td>TrainNumberRefStructure</td>
-      <td>Reference to a TRAIN NUMBER.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -325,7 +325,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>TravelSpecificationSummaryEndpointStructure</td>
-      <td>Destination of Travel. Note that for a point-to-point TARIFF the origin is assigned with a DISTANCE MATRIX ELEMENT.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -334,7 +334,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>blockParts_RelStructure</td>
-      <td>BLOCK PARTs which make up COMPOUND BLOCK.</td>
+      <td> </td>
       <td>For some use cases e.g. change of Facilities during ServiceJourney</td>
     </tr>
     <tr>
@@ -343,7 +343,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>JourneyPartRefStructure</td>
-      <td>Reference to a JOURNEY PART.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -352,7 +352,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>TemplateVehicleJourneyTypeEnumeration</td>
-      <td>Type of TEMPLATE VEHICLE JOURNEY.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -361,7 +361,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>frequencyGroupsInFrame_RelStructure</td>
-      <td>FREQUENCY GROUPs In frame. Can be used to template VEHICLE JOURNEYs.</td>
+      <td> </td>
       <td>We strictly map one frequency to the TemplateServiceJourney.</td>
     </tr>
     <tr>
@@ -370,7 +370,7 @@
       <td>mandatory</td>
       <td>1..*</td>
       <td>unknown</td>
-      <td>A group of VEHICLE JOURNEYs following the same JOURNEY PATTERN and having the same headway interval between a specified start and end time (for example, ‘every 10 minutes’). This is especially useful for presenting passenger information.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -379,7 +379,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:duration</td>
-      <td>Scheduled normal headway interval.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -388,7 +388,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>HeadwayUseEnumeration</td>
-      <td>How headway value should be displayed to public.</td>
+      <td> </td>
       <td>Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly.</td>
     </tr>
   </tbody>

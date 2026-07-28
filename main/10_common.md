@@ -99,7 +99,7 @@ In some cases we need translations or alias of the Name element. This is done wi
 |-----|---------|-------|------|------|-------------|------|
 |  | NameType | mandatory | 0..1 | NameTypeEnumeration | Type of Name - fixed value. Default is alias. | In some cases we need translations or alias of the Name element. This is done with AlternativeName. alias allowed for StopPlace. |
 |  | TypeOfName | optional | 0..1 | xsd:normalizedString | Type of Name - open value. | For StopPlace official is used for the official name |
-|  | Name | mandatory | 0..* | MultilingualString | Name of Traveller |  |
+|  | Name | mandatory | 0..1 | MultilingualString | ALTERNATIVE NAME of the ENTITY. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 
 
@@ -181,10 +181,10 @@ Holds default values for certain basic parameters.
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
 |  | DefaultLocale | mandatory | 0..1 | LocaleStructure | Default LOCAL for frame elements. Assume this value for timezone and language of elements if not specified on individual elements. | The default locale is German (de) for Swiss public transport. |
-| + | TimeZoneOffset | mandatory | 0..1 | TimeZoneOffsetType | Timezone offset from Greenwich at LOCALE. | We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) |
-| + | TimeZone | mandatory | 0..1 | xsd:normalizedString | Timezone name at LOCALE. |  |
-| + | SummerTimeZoneOffset | mandatory | 0..1 | TimeZoneOffsetType | Summer timezone offset if different from Time zone offset. | We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) |
-| + | DefaultLanguage | mandatory | 0..1 | xsd:language | Default Language for LOCALE. Assume language use is "normally used" | Is always set to “de” for Swiss public transport. |
+| + | TimeZoneOffset | mandatory | 0..1 | TimeZoneOffsetType |  | We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) |
+| + | TimeZone | mandatory | 0..1 | xsd:normalizedString |  |  |
+| + | SummerTimeZoneOffset | mandatory | 0..1 | TimeZoneOffsetType |  | We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) |
+| + | DefaultLanguage | mandatory | 0..1 | xsd:language |  | Is always set to “de” for Swiss public transport. |
 |  | DefaultLocationSystem | mandatory | 0..1 | xsd:normalizedString | Default spatial coordinate system (srsName). E.g. WGS84 Value to use for location elements using coordinates if not specified on individual elements. |  |
 
 

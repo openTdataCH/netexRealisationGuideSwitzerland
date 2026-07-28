@@ -82,7 +82,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT.</td>
+      <td> </td>
       <td>This can be used to show, when the StopPlace can be used.</td>
     </tr>
     <tr>
@@ -109,7 +109,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>KeyListStructure</td>
-      <td>A list of alternative Key values for an element.</td>
+      <td> </td>
       <td>Key value pairs for DIDOK number and SLOID and special values. Prefered is privateCodes.</td>
     </tr>
     <tr>
@@ -118,7 +118,7 @@
       <td>optional</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
-      <td>Key value pair for Entity.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -136,7 +136,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>Value associated with QUALITY STRUCTURE FACTOR.</td>
+      <td>Value for alternative key.</td>
       <td> </td>
     </tr>
     <tr>
@@ -145,7 +145,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>PrivateCodesStructure</td>
-      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -154,7 +154,7 @@
       <td>mandatory</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
       <td>In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments.</td>
     </tr>
     <tr>
@@ -170,9 +170,9 @@
       <td> </td>
       <td>Name</td>
       <td>mandatory</td>
-      <td>0..*</td>
+      <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of Traveller</td>
+      <td>Name of STOP PLACE.</td>
       <td>The official stop name. If you have different versions one needs to use AlternativeName</td>
     </tr>
     <tr>
@@ -181,16 +181,16 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>SimplePoint_VersionStructure</td>
-      <td>Centre Coordinates of GROUP of STOP PLACEs.</td>
+      <td> </td>
       <td>Global or national location</td>
     </tr>
     <tr>
       <td>+</td>
       <td>Name</td>
       <td>optional</td>
-      <td>0..*</td>
+      <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of Traveller</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -199,7 +199,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>LocationStructure</td>
-      <td>Absolute location of EQUIPMENT.</td>
+      <td> </td>
       <td>Note concerning coordinates - The main coordinates are given as <strong>WSG84</strong>.</td>
     </tr>
     <tr>
@@ -208,7 +208,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>LongitudeType</td>
-      <td>Longitude from Greenwich Meridian. -180 (East) to +180 (West).</td>
+      <td>Longitude from Greenwich Meridian. -180 (West) to +180 (East). Decimal degrees. eg 2.356</td>
       <td> </td>
     </tr>
     <tr>
@@ -217,7 +217,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>LatitudeType</td>
-      <td>Latitude from equator. -90 (South) to +90 (North).</td>
+      <td>Latitude from equator. -90 (South) to +90 (North). Decimal degrees. eg 56.356</td>
       <td> </td>
     </tr>
     <tr>
@@ -226,7 +226,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>AltitudeType</td>
-      <td>Altitude.</td>
+      <td>Altitude (metres) Above sea level.</td>
       <td> </td>
     </tr>
     <tr>
@@ -235,7 +235,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>alternativeNames_RelStructure</td>
-      <td>ALTERNATIVE NAMES for MACHINE READABILITY.</td>
+      <td> </td>
       <td>Alternative names for the StopPlace. We will also use these for synonyms.</td>
     </tr>
     <tr>
@@ -244,7 +244,7 @@
       <td>optional</td>
       <td>1..*</td>
       <td>unknown</td>
-      <td>Alternative Name.</td>
+      <td>ALTERNATIVE NAME for Element.</td>
       <td> </td>
     </tr>
     <tr>
@@ -253,7 +253,7 @@
       <td>optional</td>
       <td>1..*</td>
       <td>TopographicPlaceRefStructure</td>
-      <td>Reference to the identifier of a TOPOGRAPHIC PLACE.</td>
+      <td> </td>
       <td>Id to the county, community, canton or country.</td>
     </tr>
     <tr>
@@ -271,7 +271,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>LimitedUseTypeEnumeration</td>
-      <td>Further categorisation of stop as having topographic limitations.</td>
+      <td> </td>
       <td>For stops like Sagliains</td>
     </tr>
     <tr>
@@ -280,7 +280,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>InterchangeWeightingEnumeration</td>
-      <td>Default rating of the STOP PLACE for making interchanges.</td>
+      <td> </td>
       <td>Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions.</td>
     </tr>
     <tr>
@@ -289,7 +289,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>quays_RelStructure</td>
-      <td>QUAYs within the STOP PLACE.</td>
+      <td> </td>
       <td>The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles.</td>
     </tr>
     <tr>
@@ -298,7 +298,7 @@
       <td>expected</td>
       <td>1..*</td>
       <td>unknown</td>
-      <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>

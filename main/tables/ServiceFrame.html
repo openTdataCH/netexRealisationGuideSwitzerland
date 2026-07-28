@@ -82,7 +82,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>lineRefs_RelStructure</td>
-      <td>Lines for FLEXIBLE STOP PLACE.</td>
+      <td> </td>
       <td>Only Line is used and not FlexibleLine</td>
     </tr>
     <tr>
@@ -91,7 +91,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>A group of ROUTEs which is generally known to the public by a similar name or number.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -100,7 +100,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>groupsOfLinesInFrame_RelStructure</td>
-      <td>Groups of LINEs in NETWORK.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -109,7 +109,7 @@
       <td>expected</td>
       <td>1..*</td>
       <td>unknown</td>
-      <td>A grouping of LINEs which will be commonly referenced for a specific purpose.</td>
+      <td> </td>
       <td>We use GroupOfLine for the modeling of mixed lines</td>
     </tr>
     <tr>
@@ -118,7 +118,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>destinationDisplayRefs_RelStructure</td>
-      <td>Destinations associated with this GROUP OF SERVICEs, including via points.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -127,7 +127,7 @@
       <td>expected</td>
       <td>1..*</td>
       <td>unknown</td>
-      <td>An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations.</td>
+      <td> </td>
       <td>We only allow DestinationDisplay based on Name and not on reference to a ScheduledStopPoint</td>
     </tr>
     <tr>
@@ -136,7 +136,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>scheduledStopPointsInFrame_RelStructure</td>
-      <td>SCHEDULED STOP POINTs in frame.</td>
+      <td> </td>
       <td>Swiss ScheduledStopPoint are using the SLOID in the id, when possible.</td>
     </tr>
     <tr>
@@ -145,7 +145,7 @@
       <td>mandatory</td>
       <td>1..*</td>
       <td>unknown</td>
-      <td>A POINT where passengers can board or alight from vehicles. It is open, which hierarchical level such a point has. It can represent a single door (BoardingPosition) or a whole ZONE. The association to the physical model is done with STOP ASSIGNMENTs.</td>
+      <td> </td>
       <td>The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part.</td>
     </tr>
     <tr>
@@ -154,7 +154,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>transfersInFrame_RelStructure</td>
-      <td>CONNECTIONs in frame.</td>
+      <td> </td>
       <td>connections is used in SITE_OFFER, but not in NETWORK_OFER</td>
     </tr>
     <tr>
@@ -163,7 +163,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>The physical (spatial) possibility to connect from one point to another in a SITE.</td>
+      <td> </td>
       <td>SiteConnection are used only in the SITE_OFFER file and not in NETWORK_OFFER files.</td>
     </tr>
     <tr>
@@ -172,7 +172,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>Specifies the default transfer times to transfer between MODEs and / or OPERATORs within a region.</td>
+      <td> </td>
       <td>DefaultConnection is only used in the SITE_OFFER file</td>
     </tr>
     <tr>
@@ -181,7 +181,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>stopAssignmentsInFrame_RelStructure</td>
-      <td>STOP ASSIGNMENTs in frame.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -190,7 +190,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION.</td>
+      <td> </td>
       <td>Make the link between timetables and site model.</td>
     </tr>
     <tr>
@@ -199,7 +199,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>timingLinksInFrame_RelStructure</td>
-      <td>TIMING LINKs in frame.</td>
+      <td> </td>
       <td>We use TimingLink as the time behaviour between two ScheduledStopPoints</td>
     </tr>
     <tr>
@@ -208,7 +208,7 @@
       <td>expected</td>
       <td>1..*</td>
       <td>unknown</td>
-      <td>An ordered pair of TIMING POINTs for which run times may be recorded. Timing links are directional - there will be separate links for each direction of a route.</td>
+      <td> </td>
       <td>every different handling of the link needs a different timing link e.g. bus vs tram</td>
     </tr>
     <tr>
@@ -217,7 +217,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>journeyPatternRefs_RelStructure</td>
-      <td>JourneyPatternsequivalent to the series.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -226,7 +226,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>The JOURNEY PATTERN for a (passenger carrying) SERVICE JOURNEY.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -235,7 +235,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>timeDemandTypeRefs_RelStructure</td>
-      <td>Other TIME DEMAND TYPEs used in journey.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -244,7 +244,7 @@
       <td>expected</td>
       <td>1..*</td>
       <td>unknown</td>
-      <td>An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.</td>
+      <td> </td>
       <td>TimeDemandType is now the core concept to use for the timing behaviour of ServiceJourney.</td>
     </tr>
     <tr>
@@ -253,7 +253,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>noticesInFrame_RelStructure</td>
-      <td>NOTICEs in frame.</td>
+      <td> </td>
       <td>notices may be present or not</td>
     </tr>
     <tr>
@@ -262,7 +262,7 @@
       <td>expected</td>
       <td>1..*</td>
       <td>unknown</td>
-      <td>A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media.</td>
+      <td> </td>
       <td>if notices are present, one Notice must be.</td>
     </tr>
   </tbody>
