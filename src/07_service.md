@@ -22,7 +22,7 @@ In this chapter:
 *→ [Glossary definition](A4_annex_glossary.md#serviceframe)*
 
 ### Purpose
-Contains the network and route definitions - `Line`s, `ScheduledStopPoint`s, `DestinationDisplay`s, and `PassengerStopAssignment`s.
+Contains the network and line definitions - `Line`s, `ScheduledStopPoint`s, `DestinationDisplay`s, and `PassengerStopAssignment`s.
 
 See the following class diagram for the most important objects of the `ServiceFrame` and their relationships to the other frames.
 
@@ -95,7 +95,6 @@ class ServiceJourney {
 
 ### Contained Elements
 The `ServiceFrame` model comprises among others:
--	Route model: fixed and flexible  `Line`s and `Route`s of a transport network.
 -	Line network model: overall topology of the `Line` and line sections that make up a transport network.
 -	Service pattern model: `ScheduledStopPoint`s, `ServiceLink`, i.e., points and links referenced by schedules.
 
@@ -127,7 +126,7 @@ This means that the old two defined dirctions `ch:1:Direction:H` and `ch:1:Direc
 ## Line
 *→ [Glossary definition](A4_annex_glossary.md#line)*
 ### Purpose
-A public transport service line, representing a marketed route with a `Name`, `TransportMode`, and `Operator`.
+A public transport service line with a `Name`, `TransportMode`, and `Operator`. Be aware that the handling of "Konzessionär" and "Betreieber" is a bit complex and is discussed [here](uc17_mixed_lines.md) and [here](11_resources.md#responsibilityset).
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/Line.md)
@@ -141,9 +140,9 @@ A public transport service line, representing a marketed route with a `Name`, `T
 *->[Template](./templates/Line.xml)*
 
 ### Usage Notes
-- slnid will be integrated wherever possible. We currently think that - where it exists - it has the necessary properties to be used in the `id`-attribute.
-- For foreign lines an `id` might need to be generated.
-- We store the slnid whenever possible in `id`, `privateCodes/PrivateCode` and `KeyList`.
+- slnid will be integrated wherever possible. We currently think that - where it exists - it has the necessary properties to be used in the `@id` of the element.
+- For foreign lines an `@d` might need to be generated.
+- We store the slnid whenever possible in `@id`, `privateCodes/PrivateCode` and `KeyList`.
 - Information about the Swiss line id (slnid) can be found [here](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-line-identification-slnid).
 - Handling of mixed lines is defined in its own [use case (uc017)](uc17_mixed_lines). The relevant factors are described in the Line element as well. We have a full [example](examples/NeTEx_CH_Linie_722_Mischbetrieb.xml) on it. - Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
 - Note that there exist journeys in Switzerland and neighboring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
