@@ -198,7 +198,7 @@ class ServiceJourney {
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Line.html">Line</a></td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>Line</td>
+      <td>unknown</td>
       <td>A group of ROUTEs which is generally known to the public by a similar name or number.</td>
       <td> </td>
     </tr>
@@ -216,7 +216,7 @@ class ServiceJourney {
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/GroupOfLines.html">GroupOfLines</a></td>
       <td>expected</td>
       <td>1..1</td>
-      <td>GroupOfLines</td>
+      <td>unknown</td>
       <td>A grouping of LINEs which will be commonly referenced for a specific purpose.</td>
       <td>We use GroupOfLine for the modeling of mixed lines</td>
     </tr>
@@ -234,7 +234,7 @@ class ServiceJourney {
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/DestinationDisplay.html">DestinationDisplay</a></td>
       <td>expected</td>
       <td>1..1</td>
-      <td>DestinationDisplay</td>
+      <td>unknown</td>
       <td>An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations.</td>
       <td>We only allow fully formed content of destinationDisplays</td>
     </tr>
@@ -252,7 +252,7 @@ class ServiceJourney {
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ScheduledStopPoint.html">ScheduledStopPoint</a></td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>ScheduledStopPoint</td>
+      <td>unknown</td>
       <td>A POINT where passengers can board or alight from vehicles. It is open, which hierarchical level such a point has. It can represent a single door (BoardingPosition) or a whole ZONE. The association to the physical model is done with STOP ASSIGNMENTs.</td>
       <td>The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part.</td>
     </tr>
@@ -270,7 +270,7 @@ class ServiceJourney {
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteConnection.html">SiteConnection</a></td>
       <td>expected</td>
       <td>1..1</td>
-      <td>SiteConnection</td>
+      <td>unknown</td>
       <td>The physical (spatial) possibility to connect from one point to another in a SITE.</td>
       <td>SiteConnection are used only in the SITE_OFFER file and not in NETWORK_OFFER files.</td>
     </tr>
@@ -279,7 +279,7 @@ class ServiceJourney {
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/DefaultConnection.html">DefaultConnection</a></td>
       <td>expected</td>
       <td>1..1</td>
-      <td>DefaultConnection</td>
+      <td>unknown</td>
       <td>Specifies the default transfer times to transfer between MODEs and / or OPERATORs within a region.</td>
       <td>DefaultConnection is only used in the SITE_OFFER file</td>
     </tr>
@@ -297,7 +297,7 @@ class ServiceJourney {
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/PassengerStopAssignment.html">PassengerStopAssignment</a></td>
       <td>expected</td>
       <td>1..1</td>
-      <td>PassengerStopAssignment</td>
+      <td>unknown</td>
       <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION.</td>
       <td>are only used in a special PSA file in the export.</td>
     </tr>
@@ -315,7 +315,7 @@ class ServiceJourney {
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TimingLink.html">TimingLink</a></td>
       <td>expected</td>
       <td>1..1</td>
-      <td>TimingLink</td>
+      <td>unknown</td>
       <td>An ordered pair of TIMING POINTs for which run times may be recorded. Timing links are directional - there will be separate links for each direction of a route.</td>
       <td>every different handling of the link needs a different timing link e.g. bus vs tram</td>
     </tr>
@@ -333,7 +333,7 @@ class ServiceJourney {
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceJourneyPattern.html">ServiceJourneyPattern</a></td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>ServiceJourneyPattern</td>
+      <td>unknown</td>
       <td>The JOURNEY PATTERN for a (passenger carrying) SERVICE JOURNEY.</td>
       <td> </td>
     </tr>
@@ -351,7 +351,7 @@ class ServiceJourney {
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TimeDemandType.html">TimeDemandType</a></td>
       <td>expected</td>
       <td>1..1</td>
-      <td>TimeDemandType</td>
+      <td>unknown</td>
       <td>An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.</td>
       <td>TimeDemandType is now the core concept to use for the timing behaviour of ServiceJourney.</td>
     </tr>
@@ -369,7 +369,7 @@ class ServiceJourney {
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Notice.html">Notice</a></td>
       <td>expected</td>
       <td>1..1</td>
-      <td>Notice</td>
+      <td>unknown</td>
       <td>A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media.</td>
       <td>if notices are present, one Notice must be.</td>
     </tr>
@@ -520,7 +520,7 @@ class ServiceJourney {
       <td>ValidBetween</td>
       <td>expected</td>
       <td>1..1</td>
-      <td>ValidBetween</td>
+      <td>unknown</td>
       <td>OPTIMISATION. Simple version of a VALIDITY CONDITION. Comprises a simple period. NO UNIQUENESS CONSTRAINT.</td>
       <td>Usually set to the whole timetable year</td>
     </tr>
@@ -1380,7 +1380,7 @@ class ServiceJourney {
       <td>OperatorView</td>
       <td>optional</td>
       <td>1..1</td>
-      <td>OperatorView</td>
+      <td>unknown</td>
       <td>Simplified view of OPERATOR. All data except the identifier will be derived through the relationship.</td>
       <td> </td>
     </tr>
@@ -1834,7 +1834,7 @@ needs to be added for that too.</li>
       <td>RouteView</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>RouteView</td>
+      <td>unknown</td>
       <td>Annotated reference to a ROUTE.</td>
       <td> </td>
     </tr>
@@ -1862,7 +1862,7 @@ needs to be added for that too.</li>
       <td>mandatory</td>
       <td>0..1</td>
       <td>vehicleMeetingPointsInSequence_RelStructure</td>
-      <td>Ordered set of points making up a ROUTE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -1870,7 +1870,7 @@ needs to be added for that too.</li>
       <td>StopPointInJourneyPattern</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>StopPointInJourneyPattern</td>
+      <td>unknown</td>
       <td>The use of a SCHEDULED STOP POINT in a specified order. within a JOURNEY PATTERN or SERVICE PATTERN.</td>
       <td> </td>
     </tr>
@@ -1942,7 +1942,7 @@ needs to be added for that too.</li>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/CheckConstraint.html">CheckConstraint</a></td>
       <td>optional</td>
       <td>1..1</td>
-      <td>CheckConstraint</td>
+      <td>unknown</td>
       <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
       <td> </td>
     </tr>
@@ -1969,7 +1969,7 @@ needs to be added for that too.</li>
       <td>BookingArrangement</td>
       <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
       <td>1..1</td>
-      <td>BookingArrangement</td>
+      <td>unknown</td>
       <td>Details of the booking arrangements for a given LINE, STOP, SERVICE etc.</td>
       <td> </td>
     </tr>
@@ -2124,7 +2124,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>JourneyRunTime</td>
       <td>expected</td>
       <td>1..1</td>
-      <td>JourneyRunTime</td>
+      <td>unknown</td>
       <td>The time taken to traverse a TIMING LINK in a particular JOURNEY PATTERN, for a specified TIME DEMAND TYPE. If it exists, it will override the DEFAULT SERVICE JOURNEY RUN TIME and DEFAULT DEAD RUN RUN TIME.</td>
       <td> </td>
     </tr>
@@ -2141,7 +2141,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>++</td>
       <td>RunTime</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>xsd:duration</td>
       <td>Run time as interval.</td>
       <td> </td>
@@ -2160,7 +2160,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>JourneyWaitTime</td>
       <td>expected</td>
       <td>1..1</td>
-      <td>JourneyWaitTime</td>
+      <td>unknown</td>
       <td>The time a vehicle has to wait at a specific TIMING POINT IN JOURNEY PATTERN, for a specified TIME DEMAND TYPE. This wait time can be superseded by a VEHICLE JOURNEY WAIT TIME.</td>
       <td>Relevant waiting times at the stop</td>
     </tr>

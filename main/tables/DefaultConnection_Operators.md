@@ -12,7 +12,7 @@ Connection between two operators on the whole network or on a defined STOP PLACE
 |  | WalkTransferDuration | mandatory | 0..1 | TransferDurationStructure | Timings for walking over TRANSFER if different from the JOURNEY PATTERN transfer duration, |  |
 | + | DefaultDuration | mandatory | 0..1 | xsd:duration | Default time needed for a traveller to make a TRANSFER. |  |
 |  | From | mandatory | 0..1 | ConnectionEndStructure | Origin end of CONNECTION. |  |
-| + | OperatorView | mandatory | 1..1 | OperatorView | Simplified view of OPERATOR. All data except the identifier will be derived through the relationship. |  |
+| + | OperatorView | mandatory | 1..1 | unknown | Simplified view of OPERATOR. All data except the identifier will be derived through the relationship. |  |
 | ++ | OperatorRef | mandatory | 1..1 | OperatorRefStructure | Reference to an OPERATOR. |  |
 |  | To | mandatory | 0..1 | ConnectionEndStructure | Destination end of CONNECTION. |  |
 |  | StopPlaceRef | expected | 0..1 | StopPlaceRefStructure | System identifier of a STOP PLACE. May be omitted if given by context. | Usually a SLOID. Not set means whole network. |
