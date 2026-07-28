@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Line id="use swiss line id where possible" version="1" responsibilitySetRef="dsa">
-  <!-- For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `OperatorRef`. This is to maintain compatibility with different data consumers. -->
+  <!-- For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `OperatorRef`. This is to maintain compatibility with different data consumers. See chapter on ResourceFrame and Use Case 17. -->
   <ValidBetween>
   <!-- Usually set to the whole timetable year -->
   <FromDate>2022-12-11T00:00:00</FromDate>
@@ -33,12 +33,12 @@
   <PublicCode>3
   <!-- Contains LinieLangName (attribute LT from HRDF) -->
   </PublicCode>
-  <OperatorRef ref="ch:1:Operator:11" version="1">
+  <OperatorRef ref="ch:1:sboid:100011" version="1">
   <!-- The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney.  Is redundant to the responsibilitySetRef on purpose. -->
   </OperatorRef>
   <additionalOperators>
   <!-- Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined. -->
-  <OperatorRef ref="ch:1:Operator:33" version="1"/>
+  <OperatorRef ref="ch:1:sboid:100033" version="1"/>
   </additionalOperators>
   <LineType>fixed
   <!-- Will be used especially, when not "fixed". Details in mapping excel. -->

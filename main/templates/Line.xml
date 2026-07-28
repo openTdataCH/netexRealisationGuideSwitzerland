@@ -11,7 +11,7 @@
 							<!-- ch-root -->
 							<!-- ch-usage: mandatory -->
 							<!-- ch-attrs: id version responsibilitySetRef -->
-							<!-- ch-note: For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `OperatorRef`. This is to maintain compatibility with different data consumers. -->
+							<!-- ch-note: For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `OperatorRef`. This is to maintain compatibility with different data consumers. See chapter on ResourceFrame and Use Case 17. -->
 							<ValidBetween>
 								<!-- ch-usage: expected -->
 								<!-- ch-note: Usually set to the whole timetable year -->
@@ -41,14 +41,14 @@
 								<RailSubmode><!-- ch-usage: optional--><!-- ch-note: Here an example for rail. Be aware that other XXXSubmode are used for other mode. -->suburbanRailway</RailSubmode>
 							</TransportSubmode>
 							<PublicCode><!-- ch-usage: mandatory --><!-- ch-note: Contains LinieLangName (attribute LT from HRDF) -->3</PublicCode>
-							<OperatorRef ref="ch:1:Operator:11" versionRef="1">
+							<OperatorRef ref="ch:1:sboid:100011" versionRef="1">
 								<!-- ch-usage: expected -->
 								<!-- ch-note: The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney.  Is redundant to the responsibilitySetRef on purpose. -->
 							</OperatorRef>
 							<additionalOperators>
 								<!-- ch-usage: optional -->
 								<!-- ch-note: Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined. -->
-								<OperatorRef ref="ch:1:Operator:33" versionRef="1"/>
+								<OperatorRef ref="ch:1:sboid:100033" versionRef="1"/>
 							</additionalOperators>
                             <LineType><!-- ch-usage: expected --><!-- ch-note: Will be used especially, when not "fixed". Details in mapping excel. -->fixed</LineType>
                             <TypeOfLineRef ref="forbidden" versionRef="notused"><!-- ch-usage: forbidden --><!-- ch-note: We use LineType only --></TypeOfLineRef>

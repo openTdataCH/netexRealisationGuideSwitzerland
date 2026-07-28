@@ -12,7 +12,7 @@
 |  | BothWays | optional | 0..1 | xsd:boolean | Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER. | We don't use BothWays true, as it might differ. |
 |  | From | mandatory | 0..1 | ConnectionEndStructure | Origin end of CONNECTION. |  |
 | + | TransportMode | optional | 0..1 | AllModesEnumeration | MODE. |  |
-| + | OperatorView | optional | 1..1 | unknown | Simplified view of OPERATOR. All data except the identifier will be derived through the relationship. |  |
+| + | OperatorView | optional | 1..1 | unknown | Simplified view of OPERATOR. All data except the identifier will be derived through the relationship. | Should be a sboid whenever possible. |
 | ++ | OperatorRef | mandatory | 1..1 | OperatorRefStructure | Reference to an OPERATOR. |  |
 |  | To | mandatory | 0..1 | ConnectionEndStructure | Destination end of CONNECTION. |  |
 |  | StopPlaceRef | optional | 0..1 | StopPlaceRefStructure | System identifier of a STOP PLACE. May be omitted if given by context. | Usually a SLOID. Not set means whole network. |

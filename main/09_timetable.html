@@ -260,6 +260,24 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>The scheduled possibility for transfer of passengers between two SERVICE JOURNEYs at the same or different STOP POINTs.</td>
       <td>For modeling many forms of interchanges</td>
     </tr>
+    <tr>
+      <td> </td>
+      <td>vehicleTypes</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>transportTypeRefs_RelStructure</td>
+      <td>Opnen specifcation of VEHICLE TYPEs + v1.1</td>
+      <td>We will use this place to store Train and CompoundTrain information, when we will do formation. Not detailed at the moment</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>CompoundTrain</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td>A vehicle composed of COMPOUND TRAIN ELEMENTs in a certain order, i.e. of wagons assembled together and propelled by a locomotive or one of the wagons.</td>
+      <td> </td>
+    </tr>
   </tbody>
 </table>
 
@@ -301,6 +319,11 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <span class="nt">&lt;ToJourneyRef</span> <span class="na">ref=</span><span class="s">"sjyid-2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
   <span class="nt">&lt;/journeyInterchanges&gt;</span>
+  <span class="nt">&lt;vehicleTypes&gt;</span>
+  <span class="c">&lt;!-- We will use this place to store Train and CompoundTrain information, when we will do formation. Not detailed at the moment --&gt;</span>
+  <span class="nt">&lt;CompoundTrain</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Train</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/vehicleTypes&gt;</span>
 <span class="nt">&lt;/TimetableFrame&gt;</span>
 </code></pre></div></div>
 
@@ -746,10 +769,9 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <li><strong>Consistency:</strong> A <code class="language-plaintext highlighter-rouge">ServiceJourney</code> must reference exactly one <code class="language-plaintext highlighter-rouge">JourneyPattern</code>. The pattern’s stop sequence is authoritative.</li>
   <li><strong>Day Governance:</strong> Operating days are controlled via <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code> (<code class="language-plaintext highlighter-rouge">ValidDayBits</code>), not via <code class="language-plaintext highlighter-rouge">DayType</code>. <code class="language-plaintext highlighter-rouge">DayType</code>/<code class="language-plaintext highlighter-rouge">DayTypeAssignment</code> are reserved for flagging national holidays only (see <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#daytype">ServiceCalendarFrame</a>). <code class="language-plaintext highlighter-rouge">DatedServiceJourney</code> is not used in the Swiss profile.</li>
   <li><strong>Validation:</strong> Ensure <code class="language-plaintext highlighter-rouge">JourneyPatternRef</code>, <code class="language-plaintext highlighter-rouge">LineRef</code>, and <code class="language-plaintext highlighter-rouge">OperatorRef</code> are consistent and reference existing objects.</li>
-  <li>We assume that a Swiss Journey ID exists for almost every <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. In those cases the <code class="language-plaintext highlighter-rouge">id</code> is also set to the <code class="language-plaintext highlighter-rouge">sjyid</code>. Possible problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the <code class="language-plaintext highlighter-rouge">id</code> will contain a <code class="language-plaintext highlighter-rouge">_gen</code></li>
-  <li>substring.</li>
+  <li>We assume that a Swiss Journey ID exists for almost every <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. However, the  <code class="language-plaintext highlighter-rouge">@id</code> can’t be set to <code class="language-plaintext highlighter-rouge">sjyid</code>, because for different days the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> are different. Also problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the <code class="language-plaintext highlighter-rouge">id</code> will contain a <code class="language-plaintext highlighter-rouge">_gen</code> substring, but it still starts with the sjyid, when it exists (e.g. <code class="language-plaintext highlighter-rouge">ch:1:sjyid:100011:12391293:_gen_:1231</code> or <code class="language-plaintext highlighter-rouge">DE:12319123123:_gen_14</code>).</li>
   <li>A <code class="language-plaintext highlighter-rouge">ServiceJourney</code>can be associated with exactly one <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and <code class="language-plaintext highlighter-rouge">TimeDemandType</code>.</li>
-  <li>id-attribute needs to be kept stable between exports.</li>
+  <li>id-attribute needs to be kept stable between exports if possible. However, when new variants are used for different operating days, it changes.</li>
 </ul>
 
 <h3 id="calculation-of-passing-times-at-stops">Calculation of passing times at stops</h3>
@@ -1218,7 +1240,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
 <ul>
   <li><code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code> holds all the frequency-based information of the journey, as for example when the stops of the journey are serviced the first/last time and in what interval (or at which frequency, respectively).</li>
   <li>Note that in addition to <code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code>, standard NeTEx also features <code class="language-plaintext highlighter-rouge">RhythmicalJourneyGroup</code> to specifiy, e.g., departures at 15, 27 and 40 minutes past the hour - this is not used in the Swiss profile.</li>
-  <li>For sjyid see information about <a href="/netexRealisationGuideSwitzerland/main/uc14_frequencies.html">frequencies</a>.</li>
+  <li>For sjyid see information about <a href="/netexRealisationGuideSwitzerland/main/uc14_frequencies.html">frequencies</a> and also the remarks for the <a href="#servicejourney"><code class="language-plaintext highlighter-rouge">ServiceJourney</code></a>.</li>
   <li>id-attribute needs to be kept stable between exports.</li>
 </ul>
 

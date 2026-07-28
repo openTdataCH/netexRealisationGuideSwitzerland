@@ -21,3 +21,5 @@
 | +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | ++ | PrivateCode | optional | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 | + | [ServiceJourneyInterchange](ServiceJourneyInterchange.md) | expected | 1..1 | unknown | The scheduled possibility for transfer of passengers between two SERVICE JOURNEYs at the same or different STOP POINTs. | For modeling many forms of interchanges |
+|  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure | Opnen specifcation of VEHICLE TYPEs + v1.1 | We will use this place to store Train and CompoundTrain information, when we will do formation. Not detailed at the moment |
+| + | CompoundTrain | optional | 1..1 | unknown | A vehicle composed of COMPOUND TRAIN ELEMENTs in a certain order, i.e. of wagons assembled together and propelled by a locomotive or one of the wagons. |  |

@@ -62,7 +62,7 @@
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#serviceframe">Glossary definition</a></em></p>
 
 <h3 id="purpose">Purpose</h3>
-<p>Contains the network and route definitions - <code class="language-plaintext highlighter-rouge">Line</code>s, <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s, <code class="language-plaintext highlighter-rouge">DestinationDisplay</code>s, and <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>s.</p>
+<p>Contains the network and line definitions - <code class="language-plaintext highlighter-rouge">Line</code>s, <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s, <code class="language-plaintext highlighter-rouge">DestinationDisplay</code>s, and <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>s.</p>
 
 <p>See the following class diagram for the most important objects of the <code class="language-plaintext highlighter-rouge">ServiceFrame</code> and their relationships to the other frames.</p>
 
@@ -135,7 +135,6 @@ class ServiceJourney {
 <h3 id="contained-elements">Contained Elements</h3>
 <p>The <code class="language-plaintext highlighter-rouge">ServiceFrame</code> model comprises among others:</p>
 <ul>
-  <li>Route model: fixed and flexible  <code class="language-plaintext highlighter-rouge">Line</code>s and <code class="language-plaintext highlighter-rouge">Route</code>s of a transport network.</li>
   <li>Line network model: overall topology of the <code class="language-plaintext highlighter-rouge">Line</code> and line sections that make up a transport network.</li>
   <li>Service pattern model: <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s, <code class="language-plaintext highlighter-rouge">ServiceLink</code>, i.e., points and links referenced by schedules.</li>
 </ul>
@@ -227,7 +226,7 @@ class ServiceJourney {
       <td>0..1</td>
       <td>destinationDisplayRefs_RelStructure</td>
       <td>Destinations associated with this GROUP OF SERVICEs, including via points.</td>
-      <td>We only allow fully formed content of destinationDisplays</td>
+      <td> </td>
     </tr>
     <tr>
       <td>+</td>
@@ -236,7 +235,7 @@ class ServiceJourney {
       <td>1..1</td>
       <td>unknown</td>
       <td>An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations.</td>
-      <td>We only allow fully formed content of destinationDisplays</td>
+      <td>We only allow DestinationDisplay based on Name and not on reference to a ScheduledStopPoint</td>
     </tr>
     <tr>
       <td> </td>
@@ -263,7 +262,7 @@ class ServiceJourney {
       <td>0..1</td>
       <td>transfersInFrame_RelStructure</td>
       <td>CONNECTIONs in frame.</td>
-      <td> </td>
+      <td>connections is used in SITE_OFFER, but not in NETWORK_OFER</td>
     </tr>
     <tr>
       <td>+</td>
@@ -299,7 +298,7 @@ class ServiceJourney {
       <td>1..1</td>
       <td>unknown</td>
       <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION.</td>
-      <td>are only used in a special PSA file in the export.</td>
+      <td>Make the link between timetables and site model.</td>
     </tr>
     <tr>
       <td> </td>
@@ -402,9 +401,8 @@ class ServiceJourney {
   <span class="nt">&lt;/GroupOfLines&gt;</span>
   <span class="nt">&lt;/groupsOfLines&gt;</span>
   <span class="nt">&lt;destinationDisplays&gt;</span>
-  <span class="c">&lt;!-- We only allow fully formed content of destinationDisplays --&gt;</span>
   <span class="nt">&lt;DestinationDisplay</span> <span class="na">id=</span><span class="s">"generated-id"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- We only allow fully formed content of destinationDisplays --&gt;</span>
+  <span class="c">&lt;!-- We only allow DestinationDisplay based on Name and not on reference to a ScheduledStopPoint --&gt;</span>
   <span class="nt">&lt;/DestinationDisplay&gt;</span>
   <span class="nt">&lt;/destinationDisplays&gt;</span>
   <span class="nt">&lt;scheduledStopPoints&gt;</span>
@@ -414,6 +412,7 @@ class ServiceJourney {
   <span class="nt">&lt;/ScheduledStopPoint&gt;</span>
   <span class="nt">&lt;/scheduledStopPoints&gt;</span>
   <span class="nt">&lt;connections&gt;</span>
+  <span class="c">&lt;!-- connections is used in SITE_OFFER, but not in NETWORK_OFER --&gt;</span>
   <span class="nt">&lt;SiteConnection</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- SiteConnection are used only in the SITE_OFFER file and not in NETWORK_OFFER files. --&gt;</span>
   <span class="nt">&lt;/SiteConnection&gt;</span>
@@ -423,7 +422,7 @@ class ServiceJourney {
   <span class="nt">&lt;/connections&gt;</span>
   <span class="nt">&lt;stopAssignments&gt;</span>
   <span class="nt">&lt;PassengerStopAssignment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- are only used in a special PSA file in the export. --&gt;</span>
+  <span class="c">&lt;!-- Make the link between timetables and site model. --&gt;</span>
   <span class="nt">&lt;/PassengerStopAssignment&gt;</span>
   <span class="nt">&lt;/stopAssignments&gt;</span>
   <span class="nt">&lt;timingLinks&gt;</span>
@@ -467,11 +466,11 @@ class ServiceJourney {
 <h2 id="line">Line</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#line">Glossary definition</a></em></p>
 <h3 id="purpose-1">Purpose</h3>
-<p>A public transport service line, representing a marketed route with a <code class="language-plaintext highlighter-rouge">Name</code>, <code class="language-plaintext highlighter-rouge">TransportMode</code>, and <code class="language-plaintext highlighter-rouge">Operator</code>.</p>
+<p>A public transport service line with a <code class="language-plaintext highlighter-rouge">Name</code>, <code class="language-plaintext highlighter-rouge">TransportMode</code>, and <code class="language-plaintext highlighter-rouge">Operator</code>. Be aware that the handling of “Konzessionär” and “Betreieber” is a bit complex and is discussed <a href="/netexRealisationGuideSwitzerland/main/uc17_mixed_lines.html">here</a> and <a href="/netexRealisationGuideSwitzerland/main/11_resources.html#responsibilityset">here</a>.</p>
 
 <h3 id="table-1">Table</h3>
 
-<p>For referencing the <code class="language-plaintext highlighter-rouge">Operator</code>s we redundantly use <code class="language-plaintext highlighter-rouge">ResponsibilitySet</code> and <code class="language-plaintext highlighter-rouge">OperatorRef</code>. This is to maintain compatibility with different data consumers.</p>
+<p>For referencing the <code class="language-plaintext highlighter-rouge">Operator</code>s we redundantly use <code class="language-plaintext highlighter-rouge">ResponsibilitySet</code> and <code class="language-plaintext highlighter-rouge">OperatorRef</code>. This is to maintain compatibility with different data consumers. See chapter on ResourceFrame and Use Case 17.</p>
 
 <p><em>Table: Line</em></p>
 
@@ -713,7 +712,7 @@ class ServiceJourney {
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;Line</span> <span class="na">id=</span><span class="s">"use swiss line id where possible"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">responsibilitySetRef=</span><span class="s">"dsa"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `OperatorRef`. This is to maintain compatibility with different data consumers. --&gt;</span>
+  <span class="c">&lt;!-- For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `OperatorRef`. This is to maintain compatibility with different data consumers. See chapter on ResourceFrame and Use Case 17. --&gt;</span>
   <span class="nt">&lt;ValidBetween&gt;</span>
   <span class="c">&lt;!-- Usually set to the whole timetable year --&gt;</span>
   <span class="nt">&lt;FromDate&gt;</span>2022-12-11T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
@@ -746,12 +745,12 @@ class ServiceJourney {
   <span class="nt">&lt;PublicCode&gt;</span>3
   <span class="c">&lt;!-- Contains LinieLangName (attribute LT from HRDF) --&gt;</span>
   <span class="nt">&lt;/PublicCode&gt;</span>
-  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100011"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney.  Is redundant to the responsibilitySetRef on purpose. --&gt;</span>
   <span class="nt">&lt;/OperatorRef&gt;</span>
   <span class="nt">&lt;additionalOperators&gt;</span>
   <span class="c">&lt;!-- Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined. --&gt;</span>
-  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:33"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100033"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/additionalOperators&gt;</span>
   <span class="nt">&lt;LineType&gt;</span>fixed
   <span class="c">&lt;!-- Will be used especially, when not "fixed". Details in mapping excel. --&gt;</span>
@@ -766,9 +765,9 @@ class ServiceJourney {
 
 <h3 id="usage-notes">Usage Notes</h3>
 <ul>
-  <li>slnid will be integrated wherever possible. We currently think that - where it exists - it has the necessary properties to be used in the <code class="language-plaintext highlighter-rouge">id</code>-attribute.</li>
-  <li>For foreign lines an <code class="language-plaintext highlighter-rouge">id</code> might need to be generated.</li>
-  <li>We store the slnid whenever possible in <code class="language-plaintext highlighter-rouge">id</code>, <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> and <code class="language-plaintext highlighter-rouge">KeyList</code>.</li>
+  <li>slnid will be integrated wherever possible. We currently think that - where it exists - it has the necessary properties to be used in the <code class="language-plaintext highlighter-rouge">@id</code> of the element.</li>
+  <li>For foreign lines an <code class="language-plaintext highlighter-rouge">@d</code> might need to be generated.</li>
+  <li>We store the slnid whenever possible in <code class="language-plaintext highlighter-rouge">@id</code>, <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> and <code class="language-plaintext highlighter-rouge">KeyList</code>.</li>
   <li>Information about the Swiss line id (slnid) can be found <a href="https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-line-identification-slnid">here</a>.</li>
   <li>Handling of mixed lines is defined in its own <a href="uc17_mixed_lines">use case (uc017)</a>. The relevant factors are described in the Line element as well. We have a full <a href="examples/NeTEx_CH_Linie_722_Mischbetrieb.xml">example</a> on it. - Be aware that for mixed lines there might be multiple <code class="language-plaintext highlighter-rouge">Line</code>s in NeTEx. Otherwise, the relevant <code class="language-plaintext highlighter-rouge">Operator</code> must be set on the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</li>
   <li>Note that there exist journeys in Switzerland and neighboring countries that are not associated with a <code class="language-plaintext highlighter-rouge">Line</code>. In NeTEx, however, the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s corresponding to such journeys must still reference something in <code class="language-plaintext highlighter-rouge">LineRef</code>. To ensure this, we introduce a placeholder <code class="language-plaintext highlighter-rouge">Line</code> called “NoLine” for each <code class="language-plaintext highlighter-rouge">Operator</code> that has journeys without a Line.</li>
@@ -930,7 +929,7 @@ class ServiceJourney {
       <td>0..*</td>
       <td>MultilingualString</td>
       <td>Name of Traveller</td>
-      <td>Is always language neutral. The data is taken from the Des-tination or from the reference in *R (HRDF). If DURCHBI is used then the destination display shows the final destination.</td>
+      <td>Is always language neutral. The data is taken from the Destination or from the reference in *R (HRDF). If DURCHBI is used then the destination display shows the final destination.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -961,7 +960,7 @@ class ServiceJourney {
 <span class="nt">&lt;DestinationDisplay</span> <span class="na">id=</span><span class="s">"generated-id"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- We only allow fully formed content of destinationDisplays --&gt;</span>
   <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Porrentruy
-  <span class="c">&lt;!-- Is always language neutral. The data is taken from the Des-tination or from the reference in *R (HRDF). If DURCHBI is used then the destination display shows the final destination. --&gt;</span>
+  <span class="c">&lt;!-- Is always language neutral. The data is taken from the Destination or from the reference in *R (HRDF). If DURCHBI is used then the destination display shows the final destination. --&gt;</span>
   <span class="nt">&lt;/Name&gt;</span>
   <span class="nt">&lt;DriverDisplayText&gt;</span>Porrentruy
   <span class="c">&lt;!-- Text to display to DRIVER. --&gt;</span>
@@ -1382,7 +1381,7 @@ class ServiceJourney {
       <td>1..1</td>
       <td>unknown</td>
       <td>Simplified view of OPERATOR. All data except the identifier will be derived through the relationship.</td>
-      <td> </td>
+      <td>Should be a sboid whenever possible.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -1441,13 +1440,15 @@ class ServiceJourney {
   <span class="nt">&lt;From&gt;</span>
   <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
   <span class="nt">&lt;OperatorView&gt;</span>
-  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- Should be a sboid whenever possible. --&gt;</span>
+  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100011"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/OperatorView&gt;</span>
   <span class="nt">&lt;/From&gt;</span>
   <span class="nt">&lt;To&gt;</span>
   <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
   <span class="nt">&lt;OperatorView&gt;</span>
-  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:Operator:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="c">&lt;!-- Should be a sboid whenever possible. --&gt;</span>
+  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100033"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/OperatorView&gt;</span>
   <span class="nt">&lt;/To&gt;</span>
   <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:19231"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>

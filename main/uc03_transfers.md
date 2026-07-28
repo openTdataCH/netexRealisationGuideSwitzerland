@@ -92,13 +92,15 @@ Defines transfer times between two specific operators at a stop place. The HRDF 
   <From>
   <TransportMode>all</TransportMode>
   <OperatorView>
-  <OperatorRef ref="ch:1:Operator:11" version="1"/>
+  <!-- Should be a sboid whenever possible. -->
+  <OperatorRef ref="ch:1:sboid:100011" version="1"/>
   </OperatorView>
   </From>
   <To>
   <TransportMode>all</TransportMode>
   <OperatorView>
-  <OperatorRef ref="ch:1:Operator:11" version="1"/>
+  <!-- Should be a sboid whenever possible. -->
+  <OperatorRef ref="ch:1:sboid:100033" version="1"/>
   </OperatorView>
   </To>
   <StopPlaceRef ref="ch:1:sloid:19231" version="1">

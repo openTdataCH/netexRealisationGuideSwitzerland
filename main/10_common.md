@@ -30,13 +30,17 @@ The following rules apply to common attributes:
 | `id`                   | See description regarding [technical IDs](#ids) below                                                                                                                  |
 | `version`              | is always set to `"1"`                                                                                                                                                 |
 | `responsibilitySetRef` | We use `responsibilitySetRef` on `ServiceJourney` and `TemplateServiceJourney`.                                                                                        |
-| `nameOfRefClass`       | We use `nameOfRefClass` explicitly where a reference target is ambiguous, e.g. on `JourneyPatternRef` (which may resolve to `JourneyPattern` or `ServiceJourneyPattern`). |
+| `nameOfRefClass`       | We use `nameOfRefClass` explicitly where a reference target is ambiguous, e.g. on `PointRef` (which may resolve to `ScheduledStopPoint` mostly for us).                |
 | `versionRef`           | is always set to `"1"`. Is used, when the element can't be referenced directly, because it is in a different file. This is in our files true for the INTERCHANGE file. |
 
 *Table: Handling of the most used attributes for elements in NeTEx*
 
 #### IDs
-IDs must be globally unique during importation (in the `id`-attribute). 
+IDs must be globally unique during importation (in the `@id` of the element). By globally unique we mean:
+- They are unique by object type.
+- Also they are unique within one delivery (may be multiple files). If two elements have the same `@id` then they must be the same element.
+- Between delivery they may change, when they are declared as stable.
+- 
 They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for "primary" objects we expect object permanence. This is mentioned in the usage note of each element.
 Important business level keys are stored in elements (`KeyList`, `privateCodes/PrivateCode`) in addition to the IDs.
 
@@ -78,10 +82,10 @@ If a `ServiceJourney` runs over midnight, `DepartureDayOffset` (on `ServiceJourn
 
 #### Purpose
 
-`AlternativeName` is used to provide an alternative (alias or translation) of a name, e.g. of 
+`AlternativeName` is used to provide an alternative (alias) of a name, e.g. of 
 a `StopPlace` or `Organisation`. 
 
-For all other alternative texts use `MultilingualString`.
+For all translations and other alternative texts use `MultilingualString`.
 
 #### Table
 
@@ -93,7 +97,7 @@ In some cases we need translations or alias of the Name element. This is done wi
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | NameType | mandatory | 0..1 | NameTypeEnumeration | Type of Name - fixed value. Default is alias. | In some cases we need translations or alias of the Name element. This is done with AlternativeName. alias or translation allowed for StoopPlace. |
+|  | NameType | mandatory | 0..1 | NameTypeEnumeration | Type of Name - fixed value. Default is alias. | In some cases we need translations or alias of the Name element. This is done with AlternativeName. alias allowed for StopPlace. |
 |  | TypeOfName | optional | 0..1 | xsd:normalizedString | Type of Name - open value. | For StopPlace official is used for the official name |
 |  | Name | mandatory | 0..* | MultilingualString | Name of Traveller |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
@@ -111,7 +115,7 @@ In some cases we need translations or alias of the Name element. This is done wi
 <AlternativeName>
   <!-- In some cases we need translations or alias of the Name element. This is done with AlternativeName. -->
   <NameType>alias
-  <!-- alias or translation allowed for StoopPlace. -->
+  <!-- alias allowed for StopPlace. -->
   </NameType>
   <TypeOfName>offical
   <!-- For StopPlace official is used for the official name -->
@@ -128,62 +132,12 @@ In some cases we need translations or alias of the Name element. This is done wi
 
 We only allow the following values for `NameType`: 
 - `alias`
-- `translation`
+
 
 ### AlternativeText
 > `AlternativeText` is not used. We will use `MultilingualString`. This means that there are multiple `<Text>` elements with different `lang`-attributes. 
 
 *→ [Glossary definition](A4_annex_glossary.md#alternativetext)*
-
-#### Purpose
-The `AlternativeText` is a generic way to provide an alternative text (translation or alias).  For example, it can be used for the translation of `Notice` texts.
-
-
-
-#### Table
-
-
-
-*Table: AlternativeText*
-
-| Sub | Element | Usage | Card | Type | Description | Note |
-|-----|---------|-------|------|------|-------------|------|
-|  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
-|  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | @attributeName | mandatory | 1..1 | xsd:string | Attribute attributeName | |
-|  | @useForLanguage | mandatory | 1..1 | xsd:string | Attribute useForLanguage | |
-|  | Text | mandatory | 0..* | MultilingualString | Text content of NOTICe. |  |
-
-
-
-
-*→ - [General NeTEx definition](../site/netex-html/AlternativeText.html)*
- 
-#### Example
-
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<AlternativeText id="ch:1:AlternativeText:Notice-Hin_1229900-fr" version="1" attributeName="Text" useForLanguage="fr">
-  <!--  -->
-  <Text>Départ de la voie 2.</Text>
-</AlternativeText>
-```
-
-
-
-*→ - [Template](./templates/AlternativeText_deprecated.xml)*
-
-#### Usage Notes
-
-The `AlternativeText` is part of a `DataManagedObject` and references the name of the node, for which it provides an alternative. 
-It contains the alternative text as an attribute of type `MultilingualString` which indicates the language. 
-
-In addition, the `AlternativeText` element may have a `useForLanguage` attribute to indicate a second language for which it may be used as 
-an acceptable presentation, if there is no native language alternative; normally this will be the same as the language 
-of the string, but might be different.
-
-Alternative names (translations or aliases) of a `StopPlace` or `Organisation` are modelled with [AlternativeNames](#AlternativeName).
 
 ### MultilingualString
 *→ [Glossary definition](A4_annex_glossary.md#multilingualstring)*
@@ -198,18 +152,18 @@ Additional languages are introduced through the [AlternativeName](#alternativena
 #### Example
 
 ```xml
-<Name lang="de">Train Express Regional
-  <Text lang="it">Train Express Regional</Text>
-  <Text lang="en">Train Express Regional</Text>
-  <Text lang="fr">Train Express Regional</Text>
-</Name>
+<Text lang="de">Reservation erforderlich
+  <Text lang="it">Prenotazione obbligatoria</Text>
+  <Text lang="en">Reservation required</Text>
+  <Text lang="fr">Réservation obligatoire</Text>
+</Text>
 ```
 
 #### Usage Notes
 
 - For [Organisations](#organisation--operator--authority) e.g. there are all languages present.
 - The `StopPlace` names in Switzerland are language-independent.
-
+- Sometimes the parent element is `Text` as well. So we have `Text/Text`.
 
 
 ### FrameDefaults

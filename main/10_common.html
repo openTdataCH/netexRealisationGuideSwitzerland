@@ -94,7 +94,7 @@
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">nameOfRefClass</code></td>
-      <td>We use <code class="language-plaintext highlighter-rouge">nameOfRefClass</code> explicitly where a reference target is ambiguous, e.g. on <code class="language-plaintext highlighter-rouge">JourneyPatternRef</code> (which may resolve to <code class="language-plaintext highlighter-rouge">JourneyPattern</code> or <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>).</td>
+      <td>We use <code class="language-plaintext highlighter-rouge">nameOfRefClass</code> explicitly where a reference target is ambiguous, e.g. on <code class="language-plaintext highlighter-rouge">PointRef</code> (which may resolve to <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> mostly for us).</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">versionRef</code></td>
@@ -106,9 +106,14 @@
 <p><em>Table: Handling of the most used attributes for elements in NeTEx</em></p>
 
 <h4 id="ids">IDs</h4>
-<p>IDs must be globally unique during importation (in the <code class="language-plaintext highlighter-rouge">id</code>-attribute). 
-They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for “primary” objects we expect object permanence. This is mentioned in the usage note of each element.
-Important business level keys are stored in elements (<code class="language-plaintext highlighter-rouge">KeyList</code>, <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code>) in addition to the IDs.</p>
+<p>IDs must be globally unique during importation (in the <code class="language-plaintext highlighter-rouge">@id</code> of the element). By globally unique we mean:</p>
+<ul>
+  <li>They are unique by object type.</li>
+  <li>Also they are unique within one delivery (may be multiple files). If two elements have the same <code class="language-plaintext highlighter-rouge">@id</code> then they must be the same element.</li>
+  <li>Between delivery they may change, when they are declared as stable.</li>
+  <li>They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for “primary” objects we expect object permanence. This is mentioned in the usage note of each element.
+Important business level keys are stored in elements (<code class="language-plaintext highlighter-rouge">KeyList</code>, <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code>) in addition to the IDs.</li>
+</ul>
 
 <p>It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available.</p>
 
@@ -149,10 +154,10 @@ If a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> ru
 
 <h4 id="purpose">Purpose</h4>
 
-<p><code class="language-plaintext highlighter-rouge">AlternativeName</code> is used to provide an alternative (alias or translation) of a name, e.g. of 
+<p><code class="language-plaintext highlighter-rouge">AlternativeName</code> is used to provide an alternative (alias) of a name, e.g. of 
 a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code class="language-plaintext highlighter-rouge">Organisation</code>.</p>
 
-<p>For all other alternative texts use <code class="language-plaintext highlighter-rouge">MultilingualString</code>.</p>
+<p>For all translations and other alternative texts use <code class="language-plaintext highlighter-rouge">MultilingualString</code>.</p>
 
 <h4 id="table">Table</h4>
 
@@ -180,7 +185,7 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
       <td>0..1</td>
       <td>NameTypeEnumeration</td>
       <td>Type of Name - fixed value. Default is alias.</td>
-      <td>In some cases we need translations or alias of the Name element. This is done with AlternativeName. alias or translation allowed for StoopPlace.</td>
+      <td>In some cases we need translations or alias of the Name element. This is done with AlternativeName. alias allowed for StopPlace.</td>
     </tr>
     <tr>
       <td> </td>
@@ -220,7 +225,7 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
 <span class="nt">&lt;AlternativeName&gt;</span>
   <span class="c">&lt;!-- In some cases we need translations or alias of the Name element. This is done with AlternativeName. --&gt;</span>
   <span class="nt">&lt;NameType&gt;</span>alias
-  <span class="c">&lt;!-- alias or translation allowed for StoopPlace. --&gt;</span>
+  <span class="c">&lt;!-- alias allowed for StopPlace. --&gt;</span>
   <span class="nt">&lt;/NameType&gt;</span>
   <span class="nt">&lt;TypeOfName&gt;</span>offical
   <span class="c">&lt;!-- For StopPlace official is used for the official name --&gt;</span>
@@ -236,7 +241,6 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
 <p>We only allow the following values for <code class="language-plaintext highlighter-rouge">NameType</code>:</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">alias</code></li>
-  <li><code class="language-plaintext highlighter-rouge">translation</code></li>
 </ul>
 
 <h3 id="alternativetext">AlternativeText</h3>
@@ -246,130 +250,39 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#alternativetext">Glossary definition</a></em></p>
 
-<h4 id="purpose-1">Purpose</h4>
-<p>The <code class="language-plaintext highlighter-rouge">AlternativeText</code> is a generic way to provide an alternative text (translation or alias).  For example, it can be used for the translation of <code class="language-plaintext highlighter-rouge">Notice</code> texts.</p>
-
-<h4 id="table-1">Table</h4>
-
-<p><em>Table: AlternativeText</em></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Sub</th>
-      <th>Element</th>
-      <th>Usage</th>
-      <th>Card</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Note</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td> </td>
-      <td>@id</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>xsd:string</td>
-      <td>Attribute id</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>@version</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>xsd:string</td>
-      <td>Attribute version</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>@attributeName</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>xsd:string</td>
-      <td>Attribute attributeName</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>@useForLanguage</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>xsd:string</td>
-      <td>Attribute useForLanguage</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>Text</td>
-      <td>mandatory</td>
-      <td>0..*</td>
-      <td>MultilingualString</td>
-      <td>Text content of NOTICe.</td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-<p><em>→ - <a href="../site/netex-html/AlternativeText.html">General NeTEx definition</a></em></p>
-
-<h4 id="example-1">Example</h4>
-
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;AlternativeText</span> <span class="na">id=</span><span class="s">"ch:1:AlternativeText:Notice-Hin_1229900-fr"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">attributeName=</span><span class="s">"Text"</span> <span class="na">useForLanguage=</span><span class="s">"fr"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!--  --&gt;</span>
-  <span class="nt">&lt;Text&gt;</span>Départ de la voie 2.<span class="nt">&lt;/Text&gt;</span>
-<span class="nt">&lt;/AlternativeText&gt;</span>
-</code></pre></div></div>
-
-<p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/AlternativeText_deprecated.xml">Template</a></em></p>
-
-<h4 id="usage-notes-1">Usage Notes</h4>
-
-<p>The <code class="language-plaintext highlighter-rouge">AlternativeText</code> is part of a <code class="language-plaintext highlighter-rouge">DataManagedObject</code> and references the name of the node, for which it provides an alternative. 
-It contains the alternative text as an attribute of type <code class="language-plaintext highlighter-rouge">MultilingualString</code> which indicates the language.</p>
-
-<p>In addition, the <code class="language-plaintext highlighter-rouge">AlternativeText</code> element may have a <code class="language-plaintext highlighter-rouge">useForLanguage</code> attribute to indicate a second language for which it may be used as 
-an acceptable presentation, if there is no native language alternative; normally this will be the same as the language 
-of the string, but might be different.</p>
-
-<p>Alternative names (translations or aliases) of a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code class="language-plaintext highlighter-rouge">Organisation</code> are modelled with <a href="#AlternativeName">AlternativeNames</a>.</p>
-
 <h3 id="multilingualstring">MultilingualString</h3>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#multilingualstring">Glossary definition</a></em></p>
 
-<h4 id="purpose-2">Purpose</h4>
+<h4 id="purpose-1">Purpose</h4>
 
 <p>NeTEx uses the type <code class="language-plaintext highlighter-rouge">MultilingualString</code> for descriptive text elements (e.g. <code class="language-plaintext highlighter-rouge">Notice</code> text, <code class="language-plaintext highlighter-rouge">Name</code>, <code class="language-plaintext highlighter-rouge">ShortName</code> etc.).
 However, only one language can be set for a given element (e.g. <code class="language-plaintext highlighter-rouge">&lt;MultilingualString lang=”fr”&gt;</code>). 
 Additional languages are introduced through the <a href="#alternativename">AlternativeName</a> and <a href="#alternativetext">AlternativeText</a> element.</p>
 
-<h4 id="example-2">Example</h4>
+<h4 id="example-1">Example</h4>
 
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Train Express Regional
-  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;</span>
-  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;</span>
-  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Train Express Regional<span class="nt">&lt;/Text&gt;</span>
-<span class="nt">&lt;/Name&gt;</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Reservation erforderlich
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Prenotazione obbligatoria<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Reservation required<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Réservation obligatoire<span class="nt">&lt;/Text&gt;</span>
+<span class="nt">&lt;/Text&gt;</span>
 </code></pre></div></div>
 
-<h4 id="usage-notes-2">Usage Notes</h4>
+<h4 id="usage-notes-1">Usage Notes</h4>
 
 <ul>
   <li>For <a href="#organisation--operator--authority">Organisations</a> e.g. there are all languages present.</li>
   <li>The <code class="language-plaintext highlighter-rouge">StopPlace</code> names in Switzerland are language-independent.</li>
+  <li>Sometimes the parent element is <code class="language-plaintext highlighter-rouge">Text</code> as well. So we have <code class="language-plaintext highlighter-rouge">Text/Text</code>.</li>
 </ul>
 
 <h3 id="framedefaults">FrameDefaults</h3>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#framedefaults">Glossary definition</a></em></p>
 
-<h4 id="purpose-3">Purpose</h4>
+<h4 id="purpose-2">Purpose</h4>
 <p>Holds default values for certain basic parameters.</p>
 
-<h4 id="table-2">Table</h4>
+<h4 id="table-1">Table</h4>
 
 <p><em>Table: FrameDefaults</em></p>
 
@@ -445,7 +358,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
 
 <p><em>→ <a href="../site/netex-html/FrameDefaults.html">General NeTEx definition</a></em></p>
 
-<h4 id="example-3">Example</h4>
+<h4 id="example-2">Example</h4>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;FrameDefaults&gt;</span>
@@ -468,7 +381,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/FrameDefaults.xml">Template</a></em></p>
 
-<h4 id="usage-notes-3">Usage Notes</h4>
+<h4 id="usage-notes-2">Usage Notes</h4>
 <ul>
   <li>For values not set in <code class="language-plaintext highlighter-rouge">FrameDefaults</code> we use the values as indicated in the table and example above.</li>
   <li>We know that the use of the TimezoneOffset are redundant to the TimeZone, but we believe it may make consumption easier and the additional two lines are not really expensive.</li>

@@ -119,7 +119,7 @@
       <td>0..1</td>
       <td>destinationDisplayRefs_RelStructure</td>
       <td>Destinations associated with this GROUP OF SERVICEs, including via points.</td>
-      <td>We only allow fully formed content of destinationDisplays</td>
+      <td> </td>
     </tr>
     <tr>
       <td>+</td>
@@ -128,7 +128,7 @@
       <td>1..1</td>
       <td>unknown</td>
       <td>An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations.</td>
-      <td>We only allow fully formed content of destinationDisplays</td>
+      <td>We only allow DestinationDisplay based on Name and not on reference to a ScheduledStopPoint</td>
     </tr>
     <tr>
       <td> </td>
@@ -155,7 +155,7 @@
       <td>0..1</td>
       <td>transfersInFrame_RelStructure</td>
       <td>CONNECTIONs in frame.</td>
-      <td> </td>
+      <td>connections is used in SITE_OFFER, but not in NETWORK_OFER</td>
     </tr>
     <tr>
       <td>+</td>
@@ -191,7 +191,7 @@
       <td>1..1</td>
       <td>unknown</td>
       <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION.</td>
-      <td>are only used in a special PSA file in the export.</td>
+      <td>Make the link between timetables and site model.</td>
     </tr>
     <tr>
       <td> </td>
