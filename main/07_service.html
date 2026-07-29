@@ -774,7 +774,7 @@ class ServiceJourney {
   <li>For more information about SwissLineID: see <a href="https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf">here</a>.</li>
   <li>We have in the slnid concept also “Dispositionslinie” and “Temporäre Linie”. Those are modeled as regular <code class="language-plaintext highlighter-rouge">Line</code>. “Betriebliche Linie” is not used and modeled in NeTEx. If at some point we need to know this type. We will model it as a Key/Value pair.</li>
   <li>If there are partial lines, there is also a main line. The patterns and journeys are always attached to the partial lines.</li>
-  <li>id-attribute needs to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
 </ul>
 
 <h2 id="groupoflines">GroupOfLines</h2>
@@ -868,7 +868,7 @@ class ServiceJourney {
   <li>Only mixed lines have a <code class="language-plaintext highlighter-rouge">GroupOfLines</code>.</li>
   <li>All <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and <code class="language-plaintext highlighter-rouge">ServiceJourney</code> are assigned to the partial lines.</li>
   <li>In very rare cases the main line has two legal owners. We discuss the modeling in <a href="/netexRealisationGuideSwitzerland/main/uc17_mixed_lines.html">uc17</a>.</li>
-  <li>The id-attribute should be the number of the main line.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">@id</code> should be the number of the main line.</li>
 </ul>
 
 <h2 id="destinationdisplay">DestinationDisplay</h2>
@@ -977,7 +977,7 @@ class ServiceJourney {
   <li>The <code class="language-plaintext highlighter-rouge">DestinationDisplay</code> is set on the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> via <code class="language-plaintext highlighter-rouge">Destination/DestinationDisplayRef</code>. If it changes during the run, it needs to be changed on the relevant <code class="language-plaintext highlighter-rouge">StopPointInJourneyPattern</code> via <code class="language-plaintext highlighter-rouge">DestinationDisplayRef</code>. If it changes there, the new destination applies from that point onward — in our output, we fill all remaining <code class="language-plaintext highlighter-rouge">PointsInJourneyPattern</code> with the relevant change.</li>
   <li><code class="language-plaintext highlighter-rouge">Destination</code> must <strong>not</strong> carry a redundant inline <code class="language-plaintext highlighter-rouge">Name</code> alongside <code class="language-plaintext highlighter-rouge">DestinationDisplayRef</code> — the display text lives exclusively in the referenced <code class="language-plaintext highlighter-rouge">DestinationDisplay</code> object, to avoid inconsistency between the two sources. Only <code class="language-plaintext highlighter-rouge">ScheduledStopPointRef</code> and <code class="language-plaintext highlighter-rouge">DestinationDisplayRef</code> should be set on <code class="language-plaintext highlighter-rouge">Destination</code>.</li>
   <li>See also the <a href="/netexRealisationGuideSwitzerland/main/uc13_changes_in_destination.html">use case on changes in destination</a></li>
-  <li>id-attribute needs to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
 </ul>
 
 <h2 id="scheduledstoppoint">ScheduledStopPoint</h2>
@@ -1151,7 +1151,7 @@ class ServiceJourney {
 <ul>
   <li>We don’t keep much information  in <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s. The are assigned by <code class="language-plaintext highlighter-rouge">PassengerStopAssignnment</code>s to the site part (<code class="language-plaintext highlighter-rouge">StopPlace</code>, <code class="language-plaintext highlighter-rouge">Quay</code>).</li>
   <li><code class="language-plaintext highlighter-rouge">ScheduledStopPoints that are used in </code>TimingLinks<code class="language-plaintext highlighter-rouge">and </code>ServiceJourneyPatterns` should be on the quay level.</li>
-  <li>We use the sloid as id-attribute for <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s whener they exist. id-attribute needs to be kept stable between exports.</li>
+  <li>We use the sloid as <code class="language-plaintext highlighter-rouge">@id</code> for <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s whener they exist. <code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
   <li><code class="language-plaintext highlighter-rouge">TimingLink</code>s use <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s as well. This means that the timing between two logical stops is the important measure.</li>
 </ul>
 
@@ -1249,7 +1249,7 @@ class ServiceJourney {
 
 <h3 id="usage-notes-4">Usage Notes</h3>
 <ul>
-  <li>id-attributes don’t need to be stable.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code>s don’t need to be stable.</li>
 </ul>
 
 <h2 id="defaultconnection">DefaultConnection</h2>
@@ -1462,7 +1462,7 @@ class ServiceJourney {
 <h3 id="usage-notes-5">Usage Notes</h3>
 <ul>
   <li>For more details see the <a href="/netexRealisationGuideSwitzerland/main/uc03_transfers.html">use case on transfers</a>.</li>
-  <li>id-attribute needs to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
 </ul>
 
 <h2 id="siteconnection">SiteConnection</h2>
@@ -1471,7 +1471,7 @@ class ServiceJourney {
 <h3 id="purpose-7">Purpose</h3>
 <ul>
   <li>The <code class="language-plaintext highlighter-rouge">SiteConnection</code> describes the transfer times between two adjacent <code class="language-plaintext highlighter-rouge">StopPlace</code>s.</li>
-  <li>id-attribute needs to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
 </ul>
 
 <h3 id="table-7">Table</h3>
@@ -1777,7 +1777,7 @@ needs to be added for that too.</li>
   <li>Multiple visits of the same <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> within a
 <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> are addressed with a <code class="language-plaintext highlighter-rouge">JourneyWaitTime</code> that has a 
 <code class="language-plaintext highlighter-rouge">StopPointInServiceJourneyPatternRef</code> instead of a <code class="language-plaintext highlighter-rouge">ScheduledStopPointRef</code> like the regular ones.</li>
-  <li>id-attribute needs to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
 </ul>
 
 <h2 id="servicejourneypattern">ServiceJourneyPattern</h2>
@@ -2050,7 +2050,7 @@ needs to be added for that too.</li>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">ServiceJourney</code>s sharing the same stop sequence and the same boarding/alighting options should use the same <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>.</li>
   <li>Do not just generate one <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> for each <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</li>
-  <li>id-attribute should be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> should be kept stable between exports.</li>
 </ul>
 
 <h2 id="timedemandtype">TimeDemandType</h2>
@@ -2390,7 +2390,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
 <h3 id="usage-notes-10">Usage Notes</h3>
 <ul>
   <li>Notice elements should only be used to convey information which cannot be transported using specific model elements. Do not use <code class="language-plaintext highlighter-rouge">Notice</code> when the information could be expressed by specific elements, e.g., <code class="language-plaintext highlighter-rouge">FacilitySet</code>, <code class="language-plaintext highlighter-rouge">DayType</code>, <code class="language-plaintext highlighter-rouge">ForAlighting</code>, <code class="language-plaintext highlighter-rouge">ForBoarding</code>. <code class="language-plaintext highlighter-rouge">Notice</code>s can be used to provide further information on <code class="language-plaintext highlighter-rouge">ServiceFacility</code>s but not as a replacement for them. Ideally, the description of a <code class="language-plaintext highlighter-rouge">Notice</code> is translated to the three official languages (DE, IT, FR), and possibly E.</li>
-  <li>id-attribute doesn’t need to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> doesn’t need to be kept stable between exports.</li>
 </ul>
 
 <h2 id="noticeassignment">NoticeAssignment</h2>
@@ -2527,7 +2527,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
 
 <h3 id="usage-notes-11">Usage Notes</h3>
 <ul>
-  <li>id-attribute doesn’t need to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> doesn’t need to be kept stable between exports.</li>
 </ul>
 
   </div>

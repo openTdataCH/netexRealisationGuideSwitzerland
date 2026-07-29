@@ -146,10 +146,10 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
 |  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
 | + | AvailabilityConditionRef | mandatory | 0..* | AvailabilityConditionRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Only a single AvailabilityConditionRef is allowed. |
-|  | keyList | expected | 1..1 | KeyListStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. |
-| + | KeyValue | mandatory | 1..* | KeyValueStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. |
-| ++ | Key | mandatory | 1..1 | xsd:normalizedString | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-| ++ | Value | mandatory | 0..1 | xsd:anyType | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | keyList | optional | 1..1 | KeyListStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | KEY LIST with the KEY VALUEs belonging to the SERVICE JOURNEY. We don't use it for sjyid! |
+| + | KeyValue | optional | 1..* | KeyValueStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | We use it for tariff codes and region codes PAG mostly. |
+| ++ | Key | optional | 1..1 | xsd:normalizedString | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+| ++ | Value | optional | 0..1 | xsd:anyType | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 |  | privateCodes | expected | 1..1 | PrivateCodesStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | PrivateCode | expected | 0..* | PrivateCodeStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | The following types are possible: sjyid and rn. rn is the type used for the Postauto region. |
 | ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
@@ -195,11 +195,15 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
   </AvailabilityConditionRef>
   </validityConditions>
   <keyList>
-  <!-- KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. -->
+  <!-- KEY LIST with the KEY VALUEs belonging to the SERVICE JOURNEY. We don't use it for sjyid! -->
   <KeyValue>
-  <!-- A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. -->
-  <Key>SJYID</Key>
-  <Value>ch:1:sjyid:100001:71707-003</Value>
+  <!-- We use it for tariff codes and region codes PAG mostly. -->
+  <Key>RN</Key>
+  <Value>1203</Value>
+  </KeyValue>
+  <KeyValue>
+  <Key>TC</Key>
+  <Value>293912</Value>
   </KeyValue>
   </keyList>
   <privateCodes>
@@ -279,9 +283,10 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - **Consistency:** A `ServiceJourney` must reference exactly one `JourneyPattern`. The pattern's stop sequence is authoritative.
 - **Day Governance:** Operating days are controlled via `AvailabilityConditionRef` (`ValidDayBits`), not via `DayType`. `DayType`/`DayTypeAssignment` are reserved for flagging national holidays only (see [ServiceCalendarFrame](08_service_calendars.md#daytype)). `DatedServiceJourney` is not used in the Swiss profile.
 - **Validation:** Ensure `JourneyPatternRef`, `LineRef`, and `OperatorRef` are consistent and reference existing objects.
-- We assume that a Swiss Journey ID exists for almost every `ServiceJourney`. However, the  `@id` can't be set to `sjyid`, because for different days the `ServiceJourney` are different. Also problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `id` will contain a `_gen` substring, but it still starts with the sjyid, when it exists (e.g. `ch:1:sjyid:100011:12391293:_gen_:1231` or `DE:12319123123:_gen_14`).
+- We assume that a Swiss Journey ID exists for almost every `ServiceJourney`. However, the  `@id` can't be set to `sjyid`, because for different days the `ServiceJourney` are different. Also problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `@id` will contain a `_gen` substring, but it still starts with the sjyid, when it exists (e.g. `ch:1:sjyid:100011:12391293:_gen_:1231` or `DE:12319123123:_gen_14`).
 - A `ServiceJourney`can be associated with exactly one `ServiceJourneyPattern` and `TimeDemandType`.
-- id-attribute needs to be kept stable between exports if possible. However, when new variants are used for different operating days, it changes.
+- `@id` needs to be kept stable between exports if possible. However, when new variants are used for different operating days, it changes.
+- Tarif codes (`TC`) and region codes (`RN`) are put into a key/value pair (see example).
 
 
 ### Calculation of passing times at stops
@@ -311,8 +316,8 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
 |  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
 | + | AvailabilityConditionRef | mandatory | 0..* | AvailabilityConditionRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Only a single AvailabilityConditionRef is allowed. |
-|  | keyList | optional | 1..1 | KeyListStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Key list for the repeating journeys. Contains the SJYID. |
-| + | KeyValue | optional | 1..* | KeyValueStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. |
+|  | keyList | optional | 1..1 | KeyListStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Key List values |
+| + | KeyValue | optional | 1..* | KeyValueStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | For special Key value pairs. We don't use it for SJYID any longer |
 | ++ | Key | optional | 1..1 | xsd:normalizedString | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | ++ | Value | optional | 0..1 | xsd:anyType | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 |  | privateCodes | expected | 1..1 | PrivateCodesStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region |
@@ -363,11 +368,11 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
   </AvailabilityConditionRef>
   </validityConditions>
   <keyList>
-  <!-- Key list for the repeating journeys. Contains the SJYID. -->
+  <!-- Key List values -->
   <KeyValue>
-  <!-- A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. -->
-  <Key>SJYID</Key>
-  <Value>ch:1:sjyid:100001:71707-003</Value>
+  <!-- For special Key value pairs. We don't use it for SJYID any longer -->
+  <Key>RN</Key>
+  <Value>1001</Value>
   </KeyValue>
   </keyList>
   <privateCodes>
@@ -450,7 +455,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 - `HeadwayJourneyGroup` holds all the frequency-based information of the journey, as for example when the stops of the journey are serviced the first/last time and in what interval (or at which frequency, respectively). 
 - Note that in addition to `HeadwayJourneyGroup`, standard NeTEx also features `RhythmicalJourneyGroup` to specifiy, e.g., departures at 15, 27 and 40 minutes past the hour - this is not used in the Swiss profile.
 - For sjyid see information about [frequencies](uc14_frequencies.md) and also the remarks for the [`ServiceJourney`](#servicejourney).
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 ## TimeDemandType
 *→ [Glossary definition](A4_annex_glossary.md#timedemandtype)*
@@ -566,7 +571,7 @@ The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advert
 *→ [Template](./templates/TrainNumber.xml)*
 
 ### Usage Note
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 ## TypeOfService
 
@@ -610,7 +615,7 @@ The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advert
 *→ - [Template](./templates/TypeOfService.xml)*
 
 ### Usage Notes
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 The following types are currently used:
 
@@ -714,7 +719,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 - `FromServiceJourneyRef` references the feeder journey; `ToServiceJourneyRef` references the distributor journey. Note: the deprecated elements `FromJourneyRef` / `ToJourneyRef` from RG 1.0 (`JourneyMeeting`) must not be used.
 - Element order must follow the XSD sequence: `StaySeated` → `CrossBorder` → `ChangeWithinVehicle` → `MaximumWaitTime` → `FromPointRef` / `ToPointRef` → `FromServiceJourneyRef` / `ToServiceJourneyRef`.
 - Make sure not to generate identical `ServiceJourneyInterchange`s. Reuse them where possible.
-- id-attribute should be kept stable between exports.
+- `@id` should be kept stable between exports.
 
 ## InterchangeRule
 > **Deprecated** — `InterchangeRule` is replaced by `ServiceJourneyInterchange` in RG 2.0.  

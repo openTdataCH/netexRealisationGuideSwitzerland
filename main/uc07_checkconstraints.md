@@ -13,7 +13,6 @@ We can have `CheckConstraint`s on [`ServiceJourney`](09_timetable.md#servicejour
 We don't reference `CheckConstriants` but they are always instantiated in the `ServiceJourney` or `ServiceJourneyPattern`.
 
 
-
 ## CheckConstraint
 *→ [Glossary definition](A4_annex_glossary.md#checkconstraint)*
 
@@ -79,4 +78,4 @@ CheckConstraints are used for different use cases
 - `CheckConstraint` can also cover congestion, which we don't do for the moment.
 - The CI / CO times from HRDF can be conveyed as a `CheckConstraint` each.
 - `CheckConstraint` can also be associated with equipment, we don't do this either.
-- id-attribute can be generated.
+- `@id` can be generated.

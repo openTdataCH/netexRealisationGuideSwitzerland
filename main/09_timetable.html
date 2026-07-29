@@ -404,25 +404,25 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
     <tr>
       <td> </td>
       <td>keyList</td>
-      <td>expected</td>
+      <td>optional</td>
       <td>1..1</td>
       <td>KeyListStructure</td>
       <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
-      <td>KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID.</td>
+      <td>KEY LIST with the KEY VALUEs belonging to the SERVICE JOURNEY. We don’t use it for sjyid!</td>
     </tr>
     <tr>
       <td>+</td>
       <td>KeyValue</td>
-      <td>mandatory</td>
+      <td>optional</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
       <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
-      <td>A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID.</td>
+      <td>We use it for tariff codes and region codes PAG mostly.</td>
     </tr>
     <tr>
       <td>++</td>
       <td>Key</td>
-      <td>mandatory</td>
+      <td>optional</td>
       <td>1..1</td>
       <td>xsd:normalizedString</td>
       <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
@@ -431,7 +431,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
     <tr>
       <td>++</td>
       <td>Value</td>
-      <td>mandatory</td>
+      <td>optional</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
       <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
@@ -687,11 +687,15 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <span class="nt">&lt;/AvailabilityConditionRef&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
   <span class="nt">&lt;keyList&gt;</span>
-  <span class="c">&lt;!-- KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. --&gt;</span>
+  <span class="c">&lt;!-- KEY LIST with the KEY VALUEs belonging to the SERVICE JOURNEY. We don't use it for sjyid! --&gt;</span>
   <span class="nt">&lt;KeyValue&gt;</span>
-  <span class="c">&lt;!-- A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. --&gt;</span>
-  <span class="nt">&lt;Key&gt;</span>SJYID<span class="nt">&lt;/Key&gt;</span>
-  <span class="nt">&lt;Value&gt;</span>ch:1:sjyid:100001:71707-003<span class="nt">&lt;/Value&gt;</span>
+  <span class="c">&lt;!-- We use it for tariff codes and region codes PAG mostly. --&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>RN<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>1203<span class="nt">&lt;/Value&gt;</span>
+  <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;KeyValue&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>TC<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>293912<span class="nt">&lt;/Value&gt;</span>
   <span class="nt">&lt;/KeyValue&gt;</span>
   <span class="nt">&lt;/keyList&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
@@ -769,9 +773,10 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <li><strong>Consistency:</strong> A <code class="language-plaintext highlighter-rouge">ServiceJourney</code> must reference exactly one <code class="language-plaintext highlighter-rouge">JourneyPattern</code>. The pattern’s stop sequence is authoritative.</li>
   <li><strong>Day Governance:</strong> Operating days are controlled via <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code> (<code class="language-plaintext highlighter-rouge">ValidDayBits</code>), not via <code class="language-plaintext highlighter-rouge">DayType</code>. <code class="language-plaintext highlighter-rouge">DayType</code>/<code class="language-plaintext highlighter-rouge">DayTypeAssignment</code> are reserved for flagging national holidays only (see <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#daytype">ServiceCalendarFrame</a>). <code class="language-plaintext highlighter-rouge">DatedServiceJourney</code> is not used in the Swiss profile.</li>
   <li><strong>Validation:</strong> Ensure <code class="language-plaintext highlighter-rouge">JourneyPatternRef</code>, <code class="language-plaintext highlighter-rouge">LineRef</code>, and <code class="language-plaintext highlighter-rouge">OperatorRef</code> are consistent and reference existing objects.</li>
-  <li>We assume that a Swiss Journey ID exists for almost every <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. However, the  <code class="language-plaintext highlighter-rouge">@id</code> can’t be set to <code class="language-plaintext highlighter-rouge">sjyid</code>, because for different days the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> are different. Also problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the <code class="language-plaintext highlighter-rouge">id</code> will contain a <code class="language-plaintext highlighter-rouge">_gen</code> substring, but it still starts with the sjyid, when it exists (e.g. <code class="language-plaintext highlighter-rouge">ch:1:sjyid:100011:12391293:_gen_:1231</code> or <code class="language-plaintext highlighter-rouge">DE:12319123123:_gen_14</code>).</li>
+  <li>We assume that a Swiss Journey ID exists for almost every <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. However, the  <code class="language-plaintext highlighter-rouge">@id</code> can’t be set to <code class="language-plaintext highlighter-rouge">sjyid</code>, because for different days the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> are different. Also problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the <code class="language-plaintext highlighter-rouge">@id</code> will contain a <code class="language-plaintext highlighter-rouge">_gen</code> substring, but it still starts with the sjyid, when it exists (e.g. <code class="language-plaintext highlighter-rouge">ch:1:sjyid:100011:12391293:_gen_:1231</code> or <code class="language-plaintext highlighter-rouge">DE:12319123123:_gen_14</code>).</li>
   <li>A <code class="language-plaintext highlighter-rouge">ServiceJourney</code>can be associated with exactly one <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and <code class="language-plaintext highlighter-rouge">TimeDemandType</code>.</li>
-  <li>id-attribute needs to be kept stable between exports if possible. However, when new variants are used for different operating days, it changes.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports if possible. However, when new variants are used for different operating days, it changes.</li>
+  <li>Tarif codes (<code class="language-plaintext highlighter-rouge">TC</code>) and region codes (<code class="language-plaintext highlighter-rouge">RN</code>) are put into a key/value pair (see example).</li>
 </ul>
 
 <h3 id="calculation-of-passing-times-at-stops">Calculation of passing times at stops</h3>
@@ -857,7 +862,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>1..1</td>
       <td>KeyListStructure</td>
       <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
-      <td>Key list for the repeating journeys. Contains the SJYID.</td>
+      <td>Key List values</td>
     </tr>
     <tr>
       <td>+</td>
@@ -866,7 +871,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>1..*</td>
       <td>KeyValueStructure</td>
       <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
-      <td>A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID.</td>
+      <td>For special Key value pairs. We don’t use it for SJYID any longer</td>
     </tr>
     <tr>
       <td>++</td>
@@ -1155,11 +1160,11 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
   <span class="nt">&lt;/AvailabilityConditionRef&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
   <span class="nt">&lt;keyList&gt;</span>
-  <span class="c">&lt;!-- Key list for the repeating journeys. Contains the SJYID. --&gt;</span>
+  <span class="c">&lt;!-- Key List values --&gt;</span>
   <span class="nt">&lt;KeyValue&gt;</span>
-  <span class="c">&lt;!-- A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. --&gt;</span>
-  <span class="nt">&lt;Key&gt;</span>SJYID<span class="nt">&lt;/Key&gt;</span>
-  <span class="nt">&lt;Value&gt;</span>ch:1:sjyid:100001:71707-003<span class="nt">&lt;/Value&gt;</span>
+  <span class="c">&lt;!-- For special Key value pairs. We don't use it for SJYID any longer --&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>RN<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>1001<span class="nt">&lt;/Value&gt;</span>
   <span class="nt">&lt;/KeyValue&gt;</span>
   <span class="nt">&lt;/keyList&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
@@ -1241,7 +1246,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
   <li><code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code> holds all the frequency-based information of the journey, as for example when the stops of the journey are serviced the first/last time and in what interval (or at which frequency, respectively).</li>
   <li>Note that in addition to <code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code>, standard NeTEx also features <code class="language-plaintext highlighter-rouge">RhythmicalJourneyGroup</code> to specifiy, e.g., departures at 15, 27 and 40 minutes past the hour - this is not used in the Swiss profile.</li>
   <li>For sjyid see information about <a href="/netexRealisationGuideSwitzerland/main/uc14_frequencies.html">frequencies</a> and also the remarks for the <a href="#servicejourney"><code class="language-plaintext highlighter-rouge">ServiceJourney</code></a>.</li>
-  <li>id-attribute needs to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
 </ul>
 
 <h2 id="timedemandtype">TimeDemandType</h2>
@@ -1489,7 +1494,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
 
 <h3 id="usage-note">Usage Note</h3>
 <ul>
-  <li>id-attribute needs to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
 </ul>
 
 <h2 id="typeofservice">TypeOfService</h2>
@@ -1579,7 +1584,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
 
 <h3 id="usage-notes-3">Usage Notes</h3>
 <ul>
-  <li>id-attribute needs to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
 </ul>
 
 <p>The following types are currently used:</p>
@@ -1853,7 +1858,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
   <li><code class="language-plaintext highlighter-rouge">FromServiceJourneyRef</code> references the feeder journey; <code class="language-plaintext highlighter-rouge">ToServiceJourneyRef</code> references the distributor journey. Note: the deprecated elements <code class="language-plaintext highlighter-rouge">FromJourneyRef</code> / <code class="language-plaintext highlighter-rouge">ToJourneyRef</code> from RG 1.0 (<code class="language-plaintext highlighter-rouge">JourneyMeeting</code>) must not be used.</li>
   <li>Element order must follow the XSD sequence: <code class="language-plaintext highlighter-rouge">StaySeated</code> → <code class="language-plaintext highlighter-rouge">CrossBorder</code> → <code class="language-plaintext highlighter-rouge">ChangeWithinVehicle</code> → <code class="language-plaintext highlighter-rouge">MaximumWaitTime</code> → <code class="language-plaintext highlighter-rouge">FromPointRef</code> / <code class="language-plaintext highlighter-rouge">ToPointRef</code> → <code class="language-plaintext highlighter-rouge">FromServiceJourneyRef</code> / <code class="language-plaintext highlighter-rouge">ToServiceJourneyRef</code>.</li>
   <li>Make sure not to generate identical <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code>s. Reuse them where possible.</li>
-  <li>id-attribute should be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> should be kept stable between exports.</li>
 </ul>
 
 <h2 id="interchangerule">InterchangeRule</h2>

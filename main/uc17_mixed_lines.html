@@ -48,11 +48,11 @@
   <li>“Ordentliche Linie”</li>
   <li>“Dispositionslinie”</li>
   <li>“Temporäre Linie”
-Those are model as Line in NeTEx.</li>
+Those are modeled as Line in NeTEx.</li>
   <li>“Betriebliche Linie” is not modeled.</li>
 </ul>
 
-<p>All these lines can have partial lines.</p>
+<p>All these lines can have partial lines.  Within SKI the information is always communicated on the level of partial lines (e.g. real-time, disruptions).</p>
 
 <p>Possible motivations:</p>
 <ul>
@@ -60,7 +60,7 @@ Those are model as Line in NeTEx.</li>
   <li>operational / technical reasons.</li>
 </ul>
 
-<p>Each partial line is modeled as a <code class="language-plaintext highlighter-rouge">Line</code>. The main line is also modeled as a <code class="language-plaintext highlighter-rouge">Line</code>. In addition a <code class="language-plaintext highlighter-rouge">GroupOfLines</code> is added as well. We suggest to use the slnid of the main line for the <code class="language-plaintext highlighter-rouge">id</code>-attribute.
+<p>Each partial line is modeled as a <code class="language-plaintext highlighter-rouge">Line</code>. The main line is also modeled as a <code class="language-plaintext highlighter-rouge">Line</code>. In addition, a <code class="language-plaintext highlighter-rouge">GroupOfLines</code> is added as well. We suggest to use the slnid of the main line for the <code class="language-plaintext highlighter-rouge">id</code>-attribute.
 The basic information is replicated (e.g. <code class="language-plaintext highlighter-rouge">PublicCode</code>, <code class="language-plaintext highlighter-rouge">TransportMode</code>).
 The <code class="language-plaintext highlighter-rouge">Name</code> might be different to express something.
 All <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and <code class="language-plaintext highlighter-rouge">ServiceJourney</code>are only added to the partial lines.</p>
@@ -77,8 +77,71 @@ However, this is such a special case, that outside the Swiss ecosystem this is n
   <p>NB: If partial lines have different <code class="language-plaintext highlighter-rouge">EntityLegalOwner</code> in the partial lines, then those are co-owners. This is NOT reflected in the main line, where only one can (and must be mentioned). The owners must agree on which one there is in Atlas and that’s the one that gets written into the main line.</p>
 </blockquote>
 
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Line ML:
+    responsibilitySet:
+        EntityLegalOwnership: OP1
+        Operator: OP1
+        additionalOperators: OP2
+    OperatorRef: OP1
+    
+Line PL1
+    responsibilitySet:
+        EntityLegalOwnership: OP1
+        Operator: OP1
+    OperatorRef: OP1
+    
+Line PL2
+    responsibilitySet:
+        EntityLegalOwnership: OP2
+        Operator: OP2
+    OperatorRef: OP2
+    
+GroupOfLine GOL
+    MainLine ML
+    lines:
+        PL1
+        PL2
+        
+ServiceJourney SJ1
+    responsibilitySet:
+        EntityLegalOwnership: OP2
+        Operator: OP2
+    LineRef: PL2
+    OperatorRef: OP2
+</code></pre></div></div>
+<p><em>Figure: Relevant information about the ownership of lines. We can only have one in most data. So, in some cases and arbitrary decision is necessary. The <code class="language-plaintext highlighter-rouge">OperatorRef</code> in <code class="language-plaintext highlighter-rouge">ServiceJourney</code> always points to the organisation doing the operating.</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Line L
+    responsibilitySet:
+        EntityLegalOwnership: OP1
+        Operator: OP2
+
+ServiceJourney SJ1
+    responsibilitySet:
+        EntityLegalOwnership: OP1
+        Operator: OP2
+    LineRef: L
+    OperatorRef: OP2
+</code></pre></div></div>
+<p><em>Figure: In the case of a “owner” with an additional operator it looks like this</em>.</p>
+
+<h2 id="examples">Examples</h2>
+
+<h3 id="partial-line-with-two-owners">Partial line with two owners</h3>
+<p>We use the case from the migration concept.</p>
+
+<p>See <a href="examples/14_NeTEx_CH_Linie_722_Mischbetrieb.xml">here</a>.</p>
+
+<h3 id="partial-line-with-an-owner-and-additional-operators">Partial line with an owner and additional operators</h3>
+
 <blockquote>
-  <p><strong>LATER</strong>: We have to define how we obtain the information (currently through HRDF) to do this correctly.</p>
+  <p><strong>LATER</strong></p>
+</blockquote>
+
+<h3 id="vertical-splitting-of-operationownership">Vertical splitting of operation/ownership</h3>
+
+<blockquote>
+  <p><strong>LATER</strong></p>
 </blockquote>
 
 <h2 id="delivery-of-partial-lines">Delivery of partial lines</h2>

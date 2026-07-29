@@ -7,11 +7,15 @@
   </AvailabilityConditionRef>
   </validityConditions>
   <keyList>
-  <!-- KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. -->
+  <!-- KEY LIST with the KEY VALUEs belonging to the SERVICE JOURNEY. We don't use it for sjyid! -->
   <KeyValue>
-  <!-- A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. -->
-  <Key>SJYID</Key>
-  <Value>ch:1:sjyid:100001:71707-003</Value>
+  <!-- We use it for tariff codes and region codes PAG mostly. -->
+  <Key>RN</Key>
+  <Value>1203</Value>
+  </KeyValue>
+  <KeyValue>
+  <Key>TC</Key>
+  <Value>293912</Value>
   </KeyValue>
   </keyList>
   <privateCodes>

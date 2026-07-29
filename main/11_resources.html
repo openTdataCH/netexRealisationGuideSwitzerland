@@ -69,8 +69,6 @@
 <h3 id="purpose">Purpose</h3>
 <p>Contains shared resources used / referenced in other frames - organisations (<code class="language-plaintext highlighter-rouge">Operator</code>s), <code class="language-plaintext highlighter-rouge">VehicleType</code>s, codespaces, and other common reference data.</p>
 
-<p>See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.</p>
-
 <h3 id="contained-elements">Contained Elements</h3>
 
 <ul>
@@ -524,9 +522,8 @@ We use this element to  describe the different roles of the participating compan
 <ul>
   <li><code class="language-plaintext highlighter-rouge">FareManagement</code></li>
   <li><code class="language-plaintext highlighter-rouge">Planning</code></li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> should be kept stable between exports.</li>
 </ul>
-
-<p>id-attribute should be kept stable between exports.</p>
 
 <h2 id="typeof--valueset">TypeOf… / ValueSet</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#typeof">Glossary definition: TypeOf…</a></em><br />
@@ -540,7 +537,7 @@ We use this element to  describe the different roles of the participating compan
 <ul>
   <li><code class="language-plaintext highlighter-rouge">Notice</code>: references <code class="language-plaintext highlighter-rouge">TypeOfNotice</code></li>
   <li><code class="language-plaintext highlighter-rouge">Line</code> and <code class="language-plaintext highlighter-rouge">ServiceJourney</code>: references <code class="language-plaintext highlighter-rouge">TypeOfProductCategory</code></li>
-  <li>id-attribute needs to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
 </ul>
 
 <h2 id="typeofnotice">TypeOfNotice</h2>
@@ -930,7 +927,7 @@ in Switzerland. The TU-Code is to be used for operators of other countries.</li>
   <li>If a different <code class="language-plaintext highlighter-rouge">Operator</code> is running a given <code class="language-plaintext highlighter-rouge">ServiceJourney</code>, then this is reflected in the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> having 
 a different <code class="language-plaintext highlighter-rouge">OperatorRef</code>.</li>
   <li><code class="language-plaintext highlighter-rouge">Authority</code>  and <code class="language-plaintext highlighter-rouge">Organisation</code> are not used.</li>
-  <li>id-attribute needs to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
 </ul>
 
 <h2 id="servicefacilityset">ServiceFacilitySet</h2>
@@ -1150,7 +1147,7 @@ separated list of elements.</li>
   <li>When transforming from HRDF to NeTEx. The <code class="language-plaintext highlighter-rouge">Facility</code> is often also copied as a <code class="language-plaintext highlighter-rouge">Notice</code> in textual form.</li>
   <li>The details of the usage are defined in the <a href="/netexRealisationGuideSwitzerland/main/media/Mappingtabellen_NeTEx_v2.0.xlsx">mapping table for NeTEX 2.0</a>.</li>
   <li>See also <a href="/netexRealisationGuideSwitzerland/main/uc04_service_facilities.html">Use case on service facilities</a>.</li>
-  <li>id-attribute should be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> should be kept stable between exports.</li>
 </ul>
 
 <h2 id="sitefacilityset">SiteFacilitySet</h2>
@@ -1357,7 +1354,7 @@ referenced to define facilities of a site.</p>
   <li>There may be an overlap between <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code> and <code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code>. However, they reference very different things: site elements and vehicles.</li>
   <li>Sometimes “capabilities”/”limitations” are defined through combinations of what a stop and what a vehicle can do.</li>
   <li>In future also the use of <code class="language-plaintext highlighter-rouge">Equipment</code> and <code class="language-plaintext highlighter-rouge">EquipmentPlace</code> may become more important. These are then actual pieces of equipment. This also means that the <code class="language-plaintext highlighter-rouge">Vehicle</code> must be known and referenced.</li>
-  <li>id-attribute should be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> should be kept stable between exports.</li>
 </ul>
 
 <h2 id="vehicletype">VehicleType</h2>

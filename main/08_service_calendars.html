@@ -435,7 +435,7 @@
   <li><code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are <code class="language-plaintext highlighter-rouge">FromDate</code>/<code class="language-plaintext highlighter-rouge">ToDate</code>, <code class="language-plaintext highlighter-rouge">ValidDayBits</code>, and <code class="language-plaintext highlighter-rouge">timebands</code> — <strong>none of these is mandatory on its own</strong>; an <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> may consist of only one
 of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</code>/<code class="language-plaintext highlighter-rouge">ToDate</code> for “summer only”, only <code class="language-plaintext highlighter-rouge">timebands</code> for “school holiday period”, or only <code class="language-plaintext highlighter-rouge">ValidDayBits</code> for “Sundays only”).</li>
   <li>Hint: The frames <code class="language-plaintext highlighter-rouge">TimetableFrame</code>, <code class="language-plaintext highlighter-rouge">ServiceFrame</code> and <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code> and their elements must have the same validity.</li>
-  <li>id-attribute does not need to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> does not need to be kept stable between exports.</li>
 </ul>
 
 <h3 id="servicecalendar">ServiceCalendar</h3>
@@ -531,7 +531,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
 
 <h4 id="usage-note">Usage Note</h4>
 <ul>
-  <li>id-attribute should to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> should to be kept stable between exports.</li>
 </ul>
 
 <h3 id="daytype">DayType</h3>
@@ -748,7 +748,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
 
 <h4 id="usage-note-1">Usage Note</h4>
 <ul>
-  <li>id-attribute needs to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
 </ul>
 
 <h3 id="timeband">Timeband</h3>
@@ -833,7 +833,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
 <h4 id="usage-notes-2">Usage Notes</h4>
 <ul>
   <li>Currently <code class="language-plaintext highlighter-rouge">Timeband</code> is used in RG 1.0 for <code class="language-plaintext highlighter-rouge">InterchangeRuleTiming</code>s, later also used for the opening hours in <code class="language-plaintext highlighter-rouge">StopPlace</code> models.</li>
-  <li>id-attribute should be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> should be kept stable between exports.</li>
 </ul>
 
 <h3 id="daytypeassignment">DayTypeAssignment</h3>
@@ -917,7 +917,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
 <h4 id="usage-notes-3">Usage Notes</h4>
 <ul>
   <li>We currently use <code class="language-plaintext highlighter-rouge">DayTypeAssignment</code> only for the national holidays.</li>
-  <li>id-attribute should be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> should be kept stable between exports.</li>
 </ul>
 
   </div>

@@ -104,25 +104,25 @@
     <tr>
       <td> </td>
       <td>keyList</td>
-      <td>expected</td>
+      <td>optional</td>
       <td>1..1</td>
       <td>KeyListStructure</td>
       <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
-      <td>KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID.</td>
+      <td>KEY LIST with the KEY VALUEs belonging to the SERVICE JOURNEY. We don’t use it for sjyid!</td>
     </tr>
     <tr>
       <td>+</td>
       <td>KeyValue</td>
-      <td>mandatory</td>
+      <td>optional</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
       <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
-      <td>A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID.</td>
+      <td>We use it for tariff codes and region codes PAG mostly.</td>
     </tr>
     <tr>
       <td>++</td>
       <td>Key</td>
-      <td>mandatory</td>
+      <td>optional</td>
       <td>1..1</td>
       <td>xsd:normalizedString</td>
       <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
@@ -131,7 +131,7 @@
     <tr>
       <td>++</td>
       <td>Value</td>
-      <td>mandatory</td>
+      <td>optional</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
       <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
