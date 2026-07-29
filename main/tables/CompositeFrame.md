@@ -4,7 +4,7 @@
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | ValidBetween | expected | 1..1 | unknown |  | This defines which timetable year is meant. We don't support partial delivery. |
+|  | ValidBetween | expected | 1..* | unknown |  | This defines which timetable year is meant. We don't support partial delivery. |
 | + | FromDate | expected | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. |  |
 | + | ToDate | expected | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. |  |
 |  | Description | optional | 0..1 | MultilingualString |  | A description of the delivery can be provided. |

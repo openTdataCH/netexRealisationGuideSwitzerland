@@ -18,7 +18,7 @@
 | + | [Operator](Operator.md) | mandatory | 0..* | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. |
 |  | siteFacilitySets | optional | 0..1 | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 | Depending on the export/import part, there will be SiteFacilitySets to be included or not. |
 | + | [SiteFacilitySet](SiteFacilitySet.md) | optional | 0..* | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 |  |
-|  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITies in frame. | Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. |
-| + | [ServiceFacilitySet](ServiceFacilitySet.md) | optional | 0..* | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITies in frame. |  |
-|  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure | Opnen specifcation of VEHICLE TYPEs + v1.1 | The VehicleType here are used for generic information like lowfloor and not for formation information |
-| + | [VehicleType](VehicleType.md) | optional | 0..* | transportTypeRefs_RelStructure | Opnen specifcation of VEHICLE TYPEs + v1.1 |  |
+|  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITY SETs in frame . +v1.2.2 | Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. |
+| + | [ServiceFacilitySet](ServiceFacilitySet.md) | optional | 0..* | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITY SETs in frame . +v1.2.2 |  |
+|  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure | VEHICLE TYPEs in frame. | The VehicleType here are used for generic information like lowfloor and not for formation information |
+| + | [VehicleType](VehicleType.md) | optional | 0..* | vehicleTypesInFrame_RelStructure | VEHICLE TYPEs in frame. |  |

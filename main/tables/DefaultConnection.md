@@ -1,6 +1,6 @@
 # DefaultConnection
 
-Be aware only some combinations are allowed: from mode A to mode B without operators taken into account; from operator A and product category A  to operator B and product category B.
+Be aware only some combinations are allowed: from mode A to mode B without operators taken into account; from operator A and product category A to operator B and product category B.
 
 *Table: DefaultConnection*
 

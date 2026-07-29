@@ -55,10 +55,10 @@ Contains shared resources used / referenced in other frames - organisations (`Op
 | + | [Operator](./tables/Operator.md) | mandatory | 0..* | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. |
 |  | siteFacilitySets | optional | 0..1 | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 | Depending on the export/import part, there will be SiteFacilitySets to be included or not. |
 | + | [SiteFacilitySet](./tables/SiteFacilitySet.md) | optional | 0..* | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 |  |
-|  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITies in frame. | Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. |
-| + | [ServiceFacilitySet](./tables/ServiceFacilitySet.md) | optional | 0..* | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITies in frame. |  |
-|  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure | Opnen specifcation of VEHICLE TYPEs + v1.1 | The VehicleType here are used for generic information like lowfloor and not for formation information |
-| + | [VehicleType](./tables/VehicleType.md) | optional | 0..* | transportTypeRefs_RelStructure | Opnen specifcation of VEHICLE TYPEs + v1.1 |  |
+|  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITY SETs in frame . +v1.2.2 | Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. |
+| + | [ServiceFacilitySet](./tables/ServiceFacilitySet.md) | optional | 0..* | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITY SETs in frame . +v1.2.2 |  |
+|  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure | VEHICLE TYPEs in frame. | The VehicleType here are used for generic information like lowfloor and not for formation information |
+| + | [VehicleType](./tables/VehicleType.md) | optional | 0..* | vehicleTypesInFrame_RelStructure | VEHICLE TYPEs in frame. |  |
 
 
 
@@ -441,19 +441,19 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Extensions | expected | 0..1 | ExtensionsStructure | SERVICE FACILITies in frame. | Two elements used in HRDF for ordering facilities |
-| + | Priority | expected | 0..1 | InterchangePriorityType | SERVICE FACILITies in frame. |  |
+|  | Extensions | expected | 0..1 | ExtensionsStructure | SERVICE FACILITY SETs in frame . +v1.2.2 | Two elements used in HRDF for ordering facilities |
+| + | Priority | expected | 0..1 | InterchangePriorityType | SERVICE FACILITY SETs in frame . +v1.2.2 |  |
 |  | Description | expected | 0..1 | MultilingualString |  |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | optional | 0..* | MultilingualString | SERVICE FACILITies in frame. |  |
+| + | Text | optional | 0..* | MultilingualString | SERVICE FACILITY SETs in frame . +v1.2.2 |  |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | FareClasses | optional | 0..1 | FareClassListOfEnumerations | SERVICE FACILITies in frame. |  |
-|  | MobilityFacilityList | optional | 0..1 | MobilityFacilityListOfEnumerations | SERVICE FACILITies in frame. |  |
-|  | NuisanceFacilityList | optional | 0..1 | NuisanceFacilityListOfEnumerations | SERVICE FACILITies in frame. |  |
-|  | PassengerCommsFacilityList | optional | 0..1 | PassengerCommsFacilityListOfEnumerations | SERVICE FACILITies in frame. |  |
-|  | SanitaryFacilityList | optional | 0..1 | SanitaryFacilityListOfEnumerations | SERVICE FACILITies in frame. |  |
-|  | CouchetteFacilityList | optional | 0..1 | CouchetteFacilityListOfEnumerations | SERVICE FACILITies in frame. |  |
-|  | GroupBookingFacility | optional | 0..1 | GroupBookingEnumeration | SERVICE FACILITies in frame. |  |
+|  | FareClasses | optional | 0..1 | FareClassListOfEnumerations | SERVICE FACILITY SETs in frame . +v1.2.2 |  |
+|  | MobilityFacilityList | optional | 0..1 | MobilityFacilityListOfEnumerations | SERVICE FACILITY SETs in frame . +v1.2.2 |  |
+|  | NuisanceFacilityList | optional | 0..1 | NuisanceFacilityListOfEnumerations | SERVICE FACILITY SETs in frame . +v1.2.2 |  |
+|  | PassengerCommsFacilityList | optional | 0..1 | PassengerCommsFacilityListOfEnumerations | SERVICE FACILITY SETs in frame . +v1.2.2 |  |
+|  | SanitaryFacilityList | optional | 0..1 | SanitaryFacilityListOfEnumerations | SERVICE FACILITY SETs in frame . +v1.2.2 |  |
+|  | CouchetteFacilityList | optional | 0..1 | CouchetteFacilityListOfEnumerations | SERVICE FACILITY SETs in frame . +v1.2.2 |  |
+|  | GroupBookingFacility | optional | 0..1 | GroupBookingEnumeration | SERVICE FACILITY SETs in frame . +v1.2.2 |  |
 
 
 
@@ -615,10 +615,10 @@ Used currently mainly for the relevant accessibility elements that can be expres
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | ShortName | expected | 0..1 | MultilingualString | Opnen specifcation of VEHICLE TYPEs + v1.1 | Will be defined in mapping excel |
-|  | LowFloor | optional | 0..1 | xsd:boolean | Opnen specifcation of VEHICLE TYPEs + v1.1 |  |
-|  | HasLiftOrRamp | optional | 0..1 | xsd:boolean | Opnen specifcation of VEHICLE TYPEs + v1.1 |  |
-|  | HasHoist | optional | 0..1 | xsd:boolean | Opnen specifcation of VEHICLE TYPEs + v1.1 |  |
+|  | ShortName | expected | 0..1 | MultilingualString | VEHICLE TYPEs in frame. | Will be defined in mapping excel |
+|  | LowFloor | optional | 0..1 | xsd:boolean | VEHICLE TYPEs in frame. |  |
+|  | HasLiftOrRamp | optional | 0..1 | xsd:boolean | VEHICLE TYPEs in frame. |  |
+|  | HasHoist | optional | 0..1 | xsd:boolean | VEHICLE TYPEs in frame. |  |
 
 
 

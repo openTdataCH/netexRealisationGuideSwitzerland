@@ -122,7 +122,7 @@ Defines transfer times between specific `Lines` and `Directions` at a stop place
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <ServiceJourneyInterchange id="ch:1:ServiceJourneyInterchange:1696906_TA" version="1">
-  <!-- Transfer times between specific ServiceJourneys at a given stop (UMSTEIGL). StaySeated=false: passenger must change vehicles. One ServiceJourneyInterchange per journey pair. Replaces InterchangeRule in RG 2.0. -->
+  <!-- Transfer times between specific ServiceJourneys at a given stop (UMSTEIGL). StaySeated=false: passenger must change vehicles. One ServiceJourneyInterchange per journey pair. Replaces InterchangeRule in RG 2.0. So the UMGSTEIGL need to be done as a set of ServiceJourneyInterchange on each of the contained ServiceJourneys. -->
   <validityConditions>
   <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:TA" version="1"/>
   </validityConditions>
