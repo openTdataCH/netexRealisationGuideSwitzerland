@@ -4,8 +4,8 @@
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | Name | expected | 0..1 | MultilingualString |  |  |
+|  | Name | expected | 0..1 | MultilingualString | VALUE SETs and TYPE OF VALUEs in frame. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | ShortName | expected | 0..1 | MultilingualString |  |  |
+|  | ShortName | expected | 0..1 | MultilingualString | VALUE SETs and TYPE OF VALUEs in frame. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | PrivateCode | expected | 1..1 | PrivateCodeStructure |  |  |
+|  | PrivateCode | expected | 0..1 | PrivateCodeStructure | VALUE SETs and TYPE OF VALUEs in frame. |  |

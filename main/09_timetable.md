@@ -50,23 +50,23 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | vehicleJourneys | expected | 0..1 | journeysInFrame_RelStructure |  | Contains the ServiceJourneys and TemplateServiceJourneys. |
+|  | vehicleJourneys | expected | 0..1 | journeysInFrame_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Contains the ServiceJourneys and TemplateServiceJourneys. |
 | + | [ServiceJourney](./tables/ServiceJourney.md) | expected | 0..* | unknown |  | ServiceJourney is used for common Journeys. |
 | + | [TemplateServiceJourney](./tables/TemplateServiceJourney.md) | expected | 0..* | unknown | A VEHICLE JOURNEY with a set of frequencies that may be used to represent a set of similar journeys differing only by their time of departure. | TemplateServiceJourney is only to be used if a line is serviced at a certain frequency. |
-|  | trainNumbers | expected | 0..1 | trainNumbersInFrame_RelStructure |  |  |
+|  | trainNumbers | expected | 0..1 | trainNumbersInFrame_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | [TrainNumber](./tables/TrainNumber.md) | mandatory | 0..* | unknown |  |  |
-|  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure |  |  |
+|  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | [ServiceFacilitySet](./tables/ServiceFacilitySet.md) | expected | 0..* | unknown |  |  |
-|  | typesOfService | expected | 0..1 | typesOfServiceInFrame_RelStructure |  |  |
+|  | typesOfService | expected | 0..1 | typesOfServiceInFrame_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | TypeOfService | optional | 0..* | unknown |  | This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. |
-| ++ | Name | expected | 0..1 | MultilingualString |  |  |
+| ++ | Name | expected | 0..1 | MultilingualString | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| ++ | ShortName | expected | 0..1 | MultilingualString |  |  |
+| ++ | ShortName | expected | 0..1 | MultilingualString | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| ++ | PrivateCode | optional | 1..1 | PrivateCodeStructure |  |  |
-| + | [ServiceJourneyInterchange](./tables/ServiceJourneyInterchange.md) | expected | 1..1 | unknown |  | For modeling many forms of interchanges |
-|  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure |  | We will use this place to store Train and CompoundTrain information, when we will do formation. Not detailed at the moment |
-| + | CompoundTrain | optional | 0..* | unknown |  |  |
+| ++ | PrivateCode | optional | 1..1 | PrivateCodeStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+| + | [ServiceJourneyInterchange](./tables/ServiceJourneyInterchange.md) | expected | 1..1 | unknown | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | For modeling many forms of interchanges |
+|  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | We will use this place to store Train and CompoundTrain information, when we will do formation. Not detailed at the moment |
+| + | CompoundTrain | optional | 0..* | unknown | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 
 
 
@@ -144,37 +144,37 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
-|  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure |  | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
-| + | AvailabilityConditionRef | mandatory | 0..* | AvailabilityConditionRefStructure |  | Only a single AvailabilityConditionRef is allowed. |
-|  | keyList | expected | 1..1 | KeyListStructure |  | KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. |
-| + | KeyValue | mandatory | 1..* | KeyValueStructure |  | A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. |
+|  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
+| + | AvailabilityConditionRef | mandatory | 0..* | AvailabilityConditionRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Only a single AvailabilityConditionRef is allowed. |
+|  | keyList | expected | 1..1 | KeyListStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. |
+| + | KeyValue | mandatory | 1..* | KeyValueStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. |
 | ++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
 | ++ | Value | mandatory | 0..1 | xsd:anyType | Value for alternative key. |  |
-|  | privateCodes | expected | 1..1 | PrivateCodesStructure |  |  |
-| + | PrivateCode | expected | 0..* | PrivateCodeStructure |  | The following types are possible: sjyid and rn. rn is the type used for the Postauto region. |
+|  | privateCodes | expected | 1..1 | PrivateCodesStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | The following types are possible: sjyid and rn. rn is the type used for the Postauto region. |
 | ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
-|  | TransportMode | optional | 0..1 | AllModesEnumeration |  |  |
-|  | TypeOfProductCategoryRef | mandatory | 1..1 | TypeOfProductCategoryRefStructure |  | Relevant elements are defined in the mapping excel. |
-|  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure |  | Should always be ch:1:TypeOfService:1 |
+|  | TransportMode | optional | 0..1 | AllModesEnumeration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | TypeOfProductCategoryRef | mandatory | 1..1 | TypeOfProductCategoryRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Relevant elements are defined in the mapping excel. |
+|  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Should always be ch:1:TypeOfService:1 |
 |  | noticeAssignments | optional | 0..1 | noticeAssignments_RelStructure | NOTICEs of an interchange. | The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop). |
-| + | [NoticeAssignment](./tables/NoticeAssignment.md) | optional | 0..* | unknown |  |  |
-|  | occupancies | optional | 0..1 | OccupancyView_RelStructure |  |  |
+| + | [NoticeAssignment](./tables/NoticeAssignment.md) | optional | 0..* | unknown | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | occupancies | optional | 0..1 | OccupancyView_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | [OccupancyView](./tables/OccupancyView.md) | optional | 0..* | OccupancyView_VersionStructure |  | Currently not available |
-|  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration |  | Only the value planned is allowed. We might add the others, like cancelled, later. |
+|  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Only the value planned is allowed. We might add the others, like cancelled, later. |
 |  | DepartureTime | expected | 0..1 | xsd:time | Time of Departure. |  |
-|  | DepartureDayOffset | optional | 0..1 | DayOffsetType |  | 0 for current operating day. Could also be negative. |
+|  | DepartureDayOffset | optional | 0..1 | DayOffsetType | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | 0 for current operating day. Could also be negative. |
 |  | JourneyPatternRef | mandatory | 0..* | JourneyPatternRefStructure | Reference to a JOURNEY PATTERN. | The reference to the ServiceJourneyPattern. |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
-|  | TimeDemandTypeRef | mandatory | 0..1 | TimeDemandTypeRefStructure |  | The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. |
-|  | VehicleTypeRef | expected | 1..1 | VehicleTypeRefStructure |  | Mostly used for accessibility information like NF. Relevant definitions in the mapping excel. |
-|  | LineRef | mandatory | 1..1 | LineRefStructure |  |  |
-|  | DirectionType | mandatory | 0..1 | RelativeDirectionEnumeration |  | Allowed are: inbound, outbound |
-|  | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure |  |  |
+|  | TimeDemandTypeRef | mandatory | 0..1 | TimeDemandTypeRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. |
+|  | VehicleTypeRef | expected | 1..1 | VehicleTypeRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Mostly used for accessibility information like NF. Relevant definitions in the mapping excel. |
+|  | LineRef | mandatory | 1..1 | LineRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | DirectionType | mandatory | 0..1 | RelativeDirectionEnumeration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Allowed are: inbound, outbound |
+|  | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | TrainNumberRef | mandatory | 0..* | TrainNumberRefStructure |  |  |
-|  | [Destination](./tables/Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure |  |  |
-|  | parts | optional | 0..1 | blockParts_RelStructure |  | For some use cases e.g. change of Facilities during ServiceJourney |
-| + | JourneyPartRef | expected | 0..* | JourneyPartRefStructure |  |  |
-|  | checkConstraints | optional | 0..1 | checkConstraints_RelStructure |  |  |
+|  | [Destination](./tables/Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | parts | optional | 0..1 | blockParts_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | For some use cases e.g. change of Facilities during ServiceJourney |
+| + | JourneyPartRef | expected | 0..* | JourneyPartRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | checkConstraints | optional | 0..1 | checkConstraints_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | CheckConstraint | optional | 0..* | unknown | Process associated with a Place, typically giving rise to a delay to the traveller. | CheckConstraints are used for different use cases |
 
 
@@ -309,40 +309,40 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
-|  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure |  | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
-| + | AvailabilityConditionRef | mandatory | 0..* | AvailabilityConditionRefStructure |  | Only a single AvailabilityConditionRef is allowed. |
-|  | keyList | optional | 1..1 | KeyListStructure |  | Key list for the repeating journeys. Contains the SJYID. |
-| + | KeyValue | optional | 1..* | KeyValueStructure |  | A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. |
+|  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
+| + | AvailabilityConditionRef | mandatory | 0..* | AvailabilityConditionRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Only a single AvailabilityConditionRef is allowed. |
+|  | keyList | optional | 1..1 | KeyListStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Key list for the repeating journeys. Contains the SJYID. |
+| + | KeyValue | optional | 1..* | KeyValueStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | A KeyValue pair with the key SJYID must exist. The Value contains a valid Swiss Journey ID. |
 | ++ | Key | optional | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
 | ++ | Value | optional | 0..1 | xsd:anyType | Value for alternative key. |  |
-|  | privateCodes | expected | 1..1 | PrivateCodesStructure |  | Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region |
-| + | PrivateCode | expected | 0..* | PrivateCodeStructure |  |  |
-|  | TransportMode | optional | 0..1 | AllModesEnumeration |  |  |
-|  | TypeOfProductCategoryRef | expected | 1..1 | TypeOfProductCategoryRefStructure |  |  |
-|  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure |  |  |
-|  | noticeAssignments | optional | 0..1 | noticeAssignments_RelStructure |  | The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. |
-| + | [NoticeAssignment](./tables/NoticeAssignment.md) | optional | 0..* | unknown |  |  |
-|  | occupancies | optional | 0..1 | OccupancyView_RelStructure |  |  |
+|  | privateCodes | expected | 1..1 | PrivateCodesStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | TransportMode | optional | 0..1 | AllModesEnumeration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | TypeOfProductCategoryRef | expected | 1..1 | TypeOfProductCategoryRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | noticeAssignments | optional | 0..1 | noticeAssignments_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. |
+| + | [NoticeAssignment](./tables/NoticeAssignment.md) | optional | 0..* | unknown | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | occupancies | optional | 0..1 | OccupancyView_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | [OccupancyView](./tables/OccupancyView.md) | optional | 0..* | OccupancyView_VersionStructure |  |  |
-|  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration |  | Only the value planned is allowed. |
-|  | DepartureTime | optional | 0..1 | xsd:time |  | Departure of the first journey. |
-|  | DepartureDayOffset | optional | 0..1 | DayOffsetType |  | DayOffset if relevant. |
-|  | JourneyPatternRef | mandatory | 1..1 | JourneyPatternRefStructure |  | The reference to the ServiceJourneyPattern |
+|  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Only the value planned is allowed. |
+|  | DepartureTime | optional | 0..1 | xsd:time | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Departure of the first journey. |
+|  | DepartureDayOffset | optional | 0..1 | DayOffsetType | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | DayOffset if relevant. |
+|  | JourneyPatternRef | mandatory | 1..1 | JourneyPatternRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | The reference to the ServiceJourneyPattern |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
-|  | TimeDemandTypeRef | mandatory | 0..1 | TimeDemandTypeRefStructure |  | The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. |
-|  | VehicleTypeRef | expected | 1..1 | VehicleTypeRefStructure |  | Mostly used for accessibility information |
-|  | LineRef | mandatory | 1..1 | LineRefStructure |  |  |
-|  | DirectionType | optional | 0..1 | RelativeDirectionEnumeration |  | Allowed are: inbound, outbound |
-|  | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure |  |  |
+|  | TimeDemandTypeRef | mandatory | 0..1 | TimeDemandTypeRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. |
+|  | VehicleTypeRef | expected | 1..1 | VehicleTypeRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Mostly used for accessibility information |
+|  | LineRef | mandatory | 1..1 | LineRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | DirectionType | optional | 0..1 | RelativeDirectionEnumeration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Allowed are: inbound, outbound |
+|  | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | TrainNumberRef | mandatory | 0..* | TrainNumberRefStructure |  |  |
-|  | [Destination](./tables/Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure |  |  |
-|  | parts | optional | 0..1 | blockParts_RelStructure |  | For some use cases e.g. change of Facilities during ServiceJourney |
-| + | JourneyPartRef | expected | 0..* | JourneyPartRefStructure |  |  |
-|  | TemplateVehicleJourneyType | expected | 0..1 | TemplateVehicleJourneyTypeEnumeration |  |  |
-|  | frequencyGroups | mandatory | 0..1 | frequencyGroupsInFrame_RelStructure |  | We strictly map one frequency to the TemplateServiceJourney. |
+|  | [Destination](./tables/Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | parts | optional | 0..1 | blockParts_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | For some use cases e.g. change of Facilities during ServiceJourney |
+| + | JourneyPartRef | expected | 0..* | JourneyPartRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | TemplateVehicleJourneyType | expected | 0..1 | TemplateVehicleJourneyTypeEnumeration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | frequencyGroups | mandatory | 0..1 | frequencyGroupsInFrame_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | We strictly map one frequency to the TemplateServiceJourney. |
 | + | HeadwayJourneyGroup | mandatory | 0..* | unknown |  |  |
-| ++ | ScheduledHeadwayInterval | mandatory | 0..1 | xsd:duration |  |  |
-| ++ | HeadwayDisplay | optional | 0..1 | HeadwayUseEnumeration |  | Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly. |
+| ++ | ScheduledHeadwayInterval | mandatory | 0..1 | xsd:duration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+| ++ | HeadwayDisplay | optional | 0..1 | HeadwayUseEnumeration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly. |
 
 
 
@@ -473,13 +473,13 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | dayTypeRefs | optional | 0..1 | unknown |  |  |
+|  | dayTypeRefs | optional | 0..1 | unknown | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | DayTypeRef | optional | 1..* | DayTypeRefStructure |  |  |
-|  | dayTypes | expected | 0..1 | unknown |  |  |
-| + | [DayType](./tables/DayType.md) | expected | 1..1 | unknown |  |  |
-|  | FareClass | expected | 0..1 | FareClassEnumeration |  |  |
-|  | OccupancyLevel | expected | 0..1 | OccupancyEnumeration |  | Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable |
-|  | GroupReservation | optional | 0..* | GroupReservationStructure |  |  |
+|  | dayTypes | expected | 0..1 | unknown | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+| + | [DayType](./tables/DayType.md) | expected | 1..1 | unknown | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | FareClass | expected | 0..1 | FareClassEnumeration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | OccupancyLevel | expected | 0..1 | OccupancyEnumeration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable |
+|  | GroupReservation | optional | 0..* | GroupReservationStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | NameOfGroup | expected | 1..1 | MultilingualString | Name for which the travel group has made the reservation. |  |
 | + | NumberOfReservedSeats | expected | 1..1 | NumberOfPassengers | Number of seats that the group has booked. |  |
 
@@ -537,8 +537,8 @@ The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advert
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | ForAdvertisement | expected | 0..1 | xsd:normalizedString |  | TrainNumber to use for advertisement to public. Use if different from ID. |
-|  | ForProduction | optional | 0..1 | xsd:normalizedString |  | TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID. |
+|  | ForAdvertisement | expected | 0..1 | xsd:normalizedString | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | TrainNumber to use for advertisement to public. Use if different from ID. |
+|  | ForProduction | optional | 0..1 | xsd:normalizedString | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID. |
 
 
 
@@ -582,11 +582,11 @@ The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advert
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | Name | expected | 0..1 | MultilingualString |  |  |
+|  | Name | expected | 0..1 | MultilingualString | VALUE SETs and TYPE OF VALUEs in frame. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | ShortName | expected | 0..1 | MultilingualString |  |  |
+|  | ShortName | expected | 0..1 | MultilingualString | VALUE SETs and TYPE OF VALUEs in frame. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | PrivateCode | expected | 1..1 | PrivateCodeStructure |  |  |
+|  | PrivateCode | expected | 0..1 | PrivateCodeStructure | VALUE SETs and TYPE OF VALUEs in frame. |  |
 
 
 
@@ -648,22 +648,22 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | validityConditions | expected | 1..1 | validityConditions_RelStructure |  |  |
-| + | AvailabilityConditionRef | expected | 0..* | AvailabilityConditionRefStructure |  |  |
+|  | validityConditions | expected | 1..1 | validityConditions_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+| + | AvailabilityConditionRef | expected | 0..* | AvailabilityConditionRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 |  | Description | optional | 0..1 | MultilingualString | Description of SCHEDULED STOP POINT feeding INTERCHANGE. |  |
-|  | StaySeated | mandatory | 0..1 | xsd:boolean |  |  |
-|  | CrossBorder | optional | 0..1 | xsd:boolean |  |  |
-|  | ChangeWithinVehicle | optional | 0..1 | xsd:boolean |  | Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. |
-|  | Planned | optional | 0..1 | xsd:boolean |  |  |
-|  | Guaranteed | optional | 0..1 | xsd:boolean |  |  |
-|  | MaximumWaitTime | optional | 0..1 | xsd:duration |  | If not set or PT0M, it is guaranteed. |
-|  | FromPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure |  |  |
+|  | StaySeated | mandatory | 0..1 | xsd:boolean | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | CrossBorder | optional | 0..1 | xsd:boolean | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | ChangeWithinVehicle | optional | 0..1 | xsd:boolean | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. |
+|  | Planned | optional | 0..1 | xsd:boolean | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | Guaranteed | optional | 0..1 | xsd:boolean | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | MaximumWaitTime | optional | 0..1 | xsd:duration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | If not set or PT0M, it is guaranteed. |
+|  | FromPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
-|  | FromVisitNumber | optional | 0..1 | xsd:nonNegativeInteger |  |  |
-|  | ToPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure |  |  |
+|  | FromVisitNumber | optional | 0..1 | xsd:nonNegativeInteger | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | ToPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
-|  | FromServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure |  |  |
-|  | ToServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure |  |  |
+|  | FromServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | ToServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 
 
 

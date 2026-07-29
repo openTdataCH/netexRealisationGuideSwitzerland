@@ -80,7 +80,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>responsibilitySetsInFrame_RelStructure</td>
-      <td> </td>
+      <td>RESPONSIBILITY SETs used in frame.</td>
       <td>RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different.</td>
     </tr>
     <tr>
@@ -98,7 +98,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>typesOfValueInFrame_RelStructure</td>
-      <td> </td>
+      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
       <td>Sets of TYPE OF VALUE contained in the RESOURCE FRAME.</td>
     </tr>
     <tr>
@@ -116,7 +116,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>typesOfValue_RelStructure</td>
-      <td> </td>
+      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -124,8 +124,8 @@
       <td>TypeOfNotice</td>
       <td>expected</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>typesOfValueInFrame_RelStructure</td>
+      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -152,7 +152,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>organisationsInFrame_RelStructure</td>
-      <td> </td>
+      <td>ORGANISATIONs in frame.</td>
       <td>ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD</td>
     </tr>
     <tr>
@@ -160,8 +160,8 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Operator.html">Operator</a></td>
       <td>mandatory</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>organisationsInFrame_RelStructure</td>
+      <td>ORGANISATIONs in frame.</td>
       <td>We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once.</td>
     </tr>
     <tr>
@@ -170,7 +170,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>siteFacilitySetsInFrame_RelStructure</td>
-      <td> </td>
+      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
       <td>Depending on the export/import part, there will be SiteFacilitySets to be included or not.</td>
     </tr>
     <tr>
@@ -188,7 +188,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>serviceFacilitySetsInFrame_RelStructure</td>
-      <td> </td>
+      <td>SERVICE FACILITies in frame.</td>
       <td>Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some.</td>
     </tr>
     <tr>
@@ -206,7 +206,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>transportTypeRefs_RelStructure</td>
-      <td> </td>
+      <td>Opnen specifcation of VEHICLE TYPEs + v1.1</td>
       <td>The VehicleType here are used for generic information like lowfloor and not for formation information</td>
     </tr>
     <tr>
@@ -214,8 +214,8 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/VehicleType.html">VehicleType</a></td>
       <td>optional</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>transportTypeRefs_RelStructure</td>
+      <td>Opnen specifcation of VEHICLE TYPEs + v1.1</td>
       <td> </td>
     </tr>
   </tbody>

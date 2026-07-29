@@ -30,8 +30,8 @@ For PublicationDelivery have a good look at how the attributes must be done in t
 |  | @xsi:schemaLocation | mandatory | 1..1 | xsd:string | Attribute xsi:schemaLocation | |
 |  | @xmlns:gml | mandatory | 1..1 | xsd:string | Attribute xmlns:gml | |
 |  | @xmlns:siri | mandatory | 1..1 | xsd:string | Attribute xmlns:siri | |
-|  | PublicationTimestamp | mandatory | 1..1 | xsd:dateTime |  |  |
-|  | ParticipantRef | mandatory | 1..1 | siri:ParticipantCodeType |  |  |
+|  | PublicationTimestamp | mandatory | 1..1 | xsd:dateTime | Time of output of data. |  |
+|  | ParticipantRef | mandatory | 1..1 | siri:ParticipantCodeType | Identifier of system requesting Data. |  |
 |  | Description | optional | 0..1 | MultilingualString |  |  |
 |  | dataObjects | mandatory | 0..1 | dataObjects |  |  |
 | + | [CompositeFrame](./tables/CompositeFrame.md) | mandatory | 0..* | unknown |  |  |
@@ -119,13 +119,13 @@ Their full documentation can be found here: [ResourceFrame](10_common.md#resourc
 | + | FromDate | expected | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. |  |
 | + | ToDate | expected | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. |  |
 |  | Description | optional | 0..1 | MultilingualString |  | A description of the delivery can be provided. |
-|  | [FrameDefaults](./tables/FrameDefaults.md) | expected | 0..1 | VersionFrameDefaultsStructure |  |  |
-|  | frames | mandatory | 0..1 | frames_RelStructure |  |  |
-| + | [ResourceFrame](./tables/ResourceFrame.md) | expected | 0..* | unknown |  |  |
-| + | [SiteFrame](./tables/SiteFrame.md) | expected | 0..* | unknown |  |  |
-| + | [ServiceFrame](./tables/ServiceFrame.md) | expected | 0..* | unknown |  |  |
-| + | [ServiceCalendarFrame](./tables/ServiceCalendarFrame.md) | expected | 0..* | unknown |  |  |
-| + | [TimetableFrame](./tables/TimetableFrame.md) | expected | 0..* | unknown |  |  |
+|  | [FrameDefaults](./tables/FrameDefaults.md) | expected | 0..1 | VersionFrameDefaultsStructure | Default values to use on elements in the frame that do not explicitly state a value. |  |
+|  | frames | mandatory | 0..1 | frames_RelStructure | Content frames in COMPOSITE FRAME. |  |
+| + | [ResourceFrame](./tables/ResourceFrame.md) | expected | 0..* | frames_RelStructure | Content frames in COMPOSITE FRAME. |  |
+| + | [SiteFrame](./tables/SiteFrame.md) | expected | 0..* | frames_RelStructure | Content frames in COMPOSITE FRAME. |  |
+| + | [ServiceFrame](./tables/ServiceFrame.md) | expected | 0..* | frames_RelStructure | Content frames in COMPOSITE FRAME. |  |
+| + | [ServiceCalendarFrame](./tables/ServiceCalendarFrame.md) | expected | 0..* | frames_RelStructure | Content frames in COMPOSITE FRAME. |  |
+| + | [TimetableFrame](./tables/TimetableFrame.md) | expected | 0..* | frames_RelStructure | Content frames in COMPOSITE FRAME. |  |
 
 
 

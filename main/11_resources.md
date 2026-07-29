@@ -44,22 +44,22 @@ See the following class diagram for the most important objects of the RESOURCE F
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | responsibilitySets | mandatory | 0..1 | responsibilitySetsInFrame_RelStructure |  | RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. |
+|  | responsibilitySets | mandatory | 0..1 | responsibilitySetsInFrame_RelStructure | RESPONSIBILITY SETs used in frame. | RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. |
 | + | [ResponsibilitySet](./tables/ResponsibilitySet.md) | mandatory | 0..* | unknown |  | Each combination of Authority and Operator needs a ResponsibilitySet. |
-|  | typesOfValue | mandatory | 0..1 | typesOfValueInFrame_RelStructure |  | Sets of TYPE OF VALUE contained in the RESOURCE FRAME. |
+|  | typesOfValue | mandatory | 0..1 | typesOfValueInFrame_RelStructure | VALUE SETs and TYPE OF VALUEs in frame. | Sets of TYPE OF VALUE contained in the RESOURCE FRAME. |
 | + | ValueSet | expected | 0..* | unknown |  | We need a TypeOfNotice ValueSet. |
-| ++ | values | expected | 0..1 | typesOfValue_RelStructure |  |  |
-| +++ | TypeOfNotice | expected | 0..* | unknown |  |  |
+| ++ | values | expected | 0..1 | typesOfValue_RelStructure | VALUE SETs and TYPE OF VALUEs in frame. |  |
+| +++ | TypeOfNotice | expected | 0..* | typesOfValueInFrame_RelStructure | VALUE SETs and TYPE OF VALUEs in frame. |  |
 | + | ValueSet | expected | 0..* | unknown |  | We need a TypeOfProductCategory ValueSet |
 | + | ValueSet | expected | 0..* | unknown |  | We expect a TypsOfPlace Valueset |
-|  | organisations | mandatory | 0..1 | organisationsInFrame_RelStructure |  | ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD |
-| + | [Operator](./tables/Operator.md) | mandatory | 0..* | unknown |  | We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. |
-|  | siteFacilitySets | optional | 0..1 | siteFacilitySetsInFrame_RelStructure |  | Depending on the export/import part, there will be SiteFacilitySets to be included or not. |
+|  | organisations | mandatory | 0..1 | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD |
+| + | [Operator](./tables/Operator.md) | mandatory | 0..* | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. |
+|  | siteFacilitySets | optional | 0..1 | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 | Depending on the export/import part, there will be SiteFacilitySets to be included or not. |
 | + | [SiteFacilitySet](./tables/SiteFacilitySet.md) | optional | 0..* | unknown |  |  |
-|  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure |  | Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. |
+|  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITies in frame. | Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. |
 | + | [ServiceFacilitySet](./tables/ServiceFacilitySet.md) | optional | 0..* | unknown |  |  |
-|  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure |  | The VehicleType here are used for generic information like lowfloor and not for formation information |
-| + | [VehicleType](./tables/VehicleType.md) | optional | 0..* | unknown |  |  |
+|  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure | Opnen specifcation of VEHICLE TYPEs + v1.1 | The VehicleType here are used for generic information like lowfloor and not for formation information |
+| + | [VehicleType](./tables/VehicleType.md) | optional | 0..* | transportTypeRefs_RelStructure | Opnen specifcation of VEHICLE TYPEs + v1.1 |  |
 
 
 
@@ -180,13 +180,13 @@ Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLeg
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Name | mandatory | 0..1 | MultilingualString |  |  |
+|  | Name | mandatory | 0..1 | MultilingualString | RESPONSIBILITY SETs used in frame. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | PrivateCode | expected | 1..1 | PrivateCodeStructure |  |  |
-|  | roles | mandatory | 0..1 | responsibilityRoleAssignments_RelStructure |  |  |
+|  | PrivateCode | expected | 0..1 | PrivateCodeStructure | RESPONSIBILITY SETs used in frame. |  |
+|  | roles | mandatory | 0..1 | responsibilityRoleAssignments_RelStructure | RESPONSIBILITY SETs used in frame. |  |
 | + | ResponsibilityRoleAssignment | mandatory | 0..* | unknown |  |  |
-| ++ | StakeholderRoleType | mandatory | 0..1 | StakeholderRoleTypeListOfEnumerations |  | "EntityLegalOwnership" must be defined once and "Operator" should be too. |
-| ++ | ResponsibleOrganisationRef | mandatory | 0..1 | OrganisationRefStructure |  |  |
+| ++ | StakeholderRoleType | mandatory | 0..1 | StakeholderRoleTypeListOfEnumerations | RESPONSIBILITY SETs used in frame. | "EntityLegalOwnership" must be defined once and "Operator" should be too. |
+| ++ | ResponsibleOrganisationRef | mandatory | 0..1 | OrganisationRefStructure | RESPONSIBILITY SETs used in frame. |  |
 
 
 
@@ -294,11 +294,11 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Name | mandatory | 0..1 | MultilingualString |  |  |
+|  | Name | mandatory | 0..1 | MultilingualString | VALUE SETs and TYPE OF VALUEs in frame. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | optional | 0..* | MultilingualString |  |  |
+| + | Text | optional | 0..* | MultilingualString | VALUE SETs and TYPE OF VALUEs in frame. |  |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | ShortName | mandatory | 0..1 | MultilingualString |  |  |
+|  | ShortName | mandatory | 0..1 | MultilingualString | VALUE SETs and TYPE OF VALUEs in frame. |  |
 
 
 
@@ -352,19 +352,19 @@ We will use this organisation also in AuthorityRef. The problem is that the sboi
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | keyList | expected | 1..1 | KeyListStructure |  |  |
-| + | KeyValue | expected | 1..* | KeyValueStructure |  |  |
+|  | keyList | expected | 0..1 | KeyListStructure | ORGANISATIONs in frame. |  |
+| + | KeyValue | expected | 1..* | KeyValueStructure | ORGANISATIONs in frame. |  |
 | ++ | Key | expected | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
 | ++ | Value | expected | 0..1 | xsd:anyType | Value for alternative key. |  |
-|  | privateCodes | expected | 1..1 | PrivateCodesStructure |  |  |
-| + | PrivateCode | expected | 0..* | PrivateCodeStructure |  | Busines organisation |
-|  | PrivateCode | expected | 1..1 | PrivateCodeStructure |  |  |
-|  | Name | expected | 0..1 | MultilingualString |  |  |
-|  | ShortName | expected | 0..1 | MultilingualString |  | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
-|  | parts | optional | 0..1 | blockParts_RelStructure |  |  |
-| ++ | administrativeZones | optional | 0..* | administrativeZones_RelStructure |  |  |
-| +++ | TransportAdministrativeZone | optional | 0..* | unknown |  |  |
-| ++++ | PrivateCode | optional | 1..1 | PrivateCodeStructure |  |  |
+|  | privateCodes | expected | 0..1 | PrivateCodesStructure | ORGANISATIONs in frame. |  |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure | ORGANISATIONs in frame. | Busines organisation |
+|  | PrivateCode | expected | 0..1 | PrivateCodeStructure | ORGANISATIONs in frame. |  |
+|  | Name | expected | 0..1 | MultilingualString | ORGANISATIONs in frame. |  |
+|  | ShortName | expected | 0..1 | MultilingualString | ORGANISATIONs in frame. | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
+|  | parts | optional | 0..1 | blockParts_RelStructure | ORGANISATIONs in frame. |  |
+| ++ | administrativeZones | optional | 0..* | administrativeZones_RelStructure | ORGANISATIONs in frame. |  |
+| +++ | TransportAdministrativeZone | optional | 0..* | organisationsInFrame_RelStructure | ORGANISATIONs in frame. |  |
+| ++++ | PrivateCode | optional | 0..1 | PrivateCodeStructure | ORGANISATIONs in frame. |  |
 
 
 
@@ -443,19 +443,19 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Extensions | expected | 1..1 | ExtensionsStructure |  | Two elements used in HRDF for ordering facilities |
-| + | Priority | expected | 0..1 | InterchangePriorityType |  |  |
-|  | Description | expected | 0..1 | MultilingualString |  |  |
+|  | Extensions | expected | 0..1 | ExtensionsStructure | SERVICE FACILITies in frame. | Two elements used in HRDF for ordering facilities |
+| + | Priority | expected | 0..1 | InterchangePriorityType | SERVICE FACILITies in frame. |  |
+|  | Description | expected | 0..1 | MultilingualString | SERVICE FACILITies in frame. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | optional | 0..* | MultilingualString |  |  |
+| + | Text | optional | 0..* | MultilingualString | SERVICE FACILITies in frame. |  |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | FareClasses | optional | 1..1 | FareClassListOfEnumerations |  |  |
-|  | MobilityFacilityList | optional | 1..1 | MobilityFacilityListOfEnumerations |  |  |
-|  | NuisanceFacilityList | optional | 1..1 | NuisanceFacilityListOfEnumerations |  |  |
-|  | PassengerCommsFacilityList | optional | 1..1 | PassengerCommsFacilityListOfEnumerations |  |  |
-|  | SanitaryFacilityList | optional | 1..1 | SanitaryFacilityListOfEnumerations |  |  |
-|  | CouchetteFacilityList | optional | 1..1 | CouchetteFacilityListOfEnumerations |  |  |
-|  | GroupBookingFacility | optional | 1..1 | GroupBookingEnumeration |  |  |
+|  | FareClasses | optional | 0..1 | FareClassListOfEnumerations | SERVICE FACILITies in frame. |  |
+|  | MobilityFacilityList | optional | 0..1 | MobilityFacilityListOfEnumerations | SERVICE FACILITies in frame. |  |
+|  | NuisanceFacilityList | optional | 0..1 | NuisanceFacilityListOfEnumerations | SERVICE FACILITies in frame. |  |
+|  | PassengerCommsFacilityList | optional | 0..1 | PassengerCommsFacilityListOfEnumerations | SERVICE FACILITies in frame. |  |
+|  | SanitaryFacilityList | optional | 0..1 | SanitaryFacilityListOfEnumerations | SERVICE FACILITies in frame. |  |
+|  | CouchetteFacilityList | optional | 0..1 | CouchetteFacilityListOfEnumerations | SERVICE FACILITies in frame. |  |
+|  | GroupBookingFacility | optional | 0..1 | GroupBookingEnumeration | SERVICE FACILITies in frame. |  |
 
 
 
@@ -538,19 +538,19 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | validityConditions | optional | 1..1 | validityConditions_RelStructure |  |  |
-| + | [AvailabilityCondition](./tables/AvailabilityCondition.md) | optional | 0..* | unknown |  |  |
-|  | Description | optional | 0..1 | MultilingualString |  | Description is optional |
+|  | validityConditions | optional | 0..1 | validityConditions_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 |  |
+| + | [AvailabilityCondition](./tables/AvailabilityCondition.md) | optional | 0..* | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 |  |
+|  | Description | optional | 0..1 | MultilingualString | SITE FACILITY SETs in frame . +v1.2.2 | Description is optional |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | optional | 0..* | MultilingualString |  |  |
+| + | Text | optional | 0..* | MultilingualString | SITE FACILITY SETs in frame . +v1.2.2 |  |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | AssistanceFacilityList | optional | 1..1 | AssistanceFacilityListOfEnumerations |  |  |
-|  | AccessibilityToolList | optional | 0..1 | AccessibilityToolListOfEnumerations |  |  |
-|  | SanitaryFacilityList | optional | 1..1 | SanitaryFacilityListOfEnumerations |  |  |
-|  | TicketingServiceFacilityList | optional | 1..1 | TicketingServiceFacilityListOfEnumerations |  |  |
-|  | EmergencyServiceList | optional | 0..1 | EmergencyServiceListOfEnumerations |  |  |
-|  | LuggageLockerFacilityList | optional | 1..1 | LuggageLockerFacilityListOfEnumerations |  |  |
-|  | ParkingFacilityList | optional | 1..1 | ParkingFacilityListOfEnumerations |  |  |
+|  | AssistanceFacilityList | optional | 0..1 | AssistanceFacilityListOfEnumerations | SITE FACILITY SETs in frame . +v1.2.2 |  |
+|  | AccessibilityToolList | optional | 0..1 | AccessibilityToolListOfEnumerations | SITE FACILITY SETs in frame . +v1.2.2 |  |
+|  | SanitaryFacilityList | optional | 0..1 | SanitaryFacilityListOfEnumerations | SITE FACILITY SETs in frame . +v1.2.2 |  |
+|  | TicketingServiceFacilityList | optional | 0..1 | TicketingServiceFacilityListOfEnumerations | SITE FACILITY SETs in frame . +v1.2.2 |  |
+|  | EmergencyServiceList | optional | 0..1 | EmergencyServiceListOfEnumerations | SITE FACILITY SETs in frame . +v1.2.2 |  |
+|  | LuggageLockerFacilityList | optional | 0..1 | LuggageLockerFacilityListOfEnumerations | SITE FACILITY SETs in frame . +v1.2.2 |  |
+|  | ParkingFacilityList | optional | 0..1 | ParkingFacilityListOfEnumerations | SITE FACILITY SETs in frame . +v1.2.2 |  |
 
 
 
@@ -617,10 +617,10 @@ Used currently mainly for the relevant accessibility elements that can be expres
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | ShortName | expected | 0..1 | MultilingualString |  | Will be defined in mapping excel |
-|  | LowFloor | optional | 0..1 | xsd:boolean |  |  |
-|  | HasLiftOrRamp | optional | 0..1 | xsd:boolean |  |  |
-|  | HasHoist | optional | 0..1 | xsd:boolean |  |  |
+|  | ShortName | expected | 0..1 | MultilingualString | Opnen specifcation of VEHICLE TYPEs + v1.1 | Will be defined in mapping excel |
+|  | LowFloor | optional | 0..1 | xsd:boolean | Opnen specifcation of VEHICLE TYPEs + v1.1 |  |
+|  | HasLiftOrRamp | optional | 0..1 | xsd:boolean | Opnen specifcation of VEHICLE TYPEs + v1.1 |  |
+|  | HasHoist | optional | 0..1 | xsd:boolean | Opnen specifcation of VEHICLE TYPEs + v1.1 |  |
 
 
 

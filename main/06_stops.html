@@ -143,7 +143,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>topographicPlacesInFrame_RelStructure</td>
-      <td> </td>
+      <td>PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -161,7 +161,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>stopPlacesInFrame_RelStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -179,7 +179,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>siteFacilitySetsInFrame_RelStructure</td>
-      <td> </td>
+      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
       <td>We expect the SiteFacilitySet in the ResourceFrame</td>
     </tr>
     <tr>
@@ -271,9 +271,9 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td> </td>
       <td>ValidBetween</td>
       <td>optional</td>
-      <td>1..1</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>0..1</td>
+      <td>stopPlacesInFrame_RelStructure</td>
+      <td>STOP PLACEs in frame.</td>
       <td>This can be used to show, when the StopPlace can be used.</td>
     </tr>
     <tr>
@@ -298,9 +298,9 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td> </td>
       <td>keyList</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>KeyListStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>Key value pairs for DIDOK number and SLOID and special values. Prefered is privateCodes.</td>
     </tr>
     <tr>
@@ -309,7 +309,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>optional</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -334,9 +334,9 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td> </td>
       <td>privateCodes</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>PrivateCodesStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -345,7 +345,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>mandatory</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments.</td>
     </tr>
     <tr>
@@ -372,7 +372,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>mandatory</td>
       <td>0..1</td>
       <td>SimplePoint_VersionStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>Global or national location</td>
     </tr>
     <tr>
@@ -381,7 +381,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>optional</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -390,7 +390,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>mandatory</td>
       <td>0..1</td>
       <td>LocationStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>Note concerning coordinates - The main coordinates are given as <strong>WSG84</strong>.</td>
     </tr>
     <tr>
@@ -426,7 +426,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>optional</td>
       <td>0..1</td>
       <td>alternativeNames_RelStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>Alternative names for the StopPlace. We will also use these for synonyms.</td>
     </tr>
     <tr>
@@ -444,7 +444,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>optional</td>
       <td>1..*</td>
       <td>TopographicPlaceRefStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>Id to the county, community, canton or country.</td>
     </tr>
     <tr>
@@ -462,7 +462,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>optional</td>
       <td>0..1</td>
       <td>LimitedUseTypeEnumeration</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>For stops like Sagliains</td>
     </tr>
     <tr>
@@ -471,16 +471,16 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>optional</td>
       <td>0..1</td>
       <td>InterchangeWeightingEnumeration</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions.</td>
     </tr>
     <tr>
       <td> </td>
       <td>quays</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>quays_RelStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles.</td>
     </tr>
     <tr>
@@ -649,9 +649,9 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td> </td>
       <td>keyList</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>KeyListStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -660,7 +660,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>expected</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>When no SLOID is possible it may be omitted.</td>
     </tr>
     <tr>
@@ -685,9 +685,9 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td> </td>
       <td>privateCodes</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>PrivateCodesStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -696,7 +696,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -714,7 +714,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>mandatory</td>
       <td>0..1</td>
       <td>SimplePoint_VersionStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>Location of Quay.</td>
     </tr>
     <tr>
@@ -723,7 +723,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>optional</td>
       <td>0..1</td>
       <td>SiteRefStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>Can reference the parent Quay or StopPlace</td>
     </tr>
     <tr>
@@ -732,7 +732,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>mandatory</td>
       <td>0..1</td>
       <td>PublicCodeStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>Code used to identify the Quay to the public</td>
     </tr>
   </tbody>
@@ -897,9 +897,9 @@ as its parent.</li>
       <td> </td>
       <td>Descriptor</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TopographicPlaceDescriptor_VersionedChildStructure</td>
-      <td> </td>
+      <td>PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -926,7 +926,7 @@ as its parent.</li>
       <td>mandatory</td>
       <td>0..1</td>
       <td>TopographicPlaceTypeEnumeration</td>
-      <td> </td>
+      <td>PLACEs in frame.</td>
       <td>Allowed values: country, county</td>
     </tr>
     <tr>
@@ -935,7 +935,7 @@ as its parent.</li>
       <td>optional</td>
       <td>0..1</td>
       <td>TopographicPlaceRefStructure</td>
-      <td> </td>
+      <td>PLACEs in frame.</td>
       <td>Parent topographic place when it exists.</td>
     </tr>
   </tbody>
@@ -1000,7 +1000,7 @@ as its parent.</li>
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>Global or national location</td>
     </tr>
     <tr>
@@ -1009,7 +1009,7 @@ as its parent.</li>
       <td>mandatory</td>
       <td>0..1</td>
       <td>LocationStructure</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>Note concerning coordinates - The main coordinates are given as <strong>WSG84</strong>.</td>
     </tr>
     <tr>
