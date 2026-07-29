@@ -11,7 +11,7 @@
 							<!-- ch-root -->
 							<!-- ch-attrs: id version -->
 							<!-- ch-usage: mandatory -->
-							<!-- ch-note: Transfer times between specific ServiceJourneys at a given stop (UMSTEIGL). StaySeated=false: passenger must change vehicles. One ServiceJourneyInterchange per journey pair. Replaces InterchangeRule in RG 2.0. -->
+							<!-- ch-note: Transfer times between specific ServiceJourneys at a given stop (UMSTEIGL). StaySeated=false: passenger must change vehicles. One ServiceJourneyInterchange per journey pair. Replaces InterchangeRule in RG 2.0. So the UMGSTEIGL need to be done as a set of ServiceJourneyInterchange on each of the contained ServiceJourneys.-->
 							<validityConditions>
 								<!-- ch-usage: expected -->
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:TA" versionRef="1">
