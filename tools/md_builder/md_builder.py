@@ -832,8 +832,7 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
         
         element = element[0]
         
-        # Debug: print what we found (commented out by default)
-        # print(f"DEBUG: Found element {element_name} with tag {element.tag}, attributes {element.attrib}")
+
         
         # Get cardinality - use element's own if available, otherwise traverse substitution group
         min_occurs = element.get('minOccurs', '1')
@@ -946,15 +945,7 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
             
             break
         
-        # Debug output (commented out by default)
-        # print(f"DEBUG: Element {element_name} - type: {element_type}")
-        # print(f"DEBUG: Element attributes: {element.attrib}")
-        # print(f"DEBUG: Element children: {[child.tag for child in element]}")
-        # simple_type = element.find('xs:simpleType', namespaces)
-        # complex_type = element.find('xs:complexType', namespaces)
-        # print(f"DEBUG: Has simpleType: {simple_type is not None}, Has complexType: {complex_type is not None}")
-        # if complex_type is not None:
-        #     print(f"DEBUG: complexType tag: {complex_type.tag}")
+
         
         # Get description - collect from entire substitution group chain
         description = ""
@@ -1452,6 +1443,63 @@ def parse_template_file(file_path, xsd_type_info):
         return None
 
 
+def is_container_parent(parent_type, element, xsd_type_info=None):
+    """
+    Detect if the given parent_type represents a container for the element.
+    Containers are recognizable by element names starting with lowercase letters.
+    """
+    if not parent_type:
+        return False
+    
+    # Extract actual parent name from parent_type (handle MULTILINGUAL_ prefix)
+    actual_parent_name = None
+    parts = parent_type.split('|')
+    for part in parts:
+        if part and not part.startswith('MULTILINGUAL_'):
+            actual_parent_name = part
+            break
+    
+    if not actual_parent_name:
+        return False
+    
+    # Check for _RelStructure pattern
+    if '_RelStructure' in parent_type or '_RelStructure' in actual_parent_name:
+        return True
+    
+    # Check if parent name starts with lowercase letter (container pattern)
+    if actual_parent_name[0].islower():
+        # Check if element is the singular form of parent
+        if actual_parent_name.endswith('s') and element == actual_parent_name[:-1]:
+            return True
+        
+        # Known container patterns
+        known_containers = ['quays', 'stopPlaces', 'facilities', 'privateCodes', 
+                          'alternativeNames', 'alternativeTexts', 'names', 'descriptions', 
+                          'texts', 'localServices', 'groupsOfLines', 'lines', 'notices',
+                          'timeDemandType', 'timingLinks', 'journeyPatterns', 'stopAssignment',
+                          'connections', 'scheduledStopPoints', 'destinationDisplays']
+        
+        if actual_parent_name in known_containers:
+            return True
+    
+    return False
+
+
+def get_container_cardinality(parent_type, element, current_card, xsd_type_info=None):
+    """
+    Get the appropriate cardinality for container elements.
+    Returns the cardinality if it's a container, otherwise returns current_card unchanged.
+    """
+    if not is_container_parent(parent_type, element, xsd_type_info):
+        return current_card
+    
+    # For containers, child elements should be 0..* or 1..*
+    if current_card.startswith('0..*') or current_card.startswith('1..*'):
+        return current_card
+    
+    return '0..*'
+
+
 def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
     """Generate markdown table from parsed data"""
     if not data:
@@ -1622,24 +1670,8 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         multilingual_element_names = ['Text', 'Description', 'Name', 'ShortName', 'Label', 'Title', 'Subtitle']
         
         # Check for multilingual container patterns
-        if element in multilingual_element_names:
+        if element in multilingual_element_names and parent_type:
             # Extract parent name from parent_type
-            actual_parent_name = None
-            if parent_type:
-                parts = parent_type.split('|')
-                for part in parts:
-                    if part and not part.startswith('MULTILINGUAL_'):
-                        actual_parent_name = part
-                        break
-            
-            # Only set to 0..* if the parent is ALSO a multilingual element (nested Text, etc.)
-            # NOT if xsd_type is MultilingualString - the cardinality should come from the XSD declaration
-            if actual_parent_name in multilingual_element_names:
-                # This is a nested multilingual element (e.g., Text inside Text), should be 0..*
-                card = '0..*'
-        
-        # Check for known container patterns
-        if parent_type:
             actual_parent_name = None
             parts = parent_type.split('|')
             for part in parts:
@@ -1647,53 +1679,46 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                     actual_parent_name = part
                     break
             
-            if actual_parent_name:
-                container_patterns = [
-                    ('privateCodes', 'PrivateCode'),
-                    ('alternativeTexts', 'AlternativeText'),
-                    ('names', 'Name'),
-                    ('descriptions', 'Description'),
-                    ('texts', 'Text'),
-                ]
-                for container, child_type in container_patterns:
-                    if actual_parent_name == container and element == child_type:
-                        card = '0..*'
-                        break
-                
-                # NEW: Check if parent corresponds to a _RelStructure type
-                # Containers like quays, stopPlaces, etc. have types like quays_RelStructure, stopPlaces_RelStructure
-                # All such containers should have 0..* or 1..* cardinality for their child elements
-                if not (card.startswith('0..*') or card.startswith('1..*')):
-                    # Check if there's a complex type matching parent_type with _RelStructure
-                    # This handles containers like quays, stopPlaces, etc.
-                    if (parent_type and '_RelStructure' in parent_type) or (actual_parent_name and ('_RelStructure' in actual_parent_name or actual_parent_name.endswith('_RelStructure'))):
-                        card = '0..*'
-                    else:
-                        # Also check if parent_type + _RelStructure exists as a complex type
-                        # For example, parent_type="quays" should match complex type "quays_RelStructure"
-                        # We'll do a simple string check - if parent_type looks like a container (lowercase first letter)
-                        # and the element matches the singular form, assume it's a container
-                        if actual_parent_name and actual_parent_name[0].islower():
-                            # Check if element is the singular form of parent (e.g., quays -> Quay)
-                            # Simple heuristic: parent ends with 's' and element is parent without 's'
-                            if actual_parent_name.endswith('s') and element == actual_parent_name[:-1]:
-                                card = '0..*'
-                            # Also handle irregular plurals or other patterns
-                            # Note: 'names' removed because Name should have its own cardinality from XSD
-                            elif actual_parent_name in ['quays', 'stopPlaces', 'facilities', 'privateCodes', 
-                                                        'alternativeNames', 'alternativeTexts',
-                                                        'descriptions', 'texts', 'localServices']:
-                                card = '0..*'
+            # Only set to 0..* if the parent is ALSO a multilingual element (nested Text, etc.)
+            # NOT if xsd_type is MultilingualString - the cardinality should come from the XSD declaration
+            if actual_parent_name in multilingual_element_names:
+                # This is a nested multilingual element (e.g., Text inside Text), should be 0..*
+                card = '0..*'
+        
+        # Check for container patterns using helper function
+        card = get_container_cardinality(parent_type, element, card, xsd_type_info)
+        
+        # Handle specific known container patterns for multilingual elements
+        # if parent_type:
+        #     actual_parent_name = None
+        #     parts = parent_type.split('|')
+        #     for part in parts:
+        #         if part and not part.startswith('MULTILINGUAL_'):
+        #             actual_parent_name = part
+        #             break
+        #
+        #     if actual_parent_name:
+        #         container_patterns = [
+        #             ('privateCodes', 'PrivateCode'),
+        #             ('alternativeTexts', 'AlternativeText'),
+        #             ('names', 'Name'),
+        #             ('descriptions', 'Description'),
+        #             ('texts', 'Text'),
+        #         ]
+        #         for container, child_type in container_patterns:
+        #             if actual_parent_name == container and element == child_type:
+        #                 card = '0..*'
+        #                 break
         
         # Handle versionRef -> version conversion for display
-        if element.endswith('Ref') and 'versionRef=' in description:
-            # Replace versionRef with version in the description
-            description = description.replace('versionRef=', 'version=')
+        # if element.endswith('Ref') and 'versionRef=' in description:
+        #    # Replace versionRef with version in the description
+        #    description = description.replace('versionRef=', 'version=')
         
         # Create link if referenced
-        if item['is_referenced']:
-            link_name = item['referenced_name']
-            element = f"[{element}]({link_name}.md)"
+        #if item['is_referenced']:
+        #    link_name = item['referenced_name']
+        #    element = f"[{element}]({link_name}.md)"
         
         # Use the note from the data structure (which contains ch-note content)
         display_note = item.get('note', '')
@@ -1819,15 +1844,14 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         multilingual_element_names = ['Text', 'Description', 'Name', 'ShortName', 'Label', 'Title', 'Subtitle']
         
         # Check for multilingual container patterns
-        if element in multilingual_element_names:
+        if element in multilingual_element_names and parent_type:
             # Extract parent name from parent_type
             actual_parent_name = None
-            if parent_type:
-                parts = parent_type.split('|')
-                for part in parts:
-                    if part and not part.startswith('MULTILINGUAL_'):
-                        actual_parent_name = part
-                        break
+            parts = parent_type.split('|')
+            for part in parts:
+                if part and not part.startswith('MULTILINGUAL_'):
+                    actual_parent_name = part
+                    break
             
             # Only set to 0..* if the parent is ALSO a multilingual element (nested Text, etc.)
             # NOT if xsd_type is MultilingualString - the cardinality should come from the XSD declaration
@@ -1835,7 +1859,10 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                 # This is a nested multilingual element (e.g., Text inside Text), should be 0..*
                 card = '0..*'
         
-        # Check for known container patterns
+        # Check for container patterns using helper function
+        card = get_container_cardinality(parent_type, element, card, xsd_type_info)
+        
+        # Handle specific known container patterns for multilingual elements
         if parent_type:
             actual_parent_name = None
             parts = parent_type.split('|')
@@ -1856,31 +1883,6 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                     if actual_parent_name == container and element == child_type:
                         card = '0..*'
                         break
-                
-                # NEW: Check if parent corresponds to a _RelStructure type
-                # Containers like quays, stopPlaces, etc. have types like quays_RelStructure, stopPlaces_RelStructure
-                # All such containers should have 0..* or 1..* cardinality for their child elements
-                if not (card.startswith('0..*') or card.startswith('1..*')):
-                    # Check if there's a complex type matching parent_type with _RelStructure
-                    # This handles containers like quays, stopPlaces, etc.
-                    if (parent_type and '_RelStructure' in parent_type) or (actual_parent_name and ('_RelStructure' in actual_parent_name or actual_parent_name.endswith('_RelStructure'))):
-                        card = '0..*'
-                    else:
-                        # Also check if parent_type + _RelStructure exists as a complex type
-                        # For example, parent_type="quays" should match complex type "quays_RelStructure"
-                        # We'll do a simple string check - if parent_type looks like a container (lowercase first letter)
-                        # and the element matches the singular form, assume it's a container
-                        if actual_parent_name and actual_parent_name[0].islower():
-                            # Check if element is the singular form of parent (e.g., quays -> Quay)
-                            # Simple heuristic: parent ends with 's' and element is parent without 's'
-                            if actual_parent_name.endswith('s') and element == actual_parent_name[:-1]:
-                                card = '0..*'
-                            # Also handle irregular plurals or other patterns
-                            # Note: 'names' removed because Name should have its own cardinality from XSD
-                            elif actual_parent_name in ['quays', 'stopPlaces', 'facilities', 'privateCodes', 
-                                                        'alternativeNames', 'alternativeTexts',
-                                                        'descriptions', 'texts', 'localServices']:
-                                card = '0..*'
         
         # Handle versionRef -> version conversion for display
         if element.endswith('Ref') and 'versionRef=' in description:
@@ -1933,12 +1935,6 @@ def check_referenced_files_exist(data, template_dir):
     return True
 
 
-def process_ch_profile_templates(input_dir: str, output_dir: str, xsd_path: str, xsd_type_info):
-    """Process ch-profile template files - but don't build tables for them as requested"""
-    # As per user request: if the xml-file name starts with ch-profile, don't try to build a table
-    # So we skip processing of ch-profile files entirely
-    print("Skipping ch-profile templates (no table building requested)")
-
 
 def build_markdown_tables(input_path: str, output_path: str, xsd_path: str):
 
@@ -1950,22 +1946,37 @@ def build_markdown_tables(input_path: str, output_path: str, xsd_path: str):
     # Create output directory
     os.makedirs(output_path, exist_ok=True)
     
-    # Process ch-profile templates first
-    process_ch_profile_templates(input_path, output_path, xsd_path, xsd_type_info)
+
     
-    # Process all XML files in input directory
-    xml_files = [f for f in os.listdir(input_path) if f.endswith('.xml') and not f.startswith(('ch-profile', 'ch-profile_'))]
+    # Handle both directory and single file input
+    if os.path.isfile(input_path) and input_path.endswith('.xml'):
+        # Single file mode for faster testing
+        xml_files = [os.path.basename(input_path)]
+        is_single_file = True
+        base_dir = os.path.dirname(input_path) or '.'
+    else:
+        # Directory mode - process all XML files (ch-profile files are filtered out)
+        xml_files = [f for f in os.listdir(input_path) 
+                     if f.endswith('.xml') and not f.startswith(('ch-profile', 'ch-profile_'))]
+        is_single_file = False
+        base_dir = input_path
     
     for xml_file in xml_files:
+        # Skip ch-profile files
+        if xml_file.startswith(('ch-profile', 'ch-profile_')):
+            print(f"Skipping ch-profile file: {xml_file}")
+            continue
+            
         print(f"Processing {xml_file}")
-        file_path = os.path.join(input_path, xml_file)
+        file_path = os.path.join(base_dir, xml_file) if not is_single_file else input_path
         
         # Parse template
         data = parse_template_file(file_path, xsd_type_info)
         
         if data:
-            # Check for missing referenced files
-            check_referenced_files_exist(data, input_path)
+            # Check for missing referenced files (only for directory mode)
+            if not is_single_file:
+                check_referenced_files_exist(data, input_path)
             
             # Generate markdown filename (remove .xml, add .md)
             md_filename = os.path.splitext(xml_file)[0] + '.md'
@@ -1983,14 +1994,18 @@ def build_markdown_tables(input_path: str, output_path: str, xsd_path: str):
         else:
             print(f"No data extracted from {xml_file}")
     
-    print(f"Processed {len(xml_files)} files")
+    file_count = len([f for f in xml_files if not f.startswith(('ch-profile', 'ch-profile_'))])
+    print(f"Processed {file_count} files")
 
 def parse_args():
     """Parse command line arguments"""
     parser = argparse.ArgumentParser(description='Generate markdown documentation from NeTEx templates')
-    parser.add_argument('-i', '--input', default=TEMPLATES_DIR, help=f'Input folder containing XML templates (Default = {TEMPLATES_DIR})')
-    parser.add_argument('-o', '--output', default=SITE_TABLES_DIR, help=f'Output folder for markdown files (Default = {SITE_TABLES_DIR})')
-    parser.add_argument('-x', '--xsd', default=XSD_FILE_PATH, help=f'XSD schema file for type information (Default = {XSD_FILE_PATH})')
+    parser.add_argument('-i', '--input', default=TEMPLATES_DIR, 
+                        help=f'Input folder or single XML file for faster testing (Default = {TEMPLATES_DIR})')
+    parser.add_argument('-o', '--output', default=SITE_TABLES_DIR, 
+                        help=f'Output folder for markdown files (Default = {SITE_TABLES_DIR})')
+    parser.add_argument('-x', '--xsd', default=XSD_FILE_PATH, 
+                        help=f'XSD schema file for type information (Default = {XSD_FILE_PATH})')
     return parser.parse_args()
 
 def main():
