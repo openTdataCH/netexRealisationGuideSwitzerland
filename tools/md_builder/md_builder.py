@@ -170,7 +170,27 @@ def _build_xsd_element_paths(xsd_doc):
 
         # Get element metadata
         name = element.get('name') or element.get('ref', '').split(':')[-1]
+
+        # Resolve type: direct @type, or from @ref'ed global element, or inline types
         elem_type = element.get('type', '')
+        if not elem_type:
+            ref = element.get('ref')
+            if ref:
+                ref_name = ref.split(':')[-1]
+                ref_el = xsd_doc.xpath(f"//xs:element[@name='{ref_name}']", namespaces=XSD_NS)
+                if ref_el:
+                    elem_type = ref_el[0].get('type', '') or ''
+        if not elem_type:
+            inline_ct = element.find('xs:complexType', XSD_NS)
+            inline_st = element.find('xs:simpleType', XSD_NS)
+            if inline_ct is not None:
+                elem_type = inline_ct.get('name', '') or ''
+            elif inline_st is not None:
+                elem_type = inline_st.get('name', '') or ''
+        # Strip namespace prefix if present
+        if elem_type and ':' in elem_type:
+            elem_type = elem_type.split(':')[-1]
+
         min_occurs = element.get('minOccurs', '1')
         max_occurs = element.get('maxOccurs', '1')
 
@@ -334,102 +354,106 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
         print(f"Error processing {xsd_path}: {e}")
         return {}
 
-
 def get_element_metadata_from_xsd_by_path(xsd_doc, xml_path):
     """
-    Get element metadata from XSD using the full XML path to find the correct element definition.
+    Resolve metadata for the bottom element of a partial XML path
+    by searching the XSD with a descendant chain (//).
+
+    Behavior:
+    - Build a descendant chain where each segment matches xs:element with either @name or @ref
+      (with or without a namespace prefix).
+    - Take the first full-chain match in document order. If none, fall back to matching the last
+      segment anywhere.
+    - Extract type from @type; if missing, follow @ref to the referenced global xs:element and
+      take its @type or inline type; if still missing, look for inline type on the occurrence;
+      finally, if still unknown, look at substitutionGroup head's type.
+    - minOccurs/maxOccurs are taken from the matched element occurrence.
+    - description is obtained via get_xsd_documentation_for_element(element, xsd_doc).
 
     Args:
-        xsd_doc: Parsed XSD document (lxml.etree._ElementTree or _Element)
-        xml_path: The XML path from the template (e.g., 'stopPlaces/StopPlace/quays/Quay')
+        xsd_doc: lxml.etree parsed XSD document (ElementTree or Element)
+        xml_path: partial path like 'SiteFrame/connections/DefaultConnection'
 
     Returns:
-        Dictionary with metadata (type, min_occurs, max_occurs, description) or None if not found
+        dict with keys: type, min_occurs, max_occurs, description
+        or None if no matching element is found.
     """
     if xsd_doc is None or not xml_path:
         return None
 
-    # Convert XML path to XSD XPath expression
-    parts = xml_path.split('/')
+    parts = [p for p in xml_path.split('/') if p]
 
-    # Try exact chain of @name matches first
-    direct_xpath = "//" + "//".join([f"xs:element[@name='{p}']" for p in parts])
-    elem_def = xsd_doc.xpath(direct_xpath, namespaces=XSD_NS)
+    # 1) Prefer an exact chain where each step matches @name only (stricter, less ambiguous)
+    strict_chain = "//" + "//".join([f"xs:element[@name='{p}']" for p in parts])
+    matches = xsd_doc.xpath(strict_chain, namespaces=XSD_NS)
 
-    # If not found, generate combinations of @name and @ref for each step
-    if not elem_def:
-        xpath_options = []
+    # 2) If not found, allow @name or @ref (with optional ns prefix) at each step
+    if not matches:
+        flexible_chain = "//" + "//".join(
+            [f"xs:element[@name='{p}' or @ref='{p}' or contains(@ref, ':{p}')]" for p in parts]
+        )
+        matches = xsd_doc.xpath(flexible_chain, namespaces=XSD_NS)
 
-        def build(parts, idx=0, acc=None):
-            if acc is None:
-                acc = []
-            if idx == len(parts):
-                xpath_options.append('//' + '//'.join(acc))
-                return
-            p = parts[idx]
-            # Try @name
-            build(parts, idx + 1, acc + [f"xs:element[@name='{p}']"])
-            # Try @ref without prefix
-            build(parts, idx + 1, acc + [f"xs:element[@ref='{p}']"])
-            # Try @ref with ns prefix
-            build(parts, idx + 1, acc + [f"xs:element[contains(@ref, ':{p}')]"])
-
-        build(parts)
-
-        for option in xpath_options:
-            elem_def = xsd_doc.xpath(option, namespaces=XSD_NS)
-            if elem_def:
-                break
-
-    # Fallback: find last element by name anywhere and check its logical path
-    if not elem_def:
-        element_name = parts[-1]
-        all_candidates = xsd_doc.xpath(
-            f"//xs:element[@name='{element_name}' or @ref='{element_name}']",
+    # 3) Fallback: match the last segment anywhere
+    if not matches:
+        last = parts[-1]
+        matches = xsd_doc.xpath(
+            f"//xs:element[@name='{last}' or @ref='{last}' or contains(@ref, ':{last}')]",
             namespaces=XSD_NS
         )
-        for candidate in all_candidates:
-            candidate_path = _get_xsd_element_path(candidate)
-            if candidate_path and (candidate_path.endswith(xml_path) or xml_path.endswith(candidate_path)):
-                elem_def = [candidate]
-                break
+        if not matches:
+            return None
 
-        if not elem_def and all_candidates:
-            elem_def = [all_candidates[0]]
+    element = matches[0]  # first match in document order
 
-    if not elem_def:
-        return None
+    # --- Resolve type ---
+    elem_type = element.get('type') or ''
 
-    element = elem_def[0]
-
-    # Extract type attribute with fallback to referenced element and inline types
-    elem_type = element.get('type', '')
+    # If no @type, follow @ref to global element and read its type or inline type
     if not elem_type:
-        ref = element.get('ref', '')
+        ref = element.get('ref')
         if ref:
             ref_name = ref.split(':')[-1]
-            ref_element = xsd_doc.xpath(f"//xs:element[@name='{ref_name}']", namespaces=XSD_NS)
-            if ref_element:
-                elem_type = ref_element[0].get('type', '')
+            ref_el = xsd_doc.xpath(f"//xs:element[@name='{ref_name}']", namespaces=XSD_NS)
+            if ref_el:
+                ref_el = ref_el[0]
+                elem_type = ref_el.get('type') or ''
+                if not elem_type:
+                    inline_ct = ref_el.find('xs:complexType', XSD_NS)
+                    inline_st = ref_el.find('xs:simpleType', XSD_NS)
+                    if inline_ct is not None:
+                        elem_type = inline_ct.get('name') or ''
+                    elif inline_st is not None:
+                        elem_type = inline_st.get('name') or ''
 
+    # If still no type, check inline types on the occurrence
     if not elem_type:
-        complex_type = element.find('xs:complexType', XSD_NS)
-        if complex_type is not None:
-            elem_type = complex_type.get('name', '')
-        simple_type = element.find('xs:simpleType', XSD_NS)
-        if simple_type is not None:
-            elem_type = simple_type.get('name', '')
+        inline_ct = element.find('xs:complexType', XSD_NS)
+        inline_st = element.find('xs:simpleType', XSD_NS)
+        if inline_ct is not None:
+            elem_type = inline_ct.get('name') or ''
+        elif inline_st is not None:
+            elem_type = inline_st.get('name') or ''
 
-    # Extract cardinality
+    # Optional: if still no type, try substitutionGroup head
+    if not elem_type:
+        sg = element.get('substitutionGroup')
+        if sg:
+            head_name = sg.split(':')[-1]
+            head_el = xsd_doc.xpath(f"//xs:element[@name='{head_name}']", namespaces=XSD_NS)
+            if head_el:
+                elem_type = head_el[0].get('type') or ''
+
+    # Normalize type to local name
+    if elem_type and ':' in elem_type:
+        elem_type = elem_type.split(':')[-1]
+
+    # --- Cardinality from this occurrence ---
     min_occurs = element.get('minOccurs', '1')
     max_occurs = element.get('maxOccurs', '1')
 
-    # Robust description using the helper
+    # --- Description via the robust helper you trust ---
     description = get_xsd_documentation_for_element(element, xsd_doc)
-
-    # Clean up type name (remove namespace prefix if present)
-    if elem_type and ':' in elem_type:
-        elem_type = elem_type.split(':')[-1]
 
     return {
         'type': elem_type if elem_type else 'unknown',
@@ -437,6 +461,7 @@ def get_element_metadata_from_xsd_by_path(xsd_doc, xml_path):
         'max_occurs': max_occurs,
         'description': description
     }
+
 
 
 def get_cardinality(min_occurs, max_occurs):
@@ -554,24 +579,20 @@ def search_xsd_files_for_element_with_parent(base_dir, element_name, parent_type
 def find_best_xsd_path_match(xsd_path_info, xml_path, element_name):
     """Find the best matching XSD path for a given XML path and element name.
 
-    xsd_path_info is expected to be a dict mapping path or element name -> metadata dict.
+    Only returns:
+    - exact full path match, or
+    - element-name-only fallback.
+    Avoids returning container paths that would leak container type.
     """
     if not xsd_path_info or not xml_path:
         return None
 
-    # 1) Try exact path
+    # Exact match
     if xml_path in xsd_path_info:
         return xml_path, xsd_path_info[xml_path]
 
-    # 2) Try path prefixes (remove parts from the tail)
-    parts = xml_path.split('/')
-    for i in range(len(parts) - 1, 0, -1):
-        shortened = '/'.join(parts[:i])
-        if shortened in xsd_path_info:
-            return shortened, xsd_path_info[shortened]
-
-    # 3) Try element name
-    elem_only = parts[-1]
+    # Element-only fallback
+    elem_only = xml_path.split('/')[-1]
     if elem_only in xsd_path_info:
         return elem_only, xsd_path_info[elem_only]
 
@@ -904,13 +925,15 @@ def enrich_from_xsd(item, xsd_doc, xsd_type_info, xsd_path):
     if path_based:
         if not card or card == '1..1':
             card = get_cardinality(path_based.get('min_occurs', '1'), path_based.get('max_occurs', '1'))
-        if not xsd_type or xsd_type == 'unknown':
-            xsd_type = path_based.get('type', xsd_type)
+        # Only take non-empty, meaningful type from path-based metadata
+        pb_type = path_based.get('type')
+        if (not xsd_type or xsd_type == 'unknown') and pb_type:
+            xsd_type = pb_type
         if not description:
             description = path_based.get('description', description)
 
-    # 2) Context-aware fallback
-    if xsd_path and (not path_based or (card == '1..1' and (not xsd_type or xsd_type == 'unknown') and not description)):
+    # 2) Context-aware fallback: run if we still lack type or description, regardless of path_based
+    if xsd_path and ((not path_based) or (not xsd_type or xsd_type == 'unknown') or not description):
         meta = get_element_metadata(xsd_path, element, parent_type)
         if meta:
             if not card or card == '1..1':
@@ -920,7 +943,13 @@ def enrich_from_xsd(item, xsd_doc, xsd_type_info, xsd_path):
             if not description:
                 description = meta.get('description', description)
 
-    # 3) Generic xsd_type_info as last resort (avoid wrong-context descriptions when parent_type present)
+    # 2b) Last-resort: if type still unknown/empty, try taking just the type from name-keyed xsd_type_info
+    if (not xsd_type or xsd_type == 'unknown') and element in xsd_type_info:
+        fallback_type = xsd_type_info[element].get('type')
+        if fallback_type:
+            xsd_type = fallback_type
+
+    # 3) Generic xsd_type_info as fallback for card and description when safe
     xsd_info = xsd_type_info.get(element, {})
     if not parent_type and not path_based and xsd_info:
         if not description:
@@ -1135,8 +1164,10 @@ def parse_template_file(file_path, xsd_type_info):
                 max_occurs = xsd_info.get('max_occurs', '1')
                 card = get_cardinality(min_occurs, max_occurs)
                 xsd_type = xsd_info.get('type', 'unknown')
+                print(f"{elem_name}: {xsd_type}")
             else:
                 # Heuristics when XSD info not available
+                print(f"use heuristics on {elem_name}")
                 actual_parent_name = None
                 if parent_type_context:
                     parts = parent_type_context.split('|')
@@ -1349,6 +1380,8 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         note = item.get('note', '')
 
         # Enrich from XSD
+        if element == "Line":
+            print("here we are")
         item_copy = dict(item)
         card, xsd_type, description = enrich_from_xsd(item_copy, xsd_doc, xsd_type_info, xsd_path)
 
@@ -1511,11 +1544,11 @@ def parse_args():
     """Parse command line arguments"""
     parser = argparse.ArgumentParser(description='Generate markdown documentation from NeTEx templates')
     parser.add_argument('-i', '--input', default=TEMPLATES_DIR,
-                        help=f'Input folder or single XML file for faster testing (Default = {TEMPLATES_DIR})')
+        help=f'Input folder or single XML file for faster testing (Default = {TEMPLATES_DIR})')
     parser.add_argument('-o', '--output', default=SITE_TABLES_DIR,
-                        help=f'Output folder for markdown files (Default = {SITE_TABLES_DIR})')
+        help=f'Output folder for markdown files (Default = {SITE_TABLES_DIR})')
     parser.add_argument('-x', '--xsd', default=XSD_FILE_PATH,
-                        help=f'XSD schema file for type information (Default = {XSD_FILE_PATH})')
+        help=f'XSD schema file for type information (Default = {XSD_FILE_PATH})')
     return parser.parse_args()
 
 
