@@ -38,4 +38,4 @@ We don't reference `CheckConstriants` but they are always instantiated in the `S
 - `CheckConstraint` can also cover congestion, which we don't do for the moment.
 - The CI / CO times from HRDF can be conveyed as a `CheckConstraint` each.
 - `CheckConstraint` can also be associated with equipment, we don't do this either.
-- id-attribute can be generated.
+- `@id` can be generated.

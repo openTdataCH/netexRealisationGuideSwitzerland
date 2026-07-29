@@ -21,7 +21,6 @@ In this chapter:
 ### Purpose
 Contains shared resources used / referenced in other frames - organisations (`Operator`s), `VehicleType`s, codespaces, and other common reference data.
 
-See the following class diagram for the most important objects of the RESOURCE FRAME and their relationships to the other frames.
 
 ### Contained Elements
 
@@ -85,8 +84,7 @@ Only the values defined below are allowed in Switzerland for `StakeholderRoleTyp
 We might add at some point:
 -	`FareManagement`
 -	`Planning`
-
-id-attribute should be kept stable between exports.
+- `@id` should be kept stable between exports.
 
 ## TypeOf... / ValueSet
 *→ [Glossary definition: TypeOf...](A4_annex_glossary.md#typeof)*\
@@ -99,7 +97,7 @@ TypeOf... (examples: `TypeOfNotice`, `TypeOfProductCategory`, `TypeOfService`) a
 We use TypeOfValue references in various Frames in objects including:
 -	`Notice`: references `TypeOfNotice`
 -	`Line` and `ServiceJourney`: references `TypeOfProductCategory`
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 ## TypeOfNotice
 
@@ -179,7 +177,7 @@ in Switzerland. The TU-Code is to be used for operators of other countries.
 * If a different `Operator` is running a given `ServiceJourney`, then this is reflected in the `ServiceJourney` having 
 a different `OperatorRef`.
 * `Authority`  and `Organisation` are not used.
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 ## ServiceFacilitySet
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
@@ -219,7 +217,7 @@ separated list of elements.
 * When transforming from HRDF to NeTEx. The `Facility` is often also copied as a `Notice` in textual form.
 * The details of the usage are defined in the [mapping table for NeTEX 2.0](media/Mappingtabellen_NeTEx_v2.0.xlsx).
 * See also [Use case on service facilities](uc04_service_facilities.md).
-- id-attribute should be kept stable between exports.
+- `@id` should be kept stable between exports.
 
 ## SiteFacilitySet
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
@@ -247,7 +245,7 @@ referenced to define facilities of a site.
 * There may be an overlap between `SiteFacilitySet` and `ServiceFacilitySet`. However, they reference very different things: site elements and vehicles.
 * Sometimes "capabilities"/"limitations" are defined through combinations of what a stop and what a vehicle can do.
 * In future also the use of `Equipment` and `EquipmentPlace` may become more important. These are then actual pieces of equipment. This also means that the `Vehicle` must be known and referenced. 
-- id-attribute should be kept stable between exports.
+- `@id` should be kept stable between exports.
 
 ## VehicleType
 *→ [Glossary definition](A4_annex_glossary.md#vehicletype)*

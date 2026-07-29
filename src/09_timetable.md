@@ -77,9 +77,10 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - **Consistency:** A `ServiceJourney` must reference exactly one `JourneyPattern`. The pattern's stop sequence is authoritative.
 - **Day Governance:** Operating days are controlled via `AvailabilityConditionRef` (`ValidDayBits`), not via `DayType`. `DayType`/`DayTypeAssignment` are reserved for flagging national holidays only (see [ServiceCalendarFrame](08_service_calendars.md#daytype)). `DatedServiceJourney` is not used in the Swiss profile.
 - **Validation:** Ensure `JourneyPatternRef`, `LineRef`, and `OperatorRef` are consistent and reference existing objects.
-- We assume that a Swiss Journey ID exists for almost every `ServiceJourney`. However, the  `@id` can't be set to `sjyid`, because for different days the `ServiceJourney` are different. Also problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `id` will contain a `_gen` substring, but it still starts with the sjyid, when it exists (e.g. `ch:1:sjyid:100011:12391293:_gen_:1231` or `DE:12319123123:_gen_14`).
+- We assume that a Swiss Journey ID exists for almost every `ServiceJourney`. However, the  `@id` can't be set to `sjyid`, because for different days the `ServiceJourney` are different. Also problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `@id` will contain a `_gen` substring, but it still starts with the sjyid, when it exists (e.g. `ch:1:sjyid:100011:12391293:_gen_:1231` or `DE:12319123123:_gen_14`).
 - A `ServiceJourney`can be associated with exactly one `ServiceJourneyPattern` and `TimeDemandType`.
-- id-attribute needs to be kept stable between exports if possible. However, when new variants are used for different operating days, it changes.
+- `@id` needs to be kept stable between exports if possible. However, when new variants are used for different operating days, it changes.
+- Tarif codes (`TC`) and region codes (`RN`) are put into a key/value pair (see example).
 
 
 ### Calculation of passing times at stops
@@ -108,7 +109,7 @@ A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The
 - `HeadwayJourneyGroup` holds all the frequency-based information of the journey, as for example when the stops of the journey are serviced the first/last time and in what interval (or at which frequency, respectively). 
 - Note that in addition to `HeadwayJourneyGroup`, standard NeTEx also features `RhythmicalJourneyGroup` to specifiy, e.g., departures at 15, 27 and 40 minutes past the hour - this is not used in the Swiss profile.
 - For sjyid see information about [frequencies](uc14_frequencies.md) and also the remarks for the [`ServiceJourney`](#servicejourney).
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 ## TimeDemandType
 *→ [Glossary definition](A4_annex_glossary.md#timedemandtype)*
@@ -152,7 +153,7 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 *→ [Template](./templates/TrainNumber.xml)*
 
 ### Usage Note
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 ## TypeOfService
 
@@ -171,7 +172,7 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 *→ - [Template](./templates/TypeOfService.xml)*
 
 ### Usage Notes
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 The following types are currently used:
 
@@ -221,7 +222,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 - `FromServiceJourneyRef` references the feeder journey; `ToServiceJourneyRef` references the distributor journey. Note: the deprecated elements `FromJourneyRef` / `ToJourneyRef` from RG 1.0 (`JourneyMeeting`) must not be used.
 - Element order must follow the XSD sequence: `StaySeated` → `CrossBorder` → `ChangeWithinVehicle` → `MaximumWaitTime` → `FromPointRef` / `ToPointRef` → `FromServiceJourneyRef` / `ToServiceJourneyRef`.
 - Make sure not to generate identical `ServiceJourneyInterchange`s. Reuse them where possible.
-- id-attribute should be kept stable between exports.
+- `@id` should be kept stable between exports.
 
 ## InterchangeRule
 > **Deprecated** — `InterchangeRule` is replaced by `ServiceJourneyInterchange` in RG 2.0.  

@@ -149,7 +149,7 @@ A public transport service line with a `Name`, `TransportMode`, and `Operator`. 
 - For more information about SwissLineID: see [here](https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf).
 - We have in the slnid concept also "Dispositionslinie" and "Temporäre Linie". Those are modeled as regular `Line`. "Betriebliche Linie" is not used and modeled in NeTEx. If at some point we need to know this type. We will model it as a Key/Value pair.
 - If there are partial lines, there is also a main line. The patterns and journeys are always attached to the partial lines.
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 ## GroupOfLines
 *→ [Glossary definition](A4_annex_glossary.md#groupoflines)*
@@ -171,7 +171,7 @@ A `GroupOfLines` is used to model mixed lines. For details see [uc17](uc17_mixed
 - Only mixed lines have a `GroupOfLines`.
 - All `ServiceJourneyPattern` and `ServiceJourney` are assigned to the partial lines.
 - In very rare cases the main line has two legal owners. We discuss the modeling in [uc17](uc17_mixed_lines.md).
-- The id-attribute should be the number of the main line.
+- The `@id` should be the number of the main line.
 
 ## DestinationDisplay
 *→ [Glossary definition](A4_annex_glossary.md#destinationdisplay)*
@@ -201,7 +201,7 @@ Showing the destination of a `ServiceJourney`. The text shown on the front or si
 - The `DestinationDisplay` is set on the `ServiceJourney` via `Destination/DestinationDisplayRef`. If it changes during the run, it needs to be changed on the relevant `StopPointInJourneyPattern` via `DestinationDisplayRef`. If it changes there, the new destination applies from that point onward — in our output, we fill all remaining `PointsInJourneyPattern` with the relevant change.
 - `Destination` must **not** carry a redundant inline `Name` alongside `DestinationDisplayRef` — the display text lives exclusively in the referenced `DestinationDisplay` object, to avoid inconsistency between the two sources. Only `ScheduledStopPointRef` and `DestinationDisplayRef` should be set on `Destination`.
 - See also the [use case on changes in destination](uc13_changes_in_destination.md)
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 ## ScheduledStopPoint
 *→ [Glossary definition](A4_annex_glossary.md#scheduledstoppoint)*
@@ -228,7 +228,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Usage Notes
 - We don't keep much information  in `ScheduledStopPoint`s. The are assigned by `PassengerStopAssignnment`s to the site part (`StopPlace`, `Quay`).
 - `ScheduledStopPoints that are used in `TimingLinks`and `ServiceJourneyPatterns` should be on the quay level.
-- We use the sloid as id-attribute for `ScheduledStopPoint`s whener they exist. id-attribute needs to be kept stable between exports.
+- We use the sloid as `@id` for `ScheduledStopPoint`s whener they exist. `@id` needs to be kept stable between exports.
 - `TimingLink`s use `ScheduledStopPoint`s as well. This means that the timing between two logical stops is the important measure. 
 
 ## PassengerStopAssignment
@@ -252,7 +252,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 *->[Template](./templates/PassengerStopAssignment.xml)*
 
 ### Usage Notes
-- id-attributes don't need to be stable.
+- `@id`s don't need to be stable.
 
 
 
@@ -281,7 +281,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 
 ### Usage Notes
 - For more details see the [use case on transfers](uc03_transfers.md).
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 
 ## SiteConnection
@@ -289,7 +289,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 
 ### Purpose
 - The `SiteConnection` describes the transfer times between two adjacent `StopPlace`s. 
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 
 ### Table
@@ -341,7 +341,7 @@ See [TimeDemandType](#timedemandtype).
 - Multiple visits of the same `ScheduledStopPoint` within a
   `ServiceJourneyPattern` are addressed with a `JourneyWaitTime` that has a 
   `StopPointInServiceJourneyPatternRef` instead of a `ScheduledStopPointRef` like the regular ones.
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 ## ServiceJourneyPattern
 *→ [Glossary definition](A4_annex_glossary.md#servicejourneypattern)*
@@ -366,7 +366,7 @@ See [TimeDemandType](#timedemandtype).
 ServiceJourneyPatterns are a common concept in the VDV interface world ("Linienfahrweg"). In order to model ServiceJourneys efficiently and to reduce overall file size, use the concept wisely: 
 - `ServiceJourney`s sharing the same stop sequence and the same boarding/alighting options should use the same `ServiceJourneyPattern`.
 - Do not just generate one `ServiceJourneyPattern` for each `ServiceJourney`.
-- id-attribute should be kept stable between exports.
+- `@id` should be kept stable between exports.
 
 
 ## TimeDemandType
@@ -422,7 +422,7 @@ Informational or regulatory text associated with public transport services, disp
 
 ### Usage Notes
 - Notice elements should only be used to convey information which cannot be transported using specific model elements. Do not use `Notice` when the information could be expressed by specific elements, e.g., `FacilitySet`, `DayType`, `ForAlighting`, `ForBoarding`. `Notice`s can be used to provide further information on `ServiceFacility`s but not as a replacement for them. Ideally, the description of a `Notice` is translated to the three official languages (DE, IT, FR), and possibly E.
-- id-attribute doesn't need to be kept stable between exports.
+- `@id` doesn't need to be kept stable between exports.
 
 
 ## NoticeAssignment
@@ -443,4 +443,4 @@ Assign a `Notice` to an element.
 *->[Template](./templates/NoticeAssignment.xml)*
 
 ### Usage Notes
-- id-attribute doesn't need to be kept stable between exports.
+- `@id` doesn't need to be kept stable between exports.

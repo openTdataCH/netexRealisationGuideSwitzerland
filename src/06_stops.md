@@ -93,7 +93,7 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 - All `StopPlace`s in Switzerland are identifiable by both a DIDOK number and a SLOID. DIDOK number are under the responsibility of the Department of Transport (BAV). It is possible that in the future the BAV will also regulate “Haltepunkte” and “Haltekanten” and, therefore, the identifiers of `Quay`s.
 - Foreign `StopPlace`s may be mapped to Swiss DIDOK codes. 
 - Meta-stations will have their own codes. In some cases these are added for operational or searching reasons. 
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 - DIDOK number placement: The DIDOK number is **not** transported as free text anywhere on `StopPlace`. It is placed in `privateCodes/PrivateCode` with `type="didok"`, **and** the same value must additionally be listed in the `KeyList` (`KeyValue` with matching `Key`). Both are required — the `PrivateCode` for direct lookup, the `KeyList` entry for generic key/value tooling.
 - `ShortName` is not used on `StopPlace`. In particular, the DIDOK number must **never** be placed in `ShortName` — this was common practice under Profile 1.0 / HRDF-based exports and is explicitly discontinued under RV 2.0.
 - `ValidBetween`: Every `StopPlace` carries a `ValidBetween` with a `FromDate`. Since `StopPlace` is infrastructure master data (not a timetable-period object), **no `ToDate` is set** — validity is open-ended until a future change is published.
@@ -145,7 +145,7 @@ as its parent.
 {StopPlace SLOID}_gen:{Quay SLOID}_pf:{Platform Code}.
 - If no platform SLOID is available {StopPlace SLOID}_gen:missingSLOID_pf:{Platform Code*} will be used instead.
 - >NB: Special characters in the track identifier will be replaced with a dot («.»), for example 21/22 → 21.22.
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 
 In the table below you will find an overview of the possible cases. For more information on SLOID, see [Swiss Location Identification (SLOID)  öv-info.ch](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid "https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-location-identification-sloid").
@@ -189,7 +189,7 @@ A named geographic area such as a city, municipality, county, or region - used t
 
 ### Usage Notes
 - The `TopographicPlace` represent the cantons and communes in Switzerland. Each `StopPlace` should reference the `TopographicPlace` representing its canton.  
-- id-attribute needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports.
 
 
 ## Centroid
@@ -213,4 +213,4 @@ It provides precise geographic coordinates (WGS84) of a central reference point 
 - Required accuracy 4+ decimal positions.
 - The Swiss coordinates are added as well, when available (for Swiss stops). The format is LV95. For imports they are not needed, however.
 - INFO+ will not use the master data from NeTEx imports, it will rely on the Atlas master data for all Swiss coordinates. INFO+ will, however, use the imported location data of foreign places without DIDOK numbers. 
-- no id-attribute
+- no `@id`
