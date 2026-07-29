@@ -11,7 +11,7 @@ from lxml import etree
 from tools.configuration import TEMPLATES_DIR, XSD_FILE_PATH, SITE_TABLES_DIR
 
 def load_xsd_type_info(xsd_path):
-    """Load type and cardinality information from XSD"""
+    """Load type and cardinality information from XSD with full XPath paths"""
     try:
         # Ensure the path is absolute
         xsd_path = os.path.abspath(xsd_path)
@@ -26,8 +26,98 @@ def load_xsd_type_info(xsd_path):
         return {}
 
 
+def _get_xsd_element_path(element):
+    """Get the logical XPath path for an XSD element, ignoring groups, types, choices"""
+    path_parts = []
+    current = element
+    
+    while current is not None and current.tag != 'schema':
+        # Skip intermediate constructs that don't represent actual XML structure
+        tag = current.tag if not hasattr(current, 'tag') or not callable(current.tag) else str(current.tag)
+        
+        # Skip xs:annotation, xs:complexType, xs:simpleType, xs:group, xs:choice, xs:sequence
+        if tag.endswith('}annotation') or tag.endswith('}complexType') or tag.endswith('}simpleType') or \
+           tag.endswith('}group') or tag.endswith('}choice') or tag.endswith('}sequence') or \
+           tag.endswith('}extension') or tag.endswith('}restriction'):
+            current = current.getparent()
+            continue
+            
+        # For xs:element, get the name
+        if tag.endswith('}element'):
+            name = current.get('name') or current.get('ref', '').split(':')[-1]
+            if name:
+                path_parts.insert(0, name)
+        
+        current = current.getparent()
+    
+    return '/'.join(path_parts) if path_parts else None
+
+
+def _build_xsd_element_paths(xsd_doc):
+    """Build a map of element paths to their metadata from XSD
+    
+    Returns a dict where keys are full element paths (e.g., 'ServiceFrame/lines/Line')
+    and values are the element metadata.
+    """
+    namespaces = {'xs': 'http://www.w3.org/2001/XMLSchema'}
+    xsd_path_map = {}
+    
+    # Find all elements in the XSD
+    all_elements = xsd_doc.xpath('//xs:element', namespaces=namespaces)
+    
+    for element in all_elements:
+        # Get the logical path for this element
+        path = _get_xsd_element_path(element)
+        if not path:
+            continue
+            
+        # Get element metadata
+        name = element.get('name') or element.get('ref', '').split(':')[-1]
+        elem_type = element.get('type', '')
+        min_occurs = element.get('minOccurs', '1')
+        max_occurs = element.get('maxOccurs', '1')
+        
+        # Get description
+        description = ''
+        annotation = element.find('xs:annotation', namespaces=namespaces)
+        if annotation is not None:
+            doc = annotation.find('xs:documentation', namespaces=namespaces)
+            if doc is not None and doc.text:
+                description = sanitize_for_markdown(doc.text)
+        
+        # Store metadata at the full path (path already includes the element name)
+        # If path is just the element name (e.g., 'Line'), use that
+        # If path is a full path (e.g., 'ServiceFrame/lines/Line'), use that
+        if path not in xsd_path_map:
+            xsd_path_map[path] = {
+                'type': elem_type,
+                'min_occurs': min_occurs,
+                'max_occurs': max_occurs,
+                'description': description
+            }
+        else:
+            # If there's already an entry at this path, this might be from a different file
+            # Keep the first one for now (this could be enhanced)
+            pass
+        
+        # Also store under just the element name for fallback
+        if name not in xsd_path_map:
+            xsd_path_map[name] = {
+                'type': elem_type,
+                'min_occurs': min_occurs,
+                'max_occurs': max_occurs,
+                'description': description
+            }
+    
+    return xsd_path_map
+
+
 def _process_xsd_file(xsd_path, base_dir, processed_files=None):
-    """Process an XSD file and all its imports/includes recursively"""
+    """Process an XSD file and all its imports/includes recursively
+    
+    Returns a dict mapping element names to their metadata, but also builds
+    a path-based structure for more accurate matching.
+    """
     if processed_files is None:
         processed_files = set()
     
@@ -37,6 +127,7 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
     processed_files.add(xsd_path)
     
     type_info = {}
+    path_based_info = {}  # New: path-based element information
     
     try:
         xsd_doc = etree.parse(xsd_path)
@@ -66,6 +157,11 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
                     print(f"Processing import: {import_path}")
                     imported_types = _process_xsd_file(import_path, base_dir, processed_files)
                     type_info.update(imported_types)
+                    # Merge path-based info
+                    for path, elements in imported_types.get('_paths', {}).items():
+                        if path not in path_based_info:
+                            path_based_info[path] = {}
+                        path_based_info[path].update(elements)
                 else:
                     print(f"Import not found: {import_path}")
         
@@ -79,10 +175,22 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
                     print(f": {include_path}")
                     included_types = _process_xsd_file(include_path, base_dir, processed_files)
                     type_info.update(included_types)
+                    # Merge path-based info
+                    for path, elements in included_types.get('_paths', {}).items():
+                        if path not in path_based_info:
+                            path_based_info[path] = {}
+                        path_based_info[path].update(elements)
                 else:
                     print(f"Include not found: {include_path}")
         
-        # Extract complex types
+        # Build path-based element information
+        doc_path_map = _build_xsd_element_paths(xsd_doc)
+        for path, elements in doc_path_map.items():
+            if path not in path_based_info:
+                path_based_info[path] = {}
+            path_based_info[path].update(elements)
+        
+        # Extract complex types (for backward compatibility)
         for complex_type in xsd_root.findall('.//xs:complexType', namespaces=ns):
             name = complex_type.get('name')
             if name:
@@ -159,6 +267,9 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
                     'description': elem_description
                 }
         
+        # Store path-based info in type_info for later use
+        type_info['_paths'] = path_based_info
+        
         return type_info
     except Exception as e:
         print(f"Error processing {xsd_path}: {e}")
@@ -195,6 +306,45 @@ def get_cardinality(min_occurs, max_occurs):
         return '1..*'
     else:
         return f"{min_occurs}..{max_occurs}"
+
+
+def get_xml_element_path(element):
+    """Get the logical XPath path for an XML element, excluding document wrapper"""
+    path_parts = []
+    current = element
+    found_logical_root = False
+    
+    while current is not None:
+        # Get the local name of the element
+        if hasattr(current, 'tag') and not isinstance(current, etree._Comment):
+            try:
+                name = etree.QName(current).localname
+                if name:
+                    # Skip document wrapper elements
+                    if name in ['PublicationDelivery', 'dataObjects', 'CompositeFrame', 'frames', 'ResourceFrame', 'SiteFrame']:
+                        # These are document structure, not logical structure
+                        if name == 'PublicationDelivery':
+                            break
+                        current = current.getparent()
+                        continue
+                    else:
+                        path_parts.insert(0, name)
+                        found_logical_root = True
+            except:
+                pass
+        
+        current = current.getparent()
+        
+        # Stop if we reach the root element (PublicationDelivery in templates)
+        if current is not None and hasattr(current, 'tag'):
+            try:
+                root_name = etree.QName(current).localname
+                if root_name == 'PublicationDelivery':
+                    break
+            except:
+                pass
+    
+    return '/'.join(path_parts) if path_parts else None
 
 
 def search_xsd_files_for_element(base_dir, element_name):
@@ -269,6 +419,69 @@ def search_xsd_files_for_element_with_parent(base_dir, element_name, parent_type
                 except Exception as e:
                     # Skip files that can't be parsed
                     continue
+    
+    return None
+
+
+def find_best_xsd_path_match(xsd_path_info, xml_path, element_name):
+    """Find the best matching XSD path for a given XML path and element name
+    
+    Args:
+        xsd_path_info: The _paths dictionary from loaded XSD type info
+        xml_path: The XML path from the template (e.g., 'stopPlaces/StopPlace/Name')
+        element_name: The element name to match (for debugging/info)
+        
+    Returns:
+        The best matching XSD metadata, or None if not found
+    """
+    if not xsd_path_info or not xml_path:
+        return None
+    
+    # Try exact path match first (xml_path is the full path including element name)
+    if xml_path in xsd_path_info:
+        return xml_path, xsd_path_info[xml_path]
+    
+    # Try path variations by removing parts from the end
+    path_parts = xml_path.split('/')
+    for i in range(1, len(path_parts)):
+        shortened_path = '/'.join(path_parts[:-i])
+        if shortened_path in xsd_path_info:
+            return shortened_path, xsd_path_info[shortened_path]
+    
+    # Try just the element name as fallback
+    if '/' in xml_path:
+        element_only = xml_path.rsplit('/', 1)[-1]
+        if element_only in xsd_path_info:
+            return element_only, xsd_path_info[element_only]
+    
+    return None
+    
+    # Try path variations by removing parts from the end
+    path_parts = xml_path.split('/')
+    for i in range(1, len(path_parts) + 1):
+        shortened_path = '/'.join(path_parts[:-i])
+        if shortened_path in xsd_path_info:
+            elements = xsd_path_info[shortened_path]
+            if element_name in elements:
+                return shortened_path, elements[element_name]
+    
+    # Try path variations by replacing parts with wildcards (for type name variations)
+    # For example, StopPlace might be StopPlace_VersionStructure in XSD
+    parts = xml_path.split('/')
+    for i in range(len(parts)):
+        for pattern in ['_VersionStructure', '_Structure', '_Type']:
+            test_parts = parts.copy()
+            test_parts[i] = test_parts[i] + pattern
+            test_path = '/'.join(test_parts)
+            if test_path in xsd_path_info:
+                elements = xsd_path_info[test_path]
+                if element_name in elements:
+                    return test_path, elements[element_name]
+    
+    # Try the element name alone as a fallback
+    for path, elements in xsd_path_info.items():
+        if element_name in elements:
+            return path, elements[element_name]
     
     return None
 
@@ -700,13 +913,14 @@ def parse_template_file(file_path, xsd_type_info):
             
             return comments
         
-        def process_element(element, level=0, parent_type_context=None):
+        def process_element(element, level=0, parent_type_context=None, xml_path=None):
             """Recursively process an element and its children
             
             Args:
                 element: The XML element to process
                 level: Indentation level for hierarchy
                 parent_type_context: The name of the parent complex type for XSD lookup context
+                xml_path: The XPath path from the root to this element
             """
             # Handle namespace properly
             if hasattr(element, 'tag'):
@@ -714,6 +928,12 @@ def parse_template_file(file_path, xsd_type_info):
             else:
                 return  # Skip non-element nodes
             elem_id = element.get('id')
+            
+            # Build or use the XML path for this element
+            if xml_path is None:
+                xml_path = get_xml_element_path(element)
+            
+            # For children, we'll extend this path
             
             # Define multilingual element names early so we can use it in key generation
             multilingual_element_names = ['Text', 'Description', 'Name', 'ShortName', 'Label', 'Title', 'Subtitle']
@@ -962,7 +1182,10 @@ def parse_template_file(file_path, xsd_type_info):
                 if not is_referenced:
                     for child in element:
                         if isinstance(child, etree._Element) and not isinstance(child, etree._Comment):
-                            process_element(child, level + 1, parent_type_context)
+                            # Extend the XML path for the child
+                            child_name = etree.QName(child).localname
+                            child_xml_path = f"{xml_path}/{child_name}" if xml_path else child_name
+                            process_element(child, level + 1, parent_type_context, child_xml_path)
                 return
             
             # For multilingual elements, keep the element name simple without lang in parentheses
@@ -985,7 +1208,8 @@ def parse_template_file(file_path, xsd_type_info):
                 'level': level,
                 'attributes': attrs_list,
                 'is_deprecated': is_deprecated,
-                'parent_type': parent_type_context  # Add parent type context for XSD lookup
+                'parent_type': parent_type_context,  # Add parent type context for XSD lookup
+                'xml_path': xml_path  # Add XML path from root for path-based matching
             })
             
             # Process children ONLY if not referenced
@@ -1033,7 +1257,10 @@ def parse_template_file(file_path, xsd_type_info):
                     if child_is_multilingual_child:
                         child_parent_type = f"{child_parent_type}|MULTILINGUAL_PARENT" if child_parent_type else "MULTILINGUAL_PARENT"
                     
-                    process_element(child, level + 1, child_parent_type)
+                    # Extend the XML path for the child
+                    child_name = etree.QName(child).localname
+                    child_xml_path = f"{xml_path}/{child_name}" if xml_path else child_name
+                    process_element(child, level + 1, child_parent_type, child_xml_path)
         
         # Start processing from the common ancestor
         # Process the common ancestor element itself
@@ -1136,6 +1363,17 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         # Get parent_type for context-aware metadata lookup
         parent_type = item.get('parent_type')
         
+        # Try path-based matching first if we have xml_path
+        xml_path = item.get('xml_path')
+        xsd_paths = xsd_type_info.get('_paths', {})
+        path_based_metadata = None
+        
+        if xml_path and xsd_paths:
+            path_result = find_best_xsd_path_match(xsd_paths, xml_path, element)
+            if path_result:
+                path, path_metadata = path_result
+                path_based_metadata = path_metadata
+        
         # Try enhanced metadata extraction first if we have XSD path and parent_type
         # This ensures we get context-specific metadata before falling back to generic info
         if xsd_path:
@@ -1147,11 +1385,24 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                     xsd_type = metadata.get('type', xsd_type)
                 if not description:
                     description = metadata.get('description', description)
+            
+            # If we didn't get metadata from parent_type context but have path-based metadata, use it
+            if not metadata and path_based_metadata:
+                metadata = path_based_metadata
+                if not card or card == '1..1':
+                    card = metadata.get('min_occurs', card)
+                    max_occurs = metadata.get('max_occurs', '1')
+                    if card == '1..1':
+                        card = get_cardinality(metadata.get('min_occurs', '1'), metadata.get('max_occurs', '1'))
+                if not xsd_type or xsd_type == 'unknown':
+                    xsd_type = metadata.get('type', xsd_type)
+                if not description:
+                    description = metadata.get('description', description)
         
         # Only use generic xsd_type_info if we didn't get metadata from context-specific lookup
         # AND parent_type was not specified (for top-level elements)
         # If we have a parent_type but no metadata, don't use generic xsd_info to avoid wrong context
-        if not parent_type:
+        if not parent_type and not path_based_metadata:
             # For elements without parent context, use generic xsd_info
             if xsd_info:
                 # Use XSD description if available
@@ -1294,8 +1545,18 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         description = item['description']
         note = item.get('note', '')
         
-        # Get parent_type for context-aware metadata lookup
+        # Get parent_type and xml_path for context-aware metadata lookup
         parent_type = item.get('parent_type')
+        xml_path = item.get('xml_path')
+        xsd_paths = xsd_type_info.get('_paths', {})
+        path_based_metadata = None
+        
+        # Try path-based matching first if we have xml_path
+        if xml_path and xsd_paths:
+            path_result = find_best_xsd_path_match(xsd_paths, xml_path, element)
+            if path_result:
+                path, path_metadata = path_result
+                path_based_metadata = path_metadata
         
         # Try enhanced metadata extraction first if we have XSD path and parent_type
         # This ensures we get context-specific metadata before falling back to generic info
@@ -1308,6 +1569,16 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
                     xsd_type = metadata.get('type', xsd_type)
                 if not description:
                     description = metadata.get('description', description)
+            
+            # If we didn't get metadata from parent_type context but have path-based metadata, use it
+            if not metadata and path_based_metadata:
+                metadata = path_based_metadata
+                if not card or card == '1..1':
+                    card = get_cardinality(metadata.get('min_occurs', '1'), metadata.get('max_occurs', '1'))
+                if not xsd_type or xsd_type == 'unknown':
+                    xsd_type = metadata.get('type', xsd_type)
+                if not description:
+                    description = metadata.get('description', description)
         
         # Get XSD info for the element
         xsd_info = xsd_type_info.get(element, {})
@@ -1315,7 +1586,7 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         # Only use generic xsd_type_info if we didn't get metadata from context-specific lookup
         # AND parent_type was not specified (for top-level elements)
         # If we have a parent_type but no metadata, don't use generic xsd_info to avoid wrong context
-        if not parent_type:
+        if not parent_type and not path_based_metadata:
             # For elements without parent context, use generic xsd_info
             if xsd_info:
                 # Use XSD description if available
