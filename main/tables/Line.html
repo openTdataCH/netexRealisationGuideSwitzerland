@@ -100,7 +100,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:dateTime</td>
-      <td>Start date of AVAILABILITY CONDITION.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -109,7 +109,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:dateTime</td>
-      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -136,7 +136,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>xsd:normalizedString</td>
-      <td>Identifier of value e.g. System.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -145,7 +145,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>Value for alternative key.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -181,7 +181,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of LINE.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>contains attribute D T from HRDF. Is not translated on purpose.</td>
     </tr>
     <tr>
@@ -190,7 +190,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Short name of LINE.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>contains the LinieKurzName (attribut N T in HRDF)</td>
     </tr>
     <tr>
@@ -199,16 +199,16 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>AllModesEnumeration</td>
-      <td>PUBLIC TRANSPORT MODE of LINE.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
       <td> </td>
       <td>TransportSubmode</td>
       <td>optional</td>
-      <td>0..*</td>
+      <td>1..1</td>
       <td>TransportSubmodeStructure</td>
-      <td> </td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>the mapping excel describe how to use the TransportSubmode</td>
     </tr>
     <tr>
@@ -226,16 +226,16 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>PublicCodeStructure</td>
-      <td>Identifier of LINE.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>Contains LinieLangName (attribute LT from HRDF)</td>
     </tr>
     <tr>
       <td> </td>
       <td>OperatorRef</td>
       <td>expected</td>
-      <td>0..*</td>
+      <td>1..1</td>
       <td>OperatorRefStructure</td>
-      <td> </td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>The operator is the transport organisation that really “owns” the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney. Is redundant to the responsibilitySetRef on purpose.</td>
     </tr>
     <tr>

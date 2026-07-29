@@ -10,8 +10,8 @@ Can be a platform, track, sector group or sector. id is a SLOID whenever possibl
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | keyList | expected | 0..1 | KeyListStructure | STOP PLACEs in frame. |  |
 | + | KeyValue | expected | 1..* | KeyValueStructure | STOP PLACEs in frame. | When no SLOID is possible it may be omitted. |
-| ++ | Key | mandatory | 1..1 | xsd:normalizedString | Identifier of value e.g. System. | SLOID is mandatory key |
-| ++ | Value | mandatory | 0..1 | xsd:anyType | Value for alternative key. |  |
+| ++ | Key | mandatory | 0..1 | xsd:normalizedString | STOP PLACEs in frame. | SLOID is mandatory key |
+| ++ | Value | mandatory | 0..1 | xsd:anyType | STOP PLACEs in frame. |  |
 |  | privateCodes | expected | 0..1 | PrivateCodesStructure | STOP PLACEs in frame. |  |
 | + | PrivateCode | expected | 0..* | PrivateCodeStructure | STOP PLACEs in frame. |  |
 | ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |

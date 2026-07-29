@@ -8,4 +8,4 @@
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | @attributeName | mandatory | 1..1 | xsd:string | Attribute attributeName | |
 |  | @useForLanguage | mandatory | 1..1 | xsd:string | Attribute useForLanguage | |
-|  | Text | mandatory | 0..1 | MultilingualString | Name of the entity. |  |
+|  | Text | mandatory | 0..1 | MultilingualString | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |

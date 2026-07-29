@@ -8,7 +8,7 @@
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | Text | expected | 0..1 | MultilingualString | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | expected | 0..* | MultilingualString | Name of the entity. |  |
+| + | Text | expected | 0..* | MultilingualString | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | PublicCode | mandatory | 0..1 | PublicCodeStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | The public code is transmitted when it is to be published and when it is the type of notice 10. Only 1 and 10 aree allowed. |
 |  | ShortCode | expected | 0..1 | CleardownCodeType | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | A duplication, but we want it. "A__" indicates an offer based on BS KI |

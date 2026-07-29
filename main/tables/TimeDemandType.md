@@ -8,7 +8,7 @@ TimeDemandType assigns a timing behaviour to a ServiceJourney
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Description | optional | 0..1 | MultilingualString | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | Can be used if there exists a decription of the pattern. |
+|  | Description | optional | 0..1 | MultilingualString |  | Can be used if there exists a decription of the pattern. |
 |  | runTimes | expected | 0..1 | vehicleJourneyRunTimes_RelStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | The run time on the TimingLinks |
 | + | JourneyRunTime | expected | 0..* | unknown | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
 | ++ | TimingLinkRef | mandatory | 1..1 | TimingLinkRefStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | The timing link that is ued here and that that does have a given run time |

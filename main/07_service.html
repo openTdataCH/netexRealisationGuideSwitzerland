@@ -216,7 +216,7 @@ class ServiceJourney {
       <td>expected</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td> </td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>We use GroupOfLine for the modeling of mixed lines</td>
     </tr>
     <tr>
@@ -252,7 +252,7 @@ class ServiceJourney {
       <td>mandatory</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td> </td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part.</td>
     </tr>
     <tr>
@@ -315,7 +315,7 @@ class ServiceJourney {
       <td>expected</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td> </td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>every different handling of the link needs a different timing link e.g. bus vs tram</td>
     </tr>
     <tr>
@@ -369,7 +369,7 @@ class ServiceJourney {
       <td>expected</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td> </td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>if notices are present, one Notice must be.</td>
     </tr>
   </tbody>
@@ -529,7 +529,7 @@ class ServiceJourney {
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:dateTime</td>
-      <td>Start date of AVAILABILITY CONDITION.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -538,7 +538,7 @@ class ServiceJourney {
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:dateTime</td>
-      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -565,7 +565,7 @@ class ServiceJourney {
       <td>expected</td>
       <td>1..1</td>
       <td>xsd:normalizedString</td>
-      <td>Identifier of value e.g. System.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -574,7 +574,7 @@ class ServiceJourney {
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>Value for alternative key.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -610,7 +610,7 @@ class ServiceJourney {
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of LINE.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>contains attribute D T from HRDF. Is not translated on purpose.</td>
     </tr>
     <tr>
@@ -619,7 +619,7 @@ class ServiceJourney {
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Short name of LINE.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>contains the LinieKurzName (attribut N T in HRDF)</td>
     </tr>
     <tr>
@@ -628,16 +628,16 @@ class ServiceJourney {
       <td>mandatory</td>
       <td>0..1</td>
       <td>AllModesEnumeration</td>
-      <td>PUBLIC TRANSPORT MODE of LINE.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
       <td> </td>
       <td>TransportSubmode</td>
       <td>optional</td>
-      <td>0..*</td>
+      <td>1..1</td>
       <td>TransportSubmodeStructure</td>
-      <td> </td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>the mapping excel describe how to use the TransportSubmode</td>
     </tr>
     <tr>
@@ -655,16 +655,16 @@ class ServiceJourney {
       <td>mandatory</td>
       <td>0..1</td>
       <td>PublicCodeStructure</td>
-      <td>Identifier of LINE.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>Contains LinieLangName (attribute LT from HRDF)</td>
     </tr>
     <tr>
       <td> </td>
       <td>OperatorRef</td>
       <td>expected</td>
-      <td>0..*</td>
+      <td>1..1</td>
       <td>OperatorRefStructure</td>
-      <td> </td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>The operator is the transport organisation that really “owns” the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney. Is redundant to the responsibilitySetRef on purpose.</td>
     </tr>
     <tr>
@@ -1053,7 +1053,7 @@ class ServiceJourney {
       <td>optional</td>
       <td>1..1</td>
       <td>xsd:normalizedString</td>
-      <td>Identifier of value e.g. System.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1062,7 +1062,7 @@ class ServiceJourney {
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>Value for alternative key.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1089,7 +1089,7 @@ class ServiceJourney {
       <td>optional</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of Stop Point.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay.</td>
     </tr>
     <tr>
@@ -1216,7 +1216,7 @@ class ServiceJourney {
       <td>mandatory</td>
       <td>0..1</td>
       <td>StopPlaceRefStructure</td>
-      <td> </td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1225,7 +1225,7 @@ class ServiceJourney {
       <td>expected</td>
       <td>0..1</td>
       <td>QuayRefStructure</td>
-      <td>QUAY to which SCHEDULED STOP POINT is to be assigned.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>Not having the track may be problematic, but it can happen</td>
     </tr>
   </tbody>
@@ -1711,9 +1711,9 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
       <td> </td>
       <td>ToPointRef</td>
       <td>mandatory</td>
-      <td>0..*</td>
+      <td>1..1</td>
       <td>VehicleMeetingPointRefStructure</td>
-      <td>Identifier of POINT at which LINK ends.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this</td>
     </tr>
     <tr>
@@ -1944,7 +1944,7 @@ needs to be added for that too.</li>
       <td>optional</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td>Process associated with a Place, typically giving rise to a delay to the traveller.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1962,7 +1962,7 @@ needs to be added for that too.</li>
       <td>optional</td>
       <td>0..*</td>
       <td>BookingArrangementRefStructure</td>
-      <td> </td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td>Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information.</td>
     </tr>
     <tr>
@@ -1971,7 +1971,7 @@ needs to be added for that too.</li>
       <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td> </td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2108,7 +2108,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>optional</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td> </td>
       <td>Can be used if there exists a decription of the pattern.</td>
     </tr>
     <tr>
@@ -2296,7 +2296,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>expected</td>
       <td>0..*</td>
       <td>MultilingualString</td>
-      <td>Name of the entity.</td>
+      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2458,9 +2458,9 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td> </td>
       <td>NoticeRef</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>NoticeRefStructure</td>
-      <td> </td>
+      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
       <td> </td>
     </tr>
     <tr>

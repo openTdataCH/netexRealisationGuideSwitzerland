@@ -136,8 +136,8 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ResponsibilitySet.html">ResponsibilitySet</a></td>
       <td>mandatory</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>responsibilitySetsInFrame_RelStructure</td>
+      <td>RESPONSIBILITY SETs used in frame.</td>
       <td>Each combination of Authority and Operator needs a ResponsibilitySet.</td>
     </tr>
     <tr>
@@ -154,8 +154,8 @@
       <td>ValueSet</td>
       <td>expected</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>typesOfValueInFrame_RelStructure</td>
+      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
       <td>We need a TypeOfNotice ValueSet.</td>
     </tr>
     <tr>
@@ -181,8 +181,8 @@
       <td>ValueSet</td>
       <td>expected</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>typesOfValueInFrame_RelStructure</td>
+      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
       <td>We need a TypeOfProductCategory ValueSet</td>
     </tr>
     <tr>
@@ -190,8 +190,8 @@
       <td>ValueSet</td>
       <td>expected</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>typesOfValueInFrame_RelStructure</td>
+      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
       <td>We expect a TypsOfPlace Valueset</td>
     </tr>
     <tr>
@@ -226,8 +226,8 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
       <td>optional</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>siteFacilitySetsInFrame_RelStructure</td>
+      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
       <td> </td>
     </tr>
     <tr>
@@ -244,8 +244,8 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
       <td>optional</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>serviceFacilitySetsInFrame_RelStructure</td>
+      <td>SERVICE FACILITies in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -460,8 +460,8 @@ We use this element to  describe the different roles of the participating compan
       <td>ResponsibilityRoleAssignment</td>
       <td>mandatory</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>responsibilitySetsInFrame_RelStructure</td>
+      <td>RESPONSIBILITY SETs used in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -781,9 +781,9 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>++</td>
       <td>Key</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>xsd:normalizedString</td>
-      <td>Identifier of value e.g. System.</td>
+      <td>ORGANISATIONs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -792,7 +792,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>Value for alternative key.</td>
+      <td>ORGANISATIONs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1000,7 +1000,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>SERVICE FACILITies in frame.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -1223,7 +1223,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td> </td>
       <td>Description is optional</td>
     </tr>
     <tr>

@@ -13,7 +13,7 @@ Used for joining and splitting of trains. Check latest policy - InterchangeRule 
 |  | AtStopPointRef | mandatory | 0..1 | ScheduledStopPointRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 |  | FromJourneyRef | mandatory | 1..1 | JourneyRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 |  | ToJourneyRef | mandatory | 1..1 | JourneyRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-|  | Description | optional | 0..1 | MultilingualString | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+|  | Description | optional | 0..1 | MultilingualString |  |  |
 |  | EarliestTime | optional | 0..1 | xsd:time | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 |  | LatestTime | optional | 0..1 | xsd:time | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 |  | Reason | optional | 0..1 | ReasonForMeetingEnumeration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |

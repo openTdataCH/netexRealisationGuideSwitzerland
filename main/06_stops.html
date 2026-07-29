@@ -151,8 +151,8 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TopographicPlace.html">TopographicPlace</a></td>
       <td>expected</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>topographicPlacesInFrame_RelStructure</td>
+      <td>PLACEs in frame.</td>
       <td>Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces.</td>
     </tr>
     <tr>
@@ -169,8 +169,8 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/StopPlace.html">StopPlace</a></td>
       <td>mandatory</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td>A STOP PLACE.</td>
+      <td>stopPlacesInFrame_RelStructure</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -187,8 +187,8 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
       <td>optional</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>siteFacilitySetsInFrame_RelStructure</td>
+      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
       <td> </td>
     </tr>
   </tbody>
@@ -282,7 +282,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:dateTime</td>
-      <td>Start date of AVAILABILITY CONDITION.</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -291,7 +291,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:dateTime</td>
-      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -316,9 +316,9 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>++</td>
       <td>Key</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>xsd:normalizedString</td>
-      <td>Identifier of value e.g. System.</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -327,7 +327,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>Value for alternative key.</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -363,7 +363,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of STOP PLACE.</td>
+      <td>STOP PLACEs in frame.</td>
       <td>The official stop name. If you have different versions one needs to use AlternativeName</td>
     </tr>
     <tr>
@@ -397,18 +397,18 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>++</td>
       <td>Longitude</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>LongitudeType</td>
-      <td>Longitude from Greenwich Meridian. -180 (West) to +180 (East). Decimal degrees. eg 2.356</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
       <td>++</td>
       <td>Latitude</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>LatitudeType</td>
-      <td>Latitude from equator. -90 (South) to +90 (North). Decimal degrees. eg 56.356</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -417,7 +417,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>optional</td>
       <td>0..1</td>
       <td>AltitudeType</td>
-      <td>Altitude (metres) Above sea level.</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -434,8 +434,8 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/AlternativeName.html">AlternativeName</a></td>
       <td>optional</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td>ALTERNATIVE NAME for Element.</td>
+      <td>stopPlacesInFrame_RelStructure</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -453,7 +453,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>optional</td>
       <td>0..1</td>
       <td>StopTypeEnumeration</td>
-      <td>Type of STOP PLACE.</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -488,8 +488,8 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Quay.html">Quay</a></td>
       <td>expected</td>
       <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
+      <td>stopPlacesInFrame_RelStructure</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -667,9 +667,9 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>++</td>
       <td>Key</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>xsd:normalizedString</td>
-      <td>Identifier of value e.g. System.</td>
+      <td>STOP PLACEs in frame.</td>
       <td>SLOID is mandatory key</td>
     </tr>
     <tr>
@@ -678,7 +678,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>Value for alternative key.</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -908,7 +908,7 @@ as its parent.</li>
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of the TOPOGRAPHIC PLACE.</td>
+      <td>PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -917,7 +917,7 @@ as its parent.</li>
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Short name for TOPOGRAPHIC PLACE to be used when qualifying children.</td>
+      <td>PLACEs in frame.</td>
       <td>Abbreviation of the canton (leave empty if TopographicPlaceType is country)</td>
     </tr>
     <tr>
@@ -1016,18 +1016,18 @@ as its parent.</li>
       <td>+</td>
       <td>Longitude</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>LongitudeType</td>
-      <td>Longitude from Greenwich Meridian. -180 (West) to +180 (East). Decimal degrees. eg 2.356</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>Latitude</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>LatitudeType</td>
-      <td>Latitude from equator. -90 (South) to +90 (North). Decimal degrees. eg 56.356</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1036,7 +1036,7 @@ as its parent.</li>
       <td>optional</td>
       <td>0..1</td>
       <td>AltitudeType</td>
-      <td>Altitude (metres) Above sea level.</td>
+      <td>STOP PLACEs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1045,7 +1045,7 @@ as its parent.</li>
       <td>optional</td>
       <td>0..1</td>
       <td>gml:DirectPositionType</td>
-      <td> </td>
+      <td>STOP PLACEs in frame.</td>
       <td>EPSG:2056 is LV95. We use it in the INFO+ export.</td>
     </tr>
     <tr>

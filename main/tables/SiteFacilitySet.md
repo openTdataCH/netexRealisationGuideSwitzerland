@@ -10,7 +10,7 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | validityConditions | optional | 0..1 | validityConditions_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 |  |
 | + | [AvailabilityCondition](AvailabilityCondition.md) | optional | 0..* | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 |  |
-|  | Description | optional | 0..1 | MultilingualString | SITE FACILITY SETs in frame . +v1.2.2 | Description is optional |
+|  | Description | optional | 0..1 | MultilingualString |  | Description is optional |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | + | Text | optional | 0..* | MultilingualString | SITE FACILITY SETs in frame . +v1.2.2 |  |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |

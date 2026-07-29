@@ -10,7 +10,7 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | Extensions | expected | 0..1 | ExtensionsStructure | SERVICE FACILITies in frame. | Two elements used in HRDF for ordering facilities |
 | + | Priority | expected | 0..1 | InterchangePriorityType | SERVICE FACILITies in frame. |  |
-|  | Description | expected | 0..1 | MultilingualString | SERVICE FACILITies in frame. |  |
+|  | Description | expected | 0..1 | MultilingualString |  |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | + | Text | optional | 0..* | MultilingualString | SERVICE FACILITies in frame. |  |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |

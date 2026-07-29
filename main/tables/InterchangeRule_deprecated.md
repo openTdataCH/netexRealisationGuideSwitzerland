@@ -14,13 +14,13 @@ transfer times between Line/Directions at a given stop (UMSTEIGL)
 |  | MinimumTransferTime | expected | 0..1 | xsd:duration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 |  | MaximumTransferTime | expected | 0..1 | xsd:duration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 |  | timings | optional | 0..1 | interchangeRuleTimings_RelStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-| + | InterchangeRuleTiming | optional | 0..* | unknown | Timings for an INTERCHANGE RULE for a given TIME DEMAND TYPE. |  |
+| + | InterchangeRuleTiming | optional | 0..* | unknown | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | ++ | TimebandRef | mandatory | 1..1 | TimebandRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Timeband defined in ServiceCalendarFrame |
 |  | FeederFilter | mandatory | 0..1 | InterchangeRuleParameterStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | StopPlaceRef | mandatory | 0..1 | StopPlaceRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | LineInDirectionRef | expected | 1..1 | LineInDirectionRef_Structure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-| ++ | LineRef | mandatory | 0..1 | LineRefStructure |  |  |
-| ++ | DirectionRef | optional | 0..1 | DirectionRefStructure |  |  |
+| ++ | LineRef | mandatory | 1..1 | LineRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+| ++ | DirectionRef | optional | 1..1 | DirectionRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | AdjacentStopPlaceRef | optional | 0..1 | StopPlaceRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 | + | ServiceJourneyRef | optional | 1..1 | ServiceJourneyRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
 |  | DistributorFilter | mandatory | 0..1 | InterchangeRuleParameterStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |

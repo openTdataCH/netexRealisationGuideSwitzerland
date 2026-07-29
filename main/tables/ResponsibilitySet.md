@@ -12,6 +12,6 @@ Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLeg
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | PrivateCode | expected | 0..1 | PrivateCodeStructure | RESPONSIBILITY SETs used in frame. |  |
 |  | roles | mandatory | 0..1 | responsibilityRoleAssignments_RelStructure | RESPONSIBILITY SETs used in frame. |  |
-| + | ResponsibilityRoleAssignment | mandatory | 0..* | unknown |  |  |
+| + | ResponsibilityRoleAssignment | mandatory | 0..* | responsibilitySetsInFrame_RelStructure | RESPONSIBILITY SETs used in frame. |  |
 | ++ | StakeholderRoleType | mandatory | 0..1 | StakeholderRoleTypeListOfEnumerations | RESPONSIBILITY SETs used in frame. | "EntityLegalOwnership" must be defined once and "Operator" should be too. |
 | ++ | ResponsibleOrganisationRef | mandatory | 0..1 | OrganisationRefStructure | RESPONSIBILITY SETs used in frame. |  |

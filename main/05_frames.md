@@ -33,8 +33,8 @@ For PublicationDelivery have a good look at how the attributes must be done in t
 |  | PublicationTimestamp | mandatory | 1..1 | xsd:dateTime | Time of output of data. |  |
 |  | ParticipantRef | mandatory | 1..1 | siri:ParticipantCodeType | Identifier of system requesting Data. |  |
 |  | Description | optional | 0..1 | MultilingualString |  |  |
-|  | dataObjects | mandatory | 0..1 | dataObjects |  |  |
-| + | [CompositeFrame](./tables/CompositeFrame.md) | mandatory | 0..* | unknown |  |  |
+|  | dataObjects | mandatory | 0..1 | unknown | NeTEx Entities of any type. |  |
+| + | [CompositeFrame](./tables/CompositeFrame.md) | mandatory | 0..1 | unknown | NeTEx Entities of any type. |  |
 
 
 

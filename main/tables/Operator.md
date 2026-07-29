@@ -10,8 +10,8 @@ We will use this organisation also in AuthorityRef. The problem is that the sboi
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | keyList | expected | 0..1 | KeyListStructure | ORGANISATIONs in frame. |  |
 | + | KeyValue | expected | 1..* | KeyValueStructure | ORGANISATIONs in frame. |  |
-| ++ | Key | expected | 1..1 | xsd:normalizedString | Identifier of value e.g. System. |  |
-| ++ | Value | expected | 0..1 | xsd:anyType | Value for alternative key. |  |
+| ++ | Key | expected | 0..1 | xsd:normalizedString | ORGANISATIONs in frame. |  |
+| ++ | Value | expected | 0..1 | xsd:anyType | ORGANISATIONs in frame. |  |
 |  | privateCodes | expected | 0..1 | PrivateCodesStructure | ORGANISATIONs in frame. |  |
 | + | PrivateCode | expected | 0..* | PrivateCodeStructure | ORGANISATIONs in frame. | Busines organisation |
 |  | PrivateCode | expected | 0..1 | PrivateCodeStructure | ORGANISATIONs in frame. |  |
