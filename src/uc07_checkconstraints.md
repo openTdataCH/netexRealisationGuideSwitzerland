@@ -13,7 +13,6 @@ We can have `CheckConstraint`s on [`ServiceJourney`](09_timetable.md#servicejour
 We don't reference `CheckConstriants` but they are always instantiated in the `ServiceJourney` or `ServiceJourneyPattern`.
 
 
-
 ## CheckConstraint
 *→ [Glossary definition](A4_annex_glossary.md#checkconstraint)*
 
