@@ -1539,6 +1539,7 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         
         # NEW: Try path-based XSD element lookup using the new function
         path_based_metadata = None
+        metadata = None  # Initialize to avoid UnboundLocalError
         if xsd_doc and xml_path:
             path_based_metadata = get_element_metadata_from_xsd_by_path(xsd_doc, xml_path)
         
@@ -1607,7 +1608,7 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         # If we have parent_type but didn't get metadata from get_element_metadata,
         # and description is still empty, try generic xsd_info as fallback
         # BUT only for type, NOT for description (to avoid wrong context descriptions)
-        elif not metadata and xsd_info:
+        if parent_type and not metadata and xsd_info:
             # Don't use xsd_info description for elements with parent_type to avoid wrong context
             # Only use type and cardinality from xsd_info
             if 'min_occurs' in xsd_info and 'max_occurs' in xsd_info:
@@ -1736,6 +1737,7 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         
         # NEW: Try path-based XSD element lookup using the new function first
         path_based_metadata = None
+        metadata = None  # Initialize to avoid UnboundLocalError
         if xsd_doc and xml_path:
             path_based_metadata = get_element_metadata_from_xsd_by_path(xsd_doc, xml_path)
         
@@ -1803,7 +1805,7 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         # If we have parent_type but didn't get metadata from get_element_metadata,
         # and description is still empty, try generic xsd_info as fallback
         # BUT only for type, NOT for description (to avoid wrong context descriptions)
-        elif not metadata and xsd_info:
+        if parent_type and not metadata and xsd_info:
             # Don't use xsd_info description for elements with parent_type to avoid wrong context
             # Only use type and cardinality from xsd_info
             if 'min_occurs' in xsd_info and 'max_occurs' in xsd_info:
@@ -1932,32 +1934,10 @@ def check_referenced_files_exist(data, template_dir):
 
 
 def process_ch_profile_templates(input_dir: str, output_dir: str, xsd_path: str, xsd_type_info):
-    """Process ch-profile template files and generate MD files"""
-    ch_profile_files = [f for f in os.listdir(input_dir) if f.startswith('ch-profile_') and f.endswith('.xml')]
-    
-    for xml_file in ch_profile_files:
-        print(f"Processing ch-profile template: {xml_file}")
-        file_path = os.path.join(input_dir, xml_file)
-        
-        # Parse template
-        data = parse_template_file(file_path, xsd_type_info)
-        
-        if data:
-            # Generate markdown filename (remove .xml, add .md)
-            md_filename = os.path.splitext(xml_file)[0] + '.md'
-            md_path = os.path.join(output_dir, md_filename)
-            
-            # Generate markdown content
-            element_name = os.path.splitext(xml_file)[0]
-            markdown_content = generate_markdown_table(data, element_name, xsd_path, xsd_type_info)
-            
-            # Write to file
-            with open(md_path, 'w', encoding='utf-8') as f:
-                f.write(markdown_content)
-            
-            print(f"Generated ch-profile MD: {md_path}")
-        else:
-            print(f"No data extracted from ch-profile template {xml_file}")
+    """Process ch-profile template files - but don't build tables for them as requested"""
+    # As per user request: if the xml-file name starts with ch-profile, don't try to build a table
+    # So we skip processing of ch-profile files entirely
+    print("Skipping ch-profile templates (no table building requested)")
 
 
 def build_markdown_tables(input_path: str, output_path: str, xsd_path: str):
@@ -1974,7 +1954,7 @@ def build_markdown_tables(input_path: str, output_path: str, xsd_path: str):
     process_ch_profile_templates(input_path, output_path, xsd_path, xsd_type_info)
     
     # Process all XML files in input directory
-    xml_files = [f for f in os.listdir(input_path) if f.endswith('.xml') and not f.startswith('ch-profile_')]
+    xml_files = [f for f in os.listdir(input_path) if f.endswith('.xml') and not f.startswith(('ch-profile', 'ch-profile_'))]
     
     for xml_file in xml_files:
         print(f"Processing {xml_file}")
