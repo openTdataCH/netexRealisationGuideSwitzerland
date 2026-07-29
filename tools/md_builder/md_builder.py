@@ -280,6 +280,171 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
         return {}
 
 
+def get_element_metadata_from_xsd_by_path(xsd_doc, xml_path):
+    """Get element metadata from XSD using the full XML path to find the correct element definition.
+    
+    This function constructs an XPath expression based on the XML path and searches for the
+    corresponding element in the XSD. It then extracts type, minOccurs, maxOccurs, and description.
+    
+    Args:
+        xsd_doc: Parsed XSD document (lxml.etree._ElementTree or _Element)
+        xml_path: The XML path from the template (e.g., 'stopPlaces/StopPlace/quays/Quay')
+        
+    Returns:
+        Dictionary with metadata (type, min_occurs, max_occurs, description) or None if not found
+    """
+    if xsd_doc is None or not xml_path:
+        return None
+    
+    namespaces = {'xs': 'http://www.w3.org/2001/XMLSchema'}
+    
+    # Convert XML path to XSD XPath expression
+    # XML path: stopPlaces/StopPlace/quays/Quay
+    # XSD XPath: //xs:element[@name='stopPlaces']//xs:element[@name='StopPlace']//xs:element[@name='quays']//xs:element[@name='Quay']
+    path_parts = xml_path.split('/')
+    xpath_expr_parts = []
+    
+    for part in path_parts:
+        # Handle both direct element names and ref attributes
+        xpath_expr_parts.append(f"xs:element[@name='{part}']")
+        # Also try with ref attribute for referenced elements
+        xpath_expr_parts.append(f"xs:element[@ref='{part}']")
+        xpath_expr_parts.append(f"xs:element[contains(@ref, ':{part}')]")
+    
+    # Build XPath expressions - try each possible combination
+    # Start with the most specific (all parts as direct children)
+    direct_xpath = f"//{'//'.join([f"xs:element[@name='{part}']" for part in path_parts])}"
+    elem_def = xsd_doc.xpath(direct_xpath, namespaces=namespaces)
+    
+    if not elem_def:
+        # Try with a more flexible approach - each part can be either @name or @ref
+        # Build multiple XPath expressions and try them in order
+        xpath_options = []
+        
+        def build_xpath_options(parts, index=0, current_parts=None):
+            if current_parts is None:
+                current_parts = []
+            if index == len(parts):
+                xpath_options.append('//' + '//'.join(current_parts))
+                return
+            
+            part = parts[index]
+            # Try @name first
+            build_xpath_options(parts, index + 1, current_parts + [f"xs:element[@name='{part}']"])
+            # Try @ref
+            build_xpath_options(parts, index + 1, current_parts + [f"xs:element[@ref='{part}']"])
+            # Try @ref with namespace
+            build_xpath_options(parts, index + 1, current_parts + [f"xs:element[contains(@ref, ':{part}')]"])
+        
+        build_xpath_options(path_parts)
+        
+        for option in xpath_options:
+            elem_def = xsd_doc.xpath(option, namespaces=namespaces)
+            if elem_def:
+                break
+    
+    if not elem_def:
+        # Try a more permissive search - look for element with this name anywhere,
+        # but check if it's in a context that matches the path
+        element_name = path_parts[-1]  # The last part is the element we're looking for
+        all_elements = xsd_doc.xpath(f"//xs:element[@name='{element_name}' or @ref='{element_name}']", namespaces=namespaces)
+        
+        if all_elements:
+            # Try to find the best match by checking parent context
+            for candidate in all_elements:
+                # Check if this element has ancestors that match the path
+                candidate_path = _get_xsd_element_path(candidate)
+                if candidate_path and candidate_path.endswith(xml_path):
+                    elem_def = [candidate]
+                    break
+                # Also check if the candidate's path matches any suffix of the xml_path
+                elif candidate_path and xml_path.endswith(candidate_path):
+                    elem_def = [candidate]
+                    break
+            
+            if not elem_def:
+                # If no perfect match, use the first candidate as fallback
+                elem_def = [all_elements[0]]
+    
+    if not elem_def:
+        return None
+    
+    element = elem_def[0]
+    
+    # Extract type attribute
+    elem_type = element.get('type', '')
+    if not elem_type:
+        # Try to resolve type from ref attribute
+        ref = element.get('ref', '')
+        if ref:
+            ref_name = ref.split(':')[-1]  # Remove namespace prefix
+            # Find the referenced element
+            ref_element = xsd_doc.xpath(f"//xs:element[@name='{ref_name}']", namespaces=namespaces)
+            if ref_element:
+                elem_type = ref_element[0].get('type', '')
+    
+    if not elem_type:
+        # Try to get type from inline complexType or simpleType
+        complex_type = element.find('xs:complexType', namespaces=namespaces)
+        if complex_type is not None:
+            elem_type = complex_type.get('name', '')
+        simple_type = element.find('xs:simpleType', namespaces=namespaces)
+        if simple_type is not None:
+            elem_type = simple_type.get('name', '')
+        
+        if not elem_type:
+            # Try without namespace
+            complex_type = element.find('complexType')
+            if complex_type is not None:
+                elem_type = complex_type.get('name', '')
+            simple_type = element.find('simpleType')
+            if simple_type is not None:
+                elem_type = simple_type.get('name', '')
+    
+    # Extract cardinality
+    min_occurs = element.get('minOccurs', '1')
+    max_occurs = element.get('maxOccurs', '1')
+    
+    # Extract description from annotation/documentation
+    description = ''
+    annotation = element.find('xs:annotation', namespaces=namespaces)
+    if annotation is None:
+        annotation = element.find('annotation')
+    
+    if annotation is not None:
+        doc = annotation.find('xs:documentation', namespaces=namespaces)
+        if doc is None:
+            doc = annotation.find('documentation')
+        
+        if doc is not None and doc.text:
+            description = doc.text.strip()
+    
+    # If no description found, try to follow substitution group chain
+    if not description:
+        substitution_group = element.get('substitutionGroup')
+        if substitution_group:
+            # Find the head element
+            head_name = substitution_group.split(':')[-1]
+            head_element = xsd_doc.xpath(f"//xs:element[@name='{head_name}']", namespaces=namespaces)
+            if head_element:
+                annotation = head_element[0].find('xs:annotation', namespaces=namespaces)
+                if annotation is not None:
+                    doc = annotation.find('xs:documentation', namespaces=namespaces)
+                    if doc is not None and doc.text:
+                        description = doc.text.strip()
+    
+    # Clean up type name (remove namespace prefix if present)
+    if elem_type and ':' in elem_type:
+        elem_type = elem_type.split(':')[-1]
+    
+    return {
+        'type': elem_type if elem_type else 'unknown',
+        'min_occurs': min_occurs,
+        'max_occurs': max_occurs,
+        'description': sanitize_for_markdown(description)
+    }
+
+
 def sanitize_for_markdown(text):
     """Sanitize text for markdown table cells by escaping pipes and replacing newlines with spaces"""
     if text is None:
@@ -1292,6 +1457,14 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
     if not data:
         return ''
     
+    # Load the XSD document for path-based element lookup
+    xsd_doc = None
+    if xsd_path and os.path.exists(xsd_path):
+        try:
+            xsd_doc = etree.parse(xsd_path)
+        except Exception as e:
+            print(f"Warning: Could not parse XSD {xsd_path}: {e}")
+    
     # Separate data into top-level elements, attributes, and child elements
     top_level_elements = []
     attributes = []
@@ -1360,23 +1533,35 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         # Get XSD info for the element
         xsd_info = xsd_type_info.get(element, {})
         
-        # Get parent_type for context-aware metadata lookup
+        # Get parent_type and xml_path for context-aware metadata lookup
         parent_type = item.get('parent_type')
-        
-        # Try path-based matching first if we have xml_path
         xml_path = item.get('xml_path')
-        xsd_paths = xsd_type_info.get('_paths', {})
-        path_based_metadata = None
         
-        if xml_path and xsd_paths:
+        # NEW: Try path-based XSD element lookup using the new function
+        path_based_metadata = None
+        if xsd_doc and xml_path:
+            path_based_metadata = get_element_metadata_from_xsd_by_path(xsd_doc, xml_path)
+        
+        # Try path-based matching from pre-built paths as fallback
+        xsd_paths = xsd_type_info.get('_paths', {})
+        if not path_based_metadata and xml_path and xsd_paths:
             path_result = find_best_xsd_path_match(xsd_paths, xml_path, element)
             if path_result:
                 path, path_metadata = path_result
                 path_based_metadata = path_metadata
         
+        # NEW: Use path-based metadata first if available
+        if path_based_metadata:
+            if not card or card == '1..1':
+                card = get_cardinality(path_based_metadata.get('min_occurs', '1'), path_based_metadata.get('max_occurs', '1'))
+            if not xsd_type or xsd_type == 'unknown':
+                xsd_type = path_based_metadata.get('type', xsd_type)
+            if not description:
+                description = path_based_metadata.get('description', description)
+        
         # Try enhanced metadata extraction first if we have XSD path and parent_type
         # This ensures we get context-specific metadata before falling back to generic info
-        if xsd_path:
+        if xsd_path and (not path_based_metadata or (card == '1..1' and xsd_type == 'unknown' and not description)):
             metadata = get_element_metadata(xsd_path, element, parent_type)
             if metadata:
                 if not card or card == '1..1':
@@ -1548,19 +1733,32 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
         # Get parent_type and xml_path for context-aware metadata lookup
         parent_type = item.get('parent_type')
         xml_path = item.get('xml_path')
-        xsd_paths = xsd_type_info.get('_paths', {})
-        path_based_metadata = None
         
-        # Try path-based matching first if we have xml_path
-        if xml_path and xsd_paths:
+        # NEW: Try path-based XSD element lookup using the new function first
+        path_based_metadata = None
+        if xsd_doc and xml_path:
+            path_based_metadata = get_element_metadata_from_xsd_by_path(xsd_doc, xml_path)
+        
+        # Try path-based matching from pre-built paths as fallback
+        xsd_paths = xsd_type_info.get('_paths', {})
+        if not path_based_metadata and xml_path and xsd_paths:
             path_result = find_best_xsd_path_match(xsd_paths, xml_path, element)
             if path_result:
                 path, path_metadata = path_result
                 path_based_metadata = path_metadata
         
+        # NEW: Use path-based metadata first if available
+        if path_based_metadata:
+            if not card or card == '1..1':
+                card = get_cardinality(path_based_metadata.get('min_occurs', '1'), path_based_metadata.get('max_occurs', '1'))
+            if not xsd_type or xsd_type == 'unknown':
+                xsd_type = path_based_metadata.get('type', xsd_type)
+            if not description:
+                description = path_based_metadata.get('description', description)
+        
         # Try enhanced metadata extraction first if we have XSD path and parent_type
         # This ensures we get context-specific metadata before falling back to generic info
-        if xsd_path:
+        if xsd_path and (not path_based_metadata or (card == '1..1' and xsd_type == 'unknown' and not description)):
             metadata = get_element_metadata(xsd_path, element, parent_type)
             if metadata:
                 if not card or card == '1..1':
