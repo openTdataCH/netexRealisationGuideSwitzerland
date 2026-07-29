@@ -62,7 +62,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>ExtensionsStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Extensions to schema. (Wrapper tag used to avoid problems with handling of optional ‘any’ by some validators).</td>
       <td>When also ProductCategory is relevant, then this extension must be used</td>
     </tr>
     <tr>
@@ -71,7 +71,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td> </td>
       <td>Extension needed to map “Verkehrsmittel-Gattung”, which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges.</td>
     </tr>
     <tr>
@@ -80,7 +80,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td> </td>
       <td>Extension needed to map “Verkehrsmittel-Gattung”, which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges.</td>
     </tr>
     <tr>
@@ -89,7 +89,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>TransferDurationStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Timings for walking over TRANSFER if different from the JOURNEY PATTERN transfer duration,</td>
       <td> </td>
     </tr>
     <tr>
@@ -98,7 +98,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:duration</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Default time needed for a traveller to make a TRANSFER.</td>
       <td> </td>
     </tr>
     <tr>
@@ -107,7 +107,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER.</td>
       <td>We don’t use BothWays true, as it might differ.</td>
     </tr>
     <tr>
@@ -116,7 +116,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>ConnectionEndStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Origin end of ACCESS link.</td>
       <td> </td>
     </tr>
     <tr>
@@ -125,7 +125,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>AllModesEnumeration</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>An area within a Site. May be connected to Quays by PATH LINKs.</td>
       <td> </td>
     </tr>
     <tr>
@@ -134,7 +134,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Simplified view of OPERATOR. All data except the identifier will be derived through the relationship.</td>
       <td>Should be a sboid whenever possible.</td>
     </tr>
     <tr>
@@ -143,7 +143,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>OperatorRefStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to an OPERATOR.</td>
       <td> </td>
     </tr>
     <tr>
@@ -152,7 +152,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>ConnectionEndStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Destination end of ACCESS link.</td>
       <td> </td>
     </tr>
     <tr>
@@ -161,7 +161,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>StopPlaceRefStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a STOP PLACE.</td>
       <td>Usually a SLOID. Not set means whole network.</td>
     </tr>
   </tbody>

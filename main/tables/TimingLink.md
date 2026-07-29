@@ -8,12 +8,12 @@ A timing link is basically defined between two ScheduledStopPoints. However, the
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | privateCodes | optional | 1..1 | PrivateCodesStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | only for the "virtual" stops like Bahn2000 |
-| + | PrivateCode | optional | 0..* | PrivateCodeStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | DIDOK code of the virtual stop |
+|  | privateCodes | optional | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | only for the "virtual" stops like Bahn2000 |
+| + | PrivateCode | optional | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | DIDOK code of the virtual stop |
 | ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
-|  | Name | optional | 0..1 | MultilingualString | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | Can be used to express "Neubaustrecke", "Lötschbergbasistunnel" and the like. |
-|  | FromPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this |
+|  | Name | optional | 0..1 | MultilingualString | Name of VALIDITY CONDITION. | Can be used to express "Neubaustrecke", "Lötschbergbasistunnel" and the like. |
+|  | FromPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure | Start POINT of LINK. | We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
-|  | ToPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this |
+|  | ToPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure | End POINT of LINK. | We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
-|  | OperationalContextRef | optional | 1..1 | OperationalContextRefStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | This is "Betriebszweig". Switzerland does not use it currently, but it might become interesting at some point |
+|  | OperationalContextRef | optional | 1..1 | OperationalContextRefStructure | Reference to an OPERATIONAL CONTEXT. | This is "Betriebszweig". Switzerland does not use it currently, but it might become interesting at some point |

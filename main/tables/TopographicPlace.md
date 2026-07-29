@@ -6,8 +6,8 @@
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Descriptor | mandatory | 0..1 | TopographicPlaceDescriptor_VersionedChildStructure | PLACEs in frame. |  |
-| + | Name | mandatory | 0..1 | MultilingualString | PLACEs in frame. |  |
-| + | ShortName | expected | 0..1 | MultilingualString | PLACEs in frame. | Abbreviation of the canton (leave empty if TopographicPlaceType is country) |
-|  | TopographicPlaceType | mandatory | 0..1 | TopographicPlaceTypeEnumeration | PLACEs in frame. | Allowed values: country, county |
-|  | ParentTopographicPlaceRef | optional | 0..1 | TopographicPlaceRefStructure | PLACEs in frame. | Parent topographic place when it exists. |
+|  | Descriptor | mandatory | 1..1 | TopographicPlaceDescriptor_VersionedChildStructure | Structured text descriptor of TOPOGRAPHIC PLACE. |  |
+| + | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
+| + | ShortName | expected | 0..1 | MultilingualString | Short Name for TYPE OF VALUE. | Abbreviation of the canton (leave empty if TopographicPlaceType is country) |
+|  | TopographicPlaceType | mandatory | 0..1 | TopographicPlaceTypeEnumeration | Classification of the TOPOGRAPHIC PLACE as a settlement. Enumerated value. | Allowed values: country, county |
+|  | ParentTopographicPlaceRef | optional | 0..1 | TopographicPlaceRefStructure | Parent TOPOGRAPHIC PLACE. Reference to another TOPOGRAPHIC PLACE that contains the child TOPOGRAPHIC PLACE completely. Must not be cyclic. | Parent topographic place when it exists. |

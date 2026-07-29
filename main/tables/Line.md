@@ -9,24 +9,24 @@ For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `Oper
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
-|  | ValidBetween | expected | 1..1 | unknown | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | Usually set to the whole timetable year |
-| + | FromDate | expected | 0..1 | xsd:dateTime | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| + | ToDate | expected | 0..1 | xsd:dateTime | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-|  | keyList | mandatory | 1..1 | KeyListStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| + | KeyValue | expected | 1..* | KeyValueStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | The SLNID is mandatory, when it exists |
-| ++ | Key | expected | 1..1 | xsd:normalizedString | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| ++ | Value | expected | 0..1 | xsd:anyType | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-|  | privateCodes | expected | 1..1 | PrivateCodesStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | The SLNID is mandatory, when it exists |
-| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
+|  | ValidBetween | expected | 1..* | unknown |  | Usually set to the whole timetable year |
+| + | FromDate | expected | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. |  |
+| + | ToDate | expected | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. |  |
+|  | keyList | mandatory | 0..1 | KeyListStructure | A list of alternative Key values for an element. |  |
+| + | KeyValue | expected | 1..* | KeyValueStructure | Key value pair for Entity. | The SLNID is mandatory, when it exists |
+| ++ | Key | expected | 0..1 | xsd:normalizedString | User key. |  |
+| ++ | Value | expected | 0..1 | xsd:anyType | Value for alternative key. |  |
+|  | privateCodes | expected | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | The SLNID is mandatory, when it exists |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 | ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
-|  | Name | mandatory | 0..1 | MultilingualString | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | contains attribute D T from HRDF. Is not translated on purpose. |
-|  | ShortName | expected | 0..1 | MultilingualString | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | contains the LinieKurzName (attribut N T in HRDF) |
-|  | TransportMode | mandatory | 0..1 | AllModesEnumeration | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-|  | TransportSubmode | optional | 1..1 | TransportSubmodeStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | the mapping excel describe how to use the TransportSubmode |
-| + | RailSubmode | optional | 1..1 | RailSubmodeEnumeration | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | Here an example for rail. Be aware that other XXXSubmode are used for other mode. |
-|  | PublicCode | mandatory | 0..1 | PublicCodeStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | Contains LinieLangName (attribute LT from HRDF) |
-|  | OperatorRef | expected | 1..1 | OperatorRefStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney. Is redundant to the responsibilitySetRef on purpose. |
-|  | additionalOperators | optional | 0..1 | transportOrganisationRefs_RelStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined. |
-| + | OperatorRef | optional | 0..* | OperatorRefStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-|  | LineType | expected | 0..1 | LineTypeEnumeration | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | Will be used especially, when not "fixed". Details in mapping excel. |
-|  | TypeOfProductCategoryRef | mandatory | 1..1 | TypeOfProductCategoryRefStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | Always aligned with BS KI oev-info.ch |
+|  | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. | contains attribute D T from HRDF. Is not translated on purpose. |
+|  | ShortName | expected | 0..1 | MultilingualString | Short Name for TYPE OF VALUE. | contains the LinieKurzName (attribut N T in HRDF) |
+|  | TransportMode | mandatory | 0..1 | AllModesEnumeration | An area within a Site. May be connected to Quays by PATH LINKs. |  |
+|  | TransportSubmode | optional | 1..1 | TransportSubmodeStructure | A submode of a public or private TRANSPORT MODE. | the mapping excel describe how to use the TransportSubmode |
+| + | RailSubmode | optional | 1..1 | RailSubmodeEnumeration | TPEG pti02 Rail submodes loc13. See also See ERA B.4.7009 - Name: Item description code. | Here an example for rail. Be aware that other XXXSubmode are used for other mode. |
+|  | PublicCode | mandatory | 0..1 | PublicCodeStructure | Public identifier code of TARIFF ZONE. +v2.0 | Contains LinieLangName (attribute LT from HRDF) |
+|  | OperatorRef | expected | 1..1 | OperatorRefStructure | Reference to an OPERATOR. | The operator is the transport organisation that really "owns" the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney. Is redundant to the responsibilitySetRef on purpose. |
+|  | additionalOperators | optional | 0..1 | transportOrganisationRefs_RelStructure | Additional OPERATORs for LINE. | Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined. |
+| + | OperatorRef | optional | 0..* | OperatorRefStructure | Reference to an OPERATOR. |  |
+|  | LineType | expected | 0..1 | LineTypeEnumeration | Classification of LINE, including flexible options. +v2.0. | Will be used especially, when not "fixed". Details in mapping excel. |
+|  | TypeOfProductCategoryRef | mandatory | 1..1 | TypeOfProductCategoryRefStructure | Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code. | Always aligned with BS KI oev-info.ch |

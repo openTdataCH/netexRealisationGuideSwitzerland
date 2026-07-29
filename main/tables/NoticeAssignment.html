@@ -82,7 +82,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
       <td> </td>
     </tr>
     <tr>
@@ -91,7 +91,7 @@
       <td>optional</td>
       <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
       <td> </td>
     </tr>
     <tr>
@@ -100,7 +100,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>NoticeRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a NOTICE i.e. footnote, note, announcement or other informational text element.</td>
       <td> </td>
     </tr>
     <tr>
@@ -109,7 +109,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>VersionOfObjectRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Object with which NOTICE is associated. If given by context can be omitted.</td>
       <td>We currently have not plan of using it this way. We do it through embeddingt the NoticeAssignment within the relevant element.</td>
     </tr>
     <tr>
@@ -127,7 +127,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>PointInSequenceRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>POINT at which applicability of NOTICE starts.</td>
       <td>If the notice is valid only on a part of a ServiceJourney then this can be marked with StartPointInPatternRef and EndPointInPatternRef.</td>
     </tr>
     <tr>
@@ -136,7 +136,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>PointInSequenceRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>POINT at which applicabiity of NOTICE endsIf absent same as Start Point.</td>
       <td> </td>
     </tr>
   </tbody>

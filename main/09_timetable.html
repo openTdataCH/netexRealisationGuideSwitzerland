@@ -131,7 +131,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>expected</td>
       <td>0..1</td>
       <td>journeysInFrame_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>VEHICLE JOURNEYs in frame.</td>
       <td>Contains the ServiceJourneys and TemplateServiceJourneys.</td>
     </tr>
     <tr>
@@ -140,7 +140,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>expected</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN. The VIEW includes derived ancillary data from referenced entities.</td>
       <td>ServiceJourney is used for common Journeys.</td>
     </tr>
     <tr>
@@ -149,7 +149,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>expected</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A VEHICLE JOURNEY with a set of frequencies that may be used to represent a set of similar journeys differing only by their time of departure.</td>
       <td>TemplateServiceJourney is only to be used if a line is serviced at a certain frequency.</td>
     </tr>
     <tr>
@@ -158,7 +158,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>expected</td>
       <td>0..1</td>
       <td>trainNumbersInFrame_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>TRAIN NUMBERs -= derived through JOURNEY PARTs of a journey - for a multi-part journey only.</td>
       <td> </td>
     </tr>
     <tr>
@@ -167,7 +167,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>mandatory</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Specification of codes assigned to particular VEHICLE JOURNEYs when operated by TRAINs of COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc).</td>
       <td> </td>
     </tr>
     <tr>
@@ -176,16 +176,16 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>0..1</td>
       <td>serviceFacilitySetsInFrame_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
       <td>expected</td>
-      <td>0..*</td>
+      <td>1..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
     </tr>
     <tr>
@@ -194,16 +194,16 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>expected</td>
       <td>0..1</td>
       <td>typesOfServiceInFrame_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>TYPEs of SERVICE in frame.</td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>TypeOfService</td>
       <td>optional</td>
-      <td>0..*</td>
+      <td>1..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Classification of a Service.</td>
       <td>This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file.</td>
     </tr>
     <tr>
@@ -212,7 +212,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Name of VALIDITY CONDITION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -230,7 +230,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Short Name for TYPE OF VALUE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -248,7 +248,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>1..1</td>
       <td>PrivateCodeStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
     </tr>
     <tr>
@@ -257,7 +257,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>expected</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>The scheduled possibility for transfer of passengers between two SERVICE JOURNEYs at the same or different STOP POINTs.</td>
       <td>For modeling many forms of interchanges</td>
     </tr>
     <tr>
@@ -266,7 +266,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>0..1</td>
       <td>transportTypeRefs_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>VEHICLE TYPEs in frame.</td>
       <td>We will use this place to store Train and CompoundTrain information, when we will do formation. Not detailed at the moment</td>
     </tr>
     <tr>
@@ -275,7 +275,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A vehicle composed of COMPOUND TRAIN ELEMENTs in a certain order, i.e. of wagons assembled together and propelled by a locomotive or one of the wagons.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -389,7 +389,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>mandatory</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
       <td>Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”).</td>
     </tr>
     <tr>
@@ -398,16 +398,16 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>mandatory</td>
       <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
       <td>Only a single AvailabilityConditionRef is allowed.</td>
     </tr>
     <tr>
       <td> </td>
       <td>keyList</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>KeyListStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A list of alternative Key values for an element.</td>
       <td>KEY LIST with the KEY VALUEs belonging to the SERVICE JOURNEY. We don’t use it for sjyid!</td>
     </tr>
     <tr>
@@ -416,16 +416,16 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Key value pair for Entity.</td>
       <td>We use it for tariff codes and region codes PAG mostly.</td>
     </tr>
     <tr>
       <td>++</td>
       <td>Key</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>xsd:normalizedString</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>User key.</td>
       <td> </td>
     </tr>
     <tr>
@@ -434,16 +434,16 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Value for alternative key.</td>
       <td> </td>
     </tr>
     <tr>
       <td> </td>
       <td>privateCodes</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>PrivateCodesStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
       <td> </td>
     </tr>
     <tr>
@@ -452,7 +452,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td>The following types are possible: sjyid and rn. rn is the type used for the Postauto region.</td>
     </tr>
     <tr>
@@ -470,7 +470,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>0..1</td>
       <td>AllModesEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>An area within a Site. May be connected to Quays by PATH LINKs.</td>
       <td> </td>
     </tr>
     <tr>
@@ -479,7 +479,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>mandatory</td>
       <td>1..1</td>
       <td>TypeOfProductCategoryRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
       <td>Relevant elements are defined in the mapping excel.</td>
     </tr>
     <tr>
@@ -488,7 +488,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>1..1</td>
       <td>TypeOfServiceRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a TYPE OF SERVICE.</td>
       <td>Should always be ch:1:TypeOfService:1</td>
     </tr>
     <tr>
@@ -497,7 +497,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>0..1</td>
       <td>noticeAssignments_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>NOTICE ASSIGNMENTs in frame.</td>
       <td>The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop).</td>
     </tr>
     <tr>
@@ -506,7 +506,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
       <td> </td>
     </tr>
     <tr>
@@ -515,7 +515,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>0..1</td>
       <td>OccupancyView_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>OCCUPANCYs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -524,7 +524,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>0..*</td>
       <td>OccupancyView_VersionStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A simple VIEW of OCCUPANCY as a first implementation without full support of DECK PLAN.</td>
       <td>Currently not available</td>
     </tr>
     <tr>
@@ -533,7 +533,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>mandatory</td>
       <td>0..1</td>
       <td>ServiceAlterationEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Whether journey is as planned, a cancellation or an extra journey. Default is as Planned.</td>
       <td>Only the value planned is allowed. We might add the others, like cancelled, later.</td>
     </tr>
     <tr>
@@ -542,7 +542,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:time</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Time of departure of JOURNEY from POINT.</td>
       <td> </td>
     </tr>
     <tr>
@@ -551,16 +551,16 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>0..1</td>
       <td>DayOffsetType</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Daya offset if Time of departure of JOURNEY from origin POINT from current OPERATING DAY.</td>
       <td>0 for current operating day. Could also be negative.</td>
     </tr>
     <tr>
       <td> </td>
       <td>JourneyPatternRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>JourneyPatternRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a JOURNEY PATTERN.</td>
       <td>The reference to the ServiceJourneyPattern.</td>
     </tr>
     <tr>
@@ -578,25 +578,25 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>mandatory</td>
       <td>0..1</td>
       <td>TimeDemandTypeRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a TIME DEMAND TYPE. If given by context need not be stated.</td>
       <td>The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney.</td>
     </tr>
     <tr>
       <td> </td>
       <td>VehicleTypeRef</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>VehicleTypeRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a VEHICLE TYPE.</td>
       <td>Mostly used for accessibility information like NF. Relevant definitions in the mapping excel.</td>
     </tr>
     <tr>
       <td> </td>
       <td>LineRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>LineRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a LINE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -605,7 +605,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>mandatory</td>
       <td>0..1</td>
       <td>RelativeDirectionEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A Direction of a ROUTE. One of a restricted set of values. Default is “Outbound”</td>
       <td>Allowed are: inbound, outbound</td>
     </tr>
     <tr>
@@ -614,7 +614,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>mandatory</td>
       <td>0..1</td>
       <td>trainNumbersInFrame_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>TRAIN NUMBERs -= derived through JOURNEY PARTs of a journey - for a multi-part journey only.</td>
       <td> </td>
     </tr>
     <tr>
@@ -623,7 +623,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>mandatory</td>
       <td>0..*</td>
       <td>TrainNumberRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a TRAIN NUMBER.</td>
       <td> </td>
     </tr>
     <tr>
@@ -632,7 +632,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>expected</td>
       <td>0..1</td>
       <td>TravelSpecificationSummaryEndpointStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Destination for JOURNEY.</td>
       <td> </td>
     </tr>
     <tr>
@@ -641,7 +641,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>0..1</td>
       <td>blockParts_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Parts of the ORGANISATION.</td>
       <td>For some use cases e.g. change of Facilities during ServiceJourney</td>
     </tr>
     <tr>
@@ -650,7 +650,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>expected</td>
       <td>0..*</td>
       <td>JourneyPartRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a JOURNEY PART.</td>
       <td> </td>
     </tr>
     <tr>
@@ -659,16 +659,16 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>optional</td>
       <td>0..1</td>
       <td>checkConstraints_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>CHECK CONSTRAINTs in frame.</td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>CheckConstraint</td>
       <td>optional</td>
-      <td>0..*</td>
+      <td>1..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
       <td>CheckConstraints are used for different use cases</td>
     </tr>
   </tbody>
@@ -843,7 +843,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>mandatory</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
       <td>Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”).</td>
     </tr>
     <tr>
@@ -852,16 +852,16 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>mandatory</td>
       <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
       <td>Only a single AvailabilityConditionRef is allowed.</td>
     </tr>
     <tr>
       <td> </td>
       <td>keyList</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>KeyListStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A list of alternative Key values for an element.</td>
       <td>Key List values</td>
     </tr>
     <tr>
@@ -870,16 +870,16 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Key value pair for Entity.</td>
       <td>For special Key value pairs. We don’t use it for SJYID any longer</td>
     </tr>
     <tr>
       <td>++</td>
       <td>Key</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>xsd:normalizedString</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>User key.</td>
       <td> </td>
     </tr>
     <tr>
@@ -888,16 +888,16 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Value for alternative key.</td>
       <td> </td>
     </tr>
     <tr>
       <td> </td>
       <td>privateCodes</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>PrivateCodesStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
       <td>Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region</td>
     </tr>
     <tr>
@@ -906,7 +906,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
     </tr>
     <tr>
@@ -915,7 +915,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..1</td>
       <td>AllModesEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>An area within a Site. May be connected to Quays by PATH LINKs.</td>
       <td> </td>
     </tr>
     <tr>
@@ -924,7 +924,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>expected</td>
       <td>1..1</td>
       <td>TypeOfProductCategoryRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
       <td> </td>
     </tr>
     <tr>
@@ -933,7 +933,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>1..1</td>
       <td>TypeOfServiceRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a TYPE OF SERVICE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -942,7 +942,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..1</td>
       <td>noticeAssignments_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>NOTICE ASSIGNMENTs in frame.</td>
       <td>The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops.</td>
     </tr>
     <tr>
@@ -951,7 +951,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
       <td> </td>
     </tr>
     <tr>
@@ -960,7 +960,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..1</td>
       <td>OccupancyView_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>OCCUPANCYs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -969,7 +969,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..*</td>
       <td>OccupancyView_VersionStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A simple VIEW of OCCUPANCY as a first implementation without full support of DECK PLAN.</td>
       <td> </td>
     </tr>
     <tr>
@@ -978,7 +978,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>mandatory</td>
       <td>0..1</td>
       <td>ServiceAlterationEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Whether journey is as planned, a cancellation or an extra journey. Default is as Planned.</td>
       <td>Only the value planned is allowed.</td>
     </tr>
     <tr>
@@ -987,7 +987,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:time</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Time of departure of JOURNEY from POINT.</td>
       <td>Departure of the first journey.</td>
     </tr>
     <tr>
@@ -996,16 +996,16 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..1</td>
       <td>DayOffsetType</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Daya offset if Time of departure of JOURNEY from origin POINT from current OPERATING DAY.</td>
       <td>DayOffset if relevant.</td>
     </tr>
     <tr>
       <td> </td>
       <td>JourneyPatternRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>JourneyPatternRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a JOURNEY PATTERN.</td>
       <td>The reference to the ServiceJourneyPattern</td>
     </tr>
     <tr>
@@ -1023,25 +1023,25 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>mandatory</td>
       <td>0..1</td>
       <td>TimeDemandTypeRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a TIME DEMAND TYPE. If given by context need not be stated.</td>
       <td>The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney.</td>
     </tr>
     <tr>
       <td> </td>
       <td>VehicleTypeRef</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>VehicleTypeRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a VEHICLE TYPE.</td>
       <td>Mostly used for accessibility information</td>
     </tr>
     <tr>
       <td> </td>
       <td>LineRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>LineRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a LINE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1050,7 +1050,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..1</td>
       <td>RelativeDirectionEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A Direction of a ROUTE. One of a restricted set of values. Default is “Outbound”</td>
       <td>Allowed are: inbound, outbound</td>
     </tr>
     <tr>
@@ -1059,7 +1059,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>mandatory</td>
       <td>0..1</td>
       <td>trainNumbersInFrame_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>TRAIN NUMBERs -= derived through JOURNEY PARTs of a journey - for a multi-part journey only.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1068,7 +1068,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>mandatory</td>
       <td>0..*</td>
       <td>TrainNumberRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a TRAIN NUMBER.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1077,7 +1077,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>expected</td>
       <td>0..1</td>
       <td>TravelSpecificationSummaryEndpointStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Destination for JOURNEY.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1086,7 +1086,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..1</td>
       <td>blockParts_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Parts of the ORGANISATION.</td>
       <td>For some use cases e.g. change of Facilities during ServiceJourney</td>
     </tr>
     <tr>
@@ -1095,7 +1095,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>expected</td>
       <td>0..*</td>
       <td>JourneyPartRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a JOURNEY PART.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1104,7 +1104,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>expected</td>
       <td>0..1</td>
       <td>TemplateVehicleJourneyTypeEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Type of TEMPLATE VEHICLE JOURNEY.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1113,7 +1113,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>mandatory</td>
       <td>0..1</td>
       <td>frequencyGroupsInFrame_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>frequency groups defining Template journey. Can only be of one type.</td>
       <td>We strictly map one frequency to the TemplateServiceJourney.</td>
     </tr>
     <tr>
@@ -1122,7 +1122,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>mandatory</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A group of VEHICLE JOURNEYs following the same JOURNEY PATTERN and having the same headway interval between a specified start and end time (for example, ‘every 10 minutes’). This is especially useful for presenting passenger information.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1131,7 +1131,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:duration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Scheduled normal headway interval.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1140,7 +1140,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..1</td>
       <td>HeadwayUseEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Use to be made of Headway information when displaying to public. Default is Display Instead of Passing Times.</td>
       <td>Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly.</td>
     </tr>
   </tbody>
@@ -1301,7 +1301,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..1</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>DAY TYPEs for BLOCK.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1310,7 +1310,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>1..*</td>
       <td>DayTypeRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a DAY TYPE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1318,8 +1318,8 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>dayTypes</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>dayTypesInFrame_RelStructure</td>
+      <td>Reusable DAY TYPE in SERVICE CALENDAR FRAME.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1328,7 +1328,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>expected</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1337,7 +1337,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>expected</td>
       <td>0..1</td>
       <td>FareClassEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Fixed class associated with this CLASS OF USE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1346,7 +1346,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>expected</td>
       <td>0..1</td>
       <td>OccupancyEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>An approximate figure of how occupied or full a VEHICLE and its parts are, e.g. ‘manySeatsAvailable’ or ‘standingRoomOnly’. More accurate data can be provided by the individual occupancies or capacities below.</td>
       <td>Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable</td>
     </tr>
     <tr>
@@ -1355,7 +1355,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..*</td>
       <td>GroupReservationStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reservations of travel groups, i.e., name of group and number of seats booked.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1364,7 +1364,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>expected</td>
       <td>1..1</td>
       <td>MultilingualString</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Name for which the travel group has made the reservation.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1373,7 +1373,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>expected</td>
       <td>1..1</td>
       <td>NumberOfPassengers</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Number of seats that the group has booked.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -1459,7 +1459,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:normalizedString</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>TRAIN NUMBER to use when advertising Train -If different from Id.</td>
       <td>TrainNumber to use for advertisement to public. Use if different from ID.</td>
     </tr>
     <tr>
@@ -1468,7 +1468,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:normalizedString</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>TRAIN NUMBER to use for production -If different from Id.</td>
       <td>TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID.</td>
     </tr>
   </tbody>
@@ -1526,7 +1526,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>Name of VALIDITY CONDITION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1544,7 +1544,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>Short Name for TYPE OF VALUE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1560,9 +1560,9 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td> </td>
       <td>PrivateCode</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodeStructure</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -1674,7 +1674,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>expected</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1683,7 +1683,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>expected</td>
       <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1692,7 +1692,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>optional</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td> </td>
+      <td>Description of SCHEDULED STOP POINT feeding INTERCHANGE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1701,7 +1701,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Whether the passenger can remain in vehicle (i.e. block linking). Default is false: the passenger must change vehicles for this INTERCHANGE. Default is false.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1710,7 +1710,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Whether INTERCHANGE involves crossing an international border. Default is false.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1719,7 +1719,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>In case of train splitting, the passenger may have to change to a different part of the train to continue the journey. Default is false. +v2.1</td>
       <td>Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false.</td>
     </tr>
     <tr>
@@ -1728,7 +1728,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Whether INTERCHANGE is planned in a timetable. Default is true.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1737,7 +1737,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Whether INTERCHANGE is guaranteed. Default is false.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1746,7 +1746,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:duration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Maximum wait time for INTERCHANGE.</td>
       <td>If not set or PT0M, it is guaranteed.</td>
     </tr>
     <tr>
@@ -1755,7 +1755,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>mandatory</td>
       <td>1..1</td>
       <td>VehicleMeetingPointRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Start POINT of LINK.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1773,7 +1773,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:nonNegativeInteger</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Visit number to distinguish which visit to FROM SCHEDULED STOP POINT this is. Default is one. Only needed for circular routes with connections at the same stop on different visits.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1782,7 +1782,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>mandatory</td>
       <td>1..1</td>
       <td>VehicleMeetingPointRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>End POINT of LINK.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1800,7 +1800,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>mandatory</td>
       <td>1..1</td>
       <td>ServiceJourneyRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>SERVICE JOURNEY that feeds JOURNEY MEETING. +v2.0</td>
       <td> </td>
     </tr>
     <tr>
@@ -1809,7 +1809,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
       <td>mandatory</td>
       <td>1..1</td>
       <td>ServiceJourneyRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>SERVICE JOURNEY that distributes from JOURNEY MEETING. +v2.0</td>
       <td> </td>
     </tr>
   </tbody>

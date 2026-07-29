@@ -8,12 +8,12 @@ Swiss ScheduledStopPoint are using the sloid in the id if possible. We keep the 
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | keyList | optional | 1..1 | KeyListStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| + | KeyValue | optional | 1..* | KeyValueStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | Can contain a DIDOK key and a SLOID. We don't need it really. |
-| ++ | Key | optional | 1..1 | xsd:normalizedString | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| ++ | Value | optional | 0..1 | xsd:anyType | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-|  | privateCodes | optional | 1..1 | PrivateCodesStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| + | PrivateCode | optional | 0..* | PrivateCodeStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | If the id is not a SLOID then the SLOID must be added here. |
-|  | Name | optional | 0..1 | MultilingualString | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay. |
+|  | keyList | optional | 0..1 | KeyListStructure | A list of alternative Key values for an element. |  |
+| + | KeyValue | optional | 1..* | KeyValueStructure | Key value pair for Entity. | Can contain a DIDOK key and a SLOID. We don't need it really. |
+| ++ | Key | optional | 0..1 | xsd:normalizedString | User key. |  |
+| ++ | Value | optional | 0..1 | xsd:anyType | Value for alternative key. |  |
+|  | privateCodes | optional | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
+| + | PrivateCode | optional | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | If the id is not a SLOID then the SLOID must be added here. |
+|  | Name | optional | 0..1 | MultilingualString | Name of VALIDITY CONDITION. | The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay. |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | PublicCode | optional | 0..1 | PublicCodeStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | For Quay contains the plattform number/letter. |
+|  | PublicCode | optional | 0..1 | PublicCodeStructure | Public identifier code of TARIFF ZONE. +v2.0 | For Quay contains the plattform number/letter. |

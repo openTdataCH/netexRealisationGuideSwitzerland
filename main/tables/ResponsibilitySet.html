@@ -82,7 +82,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>Name of VALIDITY CONDITION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -98,9 +98,9 @@
       <td> </td>
       <td>PrivateCode</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodeStructure</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
     </tr>
     <tr>
@@ -109,7 +109,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>responsibilityRoleAssignments_RelStructure</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>Roles defined by this RESPONSIBILITY SET.</td>
       <td> </td>
     </tr>
     <tr>
@@ -117,8 +117,8 @@
       <td>ResponsibilityRoleAssignment</td>
       <td>mandatory</td>
       <td>0..*</td>
-      <td>responsibilitySetsInFrame_RelStructure</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>unknown</td>
+      <td>Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision.</td>
       <td> </td>
     </tr>
     <tr>
@@ -127,7 +127,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>StakeholderRoleTypeListOfEnumerations</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>Stakeholder roles which this assignment assigns.</td>
       <td>“EntityLegalOwnership” must be defined once and “Operator” should be too.</td>
     </tr>
     <tr>
@@ -136,7 +136,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>OrganisationRefStructure</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>Responsible ORGANISATION.</td>
       <td> </td>
     </tr>
   </tbody>

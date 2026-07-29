@@ -82,7 +82,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>KeyListStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>A list of alternative Key values for an element.</td>
       <td> </td>
     </tr>
     <tr>
@@ -91,7 +91,7 @@
       <td>expected</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>Key value pair for Entity.</td>
       <td> </td>
     </tr>
     <tr>
@@ -100,7 +100,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:normalizedString</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>User key.</td>
       <td> </td>
     </tr>
     <tr>
@@ -109,7 +109,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>Value for alternative key.</td>
       <td> </td>
     </tr>
     <tr>
@@ -118,7 +118,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>PrivateCodesStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
       <td> </td>
     </tr>
     <tr>
@@ -127,16 +127,16 @@
       <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td>Busines organisation</td>
     </tr>
     <tr>
       <td> </td>
       <td>PrivateCode</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodeStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
     </tr>
     <tr>
@@ -145,7 +145,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>Name of VALIDITY CONDITION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -154,7 +154,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>Short Name for TYPE OF VALUE.</td>
       <td>there may be cases, when it can’t be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators.</td>
     </tr>
     <tr>
@@ -163,7 +163,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>blockParts_RelStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>Parts of the ORGANISATION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -172,7 +172,7 @@
       <td>optional</td>
       <td>0..*</td>
       <td>administrativeZones_RelStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>Zones managed by ORGANISATION PART.</td>
       <td> </td>
     </tr>
     <tr>
@@ -180,17 +180,17 @@
       <td>TransportAdministrativeZone</td>
       <td>optional</td>
       <td>0..*</td>
-      <td>organisationsInFrame_RelStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>unknown</td>
+      <td>A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region.</td>
       <td> </td>
     </tr>
     <tr>
       <td>++++</td>
       <td>PrivateCode</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodeStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
     </tr>
   </tbody>

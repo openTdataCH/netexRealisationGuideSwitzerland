@@ -89,7 +89,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
       <td>Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”).</td>
     </tr>
     <tr>
@@ -98,16 +98,16 @@
       <td>mandatory</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs.</td>
       <td>Only a single occurence is allowed. The following elements are mandatory here, any other elements of AvailabilityCondition are not allowed or will be ignored.</td>
     </tr>
     <tr>
       <td> </td>
       <td>keyList</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>KeyListStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A list of alternative Key values for an element.</td>
       <td>KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID.</td>
     </tr>
     <tr>
@@ -116,16 +116,16 @@
       <td>mandatory</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Key value pair for Entity.</td>
       <td>A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID.</td>
     </tr>
     <tr>
       <td>++</td>
       <td>Key</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>xsd:normalizedString</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>User key.</td>
       <td> </td>
     </tr>
     <tr>
@@ -134,16 +134,16 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Value for alternative key.</td>
       <td> </td>
     </tr>
     <tr>
       <td> </td>
       <td>privateCodes</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>PrivateCodesStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
       <td> </td>
     </tr>
     <tr>
@@ -152,7 +152,7 @@
       <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
     </tr>
     <tr>
@@ -161,7 +161,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>AllModesEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>An area within a Site. May be connected to Quays by PATH LINKs.</td>
       <td> </td>
     </tr>
     <tr>
@@ -170,7 +170,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>TypeOfProductCategoryRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
       <td> </td>
     </tr>
     <tr>
@@ -179,7 +179,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>TypeOfServiceRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a TYPE OF SERVICE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -188,7 +188,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>noticeAssignments_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>NOTICE ASSIGNMENTs in frame.</td>
       <td>The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops.</td>
     </tr>
     <tr>
@@ -197,7 +197,7 @@
       <td>optional</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
       <td> </td>
     </tr>
     <tr>
@@ -206,7 +206,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>OccupancyView_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>OCCUPANCYs in frame.</td>
       <td> </td>
     </tr>
     <tr>
@@ -215,7 +215,7 @@
       <td>optional</td>
       <td>0..*</td>
       <td>OccupancyView_VersionStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A simple VIEW of OCCUPANCY as a first implementation without full support of DECK PLAN.</td>
       <td> </td>
     </tr>
     <tr>
@@ -224,7 +224,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>ServiceAlterationEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Whether journey is as planned, a cancellation or an extra journey. Default is as Planned.</td>
       <td>Only the value planned is allowed.</td>
     </tr>
     <tr>
@@ -233,7 +233,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:time</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Time of departure of JOURNEY from POINT.</td>
       <td> </td>
     </tr>
     <tr>
@@ -242,16 +242,16 @@
       <td>optional</td>
       <td>0..1</td>
       <td>DayOffsetType</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Daya offset if Time of departure of JOURNEY from origin POINT from current OPERATING DAY.</td>
       <td> </td>
     </tr>
     <tr>
       <td> </td>
       <td>LineRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>LineRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a LINE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -260,7 +260,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>RelativeDirectionEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A Direction of a ROUTE. One of a restricted set of values. Default is “Outbound”</td>
       <td>Allowed are: inbound, outbound</td>
     </tr>
     <tr>
@@ -269,7 +269,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>trainNumbersInFrame_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>TRAIN NUMBERs -= derived through JOURNEY PARTs of a journey - for a multi-part journey only.</td>
       <td> </td>
     </tr>
     <tr>
@@ -278,7 +278,7 @@
       <td>mandatory</td>
       <td>0..*</td>
       <td>TrainNumberRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a TRAIN NUMBER.</td>
       <td> </td>
     </tr>
     <tr>
@@ -287,7 +287,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>TravelSpecificationSummaryEndpointStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Destination for JOURNEY.</td>
       <td> </td>
     </tr>
     <tr>
@@ -296,16 +296,16 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>timetabledPassingTimes_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>PASSING TIMEs for VEHICLE JOURNEY.</td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>TimetabledPassingTime</td>
       <td>expected</td>
-      <td>0..*</td>
+      <td>1..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>TIMETABLED PASSING TIME at TIMING POINT.</td>
       <td> </td>
     </tr>
     <tr>
@@ -314,7 +314,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>PointInJourneyPatternRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a POINT IN JOURNEY PATTERN. If Given by Context does not need to stated.</td>
       <td> </td>
     </tr>
   </tbody>

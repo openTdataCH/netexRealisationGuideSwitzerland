@@ -97,9 +97,9 @@ In some cases we need translations or alias of the Name element. This is done wi
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | NameType | mandatory | 0..1 | NameTypeEnumeration | ORGANISATIONs in frame. | In some cases we need translations or alias of the Name element. This is done with AlternativeName. alias allowed for StopPlace. |
-|  | TypeOfName | optional | 0..1 | xsd:normalizedString | ORGANISATIONs in frame. | For StopPlace official is used for the official name |
-|  | Name | mandatory | 0..1 | MultilingualString | ORGANISATIONs in frame. |  |
+|  | NameType | mandatory | 0..1 | NameTypeEnumeration | Type of Name - fixed value. Default is alias. | In some cases we need translations or alias of the Name element. This is done with AlternativeName. alias allowed for StopPlace. |
+|  | TypeOfName | optional | 0..1 | xsd:normalizedString | Type of Name - open value. | For StopPlace official is used for the official name |
+|  | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 
 
@@ -180,12 +180,12 @@ Holds default values for certain basic parameters.
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | DefaultLocale | mandatory | 0..1 | LocaleStructure | Default values to use on elements in the frame that do not explicitly state a value. | The default locale is German (de) for Swiss public transport. |
-| + | TimeZoneOffset | mandatory | 0..1 | TimeZoneOffsetType | Default values to use on elements in the frame that do not explicitly state a value. | We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) |
-| + | TimeZone | mandatory | 0..1 | xsd:normalizedString | Default values to use on elements in the frame that do not explicitly state a value. |  |
-| + | SummerTimeZoneOffset | mandatory | 0..1 | TimeZoneOffsetType | Default values to use on elements in the frame that do not explicitly state a value. | We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) |
-| + | DefaultLanguage | mandatory | 0..1 | xsd:language | Default values to use on elements in the frame that do not explicitly state a value. | Is always set to “de” for Swiss public transport. |
-|  | DefaultLocationSystem | mandatory | 0..1 | xsd:normalizedString | Default values to use on elements in the frame that do not explicitly state a value. |  |
+|  | DefaultLocale | mandatory | 0..1 | LocaleStructure | Default LOCAL for frame elements. Assume this value for timezone and language of elements if not specified on individual elements. | The default locale is German (de) for Swiss public transport. |
+| + | TimeZoneOffset | mandatory | 0..1 | TimeZoneOffsetType | Timezone offset from Greenwich at LOCALE. | We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) |
+| + | TimeZone | mandatory | 0..1 | xsd:normalizedString | Timezone name at LOCALE. |  |
+| + | SummerTimeZoneOffset | mandatory | 0..1 | TimeZoneOffsetType | Summer timezone offset if different from Time zone offset. | We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) |
+| + | DefaultLanguage | mandatory | 0..1 | xsd:language | Default language for text elements. | Is always set to “de” for Swiss public transport. |
+|  | DefaultLocationSystem | mandatory | 0..1 | xsd:normalizedString | Default spatial coordinate system (srsName). E.g. WGS84 Value to use for location elements using coordinates if not specified on individual elements. |  |
 
 
 

@@ -80,7 +80,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:dateTime</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td>Start date of AVAILABILITY CONDITION.</td>
       <td>Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
     </tr>
     <tr>
@@ -89,7 +89,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:dateTime</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
       <td>Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
     </tr>
     <tr>
@@ -98,7 +98,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:normalizedString</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td>String of bits, one for each day in period: whether valid or not valid on the day. Normally there will be a bit for every day between start and end date. If bit is missing, assume available.</td>
       <td> </td>
     </tr>
     <tr>
@@ -107,25 +107,25 @@
       <td>optional</td>
       <td>0..1</td>
       <td>timebandRefs_RelStructure</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td>TIMEBANDs for the DAY TYPE.</td>
       <td>Can also be referenced</td>
     </tr>
     <tr>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Timeband.html">Timeband</a></td>
       <td>optional</td>
-      <td>0..*</td>
-      <td>unknown</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td>1..*</td>
+      <td>Timeband_VersionedChildStructure</td>
+      <td>A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category.</td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>TimebandRef</td>
       <td>optional</td>
-      <td>0..*</td>
+      <td>1..*</td>
       <td>TimebandRefStructure</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td>Reference to a TIME BAND.</td>
       <td> </td>
     </tr>
   </tbody>

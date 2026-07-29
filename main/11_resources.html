@@ -133,9 +133,9 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ResponsibilitySet.html">ResponsibilitySet</a></td>
       <td>mandatory</td>
-      <td>0..*</td>
-      <td>responsibilitySetsInFrame_RelStructure</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>1..*</td>
+      <td>unknown</td>
+      <td>A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent.</td>
       <td>Each combination of Authority and Operator needs a ResponsibilitySet.</td>
     </tr>
     <tr>
@@ -152,8 +152,8 @@
       <td>ValueSet</td>
       <td>expected</td>
       <td>0..*</td>
-      <td>typesOfValueInFrame_RelStructure</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>unknown</td>
+      <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
       <td>We need a TypeOfNotice ValueSet.</td>
     </tr>
     <tr>
@@ -162,7 +162,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>typesOfValue_RelStructure</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>Values in Set.</td>
       <td> </td>
     </tr>
     <tr>
@@ -170,8 +170,8 @@
       <td>TypeOfNotice</td>
       <td>expected</td>
       <td>0..*</td>
-      <td>typesOfValueInFrame_RelStructure</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>unknown</td>
+      <td>A classification of a NOTICE according to its functional purpose.</td>
       <td> </td>
     </tr>
     <tr>
@@ -179,8 +179,8 @@
       <td>ValueSet</td>
       <td>expected</td>
       <td>0..*</td>
-      <td>typesOfValueInFrame_RelStructure</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>unknown</td>
+      <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
       <td>We need a TypeOfProductCategory ValueSet</td>
     </tr>
     <tr>
@@ -188,8 +188,8 @@
       <td>ValueSet</td>
       <td>expected</td>
       <td>0..*</td>
-      <td>typesOfValueInFrame_RelStructure</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>unknown</td>
+      <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
       <td>We expect a TypsOfPlace Valueset</td>
     </tr>
     <tr>
@@ -206,8 +206,8 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Operator.html">Operator</a></td>
       <td>mandatory</td>
       <td>0..*</td>
-      <td>organisationsInFrame_RelStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>unknown</td>
+      <td>A company providing public transport services.</td>
       <td>We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once.</td>
     </tr>
     <tr>
@@ -223,9 +223,9 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
       <td>optional</td>
-      <td>0..*</td>
-      <td>siteFacilitySetsInFrame_RelStructure</td>
-      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>1..*</td>
+      <td>unknown</td>
+      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
     </tr>
     <tr>
@@ -241,9 +241,9 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
       <td>optional</td>
-      <td>0..*</td>
-      <td>serviceFacilitySetsInFrame_RelStructure</td>
-      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
+      <td>1..*</td>
+      <td>unknown</td>
+      <td>Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
     </tr>
     <tr>
@@ -260,8 +260,8 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/VehicleType.html">VehicleType</a></td>
       <td>optional</td>
       <td>0..*</td>
-      <td>vehicleTypesInFrame_RelStructure</td>
-      <td>VEHICLE TYPEs in frame.</td>
+      <td>unknown</td>
+      <td>A classification of public transport vehicles according to the vehicle scheduling requirements in mode and capacity (e.g. standard bus, double-deck, …).</td>
       <td> </td>
     </tr>
   </tbody>
@@ -423,7 +423,7 @@ We use this element to  describe the different roles of the participating compan
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>Name of VALIDITY CONDITION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -439,9 +439,9 @@ We use this element to  describe the different roles of the participating compan
       <td> </td>
       <td>PrivateCode</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodeStructure</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
     </tr>
     <tr>
@@ -450,7 +450,7 @@ We use this element to  describe the different roles of the participating compan
       <td>mandatory</td>
       <td>0..1</td>
       <td>responsibilityRoleAssignments_RelStructure</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>Roles defined by this RESPONSIBILITY SET.</td>
       <td> </td>
     </tr>
     <tr>
@@ -458,8 +458,8 @@ We use this element to  describe the different roles of the participating compan
       <td>ResponsibilityRoleAssignment</td>
       <td>mandatory</td>
       <td>0..*</td>
-      <td>responsibilitySetsInFrame_RelStructure</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>unknown</td>
+      <td>Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision.</td>
       <td> </td>
     </tr>
     <tr>
@@ -468,7 +468,7 @@ We use this element to  describe the different roles of the participating compan
       <td>mandatory</td>
       <td>0..1</td>
       <td>StakeholderRoleTypeListOfEnumerations</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>Stakeholder roles which this assignment assigns.</td>
       <td>“EntityLegalOwnership” must be defined once and “Operator” should be too.</td>
     </tr>
     <tr>
@@ -477,7 +477,7 @@ We use this element to  describe the different roles of the participating compan
       <td>mandatory</td>
       <td>0..1</td>
       <td>OrganisationRefStructure</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>Responsible ORGANISATION.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -646,7 +646,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>Name of VALIDITY CONDITION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -664,7 +664,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>optional</td>
       <td>0..*</td>
       <td>MultilingualString</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -682,7 +682,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>Short Name for TYPE OF VALUE.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -762,7 +762,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..1</td>
       <td>KeyListStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>A list of alternative Key values for an element.</td>
       <td> </td>
     </tr>
     <tr>
@@ -771,7 +771,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>1..*</td>
       <td>KeyValueStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>Key value pair for Entity.</td>
       <td> </td>
     </tr>
     <tr>
@@ -780,7 +780,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:normalizedString</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>User key.</td>
       <td> </td>
     </tr>
     <tr>
@@ -789,7 +789,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>Value for alternative key.</td>
       <td> </td>
     </tr>
     <tr>
@@ -798,7 +798,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..1</td>
       <td>PrivateCodesStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
       <td> </td>
     </tr>
     <tr>
@@ -807,16 +807,16 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td>Busines organisation</td>
     </tr>
     <tr>
       <td> </td>
       <td>PrivateCode</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodeStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
     </tr>
     <tr>
@@ -825,7 +825,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>Name of VALIDITY CONDITION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -834,7 +834,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>Short Name for TYPE OF VALUE.</td>
       <td>there may be cases, when it can’t be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators.</td>
     </tr>
     <tr>
@@ -843,7 +843,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>optional</td>
       <td>0..1</td>
       <td>blockParts_RelStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>Parts of the ORGANISATION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -852,7 +852,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>optional</td>
       <td>0..*</td>
       <td>administrativeZones_RelStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>Zones managed by ORGANISATION PART.</td>
       <td> </td>
     </tr>
     <tr>
@@ -860,17 +860,17 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>TransportAdministrativeZone</td>
       <td>optional</td>
       <td>0..*</td>
-      <td>organisationsInFrame_RelStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>unknown</td>
+      <td>A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region.</td>
       <td> </td>
     </tr>
     <tr>
       <td>++++</td>
       <td>PrivateCode</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodeStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -977,9 +977,9 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td> </td>
       <td>Extensions</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>ExtensionsStructure</td>
-      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
+      <td>Extensions to schema. (Wrapper tag used to avoid problems with handling of optional ‘any’ by some validators).</td>
       <td>Two elements used in HRDF for ordering facilities</td>
     </tr>
     <tr>
@@ -988,7 +988,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>expected</td>
       <td>0..1</td>
       <td>InterchangePriorityType</td>
-      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
+      <td>Priority to assign to this INTERCHANGE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1015,7 +1015,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>optional</td>
       <td>0..*</td>
       <td>MultilingualString</td>
-      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -1033,7 +1033,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>optional</td>
       <td>0..1</td>
       <td>FareClassListOfEnumerations</td>
-      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
+      <td>List of Fare Classes.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1042,7 +1042,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>optional</td>
       <td>0..1</td>
       <td>MobilityFacilityListOfEnumerations</td>
-      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
+      <td>List of MOBILITY FACILITies.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1051,7 +1051,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>optional</td>
       <td>0..1</td>
       <td>NuisanceFacilityListOfEnumerations</td>
-      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
+      <td>List of NUISANCE FACILITies.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1060,7 +1060,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>optional</td>
       <td>0..1</td>
       <td>PassengerCommsFacilityListOfEnumerations</td>
-      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
+      <td>List of PASSENGER COMMS FACILITies.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1069,7 +1069,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>optional</td>
       <td>0..1</td>
       <td>SanitaryFacilityListOfEnumerations</td>
-      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
+      <td>List of SANITARY FACILITies.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1078,7 +1078,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>optional</td>
       <td>0..1</td>
       <td>CouchetteFacilityListOfEnumerations</td>
-      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
+      <td>List of COUCHETTE FACILITies.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1087,7 +1087,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>optional</td>
       <td>0..1</td>
       <td>GroupBookingEnumeration</td>
-      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
+      <td>Classification of GROUP FACILITY type - TPEG pti23.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -1200,9 +1200,9 @@ referenced to define facilities of a site.</p>
       <td> </td>
       <td>validityConditions</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1210,8 +1210,8 @@ referenced to define facilities of a site.</p>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/AvailabilityCondition.html">AvailabilityCondition</a></td>
       <td>optional</td>
       <td>0..*</td>
-      <td>siteFacilitySetsInFrame_RelStructure</td>
-      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>unknown</td>
+      <td>VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1238,7 +1238,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>0..*</td>
       <td>MultilingualString</td>
-      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -1256,7 +1256,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>0..1</td>
       <td>AssistanceFacilityListOfEnumerations</td>
-      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>List of ASSISTANCE FACILITies.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1265,7 +1265,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>0..1</td>
       <td>AccessibilityToolListOfEnumerations</td>
-      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>List of TYPEs of ACCESSIBILITY TOOLs.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1274,7 +1274,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>0..1</td>
       <td>SanitaryFacilityListOfEnumerations</td>
-      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>List of SANITARY FACILITies.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1283,7 +1283,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>0..1</td>
       <td>TicketingServiceFacilityListOfEnumerations</td>
-      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>List of TICKETING SERVICE FACILITies, e.g. purchase, collection. top up.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1292,7 +1292,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>0..1</td>
       <td>EmergencyServiceListOfEnumerations</td>
-      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>List of EMERGENCY SERVICE FACILITies.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1301,7 +1301,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>0..1</td>
       <td>LuggageLockerFacilityListOfEnumerations</td>
-      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>List of LUGGAGE LOCKER FACILITies.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1310,7 +1310,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>0..1</td>
       <td>ParkingFacilityListOfEnumerations</td>
-      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>List of PARKING FACILITies.</td>
       <td> </td>
     </tr>
   </tbody>
@@ -1406,7 +1406,7 @@ referenced to define facilities of a site.</p>
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>VEHICLE TYPEs in frame.</td>
+      <td>Short Name for TYPE OF VALUE.</td>
       <td>Will be defined in mapping excel</td>
     </tr>
     <tr>
@@ -1415,7 +1415,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>VEHICLE TYPEs in frame.</td>
+      <td>Low floor VEHICLES can use stop and be accessible.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1424,7 +1424,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>VEHICLE TYPEs in frame.</td>
+      <td>Whether vehicle has lift or ramp to facilitate wheelchair access.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1433,7 +1433,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>VEHICLE TYPEs in frame.</td>
+      <td>Whether vehicle has hoist for wheelchair access.</td>
       <td> </td>
     </tr>
   </tbody>

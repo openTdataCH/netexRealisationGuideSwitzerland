@@ -80,7 +80,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Name of VALIDITY CONDITION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -89,16 +89,16 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Annotated reference to a ROUTE.</td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>LineRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>LineRefStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a LINE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -107,7 +107,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>RelativeDirectionEnumeration</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>A Direction of a ROUTE. One of a restricted set of values. Default is “Outbound”</td>
       <td> </td>
     </tr>
     <tr>
@@ -116,7 +116,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>vehicleMeetingPointsInSequence_RelStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Ordered List of points used in TIMING PATTERN. specific to TIMING PATTERN.</td>
       <td> </td>
     </tr>
     <tr>
@@ -125,7 +125,7 @@
       <td>mandatory</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -134,7 +134,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a SCHEDULED STOP POINT.</td>
       <td> </td>
     </tr>
     <tr>
@@ -143,7 +143,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Default for whether SCHEDULED STOP POINT may be used for alighting. May be overridden on specific services.</td>
       <td> </td>
     </tr>
     <tr>
@@ -152,16 +152,16 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Default for whether SCHEDULED STOP POINT may be used for boarding. May be overridden on specific services.</td>
       <td> </td>
     </tr>
     <tr>
       <td>++</td>
       <td>DestinationDisplayRef</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>DestinationDisplayRefStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a DESTINATION DISPLAY.</td>
       <td>Indicates that the destination has changed. Superseeds Line or ServiceJourney</td>
     </tr>
     <tr>
@@ -170,7 +170,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Whether stop is by default a request stop in the timetable. May be overridden in specific SERVICE PATTERNs.</td>
       <td> </td>
     </tr>
     <tr>
@@ -179,7 +179,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>StopUseEnumeration</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Nature of use of stop, e.g. access, interchange only, or pass through. Default is Access.</td>
       <td>All values possible. passthrough is used for Durchfahrt, if such data is delivered.</td>
     </tr>
     <tr>
@@ -188,16 +188,16 @@
       <td>optional</td>
       <td>0..1</td>
       <td>checkConstraints_RelStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>CHECK CONSTRAINTs in frame.</td>
       <td> </td>
     </tr>
     <tr>
       <td>+++</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/CheckConstraint.html">CheckConstraint</a></td>
       <td>optional</td>
-      <td>0..*</td>
+      <td>1..*</td>
       <td>unknown</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
       <td> </td>
     </tr>
     <tr>
@@ -206,7 +206,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>bookingArrangements_RelStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>BOOKING ARRANGEMENTs in frame +v2.0.</td>
       <td> </td>
     </tr>
     <tr>
@@ -215,16 +215,16 @@
       <td>optional</td>
       <td>0..*</td>
       <td>BookingArrangementRefStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a BOOKING ARRANGEMENT.</td>
       <td>Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information.</td>
     </tr>
     <tr>
       <td>+++</td>
       <td>BookingArrangement</td>
       <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
-      <td>0..*</td>
+      <td>1..*</td>
       <td>unknown</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Details of the booking arrangements for a given LINE, STOP, SERVICE etc.</td>
       <td> </td>
     </tr>
     <tr>
@@ -233,7 +233,7 @@
       <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
       <td>0..1</td>
       <td>BookingMethodListOfEnumerations</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Allowed Ways of Making a BOOKING.</td>
       <td> </td>
     </tr>
     <tr>
@@ -242,7 +242,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>ServiceJourneyPatternTypeEnumeration</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Type of SERVICE JOURNEY PATTERN.</td>
       <td> </td>
     </tr>
   </tbody>

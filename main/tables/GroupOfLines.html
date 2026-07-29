@@ -64,16 +64,16 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>singleJourneyRefs_RelStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Members of GROUP OF ENTITies.</td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>LineRef</td>
       <td>mandatory</td>
-      <td>0..*</td>
+      <td>1..*</td>
       <td>LineRefStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a LINE.</td>
       <td>one must be the main line</td>
     </tr>
     <tr>
@@ -82,7 +82,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>LineRefStructure</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Primary LINE in GROUP OF LINEs, if relevant.</td>
       <td>The main line must exist. It hasn’t any ServiceJourneyPattern or ServiceJourneys. Those are all on the partial lines.</td>
     </tr>
     <tr>
@@ -91,7 +91,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>GroupOfLinesTypeEnumeration</td>
-      <td>A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned.</td>
+      <td>Classification of GROUP OF LINES. +v1.1</td>
       <td> </td>
     </tr>
   </tbody>

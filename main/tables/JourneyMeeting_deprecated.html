@@ -82,7 +82,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
       <td>A specific type of VALIDITY CON-DITION used to specify a set of temporal conditions that can be associated with the JOURNEY MEETING, for example that the corresponding connections only apply on particular days of a period (indicated by ValidDayBits “Verkehrstagebitfeld”).</td>
     </tr>
     <tr>
@@ -91,7 +91,7 @@
       <td>expected</td>
       <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
       <td> </td>
     </tr>
     <tr>
@@ -100,7 +100,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>SCHEDULED STOP POINT at which JOURNEY MEETING takes place.</td>
       <td> </td>
     </tr>
     <tr>
@@ -109,7 +109,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>JourneyRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>DEPRECATE: JOURNEY that feeds JOURNEY MEETING. -v2.0</td>
       <td> </td>
     </tr>
     <tr>
@@ -118,7 +118,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>JourneyRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>DEPRECATE: JOURNEY that distributes from JOURNEY MEETING. -v2.0</td>
       <td> </td>
     </tr>
     <tr>
@@ -136,7 +136,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:time</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Earliest time that day starts.</td>
       <td> </td>
     </tr>
     <tr>
@@ -145,7 +145,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:time</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Latest time that passenger should be at stop for specified process.</td>
       <td> </td>
     </tr>
     <tr>
@@ -154,7 +154,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>ReasonForMeetingEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reason for JOURNEY MEETING.</td>
       <td> </td>
     </tr>
   </tbody>

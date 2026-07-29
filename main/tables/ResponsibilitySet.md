@@ -8,10 +8,10 @@ Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLeg
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Name | mandatory | 0..1 | MultilingualString | RESPONSIBILITY SETs used in frame. |  |
+|  | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | PrivateCode | expected | 0..1 | PrivateCodeStructure | RESPONSIBILITY SETs used in frame. |  |
-|  | roles | mandatory | 0..1 | responsibilityRoleAssignments_RelStructure | RESPONSIBILITY SETs used in frame. |  |
-| + | ResponsibilityRoleAssignment | mandatory | 0..* | responsibilitySetsInFrame_RelStructure | RESPONSIBILITY SETs used in frame. |  |
-| ++ | StakeholderRoleType | mandatory | 0..1 | StakeholderRoleTypeListOfEnumerations | RESPONSIBILITY SETs used in frame. | "EntityLegalOwnership" must be defined once and "Operator" should be too. |
-| ++ | ResponsibleOrganisationRef | mandatory | 0..1 | OrganisationRefStructure | RESPONSIBILITY SETs used in frame. |  |
+|  | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+|  | roles | mandatory | 0..1 | responsibilityRoleAssignments_RelStructure | Roles defined by this RESPONSIBILITY SET. |  |
+| + | ResponsibilityRoleAssignment | mandatory | 0..* | unknown | Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision. |  |
+| ++ | StakeholderRoleType | mandatory | 0..1 | StakeholderRoleTypeListOfEnumerations | Stakeholder roles which this assignment assigns. | "EntityLegalOwnership" must be defined once and "Operator" should be too. |
+| ++ | ResponsibleOrganisationRef | mandatory | 0..1 | OrganisationRefStructure | Responsible ORGANISATION. |  |

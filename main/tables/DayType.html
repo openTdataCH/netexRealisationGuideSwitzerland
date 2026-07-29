@@ -80,9 +80,9 @@
       <td>+</td>
       <td>AlternativeText</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>unknown</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td>ALTERNATIVE TEXT for a text attribute of Element.</td>
       <td> </td>
     </tr>
     <tr>
@@ -91,7 +91,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td>Name of the entity.</td>
       <td> </td>
     </tr>
     <tr>
@@ -109,7 +109,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td>Name of VALIDITY CONDITION.</td>
       <td>German or default text</td>
     </tr>
     <tr>
@@ -127,7 +127,7 @@
       <td>expected</td>
       <td>0..*</td>
       <td>MultilingualString</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td> </td>
       <td>Italian</td>
     </tr>
     <tr>
@@ -145,7 +145,7 @@
       <td>expected</td>
       <td>0..*</td>
       <td>MultilingualString</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td> </td>
       <td>French</td>
     </tr>
     <tr>
@@ -163,7 +163,7 @@
       <td>expected</td>
       <td>0..*</td>
       <td>MultilingualString</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td> </td>
       <td>English</td>
     </tr>
     <tr>
@@ -181,16 +181,16 @@
       <td>expected</td>
       <td>0..1</td>
       <td>propertiesOfDay_RelStructure</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td>Properties of the DAY TYPE.</td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>PropertyOfDay</td>
       <td>mandatory</td>
-      <td>0..*</td>
+      <td>1..*</td>
       <td>unknown</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td>A property which a day may possess, such as school holiday, weekday, summer, winter etc.</td>
       <td>Holidays only</td>
     </tr>
     <tr>
@@ -199,7 +199,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>HolidayTypesListOfEnumerations</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td>Type of holiday. Default is Any day.</td>
       <td> </td>
     </tr>
     <tr>
@@ -208,7 +208,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>DayEventEnumeration</td>
-      <td>A SERVICE CALENDAR. A coherent set of OPERATING DAYS and DAY TYPES comprising a Calendar. That may be used to state the temporal VALIDITY of other NeTEx entities such as Timetables, STOP PLACEs, etc. Covers a PERIOD with a collection of assignments of OPERATING DAYS to DAY TYPES.</td>
+      <td>Events happening on day.</td>
       <td> </td>
     </tr>
   </tbody>

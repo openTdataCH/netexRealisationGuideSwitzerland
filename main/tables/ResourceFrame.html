@@ -87,9 +87,9 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ResponsibilitySet.html">ResponsibilitySet</a></td>
       <td>mandatory</td>
-      <td>0..*</td>
-      <td>responsibilitySetsInFrame_RelStructure</td>
-      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>1..*</td>
+      <td>unknown</td>
+      <td>A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent.</td>
       <td>Each combination of Authority and Operator needs a ResponsibilitySet.</td>
     </tr>
     <tr>
@@ -106,8 +106,8 @@
       <td>ValueSet</td>
       <td>expected</td>
       <td>0..*</td>
-      <td>typesOfValueInFrame_RelStructure</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>unknown</td>
+      <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
       <td>We need a TypeOfNotice ValueSet.</td>
     </tr>
     <tr>
@@ -116,7 +116,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>typesOfValue_RelStructure</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>Values in Set.</td>
       <td> </td>
     </tr>
     <tr>
@@ -124,8 +124,8 @@
       <td>TypeOfNotice</td>
       <td>expected</td>
       <td>0..*</td>
-      <td>typesOfValueInFrame_RelStructure</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>unknown</td>
+      <td>A classification of a NOTICE according to its functional purpose.</td>
       <td> </td>
     </tr>
     <tr>
@@ -133,8 +133,8 @@
       <td>ValueSet</td>
       <td>expected</td>
       <td>0..*</td>
-      <td>typesOfValueInFrame_RelStructure</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>unknown</td>
+      <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
       <td>We need a TypeOfProductCategory ValueSet</td>
     </tr>
     <tr>
@@ -142,8 +142,8 @@
       <td>ValueSet</td>
       <td>expected</td>
       <td>0..*</td>
-      <td>typesOfValueInFrame_RelStructure</td>
-      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>unknown</td>
+      <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
       <td>We expect a TypsOfPlace Valueset</td>
     </tr>
     <tr>
@@ -160,8 +160,8 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/Operator.html">Operator</a></td>
       <td>mandatory</td>
       <td>0..*</td>
-      <td>organisationsInFrame_RelStructure</td>
-      <td>ORGANISATIONs in frame.</td>
+      <td>unknown</td>
+      <td>A company providing public transport services.</td>
       <td>We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once.</td>
     </tr>
     <tr>
@@ -177,9 +177,9 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
       <td>optional</td>
-      <td>0..*</td>
-      <td>siteFacilitySetsInFrame_RelStructure</td>
-      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>1..*</td>
+      <td>unknown</td>
+      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
     </tr>
     <tr>
@@ -195,9 +195,9 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
       <td>optional</td>
-      <td>0..*</td>
-      <td>serviceFacilitySetsInFrame_RelStructure</td>
-      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
+      <td>1..*</td>
+      <td>unknown</td>
+      <td>Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
     </tr>
     <tr>
@@ -214,8 +214,8 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/VehicleType.html">VehicleType</a></td>
       <td>optional</td>
       <td>0..*</td>
-      <td>vehicleTypesInFrame_RelStructure</td>
-      <td>VEHICLE TYPEs in frame.</td>
+      <td>unknown</td>
+      <td>A classification of public transport vehicles according to the vehicle scheduling requirements in mode and capacity (e.g. standard bus, double-deck, …).</td>
       <td> </td>
     </tr>
   </tbody>

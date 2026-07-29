@@ -80,7 +80,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>DAY TYPEs for BLOCK.</td>
       <td> </td>
     </tr>
     <tr>
@@ -89,7 +89,7 @@
       <td>optional</td>
       <td>1..*</td>
       <td>DayTypeRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a DAY TYPE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -97,8 +97,8 @@
       <td>dayTypes</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>dayTypesInFrame_RelStructure</td>
+      <td>Reusable DAY TYPE in SERVICE CALENDAR FRAME.</td>
       <td> </td>
     </tr>
     <tr>
@@ -107,7 +107,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays.</td>
       <td> </td>
     </tr>
     <tr>
@@ -116,7 +116,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>FareClassEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Fixed class associated with this CLASS OF USE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -125,7 +125,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>OccupancyEnumeration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>An approximate figure of how occupied or full a VEHICLE and its parts are, e.g. ‘manySeatsAvailable’ or ‘standingRoomOnly’. More accurate data can be provided by the individual occupancies or capacities below.</td>
       <td>Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable</td>
     </tr>
     <tr>
@@ -134,7 +134,7 @@
       <td>optional</td>
       <td>0..*</td>
       <td>GroupReservationStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reservations of travel groups, i.e., name of group and number of seats booked.</td>
       <td> </td>
     </tr>
     <tr>
@@ -143,7 +143,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>MultilingualString</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Name for which the travel group has made the reservation.</td>
       <td> </td>
     </tr>
     <tr>
@@ -152,7 +152,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>NumberOfPassengers</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Number of seats that the group has booked.</td>
       <td> </td>
     </tr>
   </tbody>

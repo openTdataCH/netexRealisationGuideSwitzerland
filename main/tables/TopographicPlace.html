@@ -78,9 +78,9 @@
       <td> </td>
       <td>Descriptor</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>TopographicPlaceDescriptor_VersionedChildStructure</td>
-      <td>PLACEs in frame.</td>
+      <td>Structured text descriptor of TOPOGRAPHIC PLACE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -89,7 +89,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>PLACEs in frame.</td>
+      <td>Name of VALIDITY CONDITION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -98,7 +98,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>PLACEs in frame.</td>
+      <td>Short Name for TYPE OF VALUE.</td>
       <td>Abbreviation of the canton (leave empty if TopographicPlaceType is country)</td>
     </tr>
     <tr>
@@ -107,7 +107,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>TopographicPlaceTypeEnumeration</td>
-      <td>PLACEs in frame.</td>
+      <td>Classification of the TOPOGRAPHIC PLACE as a settlement. Enumerated value.</td>
       <td>Allowed values: country, county</td>
     </tr>
     <tr>
@@ -116,7 +116,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>TopographicPlaceRefStructure</td>
-      <td>PLACEs in frame.</td>
+      <td>Parent TOPOGRAPHIC PLACE. Reference to another TOPOGRAPHIC PLACE that contains the child TOPOGRAPHIC PLACE completely. Must not be cyclic.</td>
       <td>Parent topographic place when it exists.</td>
     </tr>
   </tbody>

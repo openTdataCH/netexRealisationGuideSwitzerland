@@ -6,22 +6,22 @@
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Name | optional | 0..1 | MultilingualString | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-|  | RouteView | mandatory | 1..1 | unknown | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| + | LineRef | mandatory | 1..1 | LineRefStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-|  | DirectionType | mandatory | 0..1 | RelativeDirectionEnumeration | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-|  | pointsInSequence | mandatory | 0..1 | vehicleMeetingPointsInSequence_RelStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| + | StopPointInJourneyPattern | mandatory | 0..* | unknown | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| ++ | ScheduledStopPointRef | mandatory | 0..1 | ScheduledStopPointRefStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| ++ | ForAlighting | mandatory | 0..1 | xsd:boolean | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| ++ | ForBoarding | mandatory | 0..1 | xsd:boolean | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| ++ | DestinationDisplayRef | optional | 1..1 | DestinationDisplayRefStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | Indicates that the destination has changed. Superseeds Line or ServiceJourney |
-| ++ | RequestStop | optional | 0..1 | xsd:boolean | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| ++ | StopUse | optional | 0..1 | StopUseEnumeration | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | All values possible. passthrough is used for Durchfahrt, if such data is delivered. |
-| ++ | checkConstraints | optional | 0..1 | checkConstraints_RelStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| +++ | [CheckConstraint](CheckConstraint.md) | optional | 0..* | unknown | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| ++ | bookingArrangements | optional | 0..1 | bookingArrangements_RelStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| +++ | BookingArrangementRef | optional | 0..* | BookingArrangementRefStructure | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. | Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information. |
-| +++ | BookingArrangement | we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here | 0..* | unknown | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-| ++++ | BookingMethods | we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here | 0..1 | BookingMethodListOfEnumerations | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
-|  | ServiceJourneyPatternType | expected | 0..1 | ServiceJourneyPatternTypeEnumeration | A coherent set of Service data to which the same frame VALIDITY CONDITIONs have been assigned. |  |
+|  | Name | optional | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
+|  | RouteView | mandatory | 1..1 | unknown | Annotated reference to a ROUTE. |  |
+| + | LineRef | mandatory | 1..* | LineRefStructure | Reference to a LINE. |  |
+|  | DirectionType | mandatory | 0..1 | RelativeDirectionEnumeration | A Direction of a ROUTE. One of a restricted set of values. Default is "Outbound" |  |
+|  | pointsInSequence | mandatory | 0..1 | vehicleMeetingPointsInSequence_RelStructure | Ordered List of points used in TIMING PATTERN. specific to TIMING PATTERN. |  |
+| + | StopPointInJourneyPattern | mandatory | 0..* | unknown |  |  |
+| ++ | ScheduledStopPointRef | mandatory | 0..1 | ScheduledStopPointRefStructure | Reference to a SCHEDULED STOP POINT. |  |
+| ++ | ForAlighting | mandatory | 0..1 | xsd:boolean | Default for whether SCHEDULED STOP POINT may be used for alighting. May be overridden on specific services. |  |
+| ++ | ForBoarding | mandatory | 0..1 | xsd:boolean | Default for whether SCHEDULED STOP POINT may be used for boarding. May be overridden on specific services. |  |
+| ++ | DestinationDisplayRef | optional | 1..* | DestinationDisplayRefStructure | Reference to a DESTINATION DISPLAY. | Indicates that the destination has changed. Superseeds Line or ServiceJourney |
+| ++ | RequestStop | optional | 0..1 | xsd:boolean | Whether stop is by default a request stop in the timetable. May be overridden in specific SERVICE PATTERNs. |  |
+| ++ | StopUse | optional | 0..1 | StopUseEnumeration | Nature of use of stop, e.g. access, interchange only, or pass through. Default is Access. | All values possible. passthrough is used for Durchfahrt, if such data is delivered. |
+| ++ | checkConstraints | optional | 0..1 | checkConstraints_RelStructure | CHECK CONSTRAINTs in frame. |  |
+| +++ | [CheckConstraint](CheckConstraint.md) | optional | 1..* | unknown | Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges. |  |
+| ++ | bookingArrangements | optional | 0..1 | bookingArrangements_RelStructure | BOOKING ARRANGEMENTs in frame +v2.0. |  |
+| +++ | BookingArrangementRef | optional | 0..* | BookingArrangementRefStructure | Reference to a BOOKING ARRANGEMENT. | Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information. |
+| +++ | BookingArrangement | we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here | 1..* | unknown | Details of the booking arrangements for a given LINE, STOP, SERVICE etc. |  |
+| ++++ | BookingMethods | we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here | 0..1 | BookingMethodListOfEnumerations | Allowed Ways of Making a BOOKING. |  |
+|  | ServiceJourneyPatternType | expected | 0..1 | ServiceJourneyPatternTypeEnumeration | Type of SERVICE JOURNEY PATTERN. |  |

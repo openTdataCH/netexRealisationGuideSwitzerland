@@ -64,7 +64,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
       <td> </td>
     </tr>
     <tr>
@@ -73,7 +73,7 @@
       <td>expected</td>
       <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
       <td> </td>
     </tr>
     <tr>
@@ -82,7 +82,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Whether the passenger can remain in vehicle (i.e. block linking). Default is false: the passenger must change vehicles for this INTERCHANGE. Default is false.</td>
       <td> </td>
     </tr>
     <tr>
@@ -91,7 +91,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Whether INTERCHANGE is planned in a timetable. Default is true.</td>
       <td> </td>
     </tr>
     <tr>
@@ -100,7 +100,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Whether INTERCHANGE is guaranteed. Default is false.</td>
       <td> </td>
     </tr>
     <tr>
@@ -109,7 +109,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:duration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Maximum transfer duration for INTERCHANGE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -118,7 +118,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>xsd:duration</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Maximum transfer duration for INTERCHANGE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -127,7 +127,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>interchangeRuleTimings_RelStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Additional timings for the INTERCHANGE RULE for specific TIME DEMAND TYPEs.</td>
       <td> </td>
     </tr>
     <tr>
@@ -136,16 +136,16 @@
       <td>expected</td>
       <td>0..*</td>
       <td>unknown</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Timings for an INTERCHANGE RULE for a given TIME DEMAND TYPE.</td>
       <td> </td>
     </tr>
     <tr>
       <td>++</td>
       <td>TimebandRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>TimebandRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a TIME BAND.</td>
       <td> </td>
     </tr>
     <tr>
@@ -154,7 +154,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>InterchangeRuleParameterStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Feeder end of INTERCHANGE RULE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -163,7 +163,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>StopPlaceRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a STOP PLACE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -172,16 +172,16 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>LineInDirectionRef_Structure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a LINE in a specific DIRECTION</td>
       <td> </td>
     </tr>
     <tr>
       <td>++</td>
       <td>LineRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>LineRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a LINE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -190,7 +190,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>DirectionRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a DIRECTION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -199,7 +199,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>StopPlaceRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Prior (feeder) or onwards (distributor) SCHEDULED STOP PLACE before/after CONNECTION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -208,7 +208,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>ServiceJourneyRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a SERVICE JOURNEY.</td>
       <td> </td>
     </tr>
     <tr>
@@ -217,7 +217,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>StopPlaceRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Prior (feeder) or onwards (distributor) SCHEDULED STOP PLACE before/after CONNECTION.</td>
       <td> </td>
     </tr>
     <tr>
@@ -226,7 +226,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>ServiceJourneyRefStructure</td>
-      <td>A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>Reference to a SERVICE JOURNEY.</td>
       <td> </td>
     </tr>
   </tbody>

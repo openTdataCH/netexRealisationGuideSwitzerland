@@ -8,16 +8,16 @@ Long-term planned time data concerning public transport vehicles passing a parti
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-| + | CheckConstraint | optional | 1..1 | unknown | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-| + | IsFlexible | optional | 0..1 | xsd:boolean | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-|  | AlightAndReboard | optional | 0..1 | xsd:boolean | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-|  | StopPointInJourneyPatternRef | mandatory | 1..1 | StopPointInJourneyPatternRefStructure | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-|  | ArrivalTime | expected | 0..1 | xsd:time | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Not used if departure only. |
-|  | ArrivalDayOffset | optional | 0..1 | DayOffsetType | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-|  | DepartureTime | expected | 0..1 | xsd:time | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. | Not used if arrival only. |
-|  | DepartureDayOffset | optional | 0..1 | DayOffsetType | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-|  | WaitingTime | optional | 0..1 | xsd:duration | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-|  | LatestArrivalTime | optional | 0..1 | xsd:time | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-|  | LatestArrivalDayOffset | optional | 0..1 | DayOffsetType | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-|  | EarliestDepartureTime | optional | 0..1 | xsd:time | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
-|  | EarliestDepartureDayOffset | optional | 0..1 | DayOffsetType | A coherent set of timetable data (VEHICLE JOURNEYs and BLOCKs) to which the same VALIDITY CONDITIONs have been assigned. |  |
+| + | CheckConstraint | optional | 1..* | unknown | Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges. |  |
+| + | IsFlexible | optional | 0..1 | xsd:boolean | Whether use of stop is flexible, i.e. requires phoning to arrange. Must be a FLEXIBLE LINE. Default is false. |  |
+|  | AlightAndReboard | optional | 0..1 | xsd:boolean | Whether can alight and reboard at stop. |  |
+|  | StopPointInJourneyPatternRef | mandatory | 1..1 | StopPointInJourneyPatternRefStructure | Reference to a STOP POINT IN SEQUENCE. If given by context does not need to be stated. |  |
+|  | ArrivalTime | expected | 0..1 | xsd:time | Time of arrival of JOURNEY at destination POINT. | Not used if departure only. |
+|  | ArrivalDayOffset | optional | 0..1 | DayOffsetType | Daya offset if Time of arrival of JOURNEY at destination POINT. |  |
+|  | DepartureTime | expected | 0..1 | xsd:time | Time of departure of JOURNEY from POINT. | Not used if arrival only. |
+|  | DepartureDayOffset | optional | 0..1 | DayOffsetType | Daya offset if Time of departure of JOURNEY from origin POINT from current OPERATING DAY. |  |
+|  | WaitingTime | optional | 0..1 | xsd:duration | Timetabled waiting interval. |  |
+|  | LatestArrivalTime | optional | 0..1 | xsd:time | Latest Arrival Time. |  |
+|  | LatestArrivalDayOffset | optional | 0..1 | DayOffsetType | Number of days after the starting time of the journey if not same calendar day. Default is 0 for same day. |  |
+|  | EarliestDepartureTime | optional | 0..1 | xsd:time | Earliest Timetabled departure time. |  |
+|  | EarliestDepartureDayOffset | optional | 0..1 | DayOffsetType | Number of days after the starting time of the journey if not same calendar day. Default is 0 for same day. |  |
