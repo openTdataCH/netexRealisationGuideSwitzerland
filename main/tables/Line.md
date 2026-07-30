@@ -12,6 +12,10 @@ For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `Oper
 |  | ValidBetween | expected | 1..* | unknown |  | Usually set to the whole timetable year |
 | + | FromDate | expected | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. |  |
 | + | ToDate | expected | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. |  |
+|  | keyList | optional | 0..1 | KeyListStructure | A list of alternative Key values for an element. |  |
+| + | KeyValue | optional | 1..* | KeyValueStructure | Key value pair for Entity. | We might use KeyValue for some additional information |
+| ++ | Key | optional | 0..1 | xsd:normalizedString | User key. |  |
+| ++ | Value | optional | 0..1 | xsd:anyType | Value for alternative key. |  |
 |  | privateCodes | mandatory | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | The SLNID is mandatory if it exists |
 | + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | The SLNID is mandatory if it exists |
 | ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |

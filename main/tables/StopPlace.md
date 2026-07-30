@@ -15,7 +15,7 @@ In some cases the id of a StopPlace is not a SLOID.
 | + | KeyValue | optional | 1..* | KeyValueStructure | Key value pair for Entity. | HafasPriority and HafasKMInfo for Hafas environments, only used in exports by INFO+. |
 | ++ | Key | mandatory | 0..1 | xsd:normalizedString | User key. |  |
 | ++ | Value | mandatory | 0..1 | xsd:anyType | Value for alternative key. |  |
-|  | privateCodes | mandatory | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
+|  | privateCodes | expected | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
 | + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | Mandatory for DIDOK and SLOID if they exist. |
 | ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
 |  | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. | The official stop name. If you have different versions one needs to use AlternativeName |

@@ -543,6 +543,42 @@ class ServiceJourney {
     </tr>
     <tr>
       <td> </td>
+      <td>keyList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>KeyListStructure</td>
+      <td>A list of alternative Key values for an element.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>KeyValue</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>KeyValueStructure</td>
+      <td>Key value pair for Entity.</td>
+      <td>We might use KeyValue for some additional information</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Key</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:normalizedString</td>
+      <td>User key.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Value</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:anyType</td>
+      <td>Value for alternative key.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>privateCodes</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -682,7 +718,13 @@ class ServiceJourney {
   <span class="nt">&lt;FromDate&gt;</span>2022-12-11T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
   <span class="nt">&lt;ToDate&gt;</span>2023-12-09T23:59:59<span class="nt">&lt;/ToDate&gt;</span>
   <span class="nt">&lt;/ValidBetween&gt;</span>
-  <span class="nt">&lt;keyList/&gt;</span>
+  <span class="nt">&lt;keyList&gt;</span>
+  <span class="nt">&lt;KeyValue&gt;</span>
+  <span class="c">&lt;!-- We might use KeyValue for some additional information --&gt;</span>
+  <span class="nt">&lt;Key&gt;</span>OurKey<span class="nt">&lt;/Key&gt;</span>
+  <span class="nt">&lt;Value&gt;</span>123123<span class="nt">&lt;/Value&gt;</span>
+  <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;/keyList&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
   <span class="c">&lt;!-- The SLNID is mandatory if it exists --&gt;</span>
   <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"slnid"</span><span class="nt">&gt;</span>ch:1:slnid:102846
@@ -991,17 +1033,8 @@ class ServiceJourney {
     </tr>
     <tr>
       <td> </td>
-      <td>keyList</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>KeyListStructure</td>
-      <td>A list of alternative Key values for an element.</td>
-      <td>Swiss ScheduledStopPoint are using the sloid in the id if possible. We keep the ScheduledStopPoint very minimalistic. The information is stored in the SiteFrame.</td>
-    </tr>
-    <tr>
-      <td> </td>
       <td>privateCodes</td>
-      <td>mandatory</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>PrivateCodesStructure</td>
       <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
@@ -1053,7 +1086,6 @@ class ServiceJourney {
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;ScheduledStopPoint</span> <span class="na">id=</span><span class="s">"ch:1:sloid:4128:1:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- Swiss ScheduledStopPoint are using the sloid in the id if possible. We keep the ScheduledStopPoint very minimalistic. The information is stored in the SiteFrame. --&gt;</span>
-  <span class="nt">&lt;keyList/&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
   <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:4128:1:1
   <span class="c">&lt;!-- SLOID mandatory if it exists. --&gt;</span>

@@ -333,7 +333,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     <tr>
       <td> </td>
       <td>privateCodes</td>
-      <td>mandatory</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>PrivateCodesStructure</td>
       <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
@@ -703,7 +703,6 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- Can be a platform, track, sector group or sector. id is a SLOID whenever possible or generated. --&gt;</span>
-  <span class="nt">&lt;keyList/&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
   <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000:5:9
   <span class="c">&lt;!-- SLOID mandatory if it exists. --&gt;</span>

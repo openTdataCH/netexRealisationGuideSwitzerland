@@ -8,7 +8,6 @@ We will use this organisation also in `AuthorityRef`. The problem is that the SB
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | keyList | mandatory | 0..1 | KeyListStructure | A list of alternative Key values for an element. | We will use this organisation also in `AuthorityRef`. The problem is that the SBOID can be used only once. **TODO** Clarify |
 |  | privateCodes | mandatory | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
 | + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | SBOID and GO (busines organisation) mandatory if they exist. |
 |  | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
