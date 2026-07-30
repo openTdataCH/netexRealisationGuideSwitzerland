@@ -180,12 +180,12 @@
 </code></pre></div></div>
 
 <h2 id="line-and-direction-oriented-transfer-times-umsteigl">Line and Direction-oriented transfer times (UMSTEIGL)</h2>
-<p>Defines transfer times between specific <code class="language-plaintext highlighter-rouge">Lines</code> and <code class="language-plaintext highlighter-rouge">Directions</code> at a stop place. Journeys are specified indirectly via <code class="language-plaintext highlighter-rouge">Line</code> and <code class="language-plaintext highlighter-rouge">DirectionType</code>, not as an explicit journey pair. The ! marker in HRDF indicates a guaranteed connection.</p>
+<p>Defines transfer times between specific <code class="language-plaintext highlighter-rouge">Lines</code> and <code class="language-plaintext highlighter-rouge">Directions</code> at a stop place in HRDF. <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> has no element to reference a <code class="language-plaintext highlighter-rouge">Line</code>/<code class="language-plaintext highlighter-rouge">DirectionType</code> combination directly — it always requires two concrete journeys (<code class="language-plaintext highlighter-rouge">FromServiceJourneyRef</code>/<code class="language-plaintext highlighter-rouge">ToServiceJourneyRef</code>). UMSTEIGL is therefore fully resolved during import/export: one <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> is generated per matching pair of actual journeys. The <code class="language-plaintext highlighter-rouge">!</code> marker in HRDF indicates a guaranteed connection (<code class="language-plaintext highlighter-rouge">Guaranteed=true</code>).</p>
 <blockquote>
   <p>In the Swiss profile, only <code class="language-plaintext highlighter-rouge">DirectionType</code> (type <code class="language-plaintext highlighter-rouge">DirectionTypeEnumeration</code>) is used, not <code class="language-plaintext highlighter-rouge">DirectionRef</code>.</p>
 </blockquote>
 
-<p><strong>When to use:</strong> When the transfer time applies to all journeys of a specific line/direction combination at a given stop place.</p>
+<p><strong>When to use:</strong> When the transfer time applies to all journeys of a specific line/direction combination at a given stop place — resolved to one <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> per journey pair.</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;ServiceJourneyInterchange</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:1696906_TA"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>

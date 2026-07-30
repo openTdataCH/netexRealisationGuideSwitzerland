@@ -112,10 +112,10 @@ Defines transfer times between two specific operators at a stop place. The HRDF 
 
 
 ## Line and Direction-oriented transfer times (UMSTEIGL)
-Defines transfer times between specific `Lines` and `Directions` at a stop place. Journeys are specified indirectly via `Line` and `DirectionType`, not as an explicit journey pair. The ! marker in HRDF indicates a guaranteed connection.
+Defines transfer times between specific `Lines` and `Directions` at a stop place in HRDF. `ServiceJourneyInterchange` has no element to reference a `Line`/`DirectionType` combination directly — it always requires two concrete journeys (`FromServiceJourneyRef`/`ToServiceJourneyRef`). UMSTEIGL is therefore fully resolved during import/export: one `ServiceJourneyInterchange` is generated per matching pair of actual journeys. The `!` marker in HRDF indicates a guaranteed connection (`Guaranteed=true`).
 > In the Swiss profile, only `DirectionType` (type `DirectionTypeEnumeration`) is used, not `DirectionRef`.
 
-**When to use:** When the transfer time applies to all journeys of a specific line/direction combination at a given stop place.
+**When to use:** When the transfer time applies to all journeys of a specific line/direction combination at a given stop place — resolved to one `ServiceJourneyInterchange` per journey pair.
 
 
 
