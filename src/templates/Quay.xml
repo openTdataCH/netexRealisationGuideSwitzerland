@@ -38,6 +38,12 @@
 										<!-- ch-usage: forbidden -->
 										<!-- ch-note: We might in future model StopPlace as polygons -->
 									</gml:Polygon>
+									<AccessibilityAssessment id="generated" version="1">
+										<!-- ch-usage: optional -->
+										<!-- ch-note: Will be used at some point for the basic accessibility information. Currently not used. -->
+										<MobilityImpairedAccess><!-- ch-note: Basic information about accessibility. --><!-- ch-usage: optional -->true</MobilityImpairedAccess>
+									</AccessibilityAssessment>
+									<AccessModes><!-- ch-usage: optional --><!-- Currently we don't have the data. But especially for carTransportRail we will use it at some point. -->bicycle foot</AccessModes>
 									<PublicUse><!-- ch-usage: ignored --><!-- Might be added at some point -->all</PublicUse>
 									<Covered><!-- ch-usage: ignored --><!-- Might be added at some point -->covered</Covered>
 									<facilities>
@@ -59,6 +65,11 @@
 										<!-- ch-note: Code used to identify the Quay to the public -->
 										9
 									</PublicCode>
+									<QuayType><!-- ch-usage: optional --><!-- ch-note: will be used for formations. Allowed values are defined in mapping  excel. -->railPlatform</QuayType>
+									<ParentQuayRef ref="theparentref" versionRef="1">
+										<!-- ch-usage: optional -->
+										<!-- ch-note: Will be used when we do sectors and sector groups. -->
+									</ParentQuayRef>
 								</Quay>
 							</quays>
 						</StopPlace>
