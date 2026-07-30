@@ -11,12 +11,12 @@ In some cases the id of a StopPlace is not a SLOID.
 |  | ValidBetween | optional | 1..* | unknown |  | This can be used to show, when the StopPlace can be used. |
 | + | FromDate | optional | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. |  |
 | + | ToDate | optional | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. |  |
-|  | keyList | expected | 0..1 | KeyListStructure | A list of alternative Key values for an element. | Key value pairs for DIDOK number and SLOID and special values. Prefered is privateCodes. |
-| + | KeyValue | optional | 1..* | KeyValueStructure | Key value pair for Entity. |  |
-| ++ | Key | optional | 0..1 | xsd:normalizedString | User key. |  |
-| ++ | Value | optional | 0..1 | xsd:anyType | Value for alternative key. |  |
+|  | keyList | optional | 0..1 | KeyListStructure | A list of alternative Key values for an element. | Key value pairs. |
+| + | KeyValue | optional | 1..* | KeyValueStructure | Key value pair for Entity. | HafasPriority and HafasKMInfo for Hafas environments, only used in exports by INFO+. |
+| ++ | Key | mandatory | 0..1 | xsd:normalizedString | User key. |  |
+| ++ | Value | mandatory | 0..1 | xsd:anyType | Value for alternative key. |  |
 |  | privateCodes | mandatory | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
-| + | PrivateCode | mandatory | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments. |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | Mandatory for DIDOK and SLOID if they exist. |
 | ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
 |  | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. | The official stop name. If you have different versions one needs to use AlternativeName |
 |  | Centroid | mandatory | 0..1 | SimplePoint_VersionStructure | Centre Coordinates of ZONE. | Global or national location |

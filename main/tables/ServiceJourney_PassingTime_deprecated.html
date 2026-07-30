@@ -103,44 +103,8 @@
     </tr>
     <tr>
       <td> </td>
-      <td>keyList</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>KeyListStructure</td>
-      <td>A list of alternative Key values for an element.</td>
-      <td>KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>KeyValue</td>
-      <td>mandatory</td>
-      <td>1..*</td>
-      <td>KeyValueStructure</td>
-      <td>Key value pair for Entity.</td>
-      <td>A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Key</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>xsd:normalizedString</td>
-      <td>User key.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Value</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>xsd:anyType</td>
-      <td>Value for alternative key.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
       <td>privateCodes</td>
-      <td>expected</td>
+      <td>mandatory</td>
       <td>0..1</td>
       <td>PrivateCodesStructure</td>
       <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
@@ -149,10 +113,19 @@
     <tr>
       <td>+</td>
       <td>PrivateCode</td>
-      <td>expected</td>
+      <td>mandatory</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>The Value contains a valid Swiss Journey ID.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
       <td> </td>
     </tr>
     <tr>

@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Operator id="ch:1:sboid:100602" version="1">
-  <!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
-  <keyList>
-  <KeyValue>
-  <Key>GO</Key>
-  <Value>801</Value>
-  </KeyValue>
-  <KeyValue>
-  <Key>SBOID</Key>
-  <Value>ch:1:sboid:100602</Value>
-  </KeyValue>
-  </keyList>
+  <!-- We will use this organisation also in `AuthorityRef`. The problem is that the SBOID can be used only once. **TODO** Clarify -->
+  <keyList/>
   <privateCodes>
   <PrivateCode type="GO">801
-  <!-- Busines organisation -->
+  <!-- SBOID and GO (busines organisation) mandatory if they exist. -->
   </PrivateCode>
-  <PrivateCode type="sboid">ch:1:sboid:100602</PrivateCode>
+  <PrivateCode type="sboid">ch:1:sboid:100602
+  <!-- SBOID and GO (busines organisation) mandatory if they exist. -->
+  </PrivateCode>
   </privateCodes>
   <PrivateCode>801</PrivateCode>
   <Name>PostAuto AG</Name>

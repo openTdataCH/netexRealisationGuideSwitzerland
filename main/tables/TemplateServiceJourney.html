@@ -105,48 +105,12 @@
     </tr>
     <tr>
       <td> </td>
-      <td>keyList</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>KeyListStructure</td>
-      <td>A list of alternative Key values for an element.</td>
-      <td>Key List values</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>KeyValue</td>
-      <td>optional</td>
-      <td>1..*</td>
-      <td>KeyValueStructure</td>
-      <td>Key value pair for Entity.</td>
-      <td>For special Key value pairs. We don’t use it for SJYID any longer</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Key</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>xsd:normalizedString</td>
-      <td>User key.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Value</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>xsd:anyType</td>
-      <td>Value for alternative key.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
       <td>privateCodes</td>
-      <td>expected</td>
+      <td>mandatory</td>
       <td>0..1</td>
       <td>PrivateCodesStructure</td>
       <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
-      <td>Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region</td>
+      <td>Replaces the single PrivateCode.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -155,6 +119,15 @@
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
       <td> </td>
     </tr>
     <tr>

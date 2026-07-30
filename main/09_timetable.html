@@ -440,7 +440,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
     <tr>
       <td> </td>
       <td>privateCodes</td>
-      <td>expected</td>
+      <td>mandatory</td>
       <td>0..1</td>
       <td>PrivateCodesStructure</td>
       <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
@@ -453,7 +453,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
-      <td>The following types are possible: sjyid and rn. rn is the type used for the Postauto region.</td>
+      <td>Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -700,9 +700,11 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <span class="nt">&lt;/keyList&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
   <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sjyid"</span><span class="nt">&gt;</span>ch:1:sjyid:100001:71707-003
-  <span class="c">&lt;!-- The following types are possible: sjyid and rn. rn is the type used for the Postauto region. --&gt;</span>
+  <span class="c">&lt;!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. --&gt;</span>
   <span class="nt">&lt;/PrivateCode&gt;</span>
-  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"rn"</span><span class="nt">&gt;</span>12<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"rn"</span><span class="nt">&gt;</span>12
+  <span class="c">&lt;!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. --&gt;</span>
+  <span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
   <span class="nt">&lt;TransportMode&gt;</span>rail<span class="nt">&lt;/TransportMode&gt;</span>
   <span class="nt">&lt;TypeOfProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:IR"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -857,48 +859,12 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
     </tr>
     <tr>
       <td> </td>
-      <td>keyList</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>KeyListStructure</td>
-      <td>A list of alternative Key values for an element.</td>
-      <td>Key List values</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>KeyValue</td>
-      <td>optional</td>
-      <td>1..*</td>
-      <td>KeyValueStructure</td>
-      <td>Key value pair for Entity.</td>
-      <td>For special Key value pairs. We don’t use it for SJYID any longer</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Key</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>xsd:normalizedString</td>
-      <td>User key.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Value</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>xsd:anyType</td>
-      <td>Value for alternative key.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
       <td>privateCodes</td>
-      <td>expected</td>
+      <td>mandatory</td>
       <td>0..1</td>
       <td>PrivateCodesStructure</td>
       <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
-      <td>Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region</td>
+      <td>Replaces the single PrivateCode.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -907,6 +873,15 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
       <td> </td>
     </tr>
     <tr>
@@ -1159,18 +1134,15 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
   <span class="c">&lt;!-- Only a single AvailabilityConditionRef is allowed. --&gt;</span>
   <span class="nt">&lt;/AvailabilityConditionRef&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
-  <span class="nt">&lt;keyList&gt;</span>
-  <span class="c">&lt;!-- Key List values --&gt;</span>
-  <span class="nt">&lt;KeyValue&gt;</span>
-  <span class="c">&lt;!-- For special Key value pairs. We don't use it for SJYID any longer --&gt;</span>
-  <span class="nt">&lt;Key&gt;</span>RN<span class="nt">&lt;/Key&gt;</span>
-  <span class="nt">&lt;Value&gt;</span>1001<span class="nt">&lt;/Value&gt;</span>
-  <span class="nt">&lt;/KeyValue&gt;</span>
-  <span class="nt">&lt;/keyList&gt;</span>
+  <span class="nt">&lt;keyList/&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
-  <span class="c">&lt;!-- Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region --&gt;</span>
-  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sjyid"</span><span class="nt">&gt;</span>ch:1:sjyid:100001:71707-003<span class="nt">&lt;/PrivateCode&gt;</span>
-  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"rn"</span><span class="nt">&gt;</span>12<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="c">&lt;!-- Replaces the single PrivateCode. --&gt;</span>
+  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sjyid"</span><span class="nt">&gt;</span>ch:1:sjyid:100001:71707-003
+  <span class="c">&lt;!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. --&gt;</span>
+  <span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"rn"</span><span class="nt">&gt;</span>12
+  <span class="c">&lt;!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. --&gt;</span>
+  <span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
   <span class="nt">&lt;TransportMode&gt;</span>rail<span class="nt">&lt;/TransportMode&gt;</span>
   <span class="nt">&lt;TypeOfProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:IR"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>

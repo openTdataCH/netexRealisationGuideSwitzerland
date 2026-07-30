@@ -79,43 +79,16 @@
     <tr>
       <td> </td>
       <td>keyList</td>
-      <td>optional</td>
+      <td>mandatory</td>
       <td>0..1</td>
       <td>KeyListStructure</td>
       <td>A list of alternative Key values for an element.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>KeyValue</td>
-      <td>optional</td>
-      <td>1..*</td>
-      <td>KeyValueStructure</td>
-      <td>Key value pair for Entity.</td>
-      <td>Can contain a DIDOK key and a SLOID. We don’t need it really.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Key</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>xsd:normalizedString</td>
-      <td>User key.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Value</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>xsd:anyType</td>
-      <td>Value for alternative key.</td>
-      <td> </td>
+      <td>Swiss ScheduledStopPoint are using the sloid in the id if possible. We keep the ScheduledStopPoint very minimalistic. The information is stored in the SiteFrame.</td>
     </tr>
     <tr>
       <td> </td>
       <td>privateCodes</td>
-      <td>optional</td>
+      <td>mandatory</td>
       <td>0..1</td>
       <td>PrivateCodesStructure</td>
       <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
@@ -124,11 +97,11 @@
     <tr>
       <td>+</td>
       <td>PrivateCode</td>
-      <td>optional</td>
+      <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
-      <td>If the id is not a SLOID then the SLOID must be added here.</td>
+      <td>SLOID mandatory if it exists.</td>
     </tr>
     <tr>
       <td> </td>

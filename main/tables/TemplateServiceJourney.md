@@ -11,12 +11,9 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
 |  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
 | + | AvailabilityConditionRef | mandatory | 0..* | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. | Only a single AvailabilityConditionRef is allowed. |
-|  | keyList | optional | 0..1 | KeyListStructure | A list of alternative Key values for an element. | Key List values |
-| + | KeyValue | optional | 1..* | KeyValueStructure | Key value pair for Entity. | For special Key value pairs. We don't use it for SJYID any longer |
-| ++ | Key | optional | 0..1 | xsd:normalizedString | User key. |  |
-| ++ | Value | optional | 0..1 | xsd:anyType | Value for alternative key. |  |
-|  | privateCodes | expected | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region |
-| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+|  | privateCodes | mandatory | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | Replaces the single PrivateCode. |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. |
+| ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
 |  | TransportMode | optional | 0..1 | AllModesEnumeration | An area within a Site. May be connected to Quays by PATH LINKs. |  |
 |  | TypeOfProductCategoryRef | expected | 1..1 | TypeOfProductCategoryRefStructure | Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code. |  |
 |  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure | Reference to a TYPE OF SERVICE. |  |

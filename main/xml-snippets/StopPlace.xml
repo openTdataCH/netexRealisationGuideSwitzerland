@@ -7,31 +7,25 @@
   <ToDate>2026-12-31T00:00:00</ToDate>
   </ValidBetween>
   <keyList>
-  <!-- Key value pairs for DIDOK number and SLOID and special values. Prefered is privateCodes. -->
+  <!-- Key value pairs. -->
   <KeyValue>
-  <Key>DIDOK</Key>
-  <Value>7000</Value>
-  </KeyValue>
-  <KeyValue>
-  <Key>SLOID</Key>
-  <Value>ch:1:sloid:7000</Value>
-  </KeyValue>
-  <KeyValue>
-  <!-- Special value for Hafas environments. -->
+  <!-- HafasPriority and HafasKMInfo for Hafas environments, only used in exports by INFO+. -->
   <Key>HafasPriority</Key>
   <Value>4</Value>
   </KeyValue>
   <KeyValue>
-  <!-- Special value for Hafas environments. -->
+  <!-- Special value for Hafas environments, only used in exports by INFO+. -->
   <Key>HafasKMInfo</Key>
   <Value>1000</Value>
   </KeyValue>
   </keyList>
   <privateCodes>
   <PrivateCode type="didok">7000
-  <!-- In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments. -->
+  <!-- Mandatory for DIDOK and SLOID if they exist. -->
   </PrivateCode>
-  <PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
+  <PrivateCode type="sloid">ch:1:sloid:7000
+  <!-- Mandatory for DIDOK and SLOID if they exist. -->
+  </PrivateCode>
   </privateCodes>
   <Name>Bern
   <!-- The official stop name. If you have different versions one needs to use AlternativeName -->

@@ -16,24 +16,15 @@
 									<!-- ch-note: Can be a platform, track, sector group or sector. id is a SLOID whenever possible or generated.-->
 									<!-- ch-attrs: id version -->
 									<keyList>
-										<!-- ch-usage: expected -->
-										<KeyValue>
-											<!-- ch-usage: expected -->
-											<!-- ch-note: When no SLOID is possible it may be omitted. -->
-											<Key>
-												<!-- ch-usage: mandatory -->
-												<!-- ch-note: SLOID is mandatory key -->
-												SLOID
-											</Key>
-											<Value>
-												<!-- ch-usage: mandatory -->
-												ch:1:sloid:7000:5:9
-											</Value>
-										</KeyValue>
 									</keyList>
 									<privateCodes>
-										<!-- ch-usage: expected -->
-										<PrivateCode type="sloid"><!-- ch-usage: expected --><!-- ch-attrs: type -->ch:1:sloid:7000:5:9</PrivateCode>
+										<!-- ch-usage: mandatory -->
+										<PrivateCode type="sloid">
+											<!-- ch-usage: expected -->
+											<!-- ch-note: SLOID mandatory if it exists. -->
+											<!-- ch-attrs: type -->
+											ch:1:sloid:7000:5:9
+										</PrivateCode>
 									</privateCodes>
 									<Centroid>
 										<!-- ch-usage: mandatory -->

@@ -106,11 +106,11 @@
     <tr>
       <td> </td>
       <td>keyList</td>
-      <td>expected</td>
+      <td>optional</td>
       <td>0..1</td>
       <td>KeyListStructure</td>
       <td>A list of alternative Key values for an element.</td>
-      <td>Key value pairs for DIDOK number and SLOID and special values. Prefered is privateCodes.</td>
+      <td>Key value pairs.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -119,12 +119,12 @@
       <td>1..*</td>
       <td>KeyValueStructure</td>
       <td>Key value pair for Entity.</td>
-      <td> </td>
+      <td>HafasPriority and HafasKMInfo for Hafas environments, only used in exports by INFO+.</td>
     </tr>
     <tr>
       <td>++</td>
       <td>Key</td>
-      <td>optional</td>
+      <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:normalizedString</td>
       <td>User key.</td>
@@ -133,7 +133,7 @@
     <tr>
       <td>++</td>
       <td>Value</td>
-      <td>optional</td>
+      <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:anyType</td>
       <td>Value for alternative key.</td>
@@ -151,11 +151,11 @@
     <tr>
       <td>+</td>
       <td>PrivateCode</td>
-      <td>mandatory</td>
+      <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
       <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
-      <td>In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments.</td>
+      <td>Mandatory for DIDOK and SLOID if they exist.</td>
     </tr>
     <tr>
       <td>++</td>

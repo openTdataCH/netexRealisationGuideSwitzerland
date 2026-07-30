@@ -7,18 +7,15 @@
   <!-- Only a single AvailabilityConditionRef is allowed. -->
   </AvailabilityConditionRef>
   </validityConditions>
-  <keyList>
-  <!-- Key List values -->
-  <KeyValue>
-  <!-- For special Key value pairs. We don't use it for SJYID any longer -->
-  <Key>RN</Key>
-  <Value>1001</Value>
-  </KeyValue>
-  </keyList>
+  <keyList/>
   <privateCodes>
-  <!-- Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region -->
-  <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
-  <PrivateCode type="rn">12</PrivateCode>
+  <!-- Replaces the single PrivateCode. -->
+  <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003
+  <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
+  </PrivateCode>
+  <PrivateCode type="rn">12
+  <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
+  </PrivateCode>
   </privateCodes>
   <TransportMode>rail</TransportMode>
   <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1"/>

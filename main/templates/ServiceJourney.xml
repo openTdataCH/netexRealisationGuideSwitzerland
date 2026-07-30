@@ -33,14 +33,19 @@
 								</KeyValue>
 							</keyList>
 							<privateCodes>
-								<!-- ch-usage: expected -->
+								<!-- ch-usage: mandatory -->
 								<PrivateCode type="sjyid">
 									<!-- ch-usage: expected -->
                                     <!-- ch-attrs: type -->
-                                    <!-- ch-note: The following types are possible: sjyid and rn. rn is the type used for the Postauto region. -->
+                                    <!-- ch-note: Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
 									ch:1:sjyid:100001:71707-003
 								</PrivateCode>
-								<PrivateCode type="rn">12</PrivateCode>
+								<PrivateCode type="rn">
+									<!-- ch-usage: expected -->
+                                    <!-- ch-attrs: type -->
+                                    <!-- ch-note: Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
+									12
+								</PrivateCode>
 							</privateCodes>
 							<PrivateCode>
 								<!-- ch-usage: forbidden -->

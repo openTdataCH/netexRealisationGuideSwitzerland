@@ -12,12 +12,8 @@ For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `Oper
 |  | ValidBetween | expected | 1..* | unknown |  | Usually set to the whole timetable year |
 | + | FromDate | expected | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. |  |
 | + | ToDate | expected | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. |  |
-|  | keyList | mandatory | 0..1 | KeyListStructure | A list of alternative Key values for an element. |  |
-| + | KeyValue | expected | 1..* | KeyValueStructure | Key value pair for Entity. | The SLNID is mandatory, when it exists |
-| ++ | Key | expected | 0..1 | xsd:normalizedString | User key. |  |
-| ++ | Value | expected | 0..1 | xsd:anyType | Value for alternative key. |  |
-|  | privateCodes | expected | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | The SLNID is mandatory, when it exists |
-| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+|  | privateCodes | mandatory | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | The SLNID is mandatory if it exists |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | The SLNID is mandatory if it exists |
 | ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
 |  | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. | contains attribute D T from HRDF. Is not translated on purpose. |
 |  | ShortName | expected | 0..1 | MultilingualString | Short Name for TYPE OF VALUE. | contains the LinieKurzName (attribut N T in HRDF) |

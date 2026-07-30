@@ -150,8 +150,8 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 | + | KeyValue | optional | 1..* | KeyValueStructure | Key value pair for Entity. | We use it for tariff codes and region codes PAG mostly. |
 | ++ | Key | optional | 0..1 | xsd:normalizedString | User key. |  |
 | ++ | Value | optional | 0..1 | xsd:anyType | Value for alternative key. |  |
-|  | privateCodes | expected | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
-| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | The following types are possible: sjyid and rn. rn is the type used for the Postauto region. |
+|  | privateCodes | mandatory | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. |
 | ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
 |  | TransportMode | optional | 0..1 | AllModesEnumeration | An area within a Site. May be connected to Quays by PATH LINKs. |  |
 |  | TypeOfProductCategoryRef | mandatory | 1..1 | TypeOfProductCategoryRefStructure | Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code. | Relevant elements are defined in the mapping excel. |
@@ -208,9 +208,11 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
   </keyList>
   <privateCodes>
   <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003
-  <!-- The following types are possible: sjyid and rn. rn is the type used for the Postauto region. -->
+  <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
   </PrivateCode>
-  <PrivateCode type="rn">12</PrivateCode>
+  <PrivateCode type="rn">12
+  <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
+  </PrivateCode>
   </privateCodes>
   <TransportMode>rail</TransportMode>
   <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1">
@@ -316,12 +318,9 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | @responsibilitySetRef | mandatory | 1..1 | xsd:string | Attribute responsibilitySetRef | |
 |  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. | Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). |
 | + | AvailabilityConditionRef | mandatory | 0..* | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. | Only a single AvailabilityConditionRef is allowed. |
-|  | keyList | optional | 0..1 | KeyListStructure | A list of alternative Key values for an element. | Key List values |
-| + | KeyValue | optional | 1..* | KeyValueStructure | Key value pair for Entity. | For special Key value pairs. We don't use it for SJYID any longer |
-| ++ | Key | optional | 0..1 | xsd:normalizedString | User key. |  |
-| ++ | Value | optional | 0..1 | xsd:anyType | Value for alternative key. |  |
-|  | privateCodes | expected | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region |
-| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+|  | privateCodes | mandatory | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 | Replaces the single PrivateCode. |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. |
+| ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
 |  | TransportMode | optional | 0..1 | AllModesEnumeration | An area within a Site. May be connected to Quays by PATH LINKs. |  |
 |  | TypeOfProductCategoryRef | expected | 1..1 | TypeOfProductCategoryRefStructure | Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code. |  |
 |  | TypeOfServiceRef | optional | 1..1 | TypeOfServiceRefStructure | Reference to a TYPE OF SERVICE. |  |
@@ -367,18 +366,15 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
   <!-- Only a single AvailabilityConditionRef is allowed. -->
   </AvailabilityConditionRef>
   </validityConditions>
-  <keyList>
-  <!-- Key List values -->
-  <KeyValue>
-  <!-- For special Key value pairs. We don't use it for SJYID any longer -->
-  <Key>RN</Key>
-  <Value>1001</Value>
-  </KeyValue>
-  </keyList>
+  <keyList/>
   <privateCodes>
-  <!-- Replaces the single PrivateCode. The following types are possible: sjyid and rn. rn is the type used for the Postauto region -->
-  <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
-  <PrivateCode type="rn">12</PrivateCode>
+  <!-- Replaces the single PrivateCode. -->
+  <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003
+  <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
+  </PrivateCode>
+  <PrivateCode type="rn">12
+  <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
+  </PrivateCode>
   </privateCodes>
   <TransportMode>rail</TransportMode>
   <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1"/>
