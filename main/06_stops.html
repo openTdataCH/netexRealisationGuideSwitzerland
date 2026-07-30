@@ -677,6 +677,33 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     </tr>
     <tr>
       <td> </td>
+      <td>AccessibilityAssessment</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td>Assessment of the accessibility of a SITE.</td>
+      <td>Will be used at some point for the basic accessibility information. Currently not used.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>MobilityImpairedAccess</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Summary indication as to whether the component is considered to be accessible or not.</td>
+      <td>Basic information about accessibility.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AccessModes</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessModeListOfEnumerations</td>
+      <td>List of ACCESS MODEs that are allowed for this line. If not specified means all the usual ones for classic public transport. Can be used for example to indicate in vehicle only access. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>SiteRef</td>
       <td>optional</td>
       <td>0..1</td>
@@ -692,6 +719,24 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>PublicCodeStructure</td>
       <td>Public identifier code of TARIFF ZONE. +v2.0</td>
       <td>Code used to identify the Quay to the public</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>QuayType</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>QuayTypeEnumeration</td>
+      <td>Type of QUAY.</td>
+      <td>will be used for formations. Allowed values are defined in mapping excel.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ParentQuayRef</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>QuayRefStructure</td>
+      <td>if QUAY is a subzone of another QUAY, identifies parent.</td>
+      <td>Will be used when we do sectors and sector groups.</td>
     </tr>
   </tbody>
 </table>
@@ -716,12 +761,25 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
   <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
   <span class="nt">&lt;/Location&gt;</span>
   <span class="nt">&lt;/Centroid&gt;</span>
+  <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Will be used at some point for the basic accessibility information. Currently not used. --&gt;</span>
+  <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
+  <span class="c">&lt;!-- Basic information about accessibility. --&gt;</span>
+  <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
+  <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
+  <span class="nt">&lt;AccessModes&gt;</span>bicycle foot<span class="nt">&lt;/AccessModes&gt;</span>
   <span class="nt">&lt;SiteRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7000"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- Can reference the parent Quay or StopPlace --&gt;</span>
   <span class="nt">&lt;/SiteRef&gt;</span>
   <span class="nt">&lt;PublicCode&gt;</span>9
   <span class="c">&lt;!-- Code used to identify the Quay to the public --&gt;</span>
   <span class="nt">&lt;/PublicCode&gt;</span>
+  <span class="nt">&lt;QuayType&gt;</span>railPlatform
+  <span class="c">&lt;!-- will be used for formations. Allowed values are defined in mapping  excel. --&gt;</span>
+  <span class="nt">&lt;/QuayType&gt;</span>
+  <span class="nt">&lt;ParentQuayRef</span> <span class="na">ref=</span><span class="s">"theparentref"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Will be used when we do sectors and sector groups. --&gt;</span>
+  <span class="nt">&lt;/ParentQuayRef&gt;</span>
 <span class="nt">&lt;/Quay&gt;</span>
 </code></pre></div></div>
 

@@ -46,53 +46,28 @@
 <p>The following diagram shows the relevant core classes we will use. In the center is the ServiceJourney.</p>
 
 <pre><code class="language-mermaid">flowchart TD
-    %% Resources at the very top
-    subgraph Resources["Resources"]
-        direction LR
-        AN[AlternativeName]
-        O[Operator]
-    end
-
-    %% Main content area
-    subgraph MainContent["Main Content"]
-        %% Timetable &amp; Calendar
-        subgraph TimetableCalendar["Timetable &amp; Calendar"]
-            direction LR
-            subgraph TimetableFrame["TimetableFrame"]
-                SJ[ServiceJourney]
-                DT[DirectionType]
-                TN[TrainNumber]
-                SI[ServiceJourneyInterchange]
-                JP[JourneyPart]
-            end
-            subgraph ServiceCalendarFrame["ServiceCalendarFrame"]
-                AC[AvailabilityCondition]
-                UOP[ValidDayBits]
-            end
-        end
-
-        %% Service &amp; Network
-        subgraph ServiceNetwork["Service &amp; Network"]
-            direction LR
-            subgraph ServiceFrame["ServiceFrame"]
-                SJP[ServiceJourneyPattern]
-                TDT[TimeDemandType]
-                L[Line]
-                SPtJP[StopPointInJourneyPattern]
-                TL[TimingLink]
-                SSP[ScheduledStopPoint]
-                N[Notice]
-                F[ServiceFacilities]
-                PSA[PassengerStopAssignment]
-            end
-            subgraph SiteFrame["SiteFrame"]
-                SP[StopPlace]
-                CN[DefaultConnection]
-                Q[Quay]
-            end
-        end
-    end
-
+    AN[AlternativeName]
+    O[Operator]
+    SJ[ServiceJourney]
+    DT[DirectionType]
+    TN[TrainNumber]
+    SI[ServiceJourneyInterchange]
+    JP[JourneyPart]
+    AC[AvailabilityCondition]
+    UOP[ValidDayBits]
+    SJP[ServiceJourneyPattern]
+    TDT[TimeDemandType]
+    L[Line]
+    SPtJP[StopPointInJourneyPattern]
+    TL[TimingLink]
+    SSP[ScheduledStopPoint]
+    N[Notice]
+    F[ServiceFacilities]
+    PSA[PassengerStopAssignment]
+    SP[StopPlace]
+    CN[DefaultConnection]
+    Q[Quay]
+    
     %% Relationships
     SJ --&gt; DT
     SJ --&gt; L
@@ -117,16 +92,42 @@
     SP --&gt; Q
     O --&gt; AN
 
-    %% Styling
-    style SJ fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
-    style SJP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    %% Styling ResourceFrame
+    style O fill:#ffffff,stroke:#eea44f,stroke-width:2px
+    style F fill:#ffffff,stroke:#eea44f,stroke-width:2px
+  
+    %% Styling ServiceCalendarFrame
+    style AC fill:#ff8888,stroke:#eea44f,stroke-width:2px
+    style UOP fill:#ff8888,stroke:#eea44f,stroke-width:2px
+
+
+    %% everyhwere
+      style AN fill:#88ff88,stroke:#eea44f,stroke-width:2px
+      style DT fill:#88ff88,stroke:#eea44f,stroke-width:2px
+   
+    %% Styling SiteFrame
+    style SP fill:#a6c9a6,stroke:#eea44f,stroke-width:2px
+    style Q fill:#a6c9a6,stroke:#2ea44f,stroke-width:2px
+
+    %% Styling TimetableFrame
+    style SJ fill:#d6b9e6,stroke:#2ea44f,stroke-width:2px
+    style TN fill:#d6b9e6,stroke:#2ea44f,stroke-width:2px
+
+    
+    %% Styling ServiceFrame
     style TDT fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SJP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
     style PSA fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
-    style TimetableFrame stroke:#999,stroke-width:1px,fill:none
-    style ServiceCalendarFrame stroke:#999,stroke-width:1px,fill:none
-    style ServiceFrame stroke:#999,stroke-width:1px,fill:none
-    style SiteFrame stroke:#999,stroke-width:1px,fill:none
-    style MainContent fill:none,stroke:none
+    style L fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style TL fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SPtJP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style JP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SI fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SI fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style N fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style CN fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SSP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+
 </code></pre>
 <p><em>Core elements for timetables in NeTEx</em></p>
 

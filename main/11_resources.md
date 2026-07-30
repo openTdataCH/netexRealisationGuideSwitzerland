@@ -83,11 +83,11 @@ Contains shared resources used / referenced in other frames - organisations (`Op
   <!-- We need a TypeOfNotice ValueSet. -->
   <values>
   <TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
-  <Name>Allgemeiner Hinweis</Name>
+  <Name lang="de">Allgemeiner Hinweis</Name>
   <PrivateCode>1</PrivateCode>
   </TypeOfNotice>
   <TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
-  <Name>Angebot</Name>
+  <Name lang="de">Angebot</Name>
   <PrivateCode>10</PrivateCode>
   </TypeOfNotice>
   </values>

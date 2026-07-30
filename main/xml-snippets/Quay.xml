@@ -14,10 +14,23 @@
   <Altitude>540.2</Altitude>
   </Location>
   </Centroid>
+  <AccessibilityAssessment id="generated" version="1">
+  <!-- Will be used at some point for the basic accessibility information. Currently not used. -->
+  <MobilityImpairedAccess>true
+  <!-- Basic information about accessibility. -->
+  </MobilityImpairedAccess>
+  </AccessibilityAssessment>
+  <AccessModes>bicycle foot</AccessModes>
   <SiteRef ref="ch:1:sloid:7000">
   <!-- Can reference the parent Quay or StopPlace -->
   </SiteRef>
   <PublicCode>9
   <!-- Code used to identify the Quay to the public -->
   </PublicCode>
+  <QuayType>railPlatform
+  <!-- will be used for formations. Allowed values are defined in mapping  excel. -->
+  </QuayType>
+  <ParentQuayRef ref="theparentref" version="1">
+  <!-- Will be used when we do sectors and sector groups. -->
+  </ParentQuayRef>
 </Quay>
