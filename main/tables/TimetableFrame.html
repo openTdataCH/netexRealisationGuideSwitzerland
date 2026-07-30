@@ -88,7 +88,7 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceJourney.html">ServiceJourney</a></td>
       <td>expected</td>
       <td>0..*</td>
-      <td>unknown</td>
+      <td>ServiceJourney_VersionStructure</td>
       <td>A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN. The VIEW includes derived ancillary data from referenced entities.</td>
       <td>ServiceJourney is used for common Journeys.</td>
     </tr>
@@ -97,7 +97,7 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TemplateServiceJourney.html">TemplateServiceJourney</a></td>
       <td>expected</td>
       <td>0..*</td>
-      <td>unknown</td>
+      <td>TemplateServiceJourney_VersionStructure</td>
       <td>A VEHICLE JOURNEY with a set of frequencies that may be used to represent a set of similar journeys differing only by their time of departure.</td>
       <td>TemplateServiceJourney is only to be used if a line is serviced at a certain frequency.</td>
     </tr>
@@ -115,7 +115,7 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TrainNumber.html">TrainNumber</a></td>
       <td>mandatory</td>
       <td>0..*</td>
-      <td>unknown</td>
+      <td>TrainNumber_VersionStructure</td>
       <td>Specification of codes assigned to particular VEHICLE JOURNEYs when operated by TRAINs of COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc).</td>
       <td> </td>
     </tr>
@@ -133,7 +133,7 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
       <td>expected</td>
       <td>1..*</td>
-      <td>unknown</td>
+      <td>ServiceFacilitySet_VersionStructure</td>
       <td>Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
     </tr>
@@ -151,7 +151,7 @@
       <td>TypeOfService</td>
       <td>optional</td>
       <td>1..*</td>
-      <td>unknown</td>
+      <td>TypeOfServiceStructure</td>
       <td>Classification of a Service.</td>
       <td>This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file.</td>
     </tr>
@@ -205,7 +205,7 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceJourneyInterchange.html">ServiceJourneyInterchange</a></td>
       <td>expected</td>
       <td>1..1</td>
-      <td>unknown</td>
+      <td>ServiceJourneyInterchange_VersionStructure</td>
       <td>The scheduled possibility for transfer of passengers between two SERVICE JOURNEYs at the same or different STOP POINTs.</td>
       <td>For modeling many forms of interchanges</td>
     </tr>
@@ -223,7 +223,7 @@
       <td>CompoundTrain</td>
       <td>optional</td>
       <td>0..*</td>
-      <td>unknown</td>
+      <td>CompoundTrain_VersionStructure</td>
       <td>A vehicle composed of COMPOUND TRAIN ELEMENTs in a certain order, i.e. of wagons assembled together and propelled by a locomotive or one of the wagons.</td>
       <td> </td>
     </tr>

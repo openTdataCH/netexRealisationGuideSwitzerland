@@ -26,10 +26,10 @@ In some cases the id of a StopPlace is not a SLOID.
 | ++ | Latitude | mandatory | 1..1 | LatitudeType | Latitude from equator. -90 (South) to +90 (North). |  |
 | ++ | Altitude | optional | 0..1 | AltitudeType | Altitude. |  |
 |  | alternativeNames | optional | 0..1 | alternativeNames_RelStructure | Alternativie names for ORGANISATION. | Alternative names for the StopPlace. We will also use these for synonyms. |
-| + | [AlternativeName](AlternativeName.md) | optional | 1..* | unknown | ALTERNATIVE NAME for Element. |  |
+| + | [AlternativeName](AlternativeName.md) | optional | 1..* | AlternativeName_VersionedChildStructure | ALTERNATIVE NAME for Element. |  |
 |  | TopographicPlaceRef | optional | 1..* | TopographicPlaceRefStructure | Reference to a TOPOGRAPHIC PLACE. | Id to the county, community, canton or country. |
 |  | StopPlaceType | optional | 0..1 | StopTypeEnumeration | Type of STOP PLACE. |  |
 |  | LimitedUse | optional | 0..1 | LimitedUseTypeEnumeration | Further categorisation of stop as having topographic limitations. | For stops like Sagliains |
 |  | Weighting | optional | 0..1 | InterchangeWeightingEnumeration | Default rating of the STOP PLACE for making interchanges. | Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. |
 |  | quays | expected | 1..1 | quays_RelStructure | QUAYs within the STOP PLACE. | The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. |
-| + | [Quay](Quay.md) | expected | 0..* | unknown | A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY. |  |
+| + | [Quay](Quay.md) | expected | 0..* | Quay_VersionStructure | A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY. |  |

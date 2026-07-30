@@ -139,7 +139,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceJourney.html">ServiceJourney</a></td>
       <td>expected</td>
       <td>0..*</td>
-      <td>unknown</td>
+      <td>ServiceJourney_VersionStructure</td>
       <td>A passenger carrying VEHICLE JOURNEY for one specified DAY TYPE. The pattern of working is in principle defined by a SERVICE JOURNEY PATTERN. The VIEW includes derived ancillary data from referenced entities.</td>
       <td>ServiceJourney is used for common Journeys.</td>
     </tr>
@@ -148,7 +148,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TemplateServiceJourney.html">TemplateServiceJourney</a></td>
       <td>expected</td>
       <td>0..*</td>
-      <td>unknown</td>
+      <td>TemplateServiceJourney_VersionStructure</td>
       <td>A VEHICLE JOURNEY with a set of frequencies that may be used to represent a set of similar journeys differing only by their time of departure.</td>
       <td>TemplateServiceJourney is only to be used if a line is serviced at a certain frequency.</td>
     </tr>
@@ -166,7 +166,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/TrainNumber.html">TrainNumber</a></td>
       <td>mandatory</td>
       <td>0..*</td>
-      <td>unknown</td>
+      <td>TrainNumber_VersionStructure</td>
       <td>Specification of codes assigned to particular VEHICLE JOURNEYs when operated by TRAINs of COMPOUND TRAINs according to a functional purpose (passenger information, operation follow-up, etc).</td>
       <td> </td>
     </tr>
@@ -184,7 +184,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
       <td>expected</td>
       <td>1..*</td>
-      <td>unknown</td>
+      <td>ServiceFacilitySet_VersionStructure</td>
       <td>Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.).</td>
       <td> </td>
     </tr>
@@ -202,7 +202,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>TypeOfService</td>
       <td>optional</td>
       <td>1..*</td>
-      <td>unknown</td>
+      <td>TypeOfServiceStructure</td>
       <td>Classification of a Service.</td>
       <td>This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file.</td>
     </tr>
@@ -256,7 +256,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceJourneyInterchange.html">ServiceJourneyInterchange</a></td>
       <td>expected</td>
       <td>1..1</td>
-      <td>unknown</td>
+      <td>ServiceJourneyInterchange_VersionStructure</td>
       <td>The scheduled possibility for transfer of passengers between two SERVICE JOURNEYs at the same or different STOP POINTs.</td>
       <td>For modeling many forms of interchanges</td>
     </tr>
@@ -274,7 +274,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>CompoundTrain</td>
       <td>optional</td>
       <td>0..*</td>
-      <td>unknown</td>
+      <td>CompoundTrain_VersionStructure</td>
       <td>A vehicle composed of COMPOUND TRAIN ELEMENTs in a certain order, i.e. of wagons assembled together and propelled by a locomotive or one of the wagons.</td>
       <td> </td>
     </tr>
@@ -505,7 +505,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/NoticeAssignment.html">NoticeAssignment</a></td>
       <td>optional</td>
       <td>0..*</td>
-      <td>unknown</td>
+      <td>NoticeAssignment_VersionStructure</td>
       <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
       <td> </td>
     </tr>
@@ -667,7 +667,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>CheckConstraint</td>
       <td>optional</td>
       <td>1..*</td>
-      <td>unknown</td>
+      <td>CheckConstraint_VersionStructure</td>
       <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
       <td>CheckConstraints are used for different use cases</td>
     </tr>
@@ -950,7 +950,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/NoticeAssignment.html">NoticeAssignment</a></td>
       <td>optional</td>
       <td>0..*</td>
-      <td>unknown</td>
+      <td>NoticeAssignment_VersionStructure</td>
       <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
       <td> </td>
     </tr>
@@ -1121,7 +1121,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>HeadwayJourneyGroup</td>
       <td>mandatory</td>
       <td>0..*</td>
-      <td>unknown</td>
+      <td>HeadwayJourneyGroup_VersionStructure</td>
       <td>A group of VEHICLE JOURNEYs following the same JOURNEY PATTERN and having the same headway interval between a specified start and end time (for example, ‘every 10 minutes’). This is especially useful for presenting passenger information.</td>
       <td> </td>
     </tr>
@@ -1300,7 +1300,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td>dayTypeRefs</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>unknown</td>
+      <td>dayTypeRefs_RelStructure</td>
       <td>DAY TYPEs for BLOCK.</td>
       <td> </td>
     </tr>
@@ -1327,7 +1327,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/DayType.html">DayType</a></td>
       <td>expected</td>
       <td>1..1</td>
-      <td>unknown</td>
+      <td>DayType_VersionStructure</td>
       <td>A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays.</td>
       <td> </td>
     </tr>

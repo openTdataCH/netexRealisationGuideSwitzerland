@@ -16,7 +16,7 @@ Be aware only some combinations are allowed: from mode A to mode B without opera
 |  | BothWays | optional | 0..1 | xsd:boolean | Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER. | Should be false - we always intend to use only one way because the behaviour may not be the same. |
 |  | From | mandatory | 0..1 | ConnectionEndStructure | Origin end of ACCESS link. |  |
 | + | TransportMode | optional | 0..1 | AllModesEnumeration | An area within a Site. May be connected to Quays by PATH LINKs. |  |
-| + | OperatorView | optional | 1..1 | unknown | Simplified view of OPERATOR. All data except the identifier will be derived through the relationship. | Should be a sboid whenever possible. |
+| + | OperatorView | optional | 1..1 | Operator_DerivedViewStructure | Simplified view of OPERATOR. All data except the identifier will be derived through the relationship. | Should be a sboid whenever possible. |
 | ++ | OperatorRef | mandatory | 1..1 | OperatorRefStructure | Reference to an OPERATOR. |  |
 |  | To | mandatory | 0..1 | ConnectionEndStructure | Destination end of ACCESS link. |  |
 |  | StopPlaceRef | optional | 0..1 | StopPlaceRefStructure | Reference to a STOP PLACE. | Usually a SLOID. Not set means whole network. |

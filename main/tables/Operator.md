@@ -19,5 +19,5 @@ We will use this organisation also in AuthorityRef. The problem is that the sboi
 |  | ShortName | expected | 0..1 | MultilingualString | Short Name for TYPE OF VALUE. | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
 |  | parts | optional | 0..1 | blockParts_RelStructure | Parts of the ORGANISATION. |  |
 | ++ | administrativeZones | optional | 0..* | administrativeZones_RelStructure | Zones managed by ORGANISATION PART. |  |
-| +++ | TransportAdministrativeZone | optional | 0..* | unknown | A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region. |  |
+| +++ | TransportAdministrativeZone | optional | 0..* | TransportAdministrativeZone_VersionStructure | A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region. |  |
 | ++++ | PrivateCode | optional | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |

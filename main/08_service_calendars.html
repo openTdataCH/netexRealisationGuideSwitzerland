@@ -182,7 +182,7 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/AvailabilityCondition.html">AvailabilityCondition</a></td>
       <td>mandatory</td>
       <td>0..*</td>
-      <td>unknown</td>
+      <td>AvailabilityCondition_VersionStructure</td>
       <td>VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs.</td>
       <td>Our main mechanism for validity and operating days</td>
     </tr>
@@ -191,7 +191,7 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/ServiceCalendar.html">ServiceCalendar</a></td>
       <td>expected</td>
       <td>0..1</td>
-      <td>unknown</td>
+      <td>ServiceCalendar_VersionStructure</td>
       <td>A SERVICE CALENDAR. A collection of DAY TYPE ASSIGNMENTs.</td>
       <td>We only have one ServiceCalendar for the whole timetable year. It is not referenced.</td>
     </tr>
@@ -209,7 +209,7 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/DayType.html">DayType</a></td>
       <td>optional</td>
       <td>1..1</td>
-      <td>unknown</td>
+      <td>DayType_VersionStructure</td>
       <td>A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays.</td>
       <td>Used for holidays only</td>
     </tr>
@@ -245,7 +245,7 @@
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/DayTypeAssignment.html">DayTypeAssignment</a></td>
       <td>optional</td>
       <td>1..*</td>
-      <td>unknown</td>
+      <td>DayTypeAssignment_VersionStructure</td>
       <td>Associates a DAY TYPE with an OPERATING DAY within a specific Calendar. A specification of a particular DAY TYPE which will be valid during a TIME BAND on an OPERATING DAY.</td>
       <td>Used for holidays only</td>
     </tr>
@@ -582,7 +582,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>AlternativeText</td>
       <td>mandatory</td>
       <td>1..*</td>
-      <td>unknown</td>
+      <td>AlternativeText_VersionedChildStructure</td>
       <td>ALTERNATIVE TEXT for a text attribute of Element.</td>
       <td> </td>
     </tr>
@@ -690,7 +690,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>PropertyOfDay</td>
       <td>mandatory</td>
       <td>1..*</td>
-      <td>unknown</td>
+      <td>PropertyOfDayStructure</td>
       <td>A property which a day may possess, such as school holiday, weekday, summer, winter etc.</td>
       <td>Holidays only</td>
     </tr>

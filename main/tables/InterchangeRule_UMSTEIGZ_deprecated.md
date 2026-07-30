@@ -14,7 +14,7 @@ transfer times between ServiceJourneys (UMSTEIGZ)
 |  | MinimumTransferTime | expected | 0..1 | xsd:duration | Maximum transfer duration for INTERCHANGE. |  |
 |  | MaximumTransferTime | expected | 0..1 | xsd:duration | Maximum transfer duration for INTERCHANGE. |  |
 |  | timings | expected | 0..1 | interchangeRuleTimings_RelStructure | Additional timings for the INTERCHANGE RULE for specific TIME DEMAND TYPEs. |  |
-| + | InterchangeRuleTiming | expected | 0..* | unknown | Timings for an INTERCHANGE RULE for a given TIME DEMAND TYPE. |  |
+| + | InterchangeRuleTiming | expected | 0..* | InterchangeRuleTiming_VersionStructure | Timings for an INTERCHANGE RULE for a given TIME DEMAND TYPE. |  |
 | ++ | TimebandRef | mandatory | 1..* | TimebandRefStructure | Reference to a TIME BAND. |  |
 |  | FeederFilter | mandatory | 0..1 | InterchangeRuleParameterStructure | Feeder end of INTERCHANGE RULE. |  |
 | + | StopPlaceRef | mandatory | 0..1 | StopPlaceRefStructure | Reference to a STOP PLACE. |  |
