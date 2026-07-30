@@ -90,7 +90,9 @@ def get_xsd_documentation_for_element(element, xsd_doc):
                 return sanitize_for_markdown(desc)
 
     # 4) Docs on inline type
-    inline = element.find('xs:complexType', XSD_NS) or element.find('xs:simpleType', XSD_NS)
+    inline = element.find('xs:complexType', XSD_NS)
+    if inline is None:
+        inline = element.find('xs:simpleType', XSD_NS)
     if inline is not None:
         desc = _doc_text(inline.xpath('.//xs:annotation/xs:documentation', namespaces=XSD_NS))
         if desc:
@@ -180,13 +182,102 @@ def _build_xsd_element_paths(xsd_doc):
                 ref_el = xsd_doc.xpath(f"//xs:element[@name='{ref_name}']", namespaces=XSD_NS)
                 if ref_el:
                     elem_type = ref_el[0].get('type', '') or ''
+                    # If referenced element also has inline type with extension/restriction, resolve it
+                    if not elem_type:
+                        ref_inline_ct = ref_el[0].find('xs:complexType', XSD_NS)
+                        ref_inline_st = ref_el[0].find('xs:simpleType', XSD_NS)
+                        if ref_inline_ct is not None:
+                            elem_type = ref_inline_ct.get('name', '') or ''
+                            # Check for extension or restriction with base attribute in referenced element
+                            if not elem_type:
+                                ref_complex_content = ref_inline_ct.find('xs:complexContent', XSD_NS)
+                                if ref_complex_content is not None:
+                                    ref_extension = ref_complex_content.find('xs:extension', XSD_NS)
+                                    ref_restriction = ref_complex_content.find('xs:restriction', XSD_NS)
+                                    if ref_extension is not None:
+                                        base = ref_extension.get('base', '')
+                                        if base and ':' in base:
+                                            base = base.split(':')[-1]
+                                        elem_type = base or ''
+                                    elif ref_restriction is not None:
+                                        base = ref_restriction.get('base', '')
+                                        if base and ':' in base:
+                                            base = base.split(':')[-1]
+                                        elem_type = base or ''
+                                # If still no type, check for simpleContent
+                                if not elem_type:
+                                    ref_simple_content = ref_inline_ct.find('xs:simpleContent', XSD_NS)
+                                    if ref_simple_content is not None:
+                                        ref_simple_ext = ref_simple_content.find('xs:extension', XSD_NS)
+                                        ref_simple_rest = ref_simple_content.find('xs:restriction', XSD_NS)
+                                        if ref_simple_ext is not None:
+                                            base = ref_simple_ext.get('base', '')
+                                            if base and ':' in base:
+                                                base = base.split(':')[-1]
+                                            elem_type = base or ''
+                                        elif ref_simple_rest is not None:
+                                            base = ref_simple_rest.get('base', '')
+                                            if base and ':' in base:
+                                                base = base.split(':')[-1]
+                                            elem_type = base or ''
+                        elif ref_inline_st is not None:
+                            elem_type = ref_inline_st.get('name', '') or ''
+                            # For simpleType, also check for restriction with base in referenced element
+                            if not elem_type:
+                                ref_restriction = ref_inline_st.find('xs:restriction', XSD_NS)
+                                if ref_restriction is not None:
+                                    base = ref_restriction.get('base', '')
+                                    if base and ':' in base:
+                                        base = base.split(':')[-1]
+                                    elem_type = base or ''
         if not elem_type:
             inline_ct = element.find('xs:complexType', XSD_NS)
             inline_st = element.find('xs:simpleType', XSD_NS)
             if inline_ct is not None:
                 elem_type = inline_ct.get('name', '') or ''
+                # If no name, check for extension or restriction with base attribute
+                if not elem_type:
+                    # Look for complexContent/extension or complexContent/restriction
+                    complex_content = inline_ct.find('xs:complexContent', XSD_NS)
+                    if complex_content is not None:
+                        extension = complex_content.find('xs:extension', XSD_NS)
+                        restriction = complex_content.find('xs:restriction', XSD_NS)
+                        if extension is not None:
+                            base = extension.get('base', '')
+                            if base and ':' in base:
+                                base = base.split(':')[-1]
+                            elem_type = base or ''
+                        elif restriction is not None:
+                            base = restriction.get('base', '')
+                            if base and ':' in base:
+                                base = base.split(':')[-1]
+                            elem_type = base or ''
+                    # If still no type, check for simpleContent
+                    if not elem_type:
+                        simple_content = inline_ct.find('xs:simpleContent', XSD_NS)
+                        if simple_content is not None:
+                            simple_ext = simple_content.find('xs:extension', XSD_NS)
+                            simple_rest = simple_content.find('xs:restriction', XSD_NS)
+                            if simple_ext is not None:
+                                base = simple_ext.get('base', '')
+                                if base and ':' in base:
+                                    base = base.split(':')[-1]
+                                elem_type = base or ''
+                            elif simple_rest is not None:
+                                base = simple_rest.get('base', '')
+                                if base and ':' in base:
+                                    base = base.split(':')[-1]
+                                elem_type = base or ''
             elif inline_st is not None:
                 elem_type = inline_st.get('name', '') or ''
+                # For simpleType, also check for restriction with base
+                if not elem_type:
+                    restriction = inline_st.find('xs:restriction', XSD_NS)
+                    if restriction is not None:
+                        base = restriction.get('base', '')
+                        if base and ':' in base:
+                            base = base.split(':')[-1]
+                        elem_type = base or ''
         # Strip namespace prefix if present
         if elem_type and ':' in elem_type:
             elem_type = elem_type.split(':')[-1]
