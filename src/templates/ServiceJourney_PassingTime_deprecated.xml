@@ -30,19 +30,13 @@
 								</AvailabilityCondition>
 							</validityConditions>
 							<keyList>
-								<!-- ch-usage: expected -->
-								<!-- ch-note: KEY LIST with the KEY VALUEs belonjing to the SERVICE JOURNEY. Will contain the SJYID. -->
-								<KeyValue>
-									<!-- ch-usage: mandatory -->
-									<!-- ch-note: A KeyValue pair with the Key SJYID must exist. The Value contains a valid Swiss Journey ID. -->
-									<Key><!-- ch-usage: mandatory -->SJYID</Key>
-									<Value><!-- ch-usage: mandatory -->ch:1:sjyid:100001:71707-003</Value>
-								</KeyValue>
 							</keyList>
 							<privateCodes>
-								<!-- ch-usage: expected -->
+								<!-- ch-usage: mandatory -->
 								<PrivateCode type="sjyid">
-									<!-- ch-usage: expected -->
+									<!-- ch-usage: mandatory -->
+									<!-- ch-note: The Value contains a valid Swiss Journey ID. -->
+									<!-- ch-attrs: type -->
 									ch:1:sjyid:100001:71707-003
 								</PrivateCode>
 							</privateCodes>							

@@ -21,39 +21,35 @@
 								<ToDate><!-- ch-usage: optional -->2026-12-31T00:00:00</ToDate>
 							</ValidBetween>
 							<keyList>
-								<!-- ch-usage: expected -->
-								<!-- ch-note: Key value pairs for DIDOK number and SLOID and special values. Prefered is privateCodes. -->
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Key value pairs. -->
 								<KeyValue>
 									<!-- ch-usage: optional -->
-									<Key>
-                                        <!-- ch-usage: optional -->
-                                        DIDOK
-                                    </Key>
-									<Value>
-                                        <!-- ch-usage: optional -->
-                                        7000
-                                    </Value>
+									<!-- ch-note: HafasPriority and HafasKMInfo for Hafas environments, only used in exports by INFO+. -->
+									<Key><!-- ch-usage: mandatory -->HafasPriority</Key>
+									<Value><!-- ch-usage: mandatory -->4</Value>
 								</KeyValue>
 								<KeyValue>
-									<Key>SLOID</Key>
-									<Value>ch:1:sloid:7000</Value>
-								</KeyValue>
-								<KeyValue><!-- ch-note: Special value for Hafas environments. -->
-									<Key>HafasPriority</Key>
-									<Value>4</Value>
-								</KeyValue>
-								<KeyValue><!-- ch-note: Special value for Hafas environments. -->
-									<Key>HafasKMInfo</Key>
-									<Value>1000</Value>
+									<!-- ch-usage: optional -->
+									<!-- ch-note: Special value for Hafas environments, only used in exports by INFO+. -->
+									<Key><!-- ch-usage: mandatory -->HafasKMInfo</Key>
+									<Value><!-- ch-usage: mandatory -->1000</Value>
 								</KeyValue>
 							</keyList>
 							<privateCodes>
 								<!-- ch-usage: mandatory -->
 								<PrivateCode type="didok">
-                                    <!-- ch-usage: mandatory -->
+                                    <!-- ch-usage: expected -->
                                     <!-- ch-attrs: type -->
-                                    <!-- ch-note: In Switzerland to be filled with the DIDOK number and the SLOID. HafasPriority and HafasKMInfo are also types of PrivateCode used in Hafas environments. -->7000</PrivateCode>
-								<PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
+                                    <!-- ch-note: Mandatory for DIDOK and SLOID if they exist. -->
+									7000
+								</PrivateCode>
+								<PrivateCode type="sloid">
+									<!-- ch-usage: expected -->
+                                    <!-- ch-attrs: type -->
+                                    <!-- ch-note: Mandatory for DIDOK and SLOID if they exist. -->
+									ch:1:sloid:7000
+								</PrivateCode>
 							</privateCodes>
 							<Name><!-- ch-usage: mandatory --><!-- ch-note: The official stop name. If you have different versions one needs to use AlternativeName -->Bern</Name>
 							<ShortName>
