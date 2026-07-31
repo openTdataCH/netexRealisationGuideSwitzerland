@@ -22,8 +22,9 @@
 							<CrossBorder><!-- ch-usage: optional -->false</CrossBorder>
 							<ChangeWithinVehicle><!-- ch-usage: optional --><!-- ch-note: Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. -->false</ChangeWithinVehicle>
 							<Planned><!-- ch-usage: optional -->true</Planned>
-							<Guaranteed><!-- ch-usage: optional -->false</Guaranteed>
-							<MaximumWaitTime><!-- ch-usage: optional --><!-- ch-note: If not set or PT0M, it is guaranteed. -->PT9M</MaximumWaitTime>
+							<Guaranteed><!-- ch-usage: optional --><!-- is used, when the connection is guaranteed -->false</Guaranteed>
+							<StandardWaitTime><!-- ch-usage: optional --><!-- ch-note: Used for joining/splitting and waiting in vehicle -->PT9M</StandardWaitTime>
+							<StandardTransferTime><!-- ch-usage: expected --><!-- used for transfers from UMSTEIGZ and UMSTEIGL-->PT2M</StandardTransferTime>
 							<FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="1" nameOfRefClass="ScheduledStopPoint">
 								<!-- ch-usage: mandatory -->
 								<!-- ch-attrs: nameOfRefClass -->

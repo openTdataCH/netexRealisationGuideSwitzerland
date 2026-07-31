@@ -89,7 +89,7 @@ splitting and joining.
   <StaySeated>true</StaySeated>
   <CrossBorder>false</CrossBorder>
   <ChangeWithinVehicle>true</ChangeWithinVehicle>
-  <MaximumWaitTime>PT2M</MaximumWaitTime>
+  <StandardWaitTime>PT2M</StandardWaitTime>
   <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1"  nameOfClass="ScheduledStopPoint"/>
   <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1" nameOfClass="ScheduledStopPoint"/>
   <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_439" version="1"/>
@@ -104,7 +104,7 @@ splitting and joining.
   <StaySeated>true</StaySeated>
   <CrossBorder>false</CrossBorder>
   <ChangeWithinVehicle>true</ChangeWithinVehicle>
-  <MaximumWaitTime>PT2M</MaximumWaitTime>
+  <StandardWaitTime>PT2M</StandardWaitTime>
   <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1" nameOfClass="ScheduledStopPoint"/>
   <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1" nameOfClass="ScheduledStopPoint"/>
   <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_440" version="1"/>

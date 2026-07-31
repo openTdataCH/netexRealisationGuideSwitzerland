@@ -31,3 +31,4 @@
 | 2026-07-28 | id of ServiceJourney is not necessary a sjyid                                                                                                                                                                                                                                |
 | 2026-07-29 | rn, tariffcode as KeyValue on ServiceJourney                                                                                                                                                                                                                                 |
 | 2026-07-29 | KeyList optional for other elements, but not SID4PT and privateCodes expected for SID4PT                                                                                                                                                                                     | 
+| 2026-07-31 | Switch to StandardWaitTime and StandardTransferTime in ServiceJourneyInterchange |
