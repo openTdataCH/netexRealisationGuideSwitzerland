@@ -146,6 +146,9 @@ where the value of <code class="language-plaintext highlighter-rouge">ShortName<
 <p>Times that pass midnight of the current <code class="language-plaintext highlighter-rouge">OperatingDay</code> are marked with a <code class="language-plaintext highlighter-rouge">DayOffset</code> element. 
 If a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> runs over midnight, <code class="language-plaintext highlighter-rouge">DepartureDayOffset</code> (on <code class="language-plaintext highlighter-rouge">ServiceJourney</code>) is used for the start of the journey. Since <code class="language-plaintext highlighter-rouge">TimeDemandType</code> only holds relative durations (<code class="language-plaintext highlighter-rouge">RunTime</code>/<code class="language-plaintext highlighter-rouge">WaitTime</code>), there is no separate <code class="language-plaintext highlighter-rouge">DayOffset</code> element within <code class="language-plaintext highlighter-rouge">TimeDemandType</code> — any midnight crossing during the journey follows implicitly from cumulating <code class="language-plaintext highlighter-rouge">DepartureTime</code> with the <code class="language-plaintext highlighter-rouge">RunTime</code>/<code class="language-plaintext highlighter-rouge">WaitTime</code> values.</p>
 
+<h3 id="ordering-of-elements">Ordering of elements</h3>
+<p>XML is ordered by definition. If there are sequences of elements e.g. <code class="language-plaintext highlighter-rouge">PointsInJourneyPattern</code> they are always ordered.</p>
+
 <h2 id="common-elements-and-types">Common Elements and Types</h2>
 
 <h3 id="alternativename">AlternativeName</h3>

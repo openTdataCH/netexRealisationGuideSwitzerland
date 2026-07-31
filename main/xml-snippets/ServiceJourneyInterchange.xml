@@ -11,9 +11,10 @@
   </ChangeWithinVehicle>
   <Planned>true</Planned>
   <Guaranteed>false</Guaranteed>
-  <MaximumWaitTime>PT9M
-  <!-- If not set or PT0M, it is guaranteed. -->
-  </MaximumWaitTime>
+  <StandardWaitTime>PT9M
+  <!-- Used for joining/splitting and waiting in vehicle -->
+  </StandardWaitTime>
+  <StandardTransferTime>PT2M</StandardTransferTime>
   <FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" nameOfRefClass="ScheduledStopPoint" version="1"/>
   <FromVisitNumber>1</FromVisitNumber>
   <ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" nameOfRefClass="ScheduledStopPoint" version="1"/>

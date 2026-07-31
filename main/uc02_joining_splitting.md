@@ -89,7 +89,7 @@ splitting and joining.
   <StaySeated>true</StaySeated>
   <CrossBorder>false</CrossBorder>
   <ChangeWithinVehicle>true</ChangeWithinVehicle>
-  <MaximumWaitTime>PT2M</MaximumWaitTime>
+  <StandardWaitTime>PT2M</StandardWaitTime>
   <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1"  nameOfClass="ScheduledStopPoint"/>
   <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1" nameOfClass="ScheduledStopPoint"/>
   <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_439" version="1"/>
@@ -104,7 +104,7 @@ splitting and joining.
   <StaySeated>true</StaySeated>
   <CrossBorder>false</CrossBorder>
   <ChangeWithinVehicle>true</ChangeWithinVehicle>
-  <MaximumWaitTime>PT2M</MaximumWaitTime>
+  <StandardWaitTime>PT2M</StandardWaitTime>
   <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1" nameOfClass="ScheduledStopPoint"/>
   <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" version="1" nameOfClass="ScheduledStopPoint"/>
   <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_440" version="1"/>
@@ -133,9 +133,10 @@ The detailed handling is described for the element [ServiceJourneyInterchange](0
   </ChangeWithinVehicle>
   <Planned>true</Planned>
   <Guaranteed>false</Guaranteed>
-  <MaximumWaitTime>PT9M
-  <!-- If not set or PT0M, it is guaranteed. -->
-  </MaximumWaitTime>
+  <StandardWaitTime>PT9M
+  <!-- Used for joining/splitting and waiting in vehicle -->
+  </StandardWaitTime>
+  <StandardTransferTime>PT2M</StandardTransferTime>
   <FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" nameOfRefClass="ScheduledStopPoint" version="1"/>
   <FromVisitNumber>1</FromVisitNumber>
   <ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" nameOfRefClass="ScheduledStopPoint" version="1"/>

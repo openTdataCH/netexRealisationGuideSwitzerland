@@ -24,8 +24,8 @@
 							<!-- ch-note: ChangeWithinVehicle is not applicable when StaySeated=false -->
 							<Planned><!-- ch-usage: mandatory -->true</Planned>
 							<Guaranteed><!-- ch-usage: mandatory -->false</Guaranteed>
-							<MaximumWaitTime><!-- ch-usage: optional --><!-- ch-note: If not set or PT0M, connection is considered guaranteed. -->PT2M</MaximumWaitTime>
-							<MinimumTransferTime><!-- ch-usage: expected -->PT2M</MinimumTransferTime>
+							<StandardWaitTime><!-- ch-usage: optional --><!-- ch-note: Used for joining/splitting and waiting in vehicle -->PT9M</StandardWaitTime>
+							<StandardTransferTime><!-- ch-usage: expected --><!-- used for transfers from UMSTEIGZ and UMSTEIGL-->PT2M</StandardTransferTime>
 							<FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" versionRef="1"  nameOfRefClass="ScheduledStopPoint">
 								<!-- ch-usage: mandatory -->
 								<!-- ch-attrs: nameOfRefClass -->

@@ -15,8 +15,8 @@ ChangeWithinVehicle is not applicable when StaySeated=false
 |  | CrossBorder | optional | 0..1 | xsd:boolean | Whether INTERCHANGE involves crossing an international border. Default is false. |  |
 |  | Planned | mandatory | 0..1 | xsd:boolean | Whether INTERCHANGE is planned in a timetable. Default is true. |  |
 |  | Guaranteed | mandatory | 0..1 | xsd:boolean | Whether INTERCHANGE is guaranteed. Default is false. |  |
-|  | MaximumWaitTime | optional | 0..1 | xsd:duration | Maximum wait time for INTERCHANGE. | If not set or PT0M, connection is considered guaranteed. |
-|  | MinimumTransferTime | expected | 0..1 | xsd:duration | Maximum transfer duration for INTERCHANGE. |  |
+|  | StandardWaitTime | optional | 0..1 | xsd:duration | Standard wait time for INTERCHANGE. | Used for joining/splitting and waiting in vehicle |
+|  | StandardTransferTime | expected | 0..1 | xsd:duration | Standard transfer duration for INTERCHANGE. |  |
 |  | FromPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure | Start POINT of LINK. | ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
 |  | ToPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure | End POINT of LINK. | ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. |

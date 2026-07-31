@@ -132,10 +132,10 @@ Defines transfer times between specific `Lines` and `Directions` at a stop place
   <!-- ChangeWithinVehicle is not applicable when StaySeated=false -->
   <Planned>true</Planned>
   <Guaranteed>false</Guaranteed>
-  <MaximumWaitTime>PT2M
-  <!-- If not set or PT0M, connection is considered guaranteed. -->
-  </MaximumWaitTime>
-  <MinimumTransferTime>PT2M</MinimumTransferTime>
+  <StandardWaitTime>PT9M
+  <!-- Used for joining/splitting and waiting in vehicle -->
+  </StandardWaitTime>
+  <StandardTransferTime>PT2M</StandardTransferTime>
   <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" nameOfRefClass="ScheduledStopPoint" version="1">
   <!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. -->
   </FromPointRef>
@@ -187,11 +187,10 @@ The differences between the various situations are to be differentiated with the
   <CrossBorder>false</CrossBorder>
   <Planned>true</Planned>
   <Guaranteed>false</Guaranteed>
-  <MaximumWaitTime>PT2M
-  <!-- If not set or PT0M, connection is considered guaranteed. -->
-  </MaximumWaitTime>
-  <MinimumTransferTime>PT1M</MinimumTransferTime>
-  <MaximumTransferTime>PT2M</MaximumTransferTime>
+  <StandardWaitTime>PT9M
+  <!-- Used for joining/splitting and waiting in vehicle -->
+  </StandardWaitTime>
+  <StandardTransferTime>PT2M</StandardTransferTime>
   <FromPointRef ref="ch:1:ScheduledStopPoint:8506131:1" nameOfRefClass="ScheduledStopPoint" version="1">
   <!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. -->
   </FromPointRef>

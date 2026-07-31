@@ -1713,12 +1713,21 @@ to the fact that the passenger should not change vehicle as the transfer is impl
     </tr>
     <tr>
       <td> </td>
-      <td>MaximumWaitTime</td>
+      <td>StandardWaitTime</td>
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:duration</td>
-      <td>Maximum wait time for INTERCHANGE.</td>
-      <td>If not set or PT0M, it is guaranteed.</td>
+      <td>Standard wait time for INTERCHANGE.</td>
+      <td>Used for joining/splitting and waiting in vehicle</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>StandardTransferTime</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:duration</td>
+      <td>Standard transfer duration for INTERCHANGE.</td>
+      <td> </td>
     </tr>
     <tr>
       <td> </td>
@@ -1803,9 +1812,10 @@ to the fact that the passenger should not change vehicle as the transfer is impl
   <span class="nt">&lt;/ChangeWithinVehicle&gt;</span>
   <span class="nt">&lt;Planned&gt;</span>true<span class="nt">&lt;/Planned&gt;</span>
   <span class="nt">&lt;Guaranteed&gt;</span>false<span class="nt">&lt;/Guaranteed&gt;</span>
-  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT9M
-  <span class="c">&lt;!-- If not set or PT0M, it is guaranteed. --&gt;</span>
-  <span class="nt">&lt;/MaximumWaitTime&gt;</span>
+  <span class="nt">&lt;StandardWaitTime&gt;</span>PT9M
+  <span class="c">&lt;!-- Used for joining/splitting and waiting in vehicle --&gt;</span>
+  <span class="nt">&lt;/StandardWaitTime&gt;</span>
+  <span class="nt">&lt;StandardTransferTime&gt;</span>PT2M<span class="nt">&lt;/StandardTransferTime&gt;</span>
   <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;FromVisitNumber&gt;</span>1<span class="nt">&lt;/FromVisitNumber&gt;</span>
   <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>

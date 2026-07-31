@@ -143,7 +143,7 @@ splitting and joining.</p>
   <span class="nt">&lt;StaySeated&gt;</span>true<span class="nt">&lt;/StaySeated&gt;</span>
   <span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
   <span class="nt">&lt;ChangeWithinVehicle&gt;</span>true<span class="nt">&lt;/ChangeWithinVehicle&gt;</span>
-  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT2M<span class="nt">&lt;/MaximumWaitTime&gt;</span>
+  <span class="nt">&lt;StandardWaitTime&gt;</span>PT2M<span class="nt">&lt;/StandardWaitTime&gt;</span>
   <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">version=</span><span class="s">"1"</span>  <span class="na">nameOfClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_439"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
@@ -158,7 +158,7 @@ splitting and joining.</p>
   <span class="nt">&lt;StaySeated&gt;</span>true<span class="nt">&lt;/StaySeated&gt;</span>
   <span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
   <span class="nt">&lt;ChangeWithinVehicle&gt;</span>true<span class="nt">&lt;/ChangeWithinVehicle&gt;</span>
-  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT2M<span class="nt">&lt;/MaximumWaitTime&gt;</span>
+  <span class="nt">&lt;StandardWaitTime&gt;</span>PT2M<span class="nt">&lt;/StandardWaitTime&gt;</span>
   <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8507483:3"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:ch:1:sjyid:100015:4171-001_91001N.j26_440"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
@@ -188,9 +188,10 @@ splitting and joining.</p>
   <span class="nt">&lt;/ChangeWithinVehicle&gt;</span>
   <span class="nt">&lt;Planned&gt;</span>true<span class="nt">&lt;/Planned&gt;</span>
   <span class="nt">&lt;Guaranteed&gt;</span>false<span class="nt">&lt;/Guaranteed&gt;</span>
-  <span class="nt">&lt;MaximumWaitTime&gt;</span>PT9M
-  <span class="c">&lt;!-- If not set or PT0M, it is guaranteed. --&gt;</span>
-  <span class="nt">&lt;/MaximumWaitTime&gt;</span>
+  <span class="nt">&lt;StandardWaitTime&gt;</span>PT9M
+  <span class="c">&lt;!-- Used for joining/splitting and waiting in vehicle --&gt;</span>
+  <span class="nt">&lt;/StandardWaitTime&gt;</span>
+  <span class="nt">&lt;StandardTransferTime&gt;</span>PT2M<span class="nt">&lt;/StandardTransferTime&gt;</span>
   <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;FromVisitNumber&gt;</span>1<span class="nt">&lt;/FromVisitNumber&gt;</span>
   <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:ScheduledStopPoint:8506105:3"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
