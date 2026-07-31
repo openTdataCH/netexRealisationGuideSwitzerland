@@ -13,9 +13,9 @@ none
 
 ## Provisional Roadmap for profile 2.0
 * 2026-04: repo ready, moved to MD
-* 2026-07: first draft ready (v0.7)
-* 2026-09: input from review incorporated (v0.8)
-* 2026-12: ready for release, discussed with KI ADM and KIDS AG Solldaten (v1.0)
+* 2026-07: first draft ready (Relesae candidate 1)
+* 2026-10: input from review incorporated and second review(Release candidate 2)
+* 2026-12: ready for release, discussed with KI ADM and KIDS AG Solldaten (Release)
 
 ## Folders
 

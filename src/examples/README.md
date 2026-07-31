@@ -61,14 +61,22 @@ We model a train that has the following stops Fribourg - Bern - Zürich. Zürich
 
 [Link to example](09_NeTEx_CH_Fribourg_Bern_Zuerich_Perron.xml)
 
+## NETWORK OFFER Example
+The following example shows how a NETWORK OFFER from an operator to INFO+ might look like.  Importantly, The `SiteFrame` is missing and many things in `ServiceFrame` are reduced to the minimum.
+
+[Link to example](18_NETWORK_OFFER_export_operators.xml)
+
 ## SITE OFFER Example
-Including
-Umsteigebeziehungen und Metastations
-**LATER**
+A small example of a SITE OFFER is in the following example.
+This includes also `DefaultConnection` and `SiteConnection`
 
-## INTERCHANGES Example
+[Link to example](16_NeTEx_CH_SITE_OFFER_Connections.xml)
 
-**LATER**
+## INTERCHANGE Example
+Anbei ein einfaches Beispiel einer INTERCHANGE-Auslieferung.
+
+
+[Link to example](17_NeTEx_CH_INTERCHANGE.xml)
 
 ## Special case: Destination changed
 We use a BLS train from Bern to Luzern. Due to construction it is terminated at Wolhusen.
@@ -103,6 +111,8 @@ In a second modeling we want to model the change in the train number as also sho
 >**LATER**
 
 ## Formation for trains
+We are working on an example for the formation. This is only a DRAFT.
+[Link to example](20_NeTEx_Interlaken_Spiez_Formation.xml)
 
 >**LATER**
 

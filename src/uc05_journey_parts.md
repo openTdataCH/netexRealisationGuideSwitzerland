@@ -60,7 +60,12 @@ graph LR
 ```
 - [Example](./examples/NeTEX_CH_Bern_Olten_ZuerichHB_Winterthur_StGallen_with_Facilities.xml)
 
-### 2. Change of train number — NOT USED in the Swiss profile
+### 2. Change of ProductCategoryRef
+We will do this with `"ch:1:PurposeOfJouryneyPartition:TypeOfProductCategoryChange"` 
+
+> *LATER* Example
+
+### 3. Change of train number — NOT USED in the Swiss profile
 
 **Status:** This use case is intentionally **not implemented** via `JourneyPart` in the Swiss profile.
 
@@ -70,25 +75,29 @@ in the underlying data this is always modeled as **two separate `ServiceJourney`
 [uc02 Joining and splitting](uc02_joining_splitting.md).
 **When to use:** When a train operates under different train numbers on different sections of the same `ServiceJourney`.
 
-### 3. Splitting and Joining
+### 4. Splitting and Joining
 `JourneyPart` together with `CoupledJourney`could be used for a different modeling of joining and splitting (see [relevant use case](uc02_joining_splitting.md).
 However, we currently won't do that.
 
-### 4. Integrating data from different sources to have something to load into a trip planner in international travel
+### 5. Integrating data from different sources to have something to load into a trip planner in international travel
 
-A `ServiceJourney` may exist in the Swiss system only up to the first commerical stop abroad and completly but with less information in the Austrian system. To make sure that real-time data is easily applied the aggregated NeTEx timetable may still wish to keep the original delivered `ServiceJourney`. The relevant parts are then also modeled with `JourneyPart` and `CoupledJourney`. We won't do this either. But we study this for some international projects we have on aggregation of timetables. 
+A `ServiceJourney` may exist in the Swiss system only up to the first commercial stop abroad and completely but with less information in the Austrian system. To make sure that real-time data is easily applied the aggregated NeTEx timetable may still wish to keep the original delivered `ServiceJourney`. The relevant parts are then also modeled with `JourneyPart` and `CoupledJourney`. We won't do this either. But we study this for some international projects we have on aggregation of timetables. 
+
+### 6. Notice only for a part of the ServiceJourney
+We don't use `JourneyPart` for this. `NoticeAssignment` can be valid only for a part of the `ServiceJourney` (`StartPointInPatternRef` and `EndPointInPatternRef`).
+
 
 ## Key Elements
 
-| Element | Usage | Description |
-|---------|-------|-------------|
-| `FromStopPointRef` | mandatory | `ScheduledStopPoint` where the part begins |
-| `ToStopPointRef` | mandatory | `ScheduledStopPoint` where the part ends |
-| `StartTime` / `EndTime` | mandatory | Time bounds of the part |
-| `PurposeOfJourneyPartitionRef` | expected | Reason for the partition (e.g. `FacilityChange`, `TrainNumberChange`) |
-| `TrainNumberRef` | optional | Train number valid for this part |
-| `facilities` | optional | `ServiceFacilitySet` valid for this part only |
-| `JourneyPartCoupleRef` | optional | Links to a coupled section (Flügelzug) — not used in Swiss profile |
+| Element | Usage | Description                                                                                        |
+|---------|-------|----------------------------------------------------------------------------------------------------|
+| `FromStopPointRef` | mandatory | `ScheduledStopPoint` where the part begins                                                         |
+| `ToStopPointRef` | mandatory | `ScheduledStopPoint` where the part ends                                                           |
+| `StartTime` / `EndTime` | mandatory | Time bounds of the part                                                                            |
+| `PurposeOfJourneyPartitionRef` | expected | Reason for the partition (e.g. `FacilityChange`, `TrainNumberChange`, 'TypeOfProductCategorychage`) |
+| `TrainNumberRef` | optional | Train number valid for this part                                                                   |
+| `facilities` | optional | `ServiceFacilitySet` valid for this part only                                                      |
+| `JourneyPartCoupleRef` | optional | Links to a coupled section (Flügelzug) — not used in Swiss profile                                 |
 
 ## Usage Notes
 
