@@ -58,12 +58,12 @@ This document describes the way in which the NeTEx standard is specifically appl
   - [Differences between Swiss profile and EPIP/EPIAP and how they could be amended](A2_annex_comparison_EPIP_EPIAP.md)
   - [Differences to the French and nordic profile](A3_annex_comparison_France_Norway.md)
   - [Glossary](A4_annex_glossary.md)
-  - [Index](A5_index.md)
+  - [Index](A5_annex_index.md)
   - [Changelog and migration from Swiss profile 1.0 to 2.0)](A6_changelog_migration.md)
 
 
 ## Examples
-We have a [set of examples](./examples/README.md) that show how to create use cases with the realisation guide.
+We have a [set of examples](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/tree/main/src/examples) that show how to create use cases with the realisation guide.
 
 ## Imprint
 * Authors: Matthias Günter,  Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Thomas Schäfer, Simon Freihart, Emeric Tapia-Almosnino, 
