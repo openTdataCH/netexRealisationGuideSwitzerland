@@ -57,6 +57,28 @@ Temporal availability in terms of, e.g., Dates, Timebands, ValidDayBits.
 
 ---
 
+## CheckConstraint
+
+Used to describe foreseeable delays caused by processes such as check-in, security screening, ticket control or immigration.
+
+> **NeTEx XSD:** Characteristics of a process that takes place at a SITE COMPONENT, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning.
+>
+> **Transmodel:** Characteristics of a process that takes place at a SITE COMPONENT, or an ONBOARD SPACE, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning.
+
+→ [Full documentation](09_timetable.md#checkconstraint)
+
+---
+
+
+## CheckConstraintDelay
+
+Time penalty associated with a CheckConstraint.
+
+> **NeTEx XSD / Transmodel:** Time penalty associated with a CHECK CONSTRAINT.
+
+→ [Full documentation](09_timetable.md#checkconstraint)
+
+---
 
 ## Codespace
 
