@@ -126,7 +126,7 @@ This means that the old two defined dirctions `ch:1:Direction:H` and `ch:1:Direc
 ## Line
 *→ [Glossary definition](A4_annex_glossary.md#line)*
 ### Purpose
-A public transport service line with a `Name`, `TransportMode`, and `Operator`. Be aware that the handling of "Konzessionär" and "Betreieber" is a bit complex and is discussed [here](uc17_mixed_lines.md) and [here](11_resources.md#responsibilityset).
+A public transport service line with a `Name`, `TransportMode`, and `Operator`. Be aware that the handling of "Konzessionär" and "Betreiber" is a bit complex and is discussed [here](uc17_mixed_lines.md) and [here](11_resources.md#responsibilityset).
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/Line.md)
