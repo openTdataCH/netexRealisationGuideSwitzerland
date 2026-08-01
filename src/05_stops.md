@@ -140,7 +140,7 @@ A specific boarding or alighting position (platform, stand, bay) within a `StopP
   - A nested `Quay` is always physically contiguous with its parent and so has the same accessibility characteristics 
 as its parent. 
   - Nested `Quay`s should not be used to mark individual positions on a platform – `BoardingPosition` serve this function. 
-  - Nested `Quay`s and `AccessSpace`s must always be on the same `Level` as their parent (not currently modelled).
+  - Nested `Quay`s and `AccessSpace`s must always be on the same `Level` as their parent (not currently modeled).
 - If the SLOID for platforms is not unique, it will be formed according to the schema:
 {StopPlace SLOID}_gen:{Quay SLOID}_pf:{Platform Code}.
 - If no platform SLOID is available {StopPlace SLOID}_gen:missingSLOID_pf:{Platform Code*} will be used instead.

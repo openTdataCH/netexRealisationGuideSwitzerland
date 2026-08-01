@@ -77,7 +77,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 
 - **Template vs. Instance:** `ServiceJourney` directly carries its validity via `AvailabilityConditionRef`. `DatedServiceJourney` is not used in the Swiss profile.
 - **Consistency:** A `ServiceJourney` must reference exactly one `JourneyPattern`. The pattern's stop sequence is authoritative.
-- **Day Governance:** Operating days are controlled via `AvailabilityConditionRef` (`ValidDayBits`), not via `DayType`. `DayType`/`DayTypeAssignment` are reserved for flagging national holidays only (see [ServiceCalendarFrame](08_service_calendars.md#daytype)). `DatedServiceJourney` is not used in the Swiss profile.
+- **Day Governance:** Operating days are controlled via `AvailabilityConditionRef` (`ValidDayBits`), not via `DayType`. `DayType`/`DayTypeAssignment` are reserved for flagging national holidays only (see [ServiceCalendarFrame](07_service_calendars.md#daytype)). `DatedServiceJourney` is not used in the Swiss profile.
 - **Validation:** Ensure `JourneyPatternRef`, `LineRef`, and `OperatorRef` are consistent and reference existing objects.
 - We assume that a Swiss Journey ID exists for almost every `ServiceJourney`. However, the  `@id` can't be set to `sjyid`, because for different days the `ServiceJourney` are different. Also problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `@id` will contain a `_gen` substring, but it still starts with the sjyid, when it exists (e.g. `ch:1:sjyid:100011:12391293:_gen_:1231` or `DE:12319123123:_gen_14`).
 - A `ServiceJourney`can be associated with exactly one `ServiceJourneyPattern` and `TimeDemandType`.
@@ -247,7 +247,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 
 ## InterchangeRule
 > **Deprecated** — `InterchangeRule` is replaced by `ServiceJourneyInterchange` in RG 2.0.  
-> See [uc03 Transfers](uc03_transfers.md) for the current modelling approach.
+> See [uc03 Transfers](uc03_transfers.md) for the current modeling approach.
 
 *→ [Glossary definition](A4_annex_glossary.md#interchangerule)*
 

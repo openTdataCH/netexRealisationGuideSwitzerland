@@ -102,7 +102,7 @@ We use TypeOfValue references in various Frames in objects including:
 ## TypeOfNotice
 
 ### Purpose
-`TypeOfNotice` is used within a [Notice](07_service.md#notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
+`TypeOfNotice` is used within a [Notice](06_service.md#notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
 
 | PrivateCode | Name                | Description                                                                                                                                                                                                                                                      |
 |-------------|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

@@ -26,8 +26,8 @@ The relevant reference data that is already available/defined by SKI:
 - Lines (in a future phase) - in Atlas
 - Direction - only inbound and outbound are allowed
 - Notices – some specialised IDs and/or types, according to the [mapping excel](media/Mappingtabellen_NeTEx_v2.0.xlsx).
-- TypeOfValues - according to the lists defined here (namely in [10_common.md](10_common.md)). E.g. ProductCategory - in the [mappingexcel](media/Mappingtabellen_NeTEx_v2.0.xlsx).
-- ValueSets - in [10_common.md](10_common.md)
+- TypeOfValues - according to the lists defined here (namely in [the XML modeling](03_xml_modelling.md)). E.g. ProductCategory - in the [mappingexcel](media/Mappingtabellen_NeTEx_v2.0.xlsx).
+- ValueSets - in [XML modeling](03_xml_modelling.md)
 - Facilities - in [mapping excel](media/Mappingtabellen_NeTEx_v2.0.xlsx).
 
 ### Responsibilites data supplier

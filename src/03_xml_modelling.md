@@ -273,7 +273,6 @@ We only allow the following values for `NameType`:
 
 NeTEx uses the type `MultilingualString` for descriptive text elements (e.g. `Notice` text, `Name`, `ShortName` etc.).
 However, only one language can be set for a given element (e.g. `<MultilingualString lang=”fr”>`). 
-Additional languages are introduced through the [AlternativeName](#alternativename) and [AlternativeText](#alternativetext) element.
 
 #### Example
 
