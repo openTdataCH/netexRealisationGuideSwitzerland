@@ -2,6 +2,7 @@
 In this chapter:
 - [TimetableFrame](09_timetable.md#timetableframe)
 - [ServiceJourney](09_timetable.md#servicejourney)
+- [CheckConstraint](09_timetable.md#checkconstraint)
 - [TemplateServiceJourney](09_timetable.md#templateservicejourney)
 - [OccupancyView](09_timetable.md#occupancyview)
 - [TrainNumber](09_timetable.md#trainnumber)
@@ -292,9 +293,69 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 
 
 ### Calculation of passing times at stops
-The departure and arrival times of a `ServiceJourney` are determined by the `ServiceJourneyPattern` and the `TimeDemandType` referenced by the `ServiceJourney`.
-Element `ServiceJourney/DepartureTime` contains the departure time at the first `ScheduledStopPoint` indicated by  `ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern[1]`. The arrival time at all subsequent `ScheduledStopPoint`s is calculated by adding the run time between the previous `ScheduledStopPoint` and the current `ScheduledStopPoint` of the `ServiceJourneyPattern`. The correct run time is obtained by searching `TimeDemandType/runTimes/JourneyRunTime/Runtime` with the `TimingLink` corresponding to the previous and current `ScheduledStopPoint`. The `TimingLink` to be used is indicated by `ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern/OnwardTimingLinkRef`.
-The departure time at each `ScheduledStopPoint` is obtained by adding `TimeDemandType/waitTimes/JourneyWaitTime/Waitime` for the `ScheduledStopPoint`. Please observe that a `ScheduledStopPoint` may be visited more than once within a `ServiceJourneyPattern` and may have different waiting times at each visit. In this case, `TimeDemandType/waitTimes/StopPointInJourneyPatternRef` will be used to override `TimeDemandType/waitTimes/ScheduledStopPointRef`. 
+- The departure and arrival times of a `ServiceJourney` are determined by the `ServiceJourneyPattern` and the `TimeDemandType` referenced by the `ServiceJourney`.
+- Element `ServiceJourney/DepartureTime` contains the departure time at the first `ScheduledStopPoint` indicated by  `ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern[1]`. 
+- The arrival time at all subsequent `ScheduledStopPoint`s is calculated by adding the run time between the previous `ScheduledStopPoint` and the current `ScheduledStopPoint` of the `ServiceJourneyPattern`. The correct run time is obtained by searching `TimeDemandType/runTimes/JourneyRunTime/Runtime` with the `TimingLink` corresponding to the previous and current `ScheduledStopPoint`. The `TimingLink` to be used is indicated by `ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern/OnwardTimingLinkRef`.
+- The departure time at each `ScheduledStopPoint` is obtained by adding `TimeDemandType/waitTimes/JourneyWaitTime/Waitime` for the `ScheduledStopPoint`. Please observe that a `ScheduledStopPoint` may be visited more than once within a `ServiceJourneyPattern` and may have different waiting times at each visit. In this case, `TimeDemandType/waitTimes/StopPointInJourneyPatternRef` will be used to override `TimeDemandType/waitTimes/ScheduledStopPointRef`. 
+
+
+## CheckConstraint
+*→ [Glossary definition](A4_annex_glossary.md#checkconstraint)*
+
+### Purpose
+Used to describe foreseeable delays caused by processes such as check-in, security screening, ticket control or immigration.
+
+### Table
+
+
+
+CheckConstraints are used for different use cases
+
+*Table: CheckConstraint*
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | CheckDirection | optional | 0..1 | CheckDirectionEnumeration | For CHECK CONSTRAINTs associated with PATH LINKs, the direction in which the check applies. Forwards = from/to, backwards = to/from. For Check constraints associated with an external ENTRANCE, forwards is into the SITE, backwards is out of the SITE. | We usually only use one direction. |
+|  | CheckProcess | optional | 0..1 | CheckProcessTypeEnumeration | Type of process that may occur at CHECK CONSTRAINT. | Only a given subset is allowed |
+|  | Congestion | optional | 0..1 | CongestionEnumeration | Type of crowding that may slow use of CHECK CONSTRAINT. |  |
+|  | delays | expected | 0..1 | checkConstraintDelays_RelStructure | Delays for CHECK CONSTRAINT .process. |  |
+| + | CheckConstraintDelay | expected | 1..* | CheckConstraintDelay_VersionStructure | Time penalty associated with a CHECK CONSTRAINT. | We currently only model delays |
+| ++ | AverageDelay | expected | 0..1 | xsd:duration | Average duration expected to pass through Check. |  |
+| ++ | MaximumLikelyDelay | optional | 0..1 | xsd:duration | Maximum duration expected to pass through CHECK CONSTRAINT. |  |
+
+
+
+
+*→ [General NeTEx definition ](../xcore/netex/elements/CheckConstraint.html)*
+
+### Example
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<CheckConstraint id="" version="1">
+  <!-- CheckConstraints are used for different use cases -->
+  <CheckDirection>forwards
+  <!-- We usually only use one direction. -->
+  </CheckDirection>
+  <CheckProcess>alighting
+  <!-- Only a given subset is allowed -->
+  </CheckProcess>
+  <Congestion>queue</Congestion>
+  <delays>
+  <CheckConstraintDelay id="generated" version="1">
+  <!-- We currently only model delays -->
+  <AverageDelay>PT4M</AverageDelay>
+  <MaximumLikelyDelay>PT8M</MaximumLikelyDelay>
+  </CheckConstraintDelay>
+  </delays>
+</CheckConstraint>
+```
+
+
+
+*→ [Template](./templates/CheckConstraint.xml)*
+
 
 ## TemplateServiceJourney
 *→ [Glossary definition](A4_annex_glossary.md#templateservicejourney)*

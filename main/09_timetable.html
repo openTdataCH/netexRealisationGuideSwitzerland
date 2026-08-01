@@ -45,6 +45,7 @@
 <ul>
   <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#timetableframe">TimetableFrame</a></li>
   <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#servicejourney">ServiceJourney</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#checkconstraint">CheckConstraint</a></li>
   <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#templateservicejourney">TemplateServiceJourney</a></li>
   <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#occupancyview">OccupancyView</a></li>
   <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#trainnumber">TrainNumber</a></li>
@@ -782,18 +783,138 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
 </ul>
 
 <h3 id="calculation-of-passing-times-at-stops">Calculation of passing times at stops</h3>
-<p>The departure and arrival times of a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> are determined by the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and the <code class="language-plaintext highlighter-rouge">TimeDemandType</code> referenced by the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.
-Element <code class="language-plaintext highlighter-rouge">ServiceJourney/DepartureTime</code> contains the departure time at the first <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> indicated by  <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern[1]</code>. The arrival time at all subsequent <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s is calculated by adding the run time between the previous <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> and the current <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> of the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>. The correct run time is obtained by searching <code class="language-plaintext highlighter-rouge">TimeDemandType/runTimes/JourneyRunTime/Runtime</code> with the <code class="language-plaintext highlighter-rouge">TimingLink</code> corresponding to the previous and current <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>. The <code class="language-plaintext highlighter-rouge">TimingLink</code> to be used is indicated by <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern/OnwardTimingLinkRef</code>.
-The departure time at each <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> is obtained by adding <code class="language-plaintext highlighter-rouge">TimeDemandType/waitTimes/JourneyWaitTime/Waitime</code> for the <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>. Please observe that a <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> may be visited more than once within a <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and may have different waiting times at each visit. In this case, <code class="language-plaintext highlighter-rouge">TimeDemandType/waitTimes/StopPointInJourneyPatternRef</code> will be used to override <code class="language-plaintext highlighter-rouge">TimeDemandType/waitTimes/ScheduledStopPointRef</code>.</p>
+<ul>
+  <li>The departure and arrival times of a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> are determined by the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and the <code class="language-plaintext highlighter-rouge">TimeDemandType</code> referenced by the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</li>
+  <li>Element <code class="language-plaintext highlighter-rouge">ServiceJourney/DepartureTime</code> contains the departure time at the first <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> indicated by  <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern[1]</code>.</li>
+  <li>The arrival time at all subsequent <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s is calculated by adding the run time between the previous <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> and the current <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> of the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>. The correct run time is obtained by searching <code class="language-plaintext highlighter-rouge">TimeDemandType/runTimes/JourneyRunTime/Runtime</code> with the <code class="language-plaintext highlighter-rouge">TimingLink</code> corresponding to the previous and current <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>. The <code class="language-plaintext highlighter-rouge">TimingLink</code> to be used is indicated by <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern/OnwardTimingLinkRef</code>.</li>
+  <li>The departure time at each <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> is obtained by adding <code class="language-plaintext highlighter-rouge">TimeDemandType/waitTimes/JourneyWaitTime/Waitime</code> for the <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>. Please observe that a <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> may be visited more than once within a <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and may have different waiting times at each visit. In this case, <code class="language-plaintext highlighter-rouge">TimeDemandType/waitTimes/StopPointInJourneyPatternRef</code> will be used to override <code class="language-plaintext highlighter-rouge">TimeDemandType/waitTimes/ScheduledStopPointRef</code>.</li>
+</ul>
+
+<h2 id="checkconstraint">CheckConstraint</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#checkconstraint">Glossary definition</a></em></p>
+
+<h3 id="purpose-2">Purpose</h3>
+<p>Used to describe foreseeable delays caused by processes such as check-in, security screening, ticket control or immigration.</p>
+
+<h3 id="table-2">Table</h3>
+
+<p>CheckConstraints are used for different use cases</p>
+
+<p><em>Table: CheckConstraint</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>CheckDirection</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>CheckDirectionEnumeration</td>
+      <td>For CHECK CONSTRAINTs associated with PATH LINKs, the direction in which the check applies. Forwards = from/to, backwards = to/from. For Check constraints associated with an external ENTRANCE, forwards is into the SITE, backwards is out of the SITE.</td>
+      <td>We usually only use one direction.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>CheckProcess</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>CheckProcessTypeEnumeration</td>
+      <td>Type of process that may occur at CHECK CONSTRAINT.</td>
+      <td>Only a given subset is allowed</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Congestion</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>CongestionEnumeration</td>
+      <td>Type of crowding that may slow use of CHECK CONSTRAINT.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>delays</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>checkConstraintDelays_RelStructure</td>
+      <td>Delays for CHECK CONSTRAINT .process.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>CheckConstraintDelay</td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>CheckConstraintDelay_VersionStructure</td>
+      <td>Time penalty associated with a CHECK CONSTRAINT.</td>
+      <td>We currently only model delays</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AverageDelay</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:duration</td>
+      <td>Average duration expected to pass through Check.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>MaximumLikelyDelay</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:duration</td>
+      <td>Maximum duration expected to pass through CHECK CONSTRAINT.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../xcore/netex/elements/CheckConstraint.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-2">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;CheckConstraint</span> <span class="na">id=</span><span class="s">""</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- CheckConstraints are used for different use cases --&gt;</span>
+  <span class="nt">&lt;CheckDirection&gt;</span>forwards
+  <span class="c">&lt;!-- We usually only use one direction. --&gt;</span>
+  <span class="nt">&lt;/CheckDirection&gt;</span>
+  <span class="nt">&lt;CheckProcess&gt;</span>alighting
+  <span class="c">&lt;!-- Only a given subset is allowed --&gt;</span>
+  <span class="nt">&lt;/CheckProcess&gt;</span>
+  <span class="nt">&lt;Congestion&gt;</span>queue<span class="nt">&lt;/Congestion&gt;</span>
+  <span class="nt">&lt;delays&gt;</span>
+  <span class="nt">&lt;CheckConstraintDelay</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- We currently only model delays --&gt;</span>
+  <span class="nt">&lt;AverageDelay&gt;</span>PT4M<span class="nt">&lt;/AverageDelay&gt;</span>
+  <span class="nt">&lt;MaximumLikelyDelay&gt;</span>PT8M<span class="nt">&lt;/MaximumLikelyDelay&gt;</span>
+  <span class="nt">&lt;/CheckConstraintDelay&gt;</span>
+  <span class="nt">&lt;/delays&gt;</span>
+<span class="nt">&lt;/CheckConstraint&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/CheckConstraint.xml">Template</a></em></p>
 
 <h2 id="templateservicejourney">TemplateServiceJourney</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#templateservicejourney">Glossary definition</a></em></p>
-<h3 id="purpose-2">Purpose</h3>
+<h3 id="purpose-3">Purpose</h3>
 <p>A <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code> represents a sequence of planned trips. It is similar to the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>, but it is used if there is a frequency defined at which the trips are scheduled on an operating day.</p>
 
 <p>A frequency is specified in a <code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code> (e.g. every 20 minutes). The <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code> may thus represent multiple journeys or it could be used simply as a template for adding extra date journeys after the planning phase.</p>
 
-<h3 id="table-2">Table</h3>
+<h3 id="table-3">Table</h3>
 
 <p>TemplateServiceJourney is used for journeys repeating at a certain frequency.</p>
 
@@ -1123,7 +1244,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
 
 <p><em>→ <a href="../xcore/netex/elements/TemplateServiceJourney.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-2">Example</h3>
+<h3 id="example-3">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;TemplateServiceJourney</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -1228,10 +1349,10 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
 
 <h2 id="occupancyview">OccupancyView</h2>
 
-<h3 id="purpose-3">Purpose</h3>
+<h3 id="purpose-4">Purpose</h3>
 <p><code class="language-plaintext highlighter-rouge">OccupancyView</code>can be used on the <code class="language-plaintext highlighter-rouge">Journey</code> and <code class="language-plaintext highlighter-rouge">JourneyPart</code> elements. Used for predicted and planned occupancies of vehicles.</p>
 
-<h3 id="table-3">Table</h3>
+<h3 id="table-4">Table</h3>
 
 <p><em>Table: OccupancyView</em></p>
 
@@ -1352,7 +1473,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
 
 <p><em>→ <a href="../xcore/netex/elements/OccupancyView.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-3">Example</h3>
+<h3 id="example-4">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;OccupancyView</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -1383,11 +1504,11 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
 <h2 id="trainnumber">TrainNumber</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#trainnumber">Glossary definition</a></em></p>
 
-<h3 id="purpose-4">Purpose</h3>
+<h3 id="purpose-5">Purpose</h3>
 
 <p>Codes assigned to particular journeys (<code class="language-plaintext highlighter-rouge">ServiceJourney</code>, <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code>) when operated by trains. <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s can in principle have multiple different <code class="language-plaintext highlighter-rouge">TrainNumber</code>s whereas a <code class="language-plaintext highlighter-rouge">JourneyPart</code> can only reference a single one — however, <code class="language-plaintext highlighter-rouge">JourneyPart</code> is <strong>not used</strong> for modelling train number changes in the Swiss profile; use two <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s linked via <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> instead (see <a href="/netexRealisationGuideSwitzerland/main/uc05_journey_parts.html">uc05 Journey Parts</a>).</p>
 
-<h3 id="table-4">Table</h3>
+<h3 id="table-5">Table</h3>
 
 <p>The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advertisment und production are identical. It is the number from *Z in HRDF. Must be unique per operating day in Switzerland.</p>
 
@@ -1447,7 +1568,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
 
 <p><em>→ <a href="../xcore/netex/elements/TrainNumber.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-4">Example</h3>
+<h3 id="example-5">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;TrainNumber</span> <span class="na">id=</span><span class="s">"71707"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -1470,11 +1591,11 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
 
 <h2 id="typeofservice">TypeOfService</h2>
 
-<h3 id="purpose-5">Purpose</h3>
+<h3 id="purpose-6">Purpose</h3>
 
 <p><code class="language-plaintext highlighter-rouge">TypeOfService</code> indicates the purpose of a <code class="language-plaintext highlighter-rouge">ServiceJourney</code>, for example, whether if it is a passenger transport or a garage run-in. We only use <code class="language-plaintext highlighter-rouge">ch:1:TypeOfService:1</code></p>
 
-<h3 id="table-5">Table</h3>
+<h3 id="table-6">Table</h3>
 
 <p><em>Table: TypeOfService</em></p>
 
@@ -1541,7 +1662,7 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
 
 <p><em>→ <a href="../xcore/netex/elements/TypeOfService.html">General NeTEx definition</a></em></p>
 
-<h3 id="example-5">Example</h3>
+<h3 id="example-6">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;TypeOfService</span> <span class="na">id=</span><span class="s">"ch:1:TypeOfService:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -1597,14 +1718,14 @@ The departure time at each <code class="language-plaintext highlighter-rouge">Sc
 <h2 id="servicejourneyinterchange">ServiceJourneyInterchange</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#servicejourneyinterchange">Glossary definition</a></em></p>
 
-<h3 id="purpose-6">Purpose</h3>
+<h3 id="purpose-7">Purpose</h3>
 <p>The standard states: “In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle. This concept is for instance used for circular lines and coupled journeys. This means that passenger information should be adapted
 to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also important that operation control staff is aware of the consequences to passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs.”</p>
 
 <p><code class="language-plaintext highlighter-rouge">StaySeated=true</code> should be used for through-services (Durchbindung) and joining (Vereinigung). While splitting (Flügelzug) technically involves different vehicle parts, the passenger does not leave the train — however, they may need to move to the correct coach. For splitting, <code class="language-plaintext highlighter-rouge">StaySeated=false</code> combined with
 <code class="language-plaintext highlighter-rouge">ChangeWithinVehicle=true</code> is therefore the correct modelling. See <a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">uc02 Joining and splitting</a>.</p>
 
-<h3 id="table-6">Table</h3>
+<h3 id="table-7">Table</h3>
 
 <p><em>Table: ServiceJourneyInterchange</em></p>
 
@@ -1797,7 +1918,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 
 <p><em>→ <a href="../xcore/netex/elements/ServiceJourneyInterchange.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-6">Example</h3>
+<h3 id="example-7">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;ServiceJourneyInterchange</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200"</span><span class="nt">&gt;</span>
