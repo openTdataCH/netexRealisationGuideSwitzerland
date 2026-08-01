@@ -227,13 +227,9 @@ def format_element_with_mixed_content(element, indent='', default_ns=None):
             lines.append(f'{child_indent}{etree.tostring(child, encoding="unicode").strip()}')
         elif isinstance(child, etree._Element):
             # Recursively format child elements using serialize_element_tree
-            child_str = serialize_element_tree(child, indent_level=len(indent.split('  ')), default_ns=default_ns)
-            # Add proper indentation to each line
-            for line in child_str.split('\n'):
-                if line.strip():
-                    lines.append(f'{child_indent}{line.strip()}')
-                else:
-                    lines.append(line)
+            child_str = serialize_element_tree(child, indent_level=(len(indent) // 2) + 1, default_ns=default_ns)
+            # Add child XML with proper indentation
+            lines.extend(child_str.split('\n'))
         else:
             # Text nodes
             text = child.text if child.text else ''
@@ -285,11 +281,7 @@ def serialize_element_tree(element, indent_level=0, default_ns=None):
             elif isinstance(child, etree._Element):
                 # Recursively serialize child elements
                 child_xml = serialize_element_tree(child, indent_level + 1, default_ns)
-                for line in child_xml.split('\n'):
-                    if line.strip():
-                        lines.append(f'{child_indent}{line.strip()}')
-                    else:
-                        lines.append(line)
+                lines.extend(child_xml.split('\n'))
             else:
                 # Text nodes - shouldn't happen at this level
                 pass
