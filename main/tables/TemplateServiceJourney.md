@@ -20,7 +20,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | noticeAssignments | optional | 0..1 | noticeAssignments_RelStructure | NOTICE ASSIGNMENTs in frame. | The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. |
 | + | [NoticeAssignment](NoticeAssignment.md) | optional | 0..* | NoticeAssignment_VersionStructure | The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively. |  |
 |  | occupancies | optional | 0..1 | OccupancyView_RelStructure | OCCUPANCYs in frame. |  |
-| + | [OccupancyView](OccupancyView.md) | optional | 0..* | OccupancyView_VersionStructure | A simple VIEW of OCCUPANCY as a first implementation without full support of DECK PLAN. |  |
+| + | [OccupancyView](OccupancyView.md) | optional | 0..* | OccupancyView_VersionStructure | A simple VIEW of OCCUPANCY as a first implementation without full support of DECK PLAN. | Currently not available. |
 |  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration | Whether journey is as planned, a cancellation or an extra journey. Default is as Planned. | Only the value planned is allowed. |
 |  | DepartureTime | optional | 0..1 | xsd:time | Time of departure of JOURNEY from POINT. | Departure of the first journey. |
 |  | DepartureDayOffset | optional | 0..1 | DayOffsetType | Daya offset if Time of departure of JOURNEY from origin POINT from current OPERATING DAY. | DayOffset if relevant. |
