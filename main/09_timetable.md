@@ -175,7 +175,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 |  | parts | optional | 0..1 | blockParts_RelStructure | Parts of the ORGANISATION. | For some use cases e.g. change of Facilities during ServiceJourney |
 | + | JourneyPartRef | expected | 0..* | JourneyPartRefStructure | Reference to a JOURNEY PART. |  |
 |  | checkConstraints | optional | 0..1 | checkConstraints_RelStructure | CHECK CONSTRAINTs in frame. |  |
-| + | CheckConstraint | optional | 1..* | CheckConstraint_VersionStructure | Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges. | CheckConstraints are used for different use cases |
+| + | [CheckConstraint](./tables/CheckConstraint.md) | optional | 1..* | CheckConstraint_VersionStructure | Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges. | CheckConstraints are used to encode foreseeable delays by check-in or other processes. |
 
 
 
@@ -268,7 +268,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
   </parts>
   <checkConstraints>
   <CheckConstraint id="" version="1">
-  <!-- CheckConstraints are used for different use cases -->
+  <!-- CheckConstraints are used to encode foreseeable delays by check-in or other processes. -->
   </CheckConstraint>
   </checkConstraints>
 </ServiceJourney>
