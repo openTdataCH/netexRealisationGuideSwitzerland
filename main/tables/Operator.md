@@ -10,7 +10,6 @@ We will use this organisation also in `AuthorityRef`. The problem is that the SB
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | privateCodes | mandatory | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
 | + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | SBOID and GO (busines organisation) mandatory if they exist. |
-|  | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
 |  | Name | expected | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
 |  | ShortName | expected | 0..1 | MultilingualString | Short Name for TYPE OF VALUE. | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
 |  | parts | optional | 0..1 | blockParts_RelStructure | Parts of the ORGANISATION. |  |
