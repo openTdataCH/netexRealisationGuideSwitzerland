@@ -2,7 +2,8 @@
 mermaid: true
 ---
 
-# Services
+# Service Frame
+
 In this chapter:
 - [ServiceFrame](#serviceframe)
 - [Line](#line)

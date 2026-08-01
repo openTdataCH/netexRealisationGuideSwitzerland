@@ -1,4 +1,5 @@
-# Timetables
+# Timetable Frame
+
 In this chapter:
 - [TimetableFrame](09_timetable.md#timetableframe)
 - [ServiceJourney](09_timetable.md#servicejourney)
