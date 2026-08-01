@@ -201,19 +201,19 @@
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;SiteFrame</span> <span class="na">id=</span><span class="s">"ch:1:SiteFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;topographicPlaces&gt;</span>
-  <span class="nt">&lt;TopographicPlace</span> <span class="na">id=</span><span class="s">"ch:1:TopoGraphicPlace:CH-BE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces. --&gt;</span>
-  <span class="nt">&lt;Descriptor&gt;</span>
-  <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
-  <span class="nt">&lt;/Descriptor&gt;</span>
-  <span class="nt">&lt;/TopographicPlace&gt;</span>
+    <span class="nt">&lt;TopographicPlace</span> <span class="na">id=</span><span class="s">"ch:1:TopoGraphicPlace:CH-BE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces. --&gt;</span>
+      <span class="nt">&lt;Descriptor&gt;</span>
+        <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;/Descriptor&gt;</span>
+    <span class="nt">&lt;/TopographicPlace&gt;</span>
   <span class="nt">&lt;/topographicPlaces&gt;</span>
   <span class="nt">&lt;stopPlaces&gt;</span>
-  <span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/stopPlaces&gt;</span>
   <span class="nt">&lt;siteFacilitySets&gt;</span>
-  <span class="c">&lt;!-- We expect the SiteFacilitySet in the ResourceFrame --&gt;</span>
-  <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- We expect the SiteFacilitySet in the ResourceFrame --&gt;</span>
+    <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/siteFacilitySets&gt;</span>
 <span class="nt">&lt;/SiteFrame&gt;</span>
 </code></pre></div></div>
@@ -503,63 +503,63 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
 <span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- In some cases the id of a StopPlace is not a SLOID. --&gt;</span>
   <span class="nt">&lt;ValidBetween&gt;</span>
-  <span class="c">&lt;!-- This can be used to show, when the StopPlace can be used. --&gt;</span>
-  <span class="nt">&lt;FromDate&gt;</span>2026-01-01T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
-  <span class="nt">&lt;ToDate&gt;</span>2026-12-31T00:00:00<span class="nt">&lt;/ToDate&gt;</span>
+    <span class="c">&lt;!-- This can be used to show, when the StopPlace can be used. --&gt;</span>
+    <span class="nt">&lt;FromDate&gt;</span>2026-01-01T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
+    <span class="nt">&lt;ToDate&gt;</span>2026-12-31T00:00:00<span class="nt">&lt;/ToDate&gt;</span>
   <span class="nt">&lt;/ValidBetween&gt;</span>
   <span class="nt">&lt;keyList&gt;</span>
-  <span class="c">&lt;!-- Key value pairs. --&gt;</span>
-  <span class="nt">&lt;KeyValue&gt;</span>
-  <span class="c">&lt;!-- HafasPriority and HafasKMInfo for Hafas environments, only used in exports by INFO+. --&gt;</span>
-  <span class="nt">&lt;Key&gt;</span>HafasPriority<span class="nt">&lt;/Key&gt;</span>
-  <span class="nt">&lt;Value&gt;</span>4<span class="nt">&lt;/Value&gt;</span>
-  <span class="nt">&lt;/KeyValue&gt;</span>
-  <span class="nt">&lt;KeyValue&gt;</span>
-  <span class="c">&lt;!-- Special value for Hafas environments, only used in exports by INFO+. --&gt;</span>
-  <span class="nt">&lt;Key&gt;</span>HafasKMInfo<span class="nt">&lt;/Key&gt;</span>
-  <span class="nt">&lt;Value&gt;</span>1000<span class="nt">&lt;/Value&gt;</span>
-  <span class="nt">&lt;/KeyValue&gt;</span>
+    <span class="c">&lt;!-- Key value pairs. --&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="c">&lt;!-- HafasPriority and HafasKMInfo for Hafas environments, only used in exports by INFO+. --&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>HafasPriority<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>4<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="c">&lt;!-- Special value for Hafas environments, only used in exports by INFO+. --&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>HafasKMInfo<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>1000<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
   <span class="nt">&lt;/keyList&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
-  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"didok"</span><span class="nt">&gt;</span>7000
-  <span class="c">&lt;!-- Mandatory for DIDOK and SLOID if they exist. --&gt;</span>
-  <span class="nt">&lt;/PrivateCode&gt;</span>
-  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000
-  <span class="c">&lt;!-- Mandatory for DIDOK and SLOID if they exist. --&gt;</span>
-  <span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"didok"</span><span class="nt">&gt;</span>7000
+      <span class="c">&lt;!-- Mandatory for DIDOK and SLOID if they exist. --&gt;</span>
+    <span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000
+      <span class="c">&lt;!-- Mandatory for DIDOK and SLOID if they exist. --&gt;</span>
+    <span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
   <span class="nt">&lt;Name&gt;</span>Bern
-  <span class="c">&lt;!-- The official stop name. If you have different versions one needs to use AlternativeName --&gt;</span>
+    <span class="c">&lt;!-- The official stop name. If you have different versions one needs to use AlternativeName --&gt;</span>
   <span class="nt">&lt;/Name&gt;</span>
   <span class="nt">&lt;Centroid&gt;</span>
-  <span class="c">&lt;!-- Global or national location --&gt;</span>
-  <span class="nt">&lt;Name/&gt;</span>
-  <span class="nt">&lt;Location&gt;</span>
-  <span class="c">&lt;!-- Note concerning coordinates - The main coordinates are given as **WSG84**. --&gt;</span>
-  <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
-  <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
-  <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
-  <span class="nt">&lt;/Location&gt;</span>
+    <span class="c">&lt;!-- Global or national location --&gt;</span>
+    <span class="nt">&lt;Name/&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="c">&lt;!-- Note concerning coordinates - The main coordinates are given as **WSG84**. --&gt;</span>
+      <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
+      <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
+      <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
   <span class="nt">&lt;/Centroid&gt;</span>
   <span class="nt">&lt;alternativeNames&gt;</span>
-  <span class="c">&lt;!-- Alternative names for the StopPlace. We will also use these for synonyms. --&gt;</span>
-  <span class="nt">&lt;AlternativeName</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:it"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Berna<span class="nt">&lt;/Name&gt;</span>
-  <span class="nt">&lt;/AlternativeName&gt;</span>
+    <span class="c">&lt;!-- Alternative names for the StopPlace. We will also use these for synonyms. --&gt;</span>
+    <span class="nt">&lt;AlternativeName</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:it"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Berna<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;/AlternativeName&gt;</span>
   <span class="nt">&lt;/alternativeNames&gt;</span>
   <span class="nt">&lt;TopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"BE-bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- Id to the county, community, canton or country. --&gt;</span>
+    <span class="c">&lt;!-- Id to the county, community, canton or country. --&gt;</span>
   <span class="nt">&lt;/TopographicPlaceRef&gt;</span>
   <span class="nt">&lt;StopPlaceType&gt;</span>railStation<span class="nt">&lt;/StopPlaceType&gt;</span>
   <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly
-  <span class="c">&lt;!-- For stops like Sagliains --&gt;</span>
+    <span class="c">&lt;!-- For stops like Sagliains --&gt;</span>
   <span class="nt">&lt;/LimitedUse&gt;</span>
   <span class="nt">&lt;Weighting&gt;</span>preferredInterchange
-  <span class="c">&lt;!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. --&gt;</span>
+    <span class="c">&lt;!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. --&gt;</span>
   <span class="nt">&lt;/Weighting&gt;</span>
   <span class="nt">&lt;quays&gt;</span>
-  <span class="c">&lt;!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. --&gt;</span>
-  <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. --&gt;</span>
+    <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/quays&gt;</span>
 <span class="nt">&lt;/StopPlace&gt;</span>
 </code></pre></div></div>
@@ -749,36 +749,36 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
 <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- Can be a platform, track, sector group or sector. id is a SLOID whenever possible or generated. --&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
-  <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000:5:9
-  <span class="c">&lt;!-- SLOID mandatory if it exists. --&gt;</span>
-  <span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000:5:9
+      <span class="c">&lt;!-- SLOID mandatory if it exists. --&gt;</span>
+    <span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
   <span class="nt">&lt;Centroid&gt;</span>
-  <span class="c">&lt;!-- Location of Quay. --&gt;</span>
-  <span class="nt">&lt;Location&gt;</span>
-  <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
-  <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
-  <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
-  <span class="nt">&lt;/Location&gt;</span>
+    <span class="c">&lt;!-- Location of Quay. --&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
+      <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
+      <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
   <span class="nt">&lt;/Centroid&gt;</span>
   <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- Will be used at some point for the basic accessibility information. Currently not used. --&gt;</span>
-  <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
-  <span class="c">&lt;!-- Basic information about accessibility. --&gt;</span>
-  <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
+    <span class="c">&lt;!-- Will be used at some point for the basic accessibility information. Currently not used. --&gt;</span>
+    <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
+      <span class="c">&lt;!-- Basic information about accessibility. --&gt;</span>
+    <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
   <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
   <span class="nt">&lt;AccessModes&gt;</span>bicycle foot<span class="nt">&lt;/AccessModes&gt;</span>
   <span class="nt">&lt;SiteRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7000"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- Can reference the parent Quay or StopPlace --&gt;</span>
+    <span class="c">&lt;!-- Can reference the parent Quay or StopPlace --&gt;</span>
   <span class="nt">&lt;/SiteRef&gt;</span>
   <span class="nt">&lt;PublicCode&gt;</span>9
-  <span class="c">&lt;!-- Code used to identify the Quay to the public --&gt;</span>
+    <span class="c">&lt;!-- Code used to identify the Quay to the public --&gt;</span>
   <span class="nt">&lt;/PublicCode&gt;</span>
   <span class="nt">&lt;QuayType&gt;</span>railPlatform
-  <span class="c">&lt;!-- will be used for formations. Allowed values are defined in mapping  excel. --&gt;</span>
+    <span class="c">&lt;!-- will be used for formations. Allowed values are defined in mapping  excel. --&gt;</span>
   <span class="nt">&lt;/QuayType&gt;</span>
   <span class="nt">&lt;ParentQuayRef</span> <span class="na">ref=</span><span class="s">"theparentref"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- Will be used when we do sectors and sector groups. --&gt;</span>
+    <span class="c">&lt;!-- Will be used when we do sectors and sector groups. --&gt;</span>
   <span class="nt">&lt;/ParentQuayRef&gt;</span>
 <span class="nt">&lt;/Quay&gt;</span>
 </code></pre></div></div>
@@ -957,16 +957,16 @@ as its parent.</li>
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;TopographicPlace</span> <span class="na">id=</span><span class="s">"ch:1:TopoGraphicPlace:CH-BE"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;Descriptor&gt;</span>
-  <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
-  <span class="nt">&lt;ShortName&gt;</span>BE
-  <span class="c">&lt;!-- Abbreviation of the canton (leave empty if TopographicPlaceType is country) --&gt;</span>
-  <span class="nt">&lt;/ShortName&gt;</span>
+    <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;ShortName&gt;</span>BE
+      <span class="c">&lt;!-- Abbreviation of the canton (leave empty if TopographicPlaceType is country) --&gt;</span>
+    <span class="nt">&lt;/ShortName&gt;</span>
   <span class="nt">&lt;/Descriptor&gt;</span>
   <span class="nt">&lt;TopographicPlaceType&gt;</span>county
-  <span class="c">&lt;!-- Allowed values: country, county --&gt;</span>
+    <span class="c">&lt;!-- Allowed values: country, county --&gt;</span>
   <span class="nt">&lt;/TopographicPlaceType&gt;</span>
   <span class="nt">&lt;ParentTopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:TopoGraphicPlace:CH-BE-Bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- Parent topographic place when it exists. --&gt;</span>
+    <span class="c">&lt;!-- Parent topographic place when it exists. --&gt;</span>
   <span class="nt">&lt;/ParentTopographicPlaceRef&gt;</span>
 <span class="nt">&lt;/TopographicPlace&gt;</span>
 </code></pre></div></div>
@@ -1077,13 +1077,13 @@ as its parent.</li>
 <span class="nt">&lt;Centroid&gt;</span>
   <span class="c">&lt;!-- Global or national location --&gt;</span>
   <span class="nt">&lt;Location&gt;</span>
-  <span class="c">&lt;!-- Note concerning coordinates - The main coordinates are given as **WSG84**. --&gt;</span>
-  <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
-  <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
-  <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
-  <span class="nt">&lt;pos</span> <span class="na">srsName=</span><span class="s">"EPSG:2056"</span><span class="nt">&gt;</span>2600037.945 1199749.812
-  <span class="c">&lt;!-- EPSG:2056 is LV95. We use it in the INFO+ export. --&gt;</span>
-  <span class="nt">&lt;/pos&gt;</span>
+    <span class="c">&lt;!-- Note concerning coordinates - The main coordinates are given as **WSG84**. --&gt;</span>
+    <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
+    <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
+    <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
+    <span class="nt">&lt;pos</span> <span class="na">srsName=</span><span class="s">"EPSG:2056"</span><span class="nt">&gt;</span>2600037.945 1199749.812
+      <span class="c">&lt;!-- EPSG:2056 is LV95. We use it in the INFO+ export. --&gt;</span>
+    <span class="nt">&lt;/pos&gt;</span>
   <span class="nt">&lt;/Location&gt;</span>
 <span class="nt">&lt;/Centroid&gt;</span>
 </code></pre></div></div>

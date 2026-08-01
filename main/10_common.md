@@ -120,10 +120,10 @@ In some cases we need translations or alias of the Name element. This is done wi
 <AlternativeName>
   <!-- In some cases we need translations or alias of the Name element. This is done with AlternativeName. -->
   <NameType>alias
-  <!-- alias allowed for StopPlace. -->
+    <!-- alias allowed for StopPlace. -->
   </NameType>
   <TypeOfName>offical
-  <!-- For StopPlace official is used for the official name -->
+    <!-- For StopPlace official is used for the official name -->
   </TypeOfName>
   <Name lang="de">Die Übersetzung des Namens.</Name>
 </AlternativeName>
@@ -205,17 +205,17 @@ Holds default values for certain basic parameters.
 <?xml version="1.0" encoding="UTF-8"?>
 <FrameDefaults>
   <DefaultLocale>
-  <!-- The default locale is German (de) for Swiss public transport. -->
-  <TimeZoneOffset>1
-  <!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) -->
-  </TimeZoneOffset>
-  <TimeZone>Europe/Zurich</TimeZone>
-  <SummerTimeZoneOffset>2
-  <!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) -->
-  </SummerTimeZoneOffset>
-  <DefaultLanguage>de
-  <!-- Is always set to “de” for Swiss public transport. -->
-  </DefaultLanguage>
+    <!-- The default locale is German (de) for Swiss public transport. -->
+    <TimeZoneOffset>1
+      <!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) -->
+    </TimeZoneOffset>
+    <TimeZone>Europe/Zurich</TimeZone>
+    <SummerTimeZoneOffset>2
+      <!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) -->
+    </SummerTimeZoneOffset>
+    <DefaultLanguage>de
+      <!-- Is always set to “de” for Swiss public transport. -->
+    </DefaultLanguage>
   </DefaultLocale>
   <DefaultLocationSystem>urn:ogc:def:crs:EPSG::4326</DefaultLocationSystem>
 </FrameDefaults>

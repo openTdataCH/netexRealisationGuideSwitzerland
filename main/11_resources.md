@@ -72,72 +72,72 @@ Contains shared resources used / referenced in other frames - organisations (`Op
 <?xml version="1.0" encoding="UTF-8"?>
 <ResourceFrame id="ch:1:ResourceFrame" version="1">
   <responsibilitySets>
-  <!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
-  <ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
-  <!-- Each combination of Authority and Operator needs a ResponsibilitySet. -->
-  </ResponsibilitySet>
+    <!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
+    <ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
+      <!-- Each combination of Authority and Operator needs a ResponsibilitySet. -->
+    </ResponsibilitySet>
   </responsibilitySets>
   <typesOfValue>
-  <!-- Sets of TYPE OF VALUE contained in the RESOURCE FRAME. -->
-  <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
-  <!-- We need a TypeOfNotice ValueSet. -->
-  <values>
-  <TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
-  <Name lang="de">Allgemeiner Hinweis</Name>
-  <PrivateCode>1</PrivateCode>
-  </TypeOfNotice>
-  <TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
-  <Name lang="de">Angebot</Name>
-  <PrivateCode>10</PrivateCode>
-  </TypeOfNotice>
-  </values>
-  </ValueSet>
-  <ValueSet id="ch:1:ValueSet:TypesOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
-  <!-- We need a TypeOfProductCategory ValueSet -->
-  <values>
-  <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
-  <Name lang="de">Train Express Regional
-  <Text lang="it">Train Express Regional</Text>
-  <Text lang="en">Train Express Regional</Text>
-  <Text lang="fr">Train Express Regional</Text>
-  </Name>
-  <ShortName>TER</ShortName>
-  </TypeOfProductCategory>
-  </values>
-  </ValueSet>
-  <ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
-  <!-- We expect a TypsOfPlace Valueset -->
-  <values>
-  <TypeOfPlace id="drtCollectionPoint" version="1">
-  <Name lang="de">Sammelpunkt
-  <Text lang="en">Collection Point</Text>
-  </Name>
-  </TypeOfPlace>
-  <TypeOfPlace id="regularStop" version="1">
-  <Name lang="de">Reguläre Haltestelle
-  <Text lang="en">Regular Stop</Text>
-  </Name>
-  </TypeOfPlace>
-  </values>
-  </ValueSet>
+    <!-- Sets of TYPE OF VALUE contained in the RESOURCE FRAME. -->
+    <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
+      <!-- We need a TypeOfNotice ValueSet. -->
+      <values>
+        <TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
+          <Name lang="de">Allgemeiner Hinweis</Name>
+          <PrivateCode>1</PrivateCode>
+        </TypeOfNotice>
+        <TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
+          <Name lang="de">Angebot</Name>
+          <PrivateCode>10</PrivateCode>
+        </TypeOfNotice>
+      </values>
+    </ValueSet>
+    <ValueSet id="ch:1:ValueSet:TypesOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+      <!-- We need a TypeOfProductCategory ValueSet -->
+      <values>
+        <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
+          <Name lang="de">Train Express Regional
+            <Text lang="it">Train Express Regional</Text>
+            <Text lang="en">Train Express Regional</Text>
+            <Text lang="fr">Train Express Regional</Text>
+          </Name>
+          <ShortName>TER</ShortName>
+        </TypeOfProductCategory>
+      </values>
+    </ValueSet>
+    <ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
+      <!-- We expect a TypsOfPlace Valueset -->
+      <values>
+        <TypeOfPlace id="drtCollectionPoint" version="1">
+          <Name lang="de">Sammelpunkt
+            <Text lang="en">Collection Point</Text>
+          </Name>
+        </TypeOfPlace>
+        <TypeOfPlace id="regularStop" version="1">
+          <Name lang="de">Reguläre Haltestelle
+            <Text lang="en">Regular Stop</Text>
+          </Name>
+        </TypeOfPlace>
+      </values>
+    </ValueSet>
   </typesOfValue>
   <organisations>
-  <!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD -->
-  <Operator id="sboid" version="1">
-  <!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
-  </Operator>
+    <!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD -->
+    <Operator id="sboid" version="1">
+      <!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
+    </Operator>
   </organisations>
   <siteFacilitySets>
-  <!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. -->
-  <SiteFacilitySet id="generated" version="1"/>
+    <!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. -->
+    <SiteFacilitySet id="generated" version="1"/>
   </siteFacilitySets>
   <serviceFacilitySets>
-  <!-- Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. -->
-  <ServiceFacilitySet id="generated" version="1"/>
+    <!-- Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. -->
+    <ServiceFacilitySet id="generated" version="1"/>
   </serviceFacilitySets>
   <vehicleTypes>
-  <!-- The VehicleType here are used for generic information like lowfloor and not for formation information -->
-  <VehicleType id="tbd" version="1"/>
+    <!-- The VehicleType here are used for generic information like lowfloor and not for formation information -->
+    <VehicleType id="tbd" version="1"/>
   </vehicleTypes>
 </ResourceFrame>
 ```
@@ -202,16 +202,16 @@ Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLeg
   <Name lang="de">Basler Verkehrsbetriebe</Name>
   <PrivateCode>BVB</PrivateCode>
   <roles>
-  <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:1" version="1">
-  <StakeholderRoleType>EntityLegalOwnership
-  <!-- "EntityLegalOwnership" must be defined once and "Operator" should be too. -->
-  </StakeholderRoleType>
-  <ResponsibleOrganisationRef ref="ch:1:sboid:100622" version="1"/>
-  </ResponsibilityRoleAssignment>
-  <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:2" version="1">
-  <StakeholderRoleType>Operation</StakeholderRoleType>
-  <ResponsibleOrganisationRef ref="ch:1:sboid:100622" version="1"/>
-  </ResponsibilityRoleAssignment>
+    <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:1" version="1">
+      <StakeholderRoleType>EntityLegalOwnership
+        <!-- "EntityLegalOwnership" must be defined once and "Operator" should be too. -->
+      </StakeholderRoleType>
+      <ResponsibleOrganisationRef ref="ch:1:sboid:100622" version="1"/>
+    </ResponsibilityRoleAssignment>
+    <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:823_823:2" version="1">
+      <StakeholderRoleType>Operation</StakeholderRoleType>
+      <ResponsibleOrganisationRef ref="ch:1:sboid:100622" version="1"/>
+    </ResponsibilityRoleAssignment>
   </roles>
 </ResponsibilitySet>
 ```
@@ -311,12 +311,12 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 <?xml version="1.0" encoding="UTF-8"?>
 <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
   <alternativeTexts>
-  <!-- Is done with MultilanguageString now -->
+    <!-- Is done with MultilanguageString now -->
   </alternativeTexts>
   <Name lang="de">TER
-  <Text lang="en">Train Express Regional</Text>
-  <Text lang="it">Train Express Regional</Text>
-  <Text lang="fr">Train Express Regional</Text>
+    <Text lang="en">Train Express Regional</Text>
+    <Text lang="it">Train Express Regional</Text>
+    <Text lang="fr">Train Express Regional</Text>
   </Name>
   <ShortName>TER</ShortName>
 </TypeOfProductCategory>
@@ -372,25 +372,25 @@ We will use this organisation also in `AuthorityRef`. The problem is that the SB
 <Operator id="ch:1:sboid:100602" version="1">
   <!-- We will use this organisation also in `AuthorityRef`. The problem is that the SBOID can be used only once. **TODO** Clarify -->
   <privateCodes>
-  <PrivateCode type="GO">801
-  <!-- SBOID and GO (busines organisation) mandatory if they exist. -->
-  </PrivateCode>
-  <PrivateCode type="sboid">ch:1:sboid:100602
-  <!-- SBOID and GO (busines organisation) mandatory if they exist. -->
-  </PrivateCode>
+    <PrivateCode type="GO">801
+      <!-- SBOID and GO (busines organisation) mandatory if they exist. -->
+    </PrivateCode>
+    <PrivateCode type="sboid">ch:1:sboid:100602
+      <!-- SBOID and GO (busines organisation) mandatory if they exist. -->
+    </PrivateCode>
   </privateCodes>
   <Name>PostAuto AG</Name>
   <ShortName>PAG
-  <!-- there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. -->
+    <!-- there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. -->
   </ShortName>
   <parts>
-  <OrganisationPart id="ch:1:OrganisationPart:801-5678" version="1">
-  <administrativeZones>
-  <TransportAdministrativeZone id="ch:1:TransportAdministrativeZone:801-5678" version="1">
-  <PrivateCode>5678</PrivateCode>
-  </TransportAdministrativeZone>
-  </administrativeZones>
-  </OrganisationPart>
+    <OrganisationPart id="ch:1:OrganisationPart:801-5678" version="1">
+      <administrativeZones>
+        <TransportAdministrativeZone id="ch:1:TransportAdministrativeZone:801-5678" version="1">
+          <PrivateCode>5678</PrivateCode>
+        </TransportAdministrativeZone>
+      </administrativeZones>
+    </OrganisationPart>
   </parts>
 </Operator>
 ```
@@ -454,14 +454,14 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 <ServiceFacilitySet id="ch:1:ServiceFacilitySet:A___2" version="1">
   <!-- List of ServiceFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical ServiceFacilitySets. Reuse them. Details in the mapping excel. -->
   <Extensions>
-  <!-- Two elements used in HRDF for ordering facilities -->
-  <Priority>1</Priority>
-  <Condition>4</Condition>
+    <!-- Two elements used in HRDF for ordering facilities -->
+    <Priority>1</Priority>
+    <Condition>4</Condition>
   </Extensions>
   <Description lang="de">Nur 2. Klasse
-  <Text lang="en">2nd class only</Text>
-  <Text lang="fr">Seulement 2e classe</Text>
-  <Text lang="it">Solo 2a classe</Text>
+    <Text lang="en">2nd class only</Text>
+    <Text lang="fr">Seulement 2e classe</Text>
+    <Text lang="it">Solo 2a classe</Text>
   </Description>
   <FareClasses>secondClass</FareClasses>
   <MobilityFacilityList>stepFreeAccess lowFloor</MobilityFacilityList>
@@ -549,15 +549,15 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 <SiteFacilitySet id="generated" version="1">
   <!-- List of SiteFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical SiteFacilitySets. Reuse them. There might be an overlap to ServiceFacilitySet, but they are used for different purposes. -->
   <validityConditions>
-  <AvailabilityCondition id="generated" version="1">
-  <FromDate>2026-03-30T12:00:00</FromDate>
-  <ToDate>2026-04-01T12:00:00</ToDate>
-  <ValidDayBits>01</ValidDayBits>
-  </AvailabilityCondition>
+    <AvailabilityCondition id="generated" version="1">
+      <FromDate>2026-03-30T12:00:00</FromDate>
+      <ToDate>2026-04-01T12:00:00</ToDate>
+      <ValidDayBits>01</ValidDayBits>
+    </AvailabilityCondition>
   </validityConditions>
   <Description lang="de">SiteFacilitySet Solothurn
-  <!-- Description is optional -->
-  <Text lang="en">SiteFacilitySet Solothurn</Text>
+    <!-- Description is optional -->
+    <Text lang="en">SiteFacilitySet Solothurn</Text>
   </Description>
   <AssistanceFacilityList>personalAssistance information boardingAssistance</AssistanceFacilityList>
   <AccessibilityToolList>audioNavigator</AccessibilityToolList>
@@ -619,7 +619,7 @@ Used currently mainly for the relevant accessibility elements that can be expres
 <VehicleType id="ch:1:VehicleType:NF" version="1">
   <!-- Used currently mainly for the relevant accessibility elements that can be expressed currently -->
   <ShortName>NF
-  <!-- Will be defined in mapping excel -->
+    <!-- Will be defined in mapping excel -->
   </ShortName>
   <LowFloor>true</LowFloor>
   <HasLiftOrRamp>false</HasLiftOrRamp>

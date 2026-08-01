@@ -51,18 +51,18 @@ CheckConstraints are used for different use cases
 <CheckConstraint id="" version="1">
   <!-- CheckConstraints are used for different use cases -->
   <CheckDirection>forwards
-  <!-- We usually only use one direction. -->
+    <!-- We usually only use one direction. -->
   </CheckDirection>
   <CheckProcess>alighting
-  <!-- Only a given subset is allowed -->
+    <!-- Only a given subset is allowed -->
   </CheckProcess>
   <Congestion>queue</Congestion>
   <delays>
-  <CheckConstraintDelay id="generated" version="1">
-  <!-- We currently only model delays -->
-  <AverageDelay>PT4M</AverageDelay>
-  <MaximumLikelyDelay>PT8M</MaximumLikelyDelay>
-  </CheckConstraintDelay>
+    <CheckConstraintDelay id="generated" version="1">
+      <!-- We currently only model delays -->
+      <AverageDelay>PT4M</AverageDelay>
+      <MaximumLikelyDelay>PT8M</MaximumLikelyDelay>
+    </CheckConstraintDelay>
   </delays>
 </CheckConstraint>
 ```

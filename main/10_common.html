@@ -228,10 +228,10 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
 <span class="nt">&lt;AlternativeName&gt;</span>
   <span class="c">&lt;!-- In some cases we need translations or alias of the Name element. This is done with AlternativeName. --&gt;</span>
   <span class="nt">&lt;NameType&gt;</span>alias
-  <span class="c">&lt;!-- alias allowed for StopPlace. --&gt;</span>
+    <span class="c">&lt;!-- alias allowed for StopPlace. --&gt;</span>
   <span class="nt">&lt;/NameType&gt;</span>
   <span class="nt">&lt;TypeOfName&gt;</span>offical
-  <span class="c">&lt;!-- For StopPlace official is used for the official name --&gt;</span>
+    <span class="c">&lt;!-- For StopPlace official is used for the official name --&gt;</span>
   <span class="nt">&lt;/TypeOfName&gt;</span>
   <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Die Übersetzung des Namens.<span class="nt">&lt;/Name&gt;</span>
 <span class="nt">&lt;/AlternativeName&gt;</span>
@@ -366,17 +366,17 @@ Additional languages are introduced through the <a href="#alternativename">Alter
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;FrameDefaults&gt;</span>
   <span class="nt">&lt;DefaultLocale&gt;</span>
-  <span class="c">&lt;!-- The default locale is German (de) for Swiss public transport. --&gt;</span>
-  <span class="nt">&lt;TimeZoneOffset&gt;</span>1
-  <span class="c">&lt;!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) --&gt;</span>
-  <span class="nt">&lt;/TimeZoneOffset&gt;</span>
-  <span class="nt">&lt;TimeZone&gt;</span>Europe/Zurich<span class="nt">&lt;/TimeZone&gt;</span>
-  <span class="nt">&lt;SummerTimeZoneOffset&gt;</span>2
-  <span class="c">&lt;!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) --&gt;</span>
-  <span class="nt">&lt;/SummerTimeZoneOffset&gt;</span>
-  <span class="nt">&lt;DefaultLanguage&gt;</span>de
-  <span class="c">&lt;!-- Is always set to “de” for Swiss public transport. --&gt;</span>
-  <span class="nt">&lt;/DefaultLanguage&gt;</span>
+    <span class="c">&lt;!-- The default locale is German (de) for Swiss public transport. --&gt;</span>
+    <span class="nt">&lt;TimeZoneOffset&gt;</span>1
+      <span class="c">&lt;!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) --&gt;</span>
+    <span class="nt">&lt;/TimeZoneOffset&gt;</span>
+    <span class="nt">&lt;TimeZone&gt;</span>Europe/Zurich<span class="nt">&lt;/TimeZone&gt;</span>
+    <span class="nt">&lt;SummerTimeZoneOffset&gt;</span>2
+      <span class="c">&lt;!-- We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) --&gt;</span>
+    <span class="nt">&lt;/SummerTimeZoneOffset&gt;</span>
+    <span class="nt">&lt;DefaultLanguage&gt;</span>de
+      <span class="c">&lt;!-- Is always set to “de” for Swiss public transport. --&gt;</span>
+    <span class="nt">&lt;/DefaultLanguage&gt;</span>
   <span class="nt">&lt;/DefaultLocale&gt;</span>
   <span class="nt">&lt;DefaultLocationSystem&gt;</span>urn:ogc:def:crs:EPSG::4326<span class="nt">&lt;/DefaultLocationSystem&gt;</span>
 <span class="nt">&lt;/FrameDefaults&gt;</span>

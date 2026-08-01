@@ -2,84 +2,84 @@
 <TemplateServiceJourney id="generated" version="1">
   <!-- TemplateServiceJourney is used for journeys repeating at a certain frequency. -->
   <validityConditions>
-  <!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
-  <AvailabilityConditionRef ref="generated" version="1">
-  <!-- Only a single AvailabilityConditionRef is allowed. -->
-  </AvailabilityConditionRef>
+    <!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+    <AvailabilityConditionRef ref="generated" version="1">
+      <!-- Only a single AvailabilityConditionRef is allowed. -->
+    </AvailabilityConditionRef>
   </validityConditions>
   <privateCodes>
-  <!-- Replaces the single PrivateCode. -->
-  <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003
-  <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
-  </PrivateCode>
-  <PrivateCode type="rn">12
-  <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
-  </PrivateCode>
+    <!-- Replaces the single PrivateCode. -->
+    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003
+      <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
+    </PrivateCode>
+    <PrivateCode type="rn">12
+      <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
+    </PrivateCode>
   </privateCodes>
   <TransportMode>rail</TransportMode>
   <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1"/>
   <TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
   <noticeAssignments>
-  <!-- The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. -->
-  <NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
-  <validityConditions>
-  <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
-  </validityConditions>
-  <NoticeRef ref="ch:1:Notice:A___1" version="1"/>
-  </NoticeAssignment>
+    <!-- The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. -->
+    <NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
+      <validityConditions>
+        <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
+      </validityConditions>
+      <NoticeRef ref="ch:1:Notice:A___1" version="1"/>
+    </NoticeAssignment>
   </noticeAssignments>
   <occupancies>
-  <OccupancyView id="generated" version="1">
-  <!-- Currently not available. -->
-  </OccupancyView>
+    <OccupancyView id="generated" version="1">
+      <!-- Currently not available. -->
+    </OccupancyView>
   </occupancies>
   <ServiceAlteration>planned
-  <!-- Only the value planned is allowed. -->
+    <!-- Only the value planned is allowed. -->
   </ServiceAlteration>
   <DepartureTime>06:21:00
-  <!-- Departure of the first journey. -->
+    <!-- Departure of the first journey. -->
   </DepartureTime>
   <DepartureDayOffset>0
-  <!-- DayOffset if relevant. -->
+    <!-- DayOffset if relevant. -->
   </DepartureDayOffset>
   <JourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" nameOfRefClass="ServiceJourneyPattern" version="1">
-  <!-- The reference to the ServiceJourneyPattern -->
+    <!-- The reference to the ServiceJourneyPattern -->
   </JourneyPatternRef>
   <TimeDemandTypeRef ref="generated" version="1">
-  <!-- The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
+    <!-- The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
   </TimeDemandTypeRef>
   <VehicleTypeRef ref="ch:1:VehicleType:NF" version="1">
-  <!-- Mostly used for accessibility information -->
+    <!-- Mostly used for accessibility information -->
   </VehicleTypeRef>
   <LineRef ref="ch:1:slnid:1024355" version="1"/>
   <DirectionType>inbound
-  <!-- Allowed are: inbound, outbound -->
+    <!-- Allowed are: inbound, outbound -->
   </DirectionType>
   <trainNumbers>
-  <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
+    <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
   </trainNumbers>
   <Destination>
-  <ScheduledStopPointRef ref="ch:1:sloid:1609" version="1"/>
-  <DestinationDisplayRef ref="generated" version="1"/>
+    <ScheduledStopPointRef ref="ch:1:sloid:1609" version="1"/>
+    <DestinationDisplayRef ref="generated" version="1"/>
   </Destination>
   <parts>
-  <!-- For some use cases e.g. change of Facilities during ServiceJourney -->
-  <JourneyPartRef ref="generated" version="1"/>
+    <!-- For some use cases e.g. change of Facilities during ServiceJourney -->
+    <JourneyPartRef ref="generated" version="1"/>
   </parts>
   <TemplateVehicleJourneyType>headway</TemplateVehicleJourneyType>
   <frequencyGroups>
-  <!-- We strictly map one frequency to the TemplateServiceJourney. -->
-  <HeadwayJourneyGroup version="1" id="ch:1:HeadwayJourneyGroup:432">
-  <Name>Regular Interval service between 12am and 18:00 pm</Name>
-  <Description>About every 20 minutes</Description>
-  <FirstDepartureTime>12:00:00</FirstDepartureTime>
-  <FirstDayOffset>0</FirstDayOffset>
-  <LastDepartureTime>18:00:00</LastDepartureTime>
-  <LastDayOffset>0</LastDayOffset>
-  <ScheduledHeadwayInterval>PT20M</ScheduledHeadwayInterval>
-  <HeadwayDisplay>DisplayInsteadOfPassingTimes
-  <!-- Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly. -->
-  </HeadwayDisplay>
-  </HeadwayJourneyGroup>
+    <!-- We strictly map one frequency to the TemplateServiceJourney. -->
+    <HeadwayJourneyGroup version="1" id="ch:1:HeadwayJourneyGroup:432">
+      <Name>Regular Interval service between 12am and 18:00 pm</Name>
+      <Description>About every 20 minutes</Description>
+      <FirstDepartureTime>12:00:00</FirstDepartureTime>
+      <FirstDayOffset>0</FirstDayOffset>
+      <LastDepartureTime>18:00:00</LastDepartureTime>
+      <LastDayOffset>0</LastDayOffset>
+      <ScheduledHeadwayInterval>PT20M</ScheduledHeadwayInterval>
+      <HeadwayDisplay>DisplayInsteadOfPassingTimes
+        <!-- Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly. -->
+      </HeadwayDisplay>
+    </HeadwayJourneyGroup>
   </frequencyGroups>
 </TemplateServiceJourney>

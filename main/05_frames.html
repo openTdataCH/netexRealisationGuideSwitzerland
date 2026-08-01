@@ -190,16 +190,16 @@ participant’s identifier.</p>
   <span class="nt">&lt;ParticipantRef&gt;</span>SKI-Templates<span class="nt">&lt;/ParticipantRef&gt;</span>
   <span class="nt">&lt;Description&gt;</span>Standard export 2027-06-02 for Bernmobil.<span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;dataObjects&gt;</span>
-  <span class="nt">&lt;CompositeFrame</span> <span class="na">id=</span><span class="s">"ch:1:CompositeFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;FrameDefaults/&gt;</span>
-  <span class="nt">&lt;frames&gt;</span>
-  <span class="nt">&lt;ResourceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ResourceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;SiteFrame</span> <span class="na">id=</span><span class="s">"ch:1:SiteFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;ServiceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;ServiceCalendarFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCalendarFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;TimetableFrame</span> <span class="na">id=</span><span class="s">"ch:1:TimetableFrame:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/frames&gt;</span>
-  <span class="nt">&lt;/CompositeFrame&gt;</span>
+    <span class="nt">&lt;CompositeFrame</span> <span class="na">id=</span><span class="s">"ch:1:CompositeFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;FrameDefaults/&gt;</span>
+      <span class="nt">&lt;frames&gt;</span>
+        <span class="nt">&lt;ResourceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ResourceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;SiteFrame</span> <span class="na">id=</span><span class="s">"ch:1:SiteFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;ServiceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;ServiceCalendarFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCalendarFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;TimetableFrame</span> <span class="na">id=</span><span class="s">"ch:1:TimetableFrame:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/frames&gt;</span>
+    <span class="nt">&lt;/CompositeFrame&gt;</span>
   <span class="nt">&lt;/dataObjects&gt;</span>
 <span class="nt">&lt;/PublicationDelivery&gt;</span>
 </code></pre></div></div>
@@ -401,28 +401,28 @@ appearing in this order.</p>
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;CompositeFrame</span> <span class="na">id=</span><span class="s">"ch:1:CompositeFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ValidBetween&gt;</span>
-  <span class="c">&lt;!-- This defines which timetable year is meant. We don't support partial delivery. --&gt;</span>
-  <span class="nt">&lt;FromDate&gt;</span>2026-01-01T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
-  <span class="nt">&lt;ToDate&gt;</span>2026-12-31T00:00:00<span class="nt">&lt;/ToDate&gt;</span>
+    <span class="c">&lt;!-- This defines which timetable year is meant. We don't support partial delivery. --&gt;</span>
+    <span class="nt">&lt;FromDate&gt;</span>2026-01-01T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
+    <span class="nt">&lt;ToDate&gt;</span>2026-12-31T00:00:00<span class="nt">&lt;/ToDate&gt;</span>
   <span class="nt">&lt;/ValidBetween&gt;</span>
   <span class="nt">&lt;Description&gt;</span>
-  <span class="c">&lt;!-- A description of the delivery can be provided. --&gt;</span>
+    <span class="c">&lt;!-- A description of the delivery can be provided. --&gt;</span>
   <span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;FrameDefaults&gt;</span>
-  <span class="nt">&lt;DefaultLocale&gt;</span>
-  <span class="nt">&lt;TimeZoneOffset&gt;</span>1<span class="nt">&lt;/TimeZoneOffset&gt;</span>
-  <span class="nt">&lt;TimeZone&gt;</span>Europe/Berlin<span class="nt">&lt;/TimeZone&gt;</span>
-  <span class="nt">&lt;SummerTimeZoneOffset&gt;</span>2<span class="nt">&lt;/SummerTimeZoneOffset&gt;</span>
-  <span class="nt">&lt;DefaultLanguage&gt;</span>de<span class="nt">&lt;/DefaultLanguage&gt;</span>
-  <span class="nt">&lt;/DefaultLocale&gt;</span>
-  <span class="nt">&lt;DefaultLocationSystem&gt;</span>urn:ogc:def:crs:EPSG::4326<span class="nt">&lt;/DefaultLocationSystem&gt;</span>
+    <span class="nt">&lt;DefaultLocale&gt;</span>
+      <span class="nt">&lt;TimeZoneOffset&gt;</span>1<span class="nt">&lt;/TimeZoneOffset&gt;</span>
+      <span class="nt">&lt;TimeZone&gt;</span>Europe/Berlin<span class="nt">&lt;/TimeZone&gt;</span>
+      <span class="nt">&lt;SummerTimeZoneOffset&gt;</span>2<span class="nt">&lt;/SummerTimeZoneOffset&gt;</span>
+      <span class="nt">&lt;DefaultLanguage&gt;</span>de<span class="nt">&lt;/DefaultLanguage&gt;</span>
+    <span class="nt">&lt;/DefaultLocale&gt;</span>
+    <span class="nt">&lt;DefaultLocationSystem&gt;</span>urn:ogc:def:crs:EPSG::4326<span class="nt">&lt;/DefaultLocationSystem&gt;</span>
   <span class="nt">&lt;/FrameDefaults&gt;</span>
   <span class="nt">&lt;frames&gt;</span>
-  <span class="nt">&lt;ResourceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ResourceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;SiteFrame</span> <span class="na">id=</span><span class="s">"ch:1:SiteFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;ServiceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;ServiceCalendarFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCalendarFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;TimetableFrame</span> <span class="na">id=</span><span class="s">"ch:1:TimetableFrame:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;ResourceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ResourceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;SiteFrame</span> <span class="na">id=</span><span class="s">"ch:1:SiteFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;ServiceFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;ServiceCalendarFrame</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCalendarFrame"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;TimetableFrame</span> <span class="na">id=</span><span class="s">"ch:1:TimetableFrame:j23"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/frames&gt;</span>
 <span class="nt">&lt;/CompositeFrame&gt;</span>
 </code></pre></div></div>

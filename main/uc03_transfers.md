@@ -30,7 +30,7 @@ Defines the default transfer time at a specific stop place, regardless of operat
 <DefaultConnection id="ch:1:DefaultConnection:8506302" version="1">
   <!-- Be aware only some combinations are allowed: from mode A to mode B without operators taken into account; from operator A and product category A  to operator B and product category B. -->
   <WalkTransferDuration>
-  <DefaultDuration>PT3M</DefaultDuration>
+    <DefaultDuration>PT3M</DefaultDuration>
   </WalkTransferDuration>
   <StopPlaceRef ref="ch:2:StopPlace:8506302" version="1"/>
 </DefaultConnection>
@@ -47,16 +47,16 @@ Defines the default transfer time at a specific stop place, regardless of operat
 <DefaultConnection id="ch:1:DefaultConnection:9999999-1" version="1">
   <!-- General connection between two modes in the whole network, when not StopPlaceRef is mentioned. Most exist for each mode pair. -->
   <WalkTransferDuration>
-  <DefaultDuration>PT2M</DefaultDuration>
+    <DefaultDuration>PT2M</DefaultDuration>
   </WalkTransferDuration>
   <From>
-  <TransportMode>tram</TransportMode>
+    <TransportMode>tram</TransportMode>
   </From>
   <To>
-  <TransportMode>tram</TransportMode>
+    <TransportMode>tram</TransportMode>
   </To>
   <StopPlaceRef ref="ch:1:sloid:19231" version="1">
-  <!-- Usually a SLOID. Not set means whole network. -->
+    <!-- Usually a SLOID. Not set means whole network. -->
   </StopPlaceRef>
 </DefaultConnection>
 ```
@@ -75,36 +75,36 @@ Defines transfer times between two specific operators at a stop place. The HRDF 
 <?xml version="1.0" encoding="UTF-8"?>
 <DefaultConnection id="11-11" version="1">
   <Extensions>
-  <!-- When also ProductCategory is relevant, then this extension must be used -->
-  <FromProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1">
-  <!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
-  </FromProductCategoryRef>
-  <ToProductCategoryRef ref="ch:1:TypeOfProductCategory:TE2" version="1">
-  <!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
-  </ToProductCategoryRef>
+    <!-- When also ProductCategory is relevant, then this extension must be used -->
+    <FromProductCategoryRef ref="ch:1:TypeOfProductCategory:ICE" version="1">
+      <!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
+    </FromProductCategoryRef>
+    <ToProductCategoryRef ref="ch:1:TypeOfProductCategory:TE2" version="1">
+      <!-- Extension needed to map "Verkehrsmittel-Gattung", which is similar to but more detailed than Trans-portSubmode, for transfer times of interchanges. -->
+    </ToProductCategoryRef>
   </Extensions>
   <WalkTransferDuration>
-  <DefaultDuration>PT2M</DefaultDuration>
+    <DefaultDuration>PT2M</DefaultDuration>
   </WalkTransferDuration>
   <BothWays>false
-  <!-- We don't use BothWays true, as it might differ. -->
+    <!-- We don't use BothWays true, as it might differ. -->
   </BothWays>
   <From>
-  <TransportMode>all</TransportMode>
-  <OperatorView>
-  <!-- Should be a sboid whenever possible. -->
-  <OperatorRef ref="ch:1:sboid:100011" version="1"/>
-  </OperatorView>
+    <TransportMode>all</TransportMode>
+    <OperatorView>
+      <!-- Should be a sboid whenever possible. -->
+      <OperatorRef ref="ch:1:sboid:100011" version="1"/>
+    </OperatorView>
   </From>
   <To>
-  <TransportMode>all</TransportMode>
-  <OperatorView>
-  <!-- Should be a sboid whenever possible. -->
-  <OperatorRef ref="ch:1:sboid:100033" version="1"/>
-  </OperatorView>
+    <TransportMode>all</TransportMode>
+    <OperatorView>
+      <!-- Should be a sboid whenever possible. -->
+      <OperatorRef ref="ch:1:sboid:100033" version="1"/>
+    </OperatorView>
   </To>
   <StopPlaceRef ref="ch:1:sloid:19231" version="1">
-  <!-- Usually a SLOID. Not set means whole network. -->
+    <!-- Usually a SLOID. Not set means whole network. -->
   </StopPlaceRef>
 </DefaultConnection>
 ```
@@ -124,7 +124,7 @@ Defines transfer times between specific `Lines` and `Directions` at a stop place
 <ServiceJourneyInterchange id="ch:1:ServiceJourneyInterchange:1696906_TA" version="1">
   <!-- Transfer times between specific ServiceJourneys at a given stop (UMSTEIGL). StaySeated=false: passenger must change vehicles. Replaces InterchangeRule in RG 2.0. IMPORTANT: ServiceJourneyInterchange has no element to reference a Line/DirectionType combination abstractly - the choice between FromJourneyRef/ToJourneyRef (deprecated) and FromServiceJourneyRef/ToServiceJourneyRef always requires two concrete journeys. Therefore UMSTEIGL (which in HRDF applies to all journeys of a line/direction combination at a stop) is fully resolved during import/export: one ServiceJourneyInterchange must be generated per matching pair of actual ServiceJourneys. There is no abstract line/direction-level object in NeTEx for this. -->
   <validityConditions>
-  <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:TA" version="1"/>
+    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:TA" version="1"/>
   </validityConditions>
   <Description>UMSTEIGL: transfer at Spiez, line 33.PE.GPX → line 11.IC.IC81</Description>
   <StaySeated>false</StaySeated>
@@ -133,20 +133,20 @@ Defines transfer times between specific `Lines` and `Directions` at a stop place
   <Planned>true</Planned>
   <Guaranteed>false</Guaranteed>
   <StandardWaitTime>PT9M
-  <!-- Used for joining/splitting and waiting in vehicle -->
+    <!-- Used for joining/splitting and waiting in vehicle -->
   </StandardWaitTime>
   <StandardTransferTime>PT2M</StandardTransferTime>
   <FromPointRef ref="ch:1:ScheduledStopPoint:8507483:3" nameOfRefClass="ScheduledStopPoint" version="1">
-  <!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. -->
+    <!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. -->
   </FromPointRef>
   <ToPointRef ref="ch:1:ScheduledStopPoint:8507483:3" nameOfRefClass="ScheduledStopPoint" version="1">
-  <!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. -->
+    <!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. -->
   </ToPointRef>
   <FromServiceJourneyRef ref="ch:1:sjyid:100033:33PE-1234" version="1">
-  <!-- Reference to the specific feeder ServiceJourney. Replaces FeederFilter/LineInDirectionRef from InterchangeRule. One element per journey pair required. -->
+    <!-- Reference to the specific feeder ServiceJourney. Replaces FeederFilter/LineInDirectionRef from InterchangeRule. One element per journey pair required. -->
   </FromServiceJourneyRef>
   <ToServiceJourneyRef ref="ch:1:sjyid:100011:11IC-5678" version="1">
-  <!-- Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/LineInDirectionRef from InterchangeRule. -->
+    <!-- Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/LineInDirectionRef from InterchangeRule. -->
   </ToServiceJourneyRef>
 </ServiceJourneyInterchange>
 ```
@@ -180,7 +180,7 @@ The differences between the various situations are to be differentiated with the
 <ServiceJourneyInterchange id="ch:1:ServiceJourneyInterchange:1692675_80600_18840_18960" version="1">
   <!-- Transfer time between two specific ServiceJourneys at a given stop (UMSTEIGZ). StaySeated=false: passenger must change vehicles. Replaces InterchangeRule in RG 2.0. One element per journey pair required. -->
   <validityConditions>
-  <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:80600" version="1"/>
+    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:80600" version="1"/>
   </validityConditions>
   <Description>UMSTEIGZ: transfer at stop 8506131, S1 → IR75</Description>
   <StaySeated>false</StaySeated>
@@ -188,20 +188,20 @@ The differences between the various situations are to be differentiated with the
   <Planned>true</Planned>
   <Guaranteed>false</Guaranteed>
   <StandardWaitTime>PT9M
-  <!-- Used for joining/splitting and waiting in vehicle -->
+    <!-- Used for joining/splitting and waiting in vehicle -->
   </StandardWaitTime>
   <StandardTransferTime>PT2M</StandardTransferTime>
   <FromPointRef ref="ch:1:ScheduledStopPoint:8506131:1" nameOfRefClass="ScheduledStopPoint" version="1">
-  <!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. -->
+    <!-- ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule. -->
   </FromPointRef>
   <ToPointRef ref="ch:1:ScheduledStopPoint:8506131:1" nameOfRefClass="ScheduledStopPoint" version="1">
-  <!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. -->
+    <!-- ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers. -->
   </ToPointRef>
   <FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:11111-001_91001C.j26_1012" version="1">
-  <!-- Reference to the specific feeder ServiceJourney. Replaces FeederFilter/ServiceJourneyRef from InterchangeRule. -->
+    <!-- Reference to the specific feeder ServiceJourney. Replaces FeederFilter/ServiceJourneyRef from InterchangeRule. -->
   </FromServiceJourneyRef>
   <ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100001:2106-001_91075_.j26_802" version="1">
-  <!-- Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/ServiceJourneyRef from InterchangeRule. -->
+    <!-- Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/ServiceJourneyRef from InterchangeRule. -->
   </ToServiceJourneyRef>
 </ServiceJourneyInterchange>
 ```
@@ -220,16 +220,16 @@ Describes the walking time between two adjacent `StopPlaces` (e.g. main station 
 <SiteConnection id="ch:1:SiteConnection:8506302-8589913" version="1">
   <!-- SiteConnection are used only in the main file and not in timetable files. -->
   <WalkTransferDuration>
-  <DefaultDuration>PT13M</DefaultDuration>
+    <DefaultDuration>PT13M</DefaultDuration>
   </WalkTransferDuration>
   <BothWays>false</BothWays>
   <From>
-  <!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. -->
-  <StopPlaceRef ref="ch:2:StopPlace:8506302" version="1"/>
+    <!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. -->
+    <StopPlaceRef ref="ch:2:StopPlace:8506302" version="1"/>
   </From>
   <To>
-  <!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. -->
-  <StopPlaceRef ref="ch:2:StopPlace:8589913" version="1"/>
+    <!-- Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs. -->
+    <StopPlaceRef ref="ch:2:StopPlace:8589913" version="1"/>
   </To>
 </SiteConnection>
 ```

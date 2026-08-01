@@ -81,41 +81,41 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 <?xml version="1.0" encoding="UTF-8"?>
 <TimetableFrame id="ch:1:TimetableFrame:j23" version="1">
   <vehicleJourneys>
-  <!-- Contains the ServiceJourneys and TemplateServiceJourneys. -->
-  <ServiceJourney id="generatedOrsjyid" version="1">
-  <!-- ServiceJourney is used for common Journeys. -->
-  </ServiceJourney>
-  <TemplateServiceJourney id="generatedOrsjyid1" version="1">
-  <!-- TemplateServiceJourney is only to be used if a line is serviced at a certain frequency. -->
-  </TemplateServiceJourney>
-  <TemplateServiceJourney id="generated2" version="1"/>
+    <!-- Contains the ServiceJourneys and TemplateServiceJourneys. -->
+    <ServiceJourney id="generatedOrsjyid" version="1">
+      <!-- ServiceJourney is used for common Journeys. -->
+    </ServiceJourney>
+    <TemplateServiceJourney id="generatedOrsjyid1" version="1">
+      <!-- TemplateServiceJourney is only to be used if a line is serviced at a certain frequency. -->
+    </TemplateServiceJourney>
+    <TemplateServiceJourney id="generated2" version="1"/>
   </vehicleJourneys>
   <trainNumbers>
-  <TrainNumber id="2123" version="1"/>
+    <TrainNumber id="2123" version="1"/>
   </trainNumbers>
   <serviceFacilitySets>
-  <ServiceFacilitySet id="86558" version="1"/>
+    <ServiceFacilitySet id="86558" version="1"/>
   </serviceFacilitySets>
   <typesOfService>
-  <TypeOfService id="ch:1:TypeOfService:1" version="1">
-  <!-- This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. -->
-  <Name lang="en">PublicJourney</Name>
-  <ShortName lang="en">PJ</ShortName>
-  <PrivateCode>1</PrivateCode>
-  </TypeOfService>
+    <TypeOfService id="ch:1:TypeOfService:1" version="1">
+      <!-- This is exactly how the TypeOfService should be defined for Switzerland. Attention: Only once per file. -->
+      <Name lang="en">PublicJourney</Name>
+      <ShortName lang="en">PJ</ShortName>
+      <PrivateCode>1</PrivateCode>
+    </TypeOfService>
   </typesOfService>
   <journeyInterchanges>
-  <!-- In NETWORK_OFFER for splitting and joining. Otherwise mostly in INTERCHANGE -->
-  <ServiceJourneyInterchange id="ch:1:sji:generated-1" version="1">
-  <!-- For modeling many forms of interchanges -->
-  <FromJourneyRef ref="sjyid-1" version="1"/>
-  <ToJourneyRef ref="sjyid-2" version="1"/>
-  </ServiceJourneyInterchange>
+    <!-- In NETWORK_OFFER for splitting and joining. Otherwise mostly in INTERCHANGE -->
+    <ServiceJourneyInterchange id="ch:1:sji:generated-1" version="1">
+      <!-- For modeling many forms of interchanges -->
+      <FromJourneyRef ref="sjyid-1" version="1"/>
+      <ToJourneyRef ref="sjyid-2" version="1"/>
+    </ServiceJourneyInterchange>
   </journeyInterchanges>
   <vehicleTypes>
-  <!-- We will use this place to store Train and CompoundTrain information, when we will do formation. Not detailed at the moment -->
-  <CompoundTrain id="generated" version="1"/>
-  <Train id="generated" version="1"/>
+    <!-- We will use this place to store Train and CompoundTrain information, when we will do formation. Not detailed at the moment -->
+    <CompoundTrain id="generated" version="1"/>
+    <Train id="generated" version="1"/>
   </vehicleTypes>
 </TimetableFrame>
 ```
@@ -190,87 +190,87 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 <?xml version="1.0" encoding="UTF-8"?>
 <ServiceJourney id="generated" version="1">
   <validityConditions>
-  <!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
-  <AvailabilityConditionRef ref="generated" version="1">
-  <!-- Only a single AvailabilityConditionRef is allowed. -->
-  </AvailabilityConditionRef>
+    <!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+    <AvailabilityConditionRef ref="generated" version="1">
+      <!-- Only a single AvailabilityConditionRef is allowed. -->
+    </AvailabilityConditionRef>
   </validityConditions>
   <keyList>
-  <!-- KEY LIST with the KEY VALUEs belonging to the SERVICE JOURNEY. We don't use it for sjyid! -->
-  <KeyValue>
-  <!-- We use it for tariff codes and region codes PAG mostly. -->
-  <Key>RN</Key>
-  <Value>1203</Value>
-  </KeyValue>
-  <KeyValue>
-  <Key>TC</Key>
-  <Value>293912</Value>
-  </KeyValue>
+    <!-- KEY LIST with the KEY VALUEs belonging to the SERVICE JOURNEY. We don't use it for sjyid! -->
+    <KeyValue>
+      <!-- We use it for tariff codes and region codes PAG mostly. -->
+      <Key>RN</Key>
+      <Value>1203</Value>
+    </KeyValue>
+    <KeyValue>
+      <Key>TC</Key>
+      <Value>293912</Value>
+    </KeyValue>
   </keyList>
   <privateCodes>
-  <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003
-  <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
-  </PrivateCode>
-  <PrivateCode type="rn">12
-  <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
-  </PrivateCode>
+    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003
+      <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
+    </PrivateCode>
+    <PrivateCode type="rn">12
+      <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
+    </PrivateCode>
   </privateCodes>
   <TransportMode>rail</TransportMode>
   <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1">
-  <!-- Relevant elements are defined in the mapping excel. -->
+    <!-- Relevant elements are defined in the mapping excel. -->
   </TypeOfProductCategoryRef>
   <TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1">
-  <!-- Should always be ch:1:TypeOfService:1 -->
+    <!-- Should always be ch:1:TypeOfService:1 -->
   </TypeOfServiceRef>
   <noticeAssignments>
-  <!-- The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop). -->
-  <NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
-  <validityConditions>
-  <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
-  </validityConditions>
-  <NoticeRef ref="ch:1:Notice:A___1" version="1"/>
-  </NoticeAssignment>
+    <!-- The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop). -->
+    <NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
+      <validityConditions>
+        <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
+      </validityConditions>
+      <NoticeRef ref="ch:1:Notice:A___1" version="1"/>
+    </NoticeAssignment>
   </noticeAssignments>
   <occupancies>
-  <OccupancyView id="generated" version="1">
-  <!-- Currently not available. -->
-  </OccupancyView>
+    <OccupancyView id="generated" version="1">
+      <!-- Currently not available. -->
+    </OccupancyView>
   </occupancies>
   <ServiceAlteration>planned
-  <!-- Only the value planned is allowed. We might add the others, like cancelled, later. -->
+    <!-- Only the value planned is allowed. We might add the others, like cancelled, later. -->
   </ServiceAlteration>
   <DepartureTime>06:21:00</DepartureTime>
   <DepartureDayOffset>0
-  <!-- 0 for current operating day. Could also be negative. -->
+    <!-- 0 for current operating day. Could also be negative. -->
   </DepartureDayOffset>
   <JourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" nameOfRefClass="ServiceJourneyPattern" version="1">
-  <!-- The reference to the ServiceJourneyPattern. -->
+    <!-- The reference to the ServiceJourneyPattern. -->
   </JourneyPatternRef>
   <TimeDemandTypeRef ref="generated" version="1">
-  <!-- The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
+    <!-- The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
   </TimeDemandTypeRef>
   <VehicleTypeRef ref="ch:1:VehicleType:NF" version="1">
-  <!-- Mostly used for accessibility information like NF. Relevant definitions in the mapping excel. -->
+    <!-- Mostly used for accessibility information like NF. Relevant definitions in the mapping excel. -->
   </VehicleTypeRef>
   <LineRef ref="ch:1:slnid:1024355" version="1"/>
   <DirectionType>outbound
-  <!-- Allowed are: inbound, outbound -->
+    <!-- Allowed are: inbound, outbound -->
   </DirectionType>
   <trainNumbers>
-  <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
+    <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
   </trainNumbers>
   <Destination>
-  <ScheduledStopPointRef ref="ch:1:sloid:1609" version="1"/>
-  <DestinationDisplayRef ref="generated" version="1"/>
+    <ScheduledStopPointRef ref="ch:1:sloid:1609" version="1"/>
+    <DestinationDisplayRef ref="generated" version="1"/>
   </Destination>
   <parts>
-  <!-- For some use cases e.g. change of Facilities during ServiceJourney -->
-  <JourneyPartRef ref="generated" version="1"/>
+    <!-- For some use cases e.g. change of Facilities during ServiceJourney -->
+    <JourneyPartRef ref="generated" version="1"/>
   </parts>
   <checkConstraints>
-  <CheckConstraint id="" version="1">
-  <!-- CheckConstraints are used to encode foreseeable delays by check-in or other processes. -->
-  </CheckConstraint>
+    <CheckConstraint id="" version="1">
+      <!-- CheckConstraints are used to encode foreseeable delays by check-in or other processes. -->
+    </CheckConstraint>
   </checkConstraints>
 </ServiceJourney>
 ```
@@ -336,18 +336,18 @@ CheckConstraints are used for different use cases
 <CheckConstraint id="" version="1">
   <!-- CheckConstraints are used for different use cases -->
   <CheckDirection>forwards
-  <!-- We usually only use one direction. -->
+    <!-- We usually only use one direction. -->
   </CheckDirection>
   <CheckProcess>alighting
-  <!-- Only a given subset is allowed -->
+    <!-- Only a given subset is allowed -->
   </CheckProcess>
   <Congestion>queue</Congestion>
   <delays>
-  <CheckConstraintDelay id="generated" version="1">
-  <!-- We currently only model delays -->
-  <AverageDelay>PT4M</AverageDelay>
-  <MaximumLikelyDelay>PT8M</MaximumLikelyDelay>
-  </CheckConstraintDelay>
+    <CheckConstraintDelay id="generated" version="1">
+      <!-- We currently only model delays -->
+      <AverageDelay>PT4M</AverageDelay>
+      <MaximumLikelyDelay>PT8M</MaximumLikelyDelay>
+    </CheckConstraintDelay>
   </delays>
 </CheckConstraint>
 ```
@@ -422,85 +422,85 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 <TemplateServiceJourney id="generated" version="1">
   <!-- TemplateServiceJourney is used for journeys repeating at a certain frequency. -->
   <validityConditions>
-  <!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
-  <AvailabilityConditionRef ref="generated" version="1">
-  <!-- Only a single AvailabilityConditionRef is allowed. -->
-  </AvailabilityConditionRef>
+    <!-- Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+    <AvailabilityConditionRef ref="generated" version="1">
+      <!-- Only a single AvailabilityConditionRef is allowed. -->
+    </AvailabilityConditionRef>
   </validityConditions>
   <privateCodes>
-  <!-- Replaces the single PrivateCode. -->
-  <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003
-  <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
-  </PrivateCode>
-  <PrivateCode type="rn">12
-  <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
-  </PrivateCode>
+    <!-- Replaces the single PrivateCode. -->
+    <PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003
+      <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
+    </PrivateCode>
+    <PrivateCode type="rn">12
+      <!-- Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region. -->
+    </PrivateCode>
   </privateCodes>
   <TransportMode>rail</TransportMode>
   <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" version="1"/>
   <TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
   <noticeAssignments>
-  <!-- The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. -->
-  <NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
-  <validityConditions>
-  <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
-  </validityConditions>
-  <NoticeRef ref="ch:1:Notice:A___1" version="1"/>
-  </NoticeAssignment>
+    <!-- The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops. -->
+    <NoticeAssignment id="ch:1:NoticeAssignment:ch_1_ServiceJourney_ch_1_sjyid_100001_71707-003_1_0" version="1">
+      <validityConditions>
+        <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:c3" version="1"/>
+      </validityConditions>
+      <NoticeRef ref="ch:1:Notice:A___1" version="1"/>
+    </NoticeAssignment>
   </noticeAssignments>
   <occupancies>
-  <OccupancyView id="generated" version="1">
-  <!-- Currently not available. -->
-  </OccupancyView>
+    <OccupancyView id="generated" version="1">
+      <!-- Currently not available. -->
+    </OccupancyView>
   </occupancies>
   <ServiceAlteration>planned
-  <!-- Only the value planned is allowed. -->
+    <!-- Only the value planned is allowed. -->
   </ServiceAlteration>
   <DepartureTime>06:21:00
-  <!-- Departure of the first journey. -->
+    <!-- Departure of the first journey. -->
   </DepartureTime>
   <DepartureDayOffset>0
-  <!-- DayOffset if relevant. -->
+    <!-- DayOffset if relevant. -->
   </DepartureDayOffset>
   <JourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" nameOfRefClass="ServiceJourneyPattern" version="1">
-  <!-- The reference to the ServiceJourneyPattern -->
+    <!-- The reference to the ServiceJourneyPattern -->
   </JourneyPatternRef>
   <TimeDemandTypeRef ref="generated" version="1">
-  <!-- The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
+    <!-- The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
   </TimeDemandTypeRef>
   <VehicleTypeRef ref="ch:1:VehicleType:NF" version="1">
-  <!-- Mostly used for accessibility information -->
+    <!-- Mostly used for accessibility information -->
   </VehicleTypeRef>
   <LineRef ref="ch:1:slnid:1024355" version="1"/>
   <DirectionType>inbound
-  <!-- Allowed are: inbound, outbound -->
+    <!-- Allowed are: inbound, outbound -->
   </DirectionType>
   <trainNumbers>
-  <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
+    <TrainNumberRef ref="ch:1:TrainNumber:71707" version="1"/>
   </trainNumbers>
   <Destination>
-  <ScheduledStopPointRef ref="ch:1:sloid:1609" version="1"/>
-  <DestinationDisplayRef ref="generated" version="1"/>
+    <ScheduledStopPointRef ref="ch:1:sloid:1609" version="1"/>
+    <DestinationDisplayRef ref="generated" version="1"/>
   </Destination>
   <parts>
-  <!-- For some use cases e.g. change of Facilities during ServiceJourney -->
-  <JourneyPartRef ref="generated" version="1"/>
+    <!-- For some use cases e.g. change of Facilities during ServiceJourney -->
+    <JourneyPartRef ref="generated" version="1"/>
   </parts>
   <TemplateVehicleJourneyType>headway</TemplateVehicleJourneyType>
   <frequencyGroups>
-  <!-- We strictly map one frequency to the TemplateServiceJourney. -->
-  <HeadwayJourneyGroup version="1" id="ch:1:HeadwayJourneyGroup:432">
-  <Name>Regular Interval service between 12am and 18:00 pm</Name>
-  <Description>About every 20 minutes</Description>
-  <FirstDepartureTime>12:00:00</FirstDepartureTime>
-  <FirstDayOffset>0</FirstDayOffset>
-  <LastDepartureTime>18:00:00</LastDepartureTime>
-  <LastDayOffset>0</LastDayOffset>
-  <ScheduledHeadwayInterval>PT20M</ScheduledHeadwayInterval>
-  <HeadwayDisplay>DisplayInsteadOfPassingTimes
-  <!-- Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly. -->
-  </HeadwayDisplay>
-  </HeadwayJourneyGroup>
+    <!-- We strictly map one frequency to the TemplateServiceJourney. -->
+    <HeadwayJourneyGroup version="1" id="ch:1:HeadwayJourneyGroup:432">
+      <Name>Regular Interval service between 12am and 18:00 pm</Name>
+      <Description>About every 20 minutes</Description>
+      <FirstDepartureTime>12:00:00</FirstDepartureTime>
+      <FirstDayOffset>0</FirstDayOffset>
+      <LastDepartureTime>18:00:00</LastDepartureTime>
+      <LastDayOffset>0</LastDayOffset>
+      <ScheduledHeadwayInterval>PT20M</ScheduledHeadwayInterval>
+      <HeadwayDisplay>DisplayInsteadOfPassingTimes
+        <!-- Allowed values: displayPassingTimesOnly displayInsteadOfPassingTimes displayAsWellAsPassingTimes. We only export displayPassingTimesOnly. -->
+      </HeadwayDisplay>
+    </HeadwayJourneyGroup>
   </frequencyGroups>
 </TemplateServiceJourney>
 ```
@@ -558,18 +558,18 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 <?xml version="1.0" encoding="UTF-8"?>
 <OccupancyView id="generated" version="1">
   <dayTypeRefs>
-  <DayTypeRef ref="generated" version="1"/>
+    <DayTypeRef ref="generated" version="1"/>
   </dayTypeRefs>
   <dayTypes>
-  <DayType id="generated" version="1"/>
+    <DayType id="generated" version="1"/>
   </dayTypes>
   <FareClass>firstClass</FareClass>
   <OccupancyLevel>seatsAvailable
-  <!-- Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable -->
+    <!-- Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable -->
   </OccupancyLevel>
   <GroupReservation>
-  <NameOfGroup lang="fr">Gymnase français de Bienne></NameOfGroup>
-  <NumberOfReservedSeats>21</NumberOfReservedSeats>
+    <NameOfGroup lang="fr">Gymnase français de Bienne></NameOfGroup>
+    <NumberOfReservedSeats>21</NumberOfReservedSeats>
   </GroupReservation>
 </OccupancyView>
 ```
@@ -616,10 +616,10 @@ The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advert
 <TrainNumber id="71707" version="1">
   <!-- The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advertisment und production are identical. It is the number from *Z in HRDF. Must be unique per operating day in Switzerland. -->
   <ForAdvertisement>12311A
-  <!-- TrainNumber to use for advertisement to public. Use if different from ID. -->
+    <!-- TrainNumber to use for advertisement to public. Use if different from ID. -->
   </ForAdvertisement>
   <ForProduction>12311A
-  <!-- TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID. -->
+    <!-- TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID. -->
   </ForProduction>
 </TrainNumber>
 ```
@@ -741,18 +741,18 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 <?xml version="1.0" encoding="UTF-8"?>
 <ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
   <validityConditions>
-  <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" version="1"/>
+    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" version="1"/>
   </validityConditions>
   <Description>LineChange</Description>
   <StaySeated>true</StaySeated>
   <CrossBorder>false</CrossBorder>
   <ChangeWithinVehicle>false
-  <!-- Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. -->
+    <!-- Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false. -->
   </ChangeWithinVehicle>
   <Planned>true</Planned>
   <Guaranteed>false</Guaranteed>
   <StandardWaitTime>PT9M
-  <!-- Used for joining/splitting and waiting in vehicle -->
+    <!-- Used for joining/splitting and waiting in vehicle -->
   </StandardWaitTime>
   <StandardTransferTime>PT2M</StandardTransferTime>
   <FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" nameOfRefClass="ScheduledStopPoint" version="1"/>
