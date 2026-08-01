@@ -24,14 +24,15 @@ This document describes the way in which the NeTEx standard is specifically appl
 
 ## Chapters
 - [Introduction & Roadmap](01_intro_roadmap.md)
-- [File structure, encoding etc](03_files.md)
-- [The Frame structure](05_frames.md)
-- [Site Frame](06_stops.md)
-- [Service Frame](07_service.md)
-- [Service Calendar Frame](08_service_calendars.md)
-- [Timetable Frame](09_timetable.md)
-- [ResourceFrame](11_resources.md)
-- [Common building blocks](10_common.md)
+- [File Exchange](02_files.md)
+- [XML Modeling](03_xml_modelling.md)
+- [The Frame structure](04_frames.md)
+- [Site Frame](05_stops.md)
+- [Service Frame](06_service.md)
+- [Service Calendar Frame](07_service_calendars.md)
+- [Timetable Frame](08_timetable.md)
+- [ResourceFrame](09_resources.md)
+
 - Special use cases:
   - ["Durchbindung"](uc01_durchbindung.md)
   - [Joining / splitting](uc02_joining_splitting.md)

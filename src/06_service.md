@@ -145,7 +145,7 @@ A public transport service line with a `Name`, `TransportMode`, and `Operator`. 
 - For foreign lines an `@d` might need to be generated.
 - We store the slnid whenever possible in `@id`, `privateCodes/PrivateCode` and `KeyList`.
 - Information about the Swiss line id (slnid) can be found [here](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-line-identification-slnid).
-- Handling of mixed lines is defined in its own [use case (uc017)](uc17_mixed_lines). The relevant factors are described in the Line element as well. We have a full [example](examples/NeTEx_CH_Linie_722_Mischbetrieb.xml) on it. - Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
+- Handling of mixed lines is defined in its own [use case (uc017)](uc17_mixed_lines.md). The relevant factors are described in the Line element as well. We have a full [example](examples/14_NeTEx_CH_Linie_722_Mischbetrieb.xml) on it. - Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
 - Note that there exist journeys in Switzerland and neighboring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
 - For more information about SwissLineID: see [here](https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf).
 - We have in the slnid concept also "Dispositionslinie" and "Temporäre Linie". Those are modeled as regular `Line`. "Betriebliche Linie" is not used and modeled in NeTEx. If at some point we need to know this type. We will model it as a Key/Value pair.
@@ -227,7 +227,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 *->[Template](./templates/ScheduledStopPoint.xml)*
 
 ### Usage Notes
-- We don't keep much information  in `ScheduledStopPoint`s. The are assigned by `PassengerStopAssignnment`s to the site part (`StopPlace`, `Quay`).
+- We don't keep much information  in `ScheduledStopPoint`s. They are assigned by `PassengerStopAssignnment`s to the site part (`StopPlace`, `Quay`).
 - `ScheduledStopPoints that are used in `TimingLinks`and `ServiceJourneyPatterns` should be on the quay level.
 - We use the sloid as `@id` for `ScheduledStopPoint`s whener they exist. `@id` needs to be kept stable between exports.
 - `TimingLink`s use `ScheduledStopPoint`s as well. This means that the timing between two logical stops is the important measure. 

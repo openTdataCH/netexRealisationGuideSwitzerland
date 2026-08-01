@@ -116,7 +116,7 @@ flowchart TD
 Notes:
 * Every `ServiceJourney` belongs to one `Line` and has one `Operator`. Some more information can be stored in associated `ResponsibilitySet`s (difference between operator and legal "owner"). 
 * The pattern of the stops is defined in a `ServiceJourneyPattern` with additional details about each stop.
-* The timing behaviour is stored in `TimeDemandType`. They contain run times and where needed wait times. The `TimingLink`s are mostly based on `ScheduledStopPoint`s and may be used by multiple `ServiceJourneyPattern`.
+* The timing behaviour is stored in `TimeDemandType`. They contain run times and where needed waiting times. The `TimingLink`s are mostly based on `ScheduledStopPoint`s and may be used by multiple `ServiceJourneyPattern`.
 * The physical stops are modeled as `StopPlace`s with `Quays`.
 * `ScheduledStopPoint`s are the "logical" stops.
 * The `PassengerStopAssignment` associates the physical and the logical stops.
@@ -190,8 +190,8 @@ The following rules apply to common attributes:
 #### IDs
 IDs must be globally unique during importation (in the `@id` of the element). By globally unique we mean:
 - They are unique by object type.
-- Also they are unique within one delivery (may be multiple files). If two elements have the same `@id` then they must be the same element.
-- Between delivery they may change, when they are declared as stable.
+- Also, they are unique within one delivery (may consist of multiple files). If two elements have the same `@id` then they must be the same element.
+- Between delivery, they may change, when they are declared as stable.
 - 
 They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for "primary" objects we expect object permanence. This is mentioned in the usage note of each element.
 Important business level keys are stored in elements (`KeyList`, `privateCodes/PrivateCode`) in addition to the IDs.
@@ -286,7 +286,7 @@ However, only one language can be set for a given element (e.g. `<MultilingualSt
 
 #### Usage Notes
 
-- For [Organisations](#organisation--operator--authority) e.g. there are all languages present.
+- For [Organisations](09_resources.md#organisation--operator--authority) e.g. there are all languages present.
 - The `StopPlace` names in Switzerland are language-independent.
 - Sometimes the parent element is `Text` as well. So we have `Text/Text`.
 

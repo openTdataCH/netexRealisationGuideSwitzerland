@@ -1,24 +1,24 @@
 # Timetable Frame
 
 In this chapter:
-- [TimetableFrame](09_timetable.md#timetableframe)
-- [ServiceJourney](09_timetable.md#servicejourney)
-- [CheckConstraint](09_timetable.md#checkconstraint)
-- [TemplateServiceJourney](09_timetable.md#templateservicejourney)
-- [OccupancyView](09_timetable.md#occupancyview)
-- [TrainNumber](09_timetable.md#trainnumber)
+- [TimetableFrame](#timetableframe)
+- [ServiceJourney](#servicejourney)
+- [CheckConstraint](#checkconstraint)
+- [TemplateServiceJourney](#templateservicejourney)
+- [OccupancyView](#occupancyview)
+- [TrainNumber](#trainnumber)
 - [TypeOfService](#typeofservice)
-- [TimetabledPassingTime](09_timetable.md#timetabledpassingtime)
+- [TimetabledPassingTime](#timetabledpassingtime)
 - [ServiceJourneyInterchange](#servicejourneyinterchange)
-- [InterchangeRule](09_timetable.md#interchangerule)
+- [InterchangeRule](#interchangerule)
 
 In Service: 
-- [NoticeAssignment](07_service.md#noticeassignment)
-- [ServiceFacilitySet](10_common.md#servicefacilityset)
+- [NoticeAssignment](06_service.md#noticeassignment)
+- [ServiceFacilitySet](09_resources.md#servicefacilityset)
 
 In ServiceCalendar:
-- [AvailabilityCondition](08_service_calendars.md#availabilitycondition)
-- [Timeband](08_service_calendars.md#timeband)
+- [AvailabilityCondition](07_service_calendars.md#availabilitycondition)
+- [Timeband](07_service_calendars.md#timeband)
 
 
 
@@ -79,7 +79,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - **Consistency:** A `ServiceJourney` must reference exactly one `JourneyPattern`. The pattern's stop sequence is authoritative.
 - **Day Governance:** Operating days are controlled via `AvailabilityConditionRef` (`ValidDayBits`), not via `DayType`. `DayType`/`DayTypeAssignment` are reserved for flagging national holidays only (see [ServiceCalendarFrame](07_service_calendars.md#daytype)). `DatedServiceJourney` is not used in the Swiss profile.
 - **Validation:** Ensure `JourneyPatternRef`, `LineRef`, and `OperatorRef` are consistent and reference existing objects.
-- We assume that a Swiss Journey ID exists for almost every `ServiceJourney`. However, the  `@id` can't be set to `sjyid`, because for different days the `ServiceJourney` are different. Also problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `@id` will contain a `_gen` substring, but it still starts with the sjyid, when it exists (e.g. `ch:1:sjyid:100011:12391293:_gen_:1231` or `DE:12319123123:_gen_14`).
+- We assume that a Swiss Journey ID exists for almost every `ServiceJourney`. However, the  `@id` can't be set to `sjyid`, because for different days the `ServiceJourney` are different. Also, problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the `@id` will contain a `_gen` substring, but it still starts with the sjyid, when it exists (e.g. `ch:1:sjyid:100011:12391293:_gen_:1231` or `DE:12319123123:_gen_14`).
 - A `ServiceJourney`can be associated with exactly one `ServiceJourneyPattern` and `TimeDemandType`.
 - `@id` needs to be kept stable between exports if possible. However, when new variants are used for different operating days, it changes.
 - Tarif codes (`TC`) and region codes (`RN`) are put into a key/value pair (see example).
@@ -114,7 +114,7 @@ Used to describe foreseeable delays caused by processes such as check-in, securi
 ### Purpose
 A `TemplateServiceJourney` represents a sequence of planned trips. It is similar to the `ServiceJourney`, but it is used if there is a frequency defined at which the trips are scheduled on an operating day. 
 
-A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The `TemplateServiceJourney` may thus represent multiple journeys or it could be used simply as a template for adding extra date journeys after the planning phase. 
+A frequency is specified in a `HeadwayJourneyGroup` (e.g. every 20 minutes). The `TemplateServiceJourney` may thus represent multiple journeys, or it could be used simply as a template for adding extra date journeys after the planning phase. 
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/TemplateServiceJourney.md)
@@ -197,12 +197,12 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 
 The following types are currently used:
 
-| Name	             | Description                                                                                                                                               |
-|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| PublicJourney	    | A public passenger transport                                                                                                                              |
-| ~~GarageRunOut~~	 | A garage run-out                                                                                                                                          |
-| ~~GarageRunIn~~	  | A garage run-in                                                                                                                                           |
-| ~~ThroughCoach~~  | 	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling. |
+| Name	             | Description                                                                                                                                              |
+|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| PublicJourney	    | A public passenger transport                                                                                                                             |
+| ~~GarageRunOut~~	 | A garage run-out                                                                                                                                         |
+| ~~GarageRunIn~~	  | A garage run-in                                                                                                                                          |
+| ~~ThroughCoach~~ | 	A special type of public passenger transport that is used if a ServiceJourney is comprised of JourneyParts of other ServiceJourneys because of coupling. |
 
 Actually there is only one allowed value that we use in the Swiss profile: Only the `PublicJourney` is to be exchanged.
 
@@ -215,7 +215,7 @@ Actually there is only one allowed value that we use in the Swiss profile: Only 
 
 ### Purpose
 The standard states: "In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle. This concept is for instance used for circular lines and coupled journeys. This means that passenger information should be adapted
-to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also important that operation control staff is aware of the consequences to passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs."
+to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also important that operation control staff is aware of the consequences for passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs."
 
 `StaySeated=true` should be used for through-services (Durchbindung) and joining (Vereinigung). While splitting (Flügelzug) technically involves different vehicle parts, the passenger does not leave the train — however, they may need to move to the correct coach. For splitting, `StaySeated=false` combined with
 `ChangeWithinVehicle=true` is therefore the correct modelling. See [uc02 Joining and splitting](uc02_joining_splitting.md).
@@ -252,16 +252,16 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 *→ [Glossary definition](A4_annex_glossary.md#interchangerule)*
 
 ## AvailabilityCondition 
-*→ [see ServiceCalendarFrame](./08_service_calendars.md#availabilitycondition)*
+*→ [see ServiceCalendarFrame](./07_service_calendars.md#availabilitycondition)*
 
 ## Timeband 
-*→ [see ServiceCalendarFrame](./08_service_calendars.md#timeband)*
+*→ [see ServiceCalendarFrame](./07_service_calendars.md#timeband)*
 
 
 ## NoticeAssignment
-*→ [see Common elements](./07_service.md#noticeassignment)*
+*→ [see Common elements](./06_service.md#noticeassignment)*
 
 
 ## ServiceFacilitySet
-*→ [see Common elements](./10_common.md#servicefacilityset)*
+*→ [see Common elements](./09_resources.md#servicefacilityset)*
 
