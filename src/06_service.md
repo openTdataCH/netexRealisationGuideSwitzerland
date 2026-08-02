@@ -7,6 +7,7 @@ mermaid: true
 In this chapter:
 - [ServiceFrame](#serviceframe)
 - [Line](#line)
+- [GroupOfLines](#groupoflines)
 - [DestinationDisplay](#destinationdisplay)
 - [ScheduledStopPoint](#scheduledstoppoint)
 - [PassengerStopAssignment](#passengerstopassignment)

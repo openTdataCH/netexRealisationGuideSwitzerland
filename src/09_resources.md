@@ -5,7 +5,8 @@ This chapter describes the `ResourceFrame` and all its elements as it is a conta
 In this chapter:
 - [ResourceFrame](#resourceframe)
   - [ResponsibilitySet](#responsibilityset)
-  - [TypeOfValue / Valuesets](#typeof--valueset)
+  - [TypeOfValue / ValueSets](#typeof--valueset)
+    - [TypeOfNotice](#typeofnotice)
     - [TypeOfProductCategory](#typeofproductcategory)
     - [TypeOfService](#typeofservice)
   - [Organisation / Operator / Authority](#organisation--operator--authority)

@@ -6,21 +6,22 @@ In this chapter:
 - [CheckConstraint](#checkconstraint)
 - [TemplateServiceJourney](#templateservicejourney)
 - [OccupancyView](#occupancyview)
+- [TimeDemandType](#timedemandtype)
+- [TimingLink](#timinglink)
 - [TrainNumber](#trainnumber)
 - [TypeOfService](#typeofservice)
-- [TimetabledPassingTime](#timetabledpassingtime)
 - [ServiceJourneyInterchange](#servicejourneyinterchange)
 - [InterchangeRule](#interchangerule)
 
-In Service: 
+In Service Frame: 
 - [NoticeAssignment](06_service.md#noticeassignment)
-- [ServiceFacilitySet](09_resources.md#servicefacilityset)
 
-In ServiceCalendar:
+In ServiceCalendar Frame:
 - [AvailabilityCondition](07_service_calendars.md#availabilitycondition)
 - [Timeband](07_service_calendars.md#timeband)
 
-
+In Resource Frame: 
+- [ServiceFacilitySet](09_resources.md#servicefacilityset)
 
 ## TimetableFrame
 *→ [Glossary definition](A4_annex_glossary.md#timetableframe)*
@@ -259,9 +260,9 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 
 
 ## NoticeAssignment
-*→ [see Common elements](./06_service.md#noticeassignment)*
+*→ [see ServiceFrame](./06_service.md#noticeassignment)*
 
 
 ## ServiceFacilitySet
-*→ [see Common elements](./09_resources.md#servicefacilityset)*
+*→ [see ResourceFrame](./09_resources.md#servicefacilityset)*
 
