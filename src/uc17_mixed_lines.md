@@ -4,7 +4,7 @@ mermaid: true
 
 # Use Case: Mixed Lines
 
-The migration document for the SLNID shows what different partial lines exist. There is an [example](examples/NeTEx_CH_Linie_722_Mischbetrieb.xml) that we have modeled also.
+The migration document for the SLNID shows what different partial lines exist. There is an [example](examples/14_NeTEx_CH_Linie_722_Mischbetrieb.xml) that we have modeled also.
 
 The main line types shown there are:
 - "Ordentliche Linie"
@@ -84,7 +84,7 @@ ServiceJourney SJ1
     LineRef: L
     OperatorRef: OP2
 ```
-*Figure: In the case of a "owner" with an additional operator it looks like this*.
+*Figure: In the case of an "owner" with an additional operator it looks like this*.
 
 ## Examples
 

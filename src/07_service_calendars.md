@@ -2,7 +2,7 @@
 mermaid: true
 ---
 
-# Service calendars
+# Service Calendar Frame
 
 In this chapter:
 - [ServiceCalendarFrame](#servicecalendarframe)

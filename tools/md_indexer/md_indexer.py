@@ -85,7 +85,7 @@ def check_template_exists(term, templates_folder):
 def sort_references(references):
     """
     Sort references with priority:
-    1. Files matching 01_xx.md to 10_common.md (in numerical order)
+    1. Files matching 01_xx.md to 10_common_deprecated.md (in numerical order)
     2. Files matching uc_*.md (alphabetically)
     3. All other files (alphabetically)
     """

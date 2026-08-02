@@ -23,7 +23,7 @@ We modeled some `ServiceJourney`s from the following bus: https://github.com/use
 
 
 ## Bus where there must be passengers present at the start
-This example bases on ServiceJourney 11957 from the Line 50.119. The `ServiceJourney` has a fixed sequence of stops. also no reservation is necessary). However, during the run passengers can only alight. So, if no passengers are there at the first stop, then the bus is not running.
+This example bases on ServiceJourney 11957 from the Line 50.119. The `ServiceJourney` has a fixed sequence of stops. Also, no reservation is necessary. However, during the run passengers can only alight. So, if no passengers are there at the first stop, then the bus is not running.
 
 [Link to example](05_NeTEx_CH_DRT_Line_Dependent_On_Passengers_At_Start.xml)
 

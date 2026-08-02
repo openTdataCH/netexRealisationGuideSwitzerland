@@ -58,7 +58,7 @@ graph LR
   </parts>
 </ServiceJourney>
 ```
-- [Example](./examples/NeTEX_CH_Bern_Olten_ZuerichHB_Winterthur_StGallen_with_Facilities.xml)
+- [Example](./examples/08_NeTEX_CH_Bern_Olten_ZuerichHB_Winterthur_StGallen_with_Facilities.xml)
 
 ### 2. Change of ProductCategoryRef
 We will do this with `"ch:1:PurposeOfJouryneyPartition:TypeOfProductCategoryChange"` 

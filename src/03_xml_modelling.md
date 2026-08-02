@@ -1,8 +1,11 @@
-# Common Elements and Rules
-
-This chapter has two parts. First, it states important rules to observe (e.g., regarding attributes and date / time formats). Second, it lists the "common" elements that are used by different frames. This in particular includes the `ResourceFrame` and all its elements as it is a container holding data that can be referred to from multiple other frames.
+---
+mermaid: true
+---
+# XML Modelling
 
 In this chapter:
+
+[A first Glimpse at NeTEx Modelling](#a-first-glimpse)
 
 [Rules to Observe](#rules-to-observe)
 - [Attributes](#attributes)
@@ -16,7 +19,156 @@ In this chapter:
 - [AlternativeText](#alternativetext)
 - [MultilingualString](#multilingualstring)
 - [FrameDefaults](#framedefaults)
-- `ResourceFrame` see [here](11_resources.md)
+
+
+
+## A First Glimpse
+
+To support the Swiss timetable delivery, NeTEx uses various XML classes. The following diagram gives an overview. In the center is the `ServiceJourney`.
+
+```mermaid
+flowchart TD
+    AN[AlternativeName]
+    O[Operator]
+    SJ[ServiceJourney]
+    DT[DirectionType]
+    TN[TrainNumber]
+    SI[ServiceJourneyInterchange]
+    JP[JourneyPart]
+    AC[AvailabilityCondition]
+    UOP[ValidDayBits]
+    SJP[ServiceJourneyPattern]
+    TDT[TimeDemandType]
+    L[Line]
+    SPtJP[StopPointInJourneyPattern]
+    TL[TimingLink]
+    SSP[ScheduledStopPoint]
+    N[Notice]
+    F[ServiceFacilities]
+    PSA[PassengerStopAssignment]
+    SP[StopPlace]
+    CN[DefaultConnection]
+    Q[Quay]
+    
+    %% Relationships
+    SJ --> DT
+    SJ --> L
+    SJ --> O
+    SJ --> SJP
+    SJ --> TDT
+    SJ --> SI
+    SJ --> JP
+    SJ --> TN
+    SJ --> AC
+    AC --> UOP
+    SJP --> L
+    SJP --> DT
+    SJP --> SPtJP
+    SPtJP --> SSP
+    TDT --> TL
+    TDT --> SSP
+    TDT --> SPtJP
+    PSA --> SP
+    PSA --> Q
+    PSA --> SSP
+    SP --> Q
+    O --> AN
+
+    %% Styling ResourceFrame
+    style O fill:#ffffff,stroke:#eea44f,stroke-width:2px
+    style F fill:#ffffff,stroke:#eea44f,stroke-width:2px
+  
+    %% Styling ServiceCalendarFrame
+    style AC fill:#ff8888,stroke:#eea44f,stroke-width:2px
+    style UOP fill:#ff8888,stroke:#eea44f,stroke-width:2px
+
+
+    %% everyhwere
+      style AN fill:#88ff88,stroke:#eea44f,stroke-width:2px
+      style DT fill:#88ff88,stroke:#eea44f,stroke-width:2px
+   
+    %% Styling SiteFrame
+    style SP fill:#a6c9a6,stroke:#eea44f,stroke-width:2px
+    style Q fill:#a6c9a6,stroke:#2ea44f,stroke-width:2px
+
+    %% Styling TimetableFrame
+    style SJ fill:#d6b9e6,stroke:#2ea44f,stroke-width:2px
+    style TN fill:#d6b9e6,stroke:#2ea44f,stroke-width:2px
+
+    
+    %% Styling ServiceFrame
+    style TDT fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SJP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style PSA fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style L fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style TL fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SPtJP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style JP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SI fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SI fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style N fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style CN fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SSP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+
+```
+*Core elements for timetables in NeTEx*
+
+Notes:
+* Every `ServiceJourney` belongs to one `Line` and has one `Operator`. Some more information can be stored in associated `ResponsibilitySet`s (difference between operator and legal "owner"). 
+* The pattern of the stops is defined in a `ServiceJourneyPattern` with additional details about each stop.
+* The timing behaviour is stored in `TimeDemandType`. They contain run times and where needed waiting times. The `TimingLink`s are mostly based on `ScheduledStopPoint`s and may be used by multiple `ServiceJourneyPattern`.
+* The physical stops are modeled as `StopPlace`s with `Quays`.
+* `ScheduledStopPoint`s are the "logical" stops.
+* The `PassengerStopAssignment` associates the physical and the logical stops.
+* `DefaultConnection` and `SiteConnection` define transfers based on site elements.
+* `ServiceJourneyInterchange`s are used for splitting, joining and connecting trains and for "Durchbindungen".
+* `Notice`, `ServiceFacility` and `SiteFacility` model almost everything else (especially offers).
+* The operating days are defined through `ValidDayBits` for the whole timetable year in `AvailabilityCondition`s.
+
+## 
+
+```
+StopPlace SP
+  * Quay Q1
+  * Quay Q2
+  
+ScheduledStopPoint SPS
+
+PassengerStopAssignment PSA
+  -> ScheduledStopPoint SPS
+  -> Quay Q1
+  -> StopPlace SP 
+
+TimingLink TL
+  -> ScheduledStopPoint X
+  -> ScheduledStopPoint y
+  * some properties
+  
+ ServiceJourneyPattern SJP
+   * StopPointInJourneyPattern
+        -> ScheduledStopPoint X
+        * multiple properties
+   * lots of properties
+        
+  TimeDemandType TDT
+    runTimes
+      ServiceJourneyRunTime
+        -> TimingLink TL
+        * Duration
+    waitTimes
+       ServiceJourneyWaitTime
+         -> ScheduledStopPoint A
+         * Duration
+         
+  ServiceJourney
+    -> ServiceJourneyPattern SJP
+    -> TimeDemandType TDT
+    * lots of properties
+        
+   
+  
+```
+
 
 
 ## Rules to Observe
@@ -38,8 +190,8 @@ The following rules apply to common attributes:
 #### IDs
 IDs must be globally unique during importation (in the `@id` of the element). By globally unique we mean:
 - They are unique by object type.
-- Also they are unique within one delivery (may be multiple files). If two elements have the same `@id` then they must be the same element.
-- Between delivery they may change, when they are declared as stable.
+- Also, they are unique within one delivery (may consist of multiple files). If two elements have the same `@id` then they must be the same element.
+- Between delivery, they may change, when they are declared as stable.
 - 
 They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for "primary" objects we expect object permanence. This is mentioned in the usage note of each element.
 Important business level keys are stored in elements (`KeyList`, `privateCodes/PrivateCode`) in addition to the IDs.
@@ -75,7 +227,7 @@ Times that pass midnight of the current `OperatingDay` are marked with a `DayOff
 If a `ServiceJourney` runs over midnight, `DepartureDayOffset` (on `ServiceJourney`) is used for the start of the journey. Since `TimeDemandType` only holds relative durations (`RunTime`/`WaitTime`), there is no separate `DayOffset` element within `TimeDemandType` — any midnight crossing during the journey follows implicitly from cumulating `DepartureTime` with the `RunTime`/`WaitTime` values.
 
 
-### Ordering of elements
+### Ordering of Elements
 XML is ordered by definition. If there are sequences of elements e.g. `PointsInJourneyPattern` they are always ordered.
 
 
@@ -121,7 +273,6 @@ We only allow the following values for `NameType`:
 
 NeTEx uses the type `MultilingualString` for descriptive text elements (e.g. `Notice` text, `Name`, `ShortName` etc.).
 However, only one language can be set for a given element (e.g. `<MultilingualString lang=”fr”>`). 
-Additional languages are introduced through the [AlternativeName](#alternativename) and [AlternativeText](#alternativetext) element.
 
 #### Example
 
@@ -135,7 +286,7 @@ Additional languages are introduced through the [AlternativeName](#alternativena
 
 #### Usage Notes
 
-- For [Organisations](#organisation--operator--authority) e.g. there are all languages present.
+- For [Organisations](09_resources.md#organisation--operator--authority) e.g. there are all languages present.
 - The `StopPlace` names in Switzerland are language-independent.
 - Sometimes the parent element is `Text` as well. So we have `Text/Text`.
 
@@ -160,5 +311,4 @@ Holds default values for certain basic parameters.
 #### Usage Notes
 - For values not set in `FrameDefaults` we use the values as indicated in the table and example above.
 - We know that the use of the TimezoneOffset are redundant to the TimeZone, but we believe it may make consumption easier and the additional two lines are not really expensive.
-
 
