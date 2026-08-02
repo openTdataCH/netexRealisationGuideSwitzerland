@@ -46,7 +46,7 @@ Do it as mermaid so that it can be done directly in the markdown.
 - A table of contents at the top of each file lists the elements used.
   
 ### Headings
-There is a defined structure to describe elements and frames (examples in [TimetableFrame doc](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/docs/09_timetable.md)). There is a structure for frames and one for elements.
+There is a defined structure to describe elements and frames (examples in [Timetable Frame](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/src/08_timetable.md)). There is a structure for frames and one for elements. The headings themselvses use capital letters ("The Title of the Section").
 
  Frames
 - Purpose
@@ -79,7 +79,7 @@ In the Example portion first the link to the snippet is formed  `[Example snippe
 - The sources for drawings are to be stored in docs/media as well
 
 ### Links
-- When using links between docs, and to other structures we need to add the file and the anchor. E.g. `./10_common.md#CompositeFrame`
+- When using links between docs, and to other structures we need to add the file and the anchor. E.g. `./04_frames.md#compositeframe` (using only lowercase seems to work better).
 - see: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
 
 # Review process
