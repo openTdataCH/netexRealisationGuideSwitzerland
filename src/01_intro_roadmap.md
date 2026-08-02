@@ -12,7 +12,7 @@ The document specifically describes:
 -	how data is to be interpreted
 
 
-# How to use the document
+# How To Use the Document
 This document shows all elements of the standard deemed necessary for exchanging public transport timetable data in Switzerland. Each description is grounded in the text of the official standard, but enriched to simplify implementation. We use the following structure:
 - A link to the definition in official NeTEx and Transmodel terminology.
 - **Purpose**: Introducing the element, its purpose and how it relates to other elements

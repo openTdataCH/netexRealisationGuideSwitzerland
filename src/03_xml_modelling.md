@@ -227,7 +227,7 @@ Times that pass midnight of the current `OperatingDay` are marked with a `DayOff
 If a `ServiceJourney` runs over midnight, `DepartureDayOffset` (on `ServiceJourney`) is used for the start of the journey. Since `TimeDemandType` only holds relative durations (`RunTime`/`WaitTime`), there is no separate `DayOffset` element within `TimeDemandType` — any midnight crossing during the journey follows implicitly from cumulating `DepartureTime` with the `RunTime`/`WaitTime` values.
 
 
-### Ordering of elements
+### Ordering of Elements
 XML is ordered by definition. If there are sequences of elements e.g. `PointsInJourneyPattern` they are always ordered.
 
 

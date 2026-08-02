@@ -86,7 +86,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - Tarif codes (`TC`) and region codes (`RN`) are put into a key/value pair (see example).
 
 
-### Calculation of passing times at stops
+### Calculation of Passing Times at Stops
 - The departure and arrival times of a `ServiceJourney` are determined by the `ServiceJourneyPattern` and the `TimeDemandType` referenced by the `ServiceJourney`.
 - Element `ServiceJourney/DepartureTime` contains the departure time at the first `ScheduledStopPoint` indicated by  `ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern[1]`. 
 - The arrival time at all subsequent `ScheduledStopPoint`s is calculated by adding the run time between the previous `ScheduledStopPoint` and the current `ScheduledStopPoint` of the `ServiceJourneyPattern`. The correct run time is obtained by searching `TimeDemandType/runTimes/JourneyRunTime/Runtime` with the `TimingLink` corresponding to the previous and current `ScheduledStopPoint`. The `TimingLink` to be used is indicated by `ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern/OnwardTimingLinkRef`.

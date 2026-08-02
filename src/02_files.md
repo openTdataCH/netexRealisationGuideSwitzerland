@@ -15,7 +15,7 @@ A delivery must always be complete:
 -	in the scope of the information exchanged : for all operators and all their lines or sublines — the file must always contain everything.
 This allows the receiver to overwrite the old delivery with the new one without loss of data
 
-### Base data
+### Base Data
 Some reference data are maintained by SKI. These data are identified by business values (Abbreviation, Number, ID, …).
 These Business identifiers shall be used by the deliveries to enable their integration and homogenisation for the collection of timetable information. 
 If attributes of these reference data are transmitted in the deliveries, SKI does not adopt the values of these attributes. SKI takes these values from the reference system.
@@ -30,7 +30,7 @@ The relevant reference data that is already available/defined by SKI:
 - ValueSets - in [XML modeling](03_xml_modelling.md)
 - Facilities - in [mapping excel](media/Mappingtabellen_NeTEx_v2.0.xlsx).
 
-### Responsibilites data supplier
+### Responsibilities Data Supplier
 The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality. Complete means all timetable data in the responsibility of the provider for the whole timetable period.
 
 ### Responsibilties SKI
@@ -39,7 +39,7 @@ SKI is responsible for the timely delivery of the complete timetable information
 
 ## Files
 
-### File types
+### File Types
 
 We will have three different file types:
 * STOP_OFFER: stops, quays, transfer times and accessibility related to sites at some point
@@ -52,7 +52,7 @@ NETWORK_OFFER is per operator and in some cases per area.
 
 This repartition of the data into different file leads to some redundancy. However, the files can still be transferred efficiently.
 
-### Content of each file
+### Content of each File
 ```mermaid
 classDiagram
 class STOP_OFFER{
@@ -110,7 +110,7 @@ INTERCHANGE
 
 Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.  STOP_OFFER is only needed for data not stored in ATLAS. INFO+ will deliver an aggregated, comprehensive STOP_OFFER.
 
-### Naming conventions
+### Naming Conventions
 IT-Environments:
 - Development:	DEV
 - Test:	TEST
@@ -150,7 +150,7 @@ All Files are embedded in a zip-File. The name of the zip-file is composed of th
 
 Example :`TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_202602010402.zip`
 
-### Zip structure
+### Zip Structure
 All files in a delivery are zipped into a single one according to the name structure above.
 
 
@@ -158,18 +158,18 @@ All files in a delivery are zipped into a single one according to the name struc
 All data is encoded as UTF-8 without BOM.
 
 
-### Data transfer
+### Data Transfer
 The data transfer will be defined by INFO+. A version of the full swiss data will be available on https://opentransportdata.swiss/ for download.
 
 
-### File sent by data provider to SKI 
+### File Sent by Data Provider to SKI 
 We suggest that the partner name consists of the short name of the partner and necessary additions to identify the system. In addition, the number of the timetable period is to be indicated in the name, as well as the date and time of creation of the file
 
 Examples: `test_zvv_2024_20231112_095217.zip`, `prod_tl_2024_20231114_152836.zip`
 
 The file name must be agreed on between the data provider and SKI. Generally it is agreed that delivery can be on network, operator or line base.
 
-### Partial deliveries
+### Partial Deliveries
 No partial deliveries are accepted. They must contain:
 - all relevant lines
 - the whole timetable year
@@ -178,5 +178,5 @@ No incremental updates are supported.
 
 > NB: We might reconsider some of those points for mixed lines. 
 
-### File sent by SKI to data receivers 
+### File Sent by SKI to Data Receivers 
 As the quantity of the data is very large for a single XML-file, SKI provides the data a set of XML files. In addition to the XML files, SKI provides a README file listing the contents of each XML file. 
