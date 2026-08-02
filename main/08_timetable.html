@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Timetables | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<title>Timetable Frame | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Timetables" />
+<meta property="og:title" content="Timetable Frame" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/09_timetable.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/09_timetable.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/08_timetable.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/08_timetable.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Timetables" />
+<meta property="twitter:title" content="Timetable Frame" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Timetables","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/09_timetable.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Timetable Frame","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/08_timetable.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
@@ -37,34 +37,39 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Timetables</h1>
+    <h1 class="post-title">Timetable Frame</h1>
   </header>
 
   <div class="post-content">
     <p>In this chapter:</p>
 <ul>
-  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#timetableframe">TimetableFrame</a></li>
-  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#servicejourney">ServiceJourney</a></li>
-  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#checkconstraint">CheckConstraint</a></li>
-  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#templateservicejourney">TemplateServiceJourney</a></li>
-  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#occupancyview">OccupancyView</a></li>
-  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#trainnumber">TrainNumber</a></li>
+  <li><a href="#timetableframe">TimetableFrame</a></li>
+  <li><a href="#servicejourney">ServiceJourney</a></li>
+  <li><a href="#checkconstraint">CheckConstraint</a></li>
+  <li><a href="#templateservicejourney">TemplateServiceJourney</a></li>
+  <li><a href="#occupancyview">OccupancyView</a></li>
+  <li><a href="#timedemandtype">TimeDemandType</a></li>
+  <li><a href="#timinglink">TimingLink</a></li>
+  <li><a href="#trainnumber">TrainNumber</a></li>
   <li><a href="#typeofservice">TypeOfService</a></li>
-  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#timetabledpassingtime">TimetabledPassingTime</a></li>
   <li><a href="#servicejourneyinterchange">ServiceJourneyInterchange</a></li>
-  <li><a href="/netexRealisationGuideSwitzerland/main/09_timetable.html#interchangerule">InterchangeRule</a></li>
+  <li><a href="#interchangerule">InterchangeRule</a></li>
 </ul>
 
-<p>In Service:</p>
+<p>In Service Frame:</p>
 <ul>
-  <li><a href="/netexRealisationGuideSwitzerland/main/07_service.html#noticeassignment">NoticeAssignment</a></li>
-  <li><a href="/netexRealisationGuideSwitzerland/main/10_common.html#servicefacilityset">ServiceFacilitySet</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/06_service.html#noticeassignment">NoticeAssignment</a></li>
 </ul>
 
-<p>In ServiceCalendar:</p>
+<p>In ServiceCalendar Frame:</p>
 <ul>
-  <li><a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#availabilitycondition">AvailabilityCondition</a></li>
-  <li><a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#timeband">Timeband</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/07_service_calendars.html#availabilitycondition">AvailabilityCondition</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/07_service_calendars.html#timeband">Timeband</a></li>
+</ul>
+
+<p>In Resource Frame:</p>
+<ul>
+  <li><a href="/netexRealisationGuideSwitzerland/main/09_resources.html#servicefacilityset">ServiceFacilitySet</a></li>
 </ul>
 
 <h2 id="timetableframe">TimetableFrame</h2>
@@ -338,7 +343,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
 
 <h3 id="purpose-1">Purpose</h3>
 <p>A <code class="language-plaintext highlighter-rouge">ServiceJourney</code> represents a planned trip in the timetable operating on a recurring schedule. It defines the stop sequence via reference to a <code class="language-plaintext highlighter-rouge">JourneyPattern</code>, includes scheduled timing via <code class="language-plaintext highlighter-rouge">TimeDemandTypeRef</code>, and specifies operational details such as operator. Its operating days are controlled via
-<code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code> (<code class="language-plaintext highlighter-rouge">ValidDayBits</code>), not via <code class="language-plaintext highlighter-rouge">DayType</code> — see <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#availabilitycondition">AvailabilityCondition</a>. <code class="language-plaintext highlighter-rouge">DatedServiceJourney</code> is <strong>not used</strong> in the Swiss profile.</p>
+<code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code> (<code class="language-plaintext highlighter-rouge">ValidDayBits</code>), not via <code class="language-plaintext highlighter-rouge">DayType</code> — see <a href="08_service_calendars.md#availabilitycondition">AvailabilityCondition</a>. <code class="language-plaintext highlighter-rouge">DatedServiceJourney</code> is <strong>not used</strong> in the Swiss profile.</p>
 
 <h3 id="table-1">Table</h3>
 
@@ -774,15 +779,15 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
 <ul>
   <li><strong>Template vs. Instance:</strong> <code class="language-plaintext highlighter-rouge">ServiceJourney</code> directly carries its validity via <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code>. <code class="language-plaintext highlighter-rouge">DatedServiceJourney</code> is not used in the Swiss profile.</li>
   <li><strong>Consistency:</strong> A <code class="language-plaintext highlighter-rouge">ServiceJourney</code> must reference exactly one <code class="language-plaintext highlighter-rouge">JourneyPattern</code>. The pattern’s stop sequence is authoritative.</li>
-  <li><strong>Day Governance:</strong> Operating days are controlled via <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code> (<code class="language-plaintext highlighter-rouge">ValidDayBits</code>), not via <code class="language-plaintext highlighter-rouge">DayType</code>. <code class="language-plaintext highlighter-rouge">DayType</code>/<code class="language-plaintext highlighter-rouge">DayTypeAssignment</code> are reserved for flagging national holidays only (see <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#daytype">ServiceCalendarFrame</a>). <code class="language-plaintext highlighter-rouge">DatedServiceJourney</code> is not used in the Swiss profile.</li>
+  <li><strong>Day Governance:</strong> Operating days are controlled via <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code> (<code class="language-plaintext highlighter-rouge">ValidDayBits</code>), not via <code class="language-plaintext highlighter-rouge">DayType</code>. <code class="language-plaintext highlighter-rouge">DayType</code>/<code class="language-plaintext highlighter-rouge">DayTypeAssignment</code> are reserved for flagging national holidays only (see <a href="/netexRealisationGuideSwitzerland/main/07_service_calendars.html#daytype">ServiceCalendarFrame</a>). <code class="language-plaintext highlighter-rouge">DatedServiceJourney</code> is not used in the Swiss profile.</li>
   <li><strong>Validation:</strong> Ensure <code class="language-plaintext highlighter-rouge">JourneyPatternRef</code>, <code class="language-plaintext highlighter-rouge">LineRef</code>, and <code class="language-plaintext highlighter-rouge">OperatorRef</code> are consistent and reference existing objects.</li>
-  <li>We assume that a Swiss Journey ID exists for almost every <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. However, the  <code class="language-plaintext highlighter-rouge">@id</code> can’t be set to <code class="language-plaintext highlighter-rouge">sjyid</code>, because for different days the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> are different. Also problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the <code class="language-plaintext highlighter-rouge">@id</code> will contain a <code class="language-plaintext highlighter-rouge">_gen</code> substring, but it still starts with the sjyid, when it exists (e.g. <code class="language-plaintext highlighter-rouge">ch:1:sjyid:100011:12391293:_gen_:1231</code> or <code class="language-plaintext highlighter-rouge">DE:12319123123:_gen_14</code>).</li>
+  <li>We assume that a Swiss Journey ID exists for almost every <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. However, the  <code class="language-plaintext highlighter-rouge">@id</code> can’t be set to <code class="language-plaintext highlighter-rouge">sjyid</code>, because for different days the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> are different. Also, problematic cases: some cableways, when the frequency group is not done right (we try to remove those cases), foreign journeys. In those cases the <code class="language-plaintext highlighter-rouge">@id</code> will contain a <code class="language-plaintext highlighter-rouge">_gen</code> substring, but it still starts with the sjyid, when it exists (e.g. <code class="language-plaintext highlighter-rouge">ch:1:sjyid:100011:12391293:_gen_:1231</code> or <code class="language-plaintext highlighter-rouge">DE:12319123123:_gen_14</code>).</li>
   <li>A <code class="language-plaintext highlighter-rouge">ServiceJourney</code>can be associated with exactly one <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and <code class="language-plaintext highlighter-rouge">TimeDemandType</code>.</li>
   <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports if possible. However, when new variants are used for different operating days, it changes.</li>
   <li>Tarif codes (<code class="language-plaintext highlighter-rouge">TC</code>) and region codes (<code class="language-plaintext highlighter-rouge">RN</code>) are put into a key/value pair (see example).</li>
 </ul>
 
-<h3 id="calculation-of-passing-times-at-stops">Calculation of passing times at stops</h3>
+<h3 id="calculation-of-passing-times-at-stops">Calculation of Passing Times at Stops</h3>
 <ul>
   <li>The departure and arrival times of a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> are determined by the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and the <code class="language-plaintext highlighter-rouge">TimeDemandType</code> referenced by the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</li>
   <li>Element <code class="language-plaintext highlighter-rouge">ServiceJourney/DepartureTime</code> contains the departure time at the first <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> indicated by  <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern[1]</code>.</li>
@@ -912,7 +917,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
 <h3 id="purpose-3">Purpose</h3>
 <p>A <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code> represents a sequence of planned trips. It is similar to the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>, but it is used if there is a frequency defined at which the trips are scheduled on an operating day.</p>
 
-<p>A frequency is specified in a <code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code> (e.g. every 20 minutes). The <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code> may thus represent multiple journeys or it could be used simply as a template for adding extra date journeys after the planning phase.</p>
+<p>A frequency is specified in a <code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code> (e.g. every 20 minutes). The <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code> may thus represent multiple journeys, or it could be used simply as a template for adding extra date journeys after the planning phase.</p>
 
 <h3 id="table-3">Table</h3>
 
@@ -1722,7 +1727,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
 
 <h3 id="purpose-7">Purpose</h3>
 <p>The standard states: “In some cases, a SERVICE JOURNEY INTERCHANGE expresses an interchange between two SERVICE JOURNEYs specifically planned to be operated by the same physical vehicle. This concept is for instance used for circular lines and coupled journeys. This means that passenger information should be adapted
-to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also important that operation control staff is aware of the consequences to passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs.”</p>
+to the fact that the passenger should not change vehicle as the transfer is implicit. In this case it is also important that operation control staff is aware of the consequences for passengers if the operation is altered in such a way that two different vehicles are used for the two involved SERVICE JOURNEYs.”</p>
 
 <p><code class="language-plaintext highlighter-rouge">StaySeated=true</code> should be used for through-services (Durchbindung) and joining (Vereinigung). While splitting (Flügelzug) technically involves different vehicle parts, the passenger does not leave the train — however, they may need to move to the correct coach. For splitting, <code class="language-plaintext highlighter-rouge">StaySeated=false</code> combined with
 <code class="language-plaintext highlighter-rouge">ChangeWithinVehicle=true</code> is therefore the correct modelling. See <a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">uc02 Joining and splitting</a>.</p>
@@ -1968,22 +1973,22 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 <h2 id="interchangerule">InterchangeRule</h2>
 <blockquote>
   <p><strong>Deprecated</strong> — <code class="language-plaintext highlighter-rouge">InterchangeRule</code> is replaced by <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> in RG 2.0.<br />
-See <a href="/netexRealisationGuideSwitzerland/main/uc03_transfers.html">uc03 Transfers</a> for the current modelling approach.</p>
+See <a href="/netexRealisationGuideSwitzerland/main/uc03_transfers.html">uc03 Transfers</a> for the current modeling approach.</p>
 </blockquote>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#interchangerule">Glossary definition</a></em></p>
 
 <h2 id="availabilitycondition">AvailabilityCondition</h2>
-<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#availabilitycondition">see ServiceCalendarFrame</a></em></p>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/07_service_calendars.html#availabilitycondition">see ServiceCalendarFrame</a></em></p>
 
 <h2 id="timeband">Timeband</h2>
-<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/08_service_calendars.html#timeband">see ServiceCalendarFrame</a></em></p>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/07_service_calendars.html#timeband">see ServiceCalendarFrame</a></em></p>
 
 <h2 id="noticeassignment">NoticeAssignment</h2>
-<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/07_service.html#noticeassignment">see Common elements</a></em></p>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/06_service.html#noticeassignment">see ServiceFrame</a></em></p>
 
 <h2 id="servicefacilityset">ServiceFacilitySet</h2>
-<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/10_common.html#servicefacilityset">see Common elements</a></em></p>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/09_resources.html#servicefacilityset">see ResourceFrame</a></em></p>
 
   </div>
 

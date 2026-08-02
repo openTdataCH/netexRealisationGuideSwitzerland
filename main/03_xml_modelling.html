@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Common Elements and Rules | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<title>XML Modelling | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Common Elements and Rules" />
+<meta property="og:title" content="XML Modelling" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/10_common.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/10_common.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/03_xml_modelling.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/03_xml_modelling.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Common Elements and Rules" />
+<meta property="twitter:title" content="XML Modelling" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Common Elements and Rules","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/10_common.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"XML Modelling","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/03_xml_modelling.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
@@ -37,13 +37,13 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Common Elements and Rules</h1>
+    <h1 class="post-title">XML Modelling</h1>
   </header>
 
   <div class="post-content">
-    <p>This chapter has two parts. First, it states important rules to observe (e.g., regarding attributes and date / time formats). Second, it lists the “common” elements that are used by different frames. This in particular includes the <code class="language-plaintext highlighter-rouge">ResourceFrame</code> and all its elements as it is a container holding data that can be referred to from multiple other frames.</p>
+    <p>In this chapter:</p>
 
-<p>In this chapter:</p>
+<p><a href="#a-first-glimpse">A first Glimpse at NeTEx Modelling</a></p>
 
 <p><a href="#rules-to-observe">Rules to Observe</a></p>
 <ul>
@@ -63,8 +63,154 @@
   <li><a href="#alternativetext">AlternativeText</a></li>
   <li><a href="#multilingualstring">MultilingualString</a></li>
   <li><a href="#framedefaults">FrameDefaults</a></li>
-  <li><code class="language-plaintext highlighter-rouge">ResourceFrame</code> see <a href="/netexRealisationGuideSwitzerland/main/11_resources.html">here</a></li>
 </ul>
+
+<h2 id="a-first-glimpse">A First Glimpse</h2>
+
+<p>To support the Swiss timetable delivery, NeTEx uses various XML classes. The following diagram gives an overview. In the center is the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</p>
+
+<pre><code class="language-mermaid">flowchart TD
+    AN[AlternativeName]
+    O[Operator]
+    SJ[ServiceJourney]
+    DT[DirectionType]
+    TN[TrainNumber]
+    SI[ServiceJourneyInterchange]
+    JP[JourneyPart]
+    AC[AvailabilityCondition]
+    UOP[ValidDayBits]
+    SJP[ServiceJourneyPattern]
+    TDT[TimeDemandType]
+    L[Line]
+    SPtJP[StopPointInJourneyPattern]
+    TL[TimingLink]
+    SSP[ScheduledStopPoint]
+    N[Notice]
+    F[ServiceFacilities]
+    PSA[PassengerStopAssignment]
+    SP[StopPlace]
+    CN[DefaultConnection]
+    Q[Quay]
+    
+    %% Relationships
+    SJ --&gt; DT
+    SJ --&gt; L
+    SJ --&gt; O
+    SJ --&gt; SJP
+    SJ --&gt; TDT
+    SJ --&gt; SI
+    SJ --&gt; JP
+    SJ --&gt; TN
+    SJ --&gt; AC
+    AC --&gt; UOP
+    SJP --&gt; L
+    SJP --&gt; DT
+    SJP --&gt; SPtJP
+    SPtJP --&gt; SSP
+    TDT --&gt; TL
+    TDT --&gt; SSP
+    TDT --&gt; SPtJP
+    PSA --&gt; SP
+    PSA --&gt; Q
+    PSA --&gt; SSP
+    SP --&gt; Q
+    O --&gt; AN
+
+    %% Styling ResourceFrame
+    style O fill:#ffffff,stroke:#eea44f,stroke-width:2px
+    style F fill:#ffffff,stroke:#eea44f,stroke-width:2px
+  
+    %% Styling ServiceCalendarFrame
+    style AC fill:#ff8888,stroke:#eea44f,stroke-width:2px
+    style UOP fill:#ff8888,stroke:#eea44f,stroke-width:2px
+
+
+    %% everyhwere
+      style AN fill:#88ff88,stroke:#eea44f,stroke-width:2px
+      style DT fill:#88ff88,stroke:#eea44f,stroke-width:2px
+   
+    %% Styling SiteFrame
+    style SP fill:#a6c9a6,stroke:#eea44f,stroke-width:2px
+    style Q fill:#a6c9a6,stroke:#2ea44f,stroke-width:2px
+
+    %% Styling TimetableFrame
+    style SJ fill:#d6b9e6,stroke:#2ea44f,stroke-width:2px
+    style TN fill:#d6b9e6,stroke:#2ea44f,stroke-width:2px
+
+    
+    %% Styling ServiceFrame
+    style TDT fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SJP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style PSA fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style L fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style TL fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SPtJP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style JP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SI fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SI fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style N fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style CN fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+    style SSP fill:#e6f9e6,stroke:#2ea44f,stroke-width:2px
+
+</code></pre>
+<p><em>Core elements for timetables in NeTEx</em></p>
+
+<p>Notes:</p>
+<ul>
+  <li>Every <code class="language-plaintext highlighter-rouge">ServiceJourney</code> belongs to one <code class="language-plaintext highlighter-rouge">Line</code> and has one <code class="language-plaintext highlighter-rouge">Operator</code>. Some more information can be stored in associated <code class="language-plaintext highlighter-rouge">ResponsibilitySet</code>s (difference between operator and legal “owner”).</li>
+  <li>The pattern of the stops is defined in a <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> with additional details about each stop.</li>
+  <li>The timing behaviour is stored in <code class="language-plaintext highlighter-rouge">TimeDemandType</code>. They contain run times and where needed waiting times. The <code class="language-plaintext highlighter-rouge">TimingLink</code>s are mostly based on <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s and may be used by multiple <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>.</li>
+  <li>The physical stops are modeled as <code class="language-plaintext highlighter-rouge">StopPlace</code>s with <code class="language-plaintext highlighter-rouge">Quays</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s are the “logical” stops.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code> associates the physical and the logical stops.</li>
+  <li><code class="language-plaintext highlighter-rouge">DefaultConnection</code> and <code class="language-plaintext highlighter-rouge">SiteConnection</code> define transfers based on site elements.</li>
+  <li><code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code>s are used for splitting, joining and connecting trains and for “Durchbindungen”.</li>
+  <li><code class="language-plaintext highlighter-rouge">Notice</code>, <code class="language-plaintext highlighter-rouge">ServiceFacility</code> and <code class="language-plaintext highlighter-rouge">SiteFacility</code> model almost everything else (especially offers).</li>
+  <li>The operating days are defined through <code class="language-plaintext highlighter-rouge">ValidDayBits</code> for the whole timetable year in <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s.</li>
+</ul>
+
+<p>##</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>StopPlace SP
+  * Quay Q1
+  * Quay Q2
+  
+ScheduledStopPoint SPS
+
+PassengerStopAssignment PSA
+  -&gt; ScheduledStopPoint SPS
+  -&gt; Quay Q1
+  -&gt; StopPlace SP 
+
+TimingLink TL
+  -&gt; ScheduledStopPoint X
+  -&gt; ScheduledStopPoint y
+  * some properties
+  
+ ServiceJourneyPattern SJP
+   * StopPointInJourneyPattern
+        -&gt; ScheduledStopPoint X
+        * multiple properties
+   * lots of properties
+        
+  TimeDemandType TDT
+    runTimes
+      ServiceJourneyRunTime
+        -&gt; TimingLink TL
+        * Duration
+    waitTimes
+       ServiceJourneyWaitTime
+         -&gt; ScheduledStopPoint A
+         * Duration
+         
+  ServiceJourney
+    -&gt; ServiceJourneyPattern SJP
+    -&gt; TimeDemandType TDT
+    * lots of properties
+        
+   
+  
+</code></pre></div></div>
 
 <h2 id="rules-to-observe">Rules to Observe</h2>
 
@@ -109,8 +255,8 @@
 <p>IDs must be globally unique during importation (in the <code class="language-plaintext highlighter-rouge">@id</code> of the element). By globally unique we mean:</p>
 <ul>
   <li>They are unique by object type.</li>
-  <li>Also they are unique within one delivery (may be multiple files). If two elements have the same <code class="language-plaintext highlighter-rouge">@id</code> then they must be the same element.</li>
-  <li>Between delivery they may change, when they are declared as stable.</li>
+  <li>Also, they are unique within one delivery (may consist of multiple files). If two elements have the same <code class="language-plaintext highlighter-rouge">@id</code> then they must be the same element.</li>
+  <li>Between delivery, they may change, when they are declared as stable.</li>
   <li>They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for “primary” objects we expect object permanence. This is mentioned in the usage note of each element.
 Important business level keys are stored in elements (<code class="language-plaintext highlighter-rouge">KeyList</code>, <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code>) in addition to the IDs.</li>
 </ul>
@@ -146,7 +292,7 @@ where the value of <code class="language-plaintext highlighter-rouge">ShortName<
 <p>Times that pass midnight of the current <code class="language-plaintext highlighter-rouge">OperatingDay</code> are marked with a <code class="language-plaintext highlighter-rouge">DayOffset</code> element. 
 If a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> runs over midnight, <code class="language-plaintext highlighter-rouge">DepartureDayOffset</code> (on <code class="language-plaintext highlighter-rouge">ServiceJourney</code>) is used for the start of the journey. Since <code class="language-plaintext highlighter-rouge">TimeDemandType</code> only holds relative durations (<code class="language-plaintext highlighter-rouge">RunTime</code>/<code class="language-plaintext highlighter-rouge">WaitTime</code>), there is no separate <code class="language-plaintext highlighter-rouge">DayOffset</code> element within <code class="language-plaintext highlighter-rouge">TimeDemandType</code> — any midnight crossing during the journey follows implicitly from cumulating <code class="language-plaintext highlighter-rouge">DepartureTime</code> with the <code class="language-plaintext highlighter-rouge">RunTime</code>/<code class="language-plaintext highlighter-rouge">WaitTime</code> values.</p>
 
-<h3 id="ordering-of-elements">Ordering of elements</h3>
+<h3 id="ordering-of-elements">Ordering of Elements</h3>
 <p>XML is ordered by definition. If there are sequences of elements e.g. <code class="language-plaintext highlighter-rouge">PointsInJourneyPattern</code> they are always ordered.</p>
 
 <h2 id="common-elements-and-types">Common Elements and Types</h2>
@@ -259,8 +405,7 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
 <h4 id="purpose-1">Purpose</h4>
 
 <p>NeTEx uses the type <code class="language-plaintext highlighter-rouge">MultilingualString</code> for descriptive text elements (e.g. <code class="language-plaintext highlighter-rouge">Notice</code> text, <code class="language-plaintext highlighter-rouge">Name</code>, <code class="language-plaintext highlighter-rouge">ShortName</code> etc.).
-However, only one language can be set for a given element (e.g. <code class="language-plaintext highlighter-rouge">&lt;MultilingualString lang=”fr”&gt;</code>). 
-Additional languages are introduced through the <a href="#alternativename">AlternativeName</a> and <a href="#alternativetext">AlternativeText</a> element.</p>
+However, only one language can be set for a given element (e.g. <code class="language-plaintext highlighter-rouge">&lt;MultilingualString lang=”fr”&gt;</code>).</p>
 
 <h4 id="example-1">Example</h4>
 
@@ -274,7 +419,7 @@ Additional languages are introduced through the <a href="#alternativename">Alter
 <h4 id="usage-notes-1">Usage Notes</h4>
 
 <ul>
-  <li>For <a href="#organisation--operator--authority">Organisations</a> e.g. there are all languages present.</li>
+  <li>For <a href="/netexRealisationGuideSwitzerland/main/09_resources.html#organisation--operator--authority">Organisations</a> e.g. there are all languages present.</li>
   <li>The <code class="language-plaintext highlighter-rouge">StopPlace</code> names in Switzerland are language-independent.</li>
   <li>Sometimes the parent element is <code class="language-plaintext highlighter-rouge">Text</code> as well. So we have <code class="language-plaintext highlighter-rouge">Text/Text</code>.</li>
 </ul>
@@ -416,6 +561,11 @@ Additional languages are introduced through the <a href="#alternativename">Alter
       </div>
     </div>
   </div>
-</footer></body>
+</footer><script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    // Render code fences like ```mermaid (Jekyll outputs <pre><code class="language-mermaid">...</code></pre>)
+    mermaid.run({ querySelector: 'pre > code.language-mermaid' });
+</script></body>
 
 </html>

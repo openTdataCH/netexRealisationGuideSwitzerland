@@ -115,7 +115,7 @@ splitting and joining.
 > - `StaySeated=true` indicates that the passenger does not need to leave the vehicle — the train continues physically as one unit until the splitting point.
 > - `ChangeWithinVehicle=true` indicates that passengers must move to the correct coach within the train before the split, as each coach continues to a different destination after the splitting point.
 
-The detailed handling is described for the element [ServiceJourneyInterchange](09_timetable.md#servicejourneyinterchange).
+The detailed handling is described for the element [ServiceJourneyInterchange](08_timetable.md#servicejourneyinterchange).
 
 
 
@@ -146,7 +146,7 @@ The detailed handling is described for the element [ServiceJourneyInterchange](0
 ```
 
 
-- [Example Splitting (Flügelzug Bern–Spiez–Brig/Zweisimmen)](./examples/NeTEx_CH_Bern_Spiez_Zweisimmen_TimeDemandType.xml)
+- [Example Splitting (Flügelzug Bern–Spiez–Brig/Zweisimmen)](./examples/06_NeTEx_CH_Bern_Spiez_Zweisimmen.xml)
 
 ## Related use cases
 

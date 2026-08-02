@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Files | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<title>File Exchange | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Files" />
+<meta property="og:title" content="File Exchange" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/04_files.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/04_files.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/02_files.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/02_files.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Files" />
+<meta property="twitter:title" content="File Exchange" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Files","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/04_files.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"File Exchange","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/02_files.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
@@ -37,11 +37,50 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Files</h1>
+    <h1 class="post-title">File Exchange</h1>
   </header>
 
   <div class="post-content">
     <p>NeTEx data will be transferred as files.</p>
+
+<h2 id="guiding-principles">Guiding Principles</h2>
+<p>We want the following general principles to apply:</p>
+
+<h3 id="completeness">Completeness</h3>
+
+<p>A delivery must always be complete:</p>
+<ul>
+  <li>in the time dimension : for the whole timetable year (from December to December), but only one timetable.</li>
+  <li>in the scope of the information exchanged : for all operators and all their lines or sublines — the file must always contain everything.
+This allows the receiver to overwrite the old delivery with the new one without loss of data</li>
+</ul>
+
+<h3 id="base-data">Base Data</h3>
+<p>Some reference data are maintained by SKI. These data are identified by business values (Abbreviation, Number, ID, …).
+These Business identifiers shall be used by the deliveries to enable their integration and homogenisation for the collection of timetable information. 
+If attributes of these reference data are transmitted in the deliveries, SKI does not adopt the values of these attributes. SKI takes these values from the reference system.</p>
+
+<p>The relevant reference data that is already available/defined by SKI:</p>
+<ul>
+  <li>Organisations - in Atlas</li>
+  <li>StopPlaces, Quays and the whole physical model - in Atlas</li>
+  <li>Lines (in a future phase) - in Atlas</li>
+  <li>Direction - only inbound and outbound are allowed</li>
+  <li>Notices – some specialised IDs and/or types, according to the <a href="/netexRealisationGuideSwitzerland/main/media/Mappingtabellen_NeTEx_v2.0.xlsx">mapping excel</a>.</li>
+  <li>TypeOfValues - according to the lists defined here (namely in <a href="/netexRealisationGuideSwitzerland/main/03_xml_modelling.html">the XML modeling</a>). E.g. ProductCategory - in the <a href="/netexRealisationGuideSwitzerland/main/media/Mappingtabellen_NeTEx_v2.0.xlsx">mappingexcel</a>.</li>
+  <li>ValueSets - in <a href="/netexRealisationGuideSwitzerland/main/03_xml_modelling.html">XML modeling</a></li>
+  <li>Facilities - in <a href="/netexRealisationGuideSwitzerland/main/media/Mappingtabellen_NeTEx_v2.0.xlsx">mapping excel</a>.</li>
+</ul>
+
+<h3 id="responsibilities-data-supplier">Responsibilities Data Supplier</h3>
+<p>The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality. Complete means all timetable data in the responsibility of the provider for the whole timetable period.</p>
+
+<h3 id="responsibilties-ski">Responsibilties SKI</h3>
+<p>SKI is responsible for the timely delivery of the complete timetable information with sufficient quality of all timetable data for open data and for the consumption by the data consumers.</p>
+
+<h2 id="files">Files</h2>
+
+<h3 id="file-types">File Types</h3>
 
 <p>We will have three different file types:</p>
 <ul>
@@ -56,7 +95,7 @@
 
 <p>This repartition of the data into different file leads to some redundancy. However, the files can still be transferred efficiently.</p>
 
-<h2 id="content-of-each-file">Content of each file</h2>
+<h3 id="content-of-each-file">Content of each File</h3>
 <pre><code class="language-mermaid">classDiagram
 class STOP_OFFER{
     SiteFrame: SiteFrame
@@ -119,7 +158,7 @@ class INTERCHANGE {
 
 <p>Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.  STOP_OFFER is only needed for data not stored in ATLAS. INFO+ will deliver an aggregated, comprehensive STOP_OFFER.</p>
 
-<h2 id="naming-conventions">Naming conventions</h2>
+<h3 id="naming-conventions">Naming Conventions</h3>
 <p>IT-Environments:</p>
 <ul>
   <li>Development:	DEV</li>
@@ -255,23 +294,23 @@ class INTERCHANGE {
 
 <p>Example :<code class="language-plaintext highlighter-rouge">TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_202602010402.zip</code></p>
 
-<h2 id="zip-structure">Zip structure</h2>
+<h3 id="zip-structure">Zip Structure</h3>
 <p>All files in a delivery are zipped into a single one according to the name structure above.</p>
 
-<h2 id="encoding">Encoding</h2>
+<h3 id="encoding">Encoding</h3>
 <p>All data is encoded as UTF-8 without BOM.</p>
 
-<h2 id="data-transfer">Data transfer</h2>
+<h3 id="data-transfer">Data Transfer</h3>
 <p>The data transfer will be defined by INFO+. A version of the full swiss data will be available on https://opentransportdata.swiss/ for download.</p>
 
-<h2 id="file-sent-by-data-provider-to-ski">File sent by data provider to SKI</h2>
+<h3 id="file-sent-by-data-provider-to-ski">File Sent by Data Provider to SKI</h3>
 <p>We suggest that the partner name consists of the short name of the partner and necessary additions to identify the system. In addition, the number of the timetable period is to be indicated in the name, as well as the date and time of creation of the file</p>
 
 <p>Examples: <code class="language-plaintext highlighter-rouge">test_zvv_2024_20231112_095217.zip</code>, <code class="language-plaintext highlighter-rouge">prod_tl_2024_20231114_152836.zip</code></p>
 
 <p>The file name must be agreed on between the data provider and SKI. Generally it is agreed that delivery can be on network, operator or line base.</p>
 
-<h3 id="partial-deliveries">Partial deliveries</h3>
+<h3 id="partial-deliveries">Partial Deliveries</h3>
 <p>No partial deliveries are accepted. They must contain:</p>
 <ul>
   <li>all relevant lines</li>
@@ -284,7 +323,7 @@ class INTERCHANGE {
   <p>NB: We might reconsider some of those points for mixed lines.</p>
 </blockquote>
 
-<h2 id="file-sent-by-ski-to-data-receivers">File sent by SKI to data receivers</h2>
+<h3 id="file-sent-by-ski-to-data-receivers">File Sent by SKI to Data Receivers</h3>
 <p>As the quantity of the data is very large for a single XML-file, SKI provides the data a set of XML files. In addition to the XML files, SKI provides a README file listing the contents of each XML file.</p>
 
   </div>

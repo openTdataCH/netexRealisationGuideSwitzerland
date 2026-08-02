@@ -5,7 +5,8 @@ This chapter describes the `ResourceFrame` and all its elements as it is a conta
 In this chapter:
 - [ResourceFrame](#resourceframe)
   - [ResponsibilitySet](#responsibilityset)
-  - [TypeOfValue / Valuesets](#typeof--valueset)
+  - [TypeOfValue / ValueSets](#typeof--valueset)
+    - [TypeOfNotice](#typeofnotice)
     - [TypeOfProductCategory](#typeofproductcategory)
     - [TypeOfService](#typeofservice)
   - [Organisation / Operator / Authority](#organisation--operator--authority)
@@ -248,15 +249,15 @@ We use TypeOfValue references in various Frames in objects including:
 ## TypeOfNotice
 
 ### Purpose
-`TypeOfNotice` is used within a [Notice](07_service.md#notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
+`TypeOfNotice` is used within a [Notice](06_service.md#notice) to give information, what it is about. The table below shows the `TypeOfNotice` we use in Switzerland.
 
 | PrivateCode | Name                | Description                                                                                                                                                                                                                                                      |
 |-------------|---------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1           | Allgemeiner Hinweis | General information text                                                                                                                                                                                                                                         |
-| 2           | ~~Zugname~~         | Name of the train. Is not used, as this is stored in `ServiceJourney`/`Name`.                                                                                                                                                                                        |
+| 2           | ~~Zugname~~         | Name of the train. Is not used, as this is stored in `ServiceJourney`/`Name`.                                                                                                                                                                                    |
 | 3           | ~~Gleis-Angabe~~    | Quay and Quay section information. Is no longer used. Is put into Quay.                                                                                                                                                                                          |
 | 10          | Angebot             | Most of the `ServiceFacilitySet` are also transmitted as `Notice`. On top of that we have multiple services and facilities in Switzerland that cannot be mapped to `ServiceFacilitySets`. This `TypeOfNotice` is used to deliver those special cases as Notices. |
-| 11          | ~~Region~~          | Postauto is divided into several regions. Will be omitted. We will add a `privateCodes/PrivateCode` with `type="rn"` to the `ServiceJourney` or `TemplateServiceJourney`.                                                                                       |
+| 11          | ~~Region~~          | Postauto is divided into several regions. Will be omitted. We will add a `privateCodes/PrivateCode` with `type="rn"` to the `ServiceJourney` or `TemplateServiceJourney`.                                                                                        |
 
 *Table: Allowed TypeOfNotice in Switzerland*
 

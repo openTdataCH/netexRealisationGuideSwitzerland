@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Services | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<title>Service Frame | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Services" />
+<meta property="og:title" content="Service Frame" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/07_service.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/07_service.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/06_service.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/06_service.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Services" />
+<meta property="twitter:title" content="Service Frame" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Services","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/07_service.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Service Frame","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/06_service.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
@@ -37,7 +37,7 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Services</h1>
+    <h1 class="post-title">Service Frame</h1>
   </header>
 
   <div class="post-content">
@@ -45,6 +45,7 @@
 <ul>
   <li><a href="#serviceframe">ServiceFrame</a></li>
   <li><a href="#line">Line</a></li>
+  <li><a href="#groupoflines">GroupOfLines</a></li>
   <li><a href="#destinationdisplay">DestinationDisplay</a></li>
   <li><a href="#scheduledstoppoint">ScheduledStopPoint</a></li>
   <li><a href="#passengerstopassignment">PassengerStopAssignment</a></li>
@@ -466,7 +467,7 @@ class ServiceJourney {
 <h2 id="line">Line</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#line">Glossary definition</a></em></p>
 <h3 id="purpose-1">Purpose</h3>
-<p>A public transport service line with a <code class="language-plaintext highlighter-rouge">Name</code>, <code class="language-plaintext highlighter-rouge">TransportMode</code>, and <code class="language-plaintext highlighter-rouge">Operator</code>. Be aware that the handling of “Konzessionär” and “Betreiber” is a bit complex and is discussed <a href="/netexRealisationGuideSwitzerland/main/uc17_mixed_lines.html">here</a> and <a href="/netexRealisationGuideSwitzerland/main/11_resources.html#responsibilityset">here</a>.</p>
+<p>A public transport service line with a <code class="language-plaintext highlighter-rouge">Name</code>, <code class="language-plaintext highlighter-rouge">TransportMode</code>, and <code class="language-plaintext highlighter-rouge">Operator</code>. Be aware that the handling of “Konzessionär” and “Betreiber” is a bit complex and is discussed <a href="/netexRealisationGuideSwitzerland/main/uc17_mixed_lines.html">here</a> and <a href="/netexRealisationGuideSwitzerland/main/09_resources.html#responsibilityset">here</a>.</p>
 
 <h3 id="table-1">Table</h3>
 
@@ -771,7 +772,7 @@ class ServiceJourney {
   <li>For foreign lines an <code class="language-plaintext highlighter-rouge">@d</code> might need to be generated.</li>
   <li>We store the slnid whenever possible in <code class="language-plaintext highlighter-rouge">@id</code>, <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> and <code class="language-plaintext highlighter-rouge">KeyList</code>.</li>
   <li>Information about the Swiss line id (slnid) can be found <a href="https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-line-identification-slnid">here</a>.</li>
-  <li>Handling of mixed lines is defined in its own <a href="uc17_mixed_lines">use case (uc017)</a>. The relevant factors are described in the Line element as well. We have a full <a href="examples/NeTEx_CH_Linie_722_Mischbetrieb.xml">example</a> on it. - Be aware that for mixed lines there might be multiple <code class="language-plaintext highlighter-rouge">Line</code>s in NeTEx. Otherwise, the relevant <code class="language-plaintext highlighter-rouge">Operator</code> must be set on the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</li>
+  <li>Handling of mixed lines is defined in its own <a href="/netexRealisationGuideSwitzerland/main/uc17_mixed_lines.html">use case (uc017)</a>. The relevant factors are described in the Line element as well. We have a full <a href="examples/14_NeTEx_CH_Linie_722_Mischbetrieb.xml">example</a> on it. - Be aware that for mixed lines there might be multiple <code class="language-plaintext highlighter-rouge">Line</code>s in NeTEx. Otherwise, the relevant <code class="language-plaintext highlighter-rouge">Operator</code> must be set on the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</li>
   <li>Note that there exist journeys in Switzerland and neighboring countries that are not associated with a <code class="language-plaintext highlighter-rouge">Line</code>. In NeTEx, however, the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s corresponding to such journeys must still reference something in <code class="language-plaintext highlighter-rouge">LineRef</code>. To ensure this, we introduce a placeholder <code class="language-plaintext highlighter-rouge">Line</code> called “NoLine” for each <code class="language-plaintext highlighter-rouge">Operator</code> that has journeys without a Line.</li>
   <li>For more information about SwissLineID: see <a href="https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf">here</a>.</li>
   <li>We have in the slnid concept also “Dispositionslinie” and “Temporäre Linie”. Those are modeled as regular <code class="language-plaintext highlighter-rouge">Line</code>. “Betriebliche Linie” is not used and modeled in NeTEx. If at some point we need to know this type. We will model it as a Key/Value pair.</li>
@@ -1104,7 +1105,7 @@ class ServiceJourney {
 
 <h3 id="usage-notes-3">Usage Notes</h3>
 <ul>
-  <li>We don’t keep much information  in <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s. The are assigned by <code class="language-plaintext highlighter-rouge">PassengerStopAssignnment</code>s to the site part (<code class="language-plaintext highlighter-rouge">StopPlace</code>, <code class="language-plaintext highlighter-rouge">Quay</code>).</li>
+  <li>We don’t keep much information  in <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s. They are assigned by <code class="language-plaintext highlighter-rouge">PassengerStopAssignnment</code>s to the site part (<code class="language-plaintext highlighter-rouge">StopPlace</code>, <code class="language-plaintext highlighter-rouge">Quay</code>).</li>
   <li><code class="language-plaintext highlighter-rouge">ScheduledStopPoints that are used in </code>TimingLinks<code class="language-plaintext highlighter-rouge">and </code>ServiceJourneyPatterns` should be on the quay level.</li>
   <li>We use the sloid as <code class="language-plaintext highlighter-rouge">@id</code> for <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s whener they exist. <code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
   <li><code class="language-plaintext highlighter-rouge">TimingLink</code>s use <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s as well. This means that the timing between two logical stops is the important measure.</li>

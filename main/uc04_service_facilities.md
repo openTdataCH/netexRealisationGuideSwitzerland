@@ -15,8 +15,8 @@ We also use this for the `Notice` with the id `"ch:1:Notice:A___1"`.
 
 
 The structures are defined here:
-* [ServiceFacilitySet](10_common.md#servicefacilityset)
-* [SiteFacilitySet](10_common.md#sitefacilityset)
+* [ServiceFacilitySet](09_resources.md#servicefacilityset)
+* [SiteFacilitySet](09_resources.md#sitefacilityset)
 * The actual relevant Facilities are defined in [mapping table for NeTEX 2.0](media/Mappingtabellen_NeTEx_v2.0.xlsx).
 
 Currently, we only handle `ServiceFacilitySet`.

@@ -256,12 +256,7 @@ To deprecate an element:
 - Validate intermediate XML files
 - Test with small, simple templates first
 
-## Test Templates
 
-Comprehensive test templates demonstrating all annotations have been moved to the schematron_builder tool:
-- [`../tools/schematron_builder/test_templates/`](../../tools/schematron_builder/test_templates/)
-
-These templates show examples of all supported comment annotations and provide a complete testing framework. See the [test documentation](../tools/schematron_builder/test_templates/README.md) for details.
 
 ## Related Tools
 
