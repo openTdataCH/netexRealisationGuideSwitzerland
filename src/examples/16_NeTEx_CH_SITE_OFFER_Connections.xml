@@ -20,8 +20,7 @@
 			<frames>
 				<!-- ============================================================
 				     ResourceFrame: the two Operators referenced by the
-				     DefaultConnection below (via OperatorView). SBOIDs as
-				     used in the original SITE_OFFER example.
+				     DefaultConnection below (via OperatorView). 
 				     ============================================================ -->
 				<ResourceFrame id="ch:1:ResourceFrame:SiteConnection_Bern" version="1">
 					<responsibilitySets>
@@ -84,14 +83,11 @@
 						</Operator>
 					</organisations>
 				</ResourceFrame>
-
 				<!-- ============================================================
 				     SiteFrame: the two StopPlaces used as connection endpoints.
 				     - "Bern" (ch:1:sloid:7000): the railway station, incl. the
 				       two Quays (Gleis 4 / Gleis 50).
-				     - "Bern, Bahnhof" (ch:1:sloid:76646): the adjacent bus /
-				       PostAuto stop directly at the station forecourt
-				       (Bahnhofplatz).
+				     - "Bern, Bahnhof" (ch:1:sloid:76646)
 				     SLOIDs taken from atlas (Dienststellen / Haltekanten)
 				     ============================================================ -->
 				<SiteFrame id="ch:1:SiteFrame:SiteConnection_Bern" version="1">
@@ -100,6 +96,16 @@
 							<ValidBetween>
 								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>HafasPriority</Key>
+									<Value>4</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>HafasKMInfo</Key>
+									<Value>1000</Value>
+								</KeyValue>
+							</keyList>
 							<privateCodes>
 								<PrivateCode type="didok">8507000</PrivateCode>
 								<PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
@@ -153,6 +159,16 @@
 							<ValidBetween>
 								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>HafasPriority</Key>
+									<Value>10</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>HafasKMInfo</Key>
+									<Value>1000</Value>
+								</KeyValue>
+							</keyList>
 							<privateCodes>
 								<PrivateCode type="didok">8576646</PrivateCode>
 								<PrivateCode type="sloid">ch:1:sloid:76646</PrivateCode>
@@ -168,7 +184,6 @@
 						</StopPlace>
 					</stopPlaces>
 				</SiteFrame>
-
 				<!-- ============================================================
 				     ServiceCalendarFrame
 				     ============================================================ -->
@@ -180,7 +195,6 @@
 						</AvailabilityCondition>
 					</validityConditions>
 				</ServiceCalendarFrame>
-
 				<!-- ============================================================
 				     ServiceFrame: SiteConnection between the two StopPlaces.
 				     ============================================================ -->
@@ -198,7 +212,6 @@
 								<StopPlaceRef ref="ch:1:sloid:76646" versionRef="1"/>
 							</To>
 						</SiteConnection>
-
 						<!-- ====================================================
 						     DefaultConnection: BLS <-> SBB (UMSTEIGV/operator
 						     related transfer time), per src/templates/
