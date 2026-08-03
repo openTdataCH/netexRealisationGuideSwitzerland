@@ -1,50 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
-	<PublicationTimestamp>2026-07-21T00:00:00</PublicationTimestamp>
+	<PublicationTimestamp>2026-08-03T00:00:00</PublicationTimestamp>
 	<ParticipantRef>SBB</ParticipantRef>
 	<dataObjects>
-		<CompositeFrame id="ch:1:CompositeFrame:SITE_OFFER_Connections" version="1">
+		<CompositeFrame id="ch:1:CompositeFrame:SiteConnection_Bern" version="1">
 			<ValidBetween>
-				<FromDate>2026-01-01T00:00:00</FromDate>
-				<ToDate>2026-12-31T00:00:00</ToDate>
+				<FromDate>2025-12-14T00:00:00</FromDate>
+				<ToDate>2026-12-12T23:59:59</ToDate>
 			</ValidBetween>
+			<FrameDefaults>
+				<DefaultLocale>
+					<TimeZoneOffset>1</TimeZoneOffset>
+					<TimeZone>Europe/Zurich</TimeZone>
+					<SummerTimeZoneOffset>2</SummerTimeZoneOffset>
+					<DefaultLanguage>de</DefaultLanguage>
+				</DefaultLocale>
+				<DefaultLocationSystem>urn:ogc:def:crs:EPSG::4326</DefaultLocationSystem>
+			</FrameDefaults>
 			<frames>
 				<!-- ============================================================
 				     ResourceFrame: the two Operators referenced by the
-				     DefaultConnection below (via OperatorView).
+				     DefaultConnection below (via OperatorView). SBOIDs as
+				     used in the original SITE_OFFER example.
 				     ============================================================ -->
-				<ResourceFrame id="ch:1:ResourceFrame:SITE_OFFER_Connections" version="1">
+				<ResourceFrame id="ch:1:ResourceFrame:SiteConnection_Bern" version="1">
 					<responsibilitySets>
-						<ResponsibilitySet id="ch:1:ResponsibilitySet:SITE_OFFER" version="1">
-							<Name>Connections</Name>
+						<!-- One ResponsibilitySet per Authority/Operator combination.
+						     EntityLegalOwnership is mandatory, Operation is preferred. -->
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:100001" version="1">
+							<Name lang="de">Schweizerische Bundesbahnen SBB</Name>
+							<PrivateCode>SBB</PrivateCode>
 							<roles>
-								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:SITE_OFFER:1" version="1">
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:100001:1" version="1">
 									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:100001" version="1"/>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100001" versionRef="1"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:100001:2" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100001" versionRef="1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:100015" version="1">
+							<Name lang="de">BLS AG</Name>
+							<PrivateCode>BLS</PrivateCode>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:100015:1" version="1">
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100015" versionRef="1"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:100015:2" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100015" versionRef="1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
 					</responsibilitySets>
 					<typesOfValue>
-						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
-							<Name>ProductCategories</Name>
+						<!-- TypeOfPlace ValueSet: the StopPlaces in this delivery are
+						     regular stops. alternativeTexts are forbidden per profile. -->
+						<ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
 							<values>
-								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:B" version="1">
-									<Name lang="de">Bus</Name>
-									<ShortName>B</ShortName>
-								</TypeOfProductCategory>
+								<TypeOfPlace id="regularStop" version="1">
+									<Name lang="de">Reguläre Haltestelle<Text lang="en">Regular Stop</Text></Name>
+								</TypeOfPlace>
 							</values>
 						</ValueSet>
 					</typesOfValue>
 					<organisations>
-						<Operator id="ch:1:Operator:100015" version="1">
+						<Operator id="ch:1:sboid:100015" version="1">
 							<privateCodes>
 								<PrivateCode type="SBOID">ch:1:sboid:100015</PrivateCode>
 							</privateCodes>
 							<Name>BLS AG</Name>
 							<ShortName>BLS</ShortName>
 						</Operator>
-						<Operator id="ch:1:Operator:100001" version="1">
+						<Operator id="ch:1:sboid:100001" version="1">
 							<privateCodes>
 								<PrivateCode type="SBOID">ch:1:sboid:100001</PrivateCode>
 							</privateCodes>
@@ -56,15 +87,22 @@
 
 				<!-- ============================================================
 				     SiteFrame: the two StopPlaces used as connection endpoints.
+				     - "Bern" (ch:1:sloid:7000): the railway station, incl. the
+				       two Quays (Gleis 4 / Gleis 50).
+				     - "Bern, Bahnhof" (ch:1:sloid:76646): the adjacent bus /
+				       PostAuto stop directly at the station forecourt
+				       (Bahnhofplatz).
+				     SLOIDs taken from atlas (Dienststellen / Haltekanten)
 				     ============================================================ -->
-				<SiteFrame id="ch:1:SiteFrame:SITE_OFFER_Connections" version="1">
+				<SiteFrame id="ch:1:SiteFrame:SiteConnection_Bern" version="1">
 					<stopPlaces>
 						<StopPlace id="ch:1:sloid:7000" version="1">
 							<ValidBetween>
-								<FromDate>2026-01-01T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
 							<privateCodes>
 								<PrivateCode type="didok">8507000</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
 							</privateCodes>
 							<Name>Bern</Name>
 							<Centroid>
@@ -74,20 +112,57 @@
 									<Altitude>540</Altitude>
 								</Location>
 							</Centroid>
+							<quays>
+								<Quay id="ch:1:sloid:7000:2:4" version="1">
+									<ValidBetween>
+										<FromDate>2024-11-21T00:00:00</FromDate>
+									</ValidBetween>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:7000:2:4</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.43724657645</Longitude>
+											<Latitude>46.94844527602</Latitude>
+											<Altitude>540</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>4</PublicCode>
+									<QuayType>railPlatform</QuayType>
+								</Quay>
+								<Quay id="ch:1:sloid:7000:55:50" version="1">
+									<ValidBetween>
+										<FromDate>2024-11-21T00:00:00</FromDate>
+									</ValidBetween>
+									<privateCodes>
+										<PrivateCode type="sloid">ch:1:sloid:7000:55:50</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.43355743238</Longitude>
+											<Latitude>46.94830993732</Latitude>
+											<Altitude>540.1</Altitude>
+										</Location>
+									</Centroid>
+									<PublicCode>50</PublicCode>
+									<QuayType>railPlatform</QuayType>
+								</Quay>
+							</quays>
 						</StopPlace>
-						<StopPlace id="ch:1:sloid:8501120" version="1">
+						<StopPlace id="ch:1:sloid:76646" version="1">
 							<ValidBetween>
-								<FromDate>2026-01-01T00:00:00</FromDate>
+								<FromDate>2025-12-14T00:00:00</FromDate>
 							</ValidBetween>
 							<privateCodes>
-								<PrivateCode type="didok">8501120</PrivateCode>
+								<PrivateCode type="didok">8576646</PrivateCode>
+								<PrivateCode type="sloid">ch:1:sloid:76646</PrivateCode>
 							</privateCodes>
-							<Name>Bern Wankdorf</Name>
+							<Name>Bern, Bahnhof</Name>
 							<Centroid>
 								<Location>
-									<Longitude>7.4614</Longitude>
-									<Latitude>46.9569</Latitude>
-									<Altitude>545</Altitude>
+									<Longitude>7.4404</Longitude>
+									<Latitude>46.9481</Latitude>
+									<Altitude>540</Altitude>
 								</Location>
 							</Centroid>
 						</StopPlace>
@@ -95,58 +170,52 @@
 				</SiteFrame>
 
 				<!-- ============================================================
-				     ServiceCalendarFrame: present per CH-profile requirement for
-				     SITE_OFFER.
+				     ServiceCalendarFrame
 				     ============================================================ -->
-				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:SITE_OFFER_Connections" version="1">
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:SiteConnection_Bern" version="1">
 					<validityConditions>
-						<AvailabilityCondition id="ch:1:AvailabilityCondition:SITE_OFFER" version="1">
-							<FromDate>2026-01-01T00:00:00</FromDate>
-							<ToDate>2026-12-31T00:00:00</ToDate>
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:SiteConnection_Bern" version="1">
+							<FromDate>2025-12-14T00:00:00</FromDate>
+							<ToDate>2026-12-12T23:59:59</ToDate>
 						</AvailabilityCondition>
 					</validityConditions>
 				</ServiceCalendarFrame>
 
 				<!-- ============================================================
-				     ServiceFrame: the two connection types this example exists
-				     to demonstrate.
-				     - SiteConnection: transfer time between two StopPlaces.
-				     - DefaultConnection: transfer time between two Operators.
+				     ServiceFrame: SiteConnection between the two StopPlaces.
 				     ============================================================ -->
-				<ServiceFrame id="ch:1:ServiceFrame:SITE_OFFER_Connections" version="1">
+				<ServiceFrame id="ch:1:ServiceFrame:SiteConnection_Bern" version="1">
 					<connections>
-						<!-- SiteConnection: Bern <-> Bern Wankdorf, 8 minutes -->
-						<SiteConnection id="ch:1:SiteConnection:7000-8501120" version="1">
-							<TransferDuration>
-								<DefaultDuration>PT8M</DefaultDuration>
-							</TransferDuration>
+						<SiteConnection id="ch:1:SiteConnection:7000-76646" version="1">
 							<WalkTransferDuration>
-								<DefaultDuration>PT8M</DefaultDuration>
+								<DefaultDuration>PT3M</DefaultDuration>
 							</WalkTransferDuration>
 							<BothWays>true</BothWays>
 							<From>
-								<StopPlaceRef ref="ch:1:sloid:7000" version="1"/>
+								<StopPlaceRef ref="ch:1:sloid:7000" versionRef="1"/>
 							</From>
 							<To>
-								<StopPlaceRef ref="ch:1:sloid:8501120" version="1"/>
+								<StopPlaceRef ref="ch:1:sloid:76646" versionRef="1"/>
 							</To>
 						</SiteConnection>
 
-						<!-- DefaultConnection: BLS <-> SBB, 5 minutes.
-						     No stop-scope set here -> applies network-wide for this
-						     operator combination (see uc03_transfers.md, UMSTEIGB/UMSTEIGV). -->
+						<!-- ====================================================
+						     DefaultConnection: BLS <-> SBB (UMSTEIGV/operator
+						     related transfer time), per src/templates/
+						     DefaultConnection_Operators.xml.
+						     ==================================================== -->
 						<DefaultConnection id="ch:1:DefaultConnection:100015-100001" version="1">
 							<WalkTransferDuration>
 								<DefaultDuration>PT5M</DefaultDuration>
 							</WalkTransferDuration>
 							<From>
 								<OperatorView>
-									<OperatorRef ref="ch:1:Operator:100015" version="1"/>
+									<OperatorRef ref="ch:1:sboid:100015" versionRef="1"/>
 								</OperatorView>
 							</From>
 							<To>
 								<OperatorView>
-									<OperatorRef ref="ch:1:Operator:100001" version="1"/>
+									<OperatorRef ref="ch:1:sboid:100001" versionRef="1"/>
 								</OperatorView>
 							</To>
 						</DefaultConnection>
