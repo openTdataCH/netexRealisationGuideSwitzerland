@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     version="1.0" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+    <PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+    <ParticipantRef>SKI-Template</ParticipantRef>
+    <dataObjects>
+        <CompositeFrame id="ch:1:CompositeFrame" version="1">
+            <FrameDefaults/>
+            <frames>
+                <ResourceFrame id="ch:1:ResourceFrame" version="1"/>
+                <SiteFrame id="ch:1:SiteFrame" version="1">
+                    <topographicPlaces>
+                        <TopographicPlace id="ch:1:TopoGraphicPlace:CH-BE" version="1">
+                            <!-- ch-root -->
+                            <!-- ch-attrs: id version -->
+                            <!-- ch-usage: mandatory -->
+                            <Descriptor>
+                                <!-- ch-usage: mandatory -->
+                                <Name>
+                                  <!-- ch-usage: mandatory -->
+                                  Bern
+                                </Name>
+                                <ShortName>
+                                  <!-- ch-usage: expected -->
+                                  <!-- ch-note: Abbreviation of the canton (leave empty if TopographicPlaceType is country) -->
+                                    BE
+                                </ShortName>
+                            </Descriptor>
+                            <TopographicPlaceType>
+                                <!-- ch-usage: mandatory -->
+                                <!-- ch-allowed-enums: county country -->
+                                <!-- ch-note: Allowed values: country, county -->
+                                county
+                            </TopographicPlaceType>
+                            <ParentTopographicPlaceRef ref="ch:1:TopoGraphicPlace:CH-BE-Bern" versionRef="1">
+                              <!-- ch-usage: optional -->
+                              <!-- ch-note: Parent topographic place when it exists. -->
+                            </ParentTopographicPlaceRef>
+                        </TopographicPlace>
+                    </topographicPlaces>
+                </SiteFrame>
+            </frames>
+        </CompositeFrame>
+    </dataObjects>
+</PublicationDelivery>

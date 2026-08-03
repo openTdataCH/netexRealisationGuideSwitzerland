@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Template</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<FrameDefaults/>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame" version="1"/>
+				<SiteFrame id="ch:1:SiteFrame" version="1">
+					<!-- ch-root -->
+					<!-- ch-usage: expected -->
+					<!-- ch-attrs: id version -->
+					<topographicPlaces>
+						<!-- ch-usage: expected -->
+						<TopographicPlace id="ch:1:TopoGraphicPlace:CH-BE" version="1">
+							<!-- ch-usage: expected -->
+							<!-- ch-note: Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces.  -->
+							<!-- ch-see -->
+							<Descriptor>
+								<Name>Bern</Name>
+							</Descriptor>
+						</TopographicPlace>
+					</topographicPlaces>
+					<addresses>
+						<!-- ch-usage: forbidden -->
+						<PostalAddress id="address1" version="1"/>
+					</addresses>
+					<accesses>
+						<!-- ch-usage: forbidden -->
+						<Access id="access1" version="1">
+							<From/>
+							<To/>
+						</Access>
+					</accesses>
+					<stopPlaces>
+						<!-- ch-usage: mandatory -->
+						<StopPlace id="ch:1:sloid:7000" version="1">
+							<!-- ch-usage: mandatory -->
+							<!-- ch-see -->
+						</StopPlace>
+					</stopPlaces>
+					<flexibleStopPlaces>
+						<!-- ch-usage: forbidden -->
+						<FlexibleStopPlace id="flexibleStopPlace1" version="1">
+						</FlexibleStopPlace>
+					</flexibleStopPlaces>
+					<navigationPaths>
+						<!-- ch-usage: forbidden -->
+						<SiteNavigationPath id="notUsed" version="1"/>
+					</navigationPaths>
+					<pointOfInterestClassifications>
+						<!-- ch-usage: forbidden -->
+						<PointOfInterestClassification id="notUsed" version="1"/>
+					</pointOfInterestClassifications>
+					<pointOfInterestClassificationHierarchies>
+						<!-- ch-usage: forbidden -->
+						<PointOfInterestClassificationHierarchy id="notUsed" version="1"/>
+					</pointOfInterestClassificationHierarchies>
+					<tariffZones>
+						<!-- ch-usage: forbidden -->
+						<TariffZone id="notUsed" version="1"/>
+					</tariffZones>
+					<siteFacilitySets>
+						<!-- ch-usage: optional -->
+						<!-- ch-note: We expect the SiteFacilitySet in the ResourceFrame -->
+						<SiteFacilitySet id="generated" version="1">
+							<!-- ch-usage: optional -->
+							<!-- ch-see -->
+						</SiteFacilitySet>
+					</siteFacilitySets>
+				</SiteFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Template</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<FrameDefaults/>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame" version="1"/>
+				<SiteFrame id="ch:1:SiteFrame" version="1">
+					<stopPlaces>
+						<StopPlace id="ch:1:sloid:7000" version="1">
+							<quays>
+								<Quay id="ch:1:sloid:7000:5:9" version="1">
+									<!-- ch-root -->
+									<!-- ch-note: Can be a platform, track, sector group or sector. id is a SLOID whenever possible or generated.-->
+									<!-- ch-attrs: id version -->
+									<privateCodes>
+										<!-- ch-usage: mandatory -->
+										<PrivateCode type="sloid">
+											<!-- ch-usage: expected -->
+											<!-- ch-note: SLOID mandatory if it exists. -->
+											<!-- ch-attrs: type -->
+											ch:1:sloid:7000:5:9
+										</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: Location of Quay. -->
+										<!-- ch-see -->
+										<Location>
+											<Longitude>7.43913088992</Longitude>
+											<Latitude>46.94883228914</Latitude>
+											<Altitude>540.2</Altitude>
+										</Location>
+									</Centroid>
+									<gml:Polygon gml:id="a1231">
+										<!-- ch-usage: forbidden -->
+										<!-- ch-note: We might in future model StopPlace as polygons -->
+									</gml:Polygon>
+									<AccessibilityAssessment id="generated" version="1">
+										<!-- ch-usage: optional -->
+										<!-- ch-note: Will be used at some point for the basic accessibility information. Currently not used. -->
+										<MobilityImpairedAccess><!-- ch-note: Basic information about accessibility. --><!-- ch-usage: optional -->true</MobilityImpairedAccess>
+									</AccessibilityAssessment>
+									<AccessModes><!-- ch-usage: optional --><!-- Currently we don't have the data. But especially for carTransportRail we will use it at some point. -->bicycle foot</AccessModes>
+									<PublicUse><!-- ch-usage: ignored --><!-- Might be added at some point -->all</PublicUse>
+									<Covered><!-- ch-usage: ignored --><!-- Might be added at some point -->covered</Covered>
+									<facilities>
+										<!-- ch-usage: ignored -->
+										<!-- ch-note: might be added in the future. Especially for accessibility.-->
+										<SiteFacilitySetRef ref="generated" versionRef="1"/>
+									</facilities>
+									<SiteRef ref="ch:1:sloid:7000">
+										<!-- ch-usage: optional -->
+										<!-- ch-note: Can reference the parent Quay or StopPlace -->
+									</SiteRef>
+									<localServices>
+										<!-- ch-usage: ignored -->
+										<!-- ch-note: might be added in the future. Especially for accessibility. -->
+										<AssistanceServiceRef ref="generated" versionRef="1"/>
+									</localServices>
+									<PublicCode>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: Code used to identify the Quay to the public -->
+										9
+									</PublicCode>
+									<QuayType><!-- ch-usage: optional --><!-- ch-note: will be used for formations. Allowed values are defined in mapping  excel. -->railPlatform</QuayType>
+									<ParentQuayRef ref="theparentref" versionRef="1">
+										<!-- ch-usage: optional -->
+										<!-- ch-note: Will be used when we do sectors and sector groups. -->
+									</ParentQuayRef>
+								</Quay>
+							</quays>
+						</StopPlace>
+					</stopPlaces>
+				</SiteFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

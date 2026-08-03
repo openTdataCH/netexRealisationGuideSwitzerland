@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<!-- ch-root -->
+	<!-- ch-usage: mandatory -->
+	<PublicationTimestamp><!-- ch-usage: mandatory -->2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef><!-- ch-usage: mandatory -->SKI-Template</ParticipantRef>
+	<dataObjects>
+		<!-- ch-usage: mandatory -->
+		<CompositeFrame id="ch:1:CompositeFrmae" version="1">
+			<!-- ch-usage: mandatory -->
+			<ValidBetween>
+				<!-- ch-usage: expected -->
+				<!-- ch-note: This defines which timetable year is meant. We don't support partial delivery. -->
+				<FromDate><!-- ch-usage: expected -->2026-01-01T00:00:00</FromDate>
+				<ToDate><!-- ch-usage: expected -->2026-12-31T00:00:00</ToDate>
+			</ValidBetween>
+			<Description>
+				<!-- ch-usage: optional -->
+				<!-- ch-note: A description of the delivery can be provided.-->
+			</Description>
+			<FrameDefaults>
+				<!-- ch-see -->
+				<!-- ch-usage: expected -->
+			</FrameDefaults>
+			<frames>
+				<!-- ch-usage: mandatory -->
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame" version="1">
+					<!-- ch-usage: mandatory -->
+					<!-- ch-note: Needed for the relevant AvailabilityConditions -->
+					<!-- ch-see -->
+				</ServiceCalendarFrame>
+				<TimetableFrame id="ch:1:TimetableFrame" version="1">
+					<!-- ch-usage: mandatory -->
+					<journeyMeetings>
+						<!-- ch-usage: forbidden -->
+						<!-- ch-note: Could have been used for splitting and joining. We will do it with ServiceJourneyInterchange -->
+						<JourneyMeeting id="generated" version="1">
+							<FromJourneyRef ref="sjyid" versionRef="referenced"/>
+							<ToJourneyRef ref="sjyid1" versionRef="referenced"/>
+						</JourneyMeeting>
+					</journeyMeetings>
+					<journeyInterchanges>
+						<ServiceJourneyInterchange version="1" id="ch:1:ServiceJourneyInterchange:91014I-THU-17-1-5100_91030L-THU-80-1-7200">
+							<!-- ch-usage: mandatory -->
+							<!-- ch-see -->
+							<FromPointRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="1">
+							</FromPointRef>
+							<FromVisitNumber>1</FromVisitNumber>
+							<ToPointRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="1">
+							</ToPointRef>
+							<FromServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" versionRef="1">
+							</FromServiceJourneyRef>
+							<ToServiceJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" versionRef="1">
+							</ToServiceJourneyRef>
+						</ServiceJourneyInterchange>
+					</journeyInterchanges>
+					<interchangeRules>
+						<!-- ch-usage: forbidden -->
+						<InterchangeRule id="generated2" version="1">
+							<!-- ch-usage: mandatory -->
+						</InterchangeRule>
+						<InterchangeRule id="generated" version="1">
+						</InterchangeRule>
+					</interchangeRules>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
