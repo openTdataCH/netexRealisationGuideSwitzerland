@@ -254,6 +254,9 @@ A `ScheduledStopPoint` can represent two types of stop points:
 *->[Template](./templates/PassengerStopAssignment.xml)*
 
 ### Usage Notes
+- We don't use `BoardingPosition`.
+- In Switzerland the goal is to always have a `QuayRef`. Having to map only to the `StopPlace` is to be avoided. If there is data from abroad, it might be that we don't have the quays yet.
+- If a router has a detailed model with `Quay` and we have only `StopPlace`, then it probably is best to generate an artificial quay and then do the transfers correctly.
 - `@id`s don't need to be stable.
 
 
