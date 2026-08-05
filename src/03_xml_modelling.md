@@ -210,6 +210,9 @@ All other defined attributes like `created`, `changed`, `modification` are not u
 #### Version
 We will use `version="1"` in Switzerland. In some cases we use `versionRef="1"` instead, when the referenced object is not in the same file in references (`XXXRef`-elements). We no longer use `any` and expect to remove that semantic if possible. Also, the version (or versionRef) always must be present.
 
+Objects like lines, stop places can change during the timetable year. NeTEx would support to model this correctly with the versions (or different id). However, currently this is all flattened. In the deliveries before the change occurs, the old version is used for all service journeys and in the next export it would look like the new version (e.g. of the stop) was there all the time. Details can be obtained from ATLAS, if necessary and we might consider changing it. However, in the case of a change then all `ServiceJourney`, `ServiceJourneyPattern` etc. would need to be duplicated as well. 
+As in the delivery to INFO+ the details like coordinates are ignored (because they are taken from ATLAS) the pressure to do it, is diminished. If this behaviour should be changed then we would probably have a long  discussion in AG Solldaten. For deliveries for the next timetable period the valid element from the first day of that period is used.
+
 
 ### FromDate and ToDate
 The dates we have are always operating days. Nevertheless, we use
