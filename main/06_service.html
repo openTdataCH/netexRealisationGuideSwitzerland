@@ -1182,7 +1182,7 @@ class ServiceJourney {
       <td>0..1</td>
       <td>QuayRefStructure</td>
       <td>Reference to a QUAY.</td>
-      <td>Not having the track may be problematic, but it can happen</td>
+      <td>Not having the track may be problematic, but it can happen sometimes for stops abroad. However, the goal is to always have a QuyRef.</td>
     </tr>
   </tbody>
 </table>
@@ -1196,7 +1196,7 @@ class ServiceJourney {
   <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000:503:12"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;QuayRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000:503:12"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Not having the track may be problematic, but it can happen --&gt;</span>
+    <span class="c">&lt;!-- Not having the track may be problematic, but it can happen sometimes for stops abroad. However, the goal is to always have a QuyRef. --&gt;</span>
   <span class="nt">&lt;/QuayRef&gt;</span>
 <span class="nt">&lt;/PassengerStopAssignment&gt;</span>
 </code></pre></div></div>
@@ -1205,6 +1205,9 @@ class ServiceJourney {
 
 <h3 id="usage-notes-4">Usage Notes</h3>
 <ul>
+  <li>We don’t use <code class="language-plaintext highlighter-rouge">BoardingPosition</code>.</li>
+  <li>In Switzerland the goal is to always have a <code class="language-plaintext highlighter-rouge">QuayRef</code>. Having to map only to the <code class="language-plaintext highlighter-rouge">StopPlace</code> is to be avoided. If there is data from abroad, it might be that we don’t have the quays yet.</li>
+  <li>If a router has a detailed model with <code class="language-plaintext highlighter-rouge">Quay</code> and we have only <code class="language-plaintext highlighter-rouge">StopPlace</code>, then it probably is best to generate an artificial quay and then do the transfers correctly.</li>
   <li><code class="language-plaintext highlighter-rouge">@id</code>s don’t need to be stable.</li>
 </ul>
 
