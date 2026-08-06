@@ -7,7 +7,8 @@ A minimal ServiceFrame must be present in all timetable files.
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
 |  | lines | mandatory | 0..1 | lineRefs_RelStructure | LINEs in frame. | Only Line is used and not FlexibleLine |
-| + | [Line](Line.md) | mandatory | 0..* | Line_VersionStructure | A group of ROUTEs which is generally known to the public by a similar name or number. |  |
+| + | Line | mandatory | 0..* | Line_VersionStructure | A group of ROUTEs which is generally known to the public by a similar name or number. | For NETWORK OFFER we only need the name |
+| ++ | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
 |  | groupsOfLines | expected | 0..1 | groupsOfLinesInFrame_RelStructure | GROUPs of LINEs in frame. |  |
 | + | [GroupOfLines](GroupOfLines.md) | expected | 1..* | GroupOfLines_VersionStructure | A grouping of LINEs which will be commonly referenced for a specific purpose. | We use GroupOfLine for the modeling of mixed lines |
 |  | destinationDisplays | expected | 0..1 | destinationDisplayRefs_RelStructure | DESTINATION DISPLAYs in frame. | We only allow fully formed content of destinationDisplays |
