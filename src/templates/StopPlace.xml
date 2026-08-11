@@ -16,7 +16,7 @@
 							<!-- ch-note: In some cases the id of a StopPlace is not a SLOID. -->
 							<ValidBetween>
 								<!-- ch-usage: optional -->
-								<!-- ch-note: This can be used to show, when the StopPlace can be used. -->
+								<!-- ch-note: This can be used to show when the StopPlace can be used. Note that the usage (optional) overrides the cardinality. -->
 								<FromDate><!-- ch-usage: optional -->2026-01-01T00:00:00</FromDate>
 								<ToDate><!-- ch-usage: optional -->2026-12-31T00:00:00</ToDate>
 							</ValidBetween>
@@ -119,7 +119,7 @@
 							<Weighting><!-- ch-usage: optional --><!-- ch-note: Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. --><!-- ch-allowed-enums: noInterchange interchangeAllowed recommendedInterchange preferredInterchange -->preferredInterchange</Weighting>
 							<quays>
 								<!-- ch-usage: expected -->
-								<!-- ch-note: The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. -->
+								<!-- ch-note: The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. Note that the usage (expected) overrides the cardinality. -->
 								<Quay id="ch:1:sloid:7000:5:9" version="1">
 									<!-- ch-usage: expected -->
 									<!-- ch-see -->
