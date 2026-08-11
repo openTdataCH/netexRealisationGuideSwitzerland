@@ -79,11 +79,10 @@
                 				<!-- ch-note: DayOffset if relevant. -->
 								0
 							</DepartureDayOffset>
-							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" versionRef="1" nameOfRefClass="ServiceJourneyPattern">
+							<ServiceJourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" versionRef="1">
 								<!-- ch-usage: mandatory -->
-								<!-- ch-attrs: nameOfRefClass -->
 								<!-- ch-note: The reference to the ServiceJourneyPattern -->
-							</JourneyPatternRef>
+							</ServiceJourneyPatternRef>
 							<TimeDemandTypeRef ref="generated" versionRef="1">
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
@@ -93,7 +92,7 @@
 								<!-- ch-note: Mostly used for accessibility information -->
 							</VehicleTypeRef>
 							<LineRef ref="ch:1:slnid:1024355" versionRef="1">
-								<!--ch-usage: mandatory -->
+								<!--ch-usage: forbidden -->
 							</LineRef>
 							<DirectionType><!-- ch-usage: optional --><!-- ch-allowed-enums: inbound outbound --><!-- ch-note: Allowed are: inbound, outbound -->inbound</DirectionType>
 							<trainNumbers>
@@ -105,7 +104,7 @@
 							<Destination>
 								<!-- ch-usage: expected -->
 								<!-- ch-see -->
-							    <ScheduledStopPointRef ref="ch:1:sloid:1609" versionRef="1"/>
+								<ScheduledStopPointRef ref="ch:1:sloid:1609" versionRef="1"/>
 								<DestinationDisplayRef ref="generated" versionRef="1"/>
 							</Destination>
 							<passingTimes>
