@@ -2,7 +2,7 @@
 <StopPlace id="ch:1:sloid:7000" version="1">
   <!-- In some cases the id of a StopPlace is not a SLOID. -->
   <ValidBetween>
-    <!-- This can be used to show, when the StopPlace can be used. -->
+    <!-- This can be used to show when the StopPlace can be used. Note that the usage (optional) overrides the cardinality. -->
     <FromDate>2026-01-01T00:00:00</FromDate>
     <ToDate>2026-12-31T00:00:00</ToDate>
   </ValidBetween>
@@ -62,7 +62,7 @@
     <!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. -->
   </Weighting>
   <quays>
-    <!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. -->
+    <!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. Note that the usage (expected) overrides the cardinality. -->
     <Quay id="ch:1:sloid:7000:5:9" version="1"/>
   </quays>
 </StopPlace>

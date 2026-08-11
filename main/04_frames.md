@@ -33,7 +33,7 @@ For PublicationDelivery have a good look at how the attributes must be done in t
 |  | PublicationTimestamp | mandatory | 1..1 | xsd:dateTime | Time of output of data. |  |
 |  | ParticipantRef | mandatory | 1..1 | siri:ParticipantCodeType | Identifier of system requesting Data. |  |
 |  | Description | optional | 0..1 | MultilingualString |  |  |
-|  | dataObjects | mandatory | 0..1 | dataObjects_RelStructure | NeTEx Entities of any type. |  |
+|  | dataObjects | mandatory | 0..1 | dataObjects_RelStructure | NeTEx Entities of any type. | Note that the usage (mandatory) overrides the cardinality. |
 | + | [CompositeFrame](./tables/CompositeFrame.md) | mandatory | 1..1 | Composite_VersionFrameStructure | A container VERSION FRAME that groups a set of content VERSION FRAMsE to which the same VALIDITY CONDITIONs have been assigned. |  |
 
 
@@ -52,6 +52,7 @@ For PublicationDelivery have a good look at how the attributes must be done in t
   <ParticipantRef>SKI-Templates</ParticipantRef>
   <Description>Standard export 2027-06-02 for Bernmobil.</Description>
   <dataObjects>
+    <!-- Note that the usage (mandatory) overrides the cardinality. -->
     <CompositeFrame id="ch:1:CompositeFrame" version="1">
       <FrameDefaults/>
       <frames>

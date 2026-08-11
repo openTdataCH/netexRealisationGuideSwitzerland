@@ -274,7 +274,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>1..*</td>
       <td>unknown</td>
       <td> </td>
-      <td>This can be used to show, when the StopPlace can be used.</td>
+      <td>This can be used to show when the StopPlace can be used. Note that the usage (optional) overrides the cardinality.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -499,7 +499,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>1..1</td>
       <td>quays_RelStructure</td>
       <td>QUAYs within the STOP PLACE.</td>
-      <td>The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles.</td>
+      <td>The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. Note that the usage (expected) overrides the cardinality.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -521,7 +521,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
 <span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- In some cases the id of a StopPlace is not a SLOID. --&gt;</span>
   <span class="nt">&lt;ValidBetween&gt;</span>
-    <span class="c">&lt;!-- This can be used to show, when the StopPlace can be used. --&gt;</span>
+    <span class="c">&lt;!-- This can be used to show when the StopPlace can be used. Note that the usage (optional) overrides the cardinality. --&gt;</span>
     <span class="nt">&lt;FromDate&gt;</span>2026-01-01T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
     <span class="nt">&lt;ToDate&gt;</span>2026-12-31T00:00:00<span class="nt">&lt;/ToDate&gt;</span>
   <span class="nt">&lt;/ValidBetween&gt;</span>
@@ -581,7 +581,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     <span class="c">&lt;!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. --&gt;</span>
   <span class="nt">&lt;/Weighting&gt;</span>
   <span class="nt">&lt;quays&gt;</span>
-    <span class="c">&lt;!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. --&gt;</span>
+    <span class="c">&lt;!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. Note that the usage (expected) overrides the cardinality. --&gt;</span>
     <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/quays&gt;</span>
 <span class="nt">&lt;/StopPlace&gt;</span>
@@ -666,7 +666,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     <tr>
       <td> </td>
       <td>privateCodes</td>
-      <td>mandatory</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>PrivateCodesStructure</td>
       <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
@@ -697,7 +697,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>0..1</td>
       <td>SimplePoint_VersionStructure</td>
       <td>Centre Coordinates of ZONE.</td>
-      <td>Location of Quay.</td>
+      <td>Location of Quay. Note that the usage (mandatory) overrides the cardinality.</td>
     </tr>
     <tr>
       <td> </td>
@@ -778,7 +778,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     <span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
   <span class="nt">&lt;Centroid&gt;</span>
-    <span class="c">&lt;!-- Location of Quay. --&gt;</span>
+    <span class="c">&lt;!-- Location of Quay. Note that the usage (mandatory) overrides the cardinality. --&gt;</span>
     <span class="nt">&lt;Location&gt;</span>
       <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
       <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
@@ -1043,7 +1043,7 @@ as its parent.</li>
       <td>0..1</td>
       <td>LocationStructure</td>
       <td>The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates).</td>
-      <td>Note concerning coordinates - The main coordinates are given as <strong>WSG84</strong>.</td>
+      <td>The main coordinates are given as <strong>WSG84</strong>. Note that the usage (mandatory) overrides the cardinality.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -1101,7 +1101,7 @@ as its parent.</li>
 <span class="nt">&lt;Centroid&gt;</span>
   <span class="c">&lt;!-- Global or national location --&gt;</span>
   <span class="nt">&lt;Location&gt;</span>
-    <span class="c">&lt;!-- Note concerning coordinates - The main coordinates are given as **WSG84**. --&gt;</span>
+    <span class="c">&lt;!-- The main coordinates are given as **WSG84**. Note that the usage (mandatory) overrides the cardinality. --&gt;</span>
     <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
     <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
     <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
