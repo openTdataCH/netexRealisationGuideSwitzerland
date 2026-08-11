@@ -244,6 +244,9 @@ XML is ordered by definition. If there are sequences of elements e.g. `PointsInJ
 * Description - The original description from the schema.
 * Note - Notes that we want to convey on elements. Currently, notes can't be put on attributes. There we relay on the general note for the element or the usage notes.
 
+### Geometries
+The Swiss profile does not contain any  geometries currently. If we would do it, we would do it the following simple and compact way: with `ServiceLinks`. This allows us to define a coordinate sequence. The advantage is (a) one coordinate sequence for all journeys using the link, which makes it very compact. We don't need the `LinkProjection` because we do not need to project different kinds of links onto each other.
+
 ## Common Elements and Types
 
 ### AlternativeName
