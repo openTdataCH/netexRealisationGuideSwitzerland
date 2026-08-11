@@ -72,7 +72,7 @@ classDiagram
     ServiceCalendarFrame "1" o-- "0..*" AvailabilityCondition : contains
     ServiceCalendarFrame "1" o-- "0..*" DayType : contains
     ServiceCalendarFrame "1" o-- "0..*" DayTypeAssignment : contains
-    ServiceCalendarFrame "1" o-- "0..*" ServiceCalendar : contains
+    ServiceCalendarFrame "1" o-- "0..1*" ServiceCalendar : contains
     ServiceCalendarFrame "1" o-- "0..*" Timeband : contains
 
     %% Usage relations from external elements to AvailabilityCondition
@@ -142,7 +142,7 @@ in this frame, never inline.
 *→ [Glossary definition](A4_annex_glossary.md#servicecalendar)*
 
 #### Purpose
-Long-term planning uses calendar days that are classified as specific `DayType`s (example: weekday in school holidays). In the general NeTEx model, a `ServiceCalendar` defines a mapping between `DayType`s and OperatingDays; in the Swiss profile, this mapping via OperatingDays is not used — `ServiceCalendar` serves only as a container for `DayType`s and `DayTypeAssignment`s, defining a mapping of `DayType`s to dates. 
+Long-term planning uses calendar days that are classified as specific `DayType`s (example: weekday in school holidays). In the general NeTEx model, a `ServiceCalendar` can itself contain `dayTypes`/`dayTypeAssignments`; in the Swiss profile this nested usage is not used. `ServiceCalendar` is used only as a label for the overall timetable year (`Name`, `FromDate`, `ToDate` — e.g. "Fahrplan 2026" / "Horaire 2026"). `DayType`s and `DayTypeAssignment`s are declared as siblings of `ServiceCalendar` directly within `ServiceCalendarFrame`, not nested inside it.
 
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceCalendar.md)
