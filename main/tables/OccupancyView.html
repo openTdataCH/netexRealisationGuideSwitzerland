@@ -76,38 +76,20 @@
     </tr>
     <tr>
       <td> </td>
-      <td>dayTypeRefs</td>
+      <td>validityConditions</td>
       <td>optional</td>
-      <td>0..1</td>
-      <td>dayTypeRefs_RelStructure</td>
-      <td>DAY TYPEs for BLOCK.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>DayTypeRef</td>
-      <td>optional</td>
-      <td>1..*</td>
-      <td>DayTypeRefStructure</td>
-      <td>Reference to a DAY TYPE.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>dayTypes</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>dayTypesInFrame_RelStructure</td>
-      <td>Reusable DAY TYPE in SERVICE CALENDAR FRAME.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td><a href="/netexRealisationGuideSwitzerland/main/tables/DayType.html">DayType</a></td>
-      <td>expected</td>
       <td>1..1</td>
-      <td>DayType_VersionStructure</td>
-      <td>A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays.</td>
+      <td>validityConditions_RelStructure</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td>If there is a different availability to the ServiceJourney</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AvailabilityConditionRef</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>AvailabilityConditionRefStructure</td>
+      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
       <td> </td>
     </tr>
     <tr>

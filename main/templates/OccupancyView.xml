@@ -30,19 +30,13 @@
 										<OccupancyView id="generated" version="1">
 											<!-- ch-root -->
 											<!-- ch-attrs: id version -->
-											<dayTypeRefs>
+											<validityConditions>
 												<!-- ch-usage: optional -->
-												<DayTypeRef ref="generated" versionRef="1">
-													<!-- ch-usage: optional -->
-												</DayTypeRef>
-											</dayTypeRefs>
-											<dayTypes>
-												<!-- ch-usage: expected -->
-												<DayType id="generated" version="1">
+												<!-- ch-note: If there is a different availability to the ServiceJourney -->
+												<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1231231:11" versionRef="1">
 													<!-- ch-usage: expected -->
-													<!-- ch-see -->
-												</DayType>
-											</dayTypes>
+												</AvailabilityConditionRef>
+											</validityConditions>
 											<FareClass><!-- ch-usage: expected --><!-- ch-allowed-enums: firstClass secondClass unknown -->firstClass</FareClass>
 											<OccupancyLevel><!-- ch-usage: expected --><!-- ch-allowed-enums: unknown empty manySeatsAvailable fewSeatsAvailable standingRoomOnly crushedStandingRoomOnly full notAcceptingPassengers undefined --><!-- ch-note: Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable -->seatsAvailable</OccupancyLevel>
 											<GroupReservation>

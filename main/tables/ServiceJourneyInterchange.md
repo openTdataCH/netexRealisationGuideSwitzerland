@@ -21,5 +21,6 @@
 |  | FromVisitNumber | optional | 0..1 | xsd:nonNegativeInteger | Visit number to distinguish which visit to FROM SCHEDULED STOP POINT this is. Default is one. Only needed for circular routes with connections at the same stop on different visits. |  |
 |  | ToPointRef | mandatory | 1..1 | VehicleMeetingPointRefStructure | End POINT of LINK. |  |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
+|  | ToVisitNumber | optional | 0..1 | xsd:nonNegativeInteger | Visit number to distinguish which visit to TO SCHEDULED STOP POINT this is. Default is one. Only needed for circular routes with connections at the same stop on different visits. |  |
 |  | FromServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure | SERVICE JOURNEY that feeds JOURNEY MEETING. +v2.0 |  |
 |  | ToServiceJourneyRef | mandatory | 1..1 | ServiceJourneyRefStructure | SERVICE JOURNEY that distributes from JOURNEY MEETING. +v2.0 |  |

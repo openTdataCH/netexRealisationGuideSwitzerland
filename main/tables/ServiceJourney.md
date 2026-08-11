@@ -26,11 +26,9 @@
 |  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration | Whether journey is as planned, a cancellation or an extra journey. Default is as Planned. | Only the value planned is allowed. We might add the others, like cancelled, later. |
 |  | DepartureTime | expected | 0..1 | xsd:time | Time of departure of JOURNEY from POINT. | Usually local time. Otherwise we have problems with summer time. See Usage Notes. |
 |  | DepartureDayOffset | optional | 0..1 | DayOffsetType | Daya offset if Time of departure of JOURNEY from origin POINT from current OPERATING DAY. | 0 for current operating day. Could also be negative. |
-|  | JourneyPatternRef | mandatory | 1..* | JourneyPatternRefStructure | Reference to a JOURNEY PATTERN. | The reference to the ServiceJourneyPattern. |
-| + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
+|  | ServiceJourneyPatternRef | mandatory | 1..1 | ServiceJourneyPatternRefStructure | Reference to a SERVICE JOURNEY PATTERN. | The reference to the ServiceJourneyPattern. |
 |  | TimeDemandTypeRef | mandatory | 0..1 | TimeDemandTypeRefStructure | Reference to a TIME DEMAND TYPE. If given by context need not be stated. | The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. |
 |  | VehicleTypeRef | expected | 1..* | VehicleTypeRefStructure | Reference to a VEHICLE TYPE. | Mostly used for accessibility information like NF. Relevant definitions in the mapping excel. |
-|  | LineRef | mandatory | 1..* | LineRefStructure | Reference to a LINE. |  |
 |  | DirectionType | mandatory | 0..1 | RelativeDirectionEnumeration | A Direction of a ROUTE. One of a restricted set of values. Default is "Outbound" | Allowed are: inbound, outbound |
 |  | trainNumbers | mandatory | 0..1 | trainNumbersInFrame_RelStructure | TRAIN NUMBERs -= derived through JOURNEY PARTs of a journey - for a multi-part journey only. |  |
 | + | TrainNumberRef | mandatory | 0..* | TrainNumberRefStructure | Reference to a TRAIN NUMBER. |  |
