@@ -1,7 +1,3 @@
----
-mermaid: true
----
-
 # Service Calendar Frame
 
 In this chapter:
@@ -17,6 +13,8 @@ In this chapter:
 
 ### Purpose
 Groups calendar definitions that describe **when** services operate. We do this with `AvailabilityCondition`s stored in this frame. We also have `DayType`s and `DayTypeAssignment`s for the holidays.
+
+**How `AvailabilityCondition`/`ValidDayBits` work:** an `AvailabilityCondition` defines a validity period (`FromDate`/`ToDate`) together with a day-by-day pattern (`ValidDayBits`) indicating on which individual days within that period the condition applies. `ValidDayBits` is a bit string with exactly one bit per calendar day of the period — `1` means the day is valid, `0` means it is not (directly equivalent to an HRDF bitfield). A `ServiceJourney` (or any other element that needs temporal validity) references one `AvailabilityCondition` via `AvailabilityConditionRef`; the referenced object itself is always defined centrally in this frame, never inline.
 
 See the following class diagram for the most important objects of the `ServiceCalendarFrame` and their relationships to the other frames.
 
@@ -127,14 +125,15 @@ Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
 - AvailabilityCondition replaces OperatingDay and OperatingPeriod. Whenever a reference to a VP (“Verkehrsperiode” or "operating period" in english) is needed, we use an `AvailabilityConditionRef`:
 -	The referenced `AvailabilityCondition`s are centrally stored in the `ServiceCalendarFrame`.
 - The element `ValidDayBits` directly indicates the days on which some service is provided or not. They are similar to the HRDF bitfields. 
-- `ValidDayBits` is required whenever the `AvailabilityCondition` is of temporal nature (more often than not). Examples include:
+- `ValidDayBits` is expected whenever the `AvailabilityCondition` expresses a recurring day-by-day pattern, which is the case for most `AvailabilityCondition`s in practice. Examples include:
   -	`ServiceJourney`
   -	`NoticeAssignment`
   -	`ServiceFacilitySet`
   -	`ServiceJourneyInterchange`
 - `AvailabilityCondition`s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are `FromDate`/`ToDate`, `ValidDayBits`, and `timebands` — **none of these is mandatory on its own**; an `AvailabilityCondition` may consist of only one
   of them (e.g. only `FromDate`/`ToDate` for "summer only", only `timebands` for "school holiday period", or only `ValidDayBits` for "Sundays only").
-- Hint: The frames `TimetableFrame`, `ServiceFrame` and `ServiceCalendarFrame` and their elements must have the same validity.
+  **Concrete use case we already have:** every `AvailabilityCondition` in our examples combines `FromDate`/`ToDate` (the overall timetable period, e.g. one `Fahrplanjahr`) **with** `ValidDayBits` (the day-by-day pattern within that period) — this is the everyday case of the ANDing mechanism, directly equivalent to an HRDF "Verkehrsperiode + Bitfeld" combination. We do **not** currently have a use case that additionally combines `timebands` with the other two — see the note under [Timeband](#timeband) below.
+- Note: the frames `TimetableFrame`, `ServiceFrame` and `ServiceCalendarFrame` and their elements must have the same validity.
 - `@id` does not need to be kept stable between exports.
 
 ### ServiceCalendar
@@ -181,8 +180,9 @@ A classification of days on which a specific set of transport services operates 
 *→ [Glossary definition](A4_annex_glossary.md#timeband)*
 
 #### Purpose
-A period of time within a day, usually defined by a start and end time.
+A period of time within a day, usually defined by a start and end time (e.g. `06:00:00`–`09:00:00` for a morning peak window). Within an `AvailabilityCondition`, a `timebands` constraint restricts validity to journeys whose departure falls inside that daily time window, in addition to whichever `FromDate`/`ToDate`/`ValidDayBits` constraints are also present (all are ANDed, see [ServiceCalendarFrame](#servicecalendarframe) above).
 
+**Example use case (illustrative, not yet implemented in the Swiss profile):** a `Timeband` `07:00:00`–`09:00:00` combined with `ValidDayBits` for weekdays could restrict a fare rule or a `NoticeAssignment` (e.g. "peak-hour surcharge applies") to weekday morning-peak journeys only, without needing a separate `AvailabilityCondition` per journey.
 
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/Timeband.md)
@@ -196,8 +196,9 @@ A period of time within a day, usually defined by a start and end time.
 
 
 #### Usage Notes
-- Currently `Timeband` is used in RG 1.0 for `InterchangeRuleTiming`s, later also used for the opening hours in `StopPlace` models. 
+- `Timeband` was used in RG 1.0 for `InterchangeRuleTiming`s (not applicable in RG 2.0, since `InterchangeRule` is not used — see [uc03 Transfers](uc03_transfers.md)). It is planned for future use for opening hours in `StopPlace` models, but currently **has no active use case in the Swiss RG 2.0 profile** — we have not yet identified data that requires it.
 - `@id` should be kept stable between exports.
+
 
 ### DayTypeAssignment
 *→ [Glossary definition](A4_annex_glossary.md#daytypeassignment)*
