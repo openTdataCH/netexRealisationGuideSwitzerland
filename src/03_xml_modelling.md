@@ -191,9 +191,8 @@ The following rules apply to common attributes:
 IDs must be globally unique during importation (in the `@id` of the element). By globally unique we mean:
 - They are unique by object type.
 - Also, they are unique within one delivery (may consist of multiple files). If two elements have the same `@id` then they must be the same element.
-- Between delivery, they may change, when they are declared as stable.
-- 
-They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for "primary" objects we expect object permanence. This is mentioned in the usage note of each element.
+- Between delivery, they may change, unless when they are declared as stable (in this document). 
+- They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for "primary" objects we expect object permanence. This is mentioned in the usage note of each element.
 Important business level keys are stored in elements (`KeyList`, `privateCodes/PrivateCode`) in addition to the IDs.
 
 It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available. 
