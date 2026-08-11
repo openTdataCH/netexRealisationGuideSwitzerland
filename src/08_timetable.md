@@ -84,6 +84,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - A `ServiceJourney`can be associated with exactly one `ServiceJourneyPattern` and `TimeDemandType`.
 - `@id` needs to be kept stable between exports if possible. However, when new variants are used for different operating days, it changes.
 - Tarif codes (`TC`) and region codes (`RN`) are put into a key/value pair (see example).
+- `DepartureTime` is used without UTC time zone or offset. Otherwise, the ServiceJourney would need to be duplicated form winter and summer time. and we would need additional `AvailabilityCondition`s.  For frequency purpose additional service journeys would need to be squeezed in, when during the change additional ones are needed to maintain the frequency.  In such cases UTC must be used to clarify for those additional journeys when it starts.
 
 
 ### Calculation of Passing Times at Stops
