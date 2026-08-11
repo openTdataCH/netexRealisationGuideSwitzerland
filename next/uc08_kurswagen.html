@@ -3,9 +3,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Kurswagen (Direct carricage) | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<title>Kurswagen (Direct carriage) | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Kurswagen (Direct carricage)" />
+<meta property="og:title" content="Kurswagen (Direct carriage)" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
@@ -14,9 +14,9 @@
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Kurswagen (Direct carricage)" />
+<meta property="twitter:title" content="Kurswagen (Direct carriage)" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Kurswagen (Direct carricage)","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/next/uc08_kurswagen.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Kurswagen (Direct carriage)","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/next/uc08_kurswagen.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/netexRealisationGuideSwitzerland/next/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/next/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
@@ -37,11 +37,167 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Kurswagen (Direct carricage)</h1>
+    <h1 class="post-title">Kurswagen (Direct carriage)</h1>
   </header>
 
   <div class="post-content">
-    <p><strong>LATER</strong></p>
+    <h2 id="overview">Overview</h2>
+
+<p>A <strong>Kurswagen</strong> (direct carriage) is a vehicle group that travels as part of one train
+composition and is <strong>coupled onto a different, physically continuing train</strong> at an
+intermediate stop, or that is coupled onto an already-running train as a separate
+commercial product for the remainder of the route. The rest of the feeder
+composition does not necessarily continue further, and the carriages join a
+composition that exists independently of them.</p>
+
+<p><strong>Real-world example used in this use case:</strong> the ÖBB Nightjet <strong>NJ 470</strong>
+(Zürich HB → Hamburg-Altona) is a sleeper/couchette train. From <strong>Basel SBB</strong>
+onward, seated carriages are coupled onto the NJ 470 composition and run together
+with it all the way to Hamburg-Altona, sold as a separate product: <strong>IC 60470</strong>.
+Passengers can book IC 60470 as an ordinary seat-only Intercity, without needing to
+know it physically travels coupled to a Nightjet from Basel SBB onward.</p>
+
+<pre><code class="language-mermaid">graph LR
+  ZuerichHB["Zürich HB"] --&gt;|"NJ 470"| BaselSBB["Basel SBB (coupling point)"]
+  BaselSBB --&gt;|"NJ 470 + IC 60470 (coupled)"| HamburgAltona["Hamburg-Altona"]
+</code></pre>
+
+<blockquote>
+  <p><strong>Note:</strong> This is structurally very close to a plain through-service
+(<a href="/netexRealisationGuideSwitzerland/next/uc01_durchbindung.html">uc01 Durchbindung</a>) at the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> level — NeTEx
+does not track individual physical vehicles/carriages within a <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.
+The two products (NJ 470 and IC 60470) are each modelled as their own complete
+<code class="language-plaintext highlighter-rouge">ServiceJourney</code>, linked at the coupling point. See
+<a href="#relation-to-formations">Relation to formations</a> below for the more granular,
+not-yet-implemented alternative.</p>
+</blockquote>
+
+<h2 id="mapping-between-hrdf-and-netex">Mapping between HRDF and NeTEx</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>HRDF</th>
+      <th>NeTEx RG1</th>
+      <th>NeTEx RG2</th>
+      <th>Use Case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">[durchbi]</code></td>
+      <td><code class="language-plaintext highlighter-rouge">JourneyMeeting</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> with <code class="language-plaintext highlighter-rouge">StaySeated=true</code> and <code class="language-plaintext highlighter-rouge">ChangeWithinVehicle=false</code></td>
+      <td>Kurswagen coupled onto a different train composition at an intermediate stop</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="modelling-with-netex-rg-20-servicejourneyinterchange">Modelling with NeTEx RG 2.0 (<code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code>)</h2>
+
+<p>Kurswagen is modelled exclusively using <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code>, exactly as for
+<a href="/netexRealisationGuideSwitzerland/next/uc01_durchbindung.html">Durchbindung</a> and <a href="/netexRealisationGuideSwitzerland/next/uc02_joining_splitting.html">Flügelzug</a>.
+<code class="language-plaintext highlighter-rouge">JourneyPart</code> and <code class="language-plaintext highlighter-rouge">JourneyPartCouple</code> are <strong>not used</strong> for this in RG 2.0.</p>
+
+<p>Both <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s share the same <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> (simplified to three
+stops: Zürich HB, Basel SBB, Hamburg-Altona). NJ 470 covers the pattern from the
+first point (Zürich HB); IC 60470 covers it starting only from the second point
+(Basel SBB).</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ServiceJourney</span> <span class="na">id=</span><span class="s">"ch:1:sjyid:100003:470"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">responsibilitySetRef=</span><span class="s">"ch:1:ResponsibilitySet:OEBB"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:NJ470_IC60470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;privateCodes&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sjyid"</span><span class="nt">&gt;</span>ch:1:sjyid:100003:470<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/privateCodes&gt;</span>
+  <span class="nt">&lt;TypeOfProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:NJ"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ServiceAlteration&gt;</span>planned<span class="nt">&lt;/ServiceAlteration&gt;</span>
+  <span class="nt">&lt;DepartureTime&gt;</span>21:02:00<span class="nt">&lt;/DepartureTime&gt;</span>
+  <span class="nt">&lt;JourneyPatternRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourneyPattern:NJ470_IC60470"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfRefClass=</span><span class="s">"ServiceJourneyPattern"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;TimeDemandTypeRef</span> <span class="na">ref=</span><span class="s">"ch:1:TimeDemandType:NJ470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100003"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:NJ470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;DirectionType&gt;</span>outbound<span class="nt">&lt;/DirectionType&gt;</span>
+  <span class="nt">&lt;trainNumbers&gt;</span>
+    <span class="nt">&lt;TrainNumberRef</span> <span class="na">ref=</span><span class="s">"ch:1:TrainNumber:470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/trainNumbers&gt;</span>
+<span class="nt">&lt;/ServiceJourney&gt;</span>
+
+<span class="nt">&lt;ServiceJourney</span> <span class="na">id=</span><span class="s">"ch:1:sjyid:100001:60470"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">responsibilitySetRef=</span><span class="s">"ch:1:ResponsibilitySet:SBB"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:NJ470_IC60470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;privateCodes&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sjyid"</span><span class="nt">&gt;</span>ch:1:sjyid:100001:60470<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/privateCodes&gt;</span>
+  <span class="nt">&lt;TypeOfProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:IC"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ServiceAlteration&gt;</span>planned<span class="nt">&lt;/ServiceAlteration&gt;</span>
+  <span class="nt">&lt;DepartureTime&gt;</span>22:07:00<span class="nt">&lt;/DepartureTime&gt;</span>
+  <span class="nt">&lt;JourneyPatternRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourneyPattern:NJ470_IC60470"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfRefClass=</span><span class="s">"ServiceJourneyPattern"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;TimeDemandTypeRef</span> <span class="na">ref=</span><span class="s">"ch:1:TimeDemandType:IC60470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100001"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:IC60470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;DirectionType&gt;</span>outbound<span class="nt">&lt;/DirectionType&gt;</span>
+  <span class="nt">&lt;trainNumbers&gt;</span>
+    <span class="nt">&lt;TrainNumberRef</span> <span class="na">ref=</span><span class="s">"ch:1:TrainNumber:60470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/trainNumbers&gt;</span>
+<span class="nt">&lt;/ServiceJourney&gt;</span>
+
+<span class="nt">&lt;ServiceJourneyInterchange</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourneyInterchange:470-60470-BaselSBB"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:NJ470_IC60470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;Description&gt;</span>Kurswagen IC 60470 wird in Basel SBB an NJ 470 gekoppelt<span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;StaySeated&gt;</span>true<span class="nt">&lt;/StaySeated&gt;</span>
+  <span class="nt">&lt;CrossBorder&gt;</span>false<span class="nt">&lt;/CrossBorder&gt;</span>
+  <span class="nt">&lt;ChangeWithinVehicle&gt;</span>false<span class="nt">&lt;/ChangeWithinVehicle&gt;</span>
+  <span class="nt">&lt;StandardWaitTime&gt;</span>PT7M<span class="nt">&lt;/StandardWaitTime&gt;</span>
+  <span class="nt">&lt;StandardTransferTime&gt;</span>PT0M<span class="nt">&lt;/StandardTransferTime&gt;</span>
+  <span class="nt">&lt;FromPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:SchedStopPoint:10"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:SchedStopPoint:10"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfRefClass=</span><span class="s">"ScheduledStopPoint"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;FromServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:sjyid:100003:470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ToServiceJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:sjyid:100001:60470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/ServiceJourneyInterchange&gt;</span>
+</code></pre></div></div>
+
+<blockquote>
+  <ul>
+    <li><code class="language-plaintext highlighter-rouge">StaySeated=true</code>: a passenger already on board (in either NJ 470 or IC 60470)
+does not need to leave the vehicle at Basel SBB.</li>
+    <li><code class="language-plaintext highlighter-rouge">ChangeWithinVehicle=false</code>: unlike splitting (Flügelzug), where passengers may
+need to move to the correct coach <em>before</em> the split, here the two products are
+already in their correct, fixed carriages — no movement within the vehicle is
+required.</li>
+    <li><code class="language-plaintext highlighter-rouge">StandardWaitTime=PT7M</code>: the actual coupling time at Basel SBB — this field is
+explicitly intended for <em>“joining/splitting and waiting in vehicle”</em> scenarios
+like this one (per <code class="language-plaintext highlighter-rouge">src/templates/ServiceJourneyInterchange.xml</code>).</li>
+    <li><code class="language-plaintext highlighter-rouge">StandardTransferTime=PT0M</code>: set to zero here since no passenger walking-transfer
+applies in a Kurswagen scenario — the field itself is <code class="language-plaintext highlighter-rouge">expected</code> on every
+<code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code>.</li>
+    <li>Both <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s carry their own <code class="language-plaintext highlighter-rouge">Line</code>, <code class="language-plaintext highlighter-rouge">TrainNumber</code>, <code class="language-plaintext highlighter-rouge">Operator</code>, and
+<code class="language-plaintext highlighter-rouge">TypeOfProductCategoryRef</code> (<code class="language-plaintext highlighter-rouge">NJ</code> vs. <code class="language-plaintext highlighter-rouge">IC</code>) — this is deliberate: a single
+physical composition can be sold as two entirely separate commercial products
+for part of its route, and each product needs its own full <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</li>
+    <li><code class="language-plaintext highlighter-rouge">sjyid</code> (SID4PT) is tracked via <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode type="sjyid"</code> on each
+<code class="language-plaintext highlighter-rouge">ServiceJourney</code>.
+<code class="language-plaintext highlighter-rouge">privateCodes</code> for all SID4PT identifiers (SJYID/SLOID/SBOID/SLNID).</li>
+  </ul>
+</blockquote>
+
+<p>The detailed handling is described for the element
+<a href="09_timetable.md#servicejourneyinterchange">ServiceJourneyInterchange</a>.</p>
+
+<ul>
+  <li><a href="./examples/19_NeTEx_CH_NJ470_IC60470_Kurswagen.xml">Full example: NJ 470 / IC 60470 Kurswagen</a></li>
+</ul>
+
+<h2 id="related-use-cases">Related use cases</h2>
+
+<ul>
+  <li><a href="/netexRealisationGuideSwitzerland/next/uc01_durchbindung.html">uc01 Durchbindung</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/next/uc02_joining_splitting.html">uc02 Joining and splitting of trains</a></li>
+</ul>
 
   </div>
 
