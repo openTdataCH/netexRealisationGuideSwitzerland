@@ -213,8 +213,10 @@ We will use `version="1"` in Switzerland. In some cases we use `versionRef="1"` 
 Objects like lines, stop places can change during the timetable year. NeTEx would support to model this correctly with the versions (or different id). However, currently this is all flattened. In the deliveries before the change occurs, the old version is used for all service journeys and in the next export it would look like the new version (e.g. of the stop) was there all the time. Details can be obtained from ATLAS, if necessary and we might consider changing it. However, in the case of a change then all `ServiceJourney`, `ServiceJourneyPattern` etc. would need to be duplicated as well. 
 As in the delivery to INFO+ the details like coordinates are ignored (because they are taken from ATLAS) the pressure to do it, is diminished. If this behaviour should be changed then we would probably have a long  discussion in AG Solldaten. For deliveries for the next timetable period the valid element from the first day of that period is used.
 
+For NeTEx 3.0 there will be a general discussion, how and for what use cases `version` can be used. This can be for (a) change history, (b) change of behaviour during time, (c) planning variants. To do all in one attribute is too much and we will have to discuss this in detail for the European profile. 
 
-### FromDate and ToDate
+
+ ### FromDate and ToDate
 The dates we have are always operating days. Nevertheless, we use
 * `2026-01-01T00:00:00`
 * `2026-01-01T23:59:59`
@@ -233,6 +235,14 @@ If a `ServiceJourney` runs over midnight, `DepartureDayOffset` (on `ServiceJourn
 ### Ordering of Elements
 XML is ordered by definition. If there are sequences of elements e.g. `PointsInJourneyPattern` they are always ordered.
 
+### How to read the Tables
+* Sub - How indented the element is
+* Element - The element name
+* Usage - How the element is used in the profile. Sometimes we would have liked to make it "mandatory", but for foreign `ServiceJourney` it was not possible. So it remains "expected". The notes will tell more then.
+* Card - This is the cardinality of the schema. It may differ from Usage
+* Type - The NeTEx type from the schema.
+* Description - The original description from the schema.
+* Note - Notes that we want to convey on elements. Currently, notes can't be put on attributes. There we relay on the general note for the element or the usage notes.
 
 ## Common Elements and Types
 
