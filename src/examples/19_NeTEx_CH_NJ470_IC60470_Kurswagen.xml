@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-08-04T00:00:00</PublicationTimestamp>
+	<ParticipantRef>SBB</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame:NJ470_IC60470" version="1">
+			<ValidBetween>
+				<FromDate>2026-01-01T00:00:00</FromDate>
+				<ToDate>2026-12-31T23:59:59</ToDate>
+			</ValidBetween>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame:NJ470_IC60470" version="1">
+					<responsibilitySets>
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:OEBB" version="1">
+							<Name>ÖBB</Name>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:OEBB:1" version="1">
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100003" version="1"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:OEBB:2" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100003" version="1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:SBB" version="1">
+							<Name>SBB</Name>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:SBB:1" version="1">
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100001" version="1"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:SBB:2" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100001" version="1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+							<Name>ProductCategories</Name>
+							<values>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:NJ" version="1">
+									<Name lang="de">Nightjet</Name>
+									<ShortName>NJ</ShortName>
+								</TypeOfProductCategory>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:IC" version="1">
+									<Name lang="de">Intercity</Name>
+									<ShortName>IC</ShortName>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<Operator id="ch:1:sboid:100003" version="1">
+							<privateCodes>
+								<PrivateCode type="SBOID">ch:1:sboid:100003</PrivateCode>
+							</privateCodes>
+							<Name>Österreichische Bundesbahnen</Name>
+							<ShortName>ÖBB</ShortName>
+						</Operator>
+						<Operator id="ch:1:sboid:100001" version="1">
+							<privateCodes>
+								<PrivateCode type="SBOID">ch:1:sboid:100001</PrivateCode>
+							</privateCodes>
+							<Name>Schweizerische Bundesbahnen SBB</Name>
+							<ShortName>SBB</ShortName>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:NJ470_IC60470" version="1">
+					<validityConditions>
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:NJ470_IC60470" version="1">
+							<FromDate>2026-01-01T00:00:00</FromDate>
+							<ToDate>2026-12-31T00:00:00</ToDate>
+						</AvailabilityCondition>
+					</validityConditions>
+				</ServiceCalendarFrame>
+
+				<ServiceFrame id="ch:1:ServiceFrame:NJ470_IC60470" version="1">
+					<lines>
+						<Line id="ch:1:slnid:NJ470" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:OEBB">
+							<privateCodes>
+								<PrivateCode type="slnid">ch:1:slnid:NJ470</PrivateCode>
+							</privateCodes>
+							<Name>NJ 470 Zürich HB - Hamburg-Altona</Name>
+							<TransportMode>rail</TransportMode>
+							<TransportSubmode>
+								<RailSubmode>sleeperRailService</RailSubmode>
+							</TransportSubmode>
+							<PublicCode>NJ 470</PublicCode>
+							<OperatorRef ref="ch:1:sboid:100003" version="1"/>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:NJ" version="1"/>
+						</Line>
+						<Line id="ch:1:slnid:IC60470" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
+							<privateCodes>
+								<PrivateCode type="slnid">ch:1:slnid:IC60470</PrivateCode>
+							</privateCodes>
+							<Name>IC 60470 Basel SBB - Hamburg-Altona</Name>
+							<TransportMode>rail</TransportMode>
+							<TransportSubmode>
+								<RailSubmode>longDistance</RailSubmode>
+							</TransportSubmode>
+							<PublicCode>IC 60470</PublicCode>
+							<OperatorRef ref="ch:1:sboid:100001" version="1"/>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IC" version="1"/>
+						</Line>
+					</lines>
+
+					<scheduledStopPoints>
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:3000" version="1">
+							<Name lang="de">Zürich HB</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:SchedStopPoint:10" version="1">
+							<Name lang="de">Basel SBB</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="de:1:SchedStopPoint:8002548" version="1">
+							<Name lang="de">Hamburg-Altona</Name>
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+
+					<timingLinks>
+						<TimingLink id="ch:1:TimingLink:3000-10" version="1">
+							<FromPointRef ref="ch:1:SchedStopPoint:3000" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:SchedStopPoint:10" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:10-8002548" version="1">
+							<FromPointRef ref="ch:1:SchedStopPoint:10" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="de:1:SchedStopPoint:8002548" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+					</timingLinks>
+
+					<journeyPatterns>
+						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:NJ470_IC60470" version="1">
+							<RouteView>
+								<LineRef ref="ch:1:slnid:NJ470" version="1"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:NJ470_IC60470:1" version="1" order="1">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:3000" version="1"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:NJ470_IC60470:2" version="1" order="2">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:10" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:NJ470_IC60470:3" version="1" order="3">
+									<ScheduledStopPointRef ref="de:1:SchedStopPoint:8002548" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+						</ServiceJourneyPattern>
+					</journeyPatterns>
+
+					<timeDemandTypes>
+						<!-- NJ 470: covers the full pattern, Zürich HB -> Hamburg-Altona -->
+						<TimeDemandType id="ch:1:TimeDemandType:NJ470" version="1">
+							<Name>Zürich HB - Hamburg-Altona (NJ 470)</Name>
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:NJ470:1" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:3000-10" version="1"/>
+									<RunTime>PT58M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:NJ470:2" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:10-8002548" version="1"/>
+									<RunTime>PT11H8M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+							<waitTimes>
+								<JourneyWaitTime id="ch:1:JourneyWaitTime:NJ470:1" version="1">
+									<TimingPointRef ref="ch:1:SchedStopPoint:10" version="1"/>
+									<WaitTime>PT7M</WaitTime>
+								</JourneyWaitTime>
+							</waitTimes>
+						</TimeDemandType>
+						<!-- IC 60470: starts only at Basel SBB, where its carriages are
+						     coupled onto the NJ 470 composition -->
+						<TimeDemandType id="ch:1:TimeDemandType:IC60470" version="1">
+							<Name>Basel SBB - Hamburg-Altona (IC 60470)</Name>
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:IC60470:1" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:10-8002548" version="1"/>
+									<RunTime>PT11H8M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+						</TimeDemandType>
+					</timeDemandTypes>
+				</ServiceFrame>
+
+				<TimetableFrame id="ch:1:TimetableFrame:NJ470_IC60470" version="1">
+					<vehicleJourneys>
+						<ServiceJourney id="ch:1:sjyid:100003:470" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:OEBB">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:NJ470_IC60470" version="1"/>
+							</validityConditions>
+							<privateCodes>
+								<PrivateCode type="sjyid">ch:1:sjyid:100003:470</PrivateCode>
+							</privateCodes>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:NJ" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>21:02:00</DepartureTime>
+							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:NJ470_IC60470" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:NJ470" version="1"/>
+							<OperatorRef ref="ch:1:sboid:100003" version="1"/>
+							<LineRef ref="ch:1:slnid:NJ470" version="1"/>
+							<DirectionType>outbound</DirectionType>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:470" version="1"/>
+							</trainNumbers>
+						</ServiceJourney>
+						<ServiceJourney id="ch:1:sjyid:100001:60470" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:NJ470_IC60470" version="1"/>
+							</validityConditions>
+							<privateCodes>
+								<PrivateCode type="sjyid">ch:1:sjyid:100001:60470</PrivateCode>
+							</privateCodes>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IC" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>22:07:00</DepartureTime>
+							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:NJ470_IC60470" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:IC60470" version="1"/>
+							<OperatorRef ref="ch:1:sboid:100001" version="1"/>
+							<LineRef ref="ch:1:slnid:IC60470" version="1"/>
+							<DirectionType>outbound</DirectionType>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:60470" version="1"/>
+							</trainNumbers>
+						</ServiceJourney>
+					</vehicleJourneys>
+					<trainNumbers>
+						<TrainNumber id="ch:1:TrainNumber:470" version="1"/>
+						<TrainNumber id="ch:1:TrainNumber:60470" version="1"/>
+					</trainNumbers>
+					<journeyInterchanges>
+						<ServiceJourneyInterchange id="ch:1:ServiceJourneyInterchange:470-60470-BaselSBB" version="1">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:NJ470_IC60470" version="1"/>
+							</validityConditions>
+							<Description>Kurswagen IC 60470 wird in Basel SBB an NJ 470 gekoppelt</Description>
+							<StaySeated>true</StaySeated>
+							<CrossBorder>false</CrossBorder>
+							<ChangeWithinVehicle>false</ChangeWithinVehicle>
+							<StandardWaitTime>PT7M</StandardWaitTime>
+							<StandardTransferTime>PT0M</StandardTransferTime>
+							<FromPointRef ref="ch:1:SchedStopPoint:10" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:SchedStopPoint:10" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<FromServiceJourneyRef ref="ch:1:sjyid:100003:470" version="1"/>
+							<ToServiceJourneyRef ref="ch:1:sjyid:100001:60470" version="1"/>
+						</ServiceJourneyInterchange>
+					</journeyInterchanges>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
