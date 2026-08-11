@@ -114,7 +114,7 @@
     ServiceCalendarFrame "1" o-- "0..*" AvailabilityCondition : contains
     ServiceCalendarFrame "1" o-- "0..*" DayType : contains
     ServiceCalendarFrame "1" o-- "0..*" DayTypeAssignment : contains
-    ServiceCalendarFrame "1" o-- "0..*" ServiceCalendar : contains
+    ServiceCalendarFrame "1" o-- "0..1*" ServiceCalendar : contains
     ServiceCalendarFrame "1" o-- "0..*" Timeband : contains
 
     %% Usage relations from external elements to AvailabilityCondition
@@ -447,7 +447,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#servicecalendar">Glossary definition</a></em></p>
 
 <h4 id="purpose-2">Purpose</h4>
-<p>Long-term planning uses calendar days that are classified as specific <code class="language-plaintext highlighter-rouge">DayType</code>s (example: weekday in school holidays). In the general NeTEx model, a <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> defines a mapping between <code class="language-plaintext highlighter-rouge">DayType</code>s and OperatingDays; in the Swiss profile, this mapping via OperatingDays is not used — <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> serves only as a container for <code class="language-plaintext highlighter-rouge">DayType</code>s and <code class="language-plaintext highlighter-rouge">DayTypeAssignment</code>s, defining a mapping of <code class="language-plaintext highlighter-rouge">DayType</code>s to dates.</p>
+<p>Long-term planning uses calendar days that are classified as specific <code class="language-plaintext highlighter-rouge">DayType</code>s (example: weekday in school holidays). In the general NeTEx model, a <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> can itself contain <code class="language-plaintext highlighter-rouge">dayTypes</code>/<code class="language-plaintext highlighter-rouge">dayTypeAssignments</code>; in the Swiss profile this nested usage is not used. <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> is used only as a label for the overall timetable year (<code class="language-plaintext highlighter-rouge">Name</code>, <code class="language-plaintext highlighter-rouge">FromDate</code>, <code class="language-plaintext highlighter-rouge">ToDate</code> — e.g. “Fahrplan 2026” / “Horaire 2026”). <code class="language-plaintext highlighter-rouge">DayType</code>s and <code class="language-plaintext highlighter-rouge">DayTypeAssignment</code>s are declared as siblings of <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> directly within <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code>, not nested inside it.</p>
 
 <h4 id="table-2">Table</h4>
 
