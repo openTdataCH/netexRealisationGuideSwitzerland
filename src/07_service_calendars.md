@@ -132,8 +132,8 @@ Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
   -	`NoticeAssignment`
   -	`ServiceFacilitySet`
   -	`ServiceJourneyInterchange`
-- `AvailabilityCondition`s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are `FromDate`/`ToDate`, `ValidDayBits`, and `timebands` — **none of these is mandatory on its own**; an `AvailabilityCondition` may consist of only one
-  of them (e.g. only `FromDate`/`ToDate` for "summer only", only `timebands` for "school holiday period", or only `ValidDayBits` for "Sundays only").
+- `AvailabilityCondition`s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are `FromDate`/`ToDate`, `ValidDayBits`, and `timebands` — none of these is mandatory on its own; an `AvailabilityCondition` may consist of only one
+  of them (e.g. only `FromDate`/`ToDate` for "summer only", only `timebands` for "school holiday period", or only `ValidDayBits` for "Sundays only"). **However, we don't do this in our profile. There is always exactly one `AvailabilityCondition` per element.**
 - Hint: The frames `TimetableFrame`, `ServiceFrame` and `ServiceCalendarFrame` and their elements must have the same validity.
 - `@id` does not need to be kept stable between exports.
 
