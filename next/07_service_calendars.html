@@ -57,8 +57,6 @@
 <h3 id="purpose">Purpose</h3>
 <p>Groups calendar definitions that describe <strong>when</strong> services operate. We do this with <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s stored in this frame. We also have <code class="language-plaintext highlighter-rouge">DayType</code>s and <code class="language-plaintext highlighter-rouge">DayTypeAssignment</code>s for the holidays.</p>
 
-<p><strong>How <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>/<code class="language-plaintext highlighter-rouge">ValidDayBits</code> work:</strong> an <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> defines a validity period (<code class="language-plaintext highlighter-rouge">FromDate</code>/<code class="language-plaintext highlighter-rouge">ToDate</code>) together with a day-by-day pattern (<code class="language-plaintext highlighter-rouge">ValidDayBits</code>) indicating on which individual days within that period the condition applies. <code class="language-plaintext highlighter-rouge">ValidDayBits</code> is a bit string with exactly one bit per calendar day of the period — <code class="language-plaintext highlighter-rouge">1</code> means the day is valid, <code class="language-plaintext highlighter-rouge">0</code> means it is not (directly equivalent to an HRDF bitfield). A <code class="language-plaintext highlighter-rouge">ServiceJourney</code> (or any other element that needs temporal validity) references one <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> via <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code>; the referenced object itself is always defined centrally in this frame, never inline.</p>
-
 <p>See the following class diagram for the most important objects of the <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code> and their relationships to the other frames.</p>
 
 <pre><code class="language-mermaid">classDiagram
@@ -293,7 +291,7 @@
 
 <h4 id="usage-notes">Usage Notes</h4>
 <ul>
-  <li>Note that <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are <code class="language-plaintext highlighter-rouge">FromDate</code>/ <code class="language-plaintext highlighter-rouge">ToDate</code>, <code class="language-plaintext highlighter-rouge">ValidDayBits</code>, and <code class="language-plaintext highlighter-rouge">timebands</code>.</li>
+  <li>Note that <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are <code class="language-plaintext highlighter-rouge">FromDate</code>/ <code class="language-plaintext highlighter-rouge">ToDate</code>, <code class="language-plaintext highlighter-rouge">ValidDayBits</code>, and <code class="language-plaintext highlighter-rouge">timebands</code>. See the detailed explanation under <a href="#availabilitycondition">AvailabilityCondition</a> below.</li>
 </ul>
 
 <h3 id="availabilitycondition">AvailabilityCondition</h3>
@@ -301,6 +299,10 @@
 
 <h4 id="purpose-1">Purpose</h4>
 <p>Temporal availability in terms of <code class="language-plaintext highlighter-rouge">Date</code>s, <code class="language-plaintext highlighter-rouge">Timeband</code>s, <code class="language-plaintext highlighter-rouge">ValidDayBits</code>.</p>
+
+<p><strong>How <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>/<code class="language-plaintext highlighter-rouge">ValidDayBits</code> work:</strong> an <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> defines a validity period (<code class="language-plaintext highlighter-rouge">FromDate</code>/<code class="language-plaintext highlighter-rouge">ToDate</code>) together with a day-by-day pattern (<code class="language-plaintext highlighter-rouge">ValidDayBits</code>) indicating on which individual days within that period the condition applies. <code class="language-plaintext highlighter-rouge">ValidDayBits</code> is a bit string with exactly one bit per
+calendar day of the period — <code class="language-plaintext highlighter-rouge">1</code> means the day is valid, <code class="language-plaintext highlighter-rouge">0</code> means it is not (directly equivalent to an HRDF bitfield). A <code class="language-plaintext highlighter-rouge">ServiceJourney</code> (or any other element that needs temporal validity) references one <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> via <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code>; the referenced object itself is always defined centrally
+in this frame, never inline.</p>
 
 <h4 id="table-1">Table</h4>
 

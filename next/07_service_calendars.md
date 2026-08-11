@@ -14,8 +14,6 @@ In this chapter:
 ### Purpose
 Groups calendar definitions that describe **when** services operate. We do this with `AvailabilityCondition`s stored in this frame. We also have `DayType`s and `DayTypeAssignment`s for the holidays.
 
-**How `AvailabilityCondition`/`ValidDayBits` work:** an `AvailabilityCondition` defines a validity period (`FromDate`/`ToDate`) together with a day-by-day pattern (`ValidDayBits`) indicating on which individual days within that period the condition applies. `ValidDayBits` is a bit string with exactly one bit per calendar day of the period — `1` means the day is valid, `0` means it is not (directly equivalent to an HRDF bitfield). A `ServiceJourney` (or any other element that needs temporal validity) references one `AvailabilityCondition` via `AvailabilityConditionRef`; the referenced object itself is always defined centrally in this frame, never inline.
-
 See the following class diagram for the most important objects of the `ServiceCalendarFrame` and their relationships to the other frames.
 
 ```mermaid
@@ -158,13 +156,17 @@ A minimal ServiceCalendarFrame must be present in all timetable files.
 *→ [Template](./templates/ServiceCalendarFrame.xml)*
 
 #### Usage Notes
-- Note that `AvailabilityCondition`s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are `FromDate`/ `ToDate`, `ValidDayBits`, and `timebands`. 
+- Note that `AvailabilityCondition`s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are `FromDate`/ `ToDate`, `ValidDayBits`, and `timebands`. See the detailed explanation under [AvailabilityCondition](#availabilitycondition) below.
 
 ### AvailabilityCondition
 *→ [Glossary definition](A4_annex_glossary.md#availabilitycondition)*
 
 #### Purpose
 Temporal availability in terms of `Date`s, `Timeband`s, `ValidDayBits`.
+
+**How `AvailabilityCondition`/`ValidDayBits` work:** an `AvailabilityCondition` defines a validity period (`FromDate`/`ToDate`) together with a day-by-day pattern (`ValidDayBits`) indicating on which individual days within that period the condition applies. `ValidDayBits` is a bit string with exactly one bit per
+calendar day of the period — `1` means the day is valid, `0` means it is not (directly equivalent to an HRDF bitfield). A `ServiceJourney` (or any other element that needs temporal validity) references one `AvailabilityCondition` via `AvailabilityConditionRef`; the referenced object itself is always defined centrally
+in this frame, never inline.
 
 #### Table
 
@@ -288,7 +290,6 @@ Long-term planning uses calendar days that are classified as specific `DayType`s
 
 #### Purpose
 A classification of days on which a specific set of transport services operates (e.g., Weekdays, Saturdays, Public Holidays). The `DayType`s of the Swiss profile represent national holidays.
-
 
 #### Table
 
