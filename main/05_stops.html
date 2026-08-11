@@ -449,6 +449,24 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     </tr>
     <tr>
       <td> </td>
+      <td>Locale</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>LocaleStructure</td>
+      <td>Common LOCALE dependent properties.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TimeZone</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Timezone name at LOCALE.</td>
+      <td>Must be present, when not DefaultTimeZone</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>StopPlaceType</td>
       <td>optional</td>
       <td>0..1</td>
@@ -550,6 +568,11 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
   <span class="nt">&lt;TopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"BE-bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- Id to the county, community, canton or country. --&gt;</span>
   <span class="nt">&lt;/TopographicPlaceRef&gt;</span>
+  <span class="nt">&lt;Locale&gt;</span>
+    <span class="nt">&lt;TimeZone&gt;</span>Europe/Zurich
+      <span class="c">&lt;!-- Must be present, when not DefaultTimeZone --&gt;</span>
+    <span class="nt">&lt;/TimeZone&gt;</span>
+  <span class="nt">&lt;/Locale&gt;</span>
   <span class="nt">&lt;StopPlaceType&gt;</span>railStation<span class="nt">&lt;/StopPlaceType&gt;</span>
   <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly
     <span class="c">&lt;!-- For stops like Sagliains --&gt;</span>
@@ -575,6 +598,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
   <li>DIDOK number placement: The DIDOK number is <strong>not</strong> transported as free text anywhere on <code class="language-plaintext highlighter-rouge">StopPlace</code>. It is placed in <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> with <code class="language-plaintext highlighter-rouge">type="didok"</code>, <strong>and</strong> the same value must additionally be listed in the <code class="language-plaintext highlighter-rouge">KeyList</code> (<code class="language-plaintext highlighter-rouge">KeyValue</code> with matching <code class="language-plaintext highlighter-rouge">Key</code>). Both are required — the <code class="language-plaintext highlighter-rouge">PrivateCode</code> for direct lookup, the <code class="language-plaintext highlighter-rouge">KeyList</code> entry for generic key/value tooling.</li>
   <li><code class="language-plaintext highlighter-rouge">ShortName</code> is not used on <code class="language-plaintext highlighter-rouge">StopPlace</code>. In particular, the DIDOK number must <strong>never</strong> be placed in <code class="language-plaintext highlighter-rouge">ShortName</code> — this was common practice under Profile 1.0 / HRDF-based exports and is explicitly discontinued under RV 2.0.</li>
   <li><code class="language-plaintext highlighter-rouge">ValidBetween</code>: Every <code class="language-plaintext highlighter-rouge">StopPlace</code> carries a <code class="language-plaintext highlighter-rouge">ValidBetween</code> with a <code class="language-plaintext highlighter-rouge">FromDate</code>. Since <code class="language-plaintext highlighter-rouge">StopPlace</code> is infrastructure master data (not a timetable-period object), <strong>no <code class="language-plaintext highlighter-rouge">ToDate</code> is set</strong> — validity is open-ended until a future change is published.</li>
+  <li>We have <code class="language-plaintext highlighter-rouge">Locale\TimeZone</code> set, when necessary. See also usage notes of <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. Only used to calculate arrival and departure times.</li>
 </ul>
 
 <h4 id="example-didok-number-and-validity-on-stopplace">Example: DIDOK number and validity on <code class="language-plaintext highlighter-rouge">StopPlace</code></h4>

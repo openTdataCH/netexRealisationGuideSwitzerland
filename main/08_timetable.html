@@ -549,7 +549,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>0..1</td>
       <td>xsd:time</td>
       <td>Time of departure of JOURNEY from POINT.</td>
-      <td> </td>
+      <td>Usually local time. Otherwise we have problems with summer time. See Usage Notes.</td>
     </tr>
     <tr>
       <td> </td>
@@ -736,7 +736,9 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <span class="nt">&lt;ServiceAlteration&gt;</span>planned
     <span class="c">&lt;!-- Only the value planned is allowed. We might add the others, like cancelled, later. --&gt;</span>
   <span class="nt">&lt;/ServiceAlteration&gt;</span>
-  <span class="nt">&lt;DepartureTime&gt;</span>06:21:00<span class="nt">&lt;/DepartureTime&gt;</span>
+  <span class="nt">&lt;DepartureTime&gt;</span>06:21:00
+    <span class="c">&lt;!-- Usually local time. Otherwise we have problems with summer time. See Usage Notes. --&gt;</span>
+  <span class="nt">&lt;/DepartureTime&gt;</span>
   <span class="nt">&lt;DepartureDayOffset&gt;</span>0
     <span class="c">&lt;!-- 0 for current operating day. Could also be negative. --&gt;</span>
   <span class="nt">&lt;/DepartureDayOffset&gt;</span>
@@ -785,6 +787,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <li>A <code class="language-plaintext highlighter-rouge">ServiceJourney</code>can be associated with exactly one <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and <code class="language-plaintext highlighter-rouge">TimeDemandType</code>.</li>
   <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports if possible. However, when new variants are used for different operating days, it changes.</li>
   <li>Tarif codes (<code class="language-plaintext highlighter-rouge">TC</code>) and region codes (<code class="language-plaintext highlighter-rouge">RN</code>) are put into a key/value pair (see example).</li>
+  <li><code class="language-plaintext highlighter-rouge">DepartureTime</code> is used without UTC time zone or offset. Otherwise, the ServiceJourney would need to be duplicated form winter and summer time. and we would need additional <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s.  For frequency purpose additional service journeys would need to be squeezed in, when during the change additional ones are needed to maintain the frequency.  In such cases UTC must be used to clarify for those additional journeys when it starts.</li>
 </ul>
 
 <h3 id="calculation-of-passing-times-at-stops">Calculation of Passing Times at Stops</h3>
@@ -1089,7 +1092,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>0..1</td>
       <td>xsd:time</td>
       <td>Time of departure of JOURNEY from POINT.</td>
-      <td>Departure of the first journey.</td>
+      <td>Departure of the first journey. For timezone see ServiceJourney</td>
     </tr>
     <tr>
       <td> </td>
@@ -1290,7 +1293,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
     <span class="c">&lt;!-- Only the value planned is allowed. --&gt;</span>
   <span class="nt">&lt;/ServiceAlteration&gt;</span>
   <span class="nt">&lt;DepartureTime&gt;</span>06:21:00
-    <span class="c">&lt;!-- Departure of the first journey. --&gt;</span>
+    <span class="c">&lt;!-- Departure of the first journey. For timezone see ServiceJourney --&gt;</span>
   <span class="nt">&lt;/DepartureTime&gt;</span>
   <span class="nt">&lt;DepartureDayOffset&gt;</span>0
     <span class="c">&lt;!-- DayOffset if relevant. --&gt;</span>

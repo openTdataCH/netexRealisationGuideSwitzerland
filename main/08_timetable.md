@@ -164,7 +164,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 |  | occupancies | optional | 0..1 | OccupancyView_RelStructure | OCCUPANCYs in frame. |  |
 | + | [OccupancyView](./tables/OccupancyView.md) | optional | 0..* | OccupancyView_VersionStructure | A simple VIEW of OCCUPANCY as a first implementation without full support of DECK PLAN. | Currently not available. |
 |  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration | Whether journey is as planned, a cancellation or an extra journey. Default is as Planned. | Only the value planned is allowed. We might add the others, like cancelled, later. |
-|  | DepartureTime | expected | 0..1 | xsd:time | Time of departure of JOURNEY from POINT. |  |
+|  | DepartureTime | expected | 0..1 | xsd:time | Time of departure of JOURNEY from POINT. | Usually local time. Otherwise we have problems with summer time. See Usage Notes. |
 |  | DepartureDayOffset | optional | 0..1 | DayOffsetType | Daya offset if Time of departure of JOURNEY from origin POINT from current OPERATING DAY. | 0 for current operating day. Could also be negative. |
 |  | JourneyPatternRef | mandatory | 1..* | JourneyPatternRefStructure | Reference to a JOURNEY PATTERN. | The reference to the ServiceJourneyPattern. |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
@@ -241,7 +241,9 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
   <ServiceAlteration>planned
     <!-- Only the value planned is allowed. We might add the others, like cancelled, later. -->
   </ServiceAlteration>
-  <DepartureTime>06:21:00</DepartureTime>
+  <DepartureTime>06:21:00
+    <!-- Usually local time. Otherwise we have problems with summer time. See Usage Notes. -->
+  </DepartureTime>
   <DepartureDayOffset>0
     <!-- 0 for current operating day. Could also be negative. -->
   </DepartureDayOffset>
@@ -292,6 +294,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - A `ServiceJourney`can be associated with exactly one `ServiceJourneyPattern` and `TimeDemandType`.
 - `@id` needs to be kept stable between exports if possible. However, when new variants are used for different operating days, it changes.
 - Tarif codes (`TC`) and region codes (`RN`) are put into a key/value pair (see example).
+- `DepartureTime` is used without UTC time zone or offset. Otherwise, the ServiceJourney would need to be duplicated form winter and summer time. and we would need additional `AvailabilityCondition`s.  For frequency purpose additional service journeys would need to be squeezed in, when during the change additional ones are needed to maintain the frequency.  In such cases UTC must be used to clarify for those additional journeys when it starts.
 
 
 ### Calculation of Passing Times at Stops
@@ -392,7 +395,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | occupancies | optional | 0..1 | OccupancyView_RelStructure | OCCUPANCYs in frame. |  |
 | + | [OccupancyView](./tables/OccupancyView.md) | optional | 0..* | OccupancyView_VersionStructure | A simple VIEW of OCCUPANCY as a first implementation without full support of DECK PLAN. | Currently not available. |
 |  | ServiceAlteration | mandatory | 0..1 | ServiceAlterationEnumeration | Whether journey is as planned, a cancellation or an extra journey. Default is as Planned. | Only the value planned is allowed. |
-|  | DepartureTime | optional | 0..1 | xsd:time | Time of departure of JOURNEY from POINT. | Departure of the first journey. |
+|  | DepartureTime | optional | 0..1 | xsd:time | Time of departure of JOURNEY from POINT. | Departure of the first journey. For timezone see ServiceJourney |
 |  | DepartureDayOffset | optional | 0..1 | DayOffsetType | Daya offset if Time of departure of JOURNEY from origin POINT from current OPERATING DAY. | DayOffset if relevant. |
 |  | JourneyPatternRef | mandatory | 1..* | JourneyPatternRefStructure | Reference to a JOURNEY PATTERN. | The reference to the ServiceJourneyPattern |
 | + | @nameOfRefClass | mandatory | 1..1 | xsd:string | Attribute nameOfRefClass | |
@@ -459,7 +462,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
     <!-- Only the value planned is allowed. -->
   </ServiceAlteration>
   <DepartureTime>06:21:00
-    <!-- Departure of the first journey. -->
+    <!-- Departure of the first journey. For timezone see ServiceJourney -->
   </DepartureTime>
   <DepartureDayOffset>0
     <!-- DayOffset if relevant. -->

@@ -28,6 +28,8 @@ In some cases the id of a StopPlace is not a SLOID.
 |  | alternativeNames | optional | 0..1 | alternativeNames_RelStructure | Alternativie names for ORGANISATION. | Alternative names for the StopPlace. We will also use these for synonyms. |
 | + | [AlternativeName](AlternativeName.md) | optional | 1..* | AlternativeName_VersionedChildStructure | ALTERNATIVE NAME for Element. |  |
 |  | TopographicPlaceRef | optional | 1..* | TopographicPlaceRefStructure | Reference to a TOPOGRAPHIC PLACE. | Id to the county, community, canton or country. |
+|  | Locale | optional | 1..1 | LocaleStructure | Common LOCALE dependent properties. |  |
+| + | TimeZone | optional | 0..1 | xsd:normalizedString | Timezone name at LOCALE. | Must be present, when not DefaultTimeZone |
 |  | StopPlaceType | optional | 0..1 | StopTypeEnumeration | Type of STOP PLACE. |  |
 |  | LimitedUse | optional | 0..1 | LimitedUseTypeEnumeration | Further categorisation of stop as having topographic limitations. | For stops like Sagliains |
 |  | Weighting | optional | 0..1 | InterchangeWeightingEnumeration | Default rating of the STOP PLACE for making interchanges. | Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. |
