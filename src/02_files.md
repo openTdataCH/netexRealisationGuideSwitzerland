@@ -136,17 +136,17 @@ Example: `TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_STOP_OFFER_202301250401.xml
 
 All Files are embedded in a zip-File. The name of the zip-file is composed of the following information:
 
-| Content	             | Example	      | Description                                                                                            |
-|----------------------|---------------|--------------------------------------------------------------------------------------------------------|
-| IT-Environment	      | DEV,TEST,INT	 | In the production environment, the prefix PROD is not written in the name                              |
-| Format  of the file	 | `NETEX`	      | Describe the format (NETEX)                                                                            |
-| Content of the file	 | `TT`	         | Describe the content (TimeTable)                                                                       |
-| Version              | `2.1`         | 		Number of the version of the NeTEx .xsd schema                                                       | 
-| Country	             | `CHE`	        | ISO code of the country for which the file was produced                                                | 
-| Provider	            | `SKI`	        | Name of the provider                                                                                   | 
-| Time period	         | `2026`        | 	Time period of the data                                                                                | 
-| Name of Export	      | `oev-schweiz`	 | Defines the scope of the timetable data (e.g. `bernmobil` or for the whole of Switzerland `oev-schweiz` | 
-| Date and Time	       | `202606131500` | 	Date and time the file was produced, format: YYYYMMDDHHMM                                         | 
+| Content	             | Example	      | Description                                                                                                                                                                                 |
+|----------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| IT-Environment	      | DEV,TEST,INT	 | In the production environment, the prefix PROD is not written in the name                                                                                                                   |
+| Format  of the file	 | `NETEX`	      | Describe the format (NETEX)                                                                                                                                                                 |
+| Content of the file	 | `TT`	         | Describe the content (TimeTable)                                                                                                                                                            |
+| Version              | `2.1`         | 		Number of the version of the NeTEx .xsd schema                                                                                                                                              | 
+| Country	             | `CHE`	        | ISO code of the country for which the file was produced                                                                                                                                     | 
+| Provider	            | `SKI`	        | Name of the provider                                                                                                                                                                        | 
+| Time period	         | `2026`        | 	Time period of the data                                                                                                                                                                     | 
+| Name of Export	      | `oev-schweiz`	 | Defines the scope of the timetable data (e.g. `bernmobil` or for the whole of Switzerland `oev-schweiz`). Underscores (_) must not used here, as we use them as separator in the file name. | 
+| Date and Time	       | `202606131500` | 	Date and time the file was produced, format: YYYYMMDDHHMM                                                                                                                                   | 
 
 Example :`TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_202602010402.zip`
 
