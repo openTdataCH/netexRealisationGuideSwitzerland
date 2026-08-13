@@ -52,7 +52,7 @@ NETWORK_OFFER is per operator and in some cases per area.
 
 This repartition of the data into different file leads to some redundancy. However, the files can still be transferred efficiently.
 
-### Content of each File
+### Content of each File Type
 ```mermaid
 classDiagram
 class STOP_OFFER{
@@ -92,7 +92,7 @@ class INTERCHANGE {
     serviceJourneyInterchanges : ServiceJourneyInterchange
 }
 ```
-*Figure: Elements per file type*
+*Figure: Elements per file type in this profile*
 
 STOP_OFFER:
 * Contains everything related to (physical) stops
@@ -110,7 +110,7 @@ INTERCHANGE
 
 Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.  STOP_OFFER is only needed for data not stored in ATLAS. INFO+ will deliver an aggregated, comprehensive STOP_OFFER.
 
-### Naming Conventions
+### Naming Conventions of Files
 IT-Environments:
 - Development:	DEV
 - Test:	TEST
@@ -162,14 +162,14 @@ All data is encoded as UTF-8 without BOM.
 The data transfer will be defined by INFO+. A version of the full swiss data will be available on https://opentransportdata.swiss/ for download.
 
 
-### File Sent by Data Provider to SKI 
+### Provisions for Deliveries Sent by Data Provider to SKI 
 We suggest that the partner name consists of the short name of the partner and necessary additions to identify the system. In addition, the number of the timetable period is to be indicated in the name, as well as the date and time of creation of the file
 
 Examples: `test_zvv_2024_20231112_095217.zip`, `prod_tl_2024_20231114_152836.zip`
 
 The file name must be agreed on between the data provider and SKI. Generally it is agreed that delivery can be on network, operator or line base.
 
-### Partial Deliveries
+#### Partial Deliveries
 No partial deliveries are accepted. They must contain:
 - all relevant lines
 - the whole timetable year
@@ -178,5 +178,5 @@ No incremental updates are supported.
 
 > NB: We might reconsider some of those points for mixed lines. 
 
-### File Sent by SKI to Data Receivers 
-As the quantity of the data is very large for a single XML-file, SKI provides the data a set of XML files. In addition to the XML files, SKI provides a README file listing the contents of each XML file. 
+### Data Delivery from SKI to Data Consumers
+As the quantity of the data is very large for a single XML-file, SKI provides the data a set of XML files (one SITE_OFFER.xml, multiple NETWORK_OFFER.xml and one INTERCHANGES.xml). In addition to the XML files, SKI provides a README file listing the contents of each XML file. 
