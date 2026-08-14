@@ -32,12 +32,12 @@ Luzern			  22:03
 			</ValidBetween>
 			<FrameDefaults>
 				<DefaultLocale>
-					<TimeZoneOffset>-1</TimeZoneOffset>
-					<TimeZone>Europe/Berlin</TimeZone>
-					<SummerTimeZoneOffset>-2</SummerTimeZoneOffset>
+					<TimeZoneOffset>1</TimeZoneOffset>
+					<TimeZone>Europe/Zurich</TimeZone>
+					<SummerTimeZoneOffset>2</SummerTimeZoneOffset>
 					<DefaultLanguage>de</DefaultLanguage>
 				</DefaultLocale>
-				<DefaultLocationSystem>EPSG:4326</DefaultLocationSystem>
+				<DefaultLocationSystem>urn:ogc:def:crs:EPSG::4326</DefaultLocationSystem>
 			</FrameDefaults>
 			<frames>
 				<ResourceFrame id="ch:1:ResourceFrame:j26" version="1">
@@ -808,11 +808,9 @@ Luzern			  22:03
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:RE" version="1"/>
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>20:36:00</DepartureTime>
-							<JourneyPatternRef ref="sjp1" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<ServiceJourneyPatternRef ref="sjp1" version="1""/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:Bern_Wolhusen" version="1"/>
 							<OperatorRef ref="ch:1:Operator:100015" version="1"/>
-							<LineRef ref="ch:1:slnid:1024438" version="1"/>
-							<DirectionType>inbound</DirectionType>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:4357" version="1"/>
 							</trainNumbers>
@@ -830,7 +828,6 @@ Luzern			  22:03
 							<ServiceJourneyPatternRef ref="sjp2" version="1"/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:Wolhusen_Luzern" version="1"/>
 							<OperatorRef ref="ch:1:Operator:100015" version="1"/>
-							<DirectionType>inbound</DirectionType>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:4487" version="1"/>
 							</trainNumbers>

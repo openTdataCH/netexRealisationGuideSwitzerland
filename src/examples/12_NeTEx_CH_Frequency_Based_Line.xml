@@ -11,12 +11,12 @@
 			</ValidBetween>
 			<FrameDefaults>
 				<DefaultLocale>
-					<TimeZoneOffset>-1</TimeZoneOffset>
-					<TimeZone>Europe/Berlin</TimeZone>
-					<SummerTimeZoneOffset>-2</SummerTimeZoneOffset>
+					<TimeZoneOffset>1</TimeZoneOffset>
+					<TimeZone>Europe/Zurich</TimeZone>
+					<SummerTimeZoneOffset>2</SummerTimeZoneOffset>
 					<DefaultLanguage>de</DefaultLanguage>
 				</DefaultLocale>
-				<DefaultLocationSystem>EPSG:4326</DefaultLocationSystem>
+				<DefaultLocationSystem>urn:ogc:def:crs:EPSG::4326</DefaultLocationSystem>
 			</FrameDefaults>
 			<frames>
 				<ResourceFrame id="ch:1:ResourceFrame:1" version="1">
@@ -74,7 +74,6 @@
 							<privateCodes>
 								<PrivateCode>ch:1:sboid:100080</PrivateCode>
 							</privateCodes>
-							<PrivateCode>ch:1:sboid:100080</PrivateCode>
 							<Name lang="de">Braunwald-Standseilbahn</Name>
 							<ShortName lang="de">BRSB</ShortName>
 						</Operator>
@@ -483,7 +482,6 @@
 							<JourneyDuration>PT7M</JourneyDuration>
 							<ServiceJourneyPatternRef ref="sjp-1" version="1"/>
 							<TimeDemandTypeRef ref="tdt-1" version="1"/>
-							<DirectionType>inbound</DirectionType>
 							<trainNumbers>
 								<TrainNumberRef ref="tn-1" version="1"/>
 							</trainNumbers>
@@ -540,10 +538,8 @@
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>08:45:00</DepartureTime>
 							<JourneyDuration>PT5M</JourneyDuration>
-							<JourneyPatternRef ref="sjp-3" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<ServiceJourneyPatternRef ref="sjp-3" version="1" />
 							<TimeDemandTypeRef ref="tdt-3" version="1"/>
-							<LineRef ref="ch:1:slnid:1025132" version="1"/>
-							<DirectionType>outbound</DirectionType>
 							<trainNumbers>
 								<TrainNumberRef ref="tn-3" version="1"/>
 							</trainNumbers>

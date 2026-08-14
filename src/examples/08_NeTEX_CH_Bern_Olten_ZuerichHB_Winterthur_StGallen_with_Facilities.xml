@@ -18,12 +18,12 @@ with attributes
 			</ValidBetween>
 						<FrameDefaults>
 				<DefaultLocale>
-					<TimeZoneOffset>-1</TimeZoneOffset>
-					<TimeZone>Europe/Berlin</TimeZone>
-					<SummerTimeZoneOffset>-2</SummerTimeZoneOffset>
+					<TimeZoneOffset>1</TimeZoneOffset>
+					<TimeZone>Europe/Zurich</TimeZone>
+					<SummerTimeZoneOffset>2</SummerTimeZoneOffset>
 					<DefaultLanguage>de</DefaultLanguage>
 				</DefaultLocale>
-				<DefaultLocationSystem>EPSG:4326</DefaultLocationSystem>
+				<DefaultLocationSystem>urn:ogc:def:crs:EPSG::4326</DefaultLocationSystem>
 			</FrameDefaults>
 			<frames>
 				<ResourceFrame id="ch:1:ResourceFrame:j26" version="1">
@@ -415,7 +415,6 @@ with attributes
 							<ServiceJourneyPatternRef ref="ch:SBB:JourneyPattern:703-00" version="1"/>
 							<TimeDemandTypeRef ref="ch:1:TDT:1" version="1"/>
 							<OperatorRef ref="ch:1:sboid:100001" version="1"/>
-							<DirectionType>inbound</DirectionType>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:Train:703" version="1"/>
 							</trainNumbers>
