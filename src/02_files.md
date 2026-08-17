@@ -40,10 +40,10 @@ An owner can operate everything himself or he can delegate this (per partial lin
 >NB: We still have to finalise whether the owner has to produce a single file for the whole line or if delivery of partial lines is  allowed and how. This is an organisational matter.
  
 
-#### Responsibilities Data Supplier
+#### Responsibilities Data Provider
 The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality on the technical level. Complete means all timetable data in the responsibility of the provider for the whole timetable period.
 
-> NB: In many cases the data supplier may be identical to the Owner.
+> NB: In many cases the data provider may be identical to the Owner.
 
 #### Responsibilties SKI
 SKI is responsible for the timely delivery of the complete timetable information with sufficient quality of all timetable data for open data and for the consumption by the data consumers.
@@ -79,7 +79,7 @@ We will have three different file types:
 
 The first two are valid according to the XSD. INTERCHANGE only as far as we use `versionRef` instead of `version`.
 
-NETWORK_OFFER is the core timetable data. It can be one file per business organisation (owner and or data supplier). Or it can be two very different subsets within an organisation (e.g.  ships, carTransportRail,rail) or perhaps also per region (PAG). The distinction should not be done unilateraly by the data provider, but in collaboration with SKI. Possible criteria: (a) size of  the file remains manageable, (b) third parties can find out, in which file, which line is, without inspecting every NETWORK_OFFER, (c) sensible arrangement so that not all NETWORK_OFFER need to be consumed, if only a given subset is needed by the data consumer.
+NETWORK_OFFER is the core timetable data. It can be one file per business organisation (owner and or data provider). Or it can be two very different subsets within an organisation (e.g.  ships, carTransportRail,rail) or perhaps also per region (PAG). The distinction should not be done unilateraly by the data provider, but in collaboration with SKI. Possible criteria: (a) size of  the file remains manageable, (b) third parties can find out, in which file, which line is, without inspecting every NETWORK_OFFER, (c) sensible arrangement so that not all NETWORK_OFFER need to be consumed, if only a given subset is needed by the data consumer.
 
 This repartition of the data into different file leads to some redundancy. However, the files can still be transferred efficiently.
 
