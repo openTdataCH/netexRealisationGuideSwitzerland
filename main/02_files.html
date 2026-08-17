@@ -72,11 +72,51 @@ If attributes of these reference data are transmitted in the deliveries, SKI doe
   <li>Facilities - in <a href="/netexRealisationGuideSwitzerland/main/media/Mappingtabellen_NeTEx_v2.0.xlsx">mapping excel</a>.</li>
 </ul>
 
-<h3 id="responsibilities-data-supplier">Responsibilities Data Supplier</h3>
-<p>The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality. Complete means all timetable data in the responsibility of the provider for the whole timetable period.</p>
+<h3 id="roles-and-duties">Roles and Duties</h3>
+<h4 id="owner-konzessionär">Owner (“Konzessionär”)</h4>
+<p>The designed owner according to Atlas is responsible for the overall delivery of the data.</p>
 
-<h3 id="responsibilties-ski">Responsibilties SKI</h3>
+<h4 id="operator">Operator</h4>
+<p>An owner can operate everything himself or he can delegate this (per partial line).</p>
+
+<blockquote>
+  <p>NB: We still have to finalise whether the owner has to produce a single file for the whole line or if delivery of partial lines is  allowed and how. This is an organisational matter.</p>
+</blockquote>
+
+<h4 id="responsibilities-data-provider">Responsibilities Data Provider</h4>
+<p>The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality on the technical level. Complete means all timetable data in the responsibility of the provider for the whole timetable period.</p>
+
+<blockquote>
+  <p>NB: In many cases the data provider may be identical to the Owner.</p>
+</blockquote>
+
+<h4 id="responsibilties-ski">Responsibilties SKI</h4>
 <p>SKI is responsible for the timely delivery of the complete timetable information with sufficient quality of all timetable data for open data and for the consumption by the data consumers.</p>
+
+<h3 id="completeness-of-the-delivery">Completeness of the delivery</h3>
+
+<p>We still work on this, and it is not a matter of NeTEx but of the basic process of the data provision to SKI.</p>
+
+<p>We will start with the following:</p>
+<ul>
+  <li>All service journeys for a given timetable year with all facilities and notices, including service journeys driven by operators in the name of the owner for all lines the owner is responsible for</li>
+  <li>With co-owners one owner is designed to deliver the data.</li>
+  <li>We suggest that Atlas contains the information, which business organisation  provides the data for which line (on the technical level)</li>
+  <li>Nobody should deliver lines that belong to a different business owner.</li>
+</ul>
+
+<blockquote>
+  <p>NB: We discuss in the <a href="/netexRealisationGuideSwitzerland/main/uc17_mixed_lines.html">use case on mixed lines</a>, what is possible. However, the rules of SKI are the ones to follow</p>
+</blockquote>
+
+<blockquote>
+  <p>NB: Also replacement traffic will be defined in the general guidelines and not here. SKI will define, who has to provide what.</p>
+</blockquote>
+
+<h3 id="shared-responsibilities-for-planning">Shared Responsibilities for Planning</h3>
+<p>While <a href="/netexRealisationGuideSwitzerland/main/uc17_mixed_lines.html">use case on mixed lines</a> shows, what is possible in the first iteration we assume that one data provider will furnish the whole line with all its partial lines. Different policies don’t depend on NeTEx, but on the processing stream of INFO+.</p>
+
+<p>Also, if problems occur in the end it is always the owner that is responsible to addressing them.</p>
 
 <h2 id="files">Files</h2>
 
@@ -91,7 +131,7 @@ If attributes of these reference data are transmitted in the deliveries, SKI doe
 
 <p>The first two are valid according to the XSD. INTERCHANGE only as far as we use <code class="language-plaintext highlighter-rouge">versionRef</code> instead of <code class="language-plaintext highlighter-rouge">version</code>.</p>
 
-<p>NETWORK_OFFER is per operator and in some cases per area.</p>
+<p>NETWORK_OFFER is the core timetable data. It can be one file per business organisation (owner and or data provider). Or it can be two very different subsets within an organisation (e.g.  ships, carTransportRail,rail) or perhaps also per region (PAG). The distinction should not be done unilateraly by the data provider, but in collaboration with SKI. Possible criteria: (a) size of  the file remains manageable, (b) third parties can find out, in which file, which line is, without inspecting every NETWORK_OFFER, (c) sensible arrangement so that not all NETWORK_OFFER need to be consumed, if only a given subset is needed by the data consumer.</p>
 
 <p>This repartition of the data into different file leads to some redundancy. However, the files can still be transferred efficiently.</p>
 

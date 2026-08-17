@@ -52,6 +52,8 @@ Those are modeled as Line in NeTEx.</li>
   <li>“Betriebliche Linie” is not modeled.</li>
 </ul>
 
+<p>See also <a href="/netexRealisationGuideSwitzerland/main/02_files.html">here</a>.</p>
+
 <p>All these lines can have partial lines.  Within SKI the information is always communicated on the level of partial lines (e.g. real-time, disruptions).</p>
 
 <p>Possible motivations:</p>
@@ -64,6 +66,28 @@ Those are modeled as Line in NeTEx.</li>
 The basic information is replicated (e.g. <code class="language-plaintext highlighter-rouge">PublicCode</code>, <code class="language-plaintext highlighter-rouge">TransportMode</code>).
 The <code class="language-plaintext highlighter-rouge">Name</code> might be different to express something.
 All <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and <code class="language-plaintext highlighter-rouge">ServiceJourney</code>are only added to the partial lines.</p>
+
+<h2 id="who-delivers-what-if-we-allow-for-delivery-on-the-partial-line-level">Who delivers what if we allow for delivery on the partial line level</h2>
+<blockquote>
+  <p>NB we currently only deal with partial in the sense there are different operators. The other possibilities are not addressed here.</p>
+</blockquote>
+
+<p>We want the NETWORK_OFFER to be valid. This can be achieved as follows:</p>
+<ul>
+  <li>Each operator delivers her partial line</li>
+  <li>Both deliver the main line</li>
+  <li>Both include a GroupOfLine where in the absent line they set <code class="language-plaintext highlighter-rouge">versionRef="1"</code> instead of <code class="language-plaintext highlighter-rouge">version="1"</code>.</li>
+</ul>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;GroupOfLine id="ch:1:slnid:100011:1" version="1"&gt;
+    &lt;members&gt;
+        &lt;LineRef id="ch:1:slnid:100011:1:1" version="1"/&gt;
+        &lt;LineRef id="ch:1:slnid:100011:1:2" versionRef="1/&gt; &lt;!-- this Line is not present in the file --&gt;
+    &lt;/members&gt;
+    &lt;MainLine id="ch:1:slnid:100011:1" version="1"/&gt;
+    &lt;GroupOfLinesType&gt;&lt;/GroupOfLinesType&gt;
+&lt;/GroupOfLine&gt;
+</code></pre></div></div>
 
 <h2 id="the-problem-with-two-concessionaries">The problem with two concessionaries</h2>
 <p>NeTEx does not really assume this. Also, the way we build <code class="language-plaintext highlighter-rouge">responsibilitySet</code> does not cover it originally.

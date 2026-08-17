@@ -820,7 +820,7 @@ class ServiceJourney {
       <td>1..*</td>
       <td>LineRefStructure</td>
       <td>Reference to a LINE.</td>
-      <td>one must be the main line</td>
+      <td>one must be the main line. If a Line is not defined in the file, then it will have versionRef instead of version.</td>
     </tr>
     <tr>
       <td> </td>
@@ -852,7 +852,7 @@ class ServiceJourney {
   <span class="c">&lt;!-- We use GroupOfLine for the modeling of mixed lines. Only mixed lines have a GroupOfLines. --&gt;</span>
   <span class="nt">&lt;members&gt;</span>
     <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:1027553"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- one must be the main line --&gt;</span>
+      <span class="c">&lt;!-- one must be the main line. If a Line is not defined in the file, then it will have versionRef instead of version. --&gt;</span>
     <span class="nt">&lt;/LineRef&gt;</span>
     <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:1027553:3"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;LineRef</span> <span class="na">ref=</span><span class="s">"ch:1:slnid:1027553:4"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
