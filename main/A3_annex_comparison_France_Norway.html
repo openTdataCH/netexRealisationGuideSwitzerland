@@ -3,9 +3,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Comparison of relevant differences between the profiles in France and Norway | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<title>Comparison of the NeTEx Profiles of Switzerland, France and Norway | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Comparison of relevant differences between the profiles in France and Norway" />
+<meta property="og:title" content="Comparison of the NeTEx Profiles of Switzerland, France and Norway" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
@@ -14,9 +14,9 @@
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Comparison of relevant differences between the profiles in France and Norway" />
+<meta property="twitter:title" content="Comparison of the NeTEx Profiles of Switzerland, France and Norway" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Comparison of relevant differences between the profiles in France and Norway","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/A3_annex_comparison_France_Norway.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Comparison of the NeTEx Profiles of Switzerland, France and Norway","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/A3_annex_comparison_France_Norway.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
@@ -37,25 +37,455 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Comparison of relevant differences between the profiles in France and Norway</h1>
+    <h1 class="post-title">Comparison of the NeTEx Profiles of Switzerland, France and Norway</h1>
   </header>
 
   <div class="post-content">
-    <p>Note: The comparison may not be complete.
-<strong>LATER</strong></p>
-<h2 id="relevant-differences-between-the-profile-in-france-and-the-swiss-profile">Relevant differences between the profile in France and the Swiss profile</h2>
+    <p>This comparison is focused on the actual productive data rather than on the documentation</p>
+
+<h2 id="comparison-of-the-file-structure">Comparison of the File Structure</h2>
+
+<h3 id="france">France</h3>
+
+<p>The national access point offers NeTEx data feeds from several different regions and/or transport organisations:
+<img src="/netexRealisationGuideSwitzerland/main/media/France/FranceNAP.png" alt="NAP France" /></p>
+
+<p>The file structure of the data feeds is not totally identical. Ile de France Mobilite provides:
+<img src="/netexRealisationGuideSwitzerland/main/media/France/FranceDirectoryTree.png" alt="IDFM" /></p>
+
+<p>There are common files</p>
 <ul>
-  <li>bla</li>
-  <li>bla</li>
-  <li>bla</li>
+  <li>arrets.xml: Stop places and quays</li>
+  <li>commun.xml: Common reference data</li>
+  <li>lignes.xml: A directory of the LINEs contained in the dataset
+There are subdirectories per operator. These contain a  NeTEx file for each LINE run by the operator. These files contain routes, servicepatterns and journey. 
+<img src="/netexRealisationGuideSwitzerland/main/media/France/FranceDataSet.png" alt="OFFRE" />
+The subdirectories also contain a “calendrier” file containig the service calendar for the LINEs contained in the directory.</li>
 </ul>
 
-<h2 id="relevant-differences-between-the-nordic-profile-and-the-swiss-profile">Relevant differences between the Nordic profile and the Swiss profile</h2>
+<p>The data feeld of Nouvelle Aquitaine is similar in structure, but has file naming variants:
+<img src="/netexRealisationGuideSwitzerland/main/media/France/FrandeDataSetVariantNAQ.png" alt="NAQ" />
+Instead of using subdirectories, the region name of the data is coded into the file name, e.g BORDEAUX_METROPOLE_calendriers.xml. However, the principle is the same.</p>
+
+<p>Aditionally, the SNCF publishes a feed containing accessibility on stations. The SNCF timetable datset is not separated into files per LINE. They publish a dataset containing several LINEs.</p>
+
+<h3 id="norway">Norway</h3>
+
+<p>The Norwegian NAP provides datasets for each region / operator. There is also a dataset for the whole of Norway, but this just contains all files of the individual data sets.
+<img src="/netexRealisationGuideSwitzerland/main/media/Norway/NorwayNAP.png" alt="NAP_NORWAY" /></p>
+
+<p>Each Dataset contains a “shared data” file and individual files per LINE. The same applies for flexible services.</p>
+
+<p>The SiteFrame containing stops and quays can also be downloaded either as one file containing all norwegian stops or as separate files per region.</p>
+
+<p><img src="/netexRealisationGuideSwitzerland/main/media/Norway/NorwayDataset.png" alt="Norway dataset" /></p>
+
+<h3 id="future-swiss-profile-20">Future Swiss Profile 2.0</h3>
+
+<p>There will be</p>
 <ul>
-  <li>bla</li>
-  <li>bla</li>
-  <li>bla</li>
+  <li>one file containing the SiteFrame with all stops and quays</li>
+  <li>NETWORK_OFFER files containing ServiceFrame and Timetable for a certain region and data provider. Common reference data are contained in the files</li>
+  <li>a file containing ServiceInterchange between lines and service journeys.</li>
 </ul>
+
+<h3 id="summary">Summary</h3>
+<ul>
+  <li>While file naming conventions differ, both NO and FR provide files per LINE to make file size more manageable. Common reference data are put into extra files per data feed / data provider, but there is no common reference dataset for the whole country.</li>
+  <li>The CH profile is also aimed at making file size more manageable, but places more emphasis on having self-contained files where all reference data are contained and can be validated.</li>
+  <li>In Norway and Switzerland, the file naming convention makes sure that the file name is unique across all datasets.</li>
+</ul>
+
+<h2 id="comparison-of-the-resource-frame---common-reference-data">Comparison of the Resource Frame - Common Reference Data</h2>
+
+<h3 id="france-1">France</h3>
+
+<p>The french profile does not use the predefined NeTEx Frames like ResourceFrame, SiteFrame, ServiceFrame etc., but uses GeneralFrame with TypeOfFrameRef indicating the content.</p>
+
+<p>A GeneralFrame with TypeOfFrameRef “NETEX_COMMUN” may contain elements such as:</p>
+<ul>
+  <li>Operator</li>
+  <li>Authority</li>
+  <li>Network</li>
+  <li>Line</li>
+  <li>Notice</li>
+  <li>BookingContact (for flexible services)</li>
+</ul>
+
+<p>Note that the frame content can still be split into different files</p>
+
+<h3 id="norway-1">Norway</h3>
+
+<p>The ResourceFrame contains the elements</p>
+<ul>
+  <li>Operator</li>
+  <li>Authority</li>
+  <li>typesOfValue/Branding</li>
+</ul>
+
+<p>However, the “shared” files also contain ServiceFrame and ServiceCalendarFrame.</p>
+
+<p>ServiceFrame contains:</p>
+<ul>
+  <li>Network</li>
+  <li>Route</li>
+  <li>RoutePoint with projection to ScheduledStopPoint</li>
+  <li>ScheduledStopPoint</li>
+  <li>PassengerStopAssignment</li>
+  <li>Notice</li>
+</ul>
+
+<p>ServiceCalenderFrame contains:</p>
+<ul>
+  <li>DayType</li>
+  <li>DayTypeAssignment</li>
+</ul>
+
+<p>These elements are treated as general reference data which can be used by different TimetableFrames containing the actual services</p>
+
+<h3 id="future-swiss-profile-20-1">Future Swiss Profile 2.0</h3>
+
+<p>The ResourceFrame contains the following main elements:</p>
+<ul>
+  <li>ResponsibilitySet</li>
+  <li>TypeOfValue / ValueSets</li>
+  <li>TypeOfNotice</li>
+  <li>TypeOfProductCategory</li>
+  <li>TypeOfService</li>
+  <li>Organisation / Operator / Authority</li>
+  <li>ServiceFacilitySet</li>
+  <li>SiteFacilitySet</li>
+  <li>VehicleType (not confirmed yet)</li>
+</ul>
+
+<p>While a ResourceFrame is included in each NETWORK_OFFER file, the actual element keys and values are the same for all datasets.</p>
+
+<h3 id="summary-1">Summary</h3>
+
+<p>The Swiss profile places more emphasis on having a consolidated and mandatory set of reference data for all data providers.</p>
+
+<h2 id="comparison-of-the-siteframe---stops-and-quays">Comparison of the SiteFrame - Stops and Quays</h2>
+
+<h3 id="france-2">France</h3>
+
+<p>The french profile does not use SiteFrame for information on stops and quays, but uses GeneralFrame with TypeOfFrameRef “NETEX_ARRET” instead</p>
+
+<p>Elements contained are</p>
+<ul>
+  <li>TopographicPlace</li>
+  <li>StopPlace</li>
+  <li>Quay</li>
+  <li>TariffZone</li>
+  <li>Authority</li>
+</ul>
+
+<p>Stop places may be nested. Monomodal stops are grouped into multimodal stops. Quay elements are not child elements of StopPlace, but are referenced by StopPlace/QuayRef. Quay elements can also be nested. TypeOfQuay is not provided.</p>
+
+<p>Stop and quay coordinates are either WGS84 or the french national projection (EPSG 2154), examples for both can be found.</p>
+
+<p>AccessibilityAssessment is provided for stops and quays.</p>
+
+<h3 id="norway-2">Norway</h3>
+
+<p>Norway provides a SiteFrame containing all StopPlaces of Norway and also used stops from neighbour countries. 
+Elements contained in the SiteFrame are:</p>
+
+<ul>
+  <li>TopographicPlace</li>
+  <li>StopPlace</li>
+  <li>Quay</li>
+  <li>GroupOfStopPlace</li>
+  <li>Parking</li>
+  <li>TariffZone</li>
+  <li>GroupOfTariffZones</li>
+</ul>
+
+<p>Stops can be nested and grouped. Grouping is used to indicate the central stops of a city. TopographicPlaces are provided in great detail including ParentTopographicPlace and border coordinates.</p>
+
+<h3 id="future-swiss-profile-20-2">Future Swiss Profile 2.0</h3>
+
+<p>The main elements contained in SiteFrame are:</p>
+<ul>
+  <li><a href="#stopplace">StopPlace</a></li>
+  <li><a href="#quay">Quay</a></li>
+  <li><a href="#topographicplace">TopographicPlace</a></li>
+</ul>
+
+<p>Quays can be nested in order to model rail island platforms and tracks. TopographicPlace contains the hierarchy canton to district to locality. Default connection times for stops are provided in ServiceFrame. All stops originate from the Swiss central stop register and are identified by the SLOID (Swiss Location ID)</p>
+
+<h3 id="summary-2">Summary</h3>
+
+<p>Even though there are some differneces in detail, the model of stops and quays is relatively similar in the three profiles.</p>
+
+<h2 id="comparison-of-the-service-frame---lines-routes-and-journeypatterns">Comparison of the Service Frame - Lines, Routes and JourneyPatterns</h2>
+
+<h3 id="france-3">France</h3>
+
+<p>The french profile does not use ServiceFrame, but a GeneralFrame with typeOfFrameRef “NETEX_STRUCTURE”</p>
+
+<p>The Frame contains the main elements:</p>
+<ul>
+  <li>Route including pointsInSequence/PointOnRoute</li>
+  <li>RoutePoint</li>
+  <li>Direction</li>
+  <li>ServiceJourneyPattern</li>
+  <li>DestinationDisplay</li>
+  <li>ScheduledStopPoint</li>
+  <li>PassengerStopAssignment</li>
+  <li>DataSource</li>
+</ul>
+
+<p>Surprisingly the Line element is not contained. It is contained in the NETEX_COMMUN frame. 
+DirectionType is used to distinguish between inbound/outbound, whereas Direction indicates the name of the final destination of the Route.</p>
+
+<h3 id="norway-3">Norway</h3>
+
+<p>The Frame contains the main elements:</p>
+<ul>
+  <li>Network (including additionalNetworks)</li>
+  <li>GroupOfLines</li>
+  <li>Line</li>
+  <li>FlexibleLine</li>
+  <li>Route including pointsInSequence/PointOnRoute</li>
+  <li>RoutePoint</li>
+  <li>PointProjection</li>
+  <li>Direction</li>
+  <li>ServiceJourneyPattern</li>
+  <li>DestinationDisplay</li>
+  <li>ScheduledStopPoint</li>
+  <li>ServiceLink</li>
+  <li>PassengerStopAssignment</li>
+  <li>FlexibleStopAssignment</li>
+  <li>Notice</li>
+  <li>NoticeAssignment (to StopPointInJourneyPattern)</li>
+</ul>
+
+<p>The norwegian profile separates between route and journeypattern, but it additionally uses the PointProjection element to map RoutePoint to ScheduledStopPoint. ServiceLinks are treated as shared data between different Lines and ServiceJourneyPatterns. ServiceLinks contain the coordinate sequence of the roads or tracks travelled. The Route element does not seem to provide any additional information except that it enables the link between ServiceJourneyPattern and Line.</p>
+
+<h3 id="future-swiss-profile-20-3">Future Swiss Profile 2.0</h3>
+
+<p>The future Swiss profile contains the elements:</p>
+<ul>
+  <li>ServiceFrame</li>
+  <li>Line</li>
+  <li>GroupOfLines</li>
+  <li>DestinationDisplay</li>
+  <li>ScheduledStopPoint</li>
+  <li>PassengerStopAssignment</li>
+  <li>DefaultConnection</li>
+  <li>SiteConnection</li>
+  <li>TimingLink</li>
+  <li>ServiceJourneyPattern</li>
+  <li>TimeDemandType</li>
+  <li>Notice</li>
+  <li>NoticeAssignment</li>
+</ul>
+
+<p>GroupOfLines is used to group lines which the same line from a passenger perspective, but are operated by different operators and which are therefore split into different technical lines.
+TimeDemandType and TimingLink provide information on scheduled running times between stops of a ServiceJourneyPattern and scheduled waiting times at stops.</p>
+
+<h3 id="summary-3">Summary</h3>
+
+<p>The main differences between CH and NO,FR are</p>
+<ul>
+  <li>The Swiss profile does not use the Route element</li>
+  <li>The Swiss profile provides relative running times between stops. This enables consumers to calculate PassingTimes themselves and allows for more compact timetable files.</li>
+  <li>The Swiss profile will not provide ServiceLinks / coordinates of the route run. This may be added in a later version.</li>
+</ul>
+
+<h2 id="comparison-of-the-timetableframe---journeys-and-interchanges">Comparison of the TimetableFrame - Journeys and Interchanges</h2>
+
+<h3 id="france-4">France</h3>
+<p>The french profile does not use the TimetableFrame, it uses a GeneralFrame with TypeOfFrameRef “NETEX_HORAIRE”</p>
+
+<p>The frame contains only ServiceJourney Elements. The main child elements are</p>
+<ul>
+  <li>Name: Obviously contains a journey number</li>
+  <li>dayTypes/daytypeRef</li>
+  <li>JourneyPatternRef</li>
+  <li>trainNumbers/TrainNumber</li>
+  <li>passingTime</li>
+</ul>
+
+<h3 id="norway-4">Norway</h3>
+
+<p>The TimetableFrame contains the elements</p>
+<ul>
+  <li>ServiceJourney</li>
+  <li>DatedServiceJourney</li>
+  <li>ServiceJourneyInterchange</li>
+  <li>NoticeAssignment</li>
+</ul>
+
+<p>The child elements of ServiceJourney are:</p>
+
+<ul>
+  <li>DepartureTime</li>
+  <li>Name</li>
+  <li>dayTypes/daytypeRef</li>
+  <li>LineRef</li>
+  <li>JourneyPatternRef</li>
+  <li>OperatorRef</li>
+  <li>trainNumbers/TrainNumber</li>
+  <li>passingTime</li>
+</ul>
+
+<h3 id="future-swiss-profile-20-4">Future Swiss Profile 2.0</h3>
+
+<p>The main elements contained in a TimetableFrame are:</p>
+
+<ul>
+  <li>ServiceJourney</li>
+  <li>TemplateServiceJourney: describes a set of journeys repeating at a certain frequency. Used e.g. for cable cars.</li>
+  <li>ServiceJourneyInterchange: Describes cases where standard interchange times are overriden or where passengers may remain in the same vehicle</li>
+  <li>NoticeAssignment</li>
+  <li>ServiceFacilitySet: various services and facilities offered by the vehicles of a journey</li>
+</ul>
+
+<p>The main child elements of ServiceJourney and TemplateServiceJourney are:</p>
+<ul>
+  <li>ResponsibilitySetRef: Detailed assignment of organisations and their roles</li>
+  <li>OperatorRef: operator running the journey</li>
+  <li>DepartureTime</li>
+  <li>ServiceJourneyPatternRef</li>
+  <li>AvailabilityConditionRef: Operating days of journey</li>
+  <li>privateCodes/privateCode: Swiss journey id (SYID)</li>
+  <li>TransportMode</li>
+  <li>TypeOfProductCategoryRef</li>
+  <li>TrainNumber</li>
+  <li>NoticeAssignment</li>
+  <li>OccupancyView</li>
+  <li>VehicleTypeRef</li>
+  <li>JourneyPartRef: Used where properties change within the journey</li>
+</ul>
+
+<p>ServiceJourneys and TemplateServiceJourneys refer to a ServiceJourneyPattern and a TimeDemandType. They do not contain a PassingTimes child element. Consumers of the data need to calculate the passing times on the fly.
+Validity of ServiceJourneys is given by a reference to an AvailabilityCondition</p>
+
+<h3 id="summary-4">Summary</h3>
+
+<p>There are two main conceptual differences between the Swiss profile and NO/FR:</p>
+<ul>
+  <li>passingTimes are not provided, the consumer needs to calculate them (not difficult)</li>
+  <li>Operating Days of journeys are not provided by DayType, but by reference to an AvailabilityCondition element</li>
+</ul>
+
+<h2 id="comparison-of-the-servicecalendarframe---daytypes-and-operating-days">Comparison of the ServiceCalendarFrame - Daytypes and Operating Days</h2>
+
+<h3 id="france-5">France</h3>
+<p>The french profile does not use ServiceCalendarFrame, but uses a GeneralFrame with TypeOfFrame “NETEX_CALENDRIER” instead.</p>
+
+<p>The main elements contained in the frame are</p>
+<ul>
+  <li>Daytype</li>
+  <li>DaytypeAssignment</li>
+</ul>
+
+<p>Daytypes have in part meaningful names and “property of day” is often set</p>
+
+<h3 id="norway-5">Norway</h3>
+<p>The main elements contained in ServiceCalendarFrame are</p>
+<ul>
+  <li>Daytype</li>
+  <li>OperatingPeriod</li>
+  <li>DaytypeAssignment</li>
+</ul>
+
+<p>Daytypes can be either assigned to OperatingPeriods or to Dates. Both variants can be found in the same file.</p>
+
+<h3 id="future-swiss-profile-20-5">Future Swiss Profile 2.0</h3>
+<p>The elements contained in ServiceCalendarFrame are</p>
+<ul>
+  <li>ServiceCalendar: Only one element spanning the entire annual timetable</li>
+  <li>DayType: There is one DayType for each Swiss public holiday, but DayTypes are NOT used for operating periods of journeys.</li>
+  <li>AvailabilityCondition: Used for describing operating days of journeys. The ValidDayBits element is used to express OperatingDays in a compact manner.</li>
+  <li>TimeBand: Used for operating time intervals of TemplateServiceJourneys</li>
+</ul>
+
+<h2 id="summary-5">Summary</h2>
+<p>The main difference here is thet FR and NO use DayType and DayTypeAssignment for expressing operating days of journeys, whereas the Swiss profile uses AvailabilityCondition</p>
+
+<h2 id="comparison-of-demandresponsiveservices">Comparison of DemandResponsiveServices</h2>
+<blockquote>
+  <p><em>Draft!!!</em></p>
+</blockquote>
+
+<h3 id="france-6">France</h3>
+
+<p>According to the documentation, the following elements are used</p>
+<ul>
+  <li>FlexibleLine</li>
+  <li>BookingContact</li>
+  <li>FlexibleStopPlace</li>
+  <li>FlexiblePointProperties</li>
+  <li>FlexibleServiceProperties</li>
+</ul>
+
+<p>Alas no complete examples have been found yet which show the usage of all elements together
+<em>TODO:</em> Find meaningful examples actually using FlexibleStopPlace</p>
+
+<h3 id="norway-6">Norway</h3>
+
+<p>Norway uses the FlexibleLine element to indicate flexible services:</p>
+
+<p><img src="/netexRealisationGuideSwitzerland/main/media/Norway/NorwayFlexibleLine.png" alt="FlexibleLine" /></p>
+
+<p>The ServicePattern describes a sequence of ScheduledStopPoints which stand for the individual FlexibleStopPlaces:</p>
+
+<p><img src="/netexRealisationGuideSwitzerland/main/media/Norway/NorwayFlexibleJourneyPattern.png" alt="ServiceJourneyPattern" /></p>
+
+<p>The “BookingContact” is repeated at every area served.</p>
+
+<p>ScheduledStopPoints are assigned to a FlexibleStopPlace:
+<img src="/netexRealisationGuideSwitzerland/main/media/Norway/NorwayFlexibleStopAssignment.png" alt="FlexibleStopAssignment" /></p>
+
+<p>The FlexibleStop itsself contains a FlexibleArea with a poligon describing the area of operation:</p>
+
+<p><img src="/netexRealisationGuideSwitzerland/main/media/Norway/NorwayFlexibleStopPlace.png" alt="FlexibleStopPlace" /></p>
+
+<p>The ServiceJourney element contains PassingTimes with a time range (EarliestDeparture and LatestArrival)</p>
+
+<p><img src="/netexRealisationGuideSwitzerland/main/media/Norway/NorwayFlexibleJourney.png" alt="FlexibleJourney" /></p>
+
+<p>The FlexibleServiceProperties element describes booking conditions.</p>
+
+<p><em>TODO:</em></p>
+<ul>
+  <li>FlexibleStopPlaces containing regular stops or virtual stop points?</li>
+  <li>Journeys without fixed departures but just a time range of operaton?</li>
+</ul>
+
+<h3 id="future-swiss-profile-20-6">Future Swiss Profile 2.0</h3>
+
+<h2 id="references">References</h2>
+<p>The following references were used to compile this document.</p>
+
+<h3 id="france-7">France</h3>
+
+<p>Profile documentation:
+https://normes.transport.data.gouv.fr/</p>
+
+<p>Github:
+https://github.com/etalab/transport-profil-netex-fr</p>
+
+<p>Sample data:
+https://transport.data.gouv.fr/datasets/reseau-urbain-et-interurbain-dile-de-france-mobilites</p>
+
+<h3 id="norway-7">Norway</h3>
+
+<p>Profile documentation:
+https://entur.atlassian.net/wiki/spaces/PUBLIC/pages/728891481/Nordic+NeTEx+Profile</p>
+
+<p>Github:
+https://github.com/entur/nordic-netex-documentation 
+https://github.com/entur/profile-examples
+https://github.com/entur/nordic-netex-ontology</p>
+
+<p>Sample data (examples):
+https://entur.atlassian.net/wiki/spaces/PUBLIC/pages/728891505/NeTEx+examples+catalogue</p>
+
+<p>Sample data (Productive data feed)
+https://developer.entur.no/open-data/timetable</p>
 
   </div>
 
