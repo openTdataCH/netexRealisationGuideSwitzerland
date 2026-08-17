@@ -13,6 +13,7 @@ The main line types shown there are:
 Those are modeled as Line in NeTEx.
 - "Betriebliche Linie" is not modeled.
 
+See also [here](02_files.md).
 
 All these lines can have partial lines.  Within SKI the information is always communicated on the level of partial lines (e.g. real-time, disruptions).
 
@@ -24,6 +25,26 @@ Each partial line is modeled as a `Line`. The main line is also modeled as a `Li
 The basic information is replicated (e.g. `PublicCode`, `TransportMode`).
 The `Name` might be different to express something.
 All `ServiceJourneyPattern` and `ServiceJourney`are only added to the partial lines.
+
+## Who delivers what if we allow for delivery on the partial line level
+>NB we currently only deal with partial in the sense there are different operators. The other possibilities are not addressed here.
+
+We want the NETWORK_OFFER to be valid. This can be achieved as follows:
+* Each operator delivers her partial line
+* Both deliver the main line
+* Both include a GroupOfLine where in the absent line they set `versionRef="1"` instead of `version="1"`.
+
+
+```
+<GroupOfLine id="ch:1:slnid:100011:1" version="1">
+    <members>
+        <LineRef id="ch:1:slnid:100011:1:1" version="1"/>
+        <LineRef id="ch:1:slnid:100011:1:2" versionRef="1/> <!-- this Line is not present in the file -->
+    </members>
+    <MainLine id="ch:1:slnid:100011:1" version="1"/>
+    <GroupOfLinesType></GroupOfLinesType>
+</GroupOfLine>
+```
 
 ## The problem with two concessionaries
 NeTEx does not really assume this. Also, the way we build `responsibilitySet` does not cover it originally.

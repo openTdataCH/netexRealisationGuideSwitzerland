@@ -30,11 +30,42 @@ The relevant reference data that is already available/defined by SKI:
 - ValueSets - in [XML modeling](03_xml_modelling.md)
 - Facilities - in [mapping excel](media/Mappingtabellen_NeTEx_v2.0.xlsx).
 
-### Responsibilities Data Supplier
-The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality. Complete means all timetable data in the responsibility of the provider for the whole timetable period.
+### Roles and Duties
+#### Owner ("Konzessionär")
+The designed owner according to Atlas is responsible for the overall delivery of the data.
 
-### Responsibilties SKI
+#### Operator
+An owner can operate everything himself or he can delegate this (per partial line). 
+
+>NB: We still have to finalise whether the owner has to produce a single file for the whole line or if delivery of partial lines is  allowed and how. This is an organisational matter.
+ 
+
+#### Responsibilities Data Provider
+The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality on the technical level. Complete means all timetable data in the responsibility of the provider for the whole timetable period.
+
+> NB: In many cases the data provider may be identical to the Owner.
+
+#### Responsibilties SKI
 SKI is responsible for the timely delivery of the complete timetable information with sufficient quality of all timetable data for open data and for the consumption by the data consumers.
+
+### Completeness of the delivery
+
+We still work on this, and it is not a matter of NeTEx but of the basic process of the data provision to SKI. 
+
+We will start with the following:
+* All service journeys for a given timetable year with all facilities and notices, including service journeys driven by operators in the name of the owner for all lines the owner is responsible for
+* With co-owners one owner is designed to deliver the data.
+* We suggest that Atlas contains the information, which business organisation  provides the data for which line (on the technical level)
+* Nobody should deliver lines that belong to a different business owner.
+
+>NB: We discuss in the [use case on mixed lines](uc17_mixed_lines.md), what is possible. However, the rules of SKI are the ones to follow
+
+>NB: Also replacement traffic will be defined in the general guidelines and not here. SKI will define, who has to provide what.
+
+### Shared Responsibilities for Planning
+While [use case on mixed lines](uc17_mixed_lines.md) shows, what is possible in the first iteration we assume that one data provider will furnish the whole line with all its partial lines. Different policies don't depend on NeTEx, but on the processing stream of INFO+.
+
+Also, if problems occur in the end it is always the owner that is responsible to addressing them.
 
 
 ## Files
@@ -48,7 +79,7 @@ We will have three different file types:
 
 The first two are valid according to the XSD. INTERCHANGE only as far as we use `versionRef` instead of `version`.
 
-NETWORK_OFFER is per operator and in some cases per area.
+NETWORK_OFFER is the core timetable data. It can be one file per business organisation (owner and or data provider). Or it can be two very different subsets within an organisation (e.g.  ships, carTransportRail,rail) or perhaps also per region (PAG). The distinction should not be done unilateraly by the data provider, but in collaboration with SKI. Possible criteria: (a) size of  the file remains manageable, (b) third parties can find out, in which file, which line is, without inspecting every NETWORK_OFFER, (c) sensible arrangement so that not all NETWORK_OFFER need to be consumed, if only a given subset is needed by the data consumer.
 
 This repartition of the data into different file leads to some redundancy. However, the files can still be transferred efficiently.
 
