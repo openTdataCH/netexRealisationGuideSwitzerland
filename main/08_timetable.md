@@ -356,6 +356,11 @@ CheckConstraints are used for different use cases
 
 *→ [Template](./templates/CheckConstraint.xml)*
 
+### Usage Notes
+* We don't want to support `bothWays`. So only `forwards`and `backwards`are supported for `CheckDirection`.
+* For `CheckProcess` we currenlty only allow `alighting`, `boarding` and `queue`.
+* We currently ignore `CheckService`, `AccessFeatureType`.
+* For `Congestion` we only use `queue`. This is used to model waiting times for railTransportCar and transports like funiculars.
 
 ## TemplateServiceJourney
 *→ [Glossary definition](A4_annex_glossary.md#templateservicejourney)*
@@ -534,7 +539,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | validityConditions | optional | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. | If there is a different availability to the ServiceJourney |
 | + | AvailabilityConditionRef | expected | 0..* | AvailabilityConditionRefStructure | Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes. |  |
-|  | FareClass | expected | 0..1 | FareClassEnumeration | Fixed class associated with this CLASS OF USE. |  |
+|  | FareClass | expected | 0..1 | FareClassEnumeration | Fixed class associated with this CLASS OF USE. | Allowed values are firstClass, secondClass and unknown |
 |  | OccupancyLevel | expected | 0..1 | OccupancyEnumeration | An approximate figure of how occupied or full a VEHICLE and its parts are, e.g. 'manySeatsAvailable' or 'standingRoomOnly'. More accurate data can be provided by the individual occupancies or capacities below. | Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable |
 |  | GroupReservation | optional | 0..* | GroupReservationStructure | Reservations of travel groups, i.e., name of group and number of seats booked. |  |
 | + | NameOfGroup | expected | 1..1 | MultilingualString | Name for which the travel group has made the reservation. |  |
@@ -555,12 +560,14 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
     <!-- If there is a different availability to the ServiceJourney -->
     <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:1231231:11" version="1"/>
   </validityConditions>
-  <FareClass>firstClass</FareClass>
+  <FareClass>firstClass
+    <!-- Allowed values are firstClass, secondClass and unknown -->
+  </FareClass>
   <OccupancyLevel>seatsAvailable
     <!-- Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable -->
   </OccupancyLevel>
   <GroupReservation>
-    <NameOfGroup lang="fr">Gymnase français de Bienne></NameOfGroup>
+    <NameOfGroup lang="fr">Lycée de Bienne></NameOfGroup>
     <NumberOfReservedSeats>21</NumberOfReservedSeats>
   </GroupReservation>
 </OccupancyView>

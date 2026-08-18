@@ -36,9 +36,10 @@
 								<MobilityRestrictedTravellerDuration><!-- ch-usage: expected -->PT4M</MobilityRestrictedTravellerDuration>
 							</WalkTransferDuration>
 							<BothWays><!-- ch-usage: optional --><!-- ch-note: Should be false - we always intend to use only one way because the behaviour may not be the same.-->false</BothWays>
+                            <TransferMode><!-- ch-usage: optional --><!-- ch-note: Is foot. Others might become possible in future-->foot</TransferMode>
 							<From>
 								<!-- ch-usage: mandatory -->
-								<TransportMode><!-- ch-usage: optional -->all</TransportMode>
+								<TransportMode><!-- ch-usage: optional --><!-- ch-note: All codes are shown in mapping excel. Use with care. -->rail</TransportMode>
 								<OperatorView>
 									<!-- ch-usage: optional-->
                                     <!-- ch-note: Should be a sboid whenever possible. -->
@@ -49,7 +50,7 @@
 							</From>
 							<To>
 								<!-- ch-usage: mandatory -->
-								<TransportMode><!-- ch-usage: optional -->all</TransportMode>
+								<TransportMode><!-- ch-usage: optional --><!-- ch-note: All codes are shown in mapping excel. Use with care. -->rail</TransportMode>
 								<OperatorView>
 									<!-- ch-usage: optional -->
                                     <!-- ch-note: Should be a sboid whenever possible. -->

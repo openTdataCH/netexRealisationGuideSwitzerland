@@ -18,15 +18,22 @@
   <BothWays>false
     <!-- Should be false - we always intend to use only one way because the behaviour may not be the same. -->
   </BothWays>
+  <TransferMode>foot
+    <!-- Is foot. Others might become possible in future -->
+  </TransferMode>
   <From>
-    <TransportMode>all</TransportMode>
+    <TransportMode>rail
+      <!-- All codes are shown in mapping excel. Use with care. -->
+    </TransportMode>
     <OperatorView>
       <!-- Should be a sboid whenever possible. -->
       <OperatorRef ref="ch:1:sboid:100011" version="1"/>
     </OperatorView>
   </From>
   <To>
-    <TransportMode>all</TransportMode>
+    <TransportMode>rail
+      <!-- All codes are shown in mapping excel. Use with care. -->
+    </TransportMode>
     <OperatorView>
       <!-- Should be a sboid whenever possible. -->
       <OperatorRef ref="ch:1:sboid:100033" version="1"/>

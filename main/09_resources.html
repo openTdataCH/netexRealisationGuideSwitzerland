@@ -365,7 +365,7 @@
       <td>0..*</td>
       <td>ValueSet_VersionStructure</td>
       <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
-      <td>We expect a TypsOfPlace Valueset</td>
+      <td>We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop.</td>
     </tr>
     <tr>
       <td> </td>
@@ -483,7 +483,7 @@
       <span class="nt">&lt;/values&gt;</span>
     <span class="nt">&lt;/ValueSet&gt;</span>
     <span class="nt">&lt;ValueSet</span> <span class="na">id=</span><span class="s">"ch:1:ValueSet:TypesOfPlace"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"TypeOfPlace"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- We expect a TypsOfPlace Valueset --&gt;</span>
+      <span class="c">&lt;!-- We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop. --&gt;</span>
       <span class="nt">&lt;values&gt;</span>
         <span class="nt">&lt;TypeOfPlace</span> <span class="na">id=</span><span class="s">"drtCollectionPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Sammelpunkt
@@ -1051,13 +1051,122 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
   <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
 </ul>
 
+<h2 id="typesofplace">TypesOfPlace</h2>
+
+<h3 id="purpose-6">Purpose</h3>
+<p>We have two types of place that we use:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">regularStop</code>: regular stop from classic public transport</li>
+  <li><code class="language-plaintext highlighter-rouge">drtCollectionPoint</code>: irregular stop used in demand responsive transport.</li>
+</ul>
+
+<h3 id="table-4">Table</h3>
+
+<p>We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop.</p>
+
+<p><em>Table: ValueSet</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>values</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>typesOfValue_RelStructure</td>
+      <td>Values in Set.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TypeOfPlace</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>TypeOfPlace_ValueStructure</td>
+      <td>Classification of a PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of VALIDITY CONDITION.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>Text</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../xcore/netex/elements/TypesOfPlace.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-4">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;ValueSet</span> <span class="na">id=</span><span class="s">"ch:1:ValueSet:TypesOfPlace"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">nameOfClass=</span><span class="s">"TypeOfPlace"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop. --&gt;</span>
+  <span class="nt">&lt;values&gt;</span>
+    <span class="nt">&lt;TypeOfPlace</span> <span class="na">id=</span><span class="s">"drtCollectionPoint"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Sammelpunkt
+        <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Collection Point<span class="nt">&lt;/Text&gt;</span>
+      <span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;/TypeOfPlace&gt;</span>
+    <span class="nt">&lt;TypeOfPlace</span> <span class="na">id=</span><span class="s">"regularStop"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Reguläre Haltestelle
+        <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Regular Stop<span class="nt">&lt;/Text&gt;</span>
+      <span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;/TypeOfPlace&gt;</span>
+  <span class="nt">&lt;/values&gt;</span>
+<span class="nt">&lt;/ValueSet&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/TypesOfPlace.xml">Template</a></em></p>
+
 <h2 id="servicefacilityset">ServiceFacilitySet</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#servicefacilityset">Glossary definition</a></em></p>
 
-<h3 id="purpose-6">Purpose</h3>
+<h3 id="purpose-7">Purpose</h3>
 <p>Set of <code class="language-plaintext highlighter-rouge">Facility</code>’s available for a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> or a <code class="language-plaintext highlighter-rouge">JourneyPart</code>.</p>
 
-<h3 id="table-4">Table</h3>
+<h3 id="table-5">Table</h3>
 
 <p>List of ServiceFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical ServiceFacilitySets. Reuse them. Details in the mapping excel.</p>
 
@@ -1216,7 +1325,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
 
 <p><em>→ <a href="../xcore/netex/elements/ServiceFacilitySet.html">General NeTEx definition</a></em></p>
 
-<h3 id="example-4">Example</h3>
+<h3 id="example-5">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;ServiceFacilitySet</span> <span class="na">id=</span><span class="s">"ch:1:ServiceFacilitySet:A___2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -1274,13 +1383,13 @@ separated list of elements.</li>
 <h2 id="sitefacilityset">SiteFacilitySet</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#servicefacilityset">Glossary definition</a></em></p>
 
-<h3 id="purpose-7">Purpose</h3>
+<h3 id="purpose-8">Purpose</h3>
 <p>Set of <code class="language-plaintext highlighter-rouge">Facility</code>s available at a <code class="language-plaintext highlighter-rouge">StopPlace</code>, <code class="language-plaintext highlighter-rouge">Quay</code> or other site elements.</p>
 
 <p>A <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code> defines a set of facilities like sanitary facilities, ticket service, lockers etc. that can be 
 referenced to define facilities of a site.</p>
 
-<h3 id="table-5">Table</h3>
+<h3 id="table-6">Table</h3>
 
 <p>List of SiteFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical SiteFacilitySets. Reuse them. There might be an overlap to ServiceFacilitySet, but they are used for different purposes.</p>
 
@@ -1439,7 +1548,7 @@ referenced to define facilities of a site.</p>
 
 <p><em>→ <a href="../xcore/netex/elements/SiteFacilitySet.html">General NeTEx definition</a></em></p>
 
-<h3 id="example-5">Example</h3>
+<h3 id="example-6">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -1481,10 +1590,10 @@ referenced to define facilities of a site.</p>
 <h2 id="vehicletype">VehicleType</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#vehicletype">Glossary definition</a></em></p>
 
-<h3 id="purpose-8">Purpose</h3>
+<h3 id="purpose-9">Purpose</h3>
 <p>A typified vehicle configuration (model or series) defining reusable characteristics such as capacity, dimensions, propulsion, and accessibility features.</p>
 
-<h3 id="table-6">Table</h3>
+<h3 id="table-7">Table</h3>
 
 <p>Used currently mainly for the relevant accessibility elements that can be expressed currently</p>
 
@@ -1562,7 +1671,7 @@ referenced to define facilities of a site.</p>
 
 <p><em>→ <a href="../xcore/netex/elements/VehicleType.html">General NeTEx definition</a></em></p>
 
-<h3 id="example-6">Example</h3>
+<h3 id="example-7">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;VehicleType</span> <span class="na">id=</span><span class="s">"ch:1:VehicleType:NF"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>

@@ -5,21 +5,25 @@
 	<dataObjects>
 		<CompositeFrame id="ch:1:CompositeFrame" version="1">
 			<frames>
-				<ResourceFrame id="ch:1:ResourceFrame" version="1">
-					<organisations>
-						<Operator id="sboid" version="1">
+				<ResourceFrame id="ch:1:ResourceFrame" version="1"/>
+				<SiteFrame id="ch:1:SiteFrame" version="1">
+					<stopPlaces>
+						<StopPlace id="ch:1:sloid:7000" version="1">
+							<Name>Bern</Name>
 							<alternativeNames>
-																<AlternativeName><!-- ch-root -->
-									<!-- ch-note: In some cases we need translations or alias of the Name element. This is done with AlternativeName. -->
+                                <AlternativeName>
+                                    <!-- ch-root -->
+									<!-- ch-note: In some cases we need an alias of the Name element. This is done with AlternativeName. And it basically happens only for StopPlace and rarely Operator. -->
 									<!-- ch-usage: mandatory -->
-									<NameType><!-- ch-allowed-enums: alias --><!-- ch-note: alias allowed for StopPlace. -->alias</NameType>
-									<TypeOfName><!-- ch-usage: optional--><!-- ch-note: For StopPlace official is used for the official name -->offical</TypeOfName>
-									<Name lang="de"><!-- ch-usage: mandatory --><!-- ch-attrs: lang -->Die Übersetzung des Namens.</Name>
+									<NameType><!-- ch-allowed-enums: alias --><!-- ch-note: alias allowed e.g. for StopPlace. -->alias</NameType>
+									<TypeOfName><!-- ch-usage: optional--><!-- ch-note: If it is the official name. If used, only "offical" should be used. -->offical</TypeOfName>
+									<Name lang="de"><!-- ch-usage: mandatory --><!-- ch-attrs: lang -->Bärn</Name>
 								</AlternativeName>
 							</alternativeNames>
-						</Operator>
-					</organisations>
-				</ResourceFrame>
+						</StopPlace>
+					</stopPlaces>
+				</SiteFrame>
+
 			</frames>
 		</CompositeFrame>
 	</dataObjects>

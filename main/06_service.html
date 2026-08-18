@@ -1045,6 +1045,7 @@ class ServiceJourney {
   <li>Only mixed lines have a <code class="language-plaintext highlighter-rouge">GroupOfLines</code>.</li>
   <li>All <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and <code class="language-plaintext highlighter-rouge">ServiceJourney</code> are assigned to the partial lines.</li>
   <li>In very rare cases the main line has two legal owners. We discuss the modeling in <a href="/netexRealisationGuideSwitzerland/main/uc17_mixed_lines.html">uc17</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">GroupOfLinesType</code> is restricted in the usage we have. We currently allow only <code class="language-plaintext highlighter-rouge">administrative</code>. Meaning that all intgration is always along the hierarchy between owners and operators.</li>
   <li>The <code class="language-plaintext highlighter-rouge">@id</code> should be the number of the main line.</li>
 </ul>
 
@@ -1491,6 +1492,15 @@ class ServiceJourney {
     </tr>
     <tr>
       <td> </td>
+      <td>TransferMode</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessModeEnumeration</td>
+      <td>If a special transfer mode is needed. ACCESS MODE enumeration is also used for the TransferMode. +v2.0</td>
+      <td>Is foot. Others might become possible in future</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>From</td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -1505,7 +1515,7 @@ class ServiceJourney {
       <td>0..1</td>
       <td>AllModesEnumeration</td>
       <td>An area within a Site. May be connected to Quays by PATH LINKs.</td>
-      <td> </td>
+      <td>All codes are shown in mapping excel. Use with care.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -1570,15 +1580,22 @@ class ServiceJourney {
   <span class="nt">&lt;BothWays&gt;</span>false
     <span class="c">&lt;!-- Should be false - we always intend to use only one way because the behaviour may not be the same. --&gt;</span>
   <span class="nt">&lt;/BothWays&gt;</span>
+  <span class="nt">&lt;TransferMode&gt;</span>foot
+    <span class="c">&lt;!-- Is foot. Others might become possible in future --&gt;</span>
+  <span class="nt">&lt;/TransferMode&gt;</span>
   <span class="nt">&lt;From&gt;</span>
-    <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
+    <span class="nt">&lt;TransportMode&gt;</span>rail
+      <span class="c">&lt;!-- All codes are shown in mapping excel. Use with care. --&gt;</span>
+    <span class="nt">&lt;/TransportMode&gt;</span>
     <span class="nt">&lt;OperatorView&gt;</span>
       <span class="c">&lt;!-- Should be a sboid whenever possible. --&gt;</span>
       <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100011"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
     <span class="nt">&lt;/OperatorView&gt;</span>
   <span class="nt">&lt;/From&gt;</span>
   <span class="nt">&lt;To&gt;</span>
-    <span class="nt">&lt;TransportMode&gt;</span>all<span class="nt">&lt;/TransportMode&gt;</span>
+    <span class="nt">&lt;TransportMode&gt;</span>rail
+      <span class="c">&lt;!-- All codes are shown in mapping excel. Use with care. --&gt;</span>
+    <span class="nt">&lt;/TransportMode&gt;</span>
     <span class="nt">&lt;OperatorView&gt;</span>
       <span class="c">&lt;!-- Should be a sboid whenever possible. --&gt;</span>
       <span class="nt">&lt;OperatorRef</span> <span class="na">ref=</span><span class="s">"ch:1:sboid:100033"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
@@ -2060,7 +2077,7 @@ needs to be added for that too.</li>
       <td>0..1</td>
       <td>StopUseEnumeration</td>
       <td>Nature of use of stop, e.g. access, interchange only, or pass through. Default is Access.</td>
-      <td>All values possible. passthrough is used for Durchfahrt, if such data is delivered.</td>
+      <td>All values possible. passthrough is used for Durchfahrt, if such data is delivered. See mapping excel.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -2123,7 +2140,7 @@ needs to be added for that too.</li>
       <td>0..1</td>
       <td>ServiceJourneyPatternTypeEnumeration</td>
       <td>Type of SERVICE JOURNEY PATTERN.</td>
-      <td> </td>
+      <td>We currently only allow passenger</td>
     </tr>
   </tbody>
 </table>
@@ -2149,7 +2166,7 @@ needs to be added for that too.</li>
       <span class="nt">&lt;/DestinationDisplayRef&gt;</span>
       <span class="nt">&lt;RequestStop&gt;</span>false<span class="nt">&lt;/RequestStop&gt;</span>
       <span class="nt">&lt;StopUse&gt;</span>access
-        <span class="c">&lt;!-- All values possible. passthrough is used for Durchfahrt, if such data is delivered. --&gt;</span>
+        <span class="c">&lt;!-- All values possible. passthrough is used for Durchfahrt, if such data is delivered. See mapping excel. --&gt;</span>
       <span class="nt">&lt;/StopUse&gt;</span>
       <span class="nt">&lt;checkConstraints&gt;</span>
         <span class="nt">&lt;CheckConstraint</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
@@ -2171,7 +2188,9 @@ needs to be added for that too.</li>
       <span class="nt">&lt;ForBoarding&gt;</span>false<span class="nt">&lt;/ForBoarding&gt;</span>
     <span class="nt">&lt;/StopPointInJourneyPattern&gt;</span>
   <span class="nt">&lt;/pointsInSequence&gt;</span>
-  <span class="nt">&lt;ServiceJourneyPatternType&gt;</span>passenger<span class="nt">&lt;/ServiceJourneyPatternType&gt;</span>
+  <span class="nt">&lt;ServiceJourneyPatternType&gt;</span>passenger
+    <span class="c">&lt;!-- We currently only allow passenger --&gt;</span>
+  <span class="nt">&lt;/ServiceJourneyPatternType&gt;</span>
 <span class="nt">&lt;/ServiceJourneyPattern&gt;</span>
 </code></pre></div></div>
 

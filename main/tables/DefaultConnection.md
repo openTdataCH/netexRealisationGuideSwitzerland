@@ -14,8 +14,9 @@ Be aware only some combinations are allowed: from mode A to mode B without opera
 |  | WalkTransferDuration | mandatory | 0..1 | TransferDurationStructure | Timings for walking over TRANSFER if different from the JOURNEY PATTERN transfer duration, | We use WalkTransferDuration. At some point we need a solution for bicyle duration too (TSI telemetics) |
 | + | MobilityRestrictedTravellerDuration | expected | 0..1 | xsd:duration | Time for a Mobility Restricted traveller to make a TRANSFER. |  |
 |  | BothWays | optional | 0..1 | xsd:boolean | Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER. | Should be false - we always intend to use only one way because the behaviour may not be the same. |
+|  | TransferMode | optional | 0..1 | AccessModeEnumeration | If a special transfer mode is needed. ACCESS MODE enumeration is also used for the TransferMode. +v2.0 | Is foot. Others might become possible in future |
 |  | From | mandatory | 0..1 | ConnectionEndStructure | Origin end of ACCESS link. |  |
-| + | TransportMode | optional | 0..1 | AllModesEnumeration | An area within a Site. May be connected to Quays by PATH LINKs. |  |
+| + | TransportMode | optional | 0..1 | AllModesEnumeration | An area within a Site. May be connected to Quays by PATH LINKs. | All codes are shown in mapping excel. Use with care. |
 | + | OperatorView | optional | 1..1 | Operator_DerivedViewStructure | Simplified view of OPERATOR. All data except the identifier will be derived through the relationship. | Should be a sboid whenever possible. |
 | ++ | OperatorRef | mandatory | 1..1 | OperatorRefStructure | Reference to an OPERATOR. |  |
 |  | To | mandatory | 0..1 | ConnectionEndStructure | Destination end of ACCESS link. |  |

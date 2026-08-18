@@ -51,7 +51,7 @@ Contains shared resources used / referenced in other frames - organisations (`Op
 | ++ | values | expected | 0..1 | typesOfValue_RelStructure | Values in Set. |  |
 | +++ | TypeOfNotice | expected | 0..* | TypeOfNotice_ValueStructure | A classification of a NOTICE according to its functional purpose. |  |
 | + | ValueSet | expected | 0..* | ValueSet_VersionStructure | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfProductCategory ValueSet |
-| + | ValueSet | expected | 0..* | ValueSet_VersionStructure | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We expect a TypsOfPlace Valueset |
+| + | ValueSet | expected | 0..* | ValueSet_VersionStructure | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop. |
 |  | organisations | mandatory | 0..1 | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD |
 | + | [Operator](./tables/Operator.md) | mandatory | 0..* | Operator_VersionStructure | A company providing public transport services. | We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. |
 |  | siteFacilitySets | optional | 0..1 | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 | Depending on the export/import part, there will be SiteFacilitySets to be included or not. |
@@ -107,7 +107,7 @@ Contains shared resources used / referenced in other frames - organisations (`Op
       </values>
     </ValueSet>
     <ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
-      <!-- We expect a TypsOfPlace Valueset -->
+      <!-- We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop. -->
       <values>
         <TypeOfPlace id="drtCollectionPoint" version="1">
           <Name lang="de">Sammelpunkt
@@ -409,6 +409,63 @@ in Switzerland. The TU-Code is to be used for operators of other countries.
 a different `OperatorRef`.
 * `Authority`  and `Organisation` are not used.
 - `@id` needs to be kept stable between exports.
+
+
+## TypesOfPlace
+
+### Purpose
+We have two types of place that we use:
+- `regularStop`: regular stop from classic public transport
+- `drtCollectionPoint`: irregular stop used in demand responsive transport.
+
+### Table
+
+
+
+We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop.
+
+*Table: ValueSet*
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | values | expected | 0..1 | typesOfValue_RelStructure | Values in Set. |  |
+| + | TypeOfPlace | expected | 0..* | TypeOfPlace_ValueStructure | Classification of a PLACE. |  |
+| ++ | Name | expected | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
+| +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
+| +++ | Text | expected | 0..* | MultilingualString |  |  |
+| ++++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
+
+
+
+
+*→ [General NeTEx definition](../xcore/netex/elements/TypesOfPlace.html)*
+
+
+###  Example
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
+  <!-- We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop. -->
+  <values>
+    <TypeOfPlace id="drtCollectionPoint" version="1">
+      <Name lang="de">Sammelpunkt
+        <Text lang="en">Collection Point</Text>
+      </Name>
+    </TypeOfPlace>
+    <TypeOfPlace id="regularStop" version="1">
+      <Name lang="de">Reguläre Haltestelle
+        <Text lang="en">Regular Stop</Text>
+      </Name>
+    </TypeOfPlace>
+  </values>
+</ValueSet>
+```
+
+
+
+*→ [Template](./templates/TypesOfPlace.xml)*
 
 ## ServiceFacilitySet
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*

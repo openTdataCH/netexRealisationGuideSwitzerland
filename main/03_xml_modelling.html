@@ -497,13 +497,13 @@ If a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> ru
 <h4 id="purpose">Purpose</h4>
 
 <p><code class="language-plaintext highlighter-rouge">AlternativeName</code> is used to provide an alternative (alias) of a name, e.g. of 
-a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code class="language-plaintext highlighter-rouge">Organisation</code>.</p>
+a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code class="language-plaintext highlighter-rouge">Operator</code>.</p>
 
 <p>For all translations and other alternative texts use <code class="language-plaintext highlighter-rouge">MultilingualString</code>.</p>
 
 <h4 id="table">Table</h4>
 
-<p>In some cases we need translations or alias of the Name element. This is done with AlternativeName.</p>
+<p>In some cases we need an alias of the Name element. This is done with AlternativeName. And it basically happens only for StopPlace and rarely Operator.</p>
 
 <p><em>Table: AlternativeName</em></p>
 
@@ -527,7 +527,7 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
       <td>0..1</td>
       <td>NameTypeEnumeration</td>
       <td>Type of Name - fixed value. Default is alias.</td>
-      <td>In some cases we need translations or alias of the Name element. This is done with AlternativeName. alias allowed for StopPlace.</td>
+      <td>In some cases we need an alias of the Name element. This is done with AlternativeName. And it basically happens only for StopPlace and rarely Operator. alias allowed e.g. for StopPlace.</td>
     </tr>
     <tr>
       <td> </td>
@@ -536,7 +536,7 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
       <td>0..1</td>
       <td>xsd:normalizedString</td>
       <td>Type of Name - open value.</td>
-      <td>For StopPlace official is used for the official name</td>
+      <td>If it is the official name. If used, only “offical” should be used.</td>
     </tr>
     <tr>
       <td> </td>
@@ -565,14 +565,14 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;AlternativeName&gt;</span>
-  <span class="c">&lt;!-- In some cases we need translations or alias of the Name element. This is done with AlternativeName. --&gt;</span>
+  <span class="c">&lt;!-- In some cases we need an alias of the Name element. This is done with AlternativeName. And it basically happens only for StopPlace and rarely Operator. --&gt;</span>
   <span class="nt">&lt;NameType&gt;</span>alias
-    <span class="c">&lt;!-- alias allowed for StopPlace. --&gt;</span>
+    <span class="c">&lt;!-- alias allowed e.g. for StopPlace. --&gt;</span>
   <span class="nt">&lt;/NameType&gt;</span>
   <span class="nt">&lt;TypeOfName&gt;</span>offical
-    <span class="c">&lt;!-- For StopPlace official is used for the official name --&gt;</span>
+    <span class="c">&lt;!-- If it is the official name. If used, only "offical" should be used. --&gt;</span>
   <span class="nt">&lt;/TypeOfName&gt;</span>
-  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Die Übersetzung des Namens.<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Bärn<span class="nt">&lt;/Name&gt;</span>
 <span class="nt">&lt;/AlternativeName&gt;</span>
 </code></pre></div></div>
 

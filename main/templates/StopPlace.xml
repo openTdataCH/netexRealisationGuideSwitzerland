@@ -88,9 +88,10 @@
 							</AccessibilityAssessment>
 							<alternativeNames>
 								<!-- ch-usage: optional -->
-								<!-- ch-note: Alternative names for the StopPlace. We will also use these for synonyms. -->
+								<!-- ch-note: Alternative names for the StopPlace. We will only use these for synonyms. -->
 								<AlternativeName id="ch:1:sloid:7000:it" version="1">
 									<!-- ch-see -->
+                                    <NameType>alias</NameType>
 									<Name lang="it">Berna</Name>
 								</AlternativeName>
 							</alternativeNames>
@@ -107,16 +108,16 @@
 							</TopographicPlaceRef>
 							<Locale>
 								<!-- ch-usage: optional -->
-								<TimeZone><!-- ch-usage: optional --><!-- ch-note: Must be present, when not DefaultTimeZone -->Europe/Zurich</TimeZone>
+								<TimeZone><!-- ch-usage: optional --><!-- ch-note: Must be present, when not in DefaultTimeZone. -->Europe/Zurich</TimeZone>
 							</Locale>
 							<localServices>
 								<!-- ch-usage: ignored -->
 								<!-- ch-note: might be added in the future. Especially for accessibility. -->
 								<AssistanceServiceRef ref="generated" versionRef="1"/>
 							</localServices>
-							<StopPlaceType><!-- ch-usage: optional -->railStation</StopPlaceType>
-							<LimitedUse><!-- ch-usage: optional --><!-- ch-note: For stops like Sagliains -->interchangeOnly</LimitedUse>
-							<Weighting><!-- ch-usage: optional --><!-- ch-note: Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. --><!-- ch-allowed-enums: noInterchange interchangeAllowed recommendedInterchange preferredInterchange -->preferredInterchange</Weighting>
+							<StopPlaceType><!-- ch-usage: optional --><!-- Relevant values defined in mapping excel. -->railStation</StopPlaceType>
+							<LimitedUse><!-- ch-usage: optional --><!-- ch-note: For stops like Sagliains. We currently use only interchangeOnly. --><!-- ch-allowed-enums: interchangeOnly -->interchangeOnly</LimitedUse>
+							<Weighting><!-- ch-usage: optional --><!-- ch-note: Default relative weighting to be used for stop place. See also mapping excel. Cf. HafasPriority in Extensions. --><!-- ch-allowed-enums: noInterchange interchangeAllowed recommendedInterchange preferredInterchange -->preferredInterchange</Weighting>
 							<quays>
 								<!-- ch-usage: expected -->
 								<!-- ch-note: The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. Note that the usage (expected) overrides the cardinality. -->

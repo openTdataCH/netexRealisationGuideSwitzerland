@@ -41,8 +41,9 @@
     </Location>
   </Centroid>
   <alternativeNames>
-    <!-- Alternative names for the StopPlace. We will also use these for synonyms. -->
+    <!-- Alternative names for the StopPlace. We will only use these for synonyms. -->
     <AlternativeName id="ch:1:sloid:7000:it" version="1">
+      <NameType>alias</NameType>
       <Name lang="it">Berna</Name>
     </AlternativeName>
   </alternativeNames>
@@ -51,15 +52,15 @@
   </TopographicPlaceRef>
   <Locale>
     <TimeZone>Europe/Zurich
-      <!-- Must be present, when not DefaultTimeZone -->
+      <!-- Must be present, when not in DefaultTimeZone. -->
     </TimeZone>
   </Locale>
   <StopPlaceType>railStation</StopPlaceType>
   <LimitedUse>interchangeOnly
-    <!-- For stops like Sagliains -->
+    <!-- For stops like Sagliains. We currently use only interchangeOnly. -->
   </LimitedUse>
   <Weighting>preferredInterchange
-    <!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. -->
+    <!-- Default relative weighting to be used for stop place. See also mapping excel. Cf. HafasPriority in Extensions. -->
   </Weighting>
   <quays>
     <!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. Note that the usage (expected) overrides the cardinality. -->

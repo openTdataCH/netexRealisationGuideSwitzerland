@@ -410,7 +410,7 @@
       <td>0..1</td>
       <td>alternativeNames_RelStructure</td>
       <td>Alternativie names for ORGANISATION.</td>
-      <td>Alternative names for the StopPlace. We will also use these for synonyms.</td>
+      <td>Alternative names for the StopPlace. We will only use these for synonyms.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -446,7 +446,7 @@
       <td>0..1</td>
       <td>xsd:normalizedString</td>
       <td>Timezone name at LOCALE.</td>
-      <td>Must be present, when not DefaultTimeZone</td>
+      <td>Must be present, when not in DefaultTimeZone.</td>
     </tr>
     <tr>
       <td> </td>
@@ -464,7 +464,7 @@
       <td>0..1</td>
       <td>LimitedUseTypeEnumeration</td>
       <td>Further categorisation of stop as having topographic limitations.</td>
-      <td>For stops like Sagliains</td>
+      <td>For stops like Sagliains. We currently use only interchangeOnly.</td>
     </tr>
     <tr>
       <td> </td>
@@ -473,7 +473,7 @@
       <td>0..1</td>
       <td>InterchangeWeightingEnumeration</td>
       <td>Default rating of the STOP PLACE for making interchanges.</td>
-      <td>Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions.</td>
+      <td>Default relative weighting to be used for stop place. See also mapping excel. Cf. HafasPriority in Extensions.</td>
     </tr>
     <tr>
       <td> </td>

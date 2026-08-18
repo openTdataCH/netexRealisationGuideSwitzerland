@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>AlternativeName | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<title>TypesOfPlace | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="AlternativeName" />
+<meta property="og:title" content="TypesOfPlace" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/AlternativeName.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/AlternativeName.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/TypesOfPlace.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/TypesOfPlace.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="AlternativeName" />
+<meta property="twitter:title" content="TypesOfPlace" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"AlternativeName","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/AlternativeName.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"TypesOfPlace","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/TypesOfPlace.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
 <body><header class="site-header" role="banner">
@@ -213,11 +213,11 @@
 </nav>
     <main class="content" aria-label="Content">
       
-        <h1 class="page-title">AlternativeName</h1>
+        <h1 class="page-title">TypesOfPlace</h1>
       
-      <p>In some cases we need an alias of the Name element. This is done with AlternativeName. And it basically happens only for StopPlace and rarely Operator.</p>
+      <p>We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop.</p>
 
-<p><em>Table: AlternativeName</em></p>
+<p><em>Table: ValueSet</em></p>
 
 <table>
   <thead>
@@ -234,33 +234,51 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>NameType</td>
-      <td>mandatory</td>
+      <td>values</td>
+      <td>expected</td>
       <td>0..1</td>
-      <td>NameTypeEnumeration</td>
-      <td>Type of Name - fixed value. Default is alias.</td>
-      <td>In some cases we need an alias of the Name element. This is done with AlternativeName. And it basically happens only for StopPlace and rarely Operator. alias allowed e.g. for StopPlace.</td>
+      <td>typesOfValue_RelStructure</td>
+      <td>Values in Set.</td>
+      <td> </td>
     </tr>
     <tr>
+      <td>+</td>
+      <td>TypeOfPlace</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>TypeOfPlace_ValueStructure</td>
+      <td>Classification of a PLACE.</td>
       <td> </td>
-      <td>TypeOfName</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>xsd:normalizedString</td>
-      <td>Type of Name - open value.</td>
-      <td>If it is the official name. If used, only “offical” should be used.</td>
     </tr>
     <tr>
-      <td> </td>
+      <td>++</td>
       <td>Name</td>
-      <td>mandatory</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
       <td>Name of VALIDITY CONDITION.</td>
       <td> </td>
     </tr>
     <tr>
-      <td>+</td>
+      <td>+++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>Text</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++++</td>
       <td>@lang</td>
       <td>mandatory</td>
       <td>1..1</td>

@@ -33,7 +33,7 @@
 										<!-- ch-note: Indicates that the destination has changed. Superseeds Line or ServiceJourney -->
 									</DestinationDisplayRef>
 									<RequestStop><!-- ch-usage: optional -->false</RequestStop>
-									<StopUse><!-- ch-usage: optional --><!-- ch-note: All values possible. passthrough is used for Durchfahrt, if such data is delivered. -->access</StopUse>
+									<StopUse><!-- ch-usage: optional --><!-- ch-note: All values possible. passthrough is used for Durchfahrt, if such data is delivered. See mapping excel. -->access</StopUse>
 									<checkConstraints>
 										<!-- ch-usage: optional -->
 										<CheckConstraint id="generated" version="1">
@@ -67,7 +67,7 @@
 									<ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
-							<ServiceJourneyPatternType><!-- ch-usage: expected --><!-- ch-allowed-enums: passenger -->passenger</ServiceJourneyPatternType>
+							<ServiceJourneyPatternType><!-- ch-usage: expected --><!-- ch-allowed-enums: passenger --><!-- ch-note: We currently only allow passenger -->passenger</ServiceJourneyPatternType>
 						</ServiceJourneyPattern>
 					</journeyPatterns>
 				</ServiceFrame>

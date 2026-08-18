@@ -1060,6 +1060,14 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/CheckConstraint.xml">Template</a></em></p>
 
+<h3 id="usage-notes-1">Usage Notes</h3>
+<ul>
+  <li>We don’t want to support <code class="language-plaintext highlighter-rouge">bothWays</code>. So only <code class="language-plaintext highlighter-rouge">forwards</code>and <code class="language-plaintext highlighter-rouge">backwards</code>are supported for <code class="language-plaintext highlighter-rouge">CheckDirection</code>.</li>
+  <li>For <code class="language-plaintext highlighter-rouge">CheckProcess</code> we currenlty only allow <code class="language-plaintext highlighter-rouge">alighting</code>, <code class="language-plaintext highlighter-rouge">boarding</code> and <code class="language-plaintext highlighter-rouge">queue</code>.</li>
+  <li>We currently ignore <code class="language-plaintext highlighter-rouge">CheckService</code>, <code class="language-plaintext highlighter-rouge">AccessFeatureType</code>.</li>
+  <li>For <code class="language-plaintext highlighter-rouge">Congestion</code> we only use <code class="language-plaintext highlighter-rouge">queue</code>. This is used to model waiting times for railTransportCar and transports like funiculars.</li>
+</ul>
+
 <h2 id="templateservicejourney">TemplateServiceJourney</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#templateservicejourney">Glossary definition</a></em></p>
 <h3 id="purpose-3">Purpose</h3>
@@ -1457,7 +1465,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/TemplateServiceJourney.xml">Template</a></em></p>
 
-<h3 id="usage-notes-1">Usage Notes</h3>
+<h3 id="usage-notes-2">Usage Notes</h3>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code> holds all the frequency-based information of the journey, as for example when the stops of the journey are serviced the first/last time and in what interval (or at which frequency, respectively).</li>
   <li>Note that in addition to <code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code>, standard NeTEx also features <code class="language-plaintext highlighter-rouge">RhythmicalJourneyGroup</code> to specifiy, e.g., departures at 15, 27 and 40 minutes past the hour - this is not used in the Swiss profile.</li>
@@ -1542,7 +1550,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>0..1</td>
       <td>FareClassEnumeration</td>
       <td>Fixed class associated with this CLASS OF USE.</td>
-      <td> </td>
+      <td>Allowed values are firstClass, secondClass and unknown</td>
     </tr>
     <tr>
       <td> </td>
@@ -1593,12 +1601,14 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
     <span class="c">&lt;!-- If there is a different availability to the ServiceJourney --&gt;</span>
     <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"ch:1:AvailabilityCondition:1231231:11"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
-  <span class="nt">&lt;FareClass&gt;</span>firstClass<span class="nt">&lt;/FareClass&gt;</span>
+  <span class="nt">&lt;FareClass&gt;</span>firstClass
+    <span class="c">&lt;!-- Allowed values are firstClass, secondClass and unknown --&gt;</span>
+  <span class="nt">&lt;/FareClass&gt;</span>
   <span class="nt">&lt;OccupancyLevel&gt;</span>seatsAvailable
     <span class="c">&lt;!-- Niedrige Belegung: empty; mittlere Belegung: manySeatsAvailable; hohe Belegung: fewSeatsAvailable --&gt;</span>
   <span class="nt">&lt;/OccupancyLevel&gt;</span>
   <span class="nt">&lt;GroupReservation&gt;</span>
-    <span class="nt">&lt;NameOfGroup</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Gymnase français de Bienne&gt;<span class="nt">&lt;/NameOfGroup&gt;</span>
+    <span class="nt">&lt;NameOfGroup</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Lycée de Bienne&gt;<span class="nt">&lt;/NameOfGroup&gt;</span>
     <span class="nt">&lt;NumberOfReservedSeats&gt;</span>21<span class="nt">&lt;/NumberOfReservedSeats&gt;</span>
   <span class="nt">&lt;/GroupReservation&gt;</span>
 <span class="nt">&lt;/OccupancyView&gt;</span>
@@ -1606,7 +1616,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/OccupancyView.xml">Template</a></em></p>
 
-<h3 id="usage-notes-2">Usage Notes</h3>
+<h3 id="usage-notes-3">Usage Notes</h3>
 <ul>
   <li>We currently don’t use OccupancyView.</li>
 </ul>
@@ -1784,7 +1794,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
 
 <p><em>→ - <a href="/netexRealisationGuideSwitzerland/main/templates/TypeOfService.xml">Template</a></em></p>
 
-<h3 id="usage-notes-3">Usage Notes</h3>
+<h3 id="usage-notes-4">Usage Notes</h3>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
 </ul>
@@ -2067,7 +2077,7 @@ to the fact that the passenger should not change vehicle as the transfer is impl
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/ServiceJourneyInterchange.xml">Template</a></em></p>
 
-<h3 id="usage-notes-4">Usage Notes</h3>
+<h3 id="usage-notes-5">Usage Notes</h3>
 <ul>
   <li>The use cases are outlined in the use cases: splitting/joinging, remain seated in the same vehicle (between service journeys), guaranteed connections)</li>
   <li><code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> is placed in the <code class="language-plaintext highlighter-rouge">TimetableFrame</code> within the <code class="language-plaintext highlighter-rouge">journeyInterchanges</code> collection.</li>

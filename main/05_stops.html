@@ -601,7 +601,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>0..1</td>
       <td>alternativeNames_RelStructure</td>
       <td>Alternativie names for ORGANISATION.</td>
-      <td>Alternative names for the StopPlace. We will also use these for synonyms.</td>
+      <td>Alternative names for the StopPlace. We will only use these for synonyms.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -637,7 +637,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>0..1</td>
       <td>xsd:normalizedString</td>
       <td>Timezone name at LOCALE.</td>
-      <td>Must be present, when not DefaultTimeZone</td>
+      <td>Must be present, when not in DefaultTimeZone.</td>
     </tr>
     <tr>
       <td> </td>
@@ -655,7 +655,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>0..1</td>
       <td>LimitedUseTypeEnumeration</td>
       <td>Further categorisation of stop as having topographic limitations.</td>
-      <td>For stops like Sagliains</td>
+      <td>For stops like Sagliains. We currently use only interchangeOnly.</td>
     </tr>
     <tr>
       <td> </td>
@@ -664,7 +664,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>0..1</td>
       <td>InterchangeWeightingEnumeration</td>
       <td>Default rating of the STOP PLACE for making interchanges.</td>
-      <td>Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions.</td>
+      <td>Default relative weighting to be used for stop place. See also mapping excel. Cf. HafasPriority in Extensions.</td>
     </tr>
     <tr>
       <td> </td>
@@ -734,8 +734,9 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     <span class="nt">&lt;/Location&gt;</span>
   <span class="nt">&lt;/Centroid&gt;</span>
   <span class="nt">&lt;alternativeNames&gt;</span>
-    <span class="c">&lt;!-- Alternative names for the StopPlace. We will also use these for synonyms. --&gt;</span>
+    <span class="c">&lt;!-- Alternative names for the StopPlace. We will only use these for synonyms. --&gt;</span>
     <span class="nt">&lt;AlternativeName</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:it"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;NameType&gt;</span>alias<span class="nt">&lt;/NameType&gt;</span>
       <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Berna<span class="nt">&lt;/Name&gt;</span>
     <span class="nt">&lt;/AlternativeName&gt;</span>
   <span class="nt">&lt;/alternativeNames&gt;</span>
@@ -744,15 +745,15 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
   <span class="nt">&lt;/TopographicPlaceRef&gt;</span>
   <span class="nt">&lt;Locale&gt;</span>
     <span class="nt">&lt;TimeZone&gt;</span>Europe/Zurich
-      <span class="c">&lt;!-- Must be present, when not DefaultTimeZone --&gt;</span>
+      <span class="c">&lt;!-- Must be present, when not in DefaultTimeZone. --&gt;</span>
     <span class="nt">&lt;/TimeZone&gt;</span>
   <span class="nt">&lt;/Locale&gt;</span>
   <span class="nt">&lt;StopPlaceType&gt;</span>railStation<span class="nt">&lt;/StopPlaceType&gt;</span>
   <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly
-    <span class="c">&lt;!-- For stops like Sagliains --&gt;</span>
+    <span class="c">&lt;!-- For stops like Sagliains. We currently use only interchangeOnly. --&gt;</span>
   <span class="nt">&lt;/LimitedUse&gt;</span>
   <span class="nt">&lt;Weighting&gt;</span>preferredInterchange
-    <span class="c">&lt;!-- Default relative weighting to be used for stop place. Cf. HafasPriority in Extensions. --&gt;</span>
+    <span class="c">&lt;!-- Default relative weighting to be used for stop place. See also mapping excel. Cf. HafasPriority in Extensions. --&gt;</span>
   <span class="nt">&lt;/Weighting&gt;</span>
   <span class="nt">&lt;quays&gt;</span>
     <span class="c">&lt;!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. Note that the usage (expected) overrides the cardinality. --&gt;</span>
@@ -1134,7 +1135,7 @@ as its parent.</li>
       <td>0..1</td>
       <td>TopographicPlaceTypeEnumeration</td>
       <td>Classification of the TOPOGRAPHIC PLACE as a settlement. Enumerated value.</td>
-      <td>Allowed values: country, county</td>
+      <td>Allowed values: country, state (canton), county, municipality (commune).</td>
     </tr>
     <tr>
       <td> </td>
@@ -1160,8 +1161,8 @@ as its parent.</li>
       <span class="c">&lt;!-- Abbreviation of the canton (leave empty if TopographicPlaceType is country) --&gt;</span>
     <span class="nt">&lt;/ShortName&gt;</span>
   <span class="nt">&lt;/Descriptor&gt;</span>
-  <span class="nt">&lt;TopographicPlaceType&gt;</span>county
-    <span class="c">&lt;!-- Allowed values: country, county --&gt;</span>
+  <span class="nt">&lt;TopographicPlaceType&gt;</span>state
+    <span class="c">&lt;!-- Allowed values: country, state (canton), county, municipality (commune). --&gt;</span>
   <span class="nt">&lt;/TopographicPlaceType&gt;</span>
   <span class="nt">&lt;ParentTopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:TopoGraphicPlace:CH-BE-Bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- Parent topographic place when it exists. --&gt;</span>
