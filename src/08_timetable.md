@@ -112,6 +112,11 @@ Used to describe foreseeable delays caused by processes such as check-in, securi
 
 *→ [Template](./templates/CheckConstraint.xml)*
 
+### Usage Notes
+* We don't want to support `bothWays`. So only `forwards`and `backwards`are supported for `CheckDirection`.
+* For `CheckProcess` we currenlty only allow `alighting`, `boarding` and `queue`.
+* We currently ignore `CheckService`, `AccessFeatureType`.
+* For `Congestion` we only use `queue`. This is used to model waiting times for railTransportCar and transports like funiculars.
 
 ## TemplateServiceJourney
 *→ [Glossary definition](A4_annex_glossary.md#templateservicejourney)*

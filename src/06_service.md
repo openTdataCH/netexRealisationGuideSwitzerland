@@ -173,6 +173,7 @@ A `GroupOfLines` is used to model mixed lines. For details see [uc17](uc17_mixed
 - Only mixed lines have a `GroupOfLines`.
 - All `ServiceJourneyPattern` and `ServiceJourney` are assigned to the partial lines.
 - In very rare cases the main line has two legal owners. We discuss the modeling in [uc17](uc17_mixed_lines.md).
+- `GroupOfLinesType` is restricted in the usage we have. We currently allow only `administrative`. Meaning that all intgration is always along the hierarchy between owners and operators.
 - The `@id` should be the number of the main line.
 
 ## DestinationDisplay

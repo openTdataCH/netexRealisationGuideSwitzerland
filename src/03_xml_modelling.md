@@ -255,7 +255,7 @@ The Swiss profile does not contain any  geometries currently. If we would do it,
 #### Purpose
 
 `AlternativeName` is used to provide an alternative (alias) of a name, e.g. of 
-a `StopPlace` or `Organisation`. 
+a `StopPlace` or `Operator`. 
 
 For all translations and other alternative texts use `MultilingualString`.
 

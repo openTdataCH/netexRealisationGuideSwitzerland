@@ -180,6 +180,25 @@ a different `OperatorRef`.
 * `Authority`  and `Organisation` are not used.
 - `@id` needs to be kept stable between exports.
 
+
+## TypesOfPlace
+
+### Purpose
+We have two types of place that we use:
+- `regularStop`: regular stop from classic public transport
+- `drtCollectionPoint`: irregular stop used in demand responsive transport.
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/TypesOfPlace.md)
+
+*→ [General NeTEx definition](../xcore/netex/elements/TypesOfPlace.html)*
+
+
+###  Example
+- [XML Snippet](../site/xml-snippets/TypesOfPlace.xml)
+
+*→ [Template](./templates/TypesOfPlace.xml)*
+
 ## ServiceFacilitySet
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
 
