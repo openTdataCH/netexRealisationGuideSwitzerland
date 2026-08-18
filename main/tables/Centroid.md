@@ -7,7 +7,7 @@ Global or national location
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
 |  | Name | expected | 0..1 | MultilingualString | Name of VALIDITY CONDITION. | Global or national location |
-|  | Location | mandatory | 0..1 | LocationStructure | The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates). | The main coordinates are given as **WSG84**. Note that the usage (mandatory) overrides the cardinality. |
+|  | Location | mandatory | 0..1 | LocationStructure | The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates). | The main coordinates are given as **WSG84**. |
 | + | Longitude | mandatory | 1..1 | LongitudeType | Longitude from Greenwich Meridian. -180 (East) to +180 (West). |  |
 | + | Latitude | mandatory | 1..1 | LatitudeType | Latitude from equator. -90 (South) to +90 (North). |  |
 | + | Altitude | optional | 0..1 | AltitudeType | Altitude. |  |
