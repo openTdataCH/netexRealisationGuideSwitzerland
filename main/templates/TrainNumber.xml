@@ -7,22 +7,22 @@
 			<frames>
 				<TimetableFrame id="ch:1:TimetableFrame" version="1">
 					<trainNumbers>
-						<TrainNumber id="71707" version="1">
+						<TrainNumber id="generated" version="1">
 							<!-- ch-root -->
 							<!-- ch-attrs: id version -->
-							<!-- ch-note: The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advertisment und production are identical. It is the number from *Z in HRDF. Must be unique per operating day in Switzerland. -->
+							<!-- ch-note: The TrainNumber (in ForAdvertisment or ForProduction) are currently a maximum of 6 digits long. TrainNumber for advertisment und production are identical. It is the number from *Z in HRDF. Must be unique per operating day in Switzerland. -->
 							<Description>
 								<!-- ch-usage: ignored -->
 								Information about the train
 							</Description>
 							<ForAdvertisement>
 								<!-- ch-usage: expected -->
-								<!-- ch-note: TrainNumber to use for advertisement to public. Use if different from ID. -->
+								<!-- ch-note: TrainNumber to use for advertisement to public. -->
 								12311A
 							</ForAdvertisement>
 							<ForProduction>
 								<!-- ch-usage: optional -->
-								<!-- ch-note: TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID. -->
+								<!-- ch-note: TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use only when different from ForAdvertisement value. We might use this for the longer values of PAG at some point. -->
 								12311A
 							</ForProduction>
 						</TrainNumber>

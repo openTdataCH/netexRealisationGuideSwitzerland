@@ -1631,7 +1631,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
 
 <h3 id="table-5">Table</h3>
 
-<p>The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advertisment und production are identical. It is the number from *Z in HRDF. Must be unique per operating day in Switzerland.</p>
+<p>The TrainNumber (in ForAdvertisment or ForProduction) are currently a maximum of 6 digits long. TrainNumber for advertisment und production are identical. It is the number from *Z in HRDF. Must be unique per operating day in Switzerland.</p>
 
 <p><em>Table: TrainNumber</em></p>
 
@@ -1673,7 +1673,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>0..1</td>
       <td>xsd:normalizedString</td>
       <td>TRAIN NUMBER to use when advertising Train -If different from Id.</td>
-      <td>TrainNumber to use for advertisement to public. Use if different from ID.</td>
+      <td>TrainNumber to use for advertisement to public.</td>
     </tr>
     <tr>
       <td> </td>
@@ -1682,7 +1682,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>0..1</td>
       <td>xsd:normalizedString</td>
       <td>TRAIN NUMBER to use for production -If different from Id.</td>
-      <td>TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID.</td>
+      <td>TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use only when different from ForAdvertisement value. We might use this for the longer values of PAG at some point.</td>
     </tr>
   </tbody>
 </table>
@@ -1692,13 +1692,13 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
 <h3 id="example-5">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="nt">&lt;TrainNumber</span> <span class="na">id=</span><span class="s">"71707"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- The TrainNumber are currently a maximum of 6 digits long. TrainNumber for advertisment und production are identical. It is the number from *Z in HRDF. Must be unique per operating day in Switzerland. --&gt;</span>
+<span class="nt">&lt;TrainNumber</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- The TrainNumber (in ForAdvertisment or ForProduction) are currently a maximum of 6 digits long. TrainNumber for advertisment und production are identical. It is the number from *Z in HRDF. Must be unique per operating day in Switzerland. --&gt;</span>
   <span class="nt">&lt;ForAdvertisement&gt;</span>12311A
-    <span class="c">&lt;!-- TrainNumber to use for advertisement to public. Use if different from ID. --&gt;</span>
+    <span class="c">&lt;!-- TrainNumber to use for advertisement to public. --&gt;</span>
   <span class="nt">&lt;/ForAdvertisement&gt;</span>
   <span class="nt">&lt;ForProduction&gt;</span>12311A
-    <span class="c">&lt;!-- TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use iff different from ID. --&gt;</span>
+    <span class="c">&lt;!-- TrainNumber to use for production purposes, for instance towards technical systems that require an odd or even value according to safety regulations. Use only when different from ForAdvertisement value. We might use this for the longer values of PAG at some point. --&gt;</span>
   <span class="nt">&lt;/ForProduction&gt;</span>
 <span class="nt">&lt;/TrainNumber&gt;</span>
 </code></pre></div></div>
