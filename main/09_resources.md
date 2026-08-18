@@ -489,7 +489,7 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 | + | Priority | expected | 0..1 | InterchangePriorityType | Priority to assign to this INTERCHANGE. |  |
 |  | Description | expected | 0..1 | MultilingualString |  |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | optional | 0..* | MultilingualString |  |  |
+| + | Text | optional | 0..* | MultilingualString |  | For each language a Text element must be provided |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | FareClasses | optional | 0..1 | FareClassListOfEnumerations | List of Fare Classes. |  |
 |  | MobilityFacilityList | optional | 0..1 | MobilityFacilityListOfEnumerations | List of MOBILITY FACILITies. |  |
@@ -517,7 +517,9 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
     <Condition>4</Condition>
   </Extensions>
   <Description lang="de">Nur 2. Klasse
-    <Text lang="en">2nd class only</Text>
+    <Text lang="en">2nd class only
+      <!-- For each language a Text element must be provided -->
+    </Text>
     <Text lang="fr">Seulement 2e classe</Text>
     <Text lang="it">Solo 2a classe</Text>
   </Description>
@@ -582,9 +584,9 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | validityConditions | optional | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. |  |
 | + | [AvailabilityCondition](./tables/AvailabilityCondition.md) | optional | 0..* | AvailabilityCondition_VersionStructure | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. |  |
-|  | Description | optional | 0..1 | MultilingualString |  | Description is optional |
+|  | Description | optional | 0..1 | MultilingualString |  | Description is optional. |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | optional | 0..* | MultilingualString |  |  |
+| + | Text | optional | 0..* | MultilingualString |  | All necessary languages are modeled as a Text element |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | AssistanceFacilityList | optional | 0..1 | AssistanceFacilityListOfEnumerations | List of ASSISTANCE FACILITies. |  |
 |  | AccessibilityToolList | optional | 0..1 | AccessibilityToolListOfEnumerations | List of TYPEs of ACCESSIBILITY TOOLs. |  |
@@ -614,8 +616,10 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
     </AvailabilityCondition>
   </validityConditions>
   <Description lang="de">SiteFacilitySet Solothurn
-    <!-- Description is optional -->
-    <Text lang="en">SiteFacilitySet Solothurn</Text>
+    <!-- Description is optional. -->
+    <Text lang="en">SiteFacilitySet Solothurn
+      <!-- All necessary languages are modeled as a Text element -->
+    </Text>
   </Description>
   <AssistanceFacilityList>personalAssistance information boardingAssistance</AssistanceFacilityList>
   <AccessibilityToolList>audioNavigator</AccessibilityToolList>

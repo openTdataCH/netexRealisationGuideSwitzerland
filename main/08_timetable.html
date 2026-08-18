@@ -933,6 +933,7 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <li><code class="language-plaintext highlighter-rouge">DepartureTime</code> is used without UTC time zone or offset. Otherwise, the ServiceJourney would need to be duplicated form winter and summer time. and we would need additional <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s.  For frequency purpose additional service journeys would need to be squeezed in, when during the change additional ones are needed to maintain the frequency.  In such cases UTC must be used to clarify for those additional journeys when it starts.</li>
   <li>We don’t have a <code class="language-plaintext highlighter-rouge">LineRef</code> here, because we have it in the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>.</li>
   <li>If there exists a sjyid for a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> then it always to be put into the <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> with <code class="language-plaintext highlighter-rouge">type="sjyid</code>.</li>
+  <li>A negative <code class="language-plaintext highlighter-rouge">DepartureDayOffset</code> will be very rare. It may be used, when e.g. the train starts a day before for a different operator, and we only see it at the current day and want to preserve the operating day.</li>
 </ul>
 
 <h3 id="calculation-of-passing-times-at-stops">Calculation of Passing Times at Stops</h3>

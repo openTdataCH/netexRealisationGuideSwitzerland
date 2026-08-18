@@ -10,9 +10,9 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | validityConditions | optional | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. |  |
 | + | [AvailabilityCondition](AvailabilityCondition.md) | optional | 0..* | AvailabilityCondition_VersionStructure | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. |  |
-|  | Description | optional | 0..1 | MultilingualString |  | Description is optional |
+|  | Description | optional | 0..1 | MultilingualString |  | Description is optional. |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | optional | 0..* | MultilingualString |  |  |
+| + | Text | optional | 0..* | MultilingualString |  | All necessary languages are modeled as a Text element |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | AssistanceFacilityList | optional | 0..1 | AssistanceFacilityListOfEnumerations | List of ASSISTANCE FACILITies. |  |
 |  | AccessibilityToolList | optional | 0..1 | AccessibilityToolListOfEnumerations | List of TYPEs of ACCESSIBILITY TOOLs. |  |

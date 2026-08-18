@@ -1246,7 +1246,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>0..*</td>
       <td>MultilingualString</td>
       <td> </td>
-      <td> </td>
+      <td>For each language a Text element must be provided</td>
     </tr>
     <tr>
       <td>++</td>
@@ -1336,7 +1336,9 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
     <span class="nt">&lt;Condition&gt;</span>4<span class="nt">&lt;/Condition&gt;</span>
   <span class="nt">&lt;/Extensions&gt;</span>
   <span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Nur 2. Klasse
-    <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>2nd class only<span class="nt">&lt;/Text&gt;</span>
+    <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>2nd class only
+      <span class="c">&lt;!-- For each language a Text element must be provided --&gt;</span>
+    <span class="nt">&lt;/Text&gt;</span>
     <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"fr"</span><span class="nt">&gt;</span>Seulement 2e classe<span class="nt">&lt;/Text&gt;</span>
     <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Solo 2a classe<span class="nt">&lt;/Text&gt;</span>
   <span class="nt">&lt;/Description&gt;</span>
@@ -1451,7 +1453,7 @@ referenced to define facilities of a site.</p>
       <td>0..1</td>
       <td>MultilingualString</td>
       <td> </td>
-      <td>Description is optional</td>
+      <td>Description is optional.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -1469,7 +1471,7 @@ referenced to define facilities of a site.</p>
       <td>0..*</td>
       <td>MultilingualString</td>
       <td> </td>
-      <td> </td>
+      <td>All necessary languages are modeled as a Text element</td>
     </tr>
     <tr>
       <td>++</td>
@@ -1561,8 +1563,10 @@ referenced to define facilities of a site.</p>
     <span class="nt">&lt;/AvailabilityCondition&gt;</span>
   <span class="nt">&lt;/validityConditions&gt;</span>
   <span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>SiteFacilitySet Solothurn
-    <span class="c">&lt;!-- Description is optional --&gt;</span>
-    <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>SiteFacilitySet Solothurn<span class="nt">&lt;/Text&gt;</span>
+    <span class="c">&lt;!-- Description is optional. --&gt;</span>
+    <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>SiteFacilitySet Solothurn
+      <span class="c">&lt;!-- All necessary languages are modeled as a Text element --&gt;</span>
+    <span class="nt">&lt;/Text&gt;</span>
   <span class="nt">&lt;/Description&gt;</span>
   <span class="nt">&lt;AssistanceFacilityList&gt;</span>personalAssistance information boardingAssistance<span class="nt">&lt;/AssistanceFacilityList&gt;</span>
   <span class="nt">&lt;AccessibilityToolList&gt;</span>audioNavigator<span class="nt">&lt;/AccessibilityToolList&gt;</span>

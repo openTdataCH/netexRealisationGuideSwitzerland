@@ -290,6 +290,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - `DepartureTime` is used without UTC time zone or offset. Otherwise, the ServiceJourney would need to be duplicated form winter and summer time. and we would need additional `AvailabilityCondition`s.  For frequency purpose additional service journeys would need to be squeezed in, when during the change additional ones are needed to maintain the frequency.  In such cases UTC must be used to clarify for those additional journeys when it starts.
 - We don't have a `LineRef` here, because we have it in the `ServiceJourneyPattern`.
 - If there exists a sjyid for a `ServiceJourney` then it always to be put into the `privateCodes/PrivateCode` with `type="sjyid`.
+- A negative `DepartureDayOffset` will be very rare. It may be used, when e.g. the train starts a day before for a different operator, and we only see it at the current day and want to preserve the operating day. 
 
 
 ### Calculation of Passing Times at Stops

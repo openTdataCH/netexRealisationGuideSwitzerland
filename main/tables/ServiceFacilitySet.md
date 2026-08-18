@@ -12,7 +12,7 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 | + | Priority | expected | 0..1 | InterchangePriorityType | Priority to assign to this INTERCHANGE. |  |
 |  | Description | expected | 0..1 | MultilingualString |  |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | optional | 0..* | MultilingualString |  |  |
+| + | Text | optional | 0..* | MultilingualString |  | For each language a Text element must be provided |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | FareClasses | optional | 0..1 | FareClassListOfEnumerations | List of Fare Classes. |  |
 |  | MobilityFacilityList | optional | 0..1 | MobilityFacilityListOfEnumerations | List of MOBILITY FACILITies. |  |
