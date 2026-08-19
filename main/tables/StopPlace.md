@@ -21,7 +21,7 @@ In some cases the id of a StopPlace is not a SLOID.
 |  | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. | The official stop name. If you have different versions one needs to use AlternativeName |
 |  | Centroid | mandatory | 0..1 | SimplePoint_VersionStructure | Centre Coordinates of ZONE. | Global or national location |
 | + | Name | optional | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
-| + | Location | mandatory | 0..1 | LocationStructure | The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates). | Note concerning coordinates - The main coordinates are given as **WSG84**. |
+| + | Location | mandatory | 0..1 | LocationStructure | The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates). | Note concerning coordinates - The main coordinates are given as **WGS84**. |
 | ++ | Longitude | mandatory | 1..1 | LongitudeType | Longitude from Greenwich Meridian. -180 (East) to +180 (West). |  |
 | ++ | Latitude | mandatory | 1..1 | LatitudeType | Latitude from equator. -90 (South) to +90 (North). |  |
 | ++ | Altitude | optional | 0..1 | AltitudeType | Altitude. |  |
