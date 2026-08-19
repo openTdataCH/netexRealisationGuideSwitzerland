@@ -103,7 +103,7 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 ```xml
 <StopPlace id="ch:1:StopPlace:8503000" version="1">
   <ValidBetween>
-    <FromDate>2026-01-01T00:00:00</FromDate>
+    <FromDate>2025-12-14T00:00:00</FromDate>
   </ValidBetween>
   <Name>Zürich HB</Name>
   <privateCodes>

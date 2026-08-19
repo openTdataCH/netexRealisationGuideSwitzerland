@@ -217,8 +217,8 @@ For NeTEx 3.0 there will be a general discussion, how and for what use cases `ve
 
  ### FromDate and ToDate
 The dates we have are always operating days. Nevertheless, we use
-* `2026-01-01T00:00:00`
-* `2026-01-01T23:59:59`
+* `2026-03-14T00:00:00`
+* `2026-03-14T23:59:59`
 
 to describe a single day.
 
