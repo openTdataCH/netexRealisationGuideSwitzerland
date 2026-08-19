@@ -610,8 +610,8 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
   <!-- List of SiteFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical SiteFacilitySets. Reuse them. There might be an overlap to ServiceFacilitySet, but they are used for different purposes. -->
   <validityConditions>
     <AvailabilityCondition id="generated" version="1">
-      <FromDate>2026-03-30T12:00:00</FromDate>
-      <ToDate>2026-04-01T12:00:00</ToDate>
+      <FromDate>2026-03-30T00:00:00</FromDate>
+      <ToDate>2026-04-01T23:59:59</ToDate>
       <ValidDayBits>01</ValidDayBits>
     </AvailabilityCondition>
   </validityConditions>

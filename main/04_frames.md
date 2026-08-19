@@ -141,8 +141,8 @@ Their full documentation can be found here: [ResourceFrame](09_resources.md#reso
 <CompositeFrame id="ch:1:CompositeFrame" version="1">
   <ValidBetween>
     <!-- This defines which timetable year is meant. We don't support partial delivery. -->
-    <FromDate>2026-01-01T00:00:00</FromDate>
-    <ToDate>2026-12-31T00:00:00</ToDate>
+    <FromDate>2025-12-14T00:00:00</FromDate>
+    <ToDate>2026-12-12T23:59:59</ToDate>
   </ValidBetween>
   <Description>
     <!-- A description of the delivery can be provided. -->
