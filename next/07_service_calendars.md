@@ -364,9 +364,13 @@ In Switzerland only used for holidays and the like
 *→ [Glossary definition](A4_annex_glossary.md#timeband)*
 
 #### Purpose
-A period of time within a day, usually defined by a start and end time (e.g. `06:00:00`–`09:00:00` for a morning peak window). Within an `AvailabilityCondition`, a `timebands` constraint restricts validity to journeys whose departure falls inside that daily time window, in addition to whichever `FromDate`/`ToDate`/`ValidDayBits` constraints are also present (all are ANDed, see [ServiceCalendarFrame](#servicecalendarframe) above).
+A period of time within a day, defined by a `StartTime` and an `EndTime` (e.g. `09:00:00`–`17:00:00`). The general NeTEx/Transmodel model defines it as a period in a day that is significant for some aspect of public transport, such as similar traffic conditions or a fare category.
 
-**Example use case (illustrative, not yet implemented in the Swiss profile):** a `Timeband` `07:00:00`–`09:00:00` combined with `ValidDayBits` for weekdays could restrict a fare rule or a `NoticeAssignment` (e.g. "peak-hour surcharge applies") to weekday morning-peak journeys only, without needing a separate `AvailabilityCondition` per journey.
+**Use in the Swiss profile — frequency-based lines:** `Timeband` is primarily used to express the daily operating window of a frequency-based service. Typical cases are services that run continuously within fixed daily hours rather than on individually timetabled departures — for example a chairlift or a shuttle operating daily from 09:00 to 17:00 during a winter season. Within an `AvailabilityCondition`, the `timebands` constraint is ANDed with the `FromDate`/`ToDate` period and the `ValidDayBits` day pattern (see [AvailabilityCondition](#availabilitycondition) above), so the three together express: *"during this season, on these days, between these hours"*.
+
+`Timeband`s are defined centrally in the `ServiceCalendarFrame` and referenced from an `AvailabilityCondition` via `TimebandRef`, so the same daily window can be reused by several services instead of being repeated per journey.
+
+> **Note on the relation to `HeadwayJourneyGroup`:** `TemplateServiceJourney`/`HeadwayJourneyGroup` also carries `FirstDepartureTime` and `LastDepartureTime` (see [uc14 Frequencies](uc14_frequencies.md)), which bound the departures of one specific frequency group. `Timeband` is the reusable, calendar-level counterpart: it belongs to the validity of a service rather than to the departure pattern of a single `TemplateServiceJourney`. Where both could apply, `HeadwayJourneyGroup` is used for the departure bounds of that journey group, and `Timeband` for an operating window that is part of the service's temporal validity.
 
 #### Table
 
@@ -405,11 +409,14 @@ A period of time within a day, usually defined by a start and end time (e.g. `06
 
 *→ [Template](./templates/Timeband.xml)*
 
-
 #### Usage Notes
-- `Timeband` was used in RG 1.0 for `InterchangeRuleTiming`s (not applicable in RG 2.0, since `InterchangeRule` is not used — see [uc03 Transfers](uc03_transfers.md)). It is planned for future use for opening hours in `StopPlace` models, but currently **has no active use case in the Swiss RG 2.0 profile** — we have not yet identified data that requires it.
+- `Timeband` is mainly used for frequency-based lines, to express the daily operating window of the service.
+- The Swiss profile uses only `StartTime` and `EndTime` for `Timeband`; the alternatives available in the general NeTEx model — `StartEvent`/`EndEvent` (e.g. `dusk`, `dawn`) and `Duration` — are not used.
+- `StartTime` and `EndTime` are given in local time, i.e. without any timezone indication (no `Z`, no `±hh:mm` offset). The format is `hh:mm:ss` as required by `xsd:time`; the seconds component carries no meaning and is always given as `00`.
+- `Timeband`s are declared in the `ServiceCalendarFrame` and referenced from `AvailabilityCondition`/`timebands` via `TimebandRef`. Defining a `Timeband` inline inside an `AvailabilityCondition` is possible but should be avoided where the window is reusable.
+- `Timeband` is **not** used inside `DayType` — see [DayType](#daytype).
+- `Timeband` was used in RG 1.0 for `InterchangeRuleTiming`s. This is not applicable in RG 2.0, since `InterchangeRule` is not used (see [uc03 Transfers](uc03_transfers.md)).
 - `@id` should be kept stable between exports.
-
 
 ### DayTypeAssignment
 *→ [Glossary definition](A4_annex_glossary.md#daytypeassignment)*
