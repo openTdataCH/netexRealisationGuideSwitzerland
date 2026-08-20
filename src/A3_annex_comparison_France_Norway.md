@@ -373,6 +373,415 @@ The FlexibleServiceProperties element describes booking conditions.
 
 ### Future Swiss Profile 2.0
 
+
+---
+---
+
+## Second Part: Profile Comparison Considering Used and Unused Elements
+
+The data exctraction for this analysis and a large part of the analysis itself have been done using AI, there may be errors here and there. 
+
+An element is considered as actually *used* if identified and stated in the previous sections. 
+
+### Overview: Element Usage vs. Definition
+
+| Profile            | Defined Elements | Used in Examples | Usage Rate |
+| ------------------ | ---------------- | ---------------- | ---------- |
+| **France**         | 115              | 28               | 24%        |
+| **Norway (Entur)** | 84               | 24               | 29%        |
+| **Switzerland**    | 43               | 43               | 100%       |
+
+**Key Insight:** Both France and Norway define a significantly larger profile than they actually use in their productive data. The core "routing and scheduling" elements are universally used, while the "facility and accessibility" elements are largely unused in practice. The Swiss profile is a focused, pragmatic subset where every defined element is actively used.
+
+
+### Core Elements (Used by All Three)
+
+The 16 core "routing and scheduling" elements used across all three profiles.
+
+| Element                       | Category     |
+| ----------------------------- | ------------ |
+| **TopographicPlace**          | StopPlace    |
+| **StopPlace**                 | StopPlace    |
+| **Quay**                      | StopPlace    |
+| **Line**                      | Line         |
+| **GroupOfLines**              | Line         |
+| **DestinationDisplay**        | Journey      |
+| **ScheduledStopPoint**        | Journey      |
+| **PassengerStopAssignment**   | Journey      |
+| **ServiceJourneyPattern**     | Journey      |
+| **Notice**                    | Notice       |
+| **ServiceJourney**            | Timetable    |
+| **TrainNumber**               | Timetable    |
+| **DayType**                   | Calendar     |
+| **DayTypeAssignment**         | Calendar     |
+| **Operator**                  | Organization |
+| **ServiceJourneyInterchange** | Interchange  |
+
+
+### Profile-Specific Elements in Use
+
+#### France (4 elements not used in Norwegian or Swiss examples)
+| Element                     | Category      |
+| --------------------------- | ------------- |
+| **Authority**               | Organization  |
+| **Direction**               | Journey       |
+| **AccessEquipment**         | Accessibility |
+| **AccessibilityAssessment** | Accessibility |
+
+#### Norway (2 elements not used in France or Switzerland)
+**Almost all 24 Norway-used elements are found in either the France or Swiss used lists.** Norway's productive data is highly focused on core routing and scheduling, overlapping heavily with France's and Switzerland's used elements.
+
+**Additional elements:**
+   - Norway uses **ServiceLink** for coordinate sequences 
+   - Norway uses **DatedServiceJourney** for dated services 
+
+
+#### Switzerland (27 elements not used in France or Norway)
+| Element                       | Category     |
+| ----------------------------- | ------------ |
+| **PublicationDelivery**       | Publishing   |
+| **CompositeFrame**            | Publishing   |
+| **ResourceFrame**             | Publishing   |
+| **ResponsibilitySet**         | Organization |
+| **SiteFrame**                 | Publishing   |
+| **Centroid**                  | Common       |
+| **ServiceFrame**              | Publishing   |
+| **DefaultConnection**         | Interchange  |
+| **SiteConnection**            | Interchange  |
+| **TimingLink**                | Routing      |
+| **StopPointInJourneyPattern** | Journey      |
+| **CheckConstraint**           | Validation   |
+| **TimeDemandType**            | Flexible     |
+| **NoticeAssignment**          | Notice       |
+| **ServiceCalendarFrame**      | Publishing   |
+| **AvailabilityCondition**     | Calendar     |
+| **ServiceCalendar**           | Calendar     |
+| **Timeband**                  | Calendar     |
+| **TimetableFrame**            | Publishing   |
+| **TemplateServiceJourney**    | Timetable    |
+| **HeadwayJourneyGroup**       | Timetable    |
+| **OccupancyView**             | Timetable    |
+| **TypeOfService**             | Timetable    |
+| **TypeOfNotice**              | Notice       |
+| **TypeOfProductCategory**     | Product      |
+| **SiteFacilitySet**           | Facility     |
+| **VehicleType**               | Vehicle      |
+
+### Some Thoughts - TODO: to be reviewed / discussed / rewritten
+
+Provided the above presented data is correct:
+- The core "routing and scheduling" elements actually used by all three profiles cover the great majority of the elements used by France and Norway.
+- In contrast to the others, the Swiss profile adds another 27 elements to the 16 core elements.  Was this necessary / a good choice?
+- Regarding the "routing and scheduling" aspect all profiles care about basically the same underlying data. 
+- Isn't it a bit disappointing then, that they use different ways how to encode this same kind of data (times, interchanges, journey patterns, frames, ...)?
+- The comparisons done in this appendix only considered the top-level elements and remained blind to any differences in how the sub-elements are used.
+
+---
+
+### Used vs. Unused Elements per Profile
+
+Note that the parking and tariff parts of the French profile aren't available yet and therefore not included. 
+
+A more detailed comparison matrix of the three profiles based on the profile definitions (including both used and unused elements) can be found here:  [ComparisonMatrix_FR_NO_CH](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/media/ComparisonMatrix_FR_NO_CH.html). In addition to the top-level elements as discussed in this appendix, the comparison matrix also shows the contained sub-elements and whether the profiles define them as mandatory or optional. 
+
+#### Table: Elements actually used in France examples
+
+
+| # | Element | Where found in France data |
+|---|---------|----------------------------|
+| 1 | TopographicPlace | arrets.xml |
+| 2 | StopPlace | arrets.xml |
+| 3 | Quay | arrets.xml |
+| 4 | TariffZone | arrets.xml |
+| 5 | Authority | NETEX_COMMUN |
+| 6 | Operator | NETEX_COMMUN |
+| 7 | Network | NETEX_COMMUN |
+| 8 | Line | NETEX_COMMUN |
+| 9 | Notice | NETEX_COMMUN |
+| 10 | BookingContact | Flexible services |
+| 11 | Route | NETEX_STRUCTURE |
+| 12 | RoutePoint | NETEX_STRUCTURE |
+| 13 | Direction | NETEX_STRUCTURE |
+| 14 | ServiceJourneyPattern | NETEX_STRUCTURE |
+| 15 | DestinationDisplay | NETEX_STRUCTURE |
+| 16 | ScheduledStopPoint | NETEX_STRUCTURE |
+| 17 | PassengerStopAssignment | NETEX_STRUCTURE |
+| 18 | DataSource | NETEX_STRUCTURE |
+| 19 | ServiceJourney | NETEX_HORAIRE |
+| 20 | TrainNumber | NETEX_HORAIRE |
+| 21 | DayType | NETEX_CALENDRIER |
+| 22 | DayTypeAssignment | NETEX_CALENDRIER |
+| 23 | FlexibleLine | Demand-responsive |
+| 24 | FlexibleStopPlace | Demand-responsive |
+| 25 | FlexiblePointProperties | Demand-responsive |
+| 26 | FlexibleServiceProperties | Demand-responsive |
+| 27 | AccessEquipment | SNCF accessibility data |
+| 28 | AccessibilityAssessment | Provided for stops and quays |
+
+
+#### Table: Elements defined in France profile but NOT used in examples
+
+| # | Element | Category |
+|---|---------|----------|
+| 1 | Accommodation | StopPlace |
+| 2 | AddressablePlace | StopPlace |
+| 3 | AssistanceService | StopPlace |
+| 4 | Connection | Interchange |
+| 5 | ConnectionEnd | Interchange |
+| 6 | CoupledJourney | Interchange |
+| 7 | Crossing | Interchange |
+| 8 | CustomerService | Customer |
+| 9 | CycleStorageEquipment | Accessibility |
+| 10 | DefaultConnection | Interchange |
+| 11 | DefaultConnectionEnd | Interchange |
+| 12 | DestinationDisplayVariant | Destination |
+| 13 | DynamicStopAssignment | Assignment |
+| 14 | Entrance | StopPlace |
+| 15 | EntranceEquipment | Accessibility |
+| 16 | Equipment | General |
+| 17 | EquipmentPlace | StopPlace |
+| 18 | EquipmentPosition | StopPlace |
+| 19 | Escalator | Accessibility |
+| 20 | FacilitySet | StopPlace |
+| 21 | FlexibleLinkProperties | Flexible |
+| 22 | FlexibleRoute | Flexible |
+| 23 | GeneralSign | Signage |
+| 24 | GroupOfLines | Grouping |
+| 25 | GroupOfServices | Grouping |
+| 26 | GroupOfStopPlaces | Grouping |
+| 27 | HeadingSign | Signage |
+| 28 | HeadwayJourneyGroup | Timetable |
+| 29 | Interchange | Interchange |
+| 30 | InterchangeTimesGroup | Interchange |
+| 31 | Journey | Journey |
+| 32 | JourneyFrequencyGroup | Timetable |
+| 33 | JourneyPart | Journey |
+| 34 | JourneyPartCouple | Journey |
+| 35 | JourneyPartPosition | Journey |
+| 36 | JourneyPattern | Journey |
+| 37 | Lift | Accessibility |
+| 38 | LostPropertyService | Customer |
+| 39 | LuggageLockerEquipment | Accessibility |
+| 40 | LuggageService | Customer |
+| 41 | MeetingPointService | Customer |
+| 42 | NavigationPath | StopPlace |
+| 43 | PassengerCapacity | General |
+| 44 | PassengerEquipment | Accessibility |
+| 45 | PassengerSafetyEquipment | Accessibility |
+| 46 | PassingTime | Timetable |
+| 47 | PathJunction | StopPlace |
+| 48 | PathLink | StopPlace |
+| 49 | PathLinkEnd | StopPlace |
+| 50 | PathLinkInSequence | StopPlace |
+| 51 | PlaceLighting | StopPlace |
+| 52 | PlaceSign | Signage |
+| 53 | PointInJourneyPattern | Journey |
+| 54 | PointInLinkSequence | Route |
+| 55 | PointOfInterest | StopPlace |
+| 56 | PointOnRoute | Route |
+| 57 | QueuingEquipment | Accessibility |
+| 58 | RampEquipment | Accessibility |
+| 59 | RoughSurface | Accessibility |
+| 60 | RouteLink | Route |
+| 61 | RoutingConstraintZone | Routing |
+| 62 | RubbishDisposalEquipment | Accessibility |
+| 63 | SanitaryEquipment | Accessibility |
+| 64 | SchematicMap | Signage |
+| 65 | SchematicMapMember | Signage |
+| 66 | SeatingEquipment | Accessibility |
+| 67 | ServiceFacilitySet | StopPlace |
+| 68 | ServiceJourneyInterchange | Interchange |
+| 69 | ShelterEquipment | Accessibility |
+| 70 | Sign | Signage |
+| 71 | Site | StopPlace |
+| 72 | SiteComponent | StopPlace |
+| 73 | SiteConnection | Interchange |
+| 74 | SiteElement | StopPlace |
+| 75 | SiteElementPropertiesGroup | StopPlace |
+| 76 | Staircase | StopPlace |
+| 77 | StopPlaceSpace | StopPlace |
+| 78 | StopPointInJourneyPattern | Journey |
+| 79 | TemplateServiceJourney | Timetable |
+| 80 | TicketValidatorEquipment | Ticketing |
+| 81 | TicketingEquipment | Ticketing |
+| 82 | TicketingService | Ticketing |
+| 83 | TimingPoint | Journey |
+| 84 | TimingPointInJourneyPattern | Journey |
+| 85 | TopographicPlaceDescriptor | StopPlace |
+| 86 | Train | Journey |
+| 87 | TrainComponent | Journey |
+| 88 | TrainComponentLabelAssignment | Journey |
+| 89 | TrainElement | Journey |
+| 90 | TrainStopAssignment | Assignment |
+| 91 | TransferRestriction | Interchange |
+| 92 | Travelator | Accessibility |
+| 93 | TrolleyStandEquipment | Accessibility |
+| 94 | TypeOfEquipment | General |
+| 95 | VehicleType | General |
+| 96 | WaitingEquipment | Accessibility |
+| 97 | WaitingRoomEquipment | Accessibility |
+
+**Key takeaway:** The France profile defines a rich set of accessibility, signage, ticketing, and routing elements, but the actual productive data feeds use only the core 28 elements focused on **routing, scheduling, and stop infrastructure**. Most accessibility equipment, passenger facilities, and advanced routing concepts are defined in the profile but not represented in the data.
+
+
+#### Table: Elements from Norway profile that ARE used in examples
+
+| #   | Element                      | Category    |
+| --- | ---------------------------- | ----------- |
+| 1   | TopographicPlace             | StopPlace   |
+| 2   | StopPlace                    | StopPlace   |
+| 3   | Quay                         | StopPlace   |
+| 4   | TariffZone                   | Tariff      |
+| 5   | Network                      | Network     |
+| 6   | Line                         | Line        |
+| 7   | GroupOfLines                 | Line        |
+| 8   | Route                        | Routing     |
+| 9   | RoutePoint                   | Routing     |
+| 10  | ServiceJourneyPattern        | Journey     |
+| 11  | DestinationDisplay           | Journey     |
+| 12  | ScheduledStopPoint           | Journey     |
+| 13  | PassengerStopAssignment      | Journey     |
+| 14  | ServiceJourney               | Timetable   |
+| 15  | TrainNumber                  | Timetable   |
+| 16  | FlexibleLine                 | Flexible    |
+| 17  | FlexibleStopPlace            | Flexible    |
+| 18  | FlexibleServiceProperties    | Flexible    |
+| 19  | GroupOfStopPlaces            | StopPlace   |
+| 20  | Parking                      | StopPlace   |
+| 21  | ServiceJourneyInterchange    | Interchange |
+| 22  | BookingArrangementsStructure | Flexible    |
+| 23  | ServiceLink                  | Route       |
+| 24  | DatedServiceJourney          | Timetable   |
+
+
+#### Table: Elements from Norway profile NOT used in examples
+
+| #   | Element                     | Category    |
+| --- | --------------------------- | ----------- |
+| 1   | TopographicPlaceDescriptor  | StopPlace   |
+| 2   | AddressablePlace            | StopPlace   |
+| 3   | SiteElement                 | StopPlace   |
+| 4   | Site                        | StopPlace   |
+| 5   | Level                       | StopPlace   |
+| 6   | Entrance                    | StopPlace   |
+| 7   | StopPlaceSpace              | StopPlace   |
+| 8   | BoardingPosition            | StopPlace   |
+| 9   | AccessSpace                 | StopPlace   |
+| 10  | PathLink                    | StopPlace   |
+| 11  | PathJunction                | StopPlace   |
+| 12  | EquipmentPlace              | StopPlace   |
+| 13  | SiteFacilitySet             | StopPlace   |
+| 14  | FlexibleQuay                | Flexible    |
+| 15  | FlexibleArea                | Flexible    |
+| 16  | HailAndRideArea             | Flexible    |
+| 17  | PointOfInterest             | StopPlace   |
+| 18  | ParkingArea                 | Parking     |
+| 19  | ParkingProperties           | Parking     |
+| 20  | ParkingCapacity             | Parking     |
+| 21  | NavigationPath              | StopPlace   |
+| 22  | PathLinkEndStructure        | StopPlace   |
+| 23  | FareZone                    | Tariff      |
+| 24  | Presentation                | Line        |
+| 25  | TimingPoint                 | Journey     |
+| 26  | PointOnRoute                | Route       |
+| 27  | RouteLink                   | Route       |
+| 28  | SiteConnection              | Interchange |
+| 29  | SiteConnectionEnd           | Interchange |
+| 30  | StopAssignment              | Assignment  |
+| 31  | FlexibleStopAssignment      | Assignment  |
+| 32  | TrainStopAssignment         | Assignment  |
+| 33  | StopPointInJourneyPattern   | Journey     |
+| 34  | TimingPointInJourneyPattern | Journey     |
+| 35  | LinkInJourneyPattern        | Journey     |
+| 36  | TimingLinkInJourneyPattern  | Journey     |
+| 37  | ServiceLinkInJourneyPattern | Journey     |
+| 38  | DestinationDisplayVariant   | Destination |
+| 39  | Via                         | Destination |
+| 40  | Transfer                    | Interchange |
+| 41  | TransferDuration            | Interchange |
+| 42  | Journey                     | Journey     |
+| 43  | JourneyEndpointStructure    | Journey     |
+| 44  | VehicleJourney              | Timetable   |
+| 45  | JourneyPart                 | Timetable   |
+| 46  | Frequency                   | Timetable   |
+| 47  | VehicleJourneyWaitTime      | Timetable   |
+| 48  | VehicleJourneyRunTime       | Timetable   |
+| 49  | VehicleJourneyHeadway       | Timetable   |
+| 50  | DeadRun                     | Timetable   |
+| 51  | TemplateServiceJourney      | Timetable   |
+| 52  | JourneyFrequencyGroup       | Timetable   |
+| 53  | RhythmicalJourneyGroup      | Timetable   |
+| 54  | HeadwayJourneyGroup         | Timetable   |
+| 55  | CoupledJourney              | Timetable   |
+| 56  | JourneyPartCouple           | Timetable   |
+| 57  | ServiceCalendar             | Calendar    |
+| 58  | Interchange                 | Interchange |
+| 59  | UsageValidityPeriod         | General     |
+| 60  | FareProduct                 | Fares       |
+
+**Norway uses only 24 elements** in productive data, all focused on core routing, scheduling, and stop data (very similar to France's 28 used elements).
+
+
+#### Table: Elements of the Swiss profile
+
+All elements are considered as actually used.
+
+|                                   | Element                       |
+| --------------------------------- | ----------------------------- |
+| **Publishing Framework**          |                               |
+| 1                                 | PublicationDelivery       |
+| 2                                 | CompositeFrame            |
+| 3                                 | ResourceFrame             |
+| 4                                 | SiteFrame                 |
+| 5                                 | ServiceFrame              |
+| 6                                 | ServiceCalendarFrame      |
+| 7                                 | TimetableFrame            |
+| **Organization & Infrastructure** |                               |
+| 8                                 | ResponsibilitySet         |
+| 9                                 | Operator                  |
+| 10                                | TopographicPlace          |
+| 11                                | StopPlace                 |
+| 12                                | Quay                      |
+| 13                                | Centroid                  |
+| 14                                | SiteFacilitySet           |
+| 15                                | VehicleType               |
+| **Routing & StopPlace**           |                               |
+| 16                                | Line                      |
+| 17                                | GroupOfLines              |
+| 18                                | DestinationDisplay        |
+| 19                                | ScheduledStopPoint        |
+| 20                                | PassengerStopAssignment   |
+| 21                                | DefaultConnection         |
+| 22                                | SiteConnection            |
+| **Routing & Journey**             |                               |
+| 23                                | TimingLink                |
+| 24                                | TimeDemandType            |
+| 25                                | ServiceJourneyPattern     |
+| 26                                | StopPointInJourneyPattern |
+| **Timetable & Scheduling**        |                               |
+| 27                                | ServiceJourney            |
+| 28                                | TemplateServiceJourney    |
+| 29                                | HeadwayJourneyGroup       |
+| 30                                | OccupancyView             |
+| 31                                | TrainNumber               |
+| 32                                | TypeOfService             |
+| 33                                | ServiceJourneyInterchange |
+| **Calendar & Validity**           |                               |
+| 34                                | AvailabilityCondition     |
+| 35                                | ServiceCalendar           |
+| 36                                | DayType                   |
+| 37                                | Timeband                  |
+| 38                                | DayTypeAssignment         |
+| **Notices & Constraints**         |                               |
+| 39                                | Notice                    |
+| 40                                | NoticeAssignment          |
+| 41                                | TypeOfNotice              |
+| 42                                | CheckConstraint           |
+| 43                                | TypeOfProductCategory     |
+
+
+
+
 ## References
 The following references were used to compile this document.
 
