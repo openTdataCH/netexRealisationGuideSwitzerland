@@ -264,7 +264,7 @@
       <td>1..*</td>
       <td>ResponsibilitySet_VersionStructure</td>
       <td>A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent.</td>
-      <td>Each combination of Authority and Operator needs a ResponsibilitySet.</td>
+      <td>Each combination of LegalEntity and Operator needs a ResponsibilitySet.</td>
     </tr>
     <tr>
       <td> </td>
@@ -327,7 +327,7 @@
       <td>0..1</td>
       <td>organisationsInFrame_RelStructure</td>
       <td>ORGANISATIONs in frame.</td>
-      <td>ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD</td>
+      <td>ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We do not use the NeTEx element Authority, thus avoiding the problem of an identical SBOID for Operator and Authority.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -336,7 +336,7 @@
       <td>0..*</td>
       <td>Operator_VersionStructure</td>
       <td>A company providing public transport services.</td>
-      <td>We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once.</td>
+      <td> </td>
     </tr>
     <tr>
       <td> </td>

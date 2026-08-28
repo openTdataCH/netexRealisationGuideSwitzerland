@@ -17,7 +17,7 @@ Be aware only some combinations are allowed: from mode A to mode B without opera
 |  | TransferMode | optional | 0..1 | AccessModeEnumeration | If a special transfer mode is needed. ACCESS MODE enumeration is also used for the TransferMode. +v2.0 | Is foot. Others might become possible in future |
 |  | From | mandatory | 0..1 | ConnectionEndStructure | Origin end of ACCESS link. |  |
 | + | TransportMode | optional | 0..1 | AllModesEnumeration | An area within a Site. May be connected to Quays by PATH LINKs. | All codes are shown in mapping excel. Use with care. |
-| + | OperatorView | optional | 1..1 | Operator_DerivedViewStructure | Simplified view of OPERATOR. All data except the identifier will be derived through the relationship. | Should be a sboid whenever possible. |
-| ++ | OperatorRef | mandatory | 1..1 | OperatorRefStructure | Reference to an OPERATOR. |  |
+| + | OperatorView | optional | 1..1 | Operator_DerivedViewStructure | Simplified view of OPERATOR. All data except the identifier will be derived through the relationship. |  |
+| ++ | OperatorRef | mandatory | 1..1 | OperatorRefStructure | Reference to an OPERATOR. | Should be a SBOID whenever possible. |
 |  | To | mandatory | 0..1 | ConnectionEndStructure | Destination end of ACCESS link. |  |
 |  | StopPlaceRef | optional | 0..1 | StopPlaceRefStructure | Reference to a STOP PLACE. | Usually a SLOID. Not set means whole network. |

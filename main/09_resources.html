@@ -311,7 +311,7 @@
       <td>1..*</td>
       <td>ResponsibilitySet_VersionStructure</td>
       <td>A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent.</td>
-      <td>Each combination of Authority and Operator needs a ResponsibilitySet.</td>
+      <td>Each combination of LegalEntity and Operator needs a ResponsibilitySet.</td>
     </tr>
     <tr>
       <td> </td>
@@ -374,7 +374,7 @@
       <td>0..1</td>
       <td>organisationsInFrame_RelStructure</td>
       <td>ORGANISATIONs in frame.</td>
-      <td>ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD</td>
+      <td>ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We do not use the NeTEx element Authority, thus avoiding the problem of an identical SBOID for Operator and Authority.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -383,7 +383,7 @@
       <td>0..*</td>
       <td>Operator_VersionStructure</td>
       <td>A company providing public transport services.</td>
-      <td>We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once.</td>
+      <td> </td>
     </tr>
     <tr>
       <td> </td>
@@ -451,7 +451,7 @@
   <span class="nt">&lt;responsibilitySets&gt;</span>
     <span class="c">&lt;!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. --&gt;</span>
     <span class="nt">&lt;ResponsibilitySet</span> <span class="na">id=</span><span class="s">"ch:1:ResponsbilitySet-gen"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Each combination of Authority and Operator needs a ResponsibilitySet. --&gt;</span>
+      <span class="c">&lt;!-- Each combination of LegalEntity and Operator needs a ResponsibilitySet. --&gt;</span>
     <span class="nt">&lt;/ResponsibilitySet&gt;</span>
   <span class="nt">&lt;/responsibilitySets&gt;</span>
   <span class="nt">&lt;typesOfValue&gt;</span>
@@ -499,10 +499,8 @@
     <span class="nt">&lt;/ValueSet&gt;</span>
   <span class="nt">&lt;/typesOfValue&gt;</span>
   <span class="nt">&lt;organisations&gt;</span>
-    <span class="c">&lt;!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD --&gt;</span>
-    <span class="nt">&lt;Operator</span> <span class="na">id=</span><span class="s">"sboid"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. --&gt;</span>
-    <span class="nt">&lt;/Operator&gt;</span>
+    <span class="c">&lt;!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We do not use the NeTEx element Authority, thus avoiding the problem of an identical SBOID for Operator and Authority. --&gt;</span>
+    <span class="nt">&lt;Operator</span> <span class="na">id=</span><span class="s">"sboid"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/organisations&gt;</span>
   <span class="nt">&lt;siteFacilitySets&gt;</span>
     <span class="c">&lt;!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. --&gt;</span>
@@ -557,7 +555,7 @@ We use this element to  describe the different roles of the participating compan
 
 <h3 id="table-1">Table</h3>
 
-<p>Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line.</p>
+<p>Each combination of LegalEntity and Operator needs a ResponsibilitySet. EntitiyLegalOwnership is mandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line.</p>
 
 <p><em>Table: ResponsibilitySet</em></p>
 
@@ -664,7 +662,7 @@ We use this element to  describe the different roles of the participating compan
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;ResponsibilitySet</span> <span class="na">id=</span><span class="s">"ch:1:ResponsbilitySet-gen"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line. --&gt;</span>
+  <span class="c">&lt;!-- Each combination of LegalEntity and Operator needs a ResponsibilitySet. EntitiyLegalOwnership is mandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line. --&gt;</span>
   <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Basler Verkehrsbetriebe<span class="nt">&lt;/Name&gt;</span>
   <span class="nt">&lt;PrivateCode&gt;</span>BVB<span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;roles&gt;</span>
@@ -1014,7 +1012,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 <span class="nt">&lt;Operator</span> <span class="na">id=</span><span class="s">"ch:1:sboid:100602"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- We will use this organisation also in `AuthorityRef`. The problem is that the SBOID can be used only once. **TODO** Clarify --&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
-    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"GO"</span><span class="nt">&gt;</span>801
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"go"</span><span class="nt">&gt;</span>801
       <span class="c">&lt;!-- SBOID and GO (busines organisation) mandatory if they exist. --&gt;</span>
     <span class="nt">&lt;/PrivateCode&gt;</span>
     <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sboid"</span><span class="nt">&gt;</span>ch:1:sboid:100602

@@ -45,15 +45,15 @@ Contains shared resources used / referenced in other frames - organisations (`Op
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | responsibilitySets | mandatory | 0..1 | responsibilitySetsInFrame_RelStructure | RESPONSIBILITY SETs used in frame. | RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. |
-| + | [ResponsibilitySet](./tables/ResponsibilitySet.md) | mandatory | 1..* | ResponsibilitySet_VersionStructure | A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent. | Each combination of Authority and Operator needs a ResponsibilitySet. |
+| + | [ResponsibilitySet](./tables/ResponsibilitySet.md) | mandatory | 1..* | ResponsibilitySet_VersionStructure | A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent. | Each combination of LegalEntity and Operator needs a ResponsibilitySet. |
 |  | typesOfValue | mandatory | 0..1 | typesOfValueInFrame_RelStructure | VALUE SETs and TYPE OF VALUEs in frame. | Sets of TYPE OF VALUE contained in the RESOURCE FRAME. |
 | + | ValueSet | expected | 0..* | ValueSet_VersionStructure | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfNotice ValueSet. |
 | ++ | values | expected | 0..1 | typesOfValue_RelStructure | Values in Set. |  |
 | +++ | TypeOfNotice | expected | 0..* | TypeOfNotice_ValueStructure | A classification of a NOTICE according to its functional purpose. |  |
 | + | ValueSet | expected | 0..* | ValueSet_VersionStructure | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfProductCategory ValueSet |
 | + | ValueSet | expected | 0..* | ValueSet_VersionStructure | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop. |
-|  | organisations | mandatory | 0..1 | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD |
-| + | [Operator](./tables/Operator.md) | mandatory | 0..* | Operator_VersionStructure | A company providing public transport services. | We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. |
+|  | organisations | mandatory | 0..1 | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We do not use the NeTEx element Authority, thus avoiding the problem of an identical SBOID for Operator and Authority. |
+| + | [Operator](./tables/Operator.md) | mandatory | 0..* | Operator_VersionStructure | A company providing public transport services. |  |
 |  | siteFacilitySets | optional | 0..1 | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 | Depending on the export/import part, there will be SiteFacilitySets to be included or not. |
 | + | [SiteFacilitySet](./tables/SiteFacilitySet.md) | optional | 1..* | SiteFacilitySetStructure | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). |  |
 |  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITY SETs in frame . +v1.2.2 | Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. |
@@ -75,7 +75,7 @@ Contains shared resources used / referenced in other frames - organisations (`Op
   <responsibilitySets>
     <!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
     <ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
-      <!-- Each combination of Authority and Operator needs a ResponsibilitySet. -->
+      <!-- Each combination of LegalEntity and Operator needs a ResponsibilitySet. -->
     </ResponsibilitySet>
   </responsibilitySets>
   <typesOfValue>
@@ -123,10 +123,8 @@ Contains shared resources used / referenced in other frames - organisations (`Op
     </ValueSet>
   </typesOfValue>
   <organisations>
-    <!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD -->
-    <Operator id="sboid" version="1">
-      <!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
-    </Operator>
+    <!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We do not use the NeTEx element Authority, thus avoiding the problem of an identical SBOID for Operator and Authority. -->
+    <Operator id="sboid" version="1"/>
   </organisations>
   <siteFacilitySets>
     <!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. -->
@@ -172,7 +170,7 @@ We use this element to  describe the different roles of the participating compan
 
 
 
-Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line.
+Each combination of LegalEntity and Operator needs a ResponsibilitySet. EntitiyLegalOwnership is mandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line.
 
 *Table: ResponsibilitySet*
 
@@ -199,7 +197,7 @@ Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLeg
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
-  <!-- Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line. -->
+  <!-- Each combination of LegalEntity and Operator needs a ResponsibilitySet. EntitiyLegalOwnership is mandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line. -->
   <Name lang="de">Basler Verkehrsbetriebe</Name>
   <PrivateCode>BVB</PrivateCode>
   <roles>
@@ -373,7 +371,7 @@ We will use this organisation also in `AuthorityRef`. The problem is that the SB
 <Operator id="ch:1:sboid:100602" version="1">
   <!-- We will use this organisation also in `AuthorityRef`. The problem is that the SBOID can be used only once. **TODO** Clarify -->
   <privateCodes>
-    <PrivateCode type="GO">801
+    <PrivateCode type="go">801
       <!-- SBOID and GO (busines organisation) mandatory if they exist. -->
     </PrivateCode>
     <PrivateCode type="sboid">ch:1:sboid:100602

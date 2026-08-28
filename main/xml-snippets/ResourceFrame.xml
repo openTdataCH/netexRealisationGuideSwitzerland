@@ -3,7 +3,7 @@
   <responsibilitySets>
     <!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
     <ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
-      <!-- Each combination of Authority and Operator needs a ResponsibilitySet. -->
+      <!-- Each combination of LegalEntity and Operator needs a ResponsibilitySet. -->
     </ResponsibilitySet>
   </responsibilitySets>
   <typesOfValue>
@@ -51,10 +51,8 @@
     </ValueSet>
   </typesOfValue>
   <organisations>
-    <!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD -->
-    <Operator id="sboid" version="1">
-      <!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
-    </Operator>
+    <!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We do not use the NeTEx element Authority, thus avoiding the problem of an identical SBOID for Operator and Authority. -->
+    <Operator id="sboid" version="1"/>
   </organisations>
   <siteFacilitySets>
     <!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. -->
