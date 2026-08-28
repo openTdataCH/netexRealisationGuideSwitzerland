@@ -13,7 +13,7 @@
 						<!-- ch-usage: mandatory -->
 						<!-- ch-note: RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
 						<ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
-							<!-- ch-note: Each combination of Authority and Operator needs a ResponsibilitySet. -->
+							<!-- ch-note: Each combination of LegalEntity and Operator needs a ResponsibilitySet. -->
 							<!-- ch-usage: mandatory -->
 							<!-- ch-see -->
 						</ResponsibilitySet>
@@ -87,10 +87,9 @@
 						</ValueSet>
 					</typesOfValue>
 					<organisations>
-						<!-- ch-note: ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD-->
+						<!-- ch-note: ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We do not use the NeTEx element Authority, thus avoiding the problem of an identical SBOID for Operator and Authority. -->
 						<!-- ch-usage: mandatory -->
 						<Operator id="sboid" version="1">
-							<!-- ch-note: We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
 							<!-- ch-see -->
 							<!-- ch-usage: mandatory -->
 						</Operator>
