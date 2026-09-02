@@ -133,7 +133,7 @@ A public transport service line with a `Name`, `TransportMode`, and `Operator`. 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/Line.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/Line.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/Line.html)*
 
 ### Example
 
@@ -161,13 +161,13 @@ A `GroupOfLines` is used to model mixed lines. For details see [uc17](uc17_mixed
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/GroupOfLines.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/GroupOfLines.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/GroupOfLines.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/GroupOfLines.xml)
 
-*->[Template](./templates/GroupOfLines.xml)*
+*→ [Template](./templates/GroupOfLines.xml)*
 
 ### Usage Notes
 - Only mixed lines have a `GroupOfLines`.
@@ -191,13 +191,13 @@ Showing the destination of a `ServiceJourney`. The text shown on the front or si
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/DestinationDisplay.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/DestinationDisplay.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/DestinationDisplay.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/DestinationDisplay.xml)
 
-*->[Template](./templates/DestinationDisplay.xml)*
+*→ [Template](./templates/DestinationDisplay.xml)*
 
 ### Usage Notes
 - In HRDF sometimes the destination is not set (`*R`). This results in NeTEX in a calculated destination definition.
@@ -220,13 +220,13 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ScheduledStopPoint.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/ScheduledStopPoint.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/ScheduledStopPoint.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/ScheduledStopPoint.xml)
 
-*->[Template](./templates/ScheduledStopPoint.xml)*
+*→ [Template](./templates/ScheduledStopPoint.xml)*
 
 ### Usage Notes
 - We don't keep much information  in `ScheduledStopPoint`s. They are assigned by `PassengerStopAssignnment`s to the site part (`StopPlace`, `Quay`).
@@ -246,13 +246,13 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/PassengerStopAssignment.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/PassengerStopAssignment.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/PassengerStopAssignment.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/PassengerStopAssignment.xml)
 
-*->[Template](./templates/PassengerStopAssignment.xml)*
+*→ [Template](./templates/PassengerStopAssignment.xml)*
 
 ### Usage Notes
 - We don't use `BoardingPosition`.
@@ -277,13 +277,13 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/DefaultConnection.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/DefaultConnection.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/DefaultConnection.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/DefaultConnection.xml)
 
-*->[Template](./templates/DefaultConnection.xml)*
+*→ [Template](./templates/DefaultConnection.xml)*
 
 ### Usage Notes
 - For more details see the [use case on transfers](uc03_transfers.md).
@@ -301,13 +301,13 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/SiteConnection.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/SiteConnection.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/SiteConnection.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/SiteConnection.xml)
 
-*->[Template](./templates/SiteConnection.xml)*
+*→ [Template](./templates/SiteConnection.xml)*
 
 ### Usage Notes
 For more details see the [use case on transfers](uc03_transfers.md).
@@ -330,13 +330,13 @@ See [TimeDemandType](#timedemandtype).
 
 - [Swiss profile NeTEx definition](../site/tables/TimingLink.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/TimingLink.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/TimingLink.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/TimingLink.xml)
 
-*->[Template](./templates/TimingLink.xml)*
+*→ [Template](./templates/TimingLink.xml)*
 
 ### Usage Notes
 - It must fit with the sequence defined in `ServiceJourneyPattern`.
@@ -359,13 +359,13 @@ See [TimeDemandType](#timedemandtype).
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceJourneyPattern.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/ServiceJourneyPattern.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/ServiceJourneyPattern.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/ServiceJourneyPattern.xml)
 
-*->[Template](./templates/ServiceJourneyPattern.xml)*
+*→ [Template](./templates/ServiceJourneyPattern.xml)*
 
 ### Usage Notes
 
@@ -390,13 +390,13 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/TimeDemandType.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/TimeDemandType.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/TimeDemandType.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/TimeDemandType.xml)
 
-*->[Template](./templates/TimeDemandType.xml)*
+*→ [Template](./templates/TimeDemandType.xml)*
 
 ### Usage Notes
 - `WaitTime` is only needed when greater than 0.
@@ -418,13 +418,13 @@ Informational or regulatory text associated with public transport services, disp
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/Notice.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/Notice.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/Notice.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/Notice.xml)
 
-*->[Template](./templates/Notice.xml)*
+*→ [Template](./templates/Notice.xml)*
 
 ### Usage Notes
 - Notice elements should only be used to convey information which cannot be transported using specific model elements. Do not use `Notice` when the information could be expressed by specific elements, e.g., `FacilitySet`, `DayType`, `ForAlighting`, `ForBoarding`. `Notice`s can be used to provide further information on `ServiceFacility`s but not as a replacement for them. Ideally, the description of a `Notice` is translated to the three official languages (DE, IT, FR), and possibly E.
@@ -440,13 +440,13 @@ Assign a `Notice` to an element.
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/NoticeAssignment.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/NoticeAssignment.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/NoticeAssignment.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/NoticeAssignment.xml)
 
-*->[Template](./templates/NoticeAssignment.xml)*
+*→ [Template](./templates/NoticeAssignment.xml)*
 
 ### Usage Notes
 - `@id` doesn't need to be kept stable between exports.
