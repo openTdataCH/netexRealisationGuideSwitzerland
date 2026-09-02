@@ -28,11 +28,11 @@
 							<roles>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:1" version="1">
 									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100015" version="1"/>
 								</ResponsibilityRoleAssignment>
 								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:2" version="1">
 									<StakeholderRoleType>Operation</StakeholderRoleType>
-									<ResponsibleOrganisationRef ref="ch:1:Operator:33" version="1"/>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100015" version="1"/>
 								</ResponsibilityRoleAssignment>
 							</roles>
 						</ResponsibilitySet>
@@ -49,19 +49,10 @@
 						</ValueSet>
 					</typesOfValue>
 					<organisations>
-						<Operator id="ch:1:Operator:33" version="1">
-							<keyList>
-								<KeyValue>
-									<Key>GO</Key>
-									<Value>33</Value>
-								</KeyValue>
-								<KeyValue>
-									<Key>SBOID</Key>
-									<Value>ch:1:sboid:100015</Value>
-								</KeyValue>
-							</keyList>
+						<Operator id="ch:1:sboid:100015" version="1">
 							<privateCodes>
 								<PrivateCode type="go">33</PrivateCode>
+								<PrivateCode type="sboid">ch:1:sboid:100015</PrivateCode>
 							</privateCodes>
 							<Name>BLS AG</Name>
 							<ShortName>BLS</ShortName>
@@ -405,7 +396,7 @@
 							<DepartureDayOffset>0</DepartureDayOffset>
 							<ServiceJourneyPatternRef ref="sjp1" version="1"/>
 							<TimeDemandTypeRef ref="tdt-1" version="1"/>
-							<OperatorRef ref="ch:1:Operator:33" version="1"/>
+							<OperatorRef ref="ch:1:sboid:100015" version="1"/>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:99999" version="1"/>
 							</trainNumbers>
