@@ -421,6 +421,7 @@ The 16 core "routing and scheduling" elements used across all three profiles.
 ### Profile-Specific Elements in Use
 
 #### France (4 elements not used in Norwegian or Swiss examples)
+
 | Element                     | Category      |
 | --------------------------- | ------------- |
 | **Authority**               | Organization  |
@@ -429,6 +430,7 @@ The 16 core "routing and scheduling" elements used across all three profiles.
 | **AccessibilityAssessment** | Accessibility |
 
 #### Norway (2 elements not used in France or Switzerland)
+
 **Almost all 24 Norway-used elements are found in either the France or Swiss used lists.** Norway's productive data is highly focused on core routing and scheduling, overlapping heavily with France's and Switzerland's used elements.
 
 **Additional elements:**
@@ -437,6 +439,7 @@ The 16 core "routing and scheduling" elements used across all three profiles.
 
 
 #### Switzerland (27 elements not used in France or Norway)
+
 | Element                       | Category     |
 | ----------------------------- | ------------ |
 | **PublicationDelivery**       | Publishing   |
