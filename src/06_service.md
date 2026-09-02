@@ -139,7 +139,7 @@ A public transport service line with a `Name`, `TransportMode`, and `Operator`. 
 
 - [Example snippet](../site/xml-snippets/Line.xml)
 
-*->[Template](./templates/Line.xml)*
+*→ [Template](./templates/Line.xml)*
 
 ### Usage Notes
 - slnid will be integrated wherever possible. We currently think that - where it exists - it has the necessary properties to be used in the `@id` of the element.

@@ -125,7 +125,7 @@ Notes:
 * `Notice`, `ServiceFacility` and `SiteFacility` model almost everything else (especially offers).
 * The operating days are defined through `ValidDayBits` for the whole timetable year in `AvailabilityCondition`s.
 
-## 
+
 
 ```
 StopPlace SP
@@ -215,7 +215,7 @@ As in the delivery to INFO+ the details like coordinates are ignored (because th
 For NeTEx 3.0 there will be a general discussion, how and for what use cases `version` can be used. This can be for (a) change history, (b) change of behaviour during time, (c) planning variants. To do all in one attribute is too much and we will have to discuss this in detail for the European profile. 
 
 
- ### FromDate and ToDate
+### FromDate and ToDate
 The dates we have are always operating days. Nevertheless, we use
 * `2026-03-14T00:00:00`
 * `2026-03-14T23:59:59`
@@ -267,7 +267,7 @@ For all translations and other alternative texts use `MultilingualString`.
 #### Example
 - [XML Snippet](../site/xml-snippets/AlternativeName.xml)
 
-*→ - [Template](./templates/AlternativeName.xml)*
+*→ [Template](./templates/AlternativeName.xml)*
 
 #### Usage Notes
 
