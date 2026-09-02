@@ -203,7 +203,7 @@ Codes assigned to particular journeys (`ServiceJourney`, `TemplateServiceJourney
 ### Example
 - [XML Snippet](../site/xml-snippets/TypeOfService.xml)
 
-*→ - [Template](./templates/TypeOfService.xml)*
+*→ [Template](./templates/TypeOfService.xml)*
 
 ### Usage Notes
 - `@id` needs to be kept stable between exports.
