@@ -8,6 +8,8 @@ The finalised version (as HTML) can be found here: [https://opentdatach.github.i
 
 The original markdown sources can be found here: [markdown folder](docs/README.md)
 
+The [project board](https://github.com/orgs/openTdataCH/projects/13/views/1)
+
 ## Released version
 none
 
