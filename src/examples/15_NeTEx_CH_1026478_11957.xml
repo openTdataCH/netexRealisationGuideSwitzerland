@@ -32,11 +32,11 @@ URL:            https://widgets.oev-info.ch/publikation/jahresfpl/50.119.pdf
                         <ResponsibilitySet id="ch:1:ResponsibilitySet:PAG:Standard" version="1">
                             <Name>Standard responsability set for PostAuto AG</Name>
                             <roles>
-                                <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:PAG:entityLegalOwnership">
+                                <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:PAG:entityLegalOwnership" version="1">
                                     <StakeholderRoleType>entityLegalOwnership</StakeholderRoleType>
                                     <ResponsibleOrganisationRef ref="ch:1:sboid:100602" version="1"/>
                                 </ResponsibilityRoleAssignment>
-                                <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:PAG:operation">
+                                <ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:PAG:operation" version="1">
                                     <StakeholderRoleType>operation</StakeholderRoleType>
                                     <ResponsibleOrganisationRef ref="ch:1:sboid:100602" version="1"/>
                                 </ResponsibilityRoleAssignment>
@@ -275,7 +275,7 @@ URL:            https://widgets.oev-info.ch/publikation/jahresfpl/50.119.pdf
                                         <Location>
                                             <Longitude>7.56195653551</Longitude>
                                             <Latitude>47.44764062259</Latitude>
-                                            <Latitude>441</Latitude>
+                                            <Altitude>441</Altitude>
                                         </Location>
                                     </Centroid>
                                     <PublicCode>01</PublicCode>
@@ -299,15 +299,15 @@ URL:            https://widgets.oev-info.ch/publikation/jahresfpl/50.119.pdf
                     <lines>
                         <Line id="ch:1:slnid:1026478" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:PAG:Standard">
                             <privateCodes>
-                                <PrivateCode type="SLNID">ch:1:slnid:1026478</PrivateCode>
+                                <PrivateCode type="slnid">ch:1:slnid:1026478</PrivateCode>
                             </privateCodes>
                             <Name>Laufen - Zwingen - Nenzlingen - Grellingen</Name>
                             <ShortName>119</ShortName>
                             <TransportMode>bus</TransportMode>
                             <PublicCode>50.119</PublicCode>
-                            <OperatorRef ref="ch:1:Operator:PAG" version="1"/>
+                            <OperatorRef ref="ch:1:sboid:100602" version="1"/>
                             <LineType>fixed</LineType>
-                            <TypeOfProductCategoryRef ref="ch:1:ValueSet:TypeOffProductCategory:B" version="1"/>
+                            <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
                         </Line>
                     </lines>
                     <scheduledStopPoints>
@@ -315,8 +315,8 @@ URL:            https://widgets.oev-info.ch/publikation/jahresfpl/50.119.pdf
                         <ScheduledStopPoint id="ch:1:sloid:72178:0:535942" version="1"/>
                         <ScheduledStopPoint id="ch:1:sloid:72202:0:134953" version="1"/>
                         <ScheduledStopPoint id="ch:1:sloid:72202:0:195259" version="1"/>
-                        <ScheduledStopPoint id="ch:1:sloid:72203:0:404965:1" version="1"/>
-                        <ScheduledStopPoint id="ch:1:sloid:72203:0:171897:1" version="1"/>
+                        <ScheduledStopPoint id="ch:1:sloid:72203:0:404965" version="1"/>
+                        <ScheduledStopPoint id="ch:1:sloid:72203:0:171897" version="1"/>
                         <ScheduledStopPoint id="ch:1:sloid:673:0:849549" version="1"/>
                         <ScheduledStopPoint id="ch:1:sloid:673:0:688162" version="1"/>
                         <ScheduledStopPoint id="ch:1:sloid:72204:0:352830" version="1"/>
@@ -328,7 +328,7 @@ URL:            https://widgets.oev-info.ch/publikation/jahresfpl/50.119.pdf
                             <QuayRef ref="ch:1:sloid:72178:0:273135" version="1"/>
                         </PassengerStopAssignment>
                         <PassengerStopAssignment id="ch:1:PassengerStopAssignment:PAG:1026478:72178:02" version="1">
-                            <ScheduledStopPointRef ref="ch:1:sloid:72178:0:5359422" version="1"/>
+                            <ScheduledStopPointRef ref="ch:1:sloid:72178:0:535942" version="1"/>
                             <StopPlaceRef ref="ch:1:sloid:72178" version="1"/>
                             <QuayRef ref="ch:1:sloid:72178:0:535942" version="1"/>
                         </PassengerStopAssignment>
@@ -343,14 +343,14 @@ URL:            https://widgets.oev-info.ch/publikation/jahresfpl/50.119.pdf
                             <QuayRef ref="ch:1:sloid:72202:0:195259" version="1"/>
                         </PassengerStopAssignment>
                         <PassengerStopAssignment id="ch:1:PassengerStopAssignment:PAG:1026478:72203:01" version="1">
-                            <ScheduledStopPointRef ref="ch:1:sloid:72203:0:404965:1" version="1"/>
+                            <ScheduledStopPointRef ref="ch:1:sloid:72203:0:404965" version="1"/>
                             <StopPlaceRef ref="ch:1:sloid:72203" version="1"/>
-                            <QuayRef ref="ch:1:sloid:72203:0:404965:1" version="1"/>
+                            <QuayRef ref="ch:1:sloid:72203:0:404965" version="1"/>
                         </PassengerStopAssignment>
                         <PassengerStopAssignment id="ch:1:PassengerStopAssignment:PAG:1026478:72203:02" version="1">
-                            <ScheduledStopPointRef ref="ch:1:sloid:72203:0:171897:1" version="1"/>
+                            <ScheduledStopPointRef ref="ch:1:sloid:72203:0:171897" version="1"/>
                             <StopPlaceRef ref="ch:1:sloid:72203" version="1"/>
-                            <QuayRef ref="ch:1:sloid:72203:0:171897:1" version="1"/>
+                            <QuayRef ref="ch:1:sloid:72203:0:171897" version="1"/>
                         </PassengerStopAssignment>
                         <PassengerStopAssignment id="ch:1:PassengerStopAssignment:PAG:1026478:673:01" version="1">
                             <ScheduledStopPointRef ref="ch:1:sloid:673:0:849549" version="1"/>
@@ -375,10 +375,10 @@ URL:            https://widgets.oev-info.ch/publikation/jahresfpl/50.119.pdf
                         </TimingLink>
                         <TimingLink id="ch:1:TimingLink:PAG:1026478:11957:2" version="1">
                             <FromPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:sloid:72202:0:134953" version="1"/>
-                            <ToPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:sloid:72203:0:404965:1" version="1"/>
+                            <ToPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:sloid:72203:0:404965" version="1"/>
                         </TimingLink>
                         <TimingLink id="ch:1:TimingLink:PAG:1026478:11957:3" version="1">
-                            <FromPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:sloid:72203:0:404965:1" version="1"/>
+                            <FromPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:sloid:72203:0:404965" version="1"/>
                             <ToPointRef nameOfRefClass="ScheduledStopPoint" ref="ch:1:sloid:673:0:849549" version="1"/>
                         </TimingLink>
                         <TimingLink id="ch:1:TimingLink:PAG:1026478:11957:4" version="1">
@@ -410,7 +410,7 @@ URL:            https://widgets.oev-info.ch/publikation/jahresfpl/50.119.pdf
                                     <ForBoarding>false</ForBoarding>
                                 </StopPointInJourneyPattern>
                                 <StopPointInJourneyPattern id="ch:1:spijp:PAG:1026478:11957:3" version="1">
-                                    <ScheduledStopPointRef ref="ch:1:sloid:72203:0:404965:1"></ScheduledStopPointRef>
+                                    <ScheduledStopPointRef ref="ch:1:sloid:72203:0:404965"></ScheduledStopPointRef>
                                     <ForAlighting>true</ForAlighting>
                                     <ForBoarding>false</ForBoarding>
                                 </StopPointInJourneyPattern>
@@ -435,15 +435,15 @@ URL:            https://widgets.oev-info.ch/publikation/jahresfpl/50.119.pdf
                                     <TimingLinkRef ref="ch:1:TimingLink:PAG:1026478:11957:1" version="1"/>
                                     <RunTime>PT2M</RunTime>
                                 </JourneyRunTime>
-                                <JourneyRunTime id="ch:1:JourneyRunTime:PAG:1026478:11957:2">
+                                <JourneyRunTime id="ch:1:JourneyRunTime:PAG:1026478:11957:2"  version="1">
                                     <TimingLinkRef ref="ch:1:TimingLink:PAG:1026478:11957:2" version="1"/>
                                     <RunTime>PT1M</RunTime>
                                 </JourneyRunTime>
-                                <JourneyRunTime id="ch:1:JourneyRunTime:PAG:1026478:11957:3">
+                                <JourneyRunTime id="ch:1:JourneyRunTime:PAG:1026478:11957:3"  version="1">
                                     <TimingLinkRef ref="ch:1:TimingLink:PAG:1026478:11957:3" version="1"/>
                                     <RunTime>PT2M</RunTime>
                                 </JourneyRunTime>
-                                <JourneyRunTime id="ch:1:JourneyRunTime:PAG:1026478:11957:4">
+                                <JourneyRunTime id="ch:1:JourneyRunTime:PAG:1026478:11957:4"  version="1">
                                     <TimingLinkRef ref="ch:1:TimingLink:PAG:1026478:11957:4" version="1"/>
                                     <RunTime>PT2M</RunTime>
                                 </JourneyRunTime>
@@ -467,18 +467,25 @@ URL:            https://widgets.oev-info.ch/publikation/jahresfpl/50.119.pdf
                                 <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:FrSaSaSoHolidayNightsCH" version="1"/>
                             </validityConditions>
                             <privateCodes>
-                                <PrivateCode type="SJYID">ch:1:sjyid:generated-01</PrivateCode>
+                                <PrivateCode type="sjyid">ch:1:sjyid:generated-01</PrivateCode>
                             </privateCodes>
-                            <TypeOfProductCategoryRef ref="ch:1:ValueSet:TypeOffProductCategory:B" version="1"/>
+                            <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
                             <ServiceAlteration>planned</ServiceAlteration>
                             <DepartureTime>04:34:00</DepartureTime>
                             <DepartureDayOffset>1</DepartureDayOffset>
                             <JourneyPatternRef ref="ch:1:ServiceJourney:PAG:1026478:11957" version="1" nameOfRefClass="ServiceJourneyPattern"/>
                             <TimeDemandTypeRef ref="ch:1:TimeDemandType:PAG:1026478:11957:1" version="1"/>
-                            <LineRef ref="ch:1:slnid:1026478" version="1"/>
-                            <DirectionType>outbound</DirectionType>
+                            <trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:PAG:1026478:1" version="1"/>
+							</trainNumbers>
                         </ServiceJourney>
                     </vehicleJourneys>
+					<trainNumbers>
+						<TrainNumber id="ch:1:TrainNumber:PAG:1026478:1" version="1">
+							<!-- this we need to discuss: This should be exactly the content of the Z* part one -->
+							<ForAdvertisement>1026478</ForAdvertisement>
+						</TrainNumber>
+					</trainNumbers>
                 </TimetableFrame>
             </frames>
         </CompositeFrame>
