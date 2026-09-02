@@ -64,7 +64,7 @@ Contains shared resources used / referenced in other frames - organisations (`Op
 
 
 
-*→ - [General NeTEx definition](../site/netex-html/ResourceFrame.html)*
+*→ [General NeTEx definition](../site/netex-html/ResourceFrame.html)*
 
 ### Example
 
@@ -143,7 +143,7 @@ Contains shared resources used / referenced in other frames - organisations (`Op
 
 
 
-*→ - [Template](./templates/ResourceFrame.xml)*
+*→ [Template](./templates/ResourceFrame.xml)*
 
 ### Frame Relationships
 
@@ -189,7 +189,7 @@ Each combination of LegalEntity and Operator needs a ResponsibilitySet. EntitiyL
 
 
 
-*→ - [General NeTEx definition](../site/netex-html/ResponsibilitySet.html)*
+*→ [General NeTEx definition](../site/netex-html/ResponsibilitySet.html)*
 
 ### Example
 
@@ -217,7 +217,7 @@ Each combination of LegalEntity and Operator needs a ResponsibilitySet. EntitiyL
 
 
 
-*→ - [Template](./templates/ResponsibilitySet.xml)*
+*→ [Template](./templates/ResponsibilitySet.xml)*
 
 ### Usage Notes
 Services (e.g. replacement services) can be associated with different roles. These roles can be defined inside the `ResponsibilitySet` element.
@@ -396,7 +396,7 @@ We will use this organisation also in `AuthorityRef`. The problem is that the SB
 
 
 
-*→ - [Template](./templates/Operator.xml)*
+*→ [Template](./templates/Operator.xml)*
 
 ### Usage Notes
 * `Organisation`s located in Switzerland are identified by their [SBOIDs](https://transportdatamanagement.ch/content/uploads/2021/05/SwissBusinessOrganisationID_DE_1_2.pdf)  (earlier [GO-number](https://opentransportdata.swiss/de/dataset/didok/resource/d66259a0-a77c-4aee-b7bd-e4fba99dcbb1) ).
@@ -533,7 +533,7 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 
 
 
-*→ - [Template](./templates/ServiceFacilitySet.xml)*
+*→ [Template](./templates/ServiceFacilitySet.xml)*
 
 ### Usage Notes
 * SKI uses the following groups to classify `ServiceFacility`s:
@@ -631,7 +631,7 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 
 
 
-*→ - [Template](./templates/SiteFacilitySet.xml)*
+*→ [Template](./templates/SiteFacilitySet.xml)*
 
 ### Usage Notes
 * Make sure to not generate identical SiteFacilitySets. Reuse them.
@@ -689,7 +689,7 @@ Used currently mainly for the relevant accessibility elements that can be expres
 
 
 
-*→ - [Template](./templates/VehicleType.xml)*
+*→ [Template](./templates/VehicleType.xml)*
 
 ### Usage Notes
 * We currently use `VehicleType` but not `VehicleModel`.
