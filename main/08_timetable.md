@@ -670,7 +670,7 @@ The TrainNumber (in ForAdvertisment or ForProduction) are currently a maximum of
 
 
 
-*→ - [Template](./templates/TypeOfService.xml)*
+*→ [Template](./templates/TypeOfService.xml)*
 
 ### Usage Notes
 - `@id` needs to be kept stable between exports.
