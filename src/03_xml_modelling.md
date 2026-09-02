@@ -262,7 +262,7 @@ For all translations and other alternative texts use `MultilingualString`.
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/AlternativeName.md)
 
-*→ - [General NeTEx definition](../site/netex-html/AlternativeName.html)*
+*→ [General NeTEx definition](../site/netex-html/AlternativeName.html)*
  
 #### Example
 - [XML Snippet](../site/xml-snippets/AlternativeName.xml)
