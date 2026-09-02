@@ -479,13 +479,12 @@ Provided the above presented data is correct:
 - Isn't it a bit disappointing then, that they use different ways how to encode this same kind of data (times, interchanges, journey patterns, frames, ...)?
 - The comparisons done in this appendix only considered the top-level elements and remained blind to any differences in how the sub-elements are used.
 
----
 
 ### Used vs. Unused Elements per Profile
 
 Note that the parking and tariff parts of the French profile aren't available yet and therefore not included. 
 
-A more detailed comparison matrix of the three profiles based on the profile definitions (including both used and unused elements) can be found here:  [ComparisonMatrix_FR_NO_CH](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/media/ComparisonMatrix_FR_NO_CH.html). In addition to the top-level elements as discussed in this appendix, the comparison matrix also shows the contained sub-elements and whether the profiles define them as mandatory or optional. 
+A more detailed comparison matrix of the three profiles based on the profile definitions (including both used and unused elements) can be found here:  [ComparisonMatrix_FR_NO_CH](media/ComparisonMatrix_FR_NO_CH.html). In addition to the top-level elements as discussed in this appendix, the comparison matrix also shows the contained sub-elements and whether the profiles define them as mandatory or optional. 
 
 #### Table: Elements actually used in France examples
 
