@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Template</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<FrameDefaults/>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame" version="1"/>
+				<SiteFrame id="ch:1:SiteFrame" version="1">
+					<stopPlaces>
+						<StopPlace id="ch:1:sloid:7000" version="1">
+							<ValidBetween>
+								<FromDate>2025-12-14T00:00:00</FromDate>
+								<ToDate>2026-12-12T23:59:59</ToDate>
+							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>HafasPriority</Key>
+									<Value>4</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>HafasKMInfo</Key>
+									<Value>1000</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">
+									7000
+								</PrivateCode>
+								<PrivateCode type="sloid">
+									ch:1:sloid:7000
+								</PrivateCode>
+							</privateCodes>
+							<Name>Bern</Name>
+							<ShortName>
+							</ShortName>
+							<PrivateCode>
+							</PrivateCode>
+							<Centroid>
+								<Name>
+								</Name>
+								<Location>
+									<Longitude>7.43913088992</Longitude>
+									<Latitude>46.94883228914</Latitude>
+									<Altitude>540.2</Altitude>
+								</Location>
+							</Centroid>
+							<gml:Polygon gml:id="a1231">
+							</gml:Polygon>
+							<Url>
+							</Url>
+							<AccessibilityAssessment id="generated" version="1">
+								<!-- ch-root -->
+								<!-- ch-usage: mandatory -->
+								<MobilityImpairedAccess>
+									<!-- ch-usage: mandatory -->
+									<!-- ch-allowed-enums: true false partial unknown -->
+									<!-- ch-note: Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. -->
+									true
+								</MobilityImpairedAccess>
+								<limitations>
+									<!-- ch-usage: expected -->
+									<!-- ch-note: Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. -->
+									<AccessibilityLimitation>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: Accessibility. -->
+										<WheelchairAccess>
+											<!-- ch-usage: mandatory -->
+											<!-- ch-allowed-enums: true false partial unknown -->
+											<!-- ch-note: Accessibility. -->
+											true
+										</WheelchairAccess>	
+										<StepFreeAccess>
+											<!-- ch-usage: expected -->
+											<!-- ch-allowed-enums: true false partial unknown -->
+											<!-- ch-note: Accessibility. If absent the value `unknown` is assumed. -->
+											true
+										</StepFreeAccess>
+										<StairFreeAccess>
+											<!-- ch-usage: expected -->
+											<!-- ch-allowed-enums: true false partial unknown -->
+											<!-- ch-note: Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. -->
+											true
+										</StairFreeAccess>
+										<GuideDogAccess>
+											<!-- ch-usage: expected -->
+											<!-- ch-allowed-enums: true false partial unknown -->
+											<!-- ch-note: Accessibility. If absent the value `unknown` is assumed. -->
+											true
+										</GuideDogAccess>	
+										<TactileGuidanceAvailable>
+											<!-- ch-usage: expected -->
+											<!-- ch-allowed-enums: true false partial unknown -->
+											<!-- ch-note: Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. -->
+											true
+										</TactileGuidanceAvailable>	
+										<VisualSignsAvailable>
+											<!-- ch-usage: expected -->
+											<!-- ch-allowed-enums: true false partial unknown -->
+											<!-- ch-note: Accessibility. If absent the value `unknown` is assumed. -->
+											true
+										</VisualSignsAvailable>	
+										<LevelAccessIntoVehicle>
+											<!-- ch-usage: expected -->
+											<!-- ch-allowed-enums: true false partial unknown -->
+											<!-- ch-note: Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. -->
+											true
+										</LevelAccessIntoVehicle>	
+									</AccessibilityLimitation>
+								</limitations>
+							</AccessibilityAssessment>
+							<alternativeNames>
+								<AlternativeName id="ch:1:sloid:7000:it" version="1">
+                                    <NameType>alias</NameType>
+									<Name lang="it">Berna</Name>
+								</AlternativeName>
+							</alternativeNames>
+							<PublicUse><!-- ch-usage: ignored -->all</PublicUse>
+							<Covered>
+								covered
+							</Covered>
+							<AllAreasWheelchairAccessible>
+								true
+							</AllAreasWheelchairAccessible>
+							<facilities>
+								<SiteFacilitySet id="ch:1:sitefacilityset:7000:1" version="1">
+								</SiteFacilitySet>
+							</facilities>
+							<TopographicPlaceRef ref="BE-bern" versionRef="1">
+							</TopographicPlaceRef>
+							<Locale>
+								<TimeZone>Europe/Zurich</TimeZone>
+							</Locale>
+							<levels>
+							</levels>
+							<entrances>
+							</entrances>
+							<equipmentPlaces>
+							</equipmentPlaces>
+							<placeEquipments>
+							</placeEquipments>
+							<localServices>
+							</localServices>
+							<StopPlaceType>railStation</StopPlaceType>
+							<LimitedUse>interchangeOnly</LimitedUse>
+							<Weighting>preferredInterchange</Weighting>
+							<quays>
+								<Quay id="ch:1:sloid:7000:5:9" version="1">
+								</Quay>
+							</quays>
+							<accessSpaces>
+							</accessSpaces>
+						</StopPlace>
+					</stopPlaces>
+				</SiteFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
