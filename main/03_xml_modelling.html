@@ -433,7 +433,7 @@ TimingLink TL
 Important business level keys are stored in elements (<code class="language-plaintext highlighter-rouge">KeyList</code>, <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code>) in addition to the IDs.</li>
 </ul>
 
-<p>It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available.</p>
+<p>It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available. Some id will be very stable (as they are the primary identifier of the object). Some identifiers should be stable between exports. The reason is that those elements can be identified by the data consumer and replaced. So, even when id are generated it is reasonable to do this in a way that the same object obtains the same id in every export. Examples are variants of ServiceJourneyPattern. Others are never referenced and are not important (e.g. PassengerStopAssignments).</p>
 
 <p>For readability and easy referencing, we will use the following principles:</p>
 <ul>

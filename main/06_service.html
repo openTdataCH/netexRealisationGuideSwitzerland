@@ -951,7 +951,7 @@ class ServiceJourney {
   <li>For more information about SwissLineID: see <a href="https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf">here</a>.</li>
   <li>We have in the slnid concept also “Dispositionslinie” and “Temporäre Linie”. Those are modeled as regular <code class="language-plaintext highlighter-rouge">Line</code>. “Betriebliche Linie” is not used and modeled in NeTEx. If at some point we need to know this type. We will model it as a Key/Value pair.</li>
   <li>If there are partial lines, there is also a main line. The patterns and journeys are always attached to the partial lines.</li>
-  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
+  <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports. For <code class="language-plaintext highlighter-rouge">slnid</code> this is a given. For international ones artifical id might occur. Keeping them stable allows a referencing and partial update by the data consumers. This is important if the data consumer mixes the NeTEx import with other sources.</li>
 </ul>
 
 <h2 id="groupoflines">GroupOfLines</h2>
