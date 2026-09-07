@@ -173,7 +173,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 | + | TrainNumberRef | mandatory | 0..* | TrainNumberRefStructure | Reference to a TRAIN NUMBER. |  |
 |  | [Destination](./tables/Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure | Destination for JOURNEY. |  |
 |  | parts | optional | 0..1 | blockParts_RelStructure | Parts of the ORGANISATION. | For some use cases e.g. change of Facilities during ServiceJourney |
-| + | JourneyPartRef | expected | 0..* | JourneyPartRefStructure | Reference to a JOURNEY PART. |  |
+| + | [JourneyPart](./tables/JourneyPart.md) | expected | 1..* | JourneyPart_VersionStructure | A part of a VEHICLE JOURNEY created according to a specific functional purpose, for instance in situations when vehicle coupling or separating occurs. |  |
 |  | checkConstraints | optional | 0..1 | checkConstraints_RelStructure | CHECK CONSTRAINTs in frame. |  |
 | + | [CheckConstraint](./tables/CheckConstraint.md) | optional | 1..* | CheckConstraint_VersionStructure | Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges. | CheckConstraints are used to encode foreseeable delays by check-in or other processes. |
 
@@ -262,7 +262,10 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
   </Destination>
   <parts>
     <!-- For some use cases e.g. change of Facilities during ServiceJourney -->
-    <JourneyPartRef ref="generated" version="1"/>
+    <JourneyPart id="generated" version="1">
+      <StartTime>05:29:00</StartTime>
+      <EndTime>05:35:00</EndTime>
+    </JourneyPart>
   </parts>
   <checkConstraints>
     <CheckConstraint id="" version="1">
@@ -299,6 +302,9 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - The arrival time at all subsequent `ScheduledStopPoint`s is calculated by adding the run time between the previous `ScheduledStopPoint` and the current `ScheduledStopPoint` of the `ServiceJourneyPattern`. The correct run time is obtained by searching `TimeDemandType/runTimes/JourneyRunTime/Runtime` with the `TimingLink` corresponding to the previous and current `ScheduledStopPoint`. The `TimingLink` to be used is indicated by `ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern/OnwardTimingLinkRef`.
 - The departure time at each `ScheduledStopPoint` is obtained by adding `TimeDemandType/waitTimes/JourneyWaitTime/Waitime` for the `ScheduledStopPoint`. Please observe that a `ScheduledStopPoint` may be visited more than once within a `ServiceJourneyPattern` and may have different waiting times at each visit. In this case, `TimeDemandType/waitTimes/StopPointInJourneyPatternRef` will be used to override `TimeDemandType/waitTimes/ScheduledStopPointRef`. 
 
+
+## JourneyPart
+For `JourneyPart` see [uc05_journey_parts](uc05_journey_parts.md).
 
 ## CheckConstraint
 *→ [Glossary definition](A4_annex_glossary.md#checkconstraint)*
@@ -405,7 +411,7 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
 | + | TrainNumberRef | mandatory | 0..* | TrainNumberRefStructure | Reference to a TRAIN NUMBER. |  |
 |  | [Destination](./tables/Destination.md) | expected | 0..1 | TravelSpecificationSummaryEndpointStructure | Destination for JOURNEY. |  |
 |  | parts | optional | 0..1 | blockParts_RelStructure | Parts of the ORGANISATION. | For some use cases e.g. change of Facilities during ServiceJourney |
-| + | JourneyPartRef | expected | 0..* | JourneyPartRefStructure | Reference to a JOURNEY PART. |  |
+| + | [JourneyPart](./tables/JourneyPart.md) | optional | 1..* | JourneyPart_VersionStructure | A part of a VEHICLE JOURNEY created according to a specific functional purpose, for instance in situations when vehicle coupling or separating occurs. | We don't expect JourneyPart for TemplateServiceJourney |
 |  | TemplateVehicleJourneyType | expected | 0..1 | TemplateVehicleJourneyTypeEnumeration | Type of TEMPLATE VEHICLE JOURNEY. |  |
 |  | frequencyGroups | mandatory | 0..1 | frequencyGroupsInFrame_RelStructure | frequency groups defining Template journey. Can only be of one type. | We strictly map one frequency to the TemplateServiceJourney. |
 | + | HeadwayJourneyGroup | mandatory | 0..* | HeadwayJourneyGroup_VersionStructure | A group of VEHICLE JOURNEYs following the same JOURNEY PATTERN and having the same headway interval between a specified start and end time (for example, ‘every 10 minutes’). This is especially useful for presenting passenger information. |  |
@@ -483,7 +489,11 @@ TemplateServiceJourney is used for journeys repeating at a certain frequency.
   </Destination>
   <parts>
     <!-- For some use cases e.g. change of Facilities during ServiceJourney -->
-    <JourneyPartRef ref="generated" version="1"/>
+    <JourneyPart id="generated" version="1">
+      <!-- We don't expect JourneyPart for TemplateServiceJourney -->
+      <StartTime>05:29:00</StartTime>
+      <EndTime>05:35:00</EndTime>
+    </JourneyPart>
   </parts>
   <TemplateVehicleJourneyType>headway</TemplateVehicleJourneyType>
   <frequencyGroups>

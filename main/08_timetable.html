@@ -799,11 +799,11 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
     </tr>
     <tr>
       <td>+</td>
-      <td>JourneyPartRef</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/JourneyPart.html">JourneyPart</a></td>
       <td>expected</td>
-      <td>0..*</td>
-      <td>JourneyPartRefStructure</td>
-      <td>Reference to a JOURNEY PART.</td>
+      <td>1..*</td>
+      <td>JourneyPart_VersionStructure</td>
+      <td>A part of a VEHICLE JOURNEY created according to a specific functional purpose, for instance in situations when vehicle coupling or separating occurs.</td>
       <td> </td>
     </tr>
     <tr>
@@ -907,7 +907,10 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <span class="nt">&lt;/Destination&gt;</span>
   <span class="nt">&lt;parts&gt;</span>
     <span class="c">&lt;!-- For some use cases e.g. change of Facilities during ServiceJourney --&gt;</span>
-    <span class="nt">&lt;JourneyPartRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;JourneyPart</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;StartTime&gt;</span>05:29:00<span class="nt">&lt;/StartTime&gt;</span>
+      <span class="nt">&lt;EndTime&gt;</span>05:35:00<span class="nt">&lt;/EndTime&gt;</span>
+    <span class="nt">&lt;/JourneyPart&gt;</span>
   <span class="nt">&lt;/parts&gt;</span>
   <span class="nt">&lt;checkConstraints&gt;</span>
     <span class="nt">&lt;CheckConstraint</span> <span class="na">id=</span><span class="s">""</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -943,6 +946,9 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <li>The arrival time at all subsequent <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s is calculated by adding the run time between the previous <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> and the current <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> of the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>. The correct run time is obtained by searching <code class="language-plaintext highlighter-rouge">TimeDemandType/runTimes/JourneyRunTime/Runtime</code> with the <code class="language-plaintext highlighter-rouge">TimingLink</code> corresponding to the previous and current <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>. The <code class="language-plaintext highlighter-rouge">TimingLink</code> to be used is indicated by <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern/OnwardTimingLinkRef</code>.</li>
   <li>The departure time at each <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> is obtained by adding <code class="language-plaintext highlighter-rouge">TimeDemandType/waitTimes/JourneyWaitTime/Waitime</code> for the <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>. Please observe that a <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> may be visited more than once within a <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and may have different waiting times at each visit. In this case, <code class="language-plaintext highlighter-rouge">TimeDemandType/waitTimes/StopPointInJourneyPatternRef</code> will be used to override <code class="language-plaintext highlighter-rouge">TimeDemandType/waitTimes/ScheduledStopPointRef</code>.</li>
 </ul>
+
+<h2 id="journeypart">JourneyPart</h2>
+<p>For <code class="language-plaintext highlighter-rouge">JourneyPart</code> see <a href="/netexRealisationGuideSwitzerland/main/uc05_journey_parts.html">uc05_journey_parts</a>.</p>
 
 <h2 id="checkconstraint">CheckConstraint</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#checkconstraint">Glossary definition</a></em></p>
@@ -1322,12 +1328,12 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
     </tr>
     <tr>
       <td>+</td>
-      <td>JourneyPartRef</td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>JourneyPartRefStructure</td>
-      <td>Reference to a JOURNEY PART.</td>
-      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/JourneyPart.html">JourneyPart</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>JourneyPart_VersionStructure</td>
+      <td>A part of a VEHICLE JOURNEY created according to a specific functional purpose, for instance in situations when vehicle coupling or separating occurs.</td>
+      <td>We don’t expect JourneyPart for TemplateServiceJourney</td>
     </tr>
     <tr>
       <td> </td>
@@ -1443,7 +1449,11 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <span class="nt">&lt;/Destination&gt;</span>
   <span class="nt">&lt;parts&gt;</span>
     <span class="c">&lt;!-- For some use cases e.g. change of Facilities during ServiceJourney --&gt;</span>
-    <span class="nt">&lt;JourneyPartRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;JourneyPart</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- We don't expect JourneyPart for TemplateServiceJourney --&gt;</span>
+      <span class="nt">&lt;StartTime&gt;</span>05:29:00<span class="nt">&lt;/StartTime&gt;</span>
+      <span class="nt">&lt;EndTime&gt;</span>05:35:00<span class="nt">&lt;/EndTime&gt;</span>
+    <span class="nt">&lt;/JourneyPart&gt;</span>
   <span class="nt">&lt;/parts&gt;</span>
   <span class="nt">&lt;TemplateVehicleJourneyType&gt;</span>headway<span class="nt">&lt;/TemplateVehicleJourneyType&gt;</span>
   <span class="nt">&lt;frequencyGroups&gt;</span>

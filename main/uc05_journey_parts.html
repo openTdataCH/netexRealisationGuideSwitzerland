@@ -320,17 +320,222 @@ However, we currently won’t do that.</p>
 <h3 id="6-notice-only-for-a-part-of-the-servicejourney">6. Notice only for a part of the ServiceJourney</h3>
 <p>We don’t use <code class="language-plaintext highlighter-rouge">JourneyPart</code> for this. <code class="language-plaintext highlighter-rouge">NoticeAssignment</code> can be valid only for a part of the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> (<code class="language-plaintext highlighter-rouge">StartPointInPatternRef</code> and <code class="language-plaintext highlighter-rouge">EndPointInPatternRef</code>).</p>
 
-<h2 id="key-elements">Key Elements</h2>
+<h3 id="table">Table</h3>
 
-<p>| Element | Usage | Description                                                                                        |
-|———|——-|—————————————————————————————————-|
-| <code class="language-plaintext highlighter-rouge">FromStopPointRef</code> | mandatory | <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part begins                                                         |
-| <code class="language-plaintext highlighter-rouge">ToStopPointRef</code> | mandatory | <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part ends                                                           |
-| <code class="language-plaintext highlighter-rouge">StartTime</code> / <code class="language-plaintext highlighter-rouge">EndTime</code> | mandatory | Time bounds of the part                                                                            |
-| <code class="language-plaintext highlighter-rouge">PurposeOfJourneyPartitionRef</code> | expected | Reason for the partition (e.g. <code class="language-plaintext highlighter-rouge">FacilityChange</code>, <code class="language-plaintext highlighter-rouge">TrainNumberChange</code>, ‘TypeOfProductCategorychage<code class="language-plaintext highlighter-rouge">) |
-| </code>TrainNumberRef<code class="language-plaintext highlighter-rouge"> | optional | Train number valid for this part                                                                   |
-| </code>facilities<code class="language-plaintext highlighter-rouge"> | optional | </code>ServiceFacilitySet<code class="language-plaintext highlighter-rouge"> valid for this part only                                                      |
-| </code>JourneyPartCoupleRef` | optional | Links to a coupled section (Flügelzug) — not used in Swiss profile                                 |</p>
+<p>For some use cases e.g. change of Facilities during ServiceJourney</p>
+
+<p><em>Table: parts</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>JourneyPart</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>JourneyPart_VersionStructure</td>
+      <td>A part of a VEHICLE JOURNEY created according to a specific functional purpose, for instance in situations when vehicle coupling or separating occurs.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>validityConditions</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>validityConditions_RelStructure</td>
+      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td>We prefer to not use those</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AvailabilityConditionRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AvailabilityConditionRefStructure</td>
+      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>MainPartRef</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>JourneyPartRefStructure</td>
+      <td>Main JOURNEY PART for journey.</td>
+      <td>For the use cases we support, this is not necessary</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TrainNumberRef</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>TrainNumberRefStructure</td>
+      <td>Reference to a TRAIN NUMBER.</td>
+      <td>TrainNumber used for this part</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>FromStopPointRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td>SCHEDULED STOP POINT feeding INTERCHANGE. If absent apply to all STOP POINTs.</td>
+      <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part begins. On the level of Quay.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ToStopPointRef</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td>SCHEDULED STOP POINT distributing from INTERCHANGE. If absent apply to all STOP POINTs.</td>
+      <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part ends . If not present, it is to the end of the ServiceJourney. But we prefer to have it explicitly</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>StartTime</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:time</td>
+      <td>The (inclusive) start date and time.</td>
+      <td>Time bounds of the part</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>StartTimeDayOffset</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>DayOffsetType</td>
+      <td>Number of days after journey start time that start time is.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>EndTime</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:time</td>
+      <td>The (inclusive) end date and time.</td>
+      <td>Time bounds of the part.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>EndTimeDayOffset</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>DayOffsetType</td>
+      <td>Number of days after journey start time that end time is.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PurposeOfJourneyPartitionRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PurposeOfJourneyPartitionRefStructure</td>
+      <td>Reference to a PURPOSE OF JOURNEY PARTITION.</td>
+      <td>Reason for the partition (e.g. <code class="language-plaintext highlighter-rouge">FacilityChange</code>, <code class="language-plaintext highlighter-rouge">TrainNumberChange</code>, ‘TypeOfProductCategorychage`). Only two values are allowed (see uc0_journey_parts). Other things are implemented with different elements. Especially Notices are done with NoticeAssignment and not ServiceJourneyPart.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>facilities</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>serviceFacilitySets_RelStructure</td>
+      <td>FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed.</td>
+      <td><code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code> valid for this part only. Used when there is a change in facilities.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ServiceFacilitySetRef</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>ServiceFacilitySetRefStructure</td>
+      <td>Reference to a SERVICE FACILITY SET.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TypeOfProductCategoryRef</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>TypeOfProductCategoryRefStructure</td>
+      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
+      <td>Used when the product category changes</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../xcore/netex/elements/JourneyPart.html">General NeTEx definition </a></em></p>
+
+<h3 id="example">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;parts&gt;</span>
+  <span class="c">&lt;!-- For some use cases e.g. change of Facilities during ServiceJourney --&gt;</span>
+  <span class="nt">&lt;JourneyPart</span> <span class="na">id=</span><span class="s">"ch:1:JourneyPart:703-bistro-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;validityConditions&gt;</span>
+      <span class="c">&lt;!-- We prefer to not use those --&gt;</span>
+      <span class="nt">&lt;AvailabilityConditionRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/validityConditions&gt;</span>
+    <span class="nt">&lt;MainPartRef</span> <span class="na">ref=</span><span class="s">"ch:1:JourneyPart:703-bistro-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- For the use cases we support, this is not necessary --&gt;</span>
+    <span class="nt">&lt;/MainPartRef&gt;</span>
+    <span class="nt">&lt;TrainNumberRef</span> <span class="na">ref=</span><span class="s">"ch:1:TrainNumber:231213"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- TrainNumber used for this part --&gt;</span>
+    <span class="nt">&lt;/TrainNumberRef&gt;</span>
+    <span class="nt">&lt;FromStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7000:4:7"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- `ScheduledStopPoint` where the part begins. On the level of Quay. --&gt;</span>
+    <span class="nt">&lt;/FromStopPointRef&gt;</span>
+    <span class="nt">&lt;ToStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:218:7"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- `ScheduledStopPoint` where the part ends . If not present, it is to the end of the ServiceJourney. But we prefer to have it explicitly --&gt;</span>
+    <span class="nt">&lt;/ToStopPointRef&gt;</span>
+    <span class="nt">&lt;StartTime&gt;</span>05:29:00
+      <span class="c">&lt;!-- Time bounds of the part --&gt;</span>
+    <span class="nt">&lt;/StartTime&gt;</span>
+    <span class="nt">&lt;StartTimeDayOffset&gt;</span>0<span class="nt">&lt;/StartTimeDayOffset&gt;</span>
+    <span class="nt">&lt;EndTime&gt;</span>06:28:00
+      <span class="c">&lt;!-- Time bounds of the part. --&gt;</span>
+    <span class="nt">&lt;/EndTime&gt;</span>
+    <span class="nt">&lt;EndTimeDayOffset&gt;</span>0<span class="nt">&lt;/EndTimeDayOffset&gt;</span>
+    <span class="nt">&lt;PurposeOfJourneyPartitionRef</span> <span class="na">ref=</span><span class="s">"ch:1:PurposeOfJourneyPartition:FacilityChange"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Reason for the partition (e.g. `FacilityChange`, `TrainNumberChange`, 'TypeOfProductCategorychage`). Only two values are allowed (see uc0_journey_parts). Other things are implemented with different elements. Especially Notices are done with NoticeAssignment and not ServiceJourneyPart. --&gt;</span>
+    <span class="nt">&lt;/PurposeOfJourneyPartitionRef&gt;</span>
+    <span class="nt">&lt;facilities&gt;</span>
+      <span class="c">&lt;!-- `ServiceFacilitySet` valid for this part only. Used when there is a change in facilities. --&gt;</span>
+      <span class="nt">&lt;ServiceFacilitySetRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceFacilitySet:bistro-open"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/facilities&gt;</span>
+    <span class="nt">&lt;TypeOfProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:B"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Used when the product category changes --&gt;</span>
+    <span class="nt">&lt;/TypeOfProductCategoryRef&gt;</span>
+  <span class="nt">&lt;/JourneyPart&gt;</span>
+  <span class="nt">&lt;JourneyPart</span> <span class="na">id=</span><span class="s">"ch:1:JourneyPart:703-bistro-2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;FromStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000:501:33"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;ToStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:6302:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;StartTime&gt;</span>06:57:00<span class="nt">&lt;/StartTime&gt;</span>
+    <span class="nt">&lt;StartTimeDayOffset&gt;</span>0<span class="nt">&lt;/StartTimeDayOffset&gt;</span>
+    <span class="nt">&lt;EndTime&gt;</span>07:52:00<span class="nt">&lt;/EndTime&gt;</span>
+    <span class="nt">&lt;EndTimeDayOffset&gt;</span>0<span class="nt">&lt;/EndTimeDayOffset&gt;</span>
+    <span class="nt">&lt;PurposeOfJourneyPartitionRef</span> <span class="na">ref=</span><span class="s">"ch:1:PurposeOfJourneyPartition:FacilityChange"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;facilities&gt;</span>
+      <span class="nt">&lt;ServiceFacilitySetRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceFacilitySet:bistro-open"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/facilities&gt;</span>
+  <span class="nt">&lt;/JourneyPart&gt;</span>
+<span class="nt">&lt;/parts&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/main/templates/JourneyPart.xml">Template</a></em></p>
 
 <h2 id="usage-notes">Usage Notes</h2>
 
