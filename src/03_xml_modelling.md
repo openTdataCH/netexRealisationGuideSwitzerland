@@ -195,7 +195,7 @@ IDs must be globally unique during importation (in the `@id` of the element). By
 - They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for "primary" objects we expect object permanence. This is mentioned in the usage note of each element.
 Important business level keys are stored in elements (`KeyList`, `privateCodes/PrivateCode`) in addition to the IDs.
 
-It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available. 
+It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available. Some id will be very stable (as they are the primary identifier of the object). Some identifiers should be stable between exports. The reason is that those elements can be identified by the data consumer and replaced. So, even when id are generated it is reasonable to do this in a way that the same object obtains the same id in every export. Examples are variants of ServiceJourneyPattern. Others are never referenced and are not important (e.g. PassengerStopAssignments).
 
 For readability and easy referencing, we will use the following principles:
 -	We use the class of the object to prefix the technical ID like `ch:1:TypeOfNotice:3` for a `TypeOfNotice` element.
@@ -205,6 +205,8 @@ where the value of `ShortName` of the `TypeOfProductCategory` is used to build t
 
 
 All other defined attributes like `created`, `changed`, `modification` are not used. If we need one, we will inform about it in the table associated with the element.
+
+
 
 #### Version
 We will use `version="1"` in Switzerland. In some cases we use `versionRef="1"` instead, when the referenced object is not in the same file in references (`XXXRef`-elements). We no longer use `any` and expect to remove that semantic if possible. Also, the version (or versionRef) always must be present.
