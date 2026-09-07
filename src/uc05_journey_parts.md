@@ -87,17 +87,15 @@ A `ServiceJourney` may exist in the Swiss system only up to the first commercial
 We don't use `JourneyPart` for this. `NoticeAssignment` can be valid only for a part of the `ServiceJourney` (`StartPointInPatternRef` and `EndPointInPatternRef`).
 
 
-## Key Elements
+### Table
+- [Swiss profile NeTEx definition](../site/tables/JourneyPart.md)
 
-| Element | Usage | Description                                                                                        |
-|---------|-------|----------------------------------------------------------------------------------------------------|
-| `FromStopPointRef` | mandatory | `ScheduledStopPoint` where the part begins                                                         |
-| `ToStopPointRef` | mandatory | `ScheduledStopPoint` where the part ends                                                           |
-| `StartTime` / `EndTime` | mandatory | Time bounds of the part                                                                            |
-| `PurposeOfJourneyPartitionRef` | expected | Reason for the partition (e.g. `FacilityChange`, `TrainNumberChange`, 'TypeOfProductCategorychage`) |
-| `TrainNumberRef` | optional | Train number valid for this part                                                                   |
-| `facilities` | optional | `ServiceFacilitySet` valid for this part only                                                      |
-| `JourneyPartCoupleRef` | optional | Links to a coupled section (Flügelzug) — not used in Swiss profile                                 |
+*→ [General NeTEx definition ](../xcore/netex/elements/JourneyPart.html)*
+
+### Example
+- [Example snippet](../site/xml-snippets/JourneyPart.xml)
+
+*→ [Template](./templates/JourneyPart.xml)*
 
 ## Usage Notes
 
