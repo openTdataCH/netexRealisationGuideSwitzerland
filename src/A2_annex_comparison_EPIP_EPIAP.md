@@ -2,6 +2,7 @@
 
 Note: The following list is not necessarily comprehensive.
 >**LATER** https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/docs/A2_annex_comparison_EPIP_EPIAP.md
+
 ## Main differences
 
 EPIAP describes the following additional elements that need to be considered. 
