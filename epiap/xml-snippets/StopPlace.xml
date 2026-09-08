@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StopPlace id="ch:1:sloid:7000" version="1">
+  <!-- In some cases the id of a StopPlace is not a SLOID. -->
+  <ValidBetween>
+    <!-- This can be used to show when the StopPlace can be used. Note that the usage (optional) overrides the cardinality. -->
+    <FromDate>2025-12-14T00:00:00</FromDate>
+    <ToDate>2026-12-12T23:59:59</ToDate>
+  </ValidBetween>
+  <keyList>
+    <!-- Key value pairs. -->
+    <KeyValue>
+      <!-- HafasPriority and HafasKMInfo for Hafas environments, only used in exports by INFO+. -->
+      <Key>HafasPriority</Key>
+      <Value>4</Value>
+    </KeyValue>
+    <KeyValue>
+      <!-- Special value for Hafas environments, only used in exports by INFO+. -->
+      <Key>HafasKMInfo</Key>
+      <Value>1000</Value>
+    </KeyValue>
+  </keyList>
+  <privateCodes>
+    <PrivateCode type="didok">7000
+      <!-- Mandatory for DIDOK and SLOID if they exist. -->
+    </PrivateCode>
+    <PrivateCode type="sloid">ch:1:sloid:7000
+      <!-- Mandatory for DIDOK and SLOID if they exist. -->
+    </PrivateCode>
+  </privateCodes>
+  <Name>Bern
+    <!-- The official stop name. If you have different versions one needs to use AlternativeName -->
+  </Name>
+  <Centroid>
+    <!-- Global or national location -->
+    <Name/>
+    <Location>
+      <!-- Note concerning coordinates - The main coordinates are given as **WGS84**. -->
+      <Longitude>7.43913088992</Longitude>
+      <Latitude>46.94883228914</Latitude>
+      <Altitude>540.2</Altitude>
+    </Location>
+  </Centroid>
+  <alternativeNames>
+    <!-- Alternative names for the StopPlace. We will only use these for synonyms. -->
+    <AlternativeName id="ch:1:sloid:7000:it" version="1">
+      <NameType>alias</NameType>
+      <Name lang="it">Berna</Name>
+    </AlternativeName>
+  </alternativeNames>
+  <TopographicPlaceRef ref="BE-bern" version="1">
+    <!-- Id to the county, community, canton or country. -->
+  </TopographicPlaceRef>
+  <Locale>
+    <TimeZone>Europe/Zurich
+      <!-- Must be present, when not in DefaultTimeZone. -->
+    </TimeZone>
+  </Locale>
+  <StopPlaceType>railStation</StopPlaceType>
+  <LimitedUse>interchangeOnly
+    <!-- For stops like Sagliains. We currently use only interchangeOnly. -->
+  </LimitedUse>
+  <Weighting>preferredInterchange
+    <!-- Default relative weighting to be used for stop place. See also mapping excel. Cf. HafasPriority in Extensions. -->
+  </Weighting>
+  <quays>
+    <!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. Note that the usage (expected) overrides the cardinality. -->
+    <Quay id="ch:1:sloid:7000:5:9" version="1"/>
+  </quays>
+</StopPlace>

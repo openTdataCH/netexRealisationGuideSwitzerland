@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Annex: Relevant differences between EPIP, EPIAP and the Swiss realisation guide 2.0 | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Annex: Relevant differences between EPIP, EPIAP and the Swiss realisation guide 2.0" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/A2_annex_comparison_EPIP_EPIAP.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/A2_annex_comparison_EPIP_EPIAP.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Annex: Relevant differences between EPIP, EPIAP and the Swiss realisation guide 2.0" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Annex: Relevant differences between EPIP, EPIAP and the Swiss realisation guide 2.0","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/A2_annex_comparison_EPIP_EPIAP.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/epiap/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/epiap/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="wrapper">
+  <div class="layout-with-sidebar">
+    <nav class="sidebar" aria-label="Chapters">
+  <h4><a href="index.html">Document Root</a></h4>
+  <h3>Chapters</h3>
+  <ul>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/01_intro_roadmap.html">Introduction & Roadmap</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/02_files.html">File Exchange</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/03_xml_modelling.html">XML Modeling</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/04_frames.html">The Frame structure</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/05_stops.html">Site Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/06_service.html">Service Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/07_service_calendars.html">Service Calendar Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/08_timetable.html">Timetable Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/09_resources.html">Resource Frame</a>
+      </li>
+    
+  </ul>
+  <h3>Special Use Cases</h3>
+  <ul>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc01_durchbindung.html">Durchbindung</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc02_joining_splitting.html">Joining / splitting</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc03_transfers.html">Transfers</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc04_service_facilities.html">Service facilities</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc05_journey_parts.html">Usage of JourneyParts</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc06_modes_submodes.html">Modes and the "KI Branchenstandard"</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc07_checkconstraints.html">Check constraints</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc08_kurswagen.html">Direct carriages ("Kurswagen")</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc09_accessibility.html">Accessibility</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc10_midnight_passing.html">Journeys passing midnight</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc11_touristic_offers.html">Touristic offers</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc12_carTransportRail.html">Car transport rail</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc13_changes_in_destination.html">Changes in the destination</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc14_frequencies.html">Frequency based ServiceJourney</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc15_formations.html">Formations</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc16_drt.html">Demand Responsive Traffic</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc17_mixed_lines.html">Mixed Lines</a>
+      </li>
+    
+  </ul>
+  <h3>Annexes</h3>
+  <ul>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A1_annex_resources_references.html">Resources and references</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A2_annex_comparison_EPIP_EPIAP.html">Differences between Swiss profile and EPIP/EPIAP and how they could be amended</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A3_annex_comparison_France_Norway.html">Differences to the French and nordic profile</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html">Glossary</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A5_annex_index.html">Index</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A6_changelog_migration.html">Changelog and migration from Swiss profile 1.0 to 2.0)</a>
+      </li>
+    
+  </ul>
+</nav>
+    <main class="content" aria-label="Content">
+      
+        <h1 class="page-title">Annex: Relevant differences between EPIP, EPIAP and the Swiss realisation guide 2.0</h1>
+      
+      <p>Note: The following list is not necessarily comprehensive.</p>
+<blockquote>
+  <p><strong>LATER</strong> https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/docs/A2_annex_comparison_EPIP_EPIAP.md</p>
+  <h2 id="main-differences">Main differences</h2>
+</blockquote>
+
+<p>EPIAP describes the following additional elements that need to be considered.</p>
+
+<p><strong>AccessibilityAssessment</strong></p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">AccessibilityAssessment</code> for:
+    <ul>
+      <li>StopPlace</li>
+      <li>Quay.</li>
+      <li>Entrance</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Basic Orientation</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Level</code> - mandatory if &gt; 1</li>
+  <li><code class="language-plaintext highlighter-rouge">Entrance</code></li>
+</ul>
+
+<p><strong>Private Mobility</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Parking</code> ?</li>
+  <li><code class="language-plaintext highlighter-rouge">VehicleMeetingPoint</code> ?</li>
+</ul>
+
+<p><strong>Path Navigation</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">SitePathLink</code> - noch nicht?</li>
+  <li><code class="language-plaintext highlighter-rouge">PathJunction</code> - noch nicht?</li>
+  <li><code class="language-plaintext highlighter-rouge">AccessSpace</code> for routing</li>
+</ul>
+
+<p><strong>Facilities &amp; Equipments</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">EquipmentPlace</code> (in Quay, Entrance, StopPlace (indirecty via <code class="language-plaintext highlighter-rouge">AccessSpace</code>))</li>
+  <li><code class="language-plaintext highlighter-rouge">AccessSpace</code> - rules tbd</li>
+  <li><code class="language-plaintext highlighter-rouge">SiteFacilitySet</code>, <code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code></li>
+  <li><code class="language-plaintext highlighter-rouge">RampEquipment</code>, <code class="language-plaintext highlighter-rouge">LiftEquipment</code>, <code class="language-plaintext highlighter-rouge">TicketingEquipment</code>, <code class="language-plaintext highlighter-rouge">SanitaryEquipment</code>, <code class="language-plaintext highlighter-rouge">PassengerInformationEquipment</code> ?</li>
+</ul>
+
+<p><strong>Service Contacts</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">Operator</code> - <code class="language-plaintext highlighter-rouge">ContactDetails</code></li>
+  <li><code class="language-plaintext highlighter-rouge">AssistanceService</code></li>
+  <li><code class="language-plaintext highlighter-rouge">AssistanceBookingService</code></li>
+</ul>
+
+<p><strong>Vehicles</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">VehicleType</code>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">equipments</code></li>
+      <li><code class="language-plaintext highlighter-rouge">facilities</code></li>
+      <li><code class="language-plaintext highlighter-rouge">equipmentProfiles</code> - <code class="language-plaintext highlighter-rouge">VehicleEquipmentProfile</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Vehicle Stop Interaction</strong></p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">BoardingPosition</code> in TrainStopAssignment</li>
+  <li><code class="language-plaintext highlighter-rouge">PlatformHeight</code>, <code class="language-plaintext highlighter-rouge">GapToPlatform</code></li>
+</ul>
+
+<h2 id="other-noteworthy-differences">Other noteworthy differences</h2>
+<ul>
+  <li>DELFI, PRM TSI …</li>
+  <li>Accessibility in the French profile …</li>
+  <li>EPIAP requires AlternativeText, Swiss profile excludes it</li>
+  <li>bla</li>
+</ul>
+
+<h2 id="things-that-should-be-includedchanged-for-the-new-european-profile-for-2028">Things that should be included/changed for the new European profile for 2028</h2>
+<ul>
+  <li>bla</li>
+  <li>bla</li>
+  <li>bla</li>
+</ul>
+
+<h1 id="epiap-in-switzerland---work-in-progress">EPIAP in Switzerland - WORK IN PROGRESS</h1>
+
+<p>Definition of the Swiss Accessibility Profile.</p>
+
+<h2 id="accessibilityassessment">AccessibilityAssessment</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em> TODO</p>
+
+<h3 id="purpose">Purpose</h3>
+<p>…</p>
+
+<h3 id="table">Table</h3>
+
+<p><em>Table: AccessibilityAssessment</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>MobilityImpairedAccess</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Summary indication as to whether the component is considered to be accessible or not.</td>
+      <td>Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>limitations</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>usageParameters_RelStructure</td>
+      <td>The ACCESSIBILITY LIMITATION that apply to component.</td>
+      <td>Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AccessibilityLimitation</td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>AccessibilityLimitation_VersionedChildStructure</td>
+      <td>Assessment of the accessibility of a SITE.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>WheelchairAccess</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE is wheelchair accessible.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>StepFreeAccess</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE has step free access.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>StairFreeAccess</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0</td>
+      <td>Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>GuideDogAccess</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE allows guide dog access.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TactileGuidanceAvailable</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE has tactile guidance.</td>
+      <td>Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>VisualSignsAvailable</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE has visual signals for the hearing impaired.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>LevelAccessIntoVehicle</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).</td>
+      <td>Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../xcore/netex/elements/AccessibilityAssessment.html">General NeTEx definition </a></em></p>
+
+<h3 id="example">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
+    <span class="c">&lt;!-- Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. --&gt;</span>
+  <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
+  <span class="nt">&lt;limitations&gt;</span>
+    <span class="c">&lt;!-- Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. --&gt;</span>
+    <span class="nt">&lt;AccessibilityLimitation&gt;</span>
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+      <span class="nt">&lt;WheelchairAccess&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. --&gt;</span>
+      <span class="nt">&lt;/WheelchairAccess&gt;</span>
+      <span class="nt">&lt;StepFreeAccess&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. --&gt;</span>
+      <span class="nt">&lt;/StepFreeAccess&gt;</span>
+      <span class="nt">&lt;StairFreeAccess&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. --&gt;</span>
+      <span class="nt">&lt;/StairFreeAccess&gt;</span>
+      <span class="nt">&lt;GuideDogAccess&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. --&gt;</span>
+      <span class="nt">&lt;/GuideDogAccess&gt;</span>
+      <span class="nt">&lt;TactileGuidanceAvailable&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. --&gt;</span>
+      <span class="nt">&lt;/TactileGuidanceAvailable&gt;</span>
+      <span class="nt">&lt;VisualSignsAvailable&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. --&gt;</span>
+      <span class="nt">&lt;/VisualSignsAvailable&gt;</span>
+      <span class="nt">&lt;LevelAccessIntoVehicle&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. --&gt;</span>
+      <span class="nt">&lt;/LevelAccessIntoVehicle&gt;</span>
+    <span class="nt">&lt;/AccessibilityLimitation&gt;</span>
+  <span class="nt">&lt;/limitations&gt;</span>
+<span class="nt">&lt;/AccessibilityAssessment&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/templates/AccessibilityAssessment.xml">Template</a></em></p>
+
+<h3 id="usage-notes">Usage Notes</h3>
+
+<p>In case of <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code class="language-plaintext highlighter-rouge">Quay</code>, EPIAP uses the following interpretation: 
+<code class="language-plaintext highlighter-rouge">MobilityImpairedAccess</code> set to <code class="language-plaintext highlighter-rouge">true</code> means:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">WheelchairAccess</code> <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li><code class="language-plaintext highlighter-rouge">StepFreeAccess</code> <code class="language-plaintext highlighter-rouge">true</code></li>
+  <li><code class="language-plaintext highlighter-rouge">VisualSignsAvailable</code> <code class="language-plaintext highlighter-rouge">true</code> (only for railway stations)</li>
+  <li><code class="language-plaintext highlighter-rouge">TactileGuidanceAvailable</code> <code class="language-plaintext highlighter-rouge">true</code></li>
+</ul>
+
+<p>Interpretation of <code class="language-plaintext highlighter-rouge">AccessibilityLimitation</code>:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">WheelchairAccess</code></td>
+      <td>1.    <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> from an accessible entrance (see next row).<br />2.    The stop/platform is sufficiently wide to make a turn with a wheelchair when entering/leaving the vehicles that usually stops at this stop/platform (depending on the available/needed tools for entering/leaving the vehicle).<br />3.    If boarding trains requires boarding assistance, onsite assistance is available.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StepFreeAccess</code></td>
+      <td>1.    A step-free route is an obstacle-free/barrier free route that meets the needs of mobility impaired persons. Changes in level are avoided or, when they cannot be avoided, they are bridged via ramps or lifts (compliant with PRM TSI).<br />2.    The platform or Stop is accessible without steps from the surrounding area (footpaths).<br />A platform which has <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> without <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> (= <code class="language-plaintext highlighter-rouge">false</code>) may be not sufficiently wide to make a turn with a wheelchair.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StairFreeAccess</code></td>
+      <td>A stair-free route. Single steps allowed.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LevelAccessIntoVehicle</code></td>
+      <td>Whether the platform is high enough and gap is small enough for level access into vehicle.<br /><br />At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EscalatorFreeAccess</code></td>
+      <td>Reachable without using an escalator.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LiftFreeAccess</code></td>
+      <td>Reachable without using an elevator.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RampFreeAccess</code></td>
+      <td>Reachable without using a ramp that doesn’t fit the UN Design <a href="https://euc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=nl-nl&amp;rs=nl-nl&amp;wopisrc=https%3A%2F%2Fitxptorg.sharepoint.com%2Fsites%2FEU.DATA4PT.NETEX%2F_vti_bin%2Fwopi.ashx%2Ffiles%2Fc2c9167177c34bc1bb50e4880ff7b6ac&amp;wdenableroaming=1&amp;mscc=1&amp;hid=12869e13-00bf-76bc-9351-10ac590e57c1-730&amp;uiembed=1&amp;uih=teams&amp;uihit=files&amp;hhdr=1&amp;dchat=1&amp;sc=%7B%22pmo%22%3A%22https%3A%2F%2Fteams.microsoft.com%22%2C%22pmshare%22%3Atrue%2C%22surl%22%3A%22%22%2C%22curl%22%3A%22%22%2C%22vurl%22%3A%22%22%2C%22eurl%22%3A%22https%3A%2F%2Fteams.microsoft.com%2Ffiles%2Fapps%2Fcom.microsoft.teams.files%2Ffiles%2F2441637157%2Fopen%3Fagent%3Dpostmessage%26objectUrl%3Dhttps%253A%252F%252Fitxptorg.sharepoint.com%252Fsites%252FEU.DATA4PT.NETEX%252FShared%2520Documents%252FGeneral%252FCEN_Accessibility_Profile%252F20210326%2520PrTS%252016614-6.docx%26fileId%3Dc2c91671-77c3-4bc1-bb50-e4880ff7b6ac%26fileType%3Ddocx%26ctx%3Daggregate%26scenarioId%3D730%26locale%3Dnl-nl%26theme%3Ddefault%26version%3D21100501100%26setting%3Dring.id%3Ageneral%26setting%3DcreatedTime%3A1639152919292%22%7D&amp;wdorigin=TEAMS-ELECTRON.aggregatefiles.aggregate&amp;jsapi=1&amp;jsapiver=v1&amp;newsession=1&amp;corrid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&amp;usid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&amp;sftc=1&amp;sams=1&amp;accloop=1&amp;sdr=6&amp;scnd=1&amp;sat=1&amp;hbcv=1&amp;htv=1&amp;hodflp=1&amp;instantedit=1&amp;wopicomplete=1&amp;wdredirectionreason=Unified_SingleFlush&amp;rct=Medium&amp;ctp=LeastProtected#_ftn1">Considerations</a> (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m). <a href="https://euc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=nl-nl&amp;rs=nl-nl&amp;wopisrc=https%3A%2F%2Fitxptorg.sharepoint.com%2Fsites%2FEU.DATA4PT.NETEX%2F_vti_bin%2Fwopi.ashx%2Ffiles%2Fc2c9167177c34bc1bb50e4880ff7b6ac&amp;wdenableroaming=1&amp;mscc=1&amp;hid=12869e13-00bf-76bc-9351-10ac590e57c1-730&amp;uiembed=1&amp;uih=teams&amp;uihit=files&amp;hhdr=1&amp;dchat=1&amp;sc=%7B%22pmo%22%3A%22https%3A%2F%2Fteams.microsoft.com%22%2C%22pmshare%22%3Atrue%2C%22surl%22%3A%22%22%2C%22curl%22%3A%22%22%2C%22vurl%22%3A%22%22%2C%22eurl%22%3A%22https%3A%2F%2Fteams.microsoft.com%2Ffiles%2Fapps%2Fcom.microsoft.teams.files%2Ffiles%2F2441637157%2Fopen%3Fagent%3Dpostmessage%26objectUrl%3Dhttps%253A%252F%252Fitxptorg.sharepoint.com%252Fsites%252FEU.DATA4PT.NETEX%252FShared%2520Documents%252FGeneral%252FCEN_Accessibility_Profile%252F20210326%2520PrTS%252016614-6.docx%26fileId%3Dc2c91671-77c3-4bc1-bb50-e4880ff7b6ac%26fileType%3Ddocx%26ctx%3Daggregate%26scenarioId%3D730%26locale%3Dnl-nl%26theme%3Ddefault%26version%3D21100501100%26setting%3Dring.id%3Ageneral%26setting%3DcreatedTime%3A1639152919292%22%7D&amp;wdorigin=TEAMS-ELECTRON.aggregatefiles.aggregate&amp;jsapi=1&amp;jsapiver=v1&amp;newsession=1&amp;corrid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&amp;usid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&amp;sftc=1&amp;sams=1&amp;accloop=1&amp;sdr=6&amp;scnd=1&amp;sat=1&amp;hbcv=1&amp;htv=1&amp;hodflp=1&amp;instantedit=1&amp;wopicomplete=1&amp;wdredirectionreason=Unified_SingleFlush&amp;rct=Medium&amp;ctp=LeastProtected#_ftnref1">[1]</a> <a href="https://www.un.org/esa/socdev/enable/designm/AD2-01.htm">https://www.un.org/esa/socdev/enable/designm/AD2-01.htm</a></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AudibleSignalsAvailable</code></td>
+      <td>Whether audible signals for the visually impaired are present.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">VisualSignsAvailable</code></td>
+      <td>PRM TSI: visual information as signposting, pictograms and dynamic information.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TactileGuidanceAvailable</code></td>
+      <td>Whether the object has tactile guidance (for the visually impaired). If absent assume <code class="language-plaintext highlighter-rouge">unknown</code>.<br />PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br />For bus- and tram stops:  <br />1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br />2.   Tactile guideline or boarding position connected to (natural) guideline in environment</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="remarks-rampfreeaccess">Remarks <code class="language-plaintext highlighter-rouge">RampFreeAccess</code></h4>
+
+<ul>
+  <li>Note that <code class="language-plaintext highlighter-rouge">RampFreeAccess</code> may very well include ramps - provided their slopes are only moderate.</li>
+  <li>It seems obvious that <code class="language-plaintext highlighter-rouge">RampFreeAccess</code>should also include <code class="language-plaintext highlighter-rouge">StairFreeAccess</code> and <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> - this isn’t explicitely stated in EPIAP, however.</li>
+  <li><code class="language-plaintext highlighter-rouge">RampFreeAccess</code>is thus a stronger form of <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> excluding steeper slopes.</li>
+</ul>
+
+<h4 id="lifts-entrances---open-questions">Lifts, Entrances - OPEN QUESTIONS</h4>
+
+<p>If, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> or <code class="language-plaintext highlighter-rouge">StairFreeAccess</code> requires using a lift, this information cannot easily be conveyed. It would, however, be of interest: requires more time, knowing the location(s) might be helpful. Do we need navigation paths?</p>
+
+<p>According to EPIAP definitions, a quay has, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> if it is reachable from <em>any</em> entrance. It may be that <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> only works from a secondary entrance, not from the main entrance. Should we be able to express such situations?</p>
+
+<h2 id="stopplace---the-additional-elements">StopPlace - the Additional Elements</h2>
+
+<h3 id="table-1">Table</h3>
+
+<p><em>Table: StopPlace</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>ValidBetween</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Location</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>LocationStructure</td>
+      <td>The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates).</td>
+      <td>Element before …</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Longitude</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LongitudeType</td>
+      <td>Longitude from Greenwich Meridian. -180 (East) to +180 (West).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td>Assessment of the accessibility of a SITE.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Covered</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>CoveredEnumeration</td>
+      <td>Whether the component is Indoors or outdoors. Default is Indoors.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AllAreasWheelchairAccessible</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether all areas of the component are wheelchair accessible.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>facilities</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>serviceFacilitySets_RelStructure</td>
+      <td>FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>SiteFacilitySet</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>SiteFacilitySetStructure</td>
+      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>SiteFacilitySetRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>SiteFacilitySetRefStructure</td>
+      <td>Reference to a SITE FACILITY SET.</td>
+      <td>Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Locale</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>LocaleStructure</td>
+      <td>Common LOCALE dependent properties.</td>
+      <td>Element before …</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TimeZone</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Timezone name at LOCALE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>levels</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>levels_RelStructure</td>
+      <td>LEVELs found within SITe.</td>
+      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="./tables/Level.md">Level</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>Level_VersionStructure</td>
+      <td>Level of a Building or SITE.</td>
+      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="./tables/Level.md">Level</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>Level_VersionStructure</td>
+      <td>Level of a Building or SITE.</td>
+      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>entrances</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>pointOfInterestEntrances_RelStructure</td>
+      <td>ENTRANCEs to and within SITE.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="./tables/Entrance.md">Entrance</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>SiteEntrance_VersionStructure</td>
+      <td>Entrance to a SITE.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>equipmentPlaces</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>equipmentPlaces_RelStructure</td>
+      <td>EQUIPMENT PLACEs within SITE COMPONENT.</td>
+      <td>Accessibility. TODO</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>placeEquipments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>placeEquipments_RelStructure</td>
+      <td>Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT.</td>
+      <td>Accessibility. TODO</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>localServices</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>localServices_RelStructure</td>
+      <td>LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AssistanceServiceRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AssistanceServiceRefStructure</td>
+      <td>Identifier of an ASSISTANCE SERVICE.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>quays</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>quays_RelStructure</td>
+      <td>QUAYs within the STOP PLACE.</td>
+      <td>Element before …</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Quay</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>Quay_VersionStructure</td>
+      <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>accessSpaces</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>accessSpaces_RelStructure</td>
+      <td>ACCESS SPACEs within the STOP PLACE.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="./tables/AccessSpace.md">AccessSpace</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>AccessSpace_VersionStructure</td>
+      <td>An area within a STOP PLACE that does not give direct access to transport vehicles. May be connected to QUAYS by PATH LINKs.</td>
+      <td>Accessibility.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="example-1">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ValidBetween&gt;</span>
+    <span class="nt">&lt;FromDate&gt;</span>2025-12-14T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
+    <span class="nt">&lt;ToDate&gt;</span>2026-12-12T23:59:59<span class="nt">&lt;/ToDate&gt;</span>
+  <span class="nt">&lt;/ValidBetween&gt;</span>
+  <span class="nt">&lt;keyList&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>HafasPriority<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>4<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>HafasKMInfo<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>1000<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;/keyList&gt;</span>
+  <span class="nt">&lt;privateCodes&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"didok"</span><span class="nt">&gt;</span>7000<span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/privateCodes&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;ShortName/&gt;</span>
+  <span class="nt">&lt;PrivateCode/&gt;</span>
+  <span class="nt">&lt;Centroid&gt;</span>
+    <span class="nt">&lt;Name/&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="c">&lt;!-- Element before ... --&gt;</span>
+      <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
+      <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
+      <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;/Centroid&gt;</span>
+  <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
+  <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
+  <span class="nt">&lt;alternativeNames&gt;</span>
+    <span class="nt">&lt;AlternativeName</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:it"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- ... element in between ... --&gt;</span>
+      <span class="nt">&lt;NameType&gt;</span>alias<span class="nt">&lt;/NameType&gt;</span>
+      <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Berna<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;/AlternativeName&gt;</span>
+  <span class="nt">&lt;/alternativeNames&gt;</span>
+  <span class="nt">&lt;Covered&gt;</span>covered
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+  <span class="nt">&lt;/Covered&gt;</span>
+  <span class="nt">&lt;AllAreasWheelchairAccessible&gt;</span>true
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+  <span class="nt">&lt;/AllAreasWheelchairAccessible&gt;</span>
+  <span class="nt">&lt;facilities&gt;</span>
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"ch:1:sitefacilityset:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;/SiteFacilitySet&gt;</span>
+    <span class="nt">&lt;SiteFacilitySetRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong. --&gt;</span>
+    <span class="nt">&lt;/SiteFacilitySetRef&gt;</span>
+  <span class="nt">&lt;/facilities&gt;</span>
+  <span class="nt">&lt;TopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"BE-bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Locale&gt;</span>
+    <span class="c">&lt;!-- Element before ... --&gt;</span>
+    <span class="nt">&lt;TimeZone&gt;</span>Europe/Zurich<span class="nt">&lt;/TimeZone&gt;</span>
+  <span class="nt">&lt;/Locale&gt;</span>
+  <span class="nt">&lt;levels&gt;</span>
+    <span class="c">&lt;!-- Accessibility. Mandatory if the StopPlace has more than one level. --&gt;</span>
+    <span class="nt">&lt;Level</span> <span class="na">id=</span><span class="s">"ch:1:level:7000:0"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. Mandatory if the StopPlace has more than one level. --&gt;</span>
+    <span class="nt">&lt;/Level&gt;</span>
+    <span class="nt">&lt;Level</span> <span class="na">id=</span><span class="s">"ch:1:level:7000:-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. Mandatory if the StopPlace has more than one level. --&gt;</span>
+    <span class="nt">&lt;/Level&gt;</span>
+  <span class="nt">&lt;/levels&gt;</span>
+  <span class="nt">&lt;entrances&gt;</span>
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;Entrance</span> <span class="na">id=</span><span class="s">"ch:1:entrance:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;/Entrance&gt;</span>
+  <span class="nt">&lt;/entrances&gt;</span>
+  <span class="nt">&lt;equipmentPlaces&gt;</span>
+    <span class="c">&lt;!-- Accessibility. TODO --&gt;</span>
+  <span class="nt">&lt;/equipmentPlaces&gt;</span>
+  <span class="nt">&lt;placeEquipments&gt;</span>
+    <span class="c">&lt;!-- Accessibility. TODO --&gt;</span>
+  <span class="nt">&lt;/placeEquipments&gt;</span>
+  <span class="nt">&lt;localServices&gt;</span>
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;AssistanceServiceRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;/AssistanceServiceRef&gt;</span>
+  <span class="nt">&lt;/localServices&gt;</span>
+  <span class="nt">&lt;StopPlaceType&gt;</span>railStation<span class="nt">&lt;/StopPlaceType&gt;</span>
+  <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly<span class="nt">&lt;/LimitedUse&gt;</span>
+  <span class="nt">&lt;Weighting&gt;</span>preferredInterchange<span class="nt">&lt;/Weighting&gt;</span>
+  <span class="nt">&lt;quays&gt;</span>
+    <span class="c">&lt;!-- Element before ... --&gt;</span>
+    <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/quays&gt;</span>
+  <span class="nt">&lt;accessSpaces&gt;</span>
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;AccessSpace</span> <span class="na">id=</span><span class="s">"ch:1:accessspace:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;/AccessSpace&gt;</span>
+  <span class="nt">&lt;/accessSpaces&gt;</span>
+<span class="nt">&lt;/StopPlace&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/templates/StopPlace_withAccessibility.xml">Template</a></em></p>
+
+<hr />
+<hr />
+
+<p><strong>TEMPLATES FOR THIS DOCUMENT</strong></p>
+
+<h2 id="newelementx">NewElementX</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em> TODO</p>
+
+<h3 id="purpose-1">Purpose</h3>
+<p>…</p>
+
+<h3 id="table-2">Table</h3>
+
+<p><em>Table: AccessibilityAssessment</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>MobilityImpairedAccess</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Summary indication as to whether the component is considered to be accessible or not.</td>
+      <td>Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>limitations</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>usageParameters_RelStructure</td>
+      <td>The ACCESSIBILITY LIMITATION that apply to component.</td>
+      <td>Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AccessibilityLimitation</td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>AccessibilityLimitation_VersionedChildStructure</td>
+      <td>Assessment of the accessibility of a SITE.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>WheelchairAccess</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE is wheelchair accessible.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>StepFreeAccess</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE has step free access.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>StairFreeAccess</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0</td>
+      <td>Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>GuideDogAccess</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE allows guide dog access.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TactileGuidanceAvailable</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE has tactile guidance.</td>
+      <td>Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>VisualSignsAvailable</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE has visual signals for the hearing impaired.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>LevelAccessIntoVehicle</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).</td>
+      <td>Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../xcore/netex/elements/AccessibilityAssessment.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-2">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
+    <span class="c">&lt;!-- Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. --&gt;</span>
+  <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
+  <span class="nt">&lt;limitations&gt;</span>
+    <span class="c">&lt;!-- Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. --&gt;</span>
+    <span class="nt">&lt;AccessibilityLimitation&gt;</span>
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+      <span class="nt">&lt;WheelchairAccess&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. --&gt;</span>
+      <span class="nt">&lt;/WheelchairAccess&gt;</span>
+      <span class="nt">&lt;StepFreeAccess&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. --&gt;</span>
+      <span class="nt">&lt;/StepFreeAccess&gt;</span>
+      <span class="nt">&lt;StairFreeAccess&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. --&gt;</span>
+      <span class="nt">&lt;/StairFreeAccess&gt;</span>
+      <span class="nt">&lt;GuideDogAccess&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. --&gt;</span>
+      <span class="nt">&lt;/GuideDogAccess&gt;</span>
+      <span class="nt">&lt;TactileGuidanceAvailable&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. --&gt;</span>
+      <span class="nt">&lt;/TactileGuidanceAvailable&gt;</span>
+      <span class="nt">&lt;VisualSignsAvailable&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. --&gt;</span>
+      <span class="nt">&lt;/VisualSignsAvailable&gt;</span>
+      <span class="nt">&lt;LevelAccessIntoVehicle&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. --&gt;</span>
+      <span class="nt">&lt;/LevelAccessIntoVehicle&gt;</span>
+    <span class="nt">&lt;/AccessibilityLimitation&gt;</span>
+  <span class="nt">&lt;/limitations&gt;</span>
+<span class="nt">&lt;/AccessibilityAssessment&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/templates/AccessibilityAssessment.xml">Template</a></em></p>
+
+<h2 id="existingelementy---the-additional-elements">ExistingElementY - the Additional Elements</h2>
+
+<h3 id="table-3">Table</h3>
+
+<p><em>Table: StopPlace</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>ValidBetween</td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Location</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>LocationStructure</td>
+      <td>The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates).</td>
+      <td>Element before …</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Longitude</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>LongitudeType</td>
+      <td>Longitude from Greenwich Meridian. -180 (East) to +180 (West).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td>Assessment of the accessibility of a SITE.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Covered</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>CoveredEnumeration</td>
+      <td>Whether the component is Indoors or outdoors. Default is Indoors.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AllAreasWheelchairAccessible</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether all areas of the component are wheelchair accessible.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>facilities</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>serviceFacilitySets_RelStructure</td>
+      <td>FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>SiteFacilitySet</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>SiteFacilitySetStructure</td>
+      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>SiteFacilitySetRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>SiteFacilitySetRefStructure</td>
+      <td>Reference to a SITE FACILITY SET.</td>
+      <td>Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Locale</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>LocaleStructure</td>
+      <td>Common LOCALE dependent properties.</td>
+      <td>Element before …</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TimeZone</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:normalizedString</td>
+      <td>Timezone name at LOCALE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>levels</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>levels_RelStructure</td>
+      <td>LEVELs found within SITe.</td>
+      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="./tables/Level.md">Level</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>Level_VersionStructure</td>
+      <td>Level of a Building or SITE.</td>
+      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="./tables/Level.md">Level</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>Level_VersionStructure</td>
+      <td>Level of a Building or SITE.</td>
+      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>entrances</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>pointOfInterestEntrances_RelStructure</td>
+      <td>ENTRANCEs to and within SITE.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="./tables/Entrance.md">Entrance</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>SiteEntrance_VersionStructure</td>
+      <td>Entrance to a SITE.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>equipmentPlaces</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>equipmentPlaces_RelStructure</td>
+      <td>EQUIPMENT PLACEs within SITE COMPONENT.</td>
+      <td>Accessibility. TODO</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>placeEquipments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>placeEquipments_RelStructure</td>
+      <td>Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT.</td>
+      <td>Accessibility. TODO</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>localServices</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>localServices_RelStructure</td>
+      <td>LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AssistanceServiceRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AssistanceServiceRefStructure</td>
+      <td>Identifier of an ASSISTANCE SERVICE.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>quays</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>quays_RelStructure</td>
+      <td>QUAYs within the STOP PLACE.</td>
+      <td>Element before …</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Quay</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>Quay_VersionStructure</td>
+      <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>accessSpaces</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>accessSpaces_RelStructure</td>
+      <td>ACCESS SPACEs within the STOP PLACE.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="./tables/AccessSpace.md">AccessSpace</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>AccessSpace_VersionStructure</td>
+      <td>An area within a STOP PLACE that does not give direct access to transport vehicles. May be connected to QUAYS by PATH LINKs.</td>
+      <td>Accessibility.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="example-3">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ValidBetween&gt;</span>
+    <span class="nt">&lt;FromDate&gt;</span>2025-12-14T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
+    <span class="nt">&lt;ToDate&gt;</span>2026-12-12T23:59:59<span class="nt">&lt;/ToDate&gt;</span>
+  <span class="nt">&lt;/ValidBetween&gt;</span>
+  <span class="nt">&lt;keyList&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>HafasPriority<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>4<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+    <span class="nt">&lt;KeyValue&gt;</span>
+      <span class="nt">&lt;Key&gt;</span>HafasKMInfo<span class="nt">&lt;/Key&gt;</span>
+      <span class="nt">&lt;Value&gt;</span>1000<span class="nt">&lt;/Value&gt;</span>
+    <span class="nt">&lt;/KeyValue&gt;</span>
+  <span class="nt">&lt;/keyList&gt;</span>
+  <span class="nt">&lt;privateCodes&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"didok"</span><span class="nt">&gt;</span>7000<span class="nt">&lt;/PrivateCode&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/privateCodes&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;ShortName/&gt;</span>
+  <span class="nt">&lt;PrivateCode/&gt;</span>
+  <span class="nt">&lt;Centroid&gt;</span>
+    <span class="nt">&lt;Name/&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="c">&lt;!-- Element before ... --&gt;</span>
+      <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
+      <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
+      <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;/Centroid&gt;</span>
+  <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
+  <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
+  <span class="nt">&lt;alternativeNames&gt;</span>
+    <span class="nt">&lt;AlternativeName</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:it"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- ... element in between ... --&gt;</span>
+      <span class="nt">&lt;NameType&gt;</span>alias<span class="nt">&lt;/NameType&gt;</span>
+      <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Berna<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;/AlternativeName&gt;</span>
+  <span class="nt">&lt;/alternativeNames&gt;</span>
+  <span class="nt">&lt;Covered&gt;</span>covered
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+  <span class="nt">&lt;/Covered&gt;</span>
+  <span class="nt">&lt;AllAreasWheelchairAccessible&gt;</span>true
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+  <span class="nt">&lt;/AllAreasWheelchairAccessible&gt;</span>
+  <span class="nt">&lt;facilities&gt;</span>
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"ch:1:sitefacilityset:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;/SiteFacilitySet&gt;</span>
+    <span class="nt">&lt;SiteFacilitySetRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong. --&gt;</span>
+    <span class="nt">&lt;/SiteFacilitySetRef&gt;</span>
+  <span class="nt">&lt;/facilities&gt;</span>
+  <span class="nt">&lt;TopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"BE-bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Locale&gt;</span>
+    <span class="c">&lt;!-- Element before ... --&gt;</span>
+    <span class="nt">&lt;TimeZone&gt;</span>Europe/Zurich<span class="nt">&lt;/TimeZone&gt;</span>
+  <span class="nt">&lt;/Locale&gt;</span>
+  <span class="nt">&lt;levels&gt;</span>
+    <span class="c">&lt;!-- Accessibility. Mandatory if the StopPlace has more than one level. --&gt;</span>
+    <span class="nt">&lt;Level</span> <span class="na">id=</span><span class="s">"ch:1:level:7000:0"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. Mandatory if the StopPlace has more than one level. --&gt;</span>
+    <span class="nt">&lt;/Level&gt;</span>
+    <span class="nt">&lt;Level</span> <span class="na">id=</span><span class="s">"ch:1:level:7000:-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. Mandatory if the StopPlace has more than one level. --&gt;</span>
+    <span class="nt">&lt;/Level&gt;</span>
+  <span class="nt">&lt;/levels&gt;</span>
+  <span class="nt">&lt;entrances&gt;</span>
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;Entrance</span> <span class="na">id=</span><span class="s">"ch:1:entrance:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;/Entrance&gt;</span>
+  <span class="nt">&lt;/entrances&gt;</span>
+  <span class="nt">&lt;equipmentPlaces&gt;</span>
+    <span class="c">&lt;!-- Accessibility. TODO --&gt;</span>
+  <span class="nt">&lt;/equipmentPlaces&gt;</span>
+  <span class="nt">&lt;placeEquipments&gt;</span>
+    <span class="c">&lt;!-- Accessibility. TODO --&gt;</span>
+  <span class="nt">&lt;/placeEquipments&gt;</span>
+  <span class="nt">&lt;localServices&gt;</span>
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;AssistanceServiceRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;/AssistanceServiceRef&gt;</span>
+  <span class="nt">&lt;/localServices&gt;</span>
+  <span class="nt">&lt;StopPlaceType&gt;</span>railStation<span class="nt">&lt;/StopPlaceType&gt;</span>
+  <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly<span class="nt">&lt;/LimitedUse&gt;</span>
+  <span class="nt">&lt;Weighting&gt;</span>preferredInterchange<span class="nt">&lt;/Weighting&gt;</span>
+  <span class="nt">&lt;quays&gt;</span>
+    <span class="c">&lt;!-- Element before ... --&gt;</span>
+    <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/quays&gt;</span>
+  <span class="nt">&lt;accessSpaces&gt;</span>
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;AccessSpace</span> <span class="na">id=</span><span class="s">"ch:1:accessspace:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;/AccessSpace&gt;</span>
+  <span class="nt">&lt;/accessSpaces&gt;</span>
+<span class="nt">&lt;/StopPlace&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/templates/StopPlace_withAccessibility.xml">Template</a></em></p>
+
+    </main>
+  </div>
+</div>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/epiap/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Comparison of the NeTEx Profiles of Switzerland, France and Norway | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Comparison of the NeTEx Profiles of Switzerland, France and Norway" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/A3_annex_comparison_France_Norway.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/A3_annex_comparison_France_Norway.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Comparison of the NeTEx Profiles of Switzerland, France and Norway" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Comparison of the NeTEx Profiles of Switzerland, France and Norway","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/A3_annex_comparison_France_Norway.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/epiap/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/epiap/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="wrapper">
+  <div class="layout-with-sidebar">
+    <nav class="sidebar" aria-label="Chapters">
+  <h4><a href="index.html">Document Root</a></h4>
+  <h3>Chapters</h3>
+  <ul>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/01_intro_roadmap.html">Introduction & Roadmap</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/02_files.html">File Exchange</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/03_xml_modelling.html">XML Modeling</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/04_frames.html">The Frame structure</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/05_stops.html">Site Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/06_service.html">Service Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/07_service_calendars.html">Service Calendar Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/08_timetable.html">Timetable Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/09_resources.html">Resource Frame</a>
+      </li>
+    
+  </ul>
+  <h3>Special Use Cases</h3>
+  <ul>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc01_durchbindung.html">Durchbindung</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc02_joining_splitting.html">Joining / splitting</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc03_transfers.html">Transfers</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc04_service_facilities.html">Service facilities</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc05_journey_parts.html">Usage of JourneyParts</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc06_modes_submodes.html">Modes and the "KI Branchenstandard"</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc07_checkconstraints.html">Check constraints</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc08_kurswagen.html">Direct carriages ("Kurswagen")</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc09_accessibility.html">Accessibility</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc10_midnight_passing.html">Journeys passing midnight</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc11_touristic_offers.html">Touristic offers</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc12_carTransportRail.html">Car transport rail</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc13_changes_in_destination.html">Changes in the destination</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc14_frequencies.html">Frequency based ServiceJourney</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc15_formations.html">Formations</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc16_drt.html">Demand Responsive Traffic</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc17_mixed_lines.html">Mixed Lines</a>
+      </li>
+    
+  </ul>
+  <h3>Annexes</h3>
+  <ul>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A1_annex_resources_references.html">Resources and references</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A2_annex_comparison_EPIP_EPIAP.html">Differences between Swiss profile and EPIP/EPIAP and how they could be amended</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A3_annex_comparison_France_Norway.html">Differences to the French and nordic profile</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html">Glossary</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A5_annex_index.html">Index</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A6_changelog_migration.html">Changelog and migration from Swiss profile 1.0 to 2.0)</a>
+      </li>
+    
+  </ul>
+</nav>
+    <main class="content" aria-label="Content">
+      
+        <h1 class="page-title">Comparison of the NeTEx Profiles of Switzerland, France and Norway</h1>
+      
+      <p>This comparison is focused on the actual productive data rather than on the documentation</p>
+
+<h2 id="comparison-of-the-file-structure">Comparison of the File Structure</h2>
+
+<h3 id="france">France</h3>
+
+<p>The national access point offers NeTEx data feeds from several different regions and/or transport organisations:
+<img src="/netexRealisationGuideSwitzerland/epiap/media/France/FranceNAP.png" alt="NAP France" /></p>
+
+<p>The file structure of the data feeds is not totally identical. Ile de France Mobilite provides:
+<img src="/netexRealisationGuideSwitzerland/epiap/media/France/FranceDirectoryTree.png" alt="IDFM" /></p>
+
+<p>There are common files</p>
+<ul>
+  <li>arrets.xml: Stop places and quays</li>
+  <li>commun.xml: Common reference data</li>
+  <li>lignes.xml: A directory of the LINEs contained in the dataset
+There are subdirectories per operator. These contain a  NeTEx file for each LINE run by the operator. These files contain routes, servicepatterns and journey. 
+<img src="/netexRealisationGuideSwitzerland/epiap/media/France/FranceDataSet.png" alt="OFFRE" />
+The subdirectories also contain a “calendrier” file containig the service calendar for the LINEs contained in the directory.</li>
+</ul>
+
+<p>The data feeld of Nouvelle Aquitaine is similar in structure, but has file naming variants:
+<img src="/netexRealisationGuideSwitzerland/epiap/media/France/FrandeDataSetVariantNAQ.png" alt="NAQ" />
+Instead of using subdirectories, the region name of the data is coded into the file name, e.g BORDEAUX_METROPOLE_calendriers.xml. However, the principle is the same.</p>
+
+<p>Aditionally, the SNCF publishes a feed containing accessibility on stations. The SNCF timetable datset is not separated into files per LINE. They publish a dataset containing several LINEs.</p>
+
+<h3 id="norway">Norway</h3>
+
+<p>The Norwegian NAP provides datasets for each region / operator. There is also a dataset for the whole of Norway, but this just contains all files of the individual data sets.
+<img src="/netexRealisationGuideSwitzerland/epiap/media/Norway/NorwayNAP.png" alt="NAP_NORWAY" /></p>
+
+<p>Each Dataset contains a “shared data” file and individual files per LINE. The same applies for flexible services.</p>
+
+<p>The SiteFrame containing stops and quays can also be downloaded either as one file containing all norwegian stops or as separate files per region.</p>
+
+<p><img src="/netexRealisationGuideSwitzerland/epiap/media/Norway/NorwayDataset.png" alt="Norway dataset" /></p>
+
+<h3 id="future-swiss-profile-20">Future Swiss Profile 2.0</h3>
+
+<p>There will be</p>
+<ul>
+  <li>one file containing the SiteFrame with all stops and quays</li>
+  <li>NETWORK_OFFER files containing ServiceFrame and Timetable for a certain region and data provider. Common reference data are contained in the files</li>
+  <li>a file containing ServiceInterchange between lines and service journeys.</li>
+</ul>
+
+<h3 id="summary">Summary</h3>
+<ul>
+  <li>While file naming conventions differ, both NO and FR provide files per LINE to make file size more manageable. Common reference data are put into extra files per data feed / data provider, but there is no common reference dataset for the whole country.</li>
+  <li>The CH profile is also aimed at making file size more manageable, but places more emphasis on having self-contained files where all reference data are contained and can be validated.</li>
+  <li>In Norway and Switzerland, the file naming convention makes sure that the file name is unique across all datasets.</li>
+</ul>
+
+<h2 id="comparison-of-the-resource-frame---common-reference-data">Comparison of the Resource Frame - Common Reference Data</h2>
+
+<h3 id="france-1">France</h3>
+
+<p>The french profile does not use the predefined NeTEx Frames like ResourceFrame, SiteFrame, ServiceFrame etc., but uses GeneralFrame with TypeOfFrameRef indicating the content.</p>
+
+<p>A GeneralFrame with TypeOfFrameRef “NETEX_COMMUN” may contain elements such as:</p>
+<ul>
+  <li>Operator</li>
+  <li>Authority</li>
+  <li>Network</li>
+  <li>Line</li>
+  <li>Notice</li>
+  <li>BookingContact (for flexible services)</li>
+</ul>
+
+<p>Note that the frame content can still be split into different files</p>
+
+<h3 id="norway-1">Norway</h3>
+
+<p>The ResourceFrame contains the elements</p>
+<ul>
+  <li>Operator</li>
+  <li>Authority</li>
+  <li>typesOfValue/Branding</li>
+</ul>
+
+<p>However, the “shared” files also contain ServiceFrame and ServiceCalendarFrame.</p>
+
+<p>ServiceFrame contains:</p>
+<ul>
+  <li>Network</li>
+  <li>Route</li>
+  <li>RoutePoint with projection to ScheduledStopPoint</li>
+  <li>ScheduledStopPoint</li>
+  <li>PassengerStopAssignment</li>
+  <li>Notice</li>
+</ul>
+
+<p>ServiceCalenderFrame contains:</p>
+<ul>
+  <li>DayType</li>
+  <li>DayTypeAssignment</li>
+</ul>
+
+<p>These elements are treated as general reference data which can be used by different TimetableFrames containing the actual services</p>
+
+<h3 id="future-swiss-profile-20-1">Future Swiss Profile 2.0</h3>
+
+<p>The ResourceFrame contains the following main elements:</p>
+<ul>
+  <li>ResponsibilitySet</li>
+  <li>TypeOfValue / ValueSets</li>
+  <li>TypeOfNotice</li>
+  <li>TypeOfProductCategory</li>
+  <li>TypeOfService</li>
+  <li>Organisation / Operator / Authority</li>
+  <li>ServiceFacilitySet</li>
+  <li>SiteFacilitySet</li>
+  <li>VehicleType (not confirmed yet)</li>
+</ul>
+
+<p>While a ResourceFrame is included in each NETWORK_OFFER file, the actual element keys and values are the same for all datasets.</p>
+
+<h3 id="summary-1">Summary</h3>
+
+<p>The Swiss profile places more emphasis on having a consolidated and mandatory set of reference data for all data providers.</p>
+
+<h2 id="comparison-of-the-siteframe---stops-and-quays">Comparison of the SiteFrame - Stops and Quays</h2>
+
+<h3 id="france-2">France</h3>
+
+<p>The french profile does not use SiteFrame for information on stops and quays, but uses GeneralFrame with TypeOfFrameRef “NETEX_ARRET” instead</p>
+
+<p>Elements contained are</p>
+<ul>
+  <li>TopographicPlace</li>
+  <li>StopPlace</li>
+  <li>Quay</li>
+  <li>TariffZone</li>
+  <li>Authority</li>
+</ul>
+
+<p>Stop places may be nested. Monomodal stops are grouped into multimodal stops. Quay elements are not child elements of StopPlace, but are referenced by StopPlace/QuayRef. Quay elements can also be nested. TypeOfQuay is not provided.</p>
+
+<p>Stop and quay coordinates are either WGS84 or the french national projection (EPSG 2154), examples for both can be found.</p>
+
+<p>AccessibilityAssessment is provided for stops and quays.</p>
+
+<h3 id="norway-2">Norway</h3>
+
+<p>Norway provides a SiteFrame containing all StopPlaces of Norway and also used stops from neighbour countries. 
+Elements contained in the SiteFrame are:</p>
+
+<ul>
+  <li>TopographicPlace</li>
+  <li>StopPlace</li>
+  <li>Quay</li>
+  <li>GroupOfStopPlace</li>
+  <li>Parking</li>
+  <li>TariffZone</li>
+  <li>GroupOfTariffZones</li>
+</ul>
+
+<p>Stops can be nested and grouped. Grouping is used to indicate the central stops of a city. TopographicPlaces are provided in great detail including ParentTopographicPlace and border coordinates.</p>
+
+<h3 id="future-swiss-profile-20-2">Future Swiss Profile 2.0</h3>
+
+<p>The main elements contained in SiteFrame are:</p>
+<ul>
+  <li><a href="#stopplace">StopPlace</a></li>
+  <li><a href="#quay">Quay</a></li>
+  <li><a href="#topographicplace">TopographicPlace</a></li>
+</ul>
+
+<p>Quays can be nested in order to model rail island platforms and tracks. TopographicPlace contains the hierarchy canton to district to locality. Default connection times for stops are provided in ServiceFrame. All stops originate from the Swiss central stop register and are identified by the SLOID (Swiss Location ID)</p>
+
+<h3 id="summary-2">Summary</h3>
+
+<p>Even though there are some differneces in detail, the model of stops and quays is relatively similar in the three profiles.</p>
+
+<h2 id="comparison-of-the-service-frame---lines-routes-and-journeypatterns">Comparison of the Service Frame - Lines, Routes and JourneyPatterns</h2>
+
+<h3 id="france-3">France</h3>
+
+<p>The french profile does not use ServiceFrame, but a GeneralFrame with typeOfFrameRef “NETEX_STRUCTURE”</p>
+
+<p>The Frame contains the main elements:</p>
+<ul>
+  <li>Route including pointsInSequence/PointOnRoute</li>
+  <li>RoutePoint</li>
+  <li>Direction</li>
+  <li>ServiceJourneyPattern</li>
+  <li>DestinationDisplay</li>
+  <li>ScheduledStopPoint</li>
+  <li>PassengerStopAssignment</li>
+  <li>DataSource</li>
+</ul>
+
+<p>Surprisingly the Line element is not contained. It is contained in the NETEX_COMMUN frame. 
+DirectionType is used to distinguish between inbound/outbound, whereas Direction indicates the name of the final destination of the Route.</p>
+
+<h3 id="norway-3">Norway</h3>
+
+<p>The Frame contains the main elements:</p>
+<ul>
+  <li>Network (including additionalNetworks)</li>
+  <li>GroupOfLines</li>
+  <li>Line</li>
+  <li>FlexibleLine</li>
+  <li>Route including pointsInSequence/PointOnRoute</li>
+  <li>RoutePoint</li>
+  <li>PointProjection</li>
+  <li>Direction</li>
+  <li>ServiceJourneyPattern</li>
+  <li>DestinationDisplay</li>
+  <li>ScheduledStopPoint</li>
+  <li>ServiceLink</li>
+  <li>PassengerStopAssignment</li>
+  <li>FlexibleStopAssignment</li>
+  <li>Notice</li>
+  <li>NoticeAssignment (to StopPointInJourneyPattern)</li>
+</ul>
+
+<p>The norwegian profile separates between route and journeypattern, but it additionally uses the PointProjection element to map RoutePoint to ScheduledStopPoint. ServiceLinks are treated as shared data between different Lines and ServiceJourneyPatterns. ServiceLinks contain the coordinate sequence of the roads or tracks travelled. The Route element does not seem to provide any additional information except that it enables the link between ServiceJourneyPattern and Line.</p>
+
+<h3 id="future-swiss-profile-20-3">Future Swiss Profile 2.0</h3>
+
+<p>The future Swiss profile contains the elements:</p>
+<ul>
+  <li>ServiceFrame</li>
+  <li>Line</li>
+  <li>GroupOfLines</li>
+  <li>DestinationDisplay</li>
+  <li>ScheduledStopPoint</li>
+  <li>PassengerStopAssignment</li>
+  <li>DefaultConnection</li>
+  <li>SiteConnection</li>
+  <li>TimingLink</li>
+  <li>ServiceJourneyPattern</li>
+  <li>TimeDemandType</li>
+  <li>Notice</li>
+  <li>NoticeAssignment</li>
+</ul>
+
+<p>GroupOfLines is used to group lines which the same line from a passenger perspective, but are operated by different operators and which are therefore split into different technical lines.
+TimeDemandType and TimingLink provide information on scheduled running times between stops of a ServiceJourneyPattern and scheduled waiting times at stops.</p>
+
+<h3 id="summary-3">Summary</h3>
+
+<p>The main differences between CH and NO,FR are</p>
+<ul>
+  <li>The Swiss profile does not use the Route element</li>
+  <li>The Swiss profile provides relative running times between stops. This enables consumers to calculate PassingTimes themselves and allows for more compact timetable files.</li>
+  <li>The Swiss profile will not provide ServiceLinks / coordinates of the route run. This may be added in a later version.</li>
+</ul>
+
+<h2 id="comparison-of-the-timetableframe---journeys-and-interchanges">Comparison of the TimetableFrame - Journeys and Interchanges</h2>
+
+<h3 id="france-4">France</h3>
+<p>The french profile does not use the TimetableFrame, it uses a GeneralFrame with TypeOfFrameRef “NETEX_HORAIRE”</p>
+
+<p>The frame contains only ServiceJourney Elements. The main child elements are</p>
+<ul>
+  <li>Name: Obviously contains a journey number</li>
+  <li>dayTypes/daytypeRef</li>
+  <li>JourneyPatternRef</li>
+  <li>trainNumbers/TrainNumber</li>
+  <li>passingTime</li>
+</ul>
+
+<h3 id="norway-4">Norway</h3>
+
+<p>The TimetableFrame contains the elements</p>
+<ul>
+  <li>ServiceJourney</li>
+  <li>DatedServiceJourney</li>
+  <li>ServiceJourneyInterchange</li>
+  <li>NoticeAssignment</li>
+</ul>
+
+<p>The child elements of ServiceJourney are:</p>
+
+<ul>
+  <li>DepartureTime</li>
+  <li>Name</li>
+  <li>dayTypes/daytypeRef</li>
+  <li>LineRef</li>
+  <li>JourneyPatternRef</li>
+  <li>OperatorRef</li>
+  <li>trainNumbers/TrainNumber</li>
+  <li>passingTime</li>
+</ul>
+
+<h3 id="future-swiss-profile-20-4">Future Swiss Profile 2.0</h3>
+
+<p>The main elements contained in a TimetableFrame are:</p>
+
+<ul>
+  <li>ServiceJourney</li>
+  <li>TemplateServiceJourney: describes a set of journeys repeating at a certain frequency. Used e.g. for cable cars.</li>
+  <li>ServiceJourneyInterchange: Describes cases where standard interchange times are overriden or where passengers may remain in the same vehicle</li>
+  <li>NoticeAssignment</li>
+  <li>ServiceFacilitySet: various services and facilities offered by the vehicles of a journey</li>
+</ul>
+
+<p>The main child elements of ServiceJourney and TemplateServiceJourney are:</p>
+<ul>
+  <li>ResponsibilitySetRef: Detailed assignment of organisations and their roles</li>
+  <li>OperatorRef: operator running the journey</li>
+  <li>DepartureTime</li>
+  <li>ServiceJourneyPatternRef</li>
+  <li>AvailabilityConditionRef: Operating days of journey</li>
+  <li>privateCodes/privateCode: Swiss journey id (SYID)</li>
+  <li>TransportMode</li>
+  <li>TypeOfProductCategoryRef</li>
+  <li>TrainNumber</li>
+  <li>NoticeAssignment</li>
+  <li>OccupancyView</li>
+  <li>VehicleTypeRef</li>
+  <li>JourneyPartRef: Used where properties change within the journey</li>
+</ul>
+
+<p>ServiceJourneys and TemplateServiceJourneys refer to a ServiceJourneyPattern and a TimeDemandType. They do not contain a PassingTimes child element. Consumers of the data need to calculate the passing times on the fly.
+Validity of ServiceJourneys is given by a reference to an AvailabilityCondition</p>
+
+<h3 id="summary-4">Summary</h3>
+
+<p>There are two main conceptual differences between the Swiss profile and NO/FR:</p>
+<ul>
+  <li>passingTimes are not provided, the consumer needs to calculate them (not difficult)</li>
+  <li>Operating Days of journeys are not provided by DayType, but by reference to an AvailabilityCondition element</li>
+</ul>
+
+<h2 id="comparison-of-the-servicecalendarframe---daytypes-and-operating-days">Comparison of the ServiceCalendarFrame - Daytypes and Operating Days</h2>
+
+<h3 id="france-5">France</h3>
+<p>The french profile does not use ServiceCalendarFrame, but uses a GeneralFrame with TypeOfFrame “NETEX_CALENDRIER” instead.</p>
+
+<p>The main elements contained in the frame are</p>
+<ul>
+  <li>Daytype</li>
+  <li>DaytypeAssignment</li>
+</ul>
+
+<p>Daytypes have in part meaningful names and “property of day” is often set</p>
+
+<h3 id="norway-5">Norway</h3>
+<p>The main elements contained in ServiceCalendarFrame are</p>
+<ul>
+  <li>Daytype</li>
+  <li>OperatingPeriod</li>
+  <li>DaytypeAssignment</li>
+</ul>
+
+<p>Daytypes can be either assigned to OperatingPeriods or to Dates. Both variants can be found in the same file.</p>
+
+<h3 id="future-swiss-profile-20-5">Future Swiss Profile 2.0</h3>
+<p>The elements contained in ServiceCalendarFrame are</p>
+<ul>
+  <li>ServiceCalendar: Only one element spanning the entire annual timetable</li>
+  <li>DayType: There is one DayType for each Swiss public holiday, but DayTypes are NOT used for operating periods of journeys.</li>
+  <li>AvailabilityCondition: Used for describing operating days of journeys. The ValidDayBits element is used to express OperatingDays in a compact manner.</li>
+  <li>TimeBand: Used for operating time intervals of TemplateServiceJourneys</li>
+</ul>
+
+<h2 id="summary-5">Summary</h2>
+<p>The main difference here is thet FR and NO use DayType and DayTypeAssignment for expressing operating days of journeys, whereas the Swiss profile uses AvailabilityCondition</p>
+
+<h2 id="comparison-of-demandresponsiveservices">Comparison of DemandResponsiveServices</h2>
+<blockquote>
+  <p><em>Draft!!!</em></p>
+</blockquote>
+
+<h3 id="france-6">France</h3>
+
+<p>According to the documentation, the following elements are used</p>
+<ul>
+  <li>FlexibleLine</li>
+  <li>BookingContact</li>
+  <li>FlexibleStopPlace</li>
+  <li>FlexiblePointProperties</li>
+  <li>FlexibleServiceProperties</li>
+</ul>
+
+<p>Alas no complete examples have been found yet which show the usage of all elements together
+<em>TODO:</em> Find meaningful examples actually using FlexibleStopPlace</p>
+
+<h3 id="norway-6">Norway</h3>
+
+<p>Norway uses the FlexibleLine element to indicate flexible services:</p>
+
+<p><img src="/netexRealisationGuideSwitzerland/epiap/media/Norway/NorwayFlexibleLine.png" alt="FlexibleLine" /></p>
+
+<p>The ServicePattern describes a sequence of ScheduledStopPoints which stand for the individual FlexibleStopPlaces:</p>
+
+<p><img src="/netexRealisationGuideSwitzerland/epiap/media/Norway/NorwayFlexibleJourneyPattern.png" alt="ServiceJourneyPattern" /></p>
+
+<p>The “BookingContact” is repeated at every area served.</p>
+
+<p>ScheduledStopPoints are assigned to a FlexibleStopPlace:
+<img src="/netexRealisationGuideSwitzerland/epiap/media/Norway/NorwayFlexibleStopAssignment.png" alt="FlexibleStopAssignment" /></p>
+
+<p>The FlexibleStop itsself contains a FlexibleArea with a poligon describing the area of operation:</p>
+
+<p><img src="/netexRealisationGuideSwitzerland/epiap/media/Norway/NorwayFlexibleStopPlace.png" alt="FlexibleStopPlace" /></p>
+
+<p>The ServiceJourney element contains PassingTimes with a time range (EarliestDeparture and LatestArrival)</p>
+
+<p><img src="/netexRealisationGuideSwitzerland/epiap/media/Norway/NorwayFlexibleJourney.png" alt="FlexibleJourney" /></p>
+
+<p>The FlexibleServiceProperties element describes booking conditions.</p>
+
+<p><em>TODO:</em></p>
+<ul>
+  <li>FlexibleStopPlaces containing regular stops or virtual stop points?</li>
+  <li>Journeys without fixed departures but just a time range of operaton?</li>
+</ul>
+
+<h3 id="future-swiss-profile-20-6">Future Swiss Profile 2.0</h3>
+
+<hr />
+<hr />
+
+<h2 id="second-part-profile-comparison-considering-used-and-unused-elements">Second Part: Profile Comparison Considering Used and Unused Elements</h2>
+
+<p>The data exctraction for this analysis and a large part of the analysis itself have been done using AI, there may be errors here and there.</p>
+
+<p>An element is considered as actually <em>used</em> if identified and stated in the previous sections.</p>
+
+<h3 id="overview-element-usage-vs-definition">Overview: Element Usage vs. Definition</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Defined Elements</th>
+      <th>Used in Examples</th>
+      <th>Usage Rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>France</strong></td>
+      <td>115</td>
+      <td>28</td>
+      <td>24%</td>
+    </tr>
+    <tr>
+      <td><strong>Norway (Entur)</strong></td>
+      <td>84</td>
+      <td>24</td>
+      <td>29%</td>
+    </tr>
+    <tr>
+      <td><strong>Switzerland</strong></td>
+      <td>43</td>
+      <td>43</td>
+      <td>100%</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Key Insight:</strong> Both France and Norway define a significantly larger profile than they actually use in their productive data. The core “routing and scheduling” elements are universally used, while the “facility and accessibility” elements are largely unused in practice. The Swiss profile is a focused, pragmatic subset where every defined element is actively used.</p>
+
+<h3 id="core-elements-used-by-all-three">Core Elements (Used by All Three)</h3>
+
+<p>The 16 core “routing and scheduling” elements used across all three profiles.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>TopographicPlace</strong></td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td><strong>StopPlace</strong></td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td><strong>Quay</strong></td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td><strong>Line</strong></td>
+      <td>Line</td>
+    </tr>
+    <tr>
+      <td><strong>GroupOfLines</strong></td>
+      <td>Line</td>
+    </tr>
+    <tr>
+      <td><strong>DestinationDisplay</strong></td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td><strong>ScheduledStopPoint</strong></td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td><strong>PassengerStopAssignment</strong></td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td><strong>ServiceJourneyPattern</strong></td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td><strong>Notice</strong></td>
+      <td>Notice</td>
+    </tr>
+    <tr>
+      <td><strong>ServiceJourney</strong></td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td><strong>TrainNumber</strong></td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td><strong>DayType</strong></td>
+      <td>Calendar</td>
+    </tr>
+    <tr>
+      <td><strong>DayTypeAssignment</strong></td>
+      <td>Calendar</td>
+    </tr>
+    <tr>
+      <td><strong>Operator</strong></td>
+      <td>Organization</td>
+    </tr>
+    <tr>
+      <td><strong>ServiceJourneyInterchange</strong></td>
+      <td>Interchange</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="profile-specific-elements-in-use">Profile-Specific Elements in Use</h3>
+
+<h4 id="france-4-elements-not-used-in-norwegian-or-swiss-examples">France (4 elements not used in Norwegian or Swiss examples)</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Authority</strong></td>
+      <td>Organization</td>
+    </tr>
+    <tr>
+      <td><strong>Direction</strong></td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td><strong>AccessEquipment</strong></td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td><strong>AccessibilityAssessment</strong></td>
+      <td>Accessibility</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="norway-2-elements-not-used-in-france-or-switzerland">Norway (2 elements not used in France or Switzerland)</h4>
+
+<p><strong>Almost all 24 Norway-used elements are found in either the France or Swiss used lists.</strong> Norway’s productive data is highly focused on core routing and scheduling, overlapping heavily with France’s and Switzerland’s used elements.</p>
+
+<p><strong>Additional elements:</strong></p>
+<ul>
+  <li>Norway uses <strong>ServiceLink</strong> for coordinate sequences</li>
+  <li>Norway uses <strong>DatedServiceJourney</strong> for dated services</li>
+</ul>
+
+<h4 id="switzerland-27-elements-not-used-in-france-or-norway">Switzerland (27 elements not used in France or Norway)</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>PublicationDelivery</strong></td>
+      <td>Publishing</td>
+    </tr>
+    <tr>
+      <td><strong>CompositeFrame</strong></td>
+      <td>Publishing</td>
+    </tr>
+    <tr>
+      <td><strong>ResourceFrame</strong></td>
+      <td>Publishing</td>
+    </tr>
+    <tr>
+      <td><strong>ResponsibilitySet</strong></td>
+      <td>Organization</td>
+    </tr>
+    <tr>
+      <td><strong>SiteFrame</strong></td>
+      <td>Publishing</td>
+    </tr>
+    <tr>
+      <td><strong>Centroid</strong></td>
+      <td>Common</td>
+    </tr>
+    <tr>
+      <td><strong>ServiceFrame</strong></td>
+      <td>Publishing</td>
+    </tr>
+    <tr>
+      <td><strong>DefaultConnection</strong></td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td><strong>SiteConnection</strong></td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td><strong>TimingLink</strong></td>
+      <td>Routing</td>
+    </tr>
+    <tr>
+      <td><strong>StopPointInJourneyPattern</strong></td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td><strong>CheckConstraint</strong></td>
+      <td>Validation</td>
+    </tr>
+    <tr>
+      <td><strong>TimeDemandType</strong></td>
+      <td>Flexible</td>
+    </tr>
+    <tr>
+      <td><strong>NoticeAssignment</strong></td>
+      <td>Notice</td>
+    </tr>
+    <tr>
+      <td><strong>ServiceCalendarFrame</strong></td>
+      <td>Publishing</td>
+    </tr>
+    <tr>
+      <td><strong>AvailabilityCondition</strong></td>
+      <td>Calendar</td>
+    </tr>
+    <tr>
+      <td><strong>ServiceCalendar</strong></td>
+      <td>Calendar</td>
+    </tr>
+    <tr>
+      <td><strong>Timeband</strong></td>
+      <td>Calendar</td>
+    </tr>
+    <tr>
+      <td><strong>TimetableFrame</strong></td>
+      <td>Publishing</td>
+    </tr>
+    <tr>
+      <td><strong>TemplateServiceJourney</strong></td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td><strong>HeadwayJourneyGroup</strong></td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td><strong>OccupancyView</strong></td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td><strong>TypeOfService</strong></td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td><strong>TypeOfNotice</strong></td>
+      <td>Notice</td>
+    </tr>
+    <tr>
+      <td><strong>TypeOfProductCategory</strong></td>
+      <td>Product</td>
+    </tr>
+    <tr>
+      <td><strong>SiteFacilitySet</strong></td>
+      <td>Facility</td>
+    </tr>
+    <tr>
+      <td><strong>VehicleType</strong></td>
+      <td>Vehicle</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="some-thoughts---todo-to-be-reviewed--discussed--rewritten">Some Thoughts - TODO: to be reviewed / discussed / rewritten</h3>
+
+<p>Provided the above presented data is correct:</p>
+<ul>
+  <li>The core “routing and scheduling” elements actually used by all three profiles cover the great majority of the elements used by France and Norway.</li>
+  <li>In contrast to the others, the Swiss profile adds another 27 elements to the 16 core elements.  Was this necessary / a good choice?</li>
+  <li>Regarding the “routing and scheduling” aspect all profiles care about basically the same underlying data.</li>
+  <li>Isn’t it a bit disappointing then, that they use different ways how to encode this same kind of data (times, interchanges, journey patterns, frames, …)?</li>
+  <li>The comparisons done in this appendix only considered the top-level elements and remained blind to any differences in how the sub-elements are used.</li>
+</ul>
+
+<h3 id="used-vs-unused-elements-per-profile">Used vs. Unused Elements per Profile</h3>
+
+<p>Note that the parking and tariff parts of the French profile aren’t available yet and therefore not included.</p>
+
+<p>A more detailed comparison matrix of the three profiles based on the profile definitions (including both used and unused elements) can be found here:  <a href="/netexRealisationGuideSwitzerland/epiap/media/ComparisonMatrix_FR_NO_CH.html">ComparisonMatrix_FR_NO_CH</a>. In addition to the top-level elements as discussed in this appendix, the comparison matrix also shows the contained sub-elements and whether the profiles define them as mandatory or optional.</p>
+
+<h4 id="table-elements-actually-used-in-france-examples">Table: Elements actually used in France examples</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Element</th>
+      <th>Where found in France data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>TopographicPlace</td>
+      <td>arrets.xml</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>StopPlace</td>
+      <td>arrets.xml</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Quay</td>
+      <td>arrets.xml</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>TariffZone</td>
+      <td>arrets.xml</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Authority</td>
+      <td>NETEX_COMMUN</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Operator</td>
+      <td>NETEX_COMMUN</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Network</td>
+      <td>NETEX_COMMUN</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Line</td>
+      <td>NETEX_COMMUN</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Notice</td>
+      <td>NETEX_COMMUN</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>BookingContact</td>
+      <td>Flexible services</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Route</td>
+      <td>NETEX_STRUCTURE</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>RoutePoint</td>
+      <td>NETEX_STRUCTURE</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Direction</td>
+      <td>NETEX_STRUCTURE</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>ServiceJourneyPattern</td>
+      <td>NETEX_STRUCTURE</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>DestinationDisplay</td>
+      <td>NETEX_STRUCTURE</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>ScheduledStopPoint</td>
+      <td>NETEX_STRUCTURE</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>PassengerStopAssignment</td>
+      <td>NETEX_STRUCTURE</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>DataSource</td>
+      <td>NETEX_STRUCTURE</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>ServiceJourney</td>
+      <td>NETEX_HORAIRE</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>TrainNumber</td>
+      <td>NETEX_HORAIRE</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>DayType</td>
+      <td>NETEX_CALENDRIER</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>DayTypeAssignment</td>
+      <td>NETEX_CALENDRIER</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>FlexibleLine</td>
+      <td>Demand-responsive</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>FlexibleStopPlace</td>
+      <td>Demand-responsive</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>FlexiblePointProperties</td>
+      <td>Demand-responsive</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>FlexibleServiceProperties</td>
+      <td>Demand-responsive</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>AccessEquipment</td>
+      <td>SNCF accessibility data</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>AccessibilityAssessment</td>
+      <td>Provided for stops and quays</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="table-elements-defined-in-france-profile-but-not-used-in-examples">Table: Elements defined in France profile but NOT used in examples</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Element</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Accommodation</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>AddressablePlace</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>AssistanceService</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Connection</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>ConnectionEnd</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>CoupledJourney</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Crossing</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>CustomerService</td>
+      <td>Customer</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>CycleStorageEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>DefaultConnection</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>DefaultConnectionEnd</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>DestinationDisplayVariant</td>
+      <td>Destination</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>DynamicStopAssignment</td>
+      <td>Assignment</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Entrance</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>EntranceEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Equipment</td>
+      <td>General</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>EquipmentPlace</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>EquipmentPosition</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>Escalator</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>FacilitySet</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>FlexibleLinkProperties</td>
+      <td>Flexible</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>FlexibleRoute</td>
+      <td>Flexible</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>GeneralSign</td>
+      <td>Signage</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>GroupOfLines</td>
+      <td>Grouping</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>GroupOfServices</td>
+      <td>Grouping</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>GroupOfStopPlaces</td>
+      <td>Grouping</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>HeadingSign</td>
+      <td>Signage</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>HeadwayJourneyGroup</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>Interchange</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>InterchangeTimesGroup</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>Journey</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>JourneyFrequencyGroup</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>JourneyPart</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>JourneyPartCouple</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>JourneyPartPosition</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>JourneyPattern</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>Lift</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>LostPropertyService</td>
+      <td>Customer</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>LuggageLockerEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>LuggageService</td>
+      <td>Customer</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>MeetingPointService</td>
+      <td>Customer</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>NavigationPath</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>PassengerCapacity</td>
+      <td>General</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>PassengerEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>PassengerSafetyEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>PassingTime</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>PathJunction</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>PathLink</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>PathLinkEnd</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>PathLinkInSequence</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>PlaceLighting</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>PlaceSign</td>
+      <td>Signage</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>PointInJourneyPattern</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>PointInLinkSequence</td>
+      <td>Route</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>PointOfInterest</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>PointOnRoute</td>
+      <td>Route</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>QueuingEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>RampEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>RoughSurface</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>RouteLink</td>
+      <td>Route</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>RoutingConstraintZone</td>
+      <td>Routing</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>RubbishDisposalEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>SanitaryEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>SchematicMap</td>
+      <td>Signage</td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>SchematicMapMember</td>
+      <td>Signage</td>
+    </tr>
+    <tr>
+      <td>66</td>
+      <td>SeatingEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>ServiceFacilitySet</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>ServiceJourneyInterchange</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>69</td>
+      <td>ShelterEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>Sign</td>
+      <td>Signage</td>
+    </tr>
+    <tr>
+      <td>71</td>
+      <td>Site</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>72</td>
+      <td>SiteComponent</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>73</td>
+      <td>SiteConnection</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>74</td>
+      <td>SiteElement</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>75</td>
+      <td>SiteElementPropertiesGroup</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>76</td>
+      <td>Staircase</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>77</td>
+      <td>StopPlaceSpace</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>78</td>
+      <td>StopPointInJourneyPattern</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>79</td>
+      <td>TemplateServiceJourney</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>80</td>
+      <td>TicketValidatorEquipment</td>
+      <td>Ticketing</td>
+    </tr>
+    <tr>
+      <td>81</td>
+      <td>TicketingEquipment</td>
+      <td>Ticketing</td>
+    </tr>
+    <tr>
+      <td>82</td>
+      <td>TicketingService</td>
+      <td>Ticketing</td>
+    </tr>
+    <tr>
+      <td>83</td>
+      <td>TimingPoint</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>84</td>
+      <td>TimingPointInJourneyPattern</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>85</td>
+      <td>TopographicPlaceDescriptor</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>86</td>
+      <td>Train</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>87</td>
+      <td>TrainComponent</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>88</td>
+      <td>TrainComponentLabelAssignment</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>89</td>
+      <td>TrainElement</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>90</td>
+      <td>TrainStopAssignment</td>
+      <td>Assignment</td>
+    </tr>
+    <tr>
+      <td>91</td>
+      <td>TransferRestriction</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>92</td>
+      <td>Travelator</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>93</td>
+      <td>TrolleyStandEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>94</td>
+      <td>TypeOfEquipment</td>
+      <td>General</td>
+    </tr>
+    <tr>
+      <td>95</td>
+      <td>VehicleType</td>
+      <td>General</td>
+    </tr>
+    <tr>
+      <td>96</td>
+      <td>WaitingEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+    <tr>
+      <td>97</td>
+      <td>WaitingRoomEquipment</td>
+      <td>Accessibility</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Key takeaway:</strong> The France profile defines a rich set of accessibility, signage, ticketing, and routing elements, but the actual productive data feeds use only the core 28 elements focused on <strong>routing, scheduling, and stop infrastructure</strong>. Most accessibility equipment, passenger facilities, and advanced routing concepts are defined in the profile but not represented in the data.</p>
+
+<h4 id="table-elements-from-norway-profile-that-are-used-in-examples">Table: Elements from Norway profile that ARE used in examples</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Element</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>TopographicPlace</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>StopPlace</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Quay</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>TariffZone</td>
+      <td>Tariff</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Network</td>
+      <td>Network</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Line</td>
+      <td>Line</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>GroupOfLines</td>
+      <td>Line</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Route</td>
+      <td>Routing</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>RoutePoint</td>
+      <td>Routing</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>ServiceJourneyPattern</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>DestinationDisplay</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>ScheduledStopPoint</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>PassengerStopAssignment</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>ServiceJourney</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>TrainNumber</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>FlexibleLine</td>
+      <td>Flexible</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>FlexibleStopPlace</td>
+      <td>Flexible</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>FlexibleServiceProperties</td>
+      <td>Flexible</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>GroupOfStopPlaces</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Parking</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>ServiceJourneyInterchange</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>BookingArrangementsStructure</td>
+      <td>Flexible</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>ServiceLink</td>
+      <td>Route</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>DatedServiceJourney</td>
+      <td>Timetable</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="table-elements-from-norway-profile-not-used-in-examples">Table: Elements from Norway profile NOT used in examples</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Element</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>TopographicPlaceDescriptor</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>AddressablePlace</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>SiteElement</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Site</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Level</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Entrance</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>StopPlaceSpace</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>BoardingPosition</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>AccessSpace</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>PathLink</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>PathJunction</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>EquipmentPlace</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>SiteFacilitySet</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>FlexibleQuay</td>
+      <td>Flexible</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>FlexibleArea</td>
+      <td>Flexible</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>HailAndRideArea</td>
+      <td>Flexible</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>PointOfInterest</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>ParkingArea</td>
+      <td>Parking</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>ParkingProperties</td>
+      <td>Parking</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>ParkingCapacity</td>
+      <td>Parking</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>NavigationPath</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>PathLinkEndStructure</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>FareZone</td>
+      <td>Tariff</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Presentation</td>
+      <td>Line</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>TimingPoint</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>PointOnRoute</td>
+      <td>Route</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>RouteLink</td>
+      <td>Route</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>SiteConnection</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>SiteConnectionEnd</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>StopAssignment</td>
+      <td>Assignment</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>FlexibleStopAssignment</td>
+      <td>Assignment</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>TrainStopAssignment</td>
+      <td>Assignment</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>StopPointInJourneyPattern</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>TimingPointInJourneyPattern</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>LinkInJourneyPattern</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>TimingLinkInJourneyPattern</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>ServiceLinkInJourneyPattern</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>DestinationDisplayVariant</td>
+      <td>Destination</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Via</td>
+      <td>Destination</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>Transfer</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>TransferDuration</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>Journey</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>JourneyEndpointStructure</td>
+      <td>Journey</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>VehicleJourney</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>JourneyPart</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>Frequency</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>VehicleJourneyWaitTime</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>VehicleJourneyRunTime</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>VehicleJourneyHeadway</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>DeadRun</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>TemplateServiceJourney</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>JourneyFrequencyGroup</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>RhythmicalJourneyGroup</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>HeadwayJourneyGroup</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>CoupledJourney</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>JourneyPartCouple</td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>ServiceCalendar</td>
+      <td>Calendar</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>Interchange</td>
+      <td>Interchange</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>UsageValidityPeriod</td>
+      <td>General</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>FareProduct</td>
+      <td>Fares</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Norway uses only 24 elements</strong> in productive data, all focused on core routing, scheduling, and stop data (very similar to France’s 28 used elements).</p>
+
+<h4 id="table-elements-of-the-swiss-profile">Table: Elements of the Swiss profile</h4>
+
+<p>All elements are considered as actually used.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Element</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Publishing Framework</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>PublicationDelivery</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>CompositeFrame</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>ResourceFrame</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>SiteFrame</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>ServiceFrame</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>ServiceCalendarFrame</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>TimetableFrame</td>
+    </tr>
+    <tr>
+      <td><strong>Organization &amp; Infrastructure</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>ResponsibilitySet</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Operator</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>TopographicPlace</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>StopPlace</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Quay</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Centroid</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>SiteFacilitySet</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>VehicleType</td>
+    </tr>
+    <tr>
+      <td><strong>Routing &amp; StopPlace</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Line</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>GroupOfLines</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>DestinationDisplay</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>ScheduledStopPoint</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>PassengerStopAssignment</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>DefaultConnection</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>SiteConnection</td>
+    </tr>
+    <tr>
+      <td><strong>Routing &amp; Journey</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>TimingLink</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>TimeDemandType</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>ServiceJourneyPattern</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>StopPointInJourneyPattern</td>
+    </tr>
+    <tr>
+      <td><strong>Timetable &amp; Scheduling</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>ServiceJourney</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>TemplateServiceJourney</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>HeadwayJourneyGroup</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>OccupancyView</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>TrainNumber</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>TypeOfService</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>ServiceJourneyInterchange</td>
+    </tr>
+    <tr>
+      <td><strong>Calendar &amp; Validity</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>AvailabilityCondition</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>ServiceCalendar</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>DayType</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>Timeband</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>DayTypeAssignment</td>
+    </tr>
+    <tr>
+      <td><strong>Notices &amp; Constraints</strong></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>Notice</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>NoticeAssignment</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>TypeOfNotice</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>CheckConstraint</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>TypeOfProductCategory</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="references">References</h2>
+<p>The following references were used to compile this document.</p>
+
+<h3 id="france-7">France</h3>
+
+<p>Profile documentation:
+https://normes.transport.data.gouv.fr/</p>
+
+<p>Github:
+https://github.com/etalab/transport-profil-netex-fr</p>
+
+<p>Sample data:
+https://transport.data.gouv.fr/datasets/reseau-urbain-et-interurbain-dile-de-france-mobilites</p>
+
+<h3 id="norway-7">Norway</h3>
+
+<p>Profile documentation:
+https://entur.atlassian.net/wiki/spaces/PUBLIC/pages/728891481/Nordic+NeTEx+Profile</p>
+
+<p>Github:
+https://github.com/entur/nordic-netex-documentation 
+https://github.com/entur/profile-examples
+https://github.com/entur/nordic-netex-ontology</p>
+
+<p>Sample data (examples):
+https://entur.atlassian.net/wiki/spaces/PUBLIC/pages/728891505/NeTEx+examples+catalogue</p>
+
+<p>Sample data (Productive data feed)
+https://developer.entur.no/open-data/timetable</p>
+
+    </main>
+  </div>
+</div>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/epiap/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

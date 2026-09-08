@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ResourceFrame id="ch:1:ResourceFrame" version="1">
+  <responsibilitySets>
+    <!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
+    <ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
+      <!-- Each combination of LegalEntity and Operator needs a ResponsibilitySet. -->
+    </ResponsibilitySet>
+  </responsibilitySets>
+  <typesOfValue>
+    <!-- Sets of TYPE OF VALUE contained in the RESOURCE FRAME. -->
+    <ValueSet id="ch:1:ValueSet:notices" version="1" nameOfClass="TypeOfNotice">
+      <!-- We need a TypeOfNotice ValueSet. -->
+      <values>
+        <TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
+          <Name lang="de">Allgemeiner Hinweis</Name>
+          <PrivateCode>1</PrivateCode>
+        </TypeOfNotice>
+        <TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
+          <Name lang="de">Angebot</Name>
+          <PrivateCode>10</PrivateCode>
+        </TypeOfNotice>
+      </values>
+    </ValueSet>
+    <ValueSet id="ch:1:ValueSet:TypesOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+      <!-- We need a TypeOfProductCategory ValueSet -->
+      <values>
+        <TypeOfProductCategory id="ch:1:TypeOfProductCategory:TER" version="1">
+          <Name lang="de">Train Express Regional
+            <Text lang="it">Train Express Regional</Text>
+            <Text lang="en">Train Express Regional</Text>
+            <Text lang="fr">Train Express Regional</Text>
+          </Name>
+          <ShortName>TER</ShortName>
+        </TypeOfProductCategory>
+      </values>
+    </ValueSet>
+    <ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
+      <!-- We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop. -->
+      <values>
+        <TypeOfPlace id="drtCollectionPoint" version="1">
+          <Name lang="de">Sammelpunkt
+            <Text lang="en">Collection Point</Text>
+          </Name>
+        </TypeOfPlace>
+        <TypeOfPlace id="regularStop" version="1">
+          <Name lang="de">Reguläre Haltestelle
+            <Text lang="en">Regular Stop</Text>
+          </Name>
+        </TypeOfPlace>
+      </values>
+    </ValueSet>
+  </typesOfValue>
+  <organisations>
+    <!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We do not use the NeTEx element Authority, thus avoiding the problem of an identical SBOID for Operator and Authority. -->
+    <Operator id="sboid" version="1"/>
+  </organisations>
+  <siteFacilitySets>
+    <!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. -->
+    <SiteFacilitySet id="generated" version="1"/>
+  </siteFacilitySets>
+  <serviceFacilitySets>
+    <!-- Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. -->
+    <ServiceFacilitySet id="generated" version="1"/>
+  </serviceFacilitySets>
+  <vehicleTypes>
+    <!-- The VehicleType here are used for generic information like lowfloor and not for formation information -->
+    <VehicleType id="tbd" version="1"/>
+  </vehicleTypes>
+</ResourceFrame>

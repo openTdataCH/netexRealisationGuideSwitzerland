@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>File Exchange | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="File Exchange" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/02_files.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/02_files.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="File Exchange" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"File Exchange","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/02_files.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/epiap/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/epiap/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="wrapper">
+  <div class="layout-with-sidebar">
+    <nav class="sidebar" aria-label="Chapters">
+  <h4><a href="index.html">Document Root</a></h4>
+  <h3>Chapters</h3>
+  <ul>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/01_intro_roadmap.html">Introduction & Roadmap</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/02_files.html">File Exchange</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/03_xml_modelling.html">XML Modeling</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/04_frames.html">The Frame structure</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/05_stops.html">Site Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/06_service.html">Service Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/07_service_calendars.html">Service Calendar Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/08_timetable.html">Timetable Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/09_resources.html">Resource Frame</a>
+      </li>
+    
+  </ul>
+  <h3>Special Use Cases</h3>
+  <ul>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc01_durchbindung.html">Durchbindung</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc02_joining_splitting.html">Joining / splitting</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc03_transfers.html">Transfers</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc04_service_facilities.html">Service facilities</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc05_journey_parts.html">Usage of JourneyParts</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc06_modes_submodes.html">Modes and the "KI Branchenstandard"</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc07_checkconstraints.html">Check constraints</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc08_kurswagen.html">Direct carriages ("Kurswagen")</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc09_accessibility.html">Accessibility</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc10_midnight_passing.html">Journeys passing midnight</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc11_touristic_offers.html">Touristic offers</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc12_carTransportRail.html">Car transport rail</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc13_changes_in_destination.html">Changes in the destination</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc14_frequencies.html">Frequency based ServiceJourney</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc15_formations.html">Formations</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc16_drt.html">Demand Responsive Traffic</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc17_mixed_lines.html">Mixed Lines</a>
+      </li>
+    
+  </ul>
+  <h3>Annexes</h3>
+  <ul>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A1_annex_resources_references.html">Resources and references</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A2_annex_comparison_EPIP_EPIAP.html">Differences between Swiss profile and EPIP/EPIAP and how they could be amended</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A3_annex_comparison_France_Norway.html">Differences to the French and nordic profile</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html">Glossary</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A5_annex_index.html">Index</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A6_changelog_migration.html">Changelog and migration from Swiss profile 1.0 to 2.0)</a>
+      </li>
+    
+  </ul>
+</nav>
+    <main class="content" aria-label="Content">
+      
+        <h1 class="page-title">File Exchange</h1>
+      
+      <p>NeTEx data will be transferred as files.</p>
+
+<h2 id="guiding-principles">Guiding Principles</h2>
+<p>We want the following general principles to apply:</p>
+
+<h3 id="completeness">Completeness</h3>
+
+<p>A delivery must always be complete:</p>
+<ul>
+  <li>in the time dimension : for the whole timetable year (from December to December), but only one timetable.</li>
+  <li>in the scope of the information exchanged : for all operators and all their lines or sublines — the file must always contain everything.
+This allows the receiver to overwrite the old delivery with the new one without loss of data</li>
+</ul>
+
+<h3 id="base-data">Base Data</h3>
+<p>Some reference data are maintained by SKI. These data are identified by business values (Abbreviation, Number, ID, …).
+These Business identifiers shall be used by the deliveries to enable their integration and homogenisation for the collection of timetable information. 
+If attributes of these reference data are transmitted in the deliveries, SKI does not adopt the values of these attributes. SKI takes these values from the reference system.</p>
+
+<p>The relevant reference data that is already available/defined by SKI:</p>
+<ul>
+  <li>Organisations - in Atlas</li>
+  <li>StopPlaces, Quays and the whole physical model - in Atlas</li>
+  <li>Lines (in a future phase) - in Atlas</li>
+  <li>Direction - only inbound and outbound are allowed</li>
+  <li>Notices – some specialised IDs and/or types, according to the <a href="/netexRealisationGuideSwitzerland/epiap/media/Mappingtabellen_NeTEx_v2.0.xlsx">mapping excel</a>.</li>
+  <li>TypeOfValues - according to the lists defined here (namely in <a href="/netexRealisationGuideSwitzerland/epiap/03_xml_modelling.html">the XML modeling</a>). E.g. ProductCategory - in the <a href="/netexRealisationGuideSwitzerland/epiap/media/Mappingtabellen_NeTEx_v2.0.xlsx">mappingexcel</a>.</li>
+  <li>ValueSets - in <a href="/netexRealisationGuideSwitzerland/epiap/03_xml_modelling.html">XML modeling</a></li>
+  <li>Facilities - in <a href="/netexRealisationGuideSwitzerland/epiap/media/Mappingtabellen_NeTEx_v2.0.xlsx">mapping excel</a>.</li>
+</ul>
+
+<h3 id="roles-and-duties">Roles and Duties</h3>
+<h4 id="owner-konzessionär">Owner (“Konzessionär”)</h4>
+<p>The designed owner according to Atlas is responsible for the overall delivery of the data.</p>
+
+<h4 id="operator">Operator</h4>
+<p>An owner can operate everything himself or he can delegate this (per partial line).</p>
+
+<blockquote>
+  <p>NB: We still have to finalise whether the owner has to produce a single file for the whole line or if delivery of partial lines is  allowed and how. This is an organisational matter.</p>
+</blockquote>
+
+<h4 id="responsibilities-data-provider">Responsibilities Data Provider</h4>
+<p>The data provider is responsible for the timely delivery of the complete timetable information with sufficient quality on the technical level. Complete means all timetable data in the responsibility of the provider for the whole timetable period.</p>
+
+<blockquote>
+  <p>NB: In many cases the data provider may be identical to the Owner.</p>
+</blockquote>
+
+<h4 id="responsibilties-ski">Responsibilties SKI</h4>
+<p>SKI is responsible for the timely delivery of the complete timetable information with sufficient quality of all timetable data for open data and for the consumption by the data consumers.</p>
+
+<h3 id="completeness-of-the-delivery">Completeness of the delivery</h3>
+
+<p>We still work on this, and it is not a matter of NeTEx but of the basic process of the data provision to SKI.</p>
+
+<p>We will start with the following:</p>
+<ul>
+  <li>All service journeys for a given timetable year with all facilities and notices, including service journeys driven by operators in the name of the owner for all lines the owner is responsible for</li>
+  <li>With co-owners one owner is designed to deliver the data.</li>
+  <li>We suggest that Atlas contains the information, which business organisation  provides the data for which line (on the technical level)</li>
+  <li>Nobody should deliver lines that belong to a different business owner.</li>
+</ul>
+
+<blockquote>
+  <p>NB: We discuss in the <a href="/netexRealisationGuideSwitzerland/epiap/uc17_mixed_lines.html">use case on mixed lines</a>, what is possible. However, the rules of SKI are the ones to follow</p>
+</blockquote>
+
+<blockquote>
+  <p>NB: Also replacement traffic will be defined in the general guidelines and not here. SKI will define, who has to provide what.</p>
+</blockquote>
+
+<h3 id="shared-responsibilities-for-planning">Shared Responsibilities for Planning</h3>
+<p>While <a href="/netexRealisationGuideSwitzerland/epiap/uc17_mixed_lines.html">use case on mixed lines</a> shows, what is possible in the first iteration we assume that one data provider will furnish the whole line with all its partial lines. Different policies don’t depend on NeTEx, but on the processing stream of INFO+.</p>
+
+<p>Also, if problems occur in the end it is always the owner that is responsible to addressing them.</p>
+
+<h2 id="files">Files</h2>
+
+<h3 id="file-types">File Types</h3>
+
+<p>We will have three different file types:</p>
+<ul>
+  <li>STOP_OFFER: stops, quays, transfer times and accessibility related to sites at some point</li>
+  <li>NETWORK_OFFER: lines, routes, timetables</li>
+  <li>INTERCHANGE: interchanges, “Durchbindungen”</li>
+</ul>
+
+<p>The first two are valid according to the XSD. INTERCHANGE only as far as we use <code class="language-plaintext highlighter-rouge">versionRef</code> instead of <code class="language-plaintext highlighter-rouge">version</code>.</p>
+
+<p>NETWORK_OFFER is the core timetable data. It can be one file per business organisation (owner and or data provider). Or it can be two very different subsets within an organisation (e.g.  ships, carTransportRail,rail) or perhaps also per region (PAG). The distinction should not be done unilateraly by the data provider, but in collaboration with SKI. Possible criteria: (a) size of  the file remains manageable, (b) third parties can find out, in which file, which line is, without inspecting every NETWORK_OFFER, (c) sensible arrangement so that not all NETWORK_OFFER need to be consumed, if only a given subset is needed by the data consumer.</p>
+
+<p>This repartition of the data into different file leads to some redundancy. However, the files can still be transferred efficiently.</p>
+
+<h3 id="content-of-each-file-type">Content of each File Type</h3>
+<pre><code class="language-mermaid">classDiagram
+class STOP_OFFER{
+    SiteFrame: SiteFrame
+    topographicPlaces: TopographicPlace
+    stopPlaces: StopPlace
+    quays: Quay
+    ServiceFrame: ServiceFrame
+    defaultConnections: DefaultConnection
+    siteConnection: SiteConnection
+} 
+
+class NETWORK_OFFER{
+    ResourceFrame: ResourceFrame
+    operators: Operators
+    responsibilitySets: ResponsibilitySets
+    typeOfProductCategory:TypeOfProductCategory
+    typesOfNotice: TypeOfNotice
+    ServiceCalendarFrame: ServiceCalendarFrame
+    vehicleTypes: VehicleType
+    dayTypes: DayType 
+    ServiceCalendar: ServiceCalendar
+    daytypeAssignments: DaytypeAssignment
+    detinationDisplays: DestinationDisplay
+    ServiceFrame: ServiceFrame
+    lines: Line
+    serviceJourneyPattern: ServiceJourneyPattern
+    ScheduledStopPoint: ScheduledStopPoint
+    passengerStopAssignments: PassengerStopAssignment
+    notices: Notice
+    TimetableFrame: TimetableFrame
+    serviceJourney: ServiceJourneyPattern
+    serviceFacilitySets: ServiceFacilitySet
+    trainNumbers : TrainNumber
+}
+class INTERCHANGE {
+    serviceJourneyInterchanges : ServiceJourneyInterchange
+}
+</code></pre>
+<p><em>Figure: Elements per file type in this profile</em></p>
+
+<p>STOP_OFFER:</p>
+<ul>
+  <li>Contains everything related to (physical) stops</li>
+  <li>Accessibility will be added in the future</li>
+</ul>
+
+<p>NETWORK_OFFER:</p>
+<ul>
+  <li>By operator (legal) and sometimes region (e.g. canton)</li>
+  <li>Contains the <code class="language-plaintext highlighter-rouge">ResourceFrame</code>, <code class="language-plaintext highlighter-rouge">CalendarFrame</code>, <code class="language-plaintext highlighter-rouge">ServiceFrame</code>, <code class="language-plaintext highlighter-rouge">TimetableFrame</code></li>
+  <li>Is self-sufficient from ref/id side</li>
+  <li>Eventually a reduced <code class="language-plaintext highlighter-rouge">StopPlace</code>, <code class="language-plaintext highlighter-rouge">Quay</code> could be added, but for the time being we won’t do this.</li>
+</ul>
+
+<p>INTERCHANGE</p>
+<ul>
+  <li>Contains interchanges, spliting, joining and “Durchbindungen”.</li>
+  <li>ref/id can’t be checked by the schema. Therefore we use the attribute <code class="language-plaintext highlighter-rouge">versionRef</code> instead of <code class="language-plaintext highlighter-rouge">version</code>.</li>
+</ul>
+
+<p>Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.  STOP_OFFER is only needed for data not stored in ATLAS. INFO+ will deliver an aggregated, comprehensive STOP_OFFER.</p>
+
+<h3 id="naming-conventions-of-files">Naming Conventions of Files</h3>
+<p>IT-Environments:</p>
+<ul>
+  <li>Development:	DEV</li>
+  <li>Test:	TEST</li>
+  <li>Integration:	INT</li>
+  <li>Production:	PROD</li>
+</ul>
+
+<p>The name of each XML file is composed of the following information:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Example</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IT-Environment</td>
+      <td><code class="language-plaintext highlighter-rouge">TEST</code></td>
+      <td>DEV,TEST,INT,PROD</td>
+    </tr>
+    <tr>
+      <td>Format of the file</td>
+      <td><code class="language-plaintext highlighter-rouge">NETEX</code></td>
+      <td>NETEX</td>
+    </tr>
+    <tr>
+      <td>Content of the file</td>
+      <td><code class="language-plaintext highlighter-rouge">TT</code></td>
+      <td>Timetable</td>
+    </tr>
+    <tr>
+      <td>Version</td>
+      <td><code class="language-plaintext highlighter-rouge">2.1</code></td>
+      <td>Number of the version of the NeTEx .xsd schema</td>
+    </tr>
+    <tr>
+      <td>Country</td>
+      <td><code class="language-plaintext highlighter-rouge">CHE</code></td>
+      <td>ISO code of the country for which the file was produced</td>
+    </tr>
+    <tr>
+      <td>Provider</td>
+      <td><code class="language-plaintext highlighter-rouge">SKI</code></td>
+      <td>Name of the provider</td>
+    </tr>
+    <tr>
+      <td>Time table year</td>
+      <td><code class="language-plaintext highlighter-rouge">2026</code></td>
+      <td>period of the data (always a year for now)</td>
+    </tr>
+    <tr>
+      <td>Name of Export</td>
+      <td><code class="language-plaintext highlighter-rouge">oev-schweiz</code></td>
+      <td>Defines the scope of the timetable data (e.g. <code class="language-plaintext highlighter-rouge">bernmobil</code> or for the whole of Switzerland <code class="language-plaintext highlighter-rouge">oev-schweiz</code></td>
+    </tr>
+    <tr>
+      <td>Type of file</td>
+      <td><code class="language-plaintext highlighter-rouge">STOP_OFFER</code>, <code class="language-plaintext highlighter-rouge">NETWORK_OFFER</code>, <code class="language-plaintext highlighter-rouge">INTERCHANGE</code></td>
+      <td>Describes the content</td>
+    </tr>
+    <tr>
+      <td>Date and Time</td>
+      <td><code class="language-plaintext highlighter-rouge">202606101200</code></td>
+      <td>Date and time the file was produced, format: YYYYMMDDHHMM</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Example: <code class="language-plaintext highlighter-rouge">TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_STOP_OFFER_202301250401.xml</code></p>
+
+<p>All Files are embedded in a zip-File. The name of the zip-file is composed of the following information:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Example</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>IT-Environment</td>
+      <td>DEV,TEST,INT</td>
+      <td>In the production environment, the prefix PROD is not written in the name</td>
+    </tr>
+    <tr>
+      <td>Format  of the file</td>
+      <td><code class="language-plaintext highlighter-rouge">NETEX</code></td>
+      <td>Describe the format (NETEX)</td>
+    </tr>
+    <tr>
+      <td>Content of the file</td>
+      <td><code class="language-plaintext highlighter-rouge">TT</code></td>
+      <td>Describe the content (TimeTable)</td>
+    </tr>
+    <tr>
+      <td>Version</td>
+      <td><code class="language-plaintext highlighter-rouge">2.1</code></td>
+      <td>Number of the version of the NeTEx .xsd schema</td>
+    </tr>
+    <tr>
+      <td>Country</td>
+      <td><code class="language-plaintext highlighter-rouge">CHE</code></td>
+      <td>ISO code of the country for which the file was produced</td>
+    </tr>
+    <tr>
+      <td>Provider</td>
+      <td><code class="language-plaintext highlighter-rouge">SKI</code></td>
+      <td>Name of the provider</td>
+    </tr>
+    <tr>
+      <td>Time period</td>
+      <td><code class="language-plaintext highlighter-rouge">2026</code></td>
+      <td>Time period of the data</td>
+    </tr>
+    <tr>
+      <td>Name of Export</td>
+      <td><code class="language-plaintext highlighter-rouge">oev-schweiz</code></td>
+      <td>Defines the scope of the timetable data (e.g. <code class="language-plaintext highlighter-rouge">bernmobil</code> or for the whole of Switzerland <code class="language-plaintext highlighter-rouge">oev-schweiz</code>). Underscores (_) must not used here, as we use them as separator in the file name.</td>
+    </tr>
+    <tr>
+      <td>Date and Time</td>
+      <td><code class="language-plaintext highlighter-rouge">202606131500</code></td>
+      <td>Date and time the file was produced, format: YYYYMMDDHHMM</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Example :<code class="language-plaintext highlighter-rouge">TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_202602010402.zip</code></p>
+
+<h3 id="zip-structure">Zip Structure</h3>
+<p>All files in a delivery are zipped into a single one according to the name structure above.</p>
+
+<h3 id="encoding">Encoding</h3>
+<p>All data is encoded as UTF-8 without BOM.</p>
+
+<h3 id="data-transfer">Data Transfer</h3>
+<p>The data transfer will be defined by INFO+. A version of the full swiss data will be available on https://opentransportdata.swiss/ for download.</p>
+
+<h3 id="provisions-for-deliveries-sent-by-data-provider-to-ski">Provisions for Deliveries Sent by Data Provider to SKI</h3>
+<p>We suggest that the partner name consists of the short name of the partner and necessary additions to identify the system. In addition, the number of the timetable period is to be indicated in the name, as well as the date and time of creation of the file</p>
+
+<p>Examples: <code class="language-plaintext highlighter-rouge">test_zvv_2024_20231112_095217.zip</code>, <code class="language-plaintext highlighter-rouge">prod_tl_2024_20231114_152836.zip</code></p>
+
+<p>The file name must be agreed on between the data provider and SKI. Generally it is agreed that delivery can be on network, operator or line base.</p>
+
+<h4 id="partial-deliveries">Partial Deliveries</h4>
+<p>No partial deliveries are accepted. They must contain:</p>
+<ul>
+  <li>all relevant lines</li>
+  <li>the whole timetable year</li>
+</ul>
+
+<p>No incremental updates are supported.</p>
+
+<blockquote>
+  <p>NB: We might reconsider some of those points for mixed lines.</p>
+</blockquote>
+
+<h3 id="data-delivery-from-ski-to-data-consumers">Data Delivery from SKI to Data Consumers</h3>
+<p>As the quantity of the data is very large for a single XML-file, SKI provides the data a set of XML files (one SITE_OFFER.xml, multiple NETWORK_OFFER.xml and one INTERCHANGES.xml). In addition to the XML files, SKI provides a README file listing the contents of each XML file.</p>
+
+    </main>
+  </div>
+</div>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/epiap/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer><script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    // Render code fences like ```mermaid (Jekyll outputs <pre><code class="language-mermaid">...</code></pre>)
+    mermaid.run({ querySelector: 'pre > code.language-mermaid' });
+</script></body>
+
+</html>

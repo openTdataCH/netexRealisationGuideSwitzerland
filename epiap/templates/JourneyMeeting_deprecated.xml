@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame:" version="1">
+					<journeyMeetings>
+						<JourneyMeeting id="ch:1:JourneyMeeting:91014I-THU-17-1-5100_91030L-THU-80-1-7200_1642236775_1642209284_6660_7200" version="1">
+							<!-- ch-root -->
+							<!-- ch-attrs: id version -->
+							<!-- ch-note: Used for joining and splitting of trains. Check latest policy - InterchangeRule may be the preferred alternative. -->
+							<validityConditions>
+								<!-- ch-usage: expected --><!-- ch-note: A specific type of VALIDITY CON-DITION used to specify a set of temporal conditions that can be associated with the JOURNEY MEETING, for example that the corresponding connections only apply on particular days of a period (indicated by ValidDayBits “Verkehrstagebitfeld”). -->
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:2K" versionRef="1">
+									<!-- ch-usage: expected -->
+								</AvailabilityConditionRef>
+							</validityConditions>
+							<AtStopPointRef ref="ch:1:ScheduledStopPoint:8506105:3" versionRef="1">
+								<!-- ch-usage: mandatory -->
+							</AtStopPointRef>
+							<FromJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:30467-003_91014I.j26_17" versionRef="1">
+								<!-- ch-usage: mandatory -->
+							</FromJourneyRef>
+							<ToJourneyRef ref="ch:1:ServiceJourney:ch:1:sjyid:100046:13602-002_91030L.j26_80" versionRef="1">
+								<!-- ch-usage: mandatory -->
+							</ToJourneyRef>
+							<Description><!-- ch-usage: optional -->LineChange</Description>
+							<EarliestTime><!-- ch-usage: optional -->01:51:00</EarliestTime>
+							<LatestTime><!-- ch-usage: optional -->02:00:00</LatestTime>
+							<Reason><!-- ch-usage: optional --><!-- ch-allowed-enums: joining splitting tariffSection serviceFacility -->joining</Reason>
+						</JourneyMeeting>
+					</journeyMeetings>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

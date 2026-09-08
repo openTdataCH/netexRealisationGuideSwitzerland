@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>AvailabilityCondition | DRAFT Swiss profile 2.0 for NeTEx 2.0</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="AvailabilityCondition" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/AvailabilityCondition.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/AvailabilityCondition.html" />
+<meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.0" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="AvailabilityCondition" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"AvailabilityCondition","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/AvailabilityCondition.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/netexRealisationGuideSwitzerland/epiap/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.0" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/netexRealisationGuideSwitzerland/epiap/">DRAFT Swiss profile 2.0 for NeTEx 2.0</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="wrapper">
+  <div class="layout-with-sidebar">
+    <nav class="sidebar" aria-label="Chapters">
+  <h4><a href="index.html">Document Root</a></h4>
+  <h3>Chapters</h3>
+  <ul>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/01_intro_roadmap.html">Introduction & Roadmap</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/02_files.html">File Exchange</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/03_xml_modelling.html">XML Modeling</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/04_frames.html">The Frame structure</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/05_stops.html">Site Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/06_service.html">Service Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/07_service_calendars.html">Service Calendar Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/08_timetable.html">Timetable Frame</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/09_resources.html">Resource Frame</a>
+      </li>
+    
+  </ul>
+  <h3>Special Use Cases</h3>
+  <ul>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc01_durchbindung.html">Durchbindung</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc02_joining_splitting.html">Joining / splitting</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc03_transfers.html">Transfers</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc04_service_facilities.html">Service facilities</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc05_journey_parts.html">Usage of JourneyParts</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc06_modes_submodes.html">Modes and the "KI Branchenstandard"</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc07_checkconstraints.html">Check constraints</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc08_kurswagen.html">Direct carriages ("Kurswagen")</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc09_accessibility.html">Accessibility</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc10_midnight_passing.html">Journeys passing midnight</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc11_touristic_offers.html">Touristic offers</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc12_carTransportRail.html">Car transport rail</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc13_changes_in_destination.html">Changes in the destination</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc14_frequencies.html">Frequency based ServiceJourney</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc15_formations.html">Formations</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc16_drt.html">Demand Responsive Traffic</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/uc17_mixed_lines.html">Mixed Lines</a>
+      </li>
+    
+  </ul>
+  <h3>Annexes</h3>
+  <ul>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A1_annex_resources_references.html">Resources and references</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A2_annex_comparison_EPIP_EPIAP.html">Differences between Swiss profile and EPIP/EPIAP and how they could be amended</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A3_annex_comparison_France_Norway.html">Differences to the French and nordic profile</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html">Glossary</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A5_annex_index.html">Index</a>
+      </li>
+    
+      
+      <li class="">
+        <a href="/netexRealisationGuideSwitzerland/epiap/A6_changelog_migration.html">Changelog and migration from Swiss profile 1.0 to 2.0)</a>
+      </li>
+    
+  </ul>
+</nav>
+    <main class="content" aria-label="Content">
+      
+        <h1 class="page-title">AvailabilityCondition</h1>
+      
+      <p><em>Table: AvailabilityCondition</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>FromDate</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:dateTime</td>
+      <td>Start date of AVAILABILITY CONDITION.</td>
+      <td>Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ToDate</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:dateTime</td>
+      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td>Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ValidDayBits</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>xsd:normalizedString</td>
+      <td>String of bits, one for each day in period: whether valid or not valid on the day. Normally there will be a bit for every day between start and end date. If bit is missing, assume available.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>timebands</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>timebandRefs_RelStructure</td>
+      <td>TIMEBANDs for the DAY TYPE.</td>
+      <td>Can also be referenced</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/Timeband.html">Timeband</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>Timeband_VersionedChildStructure</td>
+      <td>A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TimebandRef</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>TimebandRefStructure</td>
+      <td>Reference to a TIME BAND.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+    </main>
+  </div>
+</div>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/netexRealisationGuideSwitzerland/epiap/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">DRAFT Swiss profile 2.0 for NeTEx 2.0</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">DRAFT Swiss profile 2.0 for NeTEx 2.0</li><li><a class="u-email" href="mailto:info.fachbus@sbb.ch">info.fachbus@sbb.ch</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>This document describes the realisation specifications for the data transfer between SKI and the public transport in  Switzerland, based on the official NeTEx standard.</p>
+      </div>
+    </div>
+  </div>
+</footer></body>
+
+</html>

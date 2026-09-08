@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame" version="1"/>
+				<SiteFrame id="ch:1:SiteFrame" version="1">
+					<stopPlaces>
+						<StopPlace id="ch:1:sloid:7000" version="1">
+							<Name>Bern</Name>
+							<alternativeNames>
+                                <AlternativeName>
+                                    <!-- ch-root -->
+									<!-- ch-note: In some cases we need an alias of the Name element. This is done with AlternativeName. And it basically happens only for StopPlace and rarely Operator. -->
+									<!-- ch-usage: mandatory -->
+									<NameType><!-- ch-allowed-enums: alias --><!-- ch-note: alias allowed e.g. for StopPlace. -->alias</NameType>
+									<TypeOfName><!-- ch-usage: optional--><!-- ch-note: If it is the official name. If used, only "offical" should be used. -->offical</TypeOfName>
+									<Name lang="de"><!-- ch-usage: mandatory --><!-- ch-attrs: lang -->Bärn</Name>
+								</AlternativeName>
+							</alternativeNames>
+						</StopPlace>
+					</stopPlaces>
+				</SiteFrame>
+
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
