@@ -46,7 +46,7 @@ This document describes the way in which the NeTEx standard is specifically appl
   - [Journeys passing midnight](uc10_midnight_passing.md)
   - **LATER**: [Touristic offers](uc11_touristic_offers.md)
   - **LATER**: [Car transport rail](uc12_carTransportRail.md)
-  - **LATER**: [Changes in the destination](uc13_changes_in_destination.md)
+  - [Changes in the destination](uc13_changes_in_destination.md)
   - [Frequency based ServiceJourney](uc14_frequencies.md)
   - **LATER**: [Formations](uc15_formations.md)
   - **LATER**: [Demand Responsive Traffic](uc16_drt.md)
@@ -54,11 +54,11 @@ This document describes the way in which the NeTEx standard is specifically appl
 - Mapping tables are defined in an [Excel](media/Mappingtabellen_NeTEx_v2.0.xlsx)
 - Annexes:
   - [Resources and references](A1_annex_resources_references.md)
-  - [Differences between Swiss profile and EPIP/EPIAP and how they could be amended](A2_annex_comparison_EPIP_EPIAP.md)
+  - **LATER**: [Differences between Swiss profile and EPIP/EPIAP and how they could be amended](A2_annex_comparison_EPIP_EPIAP.md)
   - [Differences to the French and nordic profile](A3_annex_comparison_France_Norway.md)
   - [Glossary](A4_annex_glossary.md)
   - [Index](A5_annex_index.md)
-  - [Changelog and migration from Swiss profile 1.0 to 2.0)](A6_changelog_migration.md)
+  - [Changelog and migration from Swiss profile 1.0 to 2.0](A6_changelog_migration.md)
 
 
 ## Examples
@@ -66,8 +66,8 @@ We have a [set of examples](https://github.com/openTdataCH/netexRealisationGuide
 
 ## Imprint
 * Authors: Matthias Günter,  Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Thomas Schäfer, Simon Freihart, Emeric Tapia-Almosnino, 
-* Status: Draft
-* Last change: 2026-07-31
+* Status: Release Candidate 1
+* Last change: 2026-09-07
 * Contact: info.fachbus@sbb.ch
 
 ## Copyright / License
