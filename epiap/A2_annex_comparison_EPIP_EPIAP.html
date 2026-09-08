@@ -218,8 +218,9 @@
       <p>Note: The following list is not necessarily comprehensive.</p>
 <blockquote>
   <p><strong>LATER</strong> https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/docs/A2_annex_comparison_EPIP_EPIAP.md</p>
-  <h2 id="main-differences">Main differences</h2>
 </blockquote>
+
+<h2 id="main-differences">Main differences</h2>
 
 <p>EPIAP describes the following additional elements that need to be considered.</p>
 
@@ -341,7 +342,7 @@
       <td>1..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Summary indication as to whether the component is considered to be accessible or not.</td>
-      <td>Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace.</td>
+      <td>Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace.</td>
     </tr>
     <tr>
       <td> </td>
@@ -377,7 +378,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has step free access.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -386,7 +387,16 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0</td>
-      <td>Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage.</td>
+      <td>Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>RampFreeAccess</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE has ramp free access. Ramp free isn’t necessary absolute. If a ramp is not steep, then a PLACE can still be considered ramp free.</td>
+      <td>Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -395,7 +405,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE allows guide dog access.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -404,7 +414,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has tactile guidance.</td>
-      <td>Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -413,7 +423,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has visual signals for the hearing impaired.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -422,7 +432,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).</td>
-      <td>Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
   </tbody>
 </table>
@@ -434,7 +444,7 @@
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
-    <span class="c">&lt;!-- Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. --&gt;</span>
+    <span class="c">&lt;!-- Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. --&gt;</span>
   <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
   <span class="nt">&lt;limitations&gt;</span>
     <span class="c">&lt;!-- Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. --&gt;</span>
@@ -444,22 +454,25 @@
         <span class="c">&lt;!-- Accessibility. --&gt;</span>
       <span class="nt">&lt;/WheelchairAccess&gt;</span>
       <span class="nt">&lt;StepFreeAccess&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/StepFreeAccess&gt;</span>
       <span class="nt">&lt;StairFreeAccess&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/StairFreeAccess&gt;</span>
+      <span class="nt">&lt;RampFreeAccess&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. --&gt;</span>
+      <span class="nt">&lt;/RampFreeAccess&gt;</span>
       <span class="nt">&lt;GuideDogAccess&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/GuideDogAccess&gt;</span>
       <span class="nt">&lt;TactileGuidanceAvailable&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/TactileGuidanceAvailable&gt;</span>
       <span class="nt">&lt;VisualSignsAvailable&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/VisualSignsAvailable&gt;</span>
       <span class="nt">&lt;LevelAccessIntoVehicle&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/LevelAccessIntoVehicle&gt;</span>
     <span class="nt">&lt;/AccessibilityLimitation&gt;</span>
   <span class="nt">&lt;/limitations&gt;</span>
@@ -567,33 +580,6 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>ValidBetween</td>
-      <td>mandatory</td>
-      <td>1..*</td>
-      <td>unknown</td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>Location</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>LocationStructure</td>
-      <td>The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates).</td>
-      <td>Element before …</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Longitude</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>LongitudeType</td>
-      <td>Longitude from Greenwich Meridian. -180 (East) to +180 (West).</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
       <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -645,24 +631,6 @@
       <td>SiteFacilitySetRefStructure</td>
       <td>Reference to a SITE FACILITY SET.</td>
       <td>Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>Locale</td>
-      <td>optional</td>
-      <td>1..1</td>
-      <td>LocaleStructure</td>
-      <td>Common LOCALE dependent properties.</td>
-      <td>Element before …</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>TimeZone</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>xsd:normalizedString</td>
-      <td>Timezone name at LOCALE.</td>
-      <td> </td>
     </tr>
     <tr>
       <td> </td>
@@ -744,24 +712,6 @@
       <td>AssistanceServiceRefStructure</td>
       <td>Identifier of an ASSISTANCE SERVICE.</td>
       <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>quays</td>
-      <td>expected</td>
-      <td>1..1</td>
-      <td>quays_RelStructure</td>
-      <td>QUAYs within the STOP PLACE.</td>
-      <td>Element before …</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>Quay</td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>Quay_VersionStructure</td>
-      <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
-      <td> </td>
     </tr>
     <tr>
       <td> </td>
@@ -812,7 +762,6 @@
   <span class="nt">&lt;Centroid&gt;</span>
     <span class="nt">&lt;Name/&gt;</span>
     <span class="nt">&lt;Location&gt;</span>
-      <span class="c">&lt;!-- Element before ... --&gt;</span>
       <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
       <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
       <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
@@ -826,7 +775,6 @@
   <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
   <span class="nt">&lt;alternativeNames&gt;</span>
     <span class="nt">&lt;AlternativeName</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:it"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- ... element in between ... --&gt;</span>
       <span class="nt">&lt;NameType&gt;</span>alias<span class="nt">&lt;/NameType&gt;</span>
       <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Berna<span class="nt">&lt;/Name&gt;</span>
     <span class="nt">&lt;/AlternativeName&gt;</span>
@@ -848,7 +796,6 @@
   <span class="nt">&lt;/facilities&gt;</span>
   <span class="nt">&lt;TopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"BE-bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;Locale&gt;</span>
-    <span class="c">&lt;!-- Element before ... --&gt;</span>
     <span class="nt">&lt;TimeZone&gt;</span>Europe/Zurich<span class="nt">&lt;/TimeZone&gt;</span>
   <span class="nt">&lt;/Locale&gt;</span>
   <span class="nt">&lt;levels&gt;</span>
@@ -882,7 +829,6 @@
   <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly<span class="nt">&lt;/LimitedUse&gt;</span>
   <span class="nt">&lt;Weighting&gt;</span>preferredInterchange<span class="nt">&lt;/Weighting&gt;</span>
   <span class="nt">&lt;quays&gt;</span>
-    <span class="c">&lt;!-- Element before ... --&gt;</span>
     <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/quays&gt;</span>
   <span class="nt">&lt;accessSpaces&gt;</span>
@@ -931,7 +877,7 @@
       <td>1..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Summary indication as to whether the component is considered to be accessible or not.</td>
-      <td>Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace.</td>
+      <td>Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace.</td>
     </tr>
     <tr>
       <td> </td>
@@ -967,7 +913,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has step free access.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -976,7 +922,16 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0</td>
-      <td>Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage.</td>
+      <td>Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>RampFreeAccess</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE has ramp free access. Ramp free isn’t necessary absolute. If a ramp is not steep, then a PLACE can still be considered ramp free.</td>
+      <td>Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -985,7 +940,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE allows guide dog access.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -994,7 +949,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has tactile guidance.</td>
-      <td>Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -1003,7 +958,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has visual signals for the hearing impaired.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -1012,7 +967,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).</td>
-      <td>Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
   </tbody>
 </table>
@@ -1024,7 +979,7 @@
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
-    <span class="c">&lt;!-- Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. --&gt;</span>
+    <span class="c">&lt;!-- Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. --&gt;</span>
   <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
   <span class="nt">&lt;limitations&gt;</span>
     <span class="c">&lt;!-- Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. --&gt;</span>
@@ -1034,22 +989,25 @@
         <span class="c">&lt;!-- Accessibility. --&gt;</span>
       <span class="nt">&lt;/WheelchairAccess&gt;</span>
       <span class="nt">&lt;StepFreeAccess&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/StepFreeAccess&gt;</span>
       <span class="nt">&lt;StairFreeAccess&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/StairFreeAccess&gt;</span>
+      <span class="nt">&lt;RampFreeAccess&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. --&gt;</span>
+      <span class="nt">&lt;/RampFreeAccess&gt;</span>
       <span class="nt">&lt;GuideDogAccess&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/GuideDogAccess&gt;</span>
       <span class="nt">&lt;TactileGuidanceAvailable&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/TactileGuidanceAvailable&gt;</span>
       <span class="nt">&lt;VisualSignsAvailable&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/VisualSignsAvailable&gt;</span>
       <span class="nt">&lt;LevelAccessIntoVehicle&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/LevelAccessIntoVehicle&gt;</span>
     <span class="nt">&lt;/AccessibilityLimitation&gt;</span>
   <span class="nt">&lt;/limitations&gt;</span>
@@ -1077,33 +1035,6 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td> </td>
-      <td>ValidBetween</td>
-      <td>mandatory</td>
-      <td>1..*</td>
-      <td>unknown</td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>Location</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>LocationStructure</td>
-      <td>The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates).</td>
-      <td>Element before …</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Longitude</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>LongitudeType</td>
-      <td>Longitude from Greenwich Meridian. -180 (East) to +180 (West).</td>
-      <td> </td>
-    </tr>
     <tr>
       <td> </td>
       <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
@@ -1157,24 +1088,6 @@
       <td>SiteFacilitySetRefStructure</td>
       <td>Reference to a SITE FACILITY SET.</td>
       <td>Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>Locale</td>
-      <td>optional</td>
-      <td>1..1</td>
-      <td>LocaleStructure</td>
-      <td>Common LOCALE dependent properties.</td>
-      <td>Element before …</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>TimeZone</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>xsd:normalizedString</td>
-      <td>Timezone name at LOCALE.</td>
-      <td> </td>
     </tr>
     <tr>
       <td> </td>
@@ -1259,24 +1172,6 @@
     </tr>
     <tr>
       <td> </td>
-      <td>quays</td>
-      <td>expected</td>
-      <td>1..1</td>
-      <td>quays_RelStructure</td>
-      <td>QUAYs within the STOP PLACE.</td>
-      <td>Element before …</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>Quay</td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>Quay_VersionStructure</td>
-      <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
       <td>accessSpaces</td>
       <td>expected</td>
       <td>0..1</td>
@@ -1324,7 +1219,6 @@
   <span class="nt">&lt;Centroid&gt;</span>
     <span class="nt">&lt;Name/&gt;</span>
     <span class="nt">&lt;Location&gt;</span>
-      <span class="c">&lt;!-- Element before ... --&gt;</span>
       <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
       <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
       <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
@@ -1338,7 +1232,6 @@
   <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
   <span class="nt">&lt;alternativeNames&gt;</span>
     <span class="nt">&lt;AlternativeName</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:it"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- ... element in between ... --&gt;</span>
       <span class="nt">&lt;NameType&gt;</span>alias<span class="nt">&lt;/NameType&gt;</span>
       <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Berna<span class="nt">&lt;/Name&gt;</span>
     <span class="nt">&lt;/AlternativeName&gt;</span>
@@ -1360,7 +1253,6 @@
   <span class="nt">&lt;/facilities&gt;</span>
   <span class="nt">&lt;TopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"BE-bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;Locale&gt;</span>
-    <span class="c">&lt;!-- Element before ... --&gt;</span>
     <span class="nt">&lt;TimeZone&gt;</span>Europe/Zurich<span class="nt">&lt;/TimeZone&gt;</span>
   <span class="nt">&lt;/Locale&gt;</span>
   <span class="nt">&lt;levels&gt;</span>
@@ -1394,7 +1286,6 @@
   <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly<span class="nt">&lt;/LimitedUse&gt;</span>
   <span class="nt">&lt;Weighting&gt;</span>preferredInterchange<span class="nt">&lt;/Weighting&gt;</span>
   <span class="nt">&lt;quays&gt;</span>
-    <span class="c">&lt;!-- Element before ... --&gt;</span>
     <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/quays&gt;</span>
   <span class="nt">&lt;accessSpaces&gt;</span>

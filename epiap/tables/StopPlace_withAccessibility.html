@@ -232,33 +232,6 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>ValidBetween</td>
-      <td>mandatory</td>
-      <td>1..*</td>
-      <td>unknown</td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>Location</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>LocationStructure</td>
-      <td>The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates).</td>
-      <td>Element before …</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Longitude</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>LongitudeType</td>
-      <td>Longitude from Greenwich Meridian. -180 (East) to +180 (West).</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
       <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
       <td>mandatory</td>
       <td>0..1</td>
@@ -310,24 +283,6 @@
       <td>SiteFacilitySetRefStructure</td>
       <td>Reference to a SITE FACILITY SET.</td>
       <td>Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>Locale</td>
-      <td>optional</td>
-      <td>1..1</td>
-      <td>LocaleStructure</td>
-      <td>Common LOCALE dependent properties.</td>
-      <td>Element before …</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>TimeZone</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>xsd:normalizedString</td>
-      <td>Timezone name at LOCALE.</td>
-      <td> </td>
     </tr>
     <tr>
       <td> </td>
@@ -409,24 +364,6 @@
       <td>AssistanceServiceRefStructure</td>
       <td>Identifier of an ASSISTANCE SERVICE.</td>
       <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>quays</td>
-      <td>expected</td>
-      <td>1..1</td>
-      <td>quays_RelStructure</td>
-      <td>QUAYs within the STOP PLACE.</td>
-      <td>Element before …</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>Quay</td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>Quay_VersionStructure</td>
-      <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
-      <td> </td>
     </tr>
     <tr>
       <td> </td>

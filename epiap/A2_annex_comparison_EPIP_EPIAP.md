@@ -2,6 +2,7 @@
 
 Note: The following list is not necessarily comprehensive.
 >**LATER** https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/docs/A2_annex_comparison_EPIP_EPIAP.md
+
 ## Main differences
 
 EPIAP describes the following additional elements that need to be considered. 
@@ -93,16 +94,17 @@ Definition of the Swiss Accessibility Profile.
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | MobilityImpairedAccess | mandatory | 1..1 | LimitationStatusEnumeration | Summary indication as to whether the component is considered to be accessible or not. | Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. |
+|  | MobilityImpairedAccess | mandatory | 1..1 | LimitationStatusEnumeration | Summary indication as to whether the component is considered to be accessible or not. | Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. |
 |  | limitations | expected | 0..1 | usageParameters_RelStructure | The ACCESSIBILITY LIMITATION that apply to component. | Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. |
 | + | AccessibilityLimitation | mandatory | 0..* | AccessibilityLimitation_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. |
 | ++ | WheelchairAccess | mandatory | 1..1 | LimitationStatusEnumeration | Whether a PLACE is wheelchair accessible. | Accessibility. |
-| ++ | StepFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has step free access. | Accessibility. If absent the value `unknown` is assumed. |
-| ++ | StairFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0 | Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. |
-| ++ | GuideDogAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE allows guide dog access. | Accessibility. If absent the value `unknown` is assumed. |
-| ++ | TactileGuidanceAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has tactile guidance. | Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. |
-| ++ | VisualSignsAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has visual signals for the hearing impaired. | Accessibility. If absent the value `unknown` is assumed. |
-| ++ | LevelAccessIntoVehicle | expected | 0..1 | LimitationStatusEnumeration | Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI). | Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. |
+| ++ | StepFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has step free access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+| ++ | StairFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0 | Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. |
+| ++ | RampFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has ramp free access. Ramp free isn't necessary absolute. If a ramp is not steep, then a PLACE can still be considered ramp free. | Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. |
+| ++ | GuideDogAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE allows guide dog access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+| ++ | TactileGuidanceAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has tactile guidance. | Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+| ++ | VisualSignsAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has visual signals for the hearing impaired. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+| ++ | LevelAccessIntoVehicle | expected | 0..1 | LimitationStatusEnumeration | Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI). | Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
 
 
 
@@ -116,7 +118,7 @@ Definition of the Swiss Accessibility Profile.
 <?xml version="1.0" encoding="UTF-8"?>
 <AccessibilityAssessment id="generated" version="1">
   <MobilityImpairedAccess>true
-    <!-- Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. -->
+    <!-- Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. -->
   </MobilityImpairedAccess>
   <limitations>
     <!-- Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. -->
@@ -126,22 +128,25 @@ Definition of the Swiss Accessibility Profile.
         <!-- Accessibility. -->
       </WheelchairAccess>
       <StepFreeAccess>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </StepFreeAccess>
       <StairFreeAccess>true
-        <!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. -->
+        <!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. -->
       </StairFreeAccess>
+      <RampFreeAccess>true
+        <!-- Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. -->
+      </RampFreeAccess>
       <GuideDogAccess>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </GuideDogAccess>
       <TactileGuidanceAvailable>true
-        <!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </TactileGuidanceAvailable>
       <VisualSignsAvailable>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </VisualSignsAvailable>
       <LevelAccessIntoVehicle>true
-        <!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </LevelAccessIntoVehicle>
     </AccessibilityLimitation>
   </limitations>
@@ -203,17 +208,12 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | ValidBetween | mandatory | 1..* | unknown |  |  |
-| + | Location | mandatory | 0..1 | LocationStructure | The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates). | Element before ... |
-| ++ | Longitude | mandatory | 1..1 | LongitudeType | Longitude from Greenwich Meridian. -180 (East) to +180 (West). |  |
 |  | [AccessibilityAssessment](./tables/AccessibilityAssessment.md) | mandatory | 0..1 | AccessibilityAssessment_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. |
 |  | Covered | expected | 0..1 | CoveredEnumeration | Whether the component is Indoors or outdoors. Default is Indoors. | Accessibility. |
 |  | AllAreasWheelchairAccessible | mandatory | 0..1 | xsd:boolean | Whether all areas of the component are wheelchair accessible. | Accessibility. |
 |  | facilities | expected | 0..1 | serviceFacilitySets_RelStructure | FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed. | Accessibility. |
 | + | SiteFacilitySet | optional | 1..* | SiteFacilitySetStructure | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). | Accessibility. |
 | + | SiteFacilitySetRef | optional | 0..* | SiteFacilitySetRefStructure | Reference to a SITE FACILITY SET. | Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong. |
-|  | Locale | optional | 1..1 | LocaleStructure | Common LOCALE dependent properties. | Element before ... |
-| + | TimeZone | optional | 0..1 | xsd:normalizedString | Timezone name at LOCALE. |  |
 |  | levels | expected | 0..1 | levels_RelStructure | LEVELs found within SITe. | Accessibility. Mandatory if the StopPlace has more than one level. |
 | + | [Level](./tables/Level.md) | expected | 0..* | Level_VersionStructure | Level of a Building or SITE. | Accessibility. Mandatory if the StopPlace has more than one level. |
 | + | [Level](./tables/Level.md) | expected | 0..* | Level_VersionStructure | Level of a Building or SITE. | Accessibility. Mandatory if the StopPlace has more than one level. |
@@ -223,8 +223,6 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
 |  | placeEquipments | optional | 0..1 | placeEquipments_RelStructure | Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT. | Accessibility. TODO |
 |  | localServices | expected | 0..1 | localServices_RelStructure | LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT. | Accessibility. |
 | + | AssistanceServiceRef | optional | 0..* | AssistanceServiceRefStructure | Identifier of an ASSISTANCE SERVICE. | Accessibility. |
-|  | quays | expected | 1..1 | quays_RelStructure | QUAYs within the STOP PLACE. | Element before ... |
-| + | Quay | expected | 0..* | Quay_VersionStructure | A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY. |  |
 |  | accessSpaces | expected | 0..1 | accessSpaces_RelStructure | ACCESS SPACEs within the STOP PLACE. | Accessibility. |
 | + | [AccessSpace](./tables/AccessSpace.md) | expected | 0..* | AccessSpace_VersionStructure | An area within a STOP PLACE that does not give direct access to transport vehicles. May be connected to QUAYS by PATH LINKs. | Accessibility. |
 
@@ -262,7 +260,6 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
   <Centroid>
     <Name/>
     <Location>
-      <!-- Element before ... -->
       <Longitude>7.43913088992</Longitude>
       <Latitude>46.94883228914</Latitude>
       <Altitude>540.2</Altitude>
@@ -276,7 +273,6 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
   </AccessibilityAssessment>
   <alternativeNames>
     <AlternativeName id="ch:1:sloid:7000:it" version="1">
-      <!-- ... element in between ... -->
       <NameType>alias</NameType>
       <Name lang="it">Berna</Name>
     </AlternativeName>
@@ -298,7 +294,6 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
   </facilities>
   <TopographicPlaceRef ref="BE-bern" version="1"/>
   <Locale>
-    <!-- Element before ... -->
     <TimeZone>Europe/Zurich</TimeZone>
   </Locale>
   <levels>
@@ -332,7 +327,6 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
   <LimitedUse>interchangeOnly</LimitedUse>
   <Weighting>preferredInterchange</Weighting>
   <quays>
-    <!-- Element before ... -->
     <Quay id="ch:1:sloid:7000:5:9" version="1"/>
   </quays>
   <accessSpaces>
@@ -371,16 +365,17 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | MobilityImpairedAccess | mandatory | 1..1 | LimitationStatusEnumeration | Summary indication as to whether the component is considered to be accessible or not. | Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. |
+|  | MobilityImpairedAccess | mandatory | 1..1 | LimitationStatusEnumeration | Summary indication as to whether the component is considered to be accessible or not. | Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. |
 |  | limitations | expected | 0..1 | usageParameters_RelStructure | The ACCESSIBILITY LIMITATION that apply to component. | Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. |
 | + | AccessibilityLimitation | mandatory | 0..* | AccessibilityLimitation_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. |
 | ++ | WheelchairAccess | mandatory | 1..1 | LimitationStatusEnumeration | Whether a PLACE is wheelchair accessible. | Accessibility. |
-| ++ | StepFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has step free access. | Accessibility. If absent the value `unknown` is assumed. |
-| ++ | StairFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0 | Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. |
-| ++ | GuideDogAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE allows guide dog access. | Accessibility. If absent the value `unknown` is assumed. |
-| ++ | TactileGuidanceAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has tactile guidance. | Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. |
-| ++ | VisualSignsAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has visual signals for the hearing impaired. | Accessibility. If absent the value `unknown` is assumed. |
-| ++ | LevelAccessIntoVehicle | expected | 0..1 | LimitationStatusEnumeration | Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI). | Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. |
+| ++ | StepFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has step free access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+| ++ | StairFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0 | Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. |
+| ++ | RampFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has ramp free access. Ramp free isn't necessary absolute. If a ramp is not steep, then a PLACE can still be considered ramp free. | Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. |
+| ++ | GuideDogAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE allows guide dog access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+| ++ | TactileGuidanceAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has tactile guidance. | Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+| ++ | VisualSignsAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has visual signals for the hearing impaired. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+| ++ | LevelAccessIntoVehicle | expected | 0..1 | LimitationStatusEnumeration | Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI). | Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
 
 
 
@@ -394,7 +389,7 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
 <?xml version="1.0" encoding="UTF-8"?>
 <AccessibilityAssessment id="generated" version="1">
   <MobilityImpairedAccess>true
-    <!-- Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. -->
+    <!-- Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. -->
   </MobilityImpairedAccess>
   <limitations>
     <!-- Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. -->
@@ -404,22 +399,25 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
         <!-- Accessibility. -->
       </WheelchairAccess>
       <StepFreeAccess>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </StepFreeAccess>
       <StairFreeAccess>true
-        <!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. -->
+        <!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. -->
       </StairFreeAccess>
+      <RampFreeAccess>true
+        <!-- Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. -->
+      </RampFreeAccess>
       <GuideDogAccess>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </GuideDogAccess>
       <TactileGuidanceAvailable>true
-        <!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </TactileGuidanceAvailable>
       <VisualSignsAvailable>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </VisualSignsAvailable>
       <LevelAccessIntoVehicle>true
-        <!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </LevelAccessIntoVehicle>
     </AccessibilityLimitation>
   </limitations>
@@ -443,17 +441,12 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | ValidBetween | mandatory | 1..* | unknown |  |  |
-| + | Location | mandatory | 0..1 | LocationStructure | The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates). | Element before ... |
-| ++ | Longitude | mandatory | 1..1 | LongitudeType | Longitude from Greenwich Meridian. -180 (East) to +180 (West). |  |
 |  | [AccessibilityAssessment](./tables/AccessibilityAssessment.md) | mandatory | 0..1 | AccessibilityAssessment_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. |
 |  | Covered | expected | 0..1 | CoveredEnumeration | Whether the component is Indoors or outdoors. Default is Indoors. | Accessibility. |
 |  | AllAreasWheelchairAccessible | mandatory | 0..1 | xsd:boolean | Whether all areas of the component are wheelchair accessible. | Accessibility. |
 |  | facilities | expected | 0..1 | serviceFacilitySets_RelStructure | FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed. | Accessibility. |
 | + | SiteFacilitySet | optional | 1..* | SiteFacilitySetStructure | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). | Accessibility. |
 | + | SiteFacilitySetRef | optional | 0..* | SiteFacilitySetRefStructure | Reference to a SITE FACILITY SET. | Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong. |
-|  | Locale | optional | 1..1 | LocaleStructure | Common LOCALE dependent properties. | Element before ... |
-| + | TimeZone | optional | 0..1 | xsd:normalizedString | Timezone name at LOCALE. |  |
 |  | levels | expected | 0..1 | levels_RelStructure | LEVELs found within SITe. | Accessibility. Mandatory if the StopPlace has more than one level. |
 | + | [Level](./tables/Level.md) | expected | 0..* | Level_VersionStructure | Level of a Building or SITE. | Accessibility. Mandatory if the StopPlace has more than one level. |
 | + | [Level](./tables/Level.md) | expected | 0..* | Level_VersionStructure | Level of a Building or SITE. | Accessibility. Mandatory if the StopPlace has more than one level. |
@@ -463,8 +456,6 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
 |  | placeEquipments | optional | 0..1 | placeEquipments_RelStructure | Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT. | Accessibility. TODO |
 |  | localServices | expected | 0..1 | localServices_RelStructure | LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT. | Accessibility. |
 | + | AssistanceServiceRef | optional | 0..* | AssistanceServiceRefStructure | Identifier of an ASSISTANCE SERVICE. | Accessibility. |
-|  | quays | expected | 1..1 | quays_RelStructure | QUAYs within the STOP PLACE. | Element before ... |
-| + | Quay | expected | 0..* | Quay_VersionStructure | A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY. |  |
 |  | accessSpaces | expected | 0..1 | accessSpaces_RelStructure | ACCESS SPACEs within the STOP PLACE. | Accessibility. |
 | + | [AccessSpace](./tables/AccessSpace.md) | expected | 0..* | AccessSpace_VersionStructure | An area within a STOP PLACE that does not give direct access to transport vehicles. May be connected to QUAYS by PATH LINKs. | Accessibility. |
 
@@ -502,7 +493,6 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
   <Centroid>
     <Name/>
     <Location>
-      <!-- Element before ... -->
       <Longitude>7.43913088992</Longitude>
       <Latitude>46.94883228914</Latitude>
       <Altitude>540.2</Altitude>
@@ -516,7 +506,6 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
   </AccessibilityAssessment>
   <alternativeNames>
     <AlternativeName id="ch:1:sloid:7000:it" version="1">
-      <!-- ... element in between ... -->
       <NameType>alias</NameType>
       <Name lang="it">Berna</Name>
     </AlternativeName>
@@ -538,7 +527,6 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
   </facilities>
   <TopographicPlaceRef ref="BE-bern" version="1"/>
   <Locale>
-    <!-- Element before ... -->
     <TimeZone>Europe/Zurich</TimeZone>
   </Locale>
   <levels>
@@ -572,7 +560,6 @@ According to EPIAP definitions, a quay has, e.g., `WheelchairAccess` if it is re
   <LimitedUse>interchangeOnly</LimitedUse>
   <Weighting>preferredInterchange</Weighting>
   <quays>
-    <!-- Element before ... -->
     <Quay id="ch:1:sloid:7000:5:9" version="1"/>
   </quays>
   <accessSpaces>

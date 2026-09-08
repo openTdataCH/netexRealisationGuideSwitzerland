@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <AccessibilityAssessment id="generated" version="1">
   <MobilityImpairedAccess>true
-    <!-- Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. -->
+    <!-- Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. -->
   </MobilityImpairedAccess>
   <limitations>
     <!-- Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. -->
@@ -11,22 +11,25 @@
         <!-- Accessibility. -->
       </WheelchairAccess>
       <StepFreeAccess>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </StepFreeAccess>
       <StairFreeAccess>true
-        <!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. -->
+        <!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. -->
       </StairFreeAccess>
+      <RampFreeAccess>true
+        <!-- Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. -->
+      </RampFreeAccess>
       <GuideDogAccess>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </GuideDogAccess>
       <TactileGuidanceAvailable>true
-        <!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </TactileGuidanceAvailable>
       <VisualSignsAvailable>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </VisualSignsAvailable>
       <LevelAccessIntoVehicle>true
-        <!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. -->
+        <!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </LevelAccessIntoVehicle>
     </AccessibilityLimitation>
   </limitations>

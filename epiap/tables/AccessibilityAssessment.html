@@ -237,7 +237,7 @@
       <td>1..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Summary indication as to whether the component is considered to be accessible or not.</td>
-      <td>Accessibility. Overall assessmentfor mobility impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace.</td>
+      <td>Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace.</td>
     </tr>
     <tr>
       <td> </td>
@@ -273,7 +273,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has step free access.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -282,7 +282,16 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0</td>
-      <td>Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage.</td>
+      <td>Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>RampFreeAccess</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE has ramp free access. Ramp free isn’t necessary absolute. If a ramp is not steep, then a PLACE can still be considered ramp free.</td>
+      <td>Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -291,7 +300,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE allows guide dog access.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -300,7 +309,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has tactile guidance.</td>
-      <td>Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -309,7 +318,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has visual signals for the hearing impaired.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -318,7 +327,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).</td>
-      <td>Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed.</td>
+      <td>Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
   </tbody>
 </table>
