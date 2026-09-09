@@ -245,16 +245,15 @@
 <p><strong>Private Mobility</strong></p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Parking</code> ?</li>
-  <li><code class="language-plaintext highlighter-rouge">VehicleMeetingPoint</code> ?</li>
+  <li><code class="language-plaintext highlighter-rouge">Parking</code> (not planned)</li>
+  <li><code class="language-plaintext highlighter-rouge">VehicleMeetingPoint</code></li>
 </ul>
 
 <p><strong>Path Navigation</strong></p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">SitePathLink</code> - noch nicht?</li>
-  <li><code class="language-plaintext highlighter-rouge">PathJunction</code> - noch nicht?</li>
-  <li><code class="language-plaintext highlighter-rouge">AccessSpace</code> for routing</li>
+  <li><code class="language-plaintext highlighter-rouge">SitePathLink</code></li>
+  <li><code class="language-plaintext highlighter-rouge">PathJunction</code></li>
 </ul>
 
 <p><strong>Facilities &amp; Equipments</strong></p>
@@ -263,7 +262,7 @@
   <li><code class="language-plaintext highlighter-rouge">EquipmentPlace</code> (in Quay, Entrance, StopPlace (indirecty via <code class="language-plaintext highlighter-rouge">AccessSpace</code>))</li>
   <li><code class="language-plaintext highlighter-rouge">AccessSpace</code> - rules tbd</li>
   <li><code class="language-plaintext highlighter-rouge">SiteFacilitySet</code>, <code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code></li>
-  <li><code class="language-plaintext highlighter-rouge">RampEquipment</code>, <code class="language-plaintext highlighter-rouge">LiftEquipment</code>, <code class="language-plaintext highlighter-rouge">TicketingEquipment</code>, <code class="language-plaintext highlighter-rouge">SanitaryEquipment</code>, <code class="language-plaintext highlighter-rouge">PassengerInformationEquipment</code> ?</li>
+  <li><code class="language-plaintext highlighter-rouge">RampEquipment</code>, <code class="language-plaintext highlighter-rouge">LiftEquipment</code>, <code class="language-plaintext highlighter-rouge">TicketingEquipment</code>, <code class="language-plaintext highlighter-rouge">SanitaryEquipment</code>, <code class="language-plaintext highlighter-rouge">PassengerInformationEquipment</code></li>
 </ul>
 
 <p><strong>Service Contacts</strong></p>
@@ -277,7 +276,7 @@
 <p><strong>Vehicles</strong></p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">VehicleType</code>
+  <li><code class="language-plaintext highlighter-rouge">VehicleType</code> (later)
     <ul>
       <li><code class="language-plaintext highlighter-rouge">equipments</code></li>
       <li><code class="language-plaintext highlighter-rouge">facilities</code></li>
@@ -290,7 +289,7 @@
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">BoardingPosition</code> in TrainStopAssignment</li>
-  <li><code class="language-plaintext highlighter-rouge">PlatformHeight</code>, <code class="language-plaintext highlighter-rouge">GapToPlatform</code></li>
+  <li><code class="language-plaintext highlighter-rouge">PlatformHeight</code>, <code class="language-plaintext highlighter-rouge">GapToPlatform</code> (not planned)</li>
 </ul>
 
 <h2 id="other-noteworthy-differences">Other noteworthy differences</h2>
@@ -316,7 +315,8 @@
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em> TODO</p>
 
 <h3 id="purpose">Purpose</h3>
-<p>…</p>
+
+<p>An assessment of the usability by passengers with specific needs, for example, those needing wheelchair access, step-free access or for the visually or the auditorily impaired.</p>
 
 <h3 id="table">Table</h3>
 
@@ -519,11 +519,11 @@
       <td>Whether the platform is high enough and gap is small enough for level access into vehicle.<br /><br />At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">EscalatorFreeAccess</code></td>
+      <td><code class="language-plaintext highlighter-rouge">EscalatorFreeAccess</code> (not included in profile)</td>
       <td>Reachable without using an escalator.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">LiftFreeAccess</code></td>
+      <td><code class="language-plaintext highlighter-rouge">LiftFreeAccess</code> (not included in profile)</td>
       <td>Reachable without using an elevator.</td>
     </tr>
     <tr>
@@ -553,11 +553,18 @@
   <li><code class="language-plaintext highlighter-rouge">RampFreeAccess</code>is thus a stronger form of <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> excluding steeper slopes.</li>
 </ul>
 
-<h4 id="lifts-entrances---open-questions">Lifts, Entrances - OPEN QUESTIONS</h4>
+<h4 id="limitiations-of-accessibilityassessment">Limitiations of AccessibilityAssessment</h4>
 
-<p>If, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> or <code class="language-plaintext highlighter-rouge">StairFreeAccess</code> requires using a lift, this information cannot easily be conveyed. It would, however, be of interest: requires more time, knowing the location(s) might be helpful. Do we need navigation paths?</p>
+<ul>
+  <li>
+    <p>If, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> or <code class="language-plaintext highlighter-rouge">StairFreeAccess</code> requires using a lift, the <code class="language-plaintext highlighter-rouge">AccessibilityAssessment</code> does not convey this information.</p>
+  </li>
+  <li>
+    <p>According to EPIAP definitions, a quay with, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> means that there is at least one entrance from which it is reachable. It may be that <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> only works from a secondary entrance, not from the main entrance.</p>
+  </li>
+</ul>
 
-<p>According to EPIAP definitions, a quay has, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> if it is reachable from <em>any</em> entrance. It may be that <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> only works from a secondary entrance, not from the main entrance. Should we be able to express such situations?</p>
+<p>Such information can be encoded using <code class="language-plaintext highlighter-rouge">PathLink</code>s and <code class="language-plaintext highlighter-rouge">PathJunction</code>s that describe a routing network including accessibility and location data.</p>
 
 <h2 id="stopplace---the-additional-elements">StopPlace - the Additional Elements</h2>
 
