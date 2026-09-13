@@ -5,60 +5,490 @@ Note: The following list is not necessarily comprehensive.
 
 ## Main differences
 
-EPIAP describes the following additional elements that need to be considered. 
+The following lists aim to give an overviiew of all elements related to accessibility information. Most of them are described in EPIAP, while a few are documented in greater detail in Part 1 of NeTEx (in particular, various Services and enumerations). 
 
-**AccessibilityAssessment**
-* `AccessibilityAssessment` for: 
-    * StopPlace 
-    * Quay. 
-    * Entrance
+The elements in ***italics*** are the ones that are (tentatively) elected for being included in the Swiss profile. Note that, in contrast, the French profile includes practically the totality of EPIAP. 
+
+### AccessibilityAssessment
+
+***AccessibilityAssessment*** for:
+- ***StopPlace***
+- ***Quay.***
+- ***Entrance***
+- Line - ?
+- NavigationPath
+- ***PathLink***
+- ***SanitaryEquipment***
+- any SiteElement
+
+### Basic Orientation
+
+***Level*** (NO, not FR, but EPIAP says mandatory if > 1)
+- AccessibilityAssessment
+- ***Description***
+- ***Name***
+- PublicUse
+
+***Entrance*** 
+- **EntranceType**
+-  Height 
+- ***IsEntry*** 
+- ***IsExit*** 
+- IsExternal 
+-  ***Width*** 
+- ***checkConstraints*** 
+- ***placeEquipments***
+
+***AccessSpace***
 
 
-**Basic Orientation**
+### Private Mobility
 
-* `Level` - mandatory if > 1
-* `Entrance`
+***Parking***
+- ***ParkingType***
+- ***ParkingVehicleType***
+- RechargingAvailable
+- Principal***Capacity***
+- TotalCapacity
+- etc.
 
+***VehicleMeetingPoint***
 
-**Private Mobility**
-
-* `Parking` (not planned)
-* `VehicleMeetingPoint` 
+Crossing 
+- AcousticCrossingAids 
+- AcousticDeviceSensors 
+- BumpCrossing 
+- CrossingType 
+- MarkingStatus 
+-  PedestrianLights 
+-  TactileGuidanceStrips 
+-  TactileWarningStrip 
+-  VibratingCrossingAids 
+- VisualObstacle
+-  ZebraCrossing 
 
 
 **Path Navigation**
 
-* `SitePathLink` 
-* `PathJunction`
+***SitePathLink***
+- ***AccessFeatureType*** 
+- ***AccessibilityAssessment*** 
+- ***AllAreasWheelchair*** 
+- ***AllowedUse*** 
+- Back 
+- ***Covered*** 
+- ***Description*** 
+- ***Distance*** 
+- FlooringType 
+- ***From*** 
+- ***Gated*** 
+- Gradient
+- LeftSideBorder
+- Lighting 
+- ***MinimumWidth*** 
+- ***NumberOfSteps*** 
+- PassageType 
+- PublicUse 
+- RightSideBorder
+- TactileGuidingStrip 
+- TactileWarningStrip 
+- TiltAngle 
+- TiltType 
+- Towards 
+- ***TransferDuration***
+- ***Transition***
+- checks
+- placeEquipments
+
+***PathLinkEnd***
+- ***EntranceRef***
+- ***LevelRef***
+- ***PlaceRef***
+
+PathLinkSequence
+- Instruction
+- Label
+- PathLinkRef
+- Reverse
+
+***PathJunction***
+- AllAreasWheelchair
+- Covered
+- Gated
+- Label
+- Lighting
+- PublicUse
+- ***SiteComponentRef***
+
+ConnectionEnd
+- MobilityRestrictedTravellerDuration
 
 
-**Facilities & Equipments**
+NavigationPath
+- AccessibilityAssessment
+- Covered
+- From
+- To
+- Gated
+- Lighting
+- NavigationType
+- TransferDuration
+- pathLinksInSequence
 
-* `EquipmentPlace` (in Quay, Entrance, StopPlace (indirecty via `AccessSpace`)) 
-* `AccessSpace` - rules tbd
-* `SiteFacilitySet`, `ServiceFacilitySet`
-* `RampEquipment`, `LiftEquipment`, `TicketingEquipment`, `SanitaryEquipment`, `PassengerInformationEquipment`
-
-
-**Service Contacts**
-
-* `Operator` - `ContactDetails`
-* `AssistanceService`
-* `AssistanceBookingService`
-
-
-**Vehicles**
-
-* `VehicleType` (later)
-    * `equipments`
-    * `facilities`
-    * `equipmentProfiles` - `VehicleEquipmentProfile`
+***WalkTransferduration*** (in SiteConnection, DefaultConnection)
+- ***MobilityRestrictedTravellerDuration***
 
 
-**Vehicle Stop Interaction**
 
-* `BoardingPosition` in TrainStopAssignment
-* `PlatformHeight`, `GapToPlatform` (not planned)
+
+### Facilities & Equipments
+
+
+***EquipmentPlace*** (in Quay, Entrance, StopPlace (indirecty via `AccessSpace`))
+
+
+any Site
+- ***entrances***
+- ***equipmentPlaces***
+- ***levels***
+- ***localServices***
+- ***placeEquipments***
+
+
+any SiteElement
+- AccessibilityAssessment
+- Covered
+- Gated
+- Lighting
+- facilities
+- etc.
+
+
+any Equipment
+- ***Description***
+- ***Image***
+- ***Name***
+- ***Note***
+- ***OutOfService***
+- ***TypeOfEquipmentRef***
+
+
+EquipmentPosition
+- Description
+- Location
+- ReferencePointRef
+- XOffset
+- YOffset
+
+
+***EntranceEquipment***
+- AcousticSensor 
+- AudioOrVideolntercom 
+- AudioPassthroughindicator 
+- ***AutomaticDoor***
+- ***Barrier***
+- ***GlassDoor***
+- ***Door*** 
+- DoorstepMark 
+* ***DropKerbOutside*** 
+- EntranceAttention 
+- EntranceRequiresStaffing 
+-  ***EntranceRequiresTicket***
+- ***KeptOpen*** 
+- NecessaryForceToOpen 
+- ***NumberOfGates*** 
+- RampDoorbell optional 0:1
+- ***RevolvingDoor*** 
+- TurningSpacePosition 
+- ***WheelchairPassable*** 
+- WheelchairTurningCircle
+- etc.
+
+
+
+***EscalatorEquipment***
+- ***DogsMustBeCarried***
+- TactileActuators
+- etc.
+
+
+***LiftEquipment***
+- ***AudioAnnouncements*** 
+- ***Automatic***
+- ***BrailleButtons***
+- ButtonsHeight 
+- CallButtonHeight
+- ***Depth*** 
+- DirectionButtonHeight 
+- ExternalFloorSelection 
+- GroundMarkalignedWithButton 
+- HandrailHeight 
+- HandrailType 
+- ***InternalWidth*** 
+- LowerHandrailHeight 
+- MagneticinductionLoop 
+- MaximumLoad 
+- MirrorOnOppositeSide 
+- RaisedButtons 
+- ReachedFloorAnnouncement 
+- SignageToLift 
+- ***TactileActuators*** 
+- ***TactileGroundFloorButton*** 
+- WheelchairTurningCircle 
+- etc.
+
+
+
+***RampEquipment***
+- ***Gradient***
+- ***GradientType***
+- HandrailHeight
+- HandrailType
+- Length
+- Pedestal
+- RestStopDistance
+- SafetyEdge
+
+
+
+***TravelatorEquipment***
+- Gradient
+- TactileActuators
+- ***SafeForGuideDog***
+- etc.
+
+Staircase
+- BottomEnd 
+- ContinuousHandrail 
+- Depth 
+- HandrailHeight 
+- LowerHandrailHeight 
+- NumberOfFlights 
+- NumberOfSteps
+- SpiralStair 
+- StepColourContrast 
+- StepCondition 
+- StepHeight 
+- StepLength 
+- etc.
+
+
+
+***LuggageLockerEquipment***
+- ***BlindAccessible***
+- ***WheelchairAccepted***
+- ***NumberOfLockers***
+- etc.
+
+
+***TrolleyStandEquipment***
+- ***FreeToUse***
+
+
+PassengerEquipment
+- Fixed
+
+***PassengerSafetyEquipment***
+- ***AcousticAnnouncements***
+- ***AcousticAnnouncementsTrigger***
+- ***AnnouncementTriggeringMethod***
+- ***HeightOfSosPanel***
+- ***Lighting***
+- ***PanicButton***
+- ***SosPanel***
+
+
+
+***SanitaryEquipment***
+- ***AccessibilityAssessment***
+- ***CallButtonAvailable***
+- DrinkingWater 
+- ***Gender*** 
+- HandWashing
+- KeyScheme - ?
+- LockedAccess - ?
+- SharpsDisposal 
+- Staffing 
+- SupportBarHeigth 
+- ***ToiletsType*** 
+- WheelchairTurningCircle 
+
+***TicketingEquipment*** 
+- DisabledPriority 
+- HeightOfLowCounter 
+- HeightOfMachinelnterface 
+- ***InductionLoops*** 
+- LowCounterAccess 
+- ***NumberOfMachines*** 
+- ***TactilelnterfaceAvailable*** 
+- ***TicketCounter*** 
+- ***TicketMachines*** 
+- ***WheelchairSuitable*** 
+
+
+QueingEquipment - ?
+- DisabledPriority
+- QueingSeatedPossible
+- RailedQueue
+- TicketedQueue
+
+
+RubbishDisposalEquipment
+
+
+***TicketValidatorEquipment***
+- AudioValidationFeedback
+- TactileValidationFeedback
+- ValidationGuidance
+- VisualValidationFeedback
+
+
+ShelterEquipment - ?
+- DistanceFromNearestKerb
+- Enclosed
+
+
+***WaitingEquipment***
+- AirConditioned
+- ***Heated***
+- ***Seats***
+- ***SmokingAllowed***
+- ***StepFree***
+- ***WheelchairAreaLength***
+- ***WheelchairAreaWidth***
+- etc.
+
+
+***WaitingRoomEquipment***
+- ***Facilities***
+- ***TypeOfFareClass***
+
+
+***SignEquipment*** - ?
+- ***AsBraille***
+- ***AudioTriggerMethod***
+- Contrast
+- ***FontSize***
+- etc.
+
+
+Accommodation
+- AcommodationFacility
+- PassengercommsFacilityList
+- ToiletFacility
+
+
+localServices in StopPlace
+
+***AssistanceService***
+- ***AccessibilityTrainedStaff***
+- ***AssistanceAvailability***
+- ***SafetyFacilityList***
+- ***etc.***
+
+***AssistanceBookingService***
+
+***LostPropertyService***
+
+***LuggageService***
+- LuggageMaximalWeigth
+- ***LuggageTrolleys***
+- WheelchairLuggageTrolleys
+- etc.
+
+***MeetingPointService***
+- ***Label***
+- ***MeetingPointType***
+
+***TicketingService***
+- ***MobileDeviceTickets***
+- ***OnboardPurchase***
+- ***TicketCounterService***
+
+
+
+***SiteFrame***
+- ***siteFacilitySets***
+
+***SiteFacilitySet for***
+- ***StopPlace***
+- ***Quay***
+
+
+***SiteFacilitySet***
+- ***AccessFacilityList***
+- ***AccessibilityInfoFacilityList***
+- ***AccessibilityToolList*** 
+- ***AssistanceFacilityList***
+- ***Description*** 
+- ***LuggageLockerFacilityList*** 
+- ***LuggageServiceFacilityList*** 
+- ***MobilityFacilityList***
+- ***SafeteyFacilityList***
+- ***ParkingFacilityList*** 
+- ***Staffing***
+- ***SanitaryFacilityList***
+- ***TicketingServiceFacilityList*** 
+- etc.
+
+
+***ServiceFacilitySet***
+- ***VehicleAccessFacilityList***
+- ***AccommodationFacilityLis***t - pushchair, wheelchair
+- ***LuggageCarriageFacilityList*** - pushchairsAllowed, cyclesAllowed, etc.
+- accommodations
+- onboardStays
+
+
+
+PlaceLighting
+- AlwaysLit
+- Lighting
+- LightingMethod
+
+RoughSurface
+- SurfaceType
+
+
+***Operator***
+- ***ContactDetails***
+
+***CustomerService***
+- ***Email***
+- ***InfoLink***
+- ***Phone***
+
+
+
+### Vehicles & Vehicle Stop Interaction
+
+***VehicleType (later)***
+- ***Description*** 
+- ***HasHoist*** 
+- ***HasLiftOrRamp*** 
+- Height 
+- Length
+- ***LowFloor*** 
+- ***equipments***
+- ***facilities***
+- ***equipmentProfiles - VehicleEquipmentProfile - WheelchairVehicleEquipment***
+- ***PassengerCapacity***
+	- ***WheelchairPlaceCapacity***
+- etc.
+
+PlatformHeight, GapToPlatform
+
+***BoardingPosition*** (NO, not FR)
+- ***BoardingPositionType***
+- ***Label***
+
+***TrainStopAssignment***
+- ***BoardingPositionRef***
+- ***EntranceToVehicle***
+- PassengerStopAssignmentRef
+- TrainRef
+- TrainComponentRef
+
 
 
 
