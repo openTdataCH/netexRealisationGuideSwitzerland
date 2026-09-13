@@ -222,74 +222,548 @@
 
 <h2 id="main-differences">Main differences</h2>
 
-<p>EPIAP describes the following additional elements that need to be considered.</p>
+<p>The following lists aim to give an overviiew of all elements related to accessibility information. Most of them are described in EPIAP, while a few are documented in greater detail in Part 1 of NeTEx (in particular, various Services and enumerations).</p>
 
-<p><strong>AccessibilityAssessment</strong></p>
+<p>The elements in <strong><em>italics</em></strong> are the ones that are (tentatively) elected for being included in the Swiss profile. Note that, in contrast, the French profile includes practically the totality of EPIAP.</p>
+
+<h3 id="accessibilityassessment">AccessibilityAssessment</h3>
+
+<p><strong><em>AccessibilityAssessment</em></strong> for:</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">AccessibilityAssessment</code> for:
-    <ul>
-      <li>StopPlace</li>
-      <li>Quay.</li>
-      <li>Entrance</li>
-    </ul>
-  </li>
+  <li><strong><em>StopPlace</em></strong></li>
+  <li><strong><em>Quay.</em></strong></li>
+  <li><strong><em>Entrance</em></strong></li>
+  <li>Line - ?</li>
+  <li>NavigationPath</li>
+  <li><strong><em>PathLink</em></strong></li>
+  <li><strong><em>SanitaryEquipment</em></strong></li>
+  <li>any SiteElement</li>
 </ul>
 
-<p><strong>Basic Orientation</strong></p>
+<h3 id="basic-orientation">Basic Orientation</h3>
 
+<p><strong><em>Level</em></strong> (NO, not FR, but EPIAP says mandatory if &gt; 1)</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Level</code> - mandatory if &gt; 1</li>
-  <li><code class="language-plaintext highlighter-rouge">Entrance</code></li>
+  <li>AccessibilityAssessment</li>
+  <li><strong><em>Description</em></strong></li>
+  <li><strong><em>Name</em></strong></li>
+  <li>PublicUse</li>
 </ul>
 
-<p><strong>Private Mobility</strong></p>
-
+<p><strong><em>Entrance</em></strong></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Parking</code> (not planned)</li>
-  <li><code class="language-plaintext highlighter-rouge">VehicleMeetingPoint</code></li>
+  <li><strong>EntranceType</strong></li>
+  <li>Height</li>
+  <li><strong><em>IsEntry</em></strong></li>
+  <li><strong><em>IsExit</em></strong></li>
+  <li>IsExternal</li>
+  <li><strong><em>Width</em></strong></li>
+  <li><strong><em>checkConstraints</em></strong></li>
+  <li><strong><em>placeEquipments</em></strong></li>
+</ul>
+
+<p><strong><em>AccessSpace</em></strong></p>
+
+<h3 id="private-mobility">Private Mobility</h3>
+
+<p><strong><em>Parking</em></strong></p>
+<ul>
+  <li><strong><em>ParkingType</em></strong></li>
+  <li><strong><em>ParkingVehicleType</em></strong></li>
+  <li>RechargingAvailable</li>
+  <li>Principal<strong><em>Capacity</em></strong></li>
+  <li>TotalCapacity</li>
+  <li>etc.</li>
+</ul>
+
+<p><strong><em>VehicleMeetingPoint</em></strong></p>
+
+<p>Crossing</p>
+<ul>
+  <li>AcousticCrossingAids</li>
+  <li>AcousticDeviceSensors</li>
+  <li>BumpCrossing</li>
+  <li>CrossingType</li>
+  <li>MarkingStatus</li>
+  <li>PedestrianLights</li>
+  <li>TactileGuidanceStrips</li>
+  <li>TactileWarningStrip</li>
+  <li>VibratingCrossingAids</li>
+  <li>VisualObstacle</li>
+  <li>ZebraCrossing</li>
 </ul>
 
 <p><strong>Path Navigation</strong></p>
 
+<p><strong><em>SitePathLink</em></strong></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">SitePathLink</code></li>
-  <li><code class="language-plaintext highlighter-rouge">PathJunction</code></li>
+  <li><strong><em>AccessFeatureType</em></strong></li>
+  <li><strong><em>AccessibilityAssessment</em></strong></li>
+  <li><strong><em>AllAreasWheelchair</em></strong></li>
+  <li><strong><em>AllowedUse</em></strong></li>
+  <li>Back</li>
+  <li><strong><em>Covered</em></strong></li>
+  <li><strong><em>Description</em></strong></li>
+  <li><strong><em>Distance</em></strong></li>
+  <li>FlooringType</li>
+  <li><strong><em>From</em></strong></li>
+  <li><strong><em>Gated</em></strong></li>
+  <li>Gradient</li>
+  <li>LeftSideBorder</li>
+  <li>Lighting</li>
+  <li><strong><em>MinimumWidth</em></strong></li>
+  <li><strong><em>NumberOfSteps</em></strong></li>
+  <li>PassageType</li>
+  <li>PublicUse</li>
+  <li>RightSideBorder</li>
+  <li>TactileGuidingStrip</li>
+  <li>TactileWarningStrip</li>
+  <li>TiltAngle</li>
+  <li>TiltType</li>
+  <li>Towards</li>
+  <li><strong><em>TransferDuration</em></strong></li>
+  <li><strong><em>Transition</em></strong></li>
+  <li>checks</li>
+  <li>placeEquipments</li>
 </ul>
 
-<p><strong>Facilities &amp; Equipments</strong></p>
-
+<p><strong><em>PathLinkEnd</em></strong></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">EquipmentPlace</code> (in Quay, Entrance, StopPlace (indirecty via <code class="language-plaintext highlighter-rouge">AccessSpace</code>))</li>
-  <li><code class="language-plaintext highlighter-rouge">AccessSpace</code> - rules tbd</li>
-  <li><code class="language-plaintext highlighter-rouge">SiteFacilitySet</code>, <code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code></li>
-  <li><code class="language-plaintext highlighter-rouge">RampEquipment</code>, <code class="language-plaintext highlighter-rouge">LiftEquipment</code>, <code class="language-plaintext highlighter-rouge">TicketingEquipment</code>, <code class="language-plaintext highlighter-rouge">SanitaryEquipment</code>, <code class="language-plaintext highlighter-rouge">PassengerInformationEquipment</code></li>
+  <li><strong><em>EntranceRef</em></strong></li>
+  <li><strong><em>LevelRef</em></strong></li>
+  <li><strong><em>PlaceRef</em></strong></li>
 </ul>
 
-<p><strong>Service Contacts</strong></p>
-
+<p>PathLinkSequence</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">Operator</code> - <code class="language-plaintext highlighter-rouge">ContactDetails</code></li>
-  <li><code class="language-plaintext highlighter-rouge">AssistanceService</code></li>
-  <li><code class="language-plaintext highlighter-rouge">AssistanceBookingService</code></li>
+  <li>Instruction</li>
+  <li>Label</li>
+  <li>PathLinkRef</li>
+  <li>Reverse</li>
 </ul>
 
-<p><strong>Vehicles</strong></p>
-
+<p><strong><em>PathJunction</em></strong></p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">VehicleType</code> (later)
+  <li>AllAreasWheelchair</li>
+  <li>Covered</li>
+  <li>Gated</li>
+  <li>Label</li>
+  <li>Lighting</li>
+  <li>PublicUse</li>
+  <li><strong><em>SiteComponentRef</em></strong></li>
+</ul>
+
+<p>ConnectionEnd</p>
+<ul>
+  <li>MobilityRestrictedTravellerDuration</li>
+</ul>
+
+<p>NavigationPath</p>
+<ul>
+  <li>AccessibilityAssessment</li>
+  <li>Covered</li>
+  <li>From</li>
+  <li>To</li>
+  <li>Gated</li>
+  <li>Lighting</li>
+  <li>NavigationType</li>
+  <li>TransferDuration</li>
+  <li>pathLinksInSequence</li>
+</ul>
+
+<p><strong><em>WalkTransferduration</em></strong> (in SiteConnection, DefaultConnection)</p>
+<ul>
+  <li><strong><em>MobilityRestrictedTravellerDuration</em></strong></li>
+</ul>
+
+<h3 id="facilities--equipments">Facilities &amp; Equipments</h3>
+
+<p><strong><em>EquipmentPlace</em></strong> (in Quay, Entrance, StopPlace (indirecty via <code class="language-plaintext highlighter-rouge">AccessSpace</code>))</p>
+
+<p>any Site</p>
+<ul>
+  <li><strong><em>entrances</em></strong></li>
+  <li><strong><em>equipmentPlaces</em></strong></li>
+  <li><strong><em>levels</em></strong></li>
+  <li><strong><em>localServices</em></strong></li>
+  <li><strong><em>placeEquipments</em></strong></li>
+</ul>
+
+<p>any SiteElement</p>
+<ul>
+  <li>AccessibilityAssessment</li>
+  <li>Covered</li>
+  <li>Gated</li>
+  <li>Lighting</li>
+  <li>facilities</li>
+  <li>etc.</li>
+</ul>
+
+<p>any Equipment</p>
+<ul>
+  <li><strong><em>Description</em></strong></li>
+  <li><strong><em>Image</em></strong></li>
+  <li><strong><em>Name</em></strong></li>
+  <li><strong><em>Note</em></strong></li>
+  <li><strong><em>OutOfService</em></strong></li>
+  <li><strong><em>TypeOfEquipmentRef</em></strong></li>
+</ul>
+
+<p>EquipmentPosition</p>
+<ul>
+  <li>Description</li>
+  <li>Location</li>
+  <li>ReferencePointRef</li>
+  <li>XOffset</li>
+  <li>YOffset</li>
+</ul>
+
+<p><strong><em>EntranceEquipment</em></strong></p>
+<ul>
+  <li>AcousticSensor</li>
+  <li>AudioOrVideolntercom</li>
+  <li>AudioPassthroughindicator</li>
+  <li><strong><em>AutomaticDoor</em></strong></li>
+  <li><strong><em>Barrier</em></strong></li>
+  <li><strong><em>GlassDoor</em></strong></li>
+  <li><strong><em>Door</em></strong></li>
+  <li>DoorstepMark</li>
+  <li><strong><em>DropKerbOutside</em></strong></li>
+  <li>EntranceAttention</li>
+  <li>EntranceRequiresStaffing</li>
+  <li><strong><em>EntranceRequiresTicket</em></strong></li>
+  <li><strong><em>KeptOpen</em></strong></li>
+  <li>NecessaryForceToOpen</li>
+  <li><strong><em>NumberOfGates</em></strong></li>
+  <li>RampDoorbell optional 0:1</li>
+  <li><strong><em>RevolvingDoor</em></strong></li>
+  <li>TurningSpacePosition</li>
+  <li><strong><em>WheelchairPassable</em></strong></li>
+  <li>WheelchairTurningCircle</li>
+  <li>etc.</li>
+</ul>
+
+<p><strong><em>EscalatorEquipment</em></strong></p>
+<ul>
+  <li><strong><em>DogsMustBeCarried</em></strong></li>
+  <li>TactileActuators</li>
+  <li>etc.</li>
+</ul>
+
+<p><strong><em>LiftEquipment</em></strong></p>
+<ul>
+  <li><strong><em>AudioAnnouncements</em></strong></li>
+  <li><strong><em>Automatic</em></strong></li>
+  <li><strong><em>BrailleButtons</em></strong></li>
+  <li>ButtonsHeight</li>
+  <li>CallButtonHeight</li>
+  <li><strong><em>Depth</em></strong></li>
+  <li>DirectionButtonHeight</li>
+  <li>ExternalFloorSelection</li>
+  <li>GroundMarkalignedWithButton</li>
+  <li>HandrailHeight</li>
+  <li>HandrailType</li>
+  <li><strong><em>InternalWidth</em></strong></li>
+  <li>LowerHandrailHeight</li>
+  <li>MagneticinductionLoop</li>
+  <li>MaximumLoad</li>
+  <li>MirrorOnOppositeSide</li>
+  <li>RaisedButtons</li>
+  <li>ReachedFloorAnnouncement</li>
+  <li>SignageToLift</li>
+  <li><strong><em>TactileActuators</em></strong></li>
+  <li><strong><em>TactileGroundFloorButton</em></strong></li>
+  <li>WheelchairTurningCircle</li>
+  <li>etc.</li>
+</ul>
+
+<p><strong><em>RampEquipment</em></strong></p>
+<ul>
+  <li><strong><em>Gradient</em></strong></li>
+  <li><strong><em>GradientType</em></strong></li>
+  <li>HandrailHeight</li>
+  <li>HandrailType</li>
+  <li>Length</li>
+  <li>Pedestal</li>
+  <li>RestStopDistance</li>
+  <li>SafetyEdge</li>
+</ul>
+
+<p><strong><em>TravelatorEquipment</em></strong></p>
+<ul>
+  <li>Gradient</li>
+  <li>TactileActuators</li>
+  <li><strong><em>SafeForGuideDog</em></strong></li>
+  <li>etc.</li>
+</ul>
+
+<p>Staircase</p>
+<ul>
+  <li>BottomEnd</li>
+  <li>ContinuousHandrail</li>
+  <li>Depth</li>
+  <li>HandrailHeight</li>
+  <li>LowerHandrailHeight</li>
+  <li>NumberOfFlights</li>
+  <li>NumberOfSteps</li>
+  <li>SpiralStair</li>
+  <li>StepColourContrast</li>
+  <li>StepCondition</li>
+  <li>StepHeight</li>
+  <li>StepLength</li>
+  <li>etc.</li>
+</ul>
+
+<p><strong><em>LuggageLockerEquipment</em></strong></p>
+<ul>
+  <li><strong><em>BlindAccessible</em></strong></li>
+  <li><strong><em>WheelchairAccepted</em></strong></li>
+  <li><strong><em>NumberOfLockers</em></strong></li>
+  <li>etc.</li>
+</ul>
+
+<p><strong><em>TrolleyStandEquipment</em></strong></p>
+<ul>
+  <li><strong><em>FreeToUse</em></strong></li>
+</ul>
+
+<p>PassengerEquipment</p>
+<ul>
+  <li>Fixed</li>
+</ul>
+
+<p><strong><em>PassengerSafetyEquipment</em></strong></p>
+<ul>
+  <li><strong><em>AcousticAnnouncements</em></strong></li>
+  <li><strong><em>AcousticAnnouncementsTrigger</em></strong></li>
+  <li><strong><em>AnnouncementTriggeringMethod</em></strong></li>
+  <li><strong><em>HeightOfSosPanel</em></strong></li>
+  <li><strong><em>Lighting</em></strong></li>
+  <li><strong><em>PanicButton</em></strong></li>
+  <li><strong><em>SosPanel</em></strong></li>
+</ul>
+
+<p><strong><em>SanitaryEquipment</em></strong></p>
+<ul>
+  <li><strong><em>AccessibilityAssessment</em></strong></li>
+  <li><strong><em>CallButtonAvailable</em></strong></li>
+  <li>DrinkingWater</li>
+  <li><strong><em>Gender</em></strong></li>
+  <li>HandWashing</li>
+  <li>KeyScheme - ?</li>
+  <li>LockedAccess - ?</li>
+  <li>SharpsDisposal</li>
+  <li>Staffing</li>
+  <li>SupportBarHeigth</li>
+  <li><strong><em>ToiletsType</em></strong></li>
+  <li>WheelchairTurningCircle</li>
+</ul>
+
+<p><strong><em>TicketingEquipment</em></strong></p>
+<ul>
+  <li>DisabledPriority</li>
+  <li>HeightOfLowCounter</li>
+  <li>HeightOfMachinelnterface</li>
+  <li><strong><em>InductionLoops</em></strong></li>
+  <li>LowCounterAccess</li>
+  <li><strong><em>NumberOfMachines</em></strong></li>
+  <li><strong><em>TactilelnterfaceAvailable</em></strong></li>
+  <li><strong><em>TicketCounter</em></strong></li>
+  <li><strong><em>TicketMachines</em></strong></li>
+  <li><strong><em>WheelchairSuitable</em></strong></li>
+</ul>
+
+<p>QueingEquipment - ?</p>
+<ul>
+  <li>DisabledPriority</li>
+  <li>QueingSeatedPossible</li>
+  <li>RailedQueue</li>
+  <li>TicketedQueue</li>
+</ul>
+
+<p>RubbishDisposalEquipment</p>
+
+<p><strong><em>TicketValidatorEquipment</em></strong></p>
+<ul>
+  <li>AudioValidationFeedback</li>
+  <li>TactileValidationFeedback</li>
+  <li>ValidationGuidance</li>
+  <li>VisualValidationFeedback</li>
+</ul>
+
+<p>ShelterEquipment - ?</p>
+<ul>
+  <li>DistanceFromNearestKerb</li>
+  <li>Enclosed</li>
+</ul>
+
+<p><strong><em>WaitingEquipment</em></strong></p>
+<ul>
+  <li>AirConditioned</li>
+  <li><strong><em>Heated</em></strong></li>
+  <li><strong><em>Seats</em></strong></li>
+  <li><strong><em>SmokingAllowed</em></strong></li>
+  <li><strong><em>StepFree</em></strong></li>
+  <li><strong><em>WheelchairAreaLength</em></strong></li>
+  <li><strong><em>WheelchairAreaWidth</em></strong></li>
+  <li>etc.</li>
+</ul>
+
+<p><strong><em>WaitingRoomEquipment</em></strong></p>
+<ul>
+  <li><strong><em>Facilities</em></strong></li>
+  <li><strong><em>TypeOfFareClass</em></strong></li>
+</ul>
+
+<p><strong><em>SignEquipment</em></strong> - ?</p>
+<ul>
+  <li><strong><em>AsBraille</em></strong></li>
+  <li><strong><em>AudioTriggerMethod</em></strong></li>
+  <li>Contrast</li>
+  <li><strong><em>FontSize</em></strong></li>
+  <li>etc.</li>
+</ul>
+
+<p>Accommodation</p>
+<ul>
+  <li>AcommodationFacility</li>
+  <li>PassengercommsFacilityList</li>
+  <li>ToiletFacility</li>
+</ul>
+
+<p>localServices in StopPlace</p>
+
+<p><strong><em>AssistanceService</em></strong></p>
+<ul>
+  <li><strong><em>AccessibilityTrainedStaff</em></strong></li>
+  <li><strong><em>AssistanceAvailability</em></strong></li>
+  <li><strong><em>SafetyFacilityList</em></strong></li>
+  <li><strong><em>etc.</em></strong></li>
+</ul>
+
+<p><strong><em>AssistanceBookingService</em></strong></p>
+
+<p><strong><em>LostPropertyService</em></strong></p>
+
+<p><strong><em>LuggageService</em></strong></p>
+<ul>
+  <li>LuggageMaximalWeigth</li>
+  <li><strong><em>LuggageTrolleys</em></strong></li>
+  <li>WheelchairLuggageTrolleys</li>
+  <li>etc.</li>
+</ul>
+
+<p><strong><em>MeetingPointService</em></strong></p>
+<ul>
+  <li><strong><em>Label</em></strong></li>
+  <li><strong><em>MeetingPointType</em></strong></li>
+</ul>
+
+<p><strong><em>TicketingService</em></strong></p>
+<ul>
+  <li><strong><em>MobileDeviceTickets</em></strong></li>
+  <li><strong><em>OnboardPurchase</em></strong></li>
+  <li><strong><em>TicketCounterService</em></strong></li>
+</ul>
+
+<p><strong><em>SiteFrame</em></strong></p>
+<ul>
+  <li><strong><em>siteFacilitySets</em></strong></li>
+</ul>
+
+<p><strong><em>SiteFacilitySet for</em></strong></p>
+<ul>
+  <li><strong><em>StopPlace</em></strong></li>
+  <li><strong><em>Quay</em></strong></li>
+</ul>
+
+<p><strong><em>SiteFacilitySet</em></strong></p>
+<ul>
+  <li><strong><em>AccessFacilityList</em></strong></li>
+  <li><strong><em>AccessibilityInfoFacilityList</em></strong></li>
+  <li><strong><em>AccessibilityToolList</em></strong></li>
+  <li><strong><em>AssistanceFacilityList</em></strong></li>
+  <li><strong><em>Description</em></strong></li>
+  <li><strong><em>LuggageLockerFacilityList</em></strong></li>
+  <li><strong><em>LuggageServiceFacilityList</em></strong></li>
+  <li><strong><em>MobilityFacilityList</em></strong></li>
+  <li><strong><em>SafeteyFacilityList</em></strong></li>
+  <li><strong><em>ParkingFacilityList</em></strong></li>
+  <li><strong><em>Staffing</em></strong></li>
+  <li><strong><em>SanitaryFacilityList</em></strong></li>
+  <li><strong><em>TicketingServiceFacilityList</em></strong></li>
+  <li>etc.</li>
+</ul>
+
+<p><strong><em>ServiceFacilitySet</em></strong></p>
+<ul>
+  <li><strong><em>VehicleAccessFacilityList</em></strong></li>
+  <li><strong><em>AccommodationFacilityLis</em></strong>t - pushchair, wheelchair</li>
+  <li><strong><em>LuggageCarriageFacilityList</em></strong> - pushchairsAllowed, cyclesAllowed, etc.</li>
+  <li>accommodations</li>
+  <li>onboardStays</li>
+</ul>
+
+<p>PlaceLighting</p>
+<ul>
+  <li>AlwaysLit</li>
+  <li>Lighting</li>
+  <li>LightingMethod</li>
+</ul>
+
+<p>RoughSurface</p>
+<ul>
+  <li>SurfaceType</li>
+</ul>
+
+<p><strong><em>Operator</em></strong></p>
+<ul>
+  <li><strong><em>ContactDetails</em></strong></li>
+</ul>
+
+<p><strong><em>CustomerService</em></strong></p>
+<ul>
+  <li><strong><em>Email</em></strong></li>
+  <li><strong><em>InfoLink</em></strong></li>
+  <li><strong><em>Phone</em></strong></li>
+</ul>
+
+<h3 id="vehicles--vehicle-stop-interaction">Vehicles &amp; Vehicle Stop Interaction</h3>
+
+<p><strong><em>VehicleType (later)</em></strong></p>
+<ul>
+  <li><strong><em>Description</em></strong></li>
+  <li><strong><em>HasHoist</em></strong></li>
+  <li><strong><em>HasLiftOrRamp</em></strong></li>
+  <li>Height</li>
+  <li>Length</li>
+  <li><strong><em>LowFloor</em></strong></li>
+  <li><strong><em>equipments</em></strong></li>
+  <li><strong><em>facilities</em></strong></li>
+  <li><strong><em>equipmentProfiles - VehicleEquipmentProfile - WheelchairVehicleEquipment</em></strong></li>
+  <li><strong><em>PassengerCapacity</em></strong>
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">equipments</code></li>
-      <li><code class="language-plaintext highlighter-rouge">facilities</code></li>
-      <li><code class="language-plaintext highlighter-rouge">equipmentProfiles</code> - <code class="language-plaintext highlighter-rouge">VehicleEquipmentProfile</code></li>
+      <li><strong><em>WheelchairPlaceCapacity</em></strong></li>
     </ul>
   </li>
+  <li>etc.</li>
 </ul>
 
-<p><strong>Vehicle Stop Interaction</strong></p>
+<p>PlatformHeight, GapToPlatform</p>
 
+<p><strong><em>BoardingPosition</em></strong> (NO, not FR)</p>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">BoardingPosition</code> in TrainStopAssignment</li>
-  <li><code class="language-plaintext highlighter-rouge">PlatformHeight</code>, <code class="language-plaintext highlighter-rouge">GapToPlatform</code> (not planned)</li>
+  <li><strong><em>BoardingPositionType</em></strong></li>
+  <li><strong><em>Label</em></strong></li>
+</ul>
+
+<p><strong><em>TrainStopAssignment</em></strong></p>
+<ul>
+  <li><strong><em>BoardingPositionRef</em></strong></li>
+  <li><strong><em>EntranceToVehicle</em></strong></li>
+  <li>PassengerStopAssignmentRef</li>
+  <li>TrainRef</li>
+  <li>TrainComponentRef</li>
 </ul>
 
 <h2 id="other-noteworthy-differences">Other noteworthy differences</h2>
@@ -311,7 +785,7 @@
 
 <p>Definition of the Swiss Accessibility Profile.</p>
 
-<h2 id="accessibilityassessment">AccessibilityAssessment</h2>
+<h2 id="accessibilityassessment-1">AccessibilityAssessment</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em> TODO</p>
 
 <h3 id="purpose">Purpose</h3>
