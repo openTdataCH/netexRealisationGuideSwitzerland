@@ -369,17 +369,17 @@ The first model includes localised vertices (e.g., Entrance, EquipmentPlace) con
 
 VMP = VehicleMeetingPoint, E = Entrance, AS = AccessSpace, EP = EquipmentPlace, Q = Quay, arrow = SitePathLink
 
-TODO INSERT IMAGE
+![IDFM](./media/accessibility/path_network_1.png)
 
 The second model uses localised and possibly non-localised (PathJunction) vertices, connected by similar SitePathLinks as the first model, but without Equipments and EquipmentPlaces.
 
 PJ = PathJunction
 
-TODO INSERT IMAGE
+![IDFM](./media/accessibility/path_network_2.png)
 
 The third model is a streamlined form that doesn't insist on PathJunctions if they don't provide additional information needed for accessibility routing.
 
-TODO INSERT IMAGE
+![IDFM](./media/accessibility/path_network_3.png)
 
 ---
 ---
@@ -398,73 +398,20 @@ TODO INSERT IMAGE
 ### Table
 
 
-
-*Table: AccessibilityAssessment*
-
-| Sub | Element | Usage | Card | Type | Description | Note |
-|-----|---------|-------|------|------|-------------|------|
-|  | MobilityImpairedAccess | mandatory | 1..1 | LimitationStatusEnumeration | Summary indication as to whether the component is considered to be accessible or not. | Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. |
-|  | limitations | expected | 0..1 | usageParameters_RelStructure | The ACCESSIBILITY LIMITATION that apply to component. | Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. |
-| + | AccessibilityLimitation | mandatory | 0..* | AccessibilityLimitation_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. |
-| ++ | WheelchairAccess | mandatory | 1..1 | LimitationStatusEnumeration | Whether a PLACE is wheelchair accessible. | Accessibility. |
-| ++ | StepFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has step free access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
-| ++ | StairFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0 | Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. |
-| ++ | RampFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has ramp free access. Ramp free isn't necessary absolute. If a ramp is not steep, then a PLACE can still be considered ramp free. | Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. |
-| ++ | GuideDogAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE allows guide dog access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
-| ++ | TactileGuidanceAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has tactile guidance. | Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
-| ++ | VisualSignsAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has visual signals for the hearing impaired. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
-| ++ | LevelAccessIntoVehicle | expected | 0..1 | LimitationStatusEnumeration | Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI). | Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+NewElement.md
 
 
 
-
-*→ [General NeTEx definition ](../xcore/netex/elements/AccessibilityAssessment.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/NewElement.html)*
 
 ### Example
 
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<AccessibilityAssessment id="generated" version="1">
-  <MobilityImpairedAccess>true
-    <!-- Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. -->
-  </MobilityImpairedAccess>
-  <limitations>
-    <!-- Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. -->
-    <AccessibilityLimitation>
-      <!-- Accessibility. -->
-      <WheelchairAccess>true
-        <!-- Accessibility. -->
-      </WheelchairAccess>
-      <StepFreeAccess>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
-      </StepFreeAccess>
-      <StairFreeAccess>true
-        <!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. -->
-      </StairFreeAccess>
-      <RampFreeAccess>true
-        <!-- Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. -->
-      </RampFreeAccess>
-      <GuideDogAccess>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
-      </GuideDogAccess>
-      <TactileGuidanceAvailable>true
-        <!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
-      </TactileGuidanceAvailable>
-      <VisualSignsAvailable>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
-      </VisualSignsAvailable>
-      <LevelAccessIntoVehicle>true
-        <!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
-      </LevelAccessIntoVehicle>
-    </AccessibilityLimitation>
-  </limitations>
-</AccessibilityAssessment>
-```
+NewElement.xml
 
 
 
-*→ [Template](./templates/AccessibilityAssessment.xml)*
+*→ [Template](./templates/NewElement.xml)*
 
 
 ## ExistingElementY - the Additional Elements
@@ -474,29 +421,7 @@ TODO INSERT IMAGE
 ### Table
 
 
-
-*Table: StopPlace*
-
-| Sub | Element | Usage | Card | Type | Description | Note |
-|-----|---------|-------|------|------|-------------|------|
-|  | [AccessibilityAssessment](./tables/AccessibilityAssessment.md) | mandatory | 0..1 | AccessibilityAssessment_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. |
-|  | Covered | expected | 0..1 | CoveredEnumeration | Whether the component is Indoors or outdoors. Default is Indoors. | Accessibility. |
-|  | AllAreasWheelchairAccessible | mandatory | 0..1 | xsd:boolean | Whether all areas of the component are wheelchair accessible. | Accessibility. |
-|  | facilities | expected | 0..1 | serviceFacilitySets_RelStructure | FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed. | Accessibility. |
-| + | SiteFacilitySet | optional | 1..* | SiteFacilitySetStructure | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). | Accessibility. |
-| + | SiteFacilitySetRef | optional | 0..* | SiteFacilitySetRefStructure | Reference to a SITE FACILITY SET. | Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong. |
-|  | levels | expected | 0..1 | levels_RelStructure | LEVELs found within SITe. | Accessibility. Mandatory if the StopPlace has more than one level. |
-| + | [Level](./tables/Level.md) | expected | 0..* | Level_VersionStructure | Level of a Building or SITE. | Accessibility. Mandatory if the StopPlace has more than one level. |
-| + | [Level](./tables/Level.md) | expected | 0..* | Level_VersionStructure | Level of a Building or SITE. | Accessibility. Mandatory if the StopPlace has more than one level. |
-|  | entrances | expected | 0..1 | pointOfInterestEntrances_RelStructure | ENTRANCEs to and within SITE. | Accessibility. |
-| + | [Entrance](./tables/Entrance.md) | expected | 0..* | SiteEntrance_VersionStructure | Entrance to a SITE. | Accessibility. |
-|  | equipmentPlaces | optional | 0..1 | equipmentPlaces_RelStructure | EQUIPMENT PLACEs within SITE COMPONENT. | Accessibility. TODO |
-|  | placeEquipments | optional | 0..1 | placeEquipments_RelStructure | Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT. | Accessibility. TODO |
-|  | localServices | expected | 0..1 | localServices_RelStructure | LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT. | Accessibility. |
-| + | AssistanceServiceRef | optional | 0..* | AssistanceServiceRefStructure | Identifier of an ASSISTANCE SERVICE. | Accessibility. |
-|  | accessSpaces | expected | 0..1 | accessSpaces_RelStructure | ACCESS SPACEs within the STOP PLACE. | Accessibility. |
-| + | [AccessSpace](./tables/AccessSpace.md) | expected | 0..* | AccessSpace_VersionStructure | An area within a STOP PLACE that does not give direct access to transport vehicles. May be connected to QUAYS by PATH LINKs. | Accessibility. |
-
+OldElement_withAccessibility.md
 
 
 
@@ -504,114 +429,11 @@ TODO INSERT IMAGE
 ### Example
 
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<StopPlace id="ch:1:sloid:7000" version="1">
-  <ValidBetween>
-    <FromDate>2025-12-14T00:00:00</FromDate>
-    <ToDate>2026-12-12T23:59:59</ToDate>
-  </ValidBetween>
-  <keyList>
-    <KeyValue>
-      <Key>HafasPriority</Key>
-      <Value>4</Value>
-    </KeyValue>
-    <KeyValue>
-      <Key>HafasKMInfo</Key>
-      <Value>1000</Value>
-    </KeyValue>
-  </keyList>
-  <privateCodes>
-    <PrivateCode type="didok">7000</PrivateCode>
-    <PrivateCode type="sloid">ch:1:sloid:7000</PrivateCode>
-  </privateCodes>
-  <Name>Bern</Name>
-  <ShortName/>
-  <PrivateCode/>
-  <Centroid>
-    <Name/>
-    <Location>
-      <Longitude>7.43913088992</Longitude>
-      <Latitude>46.94883228914</Latitude>
-      <Altitude>540.2</Altitude>
-    </Location>
-  </Centroid>
-  <AccessibilityAssessment id="generated" version="1">
-    <!-- Accessibility. -->
-    <MobilityImpairedAccess>true
-      <!-- Accessibility. -->
-    </MobilityImpairedAccess>
-  </AccessibilityAssessment>
-  <alternativeNames>
-    <AlternativeName id="ch:1:sloid:7000:it" version="1">
-      <NameType>alias</NameType>
-      <Name lang="it">Berna</Name>
-    </AlternativeName>
-  </alternativeNames>
-  <Covered>covered
-    <!-- Accessibility. -->
-  </Covered>
-  <AllAreasWheelchairAccessible>true
-    <!-- Accessibility. -->
-  </AllAreasWheelchairAccessible>
-  <facilities>
-    <!-- Accessibility. -->
-    <SiteFacilitySet id="ch:1:sitefacilityset:7000:1" version="1">
-      <!-- Accessibility. -->
-    </SiteFacilitySet>
-    <SiteFacilitySetRef ref="generated" version="1">
-      <!-- Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong. -->
-    </SiteFacilitySetRef>
-  </facilities>
-  <TopographicPlaceRef ref="BE-bern" version="1"/>
-  <Locale>
-    <TimeZone>Europe/Zurich</TimeZone>
-  </Locale>
-  <levels>
-    <!-- Accessibility. Mandatory if the StopPlace has more than one level. -->
-    <Level id="ch:1:level:7000:0" version="1">
-      <!-- Accessibility. Mandatory if the StopPlace has more than one level. -->
-    </Level>
-    <Level id="ch:1:level:7000:-1" version="1">
-      <!-- Accessibility. Mandatory if the StopPlace has more than one level. -->
-    </Level>
-  </levels>
-  <entrances>
-    <!-- Accessibility. -->
-    <Entrance id="ch:1:entrance:7000:1" version="1">
-      <!-- Accessibility. -->
-    </Entrance>
-  </entrances>
-  <equipmentPlaces>
-    <!-- Accessibility. TODO -->
-  </equipmentPlaces>
-  <placeEquipments>
-    <!-- Accessibility. TODO -->
-  </placeEquipments>
-  <localServices>
-    <!-- Accessibility. -->
-    <AssistanceServiceRef ref="generated" version="1">
-      <!-- Accessibility. -->
-    </AssistanceServiceRef>
-  </localServices>
-  <StopPlaceType>railStation</StopPlaceType>
-  <LimitedUse>interchangeOnly</LimitedUse>
-  <Weighting>preferredInterchange</Weighting>
-  <quays>
-    <Quay id="ch:1:sloid:7000:5:9" version="1"/>
-  </quays>
-  <accessSpaces>
-    <!-- Accessibility. -->
-    <AccessSpace id="ch:1:accessspace:7000:1" version="1">
-      <!-- Accessibility. -->
-    </AccessSpace>
-  </accessSpaces>
-</StopPlace>
-```
+OldElement_withAccessibility.xml
 
 
 
-*→ [Template](./templates/StopPlace_withAccessibility.xml)*
+*→ [Template](./templates/OldElement_withAccessibility.xml)*
 
 
 
