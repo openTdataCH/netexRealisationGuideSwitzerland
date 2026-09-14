@@ -167,17 +167,17 @@ The first model includes localised vertices (e.g., Entrance, EquipmentPlace) con
 
 VMP = VehicleMeetingPoint, E = Entrance, AS = AccessSpace, EP = EquipmentPlace, Q = Quay, arrow = SitePathLink
 
-TODO INSERT IMAGE
+![IDFM](./media/accessibility/path_network_1.png)
 
 The second model uses localised and possibly non-localised (PathJunction) vertices, connected by similar SitePathLinks as the first model, but without Equipments and EquipmentPlaces.
 
 PJ = PathJunction
 
-TODO INSERT IMAGE
+![IDFM](./media/accessibility/path_network_2.png)
 
 The third model is a streamlined form that doesn't insist on PathJunctions if they don't provide additional information needed for accessibility routing.
 
-TODO INSERT IMAGE
+![IDFM](./media/accessibility/path_network_3.png)
 
 ---
 ---
@@ -194,14 +194,14 @@ TODO INSERT IMAGE
 
 
 ### Table
-- [Swiss profile NeTEx definition](../site/tables/AccessibilityAssessment.md)
+- [Swiss profile NeTEx definition](../site/tables/NewElement.md)
 
-*→ [General NeTEx definition ](../xcore/netex/elements/AccessibilityAssessment.html)*
+*→ [General NeTEx definition ](../xcore/netex/elements/NewElement.html)*
 
 ### Example
-- [Example snippet](../site/xml-snippets/AccessibilityAssessment.xml)
+- [Example snippet](../site/xml-snippets/NewElement.xml)
 
-*→ [Template](./templates/AccessibilityAssessment.xml)*
+*→ [Template](./templates/NewElement.xml)*
 
 
 ## ExistingElementY - the Additional Elements
@@ -209,13 +209,13 @@ TODO INSERT IMAGE
 
 
 ### Table
-- [Swiss profile NeTEx definition](../site/tables/StopPlace_withAccessibility.md)
+- [Swiss profile NeTEx definition](../site/tables/OldElement_withAccessibility.md)
 
 
 ### Example
-- [Example snippet](../site/xml-snippets/StopPlace_withAccessibility.xml)
+- [Example snippet](../site/xml-snippets/OldElement_withAccessibility.xml)
 
-*→ [Template](./templates/StopPlace_withAccessibility.xml)*
+*→ [Template](./templates/OldElement_withAccessibility.xml)*
 
 
 

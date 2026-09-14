@@ -7,9 +7,7 @@ Note: The following list is not necessarily comprehensive.
 
 The following lists aim to give an overviiew of all elements related to accessibility information. Most of them are described in EPIAP, while a few are documented in greater detail in Part 1 of NeTEx (in particular, various Services and enumerations). 
 
-The elements in ***italics*** are the ones that are (tentatively) elected for being included in the Swiss profile. Note that, in contrast, the French profile includes practically the totality of EPIAP. 
-
-TODO Link to profile definition - see "Special Use Cases" - "Accessibility"
+The elements in ***italics*** are the ones that are (tentatively) elected for being included in the Swiss profile. Note that, in contrast, the French profile includes practically the totality of EPIAP. The extension of the Swiss profile to cover accessibility is documented [here](uc09_accessibility.md).
 
 
 ### AccessibilityAssessment
