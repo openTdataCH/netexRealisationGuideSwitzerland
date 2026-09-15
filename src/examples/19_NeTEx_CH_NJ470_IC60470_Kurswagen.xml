@@ -158,11 +158,6 @@
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
 						</ServiceJourneyPattern>
-						<!-- Pattern of the direct carriage product IC 60470: starts only where the
-						     carriages are coupled onto NJ 470 (Basel SBB). It needs its own pattern,
-						     because a ServiceJourney always traverses its complete JourneyPattern -
-						     there is no way to let a journey start at the second point of a shared
-						     pattern. The RouteView therefore also references the IC 60470 line. -->
 						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:IC60470" version="1">
 							<RouteView>
 								<LineRef ref="ch:1:slnid:IC60470" version="1"/>
