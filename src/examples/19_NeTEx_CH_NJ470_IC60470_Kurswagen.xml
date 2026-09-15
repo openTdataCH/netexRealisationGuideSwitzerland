@@ -134,23 +134,47 @@
 					</timingLinks>
 
 					<journeyPatterns>
-						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:NJ470_IC60470" version="1">
+						<!-- Pattern of the pulling train NJ 470: Zuerich HB - Basel SBB - Hamburg-Altona -->
+						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:NJ470" version="1">
 							<RouteView>
 								<LineRef ref="ch:1:slnid:NJ470" version="1"/>
 							</RouteView>
 							<DirectionType>outbound</DirectionType>
 							<pointsInSequence>
-								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:NJ470_IC60470:1" version="1" order="1">
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:NJ470:1" version="1" order="1">
 									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:3000" version="1"/>
 									<ForAlighting>false</ForAlighting>
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:NJ470_IC60470:2" version="1" order="2">
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:NJ470:2" version="1" order="2">
 									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:10" version="1"/>
 									<ForAlighting>true</ForAlighting>
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:NJ470_IC60470:3" version="1" order="3">
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:NJ470:3" version="1" order="3">
+									<ScheduledStopPointRef ref="de:1:SchedStopPoint:8002548" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+						</ServiceJourneyPattern>
+						<!-- Pattern of the direct carriage product IC 60470: starts only where the
+						     carriages are coupled onto NJ 470 (Basel SBB). It needs its own pattern,
+						     because a ServiceJourney always traverses its complete JourneyPattern -
+						     there is no way to let a journey start at the second point of a shared
+						     pattern. The RouteView therefore also references the IC 60470 line. -->
+						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:IC60470" version="1">
+							<RouteView>
+								<LineRef ref="ch:1:slnid:IC60470" version="1"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:IC60470:1" version="1" order="1">
+									<ScheduledStopPointRef ref="ch:1:SchedStopPoint:10" version="1"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:IC60470:2" version="1" order="2">
 									<ScheduledStopPointRef ref="de:1:SchedStopPoint:8002548" version="1"/>
 									<ForAlighting>true</ForAlighting>
 									<ForBoarding>false</ForBoarding>
@@ -206,7 +230,7 @@
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:NJ" version="1"/>
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>21:02:00</DepartureTime>
-							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:NJ470_IC60470" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:NJ470" version="1" nameOfRefClass="ServiceJourneyPattern"/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:NJ470" version="1"/>
 							<OperatorRef ref="ch:1:sboid:100003" version="1"/>
 							<LineRef ref="ch:1:slnid:NJ470" version="1"/>
@@ -225,7 +249,7 @@
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IC" version="1"/>
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>22:07:00</DepartureTime>
-							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:NJ470_IC60470" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:IC60470" version="1" nameOfRefClass="ServiceJourneyPattern"/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:IC60470" version="1"/>
 							<OperatorRef ref="ch:1:sboid:100001" version="1"/>
 							<LineRef ref="ch:1:slnid:IC60470" version="1"/>
