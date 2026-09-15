@@ -288,7 +288,7 @@
     ServiceCalendarFrame "1" o-- "0..*" AvailabilityCondition : contains
     ServiceCalendarFrame "1" o-- "0..*" DayType : contains
     ServiceCalendarFrame "1" o-- "0..*" DayTypeAssignment : contains
-    ServiceCalendarFrame "1" o-- "0..*" ServiceCalendar : contains
+    ServiceCalendarFrame "1" o-- "0..1*" ServiceCalendar : contains
     ServiceCalendarFrame "1" o-- "0..*" Timeband : contains
 
     %% Usage relations from external elements to AvailabilityCondition
@@ -465,7 +465,7 @@
 
 <h4 id="usage-notes">Usage Notes</h4>
 <ul>
-  <li>Note that <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are <code class="language-plaintext highlighter-rouge">FromDate</code>/ <code class="language-plaintext highlighter-rouge">ToDate</code>, <code class="language-plaintext highlighter-rouge">ValidDayBits</code>, and <code class="language-plaintext highlighter-rouge">timebands</code>.</li>
+  <li>Note that <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are <code class="language-plaintext highlighter-rouge">FromDate</code>/ <code class="language-plaintext highlighter-rouge">ToDate</code>, <code class="language-plaintext highlighter-rouge">ValidDayBits</code>, and <code class="language-plaintext highlighter-rouge">timebands</code>. See the detailed explanation under <a href="#availabilitycondition">AvailabilityCondition</a> below.</li>
 </ul>
 
 <h3 id="availabilitycondition">AvailabilityCondition</h3>
@@ -473,6 +473,10 @@
 
 <h4 id="purpose-1">Purpose</h4>
 <p>Temporal availability in terms of <code class="language-plaintext highlighter-rouge">Date</code>s, <code class="language-plaintext highlighter-rouge">Timeband</code>s, <code class="language-plaintext highlighter-rouge">ValidDayBits</code>.</p>
+
+<p><strong>How <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>/<code class="language-plaintext highlighter-rouge">ValidDayBits</code> work:</strong> an <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> defines a validity period (<code class="language-plaintext highlighter-rouge">FromDate</code>/<code class="language-plaintext highlighter-rouge">ToDate</code>) together with a day-by-day pattern (<code class="language-plaintext highlighter-rouge">ValidDayBits</code>) indicating on which individual days within that period the condition applies. <code class="language-plaintext highlighter-rouge">ValidDayBits</code> is a bit string with exactly one bit per
+calendar day of the period — <code class="language-plaintext highlighter-rouge">1</code> means the day is valid, <code class="language-plaintext highlighter-rouge">0</code> means it is not (directly equivalent to an HRDF bitfield). A <code class="language-plaintext highlighter-rouge">ServiceJourney</code> (or any other element that needs temporal validity) references one <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> via <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code>; the referenced object itself is always defined centrally
+in this frame, never inline.</p>
 
 <h4 id="table-1">Table</h4>
 
@@ -598,7 +602,7 @@
   <li>AvailabilityCondition replaces OperatingDay and OperatingPeriod. Whenever a reference to a VP (“Verkehrsperiode” or “operating period” in english) is needed, we use an <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code>:</li>
   <li>The referenced <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s are centrally stored in the <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code>.</li>
   <li>The element <code class="language-plaintext highlighter-rouge">ValidDayBits</code> directly indicates the days on which some service is provided or not. They are similar to the HRDF bitfields.</li>
-  <li><code class="language-plaintext highlighter-rouge">ValidDayBits</code> is required whenever the <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> is of temporal nature (more often than not). Examples include:
+  <li><code class="language-plaintext highlighter-rouge">ValidDayBits</code> is expected whenever the <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> expresses a recurring day-by-day pattern, which is the case for most <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s in practice. Examples include:
     <ul>
       <li><code class="language-plaintext highlighter-rouge">ServiceJourney</code></li>
       <li><code class="language-plaintext highlighter-rouge">NoticeAssignment</code></li>
@@ -606,9 +610,10 @@
       <li><code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code></li>
     </ul>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are <code class="language-plaintext highlighter-rouge">FromDate</code>/<code class="language-plaintext highlighter-rouge">ToDate</code>, <code class="language-plaintext highlighter-rouge">ValidDayBits</code>, and <code class="language-plaintext highlighter-rouge">timebands</code> — none of these is mandatory on its own; an <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> may consist of only one
-of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</code>/<code class="language-plaintext highlighter-rouge">ToDate</code> for “summer only”, only <code class="language-plaintext highlighter-rouge">timebands</code> for “school holiday period”, or only <code class="language-plaintext highlighter-rouge">ValidDayBits</code> for “Sundays only”). <strong>However, we don’t do this in our profile. There is always exactly one <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> per element.</strong></li>
-  <li>Hint: The frames <code class="language-plaintext highlighter-rouge">TimetableFrame</code>, <code class="language-plaintext highlighter-rouge">ServiceFrame</code> and <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code> and their elements must have the same validity.</li>
+  <li><code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>s can be combined and ANDed (all the conditions must be fulfilled at the same time). Allowed elements to specify constraints are <code class="language-plaintext highlighter-rouge">FromDate</code>/<code class="language-plaintext highlighter-rouge">ToDate</code>, <code class="language-plaintext highlighter-rouge">ValidDayBits</code>, and <code class="language-plaintext highlighter-rouge">timebands</code> — <strong>none of these is mandatory on its own</strong>; an <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> may consist of only one
+of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</code>/<code class="language-plaintext highlighter-rouge">ToDate</code> for “summer only”, only <code class="language-plaintext highlighter-rouge">timebands</code> for “school holiday period”, or only <code class="language-plaintext highlighter-rouge">ValidDayBits</code> for “Sundays only”).
+<strong>Concrete use case we already have:</strong> every <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> in our examples combines <code class="language-plaintext highlighter-rouge">FromDate</code>/<code class="language-plaintext highlighter-rouge">ToDate</code> (the overall timetable period, e.g. one <code class="language-plaintext highlighter-rouge">Fahrplanjahr</code>) <strong>with</strong> <code class="language-plaintext highlighter-rouge">ValidDayBits</code> (the day-by-day pattern within that period) — this is the everyday case of the ANDing mechanism, directly equivalent to an HRDF “Verkehrsperiode + Bitfeld” combination. We do <strong>not</strong> currently have a use case that additionally combines <code class="language-plaintext highlighter-rouge">timebands</code> with the other two — see the note under <a href="#timeband">Timeband</a> below.</li>
+  <li>Note: the frames <code class="language-plaintext highlighter-rouge">TimetableFrame</code>, <code class="language-plaintext highlighter-rouge">ServiceFrame</code> and <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code> and their elements must have the same validity.</li>
   <li><code class="language-plaintext highlighter-rouge">@id</code> does not need to be kept stable between exports.</li>
 </ul>
 
@@ -616,7 +621,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#servicecalendar">Glossary definition</a></em></p>
 
 <h4 id="purpose-2">Purpose</h4>
-<p>Long-term planning uses calendar days that are classified as specific <code class="language-plaintext highlighter-rouge">DayType</code>s (example: weekday in school holidays). In the general NeTEx model, a <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> defines a mapping between <code class="language-plaintext highlighter-rouge">DayType</code>s and OperatingDays; in the Swiss profile, this mapping via OperatingDays is not used — <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> serves only as a container for <code class="language-plaintext highlighter-rouge">DayType</code>s and <code class="language-plaintext highlighter-rouge">DayTypeAssignment</code>s, defining a mapping of <code class="language-plaintext highlighter-rouge">DayType</code>s to dates.</p>
+<p>Long-term planning uses calendar days that are classified as specific <code class="language-plaintext highlighter-rouge">DayType</code>s (example: weekday in school holidays). In the general NeTEx model, a <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> can itself contain <code class="language-plaintext highlighter-rouge">dayTypes</code>/<code class="language-plaintext highlighter-rouge">dayTypeAssignments</code>; in the Swiss profile this nested usage is not used. <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> is used only as a label for the overall timetable year (<code class="language-plaintext highlighter-rouge">Name</code>, <code class="language-plaintext highlighter-rouge">FromDate</code>, <code class="language-plaintext highlighter-rouge">ToDate</code> — e.g. “Fahrplan 2026” / “Horaire 2026”). <code class="language-plaintext highlighter-rouge">DayType</code>s and <code class="language-plaintext highlighter-rouge">DayTypeAssignment</code>s are declared as siblings of <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> directly within <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code>, not nested inside it.</p>
 
 <h4 id="table-2">Table</h4>
 
@@ -903,7 +908,15 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/main/A4_annex_glossary.html#timeband">Glossary definition</a></em></p>
 
 <h4 id="purpose-4">Purpose</h4>
-<p>A period of time within a day, usually defined by a start and end time.</p>
+<p>A period of time within a day, defined by a <code class="language-plaintext highlighter-rouge">StartTime</code> and an <code class="language-plaintext highlighter-rouge">EndTime</code> (e.g. <code class="language-plaintext highlighter-rouge">09:00:00</code>–<code class="language-plaintext highlighter-rouge">17:00:00</code>). The general NeTEx/Transmodel model defines it as a period in a day that is significant for some aspect of public transport, such as similar traffic conditions or a fare category.</p>
+
+<p><strong>Use in the Swiss profile — frequency-based lines:</strong> <code class="language-plaintext highlighter-rouge">Timeband</code> is primarily used to express the daily operating window of a frequency-based service. Typical cases are services that run continuously within fixed daily hours rather than on individually timetabled departures — for example a chairlift or a shuttle operating daily from 09:00 to 17:00 during a winter season. Within an <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>, the <code class="language-plaintext highlighter-rouge">timebands</code> constraint is ANDed with the <code class="language-plaintext highlighter-rouge">FromDate</code>/<code class="language-plaintext highlighter-rouge">ToDate</code> period and the <code class="language-plaintext highlighter-rouge">ValidDayBits</code> day pattern (see <a href="#availabilitycondition">AvailabilityCondition</a> above), so the three together express: <em>“during this season, on these days, between these hours”</em>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">Timeband</code>s are defined centrally in the <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code> and referenced from an <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> via <code class="language-plaintext highlighter-rouge">TimebandRef</code>, so the same daily window can be reused by several services instead of being repeated per journey.</p>
+
+<blockquote>
+  <p><strong>Note on the relation to <code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code>:</strong> <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code>/<code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code> also carries <code class="language-plaintext highlighter-rouge">FirstDepartureTime</code> and <code class="language-plaintext highlighter-rouge">LastDepartureTime</code> (see <a href="/netexRealisationGuideSwitzerland/main/uc14_frequencies.html">uc14 Frequencies</a>), which bound the departures of one specific frequency group. <code class="language-plaintext highlighter-rouge">Timeband</code> is the reusable, calendar-level counterpart: it belongs to the validity of a service rather than to the departure pattern of a single <code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code>. Where both could apply, <code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code> is used for the departure bounds of that journey group, and <code class="language-plaintext highlighter-rouge">Timeband</code> for an operating window that is part of the service’s temporal validity.</p>
+</blockquote>
 
 <h4 id="table-4">Table</h4>
 
@@ -980,7 +993,12 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
 
 <h4 id="usage-notes-2">Usage Notes</h4>
 <ul>
-  <li>Currently <code class="language-plaintext highlighter-rouge">Timeband</code> is used in RG 1.0 for <code class="language-plaintext highlighter-rouge">InterchangeRuleTiming</code>s, later also used for the opening hours in <code class="language-plaintext highlighter-rouge">StopPlace</code> models.</li>
+  <li><code class="language-plaintext highlighter-rouge">Timeband</code> is mainly used for frequency-based lines, to express the daily operating window of the service.</li>
+  <li>The Swiss profile uses only <code class="language-plaintext highlighter-rouge">StartTime</code> and <code class="language-plaintext highlighter-rouge">EndTime</code> for <code class="language-plaintext highlighter-rouge">Timeband</code>; the alternatives available in the general NeTEx model — <code class="language-plaintext highlighter-rouge">StartEvent</code>/<code class="language-plaintext highlighter-rouge">EndEvent</code> (e.g. <code class="language-plaintext highlighter-rouge">dusk</code>, <code class="language-plaintext highlighter-rouge">dawn</code>) and <code class="language-plaintext highlighter-rouge">Duration</code> — are not used.</li>
+  <li><code class="language-plaintext highlighter-rouge">StartTime</code> and <code class="language-plaintext highlighter-rouge">EndTime</code> are given in local time, i.e. without any timezone indication (no <code class="language-plaintext highlighter-rouge">Z</code>, no <code class="language-plaintext highlighter-rouge">±hh:mm</code> offset). The format is <code class="language-plaintext highlighter-rouge">hh:mm:ss</code> as required by <code class="language-plaintext highlighter-rouge">xsd:time</code>; the seconds component carries no meaning and is always given as <code class="language-plaintext highlighter-rouge">00</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Timeband</code>s are declared in the <code class="language-plaintext highlighter-rouge">ServiceCalendarFrame</code> and referenced from <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>/<code class="language-plaintext highlighter-rouge">timebands</code> via <code class="language-plaintext highlighter-rouge">TimebandRef</code>. Defining a <code class="language-plaintext highlighter-rouge">Timeband</code> inline inside an <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> is possible but should be avoided where the window is reusable.</li>
+  <li><code class="language-plaintext highlighter-rouge">Timeband</code> is <strong>not</strong> used inside <code class="language-plaintext highlighter-rouge">DayType</code> — see <a href="#daytype">DayType</a>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Timeband</code> was used in RG 1.0 for <code class="language-plaintext highlighter-rouge">InterchangeRuleTiming</code>s. This is not applicable in RG 2.0, since <code class="language-plaintext highlighter-rouge">InterchangeRule</code> is not used (see <a href="/netexRealisationGuideSwitzerland/main/uc03_transfers.html">uc03 Transfers</a>).</li>
   <li><code class="language-plaintext highlighter-rouge">@id</code> should be kept stable between exports.</li>
 </ul>
 
@@ -1093,11 +1111,6 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       </div>
     </div>
   </div>
-</footer><script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true });
-    // Render code fences like ```mermaid (Jekyll outputs <pre><code class="language-mermaid">...</code></pre>)
-    mermaid.run({ querySelector: 'pre > code.language-mermaid' });
-</script></body>
+</footer></body>
 
 </html>
