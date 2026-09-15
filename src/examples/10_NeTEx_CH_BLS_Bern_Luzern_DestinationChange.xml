@@ -29,12 +29,12 @@ Luzern			  Keine weitere Fahrt möglich
 			</ValidBetween>
 			<FrameDefaults>
 				<DefaultLocale>
-					<TimeZoneOffset>-1</TimeZoneOffset>
-					<TimeZone>Europe/Berlin</TimeZone>
-					<SummerTimeZoneOffset>-2</SummerTimeZoneOffset>
+					<TimeZoneOffset>1</TimeZoneOffset>
+					<TimeZone>Europe/Zurich</TimeZone>
+					<SummerTimeZoneOffset>2</SummerTimeZoneOffset>
 					<DefaultLanguage>de</DefaultLanguage>
 				</DefaultLocale>
-				<DefaultLocationSystem>EPSG:4326</DefaultLocationSystem>
+				<DefaultLocationSystem>urn:ogc:def:crs:EPSG::4326</DefaultLocationSystem>
 			</FrameDefaults>
 			<frames>
 				<ResourceFrame id="ch:1:ResourceFrame:j26" version="1">
@@ -68,8 +68,8 @@ Luzern			  Keine weitere Fahrt möglich
 					<organisations>
 						<Operator id="ch:1:sboid:100015" version="1">
 							<privateCodes>
-								<PrivateCode type="SBOID">ch:1:sboid:100015</PrivateCode>
-								<PrivateCode type="GO">33</PrivateCode>
+								<PrivateCode type="sboid">ch:1:sboid:100015</PrivateCode>
+								<PrivateCode type="go">33</PrivateCode>
 							</privateCodes>
 							<Name>BLS AG</Name>
 							<ShortName>BLS</ShortName>
@@ -852,11 +852,9 @@ Luzern			  Keine weitere Fahrt möglich
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:RE" version="1"/>
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>20:36:00</DepartureTime>
-							<JourneyPatternRef ref="sjp1" version="1" nameOfRefClass="ServiceJourneyPattern"/>
+							<ServiceJourneyPatternRef ref="sjp1" version="1"/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:Bern_Wolhusen" version="1"/>
 							<OperatorRef ref="ch:1:sboid:100015" version="1"/>
-							<LineRef ref="ch:1:slnid:1024438" version="1"/>
-							<DirectionType>inbound</DirectionType>
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:4357" version="1"/>
 							</trainNumbers>

@@ -10,12 +10,12 @@
 				<DefaultLocale>
 					<!-- ch-note: The default locale is German (de) for Swiss public transport. -->
 					<!-- ch-usage: mandatory -->
-					<TimeZoneOffset><!-- ch-usage: mandatory --><!-- ch-note: We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) -->1</TimeZoneOffset>
-					<TimeZone><!-- ch-usage: mandatory -->Europe/Zurich</TimeZone>
-					<SummerTimeZoneOffset><!-- ch-usage: mandatory --><!-- ch-note: We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2)-->2</SummerTimeZoneOffset>
-					<DefaultLanguage><!-- ch-usage: mandatory --><!-- ch-note: Is always set to “de” for Swiss public transport.-->de</DefaultLanguage>
+					<TimeZoneOffset><!-- ch-usage: mandatory --><!-- ch-note: We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2) --><!-- ch-allowed-enums: 1-->1</TimeZoneOffset>
+					<TimeZone><!-- ch-usage: mandatory --><!-- ch-allowed-enums: Europe/Zurich -->Europe/Zurich</TimeZone>
+					<SummerTimeZoneOffset><!-- ch-usage: mandatory --><!-- ch-note: We prefer times without the suf-fix "+hh:mm". Instead we specify a default TimeZoneOffset (+1) and SummerTimeZoneOffset (+2)--><!-- ch-allowed-enums: 2-->2</SummerTimeZoneOffset>
+					<DefaultLanguage><!-- ch-usage: mandatory --><!-- ch-note: Is always set to “de” for Swiss public transport.--><!-- ch-allowed-enums: de-->de</DefaultLanguage>
 				</DefaultLocale>
-				<DefaultLocationSystem><!-- ch-usage: mandatory -->urn:ogc:def:crs:EPSG::4326</DefaultLocationSystem>
+				<DefaultLocationSystem><!-- ch-usage: mandatory --><!-- ch-allowed-enums: urn:ogc:def:crs:EPSG::4326-->urn:ogc:def:crs:EPSG::4326</DefaultLocationSystem>
 			</FrameDefaults>
 			<frames>
 				<ResourceFrame id="ch:1:ResourceFrame" version="1">

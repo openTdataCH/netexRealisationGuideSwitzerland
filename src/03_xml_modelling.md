@@ -125,7 +125,7 @@ Notes:
 * `Notice`, `ServiceFacility` and `SiteFacility` model almost everything else (especially offers).
 * The operating days are defined through `ValidDayBits` for the whole timetable year in `AvailabilityCondition`s.
 
-## 
+
 
 ```
 StopPlace SP
@@ -191,12 +191,11 @@ The following rules apply to common attributes:
 IDs must be globally unique during importation (in the `@id` of the element). By globally unique we mean:
 - They are unique by object type.
 - Also, they are unique within one delivery (may consist of multiple files). If two elements have the same `@id` then they must be the same element.
-- Between delivery, they may change, when they are declared as stable.
-- 
-They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for "primary" objects we expect object permanence. This is mentioned in the usage note of each element.
+- Between delivery, they may change, unless when they are declared as stable (in this document). 
+- They may also be partially or completely artificially generated. The persistence of these IDs between exports is then usually not guaranteed. However, for "primary" objects we expect object permanence. This is mentioned in the usage note of each element.
 Important business level keys are stored in elements (`KeyList`, `privateCodes/PrivateCode`) in addition to the IDs.
 
-It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available. 
+It is important to note that internal or artificially generated IDs should not be used to extract content whenever business keys and attributes are available. Some id will be very stable (as they are the primary identifier of the object). Some identifiers should be stable between exports. The reason is that those elements can be identified by the data consumer and replaced. So, even when id are generated it is reasonable to do this in a way that the same object obtains the same id in every export. Examples are variants of ServiceJourneyPattern. Others are never referenced and are not important (e.g. PassengerStopAssignments).
 
 For readability and easy referencing, we will use the following principles:
 -	We use the class of the object to prefix the technical ID like `ch:1:TypeOfNotice:3` for a `TypeOfNotice` element.
@@ -207,14 +206,21 @@ where the value of `ShortName` of the `TypeOfProductCategory` is used to build t
 
 All other defined attributes like `created`, `changed`, `modification` are not used. If we need one, we will inform about it in the table associated with the element.
 
+
+
 #### Version
 We will use `version="1"` in Switzerland. In some cases we use `versionRef="1"` instead, when the referenced object is not in the same file in references (`XXXRef`-elements). We no longer use `any` and expect to remove that semantic if possible. Also, the version (or versionRef) always must be present.
+
+Objects like lines, stop places can change during the timetable year. NeTEx would support to model this correctly with the versions (or different id). However, currently this is all flattened. In the deliveries before the change occurs, the old version is used for all service journeys and in the next export it would look like the new version (e.g. of the stop) was there all the time. Details can be obtained from ATLAS, if necessary and we might consider changing it. However, in the case of a change then all `ServiceJourney`, `ServiceJourneyPattern` etc. would need to be duplicated as well. 
+As in the delivery to INFO+ the details like coordinates are ignored (because they are taken from ATLAS) the pressure to do it, is diminished. If this behaviour should be changed then we would probably have a long  discussion in AG Solldaten. For deliveries for the next timetable period the valid element from the first day of that period is used.
+
+For NeTEx 3.0 there will be a general discussion, how and for what use cases `version` can be used. This can be for (a) change history, (b) change of behaviour during time, (c) planning variants. To do all in one attribute is too much and we will have to discuss this in detail for the European profile. 
 
 
 ### FromDate and ToDate
 The dates we have are always operating days. Nevertheless, we use
-* `2026-01-01T00:00:00`
-* `2026-01-01T23:59:59`
+* `2026-03-14T00:00:00`
+* `2026-03-14T23:59:59`
 
 to describe a single day.
 
@@ -230,6 +236,17 @@ If a `ServiceJourney` runs over midnight, `DepartureDayOffset` (on `ServiceJourn
 ### Ordering of Elements
 XML is ordered by definition. If there are sequences of elements e.g. `PointsInJourneyPattern` they are always ordered.
 
+### How to read the Tables
+* Sub - How indented the element is
+* Element - The element name
+* Usage - How the element is used in the profile. Sometimes we would have liked to make it "mandatory", but for foreign `ServiceJourney` it was not possible. So it remains "expected". The notes will tell more then.
+* Card - This is the cardinality of the schema. It may differ from Usage
+* Type - The NeTEx type from the schema.
+* Description - The original description from the schema.
+* Note - Notes that we want to convey on elements. Currently, notes can't be put on attributes. There we relay on the general note for the element or the usage notes.
+
+### Geometries
+The Swiss profile does not contain any  geometries currently. If we would do it, we would do it the following simple and compact way: with `ServiceLinks`. This allows us to define a coordinate sequence. The advantage is (a) one coordinate sequence for all journeys using the link, which makes it very compact. We don't need the `LinkProjection` because we do not need to project different kinds of links onto each other.
 
 ## Common Elements and Types
 
@@ -240,19 +257,19 @@ XML is ordered by definition. If there are sequences of elements e.g. `PointsInJ
 #### Purpose
 
 `AlternativeName` is used to provide an alternative (alias) of a name, e.g. of 
-a `StopPlace` or `Organisation`. 
+a `StopPlace` or `Operator`. 
 
 For all translations and other alternative texts use `MultilingualString`.
 
 #### Table
 - [Swiss profile NeTEx definition](../site/tables/AlternativeName.md)
 
-*→ - [General NeTEx definition](../site/netex-html/AlternativeName.html)*
+*→ [General NeTEx definition](../site/netex-html/AlternativeName.html)*
  
 #### Example
 - [XML Snippet](../site/xml-snippets/AlternativeName.xml)
 
-*→ - [Template](./templates/AlternativeName.xml)*
+*→ [Template](./templates/AlternativeName.xml)*
 
 #### Usage Notes
 

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<TimetableFrame id="ch:1:TimetableFrame" version="1">
+					<vehicleJourneys>
+						<ServiceJourney id="generated" version="1">
+							<validityConditions>
+								<AvailabilityConditionRef ref="generated" versionRef="1">
+								</AvailabilityConditionRef>
+							</validityConditions>
+							<keyList>
+								<KeyValue>
+									<Key>RN</Key>
+									<Value>1203</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>TC</Key>
+									<Value>293912</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="sjyid">ch:1:sjyid:100001:71707-003</PrivateCode>
+								<PrivateCode type="rn">12</PrivateCode>
+							</privateCodes>
+							<PrivateCode>1</PrivateCode>
+							<TransportMode>rail</TransportMode>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IR" versionRef="1"/>
+							<TypeOfServiceRef ref="ch:1:TypeOfService:1" versionRef="1"/>
+							<ServiceAlteration>
+								planned
+							</ServiceAlteration>
+							<DepartureTime><!-- ch-usage: expected --><!-- ch-note: Usually local time. Otherwise we have problems with summer time. See Usage Notes. -->06:21:00</DepartureTime>
+							<DepartureDayOffset>
+								<!-- ch-usage: optional -->
+                                <!-- ch-note: 0 for current operating day. Could also be negative. -->
+								0
+							</DepartureDayOffset>
+							<ServiceJourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" versionRef="1"/>
+							<TimeDemandTypeRef ref="generated" versionRef="1"/>
+							<VehicleTypeRef ref="ch:1:VehicleType:NF" versionRef="1"/>
+							<LineRef ref="ch:1:slnid:1024355" versionRef="1"/>
+							<DirectionType>outbound</DirectionType>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1"/>
+							</trainNumbers>
+							<parts>
+								<!-- ch-root -->
+								<!-- ch-usage: optional -->
+								<!-- ch-note: For some use cases e.g. change of Facilities during ServiceJourney -->
+								<JourneyPart id="ch:1:JourneyPart:703-bistro-1" version="1">
+									<validityConditions>
+										<!-- ch-note: We prefer to not use those -->
+										<!-- ch-usage: optional -->
+										<AvailabilityConditionRef ref="generated" versionRef="1">
+											<!-- ch-usage: optional -->
+										</AvailabilityConditionRef>
+									</validityConditions>
+									<MainPartRef ref="ch:1:JourneyPart:703-bistro-1" versionRef="1">
+										<!-- ch-usage: optional -->
+										<!-- ch-note: For the use cases we support, this is not necessary -->
+									</MainPartRef>
+                                    <JourneyPartCoupleRef ref="generated" versionRef="1" >
+                                        <!-- ch-usage: ignored -->
+                                        <!-- ch-note: NLinks to a coupled section (Flügelzug) — not used in Swiss profile.   -->
+                                    </JourneyPartCoupleRef>
+                                    <TrainNumberRef ref="ch:1:TrainNumber:231213" versionRef="1">
+                                        <!-- ch-usage: optional -->
+                                        <!-- ch-note: TrainNumber used for this part -->
+                                    </TrainNumberRef>
+									<FromStopPointRef ref="ch:1:sloid:7000:4:7" versionRef="1">
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: `ScheduledStopPoint` where the part begins. On the level of Quay. -->
+									</FromStopPointRef>
+									<ToStopPointRef ref="ch:1:sloid:218:7" versionRef="1">
+										<!-- ch-usage: expected -->
+										<!-- ch-note: `ScheduledStopPoint` where the part ends . If not present, it is to the end of the ServiceJourney. But we prefer to have it explicitly-->
+									</ToStopPointRef>
+									<StartTime><!-- ch-usage: mandatory --><!-- ch-note: Time bounds of the part  -->05:29:00</StartTime>
+									<StartTimeDayOffset><!-- ch-usage: optional -->0</StartTimeDayOffset>
+									<EndTime><!-- ch-usage: mandatory --><!-- ch-note: Time bounds of the part. -->06:28:00</EndTime>
+									<EndTimeDayOffset><!-- ch-usage: optional -->0</EndTimeDayOffset>
+									<PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:FacilityChange" versionRef="1">
+										<!-- ch-usage: mandatory -->
+										<!-- ch-allowed-enums:  ch:1:PurposeOfJouryneyPartition:TypeOfProductCategoryChange ch:1:PurposeOfJourneyPartition:FacilityChange -->
+										<!-- ch-note: Reason for the partition (e.g. `FacilityChange`, `TrainNumberChange`, 'TypeOfProductCategorychage`). Only two values are allowed (see uc0_journey_parts). Other things are implemented with different elements. Especially Notices are done with NoticeAssignment and not ServiceJourneyPart.  -->
+									</PurposeOfJourneyPartitionRef>
+									<facilities>
+										<!-- ch-usage: expected -->
+										<!-- ch-note: `ServiceFacilitySet` valid for this part only. Used when there is a change in facilities. -->
+										<ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:bistro-open" versionRef="1">
+											<!-- ch-usage: expected -->
+										</ServiceFacilitySetRef>
+									</facilities>
+									<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" versionRef="1">
+										<!-- ch-usage: optional -->
+										<!-- ch-note: Used when the product category changes -->
+									</TypeOfProductCategoryRef>
+								</JourneyPart>
+								<JourneyPart id="ch:1:JourneyPart:703-bistro-2" version="1">
+									<FromStopPointRef ref="ch:1:sloid:3000:501:33" versionRef="1"/>
+									<ToStopPointRef ref="ch:1:sloid:6302:1" versionRef="1"/>
+									<StartTime>06:57:00</StartTime>
+									<StartTimeDayOffset>0</StartTimeDayOffset>
+									<EndTime>07:52:00</EndTime>
+									<EndTimeDayOffset>0</EndTimeDayOffset>
+									<PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:FacilityChange" versionRef="1"/>
+									<facilities>
+										<ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:bistro-open" versionRef="1"/>
+									</facilities>
+								</JourneyPart>
+							</parts>
+						</ServiceJourney>
+					</vehicleJourneys>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

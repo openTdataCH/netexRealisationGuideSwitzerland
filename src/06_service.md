@@ -133,13 +133,13 @@ A public transport service line with a `Name`, `TransportMode`, and `Operator`. 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/Line.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/Line.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/Line.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/Line.xml)
 
-*->[Template](./templates/Line.xml)*
+*→ [Template](./templates/Line.xml)*
 
 ### Usage Notes
 - slnid will be integrated wherever possible. We currently think that - where it exists - it has the necessary properties to be used in the `@id` of the element.
@@ -147,11 +147,11 @@ A public transport service line with a `Name`, `TransportMode`, and `Operator`. 
 - We store the slnid whenever possible in `@id`, `privateCodes/PrivateCode` and `KeyList`.
 - Information about the Swiss line id (slnid) can be found [here](https://www.oev-info.ch/de/datenmanagement/swiss-identification-public-transport-sid4pt/swiss-line-identification-slnid).
 - Handling of mixed lines is defined in its own [use case (uc017)](uc17_mixed_lines.md). The relevant factors are described in the Line element as well. We have a full [example](examples/14_NeTEx_CH_Linie_722_Mischbetrieb.xml) on it. - Be aware that for mixed lines there might be multiple `Line`s in NeTEx. Otherwise, the relevant `Operator` must be set on the `ServiceJourney`.
-- Note that there exist journeys in Switzerland and neighboring countries that are not associated with a `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`. To ensure this, we introduce a placeholder `Line` called "NoLine" for each `Operator` that has journeys without a Line.
+- Note that there exist journeys in Switzerland and neighboring countries that may not be officially associated with a published `Line`. In NeTEx, however, the `ServiceJourney`s corresponding to such journeys must still reference something in `LineRef`.
 - For more information about SwissLineID: see [here](https://www.xn--v-info-vxa.ch/sites/default/files/2023-06/slnid-spezifikation_v1.25_0.pdf).
 - We have in the slnid concept also "Dispositionslinie" and "Temporäre Linie". Those are modeled as regular `Line`. "Betriebliche Linie" is not used and modeled in NeTEx. If at some point we need to know this type. We will model it as a Key/Value pair.
 - If there are partial lines, there is also a main line. The patterns and journeys are always attached to the partial lines.
-- `@id` needs to be kept stable between exports.
+- `@id` needs to be kept stable between exports. For `slnid` this is a given. For international ones artifical id might occur. Keeping them stable allows a referencing and partial update by the data consumers. This is important if the data consumer mixes the NeTEx import with other sources.
 
 ## GroupOfLines
 *→ [Glossary definition](A4_annex_glossary.md#groupoflines)*
@@ -161,18 +161,19 @@ A `GroupOfLines` is used to model mixed lines. For details see [uc17](uc17_mixed
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/GroupOfLines.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/GroupOfLines.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/GroupOfLines.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/GroupOfLines.xml)
 
-*->[Template](./templates/GroupOfLines.xml)*
+*→ [Template](./templates/GroupOfLines.xml)*
 
 ### Usage Notes
 - Only mixed lines have a `GroupOfLines`.
 - All `ServiceJourneyPattern` and `ServiceJourney` are assigned to the partial lines.
 - In very rare cases the main line has two legal owners. We discuss the modeling in [uc17](uc17_mixed_lines.md).
+- `GroupOfLinesType` is restricted in the usage we have. We currently allow only `administrative`. Meaning that all intgration is always along the hierarchy between owners and operators.
 - The `@id` should be the number of the main line.
 
 ## DestinationDisplay
@@ -190,13 +191,13 @@ Showing the destination of a `ServiceJourney`. The text shown on the front or si
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/DestinationDisplay.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/DestinationDisplay.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/DestinationDisplay.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/DestinationDisplay.xml)
 
-*->[Template](./templates/DestinationDisplay.xml)*
+*→ [Template](./templates/DestinationDisplay.xml)*
 
 ### Usage Notes
 - In HRDF sometimes the destination is not set (`*R`). This results in NeTEX in a calculated destination definition.
@@ -219,13 +220,13 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ScheduledStopPoint.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/ScheduledStopPoint.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/ScheduledStopPoint.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/ScheduledStopPoint.xml)
 
-*->[Template](./templates/ScheduledStopPoint.xml)*
+*→ [Template](./templates/ScheduledStopPoint.xml)*
 
 ### Usage Notes
 - We don't keep much information  in `ScheduledStopPoint`s. They are assigned by `PassengerStopAssignnment`s to the site part (`StopPlace`, `Quay`).
@@ -245,15 +246,18 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/PassengerStopAssignment.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/PassengerStopAssignment.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/PassengerStopAssignment.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/PassengerStopAssignment.xml)
 
-*->[Template](./templates/PassengerStopAssignment.xml)*
+*→ [Template](./templates/PassengerStopAssignment.xml)*
 
 ### Usage Notes
+- We don't use `BoardingPosition`.
+- In Switzerland the goal is to always have a `QuayRef`. Having to map only to the `StopPlace` is to be avoided. If there is data from abroad, it might be that we don't have the quays yet.
+- If a router has a detailed model with `Quay` and we have only `StopPlace`, then it probably is best to generate an artificial quay and then do the transfers correctly.
 - `@id`s don't need to be stable.
 
 
@@ -273,13 +277,13 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/DefaultConnection.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/DefaultConnection.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/DefaultConnection.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/DefaultConnection.xml)
 
-*->[Template](./templates/DefaultConnection.xml)*
+*→ [Template](./templates/DefaultConnection.xml)*
 
 ### Usage Notes
 - For more details see the [use case on transfers](uc03_transfers.md).
@@ -297,13 +301,13 @@ A `ScheduledStopPoint` can represent two types of stop points:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/SiteConnection.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/SiteConnection.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/SiteConnection.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/SiteConnection.xml)
 
-*->[Template](./templates/SiteConnection.xml)*
+*→ [Template](./templates/SiteConnection.xml)*
 
 ### Usage Notes
 For more details see the [use case on transfers](uc03_transfers.md).
@@ -326,13 +330,13 @@ See [TimeDemandType](#timedemandtype).
 
 - [Swiss profile NeTEx definition](../site/tables/TimingLink.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/TimingLink.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/TimingLink.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/TimingLink.xml)
 
-*->[Template](./templates/TimingLink.xml)*
+*→ [Template](./templates/TimingLink.xml)*
 
 ### Usage Notes
 - It must fit with the sequence defined in `ServiceJourneyPattern`.
@@ -355,13 +359,13 @@ See [TimeDemandType](#timedemandtype).
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ServiceJourneyPattern.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/ServiceJourneyPattern.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/ServiceJourneyPattern.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/ServiceJourneyPattern.xml)
 
-*->[Template](./templates/ServiceJourneyPattern.xml)*
+*→ [Template](./templates/ServiceJourneyPattern.xml)*
 
 ### Usage Notes
 
@@ -386,13 +390,13 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/TimeDemandType.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/TimeDemandType.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/TimeDemandType.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/TimeDemandType.xml)
 
-*->[Template](./templates/TimeDemandType.xml)*
+*→ [Template](./templates/TimeDemandType.xml)*
 
 ### Usage Notes
 - `WaitTime` is only needed when greater than 0.
@@ -414,13 +418,13 @@ Informational or regulatory text associated with public transport services, disp
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/Notice.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/Notice.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/Notice.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/Notice.xml)
 
-*->[Template](./templates/Notice.xml)*
+*→ [Template](./templates/Notice.xml)*
 
 ### Usage Notes
 - Notice elements should only be used to convey information which cannot be transported using specific model elements. Do not use `Notice` when the information could be expressed by specific elements, e.g., `FacilitySet`, `DayType`, `ForAlighting`, `ForBoarding`. `Notice`s can be used to provide further information on `ServiceFacility`s but not as a replacement for them. Ideally, the description of a `Notice` is translated to the three official languages (DE, IT, FR), and possibly E.
@@ -436,13 +440,13 @@ Assign a `Notice` to an element.
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/NoticeAssignment.md)
 
-*-> [General NeTEx definition](../xcore/netex/elements/NoticeAssignment.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/NoticeAssignment.html)*
 
 ### Example
 
 - [Example snippet](../site/xml-snippets/NoticeAssignment.xml)
 
-*->[Template](./templates/NoticeAssignment.xml)*
+*→ [Template](./templates/NoticeAssignment.xml)*
 
 ### Usage Notes
 - `@id` doesn't need to be kept stable between exports.

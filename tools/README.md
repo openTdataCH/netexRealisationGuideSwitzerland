@@ -146,6 +146,15 @@ The following environment variables shall be set accordingly:
 > export PATH="$NETEX_RG_HOME/.venv/bin:$PATH"
 > ```
 
+### Setup XSD
+We work here to create the next NeTEX realisation guide.
+
+When you clone this project, you will get an empty xsd directory. To complete the xsd download run:
+```bash
+git submodule init
+git submodule update 
+```
+
 ### Install Tool Scripts
 
 The scripts can be installed with the following command (executed from the project root):

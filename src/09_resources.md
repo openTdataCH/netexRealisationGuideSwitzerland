@@ -37,12 +37,12 @@ Contains shared resources used / referenced in other frames - organisations (`Op
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ResourceFrame.md)
 
-*→ - [General NeTEx definition](../site/netex-html/ResourceFrame.html)*
+*→ [General NeTEx definition](../site/netex-html/ResourceFrame.html)*
 
 ### Example
 - [XML Snippet](../site/xml-snippets/ResourceFrame.xml)
 
-*→ - [Template](./templates/ResourceFrame.xml)*
+*→ [Template](./templates/ResourceFrame.xml)*
 
 ### Frame Relationships
 
@@ -68,12 +68,12 @@ We use this element to  describe the different roles of the participating compan
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/ResponsibilitySet.md)
 
-*→ - [General NeTEx definition](../site/netex-html/ResponsibilitySet.html)*
+*→ [General NeTEx definition](../site/netex-html/ResponsibilitySet.html)*
 
 ### Example
 - [XML Snippet](../site/xml-snippets/ResponsibilitySet.xml)
 
-*→ - [Template](./templates/ResponsibilitySet.xml)*
+*→ [Template](./templates/ResponsibilitySet.xml)*
 
 ### Usage Notes
 Services (e.g. replacement services) can be associated with different roles. These roles can be defined inside the `ResponsibilitySet` element.
@@ -168,7 +168,7 @@ A legally incorporated body associated with any aspect of public transportation.
 ### Example
 - [XML Snippet](../site/xml-snippets/Operator.xml)
 
-*→ - [Template](./templates/Operator.xml)*
+*→ [Template](./templates/Operator.xml)*
 
 ### Usage Notes
 * `Organisation`s located in Switzerland are identified by their [SBOIDs](https://transportdatamanagement.ch/content/uploads/2021/05/SwissBusinessOrganisationID_DE_1_2.pdf)  (earlier [GO-number](https://opentransportdata.swiss/de/dataset/didok/resource/d66259a0-a77c-4aee-b7bd-e4fba99dcbb1) ).
@@ -179,6 +179,25 @@ in Switzerland. The TU-Code is to be used for operators of other countries.
 a different `OperatorRef`.
 * `Authority`  and `Organisation` are not used.
 - `@id` needs to be kept stable between exports.
+
+
+## TypesOfPlace
+
+### Purpose
+We have two types of place that we use:
+- `regularStop`: regular stop from classic public transport
+- `drtCollectionPoint`: irregular stop used in demand responsive transport.
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/TypesOfPlace.md)
+
+*→ [General NeTEx definition](../xcore/netex/elements/TypesOfPlace.html)*
+
+
+###  Example
+- [XML Snippet](../site/xml-snippets/TypesOfPlace.xml)
+
+*→ [Template](./templates/TypesOfPlace.xml)*
 
 ## ServiceFacilitySet
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
@@ -194,7 +213,7 @@ Set of `Facility`'s available for a `ServiceJourney` or a `JourneyPart`.
 ### Example
 - [XML Snippet](../site/xml-snippets/ServiceFacilitySet.xml)
 
-*→ - [Template](./templates/ServiceFacilitySet.xml)*
+*→ [Template](./templates/ServiceFacilitySet.xml)*
 
 ### Usage Notes
 * SKI uses the following groups to classify `ServiceFacility`s:
@@ -237,7 +256,7 @@ referenced to define facilities of a site.
 ### Example
 - [XML Snippet](../site/xml-snippets/SiteFacilitySet.xml)
 
-*→ - [Template](./templates/SiteFacilitySet.xml)*
+*→ [Template](./templates/SiteFacilitySet.xml)*
 
 ### Usage Notes
 * Make sure to not generate identical SiteFacilitySets. Reuse them.
@@ -263,7 +282,7 @@ A typified vehicle configuration (model or series) defining reusable characteris
 ### Example
 - [XML Snippet](../site/xml-snippets/VehicleType.xml)
 
-*→ - [Template](./templates/VehicleType.xml)*
+*→ [Template](./templates/VehicleType.xml)*
 
 ### Usage Notes
 * We currently use `VehicleType` but not `VehicleModel`.

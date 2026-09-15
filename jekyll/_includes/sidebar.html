@@ -1,0 +1,30 @@
+<nav class="sidebar" aria-label="Chapters">
+  <h4><a href="index.html">Document Root</a></h4>
+  <h3>Chapters</h3>
+  <ul>
+    {% for item in site.data.chapters %}
+      {% assign item_url = item.url | relative_url %}
+      <li class="{% if page.url == item.url or page.url == item_url %}active{% endif %}">
+        <a href="{{ item_url }}">{{ item.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <h3>Special Use Cases</h3>
+  <ul>
+    {% for item in site.data.special %}
+      {% assign item_url = item.url | relative_url %}
+      <li class="{% if page.url == item.url or page.url == item_url %}active{% endif %}">
+        <a href="{{ item_url }}">{{ item.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <h3>Annexes</h3>
+  <ul>
+    {% for item in site.data.annexes %}
+      {% assign item_url = item.url | relative_url %}
+      <li class="{% if page.url == item.url or page.url == item_url %}active{% endif %}">
+        <a href="{{ item_url }}">{{ item.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

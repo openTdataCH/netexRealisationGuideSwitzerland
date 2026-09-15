@@ -176,6 +176,7 @@ A classification of days on which a specific set of transport services operates 
 
 #### Usage Note
 - `@id` needs to be kept stable between exports.
+- As we only use `DayType` for holidays we have strict restrictions on `PropertyOfDay`: `HolidayTypes` is only `nationalHoliday` and `DayEvent` only `anyDay` or `normalDay`.  
 
 ### Timeband
 *→ [Glossary definition](A4_annex_glossary.md#timeband)*
