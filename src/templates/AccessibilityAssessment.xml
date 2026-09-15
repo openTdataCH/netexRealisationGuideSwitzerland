@@ -53,79 +53,34 @@
 							<AccessibilityAssessment id="generated" version="1">
 								<!-- ch-root -->
 								<!-- ch-usage: mandatory -->
-								<MobilityImpairedAccess>
-									<!-- ch-usage: mandatory -->
-									<!-- ch-allowed-enums: true false partial unknown -->
-									<!-- ch-note: Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. -->
-									true
-								</MobilityImpairedAccess>
+								<MobilityImpairedAccess><!-- ch-usage: mandatory --><!-- ch-allowed-enums: true false partial unknown --><!-- ch-note: Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. -->true</MobilityImpairedAccess>
 								<limitations>
 									<!-- ch-usage: expected -->
 									<!-- ch-note: Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. -->
 									<AccessibilityLimitation>
 										<!-- ch-usage: mandatory -->
 										<!-- ch-note: Accessibility. -->
-										<WheelchairAccess>
-											<!-- ch-usage: mandatory -->
-											<!-- ch-allowed-enums: true false partial unknown -->
-											<!-- ch-note: Accessibility. -->
-											true
-										</WheelchairAccess>	
-										<StepFreeAccess>
-											<!-- ch-usage: expected -->
-											<!-- ch-allowed-enums: true false partial unknown -->
-											<!-- ch-note: Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
-											true
-										</StepFreeAccess>
-										<StairFreeAccess>
-											<!-- ch-usage: expected -->
-											<!-- ch-allowed-enums: true false partial unknown -->
-											<!-- ch-note: Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. -->
-											true
-										</StairFreeAccess>
-										<RampFreeAccess>
-											<!-- ch-usage: expected -->
-											<!-- ch-allowed-enums: true false partial unknown -->
-											<!-- ch-note: Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. -->
-											true
-										</RampFreeAccess>
-										<GuideDogAccess>
-											<!-- ch-usage: expected -->
-											<!-- ch-allowed-enums: true false partial unknown -->
-											<!-- ch-note: Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
-											true
-										</GuideDogAccess>	
-										<TactileGuidanceAvailable>
-											<!-- ch-usage: expected -->
-											<!-- ch-allowed-enums: true false partial unknown -->
-											<!-- ch-note: Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
-											true
-										</TactileGuidanceAvailable>	
-										<VisualSignsAvailable>
-											<!-- ch-usage: expected -->
-											<!-- ch-allowed-enums: true false partial unknown -->
-											<!-- ch-note: Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
-											true
-										</VisualSignsAvailable>	
-										<LevelAccessIntoVehicle>
-											<!-- ch-usage: expected -->
-											<!-- ch-allowed-enums: true false partial unknown -->
-											<!-- ch-note: Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
-											true
-										</LevelAccessIntoVehicle>	
+										<WheelchairAccess><!-- ch-usage: mandatory --><!-- ch-allowed-enums: true false partial unknown --><!-- ch-note: Accessibility. -->true</WheelchairAccess>
+										<StepFreeAccess><!-- ch-usage: expected --><!-- ch-allowed-enums: true false partial unknown --><!-- ch-note: Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->true</StepFreeAccess>
+										<StairFreeAccess><!-- ch-usage: expected --><!-- ch-allowed-enums: true false partial unknown --><!-- ch-note: Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. -->true</StairFreeAccess>
+										<RampFreeAccess><!-- ch-usage: expected --><!-- ch-allowed-enums: true false partial unknown --><!-- ch-note: Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. -->true</RampFreeAccess>
+										<LevelAccessIntoVehicle><!-- ch-usage: expected --><!-- ch-allowed-enums: true false partial unknown --><!-- ch-note: Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->true</LevelAccessIntoVehicle>										
+										<VisualSignsAvailable><!-- ch-usage: expected --><!-- ch-allowed-enums: true false partial unknown --><!-- ch-note: Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->true</VisualSignsAvailable>										
+										<TactileGuidanceAvailable><!-- ch-usage: expected --><!-- ch-allowed-enums: true false partial unknown --><!-- ch-note: Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->true</TactileGuidanceAvailable>
+										<GuideDogAccess><!-- ch-usage: expected --><!-- ch-allowed-enums: true false partial unknown --><!-- ch-note: Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->true</GuideDogAccess>
+
+
 									</AccessibilityLimitation>
 								</limitations>
 							</AccessibilityAssessment>
 							<alternativeNames>
 								<AlternativeName id="ch:1:sloid:7000:it" version="1">
-                                    <NameType>alias</NameType>
+									<NameType>alias</NameType>
 									<Name lang="it">Berna</Name>
 								</AlternativeName>
 							</alternativeNames>
 							<PublicUse><!-- ch-usage: ignored -->all</PublicUse>
-							<Covered>
-								covered
-							</Covered>
+							<Covered>covered</Covered>
 							<AllAreasWheelchairAccessible>
 								true
 							</AllAreasWheelchairAccessible>
@@ -139,14 +94,19 @@
 								<TimeZone>Europe/Zurich</TimeZone>
 							</Locale>
 							<levels>
+								<Level id="generated" version="1"/>
 							</levels>
 							<entrances>
+								<Entrance id="generated" version="1"/>
 							</entrances>
 							<equipmentPlaces>
+								<EquipmentPlace id="generated" version="1"/>
 							</equipmentPlaces>
 							<placeEquipments>
+								<SanitaryEquipment id="generated" version="1"/>
 							</placeEquipments>
 							<localServices>
+								<LuggageService id="generated-1" version="1"/>
 							</localServices>
 							<StopPlaceType>railStation</StopPlaceType>
 							<LimitedUse>interchangeOnly</LimitedUse>
@@ -156,6 +116,7 @@
 								</Quay>
 							</quays>
 							<accessSpaces>
+								<AccessSpace id="generated-2" version="1"/>
 							</accessSpaces>
 						</StopPlace>
 					</stopPlaces>
