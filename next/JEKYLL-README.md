@@ -37,6 +37,25 @@ mermaid: true
 ---
 ```
 
+### Left Sidebar
+
+The left sidebar is realized with the help of a custom layout called `with-sidebar`.
+This layout is used by default (as configured in `_config.yml`), so that the left sidebar appears on every page.
+
+
+#### Sidebar Components
+
+| File                         | Description                                                                                    |
+|------------------------------|------------------------------------------------------------------------------------------------|
+| `_layouts/with-sidebar.html` | Defines the layout `with-sidebar`. Extends `default` layout. Is used for all pages by default. |
+ | `_data/chapters.yml`         | Configuration of chapters to appear in the left sidebar.                                       |
+ | `_data/special.yml`          | Configuration of special use cases to appear in the left sidebar.                              |
+ | `_data/annexes.yml`          | Configuration of annexes to appear in the left sidebar.                                        |
+| `_includes/sidebar.html`     | HTML of the left sidebar.                                                                      | 
+| `assets/main.scss`           | CSS extending `minima` theme, with adaptions for the left sidebar.                             | 
+
+
+
 ## How to locally build pages with Jekyll
 
 ### Prerequisites

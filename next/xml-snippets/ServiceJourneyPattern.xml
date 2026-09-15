@@ -15,7 +15,7 @@
       </DestinationDisplayRef>
       <RequestStop>false</RequestStop>
       <StopUse>access
-        <!-- All values possible. passthrough is used for Durchfahrt, if such data is delivered. -->
+        <!-- All values possible. passthrough is used for Durchfahrt, if such data is delivered. See mapping excel. -->
       </StopUse>
       <checkConstraints>
         <CheckConstraint id="generated" version="1"/>
@@ -37,5 +37,7 @@
       <ForBoarding>false</ForBoarding>
     </StopPointInJourneyPattern>
   </pointsInSequence>
-  <ServiceJourneyPatternType>passenger</ServiceJourneyPatternType>
+  <ServiceJourneyPatternType>passenger
+    <!-- We currently only allow passenger -->
+  </ServiceJourneyPatternType>
 </ServiceJourneyPattern>

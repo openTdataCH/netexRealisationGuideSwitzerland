@@ -199,7 +199,7 @@ in this frame, never inline.
   <FromDate>2026-05-17T00:00:00Z
     <!-- Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
   </FromDate>
-  <ToDate>2026-05-17T00:00:00Z
+  <ToDate>2026-05-17T23:59:59Z
     <!-- Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. -->
   </ToDate>
   <ValidDayBits>01010010111</ValidDayBits>
@@ -207,7 +207,7 @@ in this frame, never inline.
     <!-- Can also be referenced -->
     <Timeband id="ch:1:Timeband:4937" version="1">
       <StartTime>06:00:00</StartTime>
-      <EndTime>06:01:00</EndTime>
+      <EndTime>06:20:00</EndTime>
     </Timeband>
     <TimebandRef ref="ch:1:Timeband:4937-2" version="1"/>
   </timebands>
@@ -303,9 +303,6 @@ In Switzerland only used for holidays and the like
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-| + | AlternativeText | mandatory | 1..* | AlternativeText_VersionedChildStructure | ALTERNATIVE TEXT for a text attribute of Element. |  |
-| ++ | Text | mandatory | 0..1 | MultilingualString | Name of the entity. |  |
-| +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. | German or default text |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | + | Text | expected | 0..* | MultilingualString |  | Italian |
@@ -359,6 +356,7 @@ In Switzerland only used for holidays and the like
 
 #### Usage Note
 - `@id` needs to be kept stable between exports.
+- As we only use `DayType` for holidays we have strict restrictions on `PropertyOfDay`: `HolidayTypes` is only `nationalHoliday` and `DayEvent` only `anyDay` or `normalDay`.  
 
 ### Timeband
 *→ [Glossary definition](A4_annex_glossary.md#timeband)*

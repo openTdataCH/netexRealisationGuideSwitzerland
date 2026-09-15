@@ -13,7 +13,7 @@
 							<!-- ch-attrs: id version responsibilitySetRef -->
 							<validityConditions>
 								<!-- ch-usage: mandatory -->
-								<!-- ch-note: Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
+								<!-- ch-note: Used to specify the temporal conditions for the TemplateServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”). -->
 								<AvailabilityConditionRef ref="generated" versionRef="1">
 									<!-- ch-usage: mandatory -->
 									<!-- ch-note: Only a single AvailabilityConditionRef is allowed. -->
@@ -73,17 +73,16 @@
 								<!-- ch-note: Only the value planned is allowed. -->
 								planned
 							</ServiceAlteration>
-							<DepartureTime><!-- ch-usage: optional --><!-- ch-note: Departure of the first journey. -->06:21:00</DepartureTime>
+							<DepartureTime><!-- ch-usage: optional --><!-- ch-note: Departure of the first journey. For timezone see ServiceJourney -->06:21:00</DepartureTime>
 							<DepartureDayOffset>
 								<!-- ch-usage: optional -->
                 				<!-- ch-note: DayOffset if relevant. -->
 								0
 							</DepartureDayOffset>
-							<JourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" versionRef="1" nameOfRefClass="ServiceJourneyPattern">
+							<ServiceJourneyPatternRef ref="ch:1:ServiceJourneyPattern:1" versionRef="1">
 								<!-- ch-usage: mandatory -->
-								<!-- ch-attrs: nameOfRefClass -->
 								<!-- ch-note: The reference to the ServiceJourneyPattern -->
-							</JourneyPatternRef>
+							</ServiceJourneyPatternRef>
 							<TimeDemandTypeRef ref="generated" versionRef="1">
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
@@ -93,9 +92,10 @@
 								<!-- ch-note: Mostly used for accessibility information -->
 							</VehicleTypeRef>
 							<LineRef ref="ch:1:slnid:1024355" versionRef="1">
-								<!--ch-usage: mandatory -->
+								<!--ch-usage: forbidden -->
+                                <!--ch-note: is in ServiceJourneyPattern -->
 							</LineRef>
-							<DirectionType><!-- ch-usage: optional --><!-- ch-allowed-enums: inbound outbound --><!-- ch-note: Allowed are: inbound, outbound -->inbound</DirectionType>
+							<DirectionType><!-- ch-usage: forbidden --><!--ch-note: is in ServiceJourneyPattern -->inbound</DirectionType>
 							<trainNumbers>
 								<!-- ch-usage: mandatory -->
 								<TrainNumberRef ref="ch:1:TrainNumber:71707" versionRef="1">
@@ -105,7 +105,7 @@
 							<Destination>
 								<!-- ch-usage: expected -->
 								<!-- ch-see -->
-							    <ScheduledStopPointRef ref="ch:1:sloid:1609" versionRef="1"/>
+								<ScheduledStopPointRef ref="ch:1:sloid:1609" versionRef="1"/>
 								<DestinationDisplayRef ref="generated" versionRef="1"/>
 							</Destination>
 							<passingTimes>
@@ -117,9 +117,13 @@
 							<parts>
 								<!-- ch-usage: optional -->
 								<!-- ch-note: For some use cases e.g. change of Facilities during ServiceJourney -->
-								<JourneyPartRef ref="generated" versionRef="1">
-									<!-- ch-usage: expected -->
-								</JourneyPartRef>
+								<JourneyPart id="generated" version="1">
+									<!-- ch-usage: optional-->
+                                    <!-- ch-note: We don't expect JourneyPart for TemplateServiceJourney -->
+                                    <!-- ch-see -->
+                                    <StartTime>05:29:00</StartTime>
+                                    <EndTime>05:35:00</EndTime>                                    
+								</JourneyPart>
 							</parts>
 							<calls>
 								<!-- ch-usage: forbidden -->

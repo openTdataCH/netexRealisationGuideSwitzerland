@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /** Reset some basic elements */
 body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr, dl, dd, ol, ul, figure { margin: 0; padding: 0; }
 
@@ -194,3 +195,34 @@ table td { border: 1px solid #e8e8e8; }
 .highlight .vg { color: #008080; }
 .highlight .vi { color: #008080; }
 .highlight .il { color: #099; }
+
+.page-title { margin-top: 0; font-size: 2rem; /* adjust to taste; Minima’s h1 is around this */ line-height: 1.25; }
+
+/* Sitewide widen */
+.wrapper { max-width: 1200px; /* or 1280/1400px */ padding-left: 12px; padding-right: 12px; }
+
+/* Keep header/footer aligned with the wider page area */
+.site-header .wrapper, .site-footer .wrapper { max-width: 1200px; }
+
+/* Optional: widen further on ultra-wide screens */
+@media (min-width: 1600px) { .wrapper, .site-header .wrapper, .site-footer .wrapper { max-width: 1400px; } }
+/* Optional: scale up further on very wide screens */
+@media (min-width: 1600px) { .page-content .wrapper--wide { max-width: 1400px; } }
+/* Reduce vertical whitespace if desired */
+.page-content { padding: 0.5rem 0 1.5rem; }
+
+/* Sidebar/content two-column layout */
+.layout-with-sidebar { display: grid; /* Sidebar width adapts with viewport; content takes the rest */ grid-template-columns: clamp(220px, 20vw, 300px) minmax(0, 1fr); gap: 1.5rem; }
+
+/* Make the sidebar sit closer to the left edge */
+.sidebar { padding-left: 0; /* remove any extra left padding */ padding-right: 1rem; border-right: 1px solid #eaeaea; position: sticky; top: 1rem; align-self: start; max-height: calc(100vh - 2rem); overflow: auto; }
+
+/* Let the main content actually use the available width */
+.content { min-width: 0; }
+
+/* important for grids so content can shrink */
+.content img, .content pre { max-width: 100%; }
+
+/* Stack on small screens */
+@media (max-width: 900px) { .layout-with-sidebar { grid-template-columns: 1fr; }
+  .sidebar { position: static; max-height: none; border-right: none; border-bottom: 1px solid #eaeaea; padding-bottom: 1rem; margin-bottom: 1rem; } }

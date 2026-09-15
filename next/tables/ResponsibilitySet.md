@@ -1,6 +1,6 @@
 # ResponsibilitySet
 
-Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line.
+Each combination of LegalEntity and Operator needs a ResponsibilitySet. EntitiyLegalOwnership is mandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line.
 
 *Table: ResponsibilitySet*
 

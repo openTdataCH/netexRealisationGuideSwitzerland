@@ -45,15 +45,15 @@ Contains shared resources used / referenced in other frames - organisations (`Op
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | responsibilitySets | mandatory | 0..1 | responsibilitySetsInFrame_RelStructure | RESPONSIBILITY SETs used in frame. | RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. |
-| + | [ResponsibilitySet](./tables/ResponsibilitySet.md) | mandatory | 1..* | ResponsibilitySet_VersionStructure | A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent. | Each combination of Authority and Operator needs a ResponsibilitySet. |
+| + | [ResponsibilitySet](./tables/ResponsibilitySet.md) | mandatory | 1..* | ResponsibilitySet_VersionStructure | A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent. | Each combination of LegalEntity and Operator needs a ResponsibilitySet. |
 |  | typesOfValue | mandatory | 0..1 | typesOfValueInFrame_RelStructure | VALUE SETs and TYPE OF VALUEs in frame. | Sets of TYPE OF VALUE contained in the RESOURCE FRAME. |
 | + | ValueSet | expected | 0..* | ValueSet_VersionStructure | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfNotice ValueSet. |
 | ++ | values | expected | 0..1 | typesOfValue_RelStructure | Values in Set. |  |
 | +++ | TypeOfNotice | expected | 0..* | TypeOfNotice_ValueStructure | A classification of a NOTICE according to its functional purpose. |  |
 | + | ValueSet | expected | 0..* | ValueSet_VersionStructure | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We need a TypeOfProductCategory ValueSet |
-| + | ValueSet | expected | 0..* | ValueSet_VersionStructure | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We expect a TypsOfPlace Valueset |
-|  | organisations | mandatory | 0..1 | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD |
-| + | [Operator](./tables/Operator.md) | mandatory | 0..* | Operator_VersionStructure | A company providing public transport services. | We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. |
+| + | ValueSet | expected | 0..* | ValueSet_VersionStructure | An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities. | We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop. |
+|  | organisations | mandatory | 0..1 | organisationsInFrame_RelStructure | ORGANISATIONs in frame. | ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We do not use the NeTEx element Authority, thus avoiding the problem of an identical SBOID for Operator and Authority. |
+| + | [Operator](./tables/Operator.md) | mandatory | 0..* | Operator_VersionStructure | A company providing public transport services. |  |
 |  | siteFacilitySets | optional | 0..1 | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 | Depending on the export/import part, there will be SiteFacilitySets to be included or not. |
 | + | [SiteFacilitySet](./tables/SiteFacilitySet.md) | optional | 1..* | SiteFacilitySetStructure | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). |  |
 |  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITY SETs in frame . +v1.2.2 | Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. |
@@ -64,7 +64,7 @@ Contains shared resources used / referenced in other frames - organisations (`Op
 
 
 
-*→ - [General NeTEx definition](../site/netex-html/ResourceFrame.html)*
+*→ [General NeTEx definition](../site/netex-html/ResourceFrame.html)*
 
 ### Example
 
@@ -75,7 +75,7 @@ Contains shared resources used / referenced in other frames - organisations (`Op
   <responsibilitySets>
     <!-- RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different. -->
     <ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
-      <!-- Each combination of Authority and Operator needs a ResponsibilitySet. -->
+      <!-- Each combination of LegalEntity and Operator needs a ResponsibilitySet. -->
     </ResponsibilitySet>
   </responsibilitySets>
   <typesOfValue>
@@ -107,7 +107,7 @@ Contains shared resources used / referenced in other frames - organisations (`Op
       </values>
     </ValueSet>
     <ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
-      <!-- We expect a TypsOfPlace Valueset -->
+      <!-- We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop. -->
       <values>
         <TypeOfPlace id="drtCollectionPoint" version="1">
           <Name lang="de">Sammelpunkt
@@ -123,10 +123,8 @@ Contains shared resources used / referenced in other frames - organisations (`Op
     </ValueSet>
   </typesOfValue>
   <organisations>
-    <!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We currently face a problem that the same sboid might be reused for Operator and Authority. We will have to check, if we only define Operators, but ue them in Authority as well. TBD -->
-    <Operator id="sboid" version="1">
-      <!-- We will use this organisation also in AuthorityRef. The problem is that the sboid can be used only once. -->
-    </Operator>
+    <!-- ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We do not use the NeTEx element Authority, thus avoiding the problem of an identical SBOID for Operator and Authority. -->
+    <Operator id="sboid" version="1"/>
   </organisations>
   <siteFacilitySets>
     <!-- Depending on the export/import part, there will be SiteFacilitySets to be included or not. -->
@@ -145,7 +143,7 @@ Contains shared resources used / referenced in other frames - organisations (`Op
 
 
 
-*→ - [Template](./templates/ResourceFrame.xml)*
+*→ [Template](./templates/ResourceFrame.xml)*
 
 ### Frame Relationships
 
@@ -172,7 +170,7 @@ We use this element to  describe the different roles of the participating compan
 
 
 
-Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line.
+Each combination of LegalEntity and Operator needs a ResponsibilitySet. EntitiyLegalOwnership is mandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line.
 
 *Table: ResponsibilitySet*
 
@@ -191,7 +189,7 @@ Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLeg
 
 
 
-*→ - [General NeTEx definition](../site/netex-html/ResponsibilitySet.html)*
+*→ [General NeTEx definition](../site/netex-html/ResponsibilitySet.html)*
 
 ### Example
 
@@ -199,7 +197,7 @@ Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLeg
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <ResponsibilitySet id="ch:1:ResponsbilitySet-gen" version="1">
-  <!-- Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLegalOwnership ismandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line. -->
+  <!-- Each combination of LegalEntity and Operator needs a ResponsibilitySet. EntitiyLegalOwnership is mandatory. All other roles are optional. However, we prefer to have the Operation part as well. If given Journeys are operated by a different Operator, then a different ResponsibilitySet should be referenced in the ServiceJourney from the Line. -->
   <Name lang="de">Basler Verkehrsbetriebe</Name>
   <PrivateCode>BVB</PrivateCode>
   <roles>
@@ -219,7 +217,7 @@ Each combination of Authority and Operator needs a ResponsibilitySet. EntitiyLeg
 
 
 
-*→ - [Template](./templates/ResponsibilitySet.xml)*
+*→ [Template](./templates/ResponsibilitySet.xml)*
 
 ### Usage Notes
 Services (e.g. replacement services) can be associated with different roles. These roles can be defined inside the `ResponsibilitySet` element.
@@ -373,7 +371,7 @@ We will use this organisation also in `AuthorityRef`. The problem is that the SB
 <Operator id="ch:1:sboid:100602" version="1">
   <!-- We will use this organisation also in `AuthorityRef`. The problem is that the SBOID can be used only once. **TODO** Clarify -->
   <privateCodes>
-    <PrivateCode type="GO">801
+    <PrivateCode type="go">801
       <!-- SBOID and GO (busines organisation) mandatory if they exist. -->
     </PrivateCode>
     <PrivateCode type="sboid">ch:1:sboid:100602
@@ -398,7 +396,7 @@ We will use this organisation also in `AuthorityRef`. The problem is that the SB
 
 
 
-*→ - [Template](./templates/Operator.xml)*
+*→ [Template](./templates/Operator.xml)*
 
 ### Usage Notes
 * `Organisation`s located in Switzerland are identified by their [SBOIDs](https://transportdatamanagement.ch/content/uploads/2021/05/SwissBusinessOrganisationID_DE_1_2.pdf)  (earlier [GO-number](https://opentransportdata.swiss/de/dataset/didok/resource/d66259a0-a77c-4aee-b7bd-e4fba99dcbb1) ).
@@ -409,6 +407,63 @@ in Switzerland. The TU-Code is to be used for operators of other countries.
 a different `OperatorRef`.
 * `Authority`  and `Organisation` are not used.
 - `@id` needs to be kept stable between exports.
+
+
+## TypesOfPlace
+
+### Purpose
+We have two types of place that we use:
+- `regularStop`: regular stop from classic public transport
+- `drtCollectionPoint`: irregular stop used in demand responsive transport.
+
+### Table
+
+
+
+We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop.
+
+*Table: ValueSet*
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | values | expected | 0..1 | typesOfValue_RelStructure | Values in Set. |  |
+| + | TypeOfPlace | expected | 0..* | TypeOfPlace_ValueStructure | Classification of a PLACE. |  |
+| ++ | Name | expected | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
+| +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
+| +++ | Text | expected | 0..* | MultilingualString |  |  |
+| ++++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
+
+
+
+
+*→ [General NeTEx definition](../xcore/netex/elements/TypesOfPlace.html)*
+
+
+###  Example
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<ValueSet id="ch:1:ValueSet:TypesOfPlace" version="1" nameOfClass="TypeOfPlace">
+  <!-- We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop. -->
+  <values>
+    <TypeOfPlace id="drtCollectionPoint" version="1">
+      <Name lang="de">Sammelpunkt
+        <Text lang="en">Collection Point</Text>
+      </Name>
+    </TypeOfPlace>
+    <TypeOfPlace id="regularStop" version="1">
+      <Name lang="de">Reguläre Haltestelle
+        <Text lang="en">Regular Stop</Text>
+      </Name>
+    </TypeOfPlace>
+  </values>
+</ValueSet>
+```
+
+
+
+*→ [Template](./templates/TypesOfPlace.xml)*
 
 ## ServiceFacilitySet
 *→ [Glossary definition](A4_annex_glossary.md#servicefacilityset)*
@@ -432,7 +487,7 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 | + | Priority | expected | 0..1 | InterchangePriorityType | Priority to assign to this INTERCHANGE. |  |
 |  | Description | expected | 0..1 | MultilingualString |  |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | optional | 0..* | MultilingualString |  |  |
+| + | Text | optional | 0..* | MultilingualString |  | For each language a Text element must be provided |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | FareClasses | optional | 0..1 | FareClassListOfEnumerations | List of Fare Classes. |  |
 |  | MobilityFacilityList | optional | 0..1 | MobilityFacilityListOfEnumerations | List of MOBILITY FACILITies. |  |
@@ -460,7 +515,9 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
     <Condition>4</Condition>
   </Extensions>
   <Description lang="de">Nur 2. Klasse
-    <Text lang="en">2nd class only</Text>
+    <Text lang="en">2nd class only
+      <!-- For each language a Text element must be provided -->
+    </Text>
     <Text lang="fr">Seulement 2e classe</Text>
     <Text lang="it">Solo 2a classe</Text>
   </Description>
@@ -476,7 +533,7 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 
 
 
-*→ - [Template](./templates/ServiceFacilitySet.xml)*
+*→ [Template](./templates/ServiceFacilitySet.xml)*
 
 ### Usage Notes
 * SKI uses the following groups to classify `ServiceFacility`s:
@@ -525,9 +582,9 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | validityConditions | optional | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. |  |
 | + | [AvailabilityCondition](./tables/AvailabilityCondition.md) | optional | 0..* | AvailabilityCondition_VersionStructure | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. |  |
-|  | Description | optional | 0..1 | MultilingualString |  | Description is optional |
+|  | Description | optional | 0..1 | MultilingualString |  | Description is optional. |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-| + | Text | optional | 0..* | MultilingualString |  |  |
+| + | Text | optional | 0..* | MultilingualString |  | All necessary languages are modeled as a Text element |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | AssistanceFacilityList | optional | 0..1 | AssistanceFacilityListOfEnumerations | List of ASSISTANCE FACILITies. |  |
 |  | AccessibilityToolList | optional | 0..1 | AccessibilityToolListOfEnumerations | List of TYPEs of ACCESSIBILITY TOOLs. |  |
@@ -551,14 +608,16 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
   <!-- List of SiteFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical SiteFacilitySets. Reuse them. There might be an overlap to ServiceFacilitySet, but they are used for different purposes. -->
   <validityConditions>
     <AvailabilityCondition id="generated" version="1">
-      <FromDate>2026-03-30T12:00:00</FromDate>
-      <ToDate>2026-04-01T12:00:00</ToDate>
+      <FromDate>2026-03-30T00:00:00</FromDate>
+      <ToDate>2026-04-01T23:59:59</ToDate>
       <ValidDayBits>01</ValidDayBits>
     </AvailabilityCondition>
   </validityConditions>
   <Description lang="de">SiteFacilitySet Solothurn
-    <!-- Description is optional -->
-    <Text lang="en">SiteFacilitySet Solothurn</Text>
+    <!-- Description is optional. -->
+    <Text lang="en">SiteFacilitySet Solothurn
+      <!-- All necessary languages are modeled as a Text element -->
+    </Text>
   </Description>
   <AssistanceFacilityList>personalAssistance information boardingAssistance</AssistanceFacilityList>
   <AccessibilityToolList>audioNavigator</AccessibilityToolList>
@@ -572,7 +631,7 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 
 
 
-*→ - [Template](./templates/SiteFacilitySet.xml)*
+*→ [Template](./templates/SiteFacilitySet.xml)*
 
 ### Usage Notes
 * Make sure to not generate identical SiteFacilitySets. Reuse them.
@@ -630,7 +689,7 @@ Used currently mainly for the relevant accessibility elements that can be expres
 
 
 
-*→ - [Template](./templates/VehicleType.xml)*
+*→ [Template](./templates/VehicleType.xml)*
 
 ### Usage Notes
 * We currently use `VehicleType` but not `VehicleModel`.

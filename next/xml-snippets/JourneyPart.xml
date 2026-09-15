@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<parts>
+  <!-- For some use cases e.g. change of Facilities during ServiceJourney -->
+  <JourneyPart id="ch:1:JourneyPart:703-bistro-1" version="1">
+    <validityConditions>
+      <!-- We prefer to not use those -->
+      <AvailabilityConditionRef ref="generated" version="1"/>
+    </validityConditions>
+    <MainPartRef ref="ch:1:JourneyPart:703-bistro-1" version="1">
+      <!-- For the use cases we support, this is not necessary -->
+    </MainPartRef>
+    <TrainNumberRef ref="ch:1:TrainNumber:231213" version="1">
+      <!-- TrainNumber used for this part -->
+    </TrainNumberRef>
+    <FromStopPointRef ref="ch:1:sloid:7000:4:7" version="1">
+      <!-- `ScheduledStopPoint` where the part begins. On the level of Quay. -->
+    </FromStopPointRef>
+    <ToStopPointRef ref="ch:1:sloid:218:7" version="1">
+      <!-- `ScheduledStopPoint` where the part ends . If not present, it is to the end of the ServiceJourney. But we prefer to have it explicitly -->
+    </ToStopPointRef>
+    <StartTime>05:29:00
+      <!-- Time bounds of the part -->
+    </StartTime>
+    <StartTimeDayOffset>0</StartTimeDayOffset>
+    <EndTime>06:28:00
+      <!-- Time bounds of the part. -->
+    </EndTime>
+    <EndTimeDayOffset>0</EndTimeDayOffset>
+    <PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:FacilityChange" version="1">
+      <!-- Reason for the partition (e.g. `FacilityChange`, `TrainNumberChange`, 'TypeOfProductCategorychage`). Only two values are allowed (see uc0_journey_parts). Other things are implemented with different elements. Especially Notices are done with NoticeAssignment and not ServiceJourneyPart. -->
+    </PurposeOfJourneyPartitionRef>
+    <facilities>
+      <!-- `ServiceFacilitySet` valid for this part only. Used when there is a change in facilities. -->
+      <ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:bistro-open" version="1"/>
+    </facilities>
+    <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1">
+      <!-- Used when the product category changes -->
+    </TypeOfProductCategoryRef>
+  </JourneyPart>
+  <JourneyPart id="ch:1:JourneyPart:703-bistro-2" version="1">
+    <FromStopPointRef ref="ch:1:sloid:3000:501:33" version="1"/>
+    <ToStopPointRef ref="ch:1:sloid:6302:1" version="1"/>
+    <StartTime>06:57:00</StartTime>
+    <StartTimeDayOffset>0</StartTimeDayOffset>
+    <EndTime>07:52:00</EndTime>
+    <EndTimeDayOffset>0</EndTimeDayOffset>
+    <PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:FacilityChange" version="1"/>
+    <facilities>
+      <ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:bistro-open" version="1"/>
+    </facilities>
+  </JourneyPart>
+</parts>
