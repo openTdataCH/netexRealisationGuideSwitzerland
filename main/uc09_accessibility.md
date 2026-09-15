@@ -85,10 +85,10 @@ An assessment of the usability by passengers with specific needs, for example, t
 | ++ | StepFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has step free access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
 | ++ | StairFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0 | Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. |
 | ++ | RampFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has ramp free access. Ramp free isn't necessary absolute. If a ramp is not steep, then a PLACE can still be considered ramp free. | Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. |
-| ++ | GuideDogAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE allows guide dog access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
-| ++ | TactileGuidanceAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has tactile guidance. | Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
-| ++ | VisualSignsAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has visual signals for the hearing impaired. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
 | ++ | LevelAccessIntoVehicle | expected | 0..1 | LimitationStatusEnumeration | Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI). | Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+| ++ | VisualSignsAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has visual signals for the hearing impaired. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+| ++ | TactileGuidanceAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has tactile guidance. | Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+| ++ | GuideDogAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE allows guide dog access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
 
 
 
@@ -120,18 +120,18 @@ An assessment of the usability by passengers with specific needs, for example, t
       <RampFreeAccess>true
         <!-- Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. -->
       </RampFreeAccess>
-      <GuideDogAccess>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
-      </GuideDogAccess>
-      <TactileGuidanceAvailable>true
-        <!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
-      </TactileGuidanceAvailable>
-      <VisualSignsAvailable>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
-      </VisualSignsAvailable>
       <LevelAccessIntoVehicle>true
         <!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </LevelAccessIntoVehicle>
+      <VisualSignsAvailable>true
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
+      </VisualSignsAvailable>
+      <TactileGuidanceAvailable>true
+        <!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
+      </TactileGuidanceAvailable>
+      <GuideDogAccess>true
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
+      </GuideDogAccess>
     </AccessibilityLimitation>
   </limitations>
 </AccessibilityAssessment>
@@ -206,7 +206,9 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
 |  | entrances | expected | 0..1 | pointOfInterestEntrances_RelStructure | ENTRANCEs to and within SITE. | Accessibility. |
 | + | [Entrance](./tables/Entrance.md) | expected | 0..* | SiteEntrance_VersionStructure | Entrance to a SITE. | Accessibility. |
 |  | equipmentPlaces | optional | 0..1 | equipmentPlaces_RelStructure | EQUIPMENT PLACEs within SITE COMPONENT. | Accessibility. TODO |
+| + | EquipmentPlaceRef | optional | 0..* | EquipmentPlaceRefStructure | Reference to an EQUIPMENT PLACE. |  |
 |  | placeEquipments | optional | 0..1 | placeEquipments_RelStructure | Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT. | Accessibility. TODO |
+| + | EntranceSensor | optional | 0..* | EntranceSensor_VersionStructure | AN EQUIPMENT used to monitor or count passengers using a PASSENGER ENTRANCE. +v2.0 |  |
 |  | localServices | expected | 0..1 | localServices_RelStructure | LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT. | Accessibility. |
 | + | AssistanceServiceRef | optional | 0..* | AssistanceServiceRefStructure | Identifier of an ASSISTANCE SERVICE. | Accessibility. |
 |  | accessSpaces | expected | 0..1 | accessSpaces_RelStructure | ACCESS SPACEs within the STOP PLACE. | Accessibility. |
@@ -299,9 +301,11 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
   </entrances>
   <equipmentPlaces>
     <!-- Accessibility. TODO -->
+    <EquipmentPlaceRef ref="generated" version="1"/>
   </equipmentPlaces>
   <placeEquipments>
     <!-- Accessibility. TODO -->
+    <EntranceSensor id="generated" version="1"/>
   </placeEquipments>
   <localServices>
     <!-- Accessibility. -->

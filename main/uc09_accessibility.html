@@ -373,11 +373,20 @@
     </tr>
     <tr>
       <td>++</td>
-      <td>GuideDogAccess</td>
+      <td>LevelAccessIntoVehicle</td>
       <td>expected</td>
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
-      <td>Whether a PLACE allows guide dog access.</td>
+      <td>Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).</td>
+      <td>Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>VisualSignsAvailable</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LimitationStatusEnumeration</td>
+      <td>Whether a PLACE has visual signals for the hearing impaired.</td>
       <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
     <tr>
@@ -391,21 +400,12 @@
     </tr>
     <tr>
       <td>++</td>
-      <td>VisualSignsAvailable</td>
+      <td>GuideDogAccess</td>
       <td>expected</td>
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
-      <td>Whether a PLACE has visual signals for the hearing impaired.</td>
+      <td>Whether a PLACE allows guide dog access.</td>
       <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>LevelAccessIntoVehicle</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>LimitationStatusEnumeration</td>
-      <td>Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).</td>
-      <td>Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
     </tr>
   </tbody>
 </table>
@@ -435,18 +435,18 @@
       <span class="nt">&lt;RampFreeAccess&gt;</span>true
         <span class="c">&lt;!-- Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/RampFreeAccess&gt;</span>
-      <span class="nt">&lt;GuideDogAccess&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
-      <span class="nt">&lt;/GuideDogAccess&gt;</span>
-      <span class="nt">&lt;TactileGuidanceAvailable&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
-      <span class="nt">&lt;/TactileGuidanceAvailable&gt;</span>
-      <span class="nt">&lt;VisualSignsAvailable&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
-      <span class="nt">&lt;/VisualSignsAvailable&gt;</span>
       <span class="nt">&lt;LevelAccessIntoVehicle&gt;</span>true
         <span class="c">&lt;!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
       <span class="nt">&lt;/LevelAccessIntoVehicle&gt;</span>
+      <span class="nt">&lt;VisualSignsAvailable&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
+      <span class="nt">&lt;/VisualSignsAvailable&gt;</span>
+      <span class="nt">&lt;TactileGuidanceAvailable&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
+      <span class="nt">&lt;/TactileGuidanceAvailable&gt;</span>
+      <span class="nt">&lt;GuideDogAccess&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
+      <span class="nt">&lt;/GuideDogAccess&gt;</span>
     <span class="nt">&lt;/AccessibilityLimitation&gt;</span>
   <span class="nt">&lt;/limitations&gt;</span>
 <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
@@ -667,6 +667,15 @@
       <td>Accessibility. TODO</td>
     </tr>
     <tr>
+      <td>+</td>
+      <td>EquipmentPlaceRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>EquipmentPlaceRefStructure</td>
+      <td>Reference to an EQUIPMENT PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td> </td>
       <td>placeEquipments</td>
       <td>optional</td>
@@ -674,6 +683,15 @@
       <td>placeEquipments_RelStructure</td>
       <td>Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT.</td>
       <td>Accessibility. TODO</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>EntranceSensor</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>EntranceSensor_VersionStructure</td>
+      <td>AN EQUIPMENT used to monitor or count passengers using a PASSENGER ENTRANCE. +v2.0</td>
+      <td> </td>
     </tr>
     <tr>
       <td> </td>
@@ -795,9 +813,11 @@
   <span class="nt">&lt;/entrances&gt;</span>
   <span class="nt">&lt;equipmentPlaces&gt;</span>
     <span class="c">&lt;!-- Accessibility. TODO --&gt;</span>
+    <span class="nt">&lt;EquipmentPlaceRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/equipmentPlaces&gt;</span>
   <span class="nt">&lt;placeEquipments&gt;</span>
     <span class="c">&lt;!-- Accessibility. TODO --&gt;</span>
+    <span class="nt">&lt;EntranceSensor</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/placeEquipments&gt;</span>
   <span class="nt">&lt;localServices&gt;</span>
     <span class="c">&lt;!-- Accessibility. --&gt;</span>

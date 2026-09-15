@@ -16,7 +16,9 @@
 |  | entrances | expected | 0..1 | pointOfInterestEntrances_RelStructure | ENTRANCEs to and within SITE. | Accessibility. |
 | + | [Entrance](Entrance.md) | expected | 0..* | SiteEntrance_VersionStructure | Entrance to a SITE. | Accessibility. |
 |  | equipmentPlaces | optional | 0..1 | equipmentPlaces_RelStructure | EQUIPMENT PLACEs within SITE COMPONENT. | Accessibility. TODO |
+| + | EquipmentPlaceRef | optional | 0..* | EquipmentPlaceRefStructure | Reference to an EQUIPMENT PLACE. |  |
 |  | placeEquipments | optional | 0..1 | placeEquipments_RelStructure | Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT. | Accessibility. TODO |
+| + | EntranceSensor | optional | 0..* | EntranceSensor_VersionStructure | AN EQUIPMENT used to monitor or count passengers using a PASSENGER ENTRANCE. +v2.0 |  |
 |  | localServices | expected | 0..1 | localServices_RelStructure | LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT. | Accessibility. |
 | + | AssistanceServiceRef | optional | 0..* | AssistanceServiceRefStructure | Identifier of an ASSISTANCE SERVICE. | Accessibility. |
 |  | accessSpaces | expected | 0..1 | accessSpaces_RelStructure | ACCESS SPACEs within the STOP PLACE. | Accessibility. |
