@@ -5,7 +5,7 @@
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:siri="http://www.siri.org.uk/siri" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.09" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
 	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
 	<ParticipantRef>SKIExamples</ParticipantRef>
-	<Description lang="de">Example of Train Formation first draft.</Description>
+	<Description lang="de">Example of Train Formation (MENTZ variant).</Description>
 	<dataObjects>
 		<CompositeFrame id="ch:1:CompositeFrame:J26" version="1">
 			<ValidBetween>
@@ -253,7 +253,8 @@
 											<Altitude>567</Altitude>
 										</Location>
 									</Centroid>
-									<PublicCode>8</PublicCode>									<QuayType>railPlatform</QuayType>
+									<PublicCode>8</PublicCode>									
+									<QuayType>railPlatform</QuayType>
 
 								</Quay>
 								<Quay id="ch:1:sloid:7492:0:460848sectorA" version="1">
@@ -264,8 +265,10 @@
 											<Altitude>567</Altitude>
 										</Location>
 									</Centroid>
-									<PublicCode>8A</PublicCode>									<QuayType>railPlatformSector</QuayType>
-
+									<PublicCode>8A</PublicCode>									
+									<QuayType>railPlatformSector</QuayType>
+									<!-- Quay sector belongs to platform 8 -->
+									<ParentQuayRef ref="ch:1:sloid:7492:0:460848" version="1"/>
 								</Quay>
 								<Quay id="ch:1:sloid:7492:0:460848sectorB" version="1">
 									<Centroid>
@@ -275,8 +278,10 @@
 											<Altitude>567</Altitude>
 										</Location>
 									</Centroid>
-									<PublicCode>8B</PublicCode>									<QuayType>railPlatformSector</QuayType>
-
+									<PublicCode>8B</PublicCode>									
+									<QuayType>railPlatformSector</QuayType>
+									<!-- Quay sector belongs to platform 8 -->
+									<ParentQuayRef ref="ch:1:sloid:7492:0:460848" version="1"/>
 								</Quay>
 							</quays>
 						</StopPlace>
@@ -317,6 +322,7 @@
 							</privateCodes>
 							<Name lang="de">Interlaken West</Name>
 						</ScheduledStopPoint>
+						
 						<ScheduledStopPoint id="ch:1:sloid:7492:0:460848" version="1">
 							<privateCodes>
 								<PrivateCode type="sloid">ch:1:sloid:7492:0:460848</PrivateCode>
@@ -336,58 +342,71 @@
 							<StopPlaceRef ref="ch:1:sloid:71310" version="1"/>
 							<QuayRef ref="ch:1:sloid:71310:0:304706" version="1"/>
 						</PassengerStopAssignment>
+						<!-- default quay assignment if formation is not known -->
 						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507492:7" version="1">
 							<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
 							<StopPlaceRef ref="ch:1:sloid:7492" version="1"/>
 							<QuayRef ref="ch:1:sloid:7492:0:460848" version="1"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="psa_with_formation_1" version="1">
-							<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
+						<!-- stop assignments if formation is known -->
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507492:70" version="1">
+							<!-- no scheduled stop point reference here as we do not want to confuse consumers who ignore PassengerStopAssignments-->
 							<StopPlaceRef ref="ch:1:sloid:7492" version="1"/>
-							<QuayRef ref="ch:1:sloid:7492:0:460848" version="1"/>
+							<!-- we assign the quay sector. The platform quay is known as the quay sector again references it (see definition of quay sector) -->
+							<QuayRef ref="ch:1:sloid:7492:0:460848sectorA" version="1"/>
+							<!-- now we assign all train components to the sector A -->
 							<passengerBoardingPositionAssignments>
-								<PassengerBoardingPositionAssignment id="pbpa1" version="1">
+								<PassengerBoardingPositionAssignment id="pbpa10" version="1">
 									<Description>Assign coach 1 to sector A</Description>
-									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorA"/>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
 									<TrainComponentRef version="1" ref="bbd:trncmp_447_01"/>
 								</PassengerBoardingPositionAssignment>
-								<PassengerBoardingPositionAssignment id="pbpa2" version="1">
+								<PassengerBoardingPositionAssignment id="pbpa11" version="1">
 									<Description>Assign coach 2 to sector A</Description>
-									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorA"/>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
 									<TrainComponentRef version="1" ref="bbd:trncmp_447_02"/>
 								</PassengerBoardingPositionAssignment>
-								<PassengerBoardingPositionAssignment id="pbpa3" version="1">
+								<PassengerBoardingPositionAssignment id="pbpa12" version="1">
 									<Description>Assign coach 3 to sector A</Description>
-									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorA"/>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
 									<TrainComponentRef version="1" ref="bbd:trncmp_447_03"/>
 								</PassengerBoardingPositionAssignment>
-								<PassengerBoardingPositionAssignment id="pbpa4" version="1">
-									<Description>Assign coach 4 to sector B</Description>
-									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorB"/>
+								<PassengerBoardingPositionAssignment id="pbpa13" version="1">
+									<Description>Assign coach 3 to sector A</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
 									<TrainComponentRef version="1" ref="bbd:trncmp_447_04"/>
-								</PassengerBoardingPositionAssignment>
-								<PassengerBoardingPositionAssignment id="pbpa5" version="1">
-									<Description>Assign coach 5 to sector B</Description>
-									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorB"/>
-									<TrainComponentRef version="1" ref="bbd:trncmp_448_01"/>
-								</PassengerBoardingPositionAssignment>
-								<PassengerBoardingPositionAssignment id="pbpa6" version="1">
-									<Description>Assign coach 6 to sector B</Description>
-									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorB"/>
-									<TrainComponentRef version="1" ref="bbd:trncmp_448_02"/>
-								</PassengerBoardingPositionAssignment>
-								<PassengerBoardingPositionAssignment id="pbpa7" version="1">
-									<Description>Assign coach 7 to sector B</Description>
-									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorB"/>
-									<TrainComponentRef version="1" ref="bbd:trncmp_448_03"/>
-								</PassengerBoardingPositionAssignment>
-								<PassengerBoardingPositionAssignment id="pbpa8" version="1">
-									<Description>Assign coach 8 to sector B</Description>
-									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848_sectorB"/>
-									<TrainComponentRef version="1" ref="bbd:trncmp_448_04"/>
 								</PassengerBoardingPositionAssignment>
 							</passengerBoardingPositionAssignments>
 						</PassengerStopAssignment>
+						<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507492:80" version="1">
+							<!-- no scheduled stop point reference here as we do not want to confuse consumers who ignore PassengerStopAssignments-->
+							<StopPlaceRef ref="ch:1:sloid:7492" version="1"/>
+							<!-- we assign the quay sector. The platform quay is known as the quay sector again references it (see definition of quay sector) -->
+							<QuayRef ref="ch:1:sloid:7492:0:460848sectorB" version="1"/>
+							<!-- now we assign all train components to the sector A -->
+							<passengerBoardingPositionAssignments>
+								<PassengerBoardingPositionAssignment id="pbpa20" version="1">
+									<Description>Assign coach 5 to sector B</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
+									<TrainComponentRef version="1" ref="bbd:trncmp_448_01"/>
+								</PassengerBoardingPositionAssignment>
+								<PassengerBoardingPositionAssignment id="pbpa21" version="1">
+									<Description>Assign coach 6 to sector B</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
+									<TrainComponentRef version="1" ref="bbd:trncmp_448_02"/>
+								</PassengerBoardingPositionAssignment>
+								<PassengerBoardingPositionAssignment id="pbpa22" version="1">
+									<Description>Assign coach 7 to sector B</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
+									<TrainComponentRef version="1" ref="bbd:trncmp_448_03"/>
+								</PassengerBoardingPositionAssignment>
+								<PassengerBoardingPositionAssignment id="pbpa23" version="1">
+									<Description>Assign coach 8 to sector B</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
+									<TrainComponentRef version="1" ref="bbd:trncmp_448_04"/>
+								</PassengerBoardingPositionAssignment>
+							</passengerBoardingPositionAssignments>
+						</PassengerStopAssignment>										
 					</stopAssignments>
 					<timingLinks>
 						<TimingLink id="tl-1" version="1">
@@ -409,8 +428,7 @@
 								<StopPointInJourneyPattern id="spijp3" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/>
 									<ForAlighting>true</ForAlighting>
-									<ForBoarding>false</ForBoarding>
-									<PassengerStopAssignmentRef ref="psa_with_formation_1" version="1"/>
+									<ForBoarding>false</ForBoarding>									
 								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="spijp2" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:7493:0:470772" version="1"/>
