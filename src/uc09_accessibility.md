@@ -121,6 +121,31 @@ Interpretation of `AccessibilityLimitation`:
 Such information can be encoded using `PathLink`s and `PathJunction`s that describe a routing network including accessibility and location data.
 
 
+
+
+
+## AssistanceService
+*→ [Glossary definition](A4_annex_glossary.md#AssistanceService)* **TODO**
+
+### Purpose
+**TODO** Do we need that? Where to find the booking / contact information that goes with the function?
+
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/AssistanceService.md)
+
+*→ [General NeTEx definition ](../xcore/netex/elements/AssistanceService.html)*
+
+### Example
+- [Example snippet](../site/xml-snippets/AssistanceService.xml)
+
+*→ [Template](./templates/AssistanceService.xml)*
+
+
+
+
+
+
 ## StopPlace - the Additional Elements
 
 
@@ -149,12 +174,14 @@ The element is used in `StopPlace` and `Quay`, for which slightly differing rule
   * `AssistanceFacilityList`
   * `TicketingFacilityList`
   * `EmergencyFacilityList`
-  
+
 
 ### Example
 - [Example snippet](../site/xml-snippets/SiteFacilitySet_withAccessibility.xml)
 
 *→ [Template](./templates/SiteFacilitySet_withAccessibility.xml)*
+
+
 
 
 
@@ -227,8 +254,8 @@ The third model is a streamlined form that doesn't insist on PathJunctions if th
 *→ [Template](./templates/NewElement.xml)*
 
 
-## ExistingElementY - the Additional Elements
 
+## ExistingElementY - the Additional Elements
 
 
 ### Table
