@@ -5,53 +5,53 @@ Definition of the Swiss Accessibility Profile.
 In this chapter:
 
 AccessibilityAssessment
-- AccessibilityAssessment
+- **AccessibilityAssessment**
 
 Basic Orientation
-- Level
-- Entrance
-- AccessSpace
-- StopPlace - the Additional Elements
-- Quay - the Additional Elements
+- **Level**
+- **Entrance**
+- *AccessSpace*
+- **StopPlace - the Additional Elements**
+- **Quay - the Additional Elements**
 
 
 PrivateMobility
 - Parking
-- VehicleMeetingPoint
+- **VehicleMeetingPoint**
 
 Path Navigation
-- SitePathLink
-- PathJunction
-- DefaultConnection - the Additional Elements
-- SiteConnection - the Additional Elements
+- *SitePathLink*
+- *PathJunction*
+- *DefaultConnection - the Additional Elements*
+- *SiteConnection - the Additional Elements*
 
 Equipments, Facilities & Services
-- EquipmentPlace
-- EntranceEquipment
-- EscalatorEquipment
-- LiftEquipment
-- RampEquipment
-- TravelatorEquipment
-- LuggageLockerEquipment
-- TrolleyStandEquipment
-- PassengerSafetyEquipment
+- **EquipmentPlace**
+- **EntranceEquipment**
+- *EscalatorEquipment*
+- *LiftEquipment*
+- *RampEquipment*
+- *TravelatorEquipment*
+- (LuggageLockerEquipment
+- (TrolleyStandEquipment
+- (PassengerSafetyEquipment
 - SanitaryEquipment
 - TicketingEquipment
-- QueingEquipment - ?
+- (QueingEquipment - ?
 - TicketValidatorEquipment
-- ShelterEquipment - ?
+- (ShelterEquipment - ?
 - WaitingEquipment
 - WaitingRoomEquipment
 - SignEquipment- ?
-- AssistanceService**_
-- AssistanceBookingService
-- LostPropertyService
+- **AssistanceService**
+- **AssistanceBookingService**
+- (LostPropertyService
 - LuggageService
-- MeetingPointService
-- TicketingService
-- CustomerService
-- SiteFacilitySet - the Additional Elements
-- ServiceFacilitySet - the Additional Elements
+- **MeetingPointService**
+- (TicketingService
+- **CustomerService**
+- **SiteFacilitySet - the Additional Elements**
+- **ServiceFacilitySet - the Additional Elements**
 
 Vehicles & Vehicle Stop Interaction
 - VehicleType

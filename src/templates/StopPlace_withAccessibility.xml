@@ -130,6 +130,17 @@
 									<!-- ch-note: Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet`.-->
 									<!-- ch-see -->
 								</AssistanceService>
+								<MeetingPointService id="ch:1:meetingpoint:7000:1" version="1">
+									<!-- ch-usage: expected -->
+									<!-- ch-note: Accessibility. Indicates the presence or absence of a meeting point. -->
+									<MeetingPointServiceType>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-allowed-enums: meetingPoint groupMeetingPoint -->
+										<!-- ch-note: Only a single value allowed: `meetingPoint groupMeetingPoint`. -->
+										meetingPoint
+									</MeetingPointServiceType>
+									<Label><!-- ch-usage: expected -->Treffpunkt</Label>
+								</MeetingPointService>
 							</localServices>
 							<StopPlaceType>railStation</StopPlaceType>
 							<LimitedUse>interchangeOnly</LimitedUse>
