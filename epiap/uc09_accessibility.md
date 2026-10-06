@@ -182,6 +182,63 @@ Interpretation of `AccessibilityLimitation`:
 Such information can be encoded using `PathLink`s and `PathJunction`s that describe a routing network including accessibility and location data.
 
 
+
+
+
+## AssistanceService
+*→ [Glossary definition](A4_annex_glossary.md#AssistanceService)* **TODO**
+
+### Purpose
+**TODO** Do we need that? Where to find the booking / contact information that goes with the function?
+
+
+### Table
+
+
+
+The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add new facilities to the ones already given by the `SiteFacilitySet`.
+
+*Table: AssistanceService*
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | AssistanceFacilityList | expected | 0..1 | AssistanceFacilityListOfEnumerations | List of ASSISTANCE FACILITies. | Accessibility. Facilities for which the availability is described below. Allowed values: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. |
+|  | AssistanceAvailability | expected | 0..1 | AssistanceAvailabilityEnumeration | Availability of assistance service. | Accessibility. Facilities for which the availability is described below. Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. |
+|  | AccessibilityToolList | optional | 0..1 | AccessibilityToolListOfEnumerations | List of TYPEs of ACCESSIBILITY TOOLs. | Accessibility. If the availabilty of wheelchairs for passenger use is restricted: `wheelchair`. |
+
+
+
+
+*→ [General NeTEx definition ](../xcore/netex/elements/AssistanceService.html)*
+
+### Example
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<AssistanceService id="ch:1:assistance:7000:1" version="1">
+  <!-- The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add new facilities to the ones already given by the `SiteFacilitySet`. -->
+  <AssistanceFacilityList>personalAssistance information boardingAssistance wheelchairAssistance
+    <!-- Accessibility. Facilities for which the availability is described below. Allowed values: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. -->
+  </AssistanceFacilityList>
+  <AssistanceAvailability>availableIfBooked
+    <!-- Accessibility. Facilities for which the availability is described below. Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. -->
+  </AssistanceAvailability>
+  <AccessibilityToolList>wheelchair
+    <!-- Accessibility. If the availabilty of wheelchairs for passenger use is restricted: `wheelchair`. -->
+  </AccessibilityToolList>
+</AssistanceService>
+```
+
+
+
+*→ [Template](./templates/AssistanceService.xml)*
+
+
+
+
+
+
 ## StopPlace - the Additional Elements
 
 
@@ -209,8 +266,8 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
 | + | EquipmentPlaceRef | optional | 0..* | EquipmentPlaceRefStructure | Reference to an EQUIPMENT PLACE. |  |
 |  | placeEquipments | optional | 0..1 | placeEquipments_RelStructure | Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT. | Accessibility. **TODO*3 TBD |
 | + | LiftEquipmentRef | optional | 0..* | AccessEquipmentRefStructure | Identifier of an LIFT EQUIPMENT. |  |
-|  | localServices | expected | 0..1 | localServices_RelStructure | LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT. | Accessibility. |
-| + | AssistanceServiceRef | optional | 0..* | AssistanceServiceRefStructure | Identifier of an ASSISTANCE SERVICE. | Accessibility. |
+|  | localServices | optional | 0..1 | localServices_RelStructure | LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT. |  |
+| + | [AssistanceService](./tables/AssistanceService.md) | optional | 0..* | AssistanceService_VersionStructure | Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc. | Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet`. |
 |  | accessSpaces | expected | 0..1 | accessSpaces_RelStructure | ACCESS SPACEs within the STOP PLACE. | Accessibility. **TODO** TBD |
 | + | [AccessSpace](./tables/AccessSpace.md) | expected | 0..* | AccessSpace_VersionStructure | An area within a STOP PLACE that does not give direct access to transport vehicles. May be connected to QUAYS by PATH LINKs. | Accessibility. |
 
@@ -308,10 +365,9 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
     <LiftEquipmentRef ref="generated" version="1"/>
   </placeEquipments>
   <localServices>
-    <!-- Accessibility. -->
-    <AssistanceServiceRef ref="generated" version="1">
-      <!-- Accessibility. -->
-    </AssistanceServiceRef>
+    <AssistanceService id="ch:1:assistance:7000:1" version="1">
+      <!-- Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet`. -->
+    </AssistanceService>
   </localServices>
   <StopPlaceType>railStation</StopPlaceType>
   <LimitedUse>interchangeOnly</LimitedUse>
@@ -364,7 +420,7 @@ The element is used in `StopPlace` and `Quay`, for which slightly differing rule
   * `AssistanceFacilityList`
   * `TicketingFacilityList`
   * `EmergencyFacilityList`
-  
+
 
 ### Example
 
@@ -411,6 +467,8 @@ The element is used in `StopPlace` and `Quay`, for which slightly differing rule
 
 
 *→ [Template](./templates/SiteFacilitySet_withAccessibility.xml)*
+
+
 
 
 
@@ -499,8 +557,8 @@ NewElement.xml
 *→ [Template](./templates/NewElement.xml)*
 
 
-## ExistingElementY - the Additional Elements
 
+## ExistingElementY - the Additional Elements
 
 
 ### Table

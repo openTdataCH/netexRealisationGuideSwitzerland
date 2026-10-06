@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssistanceService id="ch:1:assistance:7000:1" version="1">
+  <!-- The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add new facilities to the ones already given by the `SiteFacilitySet`. -->
+  <AssistanceFacilityList>personalAssistance information boardingAssistance wheelchairAssistance
+    <!-- Accessibility. Facilities for which the availability is described below. Allowed values: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. -->
+  </AssistanceFacilityList>
+  <AssistanceAvailability>availableIfBooked
+    <!-- Accessibility. Facilities for which the availability is described below. Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. -->
+  </AssistanceAvailability>
+  <AccessibilityToolList>wheelchair
+    <!-- Accessibility. If the availabilty of wheelchairs for passenger use is restricted: `wheelchair`. -->
+  </AccessibilityToolList>
+</AssistanceService>

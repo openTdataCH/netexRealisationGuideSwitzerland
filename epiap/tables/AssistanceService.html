@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>StopPlace_withAccessibility | DRAFT Swiss profile 2.0 for NeTEx 2.1</title>
+<title>AssistanceService | DRAFT Swiss profile 2.0 for NeTEx 2.1</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="StopPlace_withAccessibility" />
+<meta property="og:title" content="AssistanceService" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/StopPlace_withAccessibility.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/StopPlace_withAccessibility.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/AssistanceService.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/AssistanceService.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.1" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="StopPlace_withAccessibility" />
+<meta property="twitter:title" content="AssistanceService" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"StopPlace_withAccessibility","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/StopPlace_withAccessibility.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"AssistanceService","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/AssistanceService.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/netexRealisationGuideSwitzerland/epiap/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.1" /></head>
 <body><header class="site-header" role="banner">
@@ -213,9 +213,11 @@
 </nav>
     <main class="content" aria-label="Content">
       
-        <h1 class="page-title">StopPlace_withAccessibility</h1>
+        <h1 class="page-title">AssistanceService</h1>
       
-      <p><em>Table: StopPlace</em></p>
+      <p>The element allows for more precisely describing the availability of <code class="language-plaintext highlighter-rouge">AssistanceFacility</code>s and <code class="language-plaintext highlighter-rouge">AccessibilityTools</code>, e.g., if they need to be booked. It does not add new facilities to the ones already given by the <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code>.</p>
+
+<p><em>Table: AssistanceService</em></p>
 
 <table>
   <thead>
@@ -232,174 +234,30 @@
   <tbody>
     <tr>
       <td> </td>
-      <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
-      <td>mandatory</td>
+      <td>AssistanceFacilityList</td>
+      <td>expected</td>
       <td>0..1</td>
-      <td>AccessibilityAssessment_VersionedChildStructure</td>
-      <td>Assessment of the accessibility of a SITE.</td>
-      <td>Accessibility.</td>
+      <td>AssistanceFacilityListOfEnumerations</td>
+      <td>List of ASSISTANCE FACILITies.</td>
+      <td>Accessibility. Facilities for which the availability is described below. Allowed values: <code class="language-plaintext highlighter-rouge">boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information</code>.</td>
     </tr>
     <tr>
       <td> </td>
-      <td>Covered</td>
+      <td>AssistanceAvailability</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>CoveredEnumeration</td>
-      <td>Whether the component is Indoors or outdoors. Default is Indoors.</td>
-      <td>Accessibility.</td>
+      <td>AssistanceAvailabilityEnumeration</td>
+      <td>Availability of assistance service.</td>
+      <td>Accessibility. Facilities for which the availability is described below. Allowed values: <code class="language-plaintext highlighter-rouge">available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown</code>.</td>
     </tr>
     <tr>
       <td> </td>
-      <td>AllAreasWheelchairAccessible</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>xsd:boolean</td>
-      <td>Whether all areas of the component are wheelchair accessible.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>facilities</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>serviceFacilitySets_RelStructure</td>
-      <td>FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
-      <td>expected</td>
-      <td>1..*</td>
-      <td>SiteFacilitySetStructure</td>
-      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
-      <td>Accessibility. EPIAP wants the SiteFacilitySets being defined here.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>SiteFacilitySetRef</td>
-      <td>optional</td>
-      <td>0..*</td>
-      <td>SiteFacilitySetRefStructure</td>
-      <td>Reference to a SITE FACILITY SET.</td>
-      <td>Accessibility. <strong>TODO</strong>: Shall we allow the use of references here, e.g., for standard configurations?</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>levels</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>levels_RelStructure</td>
-      <td>LEVELs found within SITe.</td>
-      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td><a href="Level.md">Level</a></td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>Level_VersionStructure</td>
-      <td>Level of a Building or SITE.</td>
-      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td><a href="Level.md">Level</a></td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>Level_VersionStructure</td>
-      <td>Level of a Building or SITE.</td>
-      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>entrances</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>pointOfInterestEntrances_RelStructure</td>
-      <td>ENTRANCEs to and within SITE.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td><a href="Entrance.md">Entrance</a></td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>SiteEntrance_VersionStructure</td>
-      <td>Entrance to a SITE.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>equipmentPlaces</td>
+      <td>AccessibilityToolList</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>equipmentPlaces_RelStructure</td>
-      <td>EQUIPMENT PLACEs within SITE COMPONENT.</td>
-      <td>Accessibility. <strong>TODO</strong> TBD</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>EquipmentPlaceRef</td>
-      <td>optional</td>
-      <td>0..*</td>
-      <td>EquipmentPlaceRefStructure</td>
-      <td>Reference to an EQUIPMENT PLACE.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>placeEquipments</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>placeEquipments_RelStructure</td>
-      <td>Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT.</td>
-      <td>Accessibility. <em>*TODO</em>3 TBD</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>LiftEquipmentRef</td>
-      <td>optional</td>
-      <td>0..*</td>
-      <td>AccessEquipmentRefStructure</td>
-      <td>Identifier of an LIFT EQUIPMENT.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>localServices</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>localServices_RelStructure</td>
-      <td>LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/AssistanceService.html">AssistanceService</a></td>
-      <td>optional</td>
-      <td>0..*</td>
-      <td>AssistanceService_VersionStructure</td>
-      <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
-      <td>Accessibility. The element allows for more precisely describing the availability of <code class="language-plaintext highlighter-rouge">AssistanceFacility</code>s and <code class="language-plaintext highlighter-rouge">AccessibilityTools</code>, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code>.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>accessSpaces</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>accessSpaces_RelStructure</td>
-      <td>ACCESS SPACEs within the STOP PLACE.</td>
-      <td>Accessibility. <strong>TODO</strong> TBD</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td><a href="AccessSpace.md">AccessSpace</a></td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>AccessSpace_VersionStructure</td>
-      <td>An area within a STOP PLACE that does not give direct access to transport vehicles. May be connected to QUAYS by PATH LINKs.</td>
-      <td>Accessibility.</td>
+      <td>AccessibilityToolListOfEnumerations</td>
+      <td>List of TYPEs of ACCESSIBILITY TOOLs.</td>
+      <td>Accessibility. If the availabilty of wheelchairs for passenger use is restricted: <code class="language-plaintext highlighter-rouge">wheelchair</code>.</td>
     </tr>
   </tbody>
 </table>

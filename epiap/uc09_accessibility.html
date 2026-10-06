@@ -539,9 +539,85 @@
 
 <p>Such information can be encoded using <code class="language-plaintext highlighter-rouge">PathLink</code>s and <code class="language-plaintext highlighter-rouge">PathJunction</code>s that describe a routing network including accessibility and location data.</p>
 
-<h2 id="stopplace---the-additional-elements">StopPlace - the Additional Elements</h2>
+<h2 id="assistanceservice">AssistanceService</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#AssistanceService">Glossary definition</a></em> <strong>TODO</strong></p>
+
+<h3 id="purpose-1">Purpose</h3>
+<p><strong>TODO</strong> Do we need that? Where to find the booking / contact information that goes with the function?</p>
 
 <h3 id="table-1">Table</h3>
+
+<p>The element allows for more precisely describing the availability of <code class="language-plaintext highlighter-rouge">AssistanceFacility</code>s and <code class="language-plaintext highlighter-rouge">AccessibilityTools</code>, e.g., if they need to be booked. It does not add new facilities to the ones already given by the <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code>.</p>
+
+<p><em>Table: AssistanceService</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>AssistanceFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AssistanceFacilityListOfEnumerations</td>
+      <td>List of ASSISTANCE FACILITies.</td>
+      <td>Accessibility. Facilities for which the availability is described below. Allowed values: <code class="language-plaintext highlighter-rouge">boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AssistanceAvailability</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AssistanceAvailabilityEnumeration</td>
+      <td>Availability of assistance service.</td>
+      <td>Accessibility. Facilities for which the availability is described below. Allowed values: <code class="language-plaintext highlighter-rouge">available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AccessibilityToolList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessibilityToolListOfEnumerations</td>
+      <td>List of TYPEs of ACCESSIBILITY TOOLs.</td>
+      <td>Accessibility. If the availabilty of wheelchairs for passenger use is restricted: <code class="language-plaintext highlighter-rouge">wheelchair</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../xcore/netex/elements/AssistanceService.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-1">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;AssistanceService</span> <span class="na">id=</span><span class="s">"ch:1:assistance:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add new facilities to the ones already given by the `SiteFacilitySet`. --&gt;</span>
+  <span class="nt">&lt;AssistanceFacilityList&gt;</span>personalAssistance information boardingAssistance wheelchairAssistance
+    <span class="c">&lt;!-- Accessibility. Facilities for which the availability is described below. Allowed values: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. --&gt;</span>
+  <span class="nt">&lt;/AssistanceFacilityList&gt;</span>
+  <span class="nt">&lt;AssistanceAvailability&gt;</span>availableIfBooked
+    <span class="c">&lt;!-- Accessibility. Facilities for which the availability is described below. Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. --&gt;</span>
+  <span class="nt">&lt;/AssistanceAvailability&gt;</span>
+  <span class="nt">&lt;AccessibilityToolList&gt;</span>wheelchair
+    <span class="c">&lt;!-- Accessibility. If the availabilty of wheelchairs for passenger use is restricted: `wheelchair`. --&gt;</span>
+  <span class="nt">&lt;/AccessibilityToolList&gt;</span>
+<span class="nt">&lt;/AssistanceService&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/templates/AssistanceService.xml">Template</a></em></p>
+
+<h2 id="stopplace---the-additional-elements">StopPlace - the Additional Elements</h2>
+
+<h3 id="table-2">Table</h3>
 
 <p><em>Table: StopPlace</em></p>
 
@@ -696,20 +772,20 @@
     <tr>
       <td> </td>
       <td>localServices</td>
-      <td>expected</td>
+      <td>optional</td>
       <td>0..1</td>
       <td>localServices_RelStructure</td>
       <td>LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT.</td>
-      <td>Accessibility.</td>
+      <td> </td>
     </tr>
     <tr>
       <td>+</td>
-      <td>AssistanceServiceRef</td>
+      <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/AssistanceService.html">AssistanceService</a></td>
       <td>optional</td>
       <td>0..*</td>
-      <td>AssistanceServiceRefStructure</td>
-      <td>Identifier of an ASSISTANCE SERVICE.</td>
-      <td>Accessibility.</td>
+      <td>AssistanceService_VersionStructure</td>
+      <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
+      <td>Accessibility. The element allows for more precisely describing the availability of <code class="language-plaintext highlighter-rouge">AssistanceFacility</code>s and <code class="language-plaintext highlighter-rouge">AccessibilityTools</code>, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code>.</td>
     </tr>
     <tr>
       <td> </td>
@@ -732,7 +808,7 @@
   </tbody>
 </table>
 
-<h3 id="example-1">Example</h3>
+<h3 id="example-2">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -820,10 +896,9 @@
     <span class="nt">&lt;LiftEquipmentRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/placeEquipments&gt;</span>
   <span class="nt">&lt;localServices&gt;</span>
-    <span class="c">&lt;!-- Accessibility. --&gt;</span>
-    <span class="nt">&lt;AssistanceServiceRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Accessibility. --&gt;</span>
-    <span class="nt">&lt;/AssistanceServiceRef&gt;</span>
+    <span class="nt">&lt;AssistanceService</span> <span class="na">id=</span><span class="s">"ch:1:assistance:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet`. --&gt;</span>
+    <span class="nt">&lt;/AssistanceService&gt;</span>
   <span class="nt">&lt;/localServices&gt;</span>
   <span class="nt">&lt;StopPlaceType&gt;</span>railStation<span class="nt">&lt;/StopPlaceType&gt;</span>
   <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly<span class="nt">&lt;/LimitedUse&gt;</span>
@@ -844,7 +919,7 @@
 
 <h2 id="sitefacilityset---the-additional-elements">SiteFacilitySet - the Additional Elements</h2>
 
-<h3 id="table-2">Table</h3>
+<h3 id="table-3">Table</h3>
 
 <p><em>Table: SiteFacilitySet</em></p>
 
@@ -950,7 +1025,7 @@
   </li>
 </ul>
 
-<h3 id="example-2">Example</h3>
+<h3 id="example-3">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"ch:1:sloid:1234"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -995,16 +1070,16 @@
 <h2 id="sitepathlink">SitePathLink</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#sitepathlink">Glossary definition</a></em> TODO</p>
 
-<h3 id="purpose-1">Purpose</h3>
+<h3 id="purpose-2">Purpose</h3>
 <p>…</p>
 
-<h3 id="table-3">Table</h3>
+<h3 id="table-4">Table</h3>
 
 <p>SitePathLink.md</p>
 
 <p><em>→ <a href="../xcore/netex/elements/SitePathLink.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-3">Example</h3>
+<h3 id="example-4">Example</h3>
 
 <p>SitePathLink.xml</p>
 
@@ -1042,16 +1117,16 @@
 <h2 id="newelementx">NewElementX</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em> TODO</p>
 
-<h3 id="purpose-2">Purpose</h3>
+<h3 id="purpose-3">Purpose</h3>
 <p>…</p>
 
-<h3 id="table-4">Table</h3>
+<h3 id="table-5">Table</h3>
 
 <p>NewElement.md</p>
 
 <p><em>→ <a href="../xcore/netex/elements/NewElement.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-4">Example</h3>
+<h3 id="example-5">Example</h3>
 
 <p>NewElement.xml</p>
 
@@ -1059,11 +1134,11 @@
 
 <h2 id="existingelementy---the-additional-elements">ExistingElementY - the Additional Elements</h2>
 
-<h3 id="table-5">Table</h3>
+<h3 id="table-6">Table</h3>
 
 <p>OldElement_withAccessibility.md</p>
 
-<h3 id="example-5">Example</h3>
+<h3 id="example-6">Example</h3>
 
 <p>OldElement_withAccessibility.xml</p>
 
