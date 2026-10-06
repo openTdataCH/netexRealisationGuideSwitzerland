@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>AccessibilityAssessment | DRAFT Swiss profile 2.0 for NeTEx 2.1</title>
+<title>SiteFacilitySet_withAccessibility | DRAFT Swiss profile 2.0 for NeTEx 2.1</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="AccessibilityAssessment" />
+<meta property="og:title" content="SiteFacilitySet_withAccessibility" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/AccessibilityAssessment.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/AccessibilityAssessment.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/SiteFacilitySet_withAccessibility.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/SiteFacilitySet_withAccessibility.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.1" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="AccessibilityAssessment" />
+<meta property="twitter:title" content="SiteFacilitySet_withAccessibility" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"AccessibilityAssessment","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/AccessibilityAssessment.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"SiteFacilitySet_withAccessibility","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/tables/SiteFacilitySet_withAccessibility.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/netexRealisationGuideSwitzerland/epiap/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/epiap/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.1" /></head>
 <body><header class="site-header" role="banner">
@@ -213,9 +213,9 @@
 </nav>
     <main class="content" aria-label="Content">
       
-        <h1 class="page-title">AccessibilityAssessment</h1>
+        <h1 class="page-title">SiteFacilitySet_withAccessibility</h1>
       
-      <p><em>Table: AccessibilityAssessment</em></p>
+      <p><em>Table: SiteFacilitySet</em></p>
 
 <table>
   <thead>
@@ -232,102 +232,57 @@
   <tbody>
     <tr>
       <td> </td>
-      <td>MobilityImpairedAccess</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>LimitationStatusEnumeration</td>
-      <td>Summary indication as to whether the component is considered to be accessible or not.</td>
-      <td>Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace.</td>
+      <td>AssistanceFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AssistanceFacilityListOfEnumerations</td>
+      <td>List of ASSISTANCE FACILITies.</td>
+      <td>Accessibility. Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information</code>.</td>
     </tr>
     <tr>
       <td> </td>
-      <td>limitations</td>
+      <td>AccessibilityToolList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessibilityToolListOfEnumerations</td>
+      <td>List of TYPEs of ACCESSIBILITY TOOLs.</td>
+      <td>Accessibility. Presence or absence of the following facility may be signalled; absence of the item means absence of the facility (if the element is present): <code class="language-plaintext highlighter-rouge">wheelchair</code> - wheelchairs available for passenger use.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>SanitaryFacilityList</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>usageParameters_RelStructure</td>
-      <td>The ACCESSIBILITY LIMITATION that apply to component.</td>
-      <td>Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed.</td>
+      <td>SanitaryFacilityListOfEnumerations</td>
+      <td>List of SANITARY FACILITies.</td>
+      <td>Accessibility. Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">wheelchairAccessToilet wheelchairBabyChange toilet babyChange shower</code>.</td>
     </tr>
     <tr>
-      <td>+</td>
-      <td>AccessibilityLimitation</td>
-      <td>mandatory</td>
-      <td>0..*</td>
-      <td>AccessibilityLimitation_VersionedChildStructure</td>
-      <td>Assessment of the accessibility of a SITE.</td>
-      <td>Accessibility.</td>
+      <td> </td>
+      <td>TicketingServiceFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>TicketingServiceFacilityListOfEnumerations</td>
+      <td>List of TICKETING SERVICE FACILITies, e.g. purchase, collection. top up.</td>
+      <td> </td>
     </tr>
     <tr>
-      <td>++</td>
-      <td>WheelchairAccess</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>LimitationStatusEnumeration</td>
-      <td>Whether a PLACE is wheelchair accessible.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>StepFreeAccess</td>
+      <td> </td>
+      <td>EmergencyServiceList</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>LimitationStatusEnumeration</td>
-      <td>Whether a PLACE has step free access.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
+      <td>EmergencyServiceListOfEnumerations</td>
+      <td>List of EMERGENCY SERVICE FACILITies.</td>
+      <td>Accessibility. Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">sosPoint firstAid</code>. Optional: <code class="language-plaintext highlighter-rouge">police fire</code>.</td>
     </tr>
     <tr>
-      <td>++</td>
-      <td>StairFreeAccess</td>
+      <td> </td>
+      <td>ParkingFacilityList</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>LimitationStatusEnumeration</td>
-      <td>Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0</td>
-      <td>Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>RampFreeAccess</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>LimitationStatusEnumeration</td>
-      <td>Whether a PLACE has ramp free access. Ramp free isn’t necessary absolute. If a ramp is not steep, then a PLACE can still be considered ramp free.</td>
-      <td>Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>LevelAccessIntoVehicle</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>LimitationStatusEnumeration</td>
-      <td>Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).</td>
-      <td>Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>VisualSignsAvailable</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>LimitationStatusEnumeration</td>
-      <td>Whether a PLACE has visual signals for the hearing impaired.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>TactileGuidanceAvailable</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>LimitationStatusEnumeration</td>
-      <td>Whether a PLACE has tactile guidance.</td>
-      <td>Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>GuideDogAccess</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>LimitationStatusEnumeration</td>
-      <td>Whether a PLACE allows guide dog access.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
+      <td>ParkingFacilityListOfEnumerations</td>
+      <td>List of PARKING FACILITies.</td>
+      <td>Accessibility. Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">carPark parkAndRidePark motorcyclePark cyclePark</code>. Others are optional: <code class="language-plaintext highlighter-rouge">cachPark rentalCarPark</code>.</td>
     </tr>
   </tbody>
 </table>
