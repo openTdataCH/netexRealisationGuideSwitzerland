@@ -198,20 +198,20 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
 |  | Covered | expected | 0..1 | CoveredEnumeration | Whether the component is Indoors or outdoors. Default is Indoors. | Accessibility. |
 |  | AllAreasWheelchairAccessible | mandatory | 0..1 | xsd:boolean | Whether all areas of the component are wheelchair accessible. | Accessibility. |
 |  | facilities | expected | 0..1 | serviceFacilitySets_RelStructure | FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed. | Accessibility. |
-| + | SiteFacilitySet | optional | 1..* | SiteFacilitySetStructure | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). | Accessibility. |
-| + | SiteFacilitySetRef | optional | 0..* | SiteFacilitySetRefStructure | Reference to a SITE FACILITY SET. | Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong. |
+| + | [SiteFacilitySet](./tables/SiteFacilitySet.md) | expected | 1..* | SiteFacilitySetStructure | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). | Accessibility. EPIAP wants the SiteFacilitySets being defined here. |
+| + | SiteFacilitySetRef | optional | 0..* | SiteFacilitySetRefStructure | Reference to a SITE FACILITY SET. | Accessibility. **TODO**: Shall we allow the use of references here, e.g., for standard configurations? |
 |  | levels | expected | 0..1 | levels_RelStructure | LEVELs found within SITe. | Accessibility. Mandatory if the StopPlace has more than one level. |
 | + | [Level](./tables/Level.md) | expected | 0..* | Level_VersionStructure | Level of a Building or SITE. | Accessibility. Mandatory if the StopPlace has more than one level. |
 | + | [Level](./tables/Level.md) | expected | 0..* | Level_VersionStructure | Level of a Building or SITE. | Accessibility. Mandatory if the StopPlace has more than one level. |
 |  | entrances | expected | 0..1 | pointOfInterestEntrances_RelStructure | ENTRANCEs to and within SITE. | Accessibility. |
 | + | [Entrance](./tables/Entrance.md) | expected | 0..* | SiteEntrance_VersionStructure | Entrance to a SITE. | Accessibility. |
-|  | equipmentPlaces | optional | 0..1 | equipmentPlaces_RelStructure | EQUIPMENT PLACEs within SITE COMPONENT. | Accessibility. TODO |
+|  | equipmentPlaces | optional | 0..1 | equipmentPlaces_RelStructure | EQUIPMENT PLACEs within SITE COMPONENT. | Accessibility. **TODO** TBD |
 | + | EquipmentPlaceRef | optional | 0..* | EquipmentPlaceRefStructure | Reference to an EQUIPMENT PLACE. |  |
-|  | placeEquipments | optional | 0..1 | placeEquipments_RelStructure | Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT. | Accessibility. TODO |
+|  | placeEquipments | optional | 0..1 | placeEquipments_RelStructure | Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT. | Accessibility. **TODO*3 TBD |
 | + | LiftEquipmentRef | optional | 0..* | AccessEquipmentRefStructure | Identifier of an LIFT EQUIPMENT. |  |
 |  | localServices | expected | 0..1 | localServices_RelStructure | LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT. | Accessibility. |
 | + | AssistanceServiceRef | optional | 0..* | AssistanceServiceRefStructure | Identifier of an ASSISTANCE SERVICE. | Accessibility. |
-|  | accessSpaces | expected | 0..1 | accessSpaces_RelStructure | ACCESS SPACEs within the STOP PLACE. | Accessibility. |
+|  | accessSpaces | expected | 0..1 | accessSpaces_RelStructure | ACCESS SPACEs within the STOP PLACE. | Accessibility. **TODO** TBD |
 | + | [AccessSpace](./tables/AccessSpace.md) | expected | 0..* | AccessSpace_VersionStructure | An area within a STOP PLACE that does not give direct access to transport vehicles. May be connected to QUAYS by PATH LINKs. | Accessibility. |
 
 
@@ -274,10 +274,10 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
   <facilities>
     <!-- Accessibility. -->
     <SiteFacilitySet id="ch:1:sitefacilityset:7000:1" version="1">
-      <!-- Accessibility. -->
+      <!-- Accessibility. EPIAP wants the SiteFacilitySets being defined here. -->
     </SiteFacilitySet>
     <SiteFacilitySetRef ref="generated" version="1">
-      <!-- Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong. -->
+      <!-- Accessibility. **TODO**: Shall we allow the use of references here, e.g., for standard configurations? -->
     </SiteFacilitySetRef>
   </facilities>
   <TopographicPlaceRef ref="BE-bern" version="1"/>
@@ -300,11 +300,11 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
     </Entrance>
   </entrances>
   <equipmentPlaces>
-    <!-- Accessibility. TODO -->
+    <!-- Accessibility. **TODO** TBD -->
     <EquipmentPlaceRef ref="generated" version="1"/>
   </equipmentPlaces>
   <placeEquipments>
-    <!-- Accessibility. TODO -->
+    <!-- Accessibility. **TODO*3 TBD -->
     <LiftEquipmentRef ref="generated" version="1"/>
   </placeEquipments>
   <localServices>
@@ -320,7 +320,7 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
     <Quay id="ch:1:sloid:7000:5:9" version="1"/>
   </quays>
   <accessSpaces>
-    <!-- Accessibility. -->
+    <!-- Accessibility. **TODO** TBD -->
     <AccessSpace id="ch:1:accessspace:7000:1" version="1">
       <!-- Accessibility. -->
     </AccessSpace>
@@ -331,6 +331,87 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
 
 
 *→ [Template](./templates/StopPlace_withAccessibility.xml)*
+
+
+
+## SiteFacilitySet - the Additional Elements
+
+### Table
+
+
+
+*Table: SiteFacilitySet*
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | AssistanceFacilityList | expected | 0..1 | AssistanceFacilityListOfEnumerations | List of ASSISTANCE FACILITies. | Accessibility. Presence or absence of the following facilities should be signalled: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. |
+|  | AccessibilityToolList | optional | 0..1 | AccessibilityToolListOfEnumerations | List of TYPEs of ACCESSIBILITY TOOLs. | Accessibility. Presence or absence of the following facility may be signalled; absence of the item means absence of the facility (if the element is present): `wheelchair` - wheelchairs available for passenger use. |
+|  | MedicalFacilityList | expected | 0..1 | MedicalFacilityListOfEnumerations | List of MEDICAL FACILITies. | Accessibility. Presence or absence of the following facilitiy should be signalled: `defibrillator`. |
+|  | SanitaryFacilityList | expected | 0..1 | SanitaryFacilityListOfEnumerations | List of SANITARY FACILITies. | Accessibility. Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet wheelchairBabyChange toilet babyChange shower`. |
+|  | TicketingFacilityList | optional | 0..1 | TicketingFacilityListOfEnumerations | List of TICKETING FACILITies. | Accessibility. Presence or absence of the following facilities may be signalled: `unknown ticketMachines ticketOffice mobileTicketing`. Knowing the available options in advance can be helpful for visually impaired and mobility impaired passengers, in particular whether there is a ticket office and whether there is a ticket machine on the quay. |
+|  | TicketingServiceFacilityList | optional | 0..1 | TicketingServiceFacilityListOfEnumerations | List of TICKETING SERVICE FACILITies, e.g. purchase, collection. top up. |  |
+|  | EmergencyServiceList | expected | 0..1 | EmergencyServiceListOfEnumerations | List of EMERGENCY SERVICE FACILITies. | Accessibility. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`. |
+|  | ParkingFacilityList | expected | 0..1 | ParkingFacilityListOfEnumerations | List of PARKING FACILITies. | Accessibility. Presence or absence of the following facilities should be signalled: `carPark parkAndRidePark motorcyclePark cyclePark`. Others are optional: `cachPark rentalCarPark`. |
+
+
+
+
+### Usage Notes
+
+The element is used in `StopPlace` and `Quay`, for which slightly differing rules apply: 
+* General presence or absence of facilities has to be indicated at the level of the `StopPlace`.
+* Of interest at the level of each `Quay`are the following:
+  * `AssistanceFacilityList`
+  * `TicketingFacilityList`
+  * `EmergencyFacilityList`
+  
+
+### Example
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<SiteFacilitySet id="ch:1:sloid:1234" version="1">
+  <validityConditions>
+    <AvailabilityCondition id="generated" version="1">
+      <FromDate>2026-03-30T00:00:00</FromDate>
+      <ToDate>2026-04-01T23:59:59</ToDate>
+      <ValidDayBits>01</ValidDayBits>
+    </AvailabilityCondition>
+  </validityConditions>
+  <Description lang="de">SiteFacilitySet Bhf sloid:1234
+    <Text lang="en">SiteFacilitySet for a stop place</Text>
+  </Description>
+  <AssistanceFacilityList>personalAssistance information boardingAssistance wheelchairAssistance
+    <!-- Accessibility. Presence or absence of the following facilities should be signalled: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. -->
+  </AssistanceFacilityList>
+  <AccessibilityToolList>wheelchair
+    <!-- Accessibility. Presence or absence of the following facility may be signalled; absence of the item means absence of the facility (if the element is present): `wheelchair` - wheelchairs available for passenger use. -->
+  </AccessibilityToolList>
+  <MedicalFacilityList>defibrillator
+    <!-- Accessibility. Presence or absence of the following facilitiy should be signalled: `defibrillator`. -->
+  </MedicalFacilityList>
+  <SanitaryFacilityList>toilet wheelchairAccessToilet babyChange
+    <!-- Accessibility. Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet wheelchairBabyChange toilet babyChange shower`. -->
+  </SanitaryFacilityList>
+  <TicketingFacilityList>ticketMachines ticketOffice mobileTicketing
+    <!-- Accessibility. Presence or absence of the following facilities may be signalled: `unknown ticketMachines ticketOffice mobileTicketing`. Knowing the available options in advance can be helpful for visually impaired and mobility impaired passengers, in particular whether there is a ticket office and whether there is a ticket machine on the quay. -->
+  </TicketingFacilityList>
+  <TicketingServiceFacilityList>all reservations</TicketingServiceFacilityList>
+  <EmergencyServiceList>sosPoint
+    <!-- Accessibility. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`. -->
+  </EmergencyServiceList>
+  <LuggageLockerFacilityList>lockers</LuggageLockerFacilityList>
+  <ParkingFacilityList>motorcyclePark cyclePark
+    <!-- Accessibility. Presence or absence of the following facilities should be signalled: `carPark parkAndRidePark motorcyclePark cyclePark`. Others are optional: `cachPark rentalCarPark`. -->
+  </ParkingFacilityList>
+</SiteFacilitySet>
+```
+
+
+
+*→ [Template](./templates/SiteFacilitySet_withAccessibility.xml)*
+
 
 
 

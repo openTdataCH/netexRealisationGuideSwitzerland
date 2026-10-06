@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SiteFacilitySet id="generated" version="1">
+<SiteFacilitySet id="ch:1:sloid:1234" version="1">
   <validityConditions>
     <AvailabilityCondition id="generated" version="1">
       <FromDate>2026-03-30T00:00:00</FromDate>
@@ -7,8 +7,8 @@
       <ValidDayBits>01</ValidDayBits>
     </AvailabilityCondition>
   </validityConditions>
-  <Description lang="de">SiteFacilitySet Solothurn
-    <Text lang="en">SiteFacilitySet Solothurn</Text>
+  <Description lang="de">SiteFacilitySet Bhf sloid:1234
+    <Text lang="en">SiteFacilitySet for a stop place</Text>
   </Description>
   <AssistanceFacilityList>personalAssistance information boardingAssistance wheelchairAssistance
     <!-- Accessibility. Presence or absence of the following facilities should be signalled: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. -->
@@ -16,9 +16,15 @@
   <AccessibilityToolList>wheelchair
     <!-- Accessibility. Presence or absence of the following facility may be signalled; absence of the item means absence of the facility (if the element is present): `wheelchair` - wheelchairs available for passenger use. -->
   </AccessibilityToolList>
+  <MedicalFacilityList>defibrillator
+    <!-- Accessibility. Presence or absence of the following facilitiy should be signalled: `defibrillator`. -->
+  </MedicalFacilityList>
   <SanitaryFacilityList>toilet wheelchairAccessToilet babyChange
     <!-- Accessibility. Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet wheelchairBabyChange toilet babyChange shower`. -->
   </SanitaryFacilityList>
+  <TicketingFacilityList>ticketMachines ticketOffice mobileTicketing
+    <!-- Accessibility. Presence or absence of the following facilities may be signalled: `unknown ticketMachines ticketOffice mobileTicketing`. Knowing the available options in advance can be helpful for visually impaired and mobility impaired passengers, in particular whether there is a ticket office and whether there is a ticket machine on the quay. -->
+  </TicketingFacilityList>
   <TicketingServiceFacilityList>all reservations</TicketingServiceFacilityList>
   <EmergencyServiceList>sosPoint
     <!-- Accessibility. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`. -->

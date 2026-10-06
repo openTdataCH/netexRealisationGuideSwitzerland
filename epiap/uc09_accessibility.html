@@ -596,12 +596,12 @@
     </tr>
     <tr>
       <td>+</td>
-      <td>SiteFacilitySet</td>
-      <td>optional</td>
+      <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
+      <td>expected</td>
       <td>1..*</td>
       <td>SiteFacilitySetStructure</td>
       <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
-      <td>Accessibility.</td>
+      <td>Accessibility. EPIAP wants the SiteFacilitySets being defined here.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -610,7 +610,7 @@
       <td>0..*</td>
       <td>SiteFacilitySetRefStructure</td>
       <td>Reference to a SITE FACILITY SET.</td>
-      <td>Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong.</td>
+      <td>Accessibility. <strong>TODO</strong>: Shall we allow the use of references here, e.g., for standard configurations?</td>
     </tr>
     <tr>
       <td> </td>
@@ -664,7 +664,7 @@
       <td>0..1</td>
       <td>equipmentPlaces_RelStructure</td>
       <td>EQUIPMENT PLACEs within SITE COMPONENT.</td>
-      <td>Accessibility. TODO</td>
+      <td>Accessibility. <strong>TODO</strong> TBD</td>
     </tr>
     <tr>
       <td>+</td>
@@ -682,7 +682,7 @@
       <td>0..1</td>
       <td>placeEquipments_RelStructure</td>
       <td>Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT.</td>
-      <td>Accessibility. TODO</td>
+      <td>Accessibility. <em>*TODO</em>3 TBD</td>
     </tr>
     <tr>
       <td>+</td>
@@ -718,7 +718,7 @@
       <td>0..1</td>
       <td>accessSpaces_RelStructure</td>
       <td>ACCESS SPACEs within the STOP PLACE.</td>
-      <td>Accessibility.</td>
+      <td>Accessibility. <strong>TODO</strong> TBD</td>
     </tr>
     <tr>
       <td>+</td>
@@ -786,10 +786,10 @@
   <span class="nt">&lt;facilities&gt;</span>
     <span class="c">&lt;!-- Accessibility. --&gt;</span>
     <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"ch:1:sitefacilityset:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+      <span class="c">&lt;!-- Accessibility. EPIAP wants the SiteFacilitySets being defined here. --&gt;</span>
     <span class="nt">&lt;/SiteFacilitySet&gt;</span>
     <span class="nt">&lt;SiteFacilitySetRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong. --&gt;</span>
+      <span class="c">&lt;!-- Accessibility. **TODO**: Shall we allow the use of references here, e.g., for standard configurations? --&gt;</span>
     <span class="nt">&lt;/SiteFacilitySetRef&gt;</span>
   <span class="nt">&lt;/facilities&gt;</span>
   <span class="nt">&lt;TopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"BE-bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
@@ -812,11 +812,11 @@
     <span class="nt">&lt;/Entrance&gt;</span>
   <span class="nt">&lt;/entrances&gt;</span>
   <span class="nt">&lt;equipmentPlaces&gt;</span>
-    <span class="c">&lt;!-- Accessibility. TODO --&gt;</span>
+    <span class="c">&lt;!-- Accessibility. **TODO** TBD --&gt;</span>
     <span class="nt">&lt;EquipmentPlaceRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/equipmentPlaces&gt;</span>
   <span class="nt">&lt;placeEquipments&gt;</span>
-    <span class="c">&lt;!-- Accessibility. TODO --&gt;</span>
+    <span class="c">&lt;!-- Accessibility. **TODO*3 TBD --&gt;</span>
     <span class="nt">&lt;LiftEquipmentRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/placeEquipments&gt;</span>
   <span class="nt">&lt;localServices&gt;</span>
@@ -832,7 +832,7 @@
     <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/quays&gt;</span>
   <span class="nt">&lt;accessSpaces&gt;</span>
-    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="c">&lt;!-- Accessibility. **TODO** TBD --&gt;</span>
     <span class="nt">&lt;AccessSpace</span> <span class="na">id=</span><span class="s">"ch:1:accessspace:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
       <span class="c">&lt;!-- Accessibility. --&gt;</span>
     <span class="nt">&lt;/AccessSpace&gt;</span>
@@ -842,25 +842,175 @@
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/templates/StopPlace_withAccessibility.xml">Template</a></em></p>
 
+<h2 id="sitefacilityset---the-additional-elements">SiteFacilitySet - the Additional Elements</h2>
+
+<h3 id="table-2">Table</h3>
+
+<p><em>Table: SiteFacilitySet</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>AssistanceFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AssistanceFacilityListOfEnumerations</td>
+      <td>List of ASSISTANCE FACILITies.</td>
+      <td>Accessibility. Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AccessibilityToolList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessibilityToolListOfEnumerations</td>
+      <td>List of TYPEs of ACCESSIBILITY TOOLs.</td>
+      <td>Accessibility. Presence or absence of the following facility may be signalled; absence of the item means absence of the facility (if the element is present): <code class="language-plaintext highlighter-rouge">wheelchair</code> - wheelchairs available for passenger use.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>MedicalFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MedicalFacilityListOfEnumerations</td>
+      <td>List of MEDICAL FACILITies.</td>
+      <td>Accessibility. Presence or absence of the following facilitiy should be signalled: <code class="language-plaintext highlighter-rouge">defibrillator</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>SanitaryFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>SanitaryFacilityListOfEnumerations</td>
+      <td>List of SANITARY FACILITies.</td>
+      <td>Accessibility. Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">wheelchairAccessToilet wheelchairBabyChange toilet babyChange shower</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TicketingFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>TicketingFacilityListOfEnumerations</td>
+      <td>List of TICKETING FACILITies.</td>
+      <td>Accessibility. Presence or absence of the following facilities may be signalled: <code class="language-plaintext highlighter-rouge">unknown ticketMachines ticketOffice mobileTicketing</code>. Knowing the available options in advance can be helpful for visually impaired and mobility impaired passengers, in particular whether there is a ticket office and whether there is a ticket machine on the quay.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TicketingServiceFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>TicketingServiceFacilityListOfEnumerations</td>
+      <td>List of TICKETING SERVICE FACILITies, e.g. purchase, collection. top up.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>EmergencyServiceList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>EmergencyServiceListOfEnumerations</td>
+      <td>List of EMERGENCY SERVICE FACILITies.</td>
+      <td>Accessibility. Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">sosPoint firstAid</code>. Optional: <code class="language-plaintext highlighter-rouge">police fire</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ParkingFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>ParkingFacilityListOfEnumerations</td>
+      <td>List of PARKING FACILITies.</td>
+      <td>Accessibility. Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">carPark parkAndRidePark motorcyclePark cyclePark</code>. Others are optional: <code class="language-plaintext highlighter-rouge">cachPark rentalCarPark</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="usage-notes-1">Usage Notes</h3>
+
+<p>The element is used in <code class="language-plaintext highlighter-rouge">StopPlace</code> and <code class="language-plaintext highlighter-rouge">Quay</code>, for which slightly differing rules apply:</p>
+<ul>
+  <li>General presence or absence of facilities has to be indicated at the level of the <code class="language-plaintext highlighter-rouge">StopPlace</code>.</li>
+  <li>Of interest at the level of each <code class="language-plaintext highlighter-rouge">Quay</code>are the following:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">AssistanceFacilityList</code></li>
+      <li><code class="language-plaintext highlighter-rouge">TicketingFacilityList</code></li>
+      <li><code class="language-plaintext highlighter-rouge">EmergencyFacilityList</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="example-2">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"ch:1:sloid:1234"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;FromDate&gt;</span>2026-03-30T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
+      <span class="nt">&lt;ToDate&gt;</span>2026-04-01T23:59:59<span class="nt">&lt;/ToDate&gt;</span>
+      <span class="nt">&lt;ValidDayBits&gt;</span>01<span class="nt">&lt;/ValidDayBits&gt;</span>
+    <span class="nt">&lt;/AvailabilityCondition&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>SiteFacilitySet Bhf sloid:1234
+    <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>SiteFacilitySet for a stop place<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;AssistanceFacilityList&gt;</span>personalAssistance information boardingAssistance wheelchairAssistance
+    <span class="c">&lt;!-- Accessibility. Presence or absence of the following facilities should be signalled: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. --&gt;</span>
+  <span class="nt">&lt;/AssistanceFacilityList&gt;</span>
+  <span class="nt">&lt;AccessibilityToolList&gt;</span>wheelchair
+    <span class="c">&lt;!-- Accessibility. Presence or absence of the following facility may be signalled; absence of the item means absence of the facility (if the element is present): `wheelchair` - wheelchairs available for passenger use. --&gt;</span>
+  <span class="nt">&lt;/AccessibilityToolList&gt;</span>
+  <span class="nt">&lt;MedicalFacilityList&gt;</span>defibrillator
+    <span class="c">&lt;!-- Accessibility. Presence or absence of the following facilitiy should be signalled: `defibrillator`. --&gt;</span>
+  <span class="nt">&lt;/MedicalFacilityList&gt;</span>
+  <span class="nt">&lt;SanitaryFacilityList&gt;</span>toilet wheelchairAccessToilet babyChange
+    <span class="c">&lt;!-- Accessibility. Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet wheelchairBabyChange toilet babyChange shower`. --&gt;</span>
+  <span class="nt">&lt;/SanitaryFacilityList&gt;</span>
+  <span class="nt">&lt;TicketingFacilityList&gt;</span>ticketMachines ticketOffice mobileTicketing
+    <span class="c">&lt;!-- Accessibility. Presence or absence of the following facilities may be signalled: `unknown ticketMachines ticketOffice mobileTicketing`. Knowing the available options in advance can be helpful for visually impaired and mobility impaired passengers, in particular whether there is a ticket office and whether there is a ticket machine on the quay. --&gt;</span>
+  <span class="nt">&lt;/TicketingFacilityList&gt;</span>
+  <span class="nt">&lt;TicketingServiceFacilityList&gt;</span>all reservations<span class="nt">&lt;/TicketingServiceFacilityList&gt;</span>
+  <span class="nt">&lt;EmergencyServiceList&gt;</span>sosPoint
+    <span class="c">&lt;!-- Accessibility. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`. --&gt;</span>
+  <span class="nt">&lt;/EmergencyServiceList&gt;</span>
+  <span class="nt">&lt;LuggageLockerFacilityList&gt;</span>lockers<span class="nt">&lt;/LuggageLockerFacilityList&gt;</span>
+  <span class="nt">&lt;ParkingFacilityList&gt;</span>motorcyclePark cyclePark
+    <span class="c">&lt;!-- Accessibility. Presence or absence of the following facilities should be signalled: `carPark parkAndRidePark motorcyclePark cyclePark`. Others are optional: `cachPark rentalCarPark`. --&gt;</span>
+  <span class="nt">&lt;/ParkingFacilityList&gt;</span>
+<span class="nt">&lt;/SiteFacilitySet&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/templates/SiteFacilitySet_withAccessibility.xml">Template</a></em></p>
+
 <h2 id="sitepathlink">SitePathLink</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#sitepathlink">Glossary definition</a></em> TODO</p>
 
 <h3 id="purpose-1">Purpose</h3>
 <p>…</p>
 
-<h3 id="table-2">Table</h3>
+<h3 id="table-3">Table</h3>
 
 <p>SitePathLink.md</p>
 
 <p><em>→ <a href="../xcore/netex/elements/SitePathLink.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-2">Example</h3>
+<h3 id="example-3">Example</h3>
 
 <p>SitePathLink.xml</p>
 
 <p><em>→ <a href="./templates/SitePathLink.xml">Template</a></em></p>
 
-<h3 id="usage-notes-1">Usage Notes</h3>
+<h3 id="usage-notes-2">Usage Notes</h3>
 
 <h4 id="modelling-rules-for-navigation-networks">Modelling Rules for Navigation Networks</h4>
 
@@ -895,13 +1045,13 @@
 <h3 id="purpose-2">Purpose</h3>
 <p>…</p>
 
-<h3 id="table-3">Table</h3>
+<h3 id="table-4">Table</h3>
 
 <p>NewElement.md</p>
 
 <p><em>→ <a href="../xcore/netex/elements/NewElement.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-3">Example</h3>
+<h3 id="example-4">Example</h3>
 
 <p>NewElement.xml</p>
 
@@ -909,11 +1059,11 @@
 
 <h2 id="existingelementy---the-additional-elements">ExistingElementY - the Additional Elements</h2>
 
-<h3 id="table-4">Table</h3>
+<h3 id="table-5">Table</h3>
 
 <p>OldElement_withAccessibility.md</p>
 
-<h3 id="example-4">Example</h3>
+<h3 id="example-5">Example</h3>
 
 <p>OldElement_withAccessibility.xml</p>
 
