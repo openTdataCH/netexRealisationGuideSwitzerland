@@ -7,7 +7,7 @@
 			<frames>
 				<ResourceFrame id="ch:1:ResourceFrame" version="1">
 					<siteFacilitySets>
-						<SiteFacilitySet id="generated" version="1">
+						<SiteFacilitySet id="ch:1:sloid:1234" version="1">
 							<!-- ch-root -->
 							<validityConditions>
 								<AvailabilityCondition id="generated" version="1">
@@ -16,8 +16,8 @@
 									<ValidDayBits>01</ValidDayBits>
 								</AvailabilityCondition>
 							</validityConditions>
-							<Description lang="de">SiteFacilitySet Solothurn
-								<Text lang="en">SiteFacilitySet Solothurn </Text>
+							<Description lang="de">SiteFacilitySet Bhf sloid:1234
+								<Text lang="en">SiteFacilitySet for a stop place</Text>
 							</Description>
 							<AssistanceFacilityList>
 								<!-- ch-usage: expected -->
@@ -31,14 +31,24 @@
 								<!-- ch-note: Accessibility. Presence or absence of the following facility may be signalled; absence of the item means absence of the facility (if the element is present): `wheelchair` - wheelchairs available for passenger use. -->	
 								wheelchair
 							</AccessibilityToolList>
-							<!-- TODO MedicalFacilityList-->
+							<MedicalFacilityList>
+								<!-- ch-usage: expected -->
+								<!-- ch-allowed-enums: defibrillator -->
+								<!-- ch-note: Accessibility. Presence or absence of the following facilitiy should be signalled: `defibrillator`. -->		
+								defibrillator
+							</MedicalFacilityList>
 							<SanitaryFacilityList>
 								<!-- ch-usage: expected -->
 								<!-- ch-allowed-enums: wheelchairAccessToilet wheelchairBabyChange toilet babyChange shower -->
 								<!-- ch-note: Accessibility. Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet wheelchairBabyChange toilet babyChange shower`. -->		
 								toilet wheelchairAccessToilet babyChange
 							</SanitaryFacilityList>
-							<!-- TODO TicketingFacilityList-->
+							<TicketingFacilityList>
+								<!-- ch-usage: optional -->
+								<!-- ch-allowed-enums: unknown ticketMachines ticketOffice mobileTicketing -->
+								<!-- ch-note: Accessibility. Presence or absence of the following facilities may be signalled: `unknown ticketMachines ticketOffice mobileTicketing`. Knowing the available options in advance can be helpful for visually impaired and mobility impaired passengers, in particular whether there is a ticket office and whether there is a ticket machine on the quay. -->		
+								ticketMachines ticketOffice mobileTicketing
+							</TicketingFacilityList>
 							<TicketingServiceFacilityList><!-- ch-usage: optional -->all reservations</TicketingServiceFacilityList>
 							<EmergencyServiceList>
 								<!-- ch-usage: expected -->

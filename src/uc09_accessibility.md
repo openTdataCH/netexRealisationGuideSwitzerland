@@ -136,6 +136,29 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
 
 
 
+## SiteFacilitySet - the Additional Elements
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/SiteFacilitySet_withAccessibility.md)
+
+### Usage Notes
+
+The element is used in `StopPlace` and `Quay`, for which slightly differing rules apply: 
+* General presence or absence of facilities has to be indicated at the level of the `StopPlace`.
+* Of interest at the level of each `Quay`are the following:
+  * `AssistanceFacilityList`
+  * `TicketingFacilityList`
+  * `EmergencyFacilityList`
+  
+
+### Example
+- [Example snippet](../site/xml-snippets/SiteFacilitySet_withAccessibility.xml)
+
+*→ [Template](./templates/SiteFacilitySet_withAccessibility.xml)*
+
+
+
+
 
 ## SitePathLink
 *→ [Glossary definition](A4_annex_glossary.md#sitepathlink)* TODO
