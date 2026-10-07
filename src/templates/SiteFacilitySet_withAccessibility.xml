@@ -19,9 +19,15 @@
 							<Description lang="de">SiteFacilitySet Bhf sloid:1234
 								<Text lang="en">SiteFacilitySet for a stop place</Text>
 							</Description>
+							<AccessibilityInfoFacilityList>
+								<!-- ch-usage: expected -->
+								<!-- ch-allowed-enums: audioInformation audioForHearingImpaired visualDisplays displaysForVisuallyImpaired largePrintTimetables -->
+								<!-- ch-note: Accessibility. Presence or absence of the following facilities should be signalled: `audioInformation audioForHearingImpaired visualDisplays displaysForVisuallyImpaired largePrintTimetables`. -->		
+								audioInformation visualDisplays
+							</AccessibilityInfoFacilityList>
 							<AssistanceFacilityList>
 								<!-- ch-usage: expected -->
-								<!-- ch-allowed-enums: boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information -->
+								<!-- ch-allowed-enums: boardingAssistance personalAssistance wheelchairAssistance unaccompaniedMinorAssistance conductor information -->
 								<!-- ch-note: Accessibility. Presence or absence of the following facilities should be signalled: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. -->		
 								personalAssistance information boardingAssistance wheelchairAssistance
 							</AssistanceFacilityList>
@@ -37,6 +43,11 @@
 								<!-- ch-note: Accessibility. Presence or absence of the following facilitiy should be signalled: `defibrillator`. -->		
 								defibrillator
 							</MedicalFacilityList>
+							<MobilityFacilityList>
+								<!-- ch-usage: expected -->
+								<!-- ch-allowed-enums: lowFloor, stepFreeAccess, suitableForPushchair suitableForWheelchair tactilePlatformEdges tactileGuidingStrips onboardAssistance boardingAssistance unaccompaniedMinorAssistance raisedKerb unknown -->
+								<!-- ch-note: Accessibility. Presence or absence of the following facilities should be signalled: `unknown lowFloor, stepFreeAccess, suitableForPushchair suitableForWheelchair tactilePlatformEdges tactileGuidingStrips onboardAssistance boardingAssistance unaccompaniedMinorAssistance raisedKerb`. -->		
+							</MobilityFacilityList>
 							<SanitaryFacilityList>
 								<!-- ch-usage: expected -->
 								<!-- ch-allowed-enums: wheelchairAccessToilet wheelchairBabyChange toilet babyChange shower -->
@@ -50,6 +61,11 @@
 								ticketMachines ticketOffice mobileTicketing
 							</TicketingFacilityList>
 							<TicketingServiceFacilityList><!-- ch-usage: optional -->all reservations</TicketingServiceFacilityList>
+							<AccessFacilityList>
+								<!-- ch-usage: expected -->
+								<!-- ch-allowed-enums: unknown lift wheelchairLift escalator travelator ramp automaticRamp steps stairs barrier lowFloorAccess validator -->
+								<!-- ch-note: Accessibility, only expected for Quays. Presence or absence of the following facilities should be signalled: `unknown lift wheelchairLift escalator travelator ramp automaticRamp steps stairs barrier lowFloorAccess validator`. -->		
+							</AccessFacilityList>
 							<EmergencyServiceList>
 								<!-- ch-usage: expected -->
 								<!-- ch-allowed-enums: sosPoint firstAid police fire -->

@@ -128,8 +128,8 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
 *→ [Glossary definition](A4_annex_glossary.md#AssistanceService)* **TODO**
 
 ### Purpose
-**TODO** Do we need that? Where to find the booking / contact information that goes with the function?
-
+**TODO** Do we need that? 
+The booking / contact information can be found in the accompanying `AssistanceBookingService`element.
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/AssistanceService.md)
@@ -140,6 +140,27 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
 - [Example snippet](../site/xml-snippets/AssistanceService.xml)
 
 *→ [Template](./templates/AssistanceService.xml)*
+
+
+
+
+## AssistanceBookingService
+*→ [Glossary definition](A4_annex_glossary.md#AssistanceBookingService)* **TODO**
+
+### Purpose
+Booking / contact information for `AssistanceService`.
+
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/AssistanceBookingService.md)
+
+*→ [General NeTEx definition ](../xcore/netex/elements/AssistanceBookingService.html)*
+
+### Example
+- [Example snippet](../site/xml-snippets/AssistanceBookingService.xml)
+
+*→ [Template](./templates/AssistanceBookingService.xml)*
+
 
 
 
