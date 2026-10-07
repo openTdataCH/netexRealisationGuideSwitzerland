@@ -63,7 +63,7 @@ Vehicles & Vehicle Stop Interaction
 
 
 ## AccessibilityAssessment
-*→ [Glossary definition](A4_annex_glossary.md#accessibilityassessment)* TODO
+*→ [Glossary definition](A4_annex_glossary.md#accessibilityassessment)* **TODO**
 
 ### Purpose
 
@@ -491,6 +491,115 @@ Accessibility. Contact and booking information regarding assistance services.
 
 
 *→ [Template](./templates/StopPlace_withAccessibility.xml)*
+
+
+
+## StopPlaceEntrance
+*→ [Glossary definition](A4_annex_glossary.md#StopPlaceEntrance)* **TODO**
+
+### Purpose
+...
+
+
+### Table
+
+
+
+*Table: StopPlaceEntrance*
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | Name | expected | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
+|  | [AccessibilityAssessment](./tables/AccessibilityAssessment.md) | mandatory | 0..1 | AccessibilityAssessment_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. See the element's table for all details. |
+|  | LevelRef | expected | 0..1 | LevelRefStructure | Reference to LEVEL of a SITE. | Accessibility. Required if more than 1 level present. |
+| ++ | DropKerbOutside | optional | 0..1 | xsd:boolean | Whether there is a drop Kerb outside door. | Accessibility. **TODO** Seems redundant, see below. |
+| ++ | WheelchairPassable | optional | 0..1 | xsd:boolean | Whether lift is judged wheelchair passable. | Accessibility. **TODO** Seems unnecessary given AccessibilityAssessment |
+| ++ | WheelchairUnaided | optional | 0..1 | xsd:boolean | Can be passed in a wheel chair unaided. | Accessibility. **TODO** seems unnecessary given AccessibilityAssessment |
+|  | DroppedKerbOutside | expected | 0..1 | xsd:boolean | Whether nearest crossing to ENTRANCE has dropped kerb. | Accessibility. |
+|  | DropOffPointClose | expected | 0..1 | xsd:boolean | Whether there is a drop off point close by to ENTRANCE. | Accessibility. Starting point relevant for AccessibilityAssessments of Quays etc. |
+
+
+
+
+*→ [General NeTEx definition ](../xcore/netex/elements/StopPlaceEntrance.html)*
+
+### Example
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<StopPlaceEntrance id="ch:1:entrance:7000:1" version="1">
+  <Name>Main entrance west</Name>
+  <AccessibilityAssessment id="generated-2" version="1">
+    <!-- Accessibility. See the element's table for all details. -->
+    <MobilityImpairedAccess>true
+      <!-- Accessibility. -->
+    </MobilityImpairedAccess>
+    <limitations>
+      <!-- Accessibility. -->
+      <AccessibilityLimitation>
+        <!-- Accessibility. -->
+        <WheelchairAccess>true
+          <!-- Accessibility. -->
+        </WheelchairAccess>
+        <StepFreeAccess>t rue
+          <!-- Accessibility. -->
+        </StepFreeAccess>
+        <StairFreeAccess>true
+          <!-- Accessibility. -->
+        </StairFreeAccess>
+        <RampFreeAccess>true
+          <!-- Accessibility. -->
+        </RampFreeAccess>
+        <LevelAccessIntoVehicle>true
+          <!-- Not used in this context. -->
+        </LevelAccessIntoVehicle>
+        <VisualSignsAvailable>true
+          <!-- Accessibility. -->
+        </VisualSignsAvailable>
+        <TactileGuidanceAvailable>true
+          <!-- Accessibility. -->
+        </TactileGuidanceAvailable>
+        <GuideDogAccess>true
+          <!-- Accessibility. -->
+        </GuideDogAccess>
+      </AccessibilityLimitation>
+    </limitations>
+  </AccessibilityAssessment>
+  <LevelRef ref="ch:1:level:7000:0">
+    <!-- Accessibility. Required if more than 1 level present. -->
+  </LevelRef>
+  <placeEquipments>
+    <EntranceEquipment id="generated" version="1">
+      <Door>true</Door>
+      <KeptOpen>true</KeptOpen>
+      <DropKerbOutside>true
+        <!-- Accessibility. **TODO** Seems redundant, see below. -->
+      </DropKerbOutside>
+      <WheelchairPassable>true
+        <!-- Accessibility. **TODO** Seems unnecessary given AccessibilityAssessment -->
+      </WheelchairPassable>
+      <WheelchairUnaided>true
+        <!-- Accessibility. **TODO** seems unnecessary given AccessibilityAssessment -->
+      </WheelchairUnaided>
+    </EntranceEquipment>
+  </placeEquipments>
+  <EntranceType>openDoor</EntranceType>
+  <IsEntry>true</IsEntry>
+  <IsExit>true</IsExit>
+  <DroppedKerbOutside>true
+    <!-- Accessibility. -->
+  </DroppedKerbOutside>
+  <DropOffPointClose>true
+    <!-- Accessibility. Starting point relevant for AccessibilityAssessments of Quays etc. -->
+  </DropOffPointClose>
+</StopPlaceEntrance>
+```
+
+
+
+*→ [Template](./templates/StopPlaceEntrance.xml)*
+
 
 
 

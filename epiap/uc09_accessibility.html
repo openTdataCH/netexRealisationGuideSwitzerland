@@ -285,7 +285,7 @@
 </ul>
 
 <h2 id="accessibilityassessment">AccessibilityAssessment</h2>
-<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em> TODO</p>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em> <strong>TODO</strong></p>
 
 <h3 id="purpose">Purpose</h3>
 
@@ -1093,9 +1093,182 @@ The booking / contact information can be found in the accompanying <code class="
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/templates/StopPlace_withAccessibility.xml">Template</a></em></p>
 
-<h2 id="sitefacilityset---the-additional-elements">SiteFacilitySet - the Additional Elements</h2>
+<h2 id="stopplaceentrance">StopPlaceEntrance</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#StopPlaceEntrance">Glossary definition</a></em> <strong>TODO</strong></p>
+
+<h3 id="purpose-3">Purpose</h3>
+<p>…</p>
 
 <h3 id="table-4">Table</h3>
+
+<p><em>Table: StopPlaceEntrance</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of VALIDITY CONDITION.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td>Assessment of the accessibility of a SITE.</td>
+      <td>Accessibility. See the element’s table for all details.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LevelRef</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LevelRefStructure</td>
+      <td>Reference to LEVEL of a SITE.</td>
+      <td>Accessibility. Required if more than 1 level present.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>DropKerbOutside</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether there is a drop Kerb outside door.</td>
+      <td>Accessibility. <strong>TODO</strong> Seems redundant, see below.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>WheelchairPassable</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether lift is judged wheelchair passable.</td>
+      <td>Accessibility. <strong>TODO</strong> Seems unnecessary given AccessibilityAssessment</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>WheelchairUnaided</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Can be passed in a wheel chair unaided.</td>
+      <td>Accessibility. <strong>TODO</strong> seems unnecessary given AccessibilityAssessment</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DroppedKerbOutside</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether nearest crossing to ENTRANCE has dropped kerb.</td>
+      <td>Accessibility.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DropOffPointClose</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether there is a drop off point close by to ENTRANCE.</td>
+      <td>Accessibility. Starting point relevant for AccessibilityAssessments of Quays etc.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../xcore/netex/elements/StopPlaceEntrance.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-4">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;StopPlaceEntrance</span> <span class="na">id=</span><span class="s">"ch:1:entrance:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Main entrance west<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated-2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Accessibility. See the element's table for all details. --&gt;</span>
+    <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
+    <span class="nt">&lt;limitations&gt;</span>
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+      <span class="nt">&lt;AccessibilityLimitation&gt;</span>
+        <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;WheelchairAccess&gt;</span>true
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/WheelchairAccess&gt;</span>
+        <span class="nt">&lt;StepFreeAccess&gt;</span>t rue
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/StepFreeAccess&gt;</span>
+        <span class="nt">&lt;StairFreeAccess&gt;</span>true
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/StairFreeAccess&gt;</span>
+        <span class="nt">&lt;RampFreeAccess&gt;</span>true
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/RampFreeAccess&gt;</span>
+        <span class="nt">&lt;LevelAccessIntoVehicle&gt;</span>true
+          <span class="c">&lt;!-- Not used in this context. --&gt;</span>
+        <span class="nt">&lt;/LevelAccessIntoVehicle&gt;</span>
+        <span class="nt">&lt;VisualSignsAvailable&gt;</span>true
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/VisualSignsAvailable&gt;</span>
+        <span class="nt">&lt;TactileGuidanceAvailable&gt;</span>true
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/TactileGuidanceAvailable&gt;</span>
+        <span class="nt">&lt;GuideDogAccess&gt;</span>true
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/GuideDogAccess&gt;</span>
+      <span class="nt">&lt;/AccessibilityLimitation&gt;</span>
+    <span class="nt">&lt;/limitations&gt;</span>
+  <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
+  <span class="nt">&lt;LevelRef</span> <span class="na">ref=</span><span class="s">"ch:1:level:7000:0"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Accessibility. Required if more than 1 level present. --&gt;</span>
+  <span class="nt">&lt;/LevelRef&gt;</span>
+  <span class="nt">&lt;placeEquipments&gt;</span>
+    <span class="nt">&lt;EntranceEquipment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Door&gt;</span>true<span class="nt">&lt;/Door&gt;</span>
+      <span class="nt">&lt;KeptOpen&gt;</span>true<span class="nt">&lt;/KeptOpen&gt;</span>
+      <span class="nt">&lt;DropKerbOutside&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. **TODO** Seems redundant, see below. --&gt;</span>
+      <span class="nt">&lt;/DropKerbOutside&gt;</span>
+      <span class="nt">&lt;WheelchairPassable&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. **TODO** Seems unnecessary given AccessibilityAssessment --&gt;</span>
+      <span class="nt">&lt;/WheelchairPassable&gt;</span>
+      <span class="nt">&lt;WheelchairUnaided&gt;</span>true
+        <span class="c">&lt;!-- Accessibility. **TODO** seems unnecessary given AccessibilityAssessment --&gt;</span>
+      <span class="nt">&lt;/WheelchairUnaided&gt;</span>
+    <span class="nt">&lt;/EntranceEquipment&gt;</span>
+  <span class="nt">&lt;/placeEquipments&gt;</span>
+  <span class="nt">&lt;EntranceType&gt;</span>openDoor<span class="nt">&lt;/EntranceType&gt;</span>
+  <span class="nt">&lt;IsEntry&gt;</span>true<span class="nt">&lt;/IsEntry&gt;</span>
+  <span class="nt">&lt;IsExit&gt;</span>true<span class="nt">&lt;/IsExit&gt;</span>
+  <span class="nt">&lt;DroppedKerbOutside&gt;</span>true
+    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+  <span class="nt">&lt;/DroppedKerbOutside&gt;</span>
+  <span class="nt">&lt;DropOffPointClose&gt;</span>true
+    <span class="c">&lt;!-- Accessibility. Starting point relevant for AccessibilityAssessments of Quays etc. --&gt;</span>
+  <span class="nt">&lt;/DropOffPointClose&gt;</span>
+<span class="nt">&lt;/StopPlaceEntrance&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/templates/StopPlaceEntrance.xml">Template</a></em></p>
+
+<h2 id="sitefacilityset---the-additional-elements">SiteFacilitySet - the Additional Elements</h2>
+
+<h3 id="table-5">Table</h3>
 
 <p><em>Table: SiteFacilitySet</em></p>
 
@@ -1228,7 +1401,7 @@ The booking / contact information can be found in the accompanying <code class="
   </li>
 </ul>
 
-<h3 id="example-4">Example</h3>
+<h3 id="example-5">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"ch:1:sloid:1234"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -1282,16 +1455,16 @@ The booking / contact information can be found in the accompanying <code class="
 <h2 id="sitepathlink">SitePathLink</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#sitepathlink">Glossary definition</a></em> TODO</p>
 
-<h3 id="purpose-3">Purpose</h3>
+<h3 id="purpose-4">Purpose</h3>
 <p>…</p>
 
-<h3 id="table-5">Table</h3>
+<h3 id="table-6">Table</h3>
 
 <p>SitePathLink.md</p>
 
 <p><em>→ <a href="../xcore/netex/elements/SitePathLink.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-5">Example</h3>
+<h3 id="example-6">Example</h3>
 
 <p>SitePathLink.xml</p>
 
@@ -1329,16 +1502,16 @@ The booking / contact information can be found in the accompanying <code class="
 <h2 id="newelementx">NewElementX</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em> TODO</p>
 
-<h3 id="purpose-4">Purpose</h3>
+<h3 id="purpose-5">Purpose</h3>
 <p>…</p>
 
-<h3 id="table-6">Table</h3>
+<h3 id="table-7">Table</h3>
 
 <p>NewElement.md</p>
 
 <p><em>→ <a href="../xcore/netex/elements/NewElement.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-6">Example</h3>
+<h3 id="example-7">Example</h3>
 
 <p>NewElement.xml</p>
 
@@ -1346,11 +1519,11 @@ The booking / contact information can be found in the accompanying <code class="
 
 <h2 id="existingelementy---the-additional-elements">ExistingElementY - the Additional Elements</h2>
 
-<h3 id="table-7">Table</h3>
+<h3 id="table-8">Table</h3>
 
 <p>OldElement_withAccessibility.md</p>
 
-<h3 id="example-7">Example</h3>
+<h3 id="example-8">Example</h3>
 
 <p>OldElement_withAccessibility.xml</p>
 

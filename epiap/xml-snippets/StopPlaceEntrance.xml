@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StopPlaceEntrance id="ch:1:entrance:7000:1" version="1">
+  <Name>Main entrance west</Name>
+  <AccessibilityAssessment id="generated-2" version="1">
+    <!-- Accessibility. See the element's table for all details. -->
+    <MobilityImpairedAccess>true
+      <!-- Accessibility. -->
+    </MobilityImpairedAccess>
+    <limitations>
+      <!-- Accessibility. -->
+      <AccessibilityLimitation>
+        <!-- Accessibility. -->
+        <WheelchairAccess>true
+          <!-- Accessibility. -->
+        </WheelchairAccess>
+        <StepFreeAccess>t rue
+          <!-- Accessibility. -->
+        </StepFreeAccess>
+        <StairFreeAccess>true
+          <!-- Accessibility. -->
+        </StairFreeAccess>
+        <RampFreeAccess>true
+          <!-- Accessibility. -->
+        </RampFreeAccess>
+        <LevelAccessIntoVehicle>true
+          <!-- Not used in this context. -->
+        </LevelAccessIntoVehicle>
+        <VisualSignsAvailable>true
+          <!-- Accessibility. -->
+        </VisualSignsAvailable>
+        <TactileGuidanceAvailable>true
+          <!-- Accessibility. -->
+        </TactileGuidanceAvailable>
+        <GuideDogAccess>true
+          <!-- Accessibility. -->
+        </GuideDogAccess>
+      </AccessibilityLimitation>
+    </limitations>
+  </AccessibilityAssessment>
+  <LevelRef ref="ch:1:level:7000:0">
+    <!-- Accessibility. Required if more than 1 level present. -->
+  </LevelRef>
+  <placeEquipments>
+    <EntranceEquipment id="generated" version="1">
+      <Door>true</Door>
+      <KeptOpen>true</KeptOpen>
+      <DropKerbOutside>true
+        <!-- Accessibility. **TODO** Seems redundant, see below. -->
+      </DropKerbOutside>
+      <WheelchairPassable>true
+        <!-- Accessibility. **TODO** Seems unnecessary given AccessibilityAssessment -->
+      </WheelchairPassable>
+      <WheelchairUnaided>true
+        <!-- Accessibility. **TODO** seems unnecessary given AccessibilityAssessment -->
+      </WheelchairUnaided>
+    </EntranceEquipment>
+  </placeEquipments>
+  <EntranceType>openDoor</EntranceType>
+  <IsEntry>true</IsEntry>
+  <IsExit>true</IsExit>
+  <DroppedKerbOutside>true
+    <!-- Accessibility. -->
+  </DroppedKerbOutside>
+  <DropOffPointClose>true
+    <!-- Accessibility. Starting point relevant for AccessibilityAssessments of Quays etc. -->
+  </DropOffPointClose>
+</StopPlaceEntrance>
