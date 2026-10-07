@@ -63,7 +63,7 @@ Vehicles & Vehicle Stop Interaction
 
 
 ## AccessibilityAssessment
-*→ [Glossary definition](A4_annex_glossary.md#accessibilityassessment)* TODO
+*→ [Glossary definition](A4_annex_glossary.md#accessibilityassessment)* **TODO**
 
 ### Purpose
 
@@ -179,6 +179,26 @@ Booking / contact information for `AssistanceService`.
 - [Example snippet](../site/xml-snippets/StopPlace_withAccessibility.xml)
 
 *→ [Template](./templates/StopPlace_withAccessibility.xml)*
+
+
+
+## StopPlaceEntrance
+*→ [Glossary definition](A4_annex_glossary.md#StopPlaceEntrance)* **TODO**
+
+### Purpose
+...
+
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/StopPlaceEntrance.md)
+
+*→ [General NeTEx definition ](../xcore/netex/elements/StopPlaceEntrance.html)*
+
+### Example
+- [Example snippet](../site/xml-snippets/StopPlaceEntrance.xml)
+
+*→ [Template](./templates/StopPlaceEntrance.xml)*
+
 
 
 
