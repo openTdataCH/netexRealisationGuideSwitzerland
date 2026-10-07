@@ -221,14 +221,12 @@
 
 <p>Most important elements:</p>
 <ul>
+  <li><code class="language-plaintext highlighter-rouge">CompoundTrain</code></li>
   <li><code class="language-plaintext highlighter-rouge">Train</code></li>
   <li><code class="language-plaintext highlighter-rouge">TrainComponent</code></li>
   <li><code class="language-plaintext highlighter-rouge">TrainElement</code></li>
+  <li><code class="language-plaintext highlighter-rouge">PassengerBoardingPositionAssignment</code> (badly named, as we never deal with boarding positions, but quays)</li>
 </ul>
-
-<blockquote>
-  <p><strong>LATER</strong> Add template for these elements.</p>
-</blockquote>
 
 <pre><code class="language-mermaid">classDiagram
 
@@ -341,12 +339,215 @@ class TrainInCompoundTrain {
 </code></pre>
 
 <h2 id="example">Example</h2>
-<p><strong>LATER</strong> Needs to be defined with TimeDemandType</p>
+<p>Check the example we did https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/src/examples/20_NeTEx_Interlaken_Spiez_Formation.xml</p>
 
+<p>We have two important parts. Firstly, the formation itself as part of <code class="language-plaintext highlighter-rouge">vehicleTypes</code> in the <code class="language-plaintext highlighter-rouge">TimetableFrame</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>				&lt;vehicleTypes&gt;
+&lt;CompoundTrain version="1" id="compoundtrain"&gt;
+	&lt;Name&gt;4231&lt;/Name&gt;
+	&lt;Description&gt;2212 - 2122&lt;/Description&gt;
+	&lt;SelfPropelled&gt; true&lt;/SelfPropelled&gt;
+	&lt;components&gt;
+		&lt;TrainInCompoundTrain version="1" id="TICT1"&gt;
+			&lt;TrainRef version="1" ref="Train1"/&gt;
+			&lt;Label&gt;40447&lt;/Label&gt;
+		&lt;/TrainInCompoundTrain&gt;
+		&lt;TrainInCompoundTrain version="1" id="TICT2"&gt;
+			&lt;TrainRef version="1" ref="Train2"/&gt;
+			&lt;Label&gt;457&lt;/Label&gt;
+		&lt;/TrainInCompoundTrain&gt;
+	&lt;/components&gt;
+&lt;/CompoundTrain&gt;
+&lt;Train version="1" id="Train1"&gt;
+	&lt;Name&gt;blabla&lt;/Name&gt;
+	&lt;Description&gt;2212&lt;/Description&gt;
+	&lt;SelfPropelled&gt; true&lt;/SelfPropelled&gt;
+	&lt;components&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_447_01" order="1"&gt;
+			&lt;Label&gt;1&lt;/Label&gt;
+			&lt;TrainElement version="1" id="bbd:trne_447_01"&gt;
+				&lt;Name/&gt;
+				&lt;TrainElementType&gt;carriage&lt;/TrainElementType&gt;
+				&lt;FareClasses&gt;secondClass&lt;/FareClasses&gt;
+				&lt;LowFloor&gt;true&lt;/LowFloor&gt;
+				&lt;facilities&gt;
+					&lt;ServiceFacilitySetRef ref="nf" version="1"/&gt;
+					&lt;ServiceFacilitySetRef ref="bikehooks" version="1"/&gt;
+					&lt;ServiceFacilitySetRef ref="strollerplattform" version="1"/&gt;
+				&lt;/facilities&gt;
+			&lt;/TrainElement&gt;
+		&lt;/TrainComponent&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_447_02" order="2"&gt;
+			&lt;Label&gt;2&lt;/Label&gt;
+			&lt;TrainElement version="1" id="bbd:trne_447_02"&gt;
+				&lt;Name/&gt;
+				&lt;TrainElementType&gt;carriage&lt;/TrainElementType&gt;
+				&lt;FareClasses&gt;secondClass&lt;/FareClasses&gt;
+				&lt;LowFloor&gt;true&lt;/LowFloor&gt;
+				&lt;facilities&gt;
+					&lt;ServiceFacilitySetRef ref="nf" version="1"/&gt;
+					&lt;ServiceFacilitySetRef ref="bikehooks" version="1"/&gt;
+					&lt;ServiceFacilitySetRef ref="strollerplattform" version="1"/&gt;
+				&lt;/facilities&gt;
+			&lt;/TrainElement&gt;
+			&lt;ForwardCoupling&gt;
+				&lt;Splittable&gt;false&lt;/Splittable&gt;
+				&lt;ThroughAccess&gt;openEntrance&lt;/ThroughAccess&gt;
+			&lt;/ForwardCoupling&gt;
+		&lt;/TrainComponent&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_447_03" order="3"&gt;
+			&lt;Label&gt;3&lt;/Label&gt;
+			&lt;TrainElement version="1" id="bbd:trne_447_03"&gt;
+				&lt;Name/&gt;
+				&lt;TrainElementType&gt;carriage&lt;/TrainElementType&gt;
+				&lt;FareClasses&gt;firstClass&lt;/FareClasses&gt;
+				&lt;LowFloor&gt;true&lt;/LowFloor&gt;
+				&lt;facilities&gt;
+					&lt;ServiceFacilitySetRef ref="nf" version="1"/&gt;
+				&lt;/facilities&gt;
+			&lt;/TrainElement&gt;
+			&lt;ForwardCoupling&gt;
+				&lt;Splittable&gt;false&lt;/Splittable&gt;
+				&lt;ThroughAccess&gt;openEntrance&lt;/ThroughAccess&gt;
+			&lt;/ForwardCoupling&gt;
+		&lt;/TrainComponent&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_447_04" order="4"&gt;
+			&lt;Label&gt;4&lt;/Label&gt;
+			&lt;TrainElement version="1" id="bbd:trne_447_04"&gt;
+				&lt;Name/&gt;
+				&lt;TrainElementType&gt;carriage&lt;/TrainElementType&gt;
+				&lt;FareClasses&gt;secondClass&lt;/FareClasses&gt;
+				&lt;LowFloor&gt;true&lt;/LowFloor&gt;
+				&lt;facilities&gt;
+					&lt;ServiceFacilitySetRef ref="nf" version="1"/&gt;
+					&lt;ServiceFacilitySetRef ref="bikehooks" version="1"/&gt;
+					&lt;ServiceFacilitySetRef ref="wheelchairspace" version="1"/&gt;
+				&lt;/facilities&gt;
+			&lt;/TrainElement&gt;
+			&lt;ForwardCoupling&gt;
+				&lt;Splittable&gt;false&lt;/Splittable&gt;
+				&lt;ThroughAccess&gt;openEntrance&lt;/ThroughAccess&gt;
+			&lt;/ForwardCoupling&gt;
+		&lt;/TrainComponent&gt;
+	&lt;/components&gt;
+&lt;/Train&gt;
+&lt;Train version="1" id="Train2"&gt;
+	&lt;Name&gt;blabla &lt;/Name&gt;
+	&lt;Description&gt;blabla&lt;/Description&gt;
+	&lt;SelfPropelled&gt; true&lt;/SelfPropelled&gt;
+	&lt;components&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_448_01" order="1"&gt;
+			&lt;Label&gt;5&lt;/Label&gt;
+			&lt;TrainElement version="1" id="bbd:trne_448_01"&gt;
+				&lt;Name/&gt;
+				&lt;TrainElementType&gt;carriage&lt;/TrainElementType&gt;
+				&lt;FareClasses&gt;secondClass&lt;/FareClasses&gt;
+				&lt;LowFloor&gt;true&lt;/LowFloor&gt;
+				&lt;facilities&gt;
+					&lt;ServiceFacilitySetRef ref="nf" version="1"/&gt;
+					&lt;ServiceFacilitySetRef ref="bikehooks" version="1"/&gt;
+					&lt;ServiceFacilitySetRef ref="wheelchairspace" version="1"/&gt;
+				&lt;/facilities&gt;
+			&lt;/TrainElement&gt;
+			&lt;ForwardCoupling&gt;
+				&lt;Splittable&gt;true&lt;/Splittable&gt;
+				&lt;ThroughAccess&gt;noThroughAccess&lt;/ThroughAccess&gt;
+			&lt;/ForwardCoupling&gt;
+		&lt;/TrainComponent&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_448_02" order="2"&gt;
+			&lt;Label&gt;6&lt;/Label&gt;
+			&lt;TrainElement version="1" id="bbd:trne_448_02"&gt;
+				&lt;Name/&gt;
+				&lt;TrainElementType&gt;carriage&lt;/TrainElementType&gt;
+				&lt;FareClasses&gt;firstClass&lt;/FareClasses&gt;
+				&lt;LowFloor&gt;true&lt;/LowFloor&gt;
+				&lt;facilities&gt;
+					&lt;ServiceFacilitySetRef ref="nf" version="1"/&gt;
+				&lt;/facilities&gt;
+			&lt;/TrainElement&gt;
+			&lt;ForwardCoupling&gt;
+				&lt;Splittable&gt;false&lt;/Splittable&gt;
+				&lt;ThroughAccess&gt;openEntrance&lt;/ThroughAccess&gt;
+			&lt;/ForwardCoupling&gt;
+		&lt;/TrainComponent&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_448_03" order="3"&gt;
+			&lt;Label&gt;7&lt;/Label&gt;
+			&lt;TrainElement version="1" id="bbd:trne_448_03"&gt;
+				&lt;Name/&gt;
+				&lt;TrainElementType&gt;restaurantCarriage&lt;/TrainElementType&gt;
+				&lt;FareClasses&gt;secondClass&lt;/FareClasses&gt;
+				&lt;LowFloor&gt;true&lt;/LowFloor&gt;
+				&lt;facilities&gt;
+					&lt;ServiceFacilitySetRef ref="nf" version="1"/&gt;
+					&lt;ServiceFacilitySetRef ref="bikehooks" version="1"/&gt;
+					&lt;ServiceFacilitySetRef ref="strollerplattform" version="1"/&gt;
+				&lt;/facilities&gt;
+			&lt;/TrainElement&gt;
+			&lt;ForwardCoupling&gt;
+				&lt;Splittable&gt;false&lt;/Splittable&gt;
+				&lt;ThroughAccess&gt;openEntrance&lt;/ThroughAccess&gt;
+			&lt;/ForwardCoupling&gt;
+		&lt;/TrainComponent&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_448_04" order="4"&gt;
+			&lt;Label&gt;8&lt;/Label&gt;
+			&lt;TrainElement version="1" id="bbd:trne_448_04"&gt;
+				&lt;Name/&gt;
+				&lt;TrainElementType&gt;carriage&lt;/TrainElementType&gt;
+				&lt;FareClasses&gt;secondClass&lt;/FareClasses&gt;
+				&lt;LowFloor&gt;true&lt;/LowFloor&gt;
+				&lt;facilities&gt;
+					&lt;ServiceFacilitySetRef ref="nf" version="1"/&gt;
+					&lt;ServiceFacilitySetRef ref="bikehooks" version="1"/&gt;
+					&lt;ServiceFacilitySetRef ref="strollerplattform" version="1"/&gt;
+				&lt;/facilities&gt;
+			&lt;/TrainElement&gt;
+			&lt;ForwardCoupling&gt;
+				&lt;Splittable&gt;false&lt;/Splittable&gt;
+				&lt;ThroughAccess&gt;openEntrance&lt;/ThroughAccess&gt;
+			&lt;/ForwardCoupling&gt;
+		&lt;/TrainComponent&gt;
+	&lt;/components&gt;
+&lt;/Train&gt;
+					&lt;/vehicleTypes&gt;
+</code></pre></div></div>
+
+<p>Secondly, the PassengerStopAssignment that shows how the train is structured into the stop:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;PassengerStopAssignment id="ch:1:PassengerStopAssignment:8507492:80" version="1"&gt;
+	&lt;!-- no scheduled stop point reference here as we do not want to confuse consumers who ignore PassengerStopAssignments--&gt;
+	&lt;StopPlaceRef ref="ch:1:sloid:7492" version="1"/&gt;
+	&lt;!-- we assign the quay sector. The platform quay is known as the quay sector again references it (see definition of quay sector) --&gt;
+	&lt;QuayRef ref="ch:1:sloid:7492:0:460848sectorB" version="1"/&gt;
+	&lt;!-- now we assign all train components to the sector B --&gt;
+	&lt;passengerBoardingPositionAssignments&gt;
+		&lt;PassengerBoardingPositionAssignment id="pbpa20" version="1"&gt;
+			&lt;Description&gt;Assign coach 5 to sector B&lt;/Description&gt;
+			&lt;ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/&gt;
+			&lt;TrainComponentRef version="1" ref="bbd:trncmp_448_01"/&gt;
+		&lt;/PassengerBoardingPositionAssignment&gt;
+		&lt;PassengerBoardingPositionAssignment id="pbpa21" version="1"&gt;
+			&lt;Description&gt;Assign coach 6 to sector B&lt;/Description&gt;
+			&lt;ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/&gt;
+			&lt;TrainComponentRef version="1" ref="bbd:trncmp_448_02"/&gt;
+		&lt;/PassengerBoardingPositionAssignment&gt;
+		&lt;PassengerBoardingPositionAssignment id="pbpa22" version="1"&gt;
+			&lt;Description&gt;Assign coach 7 to sector B&lt;/Description&gt;
+			&lt;ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/&gt;
+			&lt;TrainComponentRef version="1" ref="bbd:trncmp_448_03"/&gt;
+		&lt;/PassengerBoardingPositionAssignment&gt;
+		&lt;PassengerBoardingPositionAssignment id="pbpa23" version="1"&gt;
+			&lt;Description&gt;Assign coach 8 to sector B&lt;/Description&gt;
+			&lt;ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1"/&gt;
+			&lt;TrainComponentRef version="1" ref="bbd:trncmp_448_04"/&gt;
+		&lt;/PassengerBoardingPositionAssignment&gt;
+	&lt;/passengerBoardingPositionAssignments&gt;
+&lt;/PassengerStopAssignment&gt;		
+</code></pre></div></div>
 <h2 id="usage-notes">Usage Notes</h2>
 <ul>
   <li>We intend to use a version without <code class="language-plaintext highlighter-rouge">Block</code> and <code class="language-plaintext highlighter-rouge">CompoundTrain</code>.</li>
-  <li>We are unsure how to map to sectors as we don’t want to have to invent new ScheduledStopPoints (especially as this would need new pseudo-sloid). <strong>LATER</strong></li>
+  <li>We don’t invent additional <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s for the sectors.</li>
   <li>We have a special example for when the platform is too short on a given stop: <strong>LATER</strong></li>
 </ul>
 
