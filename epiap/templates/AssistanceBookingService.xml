@@ -10,7 +10,6 @@
 				<SiteFrame id="ch:1:SiteFrame" version="1">
 					<stopPlaces>
 						<StopPlace id="ch:1:sloid:7000" version="1">
-							<!-- ch-root -->
 							<ValidBetween>
 								<FromDate>2025-12-14T00:00:00</FromDate>
 								<ToDate>2026-12-12T23:59:59</ToDate>
@@ -48,16 +47,11 @@
 								</Location>
 							</Centroid>
 							<gml:Polygon gml:id="a1231">
-								<!-- ch-usage: forbidden -->
 							</gml:Polygon>
 							<Url>
-								<!-- ch-usage: forbidden -->
 							</Url>
 							<AccessibilityAssessment id="generated" version="1">
-								<!-- ch-usage: mandatory -->
-								<!-- ch-note: Accessibility. -->
-								<!-- ch-see -->
-								<MobilityImpairedAccess><!-- ch-usage: mandatory --><!-- ch-note: Accessibility. -->true</MobilityImpairedAccess>
+								<MobilityImpairedAccess>true</MobilityImpairedAccess>
 							</AccessibilityAssessment>
 							<alternativeNames>
 								<AlternativeName id="ch:1:sloid:7000:it" version="1">
@@ -65,24 +59,15 @@
 									<Name lang="it">Berna</Name>
 								</AlternativeName>
 							</alternativeNames>
-							<PublicUse><!-- ch-usage: ignored -->all</PublicUse>
-							<Covered><!-- ch-usage: expected --><!-- ch-note: Accessibility. -->covered</Covered>
+							<PublicUse>all</PublicUse>
+							<Covered>covered</Covered>
 							<AllAreasWheelchairAccessible>
-								<!-- ch-usage: mandatory -->
-								<!-- ch-note: Accessibility. -->
 								true
 							</AllAreasWheelchairAccessible>
 							<facilities>
-								<!-- ch-usage: expected -->
-								<!-- ch-note: Accessibility.-->
 								<SiteFacilitySet id="ch:1:sitefacilityset:7000:1" version="1">
-									<!-- ch-usage: expected -->
-									<!-- ch-note: Accessibility. EPIAP wants the SiteFacilitySets being defined here. -->
-									<!-- ch-see -->
 								</SiteFacilitySet>
 								<SiteFacilitySetRef ref="generated" versionRef="1">
-									<!-- ch-usage: optional -->
-									<!-- ch-note: Accessibility. **TODO**: Shall we allow the use of references here, e.g., for standard configurations? -->
 								</SiteFacilitySetRef>
 							</facilities>
 							<TopographicPlaceRef ref="BE-bern" versionRef="1">
@@ -91,62 +76,50 @@
 								<TimeZone>Europe/Zurich</TimeZone>
 							</Locale>
 							<levels>
-								<!-- ch-usage: expected -->
-								<!-- ch-note: Accessibility. Mandatory if the StopPlace has more than one level. -->
 								<Level id="ch:1:level:7000:0" version="1">
-									<!-- ch-usage: expected -->
-									<!-- ch-note: Accessibility. Mandatory if the StopPlace has more than one level. -->
-									<!-- ch-see -->
 								</Level>
 								<Level id="ch:1:level:7000:-1" version="1">
-									<!-- ch-usage: expected -->
-									<!-- ch-note: Accessibility. Mandatory if the StopPlace has more than one level. -->
-									<!-- ch-see -->
 								</Level>
 							</levels>
 							<entrances>
-								<!-- ch-usage: expected -->
-								<!-- ch-note: Accessibility. -->
 								<Entrance id="ch:1:entrance:7000:1" version="1">
-									<!-- ch-usage: expected -->
-									<!-- ch-note: Accessibility. -->
-									<!-- ch-see -->
 								</Entrance>
 							</entrances>
 							<equipmentPlaces>
-								<!-- ch-usage: optional -->
-								<!-- ch-note: Accessibility. **TODO** TBD -->
 								<EquipmentPlaceRef ref="generated" versionRef="1"/>
 							</equipmentPlaces>
 							<placeEquipments>
-								<!-- ch-usage: optional -->
-								<!-- ch-note: Accessibility. **TODO*3 TBD -->
 								<LiftEquipmentRef ref="generated" versionRef="1"/>
 							</placeEquipments>
 							<localServices>
-								<!-- ch-usage: optional -->
 								<AssistanceService id="ch:1:assistance:7000:1" version="1">
-									<!-- ch-usage: optional -->
-									<!-- ch-note: Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet`.-->
-									<!-- ch-see -->
 								</AssistanceService>
 								<AssistanceBookingService id="ch:1:assistancebooking:7000:1" version="1">
+									<!-- ch-root -->
 									<!-- ch-usage: optional -->
 									<!-- ch-note: Accessibility. Contact and booking information regarding assistance services. -->
-									<!-- ch-see -->
 									<WheelchairBookingRequired>
+										<!-- ch-usage: optional -->
 										false
 									</WheelchairBookingRequired>
 									<BookingContact>
+										<!-- ch-usage: expected -->
 									</BookingContact>
 									<VehicleMode>
+										<!-- ch-usage: optional -->
 										rail
 									</VehicleMode>
 									<noticeAssignments>
+										<!-- ch-usage: optional -->
 										<NoticeAssignment id="generated" version="1">
+											<!-- ch-usage: expected -->
+											<!-- ch-see -->
 											<validityConditions>
+												<!-- ch-usage: optional -->
     											<AvailabilityCondition id="generated" version="1">
+													<!-- ch-usage: optional -->
 													<timebands>
+														<!-- ch-usage: optional -->
 														<Timeband id="generated" version="1">
 															<StartTime>07:00:00</StartTime>
 															<EndTime>06:00:00</EndTime>
@@ -155,6 +128,7 @@
 												</AvailabilityCondition>
   											</validityConditions>
 											<Notice id="generated" version="1">
+												<!-- ch-usage: expected -->
 												<Text lang="de">Nur auf Voranmeldung bis eine Stunde vorher.
 													<Text lang="en">Latest booking 1 hour before.</Text>
 												</Text>
@@ -163,15 +137,10 @@
 									</noticeAssignments>
 								</AssistanceBookingService>
 								<MeetingPointService id="ch:1:meetingpoint:7000:1" version="1">
-									<!-- ch-usage: expected -->
-									<!-- ch-note: Accessibility. Indicates the presence or absence of a meeting point. -->
 									<MeetingPointServiceType>
-										<!-- ch-usage: mandatory -->
-										<!-- ch-allowed-enums: meetingPoint groupMeetingPoint -->
-										<!-- ch-note: Only a single value allowed: `meetingPoint groupMeetingPoint`. -->
 										meetingPoint
 									</MeetingPointServiceType>
-									<Label><!-- ch-usage: expected -->Treffpunkt</Label>
+									<Label>Treffpunkt</Label>
 								</MeetingPointService>
 							</localServices>
 							<StopPlaceType>railStation</StopPlaceType>
@@ -182,12 +151,7 @@
 								</Quay>
 							</quays>
 							<accessSpaces>
-								<!-- ch-usage: expected -->
-								<!-- ch-note: Accessibility. **TODO** TBD -->
 								<AccessSpace id="ch:1:accessspace:7000:1" version="1">
-									<!-- ch-usage: expected -->
-									<!-- ch-note: Accessibility. -->
-									<!-- ch-see -->
 								</AccessSpace>
 							</accessSpaces>
 						</StopPlace>

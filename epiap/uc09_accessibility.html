@@ -221,60 +221,60 @@
 
 <p>AccessibilityAssessment</p>
 <ul>
-  <li>AccessibilityAssessment</li>
+  <li><strong>AccessibilityAssessment</strong></li>
 </ul>
 
 <p>Basic Orientation</p>
 <ul>
-  <li>Level</li>
-  <li>Entrance</li>
-  <li>AccessSpace</li>
-  <li>StopPlace - the Additional Elements</li>
-  <li>Quay - the Additional Elements</li>
+  <li><strong>Level</strong></li>
+  <li><strong>Entrance</strong></li>
+  <li><em>AccessSpace</em></li>
+  <li><strong>StopPlace - the Additional Elements</strong></li>
+  <li><strong>Quay - the Additional Elements</strong></li>
 </ul>
 
 <p>PrivateMobility</p>
 <ul>
   <li>Parking</li>
-  <li>VehicleMeetingPoint</li>
+  <li><strong>VehicleMeetingPoint</strong></li>
 </ul>
 
 <p>Path Navigation</p>
 <ul>
-  <li>SitePathLink</li>
-  <li>PathJunction</li>
-  <li>DefaultConnection - the Additional Elements</li>
-  <li>SiteConnection - the Additional Elements</li>
+  <li><em>SitePathLink</em></li>
+  <li><em>PathJunction</em></li>
+  <li><em>DefaultConnection - the Additional Elements</em></li>
+  <li><em>SiteConnection - the Additional Elements</em></li>
 </ul>
 
 <p>Equipments, Facilities &amp; Services</p>
 <ul>
-  <li>EquipmentPlace</li>
-  <li>EntranceEquipment</li>
-  <li>EscalatorEquipment</li>
-  <li>LiftEquipment</li>
-  <li>RampEquipment</li>
-  <li>TravelatorEquipment</li>
-  <li>LuggageLockerEquipment</li>
-  <li>TrolleyStandEquipment</li>
-  <li>PassengerSafetyEquipment</li>
+  <li><strong>EquipmentPlace</strong></li>
+  <li><strong>EntranceEquipment</strong></li>
+  <li><em>EscalatorEquipment</em></li>
+  <li><em>LiftEquipment</em></li>
+  <li><em>RampEquipment</em></li>
+  <li><em>TravelatorEquipment</em></li>
+  <li>(LuggageLockerEquipment</li>
+  <li>(TrolleyStandEquipment</li>
+  <li>(PassengerSafetyEquipment</li>
   <li>SanitaryEquipment</li>
   <li>TicketingEquipment</li>
-  <li>QueingEquipment - ?</li>
+  <li>(QueingEquipment - ?</li>
   <li>TicketValidatorEquipment</li>
-  <li>ShelterEquipment - ?</li>
+  <li>(ShelterEquipment - ?</li>
   <li>WaitingEquipment</li>
   <li>WaitingRoomEquipment</li>
   <li>SignEquipment- ?</li>
-  <li>AssistanceService**_</li>
-  <li>AssistanceBookingService</li>
-  <li>LostPropertyService</li>
+  <li><strong>AssistanceService</strong></li>
+  <li><strong>AssistanceBookingService</strong></li>
+  <li>(LostPropertyService</li>
   <li>LuggageService</li>
-  <li>MeetingPointService</li>
-  <li>TicketingService</li>
-  <li>CustomerService</li>
-  <li>SiteFacilitySet - the Additional Elements</li>
-  <li>ServiceFacilitySet - the Additional Elements</li>
+  <li><strong>MeetingPointService</strong></li>
+  <li>(TicketingService</li>
+  <li><strong>CustomerService</strong></li>
+  <li><strong>SiteFacilitySet - the Additional Elements</strong></li>
+  <li><strong>ServiceFacilitySet - the Additional Elements</strong></li>
 </ul>
 
 <p>Vehicles &amp; Vehicle Stop Interaction</p>
@@ -543,7 +543,8 @@
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#AssistanceService">Glossary definition</a></em> <strong>TODO</strong></p>
 
 <h3 id="purpose-1">Purpose</h3>
-<p><strong>TODO</strong> Do we need that? Where to find the booking / contact information that goes with the function?</p>
+<p><strong>TODO</strong> Do we need that? 
+The booking / contact information can be found in the accompanying <code class="language-plaintext highlighter-rouge">AssistanceBookingService</code>element.</p>
 
 <h3 id="table-1">Table</h3>
 
@@ -615,9 +616,116 @@
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/templates/AssistanceService.xml">Template</a></em></p>
 
-<h2 id="stopplace---the-additional-elements">StopPlace - the Additional Elements</h2>
+<h2 id="assistancebookingservice">AssistanceBookingService</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#AssistanceBookingService">Glossary definition</a></em> <strong>TODO</strong></p>
+
+<h3 id="purpose-2">Purpose</h3>
+<p>Booking / contact information for <code class="language-plaintext highlighter-rouge">AssistanceService</code>.</p>
 
 <h3 id="table-2">Table</h3>
+
+<p>Accessibility. Contact and booking information regarding assistance services.</p>
+
+<p><em>Table: AssistanceBookingService</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>WheelchairBookingRequired</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether a booking is needed to use a wheelchair.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>BookingContact</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>ContactStructure</td>
+      <td>Contact for Booking. +v1.1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>VehicleMode</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AllPublicTransportModesEnumeration</td>
+      <td>PUBLIC TRANSPORT MODE: a characterisation of the operation according to the means of transport (bus, tram, metro, train, ferry, ship).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>noticeAssignments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>noticeAssignments_RelStructure</td>
+      <td>NOTICE ASSIGNMENTs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/NoticeAssignment.html">NoticeAssignment</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>NoticeAssignment_VersionStructure</td>
+      <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../xcore/netex/elements/AssistanceBookingService.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-2">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;AssistanceBookingService</span> <span class="na">id=</span><span class="s">"ch:1:assistancebooking:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Accessibility. Contact and booking information regarding assistance services. --&gt;</span>
+  <span class="nt">&lt;WheelchairBookingRequired&gt;</span>false<span class="nt">&lt;/WheelchairBookingRequired&gt;</span>
+  <span class="nt">&lt;BookingContact/&gt;</span>
+  <span class="nt">&lt;VehicleMode&gt;</span>rail<span class="nt">&lt;/VehicleMode&gt;</span>
+  <span class="nt">&lt;noticeAssignments&gt;</span>
+    <span class="nt">&lt;NoticeAssignment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;validityConditions&gt;</span>
+        <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;timebands&gt;</span>
+            <span class="nt">&lt;Timeband</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;StartTime&gt;</span>07:00:00<span class="nt">&lt;/StartTime&gt;</span>
+              <span class="nt">&lt;EndTime&gt;</span>06:00:00<span class="nt">&lt;/EndTime&gt;</span>
+            <span class="nt">&lt;/Timeband&gt;</span>
+          <span class="nt">&lt;/timebands&gt;</span>
+        <span class="nt">&lt;/AvailabilityCondition&gt;</span>
+      <span class="nt">&lt;/validityConditions&gt;</span>
+      <span class="nt">&lt;Notice</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Nur auf Voranmeldung bis eine Stunde vorher.
+          <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Latest booking 1 hour before.<span class="nt">&lt;/Text&gt;</span>
+        <span class="nt">&lt;/Text&gt;</span>
+      <span class="nt">&lt;/Notice&gt;</span>
+    <span class="nt">&lt;/NoticeAssignment&gt;</span>
+  <span class="nt">&lt;/noticeAssignments&gt;</span>
+<span class="nt">&lt;/AssistanceBookingService&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/templates/AssistanceBookingService.xml">Template</a></em></p>
+
+<h2 id="stopplace---the-additional-elements">StopPlace - the Additional Elements</h2>
+
+<h3 id="table-3">Table</h3>
 
 <p><em>Table: StopPlace</em></p>
 
@@ -788,6 +896,42 @@
       <td>Accessibility. The element allows for more precisely describing the availability of <code class="language-plaintext highlighter-rouge">AssistanceFacility</code>s and <code class="language-plaintext highlighter-rouge">AccessibilityTools</code>, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code>.</td>
     </tr>
     <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/AssistanceBookingService.html">AssistanceBookingService</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AssistanceBookingService_VersionStructure</td>
+      <td>Information about how to book assistance for wheelchair and disabled users.</td>
+      <td>Accessibility. Contact and booking information regarding assistance services.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>MeetingPointService</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>MeetingPointService_VersionStructure</td>
+      <td>Specialisation of CUSTOMER SERVICE for meeting points (provides characteristics like description, label, etc.).</td>
+      <td>Accessibility. Indicates the presence or absence of a meeting point.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>MeetingPointServiceType</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>MeetingPointEnumeration</td>
+      <td>Type of MEETING POINT.</td>
+      <td>Only a single value allowed: <code class="language-plaintext highlighter-rouge">meetingPoint groupMeetingPoint</code>.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Label</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Label on step.</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td> </td>
       <td>accessSpaces</td>
       <td>expected</td>
@@ -808,7 +952,7 @@
   </tbody>
 </table>
 
-<h3 id="example-2">Example</h3>
+<h3 id="example-3">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -899,6 +1043,38 @@
     <span class="nt">&lt;AssistanceService</span> <span class="na">id=</span><span class="s">"ch:1:assistance:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
       <span class="c">&lt;!-- Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet`. --&gt;</span>
     <span class="nt">&lt;/AssistanceService&gt;</span>
+    <span class="nt">&lt;AssistanceBookingService</span> <span class="na">id=</span><span class="s">"ch:1:assistancebooking:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. Contact and booking information regarding assistance services. --&gt;</span>
+      <span class="nt">&lt;WheelchairBookingRequired&gt;</span>false<span class="nt">&lt;/WheelchairBookingRequired&gt;</span>
+      <span class="nt">&lt;BookingContact/&gt;</span>
+      <span class="nt">&lt;VehicleMode&gt;</span>rail<span class="nt">&lt;/VehicleMode&gt;</span>
+      <span class="nt">&lt;noticeAssignments&gt;</span>
+        <span class="nt">&lt;NoticeAssignment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;validityConditions&gt;</span>
+            <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;timebands&gt;</span>
+                <span class="nt">&lt;Timeband</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;StartTime&gt;</span>07:00:00<span class="nt">&lt;/StartTime&gt;</span>
+                  <span class="nt">&lt;EndTime&gt;</span>06:00:00<span class="nt">&lt;/EndTime&gt;</span>
+                <span class="nt">&lt;/Timeband&gt;</span>
+              <span class="nt">&lt;/timebands&gt;</span>
+            <span class="nt">&lt;/AvailabilityCondition&gt;</span>
+          <span class="nt">&lt;/validityConditions&gt;</span>
+          <span class="nt">&lt;Notice</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Nur auf Voranmeldung bis eine Stunde vorher.
+              <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Latest booking 1 hour before.<span class="nt">&lt;/Text&gt;</span>
+            <span class="nt">&lt;/Text&gt;</span>
+          <span class="nt">&lt;/Notice&gt;</span>
+        <span class="nt">&lt;/NoticeAssignment&gt;</span>
+      <span class="nt">&lt;/noticeAssignments&gt;</span>
+    <span class="nt">&lt;/AssistanceBookingService&gt;</span>
+    <span class="nt">&lt;MeetingPointService</span> <span class="na">id=</span><span class="s">"ch:1:meetingpoint:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. Indicates the presence or absence of a meeting point. --&gt;</span>
+      <span class="nt">&lt;MeetingPointServiceType&gt;</span>meetingPoint
+        <span class="c">&lt;!-- Only a single value allowed: `meetingPoint groupMeetingPoint`. --&gt;</span>
+      <span class="nt">&lt;/MeetingPointServiceType&gt;</span>
+      <span class="nt">&lt;Label&gt;</span>Treffpunkt<span class="nt">&lt;/Label&gt;</span>
+    <span class="nt">&lt;/MeetingPointService&gt;</span>
   <span class="nt">&lt;/localServices&gt;</span>
   <span class="nt">&lt;StopPlaceType&gt;</span>railStation<span class="nt">&lt;/StopPlaceType&gt;</span>
   <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly<span class="nt">&lt;/LimitedUse&gt;</span>
@@ -919,7 +1095,7 @@
 
 <h2 id="sitefacilityset---the-additional-elements">SiteFacilitySet - the Additional Elements</h2>
 
-<h3 id="table-3">Table</h3>
+<h3 id="table-4">Table</h3>
 
 <p><em>Table: SiteFacilitySet</em></p>
 
@@ -936,6 +1112,15 @@
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td> </td>
+      <td>AccessibilityInfoFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AccessibilityInfoFacilityListOfEnumerations</td>
+      <td>List of ACCESSIBILITY INFORMATION FACILITies.</td>
+      <td>Accessibility. Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">audioInformation audioForHearingImpaired visualDisplays displaysForVisuallyImpaired largePrintTimetables</code>.</td>
+    </tr>
     <tr>
       <td> </td>
       <td>AssistanceFacilityList</td>
@@ -965,6 +1150,15 @@
     </tr>
     <tr>
       <td> </td>
+      <td>MobilityFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MobilityFacilityListOfEnumerations</td>
+      <td>List of MOBILITY FACILITies.</td>
+      <td>Accessibility. Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">unknown lowFloor, stepFreeAccess, suitableForPushchair suitableForWheelchair tactilePlatformEdges tactileGuidingStrips onboardAssistance boardingAssistance unaccompaniedMinorAssistance raisedKerb</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>SanitaryFacilityList</td>
       <td>expected</td>
       <td>0..1</td>
@@ -989,6 +1183,15 @@
       <td>TicketingServiceFacilityListOfEnumerations</td>
       <td>List of TICKETING SERVICE FACILITies, e.g. purchase, collection. top up.</td>
       <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AccessFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AccessFacilityListOfEnumerations</td>
+      <td>List of SITE ACCESS FACILITies.</td>
+      <td>Accessibility, only expected for Quays. Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">unknown lift wheelchairLift escalator travelator ramp automaticRamp steps stairs barrier lowFloorAccess validator</code>.</td>
     </tr>
     <tr>
       <td> </td>
@@ -1025,7 +1228,7 @@
   </li>
 </ul>
 
-<h3 id="example-3">Example</h3>
+<h3 id="example-4">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"ch:1:sloid:1234"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -1039,6 +1242,9 @@
   <span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>SiteFacilitySet Bhf sloid:1234
     <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>SiteFacilitySet for a stop place<span class="nt">&lt;/Text&gt;</span>
   <span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;AccessibilityInfoFacilityList&gt;</span>audioInformation visualDisplays
+    <span class="c">&lt;!-- Accessibility. Presence or absence of the following facilities should be signalled: `audioInformation audioForHearingImpaired visualDisplays displaysForVisuallyImpaired largePrintTimetables`. --&gt;</span>
+  <span class="nt">&lt;/AccessibilityInfoFacilityList&gt;</span>
   <span class="nt">&lt;AssistanceFacilityList&gt;</span>personalAssistance information boardingAssistance wheelchairAssistance
     <span class="c">&lt;!-- Accessibility. Presence or absence of the following facilities should be signalled: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. --&gt;</span>
   <span class="nt">&lt;/AssistanceFacilityList&gt;</span>
@@ -1048,6 +1254,9 @@
   <span class="nt">&lt;MedicalFacilityList&gt;</span>defibrillator
     <span class="c">&lt;!-- Accessibility. Presence or absence of the following facilitiy should be signalled: `defibrillator`. --&gt;</span>
   <span class="nt">&lt;/MedicalFacilityList&gt;</span>
+  <span class="nt">&lt;MobilityFacilityList&gt;</span>
+    <span class="c">&lt;!-- Accessibility. Presence or absence of the following facilities should be signalled: `unknown lowFloor, stepFreeAccess, suitableForPushchair suitableForWheelchair tactilePlatformEdges tactileGuidingStrips onboardAssistance boardingAssistance unaccompaniedMinorAssistance raisedKerb`. --&gt;</span>
+  <span class="nt">&lt;/MobilityFacilityList&gt;</span>
   <span class="nt">&lt;SanitaryFacilityList&gt;</span>toilet wheelchairAccessToilet babyChange
     <span class="c">&lt;!-- Accessibility. Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet wheelchairBabyChange toilet babyChange shower`. --&gt;</span>
   <span class="nt">&lt;/SanitaryFacilityList&gt;</span>
@@ -1055,6 +1264,9 @@
     <span class="c">&lt;!-- Accessibility. Presence or absence of the following facilities may be signalled: `unknown ticketMachines ticketOffice mobileTicketing`. Knowing the available options in advance can be helpful for visually impaired and mobility impaired passengers, in particular whether there is a ticket office and whether there is a ticket machine on the quay. --&gt;</span>
   <span class="nt">&lt;/TicketingFacilityList&gt;</span>
   <span class="nt">&lt;TicketingServiceFacilityList&gt;</span>all reservations<span class="nt">&lt;/TicketingServiceFacilityList&gt;</span>
+  <span class="nt">&lt;AccessFacilityList&gt;</span>
+    <span class="c">&lt;!-- Accessibility, only expected for Quays. Presence or absence of the following facilities should be signalled: `unknown lift wheelchairLift escalator travelator ramp automaticRamp steps stairs barrier lowFloorAccess validator`. --&gt;</span>
+  <span class="nt">&lt;/AccessFacilityList&gt;</span>
   <span class="nt">&lt;EmergencyServiceList&gt;</span>sosPoint
     <span class="c">&lt;!-- Accessibility. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`. --&gt;</span>
   <span class="nt">&lt;/EmergencyServiceList&gt;</span>
@@ -1070,16 +1282,16 @@
 <h2 id="sitepathlink">SitePathLink</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#sitepathlink">Glossary definition</a></em> TODO</p>
 
-<h3 id="purpose-2">Purpose</h3>
+<h3 id="purpose-3">Purpose</h3>
 <p>…</p>
 
-<h3 id="table-4">Table</h3>
+<h3 id="table-5">Table</h3>
 
 <p>SitePathLink.md</p>
 
 <p><em>→ <a href="../xcore/netex/elements/SitePathLink.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-4">Example</h3>
+<h3 id="example-5">Example</h3>
 
 <p>SitePathLink.xml</p>
 
@@ -1117,16 +1329,16 @@
 <h2 id="newelementx">NewElementX</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em> TODO</p>
 
-<h3 id="purpose-3">Purpose</h3>
+<h3 id="purpose-4">Purpose</h3>
 <p>…</p>
 
-<h3 id="table-5">Table</h3>
+<h3 id="table-6">Table</h3>
 
 <p>NewElement.md</p>
 
 <p><em>→ <a href="../xcore/netex/elements/NewElement.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-5">Example</h3>
+<h3 id="example-6">Example</h3>
 
 <p>NewElement.xml</p>
 
@@ -1134,11 +1346,11 @@
 
 <h2 id="existingelementy---the-additional-elements">ExistingElementY - the Additional Elements</h2>
 
-<h3 id="table-6">Table</h3>
+<h3 id="table-7">Table</h3>
 
 <p>OldElement_withAccessibility.md</p>
 
-<h3 id="example-6">Example</h3>
+<h3 id="example-7">Example</h3>
 
 <p>OldElement_withAccessibility.xml</p>
 

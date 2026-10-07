@@ -5,53 +5,53 @@ Definition of the Swiss Accessibility Profile.
 In this chapter:
 
 AccessibilityAssessment
-- AccessibilityAssessment
+- **AccessibilityAssessment**
 
 Basic Orientation
-- Level
-- Entrance
-- AccessSpace
-- StopPlace - the Additional Elements
-- Quay - the Additional Elements
+- **Level**
+- **Entrance**
+- *AccessSpace*
+- **StopPlace - the Additional Elements**
+- **Quay - the Additional Elements**
 
 
 PrivateMobility
 - Parking
-- VehicleMeetingPoint
+- **VehicleMeetingPoint**
 
 Path Navigation
-- SitePathLink
-- PathJunction
-- DefaultConnection - the Additional Elements
-- SiteConnection - the Additional Elements
+- *SitePathLink*
+- *PathJunction*
+- *DefaultConnection - the Additional Elements*
+- *SiteConnection - the Additional Elements*
 
 Equipments, Facilities & Services
-- EquipmentPlace
-- EntranceEquipment
-- EscalatorEquipment
-- LiftEquipment
-- RampEquipment
-- TravelatorEquipment
-- LuggageLockerEquipment
-- TrolleyStandEquipment
-- PassengerSafetyEquipment
+- **EquipmentPlace**
+- **EntranceEquipment**
+- *EscalatorEquipment*
+- *LiftEquipment*
+- *RampEquipment*
+- *TravelatorEquipment*
+- (LuggageLockerEquipment
+- (TrolleyStandEquipment
+- (PassengerSafetyEquipment
 - SanitaryEquipment
 - TicketingEquipment
-- QueingEquipment - ?
+- (QueingEquipment - ?
 - TicketValidatorEquipment
-- ShelterEquipment - ?
+- (ShelterEquipment - ?
 - WaitingEquipment
 - WaitingRoomEquipment
 - SignEquipment- ?
-- AssistanceService**_
-- AssistanceBookingService
-- LostPropertyService
+- **AssistanceService**
+- **AssistanceBookingService**
+- (LostPropertyService
 - LuggageService
-- MeetingPointService
-- TicketingService
-- CustomerService
-- SiteFacilitySet - the Additional Elements
-- ServiceFacilitySet - the Additional Elements
+- **MeetingPointService**
+- (TicketingService
+- **CustomerService**
+- **SiteFacilitySet - the Additional Elements**
+- **ServiceFacilitySet - the Additional Elements**
 
 Vehicles & Vehicle Stop Interaction
 - VehicleType
@@ -189,8 +189,8 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
 *→ [Glossary definition](A4_annex_glossary.md#AssistanceService)* **TODO**
 
 ### Purpose
-**TODO** Do we need that? Where to find the booking / contact information that goes with the function?
-
+**TODO** Do we need that? 
+The booking / contact information can be found in the accompanying `AssistanceBookingService`element.
 
 ### Table
 
@@ -237,6 +237,74 @@ The element allows for more precisely describing the availability of `Assistance
 
 
 
+## AssistanceBookingService
+*→ [Glossary definition](A4_annex_glossary.md#AssistanceBookingService)* **TODO**
+
+### Purpose
+Booking / contact information for `AssistanceService`.
+
+
+### Table
+
+
+
+Accessibility. Contact and booking information regarding assistance services.
+
+*Table: AssistanceBookingService*
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | WheelchairBookingRequired | optional | 0..1 | xsd:boolean | Whether a booking is needed to use a wheelchair. |  |
+|  | BookingContact | expected | 0..1 | ContactStructure | Contact for Booking. +v1.1 |  |
+|  | VehicleMode | optional | 0..1 | AllPublicTransportModesEnumeration | PUBLIC TRANSPORT MODE: a characterisation of the operation according to the means of transport (bus, tram, metro, train, ferry, ship). |  |
+|  | noticeAssignments | optional | 0..1 | noticeAssignments_RelStructure | NOTICE ASSIGNMENTs in frame. |  |
+| + | [NoticeAssignment](./tables/NoticeAssignment.md) | expected | 0..* | NoticeAssignment_VersionStructure | The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively. |  |
+
+
+
+
+*→ [General NeTEx definition ](../xcore/netex/elements/AssistanceBookingService.html)*
+
+### Example
+
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<AssistanceBookingService id="ch:1:assistancebooking:7000:1" version="1">
+  <!-- Accessibility. Contact and booking information regarding assistance services. -->
+  <WheelchairBookingRequired>false</WheelchairBookingRequired>
+  <BookingContact/>
+  <VehicleMode>rail</VehicleMode>
+  <noticeAssignments>
+    <NoticeAssignment id="generated" version="1">
+      <validityConditions>
+        <AvailabilityCondition id="generated" version="1">
+          <timebands>
+            <Timeband id="generated" version="1">
+              <StartTime>07:00:00</StartTime>
+              <EndTime>06:00:00</EndTime>
+            </Timeband>
+          </timebands>
+        </AvailabilityCondition>
+      </validityConditions>
+      <Notice id="generated" version="1">
+        <Text lang="de">Nur auf Voranmeldung bis eine Stunde vorher.
+          <Text lang="en">Latest booking 1 hour before.</Text>
+        </Text>
+      </Notice>
+    </NoticeAssignment>
+  </noticeAssignments>
+</AssistanceBookingService>
+```
+
+
+
+*→ [Template](./templates/AssistanceBookingService.xml)*
+
+
+
+
+
 
 
 ## StopPlace - the Additional Elements
@@ -268,6 +336,10 @@ The element allows for more precisely describing the availability of `Assistance
 | + | LiftEquipmentRef | optional | 0..* | AccessEquipmentRefStructure | Identifier of an LIFT EQUIPMENT. |  |
 |  | localServices | optional | 0..1 | localServices_RelStructure | LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT. |  |
 | + | [AssistanceService](./tables/AssistanceService.md) | optional | 0..* | AssistanceService_VersionStructure | Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc. | Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet`. |
+| + | [AssistanceBookingService](./tables/AssistanceBookingService.md) | optional | 0..* | AssistanceBookingService_VersionStructure | Information about how to book assistance for wheelchair and disabled users. | Accessibility. Contact and booking information regarding assistance services. |
+| + | MeetingPointService | expected | 0..* | MeetingPointService_VersionStructure | Specialisation of CUSTOMER SERVICE for meeting points (provides characteristics like description, label, etc.). | Accessibility. Indicates the presence or absence of a meeting point. |
+| ++ | MeetingPointServiceType | mandatory | 1..1 | MeetingPointEnumeration | Type of MEETING POINT. | Only a single value allowed: `meetingPoint groupMeetingPoint`. |
+| ++ | Label | expected | 0..1 | MultilingualString | Label on step. |  |
 |  | accessSpaces | expected | 0..1 | accessSpaces_RelStructure | ACCESS SPACEs within the STOP PLACE. | Accessibility. **TODO** TBD |
 | + | [AccessSpace](./tables/AccessSpace.md) | expected | 0..* | AccessSpace_VersionStructure | An area within a STOP PLACE that does not give direct access to transport vehicles. May be connected to QUAYS by PATH LINKs. | Accessibility. |
 
@@ -368,6 +440,38 @@ The element allows for more precisely describing the availability of `Assistance
     <AssistanceService id="ch:1:assistance:7000:1" version="1">
       <!-- Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet`. -->
     </AssistanceService>
+    <AssistanceBookingService id="ch:1:assistancebooking:7000:1" version="1">
+      <!-- Accessibility. Contact and booking information regarding assistance services. -->
+      <WheelchairBookingRequired>false</WheelchairBookingRequired>
+      <BookingContact/>
+      <VehicleMode>rail</VehicleMode>
+      <noticeAssignments>
+        <NoticeAssignment id="generated" version="1">
+          <validityConditions>
+            <AvailabilityCondition id="generated" version="1">
+              <timebands>
+                <Timeband id="generated" version="1">
+                  <StartTime>07:00:00</StartTime>
+                  <EndTime>06:00:00</EndTime>
+                </Timeband>
+              </timebands>
+            </AvailabilityCondition>
+          </validityConditions>
+          <Notice id="generated" version="1">
+            <Text lang="de">Nur auf Voranmeldung bis eine Stunde vorher.
+              <Text lang="en">Latest booking 1 hour before.</Text>
+            </Text>
+          </Notice>
+        </NoticeAssignment>
+      </noticeAssignments>
+    </AssistanceBookingService>
+    <MeetingPointService id="ch:1:meetingpoint:7000:1" version="1">
+      <!-- Accessibility. Indicates the presence or absence of a meeting point. -->
+      <MeetingPointServiceType>meetingPoint
+        <!-- Only a single value allowed: `meetingPoint groupMeetingPoint`. -->
+      </MeetingPointServiceType>
+      <Label>Treffpunkt</Label>
+    </MeetingPointService>
   </localServices>
   <StopPlaceType>railStation</StopPlaceType>
   <LimitedUse>interchangeOnly</LimitedUse>
@@ -400,12 +504,15 @@ The element allows for more precisely describing the availability of `Assistance
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
+|  | AccessibilityInfoFacilityList | expected | 0..1 | AccessibilityInfoFacilityListOfEnumerations | List of ACCESSIBILITY INFORMATION FACILITies. | Accessibility. Presence or absence of the following facilities should be signalled: `audioInformation audioForHearingImpaired visualDisplays displaysForVisuallyImpaired largePrintTimetables`. |
 |  | AssistanceFacilityList | expected | 0..1 | AssistanceFacilityListOfEnumerations | List of ASSISTANCE FACILITies. | Accessibility. Presence or absence of the following facilities should be signalled: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. |
 |  | AccessibilityToolList | optional | 0..1 | AccessibilityToolListOfEnumerations | List of TYPEs of ACCESSIBILITY TOOLs. | Accessibility. Presence or absence of the following facility may be signalled; absence of the item means absence of the facility (if the element is present): `wheelchair` - wheelchairs available for passenger use. |
 |  | MedicalFacilityList | expected | 0..1 | MedicalFacilityListOfEnumerations | List of MEDICAL FACILITies. | Accessibility. Presence or absence of the following facilitiy should be signalled: `defibrillator`. |
+|  | MobilityFacilityList | expected | 0..1 | MobilityFacilityListOfEnumerations | List of MOBILITY FACILITies. | Accessibility. Presence or absence of the following facilities should be signalled: `unknown lowFloor, stepFreeAccess, suitableForPushchair suitableForWheelchair tactilePlatformEdges tactileGuidingStrips onboardAssistance boardingAssistance unaccompaniedMinorAssistance raisedKerb`. |
 |  | SanitaryFacilityList | expected | 0..1 | SanitaryFacilityListOfEnumerations | List of SANITARY FACILITies. | Accessibility. Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet wheelchairBabyChange toilet babyChange shower`. |
 |  | TicketingFacilityList | optional | 0..1 | TicketingFacilityListOfEnumerations | List of TICKETING FACILITies. | Accessibility. Presence or absence of the following facilities may be signalled: `unknown ticketMachines ticketOffice mobileTicketing`. Knowing the available options in advance can be helpful for visually impaired and mobility impaired passengers, in particular whether there is a ticket office and whether there is a ticket machine on the quay. |
 |  | TicketingServiceFacilityList | optional | 0..1 | TicketingServiceFacilityListOfEnumerations | List of TICKETING SERVICE FACILITies, e.g. purchase, collection. top up. |  |
+|  | AccessFacilityList | expected | 0..1 | AccessFacilityListOfEnumerations | List of SITE ACCESS FACILITies. | Accessibility, only expected for Quays. Presence or absence of the following facilities should be signalled: `unknown lift wheelchairLift escalator travelator ramp automaticRamp steps stairs barrier lowFloorAccess validator`. |
 |  | EmergencyServiceList | expected | 0..1 | EmergencyServiceListOfEnumerations | List of EMERGENCY SERVICE FACILITies. | Accessibility. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`. |
 |  | ParkingFacilityList | expected | 0..1 | ParkingFacilityListOfEnumerations | List of PARKING FACILITies. | Accessibility. Presence or absence of the following facilities should be signalled: `carPark parkAndRidePark motorcyclePark cyclePark`. Others are optional: `cachPark rentalCarPark`. |
 
@@ -438,6 +545,9 @@ The element is used in `StopPlace` and `Quay`, for which slightly differing rule
   <Description lang="de">SiteFacilitySet Bhf sloid:1234
     <Text lang="en">SiteFacilitySet for a stop place</Text>
   </Description>
+  <AccessibilityInfoFacilityList>audioInformation visualDisplays
+    <!-- Accessibility. Presence or absence of the following facilities should be signalled: `audioInformation audioForHearingImpaired visualDisplays displaysForVisuallyImpaired largePrintTimetables`. -->
+  </AccessibilityInfoFacilityList>
   <AssistanceFacilityList>personalAssistance information boardingAssistance wheelchairAssistance
     <!-- Accessibility. Presence or absence of the following facilities should be signalled: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. -->
   </AssistanceFacilityList>
@@ -447,6 +557,9 @@ The element is used in `StopPlace` and `Quay`, for which slightly differing rule
   <MedicalFacilityList>defibrillator
     <!-- Accessibility. Presence or absence of the following facilitiy should be signalled: `defibrillator`. -->
   </MedicalFacilityList>
+  <MobilityFacilityList>
+    <!-- Accessibility. Presence or absence of the following facilities should be signalled: `unknown lowFloor, stepFreeAccess, suitableForPushchair suitableForWheelchair tactilePlatformEdges tactileGuidingStrips onboardAssistance boardingAssistance unaccompaniedMinorAssistance raisedKerb`. -->
+  </MobilityFacilityList>
   <SanitaryFacilityList>toilet wheelchairAccessToilet babyChange
     <!-- Accessibility. Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet wheelchairBabyChange toilet babyChange shower`. -->
   </SanitaryFacilityList>
@@ -454,6 +567,9 @@ The element is used in `StopPlace` and `Quay`, for which slightly differing rule
     <!-- Accessibility. Presence or absence of the following facilities may be signalled: `unknown ticketMachines ticketOffice mobileTicketing`. Knowing the available options in advance can be helpful for visually impaired and mobility impaired passengers, in particular whether there is a ticket office and whether there is a ticket machine on the quay. -->
   </TicketingFacilityList>
   <TicketingServiceFacilityList>all reservations</TicketingServiceFacilityList>
+  <AccessFacilityList>
+    <!-- Accessibility, only expected for Quays. Presence or absence of the following facilities should be signalled: `unknown lift wheelchairLift escalator travelator ramp automaticRamp steps stairs barrier lowFloorAccess validator`. -->
+  </AccessFacilityList>
   <EmergencyServiceList>sosPoint
     <!-- Accessibility. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`. -->
   </EmergencyServiceList>

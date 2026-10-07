@@ -21,5 +21,9 @@
 | + | LiftEquipmentRef | optional | 0..* | AccessEquipmentRefStructure | Identifier of an LIFT EQUIPMENT. |  |
 |  | localServices | optional | 0..1 | localServices_RelStructure | LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT. |  |
 | + | [AssistanceService](AssistanceService.md) | optional | 0..* | AssistanceService_VersionStructure | Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc. | Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet`. |
+| + | [AssistanceBookingService](AssistanceBookingService.md) | optional | 0..* | AssistanceBookingService_VersionStructure | Information about how to book assistance for wheelchair and disabled users. | Accessibility. Contact and booking information regarding assistance services. |
+| + | MeetingPointService | expected | 0..* | MeetingPointService_VersionStructure | Specialisation of CUSTOMER SERVICE for meeting points (provides characteristics like description, label, etc.). | Accessibility. Indicates the presence or absence of a meeting point. |
+| ++ | MeetingPointServiceType | mandatory | 1..1 | MeetingPointEnumeration | Type of MEETING POINT. | Only a single value allowed: `meetingPoint groupMeetingPoint`. |
+| ++ | Label | expected | 0..1 | MultilingualString | Label on step. |  |
 |  | accessSpaces | expected | 0..1 | accessSpaces_RelStructure | ACCESS SPACEs within the STOP PLACE. | Accessibility. **TODO** TBD |
 | + | [AccessSpace](AccessSpace.md) | expected | 0..* | AccessSpace_VersionStructure | An area within a STOP PLACE that does not give direct access to transport vehicles. May be connected to QUAYS by PATH LINKs. | Accessibility. |

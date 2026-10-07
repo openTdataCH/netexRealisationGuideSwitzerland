@@ -384,6 +384,42 @@
       <td>Accessibility. The element allows for more precisely describing the availability of <code class="language-plaintext highlighter-rouge">AssistanceFacility</code>s and <code class="language-plaintext highlighter-rouge">AccessibilityTools</code>, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code>.</td>
     </tr>
     <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/AssistanceBookingService.html">AssistanceBookingService</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AssistanceBookingService_VersionStructure</td>
+      <td>Information about how to book assistance for wheelchair and disabled users.</td>
+      <td>Accessibility. Contact and booking information regarding assistance services.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>MeetingPointService</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>MeetingPointService_VersionStructure</td>
+      <td>Specialisation of CUSTOMER SERVICE for meeting points (provides characteristics like description, label, etc.).</td>
+      <td>Accessibility. Indicates the presence or absence of a meeting point.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>MeetingPointServiceType</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>MeetingPointEnumeration</td>
+      <td>Type of MEETING POINT.</td>
+      <td>Only a single value allowed: <code class="language-plaintext highlighter-rouge">meetingPoint groupMeetingPoint</code>.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Label</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Label on step.</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td> </td>
       <td>accessSpaces</td>
       <td>expected</td>
