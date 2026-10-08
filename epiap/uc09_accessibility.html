@@ -227,7 +227,7 @@
 <p>Basic Orientation</p>
 <ul>
   <li><strong>Level</strong></li>
-  <li><strong>Entrance</strong></li>
+  <li><strong>StopPlaceEntrance</strong></li>
   <li><em>AccessSpace</em></li>
   <li><strong>StopPlace - the Additional Elements</strong></li>
   <li><strong>Quay - the Additional Elements</strong></li>
@@ -236,7 +236,6 @@
 <p>PrivateMobility</p>
 <ul>
   <li>Parking</li>
-  <li><strong>VehicleMeetingPoint</strong></li>
 </ul>
 
 <p>Path Navigation</p>
@@ -260,12 +259,12 @@
   <li>(PassengerSafetyEquipment</li>
   <li>SanitaryEquipment</li>
   <li>TicketingEquipment</li>
-  <li>(QueingEquipment - ?</li>
+  <li>(QueingEquipment</li>
   <li>TicketValidatorEquipment</li>
-  <li>(ShelterEquipment - ?</li>
+  <li>(ShelterEquipment</li>
   <li>WaitingEquipment</li>
   <li>WaitingRoomEquipment</li>
-  <li>SignEquipment- ?</li>
+  <li>SignEquipment</li>
   <li><strong>AssistanceService</strong></li>
   <li><strong>AssistanceBookingService</strong></li>
   <li>(LostPropertyService</li>
@@ -538,6 +537,39 @@
 </ul>
 
 <p>Such information can be encoded using <code class="language-plaintext highlighter-rouge">PathLink</code>s and <code class="language-plaintext highlighter-rouge">PathJunction</code>s that describe a routing network including accessibility and location data.</p>
+
+<h3 id="modification-proposal">Modification Proposal</h3>
+
+<p>The definitions from EPIAP are partly ambiguous and of limited usefulness.</p>
+
+<p>Proposed changes to the current definition in italics: 
+<strong>TODO</strong> to be reviewed &amp; discussed, requires EPIAP modification</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">StepFreeAccess</code> - no stairs, no steps,  <strong><em>no escalator</em></strong></li>
+  <li><code class="language-plaintext highlighter-rouge">RampFreeAccess</code> =  <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> withoutRamp - <strong><em>no stairs, no steps, no escalator</em></strong>, no ramp exceeding a moderate slope (more precisely: “that doesn’t fit the UN Design Considerations” <a href="https://www.un.org/esa/socdev/enable/designm/AD2-01.htm">https://www.un.org/esa/socdev/enable/designm/AD2-01.htm</a>)</li>
+  <li><code class="language-plaintext highlighter-rouge">LiftFreeAccess</code> = <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> without lift  - <strong><em>no stairs, no steps, no escalator</em></strong>, no lift - possibly ramps</li>
+  <li><code class="language-plaintext highlighter-rouge">WheelchairAccess</code> - includes <code class="language-plaintext highlighter-rouge">StepFreeAccess</code></li>
+  <li><code class="language-plaintext highlighter-rouge">EscalatorFreeAccess</code> - may have stairs, steps, lift, ramp, but no escalator</li>
+</ul>
+
+<p>In addtion to the above modifications / clarifications, we specify that</p>
+<ul>
+  <li>all conditions of the AccessibiltyAssessment (StepFreeAccess etc.) have to be true for a complete path from a <code class="language-plaintext highlighter-rouge">StopPlaceEntrance</code> with <code class="language-plaintext highlighter-rouge">DroppedKerb=true</code> and <code class="language-plaintext highlighter-rouge">DropOffPointClose=true</code>.</li>
+</ul>
+
+<p>Then the <code class="language-plaintext highlighter-rouge">AccessibiltyAssessment</code> is able to express the following TSI/PRM requirements:</p>
+<ul>
+  <li><strong>TODO</strong></li>
+</ul>
+
+<p>Technical remarks:</p>
+<ul>
+  <li>The above (re)definition may be incompatible with a more local understanding of <code class="language-plaintext highlighter-rouge">AccessibilityAssessment</code>. A more local understanding might be an appropriate choice if a complete SitePathLink network exists.</li>
+  <li>Pure  lift free access - no lift, for claustrophobia - must always be true in public spaces, there always has to be an alternative access means like stairs. Therefore the above definition of <code class="language-plaintext highlighter-rouge">LiftFreeAccess</code> which includes <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> does not loose information for the claustophobics</li>
+  <li>As <code class="language-plaintext highlighter-rouge">EscalatorFreeAccess</code> should always be guaranteed in public spaces, it seems superflouous - remove?</li>
+  <li>One might consider adding <code class="language-plaintext highlighter-rouge">StepFreeAccessWithoutLiftWithoutRamp</code> - no stairs, no steps, no escalator, no lift, no ramp exceeding a moderate slope.</li>
+</ul>
 
 <h2 id="assistanceservice">AssistanceService</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#AssistanceService">Glossary definition</a></em> <strong>TODO</strong></p>
