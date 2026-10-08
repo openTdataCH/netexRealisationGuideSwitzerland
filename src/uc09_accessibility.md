@@ -9,7 +9,7 @@ AccessibilityAssessment
 
 Basic Orientation
 - **Level**
-- **Entrance**
+- **StopPlaceEntrance**
 - *AccessSpace*
 - **StopPlace - the Additional Elements**
 - **Quay - the Additional Elements**
@@ -17,7 +17,6 @@ Basic Orientation
 
 PrivateMobility
 - Parking
-- **VehicleMeetingPoint**
 
 Path Navigation
 - *SitePathLink*
@@ -37,12 +36,12 @@ Equipments, Facilities & Services
 - (PassengerSafetyEquipment
 - SanitaryEquipment
 - TicketingEquipment
-- (QueingEquipment - ?
+- (QueingEquipment
 - TicketValidatorEquipment
-- (ShelterEquipment - ?
+- (ShelterEquipment
 - WaitingEquipment
 - WaitingRoomEquipment
-- SignEquipment- ?
+- SignEquipment
 - **AssistanceService**
 - **AssistanceBookingService**
 - (LostPropertyService
@@ -120,6 +119,32 @@ Interpretation of `AccessibilityLimitation`:
 
 Such information can be encoded using `PathLink`s and `PathJunction`s that describe a routing network including accessibility and location data.
 
+
+### Modification Proposal
+
+The definitions from EPIAP are partly ambiguous and of limited usefulness. 
+
+Proposed changes to the current definition in italics: 
+**TODO** to be reviewed & discussed, requires EPIAP modification
+
+- `StepFreeAccess` - no stairs, no steps,  **_no escalator_**
+- `RampFreeAccess` =  `StepFreeAccess` withoutRamp - **_no stairs, no steps, no escalator_**, no ramp exceeding a moderate slope (more precisely: "that doesn't fit the UN Design Considerations" [https://www.un.org/esa/socdev/enable/designm/AD2-01.htm](https://www.un.org/esa/socdev/enable/designm/AD2-01.htm))
+- `LiftFreeAccess` = `StepFreeAccess` without lift  - **_no stairs, no steps, no escalator_**, no lift - possibly ramps
+- `WheelchairAccess` - includes `StepFreeAccess`
+- `EscalatorFreeAccess` - may have stairs, steps, lift, ramp, but no escalator
+
+In addtion to the above modifications / clarifications, we specify that 
+- all conditions of the AccessibiltyAssessment (StepFreeAccess etc.) have to be true for a complete path from a `StopPlaceEntrance` with `DroppedKerb=true` and `DropOffPointClose=true`. 
+
+Then the `AccessibiltyAssessment` is able to express the following TSI/PRM requirements:
+- **TODO**
+
+
+Technical remarks:
+- The above (re)definition may be incompatible with a more local understanding of `AccessibilityAssessment`. A more local understanding might be an appropriate choice if a complete SitePathLink network exists. 
+- Pure  lift free access - no lift, for claustrophobia - must always be true in public spaces, there always has to be an alternative access means like stairs. Therefore the above definition of `LiftFreeAccess` which includes `StepFreeAccess` does not loose information for the claustophobics
+- As `EscalatorFreeAccess` should always be guaranteed in public spaces, it seems superflouous - remove?
+- One might consider adding `StepFreeAccessWithoutLiftWithoutRamp` - no stairs, no steps, no escalator, no lift, no ramp exceeding a moderate slope.
 
 
 
