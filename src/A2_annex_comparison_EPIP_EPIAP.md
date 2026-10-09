@@ -1,13 +1,13 @@
 # Annex: Relevant differences between EPIP, EPIAP and the Swiss realisation guide 2.0
 
-Note: The following list is not necessarily comprehensive.
->**LATER** https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/docs/A2_annex_comparison_EPIP_EPIAP.md
 
 ## Main differences
 
-The following lists aim to give an overviiew of all elements related to accessibility information. Most of them are described in EPIAP, while a few are documented in greater detail in Part 1 of NeTEx (in particular, various Services and enumerations). 
+The following list provides an overview of all elements related to accessibility information. Most of them are described in EPIAP, while a few are documented in greater detail in Part 1 of NeTEx (in particular, various Services and enumerations). The list is derived from a more comprehensive [ComparisonMatrix_FR_NO_CH](media/ComparisonMatrix_FR_NO_CH.html).
 
-The elements in ***italics*** are the ones that are (tentatively) elected for being included in the Swiss profile. Note that, in contrast, the French profile includes practically the totality of EPIAP. The extension of the Swiss profile to cover accessibility is documented [here](uc09_accessibility.md).
+The elements in ***italics*** are the ones that are considered more important in the perspective of a future Swiss profile. Note that the French profile, as currently documented, includes practically the totality of EPIAP. 
+
+[The extension of the Swiss profile to cover accessibility is documented here](uc09_accessibility.md) (in work).
 
 
 ### AccessibilityAssessment
@@ -494,14 +494,11 @@ PlatformHeight, GapToPlatform
 
 
 ## Other noteworthy differences
-* DELFI, PRM TSI ...
-* Accessibility in the French profile ...
-* EPIAP requires AlternativeText, Swiss profile excludes it
-* bla
+* DELFI, PRM TSI - will be analyzed when constructing the [Swiss Accessibility Profile](uc09_accessibility.md)
+* **TODO** Clash - EPIAP requires AlternativeText, Swiss profile excludes it 
+* 
 
 ## Things that should be included/changed for the new European profile for 2028
-* bla
-* bla
-* bla
+* **TODO**
 
 
