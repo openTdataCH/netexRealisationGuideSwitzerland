@@ -217,7 +217,32 @@
       
       <p>Definition of the Swiss Accessibility Profile.</p>
 
-<p>In this chapter:</p>
+<p><strong>Current State</strong></p>
+<ul>
+  <li>Show what can be expressed with AccessibilityAssessment, Facilities, and Services</li>
+  <li>Limited localisation: attached to complete StopPlaces or single Quays</li>
+  <li>Proposal of using AccessibilityAssessment to describe the most needed “reachability” limitations / gurantees of a Quay</li>
+  <li>Elaborated only for Site elements, not for vehicles 
+This approach does not obey the EPIAP philiosophy of favoring Equipments over Facilities and Services. But it may be the more realistic and practical approach.</li>
+</ul>
+
+<p><strong>Next Step A</strong></p>
+<ul>
+  <li>TSI/PRM requirements - what is covered/missing?</li>
+  <li>Add selected Equipment types (for which data are available) - which ones?</li>
+  <li>Replace the corresponding Facilities or keeping them in parallel?</li>
+</ul>
+
+<p><strong>Next Step B</strong></p>
+<ul>
+  <li>Do we need SitePathLinks?</li>
+  <li>StairEquipment, RampEquipment, etc.</li>
+  <li>Granularity of navigation networks? - First thoughts  presented below.</li>
+</ul>
+
+<hr />
+
+<p><strong>In this chapter</strong> (typography loosely reflects priority):</p>
 
 <p>AccessibilityAssessment</p>
 <ul>
@@ -249,7 +274,7 @@
 <p>Equipments, Facilities &amp; Services</p>
 <ul>
   <li><strong>EquipmentPlace</strong></li>
-  <li><strong>EntranceEquipment</strong></li>
+  <li>EntranceEquipment</li>
   <li><em>EscalatorEquipment</em></li>
   <li><em>LiftEquipment</em></li>
   <li><em>RampEquipment</em></li>
@@ -542,8 +567,8 @@
 
 <p>The definitions from EPIAP are partly ambiguous and of limited usefulness.</p>
 
-<p>Proposed changes to the current definition in italics: 
-<strong>TODO</strong> to be reviewed &amp; discussed, requires EPIAP modification</p>
+<h4 id="proposed-changes-to-the-current-definition-in-italics">Proposed changes to the current definition in italics:</h4>
+<p><strong>TODO</strong> to be reviewed &amp; discussed, requires EPIAP modification</p>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">StepFreeAccess</code> - no stairs, no steps,  <strong><em>no escalator</em></strong></li>
@@ -558,12 +583,13 @@
   <li>all conditions of the AccessibiltyAssessment (StepFreeAccess etc.) have to be true for a complete path from a <code class="language-plaintext highlighter-rouge">StopPlaceEntrance</code> with <code class="language-plaintext highlighter-rouge">DroppedKerb=true</code> and <code class="language-plaintext highlighter-rouge">DropOffPointClose=true</code>.</li>
 </ul>
 
-<p>Then the <code class="language-plaintext highlighter-rouge">AccessibiltyAssessment</code> is able to express the following TSI/PRM requirements:</p>
+<p><strong>Then the <code class="language-plaintext highlighter-rouge">AccessibiltyAssessment</code> is able to express the following TSI/PRM requirements:</strong></p>
 <ul>
   <li><strong>TODO</strong></li>
+  <li>…</li>
 </ul>
 
-<p>Technical remarks:</p>
+<h4 id="technical-remarks">Technical remarks:</h4>
 <ul>
   <li>The above (re)definition may be incompatible with a more local understanding of <code class="language-plaintext highlighter-rouge">AccessibilityAssessment</code>. A more local understanding might be an appropriate choice if a complete SitePathLink network exists.</li>
   <li>Pure  lift free access - no lift, for claustrophobia - must always be true in public spaces, there always has to be an alternative access means like stairs. Therefore the above definition of <code class="language-plaintext highlighter-rouge">LiftFreeAccess</code> which includes <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> does not loose information for the claustophobics</li>
@@ -575,7 +601,7 @@
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#AssistanceService">Glossary definition</a></em> <strong>TODO</strong></p>
 
 <h3 id="purpose-1">Purpose</h3>
-<p><strong>TODO</strong> Do we need that? 
+<p>Used for services that require booking or with limited availability.
 The booking / contact information can be found in the accompanying <code class="language-plaintext highlighter-rouge">AssistanceBookingService</code>element.</p>
 
 <h3 id="table-1">Table</h3>
@@ -1129,7 +1155,7 @@ The booking / contact information can be found in the accompanying <code class="
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#StopPlaceEntrance">Glossary definition</a></em> <strong>TODO</strong></p>
 
 <h3 id="purpose-3">Purpose</h3>
-<p>…</p>
+<p><code class="language-plaintext highlighter-rouge">StopPlaceEntrance</code>s, in particular if <code class="language-plaintext highlighter-rouge">DroppedKerbOutside</code> and <code class="language-plaintext highlighter-rouge">DropOffPointClose</code> are true, are the starting points from which the accessibility of <code class="language-plaintext highlighter-rouge">Quay</code>s and other place elements is assessed.</p>
 
 <h3 id="table-4">Table</h3>
 
@@ -1300,6 +1326,9 @@ The booking / contact information can be found in the accompanying <code class="
 
 <h2 id="sitefacilityset---the-additional-elements">SiteFacilitySet - the Additional Elements</h2>
 
+<h3 id="purpose-4">Purpose</h3>
+<p>Accessiblity information attached to a <code class="language-plaintext highlighter-rouge">StopPlace</code> and <code class="language-plaintext highlighter-rouge">Quay</code> in particular. Also usable for other site/place elements like <code class="language-plaintext highlighter-rouge">AccessSpace</code>, <code class="language-plaintext highlighter-rouge">EquipmentPlace</code>.</p>
+
 <h3 id="table-5">Table</h3>
 
 <p><em>Table: SiteFacilitySet</em></p>
@@ -1426,12 +1455,18 @@ The booking / contact information can be found in the accompanying <code class="
   <li>General presence or absence of facilities has to be indicated at the level of the <code class="language-plaintext highlighter-rouge">StopPlace</code>.</li>
   <li>Of interest at the level of each <code class="language-plaintext highlighter-rouge">Quay</code>are the following:
     <ul>
+      <li><code class="language-plaintext highlighter-rouge">AccessibiltyInfoFacilityList</code></li>
+      <li><code class="language-plaintext highlighter-rouge">AccessFacilityList</code> (only for <code class="language-plaintext highlighter-rouge">Quay</code>)</li>
       <li><code class="language-plaintext highlighter-rouge">AssistanceFacilityList</code></li>
       <li><code class="language-plaintext highlighter-rouge">TicketingFacilityList</code></li>
       <li><code class="language-plaintext highlighter-rouge">EmergencyFacilityList</code></li>
+      <li><code class="language-plaintext highlighter-rouge">MedicalFacilityList</code></li>
     </ul>
   </li>
 </ul>
+
+<h4 id="problems-to-be-solved-todo">Problems to be solved <strong>TODO</strong></h4>
+<p>Overlaps between <code class="language-plaintext highlighter-rouge">AccessFacilityList</code>, <code class="language-plaintext highlighter-rouge">AssistanceFacilityList</code>, <code class="language-plaintext highlighter-rouge">MobilityFacilityList</code>. We might want to restrict the allowed enums, depending on what finally needs to be expressed.</p>
 
 <h3 id="example-5">Example</h3>
 
@@ -1487,7 +1522,7 @@ The booking / contact information can be found in the accompanying <code class="
 <h2 id="sitepathlink">SitePathLink</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#sitepathlink">Glossary definition</a></em> TODO</p>
 
-<h3 id="purpose-4">Purpose</h3>
+<h3 id="purpose-5">Purpose</h3>
 <p>…</p>
 
 <h3 id="table-6">Table</h3>
@@ -1534,7 +1569,7 @@ The booking / contact information can be found in the accompanying <code class="
 <h2 id="newelementx">NewElementX</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/epiap/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em> TODO</p>
 
-<h3 id="purpose-5">Purpose</h3>
+<h3 id="purpose-6">Purpose</h3>
 <p>…</p>
 
 <h3 id="table-7">Table</h3>

@@ -2,7 +2,26 @@
 
 Definition of the Swiss Accessibility Profile.
 
-In this chapter:
+**Current State**
+- Show what can be expressed with AccessibilityAssessment, Facilities, and Services
+- Limited localisation: attached to complete StopPlaces or single Quays
+- Proposal of using AccessibilityAssessment to describe the most needed "reachability" limitations / gurantees of a Quay
+- Elaborated only for Site elements, not for vehicles 
+This approach does not obey the EPIAP philiosophy of favoring Equipments over Facilities and Services. But it may be the more realistic and practical approach. 
+
+**Next Step A**
+- TSI/PRM requirements - what is covered/missing?
+- Add selected Equipment types (for which data are available) - which ones?
+- Replace the corresponding Facilities or keeping them in parallel?
+
+**Next Step B**
+- Do we need SitePathLinks? 
+- StairEquipment, RampEquipment, etc.
+- Granularity of navigation networks? - First thoughts  presented below.
+
+---
+
+**In this chapter** (typography loosely reflects priority):
 
 AccessibilityAssessment
 - **AccessibilityAssessment**
@@ -26,7 +45,7 @@ Path Navigation
 
 Equipments, Facilities & Services
 - **EquipmentPlace**
-- **EntranceEquipment**
+- EntranceEquipment
 - *EscalatorEquipment*
 - *LiftEquipment*
 - *RampEquipment*
@@ -185,7 +204,7 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
 
 The definitions from EPIAP are partly ambiguous and of limited usefulness. 
 
-Proposed changes to the current definition in italics: 
+#### Proposed changes to the current definition in italics: 
 **TODO** to be reviewed & discussed, requires EPIAP modification
 
 - `StepFreeAccess` - no stairs, no steps,  **_no escalator_**
@@ -197,11 +216,12 @@ Proposed changes to the current definition in italics:
 In addtion to the above modifications / clarifications, we specify that 
 - all conditions of the AccessibiltyAssessment (StepFreeAccess etc.) have to be true for a complete path from a `StopPlaceEntrance` with `DroppedKerb=true` and `DropOffPointClose=true`. 
 
-Then the `AccessibiltyAssessment` is able to express the following TSI/PRM requirements:
+**Then the `AccessibiltyAssessment` is able to express the following TSI/PRM requirements:**
 - **TODO**
+- ...
 
 
-Technical remarks:
+#### Technical remarks:
 - The above (re)definition may be incompatible with a more local understanding of `AccessibilityAssessment`. A more local understanding might be an appropriate choice if a complete SitePathLink network exists. 
 - Pure  lift free access - no lift, for claustrophobia - must always be true in public spaces, there always has to be an alternative access means like stairs. Therefore the above definition of `LiftFreeAccess` which includes `StepFreeAccess` does not loose information for the claustophobics
 - As `EscalatorFreeAccess` should always be guaranteed in public spaces, it seems superflouous - remove?
@@ -214,7 +234,7 @@ Technical remarks:
 *→ [Glossary definition](A4_annex_glossary.md#AssistanceService)* **TODO**
 
 ### Purpose
-**TODO** Do we need that? 
+Used for services that require booking or with limited availability.
 The booking / contact information can be found in the accompanying `AssistanceBookingService`element.
 
 ### Table
@@ -523,7 +543,7 @@ Accessibility. Contact and booking information regarding assistance services.
 *→ [Glossary definition](A4_annex_glossary.md#StopPlaceEntrance)* **TODO**
 
 ### Purpose
-...
+`StopPlaceEntrance`s, in particular if `DroppedKerbOutside` and `DropOffPointClose` are true, are the starting points from which the accessibility of `Quay`s and other place elements is assessed. 
 
 
 ### Table
@@ -630,6 +650,9 @@ Accessibility. Contact and booking information regarding assistance services.
 
 ## SiteFacilitySet - the Additional Elements
 
+### Purpose
+Accessiblity information attached to a `StopPlace` and `Quay` in particular. Also usable for other site/place elements like `AccessSpace`, `EquipmentPlace`.
+
 ### Table
 
 
@@ -658,9 +681,15 @@ Accessibility. Contact and booking information regarding assistance services.
 The element is used in `StopPlace` and `Quay`, for which slightly differing rules apply: 
 * General presence or absence of facilities has to be indicated at the level of the `StopPlace`.
 * Of interest at the level of each `Quay`are the following:
+  * `AccessibiltyInfoFacilityList`
+  * `AccessFacilityList` (only for `Quay`)
   * `AssistanceFacilityList`
   * `TicketingFacilityList`
   * `EmergencyFacilityList`
+  * `MedicalFacilityList`
+
+#### Problems to be solved **TODO**
+Overlaps between `AccessFacilityList`, `AssistanceFacilityList`, `MobilityFacilityList`. We might want to restrict the allowed enums, depending on what finally needs to be expressed. 
 
 
 ### Example
