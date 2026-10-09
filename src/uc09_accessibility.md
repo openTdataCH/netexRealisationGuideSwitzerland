@@ -5,8 +5,9 @@ Definition of the Swiss Accessibility Profile.
 **Current State**
 - Show what can be expressed with AccessibilityAssessment, Facilities, and Services
 - Limited localisation: attached to complete StopPlaces or single Quays
-- Proposal of using AccessibilityAssessment to describe the most needed "reachability" limitations / gurantees of a Quay
+- Proposal of using AccessibilityAssessment to describe the most needed "reachability" properties of a Quay
 - Elaborated only for Site elements, not for vehicles 
+
 This approach does not obey the EPIAP philiosophy of favoring Equipments over Facilities and Services. But it may be the more realistic and practical approach. 
 
 **Next Step A**
@@ -17,20 +18,20 @@ This approach does not obey the EPIAP philiosophy of favoring Equipments over Fa
 **Next Step B**
 - Do we need SitePathLinks? 
 - StairEquipment, RampEquipment, etc.
-- Granularity of navigation networks? - First thoughts  presented below.
+- Granularity of navigation networks? - First thoughts  [presented below](#sitepathlink).
 
 ---
 
 **In this chapter** (typography loosely reflects priority):
 
 AccessibilityAssessment
-- **AccessibilityAssessment**
+- [**AccessibilityAssessment**](#accessibilityassessment)
 
 Basic Orientation
 - **Level**
-- **StopPlaceEntrance**
+- [**StopPlaceEntrance**](#stopplaceentrance)
 - *AccessSpace*
-- **StopPlace - the Additional Elements**
+- [**StopPlace - the Additional Elements**](#stopplace---the-additional-elements)
 - **Quay - the Additional Elements**
 
 
@@ -38,7 +39,7 @@ PrivateMobility
 - Parking
 
 Path Navigation
-- *SitePathLink*
+- [*SitePathLink*](#sitepathlink)
 - *PathJunction*
 - *DefaultConnection - the Additional Elements*
 - *SiteConnection - the Additional Elements*
@@ -61,14 +62,14 @@ Equipments, Facilities & Services
 - WaitingEquipment
 - WaitingRoomEquipment
 - SignEquipment
-- **AssistanceService**
-- **AssistanceBookingService**
+- [**AssistanceService**](#assistanceservice)
+- [**AssistanceBookingService**](#assistancebookingservice)
 - (LostPropertyService
 - LuggageService
 - **MeetingPointService**
 - (TicketingService
 - **CustomerService**
-- **SiteFacilitySet - the Additional Elements**
+- [**SiteFacilitySet - the Additional Elements**](#sitefacilityset---the-additional-elements)
 - **ServiceFacilitySet - the Additional Elements**
 
 Vehicles & Vehicle Stop Interaction
