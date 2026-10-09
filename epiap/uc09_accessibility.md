@@ -786,7 +786,7 @@ SitePathLink.xml
 
 Which conventions and rules do we want to follow when modelling navigation networks? Which level(s) of details should we aim at? The following is intended as a starting point for a discussion.
 
-Three possible ways to model a navigation network from a VehicleMeetingPoint to two Quays.
+Three possible ways to model a navigation network from a VehicleMeetingPoint (error: the idea was a drop off point or parking) to two Quays.
 
 The first model includes localised vertices (e.g., Entrance, EquipmentPlace) connected by SitePathLinks and AccessEquipments (StairEquipment, RampEquipment). 
 
