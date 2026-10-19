@@ -215,9 +215,591 @@
       
         <h1 class="page-title">Use Case: Demand Responsive Traffic (DRT)</h1>
       
-      <blockquote>
-  <p><strong>LATER</strong></p>
-</blockquote>
+      <p>In this chapter:</p>
+<ul>
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#modelling-principles">Modelling Principles</a></li>
+  <li><a href="#line-and-linetype">Line and LineType</a></li>
+  <li><a href="#booking-and-rules-on-the-line">Booking and Rules on the Line</a></li>
+  <li><a href="#bookingarrangement">BookingArrangement</a></li>
+  <li><a href="#servicebookingarrangement">ServiceBookingArrangement</a></li>
+  <li><a href="#servicecompetitivecondition">ServiceCompetitiveCondition</a></li>
+  <li><a href="#serviceeligibilitycondition">ServiceEligibilityCondition</a></li>
+  <li><a href="#flexibleserviceproperties">FlexibleServiceProperties</a></li>
+  <li><a href="#request-stops">Request Stops</a></li>
+  <li><a href="#reservation-as-service-facility">Reservation as Service Facility</a></li>
+  <li><a href="#collection-points">Collection Points</a></li>
+  <li><a href="#templates-and-examples">Templates and Examples</a></li>
+  <li><a href="#open-points">Open Points</a></li>
+</ul>
+
+<h2 id="overview">Overview</h2>
+
+<p>Demand responsive traffic (DRT, German: <em>On-Demand-Verkehr</em>, ODV) covers services that only run,
+or only serve some stops, when passengers have booked or requested them.</p>
+
+<p>The Swiss DRT types and their <code class="language-plaintext highlighter-rouge">LineType</code> are defined in the sheet <em>LineType</em> of the
+<a href="/netexRealisationGuideSwitzerland/next/media/Mappingtabellen_NeTEx_v2.0.xlsx">mapping table for NeTEx 2.0</a>:</p>
+
+<p><em>Table: Swiss DRT types</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Swiss DRT type</th>
+      <th>LineType</th>
+      <th>TransportSubmode</th>
+      <th>Remarks from the mapping table</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1 – Bedarfslinie</td>
+      <td><code class="language-plaintext highlighter-rouge">flexible</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code></td>
+      <td>Fixed stops, operated on request.</td>
+    </tr>
+    <tr>
+      <td>2 – Anrufsammelverkehr</td>
+      <td><code class="language-plaintext highlighter-rouge">mixedFlexibleAndFixed</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code></td>
+      <td>Combines fixed and flexible elements; passengers book individual trips, shared vehicle routing.</td>
+    </tr>
+    <tr>
+      <td>3 – Richtungsband, örtlich disponierter Bus</td>
+      <td><code class="language-plaintext highlighter-rouge">corridorService</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code></td>
+      <td>Flexible routing along a geographic corridor; stops constrained to the corridor.</td>
+    </tr>
+    <tr>
+      <td>4 – Zeitbezogener Flächenverkehr</td>
+      <td><code class="language-plaintext highlighter-rouge">freeAreaAreaWide</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code></td>
+      <td>time restriction via <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> / <code class="language-plaintext highlighter-rouge">Timeband</code>.</td>
+    </tr>
+    <tr>
+      <td>5 – Freier Flächenverkehr</td>
+      <td><code class="language-plaintext highlighter-rouge">freeAreaAreaWide</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code></td>
+      <td>Fully area-wide, no fixed stops.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="modelling-principles">Modelling Principles</h2>
+
+<p>A DRT offer is delivered with the same frames and elements as any other timetable. The
+flexibility is expressed in these places:</p>
+
+<ul>
+  <li><strong>Line:</strong> every DRT service is a <code class="language-plaintext highlighter-rouge">Line</code> in the <code class="language-plaintext highlighter-rouge">ServiceFrame</code> with the <code class="language-plaintext highlighter-rouge">LineType</code> of its Swiss
+DRT type and <code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code>, see <a href="#line-and-linetype">Line and LineType</a>.</li>
+  <li><strong>Line/bookingArrangements:</strong> holds the booking conditions and the rules of the service, see
+<a href="#booking-and-rules-on-the-line">Booking and Rules on the Line</a>.</li>
+  <li><strong>ServiceJourney:</strong> a single on-demand journey has <code class="language-plaintext highlighter-rouge">FlexibleServiceProperties</code> referencing the
+<code class="language-plaintext highlighter-rouge">BookingArrangement</code> of the <code class="language-plaintext highlighter-rouge">Line</code> (example 04), see
+<a href="#flexibleserviceproperties">FlexibleServiceProperties</a>.</li>
+  <li><strong>StopPointInJourneyPattern:</strong> a request stop has <code class="language-plaintext highlighter-rouge">RequestStop</code> <code class="language-plaintext highlighter-rouge">true</code> and a request method; a
+flexible stop references the <code class="language-plaintext highlighter-rouge">BookingArrangement</code>, see <a href="#request-stops">Request Stops</a>.</li>
+  <li><strong>ServiceFacilitySet and Notice:</strong> reservation offers from HRDF are delivered as facility and
+<code class="language-plaintext highlighter-rouge">Notice</code>, see <a href="#reservation-as-service-facility">Reservation as Service Facility</a>.</li>
+</ul>
+
+<p><code class="language-plaintext highlighter-rouge">Line</code> replaces <code class="language-plaintext highlighter-rouge">FlexibleLine</code> (<code class="language-plaintext highlighter-rouge">forbidden</code> in the <a href="/netexRealisationGuideSwitzerland/next/templates/ServiceFrame.xml">ServiceFrame template</a>),
+and <code class="language-plaintext highlighter-rouge">LineType</code> replaces <code class="language-plaintext highlighter-rouge">TypeOfFlexibleService</code> (mapping table, sheet <em>LineType</em>).</p>
+
+<pre><code class="language-mermaid">classDiagram
+    %% Styles
+    classDef frame fill:#FFF8E1,stroke:#FFB300
+    classDef contained fill:#E8F4FF,stroke:#1E90FF
+    classDef external fill:#F6F6F6,stroke:#AAAAAA
+
+    %% Frames
+    class ServiceFrame:::frame {
+        lines : Line[]
+        journeyPatterns : ServiceJourneyPattern[]
+    }
+    class TimetableFrame:::frame {
+        vehicleJourneys : ServiceJourney[]
+    }
+
+    %% Contained elements
+    class Line:::contained {
+        LineType
+        TransportSubmode
+        bookingArrangements
+    }
+    class BookingArrangement:::contained {
+        BookingMethods
+        BookWhen
+        MinimumBookingPeriod
+        bookingUrls
+        BookingNote
+    }
+    class ServiceBookingArrangement:::contained {
+        BookingChargeType
+        DepositRequired
+    }
+    class ServiceCompetitiveCondition:::contained {
+        DistanceFromClassical
+        TemporalDistanceFromClassical
+        InterchangeWithConventionalServicesAllowed
+    }
+    class ServiceEligibilityCondition:::contained {
+        UserProfile
+        ResidentialQualification
+    }
+    class ServiceJourneyPattern:::contained {
+        pointsInSequence
+    }
+    class StopPointInJourneyPattern:::contained {
+        ForBoarding
+        ForAlighting
+        RequestStop
+        bookingArrangements
+    }
+    class ServiceJourney:::contained {
+        ServiceJourneyPatternRef
+        FlexibleServiceProperties
+    }
+    class FlexibleServiceProperties:::contained {
+        FlexibleServiceType
+        bookingArrangements
+    }
+
+    %% Containment relations
+    ServiceFrame "1" o-- "0..*" Line : contains
+    ServiceFrame "1" o-- "0..*" ServiceJourneyPattern : contains
+    TimetableFrame "1" o-- "0..*" ServiceJourney : contains
+    Line "1" o-- "0..*" BookingArrangement : contains
+    Line "1" o-- "0..*" ServiceBookingArrangement : contains
+    Line "1" o-- "0..*" ServiceCompetitiveCondition : contains
+    Line "1" o-- "0..*" ServiceEligibilityCondition : contains
+    ServiceJourneyPattern "1" o-- "1..*" StopPointInJourneyPattern : contains
+    ServiceJourney "1" o-- "0..1" FlexibleServiceProperties : contains
+
+    %% Foreign Key relations
+    ServiceJourney "0..*" -- "1" ServiceJourneyPattern : references
+    FlexibleServiceProperties "0..*" -- "0..*" BookingArrangement : references
+    StopPointInJourneyPattern "0..*" -- "0..*" BookingArrangement : references
+</code></pre>
+<p><em>Figure: Elements used for DRT</em></p>
+
+<h2 id="line-and-linetype">Line and LineType</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#line">Glossary definition</a></em></p>
+
+<h3 id="purpose">Purpose</h3>
+<p>General rules for <code class="language-plaintext highlighter-rouge">Line</code> are in <a href="/netexRealisationGuideSwitzerland/next/06_service.html#line">Service Frame</a>. <code class="language-plaintext highlighter-rouge">LineType</code> is <code class="language-plaintext highlighter-rouge">expected</code>
+(<a href="/netexRealisationGuideSwitzerland/next/templates/Line.xml">Line template</a>); its values are defined in the mapping table.</p>
+
+<h3 id="usage-notes">Usage Notes</h3>
+<ul>
+  <li>A DRT line gets the <code class="language-plaintext highlighter-rouge">LineType</code> of its Swiss DRT type (see <a href="#overview">Overview</a>) and
+<code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">fixed</code> is the default for all non-DRT lines. If <code class="language-plaintext highlighter-rouge">LineType</code> is omitted, <code class="language-plaintext highlighter-rouge">fixed</code> is assumed.</li>
+  <li>The values <code class="language-plaintext highlighter-rouge">mainRouteWithFlexibleEnds</code>, <code class="language-plaintext highlighter-rouge">flexibleAreasOnly</code>, <code class="language-plaintext highlighter-rouge">hailAndRideSections</code>,
+<code class="language-plaintext highlighter-rouge">fixedStopAreaWide</code> and <code class="language-plaintext highlighter-rouge">mixedFlexible</code> are not used in the Swiss profile.</li>
+</ul>
+
+<h3 id="example">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Line</span> <span class="na">id=</span><span class="s">"ch:1:slnid:1026470"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">responsibilitySetRef=</span><span class="s">"ch:1:ResponsibilitySet:BLT"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- ... --&gt;</span>
+  <span class="nt">&lt;TransportMode&gt;</span>bus<span class="nt">&lt;/TransportMode&gt;</span>
+  <span class="nt">&lt;TransportSubmode&gt;</span>
+    <span class="nt">&lt;BusSubmode&gt;</span>demandAndResponseBus<span class="nt">&lt;/BusSubmode&gt;</span>
+  <span class="nt">&lt;/TransportSubmode&gt;</span>
+  <span class="c">&lt;!-- ... --&gt;</span>
+  <span class="nt">&lt;LineType&gt;</span>flexible<span class="nt">&lt;/LineType&gt;</span>
+  <span class="nt">&lt;TypeOfProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:B"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;bookingArrangements&gt;</span>
+    <span class="nt">&lt;BookingArrangement</span> <span class="na">id=</span><span class="s">"ch:blt:generated:BOOK:29013"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;BookingMethods&gt;</span>mobileApp<span class="nt">&lt;/BookingMethods&gt;</span>
+      <span class="nt">&lt;BookWhen&gt;</span>advanceOnly<span class="nt">&lt;/BookWhen&gt;</span>
+      <span class="nt">&lt;BookingNote&gt;</span>Einstieg nur auf Voranmeldung mind. 30 Min. vor der Fahrt.<span class="nt">&lt;/BookingNote&gt;</span>
+    <span class="nt">&lt;/BookingArrangement&gt;</span>
+  <span class="nt">&lt;/bookingArrangements&gt;</span>
+<span class="nt">&lt;/Line&gt;</span>
+</code></pre></div></div>
+
+<h2 id="booking-and-rules-on-the-line">Booking and Rules on the Line</h2>
+
+<h3 id="purpose-1">Purpose</h3>
+<p><code class="language-plaintext highlighter-rouge">Line/bookingArrangements</code> holds four kinds of elements:</p>
+
+<p><em>Table: Elements in Line/bookingArrangements</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Describes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BookingArrangement</code></td>
+      <td>How to book.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ServiceBookingArrangement</code></td>
+      <td>How to book, with additional elements for booking duration and charges.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ServiceCompetitiveCondition</code></td>
+      <td>What the service may do and may not do in relation to classical public transport.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ServiceEligibilityCondition</code></td>
+      <td>Who can use the service.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="usage-notes-1">Usage Notes</h3>
+<ul>
+  <li>Several <code class="language-plaintext highlighter-rouge">ServiceEligibilityCondition</code>s are combined with OR (e.g. “senior <strong>or</strong> child”). This
+may require splitting a service.</li>
+  <li><code class="language-plaintext highlighter-rouge">FlexibleServiceProperties</code> and <code class="language-plaintext highlighter-rouge">StopPointInJourneyPattern</code> can only reference a
+<code class="language-plaintext highlighter-rouge">BookingArrangement</code>. <code class="language-plaintext highlighter-rouge">ServiceBookingArrangement</code>, <code class="language-plaintext highlighter-rouge">ServiceCompetitiveCondition</code> and
+<code class="language-plaintext highlighter-rouge">ServiceEligibilityCondition</code> are only possible in <code class="language-plaintext highlighter-rouge">Line/bookingArrangements</code>.</li>
+</ul>
+
+<h2 id="bookingarrangement">BookingArrangement</h2>
+
+<h3 id="purpose-2">Purpose</h3>
+<p>Describes how, when and where a DRT service is booked.</p>
+
+<p><em>Table: Elements of BookingArrangement</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Values / type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BookingContact</code></td>
+      <td>Contact details of the booking office.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BookingMethods</code></td>
+      <td><code class="language-plaintext highlighter-rouge">callDriver</code>, <code class="language-plaintext highlighter-rouge">callOffice</code>, <code class="language-plaintext highlighter-rouge">online</code>, <code class="language-plaintext highlighter-rouge">phoneAtStop</code>, <code class="language-plaintext highlighter-rouge">text</code>, <code class="language-plaintext highlighter-rouge">mobileApp</code>, <code class="language-plaintext highlighter-rouge">atOffice</code>, <code class="language-plaintext highlighter-rouge">none</code>, <code class="language-plaintext highlighter-rouge">other</code> (list)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BookingAccess</code></td>
+      <td><code class="language-plaintext highlighter-rouge">public</code>, <code class="language-plaintext highlighter-rouge">authorisedPublic</code>, <code class="language-plaintext highlighter-rouge">staff</code>, <code class="language-plaintext highlighter-rouge">other</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BookWhen</code> / <code class="language-plaintext highlighter-rouge">BuyWhen</code></td>
+      <td><code class="language-plaintext highlighter-rouge">advanceOnly</code>, <code class="language-plaintext highlighter-rouge">untilPreviousDay</code>, <code class="language-plaintext highlighter-rouge">dayOfTravelOnly</code>, <code class="language-plaintext highlighter-rouge">advanceAndDayOfTravel</code>, <code class="language-plaintext highlighter-rouge">timeOfTravelOnly</code>, <code class="language-plaintext highlighter-rouge">subscriptionChargeMoment</code>, <code class="language-plaintext highlighter-rouge">other</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">LatestBookingTime</code></td>
+      <td>Time</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MinimumBookingPeriod</code> / <code class="language-plaintext highlighter-rouge">MaximumBookingPeriod</code></td>
+      <td>Duration</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BookingUrl</code></td>
+      <td>URI</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">bookingUrls</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BookingUrl</code> (URI), <code class="language-plaintext highlighter-rouge">BookingDeepUrl</code> (<code class="language-plaintext highlighter-rouge">Endpoint</code>, <code class="language-plaintext highlighter-rouge">parameterDescriptions</code>) or <code class="language-plaintext highlighter-rouge">BookingService</code> (<code class="language-plaintext highlighter-rouge">Endpoint</code>, <code class="language-plaintext highlighter-rouge">EndpointVersion</code>, <code class="language-plaintext highlighter-rouge">BookingServiceType</code>, <code class="language-plaintext highlighter-rouge">SupportedSteps</code>); at least one entry.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BookingNote</code></td>
+      <td>Text</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">BookingServiceType</code>: <code class="language-plaintext highlighter-rouge">tomp</code>, <code class="language-plaintext highlighter-rouge">osdm</code>, <code class="language-plaintext highlighter-rouge">bob</code>, <code class="language-plaintext highlighter-rouge">trias</code>, <code class="language-plaintext highlighter-rouge">ojp</code>, <code class="language-plaintext highlighter-rouge">other</code>. <code class="language-plaintext highlighter-rouge">SupportedSteps</code> (list):
+<code class="language-plaintext highlighter-rouge">tripPlanning</code>, <code class="language-plaintext highlighter-rouge">pricing</code>, <code class="language-plaintext highlighter-rouge">availability</code>, <code class="language-plaintext highlighter-rouge">booking</code>, <code class="language-plaintext highlighter-rouge">reservation</code>, <code class="language-plaintext highlighter-rouge">fulfillment</code>, <code class="language-plaintext highlighter-rouge">full</code>, <code class="language-plaintext highlighter-rouge">other</code>.</p>
+
+<h3 id="usage-notes-2">Usage Notes</h3>
+<ul>
+  <li>From the HRDF conversion only a <code class="language-plaintext highlighter-rouge">BookingNote</code> can be passed at the moment. With native NeTEx
+handling more information can be transferred
+(<a href="/netexRealisationGuideSwitzerland/next/templates/ServiceJourneyPattern.xml">ServiceJourneyPattern template</a>).</li>
+  <li>In a <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>, the <code class="language-plaintext highlighter-rouge">BookingArrangement</code> is referenced with
+<code class="language-plaintext highlighter-rouge">BookingArrangementRef</code>; an inline <code class="language-plaintext highlighter-rouge">BookingArrangement</code> is <code class="language-plaintext highlighter-rouge">ignored</code>.</li>
+</ul>
+
+<h2 id="servicebookingarrangement">ServiceBookingArrangement</h2>
+
+<h3 id="purpose-3">Purpose</h3>
+<p>Contains the elements of <code class="language-plaintext highlighter-rouge">BookingArrangement</code> and additionally <code class="language-plaintext highlighter-rouge">MinimumBookingDuration</code>,
+<code class="language-plaintext highlighter-rouge">MaximumBookingDuration</code>, <code class="language-plaintext highlighter-rouge">DepositRequired</code> and <code class="language-plaintext highlighter-rouge">BookingChargeType</code> (<code class="language-plaintext highlighter-rouge">fullAmount</code>,
+<code class="language-plaintext highlighter-rouge">blockFullAmountOnCard</code>, <code class="language-plaintext highlighter-rouge">deposit</code>, <code class="language-plaintext highlighter-rouge">none</code>, <code class="language-plaintext highlighter-rouge">other</code>).</p>
+
+<h2 id="servicecompetitivecondition">ServiceCompetitiveCondition</h2>
+
+<h3 id="purpose-4">Purpose</h3>
+<p>Describes restrictions of the DRT service towards classical public transport. It contains
+<strong>either</strong> the competition parameters <strong>or</strong> the two interchange flags.</p>
+
+<p><em>Table: Elements of ServiceCompetitiveCondition</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">transferRestrictions</code> / <code class="language-plaintext highlighter-rouge">routingConstraintZones</code> / <code class="language-plaintext highlighter-rouge">serviceExclusions</code></td>
+      <td>Restrictions towards other services. If not set, the rules apply in general.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">DistanceFromClassical</code></td>
+      <td>Distance in metres to the line/service or classical public transport in general; builds geometric exclusion zones.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TemporalDistanceFromClassical</code></td>
+      <td>Temporal distance to the service/transfer in the routing constraint or classical public transport in general.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PenaltyDrivingTimeFactor</code> / <code class="language-plaintext highlighter-rouge">PenaltyTransferTimeFactor</code> / <code class="language-plaintext highlighter-rouge">WalkTimeFactor</code></td>
+      <td>Factors for the comparison with classical public transport (default <code class="language-plaintext highlighter-rouge">1.0</code>).</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">InterchangeBetweenFlexibleServicesAllowed</code></td>
+      <td>Default <code class="language-plaintext highlighter-rouge">false</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">InterchangeWithConventionalServicesAllowed</code></td>
+      <td>Default <code class="language-plaintext highlighter-rouge">false</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="example-1">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ServiceCompetitiveCondition</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCompetitiveCondition:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;DistanceFromClassical&gt;</span>200<span class="nt">&lt;/DistanceFromClassical&gt;</span>
+  <span class="nt">&lt;TemporalDistanceFromClassical&gt;</span>PT15M<span class="nt">&lt;/TemporalDistanceFromClassical&gt;</span>
+<span class="nt">&lt;/ServiceCompetitiveCondition&gt;</span>
+</code></pre></div></div>
+
+<h2 id="serviceeligibilitycondition">ServiceEligibilityCondition</h2>
+
+<h3 id="purpose-5">Purpose</h3>
+<p>Describes who can use the service. Each condition contains exactly one of <code class="language-plaintext highlighter-rouge">UserProfile</code>,
+<code class="language-plaintext highlighter-rouge">CommercialProfile</code>, <code class="language-plaintext highlighter-rouge">ResidentialQualification</code> or <code class="language-plaintext highlighter-rouge">CompanionProfile</code>.</p>
+
+<h3 id="example-2">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ServiceEligibilityCondition</span> <span class="na">id=</span><span class="s">"ch:1:ServiceEligibilityCondition:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;UserProfile</span> <span class="na">id=</span><span class="s">"ch:1:UserProfile:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;MinimumAge&gt;</span>65<span class="nt">&lt;/MinimumAge&gt;</span>
+  <span class="nt">&lt;/UserProfile&gt;</span>
+<span class="nt">&lt;/ServiceEligibilityCondition&gt;</span>
+</code></pre></div></div>
+
+<h2 id="flexibleserviceproperties">FlexibleServiceProperties</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#flexibleserviceproperties">Glossary definition</a></em></p>
+
+<h3 id="purpose-6">Purpose</h3>
+<p>Additional characteristics of a flexible service on a single <code class="language-plaintext highlighter-rouge">ServiceJourney</code>; a service may be
+partly fixed, partly flexible. Elements: <code class="language-plaintext highlighter-rouge">FlexibleServiceType</code> (<code class="language-plaintext highlighter-rouge">dynamicPassingTimes</code>,
+<code class="language-plaintext highlighter-rouge">fixedHeadwayFrequency</code>, <code class="language-plaintext highlighter-rouge">fixedPassingTimes</code>, <code class="language-plaintext highlighter-rouge">notFlexible</code>, <code class="language-plaintext highlighter-rouge">other</code>), <code class="language-plaintext highlighter-rouge">CancellationPossible</code>,
+<code class="language-plaintext highlighter-rouge">ChangeOfTimePossible</code> and <code class="language-plaintext highlighter-rouge">bookingArrangements</code>.</p>
+
+<h3 id="example-3">Example</h3>
+<p>From <a href="./examples/04_NeTEx_CH_DRT_Line_50.110.xml">example 04</a>:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ServiceJourney</span> <span class="na">id=</span><span class="s">"ch:blt:generated:SJ:29013:ODV"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">responsibilitySetRef=</span><span class="s">"ch:1:ResponsibilitySet:BLT"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- ... --&gt;</span>
+  <span class="nt">&lt;FlexibleServiceProperties</span> <span class="na">id=</span><span class="s">"ch:blt:generated:FSP:SJ:29013:ODV"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;bookingArrangements&gt;</span>
+      <span class="nt">&lt;BookingArrangementRef</span> <span class="na">ref=</span><span class="s">"ch:blt:generated:BOOK:29013"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/bookingArrangements&gt;</span>
+  <span class="nt">&lt;/FlexibleServiceProperties&gt;</span>
+<span class="nt">&lt;/ServiceJourney&gt;</span>
+</code></pre></div></div>
+
+<h2 id="request-stops">Request Stops</h2>
+
+<h3 id="purpose-7">Purpose</h3>
+<p>Request stops are set in the <code class="language-plaintext highlighter-rouge">StopPointInJourneyPattern</code> (see
+<a href="/netexRealisationGuideSwitzerland/next/06_service.html#servicejourneypattern">Service Frame</a>). The mapping from HRDF is defined in the
+sheet <em>Haltecode</em> of the mapping table:</p>
+
+<p><em>Table: Request stops (Bedarfshalt, HRDF <code class="language-plaintext highlighter-rouge">*A X</code>)</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>HRDF</th>
+      <th>ForAlighting</th>
+      <th>ForBoarding</th>
+      <th>RequestStop</th>
+      <th>Request method</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Bedarfshalt</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BoardingRequestMethod</code> and <code class="language-plaintext highlighter-rouge">AlightingRequestMethod</code></td>
+    </tr>
+    <tr>
+      <td>Bedarfshalt nur zum Einsteigen</td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BoardingRequestMethod</code></td>
+    </tr>
+    <tr>
+      <td>Bedarfshalt nur zum Aussteigen</td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td><code class="language-plaintext highlighter-rouge">false</code></td>
+      <td><code class="language-plaintext highlighter-rouge">true</code></td>
+      <td><code class="language-plaintext highlighter-rouge">AlightingRequestMethod</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="usage-notes-3">Usage Notes</h3>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">StopUse</code> is <code class="language-plaintext highlighter-rouge">access</code>, at stations with BHFArt 3 <code class="language-plaintext highlighter-rouge">interchangeOnly</code>.</li>
+  <li>A flexible stop references the <code class="language-plaintext highlighter-rouge">BookingArrangement</code> with <code class="language-plaintext highlighter-rouge">BookingArrangementRef</code>
+(<a href="/netexRealisationGuideSwitzerland/next/templates/ServiceJourneyPattern.xml">ServiceJourneyPattern template</a>).</li>
+</ul>
+
+<h2 id="reservation-as-service-facility">Reservation as Service Facility</h2>
+
+<p>Reservation offers from HRDF are delivered as <code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code> and, where defined, as <code class="language-plaintext highlighter-rouge">Notice</code>
+(sheet <em>Angebote</em> of the mapping table, see also <a href="/netexRealisationGuideSwitzerland/next/uc04_service_facilities.html">Service Facilities</a>).
+Examples:</p>
+
+<p><em>Table: Reservation offers relevant for DRT</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>HRDF</th>
+      <th>Text</th>
+      <th>Facility</th>
+      <th>Notice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">BH</code></td>
+      <td>Bedarfshalt nur auf telefonische Voranmeldung</td>
+      <td><code class="language-plaintext highlighter-rouge">reservationsCompulsory</code>; <code class="language-plaintext highlighter-rouge">RequestStop</code> <code class="language-plaintext highlighter-rouge">true</code> in the call</td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RR</code></td>
+      <td>Reservierung obligatorisch</td>
+      <td><code class="language-plaintext highlighter-rouge">reservationsCompulsory</code></td>
+      <td>–</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">XR</code></td>
+      <td>Einstieg nur nach telefonischer Voranmeldung</td>
+      <td><code class="language-plaintext highlighter-rouge">reservationsCompulsory</code></td>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GR</code></td>
+      <td>GRUPPEN: Reservierung obligatorisch</td>
+      <td><code class="language-plaintext highlighter-rouge">groupsAllowedWithReservation</code> or <code class="language-plaintext highlighter-rouge">reservationsCompulsoryForGroups</code></td>
+      <td>–</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="collection-points">Collection Points</h2>
+
+<p>Collection points are described with <code class="language-plaintext highlighter-rouge">StopPlaceType</code> (Decision 2026-06-30, “namentlich für
+drt:collectionPoint”). The <code class="language-plaintext highlighter-rouge">ResourceFrame</code> contains the <code class="language-plaintext highlighter-rouge">ValueSet</code> <code class="language-plaintext highlighter-rouge">ch:1:ValueSet:TypesOfPlace</code>
+with the <code class="language-plaintext highlighter-rouge">TypeOfPlace</code>s <code class="language-plaintext highlighter-rouge">drtCollectionPoint</code> and <code class="language-plaintext highlighter-rouge">regularStop</code>
+(<a href="/netexRealisationGuideSwitzerland/next/templates/ResourceFrame.xml">ResourceFrame template</a>,
+<a href="/netexRealisationGuideSwitzerland/next/09_resources.html#typesofplace">Resource Frame</a>).</p>
+
+<h2 id="templates-and-examples">Templates and Examples</h2>
+
+<p><em>Table: Templates relevant for DRT</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Template</th>
+      <th>Relevant content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="/netexRealisationGuideSwitzerland/next/templates/ServiceFrame.xml">ServiceFrame</a>, <a href="/netexRealisationGuideSwitzerland/next/templates/ServiceFrame_NETWORK_OFFER.xml">ServiceFrame_NETWORK_OFFER</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Line</code></td>
+    </tr>
+    <tr>
+      <td><a href="/netexRealisationGuideSwitzerland/next/templates/Line.xml">Line</a></td>
+      <td><code class="language-plaintext highlighter-rouge">LineType</code>, <code class="language-plaintext highlighter-rouge">TransportSubmode</code></td>
+    </tr>
+    <tr>
+      <td><a href="/netexRealisationGuideSwitzerland/next/templates/ServiceJourneyPattern.xml">ServiceJourneyPattern</a></td>
+      <td><code class="language-plaintext highlighter-rouge">ForBoarding</code>, <code class="language-plaintext highlighter-rouge">ForAlighting</code>, <code class="language-plaintext highlighter-rouge">RequestStop</code>, <code class="language-plaintext highlighter-rouge">StopUse</code>, <code class="language-plaintext highlighter-rouge">BookingArrangementRef</code></td>
+    </tr>
+    <tr>
+      <td><a href="/netexRealisationGuideSwitzerland/next/templates/ServiceFacilitySet.xml">ServiceFacilitySet</a></td>
+      <td>Facilities, <code class="language-plaintext highlighter-rouge">GroupBookingFacility</code></td>
+    </tr>
+    <tr>
+      <td><a href="/netexRealisationGuideSwitzerland/next/templates/Notice.xml">Notice</a></td>
+      <td>Passenger information</td>
+    </tr>
+    <tr>
+      <td><a href="/netexRealisationGuideSwitzerland/next/templates/StopPlace.xml">StopPlace</a></td>
+      <td><code class="language-plaintext highlighter-rouge">StopPlaceType</code></td>
+    </tr>
+    <tr>
+      <td><a href="/netexRealisationGuideSwitzerland/next/templates/TypesOfPlace.xml">TypesOfPlace</a>, <a href="/netexRealisationGuideSwitzerland/next/templates/ResourceFrame.xml">ResourceFrame</a></td>
+      <td><code class="language-plaintext highlighter-rouge">drtCollectionPoint</code>, <code class="language-plaintext highlighter-rouge">regularStop</code></td>
+    </tr>
+    <tr>
+      <td><a href="/netexRealisationGuideSwitzerland/next/templates/AvailabilityCondition.xml">AvailabilityCondition</a></td>
+      <td><code class="language-plaintext highlighter-rouge">Timeband</code>s (time restriction of type 4)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Table: Examples relevant for DRT</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Example</th>
+      <th>Content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="./examples/04_NeTEx_CH_DRT_Line_50.110.xml">04_NeTEx_CH_DRT_Line_50.110</a></td>
+      <td><code class="language-plaintext highlighter-rouge">BookingArrangement</code> on the <code class="language-plaintext highlighter-rouge">Line</code>, one on-demand journey with <code class="language-plaintext highlighter-rouge">FlexibleServiceProperties</code>.</td>
+    </tr>
+    <tr>
+      <td><a href="./examples/05_NeTEx_CH_DRT_Line_Dependent_On_Passengers_At_Start.xml">05_NeTEx_CH_DRT_Line_Dependent_On_Passengers_At_Start</a></td>
+      <td>No reservation; passengers can only alight after the first stop (<code class="language-plaintext highlighter-rouge">ForBoarding</code> <code class="language-plaintext highlighter-rouge">false</code>), <code class="language-plaintext highlighter-rouge">Notice</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Further Swiss DRT examples are in the NeTEx repository under
+<a href="https://github.com/NeTEx-CEN/NeTEx/tree/v2.1-wip/examples/functions/drt"><code class="language-plaintext highlighter-rouge">examples/functions/drt/</code></a>.</p>
 
     </main>
   </div>
