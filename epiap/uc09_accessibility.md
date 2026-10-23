@@ -99,7 +99,7 @@ An assessment of the usability by passengers with specific needs, for example, t
 |-----|---------|-------|------|------|-------------|------|
 |  | MobilityImpairedAccess | mandatory | 1..1 | LimitationStatusEnumeration | Summary indication as to whether the component is considered to be accessible or not. | Accessibility. Overall assessment for mobility and sensory impaired users. Allowed values: `true, false, partial, unknown`. `partial` means that AccessibiltyAssessments have to exist at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StopPlace. |
 |  | limitations | expected | 0..1 | usageParameters_RelStructure | The ACCESSIBILITY LIMITATION that apply to component. | Accessibility. AccessibilityLimitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. |
-| + | AccessibilityLimitation | mandatory | 0..* | AccessibilityLimitation_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. The kinds of access that are offered. |
+| + | AccessibilityLimitation | mandatory | 0..* | AccessibilityLimitation_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. The types of access that are offered to account for mobility and sensory impairments. |
 | ++ | WheelchairAccess | mandatory | 1..1 | LimitationStatusEnumeration | Whether a PLACE is wheelchair accessible. | Accessibility. Allowed values: `true, false, partial, unknown`. |
 | ++ | StepFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has step free access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. |
 | ++ | StairFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0 | Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: `true, false, partial, unknown`. |
@@ -127,7 +127,7 @@ An assessment of the usability by passengers with specific needs, for example, t
   <limitations>
     <!-- Accessibility. AccessibilityLimitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. -->
     <AccessibilityLimitation>
-      <!-- Accessibility. The kinds of access that are offered. -->
+      <!-- Accessibility. The types of access that are offered to account for mobility and sensory impairments. -->
       <WheelchairAccess>true
         <!-- Accessibility. Allowed values: `true, false, partial, unknown`. -->
       </WheelchairAccess>
@@ -189,7 +189,7 @@ We apply a slightly stricter interpretation than the current version of EPIAP. T
 |`RampFreeAccess`|1.   Reachable without using a ramp that doesn't fit the [UN Design Considerations](https://www.un.org/esa/socdev/enable/designm/AD2-01.htm) (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m).<br>2.    [The route provides `WheelchairAccess`]. **TODO** OK? A lesser constraint would be `StepFreeAccess`, but the principal (or only?) use case seems to be unassisted wheelchairs.
 |`AudibleSignalsAvailable`|Whether audible signals for the visually impaired are present.|
 |`VisualSignsAvailable`|1.   PRM TSI: visual information as signposting, pictograms and dynamic information. <br>2.    [Largely language independent, also suited for passengers from foreign cultures.] **TODO** OK or wrong?|
-|`TactileGuidanceAvailable`|Whether the object has tactile guidance (for the visually impaired).<br>PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br>For bus- and tram stops:  <br>1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br>2.   Tactile guideline or boarding position connected to (natural) guideline in environment|
+|`TactileGuidanceAvailable`|Whether the object has tactile guidance (for the visually impaired).<br>PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br>For bus- and tram stops:  <br>1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br>2.   Tactile guideline or boarding position connected to a (natural) guideline in the environment|
 
 #### Remarks `RampFreeAccess`
 
@@ -197,16 +197,16 @@ We apply a slightly stricter interpretation than the current version of EPIAP. T
 * `RampFreeAccess`is a stronger form of `WheelchairAccess` excluding steeper slopes.
 
 
-#### Limitiations of AccessibilityAssessment
+#### Limitations of AccessibilityAssessment
 
-* If, e.g., `WheelchairAccess` or `StairFreeAccess` requires using a lift, the `AccessibilityAssessment` does not convey this information. 
-
+* If, e.g., `WheelchairAccess` or `StairFreeAccess` requires using a lift, the `AccessibilityAssessment` does not convey this information.
 * According to EPIAP definitions, a quay with, e.g., `WheelchairAccess` means that there is at least one entrance from which it is reachable. It may be that `WheelchairAccess` only works from a secondary entrance, not from the main entrance.
 
 Such information can be encoded using `SitePathLink`s and `PathJunction`s that describe a routing network including accessibility and location data.
 
 #### Entrances related to AccessibilityAssessment
 * All `AccessibiltyLimitation`s (`StepFreeAccess` etc.) relate to a complete path from an "accessible" `StopPlaceEntrance` with `DroppedKerb=true` and `DropOffPointClose=true`. 
+
 
 
 
@@ -346,7 +346,7 @@ Accessibility. Contact and booking information regarding assistance services.
 |-----|---------|-------|------|------|-------------|------|
 |  | [AccessibilityAssessment](./tables/AccessibilityAssessment.md) | mandatory | 0..1 | AccessibilityAssessment_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments. |
 |  | Covered | optional | 0..1 | CoveredEnumeration | Whether the component is Indoors or outdoors. Default is Indoors. | Accessibility. Allowed values: `indoors outdoors covered unknown`. Railway stations are usually covered, many bus stops are outdoors. **TODO** Do we want that element? Not required by TRM PSI. |
-|  | AllAreasWheelchairAccessible | expected | 0..1 | xsd:boolean | Whether all areas of the component are wheelchair accessible. | Accessibility. True or false if data available, otherwise drop the element. |
+|  | AllAreasWheelchairAccessible | expected | 0..1 | xsd:boolean | Whether all areas of the component are wheelchair accessible. | Accessibility. True or false if data available, otherwise drop the element. **TODO** Seems superfluous given WheelchairAccess in AccessibilityAssessment. |
 |  | facilities | expected | 0..1 | serviceFacilitySets_RelStructure | FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed. | Accessibility. Facilites available at the StopPlace. For some of the facilities it is possible to more precisely describe their availabilty using `AssistanceService` further below. |
 | + | [SiteFacilitySet](./tables/SiteFacilitySet.md) | expected | 1..* | SiteFacilitySetStructure | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). | Accessibility. EPIAP wants the SiteFacilitySets being defined here. |
 | + | SiteFacilitySetRef | optional | 0..* | SiteFacilitySetRefStructure | Reference to a SITE FACILITY SET. | Accessibility. **TODO**: Shall we allow the use of references here, e.g., for standard configurations? |
@@ -422,7 +422,7 @@ Accessibility. Contact and booking information regarding assistance services.
     <!-- Accessibility. Allowed values: `indoors outdoors covered unknown`. Railway stations are usually covered, many bus stops are outdoors. **TODO** Do we want that element? Not required by TRM PSI. -->
   </Covered>
   <AllAreasWheelchairAccessible>true
-    <!-- Accessibility. True or false if data available, otherwise drop the element. -->
+    <!-- Accessibility. True or false if data available, otherwise drop the element. **TODO** Seems superfluous given WheelchairAccess in AccessibilityAssessment. -->
   </AllAreasWheelchairAccessible>
   <facilities>
     <!-- Accessibility. Facilites available at the StopPlace. For some of the facilities it is possible to more precisely describe their availabilty using `AssistanceService` further below. -->

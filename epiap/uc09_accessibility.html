@@ -358,7 +358,7 @@
       <td>0..*</td>
       <td>AccessibilityLimitation_VersionedChildStructure</td>
       <td>Assessment of the accessibility of a SITE.</td>
-      <td>Accessibility. The kinds of access that are offered.</td>
+      <td>Accessibility. The types of access that are offered to account for mobility and sensory impairments.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -456,7 +456,7 @@
   <span class="nt">&lt;limitations&gt;</span>
     <span class="c">&lt;!-- Accessibility. AccessibilityLimitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. --&gt;</span>
     <span class="nt">&lt;AccessibilityLimitation&gt;</span>
-      <span class="c">&lt;!-- Accessibility. The kinds of access that are offered. --&gt;</span>
+      <span class="c">&lt;!-- Accessibility. The types of access that are offered to account for mobility and sensory impairments. --&gt;</span>
       <span class="nt">&lt;WheelchairAccess&gt;</span>true
         <span class="c">&lt;!-- Accessibility. Allowed values: `true, false, partial, unknown`. --&gt;</span>
       <span class="nt">&lt;/WheelchairAccess&gt;</span>
@@ -552,7 +552,7 @@
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">TactileGuidanceAvailable</code></td>
-      <td>Whether the object has tactile guidance (for the visually impaired).<br />PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br />For bus- and tram stops:  <br />1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br />2.   Tactile guideline or boarding position connected to (natural) guideline in environment</td>
+      <td>Whether the object has tactile guidance (for the visually impaired).<br />PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br />For bus- and tram stops:  <br />1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br />2.   Tactile guideline or boarding position connected to a (natural) guideline in the environment</td>
     </tr>
   </tbody>
 </table>
@@ -564,15 +564,11 @@
   <li><code class="language-plaintext highlighter-rouge">RampFreeAccess</code>is a stronger form of <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> excluding steeper slopes.</li>
 </ul>
 
-<h4 id="limitiations-of-accessibilityassessment">Limitiations of AccessibilityAssessment</h4>
+<h4 id="limitations-of-accessibilityassessment">Limitations of AccessibilityAssessment</h4>
 
 <ul>
-  <li>
-    <p>If, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> or <code class="language-plaintext highlighter-rouge">StairFreeAccess</code> requires using a lift, the <code class="language-plaintext highlighter-rouge">AccessibilityAssessment</code> does not convey this information.</p>
-  </li>
-  <li>
-    <p>According to EPIAP definitions, a quay with, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> means that there is at least one entrance from which it is reachable. It may be that <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> only works from a secondary entrance, not from the main entrance.</p>
-  </li>
+  <li>If, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> or <code class="language-plaintext highlighter-rouge">StairFreeAccess</code> requires using a lift, the <code class="language-plaintext highlighter-rouge">AccessibilityAssessment</code> does not convey this information.</li>
+  <li>According to EPIAP definitions, a quay with, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> means that there is at least one entrance from which it is reachable. It may be that <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> only works from a secondary entrance, not from the main entrance.</li>
 </ul>
 
 <p>Such information can be encoded using <code class="language-plaintext highlighter-rouge">SitePathLink</code>s and <code class="language-plaintext highlighter-rouge">PathJunction</code>s that describe a routing network including accessibility and location data.</p>
@@ -810,7 +806,7 @@ The booking / contact information can be found in the accompanying <code class="
       <td>0..1</td>
       <td>xsd:boolean</td>
       <td>Whether all areas of the component are wheelchair accessible.</td>
-      <td>Accessibility. True or false if data available, otherwise drop the element.</td>
+      <td>Accessibility. True or false if data available, otherwise drop the element. <strong>TODO</strong> Seems superfluous given WheelchairAccess in AccessibilityAssessment.</td>
     </tr>
     <tr>
       <td> </td>
@@ -1035,7 +1031,7 @@ The booking / contact information can be found in the accompanying <code class="
     <span class="c">&lt;!-- Accessibility. Allowed values: `indoors outdoors covered unknown`. Railway stations are usually covered, many bus stops are outdoors. **TODO** Do we want that element? Not required by TRM PSI. --&gt;</span>
   <span class="nt">&lt;/Covered&gt;</span>
   <span class="nt">&lt;AllAreasWheelchairAccessible&gt;</span>true
-    <span class="c">&lt;!-- Accessibility. True or false if data available, otherwise drop the element. --&gt;</span>
+    <span class="c">&lt;!-- Accessibility. True or false if data available, otherwise drop the element. **TODO** Seems superfluous given WheelchairAccess in AccessibilityAssessment. --&gt;</span>
   <span class="nt">&lt;/AllAreasWheelchairAccessible&gt;</span>
   <span class="nt">&lt;facilities&gt;</span>
     <span class="c">&lt;!-- Accessibility. Facilites available at the StopPlace. For some of the facilities it is possible to more precisely describe their availabilty using `AssistanceService` further below. --&gt;</span>
