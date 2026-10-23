@@ -13,7 +13,7 @@
         <WheelchairAccess>true
           <!-- Accessibility. -->
         </WheelchairAccess>
-        <StepFreeAccess>t rue
+        <StepFreeAccess>true
           <!-- Accessibility. -->
         </StepFreeAccess>
         <StairFreeAccess>true
@@ -22,9 +22,12 @@
         <RampFreeAccess>true
           <!-- Accessibility. -->
         </RampFreeAccess>
-        <LevelAccessIntoVehicle>true
-          <!-- Not used in this context. -->
+        <LevelAccessIntoVehicle>false
+          <!-- Not used in this context.  **TODO** Would `ch-usage: forbidden` work to restrict the use of the element in the nested `AccessiblityAssessment`? -->
         </LevelAccessIntoVehicle>
+        <AudibleSignalsAvailable>false
+          <!-- Not used in this context. **TODO** Would `ch-usage: forbidden` work to restrict the use of the element in the nested `AccessiblityAssessment`? -->
+        </AudibleSignalsAvailable>
         <VisualSignsAvailable>true
           <!-- Accessibility. -->
         </VisualSignsAvailable>
@@ -41,7 +44,9 @@
     <!-- Accessibility. Required if more than 1 level present. -->
   </LevelRef>
   <placeEquipments>
+    <!-- Accessibility. **TODO** May be removed if we decide to drop below elements. -->
     <EntranceEquipment id="generated" version="1">
+      <!-- Accessibility. **TODO** May be removed if we decide to drop below elements. -->
       <Door>true</Door>
       <KeptOpen>true</KeptOpen>
       <DropKerbOutside>true
@@ -56,8 +61,12 @@
     </EntranceEquipment>
   </placeEquipments>
   <EntranceType>openDoor</EntranceType>
-  <IsEntry>true</IsEntry>
-  <IsExit>true</IsExit>
+  <IsEntry>true
+    <!-- Use to indicate a one-way passage. Assume true if not present. -->
+  </IsEntry>
+  <IsExit>true
+    <!-- Use to indicate a one-way passage. Assume true if not present. -->
+  </IsExit>
   <DroppedKerbOutside>true
     <!-- Accessibility. -->
   </DroppedKerbOutside>

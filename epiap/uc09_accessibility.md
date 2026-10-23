@@ -100,11 +100,12 @@ An assessment of the usability by passengers with specific needs, for example, t
 |  | MobilityImpairedAccess | mandatory | 1..1 | LimitationStatusEnumeration | Summary indication as to whether the component is considered to be accessible or not. | Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. |
 |  | limitations | expected | 0..1 | usageParameters_RelStructure | The ACCESSIBILITY LIMITATION that apply to component. | Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. |
 | + | AccessibilityLimitation | mandatory | 0..* | AccessibilityLimitation_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. |
-| ++ | WheelchairAccess | mandatory | 1..1 | LimitationStatusEnumeration | Whether a PLACE is wheelchair accessible. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+| ++ | WheelchairAccess | mandatory | 1..1 | LimitationStatusEnumeration | Whether a PLACE is wheelchair accessible. | Accessibility. Allowed values: true, false, partial, unknown. |
 | ++ | StepFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has step free access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
 | ++ | StairFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0 | Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. |
 | ++ | RampFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has ramp free access. Ramp free isn't necessary absolute. If a ramp is not steep, then a PLACE can still be considered ramp free. | Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. |
 | ++ | LevelAccessIntoVehicle | expected | 0..1 | LimitationStatusEnumeration | Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI). | Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+| ++ | AudibleSignalsAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has audible signals for the visually impaired. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
 | ++ | VisualSignsAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has visual signals for the hearing impaired. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
 | ++ | TactileGuidanceAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has tactile guidance. | Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
 | ++ | GuideDogAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE allows guide dog access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
@@ -128,7 +129,7 @@ An assessment of the usability by passengers with specific needs, for example, t
     <AccessibilityLimitation>
       <!-- Accessibility. -->
       <WheelchairAccess>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
+        <!-- Accessibility. Allowed values: true, false, partial, unknown. -->
       </WheelchairAccess>
       <StepFreeAccess>true
         <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
@@ -142,6 +143,9 @@ An assessment of the usability by passengers with specific needs, for example, t
       <LevelAccessIntoVehicle>true
         <!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </LevelAccessIntoVehicle>
+      <AudibleSignalsAvailable>true
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
+      </AudibleSignalsAvailable>
       <VisualSignsAvailable>true
         <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
       </VisualSignsAvailable>
@@ -249,7 +253,7 @@ The element allows for more precisely describing the availability of `Assistance
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
 |  | AssistanceFacilityList | expected | 0..1 | AssistanceFacilityListOfEnumerations | List of ASSISTANCE FACILITies. | Accessibility. Facilities for which the availability is described below. Allowed values: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. |
-|  | AssistanceAvailability | expected | 0..1 | AssistanceAvailabilityEnumeration | Availability of assistance service. | Accessibility. Facilities for which the availability is described below. Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. |
+|  | AssistanceAvailability | expected | 0..1 | AssistanceAvailabilityEnumeration | Availability of assistance service. | Accessibility. Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. |
 |  | AccessibilityToolList | optional | 0..1 | AccessibilityToolListOfEnumerations | List of TYPEs of ACCESSIBILITY TOOLs. | Accessibility. If the availabilty of wheelchairs for passenger use is restricted: `wheelchair`. |
 
 
@@ -268,7 +272,7 @@ The element allows for more precisely describing the availability of `Assistance
     <!-- Accessibility. Facilities for which the availability is described below. Allowed values: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. -->
   </AssistanceFacilityList>
   <AssistanceAvailability>availableIfBooked
-    <!-- Accessibility. Facilities for which the availability is described below. Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. -->
+    <!-- Accessibility. Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. -->
   </AssistanceAvailability>
   <AccessibilityToolList>wheelchair
     <!-- Accessibility. If the availabilty of wheelchairs for passenger use is restricted: `wheelchair`. -->
@@ -328,7 +332,7 @@ Accessibility. Contact and booking information regarding assistance services.
           <timebands>
             <Timeband id="generated" version="1">
               <StartTime>07:00:00</StartTime>
-              <EndTime>06:00:00</EndTime>
+              <EndTime>18:00:00</EndTime>
             </Timeband>
           </timebands>
         </AvailabilityCondition>
@@ -365,28 +369,27 @@ Accessibility. Contact and booking information regarding assistance services.
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | [AccessibilityAssessment](./tables/AccessibilityAssessment.md) | mandatory | 0..1 | AccessibilityAssessment_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. |
-|  | Covered | expected | 0..1 | CoveredEnumeration | Whether the component is Indoors or outdoors. Default is Indoors. | Accessibility. |
-|  | AllAreasWheelchairAccessible | mandatory | 0..1 | xsd:boolean | Whether all areas of the component are wheelchair accessible. | Accessibility. |
-|  | facilities | expected | 0..1 | serviceFacilitySets_RelStructure | FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed. | Accessibility. |
+|  | [AccessibilityAssessment](./tables/AccessibilityAssessment.md) | mandatory | 0..1 | AccessibilityAssessment_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments. |
+|  | Covered | optional | 0..1 | CoveredEnumeration | Whether the component is Indoors or outdoors. Default is Indoors. | Accessibility. Allowed values: `indoors outdoors covered unknown`. Railway stations are usually covered, many bus stops are outdoors. **TODO** Do we want that element? Not required by TRM PSI. |
+|  | AllAreasWheelchairAccessible | expected | 0..1 | xsd:boolean | Whether all areas of the component are wheelchair accessible. | Accessibility. True or false if data available, otherwise drop the element. |
+|  | facilities | expected | 0..1 | serviceFacilitySets_RelStructure | FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed. | Accessibility. Facilites available at the StopPlace. For some of the facilities it is possible to more precisely describe their availabilty using `AssistanceService` further below. |
 | + | [SiteFacilitySet](./tables/SiteFacilitySet.md) | expected | 1..* | SiteFacilitySetStructure | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). | Accessibility. EPIAP wants the SiteFacilitySets being defined here. |
 | + | SiteFacilitySetRef | optional | 0..* | SiteFacilitySetRefStructure | Reference to a SITE FACILITY SET. | Accessibility. **TODO**: Shall we allow the use of references here, e.g., for standard configurations? |
 |  | levels | expected | 0..1 | levels_RelStructure | LEVELs found within SITe. | Accessibility. Mandatory if the StopPlace has more than one level. |
 | + | [Level](./tables/Level.md) | expected | 0..* | Level_VersionStructure | Level of a Building or SITE. | Accessibility. Mandatory if the StopPlace has more than one level. |
-| + | [Level](./tables/Level.md) | expected | 0..* | Level_VersionStructure | Level of a Building or SITE. | Accessibility. Mandatory if the StopPlace has more than one level. |
-|  | entrances | expected | 0..1 | pointOfInterestEntrances_RelStructure | ENTRANCEs to and within SITE. | Accessibility. |
-| + | [Entrance](./tables/Entrance.md) | expected | 0..* | SiteEntrance_VersionStructure | Entrance to a SITE. | Accessibility. |
-|  | equipmentPlaces | optional | 0..1 | equipmentPlaces_RelStructure | EQUIPMENT PLACEs within SITE COMPONENT. | Accessibility. **TODO** TBD |
+|  | entrances | expected | 0..1 | pointOfInterestEntrances_RelStructure | ENTRANCEs to and within SITE. | Accessibility. Entrances to the StopPlace. At least one entrance that can be used by passengers with mobility or sensory impairments. Additional entrances are optional. |
+| + | [StopPlaceEntrance](./tables/StopPlaceEntrance.md) | expected | 0..* | StopPlaceEntrance_VersionStructure | Passenger Entrance to a STOP PLACE. | Accessibility. |
+|  | equipmentPlaces | optional | 0..1 | equipmentPlaces_RelStructure | EQUIPMENT PLACEs within SITE COMPONENT. | Accessibility. **TODO** Only needed if we model LiftEquipment, TicketOfficeEquipment, etc. |
 | + | EquipmentPlaceRef | optional | 0..* | EquipmentPlaceRefStructure | Reference to an EQUIPMENT PLACE. |  |
-|  | placeEquipments | optional | 0..1 | placeEquipments_RelStructure | Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT. | Accessibility. **TODO*3 TBD |
-| + | LiftEquipmentRef | optional | 0..* | AccessEquipmentRefStructure | Identifier of an LIFT EQUIPMENT. |  |
+|  | placeEquipments | optional | 0..1 | placeEquipments_RelStructure | Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT. | Accessibility. **TODO** Only needed if we model equipments. |
+| + | LiftEquipmentRef | optional | 0..* | AccessEquipmentRefStructure | Identifier of an LIFT EQUIPMENT. | Accessibility. Lift as an example. |
 |  | localServices | optional | 0..1 | localServices_RelStructure | LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT. |  |
-| + | [AssistanceService](./tables/AssistanceService.md) | optional | 0..* | AssistanceService_VersionStructure | Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc. | Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet`. |
+| + | [AssistanceService](./tables/AssistanceService.md) | optional | 0..* | AssistanceService_VersionStructure | Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc. | Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet` (see above). |
 | + | [AssistanceBookingService](./tables/AssistanceBookingService.md) | optional | 0..* | AssistanceBookingService_VersionStructure | Information about how to book assistance for wheelchair and disabled users. | Accessibility. Contact and booking information regarding assistance services. |
 | + | MeetingPointService | expected | 0..* | MeetingPointService_VersionStructure | Specialisation of CUSTOMER SERVICE for meeting points (provides characteristics like description, label, etc.). | Accessibility. Indicates the presence or absence of a meeting point. |
-| ++ | MeetingPointServiceType | mandatory | 1..1 | MeetingPointEnumeration | Type of MEETING POINT. | Only a single value allowed: `meetingPoint groupMeetingPoint`. |
+| ++ | MeetingPointServiceType | mandatory | 1..1 | MeetingPointEnumeration | Type of MEETING POINT. | Only a single value allowed from: `meetingPoint groupMeetingPoint`. |
 | ++ | Label | expected | 0..1 | MultilingualString | Label on step. |  |
-|  | accessSpaces | expected | 0..1 | accessSpaces_RelStructure | ACCESS SPACEs within the STOP PLACE. | Accessibility. **TODO** TBD |
+|  | accessSpaces | expected | 0..1 | accessSpaces_RelStructure | ACCESS SPACEs within the STOP PLACE. | Accessibility. **TODO** Needed if we model equipments - EquipmentPlaces may require an AccessSpace as parent. |
 | + | [AccessSpace](./tables/AccessSpace.md) | expected | 0..* | AccessSpace_VersionStructure | An area within a STOP PLACE that does not give direct access to transport vehicles. May be connected to QUAYS by PATH LINKs. | Accessibility. |
 
 
@@ -429,7 +432,7 @@ Accessibility. Contact and booking information regarding assistance services.
     </Location>
   </Centroid>
   <AccessibilityAssessment id="generated" version="1">
-    <!-- Accessibility. -->
+    <!-- Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments. -->
     <MobilityImpairedAccess>true
       <!-- Accessibility. -->
     </MobilityImpairedAccess>
@@ -441,13 +444,13 @@ Accessibility. Contact and booking information regarding assistance services.
     </AlternativeName>
   </alternativeNames>
   <Covered>covered
-    <!-- Accessibility. -->
+    <!-- Accessibility. Allowed values: `indoors outdoors covered unknown`. Railway stations are usually covered, many bus stops are outdoors. **TODO** Do we want that element? Not required by TRM PSI. -->
   </Covered>
   <AllAreasWheelchairAccessible>true
-    <!-- Accessibility. -->
+    <!-- Accessibility. True or false if data available, otherwise drop the element. -->
   </AllAreasWheelchairAccessible>
   <facilities>
-    <!-- Accessibility. -->
+    <!-- Accessibility. Facilites available at the StopPlace. For some of the facilities it is possible to more precisely describe their availabilty using `AssistanceService` further below. -->
     <SiteFacilitySet id="ch:1:sitefacilityset:7000:1" version="1">
       <!-- Accessibility. EPIAP wants the SiteFacilitySets being defined here. -->
     </SiteFacilitySet>
@@ -464,27 +467,27 @@ Accessibility. Contact and booking information regarding assistance services.
     <Level id="ch:1:level:7000:0" version="1">
       <!-- Accessibility. Mandatory if the StopPlace has more than one level. -->
     </Level>
-    <Level id="ch:1:level:7000:-1" version="1">
-      <!-- Accessibility. Mandatory if the StopPlace has more than one level. -->
-    </Level>
+    <Level id="ch:1:level:7000:-1" version="1"/>
   </levels>
   <entrances>
-    <!-- Accessibility. -->
-    <Entrance id="ch:1:entrance:7000:1" version="1">
+    <!-- Accessibility. Entrances to the StopPlace. At least one entrance that can be used by passengers with mobility or sensory impairments. Additional entrances are optional. -->
+    <StopPlaceEntrance id="ch:1:entrance:7000:1" version="1">
       <!-- Accessibility. -->
-    </Entrance>
+    </StopPlaceEntrance>
   </entrances>
   <equipmentPlaces>
-    <!-- Accessibility. **TODO** TBD -->
+    <!-- Accessibility. **TODO** Only needed if we model LiftEquipment, TicketOfficeEquipment, etc. -->
     <EquipmentPlaceRef ref="generated" version="1"/>
   </equipmentPlaces>
   <placeEquipments>
-    <!-- Accessibility. **TODO*3 TBD -->
-    <LiftEquipmentRef ref="generated" version="1"/>
+    <!-- Accessibility. **TODO** Only needed if we model equipments. -->
+    <LiftEquipmentRef ref="generated" version="1">
+      <!-- Accessibility. Lift as an example. -->
+    </LiftEquipmentRef>
   </placeEquipments>
   <localServices>
     <AssistanceService id="ch:1:assistance:7000:1" version="1">
-      <!-- Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet`. -->
+      <!-- Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet` (see above). -->
     </AssistanceService>
     <AssistanceBookingService id="ch:1:assistancebooking:7000:1" version="1">
       <!-- Accessibility. Contact and booking information regarding assistance services. -->
@@ -498,7 +501,7 @@ Accessibility. Contact and booking information regarding assistance services.
               <timebands>
                 <Timeband id="generated" version="1">
                   <StartTime>07:00:00</StartTime>
-                  <EndTime>06:00:00</EndTime>
+                  <EndTime>18:00:00</EndTime>
                 </Timeband>
               </timebands>
             </AvailabilityCondition>
@@ -514,7 +517,7 @@ Accessibility. Contact and booking information regarding assistance services.
     <MeetingPointService id="ch:1:meetingpoint:7000:1" version="1">
       <!-- Accessibility. Indicates the presence or absence of a meeting point. -->
       <MeetingPointServiceType>meetingPoint
-        <!-- Only a single value allowed: `meetingPoint groupMeetingPoint`. -->
+        <!-- Only a single value allowed from: `meetingPoint groupMeetingPoint`. -->
       </MeetingPointServiceType>
       <Label>Treffpunkt</Label>
     </MeetingPointService>
@@ -526,7 +529,7 @@ Accessibility. Contact and booking information regarding assistance services.
     <Quay id="ch:1:sloid:7000:5:9" version="1"/>
   </quays>
   <accessSpaces>
-    <!-- Accessibility. **TODO** TBD -->
+    <!-- Accessibility. **TODO** Needed if we model equipments - EquipmentPlaces may require an AccessSpace as parent. -->
     <AccessSpace id="ch:1:accessspace:7000:1" version="1">
       <!-- Accessibility. -->
     </AccessSpace>
@@ -558,9 +561,14 @@ Accessibility. Contact and booking information regarding assistance services.
 |  | Name | expected | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
 |  | [AccessibilityAssessment](./tables/AccessibilityAssessment.md) | mandatory | 0..1 | AccessibilityAssessment_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. See the element's table for all details. |
 |  | LevelRef | expected | 0..1 | LevelRefStructure | Reference to LEVEL of a SITE. | Accessibility. Required if more than 1 level present. |
+|  | placeEquipments | optional | 0..1 | placeEquipments_RelStructure | Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT. | Accessibility. **TODO** May be removed if we decide to drop below elements. |
+| + | EntranceEquipment | optional | 0..* | EntranceEquipment_VersionStructure | Specialisation of PLACE ACCESS EQUIPMENT for ENTRANCEs (door, barrier, revolving door, etc.). | Accessibility. **TODO** May be removed if we decide to drop below elements. |
+| ++ | Door | optional | 0..1 | xsd:boolean | Whether there is a door in the entrance. If false, opening does not have door. |  |
 | ++ | DropKerbOutside | optional | 0..1 | xsd:boolean | Whether there is a drop Kerb outside door. | Accessibility. **TODO** Seems redundant, see below. |
 | ++ | WheelchairPassable | optional | 0..1 | xsd:boolean | Whether lift is judged wheelchair passable. | Accessibility. **TODO** Seems unnecessary given AccessibilityAssessment |
 | ++ | WheelchairUnaided | optional | 0..1 | xsd:boolean | Can be passed in a wheel chair unaided. | Accessibility. **TODO** seems unnecessary given AccessibilityAssessment |
+|  | IsEntry | optional | 0..1 | xsd:boolean | Whether ENTRANCE can be used for entry. Default is true. | Use to indicate a one-way passage. Assume true if not present. |
+|  | IsExit | optional | 0..1 | xsd:boolean | Whether ENTRANCE can be used for exit. Default is true. | Use to indicate a one-way passage. Assume true if not present. |
 |  | DroppedKerbOutside | expected | 0..1 | xsd:boolean | Whether nearest crossing to ENTRANCE has dropped kerb. | Accessibility. |
 |  | DropOffPointClose | expected | 0..1 | xsd:boolean | Whether there is a drop off point close by to ENTRANCE. | Accessibility. Starting point relevant for AccessibilityAssessments of Quays etc. |
 
@@ -588,7 +596,7 @@ Accessibility. Contact and booking information regarding assistance services.
         <WheelchairAccess>true
           <!-- Accessibility. -->
         </WheelchairAccess>
-        <StepFreeAccess>t rue
+        <StepFreeAccess>true
           <!-- Accessibility. -->
         </StepFreeAccess>
         <StairFreeAccess>true
@@ -597,9 +605,12 @@ Accessibility. Contact and booking information regarding assistance services.
         <RampFreeAccess>true
           <!-- Accessibility. -->
         </RampFreeAccess>
-        <LevelAccessIntoVehicle>true
-          <!-- Not used in this context. -->
+        <LevelAccessIntoVehicle>false
+          <!-- Not used in this context.  **TODO** Would `ch-usage: forbidden` work to restrict the use of the element in the nested `AccessiblityAssessment`? -->
         </LevelAccessIntoVehicle>
+        <AudibleSignalsAvailable>false
+          <!-- Not used in this context. **TODO** Would `ch-usage: forbidden` work to restrict the use of the element in the nested `AccessiblityAssessment`? -->
+        </AudibleSignalsAvailable>
         <VisualSignsAvailable>true
           <!-- Accessibility. -->
         </VisualSignsAvailable>
@@ -616,7 +627,9 @@ Accessibility. Contact and booking information regarding assistance services.
     <!-- Accessibility. Required if more than 1 level present. -->
   </LevelRef>
   <placeEquipments>
+    <!-- Accessibility. **TODO** May be removed if we decide to drop below elements. -->
     <EntranceEquipment id="generated" version="1">
+      <!-- Accessibility. **TODO** May be removed if we decide to drop below elements. -->
       <Door>true</Door>
       <KeptOpen>true</KeptOpen>
       <DropKerbOutside>true
@@ -631,8 +644,12 @@ Accessibility. Contact and booking information regarding assistance services.
     </EntranceEquipment>
   </placeEquipments>
   <EntranceType>openDoor</EntranceType>
-  <IsEntry>true</IsEntry>
-  <IsExit>true</IsExit>
+  <IsEntry>true
+    <!-- Use to indicate a one-way passage. Assume true if not present. -->
+  </IsEntry>
+  <IsExit>true
+    <!-- Use to indicate a one-way passage. Assume true if not present. -->
+  </IsExit>
   <DroppedKerbOutside>true
     <!-- Accessibility. -->
   </DroppedKerbOutside>
@@ -672,6 +689,7 @@ Accessiblity information attached to a `StopPlace` and `Quay` in particular. Als
 |  | TicketingServiceFacilityList | optional | 0..1 | TicketingServiceFacilityListOfEnumerations | List of TICKETING SERVICE FACILITies, e.g. purchase, collection. top up. |  |
 |  | AccessFacilityList | expected | 0..1 | AccessFacilityListOfEnumerations | List of SITE ACCESS FACILITies. | Accessibility, only expected for Quays. Presence or absence of the following facilities should be signalled: `unknown lift wheelchairLift escalator travelator ramp automaticRamp steps stairs barrier lowFloorAccess validator`. |
 |  | EmergencyServiceList | expected | 0..1 | EmergencyServiceListOfEnumerations | List of EMERGENCY SERVICE FACILITies. | Accessibility. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`. |
+|  | LuggageLockerFacilityList | optional | 0..1 | LuggageLockerFacilityListOfEnumerations | List of LUGGAGE LOCKER FACILITies. | Accessibility. Presence or absence of the following facilities may be signalled: `lockers oversizeLockers leftLuggageCounter`. |
 |  | ParkingFacilityList | expected | 0..1 | ParkingFacilityListOfEnumerations | List of PARKING FACILITies. | Accessibility. Presence or absence of the following facilities should be signalled: `carPark parkAndRidePark motorcyclePark cyclePark`. Others are optional: `cachPark rentalCarPark`. |
 
 
@@ -698,7 +716,7 @@ Overlaps between `AccessFacilityList`, `AssistanceFacilityList`, `MobilityFacili
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<SiteFacilitySet id="ch:1:sloid:1234" version="1">
+<SiteFacilitySet id="ch:1:sitefacilityset:1234:1" version="1">
   <validityConditions>
     <AvailabilityCondition id="generated" version="1">
       <FromDate>2026-03-30T00:00:00</FromDate>
@@ -737,7 +755,9 @@ Overlaps between `AccessFacilityList`, `AssistanceFacilityList`, `MobilityFacili
   <EmergencyServiceList>sosPoint
     <!-- Accessibility. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`. -->
   </EmergencyServiceList>
-  <LuggageLockerFacilityList>lockers</LuggageLockerFacilityList>
+  <LuggageLockerFacilityList>lockers
+    <!-- Accessibility. Presence or absence of the following facilities may be signalled: `lockers oversizeLockers leftLuggageCounter`. -->
+  </LuggageLockerFacilityList>
   <ParkingFacilityList>motorcyclePark cyclePark
     <!-- Accessibility. Presence or absence of the following facilities should be signalled: `carPark parkAndRidePark motorcyclePark cyclePark`. Others are optional: `cachPark rentalCarPark`. -->
   </ParkingFacilityList>

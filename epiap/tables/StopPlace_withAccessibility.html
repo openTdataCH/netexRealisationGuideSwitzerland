@@ -237,25 +237,25 @@
       <td>0..1</td>
       <td>AccessibilityAssessment_VersionedChildStructure</td>
       <td>Assessment of the accessibility of a SITE.</td>
-      <td>Accessibility.</td>
+      <td>Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments.</td>
     </tr>
     <tr>
       <td> </td>
       <td>Covered</td>
-      <td>expected</td>
+      <td>optional</td>
       <td>0..1</td>
       <td>CoveredEnumeration</td>
       <td>Whether the component is Indoors or outdoors. Default is Indoors.</td>
-      <td>Accessibility.</td>
+      <td>Accessibility. Allowed values: <code class="language-plaintext highlighter-rouge">indoors outdoors covered unknown</code>. Railway stations are usually covered, many bus stops are outdoors. <strong>TODO</strong> Do we want that element? Not required by TRM PSI.</td>
     </tr>
     <tr>
       <td> </td>
       <td>AllAreasWheelchairAccessible</td>
-      <td>mandatory</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
       <td>Whether all areas of the component are wheelchair accessible.</td>
-      <td>Accessibility.</td>
+      <td>Accessibility. True or false if data available, otherwise drop the element.</td>
     </tr>
     <tr>
       <td> </td>
@@ -264,7 +264,7 @@
       <td>0..1</td>
       <td>serviceFacilitySets_RelStructure</td>
       <td>FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed.</td>
-      <td>Accessibility.</td>
+      <td>Accessibility. Facilites available at the StopPlace. For some of the facilities it is possible to more precisely describe their availabilty using <code class="language-plaintext highlighter-rouge">AssistanceService</code> further below.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -303,30 +303,21 @@
       <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
     </tr>
     <tr>
-      <td>+</td>
-      <td><a href="Level.md">Level</a></td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>Level_VersionStructure</td>
-      <td>Level of a Building or SITE.</td>
-      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
-    </tr>
-    <tr>
       <td> </td>
       <td>entrances</td>
       <td>expected</td>
       <td>0..1</td>
       <td>pointOfInterestEntrances_RelStructure</td>
       <td>ENTRANCEs to and within SITE.</td>
-      <td>Accessibility.</td>
+      <td>Accessibility. Entrances to the StopPlace. At least one entrance that can be used by passengers with mobility or sensory impairments. Additional entrances are optional.</td>
     </tr>
     <tr>
       <td>+</td>
-      <td><a href="Entrance.md">Entrance</a></td>
+      <td><a href="/netexRealisationGuideSwitzerland/epiap/tables/StopPlaceEntrance.html">StopPlaceEntrance</a></td>
       <td>expected</td>
       <td>0..*</td>
-      <td>SiteEntrance_VersionStructure</td>
-      <td>Entrance to a SITE.</td>
+      <td>StopPlaceEntrance_VersionStructure</td>
+      <td>Passenger Entrance to a STOP PLACE.</td>
       <td>Accessibility.</td>
     </tr>
     <tr>
@@ -336,7 +327,7 @@
       <td>0..1</td>
       <td>equipmentPlaces_RelStructure</td>
       <td>EQUIPMENT PLACEs within SITE COMPONENT.</td>
-      <td>Accessibility. <strong>TODO</strong> TBD</td>
+      <td>Accessibility. <strong>TODO</strong> Only needed if we model LiftEquipment, TicketOfficeEquipment, etc.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -354,7 +345,7 @@
       <td>0..1</td>
       <td>placeEquipments_RelStructure</td>
       <td>Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT.</td>
-      <td>Accessibility. <em>*TODO</em>3 TBD</td>
+      <td>Accessibility. <strong>TODO</strong> Only needed if we model equipments.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -363,7 +354,7 @@
       <td>0..*</td>
       <td>AccessEquipmentRefStructure</td>
       <td>Identifier of an LIFT EQUIPMENT.</td>
-      <td> </td>
+      <td>Accessibility. Lift as an example.</td>
     </tr>
     <tr>
       <td> </td>
@@ -381,7 +372,7 @@
       <td>0..*</td>
       <td>AssistanceService_VersionStructure</td>
       <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
-      <td>Accessibility. The element allows for more precisely describing the availability of <code class="language-plaintext highlighter-rouge">AssistanceFacility</code>s and <code class="language-plaintext highlighter-rouge">AccessibilityTools</code>, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code>.</td>
+      <td>Accessibility. The element allows for more precisely describing the availability of <code class="language-plaintext highlighter-rouge">AssistanceFacility</code>s and <code class="language-plaintext highlighter-rouge">AccessibilityTools</code>, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code> (see above).</td>
     </tr>
     <tr>
       <td>+</td>
@@ -408,7 +399,7 @@
       <td>1..1</td>
       <td>MeetingPointEnumeration</td>
       <td>Type of MEETING POINT.</td>
-      <td>Only a single value allowed: <code class="language-plaintext highlighter-rouge">meetingPoint groupMeetingPoint</code>.</td>
+      <td>Only a single value allowed from: <code class="language-plaintext highlighter-rouge">meetingPoint groupMeetingPoint</code>.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -426,7 +417,7 @@
       <td>0..1</td>
       <td>accessSpaces_RelStructure</td>
       <td>ACCESS SPACEs within the STOP PLACE.</td>
-      <td>Accessibility. <strong>TODO</strong> TBD</td>
+      <td>Accessibility. <strong>TODO</strong> Needed if we model equipments - EquipmentPlaces may require an AccessSpace as parent.</td>
     </tr>
     <tr>
       <td>+</td>

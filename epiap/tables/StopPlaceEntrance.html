@@ -258,6 +258,33 @@
       <td>Accessibility. Required if more than 1 level present.</td>
     </tr>
     <tr>
+      <td> </td>
+      <td>placeEquipments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>placeEquipments_RelStructure</td>
+      <td>Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT.</td>
+      <td>Accessibility. <strong>TODO</strong> May be removed if we decide to drop below elements.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>EntranceEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>EntranceEquipment_VersionStructure</td>
+      <td>Specialisation of PLACE ACCESS EQUIPMENT for ENTRANCEs (door, barrier, revolving door, etc.).</td>
+      <td>Accessibility. <strong>TODO</strong> May be removed if we decide to drop below elements.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Door</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether there is a door in the entrance. If false, opening does not have door.</td>
+      <td> </td>
+    </tr>
+    <tr>
       <td>++</td>
       <td>DropKerbOutside</td>
       <td>optional</td>
@@ -283,6 +310,24 @@
       <td>xsd:boolean</td>
       <td>Can be passed in a wheel chair unaided.</td>
       <td>Accessibility. <strong>TODO</strong> seems unnecessary given AccessibilityAssessment</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>IsEntry</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether ENTRANCE can be used for entry. Default is true.</td>
+      <td>Use to indicate a one-way passage. Assume true if not present.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>IsExit</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>xsd:boolean</td>
+      <td>Whether ENTRANCE can be used for exit. Default is true.</td>
+      <td>Use to indicate a one-way passage. Assume true if not present.</td>
     </tr>
     <tr>
       <td> </td>

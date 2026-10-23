@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SiteFacilitySet id="ch:1:sloid:1234" version="1">
+<SiteFacilitySet id="ch:1:sitefacilityset:1234:1" version="1">
   <validityConditions>
     <AvailabilityCondition id="generated" version="1">
       <FromDate>2026-03-30T00:00:00</FromDate>
@@ -38,7 +38,9 @@
   <EmergencyServiceList>sosPoint
     <!-- Accessibility. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`. -->
   </EmergencyServiceList>
-  <LuggageLockerFacilityList>lockers</LuggageLockerFacilityList>
+  <LuggageLockerFacilityList>lockers
+    <!-- Accessibility. Presence or absence of the following facilities may be signalled: `lockers oversizeLockers leftLuggageCounter`. -->
+  </LuggageLockerFacilityList>
   <ParkingFacilityList>motorcyclePark cyclePark
     <!-- Accessibility. Presence or absence of the following facilities should be signalled: `carPark parkAndRidePark motorcyclePark cyclePark`. Others are optional: `cachPark rentalCarPark`. -->
   </ParkingFacilityList>

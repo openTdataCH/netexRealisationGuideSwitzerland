@@ -98,10 +98,11 @@
 												<!-- ch-usage: expected -->
 												<!-- ch-note: Accessibility. -->
 												<WheelchairAccess><!-- ch-usage: expected --><!-- ch-note: Accessibility. -->true</WheelchairAccess>
-												<StepFreeAccess>t<!-- ch-usage: expected --><!-- ch-note: Accessibility. -->rue</StepFreeAccess>
+												<StepFreeAccess><!-- ch-usage: expected --><!-- ch-note: Accessibility. -->true</StepFreeAccess>
 												<StairFreeAccess><!-- ch-usage: expected --><!-- ch-note: Accessibility. -->true</StairFreeAccess>
 												<RampFreeAccess><!-- ch-usage: expected --><!-- ch-note: Accessibility. -->true</RampFreeAccess>	
-												<LevelAccessIntoVehicle><!-- ch-usage: optional --><!-- ch-note: Not used in this context. -->true</LevelAccessIntoVehicle>	
+												<LevelAccessIntoVehicle><!-- ch-usage: optional --><!-- ch-note: Not used in this context.  **TODO** Would `ch-usage: forbidden` work to restrict the use of the element in the nested `AccessiblityAssessment`? -->false</LevelAccessIntoVehicle>	
+												<AudibleSignalsAvailable><!-- ch-usage: optional --><!-- ch-note: Not used in this context. **TODO** Would `ch-usage: forbidden` work to restrict the use of the element in the nested `AccessiblityAssessment`? -->false</AudibleSignalsAvailable>
 												<VisualSignsAvailable><!-- ch-usage: expected --><!-- ch-note: Accessibility. -->true</VisualSignsAvailable>
 												<TactileGuidanceAvailable><!-- ch-usage: expected --><!-- ch-note: Accessibility. -->true</TactileGuidanceAvailable>
 												<GuideDogAccess><!-- ch-usage: expected --><!-- ch-note: Accessibility. -->true</GuideDogAccess>
@@ -110,7 +111,11 @@
 									</AccessibilityAssessment>
 									<LevelRef ref="ch:1:level:7000:0"><!-- ch-usage: expected --><!-- ch-note: Accessibility. Required if more than 1 level present. --></LevelRef>
 									<placeEquipments>
+										<!-- ch-usage: optional -->
+										<!-- ch-note: Accessibility. **TODO** May be removed if we decide to drop below elements. -->
 										<EntranceEquipment id="generated" version="1">
+											<!-- ch-usage: optional -->
+											<!-- ch-note: Accessibility. **TODO** May be removed if we decide to drop below elements. -->
 											<Door>true</Door>
 											<KeptOpen>true</KeptOpen>
 											<DropKerbOutside><!-- ch-usage: optional --><!-- ch-note: Accessibility. **TODO** Seems redundant, see below. -->true</DropKerbOutside>
@@ -119,8 +124,8 @@
 										</EntranceEquipment>
 									</placeEquipments>
 									<EntranceType>openDoor</EntranceType>
-									<IsEntry>true</IsEntry>
-									<IsExit>true</IsExit>
+									<IsEntry>true<!-- ch-usage: optional --><!-- ch-note: Use to indicate a one-way passage. Assume true if not present. --></IsEntry>
+									<IsExit>true<!-- ch-usage: optional --><!-- ch-note: Use to indicate a one-way passage. Assume true if not present. --></IsExit>
 									<DroppedKerbOutside><!-- ch-usage: expected --><!-- ch-note: Accessibility. -->true</DroppedKerbOutside>
 									<DropOffPointClose><!-- ch-usage: expected --><!-- ch-note: Accessibility. Starting point relevant for AccessibilityAssessments of Quays etc. -->true</DropOffPointClose>
 								</StopPlaceEntrance>
