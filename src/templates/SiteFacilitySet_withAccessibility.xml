@@ -7,7 +7,7 @@
 			<frames>
 				<ResourceFrame id="ch:1:ResourceFrame" version="1">
 					<siteFacilitySets>
-						<SiteFacilitySet id="ch:1:sloid:1234" version="1">
+						<SiteFacilitySet id="ch:1:sitefacilityset:1234:1" version="1">
 							<!-- ch-root -->
 							<validityConditions>
 								<AvailabilityCondition id="generated" version="1">
@@ -72,7 +72,11 @@
 								<!-- ch-note: Accessibility. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`.-->		
 								sosPoint
 							</EmergencyServiceList>
-							<LuggageLockerFacilityList>lockers</LuggageLockerFacilityList>
+							<LuggageLockerFacilityList>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Accessibility. Presence or absence of the following facilities may be signalled: `lockers oversizeLockers leftLuggageCounter`. -->
+								lockers
+							</LuggageLockerFacilityList>
 							<ParkingFacilityList>
 								<!-- ch-usage: expected -->
 								<!-- ch-allowed-enums: unknown carPark parkAndRidePark motorcyclePark cyclePark rentalCarPark coachPark -->
