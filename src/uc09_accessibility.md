@@ -124,7 +124,7 @@ We apply a slightly stricter interpretation than the current version of EPIAP. T
 |`RampFreeAccess`|1.   Reachable without using a ramp that doesn't fit the [UN Design Considerations](https://www.un.org/esa/socdev/enable/designm/AD2-01.htm) (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m).<br>2.    [The route provides `WheelchairAccess`]. **TODO** OK? A lesser constraint would be `StepFreeAccess`, but the principal (or only?) use case seems to be unassisted wheelchairs.
 |`AudibleSignalsAvailable`|Whether audible signals for the visually impaired are present.|
 |`VisualSignsAvailable`|1.   PRM TSI: visual information as signposting, pictograms and dynamic information. <br>2.    [Largely language independent, also suited for passengers from foreign cultures.] **TODO** OK or wrong?|
-|`TactileGuidanceAvailable`|Whether the object has tactile guidance (for the visually impaired).<br>PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br>For bus- and tram stops:  <br>1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br>2.   Tactile guideline or boarding position connected to (natural) guideline in environment|
+|`TactileGuidanceAvailable`|Whether the object has tactile guidance (for the visually impaired).<br>PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br>For bus- and tram stops:  <br>1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br>2.   Tactile guideline or boarding position connected to a (natural) guideline in the environment|
 
 #### Remarks `RampFreeAccess`
 
@@ -132,16 +132,16 @@ We apply a slightly stricter interpretation than the current version of EPIAP. T
 * `RampFreeAccess`is a stronger form of `WheelchairAccess` excluding steeper slopes.
 
 
-#### Limitiations of AccessibilityAssessment
+#### Limitations of AccessibilityAssessment
 
-* If, e.g., `WheelchairAccess` or `StairFreeAccess` requires using a lift, the `AccessibilityAssessment` does not convey this information. 
-
+* If, e.g., `WheelchairAccess` or `StairFreeAccess` requires using a lift, the `AccessibilityAssessment` does not convey this information.
 * According to EPIAP definitions, a quay with, e.g., `WheelchairAccess` means that there is at least one entrance from which it is reachable. It may be that `WheelchairAccess` only works from a secondary entrance, not from the main entrance.
 
 Such information can be encoded using `SitePathLink`s and `PathJunction`s that describe a routing network including accessibility and location data.
 
 #### Entrances related to AccessibilityAssessment
 * All `AccessibiltyLimitation`s (`StepFreeAccess` etc.) relate to a complete path from an "accessible" `StopPlaceEntrance` with `DroppedKerb=true` and `DropOffPointClose=true`. 
+
 
 
 
