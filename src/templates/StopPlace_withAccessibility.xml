@@ -55,7 +55,7 @@
 							</Url>
 							<AccessibilityAssessment id="generated" version="1">
 								<!-- ch-usage: mandatory -->
-								<!-- ch-note: Accessibility. -->
+								<!-- ch-note: Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments. -->
 								<!-- ch-see -->
 								<MobilityImpairedAccess><!-- ch-usage: mandatory --><!-- ch-note: Accessibility. -->true</MobilityImpairedAccess>
 							</AccessibilityAssessment>
@@ -66,15 +66,15 @@
 								</AlternativeName>
 							</alternativeNames>
 							<PublicUse><!-- ch-usage: ignored -->all</PublicUse>
-							<Covered><!-- ch-usage: expected --><!-- ch-note: Accessibility. -->covered</Covered>
+							<Covered><!-- ch-usage: optional --><!-- ch-note: Accessibility. Allowed values: `indoors outdoors covered unknown`. Railway stations are usually covered, many bus stops are outdoors. **TODO** Do we want that element? Not required by TRM PSI. -->covered</Covered>
 							<AllAreasWheelchairAccessible>
-								<!-- ch-usage: mandatory -->
-								<!-- ch-note: Accessibility. -->
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Accessibility. True or false if data available, otherwise drop the element. -->
 								true
 							</AllAreasWheelchairAccessible>
 							<facilities>
 								<!-- ch-usage: expected -->
-								<!-- ch-note: Accessibility.-->
+								<!-- ch-note: Accessibility. Facilites available at the StopPlace. For some of the facilities it is possible to more precisely describe their availabilty using `AssistanceService` further below. -->
 								<SiteFacilitySet id="ch:1:sitefacilityset:7000:1" version="1">
 									<!-- ch-usage: expected -->
 									<!-- ch-note: Accessibility. EPIAP wants the SiteFacilitySets being defined here. -->
@@ -103,7 +103,7 @@
 							</levels>
 							<entrances>
 								<!-- ch-usage: expected -->
-								<!-- ch-note: Accessibility. -->
+								<!-- ch-note: Accessibility. Entrances to the StopPlace. At least one entrance that can be used by passengers with mobility or sensory impairments. Additional entrances are optional. -->
 								<StopPlaceEntrance id="ch:1:entrance:7000:1" version="1">
 									<!-- ch-usage: expected -->
 									<!-- ch-note: Accessibility. -->
@@ -112,19 +112,19 @@
 							</entrances>
 							<equipmentPlaces>
 								<!-- ch-usage: optional -->
-								<!-- ch-note: Accessibility. **TODO** TBD -->
+								<!-- ch-note: Accessibility. **TODO** Only needed if we model LiftEquipment, TicketOfficeEquipment, etc. -->
 								<EquipmentPlaceRef ref="generated" versionRef="1"/>
 							</equipmentPlaces>
 							<placeEquipments>
 								<!-- ch-usage: optional -->
-								<!-- ch-note: Accessibility. **TODO*3 TBD -->
-								<LiftEquipmentRef ref="generated" versionRef="1"/>
+								<!-- ch-note: Accessibility. **TODO** Only needed if we model equipments. -->
+								<LiftEquipmentRef ref="generated" versionRef="1"><!-- ch-note: Accessibility. Lift as an example. --></LiftEquipmentRef>
 							</placeEquipments>
 							<localServices>
 								<!-- ch-usage: optional -->
 								<AssistanceService id="ch:1:assistance:7000:1" version="1">
 									<!-- ch-usage: optional -->
-									<!-- ch-note: Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet`.-->
+									<!-- ch-note: Accessibility. The element allows for more precisely describing the availability of `AssistanceFacility`s and `AccessibilityTools`, e.g., if they need to be booked. It does not add, however, new facilities to the ones already given by the `SiteFacilitySet` (see above).-->
 									<!-- ch-see -->
 								</AssistanceService>
 								<AssistanceBookingService id="ch:1:assistancebooking:7000:1" version="1">
@@ -165,7 +165,7 @@
 									<MeetingPointServiceType>
 										<!-- ch-usage: mandatory -->
 										<!-- ch-allowed-enums: meetingPoint groupMeetingPoint -->
-										<!-- ch-note: Only a single value allowed: `meetingPoint groupMeetingPoint`. -->
+										<!-- ch-note: Only a single value allowed from: `meetingPoint groupMeetingPoint`. -->
 										meetingPoint
 									</MeetingPointServiceType>
 									<Label><!-- ch-usage: expected -->Treffpunkt</Label>
@@ -180,7 +180,7 @@
 							</quays>
 							<accessSpaces>
 								<!-- ch-usage: expected -->
-								<!-- ch-note: Accessibility. **TODO** TBD -->
+								<!-- ch-note: Accessibility. **TODO** Needed if we model equipments - EquipmentPlaces may require an AccessSpace as parent. -->
 								<AccessSpace id="ch:1:accessspace:7000:1" version="1">
 									<!-- ch-usage: expected -->
 									<!-- ch-note: Accessibility. -->
