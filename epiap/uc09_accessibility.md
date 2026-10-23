@@ -97,18 +97,18 @@ An assessment of the usability by passengers with specific needs, for example, t
 
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
-|  | MobilityImpairedAccess | mandatory | 1..1 | LimitationStatusEnumeration | Summary indication as to whether the component is considered to be accessible or not. | Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. |
-|  | limitations | expected | 0..1 | usageParameters_RelStructure | The ACCESSIBILITY LIMITATION that apply to component. | Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. |
-| + | AccessibilityLimitation | mandatory | 0..* | AccessibilityLimitation_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. |
-| ++ | WheelchairAccess | mandatory | 1..1 | LimitationStatusEnumeration | Whether a PLACE is wheelchair accessible. | Accessibility. Allowed values: true, false, partial, unknown. |
-| ++ | StepFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has step free access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
-| ++ | StairFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0 | Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. |
-| ++ | RampFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has ramp free access. Ramp free isn't necessary absolute. If a ramp is not steep, then a PLACE can still be considered ramp free. | Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. |
-| ++ | LevelAccessIntoVehicle | expected | 0..1 | LimitationStatusEnumeration | Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI). | Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
-| ++ | AudibleSignalsAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has audible signals for the visually impaired. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
-| ++ | VisualSignsAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has visual signals for the hearing impaired. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
-| ++ | TactileGuidanceAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has tactile guidance. | Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
-| ++ | GuideDogAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE allows guide dog access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. |
+|  | MobilityImpairedAccess | mandatory | 1..1 | LimitationStatusEnumeration | Summary indication as to whether the component is considered to be accessible or not. | Accessibility. Overall assessment for mobility and sensory impaired users. Allowed values: `true, false, partial, unknown`. `partial` means that AccessibiltyAssessments have to exist at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StopPlace. |
+|  | limitations | expected | 0..1 | usageParameters_RelStructure | The ACCESSIBILITY LIMITATION that apply to component. | Accessibility. AccessibilityLimitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. |
+| + | AccessibilityLimitation | mandatory | 0..* | AccessibilityLimitation_VersionedChildStructure | Assessment of the accessibility of a SITE. | Accessibility. The kinds of access that are offered. |
+| ++ | WheelchairAccess | mandatory | 1..1 | LimitationStatusEnumeration | Whether a PLACE is wheelchair accessible. | Accessibility. Allowed values: `true, false, partial, unknown`. |
+| ++ | StepFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has step free access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. |
+| ++ | StairFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0 | Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: `true, false, partial, unknown`. |
+| ++ | RampFreeAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has ramp free access. Ramp free isn't necessary absolute. If a ramp is not steep, then a PLACE can still be considered ramp free. | Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: `true, false, partial, unknown`. |
+| ++ | LevelAccessIntoVehicle | expected | 0..1 | LimitationStatusEnumeration | Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI). | Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. |
+| ++ | AudibleSignalsAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has audible signals for the visually impaired. | Accessibility. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. |
+| ++ | VisualSignsAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has visual signals for the hearing impaired. | Accessibility. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. |
+| ++ | TactileGuidanceAvailable | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE has tactile guidance. | Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. |
+| ++ | GuideDogAccess | expected | 0..1 | LimitationStatusEnumeration | Whether a PLACE allows guide dog access. | Accessibility. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. |
 
 
 
@@ -122,38 +122,38 @@ An assessment of the usability by passengers with specific needs, for example, t
 <?xml version="1.0" encoding="UTF-8"?>
 <AccessibilityAssessment id="generated" version="1">
   <MobilityImpairedAccess>true
-    <!-- Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. -->
+    <!-- Accessibility. Overall assessment for mobility and sensory impaired users. Allowed values: `true, false, partial, unknown`. `partial` means that AccessibiltyAssessments have to exist at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StopPlace. -->
   </MobilityImpairedAccess>
   <limitations>
-    <!-- Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. -->
+    <!-- Accessibility. AccessibilityLimitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. -->
     <AccessibilityLimitation>
-      <!-- Accessibility. -->
+      <!-- Accessibility. The kinds of access that are offered. -->
       <WheelchairAccess>true
-        <!-- Accessibility. Allowed values: true, false, partial, unknown. -->
+        <!-- Accessibility. Allowed values: `true, false, partial, unknown`. -->
       </WheelchairAccess>
       <StepFreeAccess>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. -->
       </StepFreeAccess>
       <StairFreeAccess>true
-        <!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. -->
+        <!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: `true, false, partial, unknown`. -->
       </StairFreeAccess>
       <RampFreeAccess>true
-        <!-- Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. -->
+        <!-- Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: `true, false, partial, unknown`. -->
       </RampFreeAccess>
       <LevelAccessIntoVehicle>true
-        <!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
+        <!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. -->
       </LevelAccessIntoVehicle>
       <AudibleSignalsAvailable>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. -->
       </AudibleSignalsAvailable>
       <VisualSignsAvailable>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. -->
       </VisualSignsAvailable>
       <TactileGuidanceAvailable>true
-        <!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
+        <!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. -->
       </TactileGuidanceAvailable>
       <GuideDogAccess>true
-        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. -->
+        <!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. -->
       </GuideDogAccess>
     </AccessibilityLimitation>
   </limitations>
@@ -174,64 +174,39 @@ In case of `StopPlace` or `Quay`, EPIAP uses the following interpretation:
 * `VisualSignsAvailable` `true` (only for railway stations)
 * `TactileGuidanceAvailable` `true`
 
-Interpretation of `AccessibilityLimitation`:
+#### Interpretation of `AccessibilityLimitation`:
+
+We apply a slightly stricter interpretation than the current version of EPIAP. The information that can be conveyed to the passengers thus becomes more useful and exporting the data to foreign systems is unproblematic. The additional constraints are [marked in brackets].
 
 |   |   |
 |---|---|
-|`WheelchairAccess`|1.    `StepFreeAccess` from an accessible entrance (see next row).<br>2.    The stop/platform is sufficiently wide to make a turn with a wheelchair when entering/leaving the vehicles that usually stops at this stop/platform (depending on the available/needed tools for entering/leaving the vehicle).<br>3.    If boarding trains requires boarding assistance, onsite assistance is available.|
-|`StepFreeAccess`|1.    A step-free route is an obstacle-free/barrier free route that meets the needs of mobility impaired persons. Changes in level are avoided or, when they cannot be avoided, they are bridged via ramps or lifts (compliant with PRM TSI).<br>2.    The platform or Stop is accessible without steps from the surrounding area (footpaths).<br>A platform which has `StepFreeAccess` without `WheelchairAccess` (= `false`) may be not sufficiently wide to make a turn with a wheelchair.|
-|`StairFreeAccess`|A stair-free route. Single steps allowed.|
+|`WheelchairAccess`|1.    `StepFreeAccess` [including `EscalatorFreeAccess`] from an accessible entrance (see next row).<br>2.    The stop / platform is sufficiently wide to make a turn with a wheelchair when entering / leaving the vehicles that usually stop at this stop / platform (depending on the available / needed tools for entering / leaving the vehicle).<br>3.    If boarding trains requires boarding assistance, onsite assistance is available.|
+|`StepFreeAccess`|1.    A step-free route is an obstacle-free / barrier free [and `EscalatorFreeAccess`] route that meets the needs of mobility impaired persons. Changes in level are avoided or, when they cannot be avoided, they are bridged via ramps or lifts (compliant with PRM TSI).<br>2.    The platform or stop is accessible without steps from the surrounding area (footpaths).<br><br>A platform which has `StepFreeAccess` without `WheelchairAccess` (==`false`) may be not sufficiently wide to make a turn with a wheelchair.|
+|`StairFreeAccess`|A stair-free route. Single steps allowed, escalators allowed.|
 |`LevelAccessIntoVehicle`|Whether the platform is high enough and gap is small enough for level access into vehicle.<br><br>At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).|
 |`EscalatorFreeAccess` (not included in profile)|Reachable without using an escalator.|
 |`LiftFreeAccess` (not included in profile)|Reachable without using an elevator.|
-|`RampFreeAccess`|Reachable without using a ramp that doesn't fit the UN Design [Considerations](https://euc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=nl-nl&rs=nl-nl&wopisrc=https%3A%2F%2Fitxptorg.sharepoint.com%2Fsites%2FEU.DATA4PT.NETEX%2F_vti_bin%2Fwopi.ashx%2Ffiles%2Fc2c9167177c34bc1bb50e4880ff7b6ac&wdenableroaming=1&mscc=1&hid=12869e13-00bf-76bc-9351-10ac590e57c1-730&uiembed=1&uih=teams&uihit=files&hhdr=1&dchat=1&sc=%7B%22pmo%22%3A%22https%3A%2F%2Fteams.microsoft.com%22%2C%22pmshare%22%3Atrue%2C%22surl%22%3A%22%22%2C%22curl%22%3A%22%22%2C%22vurl%22%3A%22%22%2C%22eurl%22%3A%22https%3A%2F%2Fteams.microsoft.com%2Ffiles%2Fapps%2Fcom.microsoft.teams.files%2Ffiles%2F2441637157%2Fopen%3Fagent%3Dpostmessage%26objectUrl%3Dhttps%253A%252F%252Fitxptorg.sharepoint.com%252Fsites%252FEU.DATA4PT.NETEX%252FShared%2520Documents%252FGeneral%252FCEN_Accessibility_Profile%252F20210326%2520PrTS%252016614-6.docx%26fileId%3Dc2c91671-77c3-4bc1-bb50-e4880ff7b6ac%26fileType%3Ddocx%26ctx%3Daggregate%26scenarioId%3D730%26locale%3Dnl-nl%26theme%3Ddefault%26version%3D21100501100%26setting%3Dring.id%3Ageneral%26setting%3DcreatedTime%3A1639152919292%22%7D&wdorigin=TEAMS-ELECTRON.aggregatefiles.aggregate&jsapi=1&jsapiver=v1&newsession=1&corrid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&usid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&sftc=1&sams=1&accloop=1&sdr=6&scnd=1&sat=1&hbcv=1&htv=1&hodflp=1&instantedit=1&wopicomplete=1&wdredirectionreason=Unified_SingleFlush&rct=Medium&ctp=LeastProtected#_ftn1) (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m). [[1]](https://euc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=nl-nl&rs=nl-nl&wopisrc=https%3A%2F%2Fitxptorg.sharepoint.com%2Fsites%2FEU.DATA4PT.NETEX%2F_vti_bin%2Fwopi.ashx%2Ffiles%2Fc2c9167177c34bc1bb50e4880ff7b6ac&wdenableroaming=1&mscc=1&hid=12869e13-00bf-76bc-9351-10ac590e57c1-730&uiembed=1&uih=teams&uihit=files&hhdr=1&dchat=1&sc=%7B%22pmo%22%3A%22https%3A%2F%2Fteams.microsoft.com%22%2C%22pmshare%22%3Atrue%2C%22surl%22%3A%22%22%2C%22curl%22%3A%22%22%2C%22vurl%22%3A%22%22%2C%22eurl%22%3A%22https%3A%2F%2Fteams.microsoft.com%2Ffiles%2Fapps%2Fcom.microsoft.teams.files%2Ffiles%2F2441637157%2Fopen%3Fagent%3Dpostmessage%26objectUrl%3Dhttps%253A%252F%252Fitxptorg.sharepoint.com%252Fsites%252FEU.DATA4PT.NETEX%252FShared%2520Documents%252FGeneral%252FCEN_Accessibility_Profile%252F20210326%2520PrTS%252016614-6.docx%26fileId%3Dc2c91671-77c3-4bc1-bb50-e4880ff7b6ac%26fileType%3Ddocx%26ctx%3Daggregate%26scenarioId%3D730%26locale%3Dnl-nl%26theme%3Ddefault%26version%3D21100501100%26setting%3Dring.id%3Ageneral%26setting%3DcreatedTime%3A1639152919292%22%7D&wdorigin=TEAMS-ELECTRON.aggregatefiles.aggregate&jsapi=1&jsapiver=v1&newsession=1&corrid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&usid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&sftc=1&sams=1&accloop=1&sdr=6&scnd=1&sat=1&hbcv=1&htv=1&hodflp=1&instantedit=1&wopicomplete=1&wdredirectionreason=Unified_SingleFlush&rct=Medium&ctp=LeastProtected#_ftnref1) [https://www.un.org/esa/socdev/enable/designm/AD2-01.htm](https://www.un.org/esa/socdev/enable/designm/AD2-01.htm)|
+|`RampFreeAccess`|1.   Reachable without using a ramp that doesn't fit the [UN Design Considerations](https://www.un.org/esa/socdev/enable/designm/AD2-01.htm) (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m).<br>2.    [The route provides `WheelchairAccess`]. **TODO** OK? A lesser constraint would be `StepFreeAccess`, but the principal (or only?) use case seems to be unassisted wheelchairs.
 |`AudibleSignalsAvailable`|Whether audible signals for the visually impaired are present.|
-|`VisualSignsAvailable`|PRM TSI: visual information as signposting, pictograms and dynamic information.|
-|`TactileGuidanceAvailable`|Whether the object has tactile guidance (for the visually impaired). If absent assume `unknown`.<br>PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br>For bus- and tram stops:  <br>1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br>2.   Tactile guideline or boarding position connected to (natural) guideline in environment|
+|`VisualSignsAvailable`|1.   PRM TSI: visual information as signposting, pictograms and dynamic information. <br>2.    [Largely language independent, also suited for passengers from foreign cultures.] **TODO** OK or wrong?|
+|`TactileGuidanceAvailable`|Whether the object has tactile guidance (for the visually impaired).<br>PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br>For bus- and tram stops:  <br>1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br>2.   Tactile guideline or boarding position connected to (natural) guideline in environment|
 
 #### Remarks `RampFreeAccess`
 
-* Note that `RampFreeAccess` may very well include ramps - provided their slopes are only moderate.
-* It seems obvious that `RampFreeAccess`should also include `StairFreeAccess` and `StepFreeAccess` - this isn't explicitely stated in EPIAP, however. 
-* `RampFreeAccess`is thus a stronger form of `WheelchairAccess` excluding steeper slopes.
+* Note that `RampFreeAccess` may very well include ramps - provided their slopes are only moderate or they have landing / rest areas.
+* `RampFreeAccess`is a stronger form of `WheelchairAccess` excluding steeper slopes.
 
 
 #### Limitiations of AccessibilityAssessment
 
 * If, e.g., `WheelchairAccess` or `StairFreeAccess` requires using a lift, the `AccessibilityAssessment` does not convey this information. 
 
-* According to EPIAP definitions, a quay with, e.g., `WheelchairAccess` means that there is at least one entrance from which it is reachable. It may be that `WheelchairAccess` only works from a secondary entrance, not from the main entrance. 
+* According to EPIAP definitions, a quay with, e.g., `WheelchairAccess` means that there is at least one entrance from which it is reachable. It may be that `WheelchairAccess` only works from a secondary entrance, not from the main entrance.
 
-Such information can be encoded using `PathLink`s and `PathJunction`s that describe a routing network including accessibility and location data.
+Such information can be encoded using `SitePathLink`s and `PathJunction`s that describe a routing network including accessibility and location data.
 
-
-### Modification Proposal
-
-The definitions from EPIAP are partly ambiguous and of limited usefulness. 
-
-#### Proposed changes to the current definition in italics: 
-**TODO** to be reviewed & discussed, requires EPIAP modification
-
-- `StepFreeAccess` - no stairs, no steps,  **_no escalator_**
-- `RampFreeAccess` =  `StepFreeAccess` withoutRamp - **_no stairs, no steps, no escalator_**, no ramp exceeding a moderate slope (more precisely: "that doesn't fit the UN Design Considerations" [https://www.un.org/esa/socdev/enable/designm/AD2-01.htm](https://www.un.org/esa/socdev/enable/designm/AD2-01.htm))
-- `LiftFreeAccess` = `StepFreeAccess` without lift  - **_no stairs, no steps, no escalator_**, no lift - possibly ramps
-- `WheelchairAccess` - includes `StepFreeAccess`
-- `EscalatorFreeAccess` - may have stairs, steps, lift, ramp, but no escalator
-
-In addtion to the above modifications / clarifications, we specify that 
-- all conditions of the AccessibiltyAssessment (StepFreeAccess etc.) have to be true for a complete path from a `StopPlaceEntrance` with `DroppedKerb=true` and `DropOffPointClose=true`. 
-
-**Then the `AccessibiltyAssessment` is able to express the following TSI/PRM requirements:**
-- **TODO**
-- ...
-
-
-#### Technical remarks:
-- The above (re)definition may be incompatible with a more local understanding of `AccessibilityAssessment`. A more local understanding might be an appropriate choice if a complete SitePathLink network exists. 
-- Pure  lift free access - no lift, for claustrophobia - must always be true in public spaces, there always has to be an alternative access means like stairs. Therefore the above definition of `LiftFreeAccess` which includes `StepFreeAccess` does not loose information for the claustophobics
-- As `EscalatorFreeAccess` should always be guaranteed in public spaces, it seems superflouous - remove?
-- One might consider adding `StepFreeAccessWithoutLiftWithoutRamp` - no stairs, no steps, no escalator, no lift, no ramp exceeding a moderate slope.
-
+#### Entrances related to AccessibilityAssessment
+* All `AccessibiltyLimitation`s (`StepFreeAccess` etc.) relate to a complete path from an "accessible" `StopPlaceEntrance` with `DroppedKerb=true` and `DropOffPointClose=true`. 
 
 
 
@@ -704,7 +679,7 @@ The element is used in `StopPlace` and `Quay`, for which slightly differing rule
   * `AccessFacilityList` (only for `Quay`)
   * `AssistanceFacilityList`
   * `TicketingFacilityList`
-  * `EmergencyFacilityList`
+  * `EmergencyServiceList`
   * `MedicalFacilityList`
 
 #### Problems to be solved **TODO**

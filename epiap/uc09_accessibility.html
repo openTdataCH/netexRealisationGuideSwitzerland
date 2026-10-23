@@ -340,7 +340,7 @@
       <td>1..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Summary indication as to whether the component is considered to be accessible or not.</td>
-      <td>Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace.</td>
+      <td>Accessibility. Overall assessment for mobility and sensory impaired users. Allowed values: <code class="language-plaintext highlighter-rouge">true, false, partial, unknown</code>. <code class="language-plaintext highlighter-rouge">partial</code> means that AccessibiltyAssessments have to exist at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StopPlace.</td>
     </tr>
     <tr>
       <td> </td>
@@ -349,7 +349,7 @@
       <td>0..1</td>
       <td>usageParameters_RelStructure</td>
       <td>The ACCESSIBILITY LIMITATION that apply to component.</td>
-      <td>Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed.</td>
+      <td>Accessibility. AccessibilityLimitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -358,7 +358,7 @@
       <td>0..*</td>
       <td>AccessibilityLimitation_VersionedChildStructure</td>
       <td>Assessment of the accessibility of a SITE.</td>
-      <td>Accessibility.</td>
+      <td>Accessibility. The kinds of access that are offered.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -367,7 +367,7 @@
       <td>1..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE is wheelchair accessible.</td>
-      <td>Accessibility. Allowed values: true, false, partial, unknown.</td>
+      <td>Accessibility. Allowed values: <code class="language-plaintext highlighter-rouge">true, false, partial, unknown</code>.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -376,7 +376,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has step free access.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: <code class="language-plaintext highlighter-rouge">true, false, partial, unknown</code>.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -385,7 +385,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has stair free access, in comparison with step free access one single step in the route is allowed. +v2.0</td>
-      <td>Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown.</td>
+      <td>Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: <code class="language-plaintext highlighter-rouge">true, false, partial, unknown</code>.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -394,7 +394,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has ramp free access. Ramp free isn’t necessary absolute. If a ramp is not steep, then a PLACE can still be considered ramp free.</td>
-      <td>Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown.</td>
+      <td>Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: <code class="language-plaintext highlighter-rouge">true, false, partial, unknown</code>.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -403,7 +403,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether the platform is high enough and gap is small enough for level access into vehicle. At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).</td>
-      <td>Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
+      <td>Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: <code class="language-plaintext highlighter-rouge">true, false, partial, unknown</code>.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -412,7 +412,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has audible signals for the visually impaired.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: <code class="language-plaintext highlighter-rouge">true, false, partial, unknown</code>.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -421,7 +421,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has visual signals for the hearing impaired.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: <code class="language-plaintext highlighter-rouge">true, false, partial, unknown</code>.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -430,7 +430,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE has tactile guidance.</td>
-      <td>Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
+      <td>Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: <code class="language-plaintext highlighter-rouge">true, false, partial, unknown</code>.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -439,7 +439,7 @@
       <td>0..1</td>
       <td>LimitationStatusEnumeration</td>
       <td>Whether a PLACE allows guide dog access.</td>
-      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: true, false, partial, unknown.</td>
+      <td>Accessibility. If absent the value <code class="language-plaintext highlighter-rouge">unknown</code> is assumed. Allowed values: <code class="language-plaintext highlighter-rouge">true, false, partial, unknown</code>.</td>
     </tr>
   </tbody>
 </table>
@@ -451,38 +451,38 @@
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
-    <span class="c">&lt;!-- Accessibility. Overall assessment for mobility and sensory impaired users. partial means that there must exist AccessibiltyAssessment at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StoPlace. --&gt;</span>
+    <span class="c">&lt;!-- Accessibility. Overall assessment for mobility and sensory impaired users. Allowed values: `true, false, partial, unknown`. `partial` means that AccessibiltyAssessments have to exist at lower levels like Quays or other elements. Some Quays may not be accessible if partial is used on the StopPlace. --&gt;</span>
   <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
   <span class="nt">&lt;limitations&gt;</span>
-    <span class="c">&lt;!-- Accessibility. Limitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. --&gt;</span>
+    <span class="c">&lt;!-- Accessibility. AccessibilityLimitations can be omitted if MobilityImpairedaccess is set to true and no additional information needs to be conveyed. --&gt;</span>
     <span class="nt">&lt;AccessibilityLimitation&gt;</span>
-      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+      <span class="c">&lt;!-- Accessibility. The kinds of access that are offered. --&gt;</span>
       <span class="nt">&lt;WheelchairAccess&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. Allowed values: true, false, partial, unknown. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. Allowed values: `true, false, partial, unknown`. --&gt;</span>
       <span class="nt">&lt;/WheelchairAccess&gt;</span>
       <span class="nt">&lt;StepFreeAccess&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. --&gt;</span>
       <span class="nt">&lt;/StepFreeAccess&gt;</span>
       <span class="nt">&lt;StairFreeAccess&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: true, false, partial, unknown. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. Not mandatory in EPIAP, but very useful for perambulators, assisted wheelchairs, bicycles, heavy luggage. Allowed values: `true, false, partial, unknown`. --&gt;</span>
       <span class="nt">&lt;/StairFreeAccess&gt;</span>
       <span class="nt">&lt;RampFreeAccess&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: true, false, partial, unknown. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. Reachable without steep ramps, stairs, or steps. Allowed values: `true, false, partial, unknown`. --&gt;</span>
       <span class="nt">&lt;/RampFreeAccess&gt;</span>
       <span class="nt">&lt;LevelAccessIntoVehicle&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. Whether the platform is high enough and gap is small enough for level access to vehicle. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. --&gt;</span>
       <span class="nt">&lt;/LevelAccessIntoVehicle&gt;</span>
       <span class="nt">&lt;AudibleSignalsAvailable&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. --&gt;</span>
       <span class="nt">&lt;/AudibleSignalsAvailable&gt;</span>
       <span class="nt">&lt;VisualSignsAvailable&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. --&gt;</span>
       <span class="nt">&lt;/VisualSignsAvailable&gt;</span>
       <span class="nt">&lt;TactileGuidanceAvailable&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. Whether the object has tactileGuidance (for the visually impaired). If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. --&gt;</span>
       <span class="nt">&lt;/TactileGuidanceAvailable&gt;</span>
       <span class="nt">&lt;GuideDogAccess&gt;</span>true
-        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: true, false, partial, unknown. --&gt;</span>
+        <span class="c">&lt;!-- Accessibility. If absent the value `unknown` is assumed. Allowed values: `true, false, partial, unknown`. --&gt;</span>
       <span class="nt">&lt;/GuideDogAccess&gt;</span>
     <span class="nt">&lt;/AccessibilityLimitation&gt;</span>
   <span class="nt">&lt;/limitations&gt;</span>
@@ -502,7 +502,9 @@
   <li><code class="language-plaintext highlighter-rouge">TactileGuidanceAvailable</code> <code class="language-plaintext highlighter-rouge">true</code></li>
 </ul>
 
-<p>Interpretation of <code class="language-plaintext highlighter-rouge">AccessibilityLimitation</code>:</p>
+<h4 id="interpretation-of-accessibilitylimitation">Interpretation of <code class="language-plaintext highlighter-rouge">AccessibilityLimitation</code>:</h4>
+
+<p>We apply a slightly stricter interpretation than the current version of EPIAP. The information that can be conveyed to the passengers thus becomes more useful and exporting the data to foreign systems is unproblematic. The additional constraints are [marked in brackets].</p>
 
 <table>
   <thead>
@@ -514,15 +516,15 @@
   <tbody>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">WheelchairAccess</code></td>
-      <td>1.    <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> from an accessible entrance (see next row).<br />2.    The stop/platform is sufficiently wide to make a turn with a wheelchair when entering/leaving the vehicles that usually stops at this stop/platform (depending on the available/needed tools for entering/leaving the vehicle).<br />3.    If boarding trains requires boarding assistance, onsite assistance is available.</td>
+      <td>1.    <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> [including <code class="language-plaintext highlighter-rouge">EscalatorFreeAccess</code>] from an accessible entrance (see next row).<br />2.    The stop / platform is sufficiently wide to make a turn with a wheelchair when entering / leaving the vehicles that usually stop at this stop / platform (depending on the available / needed tools for entering / leaving the vehicle).<br />3.    If boarding trains requires boarding assistance, onsite assistance is available.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">StepFreeAccess</code></td>
-      <td>1.    A step-free route is an obstacle-free/barrier free route that meets the needs of mobility impaired persons. Changes in level are avoided or, when they cannot be avoided, they are bridged via ramps or lifts (compliant with PRM TSI).<br />2.    The platform or Stop is accessible without steps from the surrounding area (footpaths).<br />A platform which has <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> without <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> (= <code class="language-plaintext highlighter-rouge">false</code>) may be not sufficiently wide to make a turn with a wheelchair.</td>
+      <td>1.    A step-free route is an obstacle-free / barrier free [and <code class="language-plaintext highlighter-rouge">EscalatorFreeAccess</code>] route that meets the needs of mobility impaired persons. Changes in level are avoided or, when they cannot be avoided, they are bridged via ramps or lifts (compliant with PRM TSI).<br />2.    The platform or stop is accessible without steps from the surrounding area (footpaths).<br /><br />A platform which has <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> without <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> (==<code class="language-plaintext highlighter-rouge">false</code>) may be not sufficiently wide to make a turn with a wheelchair.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">StairFreeAccess</code></td>
-      <td>A stair-free route. Single steps allowed.</td>
+      <td>A stair-free route. Single steps allowed, escalators allowed.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">LevelAccessIntoVehicle</code></td>
@@ -538,7 +540,7 @@
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">RampFreeAccess</code></td>
-      <td>Reachable without using a ramp that doesn’t fit the UN Design <a href="https://euc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=nl-nl&amp;rs=nl-nl&amp;wopisrc=https%3A%2F%2Fitxptorg.sharepoint.com%2Fsites%2FEU.DATA4PT.NETEX%2F_vti_bin%2Fwopi.ashx%2Ffiles%2Fc2c9167177c34bc1bb50e4880ff7b6ac&amp;wdenableroaming=1&amp;mscc=1&amp;hid=12869e13-00bf-76bc-9351-10ac590e57c1-730&amp;uiembed=1&amp;uih=teams&amp;uihit=files&amp;hhdr=1&amp;dchat=1&amp;sc=%7B%22pmo%22%3A%22https%3A%2F%2Fteams.microsoft.com%22%2C%22pmshare%22%3Atrue%2C%22surl%22%3A%22%22%2C%22curl%22%3A%22%22%2C%22vurl%22%3A%22%22%2C%22eurl%22%3A%22https%3A%2F%2Fteams.microsoft.com%2Ffiles%2Fapps%2Fcom.microsoft.teams.files%2Ffiles%2F2441637157%2Fopen%3Fagent%3Dpostmessage%26objectUrl%3Dhttps%253A%252F%252Fitxptorg.sharepoint.com%252Fsites%252FEU.DATA4PT.NETEX%252FShared%2520Documents%252FGeneral%252FCEN_Accessibility_Profile%252F20210326%2520PrTS%252016614-6.docx%26fileId%3Dc2c91671-77c3-4bc1-bb50-e4880ff7b6ac%26fileType%3Ddocx%26ctx%3Daggregate%26scenarioId%3D730%26locale%3Dnl-nl%26theme%3Ddefault%26version%3D21100501100%26setting%3Dring.id%3Ageneral%26setting%3DcreatedTime%3A1639152919292%22%7D&amp;wdorigin=TEAMS-ELECTRON.aggregatefiles.aggregate&amp;jsapi=1&amp;jsapiver=v1&amp;newsession=1&amp;corrid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&amp;usid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&amp;sftc=1&amp;sams=1&amp;accloop=1&amp;sdr=6&amp;scnd=1&amp;sat=1&amp;hbcv=1&amp;htv=1&amp;hodflp=1&amp;instantedit=1&amp;wopicomplete=1&amp;wdredirectionreason=Unified_SingleFlush&amp;rct=Medium&amp;ctp=LeastProtected#_ftn1">Considerations</a> (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m). <a href="https://euc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=nl-nl&amp;rs=nl-nl&amp;wopisrc=https%3A%2F%2Fitxptorg.sharepoint.com%2Fsites%2FEU.DATA4PT.NETEX%2F_vti_bin%2Fwopi.ashx%2Ffiles%2Fc2c9167177c34bc1bb50e4880ff7b6ac&amp;wdenableroaming=1&amp;mscc=1&amp;hid=12869e13-00bf-76bc-9351-10ac590e57c1-730&amp;uiembed=1&amp;uih=teams&amp;uihit=files&amp;hhdr=1&amp;dchat=1&amp;sc=%7B%22pmo%22%3A%22https%3A%2F%2Fteams.microsoft.com%22%2C%22pmshare%22%3Atrue%2C%22surl%22%3A%22%22%2C%22curl%22%3A%22%22%2C%22vurl%22%3A%22%22%2C%22eurl%22%3A%22https%3A%2F%2Fteams.microsoft.com%2Ffiles%2Fapps%2Fcom.microsoft.teams.files%2Ffiles%2F2441637157%2Fopen%3Fagent%3Dpostmessage%26objectUrl%3Dhttps%253A%252F%252Fitxptorg.sharepoint.com%252Fsites%252FEU.DATA4PT.NETEX%252FShared%2520Documents%252FGeneral%252FCEN_Accessibility_Profile%252F20210326%2520PrTS%252016614-6.docx%26fileId%3Dc2c91671-77c3-4bc1-bb50-e4880ff7b6ac%26fileType%3Ddocx%26ctx%3Daggregate%26scenarioId%3D730%26locale%3Dnl-nl%26theme%3Ddefault%26version%3D21100501100%26setting%3Dring.id%3Ageneral%26setting%3DcreatedTime%3A1639152919292%22%7D&amp;wdorigin=TEAMS-ELECTRON.aggregatefiles.aggregate&amp;jsapi=1&amp;jsapiver=v1&amp;newsession=1&amp;corrid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&amp;usid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&amp;sftc=1&amp;sams=1&amp;accloop=1&amp;sdr=6&amp;scnd=1&amp;sat=1&amp;hbcv=1&amp;htv=1&amp;hodflp=1&amp;instantedit=1&amp;wopicomplete=1&amp;wdredirectionreason=Unified_SingleFlush&amp;rct=Medium&amp;ctp=LeastProtected#_ftnref1">[1]</a> <a href="https://www.un.org/esa/socdev/enable/designm/AD2-01.htm">https://www.un.org/esa/socdev/enable/designm/AD2-01.htm</a></td>
+      <td>1.   Reachable without using a ramp that doesn’t fit the <a href="https://www.un.org/esa/socdev/enable/designm/AD2-01.htm">UN Design Considerations</a> (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m).<br />2.    [The route provides <code class="language-plaintext highlighter-rouge">WheelchairAccess</code>]. <strong>TODO</strong> OK? A lesser constraint would be <code class="language-plaintext highlighter-rouge">StepFreeAccess</code>, but the principal (or only?) use case seems to be unassisted wheelchairs.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">AudibleSignalsAvailable</code></td>
@@ -546,11 +548,11 @@
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">VisualSignsAvailable</code></td>
-      <td>PRM TSI: visual information as signposting, pictograms and dynamic information.</td>
+      <td>1.   PRM TSI: visual information as signposting, pictograms and dynamic information. <br />2.    [Largely language independent, also suited for passengers from foreign cultures.] <strong>TODO</strong> OK or wrong?</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">TactileGuidanceAvailable</code></td>
-      <td>Whether the object has tactile guidance (for the visually impaired). If absent assume <code class="language-plaintext highlighter-rouge">unknown</code>.<br />PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br />For bus- and tram stops:  <br />1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br />2.   Tactile guideline or boarding position connected to (natural) guideline in environment</td>
+      <td>Whether the object has tactile guidance (for the visually impaired).<br />PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br />For bus- and tram stops:  <br />1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br />2.   Tactile guideline or boarding position connected to (natural) guideline in environment</td>
     </tr>
   </tbody>
 </table>
@@ -558,9 +560,8 @@
 <h4 id="remarks-rampfreeaccess">Remarks <code class="language-plaintext highlighter-rouge">RampFreeAccess</code></h4>
 
 <ul>
-  <li>Note that <code class="language-plaintext highlighter-rouge">RampFreeAccess</code> may very well include ramps - provided their slopes are only moderate.</li>
-  <li>It seems obvious that <code class="language-plaintext highlighter-rouge">RampFreeAccess</code>should also include <code class="language-plaintext highlighter-rouge">StairFreeAccess</code> and <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> - this isn’t explicitely stated in EPIAP, however.</li>
-  <li><code class="language-plaintext highlighter-rouge">RampFreeAccess</code>is thus a stronger form of <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> excluding steeper slopes.</li>
+  <li>Note that <code class="language-plaintext highlighter-rouge">RampFreeAccess</code> may very well include ramps - provided their slopes are only moderate or they have landing / rest areas.</li>
+  <li><code class="language-plaintext highlighter-rouge">RampFreeAccess</code>is a stronger form of <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> excluding steeper slopes.</li>
 </ul>
 
 <h4 id="limitiations-of-accessibilityassessment">Limitiations of AccessibilityAssessment</h4>
@@ -574,40 +575,11 @@
   </li>
 </ul>
 
-<p>Such information can be encoded using <code class="language-plaintext highlighter-rouge">PathLink</code>s and <code class="language-plaintext highlighter-rouge">PathJunction</code>s that describe a routing network including accessibility and location data.</p>
+<p>Such information can be encoded using <code class="language-plaintext highlighter-rouge">SitePathLink</code>s and <code class="language-plaintext highlighter-rouge">PathJunction</code>s that describe a routing network including accessibility and location data.</p>
 
-<h3 id="modification-proposal">Modification Proposal</h3>
-
-<p>The definitions from EPIAP are partly ambiguous and of limited usefulness.</p>
-
-<h4 id="proposed-changes-to-the-current-definition-in-italics">Proposed changes to the current definition in italics:</h4>
-<p><strong>TODO</strong> to be reviewed &amp; discussed, requires EPIAP modification</p>
-
+<h4 id="entrances-related-to-accessibilityassessment">Entrances related to AccessibilityAssessment</h4>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">StepFreeAccess</code> - no stairs, no steps,  <strong><em>no escalator</em></strong></li>
-  <li><code class="language-plaintext highlighter-rouge">RampFreeAccess</code> =  <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> withoutRamp - <strong><em>no stairs, no steps, no escalator</em></strong>, no ramp exceeding a moderate slope (more precisely: “that doesn’t fit the UN Design Considerations” <a href="https://www.un.org/esa/socdev/enable/designm/AD2-01.htm">https://www.un.org/esa/socdev/enable/designm/AD2-01.htm</a>)</li>
-  <li><code class="language-plaintext highlighter-rouge">LiftFreeAccess</code> = <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> without lift  - <strong><em>no stairs, no steps, no escalator</em></strong>, no lift - possibly ramps</li>
-  <li><code class="language-plaintext highlighter-rouge">WheelchairAccess</code> - includes <code class="language-plaintext highlighter-rouge">StepFreeAccess</code></li>
-  <li><code class="language-plaintext highlighter-rouge">EscalatorFreeAccess</code> - may have stairs, steps, lift, ramp, but no escalator</li>
-</ul>
-
-<p>In addtion to the above modifications / clarifications, we specify that</p>
-<ul>
-  <li>all conditions of the AccessibiltyAssessment (StepFreeAccess etc.) have to be true for a complete path from a <code class="language-plaintext highlighter-rouge">StopPlaceEntrance</code> with <code class="language-plaintext highlighter-rouge">DroppedKerb=true</code> and <code class="language-plaintext highlighter-rouge">DropOffPointClose=true</code>.</li>
-</ul>
-
-<p><strong>Then the <code class="language-plaintext highlighter-rouge">AccessibiltyAssessment</code> is able to express the following TSI/PRM requirements:</strong></p>
-<ul>
-  <li><strong>TODO</strong></li>
-  <li>…</li>
-</ul>
-
-<h4 id="technical-remarks">Technical remarks:</h4>
-<ul>
-  <li>The above (re)definition may be incompatible with a more local understanding of <code class="language-plaintext highlighter-rouge">AccessibilityAssessment</code>. A more local understanding might be an appropriate choice if a complete SitePathLink network exists.</li>
-  <li>Pure  lift free access - no lift, for claustrophobia - must always be true in public spaces, there always has to be an alternative access means like stairs. Therefore the above definition of <code class="language-plaintext highlighter-rouge">LiftFreeAccess</code> which includes <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> does not loose information for the claustophobics</li>
-  <li>As <code class="language-plaintext highlighter-rouge">EscalatorFreeAccess</code> should always be guaranteed in public spaces, it seems superflouous - remove?</li>
-  <li>One might consider adding <code class="language-plaintext highlighter-rouge">StepFreeAccessWithoutLiftWithoutRamp</code> - no stairs, no steps, no escalator, no lift, no ramp exceeding a moderate slope.</li>
+  <li>All <code class="language-plaintext highlighter-rouge">AccessibiltyLimitation</code>s (<code class="language-plaintext highlighter-rouge">StepFreeAccess</code> etc.) relate to a complete path from an “accessible” <code class="language-plaintext highlighter-rouge">StopPlaceEntrance</code> with <code class="language-plaintext highlighter-rouge">DroppedKerb=true</code> and <code class="language-plaintext highlighter-rouge">DropOffPointClose=true</code>.</li>
 </ul>
 
 <h2 id="assistanceservice">AssistanceService</h2>
@@ -1526,7 +1498,7 @@ The booking / contact information can be found in the accompanying <code class="
       <li><code class="language-plaintext highlighter-rouge">AccessFacilityList</code> (only for <code class="language-plaintext highlighter-rouge">Quay</code>)</li>
       <li><code class="language-plaintext highlighter-rouge">AssistanceFacilityList</code></li>
       <li><code class="language-plaintext highlighter-rouge">TicketingFacilityList</code></li>
-      <li><code class="language-plaintext highlighter-rouge">EmergencyFacilityList</code></li>
+      <li><code class="language-plaintext highlighter-rouge">EmergencyServiceList</code></li>
       <li><code class="language-plaintext highlighter-rouge">MedicalFacilityList</code></li>
     </ul>
   </li>
