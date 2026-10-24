@@ -26,4 +26,13 @@
             </assert>
         </rule>
     </pattern>
+
+    <!-- Rule (d): The order attribute is not allowed on any element -->
+    <pattern id="no_order_attribute">
+        <rule context="*[@order]">
+            <assert test="false()">
+                The order attribute is not allowed (element: <value-of select="name()"/>) 
+            </assert>
+        </rule>
+    </pattern>
 </schema>
