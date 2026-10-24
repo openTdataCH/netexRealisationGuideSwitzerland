@@ -10,6 +10,7 @@ In this chapter:
 - [Quay](#quay)
 - [TopographicPlace](#topographicplace)
 - [Centroid](#centroid)
+- [AccessibilityAssessment](#accessibilityassessment)
 
 ## SiteFrame
 *→ [Glossary definition](A4_annex_glossary.md#siteframe)*
@@ -215,3 +216,68 @@ It provides precise geographic coordinates (WGS84) of a central reference point 
 - The Swiss coordinates are added as well, when available (for Swiss stops). The format is LV95. For imports they are not needed, however.
 - INFO+ will not use the master data from NeTEx imports, it will rely on the Atlas master data for all Swiss coordinates. INFO+ will, however, use the imported location data of foreign places without DIDOK numbers. 
 - no `@id`
+
+
+
+## AccessibilityAssessment
+*→ [Glossary definition](A4_annex_glossary.md#accessibilityassessment)* 
+
+### Purpose
+
+An assessment of the usability by passengers with specific needs, for example, those needing wheelchair access, step-free access or for the visually or the auditorily impaired.
+
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/AccessibilityAssessment.md)
+
+*→ [General NeTEx definition ](../xcore/netex/elements/AccessibilityAssessment.html)*
+
+### Example
+- [Example snippet](../site/xml-snippets/AccessibilityAssessment.xml)
+
+*→ [Template](./templates/AccessibilityAssessment.xml)*
+
+
+### Usage Notes
+
+In case of `StopPlace` or `Quay`, EPIAP uses the following interpretation: 
+`MobilityImpairedAccess` set to `true` means:
+* `WheelchairAccess` `true`
+* `StepFreeAccess` `true`
+* `VisualSignsAvailable` `true` (only for railway stations)
+* `TactileGuidanceAvailable` `true`
+
+#### Interpretation of `AccessibilityLimitation`:
+
+We apply a slightly stricter interpretation than the current version of EPIAP. The information that can be conveyed to the passengers thus becomes more useful and exporting the data to foreign systems is unproblematic. The additional constraints are [marked in brackets].
+
+|   |   |
+|---|---|
+|`WheelchairAccess`|1.    `StepFreeAccess` [including `EscalatorFreeAccess`] from an accessible entrance (see next row).<br>2.    The stop / platform is sufficiently wide to make a turn with a wheelchair when entering / leaving the vehicles that usually stop at this stop / platform (depending on the available / needed tools for entering / leaving the vehicle).<br>3.    If boarding trains requires boarding assistance, onsite assistance is available.|
+|`StepFreeAccess`|1.    A step-free route is an obstacle-free / barrier free [and `EscalatorFreeAccess`] route that meets the needs of mobility impaired persons. Changes in level are avoided or, when they cannot be avoided, they are bridged via ramps or lifts (compliant with PRM TSI).<br>2.    The platform or stop is accessible without steps from the surrounding area (footpaths).<br><br>A platform which has `StepFreeAccess` without `WheelchairAccess` (==`false`) may be not sufficiently wide to make a turn with a wheelchair.|
+|`StairFreeAccess`|A stair-free route. Single steps allowed, escalators allowed.|
+|`LevelAccessIntoVehicle`|Whether the platform is high enough and gap is small enough for level access into vehicle.<br><br>At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).|
+|`EscalatorFreeAccess` (not included in profile)|Reachable without using an escalator.|
+|`LiftFreeAccess` (not included in profile)|Reachable without using an elevator.|
+|`RampFreeAccess`|1.   Reachable without using a ramp that doesn't fit the [UN Design Considerations](https://www.un.org/esa/socdev/enable/designm/AD2-01.htm) (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m).<br>2.    [The route provides `WheelchairAccess`]. **TODO** OK? A lesser constraint would be `StepFreeAccess`, but the principal (or only?) use case seems to be unassisted wheelchairs.
+|`AudibleSignalsAvailable`|Whether audible signals for the visually impaired are present.|
+|`VisualSignsAvailable`|1.   PRM TSI: visual information as signposting, pictograms and dynamic information. <br>2.    [Largely language independent, also suited for passengers from foreign cultures.] **TODO** OK or wrong?|
+|`TactileGuidanceAvailable`|Whether the object has tactile guidance (for the visually impaired).<br>PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br>For bus- and tram stops:  <br>1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br>2.   Tactile guideline or boarding position connected to a (natural) guideline in the environment|
+
+#### Remarks `RampFreeAccess`
+
+* Note that `RampFreeAccess` may very well include ramps - provided their slopes are only moderate or they have landing / rest areas.
+* `RampFreeAccess`is a stronger form of `WheelchairAccess` excluding steeper slopes.
+
+
+#### Limitations of AccessibilityAssessment
+
+* If, e.g., `WheelchairAccess` or `StairFreeAccess` requires using a lift, the `AccessibilityAssessment` does not convey this information.
+* According to EPIAP definitions, a quay with, e.g., `WheelchairAccess` means that there is at least one entrance from which it is reachable. It may be that `WheelchairAccess` only works from a secondary entrance, not from the main entrance.
+
+Such information can be encoded using `SitePathLink`s and `PathJunction`s that describe a routing network including accessibility and location data.
+
+#### Entrances related to AccessibilityAssessment
+* All `AccessibiltyLimitation`s (`StepFreeAccess` etc.) relate to a complete path from an "accessible" `StopPlaceEntrance` with `DroppedKerb=true` and `DropOffPointClose=true`. 
+
+
