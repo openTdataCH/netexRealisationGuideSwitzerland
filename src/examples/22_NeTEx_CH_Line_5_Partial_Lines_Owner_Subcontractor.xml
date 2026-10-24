@@ -1,0 +1,1041 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NeTEx Example: line 5 Solothurn - Herzogenbuchsee with two partial lines. Owner BSU operates partial line 1 itself, partial line 2 is operated by ASM on behalf of BSU. -->
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-10-24T12:00:00</PublicationTimestamp>
+	<ParticipantRef>BSU</ParticipantRef>
+	<Description lang="de">NeTEx Beispiel: Linie 5 mit Teillinien, Konzessionärin BSU, Teillinie 2 durch Subunternehmerin ASM</Description>
+	<!--
+	  Sources (Fahrplan 2026):
+	  - Atlas line export full-line-2026-10-07: ch:1:slnid:1026359, r.40.005, businessOrganisation ch:1:sboid:100682 (BSU),
+	    comment "Ausführende TU: BSU: ch:1:slnid:1026359:1 ASM: ch:1:slnid:1026359:2". Line, partial lines and organisations are real.
+	  - HRDF 5.40.41 (INFO+, 20.10.2026): FPLAN *Z 5032 and *Z 5040, line 5, Verwaltung 000883 (BSU). Stops, times,
+	    sjyid and operating days are taken from HRDF.
+	  NOT in the source data: which journeys belong to partial line 2. In HRDF all journeys of line 5 run under
+	  Verwaltung BSU without *I OP. The assignment of *Z 5040 to partial line 2 (ASM) is ILLUSTRATIVE.
+	-->
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame:1026359" version="1">
+			<ValidBetween>
+				<!-- Fahrplan 2026, ECKDATEN 14.12.2025 - 12.12.2026 -->
+				<FromDate>2025-12-14T00:00:00</FromDate>
+				<ToDate>2026-12-12T23:59:59</ToDate>
+			</ValidBetween>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame:1026359" version="1">
+					<responsibilitySets>
+						<!-- BSU holds the concession and operates partial line 1 itself -->
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:BSU-BSU" version="1">
+							<Name lang="de">Konzessionärin BSU, Betrieb BSU</Name>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BSU-BSU:1" version="1">
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100682" version="1"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BSU-BSU:2" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100682" version="1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+						<!-- BSU holds the concession, ASM operates partial line 2 on behalf of BSU -->
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:BSU-ASM" version="1">
+							<Name lang="de">Konzessionärin BSU, Betrieb ASM</Name>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BSU-ASM:1" version="1">
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100682" version="1"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BSU-ASM:2" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100020" version="1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+							<Name>ProductCategories</Name>
+							<values>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:B" version="1">
+									<Name lang="de">Bus</Name>
+									<ShortName lang="de">B</ShortName>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<!-- HRDF BETRIEB_DE 00148, Verwaltung 000883 -->
+						<Operator id="ch:1:sboid:100682" version="1">
+							<privateCodes>
+								<PrivateCode type="sboid">ch:1:sboid:100682</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Busbetrieb Solothurn und Umgebung</Name>
+							<ShortName lang="de">BSU</ShortName>
+						</Operator>
+						<!-- HRDF BETRIEB_DE 00002 "Aare Seeland mobil (bti)", the TU entry carrying this sboid -->
+						<Operator id="ch:1:sboid:100020" version="1">
+							<privateCodes>
+								<PrivateCode type="sboid">ch:1:sboid:100020</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Aare Seeland mobil</Name>
+							<ShortName lang="de">ASM</ShortName>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:1026359" version="1">
+					<validityConditions>
+						<!-- HRDF BITFELD 672538, without the 2 leading fill bits: one bit per day from 14.12.2025, 275 operating days -->
+						<AvailabilityCondition id="ch:1:AvailabilityCondition:672538" version="1">
+							<FromDate>2025-12-14T00:00:00</FromDate>
+							<ToDate>2026-12-12T23:59:59</ToDate>
+							<ValidDayBits>0111111011100101110010111111011111101111110111111011111101111110111111011111100000000000000000000000000010111101001111101111110111111011111001111110111011011111100111110111111011111101111110110111011000101111110111111011111101111100111111011111101111110111111011111101111110111111011111101111110111111011111101111110111111011111101111110111111011111101111110111111</ValidDayBits>
+						</AvailabilityCondition>
+					</validityConditions>
+				</ServiceCalendarFrame>
+
+				<ServiceFrame id="ch:1:ServiceFrame:1026359" version="1">
+					<lines>
+						<!-- Hauptlinie (Atlas). No ServiceJourneyPattern or ServiceJourney is attached to it. OperatorRef is the owner BSU, ASM is in additionalOperators. -->
+						<Line id="ch:1:slnid:1026359" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BSU-BSU">
+							<ValidBetween>
+								<FromDate>2025-12-14T00:00:00</FromDate>
+								<ToDate>2026-12-12T23:59:59</ToDate>
+							</ValidBetween>
+							<privateCodes>
+								<PrivateCode type="slnid">ch:1:slnid:1026359</PrivateCode>
+							</privateCodes>
+							<Name>Solothurn - Horriwil - Aeschi SO - Niederönz - Herzogenbuchsee</Name>
+							<ShortName>5</ShortName>
+							<TransportMode>bus</TransportMode>
+							<PublicCode>5</PublicCode>
+							<OperatorRef ref="ch:1:sboid:100682" version="1"/>
+							<additionalOperators>
+								<OperatorRef ref="ch:1:sboid:100020" version="1"/>
+							</additionalOperators>
+							<LineType>fixed</LineType>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+						</Line>
+						<!-- Teillinie 1 (Atlas comment): operated by the owner BSU itself. -->
+						<Line id="ch:1:slnid:1026359:1" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BSU-BSU">
+							<ValidBetween>
+								<FromDate>2025-12-14T00:00:00</FromDate>
+								<ToDate>2026-12-12T23:59:59</ToDate>
+							</ValidBetween>
+							<privateCodes>
+								<PrivateCode type="slnid">ch:1:slnid:1026359:1</PrivateCode>
+							</privateCodes>
+							<Name>Solothurn - Horriwil - Aeschi SO - Niederönz - Herzogenbuchsee</Name>
+							<ShortName>5</ShortName>
+							<TransportMode>bus</TransportMode>
+							<PublicCode>5</PublicCode>
+							<OperatorRef ref="ch:1:sboid:100682" version="1"/>
+							<LineType>fixed</LineType>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+						</Line>
+						<!-- Teillinie 2 (Atlas comment): owner stays BSU (Line/OperatorRef, as in the Line template), the operator ASM is given by the ResponsibilitySet, additionalOperators and ServiceJourney/OperatorRef. -->
+						<Line id="ch:1:slnid:1026359:2" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BSU-ASM">
+							<ValidBetween>
+								<FromDate>2025-12-14T00:00:00</FromDate>
+								<ToDate>2026-12-12T23:59:59</ToDate>
+							</ValidBetween>
+							<privateCodes>
+								<PrivateCode type="slnid">ch:1:slnid:1026359:2</PrivateCode>
+							</privateCodes>
+							<Name>Solothurn - Horriwil - Aeschi SO - Niederönz - Herzogenbuchsee</Name>
+							<ShortName>5</ShortName>
+							<TransportMode>bus</TransportMode>
+							<PublicCode>5</PublicCode>
+							<OperatorRef ref="ch:1:sboid:100682" version="1"/>
+							<additionalOperators>
+								<OperatorRef ref="ch:1:sboid:100020" version="1"/>
+							</additionalOperators>
+							<LineType>fixed</LineType>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+						</Line>
+					</lines>
+					<groupsOfLines>
+						<GroupOfLines id="ch:1:GroupOfLines:1026359" version="1">
+							<members>
+								<LineRef ref="ch:1:slnid:1026359" version="1"/>
+								<LineRef ref="ch:1:slnid:1026359:1" version="1"/>
+								<LineRef ref="ch:1:slnid:1026359:2" version="1"/>
+							</members>
+							<MainLineRef ref="ch:1:slnid:1026359" version="1"/>
+							<GroupOfLinesType>administrative</GroupOfLinesType>
+						</GroupOfLines>
+					</groupsOfLines>
+					<scheduledStopPoints>
+						<ScheduledStopPoint id="ch:1:sloid:78107" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78107</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Solothurn, Brühl</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78108" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78108</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Solothurn, Brunngraben</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78109" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78109</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Solothurn, Ulmenweg</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:990" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:990</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Solothurn, Wildbachstrasse</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78110" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78110</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Solothurn, Allmend</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78111" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78111</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Solothurn, Gibelinstrasse</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:72374" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:72374</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Solothurn, Grenchenstrasse</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:89956" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:89956</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Solothurn, Zentralbibliothek</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:494" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:494</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Solothurn, Amthausplatz</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78064" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78064</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Solothurn, Postplatz</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78065" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78065</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Solothurn, Vorstadt</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:72373" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:72373</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Solothurn, Hauptbahnhof</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:467" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:467</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Zuchwil, Kornfeld</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:468" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:468</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Zuchwil, Langfeld</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78067" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78067</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Derendingen, Kreuzplatz</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78112" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78112</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Derendingen, Ritterplatz</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:89920" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:89920</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Derendingen, Löhr</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78113" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78113</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Derendingen, Freiheit</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78114" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78114</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Subingen, Dorf</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78115" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78115</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Subingen, Bahnhof</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:89532" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:89532</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Subingen, Schulzentrum</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:488" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:488</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Horriwil, Post</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78117" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78117</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Horriwil, Oberdorf</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:478" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:478</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Hüniken</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78119" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78119</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Etziken, Dorf</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:477" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:477</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Bolken, Dorf</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:95921" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:95921</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Aeschi SO, Bolkenstrasse</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:476" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:476</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Aeschi SO, Dorf</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:89951" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:89951</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Aeschi SO, Ost</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78124" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78124</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Niederönz, Eggen</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:479" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:479</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Niederönz, Gemeindehaus</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:78125" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:78125</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Niederönz, Schürchhaus</Name>
+						</ScheduledStopPoint>
+						<ScheduledStopPoint id="ch:1:sloid:76917" version="1">
+							<privateCodes>
+								<PrivateCode type="sloid">ch:1:sloid:76917</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Herzogenbuchsee, Bahnhof</Name>
+						</ScheduledStopPoint>
+					</scheduledStopPoints>
+					<timingLinks>
+						<TimingLink id="ch:1:TimingLink:78107-78108" version="1">
+							<FromPointRef ref="ch:1:sloid:78107" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78108" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78108-78109" version="1">
+							<FromPointRef ref="ch:1:sloid:78108" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78109" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78109-990" version="1">
+							<FromPointRef ref="ch:1:sloid:78109" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:990" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:990-78110" version="1">
+							<FromPointRef ref="ch:1:sloid:990" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78110" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78110-78111" version="1">
+							<FromPointRef ref="ch:1:sloid:78110" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78111" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78111-72374" version="1">
+							<FromPointRef ref="ch:1:sloid:78111" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:72374" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:72374-89956" version="1">
+							<FromPointRef ref="ch:1:sloid:72374" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:89956" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:89956-494" version="1">
+							<FromPointRef ref="ch:1:sloid:89956" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:494" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:494-78064" version="1">
+							<FromPointRef ref="ch:1:sloid:494" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78064" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78064-78065" version="1">
+							<FromPointRef ref="ch:1:sloid:78064" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78065" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78065-72373" version="1">
+							<FromPointRef ref="ch:1:sloid:78065" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:72373" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:72373-467" version="1">
+							<FromPointRef ref="ch:1:sloid:72373" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:467" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:467-468" version="1">
+							<FromPointRef ref="ch:1:sloid:467" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:468" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:468-78067" version="1">
+							<FromPointRef ref="ch:1:sloid:468" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78067" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78067-78112" version="1">
+							<FromPointRef ref="ch:1:sloid:78067" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78112" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78112-89920" version="1">
+							<FromPointRef ref="ch:1:sloid:78112" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:89920" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:89920-78113" version="1">
+							<FromPointRef ref="ch:1:sloid:89920" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78113" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78113-78114" version="1">
+							<FromPointRef ref="ch:1:sloid:78113" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78114" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78114-78115" version="1">
+							<FromPointRef ref="ch:1:sloid:78114" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78115" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78115-89532" version="1">
+							<FromPointRef ref="ch:1:sloid:78115" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:89532" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:89532-488" version="1">
+							<FromPointRef ref="ch:1:sloid:89532" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:488" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:488-78117" version="1">
+							<FromPointRef ref="ch:1:sloid:488" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78117" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78117-478" version="1">
+							<FromPointRef ref="ch:1:sloid:78117" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:478" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:478-78119" version="1">
+							<FromPointRef ref="ch:1:sloid:478" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78119" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78119-477" version="1">
+							<FromPointRef ref="ch:1:sloid:78119" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:477" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:477-95921" version="1">
+							<FromPointRef ref="ch:1:sloid:477" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:95921" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:95921-476" version="1">
+							<FromPointRef ref="ch:1:sloid:95921" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:476" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:476-89951" version="1">
+							<FromPointRef ref="ch:1:sloid:476" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:89951" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:89951-78124" version="1">
+							<FromPointRef ref="ch:1:sloid:89951" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78124" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78124-479" version="1">
+							<FromPointRef ref="ch:1:sloid:78124" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:479" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:479-78125" version="1">
+							<FromPointRef ref="ch:1:sloid:479" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:78125" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+						<TimingLink id="ch:1:TimingLink:78125-76917" version="1">
+							<FromPointRef ref="ch:1:sloid:78125" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="ch:1:sloid:76917" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
+					</timingLinks>
+					<journeyPatterns>
+						<!-- One pattern per partial line with identical stops: ServiceJourney/LineRef is forbidden, so the pattern is the only link between a journey and its partial line. -->
+						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1" version="1">
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1026359:1" version="1"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:1" version="1" order="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:78107" version="1"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:2" version="1" order="2">
+									<ScheduledStopPointRef ref="ch:1:sloid:78108" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:3" version="1" order="3">
+									<ScheduledStopPointRef ref="ch:1:sloid:78109" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:4" version="1" order="4">
+									<ScheduledStopPointRef ref="ch:1:sloid:990" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:5" version="1" order="5">
+									<ScheduledStopPointRef ref="ch:1:sloid:78110" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:6" version="1" order="6">
+									<ScheduledStopPointRef ref="ch:1:sloid:78111" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:7" version="1" order="7">
+									<ScheduledStopPointRef ref="ch:1:sloid:72374" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:8" version="1" order="8">
+									<ScheduledStopPointRef ref="ch:1:sloid:89956" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:9" version="1" order="9">
+									<ScheduledStopPointRef ref="ch:1:sloid:494" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:10" version="1" order="10">
+									<ScheduledStopPointRef ref="ch:1:sloid:78064" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:11" version="1" order="11">
+									<ScheduledStopPointRef ref="ch:1:sloid:78065" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:12" version="1" order="12">
+									<ScheduledStopPointRef ref="ch:1:sloid:72373" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:13" version="1" order="13">
+									<ScheduledStopPointRef ref="ch:1:sloid:467" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:14" version="1" order="14">
+									<ScheduledStopPointRef ref="ch:1:sloid:468" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:15" version="1" order="15">
+									<ScheduledStopPointRef ref="ch:1:sloid:78067" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:16" version="1" order="16">
+									<ScheduledStopPointRef ref="ch:1:sloid:78112" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:17" version="1" order="17">
+									<ScheduledStopPointRef ref="ch:1:sloid:89920" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:18" version="1" order="18">
+									<ScheduledStopPointRef ref="ch:1:sloid:78113" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:19" version="1" order="19">
+									<ScheduledStopPointRef ref="ch:1:sloid:78114" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:20" version="1" order="20">
+									<ScheduledStopPointRef ref="ch:1:sloid:78115" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:21" version="1" order="21">
+									<ScheduledStopPointRef ref="ch:1:sloid:89532" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:22" version="1" order="22">
+									<ScheduledStopPointRef ref="ch:1:sloid:488" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:23" version="1" order="23">
+									<ScheduledStopPointRef ref="ch:1:sloid:78117" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:24" version="1" order="24">
+									<ScheduledStopPointRef ref="ch:1:sloid:478" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:25" version="1" order="25">
+									<ScheduledStopPointRef ref="ch:1:sloid:78119" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:26" version="1" order="26">
+									<ScheduledStopPointRef ref="ch:1:sloid:477" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:27" version="1" order="27">
+									<ScheduledStopPointRef ref="ch:1:sloid:95921" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:28" version="1" order="28">
+									<ScheduledStopPointRef ref="ch:1:sloid:476" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:29" version="1" order="29">
+									<ScheduledStopPointRef ref="ch:1:sloid:89951" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:30" version="1" order="30">
+									<ScheduledStopPointRef ref="ch:1:sloid:78124" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:31" version="1" order="31">
+									<ScheduledStopPointRef ref="ch:1:sloid:479" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:32" version="1" order="32">
+									<ScheduledStopPointRef ref="ch:1:sloid:78125" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-1:33" version="1" order="33">
+									<ScheduledStopPointRef ref="ch:1:sloid:76917" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+							<ServiceJourneyPatternType>passenger</ServiceJourneyPatternType>
+						</ServiceJourneyPattern>
+						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2" version="1">
+							<RouteView>
+								<LineRef ref="ch:1:slnid:1026359:2" version="1"/>
+							</RouteView>
+							<DirectionType>outbound</DirectionType>
+							<pointsInSequence>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:1" version="1" order="1">
+									<ScheduledStopPointRef ref="ch:1:sloid:78107" version="1"/>
+									<ForAlighting>false</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:2" version="1" order="2">
+									<ScheduledStopPointRef ref="ch:1:sloid:78108" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:3" version="1" order="3">
+									<ScheduledStopPointRef ref="ch:1:sloid:78109" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:4" version="1" order="4">
+									<ScheduledStopPointRef ref="ch:1:sloid:990" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:5" version="1" order="5">
+									<ScheduledStopPointRef ref="ch:1:sloid:78110" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:6" version="1" order="6">
+									<ScheduledStopPointRef ref="ch:1:sloid:78111" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:7" version="1" order="7">
+									<ScheduledStopPointRef ref="ch:1:sloid:72374" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:8" version="1" order="8">
+									<ScheduledStopPointRef ref="ch:1:sloid:89956" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:9" version="1" order="9">
+									<ScheduledStopPointRef ref="ch:1:sloid:494" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:10" version="1" order="10">
+									<ScheduledStopPointRef ref="ch:1:sloid:78064" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:11" version="1" order="11">
+									<ScheduledStopPointRef ref="ch:1:sloid:78065" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:12" version="1" order="12">
+									<ScheduledStopPointRef ref="ch:1:sloid:72373" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:13" version="1" order="13">
+									<ScheduledStopPointRef ref="ch:1:sloid:467" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:14" version="1" order="14">
+									<ScheduledStopPointRef ref="ch:1:sloid:468" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:15" version="1" order="15">
+									<ScheduledStopPointRef ref="ch:1:sloid:78067" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:16" version="1" order="16">
+									<ScheduledStopPointRef ref="ch:1:sloid:78112" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:17" version="1" order="17">
+									<ScheduledStopPointRef ref="ch:1:sloid:89920" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:18" version="1" order="18">
+									<ScheduledStopPointRef ref="ch:1:sloid:78113" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:19" version="1" order="19">
+									<ScheduledStopPointRef ref="ch:1:sloid:78114" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:20" version="1" order="20">
+									<ScheduledStopPointRef ref="ch:1:sloid:78115" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:21" version="1" order="21">
+									<ScheduledStopPointRef ref="ch:1:sloid:89532" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:22" version="1" order="22">
+									<ScheduledStopPointRef ref="ch:1:sloid:488" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:23" version="1" order="23">
+									<ScheduledStopPointRef ref="ch:1:sloid:78117" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:24" version="1" order="24">
+									<ScheduledStopPointRef ref="ch:1:sloid:478" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:25" version="1" order="25">
+									<ScheduledStopPointRef ref="ch:1:sloid:78119" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:26" version="1" order="26">
+									<ScheduledStopPointRef ref="ch:1:sloid:477" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:27" version="1" order="27">
+									<ScheduledStopPointRef ref="ch:1:sloid:95921" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:28" version="1" order="28">
+									<ScheduledStopPointRef ref="ch:1:sloid:476" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:29" version="1" order="29">
+									<ScheduledStopPointRef ref="ch:1:sloid:89951" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:30" version="1" order="30">
+									<ScheduledStopPointRef ref="ch:1:sloid:78124" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:31" version="1" order="31">
+									<ScheduledStopPointRef ref="ch:1:sloid:479" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:32" version="1" order="32">
+									<ScheduledStopPointRef ref="ch:1:sloid:78125" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:1026359-2:33" version="1" order="33">
+									<ScheduledStopPointRef ref="ch:1:sloid:76917" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>false</ForBoarding>
+								</StopPointInJourneyPattern>
+							</pointsInSequence>
+							<ServiceJourneyPatternType>passenger</ServiceJourneyPatternType>
+						</ServiceJourneyPattern>
+					</journeyPatterns>
+					<timeDemandTypes>
+						<TimeDemandType id="ch:1:TimeDemandType:1026359" version="1">
+							<Name>Solothurn, Brühl - Herzogenbuchsee, Bahnhof</Name>
+							<runTimes>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:1" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78107-78108" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:2" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78108-78109" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:3" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78109-990" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:4" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:990-78110" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:5" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78110-78111" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:6" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78111-72374" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:7" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:72374-89956" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:8" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:89956-494" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:9" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:494-78064" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:10" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78064-78065" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:11" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78065-72373" version="1"/>
+									<RunTime>PT3M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:12" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:72373-467" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:13" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:467-468" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:14" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:468-78067" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:15" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78067-78112" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:16" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78112-89920" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:17" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:89920-78113" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:18" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78113-78114" version="1"/>
+									<RunTime>PT3M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:19" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78114-78115" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:20" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78115-89532" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:21" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:89532-488" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:22" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:488-78117" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:23" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78117-478" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:24" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:478-78119" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:25" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78119-477" version="1"/>
+									<RunTime>PT3M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:26" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:477-95921" version="1"/>
+									<RunTime>PT2M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:27" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:95921-476" version="1"/>
+									<RunTime>PT3M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:28" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:476-89951" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:29" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:89951-78124" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:30" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78124-479" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:31" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:479-78125" version="1"/>
+									<RunTime>PT1M</RunTime>
+								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:1026359:32" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:78125-76917" version="1"/>
+									<RunTime>PT3M</RunTime>
+								</JourneyRunTime>
+							</runTimes>
+						</TimeDemandType>
+					</timeDemandTypes>
+				</ServiceFrame>
+
+				<TimetableFrame id="ch:1:TimetableFrame:1026359" version="1">
+					<vehicleJourneys>
+						<!-- HRDF *Z 5032: journey of partial line 1, operated by BSU -->
+						<ServiceJourney id="ch:1:sjyid:100682:SKI-5032" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BSU-BSU">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:672538" version="1"/>
+							</validityConditions>
+							<privateCodes>
+								<PrivateCode type="sjyid">ch:1:sjyid:100682:SKI-5032</PrivateCode>
+							</privateCodes>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>09:31:00</DepartureTime>
+							<ServiceJourneyPatternRef ref="ch:1:ServiceJourneyPattern:1026359-1" version="1"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:1026359" version="1"/>
+							<!-- OperatorRef is the organisation that actually operates the journey -->
+							<OperatorRef ref="ch:1:sboid:100682" version="1"/>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:5032" version="1"/>
+							</trainNumbers>
+							<!-- No Destination: *R carries no direction text. How to derive it from an empty *R is still open (decision of 2026-07-01). -->
+						</ServiceJourney>
+						<!-- HRDF *Z 5040: shown as journey of partial line 2, operated by ASM. ILLUSTRATIVE: HRDF does not show which journeys ASM operates. -->
+						<ServiceJourney id="ch:1:sjyid:100682:SKI-5040" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:BSU-ASM">
+							<validityConditions>
+								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:672538" version="1"/>
+							</validityConditions>
+							<privateCodes>
+								<PrivateCode type="sjyid">ch:1:sjyid:100682:SKI-5040</PrivateCode>
+							</privateCodes>
+							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
+							<ServiceAlteration>planned</ServiceAlteration>
+							<DepartureTime>10:31:00</DepartureTime>
+							<ServiceJourneyPatternRef ref="ch:1:ServiceJourneyPattern:1026359-2" version="1"/>
+							<TimeDemandTypeRef ref="ch:1:TimeDemandType:1026359" version="1"/>
+							<!-- OperatorRef is the organisation that actually operates the journey -->
+							<OperatorRef ref="ch:1:sboid:100020" version="1"/>
+							<trainNumbers>
+								<TrainNumberRef ref="ch:1:TrainNumber:5040" version="1"/>
+							</trainNumbers>
+							<!-- No Destination: *R carries no direction text. How to derive it from an empty *R is still open (decision of 2026-07-01). -->
+						</ServiceJourney>
+					</vehicleJourneys>
+					<trainNumbers>
+						<TrainNumber id="ch:1:TrainNumber:5032" version="1">
+							<ForAdvertisement>5032</ForAdvertisement>
+						</TrainNumber>
+						<TrainNumber id="ch:1:TrainNumber:5040" version="1">
+							<ForAdvertisement>5040</ForAdvertisement>
+						</TrainNumber>
+					</trainNumbers>
+				</TimetableFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
