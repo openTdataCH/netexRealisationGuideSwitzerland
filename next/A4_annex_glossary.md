@@ -9,6 +9,16 @@ Note that not all elements are used in the profile. Where the element exists and
 
 ---
 
+## AccessibilityAssessment
+
+An assessment of the accessibility of a StopPlace, Quay, Vehicle or other elements for  passengers with specific needs, in particular for those needing wheelchair access or step-free access and for the visually or the auditorily impaired.
+
+> **NeTEx XSD / Transmodel:** Assessment for accessibility purposes of limitations of environment and/or SUITABILITies for one or more USER NEEDs of a component.
+
+→ [Full documentation](05_stops.md#accessibilityassessment)
+
+---
+
 ## AlternativeName
 
 Additional name variant for a NeTEx object - such as an official registration, translation, or abbreviation.
