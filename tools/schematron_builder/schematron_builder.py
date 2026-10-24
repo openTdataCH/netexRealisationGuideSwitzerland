@@ -449,6 +449,34 @@ class SchematronBuilder:
                 message = f'Attribute "{attr_name}" must be present on {element_name}'
                 self.add_assert_or_report(context_xpath, test, message, kind='assert', note_text=note_text)
 
+    def include_schematron_file(self, file_path):
+        """
+        Include rules from an external schematron file.
+        Parses the file and adds all pattern elements to this schema.
+        Returns True if successful, False if file not found or parse error.
+        """
+        if not os.path.isfile(file_path):
+            return False
+        
+        try:
+            # Parse the external schematron file
+            doc = ET.parse(file_path)
+            root = doc.getroot()
+            
+            # Import all pattern elements from the external file
+            for pattern in root.findall('.//{' + SCHEMATRON_NS + '}pattern'):
+                # Deep copy the pattern and its children
+                imported_pattern = ET.fromstring(ET.tostring(pattern, encoding='unicode'))
+                self.schema.append(imported_pattern)
+                # Count rules in this pattern
+                for rule in pattern.findall('.//{' + SCHEMATRON_NS + '}rule'):
+                    self.rules_created += 1
+            
+            return True
+        except Exception as e:
+            print(f'Warning: Error parsing schematron file {file_path}: {e}', file=sys.stderr)
+            return False
+
     def tostring(self):
         """Serialize schematron to XML string with proper formatting."""
         # Pretty-print before serializing
@@ -814,7 +842,7 @@ def template_file_filter(file_name: str, prefix: str, postfix: str) -> bool:
         filter = filter and file_name.startswith(prefix)
     return filter
 
-def generate_all_schematrons(input_folder: str, prefix: str, output_folder: str, xsd_path: str, root_element: str):
+def generate_all_schematrons(input_folder: str, prefix: str, output_folder: str, xsd_path: str, root_element: str, include_rules: list = None):
     """
      Generates schematron files from all templates.
 
@@ -822,12 +850,22 @@ def generate_all_schematrons(input_folder: str, prefix: str, output_folder: str,
      param: output_path: path to the output (schematron) folder
      param: schematron_builder: SchematronBuilder object
      param: root_element: Schema root element, e.g. PublicationDelivery
+     param: include_rules: List of schematron rule files to include
      """
     print(f"Processing templates from {input_folder}.")
 
     templates = [os.path.join(input_folder, f) for f in os.listdir(input_folder) if template_file_filter(f, prefix, '.xml')]
 
     schematron_builder = SchematronBuilder(xsd_path)
+    
+    # Include additional rule files if specified
+    if include_rules:
+        schematron_rules_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'src', 'schematron_rules')
+        for rule_file in include_rules:
+            rule_path = os.path.join(schematron_rules_dir, rule_file)
+            if not schematron_builder.include_schematron_file(rule_path):
+                print(f'Warning: Could not include schematron rules from: {rule_path}', file=sys.stderr)
+    
     for template_path in templates:
         generate_schematron_from_template(template_path, input_folder, output_folder, schematron_builder, root_element)
 
@@ -855,6 +893,8 @@ def parse_args():
         help='Root element to start processing from (default: PublicationDelivery).'
     )
     parser.add_argument('-v', '--verbose', action='store_true', help='Enable verbose logging.')
+    parser.add_argument('--include_rules', nargs='+', default=[],
+                        help='Additional schematron rule files to include from src/schematron_rules folder (e.g., general_rules.sch network_offer_rules.sch)')
     return parser.parse_args()
 
 def evaluate_prefix(prefix: str, all: bool) -> str | None:
@@ -872,6 +912,7 @@ def main():
     output_folder = args.output
     VERBOSE = args.verbose
     root_element = args.root_element
+    include_rules = args.include_rules
 
     # Validate inputs
     if not os.path.isfile(xsd_path):
@@ -890,10 +931,16 @@ def main():
             print(f'Error: Template file not found: {template_path}', file=sys.stderr)
             sys.exit(1)
         schematron_builder = SchematronBuilder(xsd_path)
+        # Include additional rule files if specified
+        schematron_rules_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'src', 'schematron_rules')
+        for rule_file in include_rules:
+            rule_path = os.path.join(schematron_rules_dir, rule_file)
+            if not schematron_builder.include_schematron_file(rule_path):
+                print(f'Warning: Could not include schematron rules from: {rule_path}', file=sys.stderr)
         generate_schematron_from_template(template_path, input_folder, output_folder, schematron_builder, root_element)
     else:
         prefix = evaluate_prefix(args.prefix, args.all)
-        generate_all_schematrons(input_folder, prefix, output_folder, xsd_path, root_element)
+        generate_all_schematrons(input_folder, prefix, output_folder, xsd_path, root_element, include_rules)
 
 if __name__ == '__main__':
     main()
