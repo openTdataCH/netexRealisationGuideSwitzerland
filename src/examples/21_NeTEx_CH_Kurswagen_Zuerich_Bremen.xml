@@ -1,31 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
-	<PublicationTimestamp>2026-09-30T00:00:00</PublicationTimestamp>
+	<PublicationTimestamp>2026-10-24T00:00:00</PublicationTimestamp>
 	<ParticipantRef>SBB</ParticipantRef>
 	<!--
-	  Direct carriage (Kurswagen): one coach group, several pulling trains.
+	  Direct carriage (Kurswagen) modelled with JourneyParts.
 
-	  This is the direct-carriage example of the SKI HRDF realisation guide,
-	  modelled in NeTEx:
+	  Source situation - the direct-carriage example of the SKI HRDF realisation
+	  guide, section 7.1.4:
 
 	    *KW  000037
 	    *KWZ 000472 80____ Zuerich HB    - Basel Bad Bf   02215 02319
 	    *KWZ 000470 80____ Basel Bad Bf  - Hannover Hbf   02340 00612
 	    *KWZ 002746 80____ Hannover Hbf  - Bremen Hbf     00644 00754
 
-	  Coach group 37 runs from Zuerich HB to Bremen Hbf. It is pulled by train 472
-	  to Basel Bad Bf, there uncoupled and coupled to train 470, and at Hannover Hbf
-	  handed over to train 2746.
+	  Model: the coach group is one complete ServiceJourney from Zuerich HB to
+	  Bremen Hbf - that is what a passenger books. It is divided into three
+	  JourneyParts, one per pulling train. Each part says, through
+	  ParentJourneyRef, which original journey the coach is attached to, and
+	  through FromPointInPatternRef / ToPointInPatternRef where it rides along in
+	  that journey's own ServiceJourneyPattern. This mirrors *KWZ one to one.
 
-	  Model: the coach group is one complete ServiceJourney over its whole path -
-	  that is what a passenger books. Each pulling train is a ServiceJourney of its
-	  own. On every section the coach journey and the pulling journey use the same
-	  TimingLink with the same RunTime, because there they are one train.
+	  Train 470 continues from Hannover Hbf to Hamburg-Altona after the coach group
+	  has been detached. Its JourneyPart therefore covers only points 1 to 2 of the
+	  three-point pattern of 470 - a real sub-range, not the whole parent pattern.
 
-	  Deliberately NOT modelled: no ServiceJourneyInterchange (nobody transfers - the
-	  pulling trains do not end at the handover stations) and no JourneyPartCouple
-	  (not used in the Swiss profile). Which train pulls which section is therefore
-	  not published. See uc08_kurswagen.md.
+	  JourneyPartCoupleRef is not used: ParentJourneyRef together with the two
+	  PointInPattern references already states which train pulls which section.
+
+	  See uc08_kurswagen.md.
 	-->
 	<dataObjects>
 		<CompositeFrame id="ch:1:CompositeFrame:KW37" version="1">
@@ -64,6 +66,19 @@
 								</TypeOfProductCategory>
 							</values>
 						</ValueSet>
+						<!-- NeTEx has no TypeOfJourneyPartition. The marker for a direct
+						     carriage is a PurposeOfJourneyPartition, which is the value type
+						     that PurposeOfJourneyPartitionRef on JourneyPart points at. -->
+						<ValueSet id="ch:1:ValueSet:PurposeOfJourneyPartition" version="1" nameOfClass="PurposeOfJourneyPartition">
+							<Name>Purposes Of Journey Partition</Name>
+							<values>
+								<PurposeOfJourneyPartition id="ch:1:PurposeOfJourneyPartition:DirectCarriage" version="1">
+									<Name lang="de">Kurswagen</Name>
+									<Description lang="de">Wagengruppe, die abschnittsweise von verschiedenen Zügen gezogen wird</Description>
+									<PrivateCode>KW</PrivateCode>
+								</PurposeOfJourneyPartition>
+							</values>
+						</ValueSet>
 						<ValueSet id="ch:1:ValueSet:TypeOfNotice" version="1" nameOfClass="TypeOfNotice">
 							<Name>Type Of Notice</Name>
 							<values>
@@ -85,7 +100,6 @@
 						</Operator>
 					</organisations>
 				</ResourceFrame>
-
 				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:KW37" version="1">
 					<validityConditions>
 						<AvailabilityCondition id="ch:1:AvailabilityCondition:KW37" version="1">
@@ -97,7 +111,6 @@
 						</AvailabilityCondition>
 					</validityConditions>
 				</ServiceCalendarFrame>
-
 				<ServiceFrame id="ch:1:ServiceFrame:KW37" version="1">
 					<lines>
 						<!-- The coach group needs a Line, because RouteView/LineRef is mandatory
@@ -132,7 +145,7 @@
 							<privateCodes>
 								<PrivateCode type="slnid">ch:1:slnid:470</PrivateCode>
 							</privateCodes>
-							<Name>470 Basel Bad Bf - Hannover Hbf</Name>
+							<Name>470 Basel Bad Bf - Hamburg-Altona</Name>
 							<TransportMode>rail</TransportMode>
 							<TransportSubmode>
 								<RailSubmode>sleeperRailService</RailSubmode>
@@ -155,7 +168,6 @@
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IC" version="1"/>
 						</Line>
 					</lines>
-
 					<destinationDisplays>
 						<DestinationDisplay id="ch:1:DestinationDisplay:BremenHbf" version="1">
 							<Name lang="de">Bremen Hbf</Name>
@@ -165,16 +177,14 @@
 							<Name lang="de">Basel Bad Bf</Name>
 							<FrontText lang="de">Basel Bad Bf</FrontText>
 						</DestinationDisplay>
-						<DestinationDisplay id="ch:1:DestinationDisplay:HannoverHbf" version="1">
-							<Name lang="de">Hannover Hbf</Name>
-							<FrontText lang="de">Hannover Hbf</FrontText>
+						<DestinationDisplay id="ch:1:DestinationDisplay:HamburgAltona" version="1">
+							<Name lang="de">Hamburg-Altona</Name>
+							<FrontText lang="de">Hamburg-Altona</FrontText>
 						</DestinationDisplay>
 					</destinationDisplays>
-
 					<scheduledStopPoints>
 						<!-- Swiss stops: the id is the SLOID, which is the DIDOK number without
-						     its UIC country prefix 85. Stop place level, because the journeys
-						     here are not modelled down to the quay. -->
+						     its UIC country prefix 85. -->
 						<ScheduledStopPoint id="ch:1:sloid:3000" version="1">
 							<privateCodes>
 								<PrivateCode type="didok">8503000</PrivateCode>
@@ -183,8 +193,8 @@
 							<Name lang="de">Zürich HB</Name>
 						</ScheduledStopPoint>
 						<!-- Basel Bad Bf is operated by DB but has a Swiss DIDOK number and a
-						     SLOID, so the Swiss identifiers are used here. The HRDF example
-						     refers to the same station by its DB number 8000026. -->
+						     SLOID, so the Swiss identifiers are used. The HRDF example refers
+						     to the same station by its DB number 8000026. -->
 						<ScheduledStopPoint id="ch:1:sloid:90" version="1">
 							<privateCodes>
 								<PrivateCode type="didok">8500090</PrivateCode>
@@ -205,11 +215,14 @@
 							</privateCodes>
 							<Name lang="de">Bremen Hbf</Name>
 						</ScheduledStopPoint>
+						<ScheduledStopPoint id="8002553" version="1">
+							<privateCodes>
+								<PrivateCode type="didok">8002553</PrivateCode>
+							</privateCodes>
+							<Name lang="de">Hamburg-Altona</Name>
+						</ScheduledStopPoint>
 					</scheduledStopPoints>
-
 					<timingLinks>
-						<!-- Each link is shared by the coach journey and by the train that
-						     pulls the coach over it. -->
 						<TimingLink id="ch:1:TimingLink:3000-90" version="1">
 							<FromPointRef ref="ch:1:sloid:3000" version="1" nameOfRefClass="ScheduledStopPoint"/>
 							<ToPointRef ref="ch:1:sloid:90" version="1" nameOfRefClass="ScheduledStopPoint"/>
@@ -222,10 +235,14 @@
 							<FromPointRef ref="8000152" version="1" nameOfRefClass="ScheduledStopPoint"/>
 							<ToPointRef ref="8000050" version="1" nameOfRefClass="ScheduledStopPoint"/>
 						</TimingLink>
+						<!-- Used only by 470, after the coach group has been detached. -->
+						<TimingLink id="ch:1:TimingLink:8000152-8002553" version="1">
+							<FromPointRef ref="8000152" version="1" nameOfRefClass="ScheduledStopPoint"/>
+							<ToPointRef ref="8002553" version="1" nameOfRefClass="ScheduledStopPoint"/>
+						</TimingLink>
 					</timingLinks>
-
 					<journeyPatterns>
-						<!-- The coach group: the whole path, all four stations. -->
+						<!-- The coach group: its own pattern over the whole path. -->
 						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:KW37" version="1">
 							<RouteView>
 								<LineRef ref="ch:1:slnid:KW37" version="1"/>
@@ -272,6 +289,8 @@
 								</StopPointInJourneyPattern>
 							</pointsInSequence>
 						</ServiceJourneyPattern>
+						<!-- 470 runs on to Hamburg-Altona after Hannover Hbf. The coach group
+						     only rides points 1 to 2 of this pattern. -->
 						<ServiceJourneyPattern id="ch:1:ServiceJourneyPattern:470" version="1">
 							<RouteView>
 								<LineRef ref="ch:1:slnid:470" version="1"/>
@@ -285,6 +304,11 @@
 								</StopPointInJourneyPattern>
 								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:470:2" version="1" order="2">
 									<ScheduledStopPointRef ref="8000152" version="1"/>
+									<ForAlighting>true</ForAlighting>
+									<ForBoarding>true</ForBoarding>
+								</StopPointInJourneyPattern>
+								<StopPointInJourneyPattern id="ch:1:ServiceJourneyPattern:470:3" version="1" order="3">
+									<ScheduledStopPointRef ref="8002553" version="1"/>
 									<ForAlighting>true</ForAlighting>
 									<ForBoarding>false</ForBoarding>
 								</StopPointInJourneyPattern>
@@ -309,10 +333,8 @@
 							</pointsInSequence>
 						</ServiceJourneyPattern>
 					</journeyPatterns>
-
 					<timeDemandTypes>
-						<!-- The coach group. The wait times are the handover dwells: the coach
-						     stands while it is uncoupled from one train and coupled to the next. -->
+						<!-- The coach group. The wait times are the handover dwells. -->
 						<TimeDemandType id="ch:1:TimeDemandType:KW37" version="1">
 							<Name>Zürich HB - Bremen Hbf (Kurswagen 37)</Name>
 							<runTimes>
@@ -340,7 +362,6 @@
 								</JourneyWaitTime>
 							</waitTimes>
 						</TimeDemandType>
-						<!-- Each pulling train: same TimingLink, same RunTime as the coach. -->
 						<TimeDemandType id="ch:1:TimeDemandType:472" version="1">
 							<Name>Zürich HB - Basel Bad Bf (472)</Name>
 							<runTimes>
@@ -350,14 +371,25 @@
 								</JourneyRunTime>
 							</runTimes>
 						</TimeDemandType>
+						<!-- Same RunTime as the coach on the shared section, then on alone. -->
 						<TimeDemandType id="ch:1:TimeDemandType:470" version="1">
-							<Name>Basel Bad Bf - Hannover Hbf (470)</Name>
+							<Name>Basel Bad Bf - Hamburg-Altona (470)</Name>
 							<runTimes>
 								<JourneyRunTime id="ch:1:JourneyRunTime:470:1" version="1">
 									<TimingLinkRef ref="ch:1:TimingLink:90-8000152" version="1"/>
 									<RunTime>PT6H32M</RunTime>
 								</JourneyRunTime>
+								<JourneyRunTime id="ch:1:JourneyRunTime:470:2" version="1">
+									<TimingLinkRef ref="ch:1:TimingLink:8000152-8002553" version="1"/>
+									<RunTime>PT1H50M</RunTime>
+								</JourneyRunTime>
 							</runTimes>
+							<waitTimes>
+								<JourneyWaitTime id="ch:1:JourneyWaitTime:470:1" version="1">
+									<TimingPointRef ref="8000152" version="1"/>
+									<WaitTime>PT8M</WaitTime>
+								</JourneyWaitTime>
+							</waitTimes>
 						</TimeDemandType>
 						<TimeDemandType id="ch:1:TimeDemandType:2746" version="1">
 							<Name>Hannover Hbf - Bremen Hbf (2746)</Name>
@@ -369,12 +401,9 @@
 							</runTimes>
 						</TimeDemandType>
 					</timeDemandTypes>
-
 					<notices>
-						<!-- This is what makes the journey identifiable as a direct carriage.
-						     HRDF attribute code KW "Direkter Wagen", mapped to a Notice of type
-						     "Allgemeiner Hinweis" per the project mapping table (sheet Angebote).
-						     Consumers match on ShortCode A__KW, not on the free text. -->
+						<!-- Passenger-facing marker: HRDF attribute code KW "Direkter Wagen",
+						     mapped to a Notice per the project mapping table (sheet Angebote). -->
 						<Notice id="ch:1:Notice:A__KW" version="1">
 							<Text lang="de">Direkter Wagen</Text>
 							<PublicCode>1</PublicCode>
@@ -385,7 +414,6 @@
 						</Notice>
 					</notices>
 				</ServiceFrame>
-
 				<TimetableFrame id="ch:1:TimetableFrame:KW37" version="1">
 					<vehicleJourneys>
 						<!-- The coach group: Zürich HB 22:15 - Bremen Hbf 07:54 the next day.
@@ -407,10 +435,9 @@
 							<ServiceJourneyPatternRef ref="ch:1:ServiceJourneyPattern:KW37" version="1"/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:KW37" version="1"/>
 							<OperatorRef ref="ch:1:sboid:100310" version="1"/>
-							<!-- The coach group has no train number of its own. It runs under the
-							     numbers of the trains that pull it, in order: 472, then 470, then 2746.
-							     A TrainNumber is the number from *Z and must stay unique per operating
-							     day, so the Kurswagen number from *KW must not be put here. -->
+							<!-- The coach group has no train number of its own. The journey level
+							     lists the numbers it runs under, in order; the JourneyParts below
+							     say which number applies on which section. -->
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:472" version="1"/>
 								<TrainNumberRef ref="ch:1:TrainNumber:470" version="1"/>
@@ -419,6 +446,50 @@
 							<Destination>
 								<DestinationDisplayRef ref="ch:1:DestinationDisplay:BremenHbf" version="1"/>
 							</Destination>
+							<parts>
+								<!-- One JourneyPart per pulling train, mirroring the *KWZ lines.
+								     ParentJourneyRef names the original journey the coach is
+								     attached to; the two PointInPattern references delimit the
+								     ride inside that journey's own pattern. -->
+								<JourneyPart id="ch:1:JourneyPart:KW37:1" version="1">
+									<Description lang="de">Kurswagen 37 am Zug 472, Zürich HB - Basel Bad Bf</Description>
+									<ParentJourneyRef ref="ch:1:ServiceJourney:472" version="1"/>
+									<TrainNumberRef ref="ch:1:TrainNumber:472" version="1"/>
+									<FromPointInPatternRef ref="ch:1:ServiceJourneyPattern:472:1" version="1"/>
+									<ToPointInPatternRef ref="ch:1:ServiceJourneyPattern:472:2" version="1"/>
+									<StartTime>22:15:00</StartTime>
+									<StartTimeDayOffset>0</StartTimeDayOffset>
+									<EndTime>23:19:00</EndTime>
+									<EndTimeDayOffset>0</EndTimeDayOffset>
+									<PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:DirectCarriage" version="1"/>
+								</JourneyPart>
+								<!-- 470 continues to Hamburg-Altona; the coach leaves it at
+								     Hannover Hbf, so this part ends at point 2 of 3. -->
+								<JourneyPart id="ch:1:JourneyPart:KW37:2" version="1">
+									<Description lang="de">Kurswagen 37 am Zug 470, Basel Bad Bf - Hannover Hbf</Description>
+									<ParentJourneyRef ref="ch:1:ServiceJourney:470" version="1"/>
+									<TrainNumberRef ref="ch:1:TrainNumber:470" version="1"/>
+									<FromPointInPatternRef ref="ch:1:ServiceJourneyPattern:470:1" version="1"/>
+									<ToPointInPatternRef ref="ch:1:ServiceJourneyPattern:470:2" version="1"/>
+									<StartTime>23:40:00</StartTime>
+									<StartTimeDayOffset>0</StartTimeDayOffset>
+									<EndTime>06:12:00</EndTime>
+									<EndTimeDayOffset>1</EndTimeDayOffset>
+									<PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:DirectCarriage" version="1"/>
+								</JourneyPart>
+								<JourneyPart id="ch:1:JourneyPart:KW37:3" version="1">
+									<Description lang="de">Kurswagen 37 am Zug 2746, Hannover Hbf - Bremen Hbf</Description>
+									<ParentJourneyRef ref="ch:1:ServiceJourney:2746" version="1"/>
+									<TrainNumberRef ref="ch:1:TrainNumber:2746" version="1"/>
+									<FromPointInPatternRef ref="ch:1:ServiceJourneyPattern:2746:1" version="1"/>
+									<ToPointInPatternRef ref="ch:1:ServiceJourneyPattern:2746:2" version="1"/>
+									<StartTime>06:44:00</StartTime>
+									<StartTimeDayOffset>1</StartTimeDayOffset>
+									<EndTime>07:54:00</EndTime>
+									<EndTimeDayOffset>1</EndTimeDayOffset>
+									<PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:DirectCarriage" version="1"/>
+								</JourneyPart>
+							</parts>
 						</ServiceJourney>
 						<!-- Pulling train 1. -->
 						<ServiceJourney id="ch:1:ServiceJourney:472" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:DB">
@@ -443,7 +514,7 @@
 								<DestinationDisplayRef ref="ch:1:DestinationDisplay:BaselBadBf" version="1"/>
 							</Destination>
 						</ServiceJourney>
-						<!-- Pulling train 2. -->
+						<!-- Pulling train 2, continues beyond the handover station. -->
 						<ServiceJourney id="ch:1:ServiceJourney:470" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:DB">
 							<validityConditions>
 								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:KW37" version="1"/>
@@ -463,7 +534,7 @@
 								<TrainNumberRef ref="ch:1:TrainNumber:470" version="1"/>
 							</trainNumbers>
 							<Destination>
-								<DestinationDisplayRef ref="ch:1:DestinationDisplay:HannoverHbf" version="1"/>
+								<DestinationDisplayRef ref="ch:1:DestinationDisplay:HamburgAltona" version="1"/>
 							</Destination>
 						</ServiceJourney>
 						<!-- Pulling train 3. -->
