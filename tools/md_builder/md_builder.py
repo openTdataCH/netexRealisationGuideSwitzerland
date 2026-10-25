@@ -127,30 +127,77 @@ def load_xsd_type_info(xsd_path):
 
 
 def _get_xsd_element_path(element):
-    """Get the logical XPath path for an XSD element, ignoring groups, types, choices"""
+    """Get the logical XPath path for an XSD element, including parent context from complexType or group.
+    
+    Builds paths that match XML template paths by including the parent complexType name.
+    For example: StopPlace/facilities, AccessibilityAssessment/limitations
+    """
     path_parts = []
     current = element
-
+    
+    # First pass: build context stack by traversing up
+    context_stack = []
+    temp = element
+    while temp is not None and temp.tag != 'schema':
+        tag = temp.tag if not hasattr(temp, 'tag') or not callable(temp.tag) else str(temp.tag)
+        
+        # Get the local tag name
+        if '}' in tag:
+            local_tag = tag.split('}')[-1]
+        else:
+            local_tag = tag
+        
+        # Track complexType context
+        if local_tag == 'complexType':
+            ct_name = temp.get('name')
+            if ct_name:
+                # Clean up the complexType name to match XML element names
+                clean_name = ct_name
+                for suffix in ['_VersionStructure', '_VersionedChildStructure', '_Structure', '_Group', 'Group']:
+                    if clean_name.endswith(suffix):
+                        clean_name = clean_name[:-len(suffix)]
+                        break
+                context_stack.append(clean_name)
+        
+        # Track group context
+        elif local_tag == 'group':
+            group_name = temp.get('name')
+            if group_name:
+                # Clean up the group name
+                clean_name = group_name
+                for suffix in ['_VersionStructure', '_VersionedChildStructure', '_Structure', '_Group', 'Group']:
+                    if clean_name.endswith(suffix):
+                        clean_name = clean_name[:-len(suffix)]
+                        break
+                context_stack.append(clean_name)
+        
+        temp = temp.getparent()
+    
+    # Second pass: build the path starting from the element
+    # Now traverse up again and build the path with context
     while current is not None and current.tag != 'schema':
         tag = current.tag if not hasattr(current, 'tag') or not callable(current.tag) else str(current.tag)
-
-        # Skip xs:annotation, xs:complexType, xs:simpleType, xs:group, xs:choice, xs:sequence, xs:extension, xs:restriction
-        if tag.endswith('}annotation') or tag.endswith('}complexType') or tag.endswith('}simpleType') or \
-           tag.endswith('}group') or tag.endswith('}choice') or tag.endswith('}sequence') or \
-           tag.endswith('}extension') or tag.endswith('}restriction'):
-            current = current.getparent()
-            continue
-
-        # For xs:element, get the name
-        if tag.endswith('}element'):
+        
+        # Get the local tag name
+        if '}' in tag:
+            local_tag = tag.split('}')[-1]
+        else:
+            local_tag = tag
+        
+        # For xs:element, get the name and add with context
+        if local_tag == 'element':
             name = current.get('name') or current.get('ref', '').split(':')[-1]
             if name:
+                # Add the element name
                 path_parts.insert(0, name)
-
+                
+                # Add context stack (parent contexts) before the element
+                for context_name in reversed(context_stack):
+                    path_parts.insert(0, context_name)
+        
         current = current.getparent()
 
     return '/'.join(path_parts) if path_parts else None
-
 
 def _build_xsd_element_paths(xsd_doc):
     """
@@ -667,28 +714,142 @@ def search_xsd_files_for_element_with_parent(base_dir, element_name, parent_type
     return None
 
 
-def find_best_xsd_path_match(xsd_path_info, xml_path, element_name):
+def find_best_xsd_path_match(xsd_path_info, xml_path, element_name, parent_type=None):
     """Find the best matching XSD path for a given XML path and element name.
 
-    Only returns:
-    - exact full path match, or
-    - element-name-only fallback.
-    Avoids returning container paths that would leak container type.
+    Tries matching strategies in order:
+    1) Exact full path match
+    2) Parent/element combination match with parent_type context
+    3) Parent/element combination match (checks if parent name is in XSD path)
+    4) Element-only fallback - but only if there's only one element with that name
+    
+    This handles cases where elements with the same name exist in different contexts
+    (e.g., facilities in StopPlace vs Line, limitations in AccessibilityAssessment vs elsewhere).
     """
     if not xsd_path_info or not xml_path:
         return None
 
-    # Exact match
+    # 1) Exact match
     if xml_path in xsd_path_info:
         return xml_path, xsd_path_info[xml_path]
 
-    # Element-only fallback
+    # 2) Parent/element combination match with parent_type context
+    if parent_type:
+        path_parts = xml_path.split('/')
+        xml_element = path_parts[-1]
+        
+        # Clean up parent_type to get the base name
+        clean_parent_type = parent_type
+        if ':' in clean_parent_type:
+            clean_parent_type = clean_parent_type.split(':')[-1]
+        
+        # Also try removing common suffixes
+        for suffix in ['_VersionStructure', '_VersionedChildStructure', '_Structure', '_Group', 'VersionedChildStructure']:
+            if clean_parent_type.endswith(suffix):
+                clean_parent_type = clean_parent_type[:-len(suffix)]
+                break
+        
+        # Look for XSD paths that end with the element
+        best_match = None
+        best_score = -1  # Start at -1 so 0 is valid
+        for xsd_path, meta in xsd_path_info.items():
+            # Check if XSD path ends with the element
+            if not xsd_path.endswith('/' + xml_element):
+                continue
+            
+            # Get the parent part of the XSD path
+            xsd_path_parts = xsd_path.split('/')
+            if len(xsd_path_parts) < 2:
+                continue
+            xsd_parent = xsd_path_parts[-2]
+            
+            # Check if the parent names are related
+            # Strategy 1: exact match
+            if clean_parent_type.lower() == xsd_parent.lower():
+                return xsd_path, meta
+            
+            # Strategy 2: check if one string contains the other
+            if clean_parent_type.lower() in xsd_parent.lower() or xsd_parent.lower() in clean_parent_type.lower():
+                score = 2  # High score for substring match
+            # Strategy 3: Heuristic for Site/Place relationship
+            elif ('site' in clean_parent_type.lower() or 'site' in xsd_parent.lower()) and \
+                 ('place' in clean_parent_type.lower() or 'place' in xsd_parent.lower() or \
+                  'stop' in clean_parent_type.lower() or 'stop' in xsd_parent.lower()):
+                score = 1  # Force a match
+            # Strategy 4: check if they share a common word when split
+            else:
+                import re
+                # Split camelCase
+                clean_words = re.sub('([A-Z])', r' \1', clean_parent_type).lower().split()
+                xsd_words = re.sub('([A-Z])', r' \1', xsd_parent).lower().split()
+                # Also split by underscore
+                clean_words.extend(clean_parent_type.lower().split('_'))
+                xsd_words.extend(xsd_parent.lower().split('_'))
+                # Check for common words
+                common = set(clean_words) & set(xsd_words)
+                score = len(common)
+            
+            if score > best_score:
+                best_score = score
+                best_match = (xsd_path, meta)
+                
+        # If we found a match with score >= 1, use it
+        if best_match and best_score >= 1:
+            return best_match
+
+    # 3) Parent/element combination match (without parent_type)
+    path_parts = xml_path.split('/')
+    if len(path_parts) >= 2:
+        xml_parent = path_parts[-2]
+        xml_element = path_parts[-1]
+        
+        # Look for XSD paths that end with the element name
+        # and where the path contains the parent name
+        for xsd_path, meta in xsd_path_info.items():
+            if xsd_path.endswith('/' + xml_element):
+                # Check if parent name is in the XSD path
+                xsd_path_lower = xsd_path.lower()
+                if xml_parent.lower() in xsd_path_lower:
+                    return xsd_path, meta
+
+    # 4) Element-only fallback - but only if there's only one element with that name
     elem_only = xml_path.split('/')[-1]
     if elem_only in xsd_path_info:
-        return elem_only, xsd_path_info[elem_only]
+        # Check if there's only one element with this name
+        count = sum(1 for p in xsd_path_info.keys() if p.split('/')[-1] == elem_only)
+        if count == 1:
+            return elem_only, xsd_path_info[elem_only]
+        else:
+            # Multiple elements with this name - try to find the best match
+            # based on parent_type if available
+            if parent_type:
+                clean_parent_type = parent_type
+                if ':' in clean_parent_type:
+                    clean_parent_type = clean_parent_type.split(':')[-1]
+                
+                for suffix in ['_VersionStructure', '_VersionedChildStructure', '_Structure', '_Group', 'VersionedChildStructure']:
+                    if clean_parent_type.endswith(suffix):
+                        clean_parent_type = clean_parent_type[:-len(suffix)]
+                        break
+                
+                # Look for element paths (with parent) and check if their parent context matches
+                for xsd_path, meta in xsd_path_info.items():
+                    if xsd_path.endswith('/' + elem_only):
+                        xsd_parent = xsd_path.split('/')[-2]
+                        # Check if parent names match or one contains the other
+                        if clean_parent_type.lower() == xsd_parent.lower():
+                            return xsd_path, meta
+                        if clean_parent_type.lower() in xsd_parent.lower() or xsd_parent.lower() in clean_parent_type.lower():
+                            return xsd_path, meta
+                        # Check word overlap
+                        import re
+                        clean_words = re.sub('([A-Z])', r' \1', clean_parent_type).lower().split()
+                        xsd_words = re.sub('([A-Z])', r' \1', xsd_parent).lower().split()
+                        common = set(clean_words) & set(xsd_words)
+                        if len(common) > 0:
+                            return xsd_path, meta
 
     return None
-
 
 def get_element_metadata(xsd_path, element_name, parent_type=None):
     """Extract detailed metadata for an element from XSD using XPath with substitution group support."""
@@ -1008,7 +1169,7 @@ def enrich_from_xsd(item, xsd_doc, xsd_type_info, xsd_path):
         path_based = get_element_metadata_from_xsd_by_path(xsd_doc, xml_path)
     if not path_based and xml_path:
         xsd_paths = xsd_type_info.get('_paths', {})
-        match = find_best_xsd_path_match(xsd_paths, xml_path, element)
+        match = find_best_xsd_path_match(xsd_paths, xml_path, element, parent_type)
         if match:
             _, path_meta = match
             path_based = path_meta
@@ -1016,9 +1177,9 @@ def enrich_from_xsd(item, xsd_doc, xsd_type_info, xsd_path):
     if path_based:
         if not card or card == '1..1':
             card = get_cardinality(path_based.get('min_occurs', '1'), path_based.get('max_occurs', '1'))
-        # Only take non-empty, meaningful type from path-based metadata
+        # Always prefer path-based type when available (more context-specific)
         pb_type = path_based.get('type')
-        if (not xsd_type or xsd_type == 'unknown') and pb_type:
+        if pb_type and pb_type != 'unknown':
             xsd_type = pb_type
         if not description:
             description = path_based.get('description', description)
