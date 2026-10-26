@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PassengerStopAssignment id="generated-85003000-12" version="1">
-  <ScheduledStopPointRef ref="ch:1:sloid:3000:503:12" version="1"/>
+  <ScheduledStopPointRef ref="ch:1:sloid:3000:503:12" version="1">
+    <!-- Be aware that a ScheduledStopPointRef is only not present, when we are doing `passengerBoardingPositionAssignments` -->
+  </ScheduledStopPointRef>
   <StopPlaceRef ref="ch:1:sloid:3000" version="1"/>
   <QuayRef ref="ch:1:sloid:3000:503:12" version="1">
     <!-- Not having the track may be problematic, but it can happen sometimes for stops abroad. However, the goal is to always have a QuyRef. -->
   </QuayRef>
+  <passengerBoardingPositionAssignments>
+    <!-- Relevant for formations assigned to positions at quays. -->
+    <PassengerBoardingPositionAssignment id="pbpa20" version="1">
+      <Description>Assign coach 5 to sector B</Description>
+      <ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1">
+        <!-- This one needs to be on the sector level. -->
+      </ScheduledStopPointRef>
+      <TrainComponentRef ref="bbd:trncmp_448_01" version="1">
+        <!-- Map to the relevant TrainComponent -->
+      </TrainComponentRef>
+    </PassengerBoardingPositionAssignment>
+  </passengerBoardingPositionAssignments>
 </PassengerStopAssignment>

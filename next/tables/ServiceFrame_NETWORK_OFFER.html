@@ -237,7 +237,7 @@
       <td>lines</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>lineRefs_RelStructure</td>
+      <td>linesInFrame_RelStructure</td>
       <td>LINEs in frame.</td>
       <td>Only Line is used and not FlexibleLine</td>
     </tr>
@@ -256,7 +256,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of LINE SHAPE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -282,7 +282,7 @@
       <td>destinationDisplays</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>destinationDisplayRefs_RelStructure</td>
+      <td>destinationDisplaysInFrame_RelStructure</td>
       <td>DESTINATION DISPLAYs in frame.</td>
       <td>We only allow fully formed content of destinationDisplays</td>
     </tr>
@@ -308,8 +308,8 @@
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/ScheduledStopPoint.html">ScheduledStopPoint</a></td>
       <td>mandatory</td>
-      <td>0..*</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>ScheduledStopPoint_VersionStructure</td>
       <td>A POINT where passengers can board or alight from vehicles. It is open, which hierarchical level such a point has. It can represent a single door (BoardingPosition) or a whole ZONE. The association to the physical model is done with STOP ASSIGNMENTs.</td>
       <td>The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part.</td>
     </tr>
@@ -327,9 +327,9 @@
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/PassengerStopAssignment.html">PassengerStopAssignment</a></td>
       <td>expected</td>
       <td>0..*</td>
-      <td>PassengerStopAssignment_VersionStructure</td>
-      <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION.</td>
-      <td>are only used in a special PSA file in the export.</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>Are needed for foreign traffic and also for formations.</td>
     </tr>
     <tr>
       <td> </td>
@@ -354,7 +354,7 @@
       <td>journeyPatterns</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>journeyPatternRefs_RelStructure</td>
+      <td>journeyPatternsInFrame_RelStructure</td>
       <td>JOURNEY PATTERNs in frame.</td>
       <td> </td>
     </tr>
@@ -372,7 +372,7 @@
       <td>timeDemandTypes</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>timeDemandTypeRefs_RelStructure</td>
+      <td>timeDemandTypesInFrame_RelStructure</td>
       <td>TIME DEMAND TYPEs in frame.</td>
       <td> </td>
     </tr>

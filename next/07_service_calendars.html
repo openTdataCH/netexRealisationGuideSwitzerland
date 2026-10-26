@@ -348,7 +348,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -392,8 +392,8 @@
       <td>timebands</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>timebandRefs_RelStructure</td>
-      <td>TIMEBANDs for the DAY TYPE.</td>
+      <td>timebandsInFrame_RelStructure</td>
+      <td>Reusable TIMEBANDs used in SERVICE CALENDAR FRAME.</td>
       <td> </td>
     </tr>
     <tr>
@@ -410,7 +410,7 @@
       <td>dayTypeAssignments</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>dayTypeAssignments_RelStructure</td>
+      <td>dayTypeAssignmentsInFrame_RelStructure</td>
       <td>Assignments of DAY TYPEs to specific OPERATING DAYs. The same DAY TYPE may be assigned to multiple Operating dates, and vice versa.</td>
       <td> </td>
     </tr>
@@ -420,7 +420,7 @@
       <td>optional</td>
       <td>1..*</td>
       <td>DayTypeAssignment_VersionStructure</td>
-      <td>Associates a DAY TYPE with an OPERATING DAY within a specific Calendar. A specification of a particular DAY TYPE which will be valid during a TIME BAND on an OPERATING DAY.</td>
+      <td>An operating period.</td>
       <td>Used for holidays only</td>
     </tr>
   </tbody>
@@ -518,7 +518,7 @@ in this frame, never inline.</p>
       <td>FromDate</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:dateTime</td>
+      <td>dateTime</td>
       <td>Start date of AVAILABILITY CONDITION.</td>
       <td>Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
     </tr>
@@ -527,7 +527,7 @@ in this frame, never inline.</p>
       <td>ToDate</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:dateTime</td>
+      <td>dateTime</td>
       <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
       <td>Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
     </tr>
@@ -536,8 +536,8 @@ in this frame, never inline.</p>
       <td>ValidDayBits</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:normalizedString</td>
-      <td>String of bits, one for each day in period: whether valid or not valid on the day. Normally there will be a bit for every day between start and end date. If bit is missing, assume available.</td>
+      <td>normalizedString</td>
+      <td>For UIC style encoding of day types String of bits, one for each day in period: whether valid or not valid on the day. Normally there will be a bit for every day between start and end date. If bit is missing, assume available.</td>
       <td> </td>
     </tr>
     <tr>
@@ -545,8 +545,8 @@ in this frame, never inline.</p>
       <td>timebands</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>timebandRefs_RelStructure</td>
-      <td>TIMEBANDs for the DAY TYPE.</td>
+      <td>timebands_RelStructure</td>
+      <td>TIME BANDs for AVAILABILITY CONDITION.</td>
       <td>Can also be referenced</td>
     </tr>
     <tr>
@@ -664,7 +664,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of SERVIC CALENDAR.</td>
       <td>timetable year</td>
     </tr>
     <tr>
@@ -672,8 +672,8 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>FromDate</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:dateTime</td>
-      <td>Start date of AVAILABILITY CONDITION.</td>
+      <td>date</td>
+      <td>Start date of Calendar.</td>
       <td>Beginning of timetable year</td>
     </tr>
     <tr>
@@ -681,8 +681,8 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>ToDate</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:dateTime</td>
-      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td>date</td>
+      <td>End date of SERVICE CALENDAR. Date is INCLUSIVE.</td>
       <td>End of timetable year</td>
     </tr>
   </tbody>
@@ -762,7 +762,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of DAY TYPE.</td>
       <td>German or default text</td>
     </tr>
     <tr>
@@ -959,7 +959,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:time</td>
-      <td>The (inclusive) start date and time.</td>
+      <td> </td>
       <td>Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used.</td>
     </tr>
     <tr>
@@ -968,7 +968,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:time</td>
-      <td>The (inclusive) end date and time.</td>
+      <td> </td>
       <td>Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used.</td>
     </tr>
   </tbody>
@@ -1050,7 +1050,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>Date</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:date</td>
+      <td>date</td>
       <td>Calendar date of assignment.</td>
       <td> </td>
     </tr>
@@ -1060,7 +1060,7 @@ of them (e.g. only <code class="language-plaintext highlighter-rouge">FromDate</
       <td>mandatory</td>
       <td>1..*</td>
       <td>DayTypeRefStructure</td>
-      <td>Reference to a DAY TYPE.</td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>

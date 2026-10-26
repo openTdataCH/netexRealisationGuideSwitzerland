@@ -532,7 +532,7 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
       <td>TypeOfName</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:normalizedString</td>
+      <td>normalizedString</td>
       <td>Type of Name - open value.</td>
       <td>If it is the official name. If used, only “offical” should be used.</td>
     </tr>
@@ -542,7 +542,7 @@ a <code class="language-plaintext highlighter-rouge">StopPlace</code> or <code c
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>ALTERNATIVE NAME of the ENTITY.</td>
       <td> </td>
     </tr>
     <tr>
@@ -661,7 +661,7 @@ However, only one language can be set for a given element (e.g. <code class="lan
       <td>TimeZone</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:normalizedString</td>
+      <td>normalizedString</td>
       <td>Timezone name at LOCALE.</td>
       <td> </td>
     </tr>
@@ -679,7 +679,7 @@ However, only one language can be set for a given element (e.g. <code class="lan
       <td>DefaultLanguage</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:language</td>
+      <td>language</td>
       <td>Default language for text elements.</td>
       <td>Is always set to “de” for Swiss public transport.</td>
     </tr>
@@ -688,7 +688,7 @@ However, only one language can be set for a given element (e.g. <code class="lan
       <td>DefaultLocationSystem</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:normalizedString</td>
+      <td>SrsNameType</td>
       <td>Default spatial coordinate system (srsName). E.g. WGS84 Value to use for location elements using coordinates if not specified on individual elements.</td>
       <td> </td>
     </tr>

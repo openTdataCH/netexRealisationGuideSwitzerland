@@ -253,7 +253,7 @@
       <td>FromDate</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:dateTime</td>
+      <td>dateTime</td>
       <td>Start date of AVAILABILITY CONDITION.</td>
       <td>Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
     </tr>
@@ -262,7 +262,7 @@
       <td>ToDate</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:dateTime</td>
+      <td>dateTime</td>
       <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
       <td>Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
     </tr>
@@ -271,8 +271,8 @@
       <td>ValidDayBits</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:normalizedString</td>
-      <td>String of bits, one for each day in period: whether valid or not valid on the day. Normally there will be a bit for every day between start and end date. If bit is missing, assume available.</td>
+      <td>normalizedString</td>
+      <td>For UIC style encoding of day types String of bits, one for each day in period: whether valid or not valid on the day. Normally there will be a bit for every day between start and end date. If bit is missing, assume available.</td>
       <td> </td>
     </tr>
     <tr>
@@ -280,8 +280,8 @@
       <td>timebands</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>timebandRefs_RelStructure</td>
-      <td>TIMEBANDs for the DAY TYPE.</td>
+      <td>timebands_RelStructure</td>
+      <td>TIME BANDs for AVAILABILITY CONDITION.</td>
       <td>Can also be referenced</td>
     </tr>
     <tr>

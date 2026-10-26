@@ -254,7 +254,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -263,7 +263,7 @@
       <td>expected</td>
       <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -280,7 +280,7 @@
       <td>StaySeated</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether the passenger can remain in vehicle (i.e. block linking). Default is false: the passenger must change vehicles for this INTERCHANGE. Default is false.</td>
       <td> </td>
     </tr>
@@ -289,7 +289,7 @@
       <td>CrossBorder</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether INTERCHANGE involves crossing an international border. Default is false.</td>
       <td> </td>
     </tr>
@@ -298,7 +298,7 @@
       <td>ChangeWithinVehicle</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>In case of train splitting, the passenger may have to change to a different part of the train to continue the journey. Default is false. +v2.1</td>
       <td>Set to true for train splitting (Flügelzug) when the passenger may have to move to a different coach. Default is false.</td>
     </tr>
@@ -307,7 +307,7 @@
       <td>Planned</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether INTERCHANGE is planned in a timetable. Default is true.</td>
       <td> </td>
     </tr>
@@ -316,7 +316,7 @@
       <td>Guaranteed</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether INTERCHANGE is guaranteed. Default is false.</td>
       <td> </td>
     </tr>
@@ -325,7 +325,7 @@
       <td>StandardWaitTime</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:duration</td>
+      <td>duration</td>
       <td>Standard wait time for INTERCHANGE.</td>
       <td>Used for joining/splitting and waiting in vehicle</td>
     </tr>
@@ -334,7 +334,7 @@
       <td>StandardTransferTime</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>xsd:duration</td>
+      <td>duration</td>
       <td>Standard transfer duration for INTERCHANGE.</td>
       <td> </td>
     </tr>
@@ -343,8 +343,8 @@
       <td>FromPointRef</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>VehicleMeetingPointRefStructure</td>
-      <td>Start POINT of LINK.</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td>Identifier of SCHEDULED STOP POINT from which Link starts.</td>
       <td> </td>
     </tr>
     <tr>
@@ -361,7 +361,7 @@
       <td>FromVisitNumber</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:nonNegativeInteger</td>
+      <td>nonNegativeInteger</td>
       <td>Visit number to distinguish which visit to FROM SCHEDULED STOP POINT this is. Default is one. Only needed for circular routes with connections at the same stop on different visits.</td>
       <td> </td>
     </tr>
@@ -370,8 +370,8 @@
       <td>ToPointRef</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>VehicleMeetingPointRefStructure</td>
-      <td>End POINT of LINK.</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td>Identifier of SCHEDULED STOP POINT at which Link ends.</td>
       <td> </td>
     </tr>
     <tr>
@@ -388,7 +388,7 @@
       <td>ToVisitNumber</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:nonNegativeInteger</td>
+      <td>nonNegativeInteger</td>
       <td>Visit number to distinguish which visit to TO SCHEDULED STOP POINT this is. Default is one. Only needed for circular routes with connections at the same stop on different visits.</td>
       <td> </td>
     </tr>
@@ -398,7 +398,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>ServiceJourneyRefStructure</td>
-      <td>SERVICE JOURNEY that feeds JOURNEY MEETING. +v2.0</td>
+      <td>SERVICE JOURNEY that feeds the INTERCHANGE. +v2.0</td>
       <td> </td>
     </tr>
     <tr>
@@ -407,7 +407,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>ServiceJourneyRefStructure</td>
-      <td>SERVICE JOURNEY that distributes from JOURNEY MEETING. +v2.0</td>
+      <td>SERVICE JOURNEY that distributes from the INTERCHANGE. +v2.0</td>
       <td> </td>
     </tr>
   </tbody>

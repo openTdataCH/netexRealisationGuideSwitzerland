@@ -8,7 +8,7 @@ In Switzerland only used for holidays and the like
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. | German or default text |
+|  | Name | mandatory | 0..1 | MultilingualString | Name of DAY TYPE. | German or default text |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | + | Text | expected | 0..* | MultilingualString |  | Italian |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |

@@ -238,7 +238,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -247,7 +247,7 @@
       <td>expected</td>
       <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -255,7 +255,7 @@
       <td>StaySeated</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether the passenger can remain in vehicle (i.e. block linking). Default is false: the passenger must change vehicles for this INTERCHANGE. Default is false.</td>
       <td> </td>
     </tr>
@@ -264,7 +264,7 @@
       <td>Planned</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether INTERCHANGE is planned in a timetable. Default is true.</td>
       <td> </td>
     </tr>
@@ -273,7 +273,7 @@
       <td>Guaranteed</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether INTERCHANGE is guaranteed. Default is false.</td>
       <td> </td>
     </tr>
@@ -282,7 +282,7 @@
       <td>MinimumTransferTime</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>xsd:duration</td>
+      <td>duration</td>
       <td>Maximum transfer duration for INTERCHANGE.</td>
       <td> </td>
     </tr>
@@ -291,7 +291,7 @@
       <td>MaximumTransferTime</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>xsd:duration</td>
+      <td>duration</td>
       <td>Maximum transfer duration for INTERCHANGE.</td>
       <td> </td>
     </tr>
@@ -317,9 +317,9 @@
       <td>++</td>
       <td>TimebandRef</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>TimebandRefStructure</td>
-      <td>Reference to a TIME BAND.</td>
+      <td> </td>
       <td>Timeband defined in ServiceCalendarFrame</td>
     </tr>
     <tr>
@@ -337,34 +337,34 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>StopPlaceRefStructure</td>
-      <td>Reference to a STOP PLACE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>LineInDirectionRef</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>1..*</td>
       <td>LineInDirectionRef_Structure</td>
-      <td>Reference to a LINE in a specific DIRECTION</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
       <td>++</td>
       <td>LineRef</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>0..1</td>
       <td>LineRefStructure</td>
-      <td>Reference to a LINE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
       <td>++</td>
       <td>DirectionRef</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>DirectionRefStructure</td>
-      <td>Reference to a DIRECTION.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -382,7 +382,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>ServiceJourneyRefStructure</td>
-      <td>Reference to a SERVICE JOURNEY.</td>
+      <td>Reference to a connecting VEHICLE JOURNEY to whom INTERCHANGE RULE applies. If absent applies to all journeys.</td>
       <td> </td>
     </tr>
     <tr>
@@ -400,7 +400,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>ServiceJourneyRefStructure</td>
-      <td>Reference to a SERVICE JOURNEY.</td>
+      <td>Reference to a connecting VEHICLE JOURNEY to whom INTERCHANGE RULE applies. If absent applies to all journeys.</td>
       <td> </td>
     </tr>
   </tbody>

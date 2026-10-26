@@ -8,8 +8,8 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Extensions | expected | 1..1 | ExtensionsStructure | Extensions to schema. (Wrapper tag used to avoid problems with handling of optional 'any' by some validators). | Two elements used in HRDF for ordering facilities |
-| + | Priority | expected | 0..1 | InterchangePriorityType | Priority to assign to this INTERCHANGE. |  |
+|  | Extensions | expected | 0..1 | ExtensionsStructure |  | Two elements used in HRDF for ordering facilities |
+| + | Priority | expected | 0..1 | InterchangePriorityType |  |  |
 |  | Description | expected | 0..1 | MultilingualString |  |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | + | Text | optional | 0..* | MultilingualString |  | For each language a Text element must be provided |

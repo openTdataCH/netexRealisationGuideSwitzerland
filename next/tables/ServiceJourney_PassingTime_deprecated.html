@@ -263,7 +263,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td>Used to specify a set of temporal conditions that can be associated with the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”).</td>
     </tr>
     <tr>
@@ -279,9 +279,9 @@
       <td> </td>
       <td>privateCodes</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodesStructure</td>
-      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -290,7 +290,7 @@
       <td>mandatory</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
       <td>The Value contains a valid Swiss Journey ID.</td>
     </tr>
     <tr>
@@ -307,26 +307,26 @@
       <td>TransportMode</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>AllModesEnumeration</td>
-      <td>An area within a Site. May be connected to Quays by PATH LINKs.</td>
+      <td>AllPublicTransportModesEnumeration</td>
+      <td>PT MODE of JOURNEY.</td>
       <td> </td>
     </tr>
     <tr>
       <td> </td>
       <td>TypeOfProductCategoryRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TypeOfProductCategoryRefStructure</td>
-      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
       <td> </td>
       <td>TypeOfServiceRef</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TypeOfServiceRefStructure</td>
-      <td>Reference to a TYPE OF SERVICE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -335,7 +335,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>noticeAssignments_RelStructure</td>
-      <td>NOTICE ASSIGNMENTs in frame.</td>
+      <td>NOTICEs relevant for the whole GROUP OF SERVICEs.</td>
       <td>The complete set of all applicable notices. Attention: Notices may be restricted to a given set of stops.</td>
     </tr>
     <tr>
@@ -353,7 +353,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>OccupancyView_RelStructure</td>
-      <td>OCCUPANCYs in frame.</td>
+      <td>OCCUPANCYs associated with this JOURNEY. +v2.0</td>
       <td> </td>
     </tr>
     <tr>
@@ -362,7 +362,7 @@
       <td>optional</td>
       <td>0..*</td>
       <td>OccupancyView_VersionStructure</td>
-      <td>A simple VIEW of OCCUPANCY as a first implementation without full support of DECK PLAN.</td>
+      <td>Type for an Occupancy. Details for OCCUPANCY.</td>
       <td> </td>
     </tr>
     <tr>
@@ -379,8 +379,8 @@
       <td>DepartureTime</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>xsd:time</td>
-      <td>Time of departure of JOURNEY from POINT.</td>
+      <td>time</td>
+      <td>Time of Departure.</td>
       <td> </td>
     </tr>
     <tr>
@@ -389,16 +389,16 @@
       <td>optional</td>
       <td>0..1</td>
       <td>DayOffsetType</td>
-      <td>Daya offset if Time of departure of JOURNEY from origin POINT from current OPERATING DAY.</td>
+      <td>Day offset if day of departure time of VEHICLE JOURNEY differs from the current OPERATING DAY.</td>
       <td> </td>
     </tr>
     <tr>
       <td> </td>
       <td>LineRef</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>LineRefStructure</td>
-      <td>Reference to a LINE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -407,7 +407,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>RelativeDirectionEnumeration</td>
-      <td>A Direction of a ROUTE. One of a restricted set of values. Default is “Outbound”</td>
+      <td> </td>
       <td>Allowed are: inbound, outbound</td>
     </tr>
     <tr>
@@ -415,7 +415,7 @@
       <td>trainNumbers</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>trainNumbersInFrame_RelStructure</td>
+      <td>trainNumberRefs_RelStructure</td>
       <td>TRAIN NUMBERs -= derived through JOURNEY PARTs of a journey - for a multi-part journey only.</td>
       <td> </td>
     </tr>
@@ -425,7 +425,7 @@
       <td>mandatory</td>
       <td>0..*</td>
       <td>TrainNumberRefStructure</td>
-      <td>Reference to a TRAIN NUMBER.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -433,7 +433,7 @@
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/Destination.html">Destination</a></td>
       <td>expected</td>
       <td>0..1</td>
-      <td>TravelSpecificationSummaryEndpointStructure</td>
+      <td>JourneyEndpointStructure</td>
       <td>Destination for JOURNEY.</td>
       <td> </td>
     </tr>
@@ -461,7 +461,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>PointInJourneyPatternRefStructure</td>
-      <td>Reference to a POINT IN JOURNEY PATTERN. If Given by Context does not need to stated.</td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>

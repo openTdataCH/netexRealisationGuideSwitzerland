@@ -104,13 +104,14 @@
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney. -->
 							</TimeDemandTypeRef>
-							<VehicleTypeRef ref="ch:1:VehicleType:NF" versionRef="1">
+							<VehicleTypeRef ref="ch:1:VehicleType:NF" versionRef="1"  nameOfRefClass="CompoundTrain">
 								<!-- ch-usage: expected -->
-								<!-- ch-note: Mostly used for accessibility information like NF. Relevant definitions in the mapping excel.-->
+								<!-- ch-attrs: ref version nameOfRefClass -->
+								<!-- ch-note: Simple VehicleType is used for general type like NF. Otherwise a CompoundTrainRef or TrainRef is expected for formations.-->
 							</VehicleTypeRef>
 							<LineRef ref="ch:1:slnid:1024355" versionRef="1">
 								<!--ch-usage: forbidden -->
-                                <!--ch-note: is in ServiceJourneyPattern -->
+								<!--ch-note: is in ServiceJourneyPattern -->
 							</LineRef>
 							<DirectionType><!-- ch-usage: forbidden --><!--ch-note: is in ServiceJourneyPattern -->outbound</DirectionType>
 							<trainNumbers>
@@ -136,9 +137,9 @@
 								<!-- ch-note: For some use cases e.g. change of Facilities during ServiceJourney -->
 								<JourneyPart id="generated" version="1">
 									<!-- ch-usage: expected -->
-                                    <!-- ch-see -->
-                                    <StartTime>05:29:00</StartTime>
-                                    <EndTime>05:35:00</EndTime>
+									<!-- ch-see -->
+									<StartTime>05:29:00</StartTime>
+									<EndTime>05:35:00</EndTime>
 								</JourneyPart>
 							</parts>
 							<calls>

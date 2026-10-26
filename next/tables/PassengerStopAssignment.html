@@ -251,11 +251,11 @@
     <tr>
       <td> </td>
       <td>ScheduledStopPointRef</td>
-      <td>mandatory</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>Reference to a SCHEDULED STOP POINT.</td>
       <td> </td>
+      <td>Be aware that a ScheduledStopPointRef is only not present, when we are doing <code class="language-plaintext highlighter-rouge">passengerBoardingPositionAssignments</code></td>
     </tr>
     <tr>
       <td> </td>
@@ -263,7 +263,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>StopPlaceRefStructure</td>
-      <td>Reference to a STOP PLACE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -272,8 +272,53 @@
       <td>expected</td>
       <td>0..1</td>
       <td>QuayRefStructure</td>
-      <td>Reference to a QUAY.</td>
+      <td>QUAY to which SCHEDULED STOP POINT is to be assigned.</td>
       <td>Not having the track may be problematic, but it can happen sometimes for stops abroad. However, the goal is to always have a QuyRef.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>passengerBoardingPositionAssignments</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>passengerBoardingPositionAssignments_RelStructure</td>
+      <td>Train stop assignments elements to use for which SCHEDULED STOP POINT is to be assigned. +v2.0</td>
+      <td>Relevant for formations assigned to positions at quays.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PassengerBoardingPositionAssignment</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>PassengerBoardingPositionAssignment_VersionStructure</td>
+      <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION. NB Rebmed from TRAIN STOP ASSIGNMENT in v2.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Description</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ScheduledStopPointRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td> </td>
+      <td>This one needs to be on the sector level.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TrainComponentRef</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>TrainComponentRefStructure</td>
+      <td> </td>
+      <td>Map to the relevant TrainComponent</td>
     </tr>
   </tbody>
 </table>

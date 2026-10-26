@@ -310,7 +310,7 @@ participant’s identifier.</p>
       <td>PublicationTimestamp</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>xsd:dateTime</td>
+      <td>dateTime</td>
       <td>Time of output of data.</td>
       <td> </td>
     </tr>
@@ -319,7 +319,7 @@ participant’s identifier.</p>
       <td>ParticipantRef</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>siri:ParticipantCodeType</td>
+      <td>ParticipantCodeType</td>
       <td>Identifier of system requesting Data.</td>
       <td> </td>
     </tr>
@@ -345,9 +345,9 @@ participant’s identifier.</p>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/CompositeFrame.html">CompositeFrame</a></td>
       <td>mandatory</td>
-      <td>1..1</td>
-      <td>Composite_VersionFrameStructure</td>
-      <td>A container VERSION FRAME that groups a set of content VERSION FRAMsE to which the same VALIDITY CONDITIONs have been assigned.</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>
@@ -481,7 +481,7 @@ appearing in this order.</p>
       <td>FromDate</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>xsd:dateTime</td>
+      <td>dateTime</td>
       <td>Start date of AVAILABILITY CONDITION.</td>
       <td> </td>
     </tr>
@@ -490,7 +490,7 @@ appearing in this order.</p>
       <td>ToDate</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>xsd:dateTime</td>
+      <td>dateTime</td>
       <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
       <td> </td>
     </tr>

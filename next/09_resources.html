@@ -426,7 +426,7 @@
       <td>vehicleTypes</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>transportTypeRefs_RelStructure</td>
+      <td>vehicleTypesInFrame_RelStructure</td>
       <td>VEHICLE TYPEs in frame.</td>
       <td>The VehicleType here are used for generic information like lowfloor and not for formation information</td>
     </tr>
@@ -596,7 +596,7 @@ We use this element to  describe the different roles of the participating compan
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Explanation of RESPONSIBILITY SET.</td>
       <td> </td>
     </tr>
     <tr>
@@ -612,9 +612,9 @@ We use this element to  describe the different roles of the participating compan
       <td> </td>
       <td>PrivateCode</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>DEPRECATED - use privateCodes. -v2.0</td>
       <td> </td>
     </tr>
     <tr>
@@ -630,7 +630,7 @@ We use this element to  describe the different roles of the participating compan
       <td>+</td>
       <td>ResponsibilityRoleAssignment</td>
       <td>mandatory</td>
-      <td>0..*</td>
+      <td>1..*</td>
       <td>ResponsibilityRoleAssignment_VersionedChildStructure</td>
       <td>Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision.</td>
       <td> </td>
@@ -650,7 +650,7 @@ We use this element to  describe the different roles of the participating compan
       <td>mandatory</td>
       <td>0..1</td>
       <td>OrganisationRefStructure</td>
-      <td>Responsible ORGANISATION.</td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>
@@ -819,7 +819,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of TYPE OF VALUE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -933,9 +933,9 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td> </td>
       <td>privateCodes</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodesStructure</td>
-      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -944,7 +944,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
       <td>SBOID and GO (busines organisation) mandatory if they exist.</td>
     </tr>
     <tr>
@@ -953,7 +953,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -962,7 +962,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Short Name for TYPE OF VALUE.</td>
+      <td> </td>
       <td>there may be cases, when it can’t be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators.</td>
     </tr>
     <tr>
@@ -971,7 +971,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>optional</td>
       <td>0..1</td>
       <td>blockParts_RelStructure</td>
-      <td>Parts of the ORGANISATION.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -996,9 +996,9 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>++++</td>
       <td>PrivateCode</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>DEPRECATED - use privateCodes. -v2.0</td>
       <td> </td>
     </tr>
   </tbody>
@@ -1101,7 +1101,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of TYPE OF VALUE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1205,9 +1205,9 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td> </td>
       <td>Extensions</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>ExtensionsStructure</td>
-      <td>Extensions to schema. (Wrapper tag used to avoid problems with handling of optional ‘any’ by some validators).</td>
+      <td> </td>
       <td>Two elements used in HRDF for ordering facilities</td>
     </tr>
     <tr>
@@ -1216,7 +1216,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>expected</td>
       <td>0..1</td>
       <td>InterchangePriorityType</td>
-      <td>Priority to assign to this INTERCHANGE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -1432,7 +1432,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -1646,7 +1646,7 @@ referenced to define facilities of a site.</p>
       <td>LowFloor</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Low floor VEHICLES can use stop and be accessible.</td>
       <td> </td>
     </tr>
@@ -1655,7 +1655,7 @@ referenced to define facilities of a site.</p>
       <td>HasLiftOrRamp</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether vehicle has lift or ramp to facilitate wheelchair access.</td>
       <td> </td>
     </tr>
@@ -1664,7 +1664,7 @@ referenced to define facilities of a site.</p>
       <td>HasHoist</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether vehicle has hoist for wheelchair access.</td>
       <td> </td>
     </tr>

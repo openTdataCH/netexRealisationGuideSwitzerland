@@ -363,7 +363,7 @@ class ServiceJourney {
       <td>lines</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>lineRefs_RelStructure</td>
+      <td>linesInFrame_RelStructure</td>
       <td>LINEs in frame.</td>
       <td>Only Line is used and not FlexibleLine</td>
     </tr>
@@ -399,7 +399,7 @@ class ServiceJourney {
       <td>destinationDisplays</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>destinationDisplayRefs_RelStructure</td>
+      <td>destinationDisplaysInFrame_RelStructure</td>
       <td>DESTINATION DISPLAYs in frame.</td>
       <td> </td>
     </tr>
@@ -425,8 +425,8 @@ class ServiceJourney {
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/ScheduledStopPoint.html">ScheduledStopPoint</a></td>
       <td>mandatory</td>
-      <td>0..*</td>
-      <td>unknown</td>
+      <td>1..*</td>
+      <td>ScheduledStopPoint_VersionStructure</td>
       <td>A POINT where passengers can board or alight from vehicles. It is open, which hierarchical level such a point has. It can represent a single door (BoardingPosition) or a whole ZONE. The association to the physical model is done with STOP ASSIGNMENTs.</td>
       <td>The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part.</td>
     </tr>
@@ -471,8 +471,8 @@ class ServiceJourney {
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/PassengerStopAssignment.html">PassengerStopAssignment</a></td>
       <td>expected</td>
       <td>0..*</td>
-      <td>PassengerStopAssignment_VersionStructure</td>
-      <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION.</td>
+      <td>unknown</td>
+      <td> </td>
       <td>Make the link between timetables and site model.</td>
     </tr>
     <tr>
@@ -498,7 +498,7 @@ class ServiceJourney {
       <td>journeyPatterns</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>journeyPatternRefs_RelStructure</td>
+      <td>journeyPatternsInFrame_RelStructure</td>
       <td>JOURNEY PATTERNs in frame.</td>
       <td> </td>
     </tr>
@@ -516,7 +516,7 @@ class ServiceJourney {
       <td>timeDemandTypes</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>timeDemandTypeRefs_RelStructure</td>
+      <td>timeDemandTypesInFrame_RelStructure</td>
       <td>TIME DEMAND TYPEs in frame.</td>
       <td> </td>
     </tr>
@@ -693,7 +693,7 @@ class ServiceJourney {
       <td> </td>
       <td>ValidBetween</td>
       <td>expected</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>unknown</td>
       <td> </td>
       <td>Usually set to the whole timetable year</td>
@@ -703,7 +703,7 @@ class ServiceJourney {
       <td>FromDate</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>xsd:dateTime</td>
+      <td>dateTime</td>
       <td>Start date of AVAILABILITY CONDITION.</td>
       <td> </td>
     </tr>
@@ -712,7 +712,7 @@ class ServiceJourney {
       <td>ToDate</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>xsd:dateTime</td>
+      <td>dateTime</td>
       <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
       <td> </td>
     </tr>
@@ -720,9 +720,9 @@ class ServiceJourney {
       <td> </td>
       <td>keyList</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>KeyListStructure</td>
-      <td>A list of alternative Key values for an element.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -738,9 +738,9 @@ class ServiceJourney {
       <td>++</td>
       <td>Key</td>
       <td>optional</td>
-      <td>0..1</td>
-      <td>xsd:normalizedString</td>
-      <td>User key.</td>
+      <td>1..1</td>
+      <td>normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
       <td> </td>
     </tr>
     <tr>
@@ -748,7 +748,7 @@ class ServiceJourney {
       <td>Value</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:anyType</td>
+      <td>normalizedString</td>
       <td>Value for alternative key.</td>
       <td> </td>
     </tr>
@@ -756,9 +756,9 @@ class ServiceJourney {
       <td> </td>
       <td>privateCodes</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodesStructure</td>
-      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
       <td>The SLNID is mandatory if it exists</td>
     </tr>
     <tr>
@@ -767,7 +767,7 @@ class ServiceJourney {
       <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
       <td>The SLNID is mandatory if it exists</td>
     </tr>
     <tr>
@@ -785,7 +785,7 @@ class ServiceJourney {
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of LINE SHAPE.</td>
       <td>contains attribute D T from HRDF. Is not translated on purpose.</td>
     </tr>
     <tr>
@@ -794,7 +794,7 @@ class ServiceJourney {
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Short Name for TYPE OF VALUE.</td>
+      <td>Short name of LINE.</td>
       <td>contains the LinieKurzName (attribut N T in HRDF)</td>
     </tr>
     <tr>
@@ -802,17 +802,17 @@ class ServiceJourney {
       <td>TransportMode</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>AllModesEnumeration</td>
-      <td>An area within a Site. May be connected to Quays by PATH LINKs.</td>
+      <td>AllPublicTransportModesEnumeration</td>
+      <td>Primary PUBLIC TRANSPORT MODE of NETWORK.</td>
       <td> </td>
     </tr>
     <tr>
       <td> </td>
       <td>TransportSubmode</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TransportSubmodeStructure</td>
-      <td>A submode of a public or private TRANSPORT MODE.</td>
+      <td> </td>
       <td>the mapping excel describe how to use the TransportSubmode</td>
     </tr>
     <tr>
@@ -830,16 +830,16 @@ class ServiceJourney {
       <td>mandatory</td>
       <td>0..1</td>
       <td>PublicCodeStructure</td>
-      <td>Public identifier code of TARIFF ZONE. +v2.0</td>
+      <td>Public identifier of a LINe.</td>
       <td>Contains LinieLangName (attribute LT from HRDF)</td>
     </tr>
     <tr>
       <td> </td>
       <td>OperatorRef</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>OperatorRefStructure</td>
-      <td>Reference to an OPERATOR.</td>
+      <td>An OPERATOR should be set, even when the same as the AUTHORITY. In some cases OPERATOR or AUTHORITY are managed through a ResponsibilitySet. However, for compatibility OperatorRef and AuthorityRef still should be filled in. +v2.0</td>
       <td>The operator is the transport organisation that really “owns” the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney. Is redundant to the responsibilitySetRef on purpose.</td>
     </tr>
     <tr>
@@ -857,7 +857,7 @@ class ServiceJourney {
       <td>optional</td>
       <td>0..*</td>
       <td>OperatorRefStructure</td>
-      <td>Reference to an OPERATOR.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -873,9 +873,9 @@ class ServiceJourney {
       <td> </td>
       <td>TypeOfProductCategoryRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TypeOfProductCategoryRefStructure</td>
-      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
+      <td> </td>
       <td>Always aligned with BS KI oev-info.ch</td>
     </tr>
   </tbody>
@@ -983,8 +983,8 @@ class ServiceJourney {
       <td>members</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>singleJourneyRefs_RelStructure</td>
-      <td>Members of GROUP OF ENTITies.</td>
+      <td>lineRefs_RelStructure</td>
+      <td>LINEs in GROUP OF LINEs.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1106,7 +1106,7 @@ class ServiceJourney {
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of destination on DESTINATION DISPLAY.</td>
       <td>Is always language neutral. The data is taken from the Destination or from the reference in *R (HRDF). If DURCHBI is used then the destination display shows the final destination.</td>
     </tr>
     <tr>
@@ -1124,7 +1124,7 @@ class ServiceJourney {
       <td>optional</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Text to show to Driver or Staff for the Notice.</td>
+      <td>Text to show to Driver or Staff for the DESTINATION DISPLAY.</td>
       <td>Text to display to DRIVER.</td>
     </tr>
   </tbody>
@@ -1211,9 +1211,9 @@ class ServiceJourney {
       <td> </td>
       <td>privateCodes</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodesStructure</td>
-      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -1222,7 +1222,7 @@ class ServiceJourney {
       <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
       <td>SLOID mandatory if it exists.</td>
     </tr>
     <tr>
@@ -1231,7 +1231,7 @@ class ServiceJourney {
       <td>optional</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of POINT.</td>
       <td>The names are the same in all languages. Can be omitted as this is taken from the StopPlace/Quay.</td>
     </tr>
     <tr>
@@ -1249,7 +1249,7 @@ class ServiceJourney {
       <td>optional</td>
       <td>0..1</td>
       <td>PublicCodeStructure</td>
-      <td>Public identifier code of TARIFF ZONE. +v2.0</td>
+      <td>A PUBLIC code that uniquely identifies the STOP POINT.</td>
       <td>For Quay contains the plattform number/letter.</td>
     </tr>
   </tbody>
@@ -1335,11 +1335,11 @@ class ServiceJourney {
     <tr>
       <td> </td>
       <td>ScheduledStopPointRef</td>
-      <td>mandatory</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>Reference to a SCHEDULED STOP POINT.</td>
       <td> </td>
+      <td>Be aware that a ScheduledStopPointRef is only not present, when we are doing <code class="language-plaintext highlighter-rouge">passengerBoardingPositionAssignments</code></td>
     </tr>
     <tr>
       <td> </td>
@@ -1347,7 +1347,7 @@ class ServiceJourney {
       <td>mandatory</td>
       <td>0..1</td>
       <td>StopPlaceRefStructure</td>
-      <td>Reference to a STOP PLACE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -1356,8 +1356,53 @@ class ServiceJourney {
       <td>expected</td>
       <td>0..1</td>
       <td>QuayRefStructure</td>
-      <td>Reference to a QUAY.</td>
+      <td>QUAY to which SCHEDULED STOP POINT is to be assigned.</td>
       <td>Not having the track may be problematic, but it can happen sometimes for stops abroad. However, the goal is to always have a QuyRef.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>passengerBoardingPositionAssignments</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>passengerBoardingPositionAssignments_RelStructure</td>
+      <td>Train stop assignments elements to use for which SCHEDULED STOP POINT is to be assigned. +v2.0</td>
+      <td>Relevant for formations assigned to positions at quays.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PassengerBoardingPositionAssignment</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>PassengerBoardingPositionAssignment_VersionStructure</td>
+      <td>The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION. NB Rebmed from TRAIN STOP ASSIGNMENT in v2.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Description</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ScheduledStopPointRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td> </td>
+      <td>This one needs to be on the sector level.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TrainComponentRef</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>TrainComponentRefStructure</td>
+      <td> </td>
+      <td>Map to the relevant TrainComponent</td>
     </tr>
   </tbody>
 </table>
@@ -1368,11 +1413,25 @@ class ServiceJourney {
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;PassengerStopAssignment</span> <span class="na">id=</span><span class="s">"generated-85003000-12"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000:503:12"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000:503:12"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Be aware that a ScheduledStopPointRef is only not present, when we are doing `passengerBoardingPositionAssignments` --&gt;</span>
+  <span class="nt">&lt;/ScheduledStopPointRef&gt;</span>
   <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;QuayRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000:503:12"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- Not having the track may be problematic, but it can happen sometimes for stops abroad. However, the goal is to always have a QuyRef. --&gt;</span>
   <span class="nt">&lt;/QuayRef&gt;</span>
+  <span class="nt">&lt;passengerBoardingPositionAssignments&gt;</span>
+    <span class="c">&lt;!-- Relevant for formations assigned to positions at quays. --&gt;</span>
+    <span class="nt">&lt;PassengerBoardingPositionAssignment</span> <span class="na">id=</span><span class="s">"pbpa20"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Description&gt;</span>Assign coach 5 to sector B<span class="nt">&lt;/Description&gt;</span>
+      <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7492:0:460848"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- This one needs to be on the sector level. --&gt;</span>
+      <span class="nt">&lt;/ScheduledStopPointRef&gt;</span>
+      <span class="nt">&lt;TrainComponentRef</span> <span class="na">ref=</span><span class="s">"bbd:trncmp_448_01"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- Map to the relevant TrainComponent --&gt;</span>
+      <span class="nt">&lt;/TrainComponentRef&gt;</span>
+    <span class="nt">&lt;/PassengerBoardingPositionAssignment&gt;</span>
+  <span class="nt">&lt;/passengerBoardingPositionAssignments&gt;</span>
 <span class="nt">&lt;/PassengerStopAssignment&gt;</span>
 </code></pre></div></div>
 
@@ -1442,7 +1501,7 @@ class ServiceJourney {
       <td>optional</td>
       <td>1..1</td>
       <td>ExtensionsStructure</td>
-      <td>Extensions to schema. (Wrapper tag used to avoid problems with handling of optional ‘any’ by some validators).</td>
+      <td> </td>
       <td>When also ProductCategory is relevant, then this extension must be used</td>
     </tr>
     <tr>
@@ -1469,7 +1528,7 @@ class ServiceJourney {
       <td>mandatory</td>
       <td>0..1</td>
       <td>TransferDurationStructure</td>
-      <td>Timings for walking over TRANSFER if different from the JOURNEY PATTERN transfer duration,</td>
+      <td> </td>
       <td>We use WalkTransferDuration. At some point we need a solution for bicyle duration too (TSI telemetics)</td>
     </tr>
     <tr>
@@ -1477,7 +1536,7 @@ class ServiceJourney {
       <td>MobilityRestrictedTravellerDuration</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>xsd:duration</td>
+      <td>duration</td>
       <td>Time for a Mobility Restricted traveller to make a TRANSFER.</td>
       <td> </td>
     </tr>
@@ -1487,7 +1546,7 @@ class ServiceJourney {
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER.</td>
+      <td> </td>
       <td>Should be false - we always intend to use only one way because the behaviour may not be the same.</td>
     </tr>
     <tr>
@@ -1496,7 +1555,7 @@ class ServiceJourney {
       <td>optional</td>
       <td>0..1</td>
       <td>AccessModeEnumeration</td>
-      <td>If a special transfer mode is needed. ACCESS MODE enumeration is also used for the TransferMode. +v2.0</td>
+      <td> </td>
       <td>Is foot. Others might become possible in future</td>
     </tr>
     <tr>
@@ -1504,8 +1563,8 @@ class ServiceJourney {
       <td>From</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>ConnectionEndStructure</td>
-      <td>Origin end of ACCESS link.</td>
+      <td>DefaultConnectionEndStructure</td>
+      <td>Origin end of DEFAULT TRANSFER.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1514,7 +1573,7 @@ class ServiceJourney {
       <td>optional</td>
       <td>0..1</td>
       <td>AllModesEnumeration</td>
-      <td>An area within a Site. May be connected to Quays by PATH LINKs.</td>
+      <td> </td>
       <td>All codes are shown in mapping excel. Use with care.</td>
     </tr>
     <tr>
@@ -1522,17 +1581,17 @@ class ServiceJourney {
       <td>OperatorView</td>
       <td>optional</td>
       <td>1..1</td>
-      <td>Operator_DerivedViewStructure</td>
-      <td>Simplified view of OPERATOR. All data except the identifier will be derived through the relationship.</td>
+      <td>unknown</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
       <td>++</td>
       <td>OperatorRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>OperatorRefStructure</td>
-      <td>Reference to an OPERATOR.</td>
+      <td> </td>
       <td>Should be a SBOID whenever possible.</td>
     </tr>
     <tr>
@@ -1540,8 +1599,8 @@ class ServiceJourney {
       <td>To</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>ConnectionEndStructure</td>
-      <td>Destination end of ACCESS link.</td>
+      <td>DefaultConnectionEndStructure</td>
+      <td>Destination end of DEFAULT TRANSFER.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1550,7 +1609,7 @@ class ServiceJourney {
       <td>optional</td>
       <td>0..1</td>
       <td>StopPlaceRefStructure</td>
-      <td>Reference to a STOP PLACE.</td>
+      <td> </td>
       <td>Usually a SLOID. Not set means whole network.</td>
     </tr>
   </tbody>
@@ -1669,7 +1728,7 @@ class ServiceJourney {
       <td>mandatory</td>
       <td>0..1</td>
       <td>TransferDurationStructure</td>
-      <td>Timings for walking over TRANSFER if different from the JOURNEY PATTERN transfer duration,</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -1677,7 +1736,7 @@ class ServiceJourney {
       <td>DefaultDuration</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:duration</td>
+      <td>duration</td>
       <td>Default time needed for a traveller to make a TRANSFER.</td>
       <td> </td>
     </tr>
@@ -1687,7 +1746,7 @@ class ServiceJourney {
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>Whether timings and validity applies to both directions (true) or just to the from-to direction of the TRANSFER.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -1695,8 +1754,8 @@ class ServiceJourney {
       <td>From</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>ConnectionEndStructure</td>
-      <td>Origin end of ACCESS link.</td>
+      <td>SiteConnectionEndStructure</td>
+      <td>Origin end of SITE CONNECTION.</td>
       <td>Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs.</td>
     </tr>
     <tr>
@@ -1705,7 +1764,7 @@ class ServiceJourney {
       <td>mandatory</td>
       <td>0..1</td>
       <td>StopPlaceRefStructure</td>
-      <td>Reference to a STOP PLACE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -1713,8 +1772,8 @@ class ServiceJourney {
       <td>To</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>ConnectionEndStructure</td>
-      <td>Destination end of ACCESS link.</td>
+      <td>SiteConnectionEndStructure</td>
+      <td>Destination end of SITE CONNECTION.</td>
       <td>Could also refer to a Quay or a different SiteElement. Currently, we only transfer StopPlaceRefs.</td>
     </tr>
     <tr>
@@ -1809,9 +1868,9 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
       <td> </td>
       <td>privateCodes</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodesStructure</td>
-      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
       <td>only for the “virtual” stops like Bahn2000</td>
     </tr>
     <tr>
@@ -1820,7 +1879,7 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
       <td>optional</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
       <td>DIDOK code of the virtual stop</td>
     </tr>
     <tr>
@@ -1838,7 +1897,7 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
       <td>optional</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of LINK.</td>
       <td>Can be used to express “Neubaustrecke”, “Lötschbergbasistunnel” and the like.</td>
     </tr>
     <tr>
@@ -1846,8 +1905,8 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
       <td>FromPointRef</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>VehicleMeetingPointRefStructure</td>
-      <td>Start POINT of LINK.</td>
+      <td>TimingPointRefStructure</td>
+      <td>Identifier of TIMING POINT from which LINK starts.</td>
       <td>We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this</td>
     </tr>
     <tr>
@@ -1864,8 +1923,8 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
       <td>ToPointRef</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>VehicleMeetingPointRefStructure</td>
-      <td>End POINT of LINK.</td>
+      <td>TimingPointRefStructure</td>
+      <td>Identifier of TIMING POINT at which LINK ends.</td>
       <td>We use PointRef on purpose in preparation of BorderPoints. the nameOfClassRef helps to define this</td>
     </tr>
     <tr>
@@ -1881,9 +1940,9 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
       <td> </td>
       <td>OperationalContextRef</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>OperationalContextRefStructure</td>
-      <td>Reference to an OPERATIONAL CONTEXT.</td>
+      <td> </td>
       <td>This is “Betriebszweig”. Switzerland does not use it currently, but it might become interesting at some point</td>
     </tr>
   </tbody>
@@ -1979,7 +2038,7 @@ needs to be added for that too.</li>
       <td>optional</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of SERVIC CALENDAR.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1987,17 +2046,17 @@ needs to be added for that too.</li>
       <td>RouteView</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>Route_DerivedViewStructure</td>
-      <td>Annotated reference to a ROUTE.</td>
+      <td>unknown</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>LineRef</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>0..1</td>
       <td>LineRefStructure</td>
-      <td>Reference to a LINE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -2006,7 +2065,7 @@ needs to be added for that too.</li>
       <td>mandatory</td>
       <td>0..1</td>
       <td>RelativeDirectionEnumeration</td>
-      <td>A Direction of a ROUTE. One of a restricted set of values. Default is “Outbound”</td>
+      <td>DIRECTION of JOURNEY PATTERN. Should be same as for ROUTE on which PATTERN is based.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2014,8 +2073,8 @@ needs to be added for that too.</li>
       <td>pointsInSequence</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>vehicleMeetingPointsInSequence_RelStructure</td>
-      <td>Ordered List of points used in TIMING PATTERN. specific to TIMING PATTERN.</td>
+      <td>pointsInJourneyPattern_RelStructure</td>
+      <td>Sequence of points in JOURNEY PATTERN Points may be SCHEDULED STOP POINTs or TIMING POINTs.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2041,8 +2100,8 @@ needs to be added for that too.</li>
       <td>ForAlighting</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
-      <td>Default for whether SCHEDULED STOP POINT may be used for alighting. May be overridden on specific services.</td>
+      <td>boolean</td>
+      <td>Whether alighting is allowed at the stop. Default is true.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2050,17 +2109,17 @@ needs to be added for that too.</li>
       <td>ForBoarding</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
-      <td>Default for whether SCHEDULED STOP POINT may be used for boarding. May be overridden on specific services.</td>
+      <td>boolean</td>
+      <td>Whether boarding is allowed at the stop. Default is true.</td>
       <td> </td>
     </tr>
     <tr>
       <td>++</td>
       <td>DestinationDisplayRef</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>DestinationDisplayRefStructure</td>
-      <td>Reference to a DESTINATION DISPLAY.</td>
+      <td> </td>
       <td>Indicates that the destination has changed. Superseeds Line or ServiceJourney</td>
     </tr>
     <tr>
@@ -2068,8 +2127,8 @@ needs to be added for that too.</li>
       <td>RequestStop</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
-      <td>Whether stop is by default a request stop in the timetable. May be overridden in specific SERVICE PATTERNs.</td>
+      <td>boolean</td>
+      <td>Whether stop is a request stop for this journey. Default is false.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2087,16 +2146,16 @@ needs to be added for that too.</li>
       <td>optional</td>
       <td>0..1</td>
       <td>checkConstraints_RelStructure</td>
-      <td>CHECK CONSTRAINTs in frame.</td>
+      <td>Implements the navigation from processes or barriers that the travellers will be facing (e.g., security check, check-in, etc.). +v2.1</td>
       <td> </td>
     </tr>
     <tr>
       <td>+++</td>
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/CheckConstraint.html">CheckConstraint</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>CheckConstraint_VersionStructure</td>
-      <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
+      <td>Process associated with a Place, typically giving rise to a delay to the traveller.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2105,7 +2164,7 @@ needs to be added for that too.</li>
       <td>optional</td>
       <td>0..1</td>
       <td>bookingArrangements_RelStructure</td>
-      <td>BOOKING ARRANGEMENTs in frame +v2.0.</td>
+      <td>Set of possible Booking Arrangements for stop if different from those for SERVICE JOURNEY. +v2.0</td>
       <td> </td>
     </tr>
     <tr>
@@ -2114,14 +2173,14 @@ needs to be added for that too.</li>
       <td>optional</td>
       <td>0..*</td>
       <td>BookingArrangementRefStructure</td>
-      <td>Reference to a BOOKING ARRANGEMENT.</td>
+      <td> </td>
       <td>Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information.</td>
     </tr>
     <tr>
       <td>+++</td>
       <td>BookingArrangement</td>
       <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>BookingArrangement_VersionStructure</td>
       <td>Details of the booking arrangements for a given LINE, STOP, SERVICE etc.</td>
       <td> </td>
@@ -2270,8 +2329,8 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>runTimes</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>vehicleJourneyRunTimes_RelStructure</td>
-      <td>run times for this TIMING LINK.</td>
+      <td>journeyRunTimes_RelStructure</td>
+      <td>RUN TIMEs for TIME DEMAND TYPE.</td>
       <td>The run time on the TimingLinks</td>
     </tr>
     <tr>
@@ -2287,9 +2346,9 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>++</td>
       <td>TimingLinkRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TimingLinkRefStructure</td>
-      <td>Reference to a TIMING LINK.</td>
+      <td> </td>
       <td>The timing link that is ued here and that that does have a given run time</td>
     </tr>
     <tr>
@@ -2297,7 +2356,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>RunTime</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>xsd:duration</td>
+      <td>duration</td>
       <td>RUN TIME as an interval.</td>
       <td> </td>
     </tr>
@@ -2306,8 +2365,8 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>waitTimes</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>vehicleJourneyWaitTimes_RelStructure</td>
-      <td>Wait times for (TIMING) POINT IN JOURNEY PATTERN. There may be different times for different time demands.</td>
+      <td>journeyWaitTimes_RelStructure</td>
+      <td>WAIT TIMEs for TIME DEMAND TYPE.</td>
       <td>We only need wait times if greater than 0.</td>
     </tr>
     <tr>
@@ -2325,7 +2384,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>expected</td>
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>Reference to a SCHEDULED STOP POINT.</td>
+      <td>Specific SCHEDULED STOP POINT at end of CONNECTION.</td>
       <td>Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice).</td>
     </tr>
     <tr>
@@ -2333,7 +2392,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>WaitTime</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:duration</td>
+      <td>duration</td>
       <td>Wait time as interval.</td>
       <td> </td>
     </tr>
@@ -2432,7 +2491,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td> </td>
+      <td>Text content of NOTICe.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2449,7 +2508,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>Text</td>
       <td>expected</td>
       <td>0..*</td>
-      <td>MultilingualString</td>
+      <td>TextType</td>
       <td>Name of the entity.</td>
       <td> </td>
     </tr>
@@ -2468,7 +2527,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>mandatory</td>
       <td>0..1</td>
       <td>PublicCodeStructure</td>
-      <td>Public identifier code of TARIFF ZONE. +v2.0</td>
+      <td>Alternative code associated with Notice.</td>
       <td>The public code is transmitted when it is to be published and when it is the type of notice 10. Only 1 and 10 aree allowed.</td>
     </tr>
     <tr>
@@ -2476,7 +2535,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>ShortCode</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>CleardownCodeType</td>
+      <td>normalizedString</td>
       <td>Alternative short code associated with Notice.</td>
       <td>A duplication, but we want it. “A__” indicates an offer based on BS KI</td>
     </tr>
@@ -2484,18 +2543,18 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td> </td>
       <td>PrivateCode</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>DEPRECATED - use privateCodes. -v2.0</td>
       <td>A duplication, but we want it.</td>
     </tr>
     <tr>
       <td> </td>
       <td>TypeOfNoticeRef</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TypeOfNoticeRefStructure</td>
-      <td>Reference to a TYPE OF NOTICE.</td>
+      <td> </td>
       <td>allowed are ch:1:TypeOfNotice:1 for general notice, ch:1:TypeOfNotice:10 for offer, ch:1:TypeOfNotice:11 for region code (only PAG)</td>
     </tr>
     <tr>
@@ -2503,7 +2562,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>CanBeAdvertised</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether NOTICE is advertised to public. This may be overridden on an assignment.</td>
       <td>Whether the NOTICE is advertised.</td>
     </tr>
@@ -2596,7 +2655,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>optional</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -2605,16 +2664,16 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>optional</td>
       <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
       <td> </td>
       <td>NoticeRef</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>NoticeRefStructure</td>
-      <td>Reference to a NOTICE i.e. footnote, note, announcement or other informational text element.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>

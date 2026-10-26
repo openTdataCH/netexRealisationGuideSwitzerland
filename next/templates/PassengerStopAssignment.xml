@@ -12,7 +12,8 @@
 							<!-- ch-usage: mandatory -->
 							<!-- ch-attrs: id version -->
 							<ScheduledStopPointRef ref="ch:1:sloid:3000:503:12" versionRef="1">
-								<!-- ch-usage: mandatory -->
+								<!-- ch-usage: expected -->
+                                <!-- ch-note: Be aware that a ScheduledStopPointRef is only not present, when we are doing `passengerBoardingPositionAssignments` -->
 							</ScheduledStopPointRef>
 							<StopPlaceRef ref="ch:1:sloid:3000" versionRef="1">
 								<!-- ch-usage: mandatory -->
@@ -24,7 +25,23 @@
 							<BoardingPositionRef ref="notUsed" versionRef="notUsed">
 								<!-- ch-usage: forbidden-->
 							</BoardingPositionRef>
-						</PassengerStopAssignment>
+							<passengerBoardingPositionAssignments>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Relevant for formations assigned to positions at quays. -->
+								<PassengerBoardingPositionAssignment id="pbpa20" version="1">
+									<!-- ch-usage: optional -->
+									<Description><!-- ch-usage: optional -->Assign coach 5 to sector B</Description>
+									<ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" versionRef="1">
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: This one needs to be on the sector level. -->
+									</ScheduledStopPointRef>
+									<TrainComponentRef versionRef="1" ref="bbd:trncmp_448_01">
+										<!-- ch-usage: expected -->
+										<!-- ch-note: Map to the relevant TrainComponent -->
+									</TrainComponentRef>
+								</PassengerBoardingPositionAssignment>
+							</passengerBoardingPositionAssignments>
+						    </PassengerStopAssignment>
 					</stopAssignments>
 				</ServiceFrame>
 			</frames>

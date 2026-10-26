@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Train version="1" id="Train1">
+  <Name>blabla</Name>
+  <Description>2212</Description>
+  <SelfPropelled>true</SelfPropelled>
+  <components>
+    <!-- Can contain TrainComponent or TrainComponentRefs. order is not used, as the XML order defines, the order of the elements -->
+    <TrainComponent version="1" id="bbd:trncmp_447_01">
+      <Label>1</Label>
+      <TrainElement version="1" id="bbd:trne_447_01">
+        <Name/>
+        <TrainElementType>carriage</TrainElementType>
+        <FareClasses>secondClass</FareClasses>
+        <LowFloor>true</LowFloor>
+        <facilities>
+          <ServiceFacilitySetRef ref="nf" version="1"/>
+          <ServiceFacilitySetRef ref="bikehooks" version="1"/>
+          <ServiceFacilitySetRef ref="strollerplattform" version="1"/>
+        </facilities>
+      </TrainElement>
+    </TrainComponent>
+    <TrainComponentRef ref="" version="1"/>
+    <TrainComponent version="1" id="bbd:trncmp_447_02">
+      <Label>2</Label>
+      <TrainElement version="1" id="bbd:trne_447_02">
+        <Name/>
+        <TrainElementType>carriage</TrainElementType>
+        <FareClasses>secondClass</FareClasses>
+        <LowFloor>true</LowFloor>
+        <facilities>
+          <ServiceFacilitySetRef ref="nf" version="1"/>
+          <ServiceFacilitySetRef ref="bikehooks" version="1"/>
+          <ServiceFacilitySetRef ref="strollerplattform" version="1"/>
+        </facilities>
+      </TrainElement>
+      <ForwardCoupling>
+        <Splittable>false</Splittable>
+        <ThroughAccess>openEntrance</ThroughAccess>
+      </ForwardCoupling>
+    </TrainComponent>
+    <TrainComponent version="1" id="bbd:trncmp_447_03">
+      <Label>3</Label>
+      <TrainElement version="1" id="bbd:trne_447_03">
+        <Name/>
+        <TrainElementType>carriage</TrainElementType>
+        <FareClasses>firstClass</FareClasses>
+        <LowFloor>true</LowFloor>
+        <facilities>
+          <ServiceFacilitySetRef ref="nf" version="1"/>
+        </facilities>
+      </TrainElement>
+      <ForwardCoupling>
+        <Splittable>false</Splittable>
+        <ThroughAccess>openEntrance</ThroughAccess>
+      </ForwardCoupling>
+    </TrainComponent>
+    <TrainComponent version="1" id="bbd:trncmp_447_04">
+      <Label>4</Label>
+      <TrainElement version="1" id="bbd:trne_447_04">
+        <Name/>
+        <TrainElementType>carriage</TrainElementType>
+        <FareClasses>secondClass</FareClasses>
+        <LowFloor>true</LowFloor>
+        <facilities>
+          <ServiceFacilitySetRef ref="nf" version="1"/>
+          <ServiceFacilitySetRef ref="bikehooks" version="1"/>
+          <ServiceFacilitySetRef ref="wheelchairspace" version="1"/>
+        </facilities>
+      </TrainElement>
+      <ForwardCoupling>
+        <Splittable>false</Splittable>
+        <ThroughAccess>openEntrance</ThroughAccess>
+      </ForwardCoupling>
+    </TrainComponent>
+  </components>
+</Train>

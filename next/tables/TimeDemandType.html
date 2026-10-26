@@ -264,8 +264,8 @@
       <td>runTimes</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>vehicleJourneyRunTimes_RelStructure</td>
-      <td>run times for this TIMING LINK.</td>
+      <td>journeyRunTimes_RelStructure</td>
+      <td>RUN TIMEs for TIME DEMAND TYPE.</td>
       <td>The run time on the TimingLinks</td>
     </tr>
     <tr>
@@ -281,9 +281,9 @@
       <td>++</td>
       <td>TimingLinkRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TimingLinkRefStructure</td>
-      <td>Reference to a TIMING LINK.</td>
+      <td> </td>
       <td>The timing link that is ued here and that that does have a given run time</td>
     </tr>
     <tr>
@@ -291,7 +291,7 @@
       <td>RunTime</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>xsd:duration</td>
+      <td>duration</td>
       <td>RUN TIME as an interval.</td>
       <td> </td>
     </tr>
@@ -300,8 +300,8 @@
       <td>waitTimes</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>vehicleJourneyWaitTimes_RelStructure</td>
-      <td>Wait times for (TIMING) POINT IN JOURNEY PATTERN. There may be different times for different time demands.</td>
+      <td>journeyWaitTimes_RelStructure</td>
+      <td>WAIT TIMEs for TIME DEMAND TYPE.</td>
       <td>We only need wait times if greater than 0.</td>
     </tr>
     <tr>
@@ -319,7 +319,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>Reference to a SCHEDULED STOP POINT.</td>
+      <td>Specific SCHEDULED STOP POINT at end of CONNECTION.</td>
       <td>Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice).</td>
     </tr>
     <tr>
@@ -327,7 +327,7 @@
       <td>WaitTime</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:duration</td>
+      <td>duration</td>
       <td>Wait time as interval.</td>
       <td> </td>
     </tr>

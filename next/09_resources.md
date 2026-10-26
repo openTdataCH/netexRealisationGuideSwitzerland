@@ -58,7 +58,7 @@ Contains shared resources used / referenced in other frames - organisations (`Op
 | + | [SiteFacilitySet](./tables/SiteFacilitySet.md) | optional | 1..* | SiteFacilitySetStructure | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). |  |
 |  | serviceFacilitySets | optional | 0..1 | serviceFacilitySetsInFrame_RelStructure | SERVICE FACILITY SETs in frame . +v1.2.2 | Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some. |
 | + | [ServiceFacilitySet](./tables/ServiceFacilitySet.md) | optional | 1..* | ServiceFacilitySet_VersionStructure | Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.). |  |
-|  | vehicleTypes | optional | 0..1 | transportTypeRefs_RelStructure | VEHICLE TYPEs in frame. | The VehicleType here are used for generic information like lowfloor and not for formation information |
+|  | vehicleTypes | optional | 0..1 | vehicleTypesInFrame_RelStructure | VEHICLE TYPEs in frame. | The VehicleType here are used for generic information like lowfloor and not for formation information |
 | + | [VehicleType](./tables/VehicleType.md) | optional | 0..* | VehicleType_VersionStructure | A classification of public transport vehicles according to the vehicle scheduling requirements in mode and capacity (e.g. standard bus, double-deck, ...). |  |
 
 
@@ -178,13 +178,13 @@ Each combination of LegalEntity and Operator needs a ResponsibilitySet. EntitiyL
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
+|  | Name | mandatory | 0..1 | MultilingualString | Explanation of RESPONSIBILITY SET. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | PrivateCode | expected | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+|  | PrivateCode | expected | 0..1 | PrivateCodeStructure | DEPRECATED - use privateCodes. -v2.0 |  |
 |  | roles | mandatory | 0..1 | responsibilityRoleAssignments_RelStructure | Roles defined by this RESPONSIBILITY SET. |  |
-| + | ResponsibilityRoleAssignment | mandatory | 0..* | ResponsibilityRoleAssignment_VersionedChildStructure | Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision. |  |
+| + | ResponsibilityRoleAssignment | mandatory | 1..* | ResponsibilityRoleAssignment_VersionedChildStructure | Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision. |  |
 | ++ | StakeholderRoleType | mandatory | 0..1 | StakeholderRoleTypeListOfEnumerations | Stakeholder roles which this assignment assigns. | "EntityLegalOwnership" must be defined once and "Operator" should be too. |
-| ++ | ResponsibleOrganisationRef | mandatory | 0..1 | OrganisationRefStructure | Responsible ORGANISATION. |  |
+| ++ | ResponsibleOrganisationRef | mandatory | 0..1 | OrganisationRefStructure |  |  |
 
 
 
@@ -291,7 +291,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
+|  | Name | mandatory | 0..1 | MultilingualString | Name of TYPE OF VALUE. |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | + | Text | optional | 0..* | MultilingualString |  |  |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
@@ -349,14 +349,14 @@ We will use this organisation also in `AuthorityRef`. The problem is that the SB
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | privateCodes | mandatory | 0..1 | PrivateCodesStructure | A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0 |  |
-| + | PrivateCode | expected | 0..* | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. | SBOID and GO (busines organisation) mandatory if they exist. |
-|  | Name | expected | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
-|  | ShortName | expected | 0..1 | MultilingualString | Short Name for TYPE OF VALUE. | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
-|  | parts | optional | 0..1 | blockParts_RelStructure | Parts of the ORGANISATION. |  |
+|  | privateCodes | mandatory | 1..1 | PrivateCodesStructure |  |  |
+| + | PrivateCode | expected | 0..* | PrivateCodeStructure |  | SBOID and GO (busines organisation) mandatory if they exist. |
+|  | Name | expected | 0..1 | MultilingualString |  |  |
+|  | ShortName | expected | 0..1 | MultilingualString |  | there may be cases, when it can't be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators. |
+|  | parts | optional | 0..1 | blockParts_RelStructure |  |  |
 | ++ | administrativeZones | optional | 0..* | administrativeZones_RelStructure | Zones managed by ORGANISATION PART. |  |
 | +++ | TransportAdministrativeZone | optional | 0..* | TransportAdministrativeZone_VersionStructure | A ZONE relating to the management responsibilities of an ORGANISATION. For example to allocate bus stop identifiers for a region. |  |
-| ++++ | PrivateCode | optional | 1..1 | PrivateCodeStructure | A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems. |  |
+| ++++ | PrivateCode | optional | 0..1 | PrivateCodeStructure | DEPRECATED - use privateCodes. -v2.0 |  |
 
 
 
@@ -428,7 +428,7 @@ We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint a
 |-----|---------|-------|------|------|-------------|------|
 |  | values | expected | 0..1 | typesOfValue_RelStructure | Values in Set. |  |
 | + | TypeOfPlace | expected | 0..* | TypeOfPlace_ValueStructure | Classification of a PLACE. |  |
-| ++ | Name | expected | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
+| ++ | Name | expected | 0..1 | MultilingualString | Name of TYPE OF VALUE. |  |
 | +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | +++ | Text | expected | 0..* | MultilingualString |  |  |
 | ++++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
@@ -483,8 +483,8 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Extensions | expected | 1..1 | ExtensionsStructure | Extensions to schema. (Wrapper tag used to avoid problems with handling of optional 'any' by some validators). | Two elements used in HRDF for ordering facilities |
-| + | Priority | expected | 0..1 | InterchangePriorityType | Priority to assign to this INTERCHANGE. |  |
+|  | Extensions | expected | 0..1 | ExtensionsStructure |  | Two elements used in HRDF for ordering facilities |
+| + | Priority | expected | 0..1 | InterchangePriorityType |  |  |
 |  | Description | expected | 0..1 | MultilingualString |  |  |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | + | Text | optional | 0..* | MultilingualString |  | For each language a Text element must be provided |
@@ -580,7 +580,7 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | validityConditions | optional | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. |  |
+|  | validityConditions | optional | 1..1 | validityConditions_RelStructure |  |  |
 | + | [AvailabilityCondition](./tables/AvailabilityCondition.md) | optional | 0..* | AvailabilityCondition_VersionStructure | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. |  |
 |  | Description | optional | 0..1 | MultilingualString |  | Description is optional. |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
@@ -662,9 +662,9 @@ Used currently mainly for the relevant accessibility elements that can be expres
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
 |  | ShortName | expected | 0..1 | MultilingualString | Short Name for TYPE OF VALUE. | Will be defined in mapping excel |
-|  | LowFloor | optional | 0..1 | xsd:boolean | Low floor VEHICLES can use stop and be accessible. |  |
-|  | HasLiftOrRamp | optional | 0..1 | xsd:boolean | Whether vehicle has lift or ramp to facilitate wheelchair access. |  |
-|  | HasHoist | optional | 0..1 | xsd:boolean | Whether vehicle has hoist for wheelchair access. |  |
+|  | LowFloor | optional | 0..1 | boolean | Low floor VEHICLES can use stop and be accessible. |  |
+|  | HasLiftOrRamp | optional | 0..1 | boolean | Whether vehicle has lift or ramp to facilitate wheelchair access. |  |
+|  | HasHoist | optional | 0..1 | boolean | Whether vehicle has hoist for wheelchair access. |  |
 
 
 

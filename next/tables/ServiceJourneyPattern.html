@@ -254,7 +254,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of SERVIC CALENDAR.</td>
       <td> </td>
     </tr>
     <tr>
@@ -262,17 +262,17 @@
       <td>RouteView</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>Route_DerivedViewStructure</td>
-      <td>Annotated reference to a ROUTE.</td>
+      <td>unknown</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>LineRef</td>
       <td>mandatory</td>
-      <td>1..*</td>
+      <td>0..1</td>
       <td>LineRefStructure</td>
-      <td>Reference to a LINE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -281,7 +281,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>RelativeDirectionEnumeration</td>
-      <td>A Direction of a ROUTE. One of a restricted set of values. Default is “Outbound”</td>
+      <td>DIRECTION of JOURNEY PATTERN. Should be same as for ROUTE on which PATTERN is based.</td>
       <td> </td>
     </tr>
     <tr>
@@ -289,8 +289,8 @@
       <td>pointsInSequence</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>vehicleMeetingPointsInSequence_RelStructure</td>
-      <td>Ordered List of points used in TIMING PATTERN. specific to TIMING PATTERN.</td>
+      <td>pointsInJourneyPattern_RelStructure</td>
+      <td>Sequence of points in JOURNEY PATTERN Points may be SCHEDULED STOP POINTs or TIMING POINTs.</td>
       <td> </td>
     </tr>
     <tr>
@@ -316,8 +316,8 @@
       <td>ForAlighting</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
-      <td>Default for whether SCHEDULED STOP POINT may be used for alighting. May be overridden on specific services.</td>
+      <td>boolean</td>
+      <td>Whether alighting is allowed at the stop. Default is true.</td>
       <td> </td>
     </tr>
     <tr>
@@ -325,17 +325,17 @@
       <td>ForBoarding</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
-      <td>Default for whether SCHEDULED STOP POINT may be used for boarding. May be overridden on specific services.</td>
+      <td>boolean</td>
+      <td>Whether boarding is allowed at the stop. Default is true.</td>
       <td> </td>
     </tr>
     <tr>
       <td>++</td>
       <td>DestinationDisplayRef</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>DestinationDisplayRefStructure</td>
-      <td>Reference to a DESTINATION DISPLAY.</td>
+      <td> </td>
       <td>Indicates that the destination has changed. Superseeds Line or ServiceJourney</td>
     </tr>
     <tr>
@@ -343,8 +343,8 @@
       <td>RequestStop</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
-      <td>Whether stop is by default a request stop in the timetable. May be overridden in specific SERVICE PATTERNs.</td>
+      <td>boolean</td>
+      <td>Whether stop is a request stop for this journey. Default is false.</td>
       <td> </td>
     </tr>
     <tr>
@@ -362,16 +362,16 @@
       <td>optional</td>
       <td>0..1</td>
       <td>checkConstraints_RelStructure</td>
-      <td>CHECK CONSTRAINTs in frame.</td>
+      <td>Implements the navigation from processes or barriers that the travellers will be facing (e.g., security check, check-in, etc.). +v2.1</td>
       <td> </td>
     </tr>
     <tr>
       <td>+++</td>
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/CheckConstraint.html">CheckConstraint</a></td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>CheckConstraint_VersionStructure</td>
-      <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
+      <td>Process associated with a Place, typically giving rise to a delay to the traveller.</td>
       <td> </td>
     </tr>
     <tr>
@@ -380,7 +380,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>bookingArrangements_RelStructure</td>
-      <td>BOOKING ARRANGEMENTs in frame +v2.0.</td>
+      <td>Set of possible Booking Arrangements for stop if different from those for SERVICE JOURNEY. +v2.0</td>
       <td> </td>
     </tr>
     <tr>
@@ -389,14 +389,14 @@
       <td>optional</td>
       <td>0..*</td>
       <td>BookingArrangementRefStructure</td>
-      <td>Reference to a BOOKING ARRANGEMENT.</td>
+      <td> </td>
       <td>Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information.</td>
     </tr>
     <tr>
       <td>+++</td>
       <td>BookingArrangement</td>
       <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>BookingArrangement_VersionStructure</td>
       <td>Details of the booking arrangements for a given LINE, STOP, SERVICE etc.</td>
       <td> </td>

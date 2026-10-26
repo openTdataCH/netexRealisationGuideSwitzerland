@@ -101,15 +101,15 @@ A minimal ServiceCalendarFrame must be present in all timetable files.
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure | VALIDITY CONDITIONs conditioning entity. |  |
+|  | validityConditions | mandatory | 1..1 | validityConditions_RelStructure |  |  |
 | + | [AvailabilityCondition](./tables/AvailabilityCondition.md) | mandatory | 0..* | AvailabilityCondition_VersionStructure | VALIDITY CONDITION stated in terms of DAY TYPES and PROPERTIES OF DAYs. | Our main mechanism for validity and operating days |
 |  | [ServiceCalendar](./tables/ServiceCalendar.md) | expected | 0..1 | ServiceCalendar_VersionStructure | A SERVICE CALENDAR. A collection of DAY TYPE ASSIGNMENTs. | We only have one ServiceCalendar for the whole timetable year. It is not referenced. |
 |  | dayTypes | optional | 0..1 | dayTypesInFrame_RelStructure | Reusable DAY TYPE in SERVICE CALENDAR FRAME. |  |
 | + | [DayType](./tables/DayType.md) | optional | 1..1 | DayType_VersionStructure | A type of day characterized by one or more properties which affect public transport operation. For example: weekday in school holidays. | Used for holidays only |
-|  | timebands | expected | 0..1 | timebandRefs_RelStructure | TIMEBANDs for the DAY TYPE. |  |
+|  | timebands | expected | 0..1 | timebandsInFrame_RelStructure | Reusable TIMEBANDs used in SERVICE CALENDAR FRAME. |  |
 | + | [Timeband](./tables/Timeband.md) | expected | 1..* | Timeband_VersionedChildStructure | A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category. | Mainly used for frequency-based lines. |
-|  | dayTypeAssignments | optional | 0..1 | dayTypeAssignments_RelStructure | Assignments of DAY TYPEs to specific OPERATING DAYs. The same DAY TYPE may be assigned to multiple Operating dates, and vice versa. |  |
-| + | [DayTypeAssignment](./tables/DayTypeAssignment.md) | optional | 1..* | DayTypeAssignment_VersionStructure | Associates a DAY TYPE with an OPERATING DAY within a specific Calendar. A specification of a particular DAY TYPE which will be valid during a TIME BAND on an OPERATING DAY. | Used for holidays only |
+|  | dayTypeAssignments | optional | 0..1 | dayTypeAssignmentsInFrame_RelStructure | Assignments of DAY TYPEs to specific OPERATING DAYs. The same DAY TYPE may be assigned to multiple Operating dates, and vice versa. |  |
+| + | [DayTypeAssignment](./tables/DayTypeAssignment.md) | optional | 1..* | DayTypeAssignment_VersionStructure | An operating period. | Used for holidays only |
 
 
 
@@ -178,10 +178,10 @@ in this frame, never inline.
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | FromDate | optional | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. | Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. |
-|  | ToDate | optional | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. | Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. |
-|  | ValidDayBits | mandatory | 0..1 | xsd:normalizedString | String of bits, one for each day in period: whether valid or not valid on the day. Normally there will be a bit for every day between start and end date. If bit is missing, assume available. |  |
-|  | timebands | optional | 0..1 | timebandRefs_RelStructure | TIMEBANDs for the DAY TYPE. | Can also be referenced |
+|  | FromDate | optional | 0..1 | dateTime | Start date of AVAILABILITY CONDITION. | Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply. |
+|  | ToDate | optional | 0..1 | dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. | Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply. |
+|  | ValidDayBits | mandatory | 0..1 | normalizedString | For UIC style encoding of day types String of bits, one for each day in period: whether valid or not valid on the day. Normally there will be a bit for every day between start and end date. If bit is missing, assume available. |  |
+|  | timebands | optional | 0..1 | timebands_RelStructure | TIME BANDs for AVAILABILITY CONDITION. | Can also be referenced |
 | + | [Timeband](./tables/Timeband.md) | optional | 1..* | Timeband_VersionedChildStructure | A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category. |  |
 | + | TimebandRef | optional | 1..* | TimebandRefStructure | Reference to a TIME BAND. |  |
 
@@ -250,9 +250,9 @@ Long-term planning uses calendar days that are classified as specific `DayType`s
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Name | expected | 0..1 | MultilingualString | Name of VALIDITY CONDITION. | timetable year |
-|  | FromDate | mandatory | 0..1 | xsd:dateTime | Start date of AVAILABILITY CONDITION. | Beginning of timetable year |
-|  | ToDate | mandatory | 0..1 | xsd:dateTime | End of AVAILABILITY CONDITION. Date is INCLUSIVE. | End of timetable year |
+|  | Name | expected | 0..1 | MultilingualString | Name of SERVIC CALENDAR. | timetable year |
+|  | FromDate | mandatory | 0..1 | date | Start date of Calendar. | Beginning of timetable year |
+|  | ToDate | mandatory | 0..1 | date | End date of SERVICE CALENDAR. Date is INCLUSIVE. | End of timetable year |
 
 
 
@@ -303,7 +303,7 @@ In Switzerland only used for holidays and the like
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Name | mandatory | 0..1 | MultilingualString | Name of VALIDITY CONDITION. | German or default text |
+|  | Name | mandatory | 0..1 | MultilingualString | Name of DAY TYPE. | German or default text |
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | + | Text | expected | 0..* | MultilingualString |  | Italian |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
@@ -380,8 +380,8 @@ A period of time within a day, defined by a `StartTime` and an `EndTime` (e.g. `
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | StartTime | mandatory | 0..1 | xsd:time | The (inclusive) start date and time. | Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used. |
-|  | EndTime | mandatory | 0..1 | xsd:time | The (inclusive) end date and time. | Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used. |
+|  | StartTime | mandatory | 0..1 | xsd:time |  | Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used. |
+|  | EndTime | mandatory | 0..1 | xsd:time |  | Local time (not Zulu), i.e., without “Z” or “hh:mm:ss” suffix. Seconds are not used. |
 
 
 
@@ -436,8 +436,8 @@ We currently use DayType to store the national holidays.
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Date | mandatory | 0..1 | xsd:date | Calendar date of assignment. |  |
-|  | DayTypeRef | mandatory | 1..* | DayTypeRefStructure | Reference to a DAY TYPE. |  |
+|  | Date | mandatory | 0..1 | date | Calendar date of assignment. |  |
+|  | DayTypeRef | mandatory | 1..* | DayTypeRefStructure |  |  |
 
 
 

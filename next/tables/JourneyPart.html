@@ -236,7 +236,7 @@
       <td> </td>
       <td>JourneyPart</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>JourneyPart_VersionStructure</td>
       <td>A part of a VEHICLE JOURNEY created according to a specific functional purpose, for instance in situations when vehicle coupling or separating occurs.</td>
       <td> </td>
@@ -247,7 +247,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td>We prefer to not use those</td>
     </tr>
     <tr>
@@ -256,7 +256,7 @@
       <td>optional</td>
       <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -272,18 +272,18 @@
       <td>+</td>
       <td>TrainNumberRef</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TrainNumberRefStructure</td>
-      <td>Reference to a TRAIN NUMBER.</td>
+      <td> </td>
       <td>TrainNumber used for this part</td>
     </tr>
     <tr>
       <td>+</td>
       <td>FromStopPointRef</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>SCHEDULED STOP POINT feeding INTERCHANGE. If absent apply to all STOP POINTs.</td>
+      <td>Point at which this JOURNEY PART starts.</td>
       <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part begins. On the level of Quay.</td>
     </tr>
     <tr>
@@ -292,7 +292,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>SCHEDULED STOP POINT distributing from INTERCHANGE. If absent apply to all STOP POINTs.</td>
+      <td>Point at which this JOURNEY PART ends. If not set it is until the end of the JOURNEY. We will make this element mandatory in the future.</td>
       <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part ends . If not present, it is to the end of the ServiceJourney. But we prefer to have it explicitly</td>
     </tr>
     <tr>
@@ -300,8 +300,8 @@
       <td>StartTime</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:time</td>
-      <td>The (inclusive) start date and time.</td>
+      <td>time</td>
+      <td>Start time of JOURNEY PART.</td>
       <td>Time bounds of the part</td>
     </tr>
     <tr>
@@ -318,8 +318,8 @@
       <td>EndTime</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:time</td>
-      <td>The (inclusive) end date and time.</td>
+      <td>time</td>
+      <td>End time of JOURNEY PART.</td>
       <td>Time bounds of the part.</td>
     </tr>
     <tr>
@@ -335,9 +335,9 @@
       <td>+</td>
       <td>PurposeOfJourneyPartitionRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>PurposeOfJourneyPartitionRefStructure</td>
-      <td>Reference to a PURPOSE OF JOURNEY PARTITION.</td>
+      <td> </td>
       <td>Reason for the partition (e.g. <code class="language-plaintext highlighter-rouge">FacilityChange</code>, <code class="language-plaintext highlighter-rouge">TrainNumberChange</code>, ‘TypeOfProductCategorychage`). Only two values are allowed (see uc0_journey_parts). Other things are implemented with different elements. Especially Notices are done with NoticeAssignment and not ServiceJourneyPart.</td>
     </tr>
     <tr>
@@ -346,7 +346,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>serviceFacilitySets_RelStructure</td>
-      <td>FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed.</td>
+      <td>Facilities available during JOURNEY PART.</td>
       <td><code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code> valid for this part only. Used when there is a change in facilities.</td>
     </tr>
     <tr>
@@ -355,16 +355,16 @@
       <td>expected</td>
       <td>0..*</td>
       <td>ServiceFacilitySetRefStructure</td>
-      <td>Reference to a SERVICE FACILITY SET.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>TypeOfProductCategoryRef</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TypeOfProductCategoryRefStructure</td>
-      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
+      <td> </td>
       <td>Used when the product category changes</td>
     </tr>
   </tbody>

@@ -236,7 +236,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>AccessibilityAssessment_VersionedChildStructure</td>
-      <td>Assessment of the accessibility of a SITE.</td>
+      <td>Accessibility values associated with LEVEL.</td>
       <td>Accessibility.</td>
     </tr>
     <tr>
@@ -245,7 +245,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>CoveredEnumeration</td>
-      <td>Whether the component is Indoors or outdoors. Default is Indoors.</td>
+      <td> </td>
       <td>Accessibility.</td>
     </tr>
     <tr>
@@ -254,7 +254,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>Whether all areas of the component are wheelchair accessible.</td>
+      <td> </td>
       <td>Accessibility.</td>
     </tr>
     <tr>
@@ -262,15 +262,15 @@
       <td>facilities</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>serviceFacilitySets_RelStructure</td>
-      <td>FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed.</td>
+      <td>siteFacilitySets_RelStructure</td>
+      <td>Facilities available at SITe.</td>
       <td>Accessibility.</td>
     </tr>
     <tr>
       <td>+</td>
       <td>SiteFacilitySet</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>SiteFacilitySetStructure</td>
       <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
       <td>Accessibility.</td>
@@ -281,7 +281,7 @@
       <td>optional</td>
       <td>0..*</td>
       <td>SiteFacilitySetRefStructure</td>
-      <td>Reference to a SITE FACILITY SET.</td>
+      <td> </td>
       <td>Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong.</td>
     </tr>
     <tr>
@@ -316,8 +316,8 @@
       <td>entrances</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>pointOfInterestEntrances_RelStructure</td>
-      <td>ENTRANCEs to and within SITE.</td>
+      <td>siteEntrances_RelStructure</td>
+      <td>ENTRANCEs to SPACE.</td>
       <td>Accessibility.</td>
     </tr>
     <tr>
@@ -335,7 +335,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>equipmentPlaces_RelStructure</td>
-      <td>EQUIPMENT PLACEs within SITE COMPONENT.</td>
+      <td> </td>
       <td>Accessibility. TODO</td>
     </tr>
     <tr>
@@ -344,7 +344,7 @@
       <td>optional</td>
       <td>0..*</td>
       <td>EquipmentPlaceRefStructure</td>
-      <td>Reference to an EQUIPMENT PLACE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -352,8 +352,8 @@
       <td>placeEquipments</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>placeEquipments_RelStructure</td>
-      <td>Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT.</td>
+      <td>equipments_RelStructure</td>
+      <td>Items of EQUIPMENT that may be located in an EQUIPMENT PLACE.</td>
       <td>Accessibility. TODO</td>
     </tr>
     <tr>
@@ -371,7 +371,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>localServices_RelStructure</td>
-      <td>LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT.</td>
+      <td> </td>
       <td>Accessibility.</td>
     </tr>
     <tr>

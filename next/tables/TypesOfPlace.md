@@ -8,7 +8,7 @@ We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint a
 |-----|---------|-------|------|------|-------------|------|
 |  | values | expected | 0..1 | typesOfValue_RelStructure | Values in Set. |  |
 | + | TypeOfPlace | expected | 0..* | TypeOfPlace_ValueStructure | Classification of a PLACE. |  |
-| ++ | Name | expected | 0..1 | MultilingualString | Name of VALIDITY CONDITION. |  |
+| ++ | Name | expected | 0..1 | MultilingualString | Name of TYPE OF VALUE. |  |
 | +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | +++ | Text | expected | 0..* | MultilingualString |  |  |
 | ++++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |

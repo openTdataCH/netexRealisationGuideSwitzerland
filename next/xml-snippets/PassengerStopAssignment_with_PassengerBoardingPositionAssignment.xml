@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PassengerStopAssignment id="generated-85003000-12" version="1">
+  <!-- Stop assignments if formation is known. -->
+  <StopPlaceRef ref="ch:1:sloid:3000" version="1">
+    <!-- We assign the quay sector. The platform quay is known as the quay sector again references it (see definition of quay sector) -->
+  </StopPlaceRef>
+  <QuayRef ref="ch:1:sloid:3000:503:12" version="1">
+    <!-- Now we assign all train components to the sector with this sector/sector group. -->
+  </QuayRef>
+  <passengerBoardingPositionAssignments>
+    <!-- Relevant for formations assigned to positions at quays. -->
+    <PassengerBoardingPositionAssignment id="pbpa20" version="1">
+      <Description>Assign coach 5 to sector B</Description>
+      <ScheduledStopPointRef ref="ch:1:sloid:7492:0:460848" version="1">
+        <!-- This one needs to be on the sector level. -->
+      </ScheduledStopPointRef>
+      <TrainComponentRef ref="bbd:trncmp_448_01" version="1">
+        <!-- Map to the relevant TrainComponent -->
+      </TrainComponentRef>
+    </PassengerBoardingPositionAssignment>
+  </passengerBoardingPositionAssignments>
+</PassengerStopAssignment>

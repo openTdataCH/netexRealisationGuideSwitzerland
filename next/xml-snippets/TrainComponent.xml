@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TrainComponent version="1" id="bbd:trncmp_447_01" order="1">
+  <!-- The "logical" structure of the train. -->
+  <Label>1</Label>
+  <TrainElement version="1" id="bbd:trne_447_01">
+    <Name>Name of element</Name>
+    <TrainElementType>carriage</TrainElementType>
+    <FareClasses>secondClass</FareClasses>
+    <LowFloor>true</LowFloor>
+    <facilities>
+      <ServiceFacilitySetRef ref="nf" version="1"/>
+      <ServiceFacilitySetRef ref="bikehooks" version="1"/>
+      <ServiceFacilitySetRef ref="strollerplattform" version="1"/>
+    </facilities>
+  </TrainElement>
+  <ForwardCoupling>
+    <Splittable>false</Splittable>
+    <ThroughAccess>openEntrance
+      <!-- If you can pass to the next carriage in front. -->
+    </ThroughAccess>
+  </ForwardCoupling>
+</TrainComponent>
