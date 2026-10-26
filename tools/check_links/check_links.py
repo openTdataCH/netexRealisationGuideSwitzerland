@@ -8,6 +8,7 @@ import os
 import re
 
 from tools.configuration import DOCS_DIR
+from tools.safe_path import safe_join
 
 
 def check_markdown_links(docs_folder):
@@ -59,12 +60,20 @@ def check_markdown_links(docs_folder):
                     # The link is relative to the current markdown file's location
                     file_dir = os.path.dirname(file_path)
 
-                    if link_url.startswith("../"):
-                        # Relative path - resolve from the file's directory
-                        target_path = os.path.normpath(os.path.join(file_dir, link_url))
-                    else:
-                        # Local relative path
-                        target_path = os.path.normpath(os.path.join(file_dir, link_url))
+                    # Prevent path traversal: resolve within docs_folder
+                    try:
+                        target_path = safe_join(docs_folder, os.path.relpath(
+                            os.path.normpath(os.path.join(file_dir, link_url)),
+                            docs_folder,
+                        ))
+                    except ValueError:
+                        broken_links += 1
+                        print(
+                            f"WARNING: Path traversal blocked in link in {os.path.relpath(file_path, docs_folder)}"
+                        )
+                        print(f"  Link text: '{link_text}'")
+                        print(f"  Link URL: '{link_url}'")
+                        continue
 
                     # Convert absolute path back to relative path for display (using forward slashes)
                     rel_target_path = os.path.relpath(target_path, docs_folder)

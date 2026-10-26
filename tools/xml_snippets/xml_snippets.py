@@ -20,6 +20,8 @@ import re
 
 from lxml import etree
 
+from tools.safe_xml import safe_parser
+
 
 def remove_ch_annotations(text):
     """Remove ch-annotations except for ch-note and ch-notice content"""
@@ -353,7 +355,7 @@ def extract_snippet_from_template(file_path):
 
             # Wrap content in a temporary root for parsing
             wrapped_content = f"<__temp_root__>{content_no_decl}</__temp_root__>"
-            temp_root = etree.fromstring(wrapped_content.encode("utf-8"))
+            temp_root = etree.fromstring(wrapped_content.encode("utf-8"), safe_parser())
 
             # Find the comment with ch-root
             root_comment = None
@@ -397,7 +399,7 @@ def extract_snippet_from_template(file_path):
                 wrapped = f'<__root__ xmlns="{default_ns}">{snippet_content}</__root__>'
             else:
                 wrapped = f"<__root__>{snippet_content}</__root__>"
-            root = etree.fromstring(wrapped.encode("utf-8"))
+            root = etree.fromstring(wrapped.encode("utf-8"), safe_parser())
 
             # Find the actual content (first element child)
             snippet_root = None

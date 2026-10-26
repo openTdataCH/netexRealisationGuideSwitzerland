@@ -24,6 +24,8 @@ except ImportError:
     print("pip install lxml", file=sys.stderr)
     sys.exit(1)
 
+from tools.safe_xml import safe_parser
+
 # Markers and regexes
 ROOT_MARKER = "ch-root"
 RE_NOTE = re.compile(r"\bch-note\s*:\s*(.*)", re.IGNORECASE)
@@ -103,26 +105,11 @@ def extract_regions(text, root_marker=ROOT_MARKER):
     results = []
 
     try:
-        # Parse the XML to find elements with root markers
-        # Use temporary file to avoid issues with encoding declarations
-        import tempfile
-
-        with tempfile.NamedTemporaryFile(
-            mode="w", suffix=".xml", delete=False, encoding="utf-8"
-        ) as f:
-            f.write(text)
-            temp_file = f.name
-
-        doc = ET.parse(temp_file)
-        root = doc.getroot()
-
-        # Clean up temporary file
-        import os
-
-        try:
-            os.unlink(temp_file)
-        except Exception:
-            pass
+        # Parse the XML in-memory to find elements with root markers.
+        # Strip XML declaration to avoid encoding issues when parsing from string.
+        text_no_decl = re.sub(r"^\\s*<\\?xml\\s+[^>]*\\?>\\s*", "", text, count=1)
+        doc = ET.fromstring(text_no_decl.encode("utf-8"), safe_parser())
+        root = doc
 
         # Function to find elements with root marker in their direct child comments
         def find_elements_with_root_marker(element):
@@ -514,15 +501,15 @@ class SchematronBuilder:
             return False
 
         try:
-            # Parse the external schematron file
-            doc = ET.parse(file_path)
+            # Parse the external schematron file with XXE protections
+            doc = ET.parse(file_path, safe_parser())
             root = doc.getroot()
 
             # Import all pattern elements from the external file
             for pattern in root.findall(".//{" + SCHEMATRON_NS + "}pattern"):
                 # Deep copy the pattern and its children
                 imported_pattern = ET.fromstring(
-                    ET.tostring(pattern, encoding="unicode")
+                    ET.tostring(pattern, encoding="unicode"), safe_parser()
                 )
                 self.schema.append(imported_pattern)
                 # Count rules in this pattern
@@ -637,7 +624,7 @@ def _process_fragment_root(
                             for r in regions:
                                 wrapped = wrap_fragment(r)
                                 try:
-                                    subfrag = ET.fromstring(wrapped.encode("utf-8"))
+                                    subfrag = ET.fromstring(wrapped.encode("utf-8"), safe_parser())
                                 except Exception as e:
                                     print(
                                         f"Warning: parse error in referenced file {found_path}: {e}",
@@ -804,7 +791,7 @@ def process_element_tree(
                         for r in regions:
                             wrapped = wrap_fragment(r)
                             try:
-                                rootfrag = ET.fromstring(wrapped.encode("utf-8"))
+                                rootfrag = ET.fromstring(wrapped.encode("utf-8"), safe_parser())
                             except Exception as e:
                                 print(
                                     f"Warning: parse error in referenced file {found_path}: {e}",
@@ -881,7 +868,7 @@ def generate_schematron_from_template(
         if is_complete_element:
             # Region is already a complete XML element, parse it directly
             try:
-                root = ET.fromstring(region.encode("utf-8"))
+                root = ET.fromstring(region.encode("utf-8"), safe_parser())
             except Exception as e:
                 print(
                     f"Error parsing extracted region of {template_name}: {e}",
@@ -892,7 +879,7 @@ def generate_schematron_from_template(
             # Region is a fragment, wrap it with root element
             wrapped = wrap_fragment(region)
             try:
-                root = ET.fromstring(wrapped.encode("utf-8"))
+                root = ET.fromstring(wrapped.encode("utf-8"), safe_parser())
             except Exception as e:
                 print(
                     f"Error parsing extracted region of {template_name}: {e}",
@@ -1089,6 +1076,7 @@ def main():
         if not os.path.isfile(template_path):
             print(f"Error: Template file not found: {template_path}", file=sys.stderr)
             sys.exit(1)
+
         schematron_builder = SchematronBuilder(xsd_path)
         # Include additional rule files if specified
         schematron_rules_dir = os.path.join(

@@ -8,16 +8,16 @@ import argparse
 import os
 import sys
 
-from lxml import etree
-
 from tools.configuration import XSD_FILE_PATH
+from tools.safe_xml import safe_parse
 
 
 def load_schema(xsd_path):
     try:
-        # Parse the XSD schema
+        # Parse the XSD schema with XXE protections
         with open(xsd_path, "rb") as xsd_file:
-            schema_doc = etree.parse(xsd_file)
+            schema_doc = safe_parse(xsd_file)
+            from lxml import etree
             schema = etree.XMLSchema(schema_doc)
             return schema
     except Exception as e:
@@ -29,9 +29,9 @@ def validate_xml(xml_path, schema):
     """Validate an XML file against an XSD schema."""
     try:
 
-        # Parse the XML file
+        # Parse the XML file with XXE protections
         with open(xml_path, "rb") as xml_file:
-            xml_doc = etree.parse(xml_file)
+            xml_doc = safe_parse(xml_file)
 
         # Validate
         if schema.validate(xml_doc):
@@ -93,7 +93,7 @@ def main():
     if os.path.isdir(args.xml):
         validate_folder(args.xml, args.xsd)
     else:
-        schema = load_schema(XSD_FILE_PATH)
+        schema = load_schema(args.xsd)
         if not schema:
             sys.exit(1)
         validate_xml(args.xml, schema)

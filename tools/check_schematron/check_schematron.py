@@ -23,6 +23,8 @@ from pathlib import Path
 from lxml import etree
 from lxml.isoschematron import Schematron
 
+from tools.safe_xml import safe_parse, safe_fromstring
+
 
 def parse_args(argv):
     p = argparse.ArgumentParser(
@@ -66,6 +68,13 @@ def parse_args(argv):
         action="store_true",
         default=False,
         help="Process files sequentially (no parallel processing)",
+    )
+    p.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        default=False,
+        help="Print full traceback on errors (default: False)",
     )
     return p.parse_args(argv)
 
@@ -112,9 +121,8 @@ def create_schematron_validator(schematron_path):
 
     # Create and compile the validator using lxml's native support
     try:
-        # lxml.isoschematron accepts ElementTree, file-like objects, or filenames
-        # We use the path directly as it's most reliable
-        schematron_doc = etree.parse(str(schematron_path))
+        # Parse with XXE protections
+        schematron_doc = safe_parse(str(schematron_path))
         validator = Schematron(schematron_doc)
     except Exception as e:
         error_msg = f"Failed to compile Schematron {schematron_path}: {e}"
@@ -160,9 +168,9 @@ def get_validation_report(validator):
                 xml_start = error_str.find("<svrl:")
                 if xml_start >= 0:
                     xml_part = error_str[xml_start:]
-                    # Parse the SVRL fragment
+                    # Parse the SVRL fragment with XXE protections
                     try:
-                        fragment = etree.fromstring(xml_part.encode("utf-8"))
+                        fragment = safe_fromstring(xml_part.encode("utf-8"))
                         svrl_root.append(fragment)
                     except Exception:
                         # If parsing fails, skip this error
@@ -199,9 +207,9 @@ def validate_single_file(args_tuple):
         with open(xml_file_path, "rb") as f:
             xml_content = f.read()
 
-        # Parse XML
+        # Parse XML with XXE protections
         try:
-            doc = etree.fromstring(xml_content)
+            doc = safe_fromstring(xml_content)
         except etree.XMLSyntaxError as e:
             return (str(xml_file_path), False, None, f"XML syntax error: {e}")
 
@@ -290,7 +298,7 @@ def main(argv=None):
                     with open(xml_file, "rb") as f:
                         xml_content = f.read()
 
-                    doc = etree.fromstring(xml_content)
+                    doc = safe_fromstring(xml_content)
                     is_valid = validator.validate(doc)
 
                     # Get SVRL report - use helper to handle lxml.isoschematron API
@@ -381,9 +389,11 @@ def main(argv=None):
 
     except Exception as e:
         print(f"ERROR: {e}", file=sys.stderr)
-        import traceback
+        # Only print full traceback in verbose mode to avoid information disclosure
+        if "--verbose" in (argv or sys.argv[1:]) or "-v" in (argv or sys.argv[1:]):
+            import traceback
 
-        traceback.print_exc(file=sys.stderr)
+            traceback.print_exc(file=sys.stderr)
         return 1
 
 

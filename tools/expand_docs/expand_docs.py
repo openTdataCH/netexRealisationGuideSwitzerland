@@ -12,6 +12,7 @@ from tools.configuration import (
     DOCS_DIR,
     SITE_DIR,
 )
+from tools.safe_path import safe_join
 
 TABLE_MD_LINK_TARGET_PATTERN = re.compile(r"(\[.*?\])(\((.*?\.md)[^)]*\))")
 TABLE_MD_LINK_TARGET_REPLACEMENT = r"\1(./tables/\3)"
@@ -38,7 +39,14 @@ def include_xml_snippet(snippet_file_name: str, base_folder: str):
     # The generated folder is at the root of the project
     # base_folder is already the docs folder, so go up one level to project root
     project_root = os.path.abspath(os.path.join(base_folder, ".."))
-    full_path = os.path.join(project_root, "site", "xml-snippets", snippet_file_name)
+    snippets_dir = os.path.join(project_root, "site", "xml-snippets")
+
+    # Prevent path traversal: ensure the resolved path stays within snippets_dir
+    try:
+        full_path = safe_join(snippets_dir, snippet_file_name)
+    except ValueError:
+        print(f"WARNING: Path traversal blocked in snippet reference: {snippet_file_name}")
+        return snippet_file_name
 
     if os.path.exists(full_path):
         with open(full_path, "r", encoding="utf-8") as f:
@@ -58,7 +66,14 @@ def include_markdown_table(table_file_name: str, base_folder: str):
     # The generated folder is at the root of the project
     # base_folder is already the docs folder, so go up one level to project root
     project_root = os.path.abspath(os.path.join(base_folder, ".."))
-    full_path = os.path.join(project_root, "site", "tables", table_file_name)
+    tables_dir = os.path.join(project_root, "site", "tables")
+
+    # Prevent path traversal: ensure the resolved path stays within tables_dir
+    try:
+        full_path = safe_join(tables_dir, table_file_name)
+    except ValueError:
+        print(f"WARNING: Path traversal blocked in table reference: {table_file_name}")
+        return table_file_name
 
     if os.path.exists(full_path):
         with open(full_path, "r", encoding="utf-8") as f:

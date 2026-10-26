@@ -22,12 +22,25 @@ from tools.md_builder.md_builder import build_markdown_tables
 from tools.schematron_builder.schematron_builder import generate_all_schematrons
 from tools.xml_snippets.xml_snippets import generate_all_snippets
 
+# Resolve SITE_DIR to an absolute path for safety checks
+_SITE_DIR_RESOLVED = Path(SITE_DIR).resolve()
+_PROJECT_ROOT = _SITE_DIR_RESOLVED.parent
+
 
 def clean(dir: str):
-    dir_path = Path(dir)
+    """Remove and recreate a directory, with a safety guard against deleting
+    paths outside the project root."""
+    dir_path = Path(dir).resolve()
+    # Safety guard: refuse to delete paths that are not under the project root
+    # or that are the project root itself
+    if dir_path == _PROJECT_ROOT or _PROJECT_ROOT not in dir_path.parents:
+        raise ValueError(
+            f"Refusing to delete '{dir_path}' — it is not a subdirectory of "
+            f"the project root '{_PROJECT_ROOT}'"
+        )
     if dir_path.exists():
-        shutil.rmtree(dir)
-    os.makedirs(dir, exist_ok=True)
+        shutil.rmtree(dir_path)
+    os.makedirs(dir_path, exist_ok=True)
 
 
 def copy_jekyll_files():
@@ -46,8 +59,10 @@ def apply_base_url(base_url: str):
     else:
         config_file_path = os.path.join(str(SITE_DIR), JEKYLL_CONFIG)
         if os.path.exists(config_file_path):
+            # Escape the value to prevent YAML injection
+            safe_url = base_url.replace("\\", "\\\\").replace('"', '\\"')
             with open(config_file_path, "a", encoding="utf-8") as f:
-                f.write(f'baseurl: "{base_url}" \n')
+                f.write(f'baseurl: "{safe_url}" \n')
         else:
             print(
                 f'Failed to set base url - No config file found: "{config_file_path}"'

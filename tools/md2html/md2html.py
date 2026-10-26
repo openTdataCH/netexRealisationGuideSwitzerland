@@ -3,6 +3,7 @@ import os
 import re
 
 import markdown
+from lxml import html as lxml_html
 from pygments.formatters import HtmlFormatter
 
 from tools.configuration import SITE_DIR
@@ -10,11 +11,52 @@ from tools.configuration import SITE_DIR
 MD_LINK_PATTERN = re.compile(r"(\[.*\])(\(.*\.)(md)(.*\))")
 MD_LINK_REPLACEMENT = r"\1\2html\4"
 
+# Tags and attributes stripped from generated HTML to prevent XSS
+_DANGEROUS_TAGS = frozenset({
+    "script", "iframe", "object", "embed", "applet", "form",
+    "input", "button", "textarea", "select", "option",
+    "link", "meta", "base", "style",
+})
+
+
+def sanitize_html(html_str: str) -> str:
+    """Remove dangerous tags and attributes from an HTML fragment."""
+    try:
+        doc = lxml_html.fragment_fromstring(html_str, create_parent="div")
+    except Exception:
+        # If parsing fails, escape everything
+        import html as html_module
+        return html_module.escape(html_str)
+
+    # Remove dangerous elements entirely
+    for tag in _DANGEROUS_TAGS:
+        for elem in doc.iter(tag):
+            elem.drop_tree()
+
+    # Remove dangerous attributes (on* event handlers, javascript: URLs)
+    for elem in doc.iter():
+        for attr_name in list(elem.attrib):
+            attr_lower = attr_name.lower()
+            # Strip event handler attributes (onclick, onload, etc.)
+            if attr_lower.startswith("on"):
+                del elem.attrib[attr_name]
+                continue
+            # Strip javascript: and data: URLs in href/src
+            if attr_lower in ("href", "src", "xlink:href", "action", "formaction"):
+                val = elem.attrib[attr_name].strip().lower()
+                if val.startswith(("javascript:", "data:", "vbscript:")):
+                    del elem.attrib[attr_name]
+
+    return lxml_html.tostring(doc, encoding="unicode")
+
 
 def generate_html(md: str) -> str:
 
     md_with_html_links = MD_LINK_PATTERN.sub(MD_LINK_REPLACEMENT, md)
     body = generate_html_body(md_with_html_links)
+
+    # Sanitize the generated HTML to prevent XSS
+    body = sanitize_html(body)
 
     # Generate CSS for code highlighting
     code_css = HtmlFormatter().get_style_defs(".codehilite")

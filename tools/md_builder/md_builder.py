@@ -10,10 +10,17 @@ import os
 
 from lxml import etree
 
+from tools.safe_xml import safe_parser
+
 from tools.configuration import SITE_TABLES_DIR, TEMPLATES_DIR, XSD_FILE_PATH
 
 # Global XSD namespace
 XSD_NS = {"xs": "http://www.w3.org/2001/XMLSchema"}
+
+
+def _xq(val):
+    """Escape single quotes in a value for safe use in XPath string literals."""
+    return str(val).replace("'", "''") if val else ""
 
 
 def sanitize_for_markdown(text):
@@ -43,7 +50,7 @@ def _doc_text(nodes):
 def _find_global_element(xsd_doc, qname_or_name):
     """Find a global xs:element by name or QName."""
     name = qname_or_name.split(":")[-1]
-    els = xsd_doc.xpath(f"//xs:element[@name='{name}']", namespaces=XSD_NS)
+    els = xsd_doc.xpath(f"//xs:element[@name='{_xq(name)}']", namespaces=XSD_NS)
     return els[0] if els else None
 
 
@@ -51,7 +58,7 @@ def _find_named_type_node(xsd_doc, type_qname):
     """Find a named complexType or simpleType by QName."""
     tname = type_qname.split(":")[-1]
     nodes = xsd_doc.xpath(
-        f"//xs:complexType[@name='{tname}'] | //xs:simpleType[@name='{tname}']",
+        f"//xs:complexType[@name='{_xq(tname)}'] | //xs:simpleType[@name='{_xq(tname)}']",
         namespaces=XSD_NS,
     )
     return nodes[0] if nodes else None
@@ -260,7 +267,7 @@ def _build_xsd_element_paths(xsd_doc):
             if ref:
                 ref_name = ref.split(":")[-1]
                 ref_el = xsd_doc.xpath(
-                    f"//xs:element[@name='{ref_name}']", namespaces=XSD_NS
+                    f"//xs:element[@name='{_xq(ref_name)}']", namespaces=XSD_NS
                 )
                 if ref_el:
                     elem_type = ref_el[0].get("type", "") or ""
@@ -420,7 +427,7 @@ def _process_xsd_file(xsd_path, base_dir, processed_files=None):
     path_based_info = {}
 
     try:
-        xsd_doc = etree.parse(xsd_path)
+        xsd_doc = etree.parse(xsd_path, safe_parser())
         xsd_root = xsd_doc.getroot()
 
         # Get the target namespace from the schema element
@@ -587,14 +594,14 @@ def get_element_metadata_from_xsd_by_path(xsd_doc, xml_path):
     parts = [p for p in xml_path.split("/") if p]
 
     # 1) Prefer an exact chain where each step matches @name only (stricter, less ambiguous)
-    strict_chain = "//" + "//".join([f"xs:element[@name='{p}']" for p in parts])
+    strict_chain = "//" + "//".join([f"xs:element[@name='{_xq(p)}']" for p in parts])
     matches = xsd_doc.xpath(strict_chain, namespaces=XSD_NS)
 
     # 2) If not found, allow @name or @ref (with optional ns prefix) at each step
     if not matches:
         flexible_chain = "//" + "//".join(
             [
-                f"xs:element[@name='{p}' or @ref='{p}' or contains(@ref, ':{p}')]"
+                f"xs:element[@name='{_xq(p)}' or @ref='{_xq(p)}' or contains(@ref, ':{_xq(p)}')]"
                 for p in parts
             ]
         )
@@ -604,7 +611,7 @@ def get_element_metadata_from_xsd_by_path(xsd_doc, xml_path):
     if not matches:
         last = parts[-1]
         matches = xsd_doc.xpath(
-            f"//xs:element[@name='{last}' or @ref='{last}' or contains(@ref, ':{last}')]",
+            f"//xs:element[@name='{_xq(last)}' or @ref='{_xq(last)}' or contains(@ref, ':{_xq(last)}')]",
             namespaces=XSD_NS,
         )
         if not matches:
@@ -621,7 +628,7 @@ def get_element_metadata_from_xsd_by_path(xsd_doc, xml_path):
         if ref:
             ref_name = ref.split(":")[-1]
             ref_el = xsd_doc.xpath(
-                f"//xs:element[@name='{ref_name}']", namespaces=XSD_NS
+                f"//xs:element[@name='{_xq(ref_name)}']", namespaces=XSD_NS
             )
             if ref_el:
                 ref_el = ref_el[0]
@@ -649,7 +656,7 @@ def get_element_metadata_from_xsd_by_path(xsd_doc, xml_path):
         if sg:
             head_name = sg.split(":")[-1]
             head_el = xsd_doc.xpath(
-                f"//xs:element[@name='{head_name}']", namespaces=XSD_NS
+                f"//xs:element[@name='{_xq(head_name)}']", namespaces=XSD_NS
             )
             if head_el:
                 elem_type = head_el[0].get("type") or ""
@@ -746,35 +753,34 @@ def search_xsd_files_for_element_with_parent(base_dir, element_name, parent_type
             if file.endswith(".xsd"):
                 file_path = os.path.join(root, file)
                 try:
-                    parser = etree.XMLParser()
-                    xsd_doc = etree.parse(file_path, parser)
+                    xsd_doc = etree.parse(file_path, safe_parser())
 
                     elements = []
 
                     if parent_type:
-                        complex_type_xpath = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@name='{element_name}']"
+                        complex_type_xpath = f"//xs:complexType[contains(@name, '{_xq(parent_type)}')]//xs:element[@name='{_xq(element_name)}']"
                         elements = xsd_doc.xpath(
                             complex_type_xpath, namespaces=namespaces
                         )
 
                         if not elements:
-                            complex_type_xpath_ref = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[@ref='{element_name}']"
+                            complex_type_xpath_ref = f"//xs:complexType[contains(@name, '{_xq(parent_type)}')]//xs:element[@ref='{_xq(element_name)}']"
                             elements = xsd_doc.xpath(
                                 complex_type_xpath_ref, namespaces=namespaces
                             )
 
                             if not elements:
-                                complex_type_xpath_ref_ns = f"//xs:complexType[contains(@name, '{parent_type}')]//xs:element[contains(@ref, ':{element_name}')]"
+                                complex_type_xpath_ref_ns = f"//xs:complexType[contains(@name, '{_xq(parent_type)}')]//xs:element[contains(@ref, ':{_xq(element_name)}')]"
                                 elements = xsd_doc.xpath(
                                     complex_type_xpath_ref_ns, namespaces=namespaces
                                 )
 
                         if not elements:
-                            complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @name='{element_name}']"
+                            complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{_xq(parent_type)}')]//*[local-name()='element' and @name='{_xq(element_name)}']"
                             elements = xsd_doc.xpath(complex_type_xpath_no_ns)
 
                             if not elements:
-                                complex_type_xpath_no_ns_ref = f"//*[local-name()='complexType' and contains(@name, '{parent_type}')]//*[local-name()='element' and @ref='{element_name}']"
+                                complex_type_xpath_no_ns_ref = f"//*[local-name()='complexType' and contains(@name, '{_xq(parent_type)}')]//*[local-name()='element' and @ref='{_xq(element_name)}']"
                                 elements = xsd_doc.xpath(complex_type_xpath_no_ns_ref)
 
                         if elements:
@@ -782,11 +788,11 @@ def search_xsd_files_for_element_with_parent(base_dir, element_name, parent_type
                         else:
                             continue
                     else:
-                        element_xpath = f"//xs:element[@name='{element_name}']"
+                        element_xpath = f"//xs:element[@name='{_xq(element_name)}']"
                         elements = xsd_doc.xpath(element_xpath, namespaces=namespaces)
 
                         if not elements:
-                            element_xpath_no_ns = f"//*[local-name()='element' and @name='{element_name}']"
+                            element_xpath_no_ns = f"//*[local-name()='element' and @name='{_xq(element_name)}']"
                             elements = xsd_doc.xpath(element_xpath_no_ns)
 
                         if elements:
@@ -970,8 +976,7 @@ def find_best_xsd_path_match(xsd_path_info, xml_path, element_name, parent_type=
 def get_element_metadata(xsd_path, element_name, parent_type=None):
     """Extract detailed metadata for an element from XSD using XPath with substitution group support."""
     try:
-        parser = etree.XMLParser()
-        xsd_doc = etree.parse(xsd_path, parser)
+        xsd_doc = etree.parse(xsd_path, safe_parser())
         namespaces = {"xs": "http://www.w3.org/2001/XMLSchema"}
 
         element = None
@@ -988,35 +993,35 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
                 clean_parent_type = parent_type
 
             # Try exact match first
-            complex_type_xpath = f"//xs:complexType[@name='{clean_parent_type}']//xs:element[@name='{element_name}']"
+            complex_type_xpath = f"//xs:complexType[@name='{_xq(clean_parent_type)}']//xs:element[@name='{_xq(element_name)}']"
             element = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
 
             # Also try with ref attribute
             if not element:
-                complex_type_xpath_ref = f"//xs:complexType[@name='{clean_parent_type}']//xs:element[@ref='{element_name}']"
+                complex_type_xpath_ref = f"//xs:complexType[@name='{_xq(clean_parent_type)}']//xs:element[@ref='{_xq(element_name)}']"
                 element = xsd_doc.xpath(complex_type_xpath_ref, namespaces=namespaces)
                 if not element:
-                    complex_type_xpath_ref_ns = f"//xs:complexType[@name='{clean_parent_type}']//xs:element[contains(@ref, ':{element_name}')]"
+                    complex_type_xpath_ref_ns = f"//xs:complexType[@name='{_xq(clean_parent_type)}']//xs:element[contains(@ref, ':{_xq(element_name)}')]"
                     element = xsd_doc.xpath(
                         complex_type_xpath_ref_ns, namespaces=namespaces
                     )
 
             if not element:
-                complex_type_xpath_no_ns = f"//*[local-name()='complexType' and @name='{clean_parent_type}']//*[local-name()='element' and @name='{element_name}']"
+                complex_type_xpath_no_ns = f"//*[local-name()='complexType' and @name='{_xq(clean_parent_type)}']//*[local-name()='element' and @name='{_xq(element_name)}']"
                 element = xsd_doc.xpath(complex_type_xpath_no_ns)
 
                 if not element:
-                    complex_type_xpath_no_ns_ref = f"//*[local-name()='complexType' and @name='{clean_parent_type}']//*[local-name()='element' and @ref='{element_name}']"
+                    complex_type_xpath_no_ns_ref = f"//*[local-name()='complexType' and @name='{_xq(clean_parent_type)}']//*[local-name()='element' and @ref='{_xq(element_name)}']"
                     element = xsd_doc.xpath(complex_type_xpath_no_ns_ref)
 
             if not element:
-                complex_type_xpath_contains = f"//xs:complexType[contains(@name, '{clean_parent_type}')]//xs:element[@name='{element_name}']"
+                complex_type_xpath_contains = f"//xs:complexType[contains(@name, '{_xq(clean_parent_type)}')]//xs:element[@name='{_xq(element_name)}']"
                 element = xsd_doc.xpath(
                     complex_type_xpath_contains, namespaces=namespaces
                 )
 
                 if not element:
-                    complex_type_xpath_contains_ref = f"//xs:complexType[contains(@name, '{clean_parent_type}')]//xs:element[@ref='{element_name}']"
+                    complex_type_xpath_contains_ref = f"//xs:complexType[contains(@name, '{_xq(clean_parent_type)}')]//xs:element[@ref='{_xq(element_name)}']"
                     element = xsd_doc.xpath(
                         complex_type_xpath_contains_ref, namespaces=namespaces
                     )
@@ -1030,12 +1035,12 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
                 ]
                 for pattern in version_patterns:
                     if not element:
-                        complex_type_xpath_pattern = f"//xs:complexType[@name='{pattern}']//xs:element[@name='{element_name}']"
+                        complex_type_xpath_pattern = f"//xs:complexType[@name='{_xq(pattern)}']//xs:element[@name='{_xq(element_name)}']"
                         element = xsd_doc.xpath(
                             complex_type_xpath_pattern, namespaces=namespaces
                         )
                         if not element:
-                            complex_type_xpath_pattern_ref = f"//xs:complexType[@name='{pattern}']//xs:element[@ref='{element_name}']"
+                            complex_type_xpath_pattern_ref = f"//xs:complexType[@name='{_xq(pattern)}']//xs:element[@ref='{_xq(element_name)}']"
                             element = xsd_doc.xpath(
                                 complex_type_xpath_pattern_ref, namespaces=namespaces
                             )
@@ -1044,29 +1049,29 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
 
             if not element:
                 rel_structure_parent = f"{clean_parent_type}_RelStructure"
-                complex_type_xpath_rel = f"//xs:complexType[@name='{rel_structure_parent}']//xs:element[@ref='{element_name}']"
+                complex_type_xpath_rel = f"//xs:complexType[@name='{_xq(rel_structure_parent)}']//xs:element[@ref='{_xq(element_name)}']"
                 element = xsd_doc.xpath(complex_type_xpath_rel, namespaces=namespaces)
 
                 if not element:
-                    complex_type_xpath_rel_contains = f"//xs:complexType[contains(@name, '{rel_structure_parent}')]//xs:element[@ref='{element_name}']"
+                    complex_type_xpath_rel_contains = f"//xs:complexType[contains(@name, '{_xq(rel_structure_parent)}')]//xs:element[@ref='{_xq(element_name)}']"
                     element = xsd_doc.xpath(
                         complex_type_xpath_rel_contains, namespaces=namespaces
                     )
 
                 if not element:
-                    complex_type_xpath_rel_name = f"//xs:complexType[@name='{rel_structure_parent}']//xs:element[@name='{element_name}']"
+                    complex_type_xpath_rel_name = f"//xs:complexType[@name='{_xq(rel_structure_parent)}']//xs:element[@name='{_xq(element_name)}']"
                     element = xsd_doc.xpath(
                         complex_type_xpath_rel_name, namespaces=namespaces
                     )
 
                 if not element:
-                    complex_type_xpath_rel_name_contains = f"//xs:complexType[contains(@name, '{rel_structure_parent}')]//xs:element[@name='{element_name}']"
+                    complex_type_xpath_rel_name_contains = f"//xs:complexType[contains(@name, '{_xq(rel_structure_parent)}')]//xs:element[@name='{_xq(element_name)}']"
                     element = xsd_doc.xpath(
                         complex_type_xpath_rel_name_contains, namespaces=namespaces
                     )
 
             if not element:
-                complex_type_xpath_contains_no_ns = f"//*[local-name()='complexType' and contains(@name, '{clean_parent_type}')]//*[local-name()='element' and @name='{element_name}']"
+                complex_type_xpath_contains_no_ns = f"//*[local-name()='complexType' and contains(@name, '{_xq(clean_parent_type)}')]//*[local-name()='element' and @name='{_xq(element_name)}']"
                 element = xsd_doc.xpath(complex_type_xpath_contains_no_ns)
 
             # If not found in this file with parent context, search other XSD files with the parent context
@@ -1076,29 +1081,29 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
                     base_dir, element_name, clean_parent_type
                 )
                 if found_in_file is not None:
-                    xsd_doc = etree.parse(found_in_file, parser)
+                    xsd_doc = etree.parse(found_in_file, safe_parser())
                     namespaces = {"xs": "http://www.w3.org/2001/XMLSchema"}
-                    complex_type_xpath = f"//xs:complexType[contains(@name, '{clean_parent_type}')]//xs:element[@name='{element_name}']"
+                    complex_type_xpath = f"//xs:complexType[contains(@name, '{_xq(clean_parent_type)}')]//xs:element[@name='{_xq(element_name)}']"
                     element = xsd_doc.xpath(complex_type_xpath, namespaces=namespaces)
 
                     if not element:
-                        complex_type_xpath_ref = f"//xs:complexType[contains(@name, '{clean_parent_type}')]//xs:element[@ref='{element_name}']"
+                        complex_type_xpath_ref = f"//xs:complexType[contains(@name, '{_xq(clean_parent_type)}')]//xs:element[@ref='{_xq(element_name)}']"
                         element = xsd_doc.xpath(
                             complex_type_xpath_ref, namespaces=namespaces
                         )
 
                         if not element:
-                            complex_type_xpath_ref_ns = f"//xs:complexType[contains(@name, '{clean_parent_type}')]//xs:element[contains(@ref, ':{element_name}')]"
+                            complex_type_xpath_ref_ns = f"//xs:complexType[contains(@name, '{_xq(clean_parent_type)}')]//xs:element[contains(@ref, ':{_xq(element_name)}')]"
                             element = xsd_doc.xpath(
                                 complex_type_xpath_ref_ns, namespaces=namespaces
                             )
 
                     if not element:
-                        complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{clean_parent_type}')]//*[local-name()='element' and @name='{element_name}']"
+                        complex_type_xpath_no_ns = f"//*[local-name()='complexType' and contains(@name, '{_xq(clean_parent_type)}')]//*[local-name()='element' and @name='{_xq(element_name)}']"
                         element = xsd_doc.xpath(complex_type_xpath_no_ns)
 
                         if not element:
-                            complex_type_xpath_no_ns_ref = f"//*[local-name()='complexType' and contains(@name, '{clean_parent_type}')]//*[local-name()='element' and @ref='{element_name}']"
+                            complex_type_xpath_no_ns_ref = f"//*[local-name()='complexType' and contains(@name, '{_xq(clean_parent_type)}')]//*[local-name()='element' and @ref='{_xq(element_name)}']"
                             element = xsd_doc.xpath(complex_type_xpath_no_ns_ref)
 
                     if element:
@@ -1109,7 +1114,7 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
                 return None
         else:
             # No parent_type specified, do a generic search
-            element_xpath = f"//xs:element[@name='{element_name}']"
+            element_xpath = f"//xs:element[@name='{_xq(element_name)}']"
             element = xsd_doc.xpath(element_xpath, namespaces=namespaces)
 
             if not element:
@@ -1118,14 +1123,14 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
                     base_dir, element_name, None
                 )
                 if found_in_file is not None:
-                    xsd_doc = etree.parse(found_in_file, parser)
+                    xsd_doc = etree.parse(found_in_file, safe_parser())
                     namespaces = {"xs": "http://www.w3.org/2001/XMLSchema"}
-                    element_xpath = f"//xs:element[@name='{element_name}']"
+                    element_xpath = f"//xs:element[@name='{_xq(element_name)}']"
                     element = xsd_doc.xpath(element_xpath, namespaces=namespaces)
 
                     if not element:
                         element_xpath_no_ns = (
-                            f"//*[local-name()='element' and @name='{element_name}']"
+                            f"//*[local-name()='element' and @name='{_xq(element_name)}']"
                         )
                         element = xsd_doc.xpath(element_xpath_no_ns)
             if not element:
@@ -1166,9 +1171,9 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
                     if file.endswith(".xsd"):
                         file_path = os.path.join(root, file)
                         try:
-                            doc = etree.parse(file_path, parser)
+                            doc = etree.parse(file_path, safe_parser())
                             ct_match = doc.xpath(
-                                f"//xs:complexType[contains(@name, '{parent_type}') and contains(@name, '_RelStructure')]",
+                                f"//xs:complexType[contains(@name, '{_xq(parent_type)}') and contains(@name, '_RelStructure')]",
                                 namespaces=namespaces,
                             )
                             if ct_match:
@@ -1184,11 +1189,11 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
 
         if current_element.get("ref") and not current_element.get("type"):
             ref_name = current_element.get("ref").split(":")[-1]
-            ref_element_xpath = f"//xs:element[@name='{ref_name}']"
+            ref_element_xpath = f"//xs:element[@name='{_xq(ref_name)}']"
             ref_element = xsd_doc.xpath(ref_element_xpath, namespaces=namespaces)
             if not ref_element:
                 ref_element_xpath_no_ns = (
-                    f"//*[local-name()='element' and @name='{ref_name}']"
+                    f"//*[local-name()='element' and @name='{_xq(ref_name)}']"
                 )
                 ref_element = xsd_doc.xpath(ref_element_xpath_no_ns)
             if ref_element:
@@ -1229,7 +1234,7 @@ def get_element_metadata(xsd_path, element_name, parent_type=None):
             substitution_group = current_element.get("substitutionGroup")
             if substitution_group:
                 head_name = substitution_group.split(":")[-1]
-                head_xpath = f"//xs:element[@name='{head_name}']"
+                head_xpath = f"//xs:element[@name='{_xq(head_name)}']"
                 head_element = xsd_doc.xpath(head_xpath, namespaces=namespaces)
                 if head_element:
                     current_element = head_element[0]
@@ -1431,7 +1436,7 @@ def enrich_from_xsd(item, xsd_doc, xsd_type_info, xsd_path):
 def parse_template_file(file_path, xsd_type_info):
     """Parse a single template file and extract documentation"""
     try:
-        doc = etree.parse(file_path)
+        doc = etree.parse(file_path, safe_parser())
         root = doc.getroot()
 
         # Register namespace if present
@@ -1825,7 +1830,7 @@ def generate_markdown_table(data, filename, xsd_path: str, xsd_type_info):
     xsd_doc = None
     if xsd_path and os.path.exists(xsd_path):
         try:
-            xsd_doc = etree.parse(xsd_path)
+            xsd_doc = etree.parse(xsd_path, safe_parser())
         except Exception as e:
             print(f"Warning: Could not parse XSD {xsd_path}: {e}")
 
