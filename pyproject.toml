@@ -22,11 +22,42 @@ check-links ="tools.check_links.check_links:main"
 check-schematron = "tools.check_schematron.check_schematron:main"
 expand-docs="tools.expand_docs.expand_docs:main"
 md-builder="tools.md_builder.md_builder:main"
-pycore="tools.pycore.pycore:main"
 schematron-builder="tools.schematron_builder.schematron_builder:main"
 xml-validator="tools.xml_validator.xml_validator:main"
-xml-snippets="tools.xml_snippets.build_xml_snippets:main"
+xml-snippets="tools.xml_snippets.xml_snippets:main"
 
 # Only package the specified packages
 [tool.setuptools.packages.find]
 include = ["tools*"]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "ruff",
+    "mypy",
+    "lxml-stubs",
+    "types-requests",
+    "types-Markdown",
+    "types-Pygments",
+]
+
+[tool.black]
+target-version = ["py313"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+
+[tool.ruff.lint]
+# BLE001/S110/S112: the tools deliberately catch broad exceptions to report
+# errors, and use silent try/except in cleanup and fallback paths.
+ignore = ["BLE001", "S110", "S112"]
+
+[tool.mypy]
+python_version = "3.13"
+files = ["tools"]
+
+[[tool.mypy.overrides]]
+# lxml-stubs does not cover lxml.isoschematron
+module = "lxml.isoschematron"
+ignore_missing_imports = true

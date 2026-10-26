@@ -2,58 +2,64 @@
 """
 Generates Schematron validation files from XML templates with special comment annotations.
 """
-import sys
+
+import argparse
 import os
 import re
-import argparse
+import sys
 
-from tools.configuration import XSD_FILE_PATH, TEMPLATES_DIR, SITE_SCHEMATRON_DIR
+from tools.configuration import SITE_SCHEMATRON_DIR, TEMPLATES_DIR, XSD_FILE_PATH
 
 # Require lxml - it provides better XML handling and XPath support
 try:
     import lxml.etree as ET
     from lxml.etree import Element, tostring
+
     HAS_LXML = True
 except ImportError:
-    print("ERROR: lxml is required for this script. Please install it with:", file=sys.stderr)
+    print(
+        "ERROR: lxml is required for this script. Please install it with:",
+        file=sys.stderr,
+    )
     print("pip install lxml", file=sys.stderr)
     sys.exit(1)
 
 # Markers and regexes
 ROOT_MARKER = "ch-root"
-RE_NOTE = re.compile(r'\bch-note\s*:\s*(.*)', re.IGNORECASE)
-RE_USAGE = re.compile(r'\bch-usage\s*:\s*(\w+)', re.IGNORECASE)
-RE_SEE = re.compile(r'\bch-see\b', re.IGNORECASE)
-RE_SEE_WITH_ARGS = re.compile(r'\bch-see\s*:\s*(.+)', re.IGNORECASE)
-RE_ALLOWED_ENUMS = re.compile(r'\bch-allowed-enums\s*:\s*(.+)', re.IGNORECASE)
-RE_DEPRECATED = re.compile(r'\bch-deprecated\b', re.IGNORECASE)
-RE_CLASS_ID_MUST_EXIST = re.compile(r'\bch-class-id-must-exist\b', re.IGNORECASE)
-RE_ATTRS = re.compile(r'\bch-attrs\s*[:\s]+(.+)', re.IGNORECASE)
+RE_NOTE = re.compile(r"\bch-note\s*:\s*(.*)", re.IGNORECASE)
+RE_USAGE = re.compile(r"\bch-usage\s*:\s*(\w+)", re.IGNORECASE)
+RE_SEE = re.compile(r"\bch-see\b", re.IGNORECASE)
+RE_SEE_WITH_ARGS = re.compile(r"\bch-see\s*:\s*(.+)", re.IGNORECASE)
+RE_ALLOWED_ENUMS = re.compile(r"\bch-allowed-enums\s*:\s*(.+)", re.IGNORECASE)
+RE_DEPRECATED = re.compile(r"\bch-deprecated\b", re.IGNORECASE)
+RE_CLASS_ID_MUST_EXIST = re.compile(r"\bch-class-id-must-exist\b", re.IGNORECASE)
+RE_ATTRS = re.compile(r"\bch-attrs\s*[:\s]+(.+)", re.IGNORECASE)
 
 # Known ch-commands (for warning on unknown ones)
 KNOWN_CH_COMMANDS = {
-    'ch-note',
-    'ch-usage',
-    'ch-see',
-    'ch-allowed-enums',
-    'ch-deprecated',
-    'ch-class-id-must-exist',
-    'ch-root',
-    'ch-attrs',
+    "ch-note",
+    "ch-usage",
+    "ch-see",
+    "ch-allowed-enums",
+    "ch-deprecated",
+    "ch-class-id-must-exist",
+    "ch-root",
+    "ch-attrs",
 }
-RE_CH_COMMAND = re.compile(r'\b(ch-[a-zA-Z0-9_-]+)', re.IGNORECASE)
+RE_CH_COMMAND = re.compile(r"\b(ch-[a-zA-Z0-9_-]+)", re.IGNORECASE)
 
 # Verbose debug toggle (set via CLI)
 VERBOSE = False
 
-DEFAULT_XML_FILE_PREFIX="ch-profile_"
+DEFAULT_XML_FILE_PREFIX = "ch-profile_"
+
 
 def read_file(path):
     """Read file content with UTF-8 encoding."""
     if VERBOSE:
-        print (f'Reading ${path}')
+        print(f"Reading ${path}")
     try:
-        with open(path, 'r', encoding='utf-8') as f:
+        with open(path, "r", encoding="utf-8") as f:
             return f.read()
     except Exception as e:
         print(f"ERROR: Cannot read file {path}: {e}", file=sys.stderr)
@@ -66,7 +72,7 @@ def write_file(path, content):
         d = os.path.dirname(path)
         if d and not os.path.exists(d):
             os.makedirs(d, exist_ok=True)
-        with open(path, 'w', encoding='utf-8') as f:
+        with open(path, "w", encoding="utf-8") as f:
             f.write(content)
     except Exception as e:
         print(f"ERROR: Cannot write file {path}: {e}", file=sys.stderr)
@@ -90,62 +96,65 @@ def indent_et(elem, level=0):
 
 def extract_regions(text, root_marker=ROOT_MARKER):
     """Extract regions containing root markers.
-    
+
     New behavior: For each element containing a <!-- ch-root --> marker,
     extract that element and all its children as a separate region.
     """
     results = []
-    
+
     try:
         # Parse the XML to find elements with root markers
         # Use temporary file to avoid issues with encoding declarations
         import tempfile
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.xml', delete=False, encoding='utf-8') as f:
+
+        with tempfile.NamedTemporaryFile(
+            mode="w", suffix=".xml", delete=False, encoding="utf-8"
+        ) as f:
             f.write(text)
             temp_file = f.name
-        
+
         doc = ET.parse(temp_file)
         root = doc.getroot()
-        
+
         # Clean up temporary file
         import os
+
         try:
             os.unlink(temp_file)
-        except:
+        except Exception:
             pass
-        
+
         # Function to find elements with root marker in their direct child comments
         def find_elements_with_root_marker(element):
             elements_with_marker = []
-            
+
             # Check direct child comments of this element
             has_root_marker = False
             for child in list(element):
-                if isinstance(child, ET._Comment):
-                    if root_marker in (child.text or ''):
-                        has_root_marker = True
-                        break
-            
+                if isinstance(child, ET._Comment) and root_marker in (child.text or ""):
+                    has_root_marker = True
+                    break
+
             if has_root_marker:
                 # This element contains a root marker - include the element itself
                 elements_with_marker.append(element)
-            
+
             # Recurse into child elements to find nested markers
             for child in element:
                 if not isinstance(child, ET._Comment):
                     elements_with_marker.extend(find_elements_with_root_marker(child))
-            
+
             return elements_with_marker
-        
+
         # Find all elements with root markers
         elements_with_markers = find_elements_with_root_marker(root)
-        
+
         # Extract each element and its children as a region
         for elem in elements_with_markers:
             # Serialize the element and its children
-            region = ET.tostring(elem, encoding='unicode')
+            region = ET.tostring(elem, encoding="unicode")
             results.append(region)
-        
+
         # If no elements with markers found, fall back to old behavior for compatibility
         if not results:
             lines = text.splitlines(keepends=True)
@@ -153,42 +162,42 @@ def extract_regions(text, root_marker=ROOT_MARKER):
             for line in lines:
                 if root_marker in line:
                     if collecting:
-                        results.append(''.join(buf))
+                        results.append("".join(buf))
                         buf = []
                     collecting = True
                     buf.append(line)
                 elif collecting:
                     buf.append(line)
             if collecting and buf:
-                results.append(''.join(buf))
-                
-    except Exception as e:
+                results.append("".join(buf))
+
+    except Exception:
         # If XML parsing fails, fall back to old line-based behavior
         lines = text.splitlines(keepends=True)
         collecting, buf = False, []
         for line in lines:
             if root_marker in line:
                 if collecting:
-                    results.append(''.join(buf))
+                    results.append("".join(buf))
                     buf = []
                 collecting = True
                 buf.append(line)
             elif collecting:
                 buf.append(line)
         if collecting and buf:
-            results.append(''.join(buf))
-    
+            results.append("".join(buf))
+
     return results
 
 
 def wrap_fragment(fragment):
     """Wrap XML fragment with root element for parsing."""
-    return '<?xml version="1.0" encoding="utf-8"?><__root__>' + fragment + '</__root__>'
+    return '<?xml version="1.0" encoding="utf-8"?><__root__>' + fragment + "</__root__>"
 
 
-def warn_on_unknown_ch_commands(comment_text, location_desc=''):
+def warn_on_unknown_ch_commands(comment_text, location_desc=""):
     """Warn about unknown ch-commands in comments."""
-    found = set(cmd.lower() for cmd in RE_CH_COMMAND.findall(comment_text))
+    found = {cmd.lower() for cmd in RE_CH_COMMAND.findall(comment_text)}
     unknown = {cmd for cmd in found if cmd not in KNOWN_CH_COMMANDS}
     if unknown:
         loc = f" at {location_desc}" if location_desc else ""
@@ -210,46 +219,46 @@ def parse_usage_and_notes_from_comments(comment_text):
     args_match = RE_SEE_WITH_ARGS.search(comment_text)
     if args_match:
         vals = args_match.group(1).strip()
-        see_names = [v for v in re.split(r'\s+', vals) if v != '']
+        see_names = [v for v in re.split(r"\s+", vals) if v != ""]
     else:
         if RE_SEE.search(comment_text):
-            see_names = ['__DEFAULT__']
+            see_names = ["__DEFAULT__"]
 
     allowed_match = RE_ALLOWED_ENUMS.search(comment_text)
     allowed = []
     if allowed_match:
         vals = allowed_match.group(1).strip()
-        allowed = [v for v in re.split(r'\s+', vals) if v != '']
+        allowed = [v for v in re.split(r"\s+", vals) if v != ""]
 
     deprecated = bool(RE_DEPRECATED.search(comment_text))
     class_id_must_exist = bool(RE_CLASS_ID_MUST_EXIST.search(comment_text))
-    
+
     # Parse ch-attrs command
     attrs_match = RE_ATTRS.search(comment_text)
     required_attrs = []
     if attrs_match:
         vals = attrs_match.group(1).strip()
         # Clean up the value by removing any trailing comment markers
-        vals = vals.replace('-->', '').strip()
-        required_attrs = [v for v in re.split(r'\s+', vals) if v != '']
+        vals = vals.replace("-->", "").strip()
+        required_attrs = [v for v in re.split(r"\s+", vals) if v != ""]
 
     return {
-        'notes': [n.strip() for n in all_notes] if all_notes else [],
-        'usages': [u.strip().lower() for u in usages] if usages else [],
-        'referenced_names': see_names,
-        'allowed_enums': allowed,
-        'deprecated': deprecated,
-        'class_id_must_exist': class_id_must_exist,
-        'required_attrs': required_attrs,
+        "notes": [n.strip() for n in all_notes] if all_notes else [],
+        "usages": [u.strip().lower() for u in usages] if usages else [],
+        "referenced_names": see_names,
+        "allowed_enums": allowed,
+        "deprecated": deprecated,
+        "class_id_must_exist": class_id_must_exist,
+        "required_attrs": required_attrs,
     }
 
 
 def local_name(tag):
     """Extract local name from potentially namespaced tag."""
     if tag is None:
-        return ''
+        return ""
     # strip namespace if present
-    m = re.match(r'\{.*\}(.*)', tag)
+    m = re.match(r"\{.*\}(.*)", tag)
     return m.group(1) if m else tag
 
 
@@ -273,46 +282,46 @@ class SchematronBuilder:
         self.xsd_path = xsd_path
         self.processed_files = set()
         self.rules_created = 0
-        
+
         # Create root schema element with namespaces
         # Use only Schematron namespace on the root element for ISO compliance
         SCH_NSMAP = {SCH_PREFIX: SCHEMATRON_NS}
-        
-        self.schema = Element('{' + SCHEMATRON_NS + '}schema', nsmap=SCH_NSMAP)
-        self.schema.set('queryBinding', 'xslt')
-        
+
+        self.schema = Element("{" + SCHEMATRON_NS + "}schema", nsmap=SCH_NSMAP)
+        self.schema.set("queryBinding", "xslt")
+
         # Add title - ISO Schematron expects title before ns for lxml.isoschematron compatibility
-        self.title = Element('{' + SCHEMATRON_NS + '}title', nsmap=SCH_NSMAP)
-        self.title.text = 'Generated schematron from template'
+        self.title = Element("{" + SCHEMATRON_NS + "}title", nsmap=SCH_NSMAP)
+        self.title.text = "Generated schematron from template"
         self.schema.append(self.title)
-        
+
         # Add namespace declaration for netex
         # Note: We don't include netex in the root nsmap to avoid extra namespace attributes
-        self.ns = Element('{' + SCHEMATRON_NS + '}ns')
-        self.ns.set('prefix', 'netex')
-        self.ns.set('uri', NETEX_NS)
+        self.ns = Element("{" + SCHEMATRON_NS + "}ns")
+        self.ns.set("prefix", "netex")
+        self.ns.set("uri", NETEX_NS)
         self.schema.append(self.ns)
-        
+
         # Create pattern
-        self.pattern = Element('{' + SCHEMATRON_NS + '}pattern', nsmap=SCH_NSMAP)
-        self.pattern.set('id', 'p1')
+        self.pattern = Element("{" + SCHEMATRON_NS + "}pattern", nsmap=SCH_NSMAP)
+        self.pattern.set("id", "p1")
         self.schema.append(self.pattern)
-        
+
         # Maintain mapping from context XPath to rule element
         self._rules_by_context = {}
 
     def add_comment_to_rule(self, rule, text):
         """Add XML comment to a rule element."""
-        rule.append(ET.Comment(' ' + text + ' '))
+        rule.append(ET.Comment(" " + text + " "))
 
     def _ns_name(self, element_name):
         """Return element name prefixed with netex: unless it's '.' or empty."""
-        if not element_name or element_name == '.':
+        if not element_name or element_name == ".":
             return element_name
         # If element_name already contains a colon, assume it's already namespaced
-        if ':' in element_name:
+        if ":" in element_name:
             return element_name
-        return f'netex:{element_name}'
+        return f"netex:{element_name}"
 
     def _ns_context(self, context_xpath):
         """
@@ -322,15 +331,15 @@ class SchematronBuilder:
         - Normalize '//' to '/' (single slash is sufficient and faster).
         - Otherwise, prefix '/' (absolute paths from root).
         """
-        if not context_xpath or context_xpath == '.':
-            return '.'
+        if not context_xpath or context_xpath == ".":
+            return "."
         ctx = context_xpath
-        if ctx.startswith('//'):
+        if ctx.startswith("//"):
             # Normalize // to / for better performance
             return ctx[1:]
-        if ctx.startswith('/') or ctx.startswith('.'):
+        if ctx.startswith(("/", ".")):
             return ctx
-        return f'/{ctx}'
+        return f"/{ctx}"
 
     def _get_or_create_rule(self, context_xpath, note_text=None):
         """
@@ -343,11 +352,11 @@ class SchematronBuilder:
             if note_text:
                 self.add_comment_to_rule(rule, note_text)
             return rule
-        
+
         # Use proper namespace for rule element
         NSMAP = {SCH_PREFIX: SCHEMATRON_NS}
-        rule = Element('{' + SCHEMATRON_NS + '}rule', nsmap=NSMAP)
-        rule.set('context', ctx)
+        rule = Element("{" + SCHEMATRON_NS + "}rule", nsmap=NSMAP)
+        rule.set("context", ctx)
         if note_text:
             self.add_comment_to_rule(rule, note_text)
         self._rules_by_context[ctx] = rule
@@ -355,8 +364,9 @@ class SchematronBuilder:
         self.rules_created += 1
         return rule
 
-
-    def add_assert_or_report(self, context_xpath, test_expr, message, kind='assert', note_text=None):
+    def add_assert_or_report(
+        self, context_xpath, test_expr, message, kind="assert", note_text=None
+    ):
         """
         Add either an assert or a report to the rule for context_xpath.
         kind: 'assert' (default) or 'report'
@@ -367,87 +377,132 @@ class SchematronBuilder:
         # Check for duplicate test expressions
         existing_tests = set()
         for child in rule:
-            if not isinstance(child, ET._Comment) and child.tag.endswith('}' + kind):
-                existing_tests.add(child.get('test'))
+            if not isinstance(child, ET._Comment) and child.tag.endswith("}" + kind):
+                existing_tests.add(child.get("test"))
 
         if test_expr not in existing_tests:
             # Use proper namespace for assert/report elements
             NSMAP = {SCH_PREFIX: SCHEMATRON_NS}
-            elem_name = '{' + SCHEMATRON_NS + '}' + kind
+            elem_name = "{" + SCHEMATRON_NS + "}" + kind
             elem = Element(elem_name, nsmap=NSMAP)
-            elem.set('test', test_expr)
+            elem.set("test", test_expr)
             elem.text = message
             rule.append(elem)
-
 
     def add_rule_presence(self, parent_context_xpath, element_name, note_text=None):
         """Add rule requiring element presence."""
         if not parent_context_xpath:
             return  # no parent (top-level), skip presence rule
         ns_elem = self._ns_name(element_name)
-        test = f'count({ns_elem}) > 0'
-        self.add_assert_or_report(parent_context_xpath, test, f'{element_name} must be present', kind='assert', note_text=note_text)
+        test = f"count({ns_elem}) > 0"
+        self.add_assert_or_report(
+            parent_context_xpath,
+            test,
+            f"{element_name} must be present",
+            kind="assert",
+            note_text=note_text,
+        )
 
     def add_rule_absence(self, parent_context_xpath, element_name, note_text=None):
         """Add rule requiring element absence."""
         if not parent_context_xpath:
             return  # no parent (top-level), skip absence rule
         ns_elem = self._ns_name(element_name)
-        test = f'count({ns_elem}) = 0'
-        self.add_assert_or_report(parent_context_xpath, test, f'{element_name} must NOT be present', kind='assert', note_text=note_text)
+        test = f"count({ns_elem}) = 0"
+        self.add_assert_or_report(
+            parent_context_xpath,
+            test,
+            f"{element_name} must NOT be present",
+            kind="assert",
+            note_text=note_text,
+        )
 
-    def add_rule_allowed_enums(self, context_xpath, element_name, allowed_list, note_text=None):
+    def add_rule_allowed_enums(
+        self, context_xpath, element_name, allowed_list, note_text=None
+    ):
         """Add rule restricting element value to allowed enumerations."""
         if not allowed_list:
             return
         # If element_name == '.', test the value of the current context element.
-        if element_name == '.' or not element_name:
-            ors = ' or '.join([f". = '{val}'" for val in allowed_list])
-            test = f'({ors})'
-            self.add_assert_or_report(context_xpath, test, f'Value must be one of: {" ".join(allowed_list)}', kind='assert', note_text=note_text)
+        if element_name == "." or not element_name:
+            ors = " or ".join([f". = '{val}'" for val in allowed_list])
+            test = f"({ors})"
+            self.add_assert_or_report(
+                context_xpath,
+                test,
+                f'Value must be one of: {" ".join(allowed_list)}',
+                kind="assert",
+                note_text=note_text,
+            )
         else:
             ns_elem = self._ns_name(element_name)
-            ors = ' or '.join([f"{ns_elem} = '{val}'" for val in allowed_list])
-            test = f'({ors})'
-            self.add_assert_or_report(context_xpath, test, f'{element_name} must be one of: {" ".join(allowed_list)}', kind='assert', note_text=note_text)
+            ors = " or ".join([f"{ns_elem} = '{val}'" for val in allowed_list])
+            test = f"({ors})"
+            self.add_assert_or_report(
+                context_xpath,
+                test,
+                f'{element_name} must be one of: {" ".join(allowed_list)}',
+                kind="assert",
+                note_text=note_text,
+            )
 
     def add_rule_deprecated(self, parent_context_xpath, element_name, note_text=None):
         """Add rule marking element as deprecated."""
         if not parent_context_xpath:
             return
-        base_note = f'DEPRECATED: {element_name} is deprecated'
-        full_note = f'{base_note}; {note_text}' if note_text else base_note
+        base_note = f"DEPRECATED: {element_name} is deprecated"
+        full_note = f"{base_note}; {note_text}" if note_text else base_note
         ns_elem = self._ns_name(element_name)
-        test = f'count({ns_elem}) = 0'
-        self.add_assert_or_report(parent_context_xpath, test, f'{element_name} is deprecated and should not be used', kind='assert', note_text=full_note)
+        test = f"count({ns_elem}) = 0"
+        self.add_assert_or_report(
+            parent_context_xpath,
+            test,
+            f"{element_name} is deprecated and should not be used",
+            kind="assert",
+            note_text=full_note,
+        )
 
-    def add_rule_class_id_must_exist(self, context_xpath, element_name, id_value, note_text=None):
+    def add_rule_class_id_must_exist(
+        self, context_xpath, element_name, id_value, note_text=None
+    ):
         """
         Produce a report that an element with the given id must exist somewhere in the document.
         Attach at the element's own absolute context (if available).
         """
         if not id_value:
             return
-        base_note = f'{element_name} with id="{id_value}" must exist somewhere in the document'
-        full_note = f'{base_note}; {note_text}' if note_text else base_note
+        base_note = (
+            f'{element_name} with id="{id_value}" must exist somewhere in the document'
+        )
+        full_note = f"{base_note}; {note_text}" if note_text else base_note
         ns_elem = self._ns_name(element_name)
         test_expr = f"not(//{ns_elem}[@id='{id_value}'])"
-        self.add_assert_or_report(context_xpath, test_expr, f'An element {element_name} with id="{id_value}" must exist', kind='report', note_text=full_note)
+        self.add_assert_or_report(
+            context_xpath,
+            test_expr,
+            f'An element {element_name} with id="{id_value}" must exist',
+            kind="report",
+            note_text=full_note,
+        )
 
-    def add_rule_required_attrs(self, context_xpath, element_name, required_attrs, note_text=None):
+    def add_rule_required_attrs(
+        self, context_xpath, element_name, required_attrs, note_text=None
+    ):
         """
         Add rules requiring specified attributes to be present on an element.
         """
         if not required_attrs:
             return
-        
+
         # For each required attribute, create a rule that checks its presence
         for attr_name in required_attrs:
             if attr_name:
                 # Create XPath test: count(@attr_name) > 0
-                test = f'count(@{attr_name}) > 0'
+                test = f"count(@{attr_name}) > 0"
                 message = f'Attribute "{attr_name}" must be present on {element_name}'
-                self.add_assert_or_report(context_xpath, test, message, kind='assert', note_text=note_text)
+                self.add_assert_or_report(
+                    context_xpath, test, message, kind="assert", note_text=note_text
+                )
 
     def include_schematron_file(self, file_path):
         """
@@ -457,37 +512,40 @@ class SchematronBuilder:
         """
         if not os.path.isfile(file_path):
             return False
-        
+
         try:
             # Parse the external schematron file
             doc = ET.parse(file_path)
             root = doc.getroot()
-            
+
             # Import all pattern elements from the external file
-            for pattern in root.findall('.//{' + SCHEMATRON_NS + '}pattern'):
+            for pattern in root.findall(".//{" + SCHEMATRON_NS + "}pattern"):
                 # Deep copy the pattern and its children
-                imported_pattern = ET.fromstring(ET.tostring(pattern, encoding='unicode'))
+                imported_pattern = ET.fromstring(
+                    ET.tostring(pattern, encoding="unicode")
+                )
                 self.schema.append(imported_pattern)
                 # Count rules in this pattern
-                for rule in pattern.findall('.//{' + SCHEMATRON_NS + '}rule'):
+                for rule in pattern.findall(".//{" + SCHEMATRON_NS + "}rule"):
                     self.rules_created += 1
-            
+
             return True
         except Exception as e:
-            print(f'Warning: Error parsing schematron file {file_path}: {e}', file=sys.stderr)
+            print(
+                f"Warning: Error parsing schematron file {file_path}: {e}",
+                file=sys.stderr,
+            )
             return False
 
     def tostring(self):
         """Serialize schematron to XML string with proper formatting."""
         # Pretty-print before serializing
         indent_et(self.schema)
-        xml = tostring(self.schema, encoding='unicode', pretty_print=True)
-        
+        xml = tostring(self.schema, encoding="unicode", pretty_print=True)
+
         # Unescape '>' only inside sch:assert/@test and sch:report/@test attributes
         xml = re.sub(
-            r'((?:test=")([^"]*)("))',
-            lambda m: m.group(1).replace('&gt;', '>'),
-            xml
+            r'((?:test=")([^"]*)("))', lambda m: m.group(1).replace("&gt;", ">"), xml
         )
         # ensure XML declaration
         return '<?xml version="1.0" encoding="UTF-8"?>' + xml
@@ -496,22 +554,29 @@ class SchematronBuilder:
 def ns_join(builder, parent_path, local):
     """Join a local element name onto a namespaced absolute path."""
     ns = builder._ns_name(local)
-    return ns if not parent_path else f'{parent_path}/{ns}'
+    return ns if not parent_path else f"{parent_path}/{ns}"
 
 
-def _process_fragment_root(rootfrag, builder, base_context_path, parent_context_path, element_local_name, input_folder):
+def _process_fragment_root(
+    rootfrag,
+    builder,
+    base_context_path,
+    parent_context_path,
+    element_local_name,
+    input_folder,
+):
     """
     Process a referenced fragment for element `element_local_name`.
-    
+
     - base_context_path: absolute path to the element itself (e.g., .../netex:Operator)
     - parent_context_path: absolute path to the element's parent (e.g., .../netex:organisations)
     - element_local_name: local name (e.g., Operator)
-    
+
     Only processes ch-see references from top-level comments in the fragment.
     Element-specific annotations (ch-usage, ch-allowed-enums, etc.) are NOT processed here
     to avoid duplication - they will be handled by process_element_tree() when elements
     are encountered in their proper context.
-    
+
     The fragment's top-level element that matches element_local_name is treated as the SAME context
     (no extra /Operator appended), to avoid .../Operator/Operator.
     """
@@ -520,35 +585,38 @@ def _process_fragment_root(rootfrag, builder, base_context_path, parent_context_
         if isinstance(node, ET._Comment):
             if VERBOSE:
                 print("Fragment comment:", repr(node.text))
-            ctext = (node.text or '').strip()
+            ctext = (node.text or "").strip()
             warn_on_unknown_ch_commands(
-                ctext,
-                location_desc=f"fragment for '{element_local_name}'"
+                ctext, location_desc=f"fragment for '{element_local_name}'"
             )
             parsed = parse_usage_and_notes_from_comments(ctext)
-            referenced_names = parsed['referenced_names']
+            referenced_names = parsed["referenced_names"]
 
             # ONLY process ch-see references at fragment level.
             # Skip ch-usage, ch-allowed-enums, ch-deprecated, etc. - these are processed
             # when elements are encountered in their proper context via process_element_tree().
             if referenced_names:
                 tokens = []
-                if all(t == '__DEFAULT__' for t in referenced_names):
-                    tokens = ['__DEFAULT__']
+                if all(t == "__DEFAULT__" for t in referenced_names):
+                    tokens = ["__DEFAULT__"]
                 else:
                     for t in referenced_names:
-                        if t != '__DEFAULT__':
+                        if t != "__DEFAULT__":
                             tokens.append(t)
-                    if '__DEFAULT__' in referenced_names:
-                        tokens.append('__DEFAULT__')
+                    if "__DEFAULT__" in referenced_names:
+                        tokens.append("__DEFAULT__")
                 for token in tokens:
                     candidates = []
-                    if token == '__DEFAULT__':
-                        candidates.append(f'{element_local_name}.xml')
+                    if token == "__DEFAULT__":
+                        candidates.append(f"{element_local_name}.xml")
                     else:
-                        candidates.append(token if token.lower().endswith('.xml') else f'{token}.xml')
+                        candidates.append(
+                            token if token.lower().endswith(".xml") else f"{token}.xml"
+                        )
                     for candidate in candidates:
-                        for found_path in find_files_for_candidate(input_folder, candidate):
+                        for found_path in find_files_for_candidate(
+                            input_folder, candidate
+                        ):
                             ab = os.path.abspath(found_path)
                             if ab in builder.processed_files:
                                 continue
@@ -558,7 +626,10 @@ def _process_fragment_root(rootfrag, builder, base_context_path, parent_context_
                             try:
                                 txt = read_file(found_path)
                             except Exception as e:
-                                print(f'Warning: cannot read referenced file {found_path}: {e}', file=sys.stderr)
+                                print(
+                                    f"Warning: cannot read referenced file {found_path}: {e}",
+                                    file=sys.stderr,
+                                )
                                 continue
                             regions = extract_regions(txt)
                             if not regions:
@@ -566,12 +637,22 @@ def _process_fragment_root(rootfrag, builder, base_context_path, parent_context_
                             for r in regions:
                                 wrapped = wrap_fragment(r)
                                 try:
-                                    subfrag = ET.fromstring(wrapped.encode('utf-8'))
+                                    subfrag = ET.fromstring(wrapped.encode("utf-8"))
                                 except Exception as e:
-                                    print(f'Warning: parse error in referenced file {found_path}: {e}', file=sys.stderr)
+                                    print(
+                                        f"Warning: parse error in referenced file {found_path}: {e}",
+                                        file=sys.stderr,
+                                    )
                                     continue
                                 # Recurse: still under same element context for its top-level
-                                _process_fragment_root(subfrag, builder, base_context_path, parent_context_path, element_local_name, input_folder)
+                                _process_fragment_root(
+                                    subfrag,
+                                    builder,
+                                    base_context_path,
+                                    parent_context_path,
+                                    element_local_name,
+                                    input_folder,
+                                )
         else:
             # Element node within the fragment
             node_local = local_name(node.tag)
@@ -583,7 +664,7 @@ def _process_fragment_root(rootfrag, builder, base_context_path, parent_context_
                     parent_context_path=parent_context_path,
                     input_folder=input_folder,
                     is_ref_root=True,
-                    current_context_path=base_context_path
+                    current_context_path=base_context_path,
                 )
             else:
                 # If fragment provides children directly (without wrapping <element_local_name>),
@@ -593,11 +674,18 @@ def _process_fragment_root(rootfrag, builder, base_context_path, parent_context_
                     builder,
                     base_context_path,
                     input_folder=input_folder,
-                    is_ref_root=False
+                    is_ref_root=False,
                 )
 
 
-def process_element_tree(elem, builder, parent_context_path='', input_folder='.', is_ref_root=False, current_context_path=None):
+def process_element_tree(
+    elem,
+    builder,
+    parent_context_path="",
+    input_folder=".",
+    is_ref_root=False,
+    current_context_path=None,
+):
     """
     - parent_context_path: absolute path string of the parent element (without leading '//').
     - is_ref_root + current_context_path: when True, 'elem' corresponds to an already-established
@@ -605,12 +693,19 @@ def process_element_tree(elem, builder, parent_context_path='', input_folder='.'
     """
     tag_local = local_name(elem.tag)
     if VERBOSE:
-        print("Processing element:", tag_local, "parent context:", parent_context_path, "is_ref_root:", is_ref_root)
+        print(
+            "Processing element:",
+            tag_local,
+            "parent context:",
+            parent_context_path,
+            "is_ref_root:",
+            is_ref_root,
+        )
 
     # Determine this element's absolute path (no leading '//' internally)
     if is_ref_root and current_context_path:
-        elem_abs_path = current_context_path              # e.g., netex:.../netex:Operator
-        parent_abs_path = parent_context_path             # e.g., netex:.../netex:organisations
+        elem_abs_path = current_context_path  # e.g., netex:.../netex:Operator
+        parent_abs_path = parent_context_path  # e.g., netex:.../netex:organisations
     else:
         elem_abs_path = ns_join(builder, parent_context_path, tag_local)
         parent_abs_path = parent_context_path
@@ -626,25 +721,25 @@ def process_element_tree(elem, builder, parent_context_path='', input_folder='.'
 
     # Handle comments that annotate THIS element
     for comment_node in child_comments:
-        ctext = (comment_node.text or '').strip()
+        ctext = (comment_node.text or "").strip()
         warn_on_unknown_ch_commands(ctext, location_desc=f"element '{tag_local}'")
         parsed = parse_usage_and_notes_from_comments(ctext)
-        notes = parsed['notes']
-        usages = parsed['usages']
-        referenced_names = parsed['referenced_names']
-        allowed_enums = parsed['allowed_enums']
-        deprecated = parsed['deprecated']
-        class_id_must_exist = parsed['class_id_must_exist']
-        required_attrs = parsed['required_attrs']
+        notes = parsed["notes"]
+        usages = parsed["usages"]
+        referenced_names = parsed["referenced_names"]
+        allowed_enums = parsed["allowed_enums"]
+        deprecated = parsed["deprecated"]
+        class_id_must_exist = parsed["class_id_must_exist"]
+        required_attrs = parsed["required_attrs"]
 
-        note_text = '; '.join(notes) if notes else None
+        note_text = "; ".join(notes) if notes else None
 
         # Apply usage/deprecation about this element at its parent's context (direct child checks)
-        if any(u == 'forbidden' for u in usages):
+        if any(u == "forbidden" for u in usages):
             if tag_local == "ServiceFrame":
-                print ("here")
+                print("here")
             builder.add_rule_absence(parent_abs_path, tag_local, note_text=note_text)
-        if any(u == 'mandatory' for u in usages):
+        if any(u == "mandatory" for u in usages):
             builder.add_rule_presence(parent_abs_path, tag_local, note_text=note_text)
         if deprecated:
             builder.add_rule_deprecated(parent_abs_path, tag_local, note_text=note_text)
@@ -652,49 +747,40 @@ def process_element_tree(elem, builder, parent_context_path='', input_folder='.'
         # Allowed enums on this element's own value: attach at element's absolute path, test '.'
         if allowed_enums:
             builder.add_rule_allowed_enums(
-                elem_abs_path,
-                '.',
-                allowed_enums,
-                note_text=note_text
+                elem_abs_path, ".", allowed_enums, note_text=note_text
             )
 
         # class-id-must-exist: attach at element's absolute path, using the element's own @id
         if class_id_must_exist:
-            id_value = elem.get('id')
+            id_value = elem.get("id")
             builder.add_rule_class_id_must_exist(
-                elem_abs_path,
-                tag_local,
-                id_value,
-                note_text=note_text
+                elem_abs_path, tag_local, id_value, note_text=note_text
             )
 
         # Handle required attributes for this element
         if required_attrs:
             builder.add_rule_required_attrs(
-                elem_abs_path,
-                tag_local,
-                required_attrs,
-                note_text=note_text
+                elem_abs_path, tag_local, required_attrs, note_text=note_text
             )
 
         # Handle referenced fragments for this element
         if referenced_names:
             tokens = []
-            if all(t == '__DEFAULT__' for t in referenced_names):
-                tokens = ['__DEFAULT__']
+            if all(t == "__DEFAULT__" for t in referenced_names):
+                tokens = ["__DEFAULT__"]
             else:
                 for t in referenced_names:
-                    if t != '__DEFAULT__':
+                    if t != "__DEFAULT__":
                         tokens.append(t)
-                if '__DEFAULT__' in referenced_names:
-                    tokens.append('__DEFAULT__')
+                if "__DEFAULT__" in referenced_names:
+                    tokens.append("__DEFAULT__")
             for token in tokens:
                 candidates = []
-                if token == '__DEFAULT__':
-                    candidates.append(f'{tag_local}.xml')
+                if token == "__DEFAULT__":
+                    candidates.append(f"{tag_local}.xml")
                 else:
                     candidates.append(
-                        token if token.lower().endswith('.xml') else f'{token}.xml'
+                        token if token.lower().endswith(".xml") else f"{token}.xml"
                     )
                 for candidate in candidates:
                     for found_path in find_files_for_candidate(input_folder, candidate):
@@ -708,8 +794,8 @@ def process_element_tree(elem, builder, parent_context_path='', input_folder='.'
                             txt = read_file(found_path)
                         except Exception as e:
                             print(
-                                f'Warning: cannot read referenced file {found_path}: {e}',
-                                file=sys.stderr
+                                f"Warning: cannot read referenced file {found_path}: {e}",
+                                file=sys.stderr,
                             )
                             continue
                         regions = extract_regions(txt)
@@ -718,11 +804,11 @@ def process_element_tree(elem, builder, parent_context_path='', input_folder='.'
                         for r in regions:
                             wrapped = wrap_fragment(r)
                             try:
-                                rootfrag = ET.fromstring(wrapped.encode('utf-8'))
+                                rootfrag = ET.fromstring(wrapped.encode("utf-8"))
                             except Exception as e:
                                 print(
-                                    f'Warning: parse error in referenced file {found_path}: {e}',
-                                    file=sys.stderr
+                                    f"Warning: parse error in referenced file {found_path}: {e}",
+                                    file=sys.stderr,
                                 )
                                 continue
                             # Base context is the element itself; parent context is its parent
@@ -732,7 +818,7 @@ def process_element_tree(elem, builder, parent_context_path='', input_folder='.'
                                 base_context_path=elem_abs_path,
                                 parent_context_path=parent_abs_path,
                                 element_local_name=tag_local,
-                                input_folder=input_folder
+                                input_folder=input_folder,
                             )
 
     # Recurse into child elements; they will append to elem_abs_path
@@ -742,18 +828,24 @@ def process_element_tree(elem, builder, parent_context_path='', input_folder='.'
             builder,
             parent_context_path=elem_abs_path,
             input_folder=input_folder,
-            is_ref_root=False
+            is_ref_root=False,
         )
 
 
 def _parent_of_abs_path(abs_path: str) -> str:
     """Return the parent path of an absolute namespaced path, or '' if none."""
-    if not abs_path or '/' not in abs_path:
-        return ''
-    return abs_path.rsplit('/', 1)[0]
+    if not abs_path or "/" not in abs_path:
+        return ""
+    return abs_path.rsplit("/", 1)[0]
 
 
-def generate_schematron_from_template(template_path: str, input_folder: str, output_folder: str, schematron_builder: SchematronBuilder, root_element: str):
+def generate_schematron_from_template(
+    template_path: str,
+    input_folder: str,
+    output_folder: str,
+    schematron_builder: SchematronBuilder,
+    root_element: str,
+):
     """
     Generates a schematron file from a template.
 
@@ -765,7 +857,7 @@ def generate_schematron_from_template(template_path: str, input_folder: str, out
     """
     txt = read_file(template_path)
     template_name = os.path.basename(template_path)
-    name = template_name.split('.')[0]
+    name = template_name.split(".")[0]
     schematron_name = f"{name}.sch"
     regions = extract_regions(txt)
 
@@ -774,30 +866,38 @@ def generate_schematron_from_template(template_path: str, input_folder: str, out
 
     if not regions:
         print(
-            f'Warning: no regions found with root in {template_name}; attempting to process entire file',
-            file=sys.stderr
+            f"Warning: no regions found with root in {template_name}; attempting to process entire file",
+            file=sys.stderr,
         )
         regions = [txt]
 
     for region in regions:
         # Check if the region is already a complete XML element (starts with < and not <?xml)
         region_stripped = region.strip()
-        is_complete_element = region_stripped.startswith('<') and not region_stripped.startswith('<?xml')
+        is_complete_element = region_stripped.startswith(
+            "<"
+        ) and not region_stripped.startswith("<?xml")
 
         if is_complete_element:
             # Region is already a complete XML element, parse it directly
             try:
-                root = ET.fromstring(region.encode('utf-8'))
+                root = ET.fromstring(region.encode("utf-8"))
             except Exception as e:
-                print(f'Error parsing extracted region of {template_name}: {e}', file=sys.stderr)
+                print(
+                    f"Error parsing extracted region of {template_name}: {e}",
+                    file=sys.stderr,
+                )
                 continue
         else:
             # Region is a fragment, wrap it with root element
             wrapped = wrap_fragment(region)
             try:
-                root = ET.fromstring(wrapped.encode('utf-8'))
+                root = ET.fromstring(wrapped.encode("utf-8"))
             except Exception as e:
-                print(f'Error parsing extracted region of {template_name}: {e}', file=sys.stderr)
+                print(
+                    f"Error parsing extracted region of {template_name}: {e}",
+                    file=sys.stderr,
+                )
                 continue
 
         # Check if the root element itself is the one we're looking for
@@ -808,100 +908,159 @@ def generate_schematron_from_template(template_path: str, input_folder: str, out
             process_element_tree(
                 root,
                 schematron_builder,
-                parent_context_path='',
+                parent_context_path="",
                 input_folder=input_folder,
-                is_ref_root=False
+                is_ref_root=False,
             )
-            root_element_found = True
         else:
             # The region contains an element with ch-root marker that is not the expected root element
             # This is valid - process the element that was extracted (which contains the ch-root marker)
             process_element_tree(
                 root,
                 schematron_builder,
-                parent_context_path='',
+                parent_context_path="",
                 input_folder=input_folder,
-                is_ref_root=False
+                is_ref_root=False,
             )
-            root_element_found = True
 
     schematron_content = schematron_builder.tostring()
 
-    schematron_path = f'{output_folder}/{schematron_name}'
+    schematron_path = f"{output_folder}/{schematron_name}"
     write_file(schematron_path, schematron_content)
-    print(f'-> Created {schematron_name}: {schematron_builder.rules_created} rules.')
+    print(f"-> Created {schematron_name}: {schematron_builder.rules_created} rules.")
+
 
 def template_file_filter(file_name: str, prefix: str, postfix: str) -> bool:
     """
     Filters template files according to prefix and postfix of file names.
     """
-    filter = True;
+    filter = True
     if postfix:
         filter = filter and file_name.endswith(postfix)
     if prefix:
         filter = filter and file_name.startswith(prefix)
     return filter
 
-def generate_all_schematrons(input_folder: str, prefix: str, output_folder: str, xsd_path: str, root_element: str, include_rules: list = None):
-    """
-     Generates schematron files from all templates.
 
-     param: input_folder: path to the template folder
-     param: output_path: path to the output (schematron) folder
-     param: schematron_builder: SchematronBuilder object
-     param: root_element: Schema root element, e.g. PublicationDelivery
-     param: include_rules: List of schematron rule files to include
-     """
+def generate_all_schematrons(
+    input_folder: str,
+    prefix: str,
+    output_folder: str,
+    xsd_path: str,
+    root_element: str,
+    include_rules: list | None = None,
+):
+    """
+    Generates schematron files from all templates.
+
+    param: input_folder: path to the template folder
+    param: output_path: path to the output (schematron) folder
+    param: schematron_builder: SchematronBuilder object
+    param: root_element: Schema root element, e.g. PublicationDelivery
+    param: include_rules: List of schematron rule files to include
+    """
     print(f"Processing templates from {input_folder}.")
 
-    templates = [os.path.join(input_folder, f) for f in os.listdir(input_folder) if template_file_filter(f, prefix, '.xml')]
+    templates = [
+        os.path.join(input_folder, f)
+        for f in os.listdir(input_folder)
+        if template_file_filter(f, prefix, ".xml")
+    ]
 
     schematron_builder = SchematronBuilder(xsd_path)
-    
+
     # Include additional rule files if specified
     if include_rules:
-        schematron_rules_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'src', 'schematron_rules')
+        schematron_rules_dir = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "..",
+            "..",
+            "src",
+            "schematron_rules",
+        )
         for rule_file in include_rules:
             rule_path = os.path.join(schematron_rules_dir, rule_file)
             if not schematron_builder.include_schematron_file(rule_path):
-                print(f'Warning: Could not include schematron rules from: {rule_path}', file=sys.stderr)
-    
+                print(
+                    f"Warning: Could not include schematron rules from: {rule_path}",
+                    file=sys.stderr,
+                )
+
     for template_path in templates:
-        generate_schematron_from_template(template_path, input_folder, output_folder, schematron_builder, root_element)
+        generate_schematron_from_template(
+            template_path, input_folder, output_folder, schematron_builder, root_element
+        )
 
     print(f"Processed {len(templates)} templates.")
     print(f"Schematrons written to {output_folder}.")
 
+
 def parse_args():
     parser = argparse.ArgumentParser(
-        description=f"Generates Schematrons from XML templates and fragments. Processes all templates in an input folder, or a single template if -t or --template is used."
+        description="Generates Schematrons from XML templates and fragments. Processes all templates in an input folder, or a single template if -t or --template is used."
     )
-    parser.add_argument('-t', '--template', default=None, required=False,
-        help='Template XML file containing ch-start/ch-stop regions (Processes all templates in input folder if None).'
-    )
-    parser.add_argument('-x', '--xsd', default=XSD_FILE_PATH,
-                        help=f'XSD schema file for type information (Default = {XSD_FILE_PATH})')
-    parser.add_argument('-i', '--input', default=TEMPLATES_DIR,
-                        help=f'Input folder containing XML templates (Default = {TEMPLATES_DIR})')
-    parser.add_argument('-o', '--output', default=SITE_SCHEMATRON_DIR,
-                        help=f'Output folder for Schematron (.sch) files (Default = {SITE_SCHEMATRON_DIR})')
-    parser.add_argument('-p', '--prefix', default=DEFAULT_XML_FILE_PREFIX, help=f'Prefix for XML files (Default = {DEFAULT_XML_FILE_PREFIX}).')
-    parser.add_argument('-a', '--all', default=False, action='store_true', help='Build all - ignore XML file prefix (Default = False).')
     parser.add_argument(
-        '-r', '--root-element',
-        default='PublicationDelivery',
-        help='Root element to start processing from (default: PublicationDelivery).'
+        "-t",
+        "--template",
+        default=None,
+        required=False,
+        help="Template XML file containing ch-start/ch-stop regions (Processes all templates in input folder if None).",
     )
-    parser.add_argument('-v', '--verbose', action='store_true', help='Enable verbose logging.')
-    parser.add_argument('--include_rules', nargs='+', default=[],
-                        help='Additional schematron rule files to include from src/schematron_rules folder (e.g., general_rules.sch network_offer_rules.sch)')
+    parser.add_argument(
+        "-x",
+        "--xsd",
+        default=XSD_FILE_PATH,
+        help=f"XSD schema file for type information (Default = {XSD_FILE_PATH})",
+    )
+    parser.add_argument(
+        "-i",
+        "--input",
+        default=TEMPLATES_DIR,
+        help=f"Input folder containing XML templates (Default = {TEMPLATES_DIR})",
+    )
+    parser.add_argument(
+        "-o",
+        "--output",
+        default=SITE_SCHEMATRON_DIR,
+        help=f"Output folder for Schematron (.sch) files (Default = {SITE_SCHEMATRON_DIR})",
+    )
+    parser.add_argument(
+        "-p",
+        "--prefix",
+        default=DEFAULT_XML_FILE_PREFIX,
+        help=f"Prefix for XML files (Default = {DEFAULT_XML_FILE_PREFIX}).",
+    )
+    parser.add_argument(
+        "-a",
+        "--all",
+        default=False,
+        action="store_true",
+        help="Build all - ignore XML file prefix (Default = False).",
+    )
+    parser.add_argument(
+        "-r",
+        "--root-element",
+        default="PublicationDelivery",
+        help="Root element to start processing from (default: PublicationDelivery).",
+    )
+    parser.add_argument(
+        "-v", "--verbose", action="store_true", help="Enable verbose logging."
+    )
+    parser.add_argument(
+        "--include_rules",
+        nargs="+",
+        default=[],
+        help="Additional schematron rule files to include from src/schematron_rules folder (e.g., general_rules.sch network_offer_rules.sch)",
+    )
     return parser.parse_args()
+
 
 def evaluate_prefix(prefix: str, all: bool) -> str | None:
     if all:
         return None
     else:
         return prefix
+
 
 def main():
     global VERBOSE
@@ -916,9 +1075,9 @@ def main():
 
     # Validate inputs
     if not os.path.isfile(xsd_path):
-        print(f'Warning: xsd file not found: {xsd_path}', file=sys.stderr)
+        print(f"Warning: xsd file not found: {xsd_path}", file=sys.stderr)
     if not os.path.isdir(input_folder):
-        print(f'Warning: input folder not found: {input_folder}', file=sys.stderr)
+        print(f"Warning: input folder not found: {input_folder}", file=sys.stderr)
 
     if VERBOSE:
         print(f"Output folder: {output_folder}")
@@ -928,19 +1087,33 @@ def main():
 
     if template_path:
         if not os.path.isfile(template_path):
-            print(f'Error: Template file not found: {template_path}', file=sys.stderr)
+            print(f"Error: Template file not found: {template_path}", file=sys.stderr)
             sys.exit(1)
         schematron_builder = SchematronBuilder(xsd_path)
         # Include additional rule files if specified
-        schematron_rules_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', 'src', 'schematron_rules')
+        schematron_rules_dir = os.path.join(
+            os.path.dirname(os.path.abspath(__file__)),
+            "..",
+            "..",
+            "src",
+            "schematron_rules",
+        )
         for rule_file in include_rules:
             rule_path = os.path.join(schematron_rules_dir, rule_file)
             if not schematron_builder.include_schematron_file(rule_path):
-                print(f'Warning: Could not include schematron rules from: {rule_path}', file=sys.stderr)
-        generate_schematron_from_template(template_path, input_folder, output_folder, schematron_builder, root_element)
+                print(
+                    f"Warning: Could not include schematron rules from: {rule_path}",
+                    file=sys.stderr,
+                )
+        generate_schematron_from_template(
+            template_path, input_folder, output_folder, schematron_builder, root_element
+        )
     else:
         prefix = evaluate_prefix(args.prefix, args.all)
-        generate_all_schematrons(input_folder, prefix, output_folder, xsd_path, root_element, include_rules)
+        generate_all_schematrons(
+            input_folder, prefix, output_folder, xsd_path, root_element, include_rules
+        )
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
