@@ -13,11 +13,12 @@ The [project board](https://github.com/orgs/openTdataCH/projects/13/views/1)
 ## Released version
 none
 
-## Provisional Roadmap for profile 2.0
+## Provisional Roadmap for Swiss NeTex Profile 2.0
 * 2026-04: repo ready, moved to MD
 * 2026-07: first draft ready (Release candidate 1)
 * 2026-10: input from review incorporated and second review(Release candidate 2)
-* 2026-12: ready for release, discussed with KI ADM and KIDS AG Solldaten (Release)
+* 2026-11: ready for release, discussed with KI ADM and KIDS AG Solldaten (Release)
+* 2027-06: Version 2.1 ready with updates from exports.
 
 ## Folders
 
@@ -25,15 +26,18 @@ none
 
 Source folders added to git:
 
-| Folder        | Content                                                                                                                   |
-|---------------|---------------------------------------------------------------------------------------------------------------------------|
-| src           | The document sources of the realisation guide (with links)                                                                |
-| src/templates | Template files to generade schematrons and elements in elements.md                                                        |
-| src/examples  | Valid XML examples based on use cases                                                                                     |
-| jekyll        | jekyll template folder (is copied to the site folder during the build). Jekyll is used to generate html for GitHub pages. |
-| mgmt          | Governance and organisation                                                                                               |
-| tools         | Python tools to build everything ([see](./tools/README.md))                                                               |
-| xsd           | The NeTEx 2.0 XSD. This is a submodule. Way to check it out [here](./mgmt/HOWTO.md#setup-xsd)                             |
+| Folder               | Content                                                                                                                   |
+|----------------------|---------------------------------------------------------------------------------------------------------------------------|
+| src                  | The document sources of the realisation guide (with links)                                                                |
+| src/templates        | Template files to generade schematrons and elements in elements.md                                                        |
+| src/examples         | Valid XML examples based on use cases                                                                                     |
+| src/examples         | Valid XML examples based on use cases                                                                                     |
+| src/media            | Images and conversion excel                                                                                               |
+| src/schematron_rules | General schematron rules to be included                                                                                   |
+| jekyll               | jekyll template folder (is copied to the site folder during the build). Jekyll is used to generate html for GitHub pages. |
+| mgmt                 | Governance and organisation                                                                                               |
+| tools                | Python tools to build everything ([see](./tools/README.md))                                                               |
+| xsd                  | The NeTEx 2.0 XSD. This is a submodule. Way to check it out [here](./mgmt/HOWTO.md#setup-xsd)                             |
 
 ### Generated Folders
 

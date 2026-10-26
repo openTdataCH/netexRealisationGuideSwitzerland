@@ -1,4 +1,4 @@
-# Swiss profile 2.0 for NeTEx 2.1 - Realisation directive for public transport in Switzerland
+# Swiss NeTEx Profile 2.0 based on NeTEx 2.1 - Realisation directive for public transport in Switzerland
 
 This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.
 It provides detailed clarifications and describes deviations from the official standard, with the aim of achieving consistent use throughout public transport in Switzerland.
@@ -44,21 +44,21 @@ This document describes the way in which the NeTEx standard is specifically appl
   - [Direct carriages ("Kurswagen")](uc08_kurswagen.md)
   - [Accessibility](uc09_accessibility.md)
   - [Journeys passing midnight](uc10_midnight_passing.md)
-  - **LATER**: [Touristic offers](uc11_touristic_offers.md)
-  - **LATER**: [Car transport rail](uc12_carTransportRail.md)
+  - [Touristic offers](uc11_touristic_offers.md) (IN PROGRESS)
+  - [Car transport rail](uc12_carTransportRail.md) (IN PROGRESS)
   - [Changes in the destination](uc13_changes_in_destination.md)
   - [Frequency based ServiceJourney](uc14_frequencies.md)
-  - **LATER**: [Formations](uc15_formations.md)
-  - **LATER**: [Demand Responsive Traffic](uc16_drt.md)
+  - [Formations](uc15_formations.md) (DRAFT)
+  - [Demand Responsive Traffic](uc16_drt.md) (DRAFT)
   - [Mixed Lines](uc17_mixed_lines.md)
 - Mapping tables are defined in an [Excel](media/Mappingtabellen_NeTEx_v2.0.xlsx)
 - Annexes:
   - [Resources and references](A1_annex_resources_references.md)
-  - **LATER**: [Differences between Swiss profile and EPIP/EPIAP and how they could be amended](A2_annex_comparison_EPIP_EPIAP.md)
-  - [Differences to the French and nordic profile](A3_annex_comparison_France_Norway.md)
+  - [Differences between Swiss profile and EPIP/EPIAP and how they could be amended](A2_annex_comparison_EPIP_EPIAP.md) (DRAFT)
+  - [Differences to the French and nordic profile](A3_annex_comparison_France_Norway.md)(DRAFT)
   - [Glossary](A4_annex_glossary.md)
   - [Index](A5_annex_index.md)
-  - [Changelog and migration from Swiss profile 1.0 to 2.0](A6_changelog_migration.md)
+  - [Changelog and migration from Swiss profile 1.0 to 2.0](A6_changelog_migration.md)(IN PROGRESS)
 
 
 ## Examples
@@ -66,8 +66,8 @@ We have a [set of examples](https://github.com/openTdataCH/netexRealisationGuide
 
 ## Imprint
 * Authors: Matthias Günter,  Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Thomas Schäfer, Simon Freihart, Emeric Tapia-Almosnino, 
-* Status: Release Candidate 1
-* Last change: 2026-09-07
+* Status: Release Candidate 2
+* Last change: 2026-10-28
 * Contact: info.fachbus@sbb.ch
 
 ## Copyright / License

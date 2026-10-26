@@ -4,7 +4,7 @@ mermaid: true
 
 # Use Case: Formations
 
->NOTE: We currently don't import or export formations. Currently, this is an experimental use case that defines how we might do it. It is still work in progress.
+>NOTE: Work in progress. We currently don't import or export formations. Currently, this is an experimental use case that defines how we might do it. It is still work in progress.
 
 Most important elements:
 - `CompoundTrain`
