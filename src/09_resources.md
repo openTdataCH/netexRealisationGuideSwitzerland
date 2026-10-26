@@ -191,7 +191,7 @@ We have two types of place that we use:
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/TypesOfPlace.md)
 
-*→ [General NeTEx definition](../xcore/netex/elements/TypesOfPlace.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/TypeOfPlace.html)*
 
 
 ###  Example
