@@ -68,6 +68,7 @@ python schematron_builder.py \
     -i templates \
     -o generated/schematrons/ch-profile_export_timetable_file.sch \
     -v
+    --include_rules RULEFILE1 RULEFILE2 (the folder is src/schematron_rules for the time being)
 ```
 or, with uv:
 

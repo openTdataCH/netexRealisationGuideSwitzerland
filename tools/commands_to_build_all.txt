@@ -1,0 +1,51 @@
+
+# build index
+python tools/md_indexer/md_indexer.py -i ./src -o ./src/A5_annex_index.md -t ./src/templates
+
+# validate all files
+python tools/xml_validator/xml_validator.py --xml ./src/templates
+python tools/xml_validator/xml_validator.py --xml ./src/examples
+
+# build md
+python tools/md_builder/md_builder.py --input src/templates --output site/tables
+
+
+# build schema examples
+python tools/xml_snippets/xml_snippets.py --input src/templates --output site/xml-snippets
+
+# build all schematrons
+python tools/schematron_builder/schematron_builder.py  -t src/templates/ch-profile_SINGLE_FILE.xml -i src/templates/ -o site/schematron --include_rules general_rules.sch
+python tools/schematron_builder/schematron_builder.py  -t src/templates/ch-profile_NETWORK_OFFER.xml -i src/templates/ -o site/schematron --include_rules general_rules.sch
+python tools/schematron_builder/schematron_builder.py  -t src/templates/ch-profile_SITE_OFFER.xml -i src/templates/ -o site/schematron --include_rules general_rules.sch
+python tools/schematron_builder/schematron_builder.py  -t src/templates/ch-profile_INTERCHANGE.xml -i src/templates/ -o site/schematron --include_rules general_rules.sch
+
+
+# check_links
+python tools/check_links/check_links.py --docs src
+
+# check examples against the schematrons
+python tools/check_schematron/checK_schematron.py -i src/examples/01_NeTEx_Spiez_Interlaken_Ost.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/02_NeTEx_CH_PAG_11929.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/03_NeTEx_CH_Bus803_Nyon.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/04_NeTEx_CH_DRT_Line_50.110.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/05_NeTEx_CH_DRT_Line_Dependent_On_Passengers_At_Start.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/06_NeTEx_CH_Bern_Spiez_Zweisimmen.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/07_NeTEx_CH_Interlaken_BS_Freiburg_Breisach_Durchbindung.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/08_NeTEX_CH_Bern_Olten_ZuerichHB_Winterthur_StGallen_with_Facilities.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/09_NeTEx_CH_Fribourg_Bern_Zuerich_Perron.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/10_NeTEx_CH_BLS_Bern_Luzern_DestinationChange.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/11_NeTEx_CH_BLS_Bern_Luzern_Change_TrainNumber_and_other_stuff.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/12_NeTEx_CH_Frequency_Based_Line.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/13_NeTEx_CH_Bern_Spiez_Zweisimmen_TimeDemandType_Quay_Change.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/14_NeTEx_CH_Linie_722_Mischbetrieb.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/15_NeTEx_CH_1026478_11957.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/15_NeTEx_CH_1026478_11957.xml  -s site/schematron/ch-profile_SINGLE_FILE.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/16_NeTEx_CH_SITE_OFFER_Connections.xml  -s site/schematron/ch-profile_SITE_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/17_NeTEx_CH_INTERCHANGE.xml  -s site/schematron/ch-profile_INTERCHANGE.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/18_NETWORK_OFFER_export_operators.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/19_NeTEx_CH_NJ470_IC60470_Kurswagen.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+python tools/check_schematron/checK_schematron.py -i src/examples/20_NeTEx_Interlaken_Spiez_Formation.xml  -s site/schematron/ch-profile_NETWORK_OFFER.sch
+
+
+
+
