@@ -99,7 +99,7 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 ## Very special case: two ServiceJourneys during change from summer to winter time
 In this case:
 - the first `ServiceJourney` is the one that is "meant"-
-- if there is a second run in the second time 02:00 to 03:00, then an additional `ServiceJourney` must be created with a new `sjyid` for that given operating day and the `DepartureTime` must be indicated as UTC. E.g. `02:33:00Z`
+- if there is a second run in the second time 02:00 to 03:00, then an additional `ServiceJourney` must be created with a new `sjyid` for that given operating day and the `DepartureTime` must be indicated as UTC. E.g. `02:33:00Z`.
 
 ## JourneyPart
 For `JourneyPart` see [uc05_journey_parts](uc05_journey_parts.md).
