@@ -78,9 +78,14 @@
 								<!-- ch-usage: forbidden -->
 								<!-- ch-note: We might in future model StopPlace as polygons -->
 							</gml:Polygon>
-							<Url>
-								<!-- ch-usage: forbidden -->
-							</Url>
+							<Url><!-- ch-usage: ignored --><!-- ch-note: We only expect the URL in the export from ATLAS and not in the delivery. -->www.les-cj.ch</Url>
+							<PostalAddress id="ch:1:sloid:162:address" version="1">
+								<!-- ch-usage: ignored -->
+								<!-- ch-note: The address may be available in the export of ATLAS. -->
+								<AddressLine1>Chemin de la Halte 2a</AddressLine1>
+								<Town>Tramelan</Town>
+								<PostCode>2720</PostCode>
+							</PostalAddress>
 							<AccessibilityAssessment id="generated" version="1">
 								<!-- ch-usage: expected -->
 								<!-- ch-note: Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments. -->
@@ -91,9 +96,9 @@
 								<!-- ch-usage: optional -->
 								<!-- ch-note: Alternative names for the StopPlace. We will only use these for synonyms. -->
 								<AlternativeName id="ch:1:sloid:7000:it" version="1">
-                                    <!-- ch-usage: expected -->
+									<!-- ch-usage: expected -->
 									<!-- ch-see -->
-                                    <NameType>alias</NameType>
+									<NameType>alias</NameType>
 									<Name lang="it">Berna</Name>
 								</AlternativeName>
 							</alternativeNames>
@@ -112,10 +117,63 @@
 								<!-- ch-usage: optional -->
 								<TimeZone><!-- ch-usage: optional --><!-- ch-note: Must be present, when not in DefaultTimeZone. -->Europe/Zurich</TimeZone>
 							</Locale>
+							<entrances>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: We currently use this for the reference point that each Swiss stop uses. Unfortunately it currently has no Centroid and coordinates -->
+								<StopPlaceEntrance id="ch:1:sloid:162:164789" version="1">
+									<!-- ch-usage: mandatory -->
+									<!-- ch-note:  Currently only the sloid is known. From this point all references to accessibility are made in Switzerland -->
+									<Name><!-- ch-usage: optional -->Point of reference.</Name>
+								</StopPlaceEntrance>
+							</entrances>
+							<placeEquipments>
+								<!-- ch-usage: optional -->
+								<!-- ch-note:  Used in exports for all TSI PRM relevant equipments. Especially in the data transmissions for rail to ERA. We only have Equipments and no EquipmentPlaces. -->
+								<TicketingEquipment id="ch:1:sloid:162:ticketing" version="2">
+									<!-- ch-usage: optional -->
+									<!-- ch-note: Ticketing equipment-->
+									<TicketMachines><!-- ch-usage: mandatory -->true</TicketMachines>
+								</TicketingEquipment>
+								<AccessVehicleEquipment id="ch:1:sloid:162:0:1:access" version="1">
+									<!-- ch-usage: optional -->
+									<!-- ch-note: Method to get on the vehicle -->
+									<Hoist><!-- ch-usage: expected -->false</Hoist>
+									<Ramp><!-- ch-usage: expected -->false</Ramp>
+								</AccessVehicleEquipment>
+								<SanitaryEquipment id="ch:1:sloid:171:51406" version="1">
+									<!-- ch-usage: optional -->
+									<Name><!-- ch-usage: optional -->Toilette</Name>
+									<AccessibilityAssessment id="ch:1:sloid:171:51406:aa" version="1">
+										<!-- ch-usage: optional -->
+										<!-- ch-see -->
+										<MobilityImpairedAccess>false</MobilityImpairedAccess>
+										<limitations>
+											<AccessibilityLimitation>
+												<WheelchairAccess>false</WheelchairAccess>
+											</AccessibilityLimitation>
+										</limitations>
+									</AccessibilityAssessment>
+									<SanitaryFacilityList><!-- ch-usage: mandatory -->toilet</SanitaryFacilityList>
+									<ToiletsType><!-- ch-usage: optional -->seated</ToiletsType>
+								</SanitaryEquipment>
+							</placeEquipments>
 							<localServices>
-								<!-- ch-usage: ignored -->
-								<!-- ch-note: might be added in the future. Especially for accessibility. -->
-								<AssistanceServiceRef ref="generated" versionRef="1"/>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Will be exported from ATLAS for ERA TSI PRM. -->
+								<AssistanceService id="ch:1:sloid:4410:assistance" version="1">
+									<Note>Die Rampe zum Perron 1 erfüllt nicht die gesetzlichen Anforderungen. Eine Hilfestellung ist auf Verlangen möglich. Bitte melden Sie sich bis spätestens 1 Stunde vor Abfahrt an beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.
+									</Note>
+								</AssistanceService>
+								<AssistanceService id="ch:1:sloid:4402:assistance" version="1">
+									<!-- ch-usage: mandatory -->
+									<Note><!-- ch-usage: expected -->Bei diesem Bahnhof benötigen Sie Ein- und Ausstiegshilfen. Bitte melden Sie sich bis spätestens 1 Stunde vor Zugabfahrt unter swisspass.ch/handicap oder beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.
+									</Note>
+									<AssistanceFacilityList><!-- ch-usage: expected -->boardingAssistance</AssistanceFacilityList>
+									<AssistanceAvailability><!-- ch-usage: optional -->availableIfBooked</AssistanceAvailability>
+								</AssistanceService>
+								<AssistanceService id="ch:1:sloid:4414:assistance" version="1">
+									<Note>Der Lift erfüllt nur die gesetzlichen Mindestanforderungen.</Note>
+								</AssistanceService>
 							</localServices>
 							<StopPlaceType><!-- ch-usage: optional --><!-- Relevant values defined in mapping excel. -->railStation</StopPlaceType>
 							<LimitedUse><!-- ch-usage: optional --><!-- ch-note: For stops like Sagliains. We currently use only interchangeOnly. --><!-- ch-allowed-enums: interchangeOnly -->interchangeOnly</LimitedUse>
@@ -128,6 +186,39 @@
 									<!-- ch-see -->
 								</Quay>
 							</quays>
+							<navigationPaths>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Will be provided at least for rail in a first export for ERA TSI PRM -->
+								<NavigationPath id="generated" version="1">
+									<!-- ch-usage: expected -->
+									<From>
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: One of the points is the reference point. -->
+										<PlaceRef ref="ch:1:sloid:162:164789" version="1">
+											<!-- ch-usage: mandatory -->
+										</PlaceRef>
+										<!-- immer vom Referenzpunkt. Wären mehr NavigationPaths. Pfade hat nur DB teilweise. -->
+									</From>
+									<To>
+										<!-- ch-usage: mandatory -->
+										<PlaceRef ref="ch:1:sloid:7000:5:9" version="1"/>
+										<!-- ch-usage: mandatory -->
+									</To>
+									<AccessibilityAssessment id="ch:1:sloid:162:pathLink:1:aa" version="1">
+										<!-- ch-usage: mandatory -->
+										<!-- ch-note: If the NavigationPath is provided, then an AccessibilityAssessment must be provided too -->
+										<!-- ch-see -->
+										<MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+										<limitations>
+											<AccessibilityLimitation>
+												<WheelchairAccess>unknown</WheelchairAccess>
+												<StepFreeAccess>true</StepFreeAccess>
+												<TactileGuidanceAvailable>true</TactileGuidanceAvailable>
+											</AccessibilityLimitation>
+										</limitations>
+									</AccessibilityAssessment>
+								</NavigationPath>
+							</navigationPaths>
 						</StopPlace>
 					</stopPlaces>
 				</SiteFrame>

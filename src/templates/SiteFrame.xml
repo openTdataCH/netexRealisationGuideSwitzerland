@@ -45,6 +45,39 @@
 						<FlexibleStopPlace id="flexibleStopPlace1" version="1">
 						</FlexibleStopPlace>
 					</flexibleStopPlaces>
+					<taxiRanks>
+						<!-- ch-usage: ignored -->
+						<!-- ch-note: We might add TaxiRanks at some point -->
+						<TaxiRank id="ch:1:willbedefined" version="1">
+							<PersonCapacity>2</PersonCapacity>
+						</TaxiRank>
+					</taxiRanks>
+					<parkings>
+						<!-- ch-usage: optional -->
+						<!-- ch-note: Will be used at least in the export from ATLAS to ERSAD -->
+						<Parking id="ch:1:sloid:169:943587" version="1">
+							<!-- ch-usage: optional -->
+							<!-- ch-note: Currently only very minimal as we don't have more information (e.g. no coordinates). -->
+							<Name><!-- ch-usage: optional -->Places de stationnement</Name>
+							<ParentSiteRef ref="ch:1:sloid:169" version="1">
+								<!-- ch-usage: mandatory -->
+							</ParentSiteRef>
+							<parkingAreas>
+								<!-- ch-usage: optional -->
+								<ParkingArea id="ch:1:sloid:169:943587:parkingArea" version="1">
+									<!-- ch-usage: optional -->
+									<!-- ch-note: Used to tell there is parking for handicapped people -->
+									<parkingProperties>
+										<!-- ch-usage: optional -->
+										<ParkingProperties id="ch:1:sloid:169:943587:parkingArea:parkingProperties" version="1">
+											<!-- ch-usage: optional -->
+											<ParkingUserTypes><!-- ch-usage: optional -->registeredDisabled</ParkingUserTypes>
+										</ParkingProperties>
+									</parkingProperties>
+								</ParkingArea>
+							</parkingAreas>
+						</Parking>
+					</parkings>
 					<navigationPaths>
 						<!-- ch-usage: forbidden -->
 						<SiteNavigationPath id="notUsed" version="1"/>
