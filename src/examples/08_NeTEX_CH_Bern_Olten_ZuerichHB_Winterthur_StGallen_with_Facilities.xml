@@ -270,27 +270,27 @@ with attributes
 						</ScheduledStopPoint>
 					</scheduledStopPoints>
 					<stopAssignments>
-						<PassengerStopAssignment id="ch:SBB:PSA:Bahnhof_Bern" version="1" order="1">
+						<PassengerStopAssignment id="ch:SBB:PSA:Bahnhof_Bern" version="1">
 							<ScheduledStopPointRef ref="ch:1:sloid:7000:4:7" version="1"/>
 							<StopPlaceRef ref="ch:1:sloid:7000" version="1"/>
 							<QuayRef ref="ch:1:sloid:7000:4:7" version="1"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="ch:SBB:PSA:Bahnhof_Olten" version="1" order="2">
+						<PassengerStopAssignment id="ch:SBB:PSA:Bahnhof_Olten" version="1">
 							<ScheduledStopPointRef ref="ch:1:sloid:218:7" version="1"/>
 							<StopPlaceRef ref="ch:1:sloid:218" version="1"/>
 							<QuayRef ref="ch:1:sloid:218:7" version="1"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="ch:SBB:PSA:Zuerich_HB" version="1" order="3">
+						<PassengerStopAssignment id="ch:SBB:PSA:Zuerich_HB" version="1">
 							<ScheduledStopPointRef ref="ch:1:sloid:3000:501:33" version="1"/>
 							<StopPlaceRef ref="ch:1:sloid:3000" version="1"/>
 							<QuayRef ref="ch:1:sloid:3000:501:33" version="1"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="ch:SBB:PSA:Winterthur" version="1" order="4">
+						<PassengerStopAssignment id="ch:SBB:PSA:Winterthur" version="1">
 							<ScheduledStopPointRef ref="ch:1:sloid:6000:5" version="1"/>
 							<StopPlaceRef ref="ch:1:sloid:6000" version="1"/>
 							<QuayRef ref="ch:1:sloid:6000:5" version="1"/>
 						</PassengerStopAssignment>
-						<PassengerStopAssignment id="ch:SBB:PSA:St_Gallen" version="1" order="5">
+						<PassengerStopAssignment id="ch:SBB:PSA:St_Gallen" version="1">
 							<ScheduledStopPointRef ref="ch:1:sloid:6302:1" version="1"/>
 							<StopPlaceRef ref="ch:1:sloid:6302" version="1"/>
 							<QuayRef ref="ch:1:sloid:6302:1" version="1"/>
@@ -323,27 +323,27 @@ with attributes
 							</RouteView>
 							<DirectionType>outbound</DirectionType>
 							<pointsInSequence>
-								<StopPointInJourneyPattern id="ch:SBB:JP:703-00:1" version="1" order="1">
+								<StopPointInJourneyPattern id="ch:SBB:JP:703-00:1" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:7000:4:7" version="1"/>
 									<ForAlighting>false</ForAlighting>
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="ch:SBB:JP:703-00:2" version="1" order="2">
+								<StopPointInJourneyPattern id="ch:SBB:JP:703-00:2" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:218:7" version="1"/>
 									<ForAlighting>true</ForAlighting>
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="ch:SBB:JP:703-00:3" version="1" order="3">
+								<StopPointInJourneyPattern id="ch:SBB:JP:703-00:3" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:3000:501:33" version="1"/>
 									<ForAlighting>true</ForAlighting>
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="ch:SBB:JP:703-00:4" version="1" order="4">
+								<StopPointInJourneyPattern id="ch:SBB:JP:703-00:4" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:6000:5" version="1"/>
 									<ForAlighting>true</ForAlighting>
 									<ForBoarding>true</ForBoarding>
 								</StopPointInJourneyPattern>
-								<StopPointInJourneyPattern id="ch:SBB:JP:703-00:5" version="1" order="5">
+								<StopPointInJourneyPattern id="ch:SBB:JP:703-00:5" version="1">
 									<ScheduledStopPointRef ref="ch:1:sloid:6302:1" version="1"/>
 									<ForAlighting>true</ForAlighting>
 									<ForBoarding>false</ForBoarding>
@@ -506,21 +506,21 @@ with attributes
 						</Notice>
 					</notices>
 					<noticeAssignments>
-						<NoticeAssignment id="na-1" version="1" order="1">
+						<NoticeAssignment id="na-1" version="1">
 							<NoticeRef ref="ch:1:Notice:A___1" version="1"/>
 						</NoticeAssignment>
-						<NoticeAssignment id="na-2" version="1" order="1">
+						<NoticeAssignment id="na-2" version="1">
 							<NoticeRef ref="ch:1:Notice:A__WV" version="1"/>
 						</NoticeAssignment>
 						<!-- Offen Bern–Olten: von Punkt 1 bis Punkt 2 -->
-						<NoticeAssignment id="na-3" version="1" order="1">
+						<NoticeAssignment id="na-3" version="1">
 							<NoticeRef ref="ch:1:Notice:A__WS" version="1"/>
 							<JourneyPatternRef ref="ch:SBB:JourneyPattern:703-00" version="1"/>
 							<StartPointInPatternRef ref="ch:SBB:JP:703-00:1" version="1"/>
 							<EndPointInPatternRef ref="ch:SBB:JP:703-00:2" version="1"/>
 						</NoticeAssignment>
 						<!-- Offen Zürich–St. Gallen: von Punkt 3 bis Punkt 5 -->
-						<NoticeAssignment id="na-4" version="1" order="3">
+						<NoticeAssignment id="na-4" version="1">
 							<NoticeRef ref="ch:1:Notice:A__WS" version="1"/>
 							<JourneyPatternRef ref="ch:SBB:JourneyPattern:703-00" version="1"/>
 							<StartPointInPatternRef ref="ch:SBB:JP:703-00:3" version="1"/>
