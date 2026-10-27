@@ -25,7 +25,7 @@ In some cases the id of a StopPlace is not a SLOID.
 | ++ | Longitude | mandatory | 1..1 | LongitudeType | Longitude from Greenwich Meridian. -180 (West) to +180 (East). Decimal degrees. eg 2.356 |  |
 | ++ | Latitude | mandatory | 1..1 | LatitudeType | Latitude from equator. -90 (South) to +90 (North). Decimal degrees. eg 56.356 |  |
 | ++ | Altitude | optional | 0..1 | AltitudeType | Altitude (metres) Above sea level. |  |
-|  | [AccessibilityAssessment](AccessibilityAssessment.md) | mandatory | 0..1 | AccessibilityAssessment_VersionedChildStructure | Accessibility values associated with LEVEL. | Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments. |
+|  | [AccessibilityAssessment](AccessibilityAssessment.md) | expected | 0..1 | AccessibilityAssessment_VersionedChildStructure | Accessibility values associated with LEVEL. | Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments. |
 |  | alternativeNames | optional | 0..1 | alternativeNames_RelStructure | Alternative names for the GROUP of STOP PLACEs. | Alternative names for the StopPlace. We will only use these for synonyms. |
 | + | [AlternativeName](AlternativeName.md) | optional | 1..* | AlternativeName_VersionedChildStructure | ALTERNATIVE NAME for Element. |  |
 |  | TopographicPlaceRef | optional | 1..* | TopographicPlaceRefStructure |  | Id to the county, community, canton or country. |

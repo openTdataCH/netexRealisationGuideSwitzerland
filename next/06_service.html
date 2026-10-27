@@ -223,7 +223,6 @@
   <li><a href="#destinationdisplay">DestinationDisplay</a></li>
   <li><a href="#scheduledstoppoint">ScheduledStopPoint</a></li>
   <li><a href="#passengerstopassignment">PassengerStopAssignment</a></li>
-  <li><strong>LATER</strong> PassengerBoardingPositionAssignment</li>
   <li><a href="#defaultconnection">DefaultConnection</a></li>
   <li><a href="#siteconnection">SiteConnection</a></li>
   <li><a href="#timinglink">TimingLink</a></li>
@@ -1295,6 +1294,7 @@ class ServiceJourney {
 <ul>
   <li>A <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> in a <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> is linked to a <code class="language-plaintext highlighter-rouge">StopPlace</code> for arrival and departure.</li>
   <li>A <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> in a <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> is linked to a <code class="language-plaintext highlighter-rouge">Quay</code> for arrival and departure. In that case, both <code class="language-plaintext highlighter-rouge">Quay</code> and <code class="language-plaintext highlighter-rouge">StopPlace</code> have to be referenced.</li>
+  <li>The assigning of <code class="language-plaintext highlighter-rouge">TrainComponent</code>s to sectors is done also with <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>.</li>
 </ul>
 
 <h3 id="table-5">Table</h3>
@@ -1443,6 +1443,8 @@ class ServiceJourney {
   <li>In Switzerland the goal is to always have a <code class="language-plaintext highlighter-rouge">QuayRef</code>. Having to map only to the <code class="language-plaintext highlighter-rouge">StopPlace</code> is to be avoided. If there is data from abroad, it might be that we don’t have the quays yet.</li>
   <li>If a router has a detailed model with <code class="language-plaintext highlighter-rouge">Quay</code> and we have only <code class="language-plaintext highlighter-rouge">StopPlace</code>, then it probably is best to generate an artificial quay and then do the transfers correctly.</li>
   <li><code class="language-plaintext highlighter-rouge">@id</code>s don’t need to be stable.</li>
+  <li>When <code class="language-plaintext highlighter-rouge">passengerBoardingPositionAssignments</code> is used form formations, then <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> is not set, but it is set in the individual <code class="language-plaintext highlighter-rouge">PassengerBoardingPositionAssignment</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">PassengerBoardingPositionAssignment</code> is an unfortunate name for the mapping of <code class="language-plaintext highlighter-rouge">Quay</code> (sectors) to <code class="language-plaintext highlighter-rouge">TrainComponent</code>, but that’s what the standardsiation organisation decided.</li>
 </ul>
 
 <h2 id="defaultconnection">DefaultConnection</h2>

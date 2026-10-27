@@ -135,7 +135,7 @@ A `TimetableFrame` contains the operational journey definitions — the actual t
 
 ### Purpose
 A `ServiceJourney` represents a planned trip in the timetable operating on a recurring schedule. It defines the stop sequence via reference to a `JourneyPattern`, includes scheduled timing via `TimeDemandTypeRef`, and specifies operational details such as operator. Its operating days are controlled via
-`AvailabilityConditionRef` (`ValidDayBits`), not via `DayType` — see [AvailabilityCondition](08_service_calendars.md#availabilitycondition). `DatedServiceJourney` is **not used** in the Swiss profile.
+`AvailabilityConditionRef` (`ValidDayBits`), not via `DayType` — see [AvailabilityCondition](07_service_calendars.md#availabilitycondition). `DatedServiceJourney` is **not used** in the Swiss profile.
 
 ### Table
 

@@ -126,7 +126,7 @@ first point (Zürich HB); IC 60470 covers it starting only from the second point
 >   `privateCodes` for all SID4PT identifiers (SJYID/SLOID/SBOID/SLNID).
 
 The detailed handling is described for the element
-[ServiceJourneyInterchange](09_timetable.md#servicejourneyinterchange).
+[ServiceJourneyInterchange](08_timetable.md#servicejourneyinterchange).
 
 - [Full example: NJ 470 / IC 60470 Kurswagen](./examples/19_NeTEx_CH_NJ470_IC60470_Kurswagen.xml)
 

@@ -436,7 +436,7 @@ We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint a
 
 
 
-*→ [General NeTEx definition](../xcore/netex/elements/TypesOfPlace.html)*
+*→ [General NeTEx definition](../xcore/netex/elements/TypeOfPlace.html)*
 
 
 ###  Example
