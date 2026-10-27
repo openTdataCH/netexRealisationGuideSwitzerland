@@ -39,7 +39,7 @@ Supplementary textual description attached to any NeTEx object.
 >
 > **Transmodel:** Alternative text for any textual attribute of an ENTITY.
 
-→ [Full documentation](03_xml_modelling#alternativetext)
+→ [Full documentation](03_xml_modelling.md#alternativetext)
 
 ---
 

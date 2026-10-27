@@ -11,7 +11,6 @@ In this chapter:
 - [DestinationDisplay](#destinationdisplay)
 - [ScheduledStopPoint](#scheduledstoppoint)
 - [PassengerStopAssignment](#passengerstopassignment)
-- **LATER** PassengerBoardingPositionAssignment
 - [DefaultConnection](#defaultconnection)
 - [SiteConnection](#siteconnection)
 - [TimingLink](#timinglink)
@@ -242,6 +241,7 @@ A `ScheduledStopPoint` can represent two types of stop points:
 `PassengerStopAssignment`s bring the Site model and the Service model in alignment. We have two general cases:
 -	A `ScheduledStopPoint` in a `ServiceJourneyPattern` is linked to a `StopPlace` for arrival and departure.
 -	A `ScheduledStopPoint` in a `ServiceJourneyPattern` is linked to a `Quay` for arrival and departure. In that case, both `Quay` and `StopPlace` have to be referenced. 
+- The assigning of `TrainComponent`s to sectors is done also with `PassengerStopAssignment`.
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/PassengerStopAssignment.md)
@@ -259,6 +259,8 @@ A `ScheduledStopPoint` can represent two types of stop points:
 - In Switzerland the goal is to always have a `QuayRef`. Having to map only to the `StopPlace` is to be avoided. If there is data from abroad, it might be that we don't have the quays yet.
 - If a router has a detailed model with `Quay` and we have only `StopPlace`, then it probably is best to generate an artificial quay and then do the transfers correctly.
 - `@id`s don't need to be stable.
+- When `passengerBoardingPositionAssignments` is used form formations, then `ScheduledStopPoint` is not set, but it is set in the individual `PassengerBoardingPositionAssignment`.
+- `PassengerBoardingPositionAssignment` is an unfortunate name for the mapping of `Quay` (sectors) to `TrainComponent`, but that's what the standardsiation organisation decided.
 
 
 

@@ -1,18 +1,62 @@
 import argparse
 import os
 import re
+
 import markdown
+from lxml import html as lxml_html
 from pygments.formatters import HtmlFormatter
 
 from tools.configuration import SITE_DIR
 
-MD_LINK_PATTERN = re.compile(r'(\[.*\])(\(.*\.)(md)(.*\))')
-MD_LINK_REPLACEMENT = r'\1\2html\4'
+MD_LINK_PATTERN = re.compile(r"(\[.*\])(\(.*\.)(md)(.*\))")
+MD_LINK_REPLACEMENT = r"\1\2html\4"
+
+# Tags and attributes stripped from generated HTML to prevent XSS
+_DANGEROUS_TAGS = frozenset({
+    "script", "iframe", "object", "embed", "applet", "form",
+    "input", "button", "textarea", "select", "option",
+    "link", "meta", "base", "style",
+})
+
+
+def sanitize_html(html_str: str) -> str:
+    """Remove dangerous tags and attributes from an HTML fragment."""
+    try:
+        doc = lxml_html.fragment_fromstring(html_str, create_parent="div")
+    except Exception:
+        # If parsing fails, escape everything
+        import html as html_module
+        return html_module.escape(html_str)
+
+    # Remove dangerous elements entirely
+    for tag in _DANGEROUS_TAGS:
+        for elem in doc.iter(tag):
+            elem.drop_tree()
+
+    # Remove dangerous attributes (on* event handlers, javascript: URLs)
+    for elem in doc.iter():
+        for attr_name in list(elem.attrib):
+            attr_lower = attr_name.lower()
+            # Strip event handler attributes (onclick, onload, etc.)
+            if attr_lower.startswith("on"):
+                del elem.attrib[attr_name]
+                continue
+            # Strip javascript: and data: URLs in href/src
+            if attr_lower in ("href", "src", "xlink:href", "action", "formaction"):
+                val = elem.attrib[attr_name].strip().lower()
+                if val.startswith(("javascript:", "data:", "vbscript:")):
+                    del elem.attrib[attr_name]
+
+    return lxml_html.tostring(doc, encoding="unicode")
+
 
 def generate_html(md: str) -> str:
 
     md_with_html_links = MD_LINK_PATTERN.sub(MD_LINK_REPLACEMENT, md)
     body = generate_html_body(md_with_html_links)
+
+    # Sanitize the generated HTML to prevent XSS
+    body = sanitize_html(body)
 
     # Generate CSS for code highlighting
     code_css = HtmlFormatter().get_style_defs(".codehilite")
@@ -35,6 +79,7 @@ def generate_html(md: str) -> str:
      </body>
      </html>"""
 
+
 def generate_html_body(md: str) -> str:
     """Convert Markdown to HTML fragment."""
     body = markdown.markdown(
@@ -42,32 +87,39 @@ def generate_html_body(md: str) -> str:
         extensions=[
             "extra",  # tables, footnotes, etc.
             "fenced_code",  # triple-backtick code blocks
-            "codehilite"  # Pygments-based syntax highlighting
+            "codehilite",  # Pygments-based syntax highlighting
         ],
-        extension_configs={
-            "codehilite": {"guess_lang": True, "noclasses": False}
-        },
+        extension_configs={"codehilite": {"guess_lang": True, "noclasses": False}},
     )
     return body
+
 
 def generate_html_files(src_dir: str):
     """Generate HTML files from all markdown files in src_dir."""
     for filename in os.listdir(src_dir):
-        if filename.endswith('.md'):
+        if filename.endswith(".md"):
             md_path = os.path.join(src_dir, filename)
-            with open(md_path, 'r', encoding='utf-8') as f:
+            with open(md_path, "r", encoding="utf-8") as f:
                 md = f.read()
             html = generate_html(md)
-            html_path = md_path.replace('.md', '.html')
-            with open(html_path, 'w', encoding='utf-8') as f:
+            html_path = md_path.replace(".md", ".html")
+            with open(html_path, "w", encoding="utf-8") as f:
                 f.write(html)
     print(f"Generated HTML files in {src_dir}")
 
+
 def main():
-    parser = argparse.ArgumentParser(description='Generate HTML files from Markdown files.')
-    parser.add_argument('--dir', default=SITE_DIR, help=f"Folder to search for md files (default = {SITE_DIR})")
+    parser = argparse.ArgumentParser(
+        description="Generate HTML files from Markdown files."
+    )
+    parser.add_argument(
+        "--dir",
+        default=SITE_DIR,
+        help=f"Folder to search for md files (default = {SITE_DIR})",
+    )
     args = parser.parse_args()
     generate_html_files(args.dir)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

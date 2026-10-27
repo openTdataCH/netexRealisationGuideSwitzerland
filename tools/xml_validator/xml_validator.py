@@ -7,26 +7,31 @@ Validates XML files or folders against an XSD schema using lxml.
 import argparse
 import os
 import sys
-from lxml import etree
+
 from tools.configuration import XSD_FILE_PATH
+from tools.safe_xml import safe_parse
+
 
 def load_schema(xsd_path):
     try:
-        # Parse the XSD schema
-        with open(xsd_path, 'rb') as xsd_file:
-            schema_doc = etree.parse(xsd_file)
+        # Parse the XSD schema with XXE protections
+        with open(xsd_path, "rb") as xsd_file:
+            schema_doc = safe_parse(xsd_file)
+            from lxml import etree
             schema = etree.XMLSchema(schema_doc)
             return schema
     except Exception as e:
         print(f"✗ Error loading schema {xsd_path}: {e}")
         return False
+
+
 def validate_xml(xml_path, schema):
     """Validate an XML file against an XSD schema."""
     try:
 
-        # Parse the XML file
-        with open(xml_path, 'rb') as xml_file:
-            xml_doc = etree.parse(xml_file)
+        # Parse the XML file with XXE protections
+        with open(xml_path, "rb") as xml_file:
+            xml_doc = safe_parse(xml_file)
 
         # Validate
         if schema.validate(xml_doc):
@@ -45,12 +50,12 @@ def validate_xml(xml_path, schema):
 def validate_folder(folder_path, xsd_path):
     """Recursively validate all XML files in a folder."""
     validated_count = 0
-    schema=load_schema(xsd_path)
+    schema = load_schema(xsd_path)
     if not schema:
-        exit(1)
+        sys.exit(1)
     for root, _, files in os.walk(folder_path):
         for file in files:
-            if file.lower().endswith('.xml'):
+            if file.lower().endswith(".xml"):
                 if "archive" in root:
                     # we dont parse archive folders
                     break
@@ -67,12 +72,12 @@ def main():
     parser.add_argument(
         "--xml",
         required=True,
-        help="Path to the XML file or folder containing XML files."
+        help="Path to the XML file or folder containing XML files.",
     )
     parser.add_argument(
         "--xsd",
-        default = XSD_FILE_PATH,
-        help=f"Path to the XSD schema file (Default: {XSD_FILE_PATH})."
+        default=XSD_FILE_PATH,
+        help=f"Path to the XSD schema file (Default: {XSD_FILE_PATH}).",
     )
 
     args = parser.parse_args()
@@ -80,7 +85,7 @@ def main():
     if not os.path.exists(args.xml):
         print(f"Error: XML path '{args.xml}' does not exist.")
         sys.exit(1)
-    
+
     if not os.path.exists(args.xsd):
         print(f"Error: XSD path '{args.xsd}' does not exist.")
         sys.exit(1)
@@ -88,9 +93,9 @@ def main():
     if os.path.isdir(args.xml):
         validate_folder(args.xml, args.xsd)
     else:
-        schema = load_schema(XSD_FILE_PATH)
+        schema = load_schema(args.xsd)
         if not schema:
-            exit
+            sys.exit(1)
         validate_xml(args.xml, schema)
 
 

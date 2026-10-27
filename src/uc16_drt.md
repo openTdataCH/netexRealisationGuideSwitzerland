@@ -4,6 +4,9 @@ mermaid: true
 
 # Use Case: Demand Responsive Traffic (DRT)
 
+
+>NOTE: Work in progress. We still have to update some things here. Currently, this is not yet finalised.
+
 In this chapter:
 - [Overview](#overview)
 - [Modelling Principles](#modelling-principles)
