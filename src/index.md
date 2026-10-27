@@ -66,8 +66,8 @@ We have a [set of examples](https://github.com/openTdataCH/netexRealisationGuide
 
 ## Imprint
 * Authors: Matthias Günter,  Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Thomas Schäfer, Simon Freihart, Emeric Tapia-Almosnino, 
-* Status: Release Candidate 1
-* Last change: 2026-09-07
+* Status: Release Candidate 2
+* Last change: 2026-10-27
 * Contact: info.fachbus@sbb.ch
 
 ## Copyright / License
