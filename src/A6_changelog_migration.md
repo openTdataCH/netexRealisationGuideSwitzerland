@@ -117,8 +117,5 @@ This changelog compares version 1.00.1of the realisation guide based on NeTEx XS
 | sFTP transfer, sender identification, weekly production statement, web-services note | Dropped (transfer defined by INFO+)                                                                              |
 | `StopUse`/`RequestStop`/`VisitNumber`/`DynamicStopAssignment` (per-call)             | No direct v2 equivalent found in the guide text (patterns carry repeated visits; StopUse semantics under review) |
 
-## 5. Notes and open points
-- Internal v2 inconsistencies noticed while comparing (not v1 changes): the SKI delivery section says "SITE_OFFER.xml" while the file type is `STOP_OFFER`; file-name tables say version `2.1` but examples use `2.0`; two TODOs remain in `05_stops.md` (RampFreeAccess constraint, VisualSignsAvailable language independence).
-- v1 items whose v2 home could not be confirmed: v1 §10.5 `StopUse` values, `RequestStop`, `DynamicStopAssignment`, and the v1 rule linking ScheduledStopPoint ids to StopPlace ids; they may be pending in the work-in-progress use cases (uc09, uc15, uc16).
-- Dropped: rule to copy TypeOfValues from SKI files; "The operators must be set" MUST-rule.
+
 
