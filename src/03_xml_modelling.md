@@ -173,6 +173,10 @@ TimingLink TL
 
 ## Rules to Observe
 
+### Changes and unclear points for NeTEX files that will be imported into INFO+
+
+> **NOTE: If there are unclear parts or additional elements that shall be transmitted by a transport operator to INFO+, then this needs to be discussed before implementation with Fachbus INFO+. **
+
 ###  Attributes
 
 The following rules apply to common attributes:

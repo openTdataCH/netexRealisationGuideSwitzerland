@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- NeTEx Example: Flügelzug Bern - Spiez - Zweisimmen / Brig (RG 2.0) -->
+<PublicationDelivery xmlns:gml="http://www.opengis.net/gml/3.2" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:siri="http://www.siri.org.uk/siri" xmlns="http://www.netex.org.uk/netex" version="2.1">
+	<PublicationTimestamp>2025-06-26T14:16:54+02:00</PublicationTimestamp>
+	<ParticipantRef>ch:1:atlas</ParticipantRef>
+	<Description>ERSAD Accessibility Export - Vollexport / Snapshot</Description>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame:1" version="1">
+			<ValidBetween>
+				<!-- Fahrplanjahr 25/26 -->
+				<FromDate>2025-12-15T00:00:00</FromDate>
+				<ToDate>2026-12-12T23:59:59</ToDate>
+			</ValidBetween>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame:1" version="1">
+					<validityConditions>
+						<ValidityCondition id="ch:1:ValidityCondition:1" version="1">
+							<Name>Fahrplanjahr 2025/26</Name>
+						</ValidityCondition>
+					</validityConditions>
+					<responsibilitySets>
+						<ResponsibilitySet id="ch:1:ResponsibilitySet:BLS-bls-33" version="1">
+							<Name>BLS</Name>
+							<PrivateCode>BLS AG</PrivateCode>
+							<roles>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:1" version="1">
+									<StakeholderRoleType>EntityLegalOwnership</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100015" version="1"/>
+								</ResponsibilityRoleAssignment>
+								<ResponsibilityRoleAssignment id="ch:1:ResponsibilityRoleAssignment:BLS-Bls-33:2" version="1">
+									<StakeholderRoleType>Operation</StakeholderRoleType>
+									<ResponsibleOrganisationRef ref="ch:1:sboid:100015" version="1"/>
+								</ResponsibilityRoleAssignment>
+							</roles>
+						</ResponsibilitySet>
+					</responsibilitySets>
+					<typesOfValue>
+						<ValueSet id="ch:1:ValueSet:TypeOfProductCategory" version="1" nameOfClass="TypeOfProductCategory">
+							<Name>ProductCategories</Name>
+							<values>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:RE" version="1">
+									<Name lang="de">Regio Express</Name>
+									<ShortName lang="de">RE</ShortName>
+								</TypeOfProductCategory>
+								<TypeOfProductCategory id="ch:1:TypeOfProductCategory:R" version="1">
+									<Name lang="de">Regionalzug</Name>
+									<ShortName lang="de">R</ShortName>
+								</TypeOfProductCategory>
+							</values>
+						</ValueSet>
+						<ValueSet id="ch:1:ValueSet:PurposeOfJourneyPartition" version="1" nameOfClass="PurposeOfJourneyPartition">
+							<Name>Usage of JourneyPart</Name>
+							<values>
+								<PurposeOfJourneyPartition id="ch:1:PurposeOfJourneyPartition:FacilityChange" version="1">
+									<Name>Facility change</Name>
+								</PurposeOfJourneyPartition>
+							</values>
+						</ValueSet>
+						<ValueSet id="ch:1:ValueSet:TypeOfNotice" version="1" nameOfClass="TypeOfNotice">
+							<Name>Type Of Notice</Name>
+							<values>
+								<TypeOfNotice id="ch:1:TypeOfNotice:1" version="1">
+									<Name>Allgemeiner Hinweis</Name>
+									<PrivateCode>1</PrivateCode>
+								</TypeOfNotice>
+								<TypeOfNotice id="ch:1:TypeOfNotice:10" version="1">
+									<Name>Angebot</Name>
+									<PrivateCode>10</PrivateCode>
+								</TypeOfNotice>
+							</values>
+						</ValueSet>
+					</typesOfValue>
+					<organisations>
+						<Operator id="ch:1:sboid:100015" version="1">
+							<privateCodes>
+								<PrivateCode type="go">33</PrivateCode>
+								<PrivateCode type="sobid">ch:1:sboid:100015</PrivateCode>
+							</privateCodes>
+							<Name lang="de">BLS AG</Name>
+							<ShortName lang="de">BLS</ShortName>
+						</Operator>
+					</organisations>
+				</ResourceFrame>
+				<SiteFrame id="ch:1:SiteFrame:ERSAD:20261012" version="1">
+					<stopPlaces>
+						<StopPlace id="ch:1:sloid:162" version="2">
+							<privateCodes>
+								<PrivateCode type="didok">8500162</PrivateCode>
+							</privateCodes>
+							<Name>Tramelan-Dessous</Name>
+							<Centroid>
+								<Location>
+									<Longitude>7.11274363867</Longitude>
+									<Latitude>47.22248378123</Latitude>
+								</Location>
+							</Centroid>
+							<Url>www.les-cj.ch</Url>
+							<PostalAddress id="ch:1:sloid:162:address" version="2">
+								<AddressLine1>Chemin de la Halte 2a</AddressLine1>
+								<Town>Tramelan</Town>
+								<PostCode>2720</PostCode>
+							</PostalAddress>
+							<AccessibilityAssessment id="ch:1:sloid:162:aa" version="2">
+								<MobilityImpairedAccess>true</MobilityImpairedAccess>
+								<limitations>
+									<AccessibilityLimitation>
+										<WheelchairAccess>true</WheelchairAccess>
+										<AudibleSignalsAvailable>true</AudibleSignalsAvailable>
+									</AccessibilityLimitation>
+								</limitations>
+							</AccessibilityAssessment>
+							<entrances>
+								<StopPlaceEntrance id="ch:1:sloid:162:164789" version="1">
+									<Name>Point de référence</Name>
+								</StopPlaceEntrance>
+							</entrances>
+							<placeEquipments>
+								<TicketingEquipment id="ch:1:sloid:162:ticketing" version="2">
+									<TicketMachines>true</TicketMachines>
+								</TicketingEquipment>
+							</placeEquipments>
+							<localServices>
+								<AssistanceService id="ch:1:sloid:162:assistance" version="2">
+									<Note>https://www.les-cj.ch/Gares-et-services/Informations-pratiques/Voyager-avec-un-handicap</Note>
+								</AssistanceService>
+							</localServices>
+							<TransportMode>rail</TransportMode>
+							<StopPlaceType>railStation</StopPlaceType>
+							<quays>
+								<Quay id="ch:1:sloid:162:0:1" version="1">
+									<Centroid>
+										<Location>
+											<Longitude>7.11274363867</Longitude>
+											<Latitude>47.22248378123</Latitude>
+										</Location>
+									</Centroid>
+									<AccessibilityAssessment id="ch:1:sloid:162:0:1:aa" version="1">
+										<MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+										<limitations>
+											<AccessibilityLimitation>
+												<WheelchairAccess>unknown</WheelchairAccess>
+												<LevelAccessIntoVehicle>true</LevelAccessIntoVehicle>
+											</AccessibilityLimitation>
+										</limitations>
+									</AccessibilityAssessment>
+									<placeEquipments>
+										<AccessVehicleEquipment id="ch:1:sloid:162:0:1:access" version="1">
+											<Hoist>false</Hoist>
+											<Ramp>false</Ramp>
+										</AccessVehicleEquipment>
+									</placeEquipments>
+									<PublicCode>1</PublicCode>
+								</Quay>
+							</quays>
+							<pathLinks>
+								<SitePathLink id="ch:1:sloid:162:pathLink:1" version="1">
+									<From>
+										<PlaceRef ref="ch:1:sloid:162:164789" version="1"/>
+									</From>
+									<To>
+										<PlaceRef ref="ch:1:sloid:162:0:1" version="1"/>
+									</To>
+									<AccessibilityAssessment id="ch:1:sloid:162:pathLink:1:aa" version="1">
+										<MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+										<limitations>
+											<AccessibilityLimitation>
+												<WheelchairAccess>unknown</WheelchairAccess>
+												<StepFreeAccess>true</StepFreeAccess>
+												<TactileGuidanceAvailable>true</TactileGuidanceAvailable>
+											</AccessibilityLimitation>
+										</limitations>
+									</AccessibilityAssessment>
+								</SitePathLink>
+								<SitePathLink id="ch:1:sloid:162:pathLink:2" version="1">
+									<From>
+										<PlaceRef ref="ch:1:sloid:162:164789" version="1"/>
+									</From>
+									<To>
+										<PlaceRef ref="ch:1:sloid:162:745558" version="1"/>
+									</To>
+									<AccessibilityAssessment id="ch:1:sloid:162:pathLink:2:aa" version="1">
+										<MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+										<limitations>
+											<AccessibilityLimitation>
+												<WheelchairAccess>unknown</WheelchairAccess>
+												<StepFreeAccess>true</StepFreeAccess>
+												<TactileGuidanceAvailable>false</TactileGuidanceAvailable>
+											</AccessibilityLimitation>
+										</limitations>
+									</AccessibilityAssessment>
+									<TactileWarningStripContrast>false</TactileWarningStripContrast>
+								</SitePathLink>
+							</pathLinks>
+						</StopPlace>
+						<StopPlace id="ch:1:sloid:165" version="1">
+						<privateCodes>
+							<PrivateCode type="didok">8500165</PrivateCode>
+						</privateCodes>
+							<Name>Le Pied-d'Or</Name>
+							<Centroid>
+								<Location>
+									<Longitude>7.05622164099</Longitude>
+									<Latitude>47.22210552172</Latitude>
+								</Location>
+							</Centroid>
+							<Url>www.les-cj.ch</Url>
+							<PostalAddress id="ch:1:sloid:165:address" version="1">
+								<AddressLine1>La Chaux</AddressLine1>
+								<Town>Les Reussilles</Town>
+								<PostCode>2722</PostCode>
+							</PostalAddress>
+							<AccessibilityAssessment id="ch:1:sloid:165:aa" version="1">
+								<MobilityImpairedAccess>false</MobilityImpairedAccess>
+								<limitations>
+									<AccessibilityLimitation>
+										<WheelchairAccess>false</WheelchairAccess>
+										<AudibleSignalsAvailable>false</AudibleSignalsAvailable>
+									</AccessibilityLimitation>
+								</limitations>
+							</AccessibilityAssessment>
+							<entrances>
+								<StopPlaceEntrance id="ch:1:sloid:165:801723" version="1">
+									<Name>Point de référence</Name>
+								</StopPlaceEntrance>
+							</entrances>
+							<placeEquipments>
+								<TicketingEquipment id="ch:1:sloid:165:ticketing" version="1">
+									<TicketMachines>false</TicketMachines>
+								</TicketingEquipment>
+							</placeEquipments>
+							<localServices>
+								<AssistanceService id="ch:1:sloid:165:assistance" version="1">
+									<Note>https://www.les-cj.ch/Gares-et-services/Informations-pratiques/Voyager-avec-un-handicap</Note>
+									<AssistanceAvailability>none</AssistanceAvailability>
+								</AssistanceService>
+							</localServices>
+							<TransportMode>rail</TransportMode>
+							<StopPlaceType>railStation</StopPlaceType>
+							<quays>
+								<Quay id="ch:1:sloid:165:0:1" version="1">
+															<Centroid>
+								<Location>
+									<Longitude>7.05622164099</Longitude>
+									<Latitude>47.22210552172</Latitude>
+								</Location>
+							</Centroid>
+									<AccessibilityAssessment id="ch:1:sloid:165:0:1:aa" version="1">
+										<MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+										<limitations>
+											<AccessibilityLimitation>
+												<WheelchairAccess>unknown</WheelchairAccess>
+												<LevelAccessIntoVehicle>false</LevelAccessIntoVehicle>
+											</AccessibilityLimitation>
+										</limitations>
+									</AccessibilityAssessment>
+									<placeEquipments>
+										<AccessVehicleEquipment id="ch:1:sloid:165:0:1:access" version="1">
+											<Hoist>false</Hoist>
+											<Ramp>false</Ramp>
+										</AccessVehicleEquipment>
+									</placeEquipments>
+									<PublicCode>1</PublicCode>
+								</Quay>
+							</quays>
+							<pathLinks>
+								<SitePathLink id="ch:1:sloid:165:pathLink:1" version="1">
+									<From>
+										<PlaceRef ref="ch:1:sloid:165:801723" version="1"/>
+									</From>
+									<To>
+										<PlaceRef ref="ch:1:sloid:165:0:1" version="1"/>
+									</To>
+									<AccessibilityAssessment id="ch:1:sloid:165:pathLink:1:aa" version="1">
+										<MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+										<limitations>
+											<AccessibilityLimitation>
+												<WheelchairAccess>unknown</WheelchairAccess>
+												<StepFreeAccess>false</StepFreeAccess>
+												<TactileGuidanceAvailable>false</TactileGuidanceAvailable>
+											</AccessibilityLimitation>
+										</limitations>
+									</AccessibilityAssessment>
+								</SitePathLink>
+							</pathLinks>
+						</StopPlace>
+						<StopPlace id="ch:1:sloid:167" version="1">
+						<privateCodes>
+							<PrivateCode type="didok">8500167</PrivateCode>
+						</privateCodes>
+							<Name>Les Breuleux-Eglise</Name>
+							<Centroid>
+								<Location>
+									<Longitude>7.00242153863</Longitude>
+									<Latitude>47.21300817767</Latitude>
+								</Location>
+							</Centroid>
+							<Url>www.les-cj.ch</Url>
+							<PostalAddress id="ch:1:sloid:167:address" version="1">
+								<AddressLine1>Rue du Curé Beuret 10</AddressLine1>
+								<Town>Les Breuleux</Town>
+								<PostCode>2345</PostCode>
+							</PostalAddress>
+							<AccessibilityAssessment id="ch:1:sloid:167:aa" version="1">
+								<MobilityImpairedAccess>partial</MobilityImpairedAccess>
+								<limitations>
+									<AccessibilityLimitation>
+										<WheelchairAccess>partial</WheelchairAccess>
+										<AudibleSignalsAvailable>false</AudibleSignalsAvailable>
+									</AccessibilityLimitation>
+								</limitations>
+							</AccessibilityAssessment>
+							<entrances>
+								<StopPlaceEntrance id="ch:1:sloid:167:937753" version="1">
+									<Name>Point de référence</Name>
+								</StopPlaceEntrance>
+							</entrances>
+							<placeEquipments>
+								<TicketingEquipment id="ch:1:sloid:167:ticketing" version="1">
+									<TicketMachines>false</TicketMachines>
+								</TicketingEquipment>
+							</placeEquipments>
+							<localServices>
+								<AssistanceService id="ch:1:sloid:167:assistance" version="1">
+									<Note>https://www.les-cj.ch/Gares-et-services/Informations-pratiques/Voyager-avec-un-handicap</Note>
+									<AssistanceFacilityList>boardingAssistance</AssistanceFacilityList>
+									<AssistanceAvailability>availableIfBooked</AssistanceAvailability>
+								</AssistanceService>
+							</localServices>
+							<TransportMode>rail</TransportMode>
+							<StopPlaceType>railStation</StopPlaceType>
+							<quays>
+								<Quay id="ch:1:sloid:167:0:1" version="1">
+															<Centroid>
+								<Location>
+									<Longitude>7.00242153863</Longitude>
+									<Latitude>47.21300817767</Latitude>
+								</Location>
+							</Centroid>
+									<AccessibilityAssessment id="ch:1:sloid:167:0:1:aa" version="1">
+										<MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+										<limitations>
+											<AccessibilityLimitation>
+												<WheelchairAccess>unknown</WheelchairAccess>
+												<LevelAccessIntoVehicle>false</LevelAccessIntoVehicle>
+											</AccessibilityLimitation>
+										</limitations>
+										<Comment>intégrer dans le train</Comment>
+									</AccessibilityAssessment>
+									<placeEquipments>
+										<AccessVehicleEquipment id="ch:1:sloid:167:0:1:access" version="1">
+											<Ramp>true</Ramp>
+										</AccessVehicleEquipment>
+									</placeEquipments>
+									<PublicCode>1</PublicCode>
+								</Quay>
+							</quays>
+							<pathLinks>
+								<SitePathLink id="ch:1:sloid:167:pathLink:1" version="1">
+									<From>
+										<PlaceRef ref="ch:1:sloid:167:937753" version="1"/>
+									</From>
+									<To>
+										<PlaceRef ref="ch:1:sloid:167:0:1" version="1"/>
+									</To>
+									<AccessibilityAssessment id="ch:1:sloid:167:pathLink:1:aa" version="1">
+										<MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+										<limitations>
+											<AccessibilityLimitation>
+												<WheelchairAccess>unknown</WheelchairAccess>
+												<StepFreeAccess>true</StepFreeAccess>
+												<TactileGuidanceAvailable>false</TactileGuidanceAvailable>
+											</AccessibilityLimitation>
+										</limitations>
+									</AccessibilityAssessment>
+								</SitePathLink>
+							</pathLinks>
+						</StopPlace>
+					</stopPlaces>
+					<parkings>
+						<Parking id="ch:1:sloid:162:745558" version="1">
+							<Name>Places de stationnement</Name>
+							<ParentSiteRef ref="ch:1:sloid:162" version="2"/>
+						</Parking>
+						<Parking id="ch:1:sloid:169:943587" version="1">
+							<Name>Places de stationnement</Name>
+							<ParentSiteRef ref="ch:1:sloid:169" version="2"/>
+							<parkingAreas>
+								<ParkingArea id="ch:1:sloid:169:943587:parkingArea" version="1">
+									<parkingProperties>
+										<ParkingProperties id="ch:1:sloid:169:943587:parkingArea:parkingProperties" version="1">
+											<ParkingUserTypes>registeredDisabled</ParkingUserTypes>
+										</ParkingProperties>
+									</parkingProperties>
+								</ParkingArea>
+							</parkingAreas>
+						</Parking>
+					</parkings>
+				</SiteFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

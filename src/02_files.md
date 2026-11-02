@@ -73,7 +73,7 @@ Also, if problems occur in the end it is always the owner that is responsible to
 ### File Types
 
 We will have three different file types:
-* STOP_OFFER: stops, quays, transfer times and accessibility related to sites at some point
+* SITE_OFFER: stops, quays, transfer times and accessibility related to sites at some point
 * NETWORK_OFFER: lines, routes, timetables
 * INTERCHANGE: interchanges, "Durchbindungen"
 
@@ -86,7 +86,7 @@ This repartition of the data into different file leads to some redundancy. Howev
 ### Content of each File Type
 ```mermaid
 classDiagram
-class STOP_OFFER{
+class SITE_OFFER{
     SiteFrame: SiteFrame
     topographicPlaces: TopographicPlace
     stopPlaces: StopPlace
@@ -125,7 +125,7 @@ class INTERCHANGE {
 ```
 *Figure: Elements per file type in this profile*
 
-STOP_OFFER:
+SITE_OFFER:
 * Contains everything related to (physical) stops
 * Accessibility will be added in the future
 
@@ -139,7 +139,7 @@ INTERCHANGE
 * Contains interchanges, spliting, joining and "Durchbindungen".
 * ref/id can't be checked by the schema. Therefore we use the attribute `versionRef` instead of `version`. 
 
-Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.  STOP_OFFER is only needed for data not stored in ATLAS. INFO+ will deliver an aggregated, comprehensive STOP_OFFER.
+Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.  SITE_OFFER is only needed for data not stored in ATLAS. INFO+ will deliver an aggregated, comprehensive SITE_OFFER.
 
 ### Naming Conventions of Files
 IT-Environments:
@@ -160,10 +160,10 @@ The name of each XML file is composed of the following information:
 | Provider	           | `SKI`	                                        | Name of the provider                                                                                   |
 | Time table year	    | `2026`                                        | 	period of the data (always a year for now)                                                             |
 | Name of Export	     | `oev-schweiz`	                                | Defines the scope of the timetable data (e.g. `bernmobil` or for the whole of Switzerland `oev-schweiz` |
-| Type of file        | 	`STOP_OFFER`, `NETWORK_OFFER`, `INTERCHANGE` | 	Describes the content                                                                                 |
+| Type of file        | 	`SITE_OFFER`, `NETWORK_OFFER`, `INTERCHANGE` | 	Describes the content                                                                                 |
 | Date and Time       | `202606101200`                                | 		Date and time the file was produced, format: YYYYMMDDHHMM                                        |
 
-Example: `TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_STOP_OFFER_202301250401.xml`
+Example: `TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_SITE_OFFER_202301250401.xml`
 
 All Files are embedded in a zip-File. The name of the zip-file is composed of the following information:
 
