@@ -11,6 +11,24 @@
   <stopPlaces>
     <StopPlace id="ch:1:sloid:7000" version="1"/>
   </stopPlaces>
+  <parkings>
+    <!-- Will be used at least in the export from ATLAS to ERSAD -->
+    <Parking id="ch:1:sloid:169:943587" version="1">
+      <!-- Currently only very minimal as we don't have more information (e.g. no coordinates). -->
+      <Name>Places de stationnement</Name>
+      <ParentSiteRef ref="ch:1:sloid:169" version="1"/>
+      <parkingAreas>
+        <ParkingArea id="ch:1:sloid:169:943587:parkingArea" version="1">
+          <!-- Used to tell there is parking for handicapped people -->
+          <parkingProperties>
+            <ParkingProperties id="ch:1:sloid:169:943587:parkingArea:parkingProperties" version="1">
+              <ParkingUserTypes>registeredDisabled</ParkingUserTypes>
+            </ParkingProperties>
+          </parkingProperties>
+        </ParkingArea>
+      </parkingAreas>
+    </Parking>
+  </parkings>
   <siteFacilitySets>
     <!-- We expect the SiteFacilitySet in the ResourceFrame -->
     <SiteFacilitySet id="generated" version="1"/>

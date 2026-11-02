@@ -286,6 +286,87 @@
     </tr>
     <tr>
       <td> </td>
+      <td>parkings</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>parkingsInFrame_RelStructure</td>
+      <td>PARKINGs in frame.</td>
+      <td>Will be used at least in the export from ATLAS to ERSAD</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Parking</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>Parking_VersionStructure</td>
+      <td>A named place where Parking may be accessed. May be a building complex (e.g. a station) or an on-street location.</td>
+      <td>Currently only very minimal as we don’t have more information (e.g. no coordinates).</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of PARKING PROPERTIes.+V1.2.2</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ParentSiteRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>SiteRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>parkingAreas</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>parkingAreas_RelStructure</td>
+      <td>PARKING AREAs within PARKING.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>ParkingArea</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>ParkingArea_VersionStructure</td>
+      <td>Area within a PARKING.</td>
+      <td>Used to tell there is parking for handicapped people</td>
+    </tr>
+    <tr>
+      <td>++++</td>
+      <td>parkingProperties</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>parkingProperties_RelStructure</td>
+      <td>Properties of PARKING AREA</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++++</td>
+      <td>ParkingProperties</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>ParkingProperties_VersionedChildStructure</td>
+      <td>Properties of a PARKING.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++++++</td>
+      <td>ParkingUserTypes</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>ParkingUserListOfEnumerations</td>
+      <td>Type of users: disabled, all etc.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>siteFacilitySets</td>
       <td>optional</td>
       <td>0..1</td>

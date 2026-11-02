@@ -983,6 +983,13 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
   <li>The departure time at each <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> is obtained by adding <code class="language-plaintext highlighter-rouge">TimeDemandType/waitTimes/JourneyWaitTime/Waitime</code> for the <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>. Please observe that a <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> may be visited more than once within a <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> and may have different waiting times at each visit. In this case, <code class="language-plaintext highlighter-rouge">TimeDemandType/waitTimes/StopPointInJourneyPatternRef</code> will be used to override <code class="language-plaintext highlighter-rouge">TimeDemandType/waitTimes/ScheduledStopPointRef</code>.</li>
 </ul>
 
+<h2 id="very-special-case-two-servicejourneys-during-change-from-summer-to-winter-time">Very special case: two ServiceJourneys during change from summer to winter time</h2>
+<p>In this case:</p>
+<ul>
+  <li>the first <code class="language-plaintext highlighter-rouge">ServiceJourney</code> is the one that is “meant”-</li>
+  <li>if there is a second run in the second time 02:00 to 03:00, then an additional <code class="language-plaintext highlighter-rouge">ServiceJourney</code> must be created with a new <code class="language-plaintext highlighter-rouge">sjyid</code> for that given operating day and the <code class="language-plaintext highlighter-rouge">DepartureTime</code> must be indicated as UTC. E.g. <code class="language-plaintext highlighter-rouge">02:33:00Z</code>.</li>
+</ul>
+
 <h2 id="journeypart">JourneyPart</h2>
 <p>For <code class="language-plaintext highlighter-rouge">JourneyPart</code> see <a href="/netexRealisationGuideSwitzerland/next/uc05_journey_parts.html">uc05_journey_parts</a>.</p>
 

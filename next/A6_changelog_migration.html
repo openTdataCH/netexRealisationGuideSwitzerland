@@ -3,9 +3,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Changelog | DRAFT Swiss profile 2.0 for NeTEx 2.1</title>
+<title>Changelog of Swiss profile 1.0 to 2.0 | DRAFT Swiss profile 2.0 for NeTEx 2.1</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Changelog of Swiss profile 1.0 to 2.0" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
@@ -14,9 +14,9 @@
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.1" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Changelog" />
+<meta property="twitter:title" content="Changelog of Swiss profile 1.0 to 2.0" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Changelog","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/next/A6_changelog_migration.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Changelog of Swiss profile 1.0 to 2.0","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/next/A6_changelog_migration.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/netexRealisationGuideSwitzerland/next/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/next/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.1" /></head>
 <body><header class="site-header" role="banner">
@@ -213,13 +213,200 @@
 </nav>
     <main class="content" aria-label="Content">
       
-        <h1 class="page-title">Changelog</h1>
+        <h1 class="page-title">Changelog of Swiss profile 1.0 to 2.0</h1>
       
-      <h1 id="migration-of-swiss-profile-10-to-20">Migration of Swiss profile 1.0 to 2.0</h1>
+      <p>This changelog compares version 1.00.1of the realisation guide based on NeTEx XSD 1.10, with version 2.</p>
 
-<blockquote>
-  <p><strong>NOTE</strong>: This information is still work in progress.</p>
-</blockquote>
+<h2 id="1-global-changes">1. Global changes</h2>
+
+<h3 id="schema-and-conventions">Schema and conventions</h3>
+<ul>
+  <li><strong>NeTEx basis changed from XSD 1.10 to NeTEx 2.1</strong></li>
+  <li><strong><code class="language-plaintext highlighter-rouge">version="any"</code> replaced by <code class="language-plaintext highlighter-rouge">version="1"</code> everywhere</strong>, <code class="language-plaintext highlighter-rouge">versionRef="1"</code> for cross-file references .</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">created</code>, <code class="language-plaintext highlighter-rouge">changed</code>, <code class="language-plaintext highlighter-rouge">modification</code> remain unused</strong>; new rules documented for <code class="language-plaintext highlighter-rouge">responsibilitySetRef</code>, <code class="language-plaintext highlighter-rouge">nameOfRefClass</code> and <code class="language-plaintext highlighter-rouge">versionRef</code>.</li>
+  <li><strong>ID semantics redefined</strong>: v1 required global uniqueness at import; v2 defines uniqueness per object type within one delivery, introduces an explicit <strong>ID-stability convention</strong> (most elements “must be kept stable between exports”, some explicitly don’t need to, e.g. <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>, <code class="language-plaintext highlighter-rouge">Notice</code>, <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>), and drops <code class="language-plaintext highlighter-rouge">PublicKey</code>/<code class="language-plaintext highlighter-rouge">PrivateKey</code> in favour of <code class="language-plaintext highlighter-rouge">KeyList</code> and <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code>.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> with <code class="language-plaintext highlighter-rouge">type</code> attribute replaces v1’s <code class="language-plaintext highlighter-rouge">keyList</code>/<code class="language-plaintext highlighter-rouge">KeyValue</code> and plain <code class="language-plaintext highlighter-rouge">PrivateCode</code></strong> for business keys: sjyid (<code class="language-plaintext highlighter-rouge">type="sjyid"</code>), region (<code class="language-plaintext highlighter-rouge">type="rn"</code>), SBOID/GO number on operators, DIDOK (<code class="language-plaintext highlighter-rouge">type="didok"</code>) on stops, SLNID on lines.</li>
+  <li>
+    <p><strong>Translations now use repeated <code class="language-plaintext highlighter-rouge">&lt;Text&gt;</code> elements with <code class="language-plaintext highlighter-rouge">lang</code> inside MultilingualString</strong>; <code class="language-plaintext highlighter-rouge">AlternativeText</code> is no longer used; <code class="language-plaintext highlighter-rouge">AlternativeName</code> is restricted to <code class="language-plaintext highlighter-rouge">alias</code> only.</p>
+  </li>
+  <li><strong>New whole-model orientation section</strong> (“A First Glimpse”) and new general rules on element ordering, geometries (none in profile) and FromDate/ToDate semantics (always operating days, <code class="language-plaintext highlighter-rouge">T00:00:00</code> / <code class="language-plaintext highlighter-rouge">T23:59:59</code>)</li>
+</ul>
+
+<h3 id="file-exchange">File exchange</h3>
+<ul>
+  <li><strong>Three new file types</strong>: <code class="language-plaintext highlighter-rouge">SITE_OFFER</code> (sites/stops), <code class="language-plaintext highlighter-rouge">NETWORK_OFFER</code> (resource/calendar/service/timetable frames, self-sufficient refs), <code class="language-plaintext highlighter-rouge">INTERCHANGE</code> (interchanges, joining/splitting, through-services; cross-file validity via <code class="language-plaintext highlighter-rouge">versionRef</code> instead of <code class="language-plaintext highlighter-rouge">version</code>).</li>
+  <li><strong>Environment identifiers renamed</strong>: <code class="language-plaintext highlighter-rouge">entw/test/inte/prod</code> → <code class="language-plaintext highlighter-rouge">DEV/TEST/INT/PROD</code>, used as file-name prefixes; the v1 sender-identification rule (<code class="language-plaintext highlighter-rouge">&lt;environment&gt;_&lt;partner system&gt;</code>) is dropped .</li>
+  <li><strong>File-name version component changes from <code class="language-plaintext highlighter-rouge">1.10</code> to <code class="language-plaintext highlighter-rouge">2.1</code></strong>; new “type of file” component; underscores forbidden inside export names; v1’s <code class="language-plaintext highlighter-rouge">OJP-NAP_</code> name prefixes and frame number/total components disappear.</li>
+  <li><strong>Transport protocol</strong>: v1’s secure-FTP requirement dropped; “The data transfer will be defined by INFO+”. The v1 statements on web services (not supported) and weekly full-file production by SKI are gone.</li>
+  <li><strong>New role model</strong>: Owner (= “Konzessionär” per Atlas) is responsible for the overall delivery, per partial line delivery may be delegated; new rules on completeness of delivery (all journeys incl. those driven by other operators in the owner’s name), shared responsibilities for planning, and an explicit <strong>prohibition of partial deliveries and incremental updates</strong></li>
+  <li><strong>Kept</strong>: UTF-8 without BOM; README file rule; provider naming conventions (partner short name, timetable period, creation date).</li>
+</ul>
+
+<h3 id="time-formatting">Time formatting</h3>
+<ul>
+  <li>v1’s per-call <code class="language-plaintext highlighter-rouge">DayOffset=1</code> rule replaced: only <code class="language-plaintext highlighter-rouge">DepartureDayOffset</code> on <code class="language-plaintext highlighter-rouge">ServiceJourney</code>/<code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code> marks journeys starting after midnight; midnight crossings during the journey are <strong>implicit</strong> (times are calculated from <code class="language-plaintext highlighter-rouge">TimeDemandType</code> run/wait times).</li>
+</ul>
+
+<h2 id="2-chapter-by-chapter-changes">2. Chapter-by-chapter changes</h2>
+
+<h3 id="preliminary-remarks">Preliminary remarks</h3>
+<ul>
+  <li>Binding-nature text and mapping-table rule carried over nearly verbatim.</li>
+  <li>Referenced-documents list moved to annex <code class="language-plaintext highlighter-rouge">A1</code> and expanded (Transmodel EN 12896, SIRI, EPIP/EPIAP, Nordic/France/Slovenia profiles, tutorials).</li>
+  <li>New: roadmap with milestones (RC1 2026-07, RC2 2026-09, release planned 2026-12), imprint, AGPL-3.0 licence, example XML repository.</li>
+  <li>Dropped: v1’s scope-limiting rule that deviations must be discussed with SKI.</li>
+</ul>
+
+<h3 id="resourceframe">ResourceFrame</h3>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Organisation</code> and <code class="language-plaintext highlighter-rouge">Authority</code> are no longer used</strong>; only <code class="language-plaintext highlighter-rouge">Operator</code> . <code class="language-plaintext highlighter-rouge">OperatorRef</code> on a <code class="language-plaintext highlighter-rouge">Line</code> is always the Konzessionär; a deviating journey operator is set via <code class="language-plaintext highlighter-rouge">OperatorRef</code> on the <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</li>
+  <li><strong>SBOID becomes the primary identifier</strong> for operators (v1: GO number, SBOID “from 2024”); SBOID and GO number must be stored in both <code class="language-plaintext highlighter-rouge">KeyList</code> and <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> .</li>
+  <li><code class="language-plaintext highlighter-rouge">ResponsibilitySet</code>: purpose changed from “hierarchy between lines and sub-lines” to modelling roles of participating companies; <strong>StakeholderRoleType values reduced</strong> to <code class="language-plaintext highlighter-rouge">Operation</code> and <code class="language-plaintext highlighter-rouge">EntityLegalOwnership</code> (<code class="language-plaintext highlighter-rouge">FareManagement</code>, <code class="language-plaintext highlighter-rouge">Planning</code> dropped); the separate <code class="language-plaintext highlighter-rouge">ResponsibilityRoleAssignment</code> section is merged into <code class="language-plaintext highlighter-rouge">ResponsibilitySet</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">TypeOfNotice</code>: values <code class="language-plaintext highlighter-rouge">Zugname</code> (2), <code class="language-plaintext highlighter-rouge">Gleis-Angabe</code> (3) and <code class="language-plaintext highlighter-rouge">Region</code> (11) deprecated; Region replaced by <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode type="rn"</code> on the journey .</li>
+  <li><code class="language-plaintext highlighter-rouge">TypeOfProductCategory</code>: restriction to V580/allianceswisspass values kept; new rule that <code class="language-plaintext highlighter-rouge">Line</code> also references <code class="language-plaintext highlighter-rouge">TypeOfProductCategory</code>; TypeOf… ids must be stable between exports.</li>
+  <li>New sections without v1 counterpart: <strong><code class="language-plaintext highlighter-rouge">SiteFacilitySet</code></strong>, <strong><code class="language-plaintext highlighter-rouge">VehicleType</code></strong>, <strong><code class="language-plaintext highlighter-rouge">TypesOfPlace</code></strong> (<code class="language-plaintext highlighter-rouge">regularStop</code>, <code class="language-plaintext highlighter-rouge">drtCollectionPoint</code>), <code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code> , <code class="language-plaintext highlighter-rouge">TypeOfService</code> .</li>
+</ul>
+
+<h3 id="siteframe">SiteFrame</h3>
+<ul>
+  <li><strong>DIDOK transport changed</strong>: v1’s plain <code class="language-plaintext highlighter-rouge">PrivateCode</code> + <code class="language-plaintext highlighter-rouge">DIDOK</code>/<code class="language-plaintext highlighter-rouge">SLOID</code> KeyValues → v2 requires <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode type="didok"</code> <strong>and</strong> a matching <code class="language-plaintext highlighter-rouge">keyList</code> entry; SLOID in <code class="language-plaintext highlighter-rouge">PrivateCode</code> where it exists.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">ShortName</code> forbidden on <code class="language-plaintext highlighter-rouge">StopPlace</code></strong> (v1 carried the DIDOK number there — “discontinued under RV 2.0”).</li>
+  <li><code class="language-plaintext highlighter-rouge">ValidBetween</code> on StopPlace: v1 example had FromDate and ToDate; v2 requires <strong>FromDate only, no ToDate</strong>.</li>
+  <li>HafasPriority/HafasKMInfo moved from <code class="language-plaintext highlighter-rouge">Extensions</code> into <code class="language-plaintext highlighter-rouge">keyList</code> KeyValues (“only used in exports by INFO+”).</li>
+  <li><strong>Quay ID scheme defined</strong>: <code class="language-plaintext highlighter-rouge">{StopPlace SLOID}_gen:{Quay SLOID}_pf:{Platform Code}</code> with <code class="language-plaintext highlighter-rouge">missingSLOID</code> fallback and special-character replacement (v1 used ad-hoc ids like <code class="language-plaintext highlighter-rouge">ch:1:Quay:8503000-10</code>); <code class="language-plaintext highlighter-rouge">PublicCode</code> on Quay now mandatory; SLOID moved from Quay keyList to <code class="language-plaintext highlighter-rouge">privateCodes</code>.</li>
+  <li>New Quay elements: <code class="language-plaintext highlighter-rouge">QuayType</code>, <code class="language-plaintext highlighter-rouge">ParentQuayRef</code> (sectors; hierarchy now modelled in Atlas), <code class="language-plaintext highlighter-rouge">AccessibilityAssessment</code> (<code class="language-plaintext highlighter-rouge">MobilityImpairedAccess</code>, <code class="language-plaintext highlighter-rouge">AccessModes</code>).</li>
+  <li><code class="language-plaintext highlighter-rouge">TopographicPlace</code>: values extended (country, state/canton, county, municipality); StopPlace should reference its canton.</li>
+  <li><strong>Centroid</strong>: coordinate reference formalised as WGS84 / LV95 (EPSG:2056) with 4+ decimal accuracy; INFO+ relies on Atlas master data (v1: DIDOK master data); v1’s typo “WSG84” corrected.</li>
+  <li><strong>New <code class="language-plaintext highlighter-rouge">AccessibilityAssessment</code> interpretation</strong> (stricter than EPIAP) for StopPlace/Quay with limitation tables (StepFreeAccess, EscalatorFreeAccess, LevelAccessIntoVehicle with PRM-TSI gap values, RampFreeAccess) and entrance criteria; full site model (entrances, levels, equipment, paths) deferred to <code class="language-plaintext highlighter-rouge">uc09_accessibility.md</code> (work in progress).</li>
+  <li><code class="language-plaintext highlighter-rouge">alternativeTexts</code> (multilingual names) dropped throughout the site chapter; translations go via MultilingualString.</li>
+</ul>
+
+<h3 id="serviceframe">ServiceFrame</h3>
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Direction</code> object abolished</strong> (v1’s mandatory <code class="language-plaintext highlighter-rouge">ch:1:Direction:H</code>/<code class="language-plaintext highlighter-rouge">:R</code> pair “will no longer be supported”); only <code class="language-plaintext highlighter-rouge">DirectionType</code> on the pattern/journey is used.</li>
+  <li><strong>Line</strong>: SLNID becomes the primary identifier (in <code class="language-plaintext highlighter-rouge">@id</code> “wherever possible”, <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> and <code class="language-plaintext highlighter-rouge">KeyList</code>); slnid concepts Dispositionslinie/Temporäre Linie modelled as regular Lines, “Betriebliche Linie” not modelled; partial lines get a main line; v1’s “NoLine” placeholder concept dropped; mixed-line handling in <code class="language-plaintext highlighter-rouge">uc17_mixed_lines.md</code>.</li>
+  <li><strong>New <code class="language-plaintext highlighter-rouge">GroupOfLines</code> section</strong> (only for mixed lines, <code class="language-plaintext highlighter-rouge">GroupOfLinesType</code> restricted to <code class="language-plaintext highlighter-rouge">administrative</code>).</li>
+  <li><strong>DestinationDisplay more prescriptive</strong>: journey destination via <code class="language-plaintext highlighter-rouge">ServiceJourney/Destination/DestinationDisplayRef</code> (no redundant inline Name), mid-run changes on <code class="language-plaintext highlighter-rouge">StopPointInJourneyPattern/DestinationDisplayRef</code>; destination-change use case in <code class="language-plaintext highlighter-rouge">uc13_changes_in_destination.md</code>.</li>
+  <li><strong>ScheduledStopPoint</strong>: sloid used directly as <code class="language-plaintext highlighter-rouge">@id</code> where it exists; SSPs used in TimingLinks/JourneyPatterns should be quay-level.</li>
+  <li><strong>PassengerStopAssignment</strong>: when linking to a Quay both <code class="language-plaintext highlighter-rouge">QuayRef</code> and <code class="language-plaintext highlighter-rouge">StopPlaceRef</code> must be set; goal is always a QuayRef (artificial quays for foreign data); <code class="language-plaintext highlighter-rouge">BoardingPosition</code> not used; new <code class="language-plaintext highlighter-rouge">passengerBoardingPositionAssignments</code> for formations (quay sectors); ids explicitly need not be stable; v1’s quay-split example (arrival 2A / departure 2D) dropped.</li>
+  <li><code class="language-plaintext highlighter-rouge">DefaultConnection</code> / <code class="language-plaintext highlighter-rouge">SiteConnection</code>: details moved to <code class="language-plaintext highlighter-rouge">uc03_transfers.md</code> (HRDF mapping UMSTEIGB/UMSTEIGV/UMSTEIGZ/UMSTEIGL/METABHF/DURCHBI); ids must be stable; v1’s footnote on modelling large interchange times dropped.</li>
+  <li><code class="language-plaintext highlighter-rouge">Notice</code>: must only be used for information not expressible by specific elements (facilities, DayType, ForAlighting/ForBoarding); recommendation to translate (DE/IT/FR, possibly EN).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">NoticeAssignment</code> becomes a documented element</strong> of the ServiceFrame (v1: prose only); <code class="language-plaintext highlighter-rouge">StartPointInPatternRef</code>/<code class="language-plaintext highlighter-rouge">EndPointInPatternRef</code> allow part-of-journey notices.</li>
+  <li><strong>New pattern/timing sections</strong>: <code class="language-plaintext highlighter-rouge">TimingLink</code>, <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> (shared between journeys with identical sequences), <code class="language-plaintext highlighter-rouge">TimeDemandType</code> — the foundation of the new timing model.</li>
+</ul>
+
+<h3 id="servicecalendarframe">ServiceCalendarFrame</h3>
+<ul>
+  <li><strong>DayType/DayTypeAssignment now used only for national holidays</strong> (v1: full-year day types); journey operating days are governed exclusively by <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code> with ValidDayBits.</li>
+  <li><code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> additionally supports <code class="language-plaintext highlighter-rouge">timebands</code> as third constraint type; ValidDayBits “expected” rather than required for recurring patterns; none of FromDate/ToDate, ValidDayBits, timebands individually mandatory.</li>
+  <li>Nested <code class="language-plaintext highlighter-rouge">dayTypes</code>/<code class="language-plaintext highlighter-rouge">dayTypeAssignments</code> inside <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> are <strong>not used</strong>; they are declared as siblings in the frame; <code class="language-plaintext highlighter-rouge">ServiceCalendar</code> narrowed to a label for the timetable year.</li>
+  <li><code class="language-plaintext highlighter-rouge">DayType</code>: <code class="language-plaintext highlighter-rouge">HolidayTypes</code> restricted to <code class="language-plaintext highlighter-rouge">nationalHoliday</code>, <code class="language-plaintext highlighter-rouge">DayEvent</code> only <code class="language-plaintext highlighter-rouge">anyDay</code>/<code class="language-plaintext highlighter-rouge">normalDay</code>; multilingual <code class="language-plaintext highlighter-rouge">alternativeTexts</code> dropped.</li>
+  <li><code class="language-plaintext highlighter-rouge">Timeband</code>: main use is now the daily operating window of frequency-based lines (chairlift/shuttle); InterchangeRuleTiming use not applicable in RG 2.0; <code class="language-plaintext highlighter-rouge">StartEvent</code>/<code class="language-plaintext highlighter-rouge">EndEvent</code>/<code class="language-plaintext highlighter-rouge">Duration</code> not used; times as <code class="language-plaintext highlighter-rouge">hh:mm:ss</code> with seconds always <code class="language-plaintext highlighter-rouge">00</code>; note distinguishing Timeband from <code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code> first/last departure (pointer to <code class="language-plaintext highlighter-rouge">uc14_frequencies.md</code>).</li>
+</ul>
+
+<h3 id="timetableframe">TimetableFrame</h3>
+<ul>
+  <li><strong>New timing model — the biggest change</strong>: <code class="language-plaintext highlighter-rouge">Call</code>, <code class="language-plaintext highlighter-rouge">Arrival</code>, <code class="language-plaintext highlighter-rouge">Departure</code> and <code class="language-plaintext highlighter-rouge">TimetabledPassingTime</code> are removed (deprecated); each <code class="language-plaintext highlighter-rouge">ServiceJourney</code>/<code class="language-plaintext highlighter-rouge">TemplateServiceJourney</code> references exactly one <strong><code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code></strong> (authoritative stop sequence; carries <code class="language-plaintext highlighter-rouge">LineRef</code>) and exactly one <strong><code class="language-plaintext highlighter-rouge">TimeDemandType</code></strong> (JourneyRunTime/JourneyWaitTime); passing times are calculated by a documented algorithm.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">ServiceJourney</code></strong>: <code class="language-plaintext highlighter-rouge">LineRef</code> removed; <code class="language-plaintext highlighter-rouge">validityConditions</code> mandatory with a single <code class="language-plaintext highlighter-rouge">AvailabilityConditionRef</code>; <code class="language-plaintext highlighter-rouge">TypeOfProductCategoryRef</code> mandatory; sjyid moved to <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode type="sjyid"</code> (not keyList); <code class="language-plaintext highlighter-rouge">@id</code> may not be the sjyid; <code class="language-plaintext highlighter-rouge">DepartureTime</code> in local time without UTC offset; <code class="language-plaintext highlighter-rouge">DepartureDayOffset</code> (incl. rare negative values) replaces per-call DayOffset; <code class="language-plaintext highlighter-rouge">DatedServiceJourney</code> explicitly not used; new <code class="language-plaintext highlighter-rouge">parts</code>/<code class="language-plaintext highlighter-rouge">JourneyPart</code>, <code class="language-plaintext highlighter-rouge">checkConstraints</code>, <code class="language-plaintext highlighter-rouge">VehicleTypeRef</code>, <code class="language-plaintext highlighter-rouge">occupancies</code>/<code class="language-plaintext highlighter-rouge">OccupancyView</code> (not used).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">JourneyPart</code></strong> (new, <code class="language-plaintext highlighter-rouge">uc05_journey_parts.md</code>): segmentation for facility changes (<code class="language-plaintext highlighter-rouge">PurposeOfJourneyPartition:FacilityChange</code> replaces v1’s <code class="language-plaintext highlighter-rouge">Extensions/facilities</code> on calls) and product-category changes; <strong>not</strong> to be used for train-number changes (use two ServiceJourneys + <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code>).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">JourneyMeeting</code> removed</strong>; replaced by <strong><code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code></strong> (new element with <code class="language-plaintext highlighter-rouge">StaySeated</code>, <code class="language-plaintext highlighter-rouge">CrossBorder</code>, <code class="language-plaintext highlighter-rouge">ChangeWithinVehicle</code>, <code class="language-plaintext highlighter-rouge">MaximumWaitTime</code>, <code class="language-plaintext highlighter-rouge">FromPointRef</code>/<code class="language-plaintext highlighter-rouge">ToPointRef</code>, concrete <code class="language-plaintext highlighter-rouge">From/ToServiceJourneyRef</code>); v1’s <code class="language-plaintext highlighter-rouge">FromJourneyRef</code>/<code class="language-plaintext highlighter-rouge">ToJourneyRef</code> must not be used .</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">InterchangeRule</code>, <code class="language-plaintext highlighter-rouge">InterchangeRuleParameter</code>, <code class="language-plaintext highlighter-rouge">InterchangeRuleTiming</code> deprecated/removed</strong>: filter-based interchange rules are resolved to concrete <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code>s per journey pair during import/export (<code class="language-plaintext highlighter-rouge">uc03_transfers.md</code>).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">CheckConstraint</code></strong>: moved out of Arrival/Departure to a top-level element on ServiceJourney/ServiceJourneyPattern, always instantiated inline; new restrictions (<code class="language-plaintext highlighter-rouge">bothWays</code> forbidden; CheckProcess only <code class="language-plaintext highlighter-rouge">alighting</code>/<code class="language-plaintext highlighter-rouge">boarding</code>/<code class="language-plaintext highlighter-rouge">queue</code>); <code class="language-plaintext highlighter-rouge">MinimumLikelyDelay</code> replaced by <code class="language-plaintext highlighter-rouge">AverageDelay</code>/<code class="language-plaintext highlighter-rouge">MaximumLikelyDelay</code>; expanded use cases in <code class="language-plaintext highlighter-rouge">uc07_checkconstraints.md</code> (TGV doors, carTransportRail/touristic waiting times, HRDF CI/CO).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">HeadwayJourneyGroup</code></strong>: exactly one frequency per TemplateServiceJourney; <code class="language-plaintext highlighter-rouge">FirstDepartureTime</code>/<code class="language-plaintext highlighter-rouge">LastDepartureTime</code>/<code class="language-plaintext highlighter-rouge">First/LastDayOffset</code> dropped (timing via <code class="language-plaintext highlighter-rouge">DepartureTime</code>/<code class="language-plaintext highlighter-rouge">DepartureDayOffset</code>); <code class="language-plaintext highlighter-rouge">HeadwayDisplay</code> restricted to <code class="language-plaintext highlighter-rouge">displayPassingTimesOnly</code> (v1 example contradicted its own rule); <code class="language-plaintext highlighter-rouge">RhythmicalJourneyGroup</code> explicitly not used; frequency policy in <code class="language-plaintext highlighter-rouge">uc14_frequencies.md</code> (SIRI SX only for template journeys; multiple <code class="language-plaintext highlighter-rouge">*Z</code> sharing one sjyid no longer allowed).</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">TrainNumber</code></strong>: one per journey, unique per operating day, equals the HRDF <code class="language-plaintext highlighter-rouge">*Z</code> number; schema allows multiple refs in principle; non-rail modes also get TrainNumbers.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">TypeOfService</code></strong>: only <code class="language-plaintext highlighter-rouge">PublicJourney</code> (<code class="language-plaintext highlighter-rouge">ch:1:TypeOfService:1</code>); <code class="language-plaintext highlighter-rouge">GarageRunIn/Out</code>, <code class="language-plaintext highlighter-rouge">ThroughCoach</code> struck through.</li>
+  <li><code class="language-plaintext highlighter-rouge">NoticeAssignment</code>, <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code>, <code class="language-plaintext highlighter-rouge">Timeband</code>, <code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code> relocated to their owning-frame chapters (06/07/09); <code class="language-plaintext highlighter-rouge">08_timetable.md</code> keeps cross-references.</li>
+  <li>New frame content: <code class="language-plaintext highlighter-rouge">journeyInterchanges</code>, <code class="language-plaintext highlighter-rouge">vehicleTypes</code> placeholder for formations; explicit rule that only passenger-available journeys are modelled.</li>
+</ul>
+
+<h3 id="appendix">Appendix</h3>
+<ul>
+  <li><strong>TransportMode</strong>: v1’s 11-value list replaced by the NeTEx 2.1 20-value enumeration, with a new per-value usage column (part of the data / special file / not used) and the rule “Only use sub modes that are approved in the mapping!”; submode mapping now via the “Übergangsdokument Branchenstandard” and <code class="language-plaintext highlighter-rouge">Mappingtabellen_NeTEx_v2.0.xlsx</code> (v1: HRDF V.580 mapping on oev-info.ch); new <code class="language-plaintext highlighter-rouge">ProductCategory</code> section.</li>
+  <li><strong>Connection times **: the abstract 9-rule framework (criteria matrices, explicit hierarchy rules) is rebuilt around the HRDF source tables in <code class="language-plaintext highlighter-rouge">uc03_transfers.md</code>; rules 3, 4 and 7 (product-category-based connection times) have no v2 counterpart; v1’s dual representation of rule 5 (<code class="language-plaintext highlighter-rouge">DefaultConnection</code> **and</strong> <code class="language-plaintext highlighter-rouge">SiteConnection</code>) reduced to <code class="language-plaintext highlighter-rouge">DefaultConnection</code>; UMSTEIGZ semantics (<code class="language-plaintext highlighter-rouge">!</code> = guaranteed) and Verkehrstagebitfeldnummer documented.</li>
+  <li><strong>Transfer time</strong>: METABHF/SiteConnection survives essentially intact; new rule that this data lives only in the master data file (SITE_OFFER), not in timetable files; ends may now be any SiteElement.</li>
+</ul>
+
+<h2 id="3-new-in-v2-no-v1-counterpart">3. New in v2 (no v1 counterpart)</h2>
+
+<ul>
+  <li><strong>17 use-case chapters</strong> (<code class="language-plaintext highlighter-rouge">uc01</code>–<code class="language-plaintext highlighter-rouge">uc17</code>): Durchbindung, joining/splitting, transfers, service facilities, JourneyParts, modes/submodes, check constraints, Kurswagen, accessibility, journeys passing midnight, touristic offers (in progress), car transport rail (in progress), changes in destination, frequencies, formations (draft), demand-responsive traffic (draft), mixed lines.</li>
+  <li><strong>New elements documented for the first time</strong>: <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code>, <code class="language-plaintext highlighter-rouge">JourneyPart</code>, <code class="language-plaintext highlighter-rouge">TimeDemandType</code>, <code class="language-plaintext highlighter-rouge">TimingLink</code>, <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>, <code class="language-plaintext highlighter-rouge">GroupOfLines</code>, <code class="language-plaintext highlighter-rouge">SiteFacilitySet</code>, <code class="language-plaintext highlighter-rouge">VehicleType</code>, <code class="language-plaintext highlighter-rouge">TypesOfPlace</code>, <code class="language-plaintext highlighter-rouge">AccessibilityAssessment</code>, <code class="language-plaintext highlighter-rouge">PassengerBoardingPositionAssignment</code>, <code class="language-plaintext highlighter-rouge">Locale</code>/<code class="language-plaintext highlighter-rouge">TimeZone</code>, <code class="language-plaintext highlighter-rouge">StopPlaceType</code>/<code class="language-plaintext highlighter-rouge">LimitedUse</code>, <code class="language-plaintext highlighter-rouge">QuayType</code>, <code class="language-plaintext highlighter-rouge">ParentQuayRef</code>, <code class="language-plaintext highlighter-rouge">TemplateVehicleJourneyType</code>, <code class="language-plaintext highlighter-rouge">OccupancyView</code> (not used), <code class="language-plaintext highlighter-rouge">vehicleTypes</code>/<code class="language-plaintext highlighter-rouge">CompoundTrain</code> placeholder.</li>
+  <li><strong>New annexes</strong>: <code class="language-plaintext highlighter-rouge">A1</code> references, <code class="language-plaintext highlighter-rouge">A2</code> EPIP/EPIAP comparison, <code class="language-plaintext highlighter-rouge">A3</code> France/Norway profile comparison (draft), <code class="language-plaintext highlighter-rouge">A4</code> glossary (~70 terms with “not used in the Swiss profile” flags), <code class="language-plaintext highlighter-rouge">A5</code> element index.</li>
+  <li><strong>New general content</strong>: roadmap, role model, guiding principles for delivery, ID-stability convention, ordering rule for sequences, geometries policy, example XML repository, AGPL licence, imprint.</li>
+</ul>
+
+<h2 id="4-removed--deprecated-summary">4. Removed / deprecated summary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>v1 concept</th>
+      <th>v2 status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Direction</code> objects (<code class="language-plaintext highlighter-rouge">ch:1:Direction:H</code>/<code class="language-plaintext highlighter-rouge">R</code>)</td>
+      <td>Not supported; only <code class="language-plaintext highlighter-rouge">DirectionType</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">AlternativeText</code></td>
+      <td>Not used; MultilingualString repeated <code class="language-plaintext highlighter-rouge">Text</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Call</code> / <code class="language-plaintext highlighter-rouge">Arrival</code> / <code class="language-plaintext highlighter-rouge">Departure</code> / <code class="language-plaintext highlighter-rouge">TimetabledPassingTime</code></td>
+      <td>Deprecated; ServiceJourneyPattern + TimeDemandType</td>
+    </tr>
+    <tr>
+      <td>Per-call <code class="language-plaintext highlighter-rouge">DayOffset</code></td>
+      <td>Only <code class="language-plaintext highlighter-rouge">DepartureDayOffset</code> on the journey</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">JourneyMeeting</code> (+ <code class="language-plaintext highlighter-rouge">FromJourneyRef</code>/<code class="language-plaintext highlighter-rouge">ToJourneyRef</code>)</td>
+      <td>Must not be used; <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">InterchangeRule</code>, <code class="language-plaintext highlighter-rouge">InterchangeRuleParameter</code>, <code class="language-plaintext highlighter-rouge">InterchangeRuleTiming</code></td>
+      <td>Deprecated; <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">CoupledJourney</code> / <code class="language-plaintext highlighter-rouge">JourneyPartCouple</code> for splitting/joining</td>
+      <td>Not used</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RhythmicalJourneyGroup</code>, <code class="language-plaintext highlighter-rouge">DatedServiceJourney</code>, <code class="language-plaintext highlighter-rouge">BoardingPosition</code></td>
+      <td>Explicitly not used</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Organisation</code>, <code class="language-plaintext highlighter-rouge">Authority</code></td>
+      <td>Not used; <code class="language-plaintext highlighter-rouge">Operator</code> only</td>
+    </tr>
+    <tr>
+      <td>sjyid/sloid/DIDOK/SLNID in <code class="language-plaintext highlighter-rouge">keyList</code> KeyValue</td>
+      <td><code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> (keyList kept only for specific INFO+ keys)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ShortName</code> (DIDOK) on StopPlace</td>
+      <td>Discontinued</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Extensions</code> for facilities on journeys/calls, <code class="language-plaintext highlighter-rouge">Condition</code> on ServiceFacilitySet</td>
+      <td><code class="language-plaintext highlighter-rouge">JourneyPart</code> facilities / <code class="language-plaintext highlighter-rouge">Extensions/Priority</code></td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">MinimumLikelyDelay</code> on CheckConstraint</td>
+      <td><code class="language-plaintext highlighter-rouge">AverageDelay</code>/<code class="language-plaintext highlighter-rouge">MaximumLikelyDelay</code></td>
+    </tr>
+    <tr>
+      <td>sFTP transfer, sender identification, weekly production statement, web-services note</td>
+      <td>Dropped (transfer defined by INFO+)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">StopUse</code>/<code class="language-plaintext highlighter-rouge">RequestStop</code>/<code class="language-plaintext highlighter-rouge">VisitNumber</code>/<code class="language-plaintext highlighter-rouge">DynamicStopAssignment</code> (per-call)</td>
+      <td>No direct v2 equivalent found in the guide text (patterns carry repeated visits; StopUse semantics under review)</td>
+    </tr>
+  </tbody>
+</table>
 
     </main>
   </div>

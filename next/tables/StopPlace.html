@@ -424,7 +424,7 @@
     <tr>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/AlternativeName.html">AlternativeName</a></td>
-      <td>optional</td>
+      <td>expected</td>
       <td>1..*</td>
       <td>AlternativeName_VersionedChildStructure</td>
       <td>ALTERNATIVE NAME for Element.</td>
@@ -459,8 +459,170 @@
     </tr>
     <tr>
       <td> </td>
-      <td>StopPlaceType</td>
+      <td>entrances</td>
       <td>optional</td>
+      <td>0..1</td>
+      <td>siteEntrances_RelStructure</td>
+      <td>ENTRANCEs to SPACE.</td>
+      <td>We currently use this for the reference point that each Swiss stop uses. Unfortunately it currently has no Centroid and coordinates</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>StopPlaceEntrance</td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>StopPlaceEntrance_VersionStructure</td>
+      <td>Passenger Entrance to a STOP PLACE.</td>
+      <td>Currently only the sloid is known. From this point all references to accessibility are made in Switzerland</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of STOP PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>placeEquipments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>equipments_RelStructure</td>
+      <td>Items of EQUIPMENT that may be located in an EQUIPMENT PLACE.</td>
+      <td>Used in exports for all TSI PRM relevant equipments. Especially in the data transmissions for rail to ERA. We only have Equipments and no EquipmentPlaces.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TicketingEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>Ticketing equipment</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TicketMachines</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there are ticket machines.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AccessVehicleEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AccessVehicleEquipment_VersionStructure</td>
+      <td>Specialisation of VEHICLE EQUIPMENT for ACCESS providing information such as low floor, ramp, access area dimensions, etc.</td>
+      <td>Method to get on the vehicle</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Hoist</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>VEHICLE has a hoist or lift for wheelchairs.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Ramp</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether a ramp may be used to access VEHICLE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>SanitaryEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>SanitaryFacilityList</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>SanitaryFacilityListOfEnumerations</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ToiletsType</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>ToiletsTypeEnumeration</td>
+      <td>Indicates the position of using the toilet.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>localServices</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>localServices_RelStructure</td>
+      <td> </td>
+      <td>Will be exported from ATLAS for ERA TSI PRM.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AssistanceService</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AssistanceService_VersionStructure</td>
+      <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AssistanceService</td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>AssistanceService_VersionStructure</td>
+      <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AssistanceFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AssistanceFacilityListOfEnumerations</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AssistanceAvailability</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AssistanceAvailabilityEnumeration</td>
+      <td>Availability of assistance service.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>StopPlaceType</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>StopTypeEnumeration</td>
       <td>Type of STOP PLACE.</td>
@@ -501,6 +663,69 @@
       <td>Quay_VersionStructure</td>
       <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
       <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>navigationPaths</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>navigationPaths_RelStructure</td>
+      <td>NAVIGATION PATHs within the SITE and or between the SITE elsewhere.</td>
+      <td>Will be provided at least for rail in a first export for ERA TSI PRM</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>NavigationPath</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>SiteNavigationPath_VersionStructure</td>
+      <td>NAVIGATION PATH for a SITE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>From</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>DeckPathLinkEndStructure</td>
+      <td>Origin end of DECK NAVIGATION path. Only needed if detailed PATH LINKs are not given.</td>
+      <td>One of the points is the reference point.</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>PlaceRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PlaceRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>To</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>DeckPathLinkEndStructure</td>
+      <td>Destination end of DECK NAVIGATION PATH. Only needed if detailed PATH LINKs not given.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>PlaceRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PlaceRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td> </td>
+      <td>If the NavigationPath is provided, then an AccessibilityAssessment must be provided too</td>
     </tr>
   </tbody>
 </table>

@@ -350,6 +350,87 @@
     </tr>
     <tr>
       <td> </td>
+      <td>parkings</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>parkingsInFrame_RelStructure</td>
+      <td>PARKINGs in frame.</td>
+      <td>Will be used at least in the export from ATLAS to ERSAD</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Parking</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>Parking_VersionStructure</td>
+      <td>A named place where Parking may be accessed. May be a building complex (e.g. a station) or an on-street location.</td>
+      <td>Currently only very minimal as we don’t have more information (e.g. no coordinates).</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of PARKING PROPERTIes.+V1.2.2</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ParentSiteRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>SiteRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>parkingAreas</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>parkingAreas_RelStructure</td>
+      <td>PARKING AREAs within PARKING.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>ParkingArea</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>ParkingArea_VersionStructure</td>
+      <td>Area within a PARKING.</td>
+      <td>Used to tell there is parking for handicapped people</td>
+    </tr>
+    <tr>
+      <td>++++</td>
+      <td>parkingProperties</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>parkingProperties_RelStructure</td>
+      <td>Properties of PARKING AREA</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++++</td>
+      <td>ParkingProperties</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>ParkingProperties_VersionedChildStructure</td>
+      <td>Properties of a PARKING.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++++++</td>
+      <td>ParkingUserTypes</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>ParkingUserListOfEnumerations</td>
+      <td>Type of users: disabled, all etc.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>siteFacilitySets</td>
       <td>optional</td>
       <td>0..1</td>
@@ -386,6 +467,24 @@
   <span class="nt">&lt;stopPlaces&gt;</span>
     <span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/stopPlaces&gt;</span>
+  <span class="nt">&lt;parkings&gt;</span>
+    <span class="c">&lt;!-- Will be used at least in the export from ATLAS to ERSAD --&gt;</span>
+    <span class="nt">&lt;Parking</span> <span class="na">id=</span><span class="s">"ch:1:sloid:169:943587"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Currently only very minimal as we don't have more information (e.g. no coordinates). --&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Places de stationnement<span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;ParentSiteRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:169"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;parkingAreas&gt;</span>
+        <span class="nt">&lt;ParkingArea</span> <span class="na">id=</span><span class="s">"ch:1:sloid:169:943587:parkingArea"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="c">&lt;!-- Used to tell there is parking for handicapped people --&gt;</span>
+          <span class="nt">&lt;parkingProperties&gt;</span>
+            <span class="nt">&lt;ParkingProperties</span> <span class="na">id=</span><span class="s">"ch:1:sloid:169:943587:parkingArea:parkingProperties"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;ParkingUserTypes&gt;</span>registeredDisabled<span class="nt">&lt;/ParkingUserTypes&gt;</span>
+            <span class="nt">&lt;/ParkingProperties&gt;</span>
+          <span class="nt">&lt;/parkingProperties&gt;</span>
+        <span class="nt">&lt;/ParkingArea&gt;</span>
+      <span class="nt">&lt;/parkingAreas&gt;</span>
+    <span class="nt">&lt;/Parking&gt;</span>
+  <span class="nt">&lt;/parkings&gt;</span>
   <span class="nt">&lt;siteFacilitySets&gt;</span>
     <span class="c">&lt;!-- We expect the SiteFacilitySet in the ResourceFrame --&gt;</span>
     <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
@@ -616,7 +715,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     <tr>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/AlternativeName.html">AlternativeName</a></td>
-      <td>optional</td>
+      <td>expected</td>
       <td>1..*</td>
       <td>AlternativeName_VersionedChildStructure</td>
       <td>ALTERNATIVE NAME for Element.</td>
@@ -651,8 +750,170 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     </tr>
     <tr>
       <td> </td>
-      <td>StopPlaceType</td>
+      <td>entrances</td>
       <td>optional</td>
+      <td>0..1</td>
+      <td>siteEntrances_RelStructure</td>
+      <td>ENTRANCEs to SPACE.</td>
+      <td>We currently use this for the reference point that each Swiss stop uses. Unfortunately it currently has no Centroid and coordinates</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>StopPlaceEntrance</td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>StopPlaceEntrance_VersionStructure</td>
+      <td>Passenger Entrance to a STOP PLACE.</td>
+      <td>Currently only the sloid is known. From this point all references to accessibility are made in Switzerland</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of STOP PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>placeEquipments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>equipments_RelStructure</td>
+      <td>Items of EQUIPMENT that may be located in an EQUIPMENT PLACE.</td>
+      <td>Used in exports for all TSI PRM relevant equipments. Especially in the data transmissions for rail to ERA. We only have Equipments and no EquipmentPlaces.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TicketingEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>Ticketing equipment</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TicketMachines</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there are ticket machines.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AccessVehicleEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AccessVehicleEquipment_VersionStructure</td>
+      <td>Specialisation of VEHICLE EQUIPMENT for ACCESS providing information such as low floor, ramp, access area dimensions, etc.</td>
+      <td>Method to get on the vehicle</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Hoist</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>VEHICLE has a hoist or lift for wheelchairs.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Ramp</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether a ramp may be used to access VEHICLE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>SanitaryEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>SanitaryFacilityList</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>SanitaryFacilityListOfEnumerations</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ToiletsType</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>ToiletsTypeEnumeration</td>
+      <td>Indicates the position of using the toilet.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>localServices</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>localServices_RelStructure</td>
+      <td> </td>
+      <td>Will be exported from ATLAS for ERA TSI PRM.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AssistanceService</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AssistanceService_VersionStructure</td>
+      <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AssistanceService</td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>AssistanceService_VersionStructure</td>
+      <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AssistanceFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AssistanceFacilityListOfEnumerations</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AssistanceAvailability</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AssistanceAvailabilityEnumeration</td>
+      <td>Availability of assistance service.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>StopPlaceType</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>StopTypeEnumeration</td>
       <td>Type of STOP PLACE.</td>
@@ -693,6 +954,69 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>Quay_VersionStructure</td>
       <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
       <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>navigationPaths</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>navigationPaths_RelStructure</td>
+      <td>NAVIGATION PATHs within the SITE and or between the SITE elsewhere.</td>
+      <td>Will be provided at least for rail in a first export for ERA TSI PRM</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>NavigationPath</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>SiteNavigationPath_VersionStructure</td>
+      <td>NAVIGATION PATH for a SITE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>From</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>DeckPathLinkEndStructure</td>
+      <td>Origin end of DECK NAVIGATION path. Only needed if detailed PATH LINKs are not given.</td>
+      <td>One of the points is the reference point.</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>PlaceRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PlaceRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>To</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>DeckPathLinkEndStructure</td>
+      <td>Destination end of DECK NAVIGATION PATH. Only needed if detailed PATH LINKs not given.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>PlaceRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PlaceRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td> </td>
+      <td>If the NavigationPath is provided, then an AccessibilityAssessment must be provided too</td>
     </tr>
   </tbody>
 </table>
@@ -764,6 +1088,52 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <span class="c">&lt;!-- Must be present, when not in DefaultTimeZone. --&gt;</span>
     <span class="nt">&lt;/TimeZone&gt;</span>
   <span class="nt">&lt;/Locale&gt;</span>
+  <span class="nt">&lt;entrances&gt;</span>
+    <span class="c">&lt;!-- We currently use this for the reference point that each Swiss stop uses. Unfortunately it currently has no Centroid and coordinates --&gt;</span>
+    <span class="nt">&lt;StopPlaceEntrance</span> <span class="na">id=</span><span class="s">"ch:1:sloid:162:164789"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Currently only the sloid is known. From this point all references to accessibility are made in Switzerland --&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Point of reference.<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;/StopPlaceEntrance&gt;</span>
+  <span class="nt">&lt;/entrances&gt;</span>
+  <span class="nt">&lt;placeEquipments&gt;</span>
+    <span class="c">&lt;!-- Used in exports for all TSI PRM relevant equipments. Especially in the data transmissions for rail to ERA. We only have Equipments and no EquipmentPlaces. --&gt;</span>
+    <span class="nt">&lt;TicketingEquipment</span> <span class="na">id=</span><span class="s">"ch:1:sloid:162:ticketing"</span> <span class="na">version=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Ticketing equipment --&gt;</span>
+      <span class="nt">&lt;TicketMachines&gt;</span>true<span class="nt">&lt;/TicketMachines&gt;</span>
+    <span class="nt">&lt;/TicketingEquipment&gt;</span>
+    <span class="nt">&lt;AccessVehicleEquipment</span> <span class="na">id=</span><span class="s">"ch:1:sloid:162:0:1:access"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Method to get on the vehicle --&gt;</span>
+      <span class="nt">&lt;Hoist&gt;</span>false<span class="nt">&lt;/Hoist&gt;</span>
+      <span class="nt">&lt;Ramp&gt;</span>false<span class="nt">&lt;/Ramp&gt;</span>
+    <span class="nt">&lt;/AccessVehicleEquipment&gt;</span>
+    <span class="nt">&lt;SanitaryEquipment</span> <span class="na">id=</span><span class="s">"ch:1:sloid:171:51406"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Toilette<span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"ch:1:sloid:171:51406:aa"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;MobilityImpairedAccess&gt;</span>false<span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
+        <span class="nt">&lt;limitations&gt;</span>
+          <span class="nt">&lt;AccessibilityLimitation&gt;</span>
+            <span class="nt">&lt;WheelchairAccess&gt;</span>false<span class="nt">&lt;/WheelchairAccess&gt;</span>
+          <span class="nt">&lt;/AccessibilityLimitation&gt;</span>
+        <span class="nt">&lt;/limitations&gt;</span>
+      <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
+      <span class="nt">&lt;SanitaryFacilityList&gt;</span>toilet<span class="nt">&lt;/SanitaryFacilityList&gt;</span>
+      <span class="nt">&lt;ToiletsType&gt;</span>seated<span class="nt">&lt;/ToiletsType&gt;</span>
+    <span class="nt">&lt;/SanitaryEquipment&gt;</span>
+  <span class="nt">&lt;/placeEquipments&gt;</span>
+  <span class="nt">&lt;localServices&gt;</span>
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM. --&gt;</span>
+    <span class="nt">&lt;AssistanceService</span> <span class="na">id=</span><span class="s">"ch:1:sloid:4410:assistance"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Note&gt;</span>Die Rampe zum Perron 1 erfüllt nicht die gesetzlichen Anforderungen. Eine Hilfestellung ist auf Verlangen möglich. Bitte melden Sie sich bis spätestens 1 Stunde vor Abfahrt an beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.<span class="nt">&lt;/Note&gt;</span>
+    <span class="nt">&lt;/AssistanceService&gt;</span>
+    <span class="nt">&lt;AssistanceService</span> <span class="na">id=</span><span class="s">"ch:1:sloid:4402:assistance"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Note&gt;</span>Bei diesem Bahnhof benötigen Sie Ein- und Ausstiegshilfen. Bitte melden Sie sich bis spätestens 1 Stunde vor Zugabfahrt unter swisspass.ch/handicap oder beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.<span class="nt">&lt;/Note&gt;</span>
+      <span class="nt">&lt;AssistanceFacilityList&gt;</span>boardingAssistance<span class="nt">&lt;/AssistanceFacilityList&gt;</span>
+      <span class="nt">&lt;AssistanceAvailability&gt;</span>availableIfBooked<span class="nt">&lt;/AssistanceAvailability&gt;</span>
+    <span class="nt">&lt;/AssistanceService&gt;</span>
+    <span class="nt">&lt;AssistanceService</span> <span class="na">id=</span><span class="s">"ch:1:sloid:4414:assistance"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Note&gt;</span>Der Lift erfüllt nur die gesetzlichen Mindestanforderungen.<span class="nt">&lt;/Note&gt;</span>
+    <span class="nt">&lt;/AssistanceService&gt;</span>
+  <span class="nt">&lt;/localServices&gt;</span>
   <span class="nt">&lt;StopPlaceType&gt;</span>railStation<span class="nt">&lt;/StopPlaceType&gt;</span>
   <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly
     <span class="c">&lt;!-- For stops like Sagliains. We currently use only interchangeOnly. --&gt;</span>
@@ -775,6 +1145,29 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     <span class="c">&lt;!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. Note that the usage (expected) overrides the cardinality. --&gt;</span>
     <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/quays&gt;</span>
+  <span class="nt">&lt;navigationPaths&gt;</span>
+    <span class="c">&lt;!-- Will be provided at least for rail in a first export for ERA TSI PRM --&gt;</span>
+    <span class="nt">&lt;NavigationPath</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;From&gt;</span>
+        <span class="c">&lt;!-- One of the points is the reference point. --&gt;</span>
+        <span class="nt">&lt;PlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:162:164789"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/From&gt;</span>
+      <span class="nt">&lt;To&gt;</span>
+        <span class="nt">&lt;PlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/To&gt;</span>
+      <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"ch:1:sloid:162:pathLink:1:aa"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- If the NavigationPath is provided, then an AccessibilityAssessment must be provided too --&gt;</span>
+        <span class="nt">&lt;MobilityImpairedAccess&gt;</span>unknown<span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
+        <span class="nt">&lt;limitations&gt;</span>
+          <span class="nt">&lt;AccessibilityLimitation&gt;</span>
+            <span class="nt">&lt;WheelchairAccess&gt;</span>unknown<span class="nt">&lt;/WheelchairAccess&gt;</span>
+            <span class="nt">&lt;StepFreeAccess&gt;</span>true<span class="nt">&lt;/StepFreeAccess&gt;</span>
+            <span class="nt">&lt;TactileGuidanceAvailable&gt;</span>true<span class="nt">&lt;/TactileGuidanceAvailable&gt;</span>
+          <span class="nt">&lt;/AccessibilityLimitation&gt;</span>
+        <span class="nt">&lt;/limitations&gt;</span>
+      <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
+    <span class="nt">&lt;/NavigationPath&gt;</span>
+  <span class="nt">&lt;/navigationPaths&gt;</span>
 <span class="nt">&lt;/StopPlace&gt;</span>
 </code></pre></div></div>
 

@@ -298,7 +298,7 @@ If attributes of these reference data are transmitted in the deliveries, SKI doe
 
 <p>We will have three different file types:</p>
 <ul>
-  <li>STOP_OFFER: stops, quays, transfer times and accessibility related to sites at some point</li>
+  <li>SITE_OFFER: stops, quays, transfer times and accessibility related to sites at some point</li>
   <li>NETWORK_OFFER: lines, routes, timetables</li>
   <li>INTERCHANGE: interchanges, “Durchbindungen”</li>
 </ul>
@@ -311,7 +311,7 @@ If attributes of these reference data are transmitted in the deliveries, SKI doe
 
 <h3 id="content-of-each-file-type">Content of each File Type</h3>
 <pre><code class="language-mermaid">classDiagram
-class STOP_OFFER{
+class SITE_OFFER{
     SiteFrame: SiteFrame
     topographicPlaces: TopographicPlace
     stopPlaces: StopPlace
@@ -350,7 +350,7 @@ class INTERCHANGE {
 </code></pre>
 <p><em>Figure: Elements per file type in this profile</em></p>
 
-<p>STOP_OFFER:</p>
+<p>SITE_OFFER:</p>
 <ul>
   <li>Contains everything related to (physical) stops</li>
   <li>Accessibility will be added in the future</li>
@@ -370,7 +370,7 @@ class INTERCHANGE {
   <li>ref/id can’t be checked by the schema. Therefore we use the attribute <code class="language-plaintext highlighter-rouge">versionRef</code> instead of <code class="language-plaintext highlighter-rouge">version</code>.</li>
 </ul>
 
-<p>Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.  STOP_OFFER is only needed for data not stored in ATLAS. INFO+ will deliver an aggregated, comprehensive STOP_OFFER.</p>
+<p>Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.  SITE_OFFER is only needed for data not stored in ATLAS. INFO+ will deliver an aggregated, comprehensive SITE_OFFER.</p>
 
 <h3 id="naming-conventions-of-files">Naming Conventions of Files</h3>
 <p>IT-Environments:</p>
@@ -434,7 +434,7 @@ class INTERCHANGE {
     </tr>
     <tr>
       <td>Type of file</td>
-      <td><code class="language-plaintext highlighter-rouge">STOP_OFFER</code>, <code class="language-plaintext highlighter-rouge">NETWORK_OFFER</code>, <code class="language-plaintext highlighter-rouge">INTERCHANGE</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SITE_OFFER</code>, <code class="language-plaintext highlighter-rouge">NETWORK_OFFER</code>, <code class="language-plaintext highlighter-rouge">INTERCHANGE</code></td>
       <td>Describes the content</td>
     </tr>
     <tr>
@@ -445,7 +445,7 @@ class INTERCHANGE {
   </tbody>
 </table>
 
-<p>Example: <code class="language-plaintext highlighter-rouge">TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_STOP_OFFER_202301250401.xml</code></p>
+<p>Example: <code class="language-plaintext highlighter-rouge">TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_SITE_OFFER_202301250401.xml</code></p>
 
 <p>All Files are embedded in a zip-File. The name of the zip-file is composed of the following information:</p>
 

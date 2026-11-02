@@ -15,7 +15,7 @@
 | ++ | ScheduledStopPointRef | mandatory | 0..1 | ScheduledStopPointRefStructure | Reference to a SCHEDULED STOP POINT. |  |
 | ++ | ForAlighting | mandatory | 0..1 | boolean | Whether alighting is allowed at the stop. Default is true. |  |
 | ++ | ForBoarding | mandatory | 0..1 | boolean | Whether boarding is allowed at the stop. Default is true. |  |
-| ++ | DestinationDisplayRef | optional | 1..1 | DestinationDisplayRefStructure |  | Indicates that the destination has changed. Superseeds Line or ServiceJourney |
+| ++ | DestinationDisplayRef | optional | 1..1 | DestinationDisplayRefStructure |  | Indicates that the destination has changed. Superseeds Line or ServiceJourney. Also, there is propagation. E.g if the DestinationDisplay changes on the 4. th stop it is propagated through all stops until a different DestinationDisplay is encountered. |
 | ++ | RequestStop | optional | 0..1 | boolean | Whether stop is a request stop for this journey. Default is false. |  |
 | ++ | StopUse | optional | 0..1 | StopUseEnumeration | Nature of use of stop, e.g. access, interchange only, or pass through. Default is Access. | All values possible. passthrough is used for Durchfahrt, if such data is delivered. See mapping excel. |
 | ++ | checkConstraints | optional | 0..1 | checkConstraints_RelStructure | Implements the navigation from processes or barriers that the travellers will be facing (e.g., security check, check-in, etc.). +v2.1 |  |

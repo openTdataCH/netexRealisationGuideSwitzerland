@@ -2122,7 +2122,7 @@ needs to be added for that too.</li>
       <td>1..1</td>
       <td>DestinationDisplayRefStructure</td>
       <td> </td>
-      <td>Indicates that the destination has changed. Superseeds Line or ServiceJourney</td>
+      <td>Indicates that the destination has changed. Superseeds Line or ServiceJourney. Also, there is propagation. E.g if the DestinationDisplay changes on the 4. th stop it is propagated through all stops until a different DestinationDisplay is encountered.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -2225,7 +2225,7 @@ needs to be added for that too.</li>
       <span class="nt">&lt;ForAlighting&gt;</span>false<span class="nt">&lt;/ForAlighting&gt;</span>
       <span class="nt">&lt;ForBoarding&gt;</span>true<span class="nt">&lt;/ForBoarding&gt;</span>
       <span class="nt">&lt;DestinationDisplayRef</span> <span class="na">ref=</span><span class="s">"DestinationDisplay:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-        <span class="c">&lt;!-- Indicates that the destination has changed. Superseeds Line or ServiceJourney --&gt;</span>
+        <span class="c">&lt;!-- Indicates that the destination has changed. Superseeds Line or ServiceJourney. Also, there is propagation. E.g if the DestinationDisplay changes on the 4. th stop it is propagated through all stops until a different DestinationDisplay is encountered. --&gt;</span>
       <span class="nt">&lt;/DestinationDisplayRef&gt;</span>
       <span class="nt">&lt;RequestStop&gt;</span>false<span class="nt">&lt;/RequestStop&gt;</span>
       <span class="nt">&lt;StopUse&gt;</span>access

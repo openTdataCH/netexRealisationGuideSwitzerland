@@ -61,6 +61,52 @@
       <!-- Must be present, when not in DefaultTimeZone. -->
     </TimeZone>
   </Locale>
+  <entrances>
+    <!-- We currently use this for the reference point that each Swiss stop uses. Unfortunately it currently has no Centroid and coordinates -->
+    <StopPlaceEntrance id="ch:1:sloid:162:164789" version="1">
+      <!-- Currently only the sloid is known. From this point all references to accessibility are made in Switzerland -->
+      <Name>Point of reference.</Name>
+    </StopPlaceEntrance>
+  </entrances>
+  <placeEquipments>
+    <!-- Used in exports for all TSI PRM relevant equipments. Especially in the data transmissions for rail to ERA. We only have Equipments and no EquipmentPlaces. -->
+    <TicketingEquipment id="ch:1:sloid:162:ticketing" version="2">
+      <!-- Ticketing equipment -->
+      <TicketMachines>true</TicketMachines>
+    </TicketingEquipment>
+    <AccessVehicleEquipment id="ch:1:sloid:162:0:1:access" version="1">
+      <!-- Method to get on the vehicle -->
+      <Hoist>false</Hoist>
+      <Ramp>false</Ramp>
+    </AccessVehicleEquipment>
+    <SanitaryEquipment id="ch:1:sloid:171:51406" version="1">
+      <Name>Toilette</Name>
+      <AccessibilityAssessment id="ch:1:sloid:171:51406:aa" version="1">
+        <MobilityImpairedAccess>false</MobilityImpairedAccess>
+        <limitations>
+          <AccessibilityLimitation>
+            <WheelchairAccess>false</WheelchairAccess>
+          </AccessibilityLimitation>
+        </limitations>
+      </AccessibilityAssessment>
+      <SanitaryFacilityList>toilet</SanitaryFacilityList>
+      <ToiletsType>seated</ToiletsType>
+    </SanitaryEquipment>
+  </placeEquipments>
+  <localServices>
+    <!-- Will be exported from ATLAS for ERA TSI PRM. -->
+    <AssistanceService id="ch:1:sloid:4410:assistance" version="1">
+      <Note>Die Rampe zum Perron 1 erfüllt nicht die gesetzlichen Anforderungen. Eine Hilfestellung ist auf Verlangen möglich. Bitte melden Sie sich bis spätestens 1 Stunde vor Abfahrt an beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.</Note>
+    </AssistanceService>
+    <AssistanceService id="ch:1:sloid:4402:assistance" version="1">
+      <Note>Bei diesem Bahnhof benötigen Sie Ein- und Ausstiegshilfen. Bitte melden Sie sich bis spätestens 1 Stunde vor Zugabfahrt unter swisspass.ch/handicap oder beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.</Note>
+      <AssistanceFacilityList>boardingAssistance</AssistanceFacilityList>
+      <AssistanceAvailability>availableIfBooked</AssistanceAvailability>
+    </AssistanceService>
+    <AssistanceService id="ch:1:sloid:4414:assistance" version="1">
+      <Note>Der Lift erfüllt nur die gesetzlichen Mindestanforderungen.</Note>
+    </AssistanceService>
+  </localServices>
   <StopPlaceType>railStation</StopPlaceType>
   <LimitedUse>interchangeOnly
     <!-- For stops like Sagliains. We currently use only interchangeOnly. -->
@@ -72,4 +118,27 @@
     <!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. Note that the usage (expected) overrides the cardinality. -->
     <Quay id="ch:1:sloid:7000:5:9" version="1"/>
   </quays>
+  <navigationPaths>
+    <!-- Will be provided at least for rail in a first export for ERA TSI PRM -->
+    <NavigationPath id="generated" version="1">
+      <From>
+        <!-- One of the points is the reference point. -->
+        <PlaceRef ref="ch:1:sloid:162:164789" version="1"/>
+      </From>
+      <To>
+        <PlaceRef ref="ch:1:sloid:7000:5:9" version="1"/>
+      </To>
+      <AccessibilityAssessment id="ch:1:sloid:162:pathLink:1:aa" version="1">
+        <!-- If the NavigationPath is provided, then an AccessibilityAssessment must be provided too -->
+        <MobilityImpairedAccess>unknown</MobilityImpairedAccess>
+        <limitations>
+          <AccessibilityLimitation>
+            <WheelchairAccess>unknown</WheelchairAccess>
+            <StepFreeAccess>true</StepFreeAccess>
+            <TactileGuidanceAvailable>true</TactileGuidanceAvailable>
+          </AccessibilityLimitation>
+        </limitations>
+      </AccessibilityAssessment>
+    </NavigationPath>
+  </navigationPaths>
 </StopPlace>
