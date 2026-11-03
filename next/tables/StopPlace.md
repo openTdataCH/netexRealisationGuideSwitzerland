@@ -19,18 +19,15 @@ In some cases the id of a StopPlace is not a SLOID.
 | + | PrivateCode | expected | 0..* | PrivateCodeStructure |  | Mandatory for DIDOK and SLOID if they exist. |
 | ++ | @type | mandatory | 1..1 | xsd:string | Attribute type | |
 |  | Name | mandatory | 0..1 | MultilingualString | Name of STOP PLACE. | The official stop name. If you have different versions one needs to use AlternativeName |
-|  | Centroid | mandatory | 0..1 | SimplePoint_VersionStructure | Centre Coordinates of GROUP of STOP PLACEs. | Global or national location |
-| + | Name | optional | 0..1 | MultilingualString |  |  |
-| + | Location | mandatory | 0..1 | LocationStructure |  | Note concerning coordinates - The main coordinates are given as **WGS84**. |
-| ++ | Longitude | mandatory | 1..1 | LongitudeType | Longitude from Greenwich Meridian. -180 (West) to +180 (East). Decimal degrees. eg 2.356 |  |
-| ++ | Latitude | mandatory | 1..1 | LatitudeType | Latitude from equator. -90 (South) to +90 (North). Decimal degrees. eg 56.356 |  |
-| ++ | Altitude | optional | 0..1 | AltitudeType | Altitude (metres) Above sea level. |  |
+|  | [Centroid](Centroid.md) | mandatory | 0..1 | SimplePoint_VersionStructure | Centre Coordinates of GROUP of STOP PLACEs. | Global or national location |
 |  | [AccessibilityAssessment](AccessibilityAssessment.md) | expected | 0..1 | AccessibilityAssessment_VersionedChildStructure | Accessibility values associated with LEVEL. | Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments. |
 |  | alternativeNames | optional | 0..1 | alternativeNames_RelStructure | Alternative names for the GROUP of STOP PLACEs. | Alternative names for the StopPlace. We will only use these for synonyms. |
 | + | [AlternativeName](AlternativeName.md) | expected | 1..* | AlternativeName_VersionedChildStructure | ALTERNATIVE NAME for Element. |  |
 |  | TopographicPlaceRef | optional | 1..* | TopographicPlaceRefStructure |  | Id to the county, community, canton or country. |
 |  | Locale | optional | 0..1 | LocaleStructure |  |  |
 | + | TimeZone | optional | 0..1 | normalizedString | Timezone name at LOCALE. | Must be present, when not in DefaultTimeZone. |
+|  | levels | expected | 0..1 | levels_RelStructure | LEVELs found within SITe. | Mandatory if the StopPlace has more than one level. |
+| + | Level | expected | 0..* | Level_VersionStructure | Level of a Building or SITE. | Mandatory if the StopPlace has more than one level. |
 |  | entrances | optional | 0..1 | siteEntrances_RelStructure | ENTRANCEs to SPACE. | We currently use this for the reference point that each Swiss stop uses. Unfortunately it currently has no Centroid and coordinates |
 | + | StopPlaceEntrance | mandatory | 0..* | StopPlaceEntrance_VersionStructure | Passenger Entrance to a STOP PLACE. | Currently only the sloid is known. From this point all references to accessibility are made in Switzerland |
 | ++ | Name | optional | 0..1 | MultilingualString | Name of STOP PLACE. |  |
@@ -47,8 +44,8 @@ In some cases the id of a StopPlace is not a SLOID.
 |  | localServices | optional | 0..1 | localServices_RelStructure |  | Will be exported from ATLAS for ERA TSI PRM. |
 | + | AssistanceService | optional | 0..* | AssistanceService_VersionStructure | Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc. |  |
 | + | AssistanceService | mandatory | 0..* | AssistanceService_VersionStructure | Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc. |  |
-| ++ | AssistanceFacilityList | expected | 0..1 | AssistanceFacilityListOfEnumerations |  |  |
-| ++ | AssistanceAvailability | optional | 0..1 | AssistanceAvailabilityEnumeration | Availability of assistance service. |  |
+| ++ | AssistanceFacilityList | expected | 0..1 | AssistanceFacilityListOfEnumerations |  | Facilities for which the availability is described below. Allowed values: `boardingAssistance personalAssistance wheelchairAssistance unaccompaniedMinorAssistance conductor information`. |
+| ++ | AssistanceAvailability | optional | 0..1 | AssistanceAvailabilityEnumeration | Availability of assistance service. | Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. |
 |  | StopPlaceType | expected | 0..1 | StopTypeEnumeration | Type of STOP PLACE. |  |
 |  | LimitedUse | optional | 0..1 | LimitedUseTypeEnumeration | Further categorisation of stop as having topographic limitations. | For stops like Sagliains. We currently use only interchangeOnly. |
 |  | Weighting | optional | 0..1 | InterchangeWeightingEnumeration | Default rating of the STOP PLACE for making interchanges. | Default relative weighting to be used for stop place. See also mapping excel. Cf. HafasPriority in Extensions. |

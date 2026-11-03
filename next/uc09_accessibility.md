@@ -63,7 +63,7 @@ Vehicles & Vehicle Stop Interaction
 
 
 ## AccessibilityAssessment
-*→ [Glossary definition](A4_annex_glossary.md#accessibilityassessment)* TODO
+*→ [Glossary definition](A4_annex_glossary.md#accessibilityassessment)
 
 ### Purpose
 

@@ -351,57 +351,12 @@
     </tr>
     <tr>
       <td> </td>
-      <td>Centroid</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/Centroid.html">Centroid</a></td>
       <td>mandatory</td>
       <td>0..1</td>
       <td>SimplePoint_VersionStructure</td>
       <td>Centre Coordinates of GROUP of STOP PLACEs.</td>
       <td>Global or national location</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>Name</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>MultilingualString</td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>Location</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>LocationStructure</td>
-      <td> </td>
-      <td>Note concerning coordinates - The main coordinates are given as <strong>WGS84</strong>.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Longitude</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>LongitudeType</td>
-      <td>Longitude from Greenwich Meridian. -180 (West) to +180 (East). Decimal degrees. eg 2.356</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Latitude</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>LatitudeType</td>
-      <td>Latitude from equator. -90 (South) to +90 (North). Decimal degrees. eg 56.356</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Altitude</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>AltitudeType</td>
-      <td>Altitude (metres) Above sea level.</td>
-      <td> </td>
     </tr>
     <tr>
       <td> </td>
@@ -456,6 +411,24 @@
       <td>normalizedString</td>
       <td>Timezone name at LOCALE.</td>
       <td>Must be present, when not in DefaultTimeZone.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>levels</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>levels_RelStructure</td>
+      <td>LEVELs found within SITe.</td>
+      <td>Mandatory if the StopPlace has more than one level.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Level</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>Level_VersionStructure</td>
+      <td>Level of a Building or SITE.</td>
+      <td>Mandatory if the StopPlace has more than one level.</td>
     </tr>
     <tr>
       <td> </td>
@@ -608,7 +581,7 @@
       <td>0..1</td>
       <td>AssistanceFacilityListOfEnumerations</td>
       <td> </td>
-      <td> </td>
+      <td>Facilities for which the availability is described below. Allowed values: <code class="language-plaintext highlighter-rouge">boardingAssistance personalAssistance wheelchairAssistance unaccompaniedMinorAssistance conductor information</code>.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -617,7 +590,7 @@
       <td>0..1</td>
       <td>AssistanceAvailabilityEnumeration</td>
       <td>Availability of assistance service.</td>
-      <td> </td>
+      <td>Allowed values: <code class="language-plaintext highlighter-rouge">available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown</code>.</td>
     </tr>
     <tr>
       <td> </td>

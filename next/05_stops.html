@@ -642,57 +642,12 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     </tr>
     <tr>
       <td> </td>
-      <td>Centroid</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/Centroid.html">Centroid</a></td>
       <td>mandatory</td>
       <td>0..1</td>
       <td>SimplePoint_VersionStructure</td>
       <td>Centre Coordinates of GROUP of STOP PLACEs.</td>
       <td>Global or national location</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>Name</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>MultilingualString</td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>Location</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>LocationStructure</td>
-      <td> </td>
-      <td>Note concerning coordinates - The main coordinates are given as <strong>WGS84</strong>.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Longitude</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>LongitudeType</td>
-      <td>Longitude from Greenwich Meridian. -180 (West) to +180 (East). Decimal degrees. eg 2.356</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Latitude</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>LatitudeType</td>
-      <td>Latitude from equator. -90 (South) to +90 (North). Decimal degrees. eg 56.356</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Altitude</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>AltitudeType</td>
-      <td>Altitude (metres) Above sea level.</td>
-      <td> </td>
     </tr>
     <tr>
       <td> </td>
@@ -747,6 +702,24 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>normalizedString</td>
       <td>Timezone name at LOCALE.</td>
       <td>Must be present, when not in DefaultTimeZone.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>levels</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>levels_RelStructure</td>
+      <td>LEVELs found within SITe.</td>
+      <td>Mandatory if the StopPlace has more than one level.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Level</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>Level_VersionStructure</td>
+      <td>Level of a Building or SITE.</td>
+      <td>Mandatory if the StopPlace has more than one level.</td>
     </tr>
     <tr>
       <td> </td>
@@ -899,7 +872,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>0..1</td>
       <td>AssistanceFacilityListOfEnumerations</td>
       <td> </td>
-      <td> </td>
+      <td>Facilities for which the availability is described below. Allowed values: <code class="language-plaintext highlighter-rouge">boardingAssistance personalAssistance wheelchairAssistance unaccompaniedMinorAssistance conductor information</code>.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -908,7 +881,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <td>0..1</td>
       <td>AssistanceAvailabilityEnumeration</td>
       <td>Availability of assistance service.</td>
-      <td> </td>
+      <td>Allowed values: <code class="language-plaintext highlighter-rouge">available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown</code>.</td>
     </tr>
     <tr>
       <td> </td>
@@ -1059,9 +1032,7 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
   <span class="nt">&lt;/Name&gt;</span>
   <span class="nt">&lt;Centroid&gt;</span>
     <span class="c">&lt;!-- Global or national location --&gt;</span>
-    <span class="nt">&lt;Name/&gt;</span>
     <span class="nt">&lt;Location&gt;</span>
-      <span class="c">&lt;!-- Note concerning coordinates - The main coordinates are given as **WGS84**. --&gt;</span>
       <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
       <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
       <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
@@ -1088,6 +1059,13 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
       <span class="c">&lt;!-- Must be present, when not in DefaultTimeZone. --&gt;</span>
     <span class="nt">&lt;/TimeZone&gt;</span>
   <span class="nt">&lt;/Locale&gt;</span>
+  <span class="nt">&lt;levels&gt;</span>
+    <span class="c">&lt;!-- Mandatory if the StopPlace has more than one level. --&gt;</span>
+    <span class="nt">&lt;Level</span> <span class="na">id=</span><span class="s">"ch:1:level:162:164789:0"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Mandatory if the StopPlace has more than one level. --&gt;</span>
+    <span class="nt">&lt;/Level&gt;</span>
+    <span class="nt">&lt;Level</span> <span class="na">id=</span><span class="s">"ch:1:level:162:164789:-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/levels&gt;</span>
   <span class="nt">&lt;entrances&gt;</span>
     <span class="c">&lt;!-- We currently use this for the reference point that each Swiss stop uses. Unfortunately it currently has no Centroid and coordinates --&gt;</span>
     <span class="nt">&lt;StopPlaceEntrance</span> <span class="na">id=</span><span class="s">"ch:1:sloid:162:164789"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -1127,8 +1105,12 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     <span class="nt">&lt;/AssistanceService&gt;</span>
     <span class="nt">&lt;AssistanceService</span> <span class="na">id=</span><span class="s">"ch:1:sloid:4402:assistance"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;Note&gt;</span>Bei diesem Bahnhof benötigen Sie Ein- und Ausstiegshilfen. Bitte melden Sie sich bis spätestens 1 Stunde vor Zugabfahrt unter swisspass.ch/handicap oder beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.<span class="nt">&lt;/Note&gt;</span>
-      <span class="nt">&lt;AssistanceFacilityList&gt;</span>boardingAssistance<span class="nt">&lt;/AssistanceFacilityList&gt;</span>
-      <span class="nt">&lt;AssistanceAvailability&gt;</span>availableIfBooked<span class="nt">&lt;/AssistanceAvailability&gt;</span>
+      <span class="nt">&lt;AssistanceFacilityList&gt;</span>boardingAssistance
+        <span class="c">&lt;!-- Facilities for which the availability is described below. Allowed values: `boardingAssistance personalAssistance wheelchairAssistance unaccompaniedMinorAssistance conductor information`. --&gt;</span>
+      <span class="nt">&lt;/AssistanceFacilityList&gt;</span>
+      <span class="nt">&lt;AssistanceAvailability&gt;</span>availableIfBooked
+        <span class="c">&lt;!-- Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. --&gt;</span>
+      <span class="nt">&lt;/AssistanceAvailability&gt;</span>
     <span class="nt">&lt;/AssistanceService&gt;</span>
     <span class="nt">&lt;AssistanceService</span> <span class="na">id=</span><span class="s">"ch:1:sloid:4414:assistance"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;Note&gt;</span>Der Lift erfüllt nur die gesetzlichen Mindestanforderungen.<span class="nt">&lt;/Note&gt;</span>
@@ -1930,7 +1912,7 @@ as its parent.</li>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">RampFreeAccess</code></td>
-      <td>1.   Reachable without using a ramp that doesn’t fit the <a href="https://www.un.org/esa/socdev/enable/designm/AD2-01.htm">UN Design Considerations</a> (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m).<br />2.    [The route provides <code class="language-plaintext highlighter-rouge">WheelchairAccess</code>]. <strong>TODO</strong> OK? A lesser constraint would be <code class="language-plaintext highlighter-rouge">StepFreeAccess</code>, but the principal (or only?) use case seems to be unassisted wheelchairs.</td>
+      <td>1.   Reachable without using a ramp that doesn’t fit the <a href="https://www.un.org/esa/socdev/enable/designm/AD2-01.htm">UN Design Considerations</a> (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m).<br />2.    [The route provides <code class="language-plaintext highlighter-rouge">WheelchairAccess</code>].</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">AudibleSignalsAvailable</code></td>
@@ -1938,7 +1920,7 @@ as its parent.</li>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">VisualSignsAvailable</code></td>
-      <td>1.   PRM TSI: visual information as signposting, pictograms and dynamic information. <br />2.    [Largely language independent, also suited for passengers from foreign cultures.] <strong>TODO</strong> OK or wrong?</td>
+      <td>1.   PRM TSI: visual information as signposting, pictograms and dynamic information. <br />2.    [Largely language independent, also suited for passengers from foreign cultures.]</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">TactileGuidanceAvailable</code></td>
