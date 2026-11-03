@@ -63,15 +63,11 @@
 							<Centroid>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: Global or national location -->
-								<Name>
-									<!-- ch-usage: optional -->
-								</Name>
+								<!-- ch-see -->
 								<Location>
-									<!-- ch-usage: mandatory -->
-									<!-- ch-note: Note concerning coordinates - The main coordinates are given as **WGS84**. -->
-									<Longitude><!-- ch-usage: mandatory -->7.43913088992</Longitude>
-									<Latitude><!-- ch-usage: mandatory -->46.94883228914</Latitude>
-									<Altitude><!-- ch-usage: optional -->540.2</Altitude>
+									<Longitude>7.43913088992</Longitude>
+									<Latitude>46.94883228914</Latitude>
+									<Altitude>540.2</Altitude>
 								</Location>
 							</Centroid>
 							<gml:Polygon gml:id="a1231">
@@ -117,6 +113,15 @@
 								<!-- ch-usage: optional -->
 								<TimeZone><!-- ch-usage: optional --><!-- ch-note: Must be present, when not in DefaultTimeZone. -->Europe/Zurich</TimeZone>
 							</Locale>
+							<levels>
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Mandatory if the StopPlace has more than one level. -->
+								<Level id="ch:1:level:162:164789:0" version="1">
+									<!-- ch-usage: expected -->
+									<!-- ch-note: Mandatory if the StopPlace has more than one level. -->
+								</Level>
+								<Level id="ch:1:level:162:164789:-1" version="1"/>
+							 </levels>
 							<entrances>
 								<!-- ch-usage: optional -->
 								<!-- ch-note: We currently use this for the reference point that each Swiss stop uses. Unfortunately it currently has no Centroid and coordinates -->
@@ -153,8 +158,8 @@
 											</AccessibilityLimitation>
 										</limitations>
 									</AccessibilityAssessment>
-									<SanitaryFacilityList><!-- ch-usage: mandatory -->toilet</SanitaryFacilityList>
-									<ToiletsType><!-- ch-usage: optional -->seated</ToiletsType>
+									<SanitaryFacilityList><!-- ch-usage: mandatory --><!-- Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet toilet`. Optional: `wheelchairBabyChange babyChange shower`. -->toilet</SanitaryFacilityList>
+									<ToiletsType><!-- ch-usage: optional --><!-- Allowed values: `seated urinal seatedAndUrinal squat`. -->seated</ToiletsType>
 								</SanitaryEquipment>
 							</placeEquipments>
 							<localServices>
@@ -168,8 +173,12 @@
 									<!-- ch-usage: mandatory -->
 									<Note><!-- ch-usage: expected -->Bei diesem Bahnhof benötigen Sie Ein- und Ausstiegshilfen. Bitte melden Sie sich bis spätestens 1 Stunde vor Zugabfahrt unter swisspass.ch/handicap oder beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.
 									</Note>
-									<AssistanceFacilityList><!-- ch-usage: expected -->boardingAssistance</AssistanceFacilityList>
-									<AssistanceAvailability><!-- ch-usage: optional -->availableIfBooked</AssistanceAvailability>
+									<AssistanceFacilityList>
+										<!-- ch-usage: expected -->
+										<!-- ch-note: Facilities for which the availability is described below. Allowed values: `boardingAssistance personalAssistance wheelchairAssistance unaccompaniedMinorAssistance conductor information`. -->
+										boardingAssistance
+									</AssistanceFacilityList>
+									<AssistanceAvailability><!-- ch-usage: optional --><!-- ch-note: Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. -->availableIfBooked</AssistanceAvailability>
 								</AssistanceService>
 								<AssistanceService id="ch:1:sloid:4414:assistance" version="1">
 									<Note>Der Lift erfüllt nur die gesetzlichen Mindestanforderungen.</Note>
