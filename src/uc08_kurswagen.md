@@ -2,135 +2,139 @@
 
 ## Overview
 
-A **Kurswagen** (direct carriage) is a vehicle group that travels as part of one train
-composition and is **coupled onto a different, physically continuing train** at an
-intermediate stop, or that is coupled onto an already-running train as a separate
-commercial product for the remainder of the route. The rest of the feeder
-composition does not necessarily continue further, and the carriages join a
-composition that exists independently of them.
+A **Kurswagen** (direct carriage) is a coach group that is pulled by different trains
+on different sections of its route. A passenger stays seated in the coach group from
+its first to its last stop and books exactly this journey; the pulling trains are
+separate journeys in their own right.
 
-**Real-world example used in this use case:** the ÖBB Nightjet **NJ 470**
-(Zürich HB → Hamburg-Altona) is a sleeper/couchette train. From **Basel SBB**
-onward, seated carriages are coupled onto the NJ 470 composition and run together
-with it all the way to Hamburg-Altona, sold as a separate product: **IC 60470**.
-Passengers can book IC 60470 as an ordinary seat-only Intercity, without needing to
-know it physically travels coupled to a Nightjet from Basel SBB onward.
+**Example used in this use case:** direct carriage 37 Zürich HB – Bremen Hbf, taken
+from the direct-carriage example of the SKI HRDF realisation guide (section 7.1.4).
+The coach group is pulled by train 472 (Zürich HB – Basel Bad Bf), train 470
+(Basel Bad Bf – Hannover Hbf) and train 2746 (Hannover Hbf – Bremen Hbf). Train 470
+continues to Hamburg-Altona after the coach group has been detached.
 
 ```mermaid
 graph LR
-  ZuerichHB["Zürich HB"] -->|"NJ 470"| BaselSBB["Basel SBB (coupling point)"]
-  BaselSBB -->|"NJ 470 + IC 60470 (coupled)"| HamburgAltona["Hamburg-Altona"]
+  ZuerichHB["Zürich HB"] -->|"472"| BaselBad["Basel Bad Bf"]
+  BaselBad -->|"470"| Hannover["Hannover Hbf"]
+  Hannover -->|"2746"| Bremen["Bremen Hbf"]
+  Hannover -.->|"470 continues without the coach group"| HamburgAltona["Hamburg-Altona"]
 ```
-
-> **Note:** This is structurally very close to a plain through-service
-> ([uc01 Durchbindung](uc01_durchbindung.md)) at the `ServiceJourney` level — NeTEx
-> does not track individual physical vehicles/carriages within a `ServiceJourney`.
-> The two products (NJ 470 and IC 60470) are each modelled as their own complete
-> `ServiceJourney`, linked at the coupling point. See
-> [Relation to formations](#relation-to-formations) below for the more granular,
-> not-yet-implemented alternative.
 
 ## Mapping between HRDF and NeTEx
 
 | HRDF | NeTEx RG1 | NeTEx RG2 | Use Case |
 |------|-----------|-----------|----------|
-| `[durchbi]` | `JourneyMeeting` | `ServiceJourneyInterchange` with `StaySeated=true` and `ChangeWithinVehicle=false` | Kurswagen coupled onto a different train composition at an intermediate stop |
+| `*KW` / `*KWZ` | – | `ServiceJourney` for the coach group with one `JourneyPart` (`PurposeOfJourneyPartition:DirectCarriage`) per `*KWZ` | Direct carriage |
+| Attribute `KW` ("Direkter Wagen") | – | `Notice` assigned to the `ServiceJourney` of the coach group (see [mapping excel](./media/Mappingtabellen_NeTEx_v2.0.xlsx), sheet *Angebote*) | Passenger-facing marker |
 
-## Modelling with NeTEx RG 2.0 (`ServiceJourneyInterchange`)
+In HRDF, `*KW` carries the number of the direct carriage. Each section follows as a
+`*KWZ` line with the train number of the pulling train and the from and to stations:
 
-Kurswagen is modelled exclusively using `ServiceJourneyInterchange`, exactly as for
-[Durchbindung](uc01_durchbindung.md) and [Flügelzug](uc02_joining_splitting.md).
-`JourneyPart` and `JourneyPartCouple` are **not used** for this in RG 2.0.
-
-Both `ServiceJourney`s share the same `ServiceJourneyPattern` (simplified to three
-stops: Zürich HB, Basel SBB, Hamburg-Altona). NJ 470 covers the pattern from the
-first point (Zürich HB); IC 60470 covers it starting only from the second point
-(Basel SBB).
-
-```xml
-<ServiceJourney id="ch:1:sjyid:100003:470" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:OEBB">
-  <validityConditions>
-    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:NJ470_IC60470" version="1"/>
-  </validityConditions>
-  <privateCodes>
-    <PrivateCode type="sjyid">ch:1:sjyid:100003:470</PrivateCode>
-  </privateCodes>
-  <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:NJ" version="1"/>
-  <ServiceAlteration>planned</ServiceAlteration>
-  <DepartureTime>21:02:00</DepartureTime>
-  <JourneyPatternRef ref="ch:1:ServiceJourneyPattern:NJ470_IC60470" version="1" nameOfRefClass="ServiceJourneyPattern"/>
-  <TimeDemandTypeRef ref="ch:1:TimeDemandType:NJ470" version="1"/>
-  <OperatorRef ref="ch:1:sboid:100003" version="1"/>
-  <LineRef ref="ch:1:slnid:NJ470" version="1"/>
-  <DirectionType>outbound</DirectionType>
-  <trainNumbers>
-    <TrainNumberRef ref="ch:1:TrainNumber:470" version="1"/>
-  </trainNumbers>
-</ServiceJourney>
-
-<ServiceJourney id="ch:1:sjyid:100001:60470" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:SBB">
-  <validityConditions>
-    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:NJ470_IC60470" version="1"/>
-  </validityConditions>
-  <privateCodes>
-    <PrivateCode type="sjyid">ch:1:sjyid:100001:60470</PrivateCode>
-  </privateCodes>
-  <TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:IC" version="1"/>
-  <ServiceAlteration>planned</ServiceAlteration>
-  <DepartureTime>22:07:00</DepartureTime>
-  <JourneyPatternRef ref="ch:1:ServiceJourneyPattern:NJ470_IC60470" version="1" nameOfRefClass="ServiceJourneyPattern"/>
-  <TimeDemandTypeRef ref="ch:1:TimeDemandType:IC60470" version="1"/>
-  <OperatorRef ref="ch:1:sboid:100001" version="1"/>
-  <LineRef ref="ch:1:slnid:IC60470" version="1"/>
-  <DirectionType>outbound</DirectionType>
-  <trainNumbers>
-    <TrainNumberRef ref="ch:1:TrainNumber:60470" version="1"/>
-  </trainNumbers>
-</ServiceJourney>
-
-<ServiceJourneyInterchange id="ch:1:ServiceJourneyInterchange:470-60470-BaselSBB" version="1">
-  <validityConditions>
-    <AvailabilityConditionRef ref="ch:1:AvailabilityCondition:NJ470_IC60470" version="1"/>
-  </validityConditions>
-  <Description>Kurswagen IC 60470 wird in Basel SBB an NJ 470 gekoppelt</Description>
-  <StaySeated>true</StaySeated>
-  <CrossBorder>false</CrossBorder>
-  <ChangeWithinVehicle>false</ChangeWithinVehicle>
-  <StandardWaitTime>PT7M</StandardWaitTime>
-  <StandardTransferTime>PT0M</StandardTransferTime>
-  <FromPointRef ref="ch:1:SchedStopPoint:10" version="1" nameOfRefClass="ScheduledStopPoint"/>
-  <ToPointRef ref="ch:1:SchedStopPoint:10" version="1" nameOfRefClass="ScheduledStopPoint"/>
-  <FromServiceJourneyRef ref="ch:1:sjyid:100003:470" version="1"/>
-  <ToServiceJourneyRef ref="ch:1:sjyid:100001:60470" version="1"/>
-</ServiceJourneyInterchange>
+```
+*KW  000037
+*KWZ 000472 80____ Zuerich HB    - Basel Bad Bf   02215 02319
+*KWZ 000470 80____ Basel Bad Bf  - Hannover Hbf   02340 00612
+*KWZ 002746 80____ Hannover Hbf  - Bremen Hbf     00644 00754
 ```
 
-> - `StaySeated=true`: a passenger already on board (in either NJ 470 or IC 60470)
->   does not need to leave the vehicle at Basel SBB.
-> - `ChangeWithinVehicle=false`: unlike splitting (Flügelzug), where passengers may
->   need to move to the correct coach *before* the split, here the two products are
->   already in their correct, fixed carriages — no movement within the vehicle is
->   required.
-> - `StandardWaitTime=PT7M`: the actual coupling time at Basel SBB — this field is
->   explicitly intended for *"joining/splitting and waiting in vehicle"* scenarios
->   like this one (per `src/templates/ServiceJourneyInterchange.xml`).
-> - `StandardTransferTime=PT0M`: set to zero here since no passenger walking-transfer
->   applies in a Kurswagen scenario — the field itself is `expected` on every
->   `ServiceJourneyInterchange`.
-> - Both `ServiceJourney`s carry their own `Line`, `TrainNumber`, `Operator`, and
->   `TypeOfProductCategoryRef` (`NJ` vs. `IC`) — this is deliberate: a single
->   physical composition can be sold as two entirely separate commercial products
->   for part of its route, and each product needs its own full `ServiceJourney`.
-> - `sjyid` (SID4PT) is tracked via `privateCodes/PrivateCode type="sjyid"` on each
->   `ServiceJourney`.
->   `privateCodes` for all SID4PT identifiers (SJYID/SLOID/SBOID/SLNID).
+## Modelling with NeTEx RG 2.0 (`JourneyPart`)
 
-The detailed handling is described for the element
-[ServiceJourneyInterchange](08_timetable.md#servicejourneyinterchange).
+Direct carriages are modelled with `JourneyPart`. The general rules for `JourneyPart`
+are described in [uc05 Journey Parts](uc05_journey_parts.md).
 
-- [Full example: NJ 470 / IC 60470 Kurswagen](./examples/19_NeTEx_CH_NJ470_IC60470_Kurswagen.xml)
+- The coach group is one complete `ServiceJourney` from its first to its last stop.
+  It has its own `ServiceJourneyPattern` over the whole path, its own
+  `TimeDemandType` (the wait times are the handover dwells) and its own `Line`,
+  because `RouteView/LineRef` is mandatory on `ServiceJourneyPattern`.
+- Each pulling train is a `ServiceJourney` of its own, with its own
+  `ServiceJourneyPattern`.
+- The `ServiceJourney` of the coach group contains one `JourneyPart` per pulling
+  train, i.e. one per `*KWZ`:
+  - `ParentJourneyRef` references the `ServiceJourney` of the pulling train.
+  - `FromPointInPatternRef` / `ToPointInPatternRef` delimit the section within the
+    `ServiceJourneyPattern` of the pulling train. This can be a sub-range: train 470
+    has three points (Basel Bad Bf, Hannover Hbf, Hamburg-Altona), the coach group
+    only rides points 1 to 2.
+  - `TrainNumberRef` is the train number of the pulling train.
+  - `StartTime` / `EndTime` with the day offsets give the time bounds of the section.
+  - `PurposeOfJourneyPartitionRef` is `ch:1:PurposeOfJourneyPartition:DirectCarriage`.
+- The coach group has no train number of its own. Its `trainNumbers` list the
+  `TrainNumber`s of the pulling trains in the order of the sections. The number of
+  the direct carriage from `*KW` is **not** a `TrainNumber`: a `TrainNumber` is the
+  number from `*Z` (see [TrainNumber template](./templates/TrainNumber.xml)).
+- `JourneyPartCouple` and `ServiceJourneyInterchange` are **not used** for direct
+  carriages. `ParentJourneyRef` together with the two `PointInPattern` references
+  already states which train pulls which section.
+
+```xml
+<ServiceJourney id="ch:1:ServiceJourney:KW37" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:DB">
+  <!-- ... -->
+  <noticeAssignments>
+    <NoticeAssignment id="ch:1:NoticeAssignment:KW37:1" version="1">
+      <NoticeRef ref="ch:1:Notice:A__KW" version="1"/>
+    </NoticeAssignment>
+  </noticeAssignments>
+  <ServiceAlteration>planned</ServiceAlteration>
+  <DepartureTime>22:15:00</DepartureTime>
+  <DepartureDayOffset>0</DepartureDayOffset>
+  <ServiceJourneyPatternRef ref="ch:1:ServiceJourneyPattern:KW37" version="1"/>
+  <TimeDemandTypeRef ref="ch:1:TimeDemandType:KW37" version="1"/>
+  <OperatorRef ref="ch:1:sboid:100310" version="1"/>
+  <trainNumbers>
+    <TrainNumberRef ref="ch:1:TrainNumber:472" version="1"/>
+    <TrainNumberRef ref="ch:1:TrainNumber:470" version="1"/>
+    <TrainNumberRef ref="ch:1:TrainNumber:2746" version="1"/>
+  </trainNumbers>
+  <!-- ... -->
+  <parts>
+    <JourneyPart id="ch:1:JourneyPart:KW37:1" version="1">
+      <Description lang="de">Kurswagen 37 am Zug 472, Zürich HB - Basel Bad Bf</Description>
+      <ParentJourneyRef ref="ch:1:ServiceJourney:472" version="1"/>
+      <TrainNumberRef ref="ch:1:TrainNumber:472" version="1"/>
+      <FromPointInPatternRef ref="ch:1:ServiceJourneyPattern:472:1" version="1"/>
+      <ToPointInPatternRef ref="ch:1:ServiceJourneyPattern:472:2" version="1"/>
+      <StartTime>22:15:00</StartTime>
+      <StartTimeDayOffset>0</StartTimeDayOffset>
+      <EndTime>23:19:00</EndTime>
+      <EndTimeDayOffset>0</EndTimeDayOffset>
+      <PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:DirectCarriage" version="1"/>
+    </JourneyPart>
+    <!-- 470 continues to Hamburg-Altona; the coach leaves it at Hannover Hbf,
+         so this part ends at point 2 of 3. -->
+    <JourneyPart id="ch:1:JourneyPart:KW37:2" version="1">
+      <Description lang="de">Kurswagen 37 am Zug 470, Basel Bad Bf - Hannover Hbf</Description>
+      <ParentJourneyRef ref="ch:1:ServiceJourney:470" version="1"/>
+      <TrainNumberRef ref="ch:1:TrainNumber:470" version="1"/>
+      <FromPointInPatternRef ref="ch:1:ServiceJourneyPattern:470:1" version="1"/>
+      <ToPointInPatternRef ref="ch:1:ServiceJourneyPattern:470:2" version="1"/>
+      <StartTime>23:40:00</StartTime>
+      <StartTimeDayOffset>0</StartTimeDayOffset>
+      <EndTime>06:12:00</EndTime>
+      <EndTimeDayOffset>1</EndTimeDayOffset>
+      <PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:DirectCarriage" version="1"/>
+    </JourneyPart>
+    <JourneyPart id="ch:1:JourneyPart:KW37:3" version="1">
+      <Description lang="de">Kurswagen 37 am Zug 2746, Hannover Hbf - Bremen Hbf</Description>
+      <ParentJourneyRef ref="ch:1:ServiceJourney:2746" version="1"/>
+      <TrainNumberRef ref="ch:1:TrainNumber:2746" version="1"/>
+      <FromPointInPatternRef ref="ch:1:ServiceJourneyPattern:2746:1" version="1"/>
+      <ToPointInPatternRef ref="ch:1:ServiceJourneyPattern:2746:2" version="1"/>
+      <StartTime>06:44:00</StartTime>
+      <StartTimeDayOffset>1</StartTimeDayOffset>
+      <EndTime>07:54:00</EndTime>
+      <EndTimeDayOffset>1</EndTimeDayOffset>
+      <PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:DirectCarriage" version="1"/>
+    </JourneyPart>
+  </parts>
+</ServiceJourney>
+```
+
+- [Full example: direct carriage 37 Zürich HB – Bremen Hbf](./examples/21_NeTEx_CH_Kurswagen_Zuerich_Bremen.xml)
 
 ## Related use cases
 
 - [uc01 Durchbindung](uc01_durchbindung.md)
 - [uc02 Joining and splitting of trains](uc02_joining_splitting.md)
+- [uc05 Journey Parts](uc05_journey_parts.md)
+- [uc15 Formations](uc15_formations.md)
