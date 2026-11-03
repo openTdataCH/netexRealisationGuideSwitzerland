@@ -75,7 +75,6 @@ This includes also `DefaultConnection` and `SiteConnection`
 ## INTERCHANGE Example
 Anbei ein einfaches Beispiel einer INTERCHANGE-Auslieferung.
 
-
 [Link to example](17_NeTEx_CH_INTERCHANGE.xml)
 
 ## Special case: Destination changed
@@ -90,11 +89,14 @@ In a second modeling we want to model the change in the train number as also sho
 
 [Link to example](11_NeTEx_CH_BLS_Bern_Luzern_Change_TrainNumber_and_other_stuff.xml)
 
-
 ## Mixed Lines
 
 [Link to example](14_NeTEx_CH_Linie_722_Mischbetrieb.xml)
 
+## Direct carriage (Kurswagen)
+Direct carriage 37 Zürich HB – Bremen Hbf, based on the direct-carriage example of the SKI HRDF realisation guide (section 7.1.4). The coach group is one complete `ServiceJourney` from Zürich HB to Bremen Hbf. It is divided into three `JourneyPart`s, one per pulling train (472, 470, 2746), mirroring the HRDF `*KWZ` lines. Train 470 continues to Hamburg-Altona after the coach group has been detached, so its `JourneyPart` covers only a sub-range of its pattern. See [uc08 Direct carriages](../uc08_kurswagen.md).
+
+[Link to example](21_NeTEx_CH_Kurswagen_Zuerich_Bremen.xml)
 
 ## Special case: Destination display in a round trip
 
