@@ -158,8 +158,8 @@
 											</AccessibilityLimitation>
 										</limitations>
 									</AccessibilityAssessment>
-									<SanitaryFacilityList><!-- ch-usage: mandatory --><!-- Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet toilet`. Optional: `wheelchairBabyChange babyChange shower`. -->toilet</SanitaryFacilityList>
-									<ToiletsType><!-- ch-usage: optional --><!-- Allowed values: `seated urinal seatedAndUrinal squat`. -->seated</ToiletsType>
+									<SanitaryFacilityList><!-- ch-usage: mandatory --><!-- ch-note: Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet toilet`. Optional: `wheelchairBabyChange babyChange shower`. -->toilet</SanitaryFacilityList>
+									<ToiletsType><!-- ch-usage: optional --><!-- ch-note: Allowed values: `seated urinal seatedAndUrinal squat`. -->seated</ToiletsType>
 								</SanitaryEquipment>
 							</placeEquipments>
 							<localServices>
@@ -171,6 +171,8 @@
 								</AssistanceService>
 								<AssistanceService id="ch:1:sloid:4402:assistance" version="1">
 									<!-- ch-usage: mandatory -->
+									<!-- ch-note: Presence of`AssistanceFacility`s and their availability , e.g., if they need to be booked. -->
+									<!-- ch-see -->
 									<Note><!-- ch-usage: expected -->Bei diesem Bahnhof benötigen Sie Ein- und Ausstiegshilfen. Bitte melden Sie sich bis spätestens 1 Stunde vor Zugabfahrt unter swisspass.ch/handicap oder beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.
 									</Note>
 									<AssistanceFacilityList>
@@ -183,6 +185,38 @@
 								<AssistanceService id="ch:1:sloid:4414:assistance" version="1">
 									<Note>Der Lift erfüllt nur die gesetzlichen Mindestanforderungen.</Note>
 								</AssistanceService>
+								<AssistanceBookingService id="ch:1:sloid:4402:assistancebooking" version="1">
+									<!-- ch-usage: optional -->
+									<!-- ch-note: Accessibility. Contact and booking information regarding assistance services. -->
+									<!-- ch-see -->
+									<WheelchairBookingRequired>
+										true
+									</WheelchairBookingRequired>
+									<BookingContact>
+									</BookingContact>
+									<VehicleMode>
+										rail
+									</VehicleMode>
+									<noticeAssignments>
+										<NoticeAssignment id="generated" version="1">
+											<validityConditions>
+    											<AvailabilityCondition id="generated" version="1">
+													<timebands>
+														<Timeband id="generated" version="1">
+															<StartTime>07:00:00</StartTime>
+															<EndTime>18:00:00</EndTime>
+														</Timeband>
+													</timebands>
+												</AvailabilityCondition>
+  											</validityConditions>
+											<Notice id="generated" version="1">
+												<Text lang="de">Nur auf Voranmeldung bis eine Stunde vorher.
+													<Text lang="en">Latest booking 1 hour before.</Text>
+												</Text>
+											</Notice>
+										</NoticeAssignment>
+									</noticeAssignments>
+								</AssistanceBookingService>
 							</localServices>
 							<StopPlaceType><!-- ch-usage: expected --><!-- Relevant values defined in mapping excel. Only value may be used, so use the most fitting one-->railStation</StopPlaceType>
 							<LimitedUse><!-- ch-usage: optional --><!-- ch-note: For stops like Sagliains. We currently use only interchangeOnly. --><!-- ch-allowed-enums: interchangeOnly -->interchangeOnly</LimitedUse>

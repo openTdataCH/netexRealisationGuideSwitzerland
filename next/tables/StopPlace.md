@@ -39,13 +39,12 @@ In some cases the id of a StopPlace is not a SLOID.
 | ++ | Ramp | expected | 0..1 | boolean | Whether a ramp may be used to access VEHICLE. |  |
 | + | SanitaryEquipment | optional | 0..* | unknown |  |  |
 | ++ | [AccessibilityAssessment](AccessibilityAssessment.md) | optional | 0..1 | AccessibilityAssessment_VersionedChildStructure |  |  |
-| ++ | SanitaryFacilityList | mandatory | 0..1 | SanitaryFacilityListOfEnumerations |  |  |
-| ++ | ToiletsType | optional | 0..1 | ToiletsTypeEnumeration | Indicates the position of using the toilet. |  |
+| ++ | SanitaryFacilityList | mandatory | 0..1 | SanitaryFacilityListOfEnumerations |  | Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet toilet`. Optional: `wheelchairBabyChange babyChange shower`. |
+| ++ | ToiletsType | optional | 0..1 | ToiletsTypeEnumeration | Indicates the position of using the toilet. | Allowed values: `seated urinal seatedAndUrinal squat`. |
 |  | localServices | optional | 0..1 | localServices_RelStructure |  | Will be exported from ATLAS for ERA TSI PRM. |
 | + | AssistanceService | optional | 0..* | AssistanceService_VersionStructure | Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc. |  |
-| + | AssistanceService | mandatory | 0..* | AssistanceService_VersionStructure | Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc. |  |
-| ++ | AssistanceFacilityList | expected | 0..1 | AssistanceFacilityListOfEnumerations |  | Facilities for which the availability is described below. Allowed values: `boardingAssistance personalAssistance wheelchairAssistance unaccompaniedMinorAssistance conductor information`. |
-| ++ | AssistanceAvailability | optional | 0..1 | AssistanceAvailabilityEnumeration | Availability of assistance service. | Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. |
+| + | [AssistanceService](AssistanceService.md) | mandatory | 0..* | AssistanceService_VersionStructure | Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc. | Presence of`AssistanceFacility`s and their availability , e.g., if they need to be booked. |
+| + | [AssistanceBookingService](AssistanceBookingService.md) | optional | 0..* | AssistanceBookingService_VersionStructure | Information about how to book assistance for wheelchair and disabled users. | Accessibility. Contact and booking information regarding assistance services. |
 |  | StopPlaceType | expected | 0..1 | StopTypeEnumeration | Type of STOP PLACE. |  |
 |  | LimitedUse | optional | 0..1 | LimitedUseTypeEnumeration | Further categorisation of stop as having topographic limitations. | For stops like Sagliains. We currently use only interchangeOnly. |
 |  | Weighting | optional | 0..1 | InterchangeWeightingEnumeration | Default rating of the STOP PLACE for making interchanges. | Default relative weighting to be used for stop place. See also mapping excel. Cf. HafasPriority in Extensions. |

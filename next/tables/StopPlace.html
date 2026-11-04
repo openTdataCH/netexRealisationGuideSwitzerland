@@ -536,7 +536,7 @@
       <td>0..1</td>
       <td>SanitaryFacilityListOfEnumerations</td>
       <td> </td>
-      <td> </td>
+      <td>Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">wheelchairAccessToilet toilet</code>. Optional: <code class="language-plaintext highlighter-rouge">wheelchairBabyChange babyChange shower</code>.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -545,7 +545,7 @@
       <td>0..1</td>
       <td>ToiletsTypeEnumeration</td>
       <td>Indicates the position of using the toilet.</td>
-      <td> </td>
+      <td>Allowed values: <code class="language-plaintext highlighter-rouge">seated urinal seatedAndUrinal squat</code>.</td>
     </tr>
     <tr>
       <td> </td>
@@ -567,30 +567,21 @@
     </tr>
     <tr>
       <td>+</td>
-      <td>AssistanceService</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AssistanceService.html">AssistanceService</a></td>
       <td>mandatory</td>
       <td>0..*</td>
       <td>AssistanceService_VersionStructure</td>
       <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
-      <td> </td>
+      <td>Presence of<code class="language-plaintext highlighter-rouge">AssistanceFacility</code>s and their availability , e.g., if they need to be booked.</td>
     </tr>
     <tr>
-      <td>++</td>
-      <td>AssistanceFacilityList</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>AssistanceFacilityListOfEnumerations</td>
-      <td> </td>
-      <td>Facilities for which the availability is described below. Allowed values: <code class="language-plaintext highlighter-rouge">boardingAssistance personalAssistance wheelchairAssistance unaccompaniedMinorAssistance conductor information</code>.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>AssistanceAvailability</td>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AssistanceBookingService.html">AssistanceBookingService</a></td>
       <td>optional</td>
-      <td>0..1</td>
-      <td>AssistanceAvailabilityEnumeration</td>
-      <td>Availability of assistance service.</td>
-      <td>Allowed values: <code class="language-plaintext highlighter-rouge">available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown</code>.</td>
+      <td>0..*</td>
+      <td>AssistanceBookingService_VersionStructure</td>
+      <td>Information about how to book assistance for wheelchair and disabled users.</td>
+      <td>Accessibility. Contact and booking information regarding assistance services.</td>
     </tr>
     <tr>
       <td> </td>
