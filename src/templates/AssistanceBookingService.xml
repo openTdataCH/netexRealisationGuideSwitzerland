@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Template</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<FrameDefaults/>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame" version="1"/>
+				<SiteFrame id="ch:1:SiteFrame" version="1">
+					<stopPlaces>
+						<StopPlace id="ch:1:sloid:7000" version="1">
+							<ValidBetween>
+								<FromDate>2025-12-14T00:00:00</FromDate>
+								<ToDate>2026-12-12T23:59:59</ToDate>
+							</ValidBetween>
+							<keyList>
+								<KeyValue>
+									<Key>HafasPriority</Key>
+									<Value>4</Value>
+								</KeyValue>
+								<KeyValue>
+									<Key>HafasKMInfo</Key>
+									<Value>1000</Value>
+								</KeyValue>
+							</keyList>
+							<privateCodes>
+								<PrivateCode type="didok">
+									7000
+								</PrivateCode>
+								<PrivateCode type="sloid">
+									ch:1:sloid:7000
+								</PrivateCode>
+							</privateCodes>
+							<Name>Bern</Name>
+							<ShortName>
+							</ShortName>
+							<PrivateCode>
+							</PrivateCode>
+							<Centroid>
+								<Name>
+								</Name>
+								<Location>
+									<Longitude>7.43913088992</Longitude>
+									<Latitude>46.94883228914</Latitude>
+									<Altitude>540.2</Altitude>
+								</Location>
+							</Centroid>
+							<gml:Polygon gml:id="a1231">
+							</gml:Polygon>
+							<Url>
+							</Url>
+							<AccessibilityAssessment id="generated" version="1">
+								<MobilityImpairedAccess>true</MobilityImpairedAccess>
+							</AccessibilityAssessment>
+							<alternativeNames>
+								<AlternativeName id="ch:1:sloid:7000:it" version="1">
+                                    <NameType>alias</NameType>
+									<Name lang="it">Berna</Name>
+								</AlternativeName>
+							</alternativeNames>
+							<PublicUse>all</PublicUse>
+							<Covered>covered</Covered>
+							<AllAreasWheelchairAccessible>
+								true
+							</AllAreasWheelchairAccessible>
+							<facilities>
+								<SiteFacilitySet id="ch:1:sitefacilityset:7000:1" version="1">
+								</SiteFacilitySet>
+								<SiteFacilitySetRef ref="generated" versionRef="1">
+								</SiteFacilitySetRef>
+							</facilities>
+							<TopographicPlaceRef ref="BE-bern" versionRef="1">
+							</TopographicPlaceRef>
+							<Locale>
+								<TimeZone>Europe/Zurich</TimeZone>
+							</Locale>
+							<levels>
+								<Level id="ch:1:level:7000:0" version="1">
+								</Level>
+								<Level id="ch:1:level:7000:-1" version="1">
+								</Level>
+							</levels>
+							<entrances>
+								<StopPlaceEntrance id="ch:1:entrance:7000:1" version="1">
+								</StopPlaceEntrance>
+							</entrances>
+							<equipmentPlaces>
+								<EquipmentPlaceRef ref="generated" versionRef="1"/>
+							</equipmentPlaces>
+							<placeEquipments>
+								<LiftEquipmentRef ref="generated" versionRef="1"/>
+							</placeEquipments>
+							<localServices>
+								<AssistanceService id="ch:1:assistance:7000:1" version="1">
+								</AssistanceService>
+								<AssistanceBookingService id="ch:1:assistancebooking:7000:1" version="1">
+									<!-- ch-root -->
+									<!-- ch-usage: optional -->
+									<!-- ch-note: Accessibility. Contact and booking information regarding assistance services. -->
+									<WheelchairBookingRequired>
+										<!-- ch-usage: optional -->
+										true
+									</WheelchairBookingRequired>
+									<BookingContact>
+										<!-- ch-usage: expected -->
+									</BookingContact>
+									<VehicleMode>
+										<!-- ch-usage: optional -->
+										rail
+									</VehicleMode>
+									<noticeAssignments>
+										<!-- ch-usage: optional -->
+										<NoticeAssignment id="generated" version="1">
+											<!-- ch-usage: expected -->
+											<!-- ch-see -->
+											<validityConditions>
+												<!-- ch-usage: optional -->
+    											<AvailabilityCondition id="generated" version="1">
+													<!-- ch-usage: optional -->
+													<timebands>
+														<!-- ch-usage: optional -->
+														<Timeband id="generated" version="1">
+															<StartTime>07:00:00</StartTime>
+															<EndTime>18:00:00</EndTime>
+														</Timeband>
+													</timebands>
+												</AvailabilityCondition>
+  											</validityConditions>
+											<Notice id="generated" version="1">
+												<!-- ch-usage: expected -->
+												<Text lang="de">Nur auf Voranmeldung bis eine Stunde vorher.
+													<Text lang="en">Latest booking 1 hour before.</Text>
+												</Text>
+											</Notice>
+										</NoticeAssignment>
+									</noticeAssignments>
+								</AssistanceBookingService>
+								<MeetingPointService id="ch:1:meetingpoint:7000:1" version="1">
+									<MeetingPointServiceType>
+										meetingPoint
+									</MeetingPointServiceType>
+									<Label>Treffpunkt</Label>
+								</MeetingPointService>
+							</localServices>
+							<StopPlaceType>railStation</StopPlaceType>
+							<LimitedUse>interchangeOnly</LimitedUse>
+							<Weighting>preferredInterchange</Weighting>
+							<quays>
+								<Quay id="ch:1:sloid:7000:5:9" version="1">
+								</Quay>
+							</quays>
+							<accessSpaces>
+								<AccessSpace id="ch:1:accessspace:7000:1" version="1">
+								</AccessSpace>
+							</accessSpaces>
+						</StopPlace>
+					</stopPlaces>
+				</SiteFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

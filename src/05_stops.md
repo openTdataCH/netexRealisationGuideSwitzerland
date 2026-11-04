@@ -11,6 +11,9 @@ In this chapter:
 - [TopographicPlace](#topographicplace)
 - [Centroid](#centroid)
 - [AccessibilityAssessment](#accessibilityassessment)
+- [StopPlaceEntrance](#stopplaceentrance)
+- [AssistanceService](#assistanceservice)
+- [AssistanceBookingService](#assistancebookingservice)
 
 ## SiteFrame
 *→ [Glossary definition](A4_annex_glossary.md#siteframe)*
@@ -280,4 +283,62 @@ Such information can be encoded using `SitePathLink`s and `PathJunction`s that d
 #### Entrances related to AccessibilityAssessment
 * All `AccessibiltyLimitation`s (`StepFreeAccess` etc.) relate to a complete path from an "accessible" `StopPlaceEntrance` with `DroppedKerb=true` and `DropOffPointClose=true`. 
 
+
+
+## StopPlaceEntrance
+*→ [Glossary definition](A4_annex_glossary.md#StopPlaceEntrance)* **TODO**
+
+### Purpose
+`StopPlaceEntrance`s, in particular if `DroppedKerbOutside` and `DropOffPointClose` are true, are the reference points from which the accessibility of `Quay`s and other place elements is assessed. 
+
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/StopPlaceEntrance.md)
+
+*→ [General NeTEx definition ](../xcore/netex/elements/StopPlaceEntrance.html)*
+
+### Example
+- [Example snippet](../site/xml-snippets/StopPlaceEntrance.xml)
+
+*→ [Template](./templates/StopPlaceEntrance.xml)*
+
+
+
+
+## AssistanceService
+*→ [Glossary definition](A4_annex_glossary.md#AssistanceService)* **TODO**
+
+### Purpose
+Used to inform about assistance services and their availability.
+The booking / contact information can be found in the accompanying `AssistanceBookingService`element.
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/AssistanceService.md)
+
+*→ [General NeTEx definition ](../xcore/netex/elements/AssistanceService.html)*
+
+### Example
+- [Example snippet](../site/xml-snippets/AssistanceService.xml)
+
+*→ [Template](./templates/AssistanceService.xml)*
+
+
+
+
+## AssistanceBookingService
+*→ [Glossary definition](A4_annex_glossary.md#AssistanceBookingService)* **TODO**
+
+### Purpose
+Booking / contact information for `AssistanceService`.
+
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/AssistanceBookingService.md)
+
+*→ [General NeTEx definition ](../xcore/netex/elements/AssistanceBookingService.html)*
+
+### Example
+- [Example snippet](../site/xml-snippets/AssistanceBookingService.xml)
+
+*→ [Template](./templates/AssistanceBookingService.xml)*
 
