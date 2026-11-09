@@ -383,24 +383,7 @@
 						</TimeDemandType>
 					</timeDemandTypes>
 				</ServiceFrame>
-				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="1">
-					<validityConditions>
-						<AvailabilityCondition id="ch:1:AvailabilityCondition:15" version="1">
-							<FromDate>2025-12-14T00:00:00</FromDate>
-							<ToDate>2026-12-12T23:59:59</ToDate>
-							<ValidDayBits>0111110011100001110000111110011111001111100111110011111001111100111110011111001111100111110011111001111100111100001111001111100111110011111001111100111010011111000111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110</ValidDayBits>
-						</AvailabilityCondition>
-						<AvailabilityCondition id="ch:1:AvailabilityCondition:16" version="1">
-							<FromDate>2025-12-14T00:00:00</FromDate>
-							<ToDate>2026-12-12T23:59:59</ToDate>
-							<ValidDayBits>0111111011100101110010111111011111101111110111111011111101111110111111011111101111110111111011111101111110111101001111101111110111111011111101111110111011011111100111110111111011111101111110111111011111101111110111111011111101111100111111011111101111110111111011111101111110111111011111101111110111111011111101111110111111011111101111110111111011111101111110111111</ValidDayBits>
-						</AvailabilityCondition>
-						<AvailabilityCondition id="ch:1:AvailabilityCondition:17" version="1">
-							<FromDate>2025-12-14T00:00:00</FromDate>
-							<ToDate>2026-12-12T23:59:59</ToDate>
-							<ValidDayBits>1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111</ValidDayBits>
-						</AvailabilityCondition>
-					</validityConditions>
+				<ServiceCalendarFrame id="ch:1:ServiceCalendarFrame:j26" version="1">					
 					<ServiceCalendar id="ch:1:ServiceCalendar:j26" version="1">
 						<Name>Horaire 2026</Name>
 						<FromDate>2025-12-14</FromDate>
@@ -419,20 +402,71 @@
 								</PropertyOfDay>
 							</properties>
 						</DayType>
+						<!-- Daytypes corresponding to HRDF Bitfields -->
+						<DayType id="ch:1:Daytype:15" version="1">
+							<Name>Montag - Freitag</Name>
+						</DayType>
+						<DayType id="ch:1:Daytype:16" version="1">
+							<Name>Montag - Samstag vom 01.06.26 - 30.06.26</Name>
+						</DayType>
+						<DayType id="ch:1:Daytype:17" version="1">
+							<Name>nur 08.11.26, 10.11.26, 12.11.26</Name>
+						</DayType>						
 					</dayTypes>
+					<operatingPeriods>
+						<UicOperatingPeriod id="ch:1:UicOperatingPeriod:15" version="1">
+							<FromDate>2025-12-14T00:00:00</FromDate>
+							<ToDate>2026-12-12T23:59:59</ToDate>										<ValidDayBits>0111110011100001110000111110011111001111100111110011111001111100111110011111001111100111110011111001111100111100001111001111100111110011111001111100111010011111000111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110011111001111100111110</ValidDayBits>
+						</UicOperatingPeriod>
+						<UicOperatingPeriod id="ch:1:UicOperatingPeriod:16" version="1">
+							<FromDate>2626-06-01T00:00:00</FromDate>
+							<ToDate>2626-06-01T23:59:59</ToDate>
+							<!-- short date range results in shorter string -->
+							<ValidDayBits>111111011111101111110111111011</ValidDayBits>
+						</UicOperatingPeriod>
+						<UicOperatingPeriod id="ch:1:UicOperatingPeriod:17" version="1">
+							<FromDate>2626-11-09T00:00:00</FromDate>
+							<ToDate>2626-11-13T23:59:59</ToDate>
+							<!-- short date range results in shorter string -->
+							<ValidDayBits>10101</ValidDayBits>
+						</UicOperatingPeriod>
+						<UicOperatingPeriod id="ch:1:UicOperatingPeriod:Weihnachten" version="1">
+							<FromDate>2626-12-25T00:00:00</FromDate>
+							<ToDate>2626-11-13T23:59:59</ToDate>							
+							<ValidDayBits>1</ValidDayBits>
+						</UicOperatingPeriod>
+					</operatingPeriods>
 					<dayTypeAssignments>
+						<!-- Day type Assignments for HRDF style bitfields -->
+						<DayTypeAssignment id="ch:1:DaytypeAssignment:15" version="1">
+							<UicOperatingPeriodRef ref="ch:1:UicOperatingPeriod:15" version="1"/>
+							<DayTypeRef ref="ch:1:Daytype:15" version="1"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment id="ch:1:DaytypeAssignment:16" version="1">
+							<UicOperatingPeriodRef ref="ch:1:UicOperatingPeriod:16" version="1"/>
+							<DayTypeRef ref="ch:1:Daytype:15" version="1"/>
+						</DayTypeAssignment>
+						<DayTypeAssignment id="ch:1:DaytypeAssignment:17" version="1">
+							<UicOperatingPeriodRef ref="ch:1:UicOperatingPeriod:17" version="1"/>
+							<DayTypeRef ref="ch:1:Daytype:15" version="1"/>
+						</DayTypeAssignment>
+						
+						<!-- Day type Assignments for public holidays were done by Assignment of explicit date before...
 						<DayTypeAssignment id="ch:1:DayTypeAssignment:Weihnachten" version="1" order="1">
 							<Date>2025-12-25</Date>
 							<DayTypeRef ref="ch:1:DayType:Weihnachten" version="1"/>
 						</DayTypeAssignment>
+						-->
+						<!-- but now they are done by UicOperatingPeriod as well for sake of simplicity -->
+						<DayTypeAssignment id="ch:1:DayTypeAssignment:Weihnachten" version="1" order="1">
+							<UicOperatingPeriodRef ref="ch:1:UicOperatingPeriod:Weihnachten" version="1"/>
+							<DayTypeRef ref="ch:1:DayType:Weihnachten" version="1"/>
+						</DayTypeAssignment>					
 					</dayTypeAssignments>
 				</ServiceCalendarFrame>
 				<TimetableFrame id="ch:1:TimetableFrame:j26" version="1">
 					<vehicleJourneys>
-						<ServiceJourney id="ch:1:ServiceJourney:ch:1:sjyid:100540:plan:64400bea-e375-43df-96ae-41b5cdd0f97c.j26" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:TPN_738_TPN">
-							<validityConditions>
-								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:15" version="1"/>
-							</validityConditions>
+						<ServiceJourney id="ch:1:ServiceJourney:ch:1:sjyid:100540:plan:64400bea-e375-43df-96ae-41b5cdd0f97c.j26" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:TPN_738_TPN">							
 							<privateCodes>
 								<PrivateCode type="sjyid">ch:1:sjyid:100540:plan:64400bea-e375-43df-96ae-41b5cdd0f97c</PrivateCode>
 							</privateCodes>
@@ -442,6 +476,9 @@
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>05:58:00</DepartureTime>
 							<DepartureDayOffset>0</DepartureDayOffset>
+							<dayTypes>
+								<DayTypeRef ref="ch:1:Daytype:15" version="1"></DayTypeRef>
+							</dayTypes>
 							<ServiceJourneyPatternRef ref="ch:1:JourneyPattern:1025522-1" version="1"/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:1" version="1"/>
 							<VehicleTypeRef ref="ch:1:VehicleType:NF" version="1" nameOfRefClass="VehicleType"/>
@@ -453,10 +490,7 @@
 								<ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A__NF" version="1"/>
 							</facilities>
 						</ServiceJourney>
-						<ServiceJourney id="ch:1:ServiceJourney:ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27.j26" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:TPN_738_TPN">
-							<validityConditions>
-								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:15" version="1"/>
-							</validityConditions>
+						<ServiceJourney id="ch:1:ServiceJourney:ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27.j26" version="1" responsibilitySetRef="ch:1:ResponsibilitySet:TPN_738_TPN">							
 							<privateCodes>
 								<PrivateCode type="sjyid">ch:1:sjyid:100540:plan:8a591483-1758-4723-938f-60ae557b0d27</PrivateCode>
 							</privateCodes>
@@ -465,6 +499,9 @@
 							<TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
 							<ServiceAlteration>planned</ServiceAlteration>
 							<DepartureTime>06:01:00</DepartureTime>
+							<dayTypes>
+								<DayTypeRef ref="ch:1:Daytype:15" version="1"></DayTypeRef>
+							</dayTypes>
 							<ServiceJourneyPatternRef ref="ch:1:JourneyPattern:1025522-2" version="1"/>
 							<TimeDemandTypeRef ref="ch:1:TimeDemandType:1" version="1"/>
 							<VehicleTypeRef ref="ch:1:VehicleType:NF" version="1" nameOfRefClass="VehicleType"/>
@@ -488,7 +525,13 @@
 					<serviceFacilitySets>
 						<ServiceFacilitySet id="ch:1:ServiceFacilitySet:A__NF" version="1">
 							<validityConditions>
-								<AvailabilityConditionRef ref="ch:1:AvailabilityCondition:15" version="1"/>
+								<!-- we can refer to Day types in the availability condition as well -->
+								<!-- this is only necessary if the facility set is not available at all days the service journey operates -->
+								<AvailabilityCondition id="ch:1:AvailabilityCondition:A__NF" version="1">
+									<dayTypes>
+										<DayTypeRef ref="ch:1:Daytype:15" version="1"/>
+									</dayTypes>
+								</AvailabilityCondition>
 							</validityConditions>
 							<alternativeTexts>
 								<AlternativeText attributeName="Description">
