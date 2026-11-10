@@ -219,6 +219,12 @@
   <p>NOTE: Work in progress. We still have to update some things here. Currently, this is not yet finalised.</p>
 </blockquote>
 
+<blockquote>
+  <p>NOTE: <code class="language-plaintext highlighter-rouge">ServiceCompetitiveCondition</code>, <code class="language-plaintext highlighter-rouge">ServiceEligibilityCondition</code> and <code class="language-plaintext highlighter-rouge">ServiceBookingArrangement</code> in
+<code class="language-plaintext highlighter-rouge">Line/bookingArrangements</code> were introduced by the DRT extension of NeTEx
+(<a href="https://github.com/NeTEx-CEN/NeTEx/pull/959">pull request #959</a>).</p>
+</blockquote>
+
 <p>In this chapter:</p>
 <ul>
   <li><a href="#overview">Overview</a></li>
@@ -233,8 +239,8 @@
   <li><a href="#request-stops">Request Stops</a></li>
   <li><a href="#reservation-as-service-facility">Reservation as Service Facility</a></li>
   <li><a href="#collection-points">Collection Points</a></li>
+  <li><a href="#service-areas">Service Areas</a></li>
   <li><a href="#templates-and-examples">Templates and Examples</a></li>
-  <li><a href="#open-points">Open Points</a></li>
 </ul>
 
 <h2 id="overview">Overview</h2>
@@ -250,42 +256,42 @@ or only serve some stops, when passengers have booked or requested them.</p>
 <table>
   <thead>
     <tr>
-      <th>Swiss DRT type</th>
+      <th>Remarks from the mapping table</th>
       <th>LineType</th>
       <th>TransportSubmode</th>
-      <th>Remarks from the mapping table</th>
+      <th>Swiss DRT type</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>1 – Bedarfslinie</td>
+      <td>Fixed stops, operated on request.</td>
       <td><code class="language-plaintext highlighter-rouge">flexible</code></td>
       <td><code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code></td>
-      <td>Fixed stops, operated on request.</td>
+      <td>1 – Bedarfslinie</td>
     </tr>
     <tr>
-      <td>2 – Anrufsammelverkehr</td>
+      <td>Combines fixed and flexible elements; passengers book individual trips, shared vehicle routing.</td>
       <td><code class="language-plaintext highlighter-rouge">mixedFlexibleAndFixed</code></td>
       <td><code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code></td>
-      <td>Combines fixed and flexible elements; passengers book individual trips, shared vehicle routing.</td>
+      <td>2 – Anrufsammelverkehr</td>
     </tr>
     <tr>
-      <td>3 – Richtungsband, örtlich disponierter Bus</td>
+      <td>Flexible routing along a geographic corridor; stops constrained to the corridor.</td>
       <td><code class="language-plaintext highlighter-rouge">corridorService</code></td>
       <td><code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code></td>
-      <td>Flexible routing along a geographic corridor; stops constrained to the corridor.</td>
+      <td>3 – Richtungsband, örtlich disponierter Bus</td>
     </tr>
     <tr>
+      <td>Area-wide service with time-based operating windows; time restriction via <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> / <code class="language-plaintext highlighter-rouge">Timeband</code>.</td>
+      <td><code class="language-plaintext highlighter-rouge">freeAreaAreaWide</code></td>
+      <td><code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code></td>
       <td>4 – Zeitbezogener Flächenverkehr</td>
-      <td><code class="language-plaintext highlighter-rouge">freeAreaAreaWide</code></td>
-      <td><code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code></td>
-      <td>time restriction via <code class="language-plaintext highlighter-rouge">AvailabilityCondition</code> / <code class="language-plaintext highlighter-rouge">Timeband</code>.</td>
     </tr>
     <tr>
-      <td>5 – Freier Flächenverkehr</td>
+      <td>Fully area-wide, no fixed stops.</td>
       <td><code class="language-plaintext highlighter-rouge">freeAreaAreaWide</code></td>
       <td><code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code></td>
-      <td>Fully area-wide, no fixed stops.</td>
+      <td>5 – Freier Flächenverkehr</td>
     </tr>
   </tbody>
 </table>
@@ -307,6 +313,10 @@ DRT type and <code class="language-plaintext highlighter-rouge">BusSubmode</code
 flexible stop references the <code class="language-plaintext highlighter-rouge">BookingArrangement</code>, see <a href="#request-stops">Request Stops</a>.</li>
   <li><strong>ServiceFacilitySet and Notice:</strong> reservation offers from HRDF are delivered as facility and
 <code class="language-plaintext highlighter-rouge">Notice</code>, see <a href="#reservation-as-service-facility">Reservation as Service Facility</a>.</li>
+  <li><strong>TypeOfPlace:</strong> stops are typed as <code class="language-plaintext highlighter-rouge">drtCollectionPoint</code> or <code class="language-plaintext highlighter-rouge">regularStop</code>, see
+<a href="#collection-points">Collection Points</a>.</li>
+  <li><strong>FlexibleStopPlace and FlexibleStopAssignment:</strong> the service area of the types 3 to 5, see
+<a href="#service-areas">Service Areas</a>.</li>
 </ul>
 
 <p><code class="language-plaintext highlighter-rouge">Line</code> replaces <code class="language-plaintext highlighter-rouge">FlexibleLine</code> (<code class="language-plaintext highlighter-rouge">forbidden</code> in the <a href="/netexRealisationGuideSwitzerland/next/templates/ServiceFrame.xml">ServiceFrame template</a>),
@@ -341,17 +351,25 @@ and <code class="language-plaintext highlighter-rouge">LineType</code> replaces 
         BookingNote
     }
     class ServiceBookingArrangement:::contained {
-        BookingChargeType
+        MinimumBookingDuration
+        MaximumBookingDuration
         DepositRequired
+        BookingChargeType
     }
     class ServiceCompetitiveCondition:::contained {
-        DistanceFromClassical
-        TemporalDistanceFromClassical
+        MinimalDistanceFromClassical
+        TemporalDistanceFromClassicalBefore
+        TemporalDistanceFromClassicalAfter
+        PenaltyTravelTimeFactor
+        MinimumTravelDuration
+        MaximumTravelDuration
         InterchangeWithConventionalServicesAllowed
     }
     class ServiceEligibilityCondition:::contained {
         UserProfile
+        CommercialProfile
         ResidentialQualification
+        CompanionProfile
     }
     class ServiceJourneyPattern:::contained {
         pointsInSequence
@@ -379,6 +397,7 @@ and <code class="language-plaintext highlighter-rouge">LineType</code> replaces 
     Line "1" o-- "0..*" ServiceBookingArrangement : contains
     Line "1" o-- "0..*" ServiceCompetitiveCondition : contains
     Line "1" o-- "0..*" ServiceEligibilityCondition : contains
+    ServiceBookingArrangement --|&gt; BookingArrangement : extends
     ServiceJourneyPattern "1" o-- "1..*" StopPointInJourneyPattern : contains
     ServiceJourney "1" o-- "0..1" FlexibleServiceProperties : contains
 
@@ -464,9 +483,14 @@ and <code class="language-plaintext highlighter-rouge">LineType</code> replaces 
 <ul>
   <li>Several <code class="language-plaintext highlighter-rouge">ServiceEligibilityCondition</code>s are combined with OR (e.g. “senior <strong>or</strong> child”). This
 may require splitting a service.</li>
-  <li><code class="language-plaintext highlighter-rouge">FlexibleServiceProperties</code> and <code class="language-plaintext highlighter-rouge">StopPointInJourneyPattern</code> can only reference a
-<code class="language-plaintext highlighter-rouge">BookingArrangement</code>. <code class="language-plaintext highlighter-rouge">ServiceBookingArrangement</code>, <code class="language-plaintext highlighter-rouge">ServiceCompetitiveCondition</code> and
-<code class="language-plaintext highlighter-rouge">ServiceEligibilityCondition</code> are only possible in <code class="language-plaintext highlighter-rouge">Line/bookingArrangements</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">Line/bookingArrangements</code> is of type <code class="language-plaintext highlighter-rouge">serviceBookingArrangements_RelStructure</code> and can hold all
+four elements. <code class="language-plaintext highlighter-rouge">bookingArrangements</code> in <code class="language-plaintext highlighter-rouge">ServiceJourney</code>,
+<code class="language-plaintext highlighter-rouge">FlexibleServiceProperties</code> and <code class="language-plaintext highlighter-rouge">StopPointInJourneyPattern</code> stays
+<code class="language-plaintext highlighter-rouge">bookingArrangements_RelStructure</code>: only <code class="language-plaintext highlighter-rouge">BookingArrangement</code> or <code class="language-plaintext highlighter-rouge">BookingArrangementRef</code>.
+<code class="language-plaintext highlighter-rouge">ServiceBookingArrangement</code>, <code class="language-plaintext highlighter-rouge">ServiceCompetitiveCondition</code> and <code class="language-plaintext highlighter-rouge">ServiceEligibilityCondition</code> are
+therefore only possible in <code class="language-plaintext highlighter-rouge">Line/bookingArrangements</code>.</li>
+  <li>The <code class="language-plaintext highlighter-rouge">bookingArrangements</code> of the <code class="language-plaintext highlighter-rouge">Line</code> are valid for the whole <code class="language-plaintext highlighter-rouge">Line</code>; a lower level supersedes a
+higher level (XSD documentation of <code class="language-plaintext highlighter-rouge">Line/bookingArrangements</code>).</li>
 </ul>
 
 <h2 id="bookingarrangement">BookingArrangement</h2>
@@ -533,6 +557,10 @@ handling more information can be transferred
 (<a href="/netexRealisationGuideSwitzerland/next/templates/ServiceJourneyPattern.xml">ServiceJourneyPattern template</a>).</li>
   <li>In a <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>, the <code class="language-plaintext highlighter-rouge">BookingArrangement</code> is referenced with
 <code class="language-plaintext highlighter-rouge">BookingArrangementRef</code>; an inline <code class="language-plaintext highlighter-rouge">BookingArrangement</code> is <code class="language-plaintext highlighter-rouge">ignored</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">BookingArrangement</code> is still needed even though <code class="language-plaintext highlighter-rouge">ServiceBookingArrangement</code> contains all its
+elements: <code class="language-plaintext highlighter-rouge">ServiceJourney</code>, <code class="language-plaintext highlighter-rouge">FlexibleServiceProperties</code> and <code class="language-plaintext highlighter-rouge">StopPointInJourneyPattern</code> can only
+hold a <code class="language-plaintext highlighter-rouge">BookingArrangement</code> or a <code class="language-plaintext highlighter-rouge">BookingArrangementRef</code> (see
+<a href="#booking-and-rules-on-the-line">Booking and Rules on the Line</a>).</li>
 </ul>
 
 <h2 id="servicebookingarrangement">ServiceBookingArrangement</h2>
@@ -545,40 +573,57 @@ handling more information can be transferred
 <h2 id="servicecompetitivecondition">ServiceCompetitiveCondition</h2>
 
 <h3 id="purpose-4">Purpose</h3>
-<p>Describes restrictions of the DRT service towards classical public transport. It contains
-<strong>either</strong> the competition parameters <strong>or</strong> the two interchange flags.</p>
+<p>Describes restrictions of the DRT service towards classical public transport. Besides <code class="language-plaintext highlighter-rouge">Name</code> and
+<code class="language-plaintext highlighter-rouge">Description</code> it contains <strong>exactly one</strong> of three groups (choice in the XSD).</p>
 
 <p><em>Table: Elements of ServiceCompetitiveCondition</em></p>
 
 <table>
   <thead>
     <tr>
+      <th>Group</th>
       <th>Element</th>
       <th>Meaning</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">transferRestrictions</code> / <code class="language-plaintext highlighter-rouge">routingConstraintZones</code> / <code class="language-plaintext highlighter-rouge">serviceExclusions</code></td>
+      <td>Distance</td>
+      <td><code class="language-plaintext highlighter-rouge">transferRestrictions</code> / <code class="language-plaintext highlighter-rouge">routingConstraintZones</code></td>
       <td>Restrictions towards other services. If not set, the rules apply in general.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">DistanceFromClassical</code></td>
-      <td>Distance in metres to the line/service or classical public transport in general; builds geometric exclusion zones.</td>
+      <td>Distance</td>
+      <td><code class="language-plaintext highlighter-rouge">MinimalDistanceFromClassical</code></td>
+      <td>Distance in metres to the line/service or classical public transport in general: the minimum walking distance from the next <code class="language-plaintext highlighter-rouge">StopPlace</code> of classical public transport.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">TemporalDistanceFromClassical</code></td>
-      <td>Temporal distance to the service/transfer in the routing constraint or classical public transport in general.</td>
+      <td>Distance</td>
+      <td><code class="language-plaintext highlighter-rouge">TemporalDistanceFromClassicalBefore</code> / <code class="language-plaintext highlighter-rouge">TemporalDistanceFromClassicalAfter</code></td>
+      <td>Temporal distance to the service/transfer in the routing constraint or classical public transport in general, before / after the departure at a reasonably nearby stop.</td>
     </tr>
     <tr>
-      <td><code class="language-plaintext highlighter-rouge">PenaltyDrivingTimeFactor</code> / <code class="language-plaintext highlighter-rouge">PenaltyTransferTimeFactor</code> / <code class="language-plaintext highlighter-rouge">WalkTimeFactor</code></td>
+      <td>Dominance</td>
+      <td><code class="language-plaintext highlighter-rouge">PenaltyTravelTimeFactor</code> / <code class="language-plaintext highlighter-rouge">PenaltyTransferTimeFactor</code> / <code class="language-plaintext highlighter-rouge">WalkTimeFactor</code></td>
       <td>Factors for the comparison with classical public transport (default <code class="language-plaintext highlighter-rouge">1.0</code>).</td>
     </tr>
     <tr>
+      <td>Dominance</td>
+      <td><code class="language-plaintext highlighter-rouge">PenaltyTravelTimeOffset</code></td>
+      <td>Offset in the calculation of the dominance (default <code class="language-plaintext highlighter-rouge">PT0S</code>).</td>
+    </tr>
+    <tr>
+      <td>Dominance</td>
+      <td><code class="language-plaintext highlighter-rouge">MinimumTravelDuration</code> / <code class="language-plaintext highlighter-rouge">MaximumTravelDuration</code></td>
+      <td>Minimum (default <code class="language-plaintext highlighter-rouge">PT0S</code>) and maximum travel duration allowed for the service.</td>
+    </tr>
+    <tr>
+      <td>Interchange</td>
       <td><code class="language-plaintext highlighter-rouge">InterchangeBetweenFlexibleServicesAllowed</code></td>
       <td>Default <code class="language-plaintext highlighter-rouge">false</code>.</td>
     </tr>
     <tr>
+      <td>Interchange</td>
       <td><code class="language-plaintext highlighter-rouge">InterchangeWithConventionalServicesAllowed</code></td>
       <td>Default <code class="language-plaintext highlighter-rouge">false</code>.</td>
     </tr>
@@ -588,8 +633,8 @@ handling more information can be transferred
 <h3 id="example-1">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ServiceCompetitiveCondition</span> <span class="na">id=</span><span class="s">"ch:1:ServiceCompetitiveCondition:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;DistanceFromClassical&gt;</span>200<span class="nt">&lt;/DistanceFromClassical&gt;</span>
-  <span class="nt">&lt;TemporalDistanceFromClassical&gt;</span>PT15M<span class="nt">&lt;/TemporalDistanceFromClassical&gt;</span>
+  <span class="nt">&lt;MinimalDistanceFromClassical&gt;</span>200<span class="nt">&lt;/MinimalDistanceFromClassical&gt;</span>
+  <span class="nt">&lt;TemporalDistanceFromClassicalBefore&gt;</span>PT15M<span class="nt">&lt;/TemporalDistanceFromClassicalBefore&gt;</span>
 <span class="nt">&lt;/ServiceCompetitiveCondition&gt;</span>
 </code></pre></div></div>
 
@@ -678,7 +723,8 @@ sheet <em>Haltecode</em> of the mapping table:</p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">StopUse</code> is <code class="language-plaintext highlighter-rouge">access</code>, at stations with BHFArt 3 <code class="language-plaintext highlighter-rouge">interchangeOnly</code>.</li>
   <li>A flexible stop references the <code class="language-plaintext highlighter-rouge">BookingArrangement</code> with <code class="language-plaintext highlighter-rouge">BookingArrangementRef</code>
-(<a href="/netexRealisationGuideSwitzerland/next/templates/ServiceJourneyPattern.xml">ServiceJourneyPattern template</a>).</li>
+(<a href="/netexRealisationGuideSwitzerland/next/templates/ServiceJourneyPattern.xml">ServiceJourneyPattern template</a>, <code class="language-plaintext highlighter-rouge">optional</code>). The template uses
+it to mark that a stop is flexible.</li>
 </ul>
 
 <h2 id="reservation-as-service-facility">Reservation as Service Facility</h2>
@@ -728,11 +774,438 @@ Examples:</p>
 
 <h2 id="collection-points">Collection Points</h2>
 
-<p>Collection points are described with <code class="language-plaintext highlighter-rouge">StopPlaceType</code> (Decision 2026-06-30, “namentlich für
-drt:collectionPoint”). The <code class="language-plaintext highlighter-rouge">ResourceFrame</code> contains the <code class="language-plaintext highlighter-rouge">ValueSet</code> <code class="language-plaintext highlighter-rouge">ch:1:ValueSet:TypesOfPlace</code>
-with the <code class="language-plaintext highlighter-rouge">TypeOfPlace</code>s <code class="language-plaintext highlighter-rouge">drtCollectionPoint</code> and <code class="language-plaintext highlighter-rouge">regularStop</code>
-(<a href="/netexRealisationGuideSwitzerland/next/templates/ResourceFrame.xml">ResourceFrame template</a>,
-<a href="/netexRealisationGuideSwitzerland/next/09_resources.html#typesofplace">Resource Frame</a>).</p>
+<h3 id="purpose-8">Purpose</h3>
+<p>The Swiss profile distinguishes two types of stop place
+(<a href="/netexRealisationGuideSwitzerland/next/09_resources.html#typesofplace">Resource Frame</a>):</p>
+
+<p><em>Table: Types of stop place</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th><code class="language-plaintext highlighter-rouge">TypeOfPlace</code></th>
+      <th>Name (de / en)</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">regularStop</code></td>
+      <td>Reguläre Haltestelle / Regular Stop</td>
+      <td>Regular stop from classic public transport.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">drtCollectionPoint</code></td>
+      <td>Sammelpunkt / Collection Point</td>
+      <td>Irregular stop used in demand responsive transport.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Both are defined as <code class="language-plaintext highlighter-rouge">TypeOfPlace</code> in the <code class="language-plaintext highlighter-rouge">ValueSet</code> <code class="language-plaintext highlighter-rouge">ch:1:ValueSet:TypesOfPlace</code> of the
+<code class="language-plaintext highlighter-rouge">ResourceFrame</code>. The <code class="language-plaintext highlighter-rouge">ValueSet</code> is <code class="language-plaintext highlighter-rouge">expected</code> and must have these two entries
+(<a href="/netexRealisationGuideSwitzerland/next/templates/TypesOfPlace.xml">TypesOfPlace template</a>,
+<a href="/netexRealisationGuideSwitzerland/next/templates/ResourceFrame.xml">ResourceFrame template</a>).</p>
+
+<p>The type is independent of <code class="language-plaintext highlighter-rouge">StopPlaceType</code>: <code class="language-plaintext highlighter-rouge">StopPlaceType</code> describes the kind of stop place
+(e.g. <code class="language-plaintext highlighter-rouge">onstreetBus</code>, values in the sheet <em>StopPlaceType</em> of the
+<a href="/netexRealisationGuideSwitzerland/next/media/Mappingtabellen_NeTEx_v2.0.xlsx">mapping table</a>), the <code class="language-plaintext highlighter-rouge">TypeOfPlace</code> says whether it is a
+regular stop or a collection point.</p>
+
+<h3 id="example-4">Example</h3>
+<p>In NeTEx, a <code class="language-plaintext highlighter-rouge">StopPlace</code> refers to its <code class="language-plaintext highlighter-rouge">TypeOfPlace</code> with <code class="language-plaintext highlighter-rouge">placeTypes/TypeOfPlaceRef</code> (directly after
+<code class="language-plaintext highlighter-rouge">Centroid</code>):</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- ... --&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;Centroid&gt;</span>
+    <span class="c">&lt;!-- ... --&gt;</span>
+  <span class="nt">&lt;/Centroid&gt;</span>
+  <span class="nt">&lt;placeTypes&gt;</span>
+    <span class="nt">&lt;TypeOfPlaceRef</span> <span class="na">ref=</span><span class="s">"regularStop"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/placeTypes&gt;</span>
+  <span class="c">&lt;!-- ... --&gt;</span>
+  <span class="nt">&lt;StopPlaceType&gt;</span>railStation<span class="nt">&lt;/StopPlaceType&gt;</span>
+  <span class="c">&lt;!-- ... --&gt;</span>
+<span class="nt">&lt;/StopPlace&gt;</span>
+</code></pre></div></div>
+
+<h2 id="service-areas">Service Areas</h2>
+
+<h3 id="purpose-9">Purpose</h3>
+<p>The types 3 to 5 have a service area (Bediengebiet). Type 3 (corridor) is modelled as an area as
+well. The modelling follows the Swiss area example in the NeTEx repository
+(<code class="language-plaintext highlighter-rouge">examples/functions/drt/CH_DRT_Area_mybuxi.xml</code>), split between the two file types like the regular
+stops:</p>
+
+<p><em>Table: Elements for service areas</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Element</th>
+      <th>Frame</th>
+      <th>File type</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FlexibleStopPlace</code> with one <code class="language-plaintext highlighter-rouge">FlexibleArea</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SiteFrame/flexibleStopPlaces</code></td>
+      <td><code class="language-plaintext highlighter-rouge">SITE_OFFER</code></td>
+      <td>The area with its geometry.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ServiceFrame/scheduledStopPoints</code></td>
+      <td><code class="language-plaintext highlighter-rouge">NETWORK_OFFER</code></td>
+      <td>Stands for the whole area in the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">FlexibleStopAssignment</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ServiceFrame/stopAssignments</code></td>
+      <td><code class="language-plaintext highlighter-rouge">NETWORK_OFFER</code></td>
+      <td>Links the <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> to the <code class="language-plaintext highlighter-rouge">FlexibleStopPlace</code> and <code class="language-plaintext highlighter-rouge">FlexibleArea</code>, like <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code> for regular stops.</td>
+    </tr>
+  </tbody>
+</table>
+
+<pre><code class="language-mermaid">classDiagram
+    class FlexibleStopPlace {
+        Name
+        areas
+    }
+    class FlexibleArea {
+        Name
+        members
+        Polygon (gml)
+    }
+    class ScheduledStopPoint
+    class FlexibleStopAssignment {
+        ScheduledStopPointRef
+        FlexibleStopPlaceRef
+        FlexibleAreaRef
+    }
+    FlexibleStopPlace "1" o-- "1..*" FlexibleArea : contains
+    FlexibleStopAssignment "0..*" -- "1" ScheduledStopPoint : references
+    FlexibleStopAssignment "0..*" -- "1" FlexibleStopPlace : references
+    FlexibleStopAssignment "0..*" -- "0..1" FlexibleArea : references
+    FlexibleArea "0..*" -- "0..*" ScheduledStopPoint : members (collection points)
+</code></pre>
+<p><em>Figure: Service area</em></p>
+
+<h3 id="table">Table</h3>
+
+<p>Service area (Bediengebiet) of a demand responsive service of type 3 (corridor), 4 or 5 (area-wide). Delivered in SITE_OFFER. Linked to the timetable by a FlexibleStopAssignment in the ServiceFrame. See uc16_drt.</p>
+
+<p><em>Table: FlexibleStopPlace</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of STOP PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ShortName</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of STOP PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TransportMode</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AllPublicTransportModesEnumeration</td>
+      <td>Primary PT MODE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>areas</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>parkingAreaRefs_RelStructure</td>
+      <td>Areas in FLEXIBLE STOP PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>FlexibleArea</td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>FlexibleArea_VersionStructure</td>
+      <td>Specialisation of a FLEXIBLE QUAY (which is abstract) to identify what is the catchment area for a flexible service (so that a stop finder can find the nearest available types of transport). It is a named zone visited by a particular mode of transport. It is part of the SITE data set rather than the service data set, since it can be defined and exists independently of an actual service.</td>
+      <td>The area itself. HailAndRideArea is not used.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ShortName</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>members</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>singleJourneyRefs_RelStructure</td>
+      <td> </td>
+      <td>Collection points (TypeOfPlace drtCollectionPoint) of the area, if the service has any. Omitted for services without fixed stops (type 5). The references point to ScheduledStopPoints, which are not part of SITE_OFFER. Therefore versionRef is used instead of version: with version, the XSD key reference requires the ScheduledStopPoint in the same document.</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>ScheduledStopPointRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td>Reference to a SCHEDULED STOP POINT.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Polygon</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>gml:PolygonType</td>
+      <td> </td>
+      <td>Decision: mandatory. Either gml:Polygon or gml:MultiSurface (choice in the XSD), in EPSG:4326. Not checked by the schematron, because the annotations cannot express the choice and do not handle the gml namespace. Coordinates shortened for the template.</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>exterior</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AbstractRingPropertyType</td>
+      <td>A boundary of a surface consists of a number of rings. In the normal 2D case, one of these rings is distinguished as being the exterior boundary. In a general manifold this is not always possible, in which case all boundaries shall be listed as interior boundaries, and the exterior will be empty.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TransportMode</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AllPublicTransportModesEnumeration</td>
+      <td>Primary PT MODE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>BoardingUse</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether space can be used for boarding or en route to boarding. Default is true.</td>
+      <td>Default true.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AlightingUse</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether space can be used for alighting or en route to boarding. Default is true.</td>
+      <td>Default true.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Links the ScheduledStopPoint of a service area to its FlexibleStopPlace and FlexibleArea in SITE_OFFER. Same role as PassengerStopAssignment for regular stops. See uc16_drt.</p>
+
+<p><em>Table: FlexibleStopAssignment</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ScheduledStopPointRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td> </td>
+      <td>ScheduledStopPoint that stands for the whole area in the ServiceJourneyPattern.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>FlexibleStopPlaceRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>FlexibleStopPlaceRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>FlexibleAreaRef</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>FlexibleAreaRefStructure</td>
+      <td> </td>
+      <td>FlexibleArea of the FlexibleStopPlace.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../xcore/netex/elements/FlexibleStopPlace.html">General NeTEx definition</a></em></p>
+
+<h3 id="example-5">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;FlexibleStopPlace</span> <span class="na">id=</span><span class="s">"ch:1:FlexibleStopPlace:myBuxi_Gotthardregion"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>myBuxi Gotthardregion<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;ShortName&gt;</span>31<span class="nt">&lt;/ShortName&gt;</span>
+  <span class="nt">&lt;TransportMode&gt;</span>bus<span class="nt">&lt;/TransportMode&gt;</span>
+  <span class="nt">&lt;areas&gt;</span>
+    <span class="nt">&lt;FlexibleArea</span> <span class="na">id=</span><span class="s">"ch:1:FlexibleArea:myBuxi_Gotthardregion"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>myBuxi Gotthardregion<span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;members&gt;</span>
+        <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:StopPlaceCollectionPoint:2-0-Gen"</span> <span class="na">versionRef=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:StopPlaceCollectionPoint:3-0-Gen"</span> <span class="na">versionRef=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;/members&gt;</span>
+      <span class="nt">&lt;gml:Polygon</span> <span class="na">gml:id=</span><span class="s">"Area31"</span> <span class="na">srsName=</span><span class="s">"EPSG:4326"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;gml:exterior&gt;</span>
+          <span class="nt">&lt;gml:LinearRing&gt;</span>
+            <span class="nt">&lt;gml:pos&gt;</span>8.6314774 46.7285658<span class="nt">&lt;/gml:pos&gt;</span>
+            <span class="c">&lt;!-- ... --&gt;</span>
+            <span class="nt">&lt;gml:pos&gt;</span>8.6314774 46.7285658<span class="nt">&lt;/gml:pos&gt;</span>
+          <span class="nt">&lt;/gml:LinearRing&gt;</span>
+        <span class="nt">&lt;/gml:exterior&gt;</span>
+      <span class="nt">&lt;/gml:Polygon&gt;</span>
+    <span class="nt">&lt;/FlexibleArea&gt;</span>
+  <span class="nt">&lt;/areas&gt;</span>
+<span class="nt">&lt;/FlexibleStopPlace&gt;</span>
+</code></pre></div></div>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;FlexibleStopAssignment</span> <span class="na">id=</span><span class="s">"ch:1:FlexibleStopAssignment:myBuxi_Gotthardregion"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:DrtArea:myBuxi_Gotthardregion"</span> <span class="na">versionRef=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;FlexibleStopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:FlexibleStopPlace:myBuxi_Gotthardregion"</span> <span class="na">versionRef=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;FlexibleAreaRef</span> <span class="na">ref=</span><span class="s">"ch:1:FlexibleArea:myBuxi_Gotthardregion"</span> <span class="na">versionRef=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/FlexibleStopAssignment&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/templates/FlexibleStopPlace.xml">FlexibleStopPlace template</a>,
+<a href="/netexRealisationGuideSwitzerland/next/templates/FlexibleStopAssignment.xml">FlexibleStopAssignment template</a></em></p>
+
+<h3 id="usage-notes-4">Usage Notes</h3>
+<ul>
+  <li>The geometry of the <code class="language-plaintext highlighter-rouge">FlexibleArea</code> is mandatory: either <code class="language-plaintext highlighter-rouge">gml:Polygon</code> or <code class="language-plaintext highlighter-rouge">gml:MultiSurface</code> (choice in the
+XSD), in EPSG:4326. The schematron does not check this, because the template annotations cannot express the
+choice and do not handle the <code class="language-plaintext highlighter-rouge">gml</code> namespace; the template marks it as <code class="language-plaintext highlighter-rouge">expected</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">members</code> is optional. It lists the collection points (<code class="language-plaintext highlighter-rouge">TypeOfPlace</code> <code class="language-plaintext highlighter-rouge">drtCollectionPoint</code>, see
+<a href="#collection-points">Collection Points</a>) of the area, if the service has any. A service without fixed stops
+(type 5) has no <code class="language-plaintext highlighter-rouge">members</code>, only the geometry.</li>
+  <li><code class="language-plaintext highlighter-rouge">members</code> and the references in the <code class="language-plaintext highlighter-rouge">FlexibleStopAssignment</code> point into the other file type. They use
+<code class="language-plaintext highlighter-rouge">versionRef</code> instead of <code class="language-plaintext highlighter-rouge">version</code>: with <code class="language-plaintext highlighter-rouge">version</code>, the XSD key reference requires the referenced object in the
+same document.</li>
+  <li><code class="language-plaintext highlighter-rouge">HailAndRideArea</code> is not used.</li>
+</ul>
 
 <h2 id="templates-and-examples">Templates and Examples</h2>
 
@@ -741,39 +1214,2564 @@ with the <code class="language-plaintext highlighter-rouge">TypeOfPlace</code>s 
 <table>
   <thead>
     <tr>
+      <th>Swiss profile definition</th>
       <th>Template</th>
       <th>Relevant content</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A minimal ServiceFrame must be present in all timetable files.</p>
+
+<p><em>Table: ServiceFrame</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>lines</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>linesInFrame_RelStructure</td>
+      <td>LINEs in frame.</td>
+      <td>Only Line is used and not FlexibleLine</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/Line.html">Line</a></td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>Line_VersionStructure</td>
+      <td>A group of ROUTEs which is generally known to the public by a similar name or number.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>groupsOfLines</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>groupsOfLinesInFrame_RelStructure</td>
+      <td>GROUPs of LINEs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/GroupOfLines.html">GroupOfLines</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>GroupOfLines_VersionStructure</td>
+      <td>A grouping of LINEs which will be commonly referenced for a specific purpose.</td>
+      <td>We use GroupOfLine for the modeling of mixed lines</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>destinationDisplays</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>destinationDisplaysInFrame_RelStructure</td>
+      <td>DESTINATION DISPLAYs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/DestinationDisplay.html">DestinationDisplay</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>DestinationDisplay_VersionStructure</td>
+      <td>An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations.</td>
+      <td>We only allow DestinationDisplay based on Name and not on reference to a ScheduledStopPoint</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>scheduledStopPoints</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>scheduledStopPointsInFrame_RelStructure</td>
+      <td>SCHEDULED STOP POINTs in frame.</td>
+      <td>Swiss ScheduledStopPoint are using the SLOID in the id, when possible.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/ScheduledStopPoint.html">ScheduledStopPoint</a></td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>ScheduledStopPoint_VersionStructure</td>
+      <td>A POINT where passengers can board or alight from vehicles. It is open, which hierarchical level such a point has. It can represent a single door (BoardingPosition) or a whole ZONE. The association to the physical model is done with STOP ASSIGNMENTs.</td>
+      <td>The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>connections</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>transfersInFrame_RelStructure</td>
+      <td>CONNECTIONs in frame.</td>
+      <td>connections is used in SITE_OFFER, but not in NETWORK_OFER</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/SiteConnection.html">SiteConnection</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>SiteConnection_VersionStructure</td>
+      <td>The physical (spatial) possibility to connect from one point to another in a SITE.</td>
+      <td>SiteConnection are used only in the SITE_OFFER file and not in NETWORK_OFFER files.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/DefaultConnection.html">DefaultConnection</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>DefaultConnection_VersionStructure</td>
+      <td>Specifies the default transfer times to transfer between MODEs and / or OPERATORs within a region.</td>
+      <td>DefaultConnection is only used in the SITE_OFFER file</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>stopAssignments</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>stopAssignmentsInFrame_RelStructure</td>
+      <td>STOP ASSIGNMENTs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/PassengerStopAssignment.html">PassengerStopAssignment</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>Make the link between timetables and site model.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/FlexibleStopAssignment.html">FlexibleStopAssignment</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>FlexibleStopAssignment_VersionStructure</td>
+      <td>Assignment of a SCHEDULED STOP POINT to a FLEXIBLE STOP PLACE and quay. etc.</td>
+      <td>For service areas (Bediengebiete) of demand responsive services.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>timingLinks</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>timingLinksInFrame_RelStructure</td>
+      <td>TIMING LINKs in frame.</td>
+      <td>We use TimingLink as the time behaviour between two ScheduledStopPoints</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/TimingLink.html">TimingLink</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>TimingLink_VersionStructure</td>
+      <td>An ordered pair of TIMING POINTs for which run times may be recorded. Timing links are directional - there will be separate links for each direction of a route.</td>
+      <td>every different handling of the link needs a different timing link e.g. bus vs tram</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>journeyPatterns</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>journeyPatternsInFrame_RelStructure</td>
+      <td>JOURNEY PATTERNs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/ServiceJourneyPattern.html">ServiceJourneyPattern</a></td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>ServiceJourneyPattern_VersionStructure</td>
+      <td>The JOURNEY PATTERN for a (passenger carrying) SERVICE JOURNEY.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>timeDemandTypes</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>timeDemandTypesInFrame_RelStructure</td>
+      <td>TIME DEMAND TYPEs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/TimeDemandType.html">TimeDemandType</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>TimeDemandType_VersionStructure</td>
+      <td>An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.</td>
+      <td>TimeDemandType is now the core concept to use for the timing behaviour of ServiceJourney.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>notices</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>noticesInFrame_RelStructure</td>
+      <td>NOTICEs in frame.</td>
+      <td>notices may be present or not</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/Notice.html">Notice</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>Notice_VersionStructure</td>
+      <td>A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media.</td>
+      <td>if notices are present, one Notice must be.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>,</p>
+
+<p>A minimal ServiceFrame must be present in all timetable files.</p>
+
+<p><em>Table: ServiceFrame</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>lines</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>linesInFrame_RelStructure</td>
+      <td>LINEs in frame.</td>
+      <td>Only Line is used and not FlexibleLine</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Line</td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>Line_VersionStructure</td>
+      <td>A group of ROUTEs which is generally known to the public by a similar name or number.</td>
+      <td>For NETWORK OFFER we only need the name</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of LINE SHAPE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>groupsOfLines</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>groupsOfLinesInFrame_RelStructure</td>
+      <td>GROUPs of LINEs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/GroupOfLines.html">GroupOfLines</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>GroupOfLines_VersionStructure</td>
+      <td>A grouping of LINEs which will be commonly referenced for a specific purpose.</td>
+      <td>We use GroupOfLine for the modeling of mixed lines</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>destinationDisplays</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>destinationDisplaysInFrame_RelStructure</td>
+      <td>DESTINATION DISPLAYs in frame.</td>
+      <td>We only allow fully formed content of destinationDisplays</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/DestinationDisplay.html">DestinationDisplay</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>DestinationDisplay_VersionStructure</td>
+      <td>An advertised destination of a specific JOURNEY PATTERN, usually displayed on a head sign or at other on-board locations.</td>
+      <td>We only allow fully formed content of destinationDisplays</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>scheduledStopPoints</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>scheduledStopPointsInFrame_RelStructure</td>
+      <td>SCHEDULED STOP POINTs in frame.</td>
+      <td>Swiss ScheduledStopPoint are using the SLOID in the id if possible.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/ScheduledStopPoint.html">ScheduledStopPoint</a></td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>ScheduledStopPoint_VersionStructure</td>
+      <td>A POINT where passengers can board or alight from vehicles. It is open, which hierarchical level such a point has. It can represent a single door (BoardingPosition) or a whole ZONE. The association to the physical model is done with STOP ASSIGNMENTs.</td>
+      <td>The id of the ScheduledStopPoint is a SLOID if one exists. Otherwisse it contains a gen part.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>stopAssignments</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>stopAssignmentsInFrame_RelStructure</td>
+      <td>STOP ASSIGNMENTs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/PassengerStopAssignment.html">PassengerStopAssignment</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>Are needed for foreign traffic and also for formations.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/FlexibleStopAssignment.html">FlexibleStopAssignment</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>FlexibleStopAssignment_VersionStructure</td>
+      <td>Assignment of a SCHEDULED STOP POINT to a FLEXIBLE STOP PLACE and quay. etc.</td>
+      <td>For service areas (Bediengebiete) of demand responsive services.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>timingLinks</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>timingLinksInFrame_RelStructure</td>
+      <td>TIMING LINKs in frame.</td>
+      <td>We use TimingLink as the time behaviour between two ScheduledStopPoints</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/TimingLink.html">TimingLink</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>TimingLink_VersionStructure</td>
+      <td>An ordered pair of TIMING POINTs for which run times may be recorded. Timing links are directional - there will be separate links for each direction of a route.</td>
+      <td>every different handling of the link needs a different timing link e.g. bus vs tram</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>journeyPatterns</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>journeyPatternsInFrame_RelStructure</td>
+      <td>JOURNEY PATTERNs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/ServiceJourneyPattern.html">ServiceJourneyPattern</a></td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>ServiceJourneyPattern_VersionStructure</td>
+      <td>The JOURNEY PATTERN for a (passenger carrying) SERVICE JOURNEY.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>timeDemandTypes</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>timeDemandTypesInFrame_RelStructure</td>
+      <td>TIME DEMAND TYPEs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/TimeDemandType.html">TimeDemandType</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>TimeDemandType_VersionStructure</td>
+      <td>An indicator of traffic conditions or other factors which may affect vehicle run or wait times. It may be entered directly by the scheduler or defined by the use of TIME BANDs.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>notices</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>noticesInFrame_RelStructure</td>
+      <td>NOTICEs in frame.</td>
+      <td>notices may be present or not</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/Notice.html">Notice</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>Notice_VersionStructure</td>
+      <td>A note or footnote about any aspect of a service, e.g. an announcement, notice, etc. May have different DELIVERY VARIANTs for different media.</td>
+      <td>if notices are present, one Notice must be.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
       <td><a href="/netexRealisationGuideSwitzerland/next/templates/ServiceFrame.xml">ServiceFrame</a>, <a href="/netexRealisationGuideSwitzerland/next/templates/ServiceFrame_NETWORK_OFFER.xml">ServiceFrame_NETWORK_OFFER</a></td>
       <td><code class="language-plaintext highlighter-rouge">Line</code></td>
     </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For referencing the <code class="language-plaintext highlighter-rouge">Operator</code>s we redundantly use <code class="language-plaintext highlighter-rouge">ResponsibilitySet</code> and <code class="language-plaintext highlighter-rouge">OperatorRef</code>. This is to maintain compatibility with different data consumers. See chapter on ResourceFrame and Use Case 17.</p>
+
+<p><em>Table: Line</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@responsibilitySetRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute responsibilitySetRef</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ValidBetween</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>Usually set to the whole timetable year</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>FromDate</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>dateTime</td>
+      <td>Start date of AVAILABILITY CONDITION.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ToDate</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>dateTime</td>
+      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>keyList</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>KeyListStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>KeyValue</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>KeyValueStructure</td>
+      <td>Key value pair for Entity.</td>
+      <td>We might use KeyValue for some additional information</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Key</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Value</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>normalizedString</td>
+      <td>Value for alternative key.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>privateCodes</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PrivateCodesStructure</td>
+      <td> </td>
+      <td>The SLNID is mandatory if it exists</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>PrivateCodeStructure</td>
+      <td> </td>
+      <td>The SLNID is mandatory if it exists</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of LINE SHAPE.</td>
+      <td>contains attribute D T from HRDF. Is not translated on purpose.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ShortName</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Short name of LINE.</td>
+      <td>contains the LinieKurzName (attribut N T in HRDF)</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TransportMode</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>AllPublicTransportModesEnumeration</td>
+      <td>Primary PUBLIC TRANSPORT MODE of NETWORK.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TransportSubmode</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>TransportSubmodeStructure</td>
+      <td> </td>
+      <td>the mapping excel describe how to use the TransportSubmode</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>RailSubmode</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>RailSubmodeEnumeration</td>
+      <td>TPEG pti02 Rail submodes loc13. See also See ERA B.4.7009 - Name: Item description code.</td>
+      <td>Here an example for rail. Be aware that other XXXSubmode are used for other mode.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>PublicCode</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>PublicCodeStructure</td>
+      <td>Public identifier of a LINe.</td>
+      <td>Contains LinieLangName (attribute LT from HRDF)</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>OperatorRef</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>OperatorRefStructure</td>
+      <td>An OPERATOR should be set, even when the same as the AUTHORITY. In some cases OPERATOR or AUTHORITY are managed through a ResponsibilitySet. However, for compatibility OperatorRef and AuthorityRef still should be filled in. +v2.0</td>
+      <td>The operator is the transport organisation that really “owns” the line. Additional operators can be added in additionalOperators. The actual operating organisation can be set in the ServiceJourney. Is redundant to the responsibilitySetRef on purpose.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>additionalOperators</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>transportOrganisationRefs_RelStructure</td>
+      <td>Additional OPERATORs for LINE.</td>
+      <td>Used for other operating companies. Is redundant to the responsibilitySetRef on purpose. this is especially important, when a co-ownership of the Line was defined.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>OperatorRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>OperatorRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LineType</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LineTypeEnumeration</td>
+      <td>Classification of LINE, including flexible options. +v2.0.</td>
+      <td>Will be used especially, when not “fixed”. Details in mapping excel.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TypeOfProductCategoryRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>TypeOfProductCategoryRefStructure</td>
+      <td> </td>
+      <td>Always aligned with BS KI oev-info.ch</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
       <td><a href="/netexRealisationGuideSwitzerland/next/templates/Line.xml">Line</a></td>
       <td><code class="language-plaintext highlighter-rouge">LineType</code>, <code class="language-plaintext highlighter-rouge">TransportSubmode</code></td>
     </tr>
     <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Table: ServiceJourneyPattern</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of SERVIC CALENDAR.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>RouteView</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>LineRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>LineRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DirectionType</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>RelativeDirectionEnumeration</td>
+      <td>DIRECTION of JOURNEY PATTERN. Should be same as for ROUTE on which PATTERN is based.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>pointsInSequence</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>pointsInJourneyPattern_RelStructure</td>
+      <td>Sequence of points in JOURNEY PATTERN Points may be SCHEDULED STOP POINTs or TIMING POINTs.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>StopPointInJourneyPattern</td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ScheduledStopPointRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td>Reference to a SCHEDULED STOP POINT.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ForAlighting</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether alighting is allowed at the stop. Default is true.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ForBoarding</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether boarding is allowed at the stop. Default is true.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>DestinationDisplayRef</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>DestinationDisplayRefStructure</td>
+      <td> </td>
+      <td>Indicates that the destination has changed. Superseeds Line or ServiceJourney. Also, there is propagation. E.g if the DestinationDisplay changes on the 4. th stop it is propagated through all stops until a different DestinationDisplay is encountered.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>RequestStop</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether stop is a request stop for this journey. Default is false.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>StopUse</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>StopUseEnumeration</td>
+      <td>Nature of use of stop, e.g. access, interchange only, or pass through. Default is Access.</td>
+      <td>All values possible. passthrough is used for Durchfahrt, if such data is delivered. See mapping excel.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>checkConstraints</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>checkConstraints_RelStructure</td>
+      <td>Implements the navigation from processes or barriers that the travellers will be facing (e.g., security check, check-in, etc.). +v2.1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/CheckConstraint.html">CheckConstraint</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>CheckConstraint_VersionStructure</td>
+      <td>Process associated with a Place, typically giving rise to a delay to the traveller.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>bookingArrangements</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>bookingArrangements_RelStructure</td>
+      <td>Set of possible Booking Arrangements for stop if different from those for SERVICE JOURNEY. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>BookingArrangementRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>BookingArrangementRefStructure</td>
+      <td> </td>
+      <td>Specially we use bookingArrangementRef here to model the information that a stop is flexible. From the HRDF conversion only a BookingNote can be passed at the moment. With native NeTEx handling we can transfer more information.</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>BookingArrangement</td>
+      <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
+      <td>0..*</td>
+      <td>BookingArrangement_VersionStructure</td>
+      <td>Details of the booking arrangements for a given LINE, STOP, SERVICE etc.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++++</td>
+      <td>BookingMethods</td>
+      <td>we expect a BookingArrangementRef. We use this here to show how native NeTEx handling could improve transfering information here</td>
+      <td>0..1</td>
+      <td>BookingMethodListOfEnumerations</td>
+      <td>Allowed Ways of Making a BOOKING.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ServiceJourneyPatternType</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>ServiceJourneyPatternTypeEnumeration</td>
+      <td>Type of SERVICE JOURNEY PATTERN.</td>
+      <td>We currently only allow passenger</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
       <td><a href="/netexRealisationGuideSwitzerland/next/templates/ServiceJourneyPattern.xml">ServiceJourneyPattern</a></td>
       <td><code class="language-plaintext highlighter-rouge">ForBoarding</code>, <code class="language-plaintext highlighter-rouge">ForAlighting</code>, <code class="language-plaintext highlighter-rouge">RequestStop</code>, <code class="language-plaintext highlighter-rouge">StopUse</code>, <code class="language-plaintext highlighter-rouge">BookingArrangementRef</code></td>
     </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>List of ServiceFacility. Be careful: not all are supported. Consult profile. Make sure to not generate identical ServiceFacilitySets. Reuse them. Details in the mapping excel.</p>
+
+<p><em>Table: ServiceFacilitySet</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Extensions</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>ExtensionsStructure</td>
+      <td> </td>
+      <td>Two elements used in HRDF for ordering facilities</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Priority</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>InterchangePriorityType</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Description</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Text</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td>For each language a Text element must be provided</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>FareClasses</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>FareClassListOfEnumerations</td>
+      <td>List of Fare Classes.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>MobilityFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MobilityFacilityListOfEnumerations</td>
+      <td>List of MOBILITY FACILITies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>NuisanceFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>NuisanceFacilityListOfEnumerations</td>
+      <td>List of NUISANCE FACILITies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>PassengerCommsFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>PassengerCommsFacilityListOfEnumerations</td>
+      <td>List of PASSENGER COMMS FACILITies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>SanitaryFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>SanitaryFacilityListOfEnumerations</td>
+      <td>List of SANITARY FACILITies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>CouchetteFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>CouchetteFacilityListOfEnumerations</td>
+      <td>List of COUCHETTE FACILITies.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>GroupBookingFacility</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>GroupBookingEnumeration</td>
+      <td>Classification of GROUP FACILITY type - TPEG pti23.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
       <td><a href="/netexRealisationGuideSwitzerland/next/templates/ServiceFacilitySet.xml">ServiceFacilitySet</a></td>
       <td>Facilities, <code class="language-plaintext highlighter-rouge">GroupBookingFacility</code></td>
     </tr>
     <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Table: Notice</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Text</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Text content of NOTICe.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Text</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>TextType</td>
+      <td>Name of the entity.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>PublicCode</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>PublicCodeStructure</td>
+      <td>Alternative code associated with Notice.</td>
+      <td>The public code is transmitted when it is to be published and when it is the type of notice 10. Only 1 and 10 aree allowed.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ShortCode</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>normalizedString</td>
+      <td>Alternative short code associated with Notice.</td>
+      <td>A duplication, but we want it. “A__” indicates an offer based on BS KI</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>PrivateCodeStructure</td>
+      <td>DEPRECATED - use privateCodes. -v2.0</td>
+      <td>A duplication, but we want it.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TypeOfNoticeRef</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>TypeOfNoticeRefStructure</td>
+      <td> </td>
+      <td>allowed are ch:1:TypeOfNotice:1 for general notice, ch:1:TypeOfNotice:10 for offer, ch:1:TypeOfNotice:11 for region code (only PAG)</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>CanBeAdvertised</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether NOTICE is advertised to public. This may be overridden on an assignment.</td>
+      <td>Whether the NOTICE is advertised.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
       <td><a href="/netexRealisationGuideSwitzerland/next/templates/Notice.xml">Notice</a></td>
       <td>Passenger information</td>
     </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In some cases the id of a StopPlace is not a SLOID.</p>
+
+<p><em>Table: StopPlace</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ValidBetween</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>This can be used to show when the StopPlace can be used. Note that the usage (optional) overrides the cardinality.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>FromDate</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>dateTime</td>
+      <td>Start date of AVAILABILITY CONDITION.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ToDate</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>dateTime</td>
+      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>keyList</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>KeyListStructure</td>
+      <td> </td>
+      <td>Key value pairs.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>KeyValue</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>KeyValueStructure</td>
+      <td>Key value pair for Entity.</td>
+      <td>HafasPriority and HafasKMInfo for Hafas environments, only used in exports by INFO+.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Key</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Value</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>normalizedString</td>
+      <td>Value for alternative key.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>privateCodes</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodesStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>PrivateCodeStructure</td>
+      <td> </td>
+      <td>Mandatory for DIDOK and SLOID if they exist.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of STOP PLACE.</td>
+      <td>The official stop name. If you have different versions one needs to use AlternativeName</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/Centroid.html">Centroid</a></td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>SimplePoint_VersionStructure</td>
+      <td>Centre Coordinates of GROUP of STOP PLACEs.</td>
+      <td>Global or national location</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td>Accessibility values associated with LEVEL.</td>
+      <td>Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>alternativeNames</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>alternativeNames_RelStructure</td>
+      <td>Alternative names for the GROUP of STOP PLACEs.</td>
+      <td>Alternative names for the StopPlace. We will only use these for synonyms.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AlternativeName.html">AlternativeName</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>AlternativeName_VersionedChildStructure</td>
+      <td>ALTERNATIVE NAME for Element.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TopographicPlaceRef</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>TopographicPlaceRefStructure</td>
+      <td> </td>
+      <td>Id to the county, community, canton or country.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Locale</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>LocaleStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TimeZone</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>normalizedString</td>
+      <td>Timezone name at LOCALE.</td>
+      <td>Must be present, when not in DefaultTimeZone.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>levels</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>levels_RelStructure</td>
+      <td>LEVELs found within SITe.</td>
+      <td>Mandatory if the StopPlace has more than one level.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Level</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>Level_VersionStructure</td>
+      <td>Level of a Building or SITE.</td>
+      <td>Mandatory if the StopPlace has more than one level.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>entrances</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>siteEntrances_RelStructure</td>
+      <td>ENTRANCEs to SPACE.</td>
+      <td>We currently use this for the reference point that each Swiss stop uses. Unfortunately it currently has no Centroid and coordinates</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>StopPlaceEntrance</td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>StopPlaceEntrance_VersionStructure</td>
+      <td>Passenger Entrance to a STOP PLACE.</td>
+      <td>Currently only the sloid is known. From this point all references to accessibility are made in Switzerland</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of STOP PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>placeEquipments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>equipments_RelStructure</td>
+      <td>Items of EQUIPMENT that may be located in an EQUIPMENT PLACE.</td>
+      <td>Used in exports for all TSI PRM relevant equipments. Especially in the data transmissions for rail to ERA. We only have Equipments and no EquipmentPlaces.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TicketingEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>Ticketing equipment</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TicketMachines</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there are ticket machines.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AccessVehicleEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AccessVehicleEquipment_VersionStructure</td>
+      <td>Specialisation of VEHICLE EQUIPMENT for ACCESS providing information such as low floor, ramp, access area dimensions, etc.</td>
+      <td>Method to get on the vehicle</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Hoist</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>VEHICLE has a hoist or lift for wheelchairs.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Ramp</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether a ramp may be used to access VEHICLE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>SanitaryEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>SanitaryFacilityList</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>SanitaryFacilityListOfEnumerations</td>
+      <td> </td>
+      <td>Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">wheelchairAccessToilet toilet</code>. Optional: <code class="language-plaintext highlighter-rouge">wheelchairBabyChange babyChange shower</code>.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ToiletsType</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>ToiletsTypeEnumeration</td>
+      <td>Indicates the position of using the toilet.</td>
+      <td>Allowed values: <code class="language-plaintext highlighter-rouge">seated urinal seatedAndUrinal squat</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>localServices</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>localServices_RelStructure</td>
+      <td> </td>
+      <td>Will be exported from ATLAS for ERA TSI PRM.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AssistanceService</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AssistanceService_VersionStructure</td>
+      <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AssistanceService.html">AssistanceService</a></td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>AssistanceService_VersionStructure</td>
+      <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
+      <td>Presence of<code class="language-plaintext highlighter-rouge">AssistanceFacility</code>s and their availability , e.g., if they need to be booked.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AssistanceBookingService.html">AssistanceBookingService</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AssistanceBookingService_VersionStructure</td>
+      <td>Information about how to book assistance for wheelchair and disabled users.</td>
+      <td>Accessibility. Contact and booking information regarding assistance services.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>StopPlaceType</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>StopTypeEnumeration</td>
+      <td>Type of STOP PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LimitedUse</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>LimitedUseTypeEnumeration</td>
+      <td>Further categorisation of stop as having topographic limitations.</td>
+      <td>For stops like Sagliains. We currently use only interchangeOnly.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Weighting</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>InterchangeWeightingEnumeration</td>
+      <td>Default rating of the STOP PLACE for making interchanges.</td>
+      <td>Default relative weighting to be used for stop place. See also mapping excel. Cf. HafasPriority in Extensions.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>quays</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>quays_RelStructure</td>
+      <td>QUAYs within the STOP PLACE.</td>
+      <td>The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. Note that the usage (expected) overrides the cardinality.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/Quay.html">Quay</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>Quay_VersionStructure</td>
+      <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>navigationPaths</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>navigationPaths_RelStructure</td>
+      <td>NAVIGATION PATHs within the SITE and or between the SITE elsewhere.</td>
+      <td>Will be provided at least for rail in a first export for ERA TSI PRM</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>NavigationPath</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>SiteNavigationPath_VersionStructure</td>
+      <td>NAVIGATION PATH for a SITE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>From</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>DeckPathLinkEndStructure</td>
+      <td>Origin end of DECK NAVIGATION path. Only needed if detailed PATH LINKs are not given.</td>
+      <td>One of the points is the reference point.</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>PlaceRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PlaceRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>To</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>DeckPathLinkEndStructure</td>
+      <td>Destination end of DECK NAVIGATION PATH. Only needed if detailed PATH LINKs not given.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>PlaceRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PlaceRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td> </td>
+      <td>If the NavigationPath is provided, then an AccessibilityAssessment must be provided too</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
       <td><a href="/netexRealisationGuideSwitzerland/next/templates/StopPlace.xml">StopPlace</a></td>
       <td><code class="language-plaintext highlighter-rouge">StopPlaceType</code></td>
     </tr>
     <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Service area (Bediengebiet) of a demand responsive service of type 3 (corridor), 4 or 5 (area-wide). Delivered in SITE_OFFER. Linked to the timetable by a FlexibleStopAssignment in the ServiceFrame. See uc16_drt.</p>
+
+<p><em>Table: FlexibleStopPlace</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of STOP PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ShortName</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of STOP PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TransportMode</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AllPublicTransportModesEnumeration</td>
+      <td>Primary PT MODE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>areas</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>parkingAreaRefs_RelStructure</td>
+      <td>Areas in FLEXIBLE STOP PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>FlexibleArea</td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>FlexibleArea_VersionStructure</td>
+      <td>Specialisation of a FLEXIBLE QUAY (which is abstract) to identify what is the catchment area for a flexible service (so that a stop finder can find the nearest available types of transport). It is a named zone visited by a particular mode of transport. It is part of the SITE data set rather than the service data set, since it can be defined and exists independently of an actual service.</td>
+      <td>The area itself. HailAndRideArea is not used.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ShortName</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>members</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>singleJourneyRefs_RelStructure</td>
+      <td> </td>
+      <td>Collection points (TypeOfPlace drtCollectionPoint) of the area, if the service has any. Omitted for services without fixed stops (type 5). The references point to ScheduledStopPoints, which are not part of SITE_OFFER. Therefore versionRef is used instead of version: with version, the XSD key reference requires the ScheduledStopPoint in the same document.</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>ScheduledStopPointRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td>Reference to a SCHEDULED STOP POINT.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Polygon</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>gml:PolygonType</td>
+      <td> </td>
+      <td>Decision: mandatory. Either gml:Polygon or gml:MultiSurface (choice in the XSD), in EPSG:4326. Not checked by the schematron, because the annotations cannot express the choice and do not handle the gml namespace. Coordinates shortened for the template.</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>exterior</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AbstractRingPropertyType</td>
+      <td>A boundary of a surface consists of a number of rings. In the normal 2D case, one of these rings is distinguished as being the exterior boundary. In a general manifold this is not always possible, in which case all boundaries shall be listed as interior boundaries, and the exterior will be empty.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TransportMode</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AllPublicTransportModesEnumeration</td>
+      <td>Primary PT MODE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>BoardingUse</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether space can be used for boarding or en route to boarding. Default is true.</td>
+      <td>Default true.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AlightingUse</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether space can be used for alighting or en route to boarding. Default is true.</td>
+      <td>Default true.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>,</p>
+
+<p><em>Table: SiteFrame</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>topographicPlaces</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>topographicPlacesInFrame_RelStructure</td>
+      <td>PLACEs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/TopographicPlace.html">TopographicPlace</a></td>
+      <td>expected</td>
+      <td>1..*</td>
+      <td>TopographicPlace_VersionStructure</td>
+      <td>A town, city, village, suburb, quarter or other name settlement within a country. Provides a Gazetteer of Transport related place names.</td>
+      <td>Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>stopPlaces</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>stopPlacesInFrame_RelStructure</td>
+      <td>STOP PLACEs in frame.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/StopPlace.html">StopPlace</a></td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>StopPlace_VersionStructure</td>
+      <td>A STOP PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>flexibleStopPlaces</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>flexibleStopPlacesInFrame_RelStructure</td>
+      <td>STOP PLACEs in frame.</td>
+      <td>Service areas (Bediengebiete) of demand responsive services. Delivered in SITE_OFFER.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/FlexibleStopPlace.html">FlexibleStopPlace</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>FlexibleStopPlace_VersionStructure</td>
+      <td>A named type of STOP PLACE for DRT comprising one or more flexible zones where vehicles may stop and where passengers may board or leave vehicles.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>parkings</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>parkingsInFrame_RelStructure</td>
+      <td>PARKINGs in frame.</td>
+      <td>Will be used at least in the export from ATLAS to ERSAD</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Parking</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>Parking_VersionStructure</td>
+      <td>A named place where Parking may be accessed. May be a building complex (e.g. a station) or an on-street location.</td>
+      <td>Currently only very minimal as we don’t have more information (e.g. no coordinates).</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of PARKING PROPERTIes.+V1.2.2</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ParentSiteRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>SiteRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>parkingAreas</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>parkingAreas_RelStructure</td>
+      <td>PARKING AREAs within PARKING.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>ParkingArea</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>ParkingArea_VersionStructure</td>
+      <td>Area within a PARKING.</td>
+      <td>Used to tell there is parking for handicapped people</td>
+    </tr>
+    <tr>
+      <td>++++</td>
+      <td>parkingProperties</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>parkingProperties_RelStructure</td>
+      <td>Properties of PARKING AREA</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++++</td>
+      <td>ParkingProperties</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>ParkingProperties_VersionedChildStructure</td>
+      <td>Properties of a PARKING.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++++++</td>
+      <td>ParkingUserTypes</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>ParkingUserListOfEnumerations</td>
+      <td>Type of users: disabled, all etc.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>siteFacilitySets</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>siteFacilitySetsInFrame_RelStructure</td>
+      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>We expect the SiteFacilitySet in the ResourceFrame</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>SiteFacilitySetStructure</td>
+      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="/netexRealisationGuideSwitzerland/next/templates/FlexibleStopPlace.xml">FlexibleStopPlace</a>, <a href="/netexRealisationGuideSwitzerland/next/templates/SiteFrame.xml">SiteFrame</a></td>
+      <td>Service area (<code class="language-plaintext highlighter-rouge">FlexibleArea</code>)</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Links the ScheduledStopPoint of a service area to its FlexibleStopPlace and FlexibleArea in SITE_OFFER. Same role as PassengerStopAssignment for regular stops. See uc16_drt.</p>
+
+<p><em>Table: FlexibleStopAssignment</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ScheduledStopPointRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td> </td>
+      <td>ScheduledStopPoint that stands for the whole area in the ServiceJourneyPattern.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>FlexibleStopPlaceRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>FlexibleStopPlaceRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>FlexibleAreaRef</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>FlexibleAreaRefStructure</td>
+      <td> </td>
+      <td>FlexibleArea of the FlexibleStopPlace.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="/netexRealisationGuideSwitzerland/next/templates/FlexibleStopAssignment.xml">FlexibleStopAssignment</a>, <a href="/netexRealisationGuideSwitzerland/next/templates/ServiceFrame_NETWORK_OFFER.xml">ServiceFrame_NETWORK_OFFER</a></td>
+      <td>Link between <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> and service area</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop.</p>
+
+<p><em>Table: ValueSet</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>values</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>typesOfValue_RelStructure</td>
+      <td>Values in Set.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TypeOfPlace</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>TypeOfPlace_ValueStructure</td>
+      <td>Classification of a PLACE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of TYPE OF VALUE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>Text</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>,</p>
+
+<p><em>Table: ResourceFrame</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>responsibilitySets</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>responsibilitySetsInFrame_RelStructure</td>
+      <td>RESPONSIBILITY SETs used in frame.</td>
+      <td>RESPONSIBILITY SETs contained in RESOURCE FRAME. ResponsibilitySets are used for the cases in which the LegalEntity, the Operator and the organisation selling the tickets are different.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/ResponsibilitySet.html">ResponsibilitySet</a></td>
+      <td>mandatory</td>
+      <td>1..*</td>
+      <td>ResponsibilitySet_VersionStructure</td>
+      <td>A set of responsibility roles assignments that can be associated with a DATA MANAGED OBJECT. A Child ENTITY has the same responsibilities as its parent.</td>
+      <td>Each combination of LegalEntity and Operator needs a ResponsibilitySet.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>typesOfValue</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>typesOfValueInFrame_RelStructure</td>
+      <td>VALUE SETs and TYPE OF VALUEs in frame.</td>
+      <td>Sets of TYPE OF VALUE contained in the RESOURCE FRAME.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ValueSet</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>ValueSet_VersionStructure</td>
+      <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
+      <td>We need a TypeOfNotice ValueSet.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>values</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>typesOfValue_RelStructure</td>
+      <td>Values in Set.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>TypeOfNotice</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>TypeOfNotice_ValueStructure</td>
+      <td>A classification of a NOTICE according to its functional purpose.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ValueSet</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>ValueSet_VersionStructure</td>
+      <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
+      <td>We need a TypeOfProductCategory ValueSet</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ValueSet</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>ValueSet_VersionStructure</td>
+      <td>An extensible set of code values which may be added to by user applications and is used to validate the properties of Entities.</td>
+      <td>We expect a TypsOfPlace Valueset. It must have two entries: drtCollectionPoint and regularStop.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>organisations</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>organisationsInFrame_RelStructure</td>
+      <td>ORGANISATIONs in frame.</td>
+      <td>ORGANISATIONs contained in RESOURCE FRAME. Contains the relevant Operators and other Organisations. We do not use the NeTEx element Authority, thus avoiding the problem of an identical SBOID for Operator and Authority.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/Operator.html">Operator</a></td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>Operator_VersionStructure</td>
+      <td>A company providing public transport services.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>siteFacilitySets</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>siteFacilitySetsInFrame_RelStructure</td>
+      <td>SITE FACILITY SETs in frame . +v1.2.2</td>
+      <td>Depending on the export/import part, there will be SiteFacilitySets to be included or not.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>SiteFacilitySetStructure</td>
+      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>serviceFacilitySets</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>serviceFacilitySetsInFrame_RelStructure</td>
+      <td>SERVICE FACILITY SETs in frame . +v1.2.2</td>
+      <td>Depending on the export/import part, there will be ServiceFacilitySets to be included. If there are ServiceJourneys we expect there to be some.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/ServiceFacilitySet.html">ServiceFacilitySet</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>ServiceFacilitySet_VersionStructure</td>
+      <td>Service FACILITY. Set of enumerated FACILITY values (Where available names are based on TPEG classifications, augmented with UIC etc.).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>vehicleTypes</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>vehicleTypesInFrame_RelStructure</td>
+      <td>VEHICLE TYPEs in frame.</td>
+      <td>The VehicleType here are used for generic information like lowfloor and not for formation information</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/VehicleType.html">VehicleType</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>VehicleType_VersionStructure</td>
+      <td>A classification of public transport vehicles according to the vehicle scheduling requirements in mode and capacity (e.g. standard bus, double-deck, …).</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
       <td><a href="/netexRealisationGuideSwitzerland/next/templates/TypesOfPlace.xml">TypesOfPlace</a>, <a href="/netexRealisationGuideSwitzerland/next/templates/ResourceFrame.xml">ResourceFrame</a></td>
       <td><code class="language-plaintext highlighter-rouge">drtCollectionPoint</code>, <code class="language-plaintext highlighter-rouge">regularStop</code></td>
     </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Table: AvailabilityCondition</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>FromDate</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>dateTime</td>
+      <td>Start date of AVAILABILITY CONDITION.</td>
+      <td>Is equal to the start date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ToDate</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>dateTime</td>
+      <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
+      <td>Is equal to the end date of the timetable year or, more generally, the period in which the ValidDayBits apply.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ValidDayBits</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>normalizedString</td>
+      <td>For UIC style encoding of day types String of bits, one for each day in period: whether valid or not valid on the day. Normally there will be a bit for every day between start and end date. If bit is missing, assume available.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>timebands</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>timebands_RelStructure</td>
+      <td>TIME BANDs for AVAILABILITY CONDITION.</td>
+      <td>Can also be referenced</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/Timeband.html">Timeband</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>Timeband_VersionedChildStructure</td>
+      <td>A period in a day, significant for some aspect of public transport, e.g. similar traffic conditions or fare category.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TimebandRef</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>TimebandRefStructure</td>
+      <td>Reference to a TIME BAND.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
       <td><a href="/netexRealisationGuideSwitzerland/next/templates/AvailabilityCondition.xml">AvailabilityCondition</a></td>
       <td><code class="language-plaintext highlighter-rouge">Timeband</code>s (time restriction of type 4)</td>

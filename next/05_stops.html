@@ -353,6 +353,24 @@
     </tr>
     <tr>
       <td> </td>
+      <td>flexibleStopPlaces</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>flexibleStopPlacesInFrame_RelStructure</td>
+      <td>STOP PLACEs in frame.</td>
+      <td>Service areas (Bediengebiete) of demand responsive services. Delivered in SITE_OFFER.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/FlexibleStopPlace.html">FlexibleStopPlace</a></td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>FlexibleStopPlace_VersionStructure</td>
+      <td>A named type of STOP PLACE for DRT comprising one or more flexible zones where vehicles may stop and where passengers may board or leave vehicles.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>parkings</td>
       <td>optional</td>
       <td>0..1</td>
@@ -470,6 +488,10 @@
   <span class="nt">&lt;stopPlaces&gt;</span>
     <span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/stopPlaces&gt;</span>
+  <span class="nt">&lt;flexibleStopPlaces&gt;</span>
+    <span class="c">&lt;!-- Service areas (Bediengebiete) of demand responsive services. Delivered in SITE_OFFER. --&gt;</span>
+    <span class="nt">&lt;FlexibleStopPlace</span> <span class="na">id=</span><span class="s">"ch:1:FlexibleStopPlace:myBuxi_Gotthardregion"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/flexibleStopPlaces&gt;</span>
   <span class="nt">&lt;parkings&gt;</span>
     <span class="c">&lt;!-- Will be used at least in the export from ATLAS to ERSAD --&gt;</span>
     <span class="nt">&lt;Parking</span> <span class="na">id=</span><span class="s">"ch:1:sloid:169:943587"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>

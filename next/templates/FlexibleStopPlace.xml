@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-11-03T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<SiteFrame id="ch:1:SiteFrame" version="1">
+					<flexibleStopPlaces>
+						<FlexibleStopPlace id="ch:1:FlexibleStopPlace:myBuxi_Gotthardregion" version="1">
+							<!-- ch-root -->
+							<!-- ch-attrs: id version -->
+							<!-- ch-note: Service area (Bediengebiet) of a demand responsive service of type 3 (corridor), 4 or 5 (area-wide). Delivered in SITE_OFFER. Linked to the timetable by a FlexibleStopAssignment in the ServiceFrame. See uc16_drt. -->
+							<Name><!-- ch-usage: expected -->myBuxi Gotthardregion</Name>
+							<ShortName><!-- ch-usage: optional -->31</ShortName>
+							<TransportMode><!-- ch-usage: optional -->bus</TransportMode>
+							<areas>
+								<!-- ch-usage: mandatory -->
+								<FlexibleArea id="ch:1:FlexibleArea:myBuxi_Gotthardregion" version="1">
+									<!-- ch-usage: mandatory -->
+									<!-- ch-attrs: id version -->
+									<!-- ch-note: The area itself. HailAndRideArea is not used. -->
+									<Name lang="de"><!-- ch-usage: expected --><!-- ch-attrs: lang -->myBuxi Gotthardregion</Name>
+									<ShortName><!-- ch-usage: optional -->31</ShortName>
+									<members>
+										<!-- ch-usage: optional -->
+										<!-- ch-note: Collection points (TypeOfPlace drtCollectionPoint) of the area, if the service has any. Omitted for services without fixed stops (type 5). The references point to ScheduledStopPoints, which are not part of SITE_OFFER. Therefore versionRef is used instead of version: with version, the XSD key reference requires the ScheduledStopPoint in the same document. -->
+										<ScheduledStopPointRef ref="ch:1:StopPlaceCollectionPoint:2-0-Gen" versionRef="1"/>
+										<ScheduledStopPointRef ref="ch:1:StopPlaceCollectionPoint:3-0-Gen" versionRef="1"/>
+									</members>
+									<gml:Polygon gml:id="Area31" srsName="EPSG:4326">
+										<!-- ch-usage: expected -->
+										<!-- ch-note: Decision: mandatory. Either gml:Polygon or gml:MultiSurface (choice in the XSD), in EPSG:4326. Not checked by the schematron, because the annotations cannot express the choice and do not handle the gml namespace. Coordinates shortened for the template. -->
+										<gml:exterior>
+											<gml:LinearRing>
+												<gml:pos>8.6314774 46.7285658</gml:pos>
+												<gml:pos>8.6423779 46.7440955</gml:pos>
+												<gml:pos>8.6409187 46.7546226</gml:pos>
+												<gml:pos>8.5978317 46.653796</gml:pos>
+												<gml:pos>8.6125946 46.7078526</gml:pos>
+												<gml:pos>8.6314774 46.7285658</gml:pos>
+											</gml:LinearRing>
+										</gml:exterior>
+									</gml:Polygon>
+									<TransportMode><!-- ch-usage: optional -->bus</TransportMode>
+									<BoardingUse><!-- ch-usage: optional --><!-- ch-note: Default true. -->true</BoardingUse>
+									<AlightingUse><!-- ch-usage: optional --><!-- ch-note: Default true. -->true</AlightingUse>
+								</FlexibleArea>
+							</areas>
+						</FlexibleStopPlace>
+					</flexibleStopPlaces>
+				</SiteFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

@@ -21,6 +21,7 @@ A minimal ServiceFrame must be present in all timetable files.
 | + | [DefaultConnection](DefaultConnection.md) | expected | 0..* | DefaultConnection_VersionStructure | Specifies the default transfer times to transfer between MODEs and / or OPERATORs within a region. | DefaultConnection is only used in the SITE_OFFER file |
 |  | stopAssignments | expected | 0..1 | stopAssignmentsInFrame_RelStructure | STOP ASSIGNMENTs in frame. |  |
 | + | [PassengerStopAssignment](PassengerStopAssignment.md) | expected | 0..* | unknown |  | Make the link between timetables and site model. |
+| + | [FlexibleStopAssignment](FlexibleStopAssignment.md) | optional | 0..* | FlexibleStopAssignment_VersionStructure | Assignment of a SCHEDULED STOP POINT to a FLEXIBLE STOP PLACE and quay. etc. | For service areas (Bediengebiete) of demand responsive services. |
 |  | timingLinks | expected | 0..1 | timingLinksInFrame_RelStructure | TIMING LINKs in frame. | We use TimingLink as the time behaviour between two ScheduledStopPoints |
 | + | [TimingLink](TimingLink.md) | expected | 1..* | TimingLink_VersionStructure | An ordered pair of TIMING POINTs for which run times may be recorded. Timing links are directional - there will be separate links for each direction of a route. | every different handling of the link needs a different timing link e.g. bus vs tram |
 |  | journeyPatterns | mandatory | 0..1 | journeyPatternsInFrame_RelStructure | JOURNEY PATTERNs in frame. |  |

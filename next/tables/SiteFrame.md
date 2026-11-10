@@ -10,6 +10,8 @@
 | + | [TopographicPlace](TopographicPlace.md) | expected | 1..* | TopographicPlace_VersionStructure | A town, city, village, suburb, quarter or other name settlement within a country. Provides a Gazetteer of Transport related place names. | Used to represent countries if outside CH, cantons and communes if in CH. Cantons are referenced from StopPlaces. |
 |  | stopPlaces | mandatory | 0..1 | stopPlacesInFrame_RelStructure | STOP PLACEs in frame. |  |
 | + | [StopPlace](StopPlace.md) | mandatory | 1..* | StopPlace_VersionStructure | A STOP PLACE. |  |
+|  | flexibleStopPlaces | optional | 0..1 | flexibleStopPlacesInFrame_RelStructure | STOP PLACEs in frame. | Service areas (Bediengebiete) of demand responsive services. Delivered in SITE_OFFER. |
+| + | [FlexibleStopPlace](FlexibleStopPlace.md) | optional | 1..* | FlexibleStopPlace_VersionStructure | A named type of STOP PLACE for DRT comprising one or more flexible zones where vehicles may stop and where passengers may board or leave vehicles. |  |
 |  | parkings | optional | 0..1 | parkingsInFrame_RelStructure | PARKINGs in frame. | Will be used at least in the export from ATLAS to ERSAD |
 | + | Parking | optional | 0..* | Parking_VersionStructure | A named place where Parking may be accessed. May be a building complex (e.g. a station) or an on-street location. | Currently only very minimal as we don't have more information (e.g. no coordinates). |
 | ++ | Name | optional | 0..1 | MultilingualString | Name of PARKING PROPERTIes.+V1.2.2 |  |
