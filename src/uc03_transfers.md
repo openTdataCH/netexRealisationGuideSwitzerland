@@ -10,13 +10,24 @@ The following table shows how we will map HRDF tables into NeTEX.
 
 | HRDF     | NeTEx RG1           | NeTEx RG2                                                                                                      | Use Case                                   |
 |----------|---------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+| DURCHBI  | `JourneyMeeting`    | `ServiceJourneyInterchange`                                                                                    | Durchbindung, Flügelzug, Vereinigung       |
 | UMSTEIGZ | `InterchangeRule`   | `ServiceJourneyInterchange`                                                                                    | Fahrtbezogene Umsteigezeit                 |
 | UMSTEIGL | `InterchangeRule`   | `ServiceJourneyInterchange`                                                                                    | Linien- und Richtungsbezogene Umsteigezeit |
+| UMSTEIGV | `DefaultConnection` | `DefaultConnection`                                                                                            | Verwaltungsbezogene Umsteigezeit           |
 | UMSTEIGB | `DefaultConnection` | `DefaultConnection`                                                                                            | Standardumsteigezeit pro Haltestelle       |
 | METABHF  | `SiteConnection`    | `SiteConnection`                                                                                               | Umsteigezeit zwischen Haltestellen         |
-| UMSTEIGV | `DefaultConnection` | `DefaultConnection`                                                                                            | Verwaltungsbezogene Umsteigezeit           |
-| DURCHBI  | `JourneyMeeting`    | `ServiceJourneyInterchange`                                                                                    | Durchbindung, Flügelzug, Vereinigung       |
 
+If multiple transfer rules apply to a service journey pair, the first matching rule (top to bottom in the table above) should apply. If multiple `DefaultConnection` transfer rules apply to the same transfer, the one referencing operators should apply.
+
+The export guarantees that:
+- for two service journeys and `FromPointRef` / `ToPointRef`, maximum one `ServiceJourneyInterchange` will be produced
+- for two stops, maximum one `DefaultConnection` will provide the default transfer time between that stop pair
+- for two operators, maximum one `DefaultConnection` will provide the default transfer time between that operator pair
+
+Additional transfers:
+
+- A journey planner MUST NOT generate transfers based on geographic data or proximity for transfers that are governed by one of the rules above.
+- A journey planner MAY generate transfers based on geographic data or proximity for transfers that are NOT governed by one of the rules above.
 
 ## Transfer times at a given StopPlace (UMSTEIGB)
 Defines the default transfer time at a specific stop place, regardless of operator or line.
