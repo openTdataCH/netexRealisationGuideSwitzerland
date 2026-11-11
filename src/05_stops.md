@@ -94,31 +94,26 @@ Note that a `StopPlace` is a distinct concept from the representation of the sto
 *→ [Template](./templates/StopPlace.xml)*
 
 ### Usage Notes
-- All `StopPlace`s in Switzerland are identifiable by both a DIDOK number and a SLOID. DIDOK number are under the responsibility of the Department of Transport (BAV). It is possible that in the future the BAV will also regulate “Haltepunkte” and “Haltekanten” and, therefore, the identifiers of `Quay`s.
-- Foreign `StopPlace`s may be mapped to Swiss DIDOK codes. 
+- All `StopPlace`s in Switzerland are identifiable by a SLOID. DIDOK are still added in the oev-ch export as available. We also regulated “Haltepunkte” and “Haltekanten” and, therefore, the identifiers of `Quay`s.
+- Foreign `StopPlace`s may be mapped to Swiss SLOID codes. 
 - Meta-stations will have their own codes. In some cases these are added for operational or searching reasons. 
 - `@id` needs to be kept stable between exports.
-- DIDOK number placement: The DIDOK number is **not** transported as free text anywhere on `StopPlace`. It is placed in `privateCodes/PrivateCode` with `type="didok"`, **and** the same value must additionally be listed in the `KeyList` (`KeyValue` with matching `Key`). Both are required — the `PrivateCode` for direct lookup, the `KeyList` entry for generic key/value tooling.
-- `ShortName` is not used on `StopPlace`. In particular, the DIDOK number must **never** be placed in `ShortName` — this was common practice under Profile 1.0 / HRDF-based exports and is explicitly discontinued under RV 2.0.
+- SLOID (and DIDOK) number placement: The SLOID number is **not** transported as free text anywhere on `StopPlace`. It is placed in `privateCodes/PrivateCode` with `type="sloid"` and `type="didok"`.
+- `ShortName` is not used on `StopPlace`.
 - `ValidBetween`: Every `StopPlace` carries a `ValidBetween` with a `FromDate`. Since `StopPlace` is infrastructure master data (not a timetable-period object), **no `ToDate` is set** — validity is open-ended until a future change is published.
 - We have `Locale\TimeZone` set, when necessary. See also usage notes of `ServiceJourney`. Only used to calculate arrival and departure times.
 
 #### Example: DIDOK number and validity on `StopPlace`
 ```xml
-<StopPlace id="ch:1:StopPlace:8503000" version="1">
+<StopPlace id="ch:1:sloid:3000" version="1">
   <ValidBetween>
     <FromDate>2025-12-14T00:00:00</FromDate>
   </ValidBetween>
   <Name>Zürich HB</Name>
   <privateCodes>
+    <PrivateCode type="sloid">ch:1:sloid:3000</PrivateCode>
     <PrivateCode type="didok">8503000</PrivateCode>
   </privateCodes>
-  <keyList>
-    <KeyValue>
-      <Key>didok</Key>
-      <Value>8503000</Value>
-    </KeyValue>
-  </keyList>
   <!-- Quays, Centroid, etc. -->
 </StopPlace>
 ```
