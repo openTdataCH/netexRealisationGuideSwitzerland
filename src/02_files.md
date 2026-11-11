@@ -139,7 +139,9 @@ INTERCHANGE
 * Contains interchanges, spliting, joining and "Durchbindungen".
 * ref/id can't be checked by the schema. Therefore we use the attribute `versionRef` instead of `version`. 
 
-Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.  SITE_OFFER is only needed for data not stored in ATLAS. INFO+ will deliver an aggregated, comprehensive SITE_OFFER.
+Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.
+SITE_OFFER may be delivered, but INFO+ ignores SITE_OFFER files because operators must store all reference data in ATLAS themselves.
+INFO+ delivers additionaly an aggregated, comprehensive SITE_OFFER based on ATLAS data.
 
 ### Naming Conventions of Files
 IT-Environments:
