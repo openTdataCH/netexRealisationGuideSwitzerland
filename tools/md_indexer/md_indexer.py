@@ -153,7 +153,7 @@ def generate_index(
             if check_template_exists(term, templates_folder):
                 # Check if the site/tables/{term}.md file would exist
                 tables_file = os.path.join(
-                    source_folder, "..", "site", "tables", f"{term}.html"
+                    source_folder, "..", "tables", f"{term}.html"
                 )
                 # Normalize the path
                 tables_file = os.path.normpath(tables_file)

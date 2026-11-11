@@ -65,9 +65,9 @@ This document describes the way in which the NeTEx standard is specifically appl
 We have a [set of examples](https://github.com/openTdataCH/netexRealisationGuideSwitzerland/tree/main/src/examples) that show how to create use cases with the realisation guide.
 
 ## Imprint
-* Authors: Matthias Günter,  Wilfried Düx, Adrian Schmid, Urs Stöckli, André Murbach, Thomas Schäfer, Simon Freihart, Emeric Tapia-Almosnino, 
-* Status: Release Candidate 2
-* Last change: 2026-10-28
+* Authors: Matthias Günter,  Wilfried Düx, Adrian Schmid,  André Murbach, Thomas Schäfer, Simon Freihart, Emeric Tapia-Almosnino, Urs Stöckli
+* Status: Release Candidate 3
+* Last change: 2026-11-17
 * Contact: info.fachbus@sbb.ch
 
 ## Copyright / License

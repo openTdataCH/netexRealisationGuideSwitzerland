@@ -27,11 +27,13 @@ In some cases there are references to the HRDF format currently used in the data
 
 # Roadmap
 
-| Date    | Milestone                                                       |
-|---------|-----------------------------------------------------------------|
-| 2026-07 | First draft for discussion of RG 2.0 (Release cnadidate (RC) 1) |
-| 2026-09 | Review 1 done (RC 2)                                            |
-| 2026-12 | RG 2.0 ready (Release)                                          |
-| tbd     | RG 2.0 based NeTEx output                                       |
-| tbd     | Input accepted in version 2.0 format by SKI                     |
+| Date    | Milestone                                                                                                                                                                  |
+|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 2026-07 | First draft for discussion of RG 2.0 (Release candidate (RC) 1)                                                                                                            |
+| 2026-09 | Review 1 done (RC 2)                                                                                                                                                       |
+| 2026-11 | RG 2.0 RC3                                                                                                                                                                 |
+| 2026-12 | RG 2.0 ready (Release)                                                                                                                                                     |
+| 2027-06 | RG 2.0 based NeTEx output from INFO+                                                                                                                                       |
+| 2027-06 | RG 2.0.1 or RG 2.1 with all input from the implementations NeTe output, work at INFO+, comparisons with other profiles and work by software providers working on NeTEx 2.0 |
+| 2027-12 | Input accepted in version 2.0 format by INFO+                                                                                                                              |
 
