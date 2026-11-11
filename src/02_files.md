@@ -143,7 +143,9 @@ Swiss operators deliver NETWORK_OFFER and INTERCHANGE to INFO+.
 SITE_OFFER may be delivered, but INFO+ ignores SITE_OFFER files because operators must store all reference data in ATLAS themselves.
 INFO+ delivers additionaly an aggregated, comprehensive SITE_OFFER based on ATLAS data.
 
-### Naming Conventions of Files
+### Naming Conventions of Files for the main public transport NeTEx files
+They will be provided opentransportdata.swiss.
+
 IT-Environments:
 - Development:	DEV
 - Test:	TEST
@@ -167,7 +169,7 @@ The name of each XML file is composed of the following information:
 
 Example: `TEST_NETEX_TT_2.0_CHE_SKI_2026_OEV-SCHWEIZ_SITE_OFFER_202301250401.xml`
 
-All Files are embedded in a zip-File. The name of the zip-file is composed of the following information:
+All Files are embedded in a zip-File. The name of the zip-file is composed of the following information in the case of deliveries from INFO+:
 
 | Content	             | Example	      | Description                                                                                                                                                                                 |
 |----------------------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -176,7 +178,7 @@ All Files are embedded in a zip-File. The name of the zip-file is composed of th
 | Content of the file	 | `TT`	         | Describe the content (TimeTable)                                                                                                                                                            |
 | Version              | `2.1`         | 		Number of the version of the NeTEx .xsd schema                                                                                                                                              | 
 | Country	             | `CHE`	        | ISO code of the country for which the file was produced                                                                                                                                     | 
-| Provider	            | `SKI`	        | Name of the provider                                                                                                                                                                        | 
+| Provider	            | `SKI`	        | Name of the provider (SKI means INFO+ in this context)                                                                                                                                      | 
 | Time period	         | `2026`        | 	Time period of the data                                                                                                                                                                     | 
 | Name of Export	      | `oev-schweiz`	 | Defines the scope of the timetable data (e.g. `bernmobil` or for the whole of Switzerland `oev-schweiz`). Underscores (_) must not used here, as we use them as separator in the file name. | 
 | Date and Time	       | `202606131500` | 	Date and time the file was produced, format: YYYYMMDDHHMM                                                                                                                                   | 
@@ -192,24 +194,29 @@ All data is encoded as UTF-8 without BOM.
 
 
 ### Data Transfer
+> NOTE: The details of deliveries from operators  to INFO+ will be defined in a separate document at some point.
+
 The data transfer will be defined by INFO+. A version of the full swiss data will be available on https://opentransportdata.swiss/ for download.
 
 
-### Provisions for Deliveries Sent by Data Provider to SKI 
+### Provisions for Deliveries Sent by Data Provider to SKI (INFO+)
+> NOTE: The details of deliveries from operators  to INFO+ will be defined in a separate document at some point.
+
 We suggest that the partner name consists of the short name of the partner and necessary additions to identify the system. In addition, the number of the timetable period is to be indicated in the name, as well as the date and time of creation of the file
 
 Examples: `test_zvv_2024_20231112_095217.zip`, `prod_tl_2024_20231114_152836.zip`
 
 The file name must be agreed on between the data provider and SKI. Generally it is agreed that delivery can be on network, operator or line base.
 
-#### Partial Deliveries
+#### Partial Deliveries from transport operators
+> NOTE: The details of deliveries from operators  to INFO+ will be defined in a separate document at some point. We might reconsider some of those points for mixed lines. 
+
 No partial deliveries are accepted. They must contain:
 - all relevant lines
 - the whole timetable year
 
 No incremental updates are supported.
 
-> NB: We might reconsider some of those points for mixed lines. 
 
 ### Data Delivery from SKI to Data Consumers
 As the quantity of the data is very large for a single XML-file, SKI provides the data a set of XML files (one SITE_OFFER.xml, multiple NETWORK_OFFER.xml and one INTERCHANGES.xml). In addition to the XML files, SKI provides a README file listing the contents of each XML file. 
