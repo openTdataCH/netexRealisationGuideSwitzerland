@@ -96,6 +96,11 @@ A `ServiceJourney` represents a planned trip in the timetable operating on a rec
 - The arrival time at all subsequent `ScheduledStopPoint`s is calculated by adding the run time between the previous `ScheduledStopPoint` and the current `ScheduledStopPoint` of the `ServiceJourneyPattern`. The correct run time is obtained by searching `TimeDemandType/runTimes/JourneyRunTime/Runtime` with the `TimingLink` corresponding to the previous and current `ScheduledStopPoint`. The `TimingLink` to be used is indicated by `ServiceJourneyPattern/pointsInSequence/StopPointInJourneyPattern/OnwardTimingLinkRef`.
 - The departure time at each `ScheduledStopPoint` is obtained by adding `TimeDemandType/waitTimes/JourneyWaitTime/Waitime` for the `ScheduledStopPoint`. Please observe that a `ScheduledStopPoint` may be visited more than once within a `ServiceJourneyPattern` and may have different waiting times at each visit. In this case, `TimeDemandType/waitTimes/StopPointInJourneyPatternRef` will be used to override `TimeDemandType/waitTimes/ScheduledStopPointRef`. 
 
+## Multiple visits to the same stop in a ServiceJourney and multiple usage of the same timing link in the same ServiceJourney
+If a specific stop is visited multiple time this is only a problem, when there are different wait time. Usually, a `WaitTime` contains a `ScheduledStopPointRef` and is valid for all visits. If you need a different `WaitTime` then it needs to do the reference with a `StopPointInJourneyPatternRef`. The second one takes precedence, if both exist.
+
+If the same link between two stops is traveled twice with a different `RunTime`, then the `JourneyRunTime` needs to be different, but it can keep the same `TimingLinkRef` as the time is stored in the `JourneyRunTime` and not the `RunTime`. 
+
 ## Very special case: two ServiceJourneys during change from summer to winter time
 In this case:
 - the first `ServiceJourney` is the one that is "meant"-

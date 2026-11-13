@@ -78,7 +78,7 @@
 									<!-- ch-note: Relevant waiting times at the stop -->
 									<ScheduledStopPointRef ref="sloid" versionRef="1">
 										<!-- ch-usage: expected -->
-										<!-- ch-note: Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice). -->
+										<!-- ch-note: Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice). That's why we only write expected here. The more detailed version takes precedence (StopPointInJourneyPatternRef over ScheduledStopPointRef). -->
 									</ScheduledStopPointRef>
 									<WaitTime><!-- ch-usage: mandatory -->PT2M</WaitTime>
 								</JourneyWaitTime>
