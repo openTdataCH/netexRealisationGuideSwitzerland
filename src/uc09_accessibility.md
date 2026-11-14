@@ -1,73 +1,74 @@
-# Accessibility - WORK IN PROGRESS
+# Accessibility
 
 Definition of the Swiss Accessibility Profile.
 
-In this chapter:
+**Current State**
+- Elaborated only for Site elements
+- Does not fully obey the EPIAP philosophy of favoring Equipments over Facilities and Services. 
+
+
+**Future Developments**
+- Alignment with upcoming ERA TSI/PRM definitions
+- Accessibility for vehicles, journeys
+- We may add SitePathLinks
+- We may add StairEquipment, RampEquipment, etc. 
+- Granularity of navigation networks? - First thoughts  [presented below](#sitepathlink).
+
+---
+
+**In this chapter**:
 
 AccessibilityAssessment
-- AccessibilityAssessment
+- [**AccessibilityAssessment**](#accessibilityassessment)
 
 Basic Orientation
-- Level
-- Entrance
-- AccessSpace
-- StopPlace - the Additional Elements
-- Quay - the Additional Elements
+- **Level**
+- [**StopPlaceEntrance**](#stopplaceentrance)
+- [**StopPlace - the Additional Elements**](#stopplace---the-additional-elements)
+- [**Quay - the Additional Elements**](#quay---the-additional-elements)
+- *AccessSpace - not used*
 
 
 PrivateMobility
-- Parking
-- VehicleMeetingPoint
+- **Parking -** [**see StopPlace**](#stopplace---the-additional-elements)
 
 Path Navigation
-- SitePathLink
-- PathJunction
-- DefaultConnection - the Additional Elements
-- SiteConnection - the Additional Elements
+- [**SitePathLink**](#sitepathlink) - *not used*
+- *PathJunction - not used*
+
 
 Equipments, Facilities & Services
-- EquipmentPlace
-- EntranceEquipment
-- EscalatorEquipment
-- LiftEquipment
-- RampEquipment
-- TravelatorEquipment
-- LuggageLockerEquipment
-- TrolleyStandEquipment
-- PassengerSafetyEquipment
-- SanitaryEquipment
-- TicketingEquipment
-- QueingEquipment - ?
-- TicketValidatorEquipment
-- ShelterEquipment - ?
-- WaitingEquipment
-- WaitingRoomEquipment
-- SignEquipment- ?
-- AssistanceService**_
-- AssistanceBookingService
-- LostPropertyService
-- LuggageService
-- MeetingPointService
-- TicketingService
-- CustomerService
-- SiteFacilitySet - the Additional Elements
-- ServiceFacilitySet - the Additional Elements
+- [**SiteFacilitySet - the Additional Elements**](#sitefacilityset---the-additional-elements)
+- [**AssistanceService**](#assistanceservice)
+- [**AssistanceBookingService**](#assistancebookingservice)
+- **SanitaryEquipment -** [**see StopPlace**](#stopplace---the-additional-elements)
+- **TicketingEquipment -** [**see StopPlace**](#stopplace---the-additional-elements)
+- *EquipmentPlace - not used*
+- *EntranceEquipment - not used*
+- *EscalatorEquipment - not used*
+- *LiftEquipment - not used*
+- *RampEquipment - not used*
+- *TravelatorEquipment - not used*
+- *SignEquipment - not used*
+- *MeetingPointService - not used*
+- *CustomerService - not used*
+- *ServiceFacilitySet - not used*
 
 Vehicles & Vehicle Stop Interaction
-- VehicleType
-- BoardingPosition
-- TrainStopAssignment
+- *VehicleType - not used*
+- *BoardingPosition - not used*
 
 
 
 
 
 ## AccessibilityAssessment
-*→ [Glossary definition](A4_annex_glossary.md#accessibilityassessment)
+*→ [Glossary definition](A4_annex_glossary.md#accessibilityassessment)* 
 
 ### Purpose
 
 An assessment of the usability by passengers with specific needs, for example, those needing wheelchair access, step-free access or for the visually or the auditorily impaired.
+
 
 
 ### Table
@@ -90,49 +91,155 @@ In case of `StopPlace` or `Quay`, EPIAP uses the following interpretation:
 * `VisualSignsAvailable` `true` (only for railway stations)
 * `TactileGuidanceAvailable` `true`
 
-Interpretation of `AccessibilityLimitation`:
+#### Interpretation of `AccessibilityLimitation`:
 
-|   |   |
-|---|---|
-|`WheelchairAccess`|1.    `StepFreeAccess` from an accessible entrance (see next row).<br>2.    The stop/platform is sufficiently wide to make a turn with a wheelchair when entering/leaving the vehicles that usually stops at this stop/platform (depending on the available/needed tools for entering/leaving the vehicle).<br>3.    If boarding trains requires boarding assistance, onsite assistance is available.|
-|`StepFreeAccess`|1.    A step-free route is an obstacle-free/barrier free route that meets the needs of mobility impaired persons. Changes in level are avoided or, when they cannot be avoided, they are bridged via ramps or lifts (compliant with PRM TSI).<br>2.    The platform or Stop is accessible without steps from the surrounding area (footpaths).<br>A platform which has `StepFreeAccess` without `WheelchairAccess` (= `false`) may be not sufficiently wide to make a turn with a wheelchair.|
-|`StairFreeAccess`|A stair-free route. Single steps allowed.|
-|`LevelAccessIntoVehicle`|Whether the platform is high enough and gap is small enough for level access into vehicle.<br><br>At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).|
-|`EscalatorFreeAccess` (not included in profile)|Reachable without using an escalator.|
-|`LiftFreeAccess` (not included in profile)|Reachable without using an elevator.|
-|`RampFreeAccess`|Reachable without using a ramp that doesn't fit the UN Design [Considerations](https://euc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=nl-nl&rs=nl-nl&wopisrc=https%3A%2F%2Fitxptorg.sharepoint.com%2Fsites%2FEU.DATA4PT.NETEX%2F_vti_bin%2Fwopi.ashx%2Ffiles%2Fc2c9167177c34bc1bb50e4880ff7b6ac&wdenableroaming=1&mscc=1&hid=12869e13-00bf-76bc-9351-10ac590e57c1-730&uiembed=1&uih=teams&uihit=files&hhdr=1&dchat=1&sc=%7B%22pmo%22%3A%22https%3A%2F%2Fteams.microsoft.com%22%2C%22pmshare%22%3Atrue%2C%22surl%22%3A%22%22%2C%22curl%22%3A%22%22%2C%22vurl%22%3A%22%22%2C%22eurl%22%3A%22https%3A%2F%2Fteams.microsoft.com%2Ffiles%2Fapps%2Fcom.microsoft.teams.files%2Ffiles%2F2441637157%2Fopen%3Fagent%3Dpostmessage%26objectUrl%3Dhttps%253A%252F%252Fitxptorg.sharepoint.com%252Fsites%252FEU.DATA4PT.NETEX%252FShared%2520Documents%252FGeneral%252FCEN_Accessibility_Profile%252F20210326%2520PrTS%252016614-6.docx%26fileId%3Dc2c91671-77c3-4bc1-bb50-e4880ff7b6ac%26fileType%3Ddocx%26ctx%3Daggregate%26scenarioId%3D730%26locale%3Dnl-nl%26theme%3Ddefault%26version%3D21100501100%26setting%3Dring.id%3Ageneral%26setting%3DcreatedTime%3A1639152919292%22%7D&wdorigin=TEAMS-ELECTRON.aggregatefiles.aggregate&jsapi=1&jsapiver=v1&newsession=1&corrid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&usid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&sftc=1&sams=1&accloop=1&sdr=6&scnd=1&sat=1&hbcv=1&htv=1&hodflp=1&instantedit=1&wopicomplete=1&wdredirectionreason=Unified_SingleFlush&rct=Medium&ctp=LeastProtected#_ftn1) (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m). [[1]](https://euc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=nl-nl&rs=nl-nl&wopisrc=https%3A%2F%2Fitxptorg.sharepoint.com%2Fsites%2FEU.DATA4PT.NETEX%2F_vti_bin%2Fwopi.ashx%2Ffiles%2Fc2c9167177c34bc1bb50e4880ff7b6ac&wdenableroaming=1&mscc=1&hid=12869e13-00bf-76bc-9351-10ac590e57c1-730&uiembed=1&uih=teams&uihit=files&hhdr=1&dchat=1&sc=%7B%22pmo%22%3A%22https%3A%2F%2Fteams.microsoft.com%22%2C%22pmshare%22%3Atrue%2C%22surl%22%3A%22%22%2C%22curl%22%3A%22%22%2C%22vurl%22%3A%22%22%2C%22eurl%22%3A%22https%3A%2F%2Fteams.microsoft.com%2Ffiles%2Fapps%2Fcom.microsoft.teams.files%2Ffiles%2F2441637157%2Fopen%3Fagent%3Dpostmessage%26objectUrl%3Dhttps%253A%252F%252Fitxptorg.sharepoint.com%252Fsites%252FEU.DATA4PT.NETEX%252FShared%2520Documents%252FGeneral%252FCEN_Accessibility_Profile%252F20210326%2520PrTS%252016614-6.docx%26fileId%3Dc2c91671-77c3-4bc1-bb50-e4880ff7b6ac%26fileType%3Ddocx%26ctx%3Daggregate%26scenarioId%3D730%26locale%3Dnl-nl%26theme%3Ddefault%26version%3D21100501100%26setting%3Dring.id%3Ageneral%26setting%3DcreatedTime%3A1639152919292%22%7D&wdorigin=TEAMS-ELECTRON.aggregatefiles.aggregate&jsapi=1&jsapiver=v1&newsession=1&corrid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&usid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&sftc=1&sams=1&accloop=1&sdr=6&scnd=1&sat=1&hbcv=1&htv=1&hodflp=1&instantedit=1&wopicomplete=1&wdredirectionreason=Unified_SingleFlush&rct=Medium&ctp=LeastProtected#_ftnref1) [https://www.un.org/esa/socdev/enable/designm/AD2-01.htm](https://www.un.org/esa/socdev/enable/designm/AD2-01.htm)|
-|`AudibleSignalsAvailable`|Whether audible signals for the visually impaired are present.|
-|`VisualSignsAvailable`|PRM TSI: visual information as signposting, pictograms and dynamic information.|
-|`TactileGuidanceAvailable`|Whether the object has tactile guidance (for the visually impaired). If absent assume `unknown`.<br>PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br>For bus- and tram stops:  <br>1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br>2.   Tactile guideline or boarding position connected to (natural) guideline in environment|
+We apply a slightly stricter interpretation than the current version of EPIAP. The information that can be conveyed to the passengers thus becomes more useful and exporting the data to foreign systems is unproblematic. The additional constraints are [marked in brackets].
+
+|                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+|-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `WheelchairAccess`                              | 1.    `StepFreeAccess` [including `EscalatorFreeAccess`] from an accessible entrance (see next row).<br>2.    The stop / platform is sufficiently wide to make a turn with a wheelchair when entering / leaving the vehicles that usually stop at this stop / platform (depending on the available / needed tools for entering / leaving the vehicle).<br>3.    If boarding trains requires boarding assistance, onsite assistance is available.                                                                                |
+| `StepFreeAccess`                                | 1.    A step-free route is an obstacle-free / barrier free [and `EscalatorFreeAccess`] route that meets the needs of mobility impaired persons. Changes in level are avoided or, when they cannot be avoided, they are bridged via ramps or lifts (compliant with PRM TSI).<br>2.    The platform or stop is accessible without steps from the surrounding area (footpaths).<br><br>A platform which has `StepFreeAccess` without `WheelchairAccess` (==`false`) may be not sufficiently wide to make a turn with a wheelchair. |
+| `StairFreeAccess`                               | A stair-free route. Single steps allowed, escalators allowed.                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| `LevelAccessIntoVehicle`                        | Whether the platform is high enough and gap is small enough for level access into vehicle.<br><br>At least at a designated wheelchair door position the gap between platform and vehicle floor (of level access vehicle) does not exceed 75 mm measured horizontally and 50 mm measured vertically including sliding step (according to PRM TSI).                                                                                                                                                                               |
+| `EscalatorFreeAccess` (not included in profile) | Reachable without using an escalator.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `LiftFreeAccess` (not included in profile)      | Reachable without using an elevator.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| `RampFreeAccess`                                | 1.   Reachable without using a ramp that doesn't fit the [UN Design Considerations](https://www.un.org/esa/socdev/enable/designm/AD2-01.htm) (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m).<br>2.    [The route provides `WheelchairAccess`].                                                                         |
+| `AudibleSignalsAvailable`                       | Whether audible signals for the visually impaired are present.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| `VisualSignsAvailable`                          | 1.   PRM TSI: visual information as signposting, pictograms and dynamic information. <br>2.    [Largely language independent, also suited for passengers from foreign cultures.]                                                                                                                                                                                                                                                                            |
+| `TactileGuidanceAvailable`                      | Whether the object has tactile guidance (for the visually impaired).<br>PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br>For bus- and tram stops:  <br>1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br>2.   Tactile guideline or boarding position connected to a (natural) guideline in the environment                                                                              |
 
 #### Remarks `RampFreeAccess`
 
-* Note that `RampFreeAccess` may very well include ramps - provided their slopes are only moderate.
-* It seems obvious that `RampFreeAccess`should also include `StairFreeAccess` and `StepFreeAccess` - this isn't explicitely stated in EPIAP, however. 
-* `RampFreeAccess`is thus a stronger form of `WheelchairAccess` excluding steeper slopes.
+* Note that `RampFreeAccess` may very well include ramps - provided their slopes are only moderate or they have landing / rest areas.
+* `RampFreeAccess`is a stronger form of `WheelchairAccess` excluding steeper slopes.
 
 
-#### Limitiations of AccessibilityAssessment
+#### Limitations of AccessibilityAssessment
 
-* If, e.g., `WheelchairAccess` or `StairFreeAccess` requires using a lift, the `AccessibilityAssessment` does not convey this information. 
+* If, e.g., `WheelchairAccess` or `StairFreeAccess` requires using a lift, the `AccessibilityAssessment` does not convey this information.
+* According to EPIAP definitions, a quay with, e.g., `WheelchairAccess` means that there is at least one entrance from which it is reachable. It may be that `WheelchairAccess` only works from a secondary entrance, not from the main entrance.
 
-* According to EPIAP definitions, a quay with, e.g., `WheelchairAccess` means that there is at least one entrance from which it is reachable. It may be that `WheelchairAccess` only works from a secondary entrance, not from the main entrance. 
+Such information can be encoded using `SitePathLink`s and `PathJunction`s that describe a routing network including accessibility and location data.
 
-Such information can be encoded using `PathLink`s and `PathJunction`s that describe a routing network including accessibility and location data.
+#### Entrances related to AccessibilityAssessment
+* All `AccessibiltyLimitation`s (`StepFreeAccess` etc.) relate to a complete path from an "accessible" `StopPlaceEntrance` with `DroppedKerb=true` and `DropOffPointClose=true`. 
+
+
+
+## StopPlaceEntrance
+*→ [Glossary definition](A4_annex_glossary.md#StopPlaceEntrance)* 
+
+### Purpose
+`StopPlaceEntrance`s, in particular if `DroppedKerbOutside` and `DropOffPointClose` are true, are the reference points from which the accessibility of `Quay`s and other place elements is assessed. 
+
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/StopPlaceEntrance.md)
+
+*→ [General NeTEx definition ](../xcore/netex/elements/StopPlaceEntrance.html)*
+
+### Example
+- [Example snippet](../site/xml-snippets/StopPlaceEntrance.xml)
+
+*→ [Template](./templates/StopPlaceEntrance.xml)*
+
+
 
 
 ## StopPlace - the Additional Elements
 
 
-
 ### Table
-- [Swiss profile NeTEx definition](../site/tables/StopPlace_withAccessibility.md)
+- [Swiss profile NeTEx definition](../site/tables/StopPlace_accessibility.md)
 
 
 ### Example
-- [Example snippet](../site/xml-snippets/StopPlace_withAccessibility.xml)
+- [Example snippet](../site/xml-snippets/StopPlace_accessibility.xml)
 
-*→ [Template](./templates/StopPlace_withAccessibility.xml)*
+*→ [Template](./templates/StopPlace_accessibility.xml)*
+
+
+
+
+## Quay - the Additional Elements
+
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/Quay_accessibility.md)
+
+
+### Example
+- [Example snippet](../site/xml-snippets/Quay_accessibility.xml)
+
+*→ [Template](./templates/Quay_accessibility.xml)*
+
+
+
+
+## AssistanceService
+*→ [Glossary definition](A4_annex_glossary.md#AssistanceService)* 
+
+### Purpose
+Used to inform about assistance services and their availability.
+The booking / contact information can be found in the accompanying `AssistanceBookingService`element.
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/AssistanceService.md)
+
+*→ [General NeTEx definition ](../xcore/netex/elements/AssistanceService.html)*
+
+### Example
+- [Example snippet](../site/xml-snippets/AssistanceService.xml)
+
+*→ [Template](./templates/AssistanceService.xml)*
+
+
+
+
+## AssistanceBookingService
+*→ [Glossary definition](A4_annex_glossary.md#AssistanceBookingService)* 
+
+### Purpose
+Booking / contact information for `AssistanceService`.
+
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/AssistanceBookingService.md)
+
+*→ [General NeTEx definition ](../xcore/netex/elements/AssistanceBookingService.html)*
+
+### Example
+- [Example snippet](../site/xml-snippets/AssistanceBookingService.xml)
+
+*→ [Template](./templates/AssistanceBookingService.xml)*
+
+
+
+
+## SiteFacilitySet - the Additional Elements
+*→ [Glossary definition](A4_annex_glossary.md#SiteFacilitySet_accessibility)* 
+
+### Purpose
+Accessiblity information attached to a `StopPlace` and `Quay` in particular.
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/SiteFacilitySet_accessibility.md)
+
+### Usage Notes
+
+* General presence or absence of facilities is indicated at the level of the `StopPlace`.
+* In case of `MobilityFacilityList` it may be necessary to have the facilities at the level of `Quay` (e.g., if only some quays allow for step free acces).
+
+
+
+### Example
+- [Example snippet](../site/xml-snippets/SiteFacilitySet_accessibility.xml)
+
+*→ [Template](./templates/SiteFacilitySet_accessibility.xml)*
+
+
+
+
 
 
 
@@ -161,7 +268,7 @@ Such information can be encoded using `PathLink`s and `PathJunction`s that descr
 
 Which conventions and rules do we want to follow when modelling navigation networks? Which level(s) of details should we aim at? The following is intended as a starting point for a discussion.
 
-Three possible ways to model a navigation network from a VehicleMeetingPoint to two Quays.
+Three possible ways to model a navigation network from a VehicleMeetingPoint (error: the idea was a drop off point or parking) to two Quays.
 
 The first model includes localised vertices (e.g., Entrance, EquipmentPlace) connected by SitePathLinks and AccessEquipments (StairEquipment, RampEquipment). 
 
@@ -187,7 +294,7 @@ The third model is a streamlined form that doesn't insist on PathJunctions if th
 
 
 ## NewElementX
-*→ [Glossary definition](A4_annex_glossary.md#accessibilityassessment)* TODO
+*→ [Glossary definition](A4_annex_glossary.md#accessibilityassessment)* 
 
 ### Purpose
 ...
@@ -204,8 +311,8 @@ The third model is a streamlined form that doesn't insist on PathJunctions if th
 *→ [Template](./templates/NewElement.xml)*
 
 
-## ExistingElementY - the Additional Elements
 
+## ExistingElementY - the Additional Elements
 
 
 ### Table
