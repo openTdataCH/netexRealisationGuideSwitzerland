@@ -25,13 +25,70 @@
 							<Description lang="de"><!-- ch-usage: optional --><!-- ch-note: Description is optional. -->SiteFacilitySet Solothurn
 								<Text lang="en"><!-- ch-usage: optional --><!-- ch-note: All necessary languages are modeled as a Text element-->SiteFacilitySet Solothurn </Text>
 							</Description>
-							<AssistanceFacilityList><!-- ch-usage: optional -->personalAssistance information boardingAssistance</AssistanceFacilityList>
-							<AccessibilityToolList><!-- ch-usage: optional -->audioNavigator</AccessibilityToolList>
-							<SanitaryFacilityList><!-- ch-usage: optional -->toilet babyChange</SanitaryFacilityList>
+							<AccessibilityInfoFacilityList>
+								<!-- ch-usage: expected -->
+								<!-- ch-allowed-enums: audioInformation audioForHearingImpaired visualDisplays displaysForVisuallyImpaired largePrintTimetables -->
+								<!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (`visualDisplays`: Kundeninformation Haltestelle - "Statisch/optisch; `audioInformation`: Kundeninformation - "Akustisch"). Note that AccessibilityAssessment features `AudibleSignalsAvailable` and `VisualSignsAvailable`, the latter implying dynamic visual information (Kundeninformation Haltestelle - "Dynamisch/optisch"). -->		
+								audioInformation visualDisplays
+							</AccessibilityInfoFacilityList>
+							<AssistanceFacilityList>
+								<!-- ch-usage: expected -->
+								<!-- ch-allowed-enums: boardingAssistance personalAssistance wheelchairAssistance unaccompaniedMinorAssistance conductor information -->
+								<!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Autonome Benutzbarkeit - "Hilfestellung durch Personal" sets `boardingAssistance personalAssistance wheelchairAssistance`). -->		
+								personalAssistance boardingAssistance wheelchairAssistance
+							</AssistanceFacilityList>
+							<AccessibilityToolList>
+								<!-- ch-usage: optional -->
+								<!-- ch-allowed-enums: wheelchair-->
+								<!-- ch-note: NOT USED. Presence or absence of the following facility may be signalled; absence of the item means absence of the facility (if the element is present): `wheelchair` - wheelchairs available for passenger use. -->	
+								wheelchair
+							</AccessibilityToolList>
+							<MedicalFacilityList>
+								<!-- ch-usage: ignored -->
+								<!-- ch-allowed-enums: defibrillator -->
+								<!-- ch-note: NOT USED. Presence or absence of the following facility should be signalled: `defibrillator`. -->		
+								defibrillator
+							</MedicalFacilityList>
+							<MobilityFacilityList>
+								<!-- ch-usage: expected -->
+								<!-- ch-allowed-enums: lowFloor, stepFreeAccess, suitableForPushchair suitableForWheelchair tactilePlatformEdges tactileGuidingStrips onboardAssistance boardingAssistance unaccompaniedMinorAssistance raisedKerb unknown -->
+								<!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (`suitableForWheelchair`: Autonome Benutzbarkeit - "Voraussetzungen erfüllt"; `boardingAssistance`: AutonomeBenutzbarkeit - "Hilfestellung durch Personal"; `stepFreeAccess`: Haltekante - "Niveaugleicher Einstieg";`tactilePlatformEdges`: Haltekante - "Taktil-visuelle Markierung Perronfläche"). Additional allowed value if no data in ATLAS: `unknown`. -->		
+							</MobilityFacilityList>
+							<SanitaryFacilityList>
+								<!-- ch-usage: expected -->
+								<!-- ch-allowed-enums: wheelchairAccessToilet wheelchairBabyChange toilet babyChange shower -->
+								<!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Toiletten - "Rollstuhlgängige Toilette). Presence or absence of `wheelchairAccessToilet toilet`. -->		
+								toilet wheelchairAccessToilet
+							</SanitaryFacilityList>
+							<TicketingFacilityList>
+								<!-- ch-usage: expected -->
+								<!-- ch-allowed-enums: unknown ticketMachines ticketOffice -->
+								<!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden", and Schalter present, respectively). Presence or absence of the following facilities should be signalled: `unknown ticketMachines ticketOffice`. -->		
+								ticketMachines ticketOffice
+							</TicketingFacilityList>
 							<TicketingServiceFacilityList><!-- ch-usage: optional -->all reservations</TicketingServiceFacilityList>
-							<EmergencyServiceList><!-- ch-usage: optional -->police firstAid</EmergencyServiceList>
-							<LuggageLockerFacilityList><!-- ch-usage: optional -->lockers</LuggageLockerFacilityList>
-							<ParkingFacilityList><!-- ch-usage: optional -->parkAndRidePark</ParkingFacilityList>
+							<AccessFacilityList>
+								<!-- ch-usage: ignored -->
+								<!-- ch-allowed-enums: unknown lift wheelchairLift escalator travelator ramp automaticRamp steps stairs barrier lowFloorAccess validator -->
+								<!-- ch-note: NOT USED. Only expected for Quays. Presence or absence of the following facilities should be signalled: `unknown lift wheelchairLift escalator travelator ramp automaticRamp steps stairs barrier lowFloorAccess validator`. -->		
+							</AccessFacilityList>
+							<EmergencyServiceList>
+								<!-- ch-usage: ignored -->
+								<!-- ch-allowed-enums: sosPoint firstAid police fire -->
+								<!-- ch-note: NOT USED. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`.-->		
+								sosPoint
+							</EmergencyServiceList>
+							<LuggageLockerFacilityList>
+								<!-- ch-usage: ignored -->
+								<!-- ch-note: NOT USED. Presence or absence of the following facilities may be signalled: `lockers oversizeLockers leftLuggageCounter`. -->
+								lockers
+							</LuggageLockerFacilityList>
+							<ParkingFacilityList>
+								<!-- ch-usage: expected -->
+								<!-- ch-allowed-enums: unknown carPark parkAndRidePark motorcyclePark cyclePark rentalCarPark coachPark -->
+								<!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Parkplatz - Parkplätze). The following should be signalled: `carPark unknown`. -->	
+								carPark
+							</ParkingFacilityList>
 						</SiteFacilitySet>
 					</siteFacilitySets>
 				</ResourceFrame>
