@@ -85,7 +85,7 @@
 								<StopPlaceEntrance id="ch:1:entrance:7000:1" version="1">
 									<!-- ch-root -->
 									<!-- ch-usage: expected -->
-									<Name>Main entrance west</Name>
+									<Name><!-- ch-usage: mandatory --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Referenzpunkt - "Bezeichnung"). -->Haupteingang West</Name>
 									<AccessibilityAssessment id="generated-2" version="1">
 										<!-- ch-usage: mandatory -->
 										<!-- ch-note: Accessibility. See the element's table for all details. -->
@@ -124,8 +124,8 @@
 									<EntranceType>openDoor<!-- ch-usage: ignored --></EntranceType>
 									<IsEntry>true<!-- ch-usage: ignored --><!-- ch-note: Use to indicate a one-way passage. Assume true if not present. --></IsEntry>
 									<IsExit>true<!-- ch-usage: ignored --><!-- ch-note: Use to indicate a one-way passage. Assume true if not present. --></IsExit>
-									<DroppedKerbOutside><!-- ch-usage: expected --><!-- ch-note: To indicate starting point relevant for AccessibilityAssessments of Quays etc. **TODO** To be discussed. -->true</DroppedKerbOutside>
-									<DropOffPointClose><!-- ch-usage: expected --><!-- ch-note: To indicate starting point relevant for AccessibilityAssessments of Quays etc. -->true</DropOffPointClose>
+									<DroppedKerbOutside><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. -->true</DroppedKerbOutside>
+									<DropOffPointClose><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. -->true</DropOffPointClose>
 								</StopPlaceEntrance>
 							</entrances>
 							<equipmentPlaces>
