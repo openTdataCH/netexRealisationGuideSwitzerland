@@ -238,29 +238,8 @@ Accessiblity information attached to a `StopPlace` and `Quay` in particular.
 *→ [Template](./templates/SiteFacilitySet_accessibility.xml)*
 
 
-
-
-
-
-
-
 ## SitePathLink
-*→ [Glossary definition](A4_annex_glossary.md#sitepathlink)* TODO
-
-### Purpose
-...
-
-
-### Table
-- [Swiss profile NeTEx definition](../site/tables/SitePathLink.md)
-
-*→ [General NeTEx definition ](../xcore/netex/elements/SitePathLink.html)*
-
-### Example
-- [Example snippet](../site/xml-snippets/SitePathLink.xml)
-
-*→ [Template](./templates/SitePathLink.xml)*
-
+> **TODO**
 
 ### Usage Notes
 
@@ -285,44 +264,5 @@ PJ = PathJunction
 The third model is a streamlined form that doesn't insist on PathJunctions if they don't provide additional information needed for accessibility routing.
 
 ![IDFM](./media/accessibility/path_network_3.png)
-
----
----
-
-
-**TEMPLATES FOR THIS DOCUMENT**
-
-
-## NewElementX
-*→ [Glossary definition](A4_annex_glossary.md#accessibilityassessment)* 
-
-### Purpose
-...
-
-
-### Table
-- [Swiss profile NeTEx definition](../site/tables/NewElement.md)
-
-*→ [General NeTEx definition ](../xcore/netex/elements/NewElement.html)*
-
-### Example
-- [Example snippet](../site/xml-snippets/NewElement.xml)
-
-*→ [Template](./templates/NewElement.xml)*
-
-
-
-## ExistingElementY - the Additional Elements
-
-
-### Table
-- [Swiss profile NeTEx definition](../site/tables/OldElement_withAccessibility.md)
-
-
-### Example
-- [Example snippet](../site/xml-snippets/OldElement_withAccessibility.xml)
-
-*→ [Template](./templates/OldElement_withAccessibility.xml)*
-
 
 
