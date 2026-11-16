@@ -82,10 +82,7 @@
 							<levels>
 								<!-- ch-usage: expected -->
 								<!-- ch-note: Mandatory if the StopPlace has more than one level. -->
-								<Level id="ch:1:level:162:164789:0" version="1">
-									<!-- ch-usage: expected -->
-									<!-- ch-note: Mandatory if the StopPlace has more than one level. -->
-								</Level>
+								<Level id="ch:1:level:162:164789:0" version="1"><!-- ch-usage: expected --><!-- ch-note: Mandatory if the StopPlace has more than one level. --></Level>
 								<Level id="ch:1:level:162:164789:-1" version="1"/>
 							 </levels>
 							<entrances>
@@ -114,13 +111,12 @@
 									<WheelchairSuitable><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Schalter - "Rollstuhlzugänglichkeit" or Billettautomat - "Barrierefrei"). Applicable for TicketMachine, TicketOffice, TicketCounter. -->true</WheelchairSuitable>
 								</TicketingEquipment>
 								<TicketingEquipment id="ch:1:sloid:162:ticketmachines" version="2">
-									<!-- ch-usage: optional -->
 									<!-- ch-note: Example ticket machine(s). -->
-									<TicketMachines><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden"). Mirrored in SiteFacilitySet - ticketMachines. -->true</TicketMachines>
-									<LowCounterAccess><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Barrierefrei"). -->true</LowCounterAccess>
-									<TactileInterfaceAvailable><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). -->false</TactileInterfaceAvailable>
-									<AudioInterfaceAvailable><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). -->false</AudioInterfaceAvailable>
-									<WheelchairSuitable><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Barrierefrei"). -->true</WheelchairSuitable>
+									<TicketMachines><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden"). Mirrored in SiteFacilitySet - ticketMachines. -->true</TicketMachines>
+									<LowCounterAccess><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Barrierefrei"). -->true</LowCounterAccess>
+									<TactileInterfaceAvailable><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). -->false</TactileInterfaceAvailable>
+									<AudioInterfaceAvailable><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). -->false</AudioInterfaceAvailable>
+									<WheelchairSuitable><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Barrierefrei"). -->true</WheelchairSuitable>
 								</TicketingEquipment>
 								<AccessVehicleEquipment id="ch:1:sloid:162:0:1:access" version="1">
 									<!-- ch-usage: optional -->
@@ -148,10 +144,6 @@
 							<localServices>
 								<!-- ch-usage: optional -->
 								<!-- ch-note: Will be exported from ATLAS for ERA TSI PRM. -->
-								<AssistanceService id="ch:1:sloid:4410:assistance" version="1">
-									<Note>Die Rampe zum Perron 1 erfüllt nicht die gesetzlichen Anforderungen. Eine Hilfestellung ist auf Verlangen möglich. Bitte melden Sie sich bis spätestens 1 Stunde vor Abfahrt an beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.
-									</Note>
-								</AssistanceService>
 								<AssistanceService id="ch:1:sloid:4402:assistance" version="1">
 									<!-- ch-usage: mandatory -->
 									<!-- ch-note: Presence of`AssistanceFacility`s and their availability , e.g., if they need to be booked. -->
@@ -206,38 +198,6 @@
 								<Quay id="ch:1:sloid:7000:5:9" version="1">
 								</Quay>
 							</quays>
-							<navigationPaths>
-								<!-- ch-usage: ignored -->
-								<NavigationPath id="generated" version="1">
-									<!-- ch-usage: expected -->
-									<From>
-										<!-- ch-usage: mandatory -->
-										<!-- ch-note: One of the points is the reference point. -->
-										<PlaceRef ref="ch:1:sloid:162:164789" version="1">
-											<!-- ch-usage: mandatory -->
-										</PlaceRef>
-										<!-- immer vom Referenzpunkt. Wären mehr NavigationPaths. Pfade hat nur DB teilweise. -->
-									</From>
-									<To>
-										<!-- ch-usage: mandatory -->
-										<PlaceRef ref="ch:1:sloid:7000:5:9" version="1"/>
-										<!-- ch-usage: mandatory -->
-									</To>
-									<AccessibilityAssessment id="ch:1:sloid:162:pathLink:1:aa" version="1">
-										<!-- ch-usage: mandatory -->
-										<!-- ch-note: If the NavigationPath is provided, then an AccessibilityAssessment must be provided too -->
-										<!-- ch-see -->
-										<MobilityImpairedAccess>unknown</MobilityImpairedAccess>
-										<limitations>
-											<AccessibilityLimitation>
-												<WheelchairAccess>unknown</WheelchairAccess>
-												<StepFreeAccess>true</StepFreeAccess>
-												<TactileGuidanceAvailable>true</TactileGuidanceAvailable>
-											</AccessibilityLimitation>
-										</limitations>
-									</AccessibilityAssessment>
-								</NavigationPath>
-							</navigationPaths>
 						</StopPlace>
 					</stopPlaces>
 				</SiteFrame>

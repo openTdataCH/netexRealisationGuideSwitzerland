@@ -1527,15 +1527,6 @@ referenced to define facilities of a site.</p>
     </tr>
     <tr>
       <td> </td>
-      <td>TicketingServiceFacilityList</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>TicketingServiceFacilityListOfEnumerations</td>
-      <td>List of TICKETING SERVICE FACILITies, e.g. purchase, collection. top up.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
       <td>ParkingFacilityList</td>
       <td>expected</td>
       <td>0..1</td>
@@ -1581,7 +1572,6 @@ referenced to define facilities of a site.</p>
   <span class="nt">&lt;TicketingFacilityList&gt;</span>ticketMachines ticketOffice
     <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden", and Schalter present, respectively). Presence or absence of the following facilities should be signalled: `unknown ticketMachines ticketOffice`. --&gt;</span>
   <span class="nt">&lt;/TicketingFacilityList&gt;</span>
-  <span class="nt">&lt;TicketingServiceFacilityList&gt;</span>all reservations<span class="nt">&lt;/TicketingServiceFacilityList&gt;</span>
   <span class="nt">&lt;ParkingFacilityList&gt;</span>carPark
     <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Parkplatz - Parkplätze). The following should be signalled: `carPark unknown`. --&gt;</span>
   <span class="nt">&lt;/ParkingFacilityList&gt;</span>

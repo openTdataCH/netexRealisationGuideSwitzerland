@@ -459,7 +459,7 @@
     </tr>
     <tr>
       <td>+</td>
-      <td><a href="/netexRealisationGuideSwitzerland/next/tables/StopPlaceEntrance.html">StopPlaceEntrance</a></td>
+      <td><a href="StopPlaceEntrance.md">StopPlaceEntrance</a></td>
       <td>mandatory</td>
       <td>0..*</td>
       <td>StopPlaceEntrance_VersionStructure</td>
@@ -558,15 +558,6 @@
     </tr>
     <tr>
       <td>+</td>
-      <td>TicketingEquipment</td>
-      <td>optional</td>
-      <td>0..*</td>
-      <td>unknown</td>
-      <td> </td>
-      <td>Example ticket machine(s).</td>
-    </tr>
-    <tr>
-      <td>+</td>
       <td>AccessVehicleEquipment</td>
       <td>optional</td>
       <td>0..*</td>
@@ -648,15 +639,6 @@
     </tr>
     <tr>
       <td>+</td>
-      <td>AssistanceService</td>
-      <td>optional</td>
-      <td>0..*</td>
-      <td>AssistanceService_VersionStructure</td>
-      <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/AssistanceService.html">AssistanceService</a></td>
       <td>mandatory</td>
       <td>0..*</td>
@@ -717,60 +699,6 @@
       <td>Quay_VersionStructure</td>
       <td>A place such as platform, stance, or quayside where passengers have access to PT vehicles, Taxi cars or other means of transportation. A QUAY may contain other sub QUAYs. A child QUAY must be physically contained within its parent QUAY.</td>
       <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>NavigationPath</td>
-      <td>expected</td>
-      <td>1..1</td>
-      <td>SiteNavigationPath_VersionStructure</td>
-      <td>A designated path between two PLACEs. May include an Ordered sequence of references to PATH LINKS.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>From</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>DeckPathLinkEndStructure</td>
-      <td>Origin end of DECK NAVIGATION path. Only needed if detailed PATH LINKs are not given.</td>
-      <td>One of the points is the reference point.</td>
-    </tr>
-    <tr>
-      <td>+++</td>
-      <td>PlaceRef</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>PlaceRefStructure</td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>To</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>DeckPathLinkEndStructure</td>
-      <td>Destination end of DECK NAVIGATION PATH. Only needed if detailed PATH LINKs not given.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+++</td>
-      <td>PlaceRef</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>PlaceRefStructure</td>
-      <td> </td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>AccessibilityAssessment_VersionedChildStructure</td>
-      <td> </td>
-      <td>If the NavigationPath is provided, then an AccessibilityAssessment must be provided too</td>
     </tr>
   </tbody>
 </table>

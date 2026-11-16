@@ -201,17 +201,7 @@ Such information can be encoded using `SitePathLink`s and `PathJunction`s that d
 ### Table
 
 
-
-*Table: StopPlaceEntrance*
-
-| Sub | Element | Usage | Card | Type | Description | Note |
-|-----|---------|-------|------|------|-------------|------|
-|  | Name | mandatory | 0..1 | MultilingualString | Name of STOP PLACE. | Will be exported from ATLAS for ERA TSI PRM (Referenzpunkt - "Bezeichnung"). |
-|  | [AccessibilityAssessment](./tables/AccessibilityAssessment.md) | mandatory | 0..1 | AccessibilityAssessment_VersionedChildStructure | Accessibility values associated with LEVEL. | Accessibility. See the element's table for all details. |
-|  | LevelRef | expected | 0..1 | LevelRefStructure |  | Required if more than 1 level present. |
-|  | DroppedKerbOutside | optional | 0..1 | boolean | Whether nearest crossing to ENTRANCE has dropped kerb. | Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. |
-|  | DropOffPointClose | optional | 0..1 | boolean | Whether there is a drop off point close by to ENTRANCE. | Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. |
-
+StopPlaceEntrance.md
 
 
 
@@ -220,62 +210,7 @@ Such information can be encoded using `SitePathLink`s and `PathJunction`s that d
 ### Example
 
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<StopPlaceEntrance id="ch:1:entrance:7000:1" version="1">
-  <Name>Haupteingang West
-    <!-- Will be exported from ATLAS for ERA TSI PRM (Referenzpunkt - "Bezeichnung"). -->
-  </Name>
-  <AccessibilityAssessment id="generated-2" version="1">
-    <!-- Accessibility. See the element's table for all details. -->
-    <MobilityImpairedAccess>true
-      <!-- Accessibility. -->
-    </MobilityImpairedAccess>
-    <limitations>
-      <!-- Accessibility. -->
-      <AccessibilityLimitation>
-        <!-- Accessibility. -->
-        <WheelchairAccess>true
-          <!-- Accessibility. -->
-        </WheelchairAccess>
-        <StepFreeAccess>true
-          <!-- Accessibility. -->
-        </StepFreeAccess>
-        <StairFreeAccess>true
-          <!-- Accessibility. -->
-        </StairFreeAccess>
-        <RampFreeAccess>true
-          <!-- Accessibility. -->
-        </RampFreeAccess>
-        <LevelAccessIntoVehicle>false
-          <!-- Not used in this context.  **TODO** Would `ch-usage: forbidden` work to restrict the use of the element in the nested `AccessiblityAssessment`? -->
-        </LevelAccessIntoVehicle>
-        <AudibleSignalsAvailable>false
-          <!-- Not used in this context. **TODO** Would `ch-usage: forbidden` work to restrict the use of the element in the nested `AccessiblityAssessment`? -->
-        </AudibleSignalsAvailable>
-        <VisualSignsAvailable>true
-          <!-- Accessibility. -->
-        </VisualSignsAvailable>
-        <TactileGuidanceAvailable>true
-          <!-- Accessibility. -->
-        </TactileGuidanceAvailable>
-        <GuideDogAccess>true
-          <!-- Accessibility. -->
-        </GuideDogAccess>
-      </AccessibilityLimitation>
-    </limitations>
-  </AccessibilityAssessment>
-  <LevelRef ref="ch:1:level:7000:0">
-    <!-- Required if more than 1 level present. -->
-  </LevelRef>
-  <DroppedKerbOutside>true
-    <!-- Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. -->
-  </DroppedKerbOutside>
-  <DropOffPointClose>true
-    <!-- Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. -->
-  </DropOffPointClose>
-</StopPlaceEntrance>
-```
+StopPlaceEntrance.xml
 
 
 
@@ -312,7 +247,6 @@ Such information can be encoded using `SitePathLink`s and `PathJunction`s that d
 | ++ | TactileInterfaceAvailable | optional | 0..1 | boolean | Indicates whether there is a tactile interface +v1.1. | Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). Only applicable for TicketMachine. |
 | ++ | AudioInterfaceAvailable | optional | 0..1 | boolean | Indicates whether there is an accessible audio interface (allowing a use closed eyes). +v1.1 | Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). Only applicable for TicketMachine. |
 | ++ | WheelchairSuitable | expected | 0..1 | boolean | Indicates whether equipment may be used while seated in a wheelchair. +v1.1 | Will be exported from ATLAS for ERA TSI PRM (Schalter - "Rollstuhlzugänglichkeit" or Billettautomat - "Barrierefrei"). Applicable for TicketMachine, TicketOffice, TicketCounter. |
-| + | TicketingEquipment | optional | 0..* | unknown |  | Example ticket machine(s). |
 | + | AccessVehicleEquipment | optional | 0..* | AccessVehicleEquipment_VersionStructure | Specialisation of VEHICLE EQUIPMENT for ACCESS providing information such as low floor, ramp, access area dimensions, etc. | Method to get on the vehicle |
 | ++ | Hoist | expected | 0..1 | boolean | VEHICLE has a hoist or lift for wheelchairs. | Will be exported from ATLAS for ERA TSI PRM (Haltekante - "Hilfsmittel für Rollstuhl"). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair. |
 | ++ | Ramp | expected | 0..1 | boolean | Whether a ramp may be used to access VEHICLE. | Will be exported from ATLAS for ERA TSI PRM (Haltekante - "Hilfsmittel für Rollstuhl"). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair. |
@@ -322,15 +256,8 @@ Such information can be encoded using `SitePathLink`s and `PathJunction`s that d
 | ++ | SanitaryFacilityList | mandatory | 0..1 | SanitaryFacilityListOfEnumerations |  | Will be exported from ATLAS for ERA TSI PRM (Toiletten - "Rollstuhlgängige Toilette). Presence or absence of `wheelchairAccessToilet toilet`. Mirrored in SiteFacilitySet - SanitaryFacilityList. |
 | ++ | ToiletsType | optional | 0..1 | ToiletsTypeEnumeration | Indicates the position of using the toilet. | Allowed values: `seated urinal seatedAndUrinal squat`. |
 |  | localServices | optional | 0..1 | localServices_RelStructure |  | Will be exported from ATLAS for ERA TSI PRM. |
-| + | AssistanceService | optional | 0..* | AssistanceService_VersionStructure | Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc. |  |
 | + | [AssistanceService](./tables/AssistanceService.md) | mandatory | 0..* | AssistanceService_VersionStructure | Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc. | Presence of`AssistanceFacility`s and their availability , e.g., if they need to be booked. |
 | + | [AssistanceBookingService](./tables/AssistanceBookingService.md) | optional | 0..* | AssistanceBookingService_VersionStructure | Information about how to book assistance for wheelchair and disabled users. | Accessibility. Contact and booking information regarding assistance services. |
-| + | NavigationPath | expected | 1..1 | SiteNavigationPath_VersionStructure | A designated path between two PLACEs. May include an Ordered sequence of references to PATH LINKS. |  |
-| ++ | From | mandatory | 0..1 | DeckPathLinkEndStructure | Origin end of DECK NAVIGATION path. Only needed if detailed PATH LINKs are not given. | One of the points is the reference point. |
-| +++ | PlaceRef | mandatory | 1..1 | PlaceRefStructure |  |  |
-| ++ | To | mandatory | 0..1 | DeckPathLinkEndStructure | Destination end of DECK NAVIGATION PATH. Only needed if detailed PATH LINKs not given. |  |
-| +++ | PlaceRef | mandatory | 1..1 | PlaceRefStructure |  |  |
-| ++ | [AccessibilityAssessment](./tables/AccessibilityAssessment.md) | mandatory | 0..1 | AccessibilityAssessment_VersionedChildStructure |  | If the NavigationPath is provided, then an AccessibilityAssessment must be provided too |
 
 
 
@@ -488,9 +415,6 @@ Such information can be encoded using `SitePathLink`s and `PathJunction`s that d
   </placeEquipments>
   <localServices>
     <!-- Will be exported from ATLAS for ERA TSI PRM. -->
-    <AssistanceService id="ch:1:sloid:4410:assistance" version="1">
-      <Note>Die Rampe zum Perron 1 erfüllt nicht die gesetzlichen Anforderungen. Eine Hilfestellung ist auf Verlangen möglich. Bitte melden Sie sich bis spätestens 1 Stunde vor Abfahrt an beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.</Note>
-    </AssistanceService>
     <AssistanceService id="ch:1:sloid:4402:assistance" version="1">
       <!-- Presence of`AssistanceFacility`s and their availability , e.g., if they need to be booked. -->
       <Note>Bei diesem Bahnhof benötigen Sie Ein- und Ausstiegshilfen. Bitte melden Sie sich bis spätestens 1 Stunde vor Zugabfahrt unter swisspass.ch/handicap oder beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.</Note>
@@ -556,7 +480,7 @@ Such information can be encoded using `SitePathLink`s and `PathJunction`s that d
 |  | [AccessibilityAssessment](./tables/AccessibilityAssessment.md) | expected | 0..1 | AccessibilityAssessment_VersionedChildStructure |  | Only required if the AccessibilityAssessment of the StopPlace contains value(s) `partial`. |
 |  | [facilities](./tables/facilities.md) | optional | 0..1 | serviceFacilitySets_RelStructure |  | Only use to signal a facility not generally available for the StopPlace. Will be exported from ATLAS for ERA TSI PRM. |
 |  | localServices | optional | 0..1 | localServices_RelStructure |  | NOT USED at the level of Quay. |
-| + | AssistanceServiceRef | optional | 0..* | AssistanceServiceRefStructure | Identifier of an ASSISTANCE SERVICE. |  |
+| + | [AssistanceService](./tables/AssistanceService.md) | optional | 0..* | AssistanceService_VersionStructure | Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc. |  |
 
 
 
@@ -593,7 +517,9 @@ Such information can be encoded using `SitePathLink`s and `PathJunction`s that d
   <SiteRef ref="ch:1:sloid:7000"/>
   <localServices>
     <!-- NOT USED at the level of Quay. -->
-    <AssistanceServiceRef ref="generated" version="1"/>
+    <AssistanceService id="ch:1:sloid:4410:assistance" version="1">
+      <Note>Die Rampe zum Perron erfüllt nicht die gesetzlichen Anforderungen. Eine Hilfestellung ist auf Verlangen möglich. Bitte melden Sie sich bis spätestens 1 Stunde vor Abfahrt an beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.</Note>
+    </AssistanceService>
   </localServices>
   <PublicCode>9</PublicCode>
   <QuayType>railPlatform</QuayType>
