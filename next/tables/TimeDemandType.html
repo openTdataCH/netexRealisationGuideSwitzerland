@@ -284,7 +284,7 @@
       <td>0..1</td>
       <td>TimingLinkRefStructure</td>
       <td> </td>
-      <td>The timing link that is ued here and that that does have a given run time</td>
+      <td>The timing link that is used here and that that does have a given run time. The same TimingLink may be referenced several times. As XML is ordered, the appropriate one is to be used. Always in tandem with the ServiceJourneyPattern’s list of StopPointInServiceJourney.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -320,7 +320,7 @@
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
       <td>Specific SCHEDULED STOP POINT at end of CONNECTION.</td>
-      <td>Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice).</td>
+      <td>Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice). That’s why we only write expected here. The more detailed version takes precedence (StopPointInJourneyPatternRef over ScheduledStopPointRef).</td>
     </tr>
     <tr>
       <td>++</td>

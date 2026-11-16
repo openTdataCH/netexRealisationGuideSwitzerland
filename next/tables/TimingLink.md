@@ -1,6 +1,6 @@
 # TimingLink
 
-A timing link is basically defined between two ScheduledStopPoints. However, there may be different timing behaviours and then multiple TimingLinks between the same ScheduledStopPoint might be necessary
+A timing link is basically defined between two ScheduledStopPoints. If there are two way like Neubaustrecke or no Neubaustrecke, then multiple TimingLinks between two ScheduledStopPoints may exist.
 
 *Table: TimingLink*
 

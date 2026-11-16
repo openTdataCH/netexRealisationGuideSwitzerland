@@ -654,7 +654,7 @@ class ServiceJourney {
 <h2 id="line">Line</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#line">Glossary definition</a></em></p>
 <h3 id="purpose-1">Purpose</h3>
-<p>A public transport service line with a <code class="language-plaintext highlighter-rouge">Name</code>, <code class="language-plaintext highlighter-rouge">TransportMode</code>, and <code class="language-plaintext highlighter-rouge">Operator</code>. Be aware that the handling of “Konzessionär” and “Betreiber” is a bit complex and is discussed <a href="/netexRealisationGuideSwitzerland/next/uc17_mixed_lines.html">here</a> and <a href="/netexRealisationGuideSwitzerland/next/09_resources.html#responsibilityset">here</a>.</p>
+<p>A public transport service line with a <code class="language-plaintext highlighter-rouge">Name</code>, <code class="language-plaintext highlighter-rouge">TransportMode</code>, and <code class="language-plaintext highlighter-rouge">Operator</code>. Be aware that the handling of legal owner (“Konzessionär”) and operator (“Betreiber”) is a bit complex and is discussed <a href="/netexRealisationGuideSwitzerland/next/uc17_mixed_lines.html">here</a> and <a href="/netexRealisationGuideSwitzerland/next/09_resources.html#responsibilityset">here</a>.</p>
 
 <h3 id="table-1">Table</h3>
 
@@ -1845,7 +1845,7 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
 
 <h3 id="table-8">Table</h3>
 
-<p>A timing link is basically defined between two ScheduledStopPoints. However, there may be different timing behaviours and then multiple TimingLinks between the same ScheduledStopPoint might be necessary</p>
+<p>A timing link is basically defined between two ScheduledStopPoints. If there are two way like Neubaustrecke or no Neubaustrecke, then multiple TimingLinks between two ScheduledStopPoints may exist.</p>
 
 <p><em>Table: TimingLink</em></p>
 
@@ -1970,7 +1970,7 @@ See <a href="#timedemandtype">TimeDemandType</a>.</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;TimingLink</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-  <span class="c">&lt;!-- A timing link is basically defined between two ScheduledStopPoints. However, there may be different timing behaviours and then multiple TimingLinks between the same ScheduledStopPoint might be necessary --&gt;</span>
+  <span class="c">&lt;!-- A timing link is basically defined between two ScheduledStopPoints. If there are two way like Neubaustrecke or no Neubaustrecke, then multiple TimingLinks between two ScheduledStopPoints may exist. --&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
     <span class="c">&lt;!-- only for the "virtual" stops like Bahn2000 --&gt;</span>
     <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"virtualStops"</span><span class="nt">&gt;</span>00000001
@@ -2365,7 +2365,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>0..1</td>
       <td>TimingLinkRefStructure</td>
       <td> </td>
-      <td>The timing link that is ued here and that that does have a given run time</td>
+      <td>The timing link that is used here and that that does have a given run time. The same TimingLink may be referenced several times. As XML is ordered, the appropriate one is to be used. Always in tandem with the ServiceJourneyPattern’s list of StopPointInServiceJourney.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -2401,7 +2401,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
       <td>Specific SCHEDULED STOP POINT at end of CONNECTION.</td>
-      <td>Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice).</td>
+      <td>Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice). That’s why we only write expected here. The more detailed version takes precedence (StopPointInJourneyPatternRef over ScheduledStopPointRef).</td>
     </tr>
     <tr>
       <td>++</td>
@@ -2429,7 +2429,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
     <span class="c">&lt;!-- The run time on the TimingLinks --&gt;</span>
     <span class="nt">&lt;JourneyRunTime</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;TimingLinkRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-        <span class="c">&lt;!-- The timing link that is ued here and that that does have a given run time --&gt;</span>
+        <span class="c">&lt;!-- The timing link that is used here and that that does have a given run time. The same TimingLink may be referenced several times. As XML is ordered, the appropriate one is to be used. Always in tandem with the ServiceJourneyPattern's list of StopPointInServiceJourney. --&gt;</span>
       <span class="nt">&lt;/TimingLinkRef&gt;</span>
       <span class="nt">&lt;RunTime&gt;</span>PT5M<span class="nt">&lt;/RunTime&gt;</span>
     <span class="nt">&lt;/JourneyRunTime&gt;</span>
@@ -2439,7 +2439,7 @@ different traffic or dwell conditions (e.g. peak vs. off-peak).</p>
     <span class="nt">&lt;JourneyWaitTime</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
       <span class="c">&lt;!-- Relevant waiting times at the stop --&gt;</span>
       <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"sloid"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-        <span class="c">&lt;!-- Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice). --&gt;</span>
+        <span class="c">&lt;!-- Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice). That's why we only write expected here. The more detailed version takes precedence (StopPointInJourneyPatternRef over ScheduledStopPointRef). --&gt;</span>
       <span class="nt">&lt;/ScheduledStopPointRef&gt;</span>
       <span class="nt">&lt;WaitTime&gt;</span>PT2M<span class="nt">&lt;/WaitTime&gt;</span>
     <span class="nt">&lt;/JourneyWaitTime&gt;</span>

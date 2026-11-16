@@ -8,7 +8,7 @@
     <!-- The run time on the TimingLinks -->
     <JourneyRunTime id="generated" version="1">
       <TimingLinkRef ref="generated" version="1">
-        <!-- The timing link that is ued here and that that does have a given run time -->
+        <!-- The timing link that is used here and that that does have a given run time. The same TimingLink may be referenced several times. As XML is ordered, the appropriate one is to be used. Always in tandem with the ServiceJourneyPattern's list of StopPointInServiceJourney. -->
       </TimingLinkRef>
       <RunTime>PT5M</RunTime>
     </JourneyRunTime>
@@ -18,7 +18,7 @@
     <JourneyWaitTime id="generated" version="1">
       <!-- Relevant waiting times at the stop -->
       <ScheduledStopPointRef ref="sloid" version="1">
-        <!-- Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice). -->
+        <!-- Which Quay is referenced. In the case of multiple visits, it should be a StopPointInJourneyPatternRef instead. It also can be a TimingPoint (choice). That's why we only write expected here. The more detailed version takes precedence (StopPointInJourneyPatternRef over ScheduledStopPointRef). -->
       </ScheduledStopPointRef>
       <WaitTime>PT2M</WaitTime>
     </JourneyWaitTime>

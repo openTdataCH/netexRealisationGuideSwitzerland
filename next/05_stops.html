@@ -1313,31 +1313,26 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
 
 <h3 id="usage-notes">Usage Notes</h3>
 <ul>
-  <li>All <code class="language-plaintext highlighter-rouge">StopPlace</code>s in Switzerland are identifiable by both a DIDOK number and a SLOID. DIDOK number are under the responsibility of the Department of Transport (BAV). It is possible that in the future the BAV will also regulate “Haltepunkte” and “Haltekanten” and, therefore, the identifiers of <code class="language-plaintext highlighter-rouge">Quay</code>s.</li>
-  <li>Foreign <code class="language-plaintext highlighter-rouge">StopPlace</code>s may be mapped to Swiss DIDOK codes.</li>
+  <li>All <code class="language-plaintext highlighter-rouge">StopPlace</code>s in Switzerland are identifiable by a SLOID. DIDOK are still added in the oev-ch export as available. We also regulated “Haltepunkte” and “Haltekanten” and, therefore, the identifiers of <code class="language-plaintext highlighter-rouge">Quay</code>s.</li>
+  <li>Foreign <code class="language-plaintext highlighter-rouge">StopPlace</code>s may be mapped to Swiss SLOID codes.</li>
   <li>Meta-stations will have their own codes. In some cases these are added for operational or searching reasons.</li>
   <li><code class="language-plaintext highlighter-rouge">@id</code> needs to be kept stable between exports.</li>
-  <li>DIDOK number placement: The DIDOK number is <strong>not</strong> transported as free text anywhere on <code class="language-plaintext highlighter-rouge">StopPlace</code>. It is placed in <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> with <code class="language-plaintext highlighter-rouge">type="didok"</code>, <strong>and</strong> the same value must additionally be listed in the <code class="language-plaintext highlighter-rouge">KeyList</code> (<code class="language-plaintext highlighter-rouge">KeyValue</code> with matching <code class="language-plaintext highlighter-rouge">Key</code>). Both are required — the <code class="language-plaintext highlighter-rouge">PrivateCode</code> for direct lookup, the <code class="language-plaintext highlighter-rouge">KeyList</code> entry for generic key/value tooling.</li>
-  <li><code class="language-plaintext highlighter-rouge">ShortName</code> is not used on <code class="language-plaintext highlighter-rouge">StopPlace</code>. In particular, the DIDOK number must <strong>never</strong> be placed in <code class="language-plaintext highlighter-rouge">ShortName</code> — this was common practice under Profile 1.0 / HRDF-based exports and is explicitly discontinued under RV 2.0.</li>
+  <li>SLOID (and DIDOK) number placement: The SLOID number is <strong>not</strong> transported as free text anywhere on <code class="language-plaintext highlighter-rouge">StopPlace</code>. It is placed in <code class="language-plaintext highlighter-rouge">privateCodes/PrivateCode</code> with <code class="language-plaintext highlighter-rouge">type="sloid"</code> and <code class="language-plaintext highlighter-rouge">type="didok"</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">ShortName</code> is not used on <code class="language-plaintext highlighter-rouge">StopPlace</code>.</li>
   <li><code class="language-plaintext highlighter-rouge">ValidBetween</code>: Every <code class="language-plaintext highlighter-rouge">StopPlace</code> carries a <code class="language-plaintext highlighter-rouge">ValidBetween</code> with a <code class="language-plaintext highlighter-rouge">FromDate</code>. Since <code class="language-plaintext highlighter-rouge">StopPlace</code> is infrastructure master data (not a timetable-period object), <strong>no <code class="language-plaintext highlighter-rouge">ToDate</code> is set</strong> — validity is open-ended until a future change is published.</li>
   <li>We have <code class="language-plaintext highlighter-rouge">Locale\TimeZone</code> set, when necessary. See also usage notes of <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. Only used to calculate arrival and departure times.</li>
 </ul>
 
 <h4 id="example-didok-number-and-validity-on-stopplace">Example: DIDOK number and validity on <code class="language-plaintext highlighter-rouge">StopPlace</code></h4>
-<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:StopPlace:8503000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:3000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;ValidBetween&gt;</span>
     <span class="nt">&lt;FromDate&gt;</span>2025-12-14T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
   <span class="nt">&lt;/ValidBetween&gt;</span>
   <span class="nt">&lt;Name&gt;</span>Zürich HB<span class="nt">&lt;/Name&gt;</span>
   <span class="nt">&lt;privateCodes&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:3000<span class="nt">&lt;/PrivateCode&gt;</span>
     <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"didok"</span><span class="nt">&gt;</span>8503000<span class="nt">&lt;/PrivateCode&gt;</span>
   <span class="nt">&lt;/privateCodes&gt;</span>
-  <span class="nt">&lt;keyList&gt;</span>
-    <span class="nt">&lt;KeyValue&gt;</span>
-      <span class="nt">&lt;Key&gt;</span>didok<span class="nt">&lt;/Key&gt;</span>
-      <span class="nt">&lt;Value&gt;</span>8503000<span class="nt">&lt;/Value&gt;</span>
-    <span class="nt">&lt;/KeyValue&gt;</span>
-  <span class="nt">&lt;/keyList&gt;</span>
   <span class="c">&lt;!-- Quays, Centroid, etc. --&gt;</span>
 <span class="nt">&lt;/StopPlace&gt;</span>
 </code></pre></div></div>
