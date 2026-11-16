@@ -563,13 +563,104 @@
 
 <h3 id="table-1">Table</h3>
 
-<p>StopPlaceEntrance.md</p>
+<p><em>Table: StopPlaceEntrance</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of STOP PLACE.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Referenzpunkt - “Bezeichnung”).</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td>Accessibility values associated with LEVEL.</td>
+      <td>Accessibility. See the element’s table for all details.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LevelRef</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LevelRefStructure</td>
+      <td> </td>
+      <td>Required if more than 1 level present.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DroppedKerbOutside</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether nearest crossing to ENTRANCE has dropped kerb.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (only set to <code class="language-plaintext highlighter-rouge">true</code> if Verbindung from Parkplatz with “Stufenfreier Zugang” = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DropOffPointClose</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there is a drop off point close by to ENTRANCE.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (only set to <code class="language-plaintext highlighter-rouge">true</code> if Verbindung from Parkplatz with “Stufenfreier Zugang” = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc.</td>
+    </tr>
+  </tbody>
+</table>
 
 <p><em>→ <a href="../xcore/netex/elements/StopPlaceEntrance.html">General NeTEx definition </a></em></p>
 
 <h3 id="example-1">Example</h3>
 
-<p>StopPlaceEntrance.xml</p>
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;StopPlaceEntrance</span> <span class="na">id=</span><span class="s">"ch:1:entrance:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Haupteingang West
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Referenzpunkt - "Bezeichnung"). --&gt;</span>
+  <span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated-2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Accessibility. See the element's table for all details. --&gt;</span>
+    <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true<span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
+    <span class="nt">&lt;limitations&gt;</span>
+      <span class="nt">&lt;AccessibilityLimitation&gt;</span>
+        <span class="nt">&lt;WheelchairAccess&gt;</span>true<span class="nt">&lt;/WheelchairAccess&gt;</span>
+        <span class="nt">&lt;StepFreeAccess&gt;</span>true<span class="nt">&lt;/StepFreeAccess&gt;</span>
+        <span class="nt">&lt;StairFreeAccess&gt;</span>true<span class="nt">&lt;/StairFreeAccess&gt;</span>
+        <span class="nt">&lt;RampFreeAccess&gt;</span>true<span class="nt">&lt;/RampFreeAccess&gt;</span>
+        <span class="nt">&lt;VisualSignsAvailable&gt;</span>true<span class="nt">&lt;/VisualSignsAvailable&gt;</span>
+        <span class="nt">&lt;TactileGuidanceAvailable&gt;</span>true<span class="nt">&lt;/TactileGuidanceAvailable&gt;</span>
+        <span class="nt">&lt;GuideDogAccess&gt;</span>true<span class="nt">&lt;/GuideDogAccess&gt;</span>
+      <span class="nt">&lt;/AccessibilityLimitation&gt;</span>
+    <span class="nt">&lt;/limitations&gt;</span>
+  <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
+  <span class="nt">&lt;LevelRef</span> <span class="na">ref=</span><span class="s">"ch:1:level:7000:0"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Required if more than 1 level present. --&gt;</span>
+  <span class="nt">&lt;/LevelRef&gt;</span>
+  <span class="nt">&lt;DroppedKerbOutside&gt;</span>true
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. --&gt;</span>
+  <span class="nt">&lt;/DroppedKerbOutside&gt;</span>
+  <span class="nt">&lt;DropOffPointClose&gt;</span>true
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. --&gt;</span>
+  <span class="nt">&lt;/DropOffPointClose&gt;</span>
+<span class="nt">&lt;/StopPlaceEntrance&gt;</span>
+</code></pre></div></div>
 
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/next/templates/StopPlaceEntrance.xml">Template</a></em></p>
 
@@ -648,7 +739,7 @@
     </tr>
     <tr>
       <td>+</td>
-      <td><a href="./tables/StopPlaceEntrance.md">StopPlaceEntrance</a></td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/StopPlaceEntrance.html">StopPlaceEntrance</a></td>
       <td>mandatory</td>
       <td>0..*</td>
       <td>StopPlaceEntrance_VersionStructure</td>
@@ -1624,22 +1715,9 @@ The booking / contact information can be found in the accompanying <code class="
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/next/templates/SiteFacilitySet_accessibility.xml">Template</a></em></p>
 
 <h2 id="sitepathlink">SitePathLink</h2>
-<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#sitepathlink">Glossary definition</a></em> TODO</p>
-
-<h3 id="purpose-5">Purpose</h3>
-<p>…</p>
-
-<h3 id="table-7">Table</h3>
-
-<p>SitePathLink.md</p>
-
-<p><em>→ <a href="../xcore/netex/elements/SitePathLink.html">General NeTEx definition </a></em></p>
-
-<h3 id="example-7">Example</h3>
-
-<p>SitePathLink.xml</p>
-
-<p><em>→ <a href="./templates/SitePathLink.xml">Template</a></em></p>
+<blockquote>
+  <p><strong>TODO</strong></p>
+</blockquote>
 
 <h3 id="usage-notes-2">Usage Notes</h3>
 
@@ -1664,41 +1742,6 @@ The booking / contact information can be found in the accompanying <code class="
 <p>The third model is a streamlined form that doesn’t insist on PathJunctions if they don’t provide additional information needed for accessibility routing.</p>
 
 <p><img src="/netexRealisationGuideSwitzerland/next/media/accessibility/path_network_3.png" alt="IDFM" /></p>
-
-<hr />
-<hr />
-
-<p><strong>TEMPLATES FOR THIS DOCUMENT</strong></p>
-
-<h2 id="newelementx">NewElementX</h2>
-<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em></p>
-
-<h3 id="purpose-6">Purpose</h3>
-<p>…</p>
-
-<h3 id="table-8">Table</h3>
-
-<p>NewElement.md</p>
-
-<p><em>→ <a href="../xcore/netex/elements/NewElement.html">General NeTEx definition </a></em></p>
-
-<h3 id="example-8">Example</h3>
-
-<p>NewElement.xml</p>
-
-<p><em>→ <a href="./templates/NewElement.xml">Template</a></em></p>
-
-<h2 id="existingelementy---the-additional-elements">ExistingElementY - the Additional Elements</h2>
-
-<h3 id="table-9">Table</h3>
-
-<p>OldElement_withAccessibility.md</p>
-
-<h3 id="example-9">Example</h3>
-
-<p>OldElement_withAccessibility.xml</p>
-
-<p><em>→ <a href="./templates/OldElement_withAccessibility.xml">Template</a></em></p>
 
     </main>
   </div>

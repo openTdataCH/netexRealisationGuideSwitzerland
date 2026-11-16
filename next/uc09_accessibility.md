@@ -201,7 +201,17 @@ Such information can be encoded using `SitePathLink`s and `PathJunction`s that d
 ### Table
 
 
-StopPlaceEntrance.md
+
+*Table: StopPlaceEntrance*
+
+| Sub | Element | Usage | Card | Type | Description | Note |
+|-----|---------|-------|------|------|-------------|------|
+|  | Name | mandatory | 0..1 | MultilingualString | Name of STOP PLACE. | Will be exported from ATLAS for ERA TSI PRM (Referenzpunkt - "Bezeichnung"). |
+|  | [AccessibilityAssessment](./tables/AccessibilityAssessment.md) | mandatory | 0..1 | AccessibilityAssessment_VersionedChildStructure | Accessibility values associated with LEVEL. | Accessibility. See the element's table for all details. |
+|  | LevelRef | expected | 0..1 | LevelRefStructure |  | Required if more than 1 level present. |
+|  | DroppedKerbOutside | optional | 0..1 | boolean | Whether nearest crossing to ENTRANCE has dropped kerb. | Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. |
+|  | DropOffPointClose | optional | 0..1 | boolean | Whether there is a drop off point close by to ENTRANCE. | Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. |
+
 
 
 
@@ -210,7 +220,38 @@ StopPlaceEntrance.md
 ### Example
 
 
-StopPlaceEntrance.xml
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<StopPlaceEntrance id="ch:1:entrance:7000:1" version="1">
+  <Name>Haupteingang West
+    <!-- Will be exported from ATLAS for ERA TSI PRM (Referenzpunkt - "Bezeichnung"). -->
+  </Name>
+  <AccessibilityAssessment id="generated-2" version="1">
+    <!-- Accessibility. See the element's table for all details. -->
+    <MobilityImpairedAccess>true</MobilityImpairedAccess>
+    <limitations>
+      <AccessibilityLimitation>
+        <WheelchairAccess>true</WheelchairAccess>
+        <StepFreeAccess>true</StepFreeAccess>
+        <StairFreeAccess>true</StairFreeAccess>
+        <RampFreeAccess>true</RampFreeAccess>
+        <VisualSignsAvailable>true</VisualSignsAvailable>
+        <TactileGuidanceAvailable>true</TactileGuidanceAvailable>
+        <GuideDogAccess>true</GuideDogAccess>
+      </AccessibilityLimitation>
+    </limitations>
+  </AccessibilityAssessment>
+  <LevelRef ref="ch:1:level:7000:0">
+    <!-- Required if more than 1 level present. -->
+  </LevelRef>
+  <DroppedKerbOutside>true
+    <!-- Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. -->
+  </DroppedKerbOutside>
+  <DropOffPointClose>true
+    <!-- Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. -->
+  </DropOffPointClose>
+</StopPlaceEntrance>
+```
 
 
 
@@ -771,37 +812,8 @@ Accessiblity information attached to a `StopPlace` and `Quay` in particular.
 *→ [Template](./templates/SiteFacilitySet_accessibility.xml)*
 
 
-
-
-
-
-
-
 ## SitePathLink
-*→ [Glossary definition](A4_annex_glossary.md#sitepathlink)* TODO
-
-### Purpose
-...
-
-
-### Table
-
-
-SitePathLink.md
-
-
-
-*→ [General NeTEx definition ](../xcore/netex/elements/SitePathLink.html)*
-
-### Example
-
-
-SitePathLink.xml
-
-
-
-*→ [Template](./templates/SitePathLink.xml)*
-
+> **TODO**
 
 ### Usage Notes
 
@@ -826,60 +838,5 @@ PJ = PathJunction
 The third model is a streamlined form that doesn't insist on PathJunctions if they don't provide additional information needed for accessibility routing.
 
 ![IDFM](./media/accessibility/path_network_3.png)
-
----
----
-
-
-**TEMPLATES FOR THIS DOCUMENT**
-
-
-## NewElementX
-*→ [Glossary definition](A4_annex_glossary.md#accessibilityassessment)* 
-
-### Purpose
-...
-
-
-### Table
-
-
-NewElement.md
-
-
-
-*→ [General NeTEx definition ](../xcore/netex/elements/NewElement.html)*
-
-### Example
-
-
-NewElement.xml
-
-
-
-*→ [Template](./templates/NewElement.xml)*
-
-
-
-## ExistingElementY - the Additional Elements
-
-
-### Table
-
-
-OldElement_withAccessibility.md
-
-
-
-
-### Example
-
-
-OldElement_withAccessibility.xml
-
-
-
-*→ [Template](./templates/OldElement_withAccessibility.xml)*
-
 
 
