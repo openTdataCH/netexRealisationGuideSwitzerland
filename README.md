@@ -2,7 +2,7 @@
 # Work in Progress: NeTEx realisation guide 2.0 for Switzerland
 We work here to create the next NeTEX realisation guide.
 
-## Profile 2.0 draft
+## Profile 2.0 release candidate 3
 
 The finalised version (as HTML) can be found here: [https://opentdatach.github.io/netexRealisationGuideSwitzerland/](https://opentdatach.github.io/netexRealisationGuideSwitzerland/).
 
@@ -18,7 +18,7 @@ none
 * 2026-07: first draft ready (Release candidate 1)
 * 2026-10: input from review incorporated and second review(Release candidate 2)
 * 2026-11: ready for release, discussed with KI ADM and KIDS AG Solldaten (Release)
-* 2027-06: Version 2.1 ready with updates from exports.
+* 2027-09: Version 2.1 ready with updates from exports.
 
 ## Folders
 
