@@ -306,12 +306,48 @@
     </tr>
     <tr>
       <td> </td>
+      <td>facilities</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>serviceFacilitySets_RelStructure</td>
+      <td> </td>
+      <td>Only use to signal a facility not generally available for the StopPlace. Will be exported from ATLAS for ERA TSI PRM.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>SiteFacilitySetStructure</td>
+      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>SiteRef</td>
       <td>optional</td>
       <td>0..1</td>
       <td>SiteRefStructure</td>
       <td> </td>
       <td>Can reference the parent Quay or StopPlace</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>localServices</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>localServices_RelStructure</td>
+      <td> </td>
+      <td>NOT USED at the level of Quay.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AssistanceServiceRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AssistanceServiceRefStructure</td>
+      <td>Identifier of an ASSISTANCE SERVICE.</td>
+      <td> </td>
     </tr>
     <tr>
       <td> </td>

@@ -1441,12 +1441,48 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     </tr>
     <tr>
       <td> </td>
+      <td>facilities</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>serviceFacilitySets_RelStructure</td>
+      <td> </td>
+      <td>Only use to signal a facility not generally available for the StopPlace. Will be exported from ATLAS for ERA TSI PRM.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>SiteFacilitySetStructure</td>
+      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>SiteRef</td>
       <td>optional</td>
       <td>0..1</td>
       <td>SiteRefStructure</td>
       <td> </td>
       <td>Can reference the parent Quay or StopPlace</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>localServices</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>localServices_RelStructure</td>
+      <td> </td>
+      <td>NOT USED at the level of Quay.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AssistanceServiceRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AssistanceServiceRefStructure</td>
+      <td>Identifier of an ASSISTANCE SERVICE.</td>
+      <td> </td>
     </tr>
     <tr>
       <td> </td>
@@ -1505,9 +1541,17 @@ Note that a <code class="language-plaintext highlighter-rouge">StopPlace</code> 
     <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
   <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
   <span class="nt">&lt;AccessModes&gt;</span>bicycle foot<span class="nt">&lt;/AccessModes&gt;</span>
+  <span class="nt">&lt;facilities&gt;</span>
+    <span class="c">&lt;!-- Only use to signal a facility not generally available for the StopPlace. Will be exported from ATLAS for ERA TSI PRM. --&gt;</span>
+    <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/facilities&gt;</span>
   <span class="nt">&lt;SiteRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7000"</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- Can reference the parent Quay or StopPlace --&gt;</span>
   <span class="nt">&lt;/SiteRef&gt;</span>
+  <span class="nt">&lt;localServices&gt;</span>
+    <span class="c">&lt;!-- NOT USED at the level of Quay. --&gt;</span>
+    <span class="nt">&lt;AssistanceServiceRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/localServices&gt;</span>
   <span class="nt">&lt;PublicCode&gt;</span>9
     <span class="c">&lt;!-- Code used to identify the Quay to the public --&gt;</span>
   <span class="nt">&lt;/PublicCode&gt;</span>

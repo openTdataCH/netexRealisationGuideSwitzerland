@@ -14,7 +14,11 @@ Can be a platform, track, sector group or sector. id is a SLOID whenever possibl
 |  | [Centroid](Centroid.md) | mandatory | 0..1 | SimplePoint_VersionStructure |  | Location of Quay. Note that the usage (mandatory) overrides the cardinality. |
 |  | [AccessibilityAssessment](AccessibilityAssessment.md) | expected | 0..1 | AccessibilityAssessment_VersionedChildStructure |  | Only required if the AccessibilityAssessment of the StopPlace contains value(s) `partial`. |
 |  | AccessModes | optional | 0..1 | AccessModeListOfEnumerations |  |  |
+|  | facilities | optional | 0..1 | serviceFacilitySets_RelStructure |  | Only use to signal a facility not generally available for the StopPlace. Will be exported from ATLAS for ERA TSI PRM. |
+| + | [SiteFacilitySet](SiteFacilitySet.md) | optional | 0..* | SiteFacilitySetStructure | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). |  |
 |  | SiteRef | optional | 0..1 | SiteRefStructure |  | Can reference the parent Quay or StopPlace |
+|  | localServices | optional | 0..1 | localServices_RelStructure |  | NOT USED at the level of Quay. |
+| + | AssistanceServiceRef | optional | 0..* | AssistanceServiceRefStructure | Identifier of an ASSISTANCE SERVICE. |  |
 |  | PublicCode | mandatory | 0..1 | PublicCodeStructure | Pubic identifier code of QUAY. | Code used to identify the Quay to the public |
 |  | QuayType | optional | 0..1 | QuayTypeEnumeration | Type of QUAY. | will be used for formations. Allowed values are defined in mapping excel. |
 |  | ParentQuayRef | optional | 0..1 | QuayRefStructure | if QUAY is a subzone of another QUAY, identifies parent. | Will be used when we do sectors and sector groups. |
