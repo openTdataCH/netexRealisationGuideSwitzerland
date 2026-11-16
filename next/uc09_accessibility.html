@@ -3,9 +3,9 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Accessibility - WORK IN PROGRESS | DRAFT Swiss profile 2.0 for NeTEx 2.1</title>
+<title>Accessibility | DRAFT Swiss profile 2.0 for NeTEx 2.1</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Accessibility - WORK IN PROGRESS" />
+<meta property="og:title" content="Accessibility" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
@@ -14,9 +14,9 @@
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.1" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Accessibility - WORK IN PROGRESS" />
+<meta property="twitter:title" content="Accessibility" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Accessibility - WORK IN PROGRESS","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/next/uc09_accessibility.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"Accessibility","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/next/uc09_accessibility.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/netexRealisationGuideSwitzerland/next/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/next/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.1" /></head>
 <body><header class="site-header" role="banner">
@@ -213,79 +213,81 @@
 </nav>
     <main class="content" aria-label="Content">
       
-        <h1 class="page-title">Accessibility - WORK IN PROGRESS</h1>
+        <h1 class="page-title">Accessibility</h1>
       
       <p>Definition of the Swiss Accessibility Profile.</p>
 
-<p>In this chapter:</p>
+<p><strong>Current State</strong></p>
+<ul>
+  <li>Elaborated only for Site elements</li>
+  <li>Does not fully obey the EPIAP philosophy of favoring Equipments over Facilities and Services.</li>
+</ul>
+
+<p><strong>Future Developments</strong></p>
+<ul>
+  <li>Alignment with upcoming ERA TSI/PRM definitions</li>
+  <li>Accessibility for vehicles, journeys</li>
+  <li>We may add SitePathLinks</li>
+  <li>We may add StairEquipment, RampEquipment, etc.</li>
+  <li>Granularity of navigation networks? - First thoughts  <a href="#sitepathlink">presented below</a>.</li>
+</ul>
+
+<hr />
+
+<p><strong>In this chapter</strong>:</p>
 
 <p>AccessibilityAssessment</p>
 <ul>
-  <li>AccessibilityAssessment</li>
+  <li><a href="#accessibilityassessment"><strong>AccessibilityAssessment</strong></a></li>
 </ul>
 
 <p>Basic Orientation</p>
 <ul>
-  <li>Level</li>
-  <li>Entrance</li>
-  <li>AccessSpace</li>
-  <li>StopPlace - the Additional Elements</li>
-  <li>Quay - the Additional Elements</li>
+  <li><strong>Level</strong></li>
+  <li><a href="#stopplaceentrance"><strong>StopPlaceEntrance</strong></a></li>
+  <li><a href="#stopplace---the-additional-elements"><strong>StopPlace - the Additional Elements</strong></a></li>
+  <li><a href="#quay---the-additional-elements"><strong>Quay - the Additional Elements</strong></a></li>
+  <li><em>AccessSpace - not used</em></li>
 </ul>
 
 <p>PrivateMobility</p>
 <ul>
-  <li>Parking</li>
-  <li>VehicleMeetingPoint</li>
+  <li><strong>Parking -</strong> <a href="#stopplace---the-additional-elements"><strong>see StopPlace</strong></a></li>
 </ul>
 
 <p>Path Navigation</p>
 <ul>
-  <li>SitePathLink</li>
-  <li>PathJunction</li>
-  <li>DefaultConnection - the Additional Elements</li>
-  <li>SiteConnection - the Additional Elements</li>
+  <li><a href="#sitepathlink"><strong>SitePathLink</strong></a> - <em>not used</em></li>
+  <li><em>PathJunction - not used</em></li>
 </ul>
 
 <p>Equipments, Facilities &amp; Services</p>
 <ul>
-  <li>EquipmentPlace</li>
-  <li>EntranceEquipment</li>
-  <li>EscalatorEquipment</li>
-  <li>LiftEquipment</li>
-  <li>RampEquipment</li>
-  <li>TravelatorEquipment</li>
-  <li>LuggageLockerEquipment</li>
-  <li>TrolleyStandEquipment</li>
-  <li>PassengerSafetyEquipment</li>
-  <li>SanitaryEquipment</li>
-  <li>TicketingEquipment</li>
-  <li>QueingEquipment - ?</li>
-  <li>TicketValidatorEquipment</li>
-  <li>ShelterEquipment - ?</li>
-  <li>WaitingEquipment</li>
-  <li>WaitingRoomEquipment</li>
-  <li>SignEquipment- ?</li>
-  <li>AssistanceService**_</li>
-  <li>AssistanceBookingService</li>
-  <li>LostPropertyService</li>
-  <li>LuggageService</li>
-  <li>MeetingPointService</li>
-  <li>TicketingService</li>
-  <li>CustomerService</li>
-  <li>SiteFacilitySet - the Additional Elements</li>
-  <li>ServiceFacilitySet - the Additional Elements</li>
+  <li><a href="#sitefacilityset---the-additional-elements"><strong>SiteFacilitySet - the Additional Elements</strong></a></li>
+  <li><a href="#assistanceservice"><strong>AssistanceService</strong></a></li>
+  <li><a href="#assistancebookingservice"><strong>AssistanceBookingService</strong></a></li>
+  <li><strong>SanitaryEquipment -</strong> <a href="#stopplace---the-additional-elements"><strong>see StopPlace</strong></a></li>
+  <li><strong>TicketingEquipment -</strong> <a href="#stopplace---the-additional-elements"><strong>see StopPlace</strong></a></li>
+  <li><em>EquipmentPlace - not used</em></li>
+  <li><em>EntranceEquipment - not used</em></li>
+  <li><em>EscalatorEquipment - not used</em></li>
+  <li><em>LiftEquipment - not used</em></li>
+  <li><em>RampEquipment - not used</em></li>
+  <li><em>TravelatorEquipment - not used</em></li>
+  <li><em>SignEquipment - not used</em></li>
+  <li><em>MeetingPointService - not used</em></li>
+  <li><em>CustomerService - not used</em></li>
+  <li><em>ServiceFacilitySet - not used</em></li>
 </ul>
 
 <p>Vehicles &amp; Vehicle Stop Interaction</p>
 <ul>
-  <li>VehicleType</li>
-  <li>BoardingPosition</li>
-  <li>TrainStopAssignment</li>
+  <li><em>VehicleType - not used</em></li>
+  <li><em>BoardingPosition - not used</em></li>
 </ul>
 
 <h2 id="accessibilityassessment">AccessibilityAssessment</h2>
-<p>*→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></p>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em></p>
 
 <h3 id="purpose">Purpose</h3>
 
@@ -477,7 +479,9 @@
   <li><code class="language-plaintext highlighter-rouge">TactileGuidanceAvailable</code> <code class="language-plaintext highlighter-rouge">true</code></li>
 </ul>
 
-<p>Interpretation of <code class="language-plaintext highlighter-rouge">AccessibilityLimitation</code>:</p>
+<h4 id="interpretation-of-accessibilitylimitation">Interpretation of <code class="language-plaintext highlighter-rouge">AccessibilityLimitation</code>:</h4>
+
+<p>We apply a slightly stricter interpretation than the current version of EPIAP. The information that can be conveyed to the passengers thus becomes more useful and exporting the data to foreign systems is unproblematic. The additional constraints are [marked in brackets].</p>
 
 <table>
   <thead>
@@ -489,15 +493,15 @@
   <tbody>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">WheelchairAccess</code></td>
-      <td>1.    <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> from an accessible entrance (see next row).<br />2.    The stop/platform is sufficiently wide to make a turn with a wheelchair when entering/leaving the vehicles that usually stops at this stop/platform (depending on the available/needed tools for entering/leaving the vehicle).<br />3.    If boarding trains requires boarding assistance, onsite assistance is available.</td>
+      <td>1.    <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> [including <code class="language-plaintext highlighter-rouge">EscalatorFreeAccess</code>] from an accessible entrance (see next row).<br />2.    The stop / platform is sufficiently wide to make a turn with a wheelchair when entering / leaving the vehicles that usually stop at this stop / platform (depending on the available / needed tools for entering / leaving the vehicle).<br />3.    If boarding trains requires boarding assistance, onsite assistance is available.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">StepFreeAccess</code></td>
-      <td>1.    A step-free route is an obstacle-free/barrier free route that meets the needs of mobility impaired persons. Changes in level are avoided or, when they cannot be avoided, they are bridged via ramps or lifts (compliant with PRM TSI).<br />2.    The platform or Stop is accessible without steps from the surrounding area (footpaths).<br />A platform which has <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> without <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> (= <code class="language-plaintext highlighter-rouge">false</code>) may be not sufficiently wide to make a turn with a wheelchair.</td>
+      <td>1.    A step-free route is an obstacle-free / barrier free [and <code class="language-plaintext highlighter-rouge">EscalatorFreeAccess</code>] route that meets the needs of mobility impaired persons. Changes in level are avoided or, when they cannot be avoided, they are bridged via ramps or lifts (compliant with PRM TSI).<br />2.    The platform or stop is accessible without steps from the surrounding area (footpaths).<br /><br />A platform which has <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> without <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> (==<code class="language-plaintext highlighter-rouge">false</code>) may be not sufficiently wide to make a turn with a wheelchair.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">StairFreeAccess</code></td>
-      <td>A stair-free route. Single steps allowed.</td>
+      <td>A stair-free route. Single steps allowed, escalators allowed.</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">LevelAccessIntoVehicle</code></td>
@@ -513,7 +517,7 @@
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">RampFreeAccess</code></td>
-      <td>Reachable without using a ramp that doesn’t fit the UN Design <a href="https://euc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=nl-nl&amp;rs=nl-nl&amp;wopisrc=https%3A%2F%2Fitxptorg.sharepoint.com%2Fsites%2FEU.DATA4PT.NETEX%2F_vti_bin%2Fwopi.ashx%2Ffiles%2Fc2c9167177c34bc1bb50e4880ff7b6ac&amp;wdenableroaming=1&amp;mscc=1&amp;hid=12869e13-00bf-76bc-9351-10ac590e57c1-730&amp;uiembed=1&amp;uih=teams&amp;uihit=files&amp;hhdr=1&amp;dchat=1&amp;sc=%7B%22pmo%22%3A%22https%3A%2F%2Fteams.microsoft.com%22%2C%22pmshare%22%3Atrue%2C%22surl%22%3A%22%22%2C%22curl%22%3A%22%22%2C%22vurl%22%3A%22%22%2C%22eurl%22%3A%22https%3A%2F%2Fteams.microsoft.com%2Ffiles%2Fapps%2Fcom.microsoft.teams.files%2Ffiles%2F2441637157%2Fopen%3Fagent%3Dpostmessage%26objectUrl%3Dhttps%253A%252F%252Fitxptorg.sharepoint.com%252Fsites%252FEU.DATA4PT.NETEX%252FShared%2520Documents%252FGeneral%252FCEN_Accessibility_Profile%252F20210326%2520PrTS%252016614-6.docx%26fileId%3Dc2c91671-77c3-4bc1-bb50-e4880ff7b6ac%26fileType%3Ddocx%26ctx%3Daggregate%26scenarioId%3D730%26locale%3Dnl-nl%26theme%3Ddefault%26version%3D21100501100%26setting%3Dring.id%3Ageneral%26setting%3DcreatedTime%3A1639152919292%22%7D&amp;wdorigin=TEAMS-ELECTRON.aggregatefiles.aggregate&amp;jsapi=1&amp;jsapiver=v1&amp;newsession=1&amp;corrid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&amp;usid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&amp;sftc=1&amp;sams=1&amp;accloop=1&amp;sdr=6&amp;scnd=1&amp;sat=1&amp;hbcv=1&amp;htv=1&amp;hodflp=1&amp;instantedit=1&amp;wopicomplete=1&amp;wdredirectionreason=Unified_SingleFlush&amp;rct=Medium&amp;ctp=LeastProtected#_ftn1">Considerations</a> (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m). <a href="https://euc-word-edit.officeapps.live.com/we/wordeditorframe.aspx?ui=nl-nl&amp;rs=nl-nl&amp;wopisrc=https%3A%2F%2Fitxptorg.sharepoint.com%2Fsites%2FEU.DATA4PT.NETEX%2F_vti_bin%2Fwopi.ashx%2Ffiles%2Fc2c9167177c34bc1bb50e4880ff7b6ac&amp;wdenableroaming=1&amp;mscc=1&amp;hid=12869e13-00bf-76bc-9351-10ac590e57c1-730&amp;uiembed=1&amp;uih=teams&amp;uihit=files&amp;hhdr=1&amp;dchat=1&amp;sc=%7B%22pmo%22%3A%22https%3A%2F%2Fteams.microsoft.com%22%2C%22pmshare%22%3Atrue%2C%22surl%22%3A%22%22%2C%22curl%22%3A%22%22%2C%22vurl%22%3A%22%22%2C%22eurl%22%3A%22https%3A%2F%2Fteams.microsoft.com%2Ffiles%2Fapps%2Fcom.microsoft.teams.files%2Ffiles%2F2441637157%2Fopen%3Fagent%3Dpostmessage%26objectUrl%3Dhttps%253A%252F%252Fitxptorg.sharepoint.com%252Fsites%252FEU.DATA4PT.NETEX%252FShared%2520Documents%252FGeneral%252FCEN_Accessibility_Profile%252F20210326%2520PrTS%252016614-6.docx%26fileId%3Dc2c91671-77c3-4bc1-bb50-e4880ff7b6ac%26fileType%3Ddocx%26ctx%3Daggregate%26scenarioId%3D730%26locale%3Dnl-nl%26theme%3Ddefault%26version%3D21100501100%26setting%3Dring.id%3Ageneral%26setting%3DcreatedTime%3A1639152919292%22%7D&amp;wdorigin=TEAMS-ELECTRON.aggregatefiles.aggregate&amp;jsapi=1&amp;jsapiver=v1&amp;newsession=1&amp;corrid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&amp;usid=ce9d3917-7c65-4632-a7d4-9644eb2f8575&amp;sftc=1&amp;sams=1&amp;accloop=1&amp;sdr=6&amp;scnd=1&amp;sat=1&amp;hbcv=1&amp;htv=1&amp;hodflp=1&amp;instantedit=1&amp;wopicomplete=1&amp;wdredirectionreason=Unified_SingleFlush&amp;rct=Medium&amp;ctp=LeastProtected#_ftnref1">[1]</a> <a href="https://www.un.org/esa/socdev/enable/designm/AD2-01.htm">https://www.un.org/esa/socdev/enable/designm/AD2-01.htm</a></td>
+      <td>1.   Reachable without using a ramp that doesn’t fit the <a href="https://www.un.org/esa/socdev/enable/designm/AD2-01.htm">UN Design Considerations</a> (for instance, because they are too steep or a landing is missing in case of a ramp of more than 10 m).<br />2.    [The route provides <code class="language-plaintext highlighter-rouge">WheelchairAccess</code>].</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">AudibleSignalsAvailable</code></td>
@@ -521,11 +525,11 @@
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">VisualSignsAvailable</code></td>
-      <td>PRM TSI: visual information as signposting, pictograms and dynamic information.</td>
+      <td>1.   PRM TSI: visual information as signposting, pictograms and dynamic information. <br />2.    [Largely language independent, also suited for passengers from foreign cultures.]</td>
     </tr>
     <tr>
       <td><code class="language-plaintext highlighter-rouge">TactileGuidanceAvailable</code></td>
-      <td>Whether the object has tactile guidance (for the visually impaired). If absent assume <code class="language-plaintext highlighter-rouge">unknown</code>.<br />PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br />For bus- and tram stops:  <br />1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br />2.   Tactile guideline or boarding position connected to (natural) guideline in environment</td>
+      <td>Whether the object has tactile guidance (for the visually impaired).<br />PRM TSI: obstacle-free route to each Quay for the visually impaired passengers equipped with tactile information.  <br />For bus- and tram stops:  <br />1.  Groundsurfaceindicator (at location first door) and/or full-length guideline (for boarding at all entrances)<br />2.   Tactile guideline or boarding position connected to a (natural) guideline in the environment</td>
     </tr>
   </tbody>
 </table>
@@ -533,27 +537,160 @@
 <h4 id="remarks-rampfreeaccess">Remarks <code class="language-plaintext highlighter-rouge">RampFreeAccess</code></h4>
 
 <ul>
-  <li>Note that <code class="language-plaintext highlighter-rouge">RampFreeAccess</code> may very well include ramps - provided their slopes are only moderate.</li>
-  <li>It seems obvious that <code class="language-plaintext highlighter-rouge">RampFreeAccess</code>should also include <code class="language-plaintext highlighter-rouge">StairFreeAccess</code> and <code class="language-plaintext highlighter-rouge">StepFreeAccess</code> - this isn’t explicitely stated in EPIAP, however.</li>
-  <li><code class="language-plaintext highlighter-rouge">RampFreeAccess</code>is thus a stronger form of <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> excluding steeper slopes.</li>
+  <li>Note that <code class="language-plaintext highlighter-rouge">RampFreeAccess</code> may very well include ramps - provided their slopes are only moderate or they have landing / rest areas.</li>
+  <li><code class="language-plaintext highlighter-rouge">RampFreeAccess</code>is a stronger form of <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> excluding steeper slopes.</li>
 </ul>
 
-<h4 id="limitiations-of-accessibilityassessment">Limitiations of AccessibilityAssessment</h4>
+<h4 id="limitations-of-accessibilityassessment">Limitations of AccessibilityAssessment</h4>
 
 <ul>
-  <li>
-    <p>If, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> or <code class="language-plaintext highlighter-rouge">StairFreeAccess</code> requires using a lift, the <code class="language-plaintext highlighter-rouge">AccessibilityAssessment</code> does not convey this information.</p>
-  </li>
-  <li>
-    <p>According to EPIAP definitions, a quay with, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> means that there is at least one entrance from which it is reachable. It may be that <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> only works from a secondary entrance, not from the main entrance.</p>
-  </li>
+  <li>If, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> or <code class="language-plaintext highlighter-rouge">StairFreeAccess</code> requires using a lift, the <code class="language-plaintext highlighter-rouge">AccessibilityAssessment</code> does not convey this information.</li>
+  <li>According to EPIAP definitions, a quay with, e.g., <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> means that there is at least one entrance from which it is reachable. It may be that <code class="language-plaintext highlighter-rouge">WheelchairAccess</code> only works from a secondary entrance, not from the main entrance.</li>
 </ul>
 
-<p>Such information can be encoded using <code class="language-plaintext highlighter-rouge">PathLink</code>s and <code class="language-plaintext highlighter-rouge">PathJunction</code>s that describe a routing network including accessibility and location data.</p>
+<p>Such information can be encoded using <code class="language-plaintext highlighter-rouge">SitePathLink</code>s and <code class="language-plaintext highlighter-rouge">PathJunction</code>s that describe a routing network including accessibility and location data.</p>
+
+<h4 id="entrances-related-to-accessibilityassessment">Entrances related to AccessibilityAssessment</h4>
+<ul>
+  <li>All <code class="language-plaintext highlighter-rouge">AccessibiltyLimitation</code>s (<code class="language-plaintext highlighter-rouge">StepFreeAccess</code> etc.) relate to a complete path from an “accessible” <code class="language-plaintext highlighter-rouge">StopPlaceEntrance</code> with <code class="language-plaintext highlighter-rouge">DroppedKerb=true</code> and <code class="language-plaintext highlighter-rouge">DropOffPointClose=true</code>.</li>
+</ul>
+
+<h2 id="stopplaceentrance">StopPlaceEntrance</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#StopPlaceEntrance">Glossary definition</a></em></p>
+
+<h3 id="purpose-1">Purpose</h3>
+<p><code class="language-plaintext highlighter-rouge">StopPlaceEntrance</code>s, in particular if <code class="language-plaintext highlighter-rouge">DroppedKerbOutside</code> and <code class="language-plaintext highlighter-rouge">DropOffPointClose</code> are true, are the reference points from which the accessibility of <code class="language-plaintext highlighter-rouge">Quay</code>s and other place elements is assessed.</p>
+
+<h3 id="table-1">Table</h3>
+
+<p><em>Table: StopPlaceEntrance</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of STOP PLACE.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Referenzpunkt - “Bezeichnung”).</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td>Accessibility values associated with LEVEL.</td>
+      <td>Accessibility. See the element’s table for all details.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LevelRef</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>LevelRefStructure</td>
+      <td> </td>
+      <td>Required if more than 1 level present.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DroppedKerbOutside</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether nearest crossing to ENTRANCE has dropped kerb.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (only set to <code class="language-plaintext highlighter-rouge">true</code> if Verbindung from Parkplatz with “Stufenfreier Zugang” = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DropOffPointClose</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there is a drop off point close by to ENTRANCE.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (only set to <code class="language-plaintext highlighter-rouge">true</code> if Verbindung from Parkplatz with “Stufenfreier Zugang” = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../xcore/netex/elements/StopPlaceEntrance.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-1">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;StopPlaceEntrance</span> <span class="na">id=</span><span class="s">"ch:1:entrance:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>Haupteingang West
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Referenzpunkt - "Bezeichnung"). --&gt;</span>
+  <span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated-2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Accessibility. See the element's table for all details. --&gt;</span>
+    <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
+    <span class="nt">&lt;limitations&gt;</span>
+      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+      <span class="nt">&lt;AccessibilityLimitation&gt;</span>
+        <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;WheelchairAccess&gt;</span>true
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/WheelchairAccess&gt;</span>
+        <span class="nt">&lt;StepFreeAccess&gt;</span>true
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/StepFreeAccess&gt;</span>
+        <span class="nt">&lt;StairFreeAccess&gt;</span>true
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/StairFreeAccess&gt;</span>
+        <span class="nt">&lt;RampFreeAccess&gt;</span>true
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/RampFreeAccess&gt;</span>
+        <span class="nt">&lt;LevelAccessIntoVehicle&gt;</span>false
+          <span class="c">&lt;!-- Not used in this context.  **TODO** Would `ch-usage: forbidden` work to restrict the use of the element in the nested `AccessiblityAssessment`? --&gt;</span>
+        <span class="nt">&lt;/LevelAccessIntoVehicle&gt;</span>
+        <span class="nt">&lt;AudibleSignalsAvailable&gt;</span>false
+          <span class="c">&lt;!-- Not used in this context. **TODO** Would `ch-usage: forbidden` work to restrict the use of the element in the nested `AccessiblityAssessment`? --&gt;</span>
+        <span class="nt">&lt;/AudibleSignalsAvailable&gt;</span>
+        <span class="nt">&lt;VisualSignsAvailable&gt;</span>true
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/VisualSignsAvailable&gt;</span>
+        <span class="nt">&lt;TactileGuidanceAvailable&gt;</span>true
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/TactileGuidanceAvailable&gt;</span>
+        <span class="nt">&lt;GuideDogAccess&gt;</span>true
+          <span class="c">&lt;!-- Accessibility. --&gt;</span>
+        <span class="nt">&lt;/GuideDogAccess&gt;</span>
+      <span class="nt">&lt;/AccessibilityLimitation&gt;</span>
+    <span class="nt">&lt;/limitations&gt;</span>
+  <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
+  <span class="nt">&lt;LevelRef</span> <span class="na">ref=</span><span class="s">"ch:1:level:7000:0"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Required if more than 1 level present. --&gt;</span>
+  <span class="nt">&lt;/LevelRef&gt;</span>
+  <span class="nt">&lt;DroppedKerbOutside&gt;</span>true
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. --&gt;</span>
+  <span class="nt">&lt;/DroppedKerbOutside&gt;</span>
+  <span class="nt">&lt;DropOffPointClose&gt;</span>true
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. --&gt;</span>
+  <span class="nt">&lt;/DropOffPointClose&gt;</span>
+<span class="nt">&lt;/StopPlaceEntrance&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/templates/StopPlaceEntrance.xml">Template</a></em></p>
 
 <h2 id="stopplace---the-additional-elements">StopPlace - the Additional Elements</h2>
 
-<h3 id="table-1">Table</h3>
+<h3 id="table-2">Table</h3>
 
 <p><em>Table: StopPlace</em></p>
 
@@ -573,29 +710,11 @@
     <tr>
       <td> </td>
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
-      <td>mandatory</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>AccessibilityAssessment_VersionedChildStructure</td>
       <td>Accessibility values associated with LEVEL.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>Covered</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>CoveredEnumeration</td>
-      <td> </td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>AllAreasWheelchairAccessible</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>xsd:boolean</td>
-      <td> </td>
-      <td>Accessibility.</td>
+      <td>Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments.</td>
     </tr>
     <tr>
       <td> </td>
@@ -604,25 +723,16 @@
       <td>0..1</td>
       <td>siteFacilitySets_RelStructure</td>
       <td>Facilities available at SITe.</td>
-      <td>Accessibility.</td>
+      <td>Facilities available at the stop.</td>
     </tr>
     <tr>
       <td>+</td>
-      <td>SiteFacilitySet</td>
-      <td>optional</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
+      <td>expected</td>
       <td>0..*</td>
       <td>SiteFacilitySetStructure</td>
       <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>SiteFacilitySetRef</td>
-      <td>optional</td>
-      <td>0..*</td>
-      <td>SiteFacilitySetRefStructure</td>
-      <td> </td>
-      <td>Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong.</td>
+      <td>In particular for accessibility information.</td>
     </tr>
     <tr>
       <td> </td>
@@ -631,61 +741,34 @@
       <td>0..1</td>
       <td>levels_RelStructure</td>
       <td>LEVELs found within SITe.</td>
-      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
+      <td>Mandatory if the StopPlace has more than one level.</td>
     </tr>
     <tr>
       <td>+</td>
-      <td><a href="./tables/Level.md">Level</a></td>
+      <td>Level</td>
       <td>expected</td>
       <td>0..*</td>
       <td>Level_VersionStructure</td>
       <td>Level of a Building or SITE.</td>
-      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td><a href="./tables/Level.md">Level</a></td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>Level_VersionStructure</td>
-      <td>Level of a Building or SITE.</td>
-      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
+      <td>Mandatory if the StopPlace has more than one level.</td>
     </tr>
     <tr>
       <td> </td>
       <td>entrances</td>
-      <td>expected</td>
+      <td>optional</td>
       <td>0..1</td>
       <td>siteEntrances_RelStructure</td>
       <td>ENTRANCEs to SPACE.</td>
-      <td>Accessibility.</td>
+      <td>Reference points that will be exported from ATLAS for ERA TSI PRM.</td>
     </tr>
     <tr>
       <td>+</td>
-      <td><a href="./tables/Entrance.md">Entrance</a></td>
-      <td>expected</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/StopPlaceEntrance.html">StopPlaceEntrance</a></td>
+      <td>mandatory</td>
       <td>0..*</td>
-      <td>SiteEntrance_VersionStructure</td>
-      <td>Entrance to a SITE.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>equipmentPlaces</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>equipmentPlaces_RelStructure</td>
-      <td> </td>
-      <td>Accessibility. TODO</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>EquipmentPlaceRef</td>
-      <td>optional</td>
-      <td>0..*</td>
-      <td>EquipmentPlaceRefStructure</td>
-      <td> </td>
-      <td> </td>
+      <td>StopPlaceEntrance_VersionStructure</td>
+      <td>Passenger Entrance to a STOP PLACE.</td>
+      <td>Currently only the sloid is known, coordinates planned for 2027. From this point all references to accessibility are made in Switzerland.</td>
     </tr>
     <tr>
       <td> </td>
@@ -694,57 +777,264 @@
       <td>0..1</td>
       <td>equipments_RelStructure</td>
       <td>Items of EQUIPMENT that may be located in an EQUIPMENT PLACE.</td>
-      <td>Accessibility. TODO</td>
+      <td>Used in exports for all TSI PRM relevant equipments. Especially in the data transmissions for rail to ERA. We only have Equipments and no EquipmentPlaces.</td>
     </tr>
     <tr>
       <td>+</td>
-      <td>EntranceSensor</td>
+      <td>TicketingEquipment</td>
       <td>optional</td>
       <td>0..*</td>
-      <td>EntranceSensor_VersionStructure</td>
-      <td>AN EQUIPMENT used to monitor or count passengers using a PASSENGER ENTRANCE. +v2.0</td>
+      <td>unknown</td>
       <td> </td>
+      <td>Ticketing equipment.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TicketMachines</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there are ticket machines.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Billettautomat - “Billettautomat vorhanden”). Mirrored in SiteFacilitySet - ticketMachines.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TicketOffice</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there is a distinct ticket office.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter present). Mirrored in SiteFacilitySet - ticketOffice.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TicketCounter</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there is a ticket counter.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter present). We don’t distinguish between TicketOffice and TicketCounter.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>LowCounterAccess</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there is a low counter for accessibility.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter - “Rollstuhlzugänglichkeit” or Billettautomat - “Barrierefrei”). Applicable for TicketMachine, TicketOffice, TicketCounter.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>InductionLoops</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there are induction loops.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter - “Induktionsverstärker”). Only applicable for TicketOffice, TicketCounter.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TactileInterfaceAvailable</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Indicates whether there is a tactile interface +v1.1.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Billettautomat - “Akustische und taktile Ausrüstung”). Only applicable for TicketMachine.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AudioInterfaceAvailable</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Indicates whether there is an accessible audio interface (allowing a use closed eyes). +v1.1</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Billettautomat - “Akustische und taktile Ausrüstung”). Only applicable for TicketMachine.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>WheelchairSuitable</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Indicates whether equipment may be used while seated in a wheelchair. +v1.1</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter - “Rollstuhlzugänglichkeit” or Billettautomat - “Barrierefrei”). Applicable for TicketMachine, TicketOffice, TicketCounter.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TicketingEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>Example ticket machine(s).</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AccessVehicleEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AccessVehicleEquipment_VersionStructure</td>
+      <td>Specialisation of VEHICLE EQUIPMENT for ACCESS providing information such as low floor, ramp, access area dimensions, etc.</td>
+      <td>Method to get on the vehicle</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Hoist</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>VEHICLE has a hoist or lift for wheelchairs.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Haltekante - “Hilfsmittel für Rollstuhl”). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Ramp</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether a ramp may be used to access VEHICLE.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Haltekante - “Hilfsmittel für Rollstuhl”). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>SanitaryEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of EQUIPMENT.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>SanitaryFacilityList</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>SanitaryFacilityListOfEnumerations</td>
+      <td> </td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Toiletten - “Rollstuhlgängige Toilette). Presence or absence of <code class="language-plaintext highlighter-rouge">wheelchairAccessToilet toilet</code>. Mirrored in SiteFacilitySet - SanitaryFacilityList.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ToiletsType</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>ToiletsTypeEnumeration</td>
+      <td>Indicates the position of using the toilet.</td>
+      <td>Allowed values: <code class="language-plaintext highlighter-rouge">seated urinal seatedAndUrinal squat</code>.</td>
     </tr>
     <tr>
       <td> </td>
       <td>localServices</td>
-      <td>expected</td>
+      <td>optional</td>
       <td>0..1</td>
       <td>localServices_RelStructure</td>
       <td> </td>
-      <td>Accessibility.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM.</td>
     </tr>
     <tr>
       <td>+</td>
-      <td>AssistanceServiceRef</td>
+      <td>AssistanceService</td>
       <td>optional</td>
       <td>0..*</td>
-      <td>AssistanceServiceRefStructure</td>
-      <td>Identifier of an ASSISTANCE SERVICE.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
+      <td>AssistanceService_VersionStructure</td>
+      <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
       <td> </td>
-      <td>accessSpaces</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>accessSpaces_RelStructure</td>
-      <td>ACCESS SPACEs within the STOP PLACE.</td>
-      <td>Accessibility.</td>
     </tr>
     <tr>
       <td>+</td>
-      <td><a href="./tables/AccessSpace.md">AccessSpace</a></td>
-      <td>expected</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AssistanceService.html">AssistanceService</a></td>
+      <td>mandatory</td>
       <td>0..*</td>
-      <td>AccessSpace_VersionStructure</td>
-      <td>An area within a STOP PLACE that does not give direct access to transport vehicles. May be connected to QUAYS by PATH LINKs.</td>
-      <td>Accessibility.</td>
+      <td>AssistanceService_VersionStructure</td>
+      <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
+      <td>Presence of<code class="language-plaintext highlighter-rouge">AssistanceFacility</code>s and their availability , e.g., if they need to be booked.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AssistanceBookingService.html">AssistanceBookingService</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AssistanceBookingService_VersionStructure</td>
+      <td>Information about how to book assistance for wheelchair and disabled users.</td>
+      <td>Accessibility. Contact and booking information regarding assistance services.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>NavigationPath</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>SiteNavigationPath_VersionStructure</td>
+      <td>A designated path between two PLACEs. May include an Ordered sequence of references to PATH LINKS.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>From</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>DeckPathLinkEndStructure</td>
+      <td>Origin end of DECK NAVIGATION path. Only needed if detailed PATH LINKs are not given.</td>
+      <td>One of the points is the reference point.</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>PlaceRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PlaceRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>To</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>DeckPathLinkEndStructure</td>
+      <td>Destination end of DECK NAVIGATION PATH. Only needed if detailed PATH LINKs not given.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>PlaceRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>PlaceRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td> </td>
+      <td>If the NavigationPath is provided, then an AccessibilityAssessment must be provided too</td>
     </tr>
   </tbody>
 </table>
 
-<h3 id="example-1">Example</h3>
+<h3 id="example-2">Example</h3>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;StopPlace</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
@@ -768,19 +1058,24 @@
   <span class="nt">&lt;/privateCodes&gt;</span>
   <span class="nt">&lt;Name&gt;</span>Bern<span class="nt">&lt;/Name&gt;</span>
   <span class="nt">&lt;ShortName/&gt;</span>
-  <span class="nt">&lt;PrivateCode/&gt;</span>
   <span class="nt">&lt;Centroid&gt;</span>
-    <span class="nt">&lt;Name/&gt;</span>
     <span class="nt">&lt;Location&gt;</span>
       <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
       <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
       <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
     <span class="nt">&lt;/Location&gt;</span>
   <span class="nt">&lt;/Centroid&gt;</span>
+  <span class="nt">&lt;Polygon</span> <span class="err">{http://www.opengis.net/gml/3.2}</span><span class="na">id=</span><span class="s">"a1231"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Url&gt;</span>www.les-cj.ch<span class="nt">&lt;/Url&gt;</span>
+  <span class="nt">&lt;PostalAddress</span> <span class="na">id=</span><span class="s">"ch:1:sloid:162:address"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;AddressLine1&gt;</span>Chemin de la Halte 2a<span class="nt">&lt;/AddressLine1&gt;</span>
+    <span class="nt">&lt;Town&gt;</span>Tramelan<span class="nt">&lt;/Town&gt;</span>
+    <span class="nt">&lt;PostCode&gt;</span>2720<span class="nt">&lt;/PostCode&gt;</span>
+  <span class="nt">&lt;/PostalAddress&gt;</span>
   <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="c">&lt;!-- Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments. --&gt;</span>
     <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
-      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+      <span class="c">&lt;!-- Basic information about accessibility. --&gt;</span>
     <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
   <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
   <span class="nt">&lt;alternativeNames&gt;</span>
@@ -789,53 +1084,143 @@
       <span class="nt">&lt;Name</span> <span class="na">lang=</span><span class="s">"it"</span><span class="nt">&gt;</span>Berna<span class="nt">&lt;/Name&gt;</span>
     <span class="nt">&lt;/AlternativeName&gt;</span>
   <span class="nt">&lt;/alternativeNames&gt;</span>
-  <span class="nt">&lt;Covered&gt;</span>covered
-    <span class="c">&lt;!-- Accessibility. --&gt;</span>
-  <span class="nt">&lt;/Covered&gt;</span>
-  <span class="nt">&lt;AllAreasWheelchairAccessible&gt;</span>true
-    <span class="c">&lt;!-- Accessibility. --&gt;</span>
-  <span class="nt">&lt;/AllAreasWheelchairAccessible&gt;</span>
   <span class="nt">&lt;facilities&gt;</span>
-    <span class="c">&lt;!-- Accessibility. --&gt;</span>
-    <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"ch:1:sitefacilityset:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Accessibility. --&gt;</span>
+    <span class="c">&lt;!-- Facilities available at the stop. --&gt;</span>
+    <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- In particular for accessibility information. --&gt;</span>
     <span class="nt">&lt;/SiteFacilitySet&gt;</span>
-    <span class="nt">&lt;SiteFacilitySetRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong. --&gt;</span>
-    <span class="nt">&lt;/SiteFacilitySetRef&gt;</span>
   <span class="nt">&lt;/facilities&gt;</span>
   <span class="nt">&lt;TopographicPlaceRef</span> <span class="na">ref=</span><span class="s">"BE-bern"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;Locale&gt;</span>
     <span class="nt">&lt;TimeZone&gt;</span>Europe/Zurich<span class="nt">&lt;/TimeZone&gt;</span>
   <span class="nt">&lt;/Locale&gt;</span>
   <span class="nt">&lt;levels&gt;</span>
-    <span class="c">&lt;!-- Accessibility. Mandatory if the StopPlace has more than one level. --&gt;</span>
-    <span class="nt">&lt;Level</span> <span class="na">id=</span><span class="s">"ch:1:level:7000:0"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Accessibility. Mandatory if the StopPlace has more than one level. --&gt;</span>
+    <span class="c">&lt;!-- Mandatory if the StopPlace has more than one level. --&gt;</span>
+    <span class="nt">&lt;Level</span> <span class="na">id=</span><span class="s">"ch:1:level:162:164789:0"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Mandatory if the StopPlace has more than one level. --&gt;</span>
     <span class="nt">&lt;/Level&gt;</span>
-    <span class="nt">&lt;Level</span> <span class="na">id=</span><span class="s">"ch:1:level:7000:-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Accessibility. Mandatory if the StopPlace has more than one level. --&gt;</span>
-    <span class="nt">&lt;/Level&gt;</span>
+    <span class="nt">&lt;Level</span> <span class="na">id=</span><span class="s">"ch:1:level:162:164789:-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/levels&gt;</span>
   <span class="nt">&lt;entrances&gt;</span>
-    <span class="c">&lt;!-- Accessibility. --&gt;</span>
-    <span class="nt">&lt;Entrance</span> <span class="na">id=</span><span class="s">"ch:1:entrance:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Accessibility. --&gt;</span>
-    <span class="nt">&lt;/Entrance&gt;</span>
+    <span class="c">&lt;!-- Reference points that will be exported from ATLAS for ERA TSI PRM. --&gt;</span>
+    <span class="nt">&lt;StopPlaceEntrance</span> <span class="na">id=</span><span class="s">"ch:1:sloid:162:164789"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Currently only the sloid is known, coordinates planned for 2027. From this point all references to accessibility are made in Switzerland. --&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Point of reference.<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;/StopPlaceEntrance&gt;</span>
   <span class="nt">&lt;/entrances&gt;</span>
-  <span class="nt">&lt;equipmentPlaces&gt;</span>
-    <span class="c">&lt;!-- Accessibility. TODO --&gt;</span>
-    <span class="nt">&lt;EquipmentPlaceRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-  <span class="nt">&lt;/equipmentPlaces&gt;</span>
   <span class="nt">&lt;placeEquipments&gt;</span>
-    <span class="c">&lt;!-- Accessibility. TODO --&gt;</span>
-    <span class="nt">&lt;EntranceSensor</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- Used in exports for all TSI PRM relevant equipments. Especially in the data transmissions for rail to ERA. We only have Equipments and no EquipmentPlaces. --&gt;</span>
+    <span class="nt">&lt;TicketingEquipment</span> <span class="na">id=</span><span class="s">"ch:1:sloid:162:ticketing"</span> <span class="na">version=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Ticketing equipment. --&gt;</span>
+      <span class="nt">&lt;TicketMachines&gt;</span>true
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden"). Mirrored in SiteFacilitySet - ticketMachines. --&gt;</span>
+      <span class="nt">&lt;/TicketMachines&gt;</span>
+      <span class="nt">&lt;TicketOffice&gt;</span>true
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Schalter present). Mirrored in SiteFacilitySet - ticketOffice. --&gt;</span>
+      <span class="nt">&lt;/TicketOffice&gt;</span>
+      <span class="nt">&lt;TicketCounter&gt;</span>true
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Schalter present). We don't distinguish between TicketOffice and TicketCounter. --&gt;</span>
+      <span class="nt">&lt;/TicketCounter&gt;</span>
+      <span class="nt">&lt;LowCounterAccess&gt;</span>true
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Schalter - "Rollstuhlzugänglichkeit" or Billettautomat - "Barrierefrei"). Applicable for TicketMachine, TicketOffice, TicketCounter. --&gt;</span>
+      <span class="nt">&lt;/LowCounterAccess&gt;</span>
+      <span class="nt">&lt;InductionLoops&gt;</span>true
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Schalter - "Induktionsverstärker"). Only applicable for TicketOffice, TicketCounter. --&gt;</span>
+      <span class="nt">&lt;/InductionLoops&gt;</span>
+      <span class="nt">&lt;TactileInterfaceAvailable&gt;</span>false
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). Only applicable for TicketMachine. --&gt;</span>
+      <span class="nt">&lt;/TactileInterfaceAvailable&gt;</span>
+      <span class="nt">&lt;AudioInterfaceAvailable&gt;</span>false
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). Only applicable for TicketMachine. --&gt;</span>
+      <span class="nt">&lt;/AudioInterfaceAvailable&gt;</span>
+      <span class="nt">&lt;WheelchairSuitable&gt;</span>true
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Schalter - "Rollstuhlzugänglichkeit" or Billettautomat - "Barrierefrei"). Applicable for TicketMachine, TicketOffice, TicketCounter. --&gt;</span>
+      <span class="nt">&lt;/WheelchairSuitable&gt;</span>
+    <span class="nt">&lt;/TicketingEquipment&gt;</span>
+    <span class="nt">&lt;TicketingEquipment</span> <span class="na">id=</span><span class="s">"ch:1:sloid:162:ticketmachines"</span> <span class="na">version=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Example ticket machine(s). --&gt;</span>
+      <span class="nt">&lt;TicketMachines&gt;</span>true
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden"). Mirrored in SiteFacilitySet - ticketMachines. --&gt;</span>
+      <span class="nt">&lt;/TicketMachines&gt;</span>
+      <span class="nt">&lt;LowCounterAccess&gt;</span>true
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Barrierefrei"). --&gt;</span>
+      <span class="nt">&lt;/LowCounterAccess&gt;</span>
+      <span class="nt">&lt;TactileInterfaceAvailable&gt;</span>false
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). --&gt;</span>
+      <span class="nt">&lt;/TactileInterfaceAvailable&gt;</span>
+      <span class="nt">&lt;AudioInterfaceAvailable&gt;</span>false
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). --&gt;</span>
+      <span class="nt">&lt;/AudioInterfaceAvailable&gt;</span>
+      <span class="nt">&lt;WheelchairSuitable&gt;</span>true
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Barrierefrei"). --&gt;</span>
+      <span class="nt">&lt;/WheelchairSuitable&gt;</span>
+    <span class="nt">&lt;/TicketingEquipment&gt;</span>
+    <span class="nt">&lt;AccessVehicleEquipment</span> <span class="na">id=</span><span class="s">"ch:1:sloid:162:0:1:access"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Method to get on the vehicle --&gt;</span>
+      <span class="nt">&lt;Hoist&gt;</span>false
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Haltekante - "Hilfsmittel für Rollstuhl"). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair. --&gt;</span>
+      <span class="nt">&lt;/Hoist&gt;</span>
+      <span class="nt">&lt;Ramp&gt;</span>false
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Haltekante - "Hilfsmittel für Rollstuhl"). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair. --&gt;</span>
+      <span class="nt">&lt;/Ramp&gt;</span>
+    <span class="nt">&lt;/AccessVehicleEquipment&gt;</span>
+    <span class="nt">&lt;SanitaryEquipment</span> <span class="na">id=</span><span class="s">"ch:1:sloid:171:51406"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Name&gt;</span>Toilette<span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"ch:1:sloid:171:51406:aa"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;MobilityImpairedAccess&gt;</span>false<span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
+        <span class="nt">&lt;limitations&gt;</span>
+          <span class="nt">&lt;AccessibilityLimitation&gt;</span>
+            <span class="nt">&lt;WheelchairAccess&gt;</span>false<span class="nt">&lt;/WheelchairAccess&gt;</span>
+          <span class="nt">&lt;/AccessibilityLimitation&gt;</span>
+        <span class="nt">&lt;/limitations&gt;</span>
+      <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
+      <span class="nt">&lt;SanitaryFacilityList&gt;</span>toilet
+        <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Toiletten - "Rollstuhlgängige Toilette). Presence or absence of `wheelchairAccessToilet toilet`. Mirrored in SiteFacilitySet - SanitaryFacilityList. --&gt;</span>
+      <span class="nt">&lt;/SanitaryFacilityList&gt;</span>
+      <span class="nt">&lt;ToiletsType&gt;</span>seated
+        <span class="c">&lt;!-- Allowed values: `seated urinal seatedAndUrinal squat`. --&gt;</span>
+      <span class="nt">&lt;/ToiletsType&gt;</span>
+    <span class="nt">&lt;/SanitaryEquipment&gt;</span>
   <span class="nt">&lt;/placeEquipments&gt;</span>
   <span class="nt">&lt;localServices&gt;</span>
-    <span class="c">&lt;!-- Accessibility. --&gt;</span>
-    <span class="nt">&lt;AssistanceServiceRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Accessibility. --&gt;</span>
-    <span class="nt">&lt;/AssistanceServiceRef&gt;</span>
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM. --&gt;</span>
+    <span class="nt">&lt;AssistanceService</span> <span class="na">id=</span><span class="s">"ch:1:sloid:4410:assistance"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Note&gt;</span>Die Rampe zum Perron 1 erfüllt nicht die gesetzlichen Anforderungen. Eine Hilfestellung ist auf Verlangen möglich. Bitte melden Sie sich bis spätestens 1 Stunde vor Abfahrt an beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.<span class="nt">&lt;/Note&gt;</span>
+    <span class="nt">&lt;/AssistanceService&gt;</span>
+    <span class="nt">&lt;AssistanceService</span> <span class="na">id=</span><span class="s">"ch:1:sloid:4402:assistance"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Presence of`AssistanceFacility`s and their availability , e.g., if they need to be booked. --&gt;</span>
+      <span class="nt">&lt;Note&gt;</span>Bei diesem Bahnhof benötigen Sie Ein- und Ausstiegshilfen. Bitte melden Sie sich bis spätestens 1 Stunde vor Zugabfahrt unter swisspass.ch/handicap oder beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.<span class="nt">&lt;/Note&gt;</span>
+      <span class="nt">&lt;AssistanceFacilityList&gt;</span>boardingAssistance<span class="nt">&lt;/AssistanceFacilityList&gt;</span>
+      <span class="nt">&lt;AssistanceAvailability&gt;</span>availableIfBooked<span class="nt">&lt;/AssistanceAvailability&gt;</span>
+    <span class="nt">&lt;/AssistanceService&gt;</span>
+    <span class="nt">&lt;AssistanceService</span> <span class="na">id=</span><span class="s">"ch:1:sloid:4414:assistance"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Note&gt;</span>Der Lift erfüllt nur die gesetzlichen Mindestanforderungen.<span class="nt">&lt;/Note&gt;</span>
+    <span class="nt">&lt;/AssistanceService&gt;</span>
+    <span class="nt">&lt;AssistanceBookingService</span> <span class="na">id=</span><span class="s">"ch:1:sloid:4402:assistancebooking"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Accessibility. Contact and booking information regarding assistance services. --&gt;</span>
+      <span class="nt">&lt;WheelchairBookingRequired&gt;</span>true<span class="nt">&lt;/WheelchairBookingRequired&gt;</span>
+      <span class="nt">&lt;BookingContact/&gt;</span>
+      <span class="nt">&lt;VehicleMode&gt;</span>rail<span class="nt">&lt;/VehicleMode&gt;</span>
+      <span class="nt">&lt;noticeAssignments&gt;</span>
+        <span class="nt">&lt;NoticeAssignment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;validityConditions&gt;</span>
+            <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;timebands&gt;</span>
+                <span class="nt">&lt;Timeband</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+                  <span class="nt">&lt;StartTime&gt;</span>07:00:00<span class="nt">&lt;/StartTime&gt;</span>
+                  <span class="nt">&lt;EndTime&gt;</span>18:00:00<span class="nt">&lt;/EndTime&gt;</span>
+                <span class="nt">&lt;/Timeband&gt;</span>
+              <span class="nt">&lt;/timebands&gt;</span>
+            <span class="nt">&lt;/AvailabilityCondition&gt;</span>
+          <span class="nt">&lt;/validityConditions&gt;</span>
+          <span class="nt">&lt;Notice</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Nur auf Voranmeldung bis eine Stunde vorher.
+              <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Latest booking 1 hour before.<span class="nt">&lt;/Text&gt;</span>
+            <span class="nt">&lt;/Text&gt;</span>
+          <span class="nt">&lt;/Notice&gt;</span>
+        <span class="nt">&lt;/NoticeAssignment&gt;</span>
+      <span class="nt">&lt;/noticeAssignments&gt;</span>
+    <span class="nt">&lt;/AssistanceBookingService&gt;</span>
   <span class="nt">&lt;/localServices&gt;</span>
   <span class="nt">&lt;StopPlaceType&gt;</span>railStation<span class="nt">&lt;/StopPlaceType&gt;</span>
   <span class="nt">&lt;LimitedUse&gt;</span>interchangeOnly<span class="nt">&lt;/LimitedUse&gt;</span>
@@ -843,42 +1228,509 @@
   <span class="nt">&lt;quays&gt;</span>
     <span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/quays&gt;</span>
-  <span class="nt">&lt;accessSpaces&gt;</span>
-    <span class="c">&lt;!-- Accessibility. --&gt;</span>
-    <span class="nt">&lt;AccessSpace</span> <span class="na">id=</span><span class="s">"ch:1:accessspace:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Accessibility. --&gt;</span>
-    <span class="nt">&lt;/AccessSpace&gt;</span>
-  <span class="nt">&lt;/accessSpaces&gt;</span>
 <span class="nt">&lt;/StopPlace&gt;</span>
 </code></pre></div></div>
 
-<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/templates/StopPlace_withAccessibility.xml">Template</a></em></p>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/templates/StopPlace_accessibility.xml">Template</a></em></p>
+
+<h2 id="quay---the-additional-elements">Quay - the Additional Elements</h2>
+
+<h3 id="table-3">Table</h3>
+
+<p><em>Table: Quay</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td> </td>
+      <td>Only required if the AccessibilityAssessment of the StopPlace contains value(s) <code class="language-plaintext highlighter-rouge">partial</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="./tables/facilities.md">facilities</a></td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>serviceFacilitySets_RelStructure</td>
+      <td> </td>
+      <td>Only use to signal a facility not generally available for the StopPlace. Will be exported from ATLAS for ERA TSI PRM.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>localServices</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>localServices_RelStructure</td>
+      <td> </td>
+      <td>NOT USED at the level of Quay.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AssistanceServiceRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AssistanceServiceRefStructure</td>
+      <td>Identifier of an ASSISTANCE SERVICE.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="example-3">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;Quay</span> <span class="na">id=</span><span class="s">"ch:1:sloid:7000:5:9"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;privateCodes&gt;</span>
+    <span class="nt">&lt;PrivateCode</span> <span class="na">type=</span><span class="s">"sloid"</span><span class="nt">&gt;</span>ch:1:sloid:7000:5:9<span class="nt">&lt;/PrivateCode&gt;</span>
+  <span class="nt">&lt;/privateCodes&gt;</span>
+  <span class="nt">&lt;Centroid&gt;</span>
+    <span class="nt">&lt;Location&gt;</span>
+      <span class="nt">&lt;Longitude&gt;</span>7.43913088992<span class="nt">&lt;/Longitude&gt;</span>
+      <span class="nt">&lt;Latitude&gt;</span>46.94883228914<span class="nt">&lt;/Latitude&gt;</span>
+      <span class="nt">&lt;Altitude&gt;</span>540.2<span class="nt">&lt;/Altitude&gt;</span>
+    <span class="nt">&lt;/Location&gt;</span>
+  <span class="nt">&lt;/Centroid&gt;</span>
+  <span class="nt">&lt;Polygon</span> <span class="err">{http://www.opengis.net/gml/3.2}</span><span class="na">id=</span><span class="s">"a1231"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;AccessibilityAssessment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Only required if the AccessibilityAssessment of the StopPlace contains value(s) `partial`. --&gt;</span>
+    <span class="nt">&lt;MobilityImpairedAccess&gt;</span>true
+      <span class="c">&lt;!-- Basic information about accessibility. --&gt;</span>
+    <span class="nt">&lt;/MobilityImpairedAccess&gt;</span>
+  <span class="nt">&lt;/AccessibilityAssessment&gt;</span>
+  <span class="nt">&lt;AccessModes&gt;</span>bicycle foot<span class="nt">&lt;/AccessModes&gt;</span>
+  <span class="nt">&lt;facilities&gt;</span>
+    <span class="c">&lt;!-- Only use to signal a facility not generally available for the StopPlace. Will be exported from ATLAS for ERA TSI PRM. --&gt;</span>
+    <span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/facilities&gt;</span>
+  <span class="nt">&lt;SiteRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7000"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;localServices&gt;</span>
+    <span class="c">&lt;!-- NOT USED at the level of Quay. --&gt;</span>
+    <span class="nt">&lt;AssistanceServiceRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/localServices&gt;</span>
+  <span class="nt">&lt;PublicCode&gt;</span>9<span class="nt">&lt;/PublicCode&gt;</span>
+  <span class="nt">&lt;QuayType&gt;</span>railPlatform<span class="nt">&lt;/QuayType&gt;</span>
+  <span class="nt">&lt;ParentQuayRef</span> <span class="na">ref=</span><span class="s">"theparentref"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/Quay&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/templates/Quay_accessibility.xml">Template</a></em></p>
+
+<h2 id="assistanceservice">AssistanceService</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#AssistanceService">Glossary definition</a></em></p>
+
+<h3 id="purpose-2">Purpose</h3>
+<p>Used to inform about assistance services and their availability.
+The booking / contact information can be found in the accompanying <code class="language-plaintext highlighter-rouge">AssistanceBookingService</code>element.</p>
+
+<h3 id="table-4">Table</h3>
+
+<p>Presence of<code class="language-plaintext highlighter-rouge">AssistanceFacility</code>s and their availability , e.g., if they need to be booked.</p>
+
+<p><em>Table: AssistanceService</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>Note</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AssistanceFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AssistanceFacilityListOfEnumerations</td>
+      <td> </td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Autonome Benutzbarkeit - “Hilfestellung durch Personal” sets <code class="language-plaintext highlighter-rouge">boardingAssistance personalAssistance wheelchairAssistance</code>). Mirrored in SiteFacilitySet - AssistanceFacilityList. Availability of the facilities may be described below.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AssistanceAvailability</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AssistanceAvailabilityEnumeration</td>
+      <td>Availability of assistance service.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (may be a standard availability or derived Autonome Benutzbarkeit - “Hinweise zur Hilfestellung”. Allowed values: <code class="language-plaintext highlighter-rouge">available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../xcore/netex/elements/AssistanceService.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-4">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;AssistanceService</span> <span class="na">id=</span><span class="s">"ch:1:sloid:4402:assistance"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Presence of`AssistanceFacility`s and their availability , e.g., if they need to be booked. --&gt;</span>
+  <span class="nt">&lt;Note&gt;</span>Bei diesem Bahnhof benötigen Sie Ein- und Ausstiegshilfen. Bitte melden Sie sich bis spätestens 1 Stunde vor Zugabfahrt unter swisspass.ch/handicap oder beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.<span class="nt">&lt;/Note&gt;</span>
+  <span class="nt">&lt;AssistanceFacilityList&gt;</span>boardingAssistance personalAssistance wheelchairAssistance
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Autonome Benutzbarkeit - "Hilfestellung durch Personal" sets `boardingAssistance personalAssistance wheelchairAssistance`). Mirrored in SiteFacilitySet - AssistanceFacilityList. Availability of the facilities may be described below. --&gt;</span>
+  <span class="nt">&lt;/AssistanceFacilityList&gt;</span>
+  <span class="nt">&lt;AssistanceAvailability&gt;</span>availableIfBooked
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (may be a standard availability or derived Autonome Benutzbarkeit - "Hinweise zur Hilfestellung". Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. --&gt;</span>
+  <span class="nt">&lt;/AssistanceAvailability&gt;</span>
+<span class="nt">&lt;/AssistanceService&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/templates/AssistanceService.xml">Template</a></em></p>
+
+<h2 id="assistancebookingservice">AssistanceBookingService</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#AssistanceBookingService">Glossary definition</a></em></p>
+
+<h3 id="purpose-3">Purpose</h3>
+<p>Booking / contact information for <code class="language-plaintext highlighter-rouge">AssistanceService</code>.</p>
+
+<h3 id="table-5">Table</h3>
+
+<p>Accessibility. Contact and booking information regarding assistance services.</p>
+
+<p><em>Table: AssistanceBookingService</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>WheelchairBookingRequired</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether a booking is needed to use a wheelchair.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>BookingContact</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>ContactStructure</td>
+      <td>Contact details for ASSISTANCE BOOKING SERVICE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>VehicleMode</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AllPublicTransportModesEnumeration</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>noticeAssignments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>noticeAssignments_RelStructure</td>
+      <td>NOTICEs for ASSISTANCE BOOKING SERVICE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/NoticeAssignment.html">NoticeAssignment</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>NoticeAssignment_VersionStructure</td>
+      <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>→ <a href="../xcore/netex/elements/AssistanceBookingService.html">General NeTEx definition </a></em></p>
+
+<h3 id="example-5">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;AssistanceBookingService</span> <span class="na">id=</span><span class="s">"ch:1:assistancebooking:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- Accessibility. Contact and booking information regarding assistance services. --&gt;</span>
+  <span class="nt">&lt;WheelchairBookingRequired&gt;</span>true<span class="nt">&lt;/WheelchairBookingRequired&gt;</span>
+  <span class="nt">&lt;BookingContact/&gt;</span>
+  <span class="nt">&lt;VehicleMode&gt;</span>rail<span class="nt">&lt;/VehicleMode&gt;</span>
+  <span class="nt">&lt;noticeAssignments&gt;</span>
+    <span class="nt">&lt;NoticeAssignment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;validityConditions&gt;</span>
+        <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;timebands&gt;</span>
+            <span class="nt">&lt;Timeband</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;StartTime&gt;</span>07:00:00<span class="nt">&lt;/StartTime&gt;</span>
+              <span class="nt">&lt;EndTime&gt;</span>18:00:00<span class="nt">&lt;/EndTime&gt;</span>
+            <span class="nt">&lt;/Timeband&gt;</span>
+          <span class="nt">&lt;/timebands&gt;</span>
+        <span class="nt">&lt;/AvailabilityCondition&gt;</span>
+      <span class="nt">&lt;/validityConditions&gt;</span>
+      <span class="nt">&lt;Notice</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Nur auf Voranmeldung bis eine Stunde vorher.
+          <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Latest booking 1 hour before.<span class="nt">&lt;/Text&gt;</span>
+        <span class="nt">&lt;/Text&gt;</span>
+      <span class="nt">&lt;/Notice&gt;</span>
+    <span class="nt">&lt;/NoticeAssignment&gt;</span>
+  <span class="nt">&lt;/noticeAssignments&gt;</span>
+<span class="nt">&lt;/AssistanceBookingService&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/templates/AssistanceBookingService.xml">Template</a></em></p>
+
+<h2 id="sitefacilityset---the-additional-elements">SiteFacilitySet - the Additional Elements</h2>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#SiteFacilitySet_accessibility">Glossary definition</a></em></p>
+
+<h3 id="purpose-4">Purpose</h3>
+<p>Accessiblity information attached to a <code class="language-plaintext highlighter-rouge">StopPlace</code> and <code class="language-plaintext highlighter-rouge">Quay</code> in particular.</p>
+
+<h3 id="table-6">Table</h3>
+
+<p><em>Table: SiteFacilitySet</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>AccessibilityInfoFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AccessibilityInfoFacilityListOfEnumerations</td>
+      <td>List of ACCESSIBILITY INFORMATION FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (<code class="language-plaintext highlighter-rouge">visualDisplays</code>: Kundeninformation Haltestelle - “Statisch/optisch; <code class="language-plaintext highlighter-rouge">audioInformation</code>: Kundeninformation - “Akustisch”). Note that AccessibilityAssessment features <code class="language-plaintext highlighter-rouge">AudibleSignalsAvailable</code> and <code class="language-plaintext highlighter-rouge">VisualSignsAvailable</code>, the latter implying dynamic visual information (Kundeninformation Haltestelle - “Dynamisch/optisch”). NOT USED: <code class="language-plaintext highlighter-rouge">audioForHearingImpaired displaysForVisuallyImpaired largePrintTimetables</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AssistanceFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>AssistanceFacilityListOfEnumerations</td>
+      <td>List of ASSISTANCE FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Autonome Benutzbarkeit - “Hilfestellung durch Personal” sets <code class="language-plaintext highlighter-rouge">boardingAssistance personalAssistance wheelchairAssistance</code>). NOT USED: <code class="language-plaintext highlighter-rouge">unaccompaniedMinorAssistance conductor information</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AccessibilityToolList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessibilityToolListOfEnumerations</td>
+      <td>List of TYPEs of ACCESSIBILITY TOOLs.</td>
+      <td>NOT USED. Presence or absence of the following facility may be signalled; absence of the item means absence of the facility (if the element is present): <code class="language-plaintext highlighter-rouge">wheelchair</code> - wheelchairs available for passenger use.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>MedicalFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MedicalFacilityListOfEnumerations</td>
+      <td>List of MEDICAL FACILITies.</td>
+      <td>NOT USED. Presence or absence of the following facilitiy should be signalled: <code class="language-plaintext highlighter-rouge">defibrillator</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>MobilityFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MobilityFacilityListOfEnumerations</td>
+      <td>List of MOBILITY FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (<code class="language-plaintext highlighter-rouge">suitableForWheelchair</code>: Autonome Benutzbarkeit - “Voraussetzungen erfüllt”; <code class="language-plaintext highlighter-rouge">boardingAssistance</code>: AutonomeBenutzbarkeit - “Hilfestellung durch Personal”; <code class="language-plaintext highlighter-rouge">stepFreeAccess</code>: Haltekante - “Niveaugleicher Einstieg”;<code class="language-plaintext highlighter-rouge">tactilePlatformEdges</code>: Haltekante - “Taktil-visuelle Markierung Perronfläche”). Additional allowed value if no data in ATLAS: <code class="language-plaintext highlighter-rouge">unknown</code>. NOT USED: <code class="language-plaintext highlighter-rouge">lowFloor suitableForPushchair tactileGuidingStrips onboardAssistance unaccompaniedMinorAssistance raisedKerb</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>SanitaryFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>SanitaryFacilityListOfEnumerations</td>
+      <td>List of SANITARY FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Toiletten - “Rollstuhlgängige Toilette). Presence or absence of <code class="language-plaintext highlighter-rouge">wheelchairAccessToilet toilet</code>. NOT USED: <code class="language-plaintext highlighter-rouge">wheelchairBabyChange babyChange shower</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TicketingFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>TicketingFacilityListOfEnumerations</td>
+      <td>List of TICKETING FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Billettautomat - “Billettautomat vorhanden”, and Schalter present, respectively). Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">unknown ticketMachines ticketOffice</code>. NOT USED: <code class="language-plaintext highlighter-rouge">mobileTicketing</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TicketingServiceFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>TicketingServiceFacilityListOfEnumerations</td>
+      <td>List of TICKETING SERVICE FACILITies, e.g. purchase, collection. top up.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>AccessFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessFacilityListOfEnumerations</td>
+      <td>List of ACCESS FACILITies. + v1.1</td>
+      <td>NOT USED. Only expected for Quays. Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">unknown lift wheelchairLift escalator travelator ramp automaticRamp steps stairs barrier lowFloorAccess validator</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>EmergencyServiceList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>EmergencyServiceListOfEnumerations</td>
+      <td>List of EMERGENCY SERVICE FACILITies.</td>
+      <td>NOT USED. Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">sosPoint firstAid</code>. Optional: <code class="language-plaintext highlighter-rouge">police fire</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>LuggageLockerFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>LuggageLockerFacilityListOfEnumerations</td>
+      <td>List of LUGGAGE LOCKER FACILITies.</td>
+      <td>NOT USED. Presence or absence of the following facilities may be signalled: <code class="language-plaintext highlighter-rouge">lockers oversizeLockers leftLuggageCounter</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ParkingFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>ParkingFacilityListOfEnumerations</td>
+      <td>List of PARKING FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Parkplatz - Parkplätze). The following should be signalled: <code class="language-plaintext highlighter-rouge">carPark unknown</code>. NOT USED: <code class="language-plaintext highlighter-rouge">parkAndRidePark motorcyclePark cyclePark coachPark rentalCarPark</code>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="usage-notes-1">Usage Notes</h3>
+
+<ul>
+  <li>General presence or absence of facilities is indicated at the level of the <code class="language-plaintext highlighter-rouge">StopPlace</code>.</li>
+  <li>In case of <code class="language-plaintext highlighter-rouge">MobilityFacilityList</code> it may be necessary to have the facilities at the level of <code class="language-plaintext highlighter-rouge">Quay</code> (e.g., if only some quays allow for step free acces).</li>
+</ul>
+
+<h3 id="example-6">Example</h3>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+<span class="nt">&lt;SiteFacilitySet</span> <span class="na">id=</span><span class="s">"ch:1:sitefacilityset:1234:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;validityConditions&gt;</span>
+    <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;FromDate&gt;</span>2026-03-30T00:00:00<span class="nt">&lt;/FromDate&gt;</span>
+      <span class="nt">&lt;ToDate&gt;</span>2026-04-01T23:59:59<span class="nt">&lt;/ToDate&gt;</span>
+      <span class="nt">&lt;ValidDayBits&gt;</span>01<span class="nt">&lt;/ValidDayBits&gt;</span>
+    <span class="nt">&lt;/AvailabilityCondition&gt;</span>
+  <span class="nt">&lt;/validityConditions&gt;</span>
+  <span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>SiteFacilitySet Bhf sloid:1234
+    <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>SiteFacilitySet for a stop place<span class="nt">&lt;/Text&gt;</span>
+  <span class="nt">&lt;/Description&gt;</span>
+  <span class="nt">&lt;AccessibilityInfoFacilityList&gt;</span>audioInformation visualDisplays
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (`visualDisplays`: Kundeninformation Haltestelle - "Statisch/optisch; `audioInformation`: Kundeninformation - "Akustisch"). Note that AccessibilityAssessment features `AudibleSignalsAvailable` and `VisualSignsAvailable`, the latter implying dynamic visual information (Kundeninformation Haltestelle - "Dynamisch/optisch"). NOT USED: `audioForHearingImpaired displaysForVisuallyImpaired largePrintTimetables`. --&gt;</span>
+  <span class="nt">&lt;/AccessibilityInfoFacilityList&gt;</span>
+  <span class="nt">&lt;AssistanceFacilityList&gt;</span>personalAssistance boardingAssistance wheelchairAssistance
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Autonome Benutzbarkeit - "Hilfestellung durch Personal" sets `boardingAssistance personalAssistance wheelchairAssistance`). NOT USED: `unaccompaniedMinorAssistance conductor information`. --&gt;</span>
+  <span class="nt">&lt;/AssistanceFacilityList&gt;</span>
+  <span class="nt">&lt;AccessibilityToolList&gt;</span>wheelchair
+    <span class="c">&lt;!-- NOT USED. Presence or absence of the following facility may be signalled; absence of the item means absence of the facility (if the element is present): `wheelchair` - wheelchairs available for passenger use. --&gt;</span>
+  <span class="nt">&lt;/AccessibilityToolList&gt;</span>
+  <span class="nt">&lt;MedicalFacilityList&gt;</span>defibrillator
+    <span class="c">&lt;!-- NOT USED. Presence or absence of the following facilitiy should be signalled: `defibrillator`. --&gt;</span>
+  <span class="nt">&lt;/MedicalFacilityList&gt;</span>
+  <span class="nt">&lt;MobilityFacilityList&gt;</span>
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (`suitableForWheelchair`: Autonome Benutzbarkeit - "Voraussetzungen erfüllt"; `boardingAssistance`: AutonomeBenutzbarkeit - "Hilfestellung durch Personal"; `stepFreeAccess`: Haltekante - "Niveaugleicher Einstieg";`tactilePlatformEdges`: Haltekante - "Taktil-visuelle Markierung Perronfläche"). Additional allowed value if no data in ATLAS: `unknown`. NOT USED: `lowFloor suitableForPushchair tactileGuidingStrips onboardAssistance unaccompaniedMinorAssistance raisedKerb`. --&gt;</span>
+  <span class="nt">&lt;/MobilityFacilityList&gt;</span>
+  <span class="nt">&lt;SanitaryFacilityList&gt;</span>toilet wheelchairAccessToilet
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Toiletten - "Rollstuhlgängige Toilette). Presence or absence of `wheelchairAccessToilet toilet`. NOT USED: `wheelchairBabyChange babyChange shower`. --&gt;</span>
+  <span class="nt">&lt;/SanitaryFacilityList&gt;</span>
+  <span class="nt">&lt;TicketingFacilityList&gt;</span>ticketMachines ticketOffice
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden", and Schalter present, respectively). Presence or absence of the following facilities should be signalled: `unknown ticketMachines ticketOffice`. NOT USED: `mobileTicketing`. --&gt;</span>
+  <span class="nt">&lt;/TicketingFacilityList&gt;</span>
+  <span class="nt">&lt;TicketingServiceFacilityList&gt;</span>all reservations<span class="nt">&lt;/TicketingServiceFacilityList&gt;</span>
+  <span class="nt">&lt;AccessFacilityList&gt;</span>
+    <span class="c">&lt;!-- NOT USED. Only expected for Quays. Presence or absence of the following facilities should be signalled: `unknown lift wheelchairLift escalator travelator ramp automaticRamp steps stairs barrier lowFloorAccess validator`. --&gt;</span>
+  <span class="nt">&lt;/AccessFacilityList&gt;</span>
+  <span class="nt">&lt;EmergencyServiceList&gt;</span>sosPoint
+    <span class="c">&lt;!-- NOT USED. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`. --&gt;</span>
+  <span class="nt">&lt;/EmergencyServiceList&gt;</span>
+  <span class="nt">&lt;LuggageLockerFacilityList&gt;</span>lockers
+    <span class="c">&lt;!-- NOT USED. Presence or absence of the following facilities may be signalled: `lockers oversizeLockers leftLuggageCounter`. --&gt;</span>
+  <span class="nt">&lt;/LuggageLockerFacilityList&gt;</span>
+  <span class="nt">&lt;ParkingFacilityList&gt;</span>carPark
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Parkplatz - Parkplätze). The following should be signalled: `carPark unknown`. NOT USED: `parkAndRidePark motorcyclePark cyclePark coachPark rentalCarPark`. --&gt;</span>
+  <span class="nt">&lt;/ParkingFacilityList&gt;</span>
+<span class="nt">&lt;/SiteFacilitySet&gt;</span>
+</code></pre></div></div>
+
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/templates/SiteFacilitySet_accessibility.xml">Template</a></em></p>
 
 <h2 id="sitepathlink">SitePathLink</h2>
 <p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#sitepathlink">Glossary definition</a></em> TODO</p>
 
-<h3 id="purpose-1">Purpose</h3>
+<h3 id="purpose-5">Purpose</h3>
 <p>…</p>
 
-<h3 id="table-2">Table</h3>
+<h3 id="table-7">Table</h3>
 
 <p>SitePathLink.md</p>
 
 <p><em>→ <a href="../xcore/netex/elements/SitePathLink.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-2">Example</h3>
+<h3 id="example-7">Example</h3>
 
 <p>SitePathLink.xml</p>
 
 <p><em>→ <a href="./templates/SitePathLink.xml">Template</a></em></p>
 
-<h3 id="usage-notes-1">Usage Notes</h3>
+<h3 id="usage-notes-2">Usage Notes</h3>
 
 <h4 id="modelling-rules-for-navigation-networks">Modelling Rules for Navigation Networks</h4>
 
 <p>Which conventions and rules do we want to follow when modelling navigation networks? Which level(s) of details should we aim at? The following is intended as a starting point for a discussion.</p>
 
-<p>Three possible ways to model a navigation network from a VehicleMeetingPoint to two Quays.</p>
+<p>Three possible ways to model a navigation network from a VehicleMeetingPoint (error: the idea was a drop off point or parking) to two Quays.</p>
 
 <p>The first model includes localised vertices (e.g., Entrance, EquipmentPlace) connected by SitePathLinks and AccessEquipments (StairEquipment, RampEquipment).</p>
 
@@ -902,18 +1754,18 @@
 <p><strong>TEMPLATES FOR THIS DOCUMENT</strong></p>
 
 <h2 id="newelementx">NewElementX</h2>
-<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em> TODO</p>
+<p><em>→ <a href="/netexRealisationGuideSwitzerland/next/A4_annex_glossary.html#accessibilityassessment">Glossary definition</a></em></p>
 
-<h3 id="purpose-2">Purpose</h3>
+<h3 id="purpose-6">Purpose</h3>
 <p>…</p>
 
-<h3 id="table-3">Table</h3>
+<h3 id="table-8">Table</h3>
 
 <p>NewElement.md</p>
 
 <p><em>→ <a href="../xcore/netex/elements/NewElement.html">General NeTEx definition </a></em></p>
 
-<h3 id="example-3">Example</h3>
+<h3 id="example-8">Example</h3>
 
 <p>NewElement.xml</p>
 
@@ -921,11 +1773,11 @@
 
 <h2 id="existingelementy---the-additional-elements">ExistingElementY - the Additional Elements</h2>
 
-<h3 id="table-4">Table</h3>
+<h3 id="table-9">Table</h3>
 
 <p>OldElement_withAccessibility.md</p>
 
-<h3 id="example-4">Example</h3>
+<h3 id="example-9">Example</h3>
 
 <p>OldElement_withAccessibility.xml</p>
 
