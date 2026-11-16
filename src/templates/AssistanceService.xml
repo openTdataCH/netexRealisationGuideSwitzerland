@@ -98,15 +98,15 @@
 									</Note>
 									<AssistanceFacilityList>
 										<!-- ch-usage: expected -->
-										<!-- ch-allowed-enums: boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information -->
-										<!-- ch-note: Accessibility. Facilities for which the availability is described below. Allowed values: `boardingAssistance personalAssistance wheelchairAssistance unaccompanied­MinorAssistance conductor information`. -->		
-										boardingAssistance
+										<!-- ch-allowed-enums: boardingAssistance personalAssistance wheelchairAssistance unaccompanied MinorAssistance conductor information -->
+										<!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Autonome Benutzbarkeit - "Hilfestellung durch Personal" sets `boardingAssistance personalAssistance wheelchairAssistance`). Mirrored in SiteFacilitySet - AssistanceFacilityList. Availability of the facilities may be described below. -->		
+										boardingAssistance personalAssistance wheelchairAssistance
 									</AssistanceFacilityList>
-									<AssistanceAvailability><!-- ch-usage: expected --><!-- ch-allowed-enums: available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown --><!-- ch-note: Accessibility. Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. -->availableIfBooked</AssistanceAvailability>
+									<AssistanceAvailability><!-- ch-usage: expected --><!-- ch-allowed-enums: available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (may be a standard availability or derived Autonome Benutzbarkeit - "Hinweise zur Hilfestellung". Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. -->availableIfBooked</AssistanceAvailability>
 									<AccessibilityToolList>
 										<!-- ch-usage: ignored -->
 										<!-- ch-allowed-enums: wheelchair-->
-										<!-- ch-note: Accessibility. If the availabilty of wheelchairs for passenger use is restricted: `wheelchair`. -->	
+										<!-- ch-note: If the availabilty of wheelchairs for passenger use is restricted: `wheelchair`. -->	
 										wheelchair
 									</AccessibilityToolList>
 								</AssistanceService>

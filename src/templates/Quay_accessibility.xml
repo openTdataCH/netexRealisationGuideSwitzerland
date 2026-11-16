@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-03-30T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Template</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<FrameDefaults/>
+			<frames>
+				<ResourceFrame id="ch:1:ResourceFrame" version="1"/>
+				<SiteFrame id="ch:1:SiteFrame" version="1">
+					<stopPlaces>
+						<StopPlace id="ch:1:sloid:7000" version="1">
+							<quays>
+								<Quay id="ch:1:sloid:7000:5:9" version="1">
+									<!-- ch-root -->
+									<privateCodes>
+										<PrivateCode type="sloid">
+											ch:1:sloid:7000:5:9
+										</PrivateCode>
+									</privateCodes>
+									<Centroid>
+										<Location>
+											<Longitude>7.43913088992</Longitude>
+											<Latitude>46.94883228914</Latitude>
+											<Altitude>540.2</Altitude>
+										</Location>
+									</Centroid>
+									<gml:Polygon gml:id="a1231">
+									</gml:Polygon>
+									<AccessibilityAssessment id="generated" version="1">
+										<!-- ch-usage: expected -->
+										<!-- ch-note: Only required if the AccessibilityAssessment of the StopPlace contains value(s) `partial`. -->
+										<!-- ch-see -->
+										<MobilityImpairedAccess><!-- ch-note: Basic information about accessibility. --><!-- ch-usage: mandatory -->true</MobilityImpairedAccess>
+									</AccessibilityAssessment>
+									<AccessModes>bicycle foot</AccessModes>
+									<PublicUse><!-- ch-usage: ignored --><!-- Might be added at some point -->all</PublicUse>
+									<Covered><!-- ch-usage: ignored --><!-- Might be added at some point -->covered</Covered>
+									<facilities>
+										<!-- ch-usage: optional -->
+										<!-- ch-note: Only use to signal a facility not generally available for the StopPlace. Will be exported from ATLAS for ERA TSI PRM. -->
+										<!-- ch-see -->
+										<SiteFacilitySet id="generated" version="1"></SiteFacilitySet>
+									</facilities>
+									<SiteRef ref="ch:1:sloid:7000">
+									</SiteRef>
+									<localServices>
+										<!-- ch-usage: optional -->
+										<!-- ch-note: NOT USED at the level of Quay. -->
+										<AssistanceServiceRef ref="generated" versionRef="1"/>
+									</localServices>
+									<PublicCode>
+										9
+									</PublicCode>
+									<QuayType>railPlatform</QuayType>
+									<ParentQuayRef ref="theparentref" versionRef="1">
+									</ParentQuayRef>
+								</Quay>
+							</quays>
+						</StopPlace>
+					</stopPlaces>
+				</SiteFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>
