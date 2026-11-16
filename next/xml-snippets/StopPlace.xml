@@ -51,6 +51,12 @@
       <Name lang="it">Berna</Name>
     </AlternativeName>
   </alternativeNames>
+  <facilities>
+    <!-- Facilities available at the stop. -->
+    <SiteFacilitySet id="generated" version="1">
+      <!-- In particular for accessibility information. -->
+    </SiteFacilitySet>
+  </facilities>
   <TopographicPlaceRef ref="BE-bern" version="1">
     <!-- Id to the county, community, canton or country. -->
   </TopographicPlaceRef>
@@ -76,13 +82,58 @@
   <placeEquipments>
     <!-- Used in exports for all TSI PRM relevant equipments. Especially in the data transmissions for rail to ERA. We only have Equipments and no EquipmentPlaces. -->
     <TicketingEquipment id="ch:1:sloid:162:ticketing" version="2">
-      <!-- Ticketing equipment -->
-      <TicketMachines>true</TicketMachines>
+      <!-- Ticketing equipment. -->
+      <TicketMachines>true
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden"). Mirrored in SiteFacilitySet - ticketMachines. -->
+      </TicketMachines>
+      <TicketOffice>true
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Schalter present). Mirrored in SiteFacilitySet - ticketOffice. -->
+      </TicketOffice>
+      <TicketCounter>true
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Schalter present). We don't distinguish between TicketOffice and TicketCounter. -->
+      </TicketCounter>
+      <LowCounterAccess>true
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Schalter - "Rollstuhlzugänglichkeit" or Billettautomat - "Barrierefrei"). Applicable for TicketMachine, TicketOffice, TicketCounter. -->
+      </LowCounterAccess>
+      <InductionLoops>true
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Schalter - "Induktionsverstärker"). Only applicable for TicketOffice, TicketCounter. -->
+      </InductionLoops>
+      <TactileInterfaceAvailable>false
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). Only applicable for TicketMachine. -->
+      </TactileInterfaceAvailable>
+      <AudioInterfaceAvailable>false
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). Only applicable for TicketMachine. -->
+      </AudioInterfaceAvailable>
+      <WheelchairSuitable>true
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Schalter - "Rollstuhlzugänglichkeit" or Billettautomat - "Barrierefrei"). Applicable for TicketMachine, TicketOffice, TicketCounter. -->
+      </WheelchairSuitable>
+    </TicketingEquipment>
+    <TicketingEquipment id="ch:1:sloid:162:ticketmachines" version="2">
+      <!-- Example ticket machine(s). -->
+      <TicketMachines>true
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden"). Mirrored in SiteFacilitySet - ticketMachines. -->
+      </TicketMachines>
+      <LowCounterAccess>true
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Barrierefrei"). -->
+      </LowCounterAccess>
+      <TactileInterfaceAvailable>false
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). -->
+      </TactileInterfaceAvailable>
+      <AudioInterfaceAvailable>false
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). -->
+      </AudioInterfaceAvailable>
+      <WheelchairSuitable>true
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Barrierefrei"). -->
+      </WheelchairSuitable>
     </TicketingEquipment>
     <AccessVehicleEquipment id="ch:1:sloid:162:0:1:access" version="1">
       <!-- Method to get on the vehicle -->
-      <Hoist>false</Hoist>
-      <Ramp>false</Ramp>
+      <Hoist>false
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Haltekante - "Hilfsmittel für Rollstuhl"). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair. -->
+      </Hoist>
+      <Ramp>false
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Haltekante - "Hilfsmittel für Rollstuhl"). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair. -->
+      </Ramp>
     </AccessVehicleEquipment>
     <SanitaryEquipment id="ch:1:sloid:171:51406" version="1">
       <Name>Toilette</Name>
@@ -95,7 +146,7 @@
         </limitations>
       </AccessibilityAssessment>
       <SanitaryFacilityList>toilet
-        <!-- Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet toilet`. Optional: `wheelchairBabyChange babyChange shower`. -->
+        <!-- Will be exported from ATLAS for ERA TSI PRM (Toiletten - "Rollstuhlgängige Toilette). Presence or absence of `wheelchairAccessToilet toilet`. Mirrored in SiteFacilitySet - SanitaryFacilityList. -->
       </SanitaryFacilityList>
       <ToiletsType>seated
         <!-- Allowed values: `seated urinal seatedAndUrinal squat`. -->
@@ -157,27 +208,4 @@
     <!-- The Quays contained in the StopPlace - platforms, jetties, bays, taxi ranks, and other points of physical access to vehicles. Note that the usage (expected) overrides the cardinality. -->
     <Quay id="ch:1:sloid:7000:5:9" version="1"/>
   </quays>
-  <navigationPaths>
-    <!-- Will be provided at least for rail in a first export for ERA TSI PRM -->
-    <NavigationPath id="generated" version="1">
-      <From>
-        <!-- One of the points is the reference point. -->
-        <PlaceRef ref="ch:1:sloid:162:164789" version="1"/>
-      </From>
-      <To>
-        <PlaceRef ref="ch:1:sloid:7000:5:9" version="1"/>
-      </To>
-      <AccessibilityAssessment id="ch:1:sloid:162:pathLink:1:aa" version="1">
-        <!-- If the NavigationPath is provided, then an AccessibilityAssessment must be provided too -->
-        <MobilityImpairedAccess>unknown</MobilityImpairedAccess>
-        <limitations>
-          <AccessibilityLimitation>
-            <WheelchairAccess>unknown</WheelchairAccess>
-            <StepFreeAccess>true</StepFreeAccess>
-            <TactileGuidanceAvailable>true</TactileGuidanceAvailable>
-          </AccessibilityLimitation>
-        </limitations>
-      </AccessibilityAssessment>
-    </NavigationPath>
-  </navigationPaths>
 </StopPlace>

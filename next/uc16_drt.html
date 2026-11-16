@@ -2618,6 +2618,24 @@ same document.</li>
     </tr>
     <tr>
       <td> </td>
+      <td>facilities</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>siteFacilitySets_RelStructure</td>
+      <td>Facilities available at SITe.</td>
+      <td>Facilities available at the stop.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>SiteFacilitySetStructure</td>
+      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
+      <td>In particular for accessibility information.</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>TopographicPlaceRef</td>
       <td>optional</td>
       <td>1..*</td>
@@ -2672,21 +2690,12 @@ same document.</li>
     </tr>
     <tr>
       <td>+</td>
-      <td>StopPlaceEntrance</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/StopPlaceEntrance.html">StopPlaceEntrance</a></td>
       <td>mandatory</td>
       <td>0..*</td>
       <td>StopPlaceEntrance_VersionStructure</td>
       <td>Passenger Entrance to a STOP PLACE.</td>
       <td>Currently only the sloid is known. From this point all references to accessibility are made in Switzerland</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Name</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>MultilingualString</td>
-      <td>Name of STOP PLACE.</td>
-      <td> </td>
     </tr>
     <tr>
       <td> </td>
@@ -2704,16 +2713,88 @@ same document.</li>
       <td>0..*</td>
       <td>unknown</td>
       <td> </td>
-      <td>Ticketing equipment</td>
+      <td>Ticketing equipment.</td>
     </tr>
     <tr>
       <td>++</td>
       <td>TicketMachines</td>
-      <td>mandatory</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>boolean</td>
       <td>Whether there are ticket machines.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Billettautomat - “Billettautomat vorhanden”). Mirrored in SiteFacilitySet - ticketMachines.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TicketOffice</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there is a distinct ticket office.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter present). Mirrored in SiteFacilitySet - ticketOffice.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TicketCounter</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there is a ticket counter.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter present). We don’t distinguish between TicketOffice and TicketCounter.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>LowCounterAccess</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there is a low counter for accessibility.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter - “Rollstuhlzugänglichkeit” or Billettautomat - “Barrierefrei”). Applicable for TicketMachine, TicketOffice, TicketCounter.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>InductionLoops</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there are induction loops.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter - “Induktionsverstärker”). Only applicable for TicketOffice, TicketCounter.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TactileInterfaceAvailable</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Indicates whether there is a tactile interface +v1.1.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Billettautomat - “Akustische und taktile Ausrüstung”). Only applicable for TicketMachine.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AudioInterfaceAvailable</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Indicates whether there is an accessible audio interface (allowing a use closed eyes). +v1.1</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Billettautomat - “Akustische und taktile Ausrüstung”). Only applicable for TicketMachine.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>WheelchairSuitable</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Indicates whether equipment may be used while seated in a wheelchair. +v1.1</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter - “Rollstuhlzugänglichkeit” or Billettautomat - “Barrierefrei”). Applicable for TicketMachine, TicketOffice, TicketCounter.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TicketingEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>unknown</td>
       <td> </td>
+      <td>Example ticket machine(s).</td>
     </tr>
     <tr>
       <td>+</td>
@@ -2731,7 +2812,7 @@ same document.</li>
       <td>0..1</td>
       <td>boolean</td>
       <td>VEHICLE has a hoist or lift for wheelchairs.</td>
-      <td> </td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Haltekante - “Hilfsmittel für Rollstuhl”). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -2740,7 +2821,7 @@ same document.</li>
       <td>0..1</td>
       <td>boolean</td>
       <td>Whether a ramp may be used to access VEHICLE.</td>
-      <td> </td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Haltekante - “Hilfsmittel für Rollstuhl”). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -2749,6 +2830,15 @@ same document.</li>
       <td>0..*</td>
       <td>unknown</td>
       <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of EQUIPMENT.</td>
       <td> </td>
     </tr>
     <tr>
@@ -2767,7 +2857,7 @@ same document.</li>
       <td>0..1</td>
       <td>SanitaryFacilityListOfEnumerations</td>
       <td> </td>
-      <td>Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">wheelchairAccessToilet toilet</code>. Optional: <code class="language-plaintext highlighter-rouge">wheelchairBabyChange babyChange shower</code>.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Toiletten - “Rollstuhlgängige Toilette). Presence or absence of <code class="language-plaintext highlighter-rouge">wheelchairAccessToilet toilet</code>. Mirrored in SiteFacilitySet - SanitaryFacilityList.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -2860,21 +2950,12 @@ same document.</li>
       <td> </td>
     </tr>
     <tr>
-      <td> </td>
-      <td>navigationPaths</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>navigationPaths_RelStructure</td>
-      <td>NAVIGATION PATHs within the SITE and or between the SITE elsewhere.</td>
-      <td>Will be provided at least for rail in a first export for ERA TSI PRM</td>
-    </tr>
-    <tr>
       <td>+</td>
       <td>NavigationPath</td>
       <td>expected</td>
-      <td>0..*</td>
+      <td>1..1</td>
       <td>SiteNavigationPath_VersionStructure</td>
-      <td>NAVIGATION PATH for a SITE.</td>
+      <td>A designated path between two PLACEs. May include an Ordered sequence of references to PATH LINKS.</td>
       <td> </td>
     </tr>
     <tr>
@@ -3306,7 +3387,7 @@ same document.</li>
       <td>0..1</td>
       <td>siteFacilitySetsInFrame_RelStructure</td>
       <td>SITE FACILITY SETs in frame . +v1.2.2</td>
-      <td>We expect the SiteFacilitySet in the ResourceFrame</td>
+      <td>We expect the SiteFacilitySet in the StopPlace.</td>
     </tr>
     <tr>
       <td>+</td>

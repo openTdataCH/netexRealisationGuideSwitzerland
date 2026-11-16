@@ -21,5 +21,5 @@
 | ++++ | parkingProperties | optional | 1..1 | parkingProperties_RelStructure | Properties of PARKING AREA |  |
 | +++++ | ParkingProperties | optional | 1..* | ParkingProperties_VersionedChildStructure | Properties of a PARKING. |  |
 | ++++++ | ParkingUserTypes | optional | 0..1 | ParkingUserListOfEnumerations | Type of users: disabled, all etc. |  |
-|  | siteFacilitySets | optional | 0..1 | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 | We expect the SiteFacilitySet in the ResourceFrame |
+|  | siteFacilitySets | optional | 0..1 | siteFacilitySetsInFrame_RelStructure | SITE FACILITY SETs in frame . +v1.2.2 | We expect the SiteFacilitySet in the StopPlace. |
 | + | [SiteFacilitySet](SiteFacilitySet.md) | optional | 1..* | SiteFacilitySetStructure | Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.). |  |

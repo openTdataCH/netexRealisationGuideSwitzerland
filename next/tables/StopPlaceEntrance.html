@@ -233,11 +233,11 @@
     <tr>
       <td> </td>
       <td>Name</td>
-      <td>expected</td>
+      <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
       <td>Name of STOP PLACE.</td>
-      <td> </td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Referenzpunkt - “Bezeichnung”).</td>
     </tr>
     <tr>
       <td> </td>
@@ -260,20 +260,20 @@
     <tr>
       <td> </td>
       <td>DroppedKerbOutside</td>
-      <td>expected</td>
+      <td>optional</td>
       <td>0..1</td>
       <td>boolean</td>
       <td>Whether nearest crossing to ENTRANCE has dropped kerb.</td>
-      <td>To indicate starting point relevant for AccessibilityAssessments of Quays etc. <strong>TODO</strong> To be discussed.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (only set to <code class="language-plaintext highlighter-rouge">true</code> if Verbindung from Parkplatz with “Stufenfreier Zugang” = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc.</td>
     </tr>
     <tr>
       <td> </td>
       <td>DropOffPointClose</td>
-      <td>expected</td>
+      <td>optional</td>
       <td>0..1</td>
       <td>boolean</td>
       <td>Whether there is a drop off point close by to ENTRANCE.</td>
-      <td>To indicate starting point relevant for AccessibilityAssessments of Quays etc.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (only set to <code class="language-plaintext highlighter-rouge">true</code> if Verbindung from Parkplatz with “Stufenfreier Zugang” = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc.</td>
     </tr>
   </tbody>
 </table>

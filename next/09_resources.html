@@ -1482,30 +1482,48 @@ referenced to define facilities of a site.</p>
     </tr>
     <tr>
       <td> </td>
-      <td>AssistanceFacilityList</td>
-      <td>optional</td>
+      <td>AccessibilityInfoFacilityList</td>
+      <td>expected</td>
       <td>0..1</td>
-      <td>AssistanceFacilityListOfEnumerations</td>
-      <td>List of ASSISTANCE FACILITies.</td>
-      <td> </td>
+      <td>AccessibilityInfoFacilityListOfEnumerations</td>
+      <td>List of ACCESSIBILITY INFORMATION FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (<code class="language-plaintext highlighter-rouge">visualDisplays</code>: Kundeninformation Haltestelle - “Statisch/optisch; <code class="language-plaintext highlighter-rouge">audioInformation</code>: Kundeninformation - “Akustisch”). Note that AccessibilityAssessment features <code class="language-plaintext highlighter-rouge">AudibleSignalsAvailable</code> and <code class="language-plaintext highlighter-rouge">VisualSignsAvailable</code>, the latter implying dynamic visual information (Kundeninformation Haltestelle - “Dynamisch/optisch”).</td>
     </tr>
     <tr>
       <td> </td>
-      <td>AccessibilityToolList</td>
-      <td>optional</td>
+      <td>AssistanceFacilityList</td>
+      <td>expected</td>
       <td>0..1</td>
-      <td>AccessibilityToolListOfEnumerations</td>
-      <td>List of TYPEs of ACCESSIBILITY TOOLs.</td>
+      <td>AssistanceFacilityListOfEnumerations</td>
+      <td>List of ASSISTANCE FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Autonome Benutzbarkeit - “Hilfestellung durch Personal” sets <code class="language-plaintext highlighter-rouge">boardingAssistance personalAssistance wheelchairAssistance</code>).</td>
+    </tr>
+    <tr>
       <td> </td>
+      <td>MobilityFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MobilityFacilityListOfEnumerations</td>
+      <td>List of MOBILITY FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (<code class="language-plaintext highlighter-rouge">suitableForWheelchair</code>: Autonome Benutzbarkeit - “Voraussetzungen erfüllt”; <code class="language-plaintext highlighter-rouge">boardingAssistance</code>: AutonomeBenutzbarkeit - “Hilfestellung durch Personal”; <code class="language-plaintext highlighter-rouge">stepFreeAccess</code>: Haltekante - “Niveaugleicher Einstieg”;<code class="language-plaintext highlighter-rouge">tactilePlatformEdges</code>: Haltekante - “Taktil-visuelle Markierung Perronfläche”). Additional allowed value if no data in ATLAS: <code class="language-plaintext highlighter-rouge">unknown</code>.</td>
     </tr>
     <tr>
       <td> </td>
       <td>SanitaryFacilityList</td>
-      <td>optional</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>SanitaryFacilityListOfEnumerations</td>
       <td>List of SANITARY FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Toiletten - “Rollstuhlgängige Toilette). Presence or absence of <code class="language-plaintext highlighter-rouge">wheelchairAccessToilet toilet</code>.</td>
+    </tr>
+    <tr>
       <td> </td>
+      <td>TicketingFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>TicketingFacilityListOfEnumerations</td>
+      <td>List of TICKETING FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Billettautomat - “Billettautomat vorhanden”, and Schalter present, respectively). Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">unknown ticketMachines ticketOffice</code>.</td>
     </tr>
     <tr>
       <td> </td>
@@ -1518,30 +1536,12 @@ referenced to define facilities of a site.</p>
     </tr>
     <tr>
       <td> </td>
-      <td>EmergencyServiceList</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>EmergencyServiceListOfEnumerations</td>
-      <td>List of EMERGENCY SERVICE FACILITies.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>LuggageLockerFacilityList</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>LuggageLockerFacilityListOfEnumerations</td>
-      <td>List of LUGGAGE LOCKER FACILITies.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
       <td>ParkingFacilityList</td>
-      <td>optional</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>ParkingFacilityListOfEnumerations</td>
       <td>List of PARKING FACILITies.</td>
-      <td> </td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Parkplatz - Parkplätze). The following should be signalled: <code class="language-plaintext highlighter-rouge">carPark unknown</code>.</td>
     </tr>
   </tbody>
 </table>
@@ -1566,13 +1566,25 @@ referenced to define facilities of a site.</p>
       <span class="c">&lt;!-- All necessary languages are modeled as a Text element --&gt;</span>
     <span class="nt">&lt;/Text&gt;</span>
   <span class="nt">&lt;/Description&gt;</span>
-  <span class="nt">&lt;AssistanceFacilityList&gt;</span>personalAssistance information boardingAssistance<span class="nt">&lt;/AssistanceFacilityList&gt;</span>
-  <span class="nt">&lt;AccessibilityToolList&gt;</span>audioNavigator<span class="nt">&lt;/AccessibilityToolList&gt;</span>
-  <span class="nt">&lt;SanitaryFacilityList&gt;</span>toilet babyChange<span class="nt">&lt;/SanitaryFacilityList&gt;</span>
+  <span class="nt">&lt;AccessibilityInfoFacilityList&gt;</span>audioInformation visualDisplays
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (`visualDisplays`: Kundeninformation Haltestelle - "Statisch/optisch; `audioInformation`: Kundeninformation - "Akustisch"). Note that AccessibilityAssessment features `AudibleSignalsAvailable` and `VisualSignsAvailable`, the latter implying dynamic visual information (Kundeninformation Haltestelle - "Dynamisch/optisch"). --&gt;</span>
+  <span class="nt">&lt;/AccessibilityInfoFacilityList&gt;</span>
+  <span class="nt">&lt;AssistanceFacilityList&gt;</span>personalAssistance boardingAssistance wheelchairAssistance
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Autonome Benutzbarkeit - "Hilfestellung durch Personal" sets `boardingAssistance personalAssistance wheelchairAssistance`). --&gt;</span>
+  <span class="nt">&lt;/AssistanceFacilityList&gt;</span>
+  <span class="nt">&lt;MobilityFacilityList&gt;</span>
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (`suitableForWheelchair`: Autonome Benutzbarkeit - "Voraussetzungen erfüllt"; `boardingAssistance`: AutonomeBenutzbarkeit - "Hilfestellung durch Personal"; `stepFreeAccess`: Haltekante - "Niveaugleicher Einstieg";`tactilePlatformEdges`: Haltekante - "Taktil-visuelle Markierung Perronfläche"). Additional allowed value if no data in ATLAS: `unknown`. --&gt;</span>
+  <span class="nt">&lt;/MobilityFacilityList&gt;</span>
+  <span class="nt">&lt;SanitaryFacilityList&gt;</span>toilet wheelchairAccessToilet
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Toiletten - "Rollstuhlgängige Toilette). Presence or absence of `wheelchairAccessToilet toilet`. --&gt;</span>
+  <span class="nt">&lt;/SanitaryFacilityList&gt;</span>
+  <span class="nt">&lt;TicketingFacilityList&gt;</span>ticketMachines ticketOffice
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden", and Schalter present, respectively). Presence or absence of the following facilities should be signalled: `unknown ticketMachines ticketOffice`. --&gt;</span>
+  <span class="nt">&lt;/TicketingFacilityList&gt;</span>
   <span class="nt">&lt;TicketingServiceFacilityList&gt;</span>all reservations<span class="nt">&lt;/TicketingServiceFacilityList&gt;</span>
-  <span class="nt">&lt;EmergencyServiceList&gt;</span>police firstAid<span class="nt">&lt;/EmergencyServiceList&gt;</span>
-  <span class="nt">&lt;LuggageLockerFacilityList&gt;</span>lockers<span class="nt">&lt;/LuggageLockerFacilityList&gt;</span>
-  <span class="nt">&lt;ParkingFacilityList&gt;</span>parkAndRidePark<span class="nt">&lt;/ParkingFacilityList&gt;</span>
+  <span class="nt">&lt;ParkingFacilityList&gt;</span>carPark
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Parkplatz - Parkplätze). The following should be signalled: `carPark unknown`. --&gt;</span>
+  <span class="nt">&lt;/ParkingFacilityList&gt;</span>
 <span class="nt">&lt;/SiteFacilitySet&gt;</span>
 </code></pre></div></div>
 

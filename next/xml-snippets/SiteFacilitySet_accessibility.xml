@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SiteFacilitySet id="ch:1:sitefacilityset:1234:1" version="1">
+  <validityConditions>
+    <AvailabilityCondition id="generated" version="1">
+      <FromDate>2026-03-30T00:00:00</FromDate>
+      <ToDate>2026-04-01T23:59:59</ToDate>
+      <ValidDayBits>01</ValidDayBits>
+    </AvailabilityCondition>
+  </validityConditions>
+  <Description lang="de">SiteFacilitySet Bhf sloid:1234
+    <Text lang="en">SiteFacilitySet for a stop place</Text>
+  </Description>
+  <AccessibilityInfoFacilityList>audioInformation visualDisplays
+    <!-- Will be exported from ATLAS for ERA TSI PRM (`visualDisplays`: Kundeninformation Haltestelle - "Statisch/optisch; `audioInformation`: Kundeninformation - "Akustisch"). Note that AccessibilityAssessment features `AudibleSignalsAvailable` and `VisualSignsAvailable`, the latter implying dynamic visual information (Kundeninformation Haltestelle - "Dynamisch/optisch"). NOT USED: `audioForHearingImpaired displaysForVisuallyImpaired largePrintTimetables`. -->
+  </AccessibilityInfoFacilityList>
+  <AssistanceFacilityList>personalAssistance boardingAssistance wheelchairAssistance
+    <!-- Will be exported from ATLAS for ERA TSI PRM (Autonome Benutzbarkeit - "Hilfestellung durch Personal" sets `boardingAssistance personalAssistance wheelchairAssistance`). NOT USED: `unaccompaniedMinorAssistance conductor information`. -->
+  </AssistanceFacilityList>
+  <AccessibilityToolList>wheelchair
+    <!-- NOT USED. Presence or absence of the following facility may be signalled; absence of the item means absence of the facility (if the element is present): `wheelchair` - wheelchairs available for passenger use. -->
+  </AccessibilityToolList>
+  <MedicalFacilityList>defibrillator
+    <!-- NOT USED. Presence or absence of the following facilitiy should be signalled: `defibrillator`. -->
+  </MedicalFacilityList>
+  <MobilityFacilityList>
+    <!-- Will be exported from ATLAS for ERA TSI PRM (`suitableForWheelchair`: Autonome Benutzbarkeit - "Voraussetzungen erfüllt"; `boardingAssistance`: AutonomeBenutzbarkeit - "Hilfestellung durch Personal"; `stepFreeAccess`: Haltekante - "Niveaugleicher Einstieg";`tactilePlatformEdges`: Haltekante - "Taktil-visuelle Markierung Perronfläche"). Additional allowed value if no data in ATLAS: `unknown`. NOT USED: `lowFloor suitableForPushchair tactileGuidingStrips onboardAssistance unaccompaniedMinorAssistance raisedKerb`. -->
+  </MobilityFacilityList>
+  <SanitaryFacilityList>toilet wheelchairAccessToilet
+    <!-- Will be exported from ATLAS for ERA TSI PRM (Toiletten - "Rollstuhlgängige Toilette). Presence or absence of `wheelchairAccessToilet toilet`. NOT USED: `wheelchairBabyChange babyChange shower`. -->
+  </SanitaryFacilityList>
+  <TicketingFacilityList>ticketMachines ticketOffice
+    <!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden", and Schalter present, respectively). Presence or absence of the following facilities should be signalled: `unknown ticketMachines ticketOffice`. NOT USED: `mobileTicketing`. -->
+  </TicketingFacilityList>
+  <TicketingServiceFacilityList>all reservations</TicketingServiceFacilityList>
+  <AccessFacilityList>
+    <!-- NOT USED. Only expected for Quays. Presence or absence of the following facilities should be signalled: `unknown lift wheelchairLift escalator travelator ramp automaticRamp steps stairs barrier lowFloorAccess validator`. -->
+  </AccessFacilityList>
+  <EmergencyServiceList>sosPoint
+    <!-- NOT USED. Presence or absence of the following facilities should be signalled: `sosPoint firstAid`. Optional: `police fire`. -->
+  </EmergencyServiceList>
+  <LuggageLockerFacilityList>lockers
+    <!-- NOT USED. Presence or absence of the following facilities may be signalled: `lockers oversizeLockers leftLuggageCounter`. -->
+  </LuggageLockerFacilityList>
+  <ParkingFacilityList>carPark
+    <!-- Will be exported from ATLAS for ERA TSI PRM (Parkplatz - Parkplätze). The following should be signalled: `carPark unknown`. NOT USED: `parkAndRidePark motorcyclePark cyclePark coachPark rentalCarPark`. -->
+  </ParkingFacilityList>
+</SiteFacilitySet>

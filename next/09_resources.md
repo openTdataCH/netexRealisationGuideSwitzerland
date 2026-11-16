@@ -586,13 +586,13 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
 | + | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 | + | Text | optional | 0..* | MultilingualString |  | All necessary languages are modeled as a Text element |
 | ++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
-|  | AssistanceFacilityList | optional | 0..1 | AssistanceFacilityListOfEnumerations | List of ASSISTANCE FACILITies. |  |
-|  | AccessibilityToolList | optional | 0..1 | AccessibilityToolListOfEnumerations | List of TYPEs of ACCESSIBILITY TOOLs. |  |
-|  | SanitaryFacilityList | optional | 0..1 | SanitaryFacilityListOfEnumerations | List of SANITARY FACILITies. |  |
+|  | AccessibilityInfoFacilityList | expected | 0..1 | AccessibilityInfoFacilityListOfEnumerations | List of ACCESSIBILITY INFORMATION FACILITies. | Will be exported from ATLAS for ERA TSI PRM (`visualDisplays`: Kundeninformation Haltestelle - "Statisch/optisch; `audioInformation`: Kundeninformation - "Akustisch"). Note that AccessibilityAssessment features `AudibleSignalsAvailable` and `VisualSignsAvailable`, the latter implying dynamic visual information (Kundeninformation Haltestelle - "Dynamisch/optisch"). |
+|  | AssistanceFacilityList | expected | 0..1 | AssistanceFacilityListOfEnumerations | List of ASSISTANCE FACILITies. | Will be exported from ATLAS for ERA TSI PRM (Autonome Benutzbarkeit - "Hilfestellung durch Personal" sets `boardingAssistance personalAssistance wheelchairAssistance`). |
+|  | MobilityFacilityList | expected | 0..1 | MobilityFacilityListOfEnumerations | List of MOBILITY FACILITies. | Will be exported from ATLAS for ERA TSI PRM (`suitableForWheelchair`: Autonome Benutzbarkeit - "Voraussetzungen erfüllt"; `boardingAssistance`: AutonomeBenutzbarkeit - "Hilfestellung durch Personal"; `stepFreeAccess`: Haltekante - "Niveaugleicher Einstieg";`tactilePlatformEdges`: Haltekante - "Taktil-visuelle Markierung Perronfläche"). Additional allowed value if no data in ATLAS: `unknown`. |
+|  | SanitaryFacilityList | expected | 0..1 | SanitaryFacilityListOfEnumerations | List of SANITARY FACILITies. | Will be exported from ATLAS for ERA TSI PRM (Toiletten - "Rollstuhlgängige Toilette). Presence or absence of `wheelchairAccessToilet toilet`. |
+|  | TicketingFacilityList | expected | 0..1 | TicketingFacilityListOfEnumerations | List of TICKETING FACILITies. | Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden", and Schalter present, respectively). Presence or absence of the following facilities should be signalled: `unknown ticketMachines ticketOffice`. |
 |  | TicketingServiceFacilityList | optional | 0..1 | TicketingServiceFacilityListOfEnumerations | List of TICKETING SERVICE FACILITies, e.g. purchase, collection. top up. |  |
-|  | EmergencyServiceList | optional | 0..1 | EmergencyServiceListOfEnumerations | List of EMERGENCY SERVICE FACILITies. |  |
-|  | LuggageLockerFacilityList | optional | 0..1 | LuggageLockerFacilityListOfEnumerations | List of LUGGAGE LOCKER FACILITies. |  |
-|  | ParkingFacilityList | optional | 0..1 | ParkingFacilityListOfEnumerations | List of PARKING FACILITies. |  |
+|  | ParkingFacilityList | expected | 0..1 | ParkingFacilityListOfEnumerations | List of PARKING FACILITies. | Will be exported from ATLAS for ERA TSI PRM (Parkplatz - Parkplätze). The following should be signalled: `carPark unknown`. |
 
 
 
@@ -619,13 +619,25 @@ List of SiteFacility. Be careful: not all are supported. Consult profile. Make s
       <!-- All necessary languages are modeled as a Text element -->
     </Text>
   </Description>
-  <AssistanceFacilityList>personalAssistance information boardingAssistance</AssistanceFacilityList>
-  <AccessibilityToolList>audioNavigator</AccessibilityToolList>
-  <SanitaryFacilityList>toilet babyChange</SanitaryFacilityList>
+  <AccessibilityInfoFacilityList>audioInformation visualDisplays
+    <!-- Will be exported from ATLAS for ERA TSI PRM (`visualDisplays`: Kundeninformation Haltestelle - "Statisch/optisch; `audioInformation`: Kundeninformation - "Akustisch"). Note that AccessibilityAssessment features `AudibleSignalsAvailable` and `VisualSignsAvailable`, the latter implying dynamic visual information (Kundeninformation Haltestelle - "Dynamisch/optisch"). -->
+  </AccessibilityInfoFacilityList>
+  <AssistanceFacilityList>personalAssistance boardingAssistance wheelchairAssistance
+    <!-- Will be exported from ATLAS for ERA TSI PRM (Autonome Benutzbarkeit - "Hilfestellung durch Personal" sets `boardingAssistance personalAssistance wheelchairAssistance`). -->
+  </AssistanceFacilityList>
+  <MobilityFacilityList>
+    <!-- Will be exported from ATLAS for ERA TSI PRM (`suitableForWheelchair`: Autonome Benutzbarkeit - "Voraussetzungen erfüllt"; `boardingAssistance`: AutonomeBenutzbarkeit - "Hilfestellung durch Personal"; `stepFreeAccess`: Haltekante - "Niveaugleicher Einstieg";`tactilePlatformEdges`: Haltekante - "Taktil-visuelle Markierung Perronfläche"). Additional allowed value if no data in ATLAS: `unknown`. -->
+  </MobilityFacilityList>
+  <SanitaryFacilityList>toilet wheelchairAccessToilet
+    <!-- Will be exported from ATLAS for ERA TSI PRM (Toiletten - "Rollstuhlgängige Toilette). Presence or absence of `wheelchairAccessToilet toilet`. -->
+  </SanitaryFacilityList>
+  <TicketingFacilityList>ticketMachines ticketOffice
+    <!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden", and Schalter present, respectively). Presence or absence of the following facilities should be signalled: `unknown ticketMachines ticketOffice`. -->
+  </TicketingFacilityList>
   <TicketingServiceFacilityList>all reservations</TicketingServiceFacilityList>
-  <EmergencyServiceList>police firstAid</EmergencyServiceList>
-  <LuggageLockerFacilityList>lockers</LuggageLockerFacilityList>
-  <ParkingFacilityList>parkAndRidePark</ParkingFacilityList>
+  <ParkingFacilityList>carPark
+    <!-- Will be exported from ATLAS for ERA TSI PRM (Parkplatz - Parkplätze). The following should be signalled: `carPark unknown`. -->
+  </ParkingFacilityList>
 </SiteFacilitySet>
 ```
 
