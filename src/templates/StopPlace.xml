@@ -101,9 +101,13 @@
 							<PublicUse><!-- ch-usage: ignored --><!-- Might be added at some point -->all</PublicUse>
 							<Covered><!-- ch-usage: ignored --><!-- Might be added at some point -->covered</Covered>
 							<facilities>
-								<!-- ch-usage: ignored -->
-								<!-- ch-note: might be added in the future. Especially for accessibility.-->
-								<SiteFacilitySetRef ref="generated" versionRef="1"/>
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Facilities available at the stop. -->
+								<SiteFacilitySet id="generated" version="1">
+									<!-- ch-usage: expected -->
+									<!-- ch-note: In particular for accessibility information. -->
+									<!-- ch-see -->
+								</SiteFacilitySet>
 							</facilities>
 							<TopographicPlaceRef ref="BE-bern" versionRef="1">
 								<!-- ch-note: Id to the county, community, canton or country. -->
@@ -128,6 +132,7 @@
 								<StopPlaceEntrance id="ch:1:sloid:162:164789" version="1">
 									<!-- ch-usage: mandatory -->
 									<!-- ch-note:  Currently only the sloid is known. From this point all references to accessibility are made in Switzerland -->
+									<!-- ch-see -->
 									<Name><!-- ch-usage: optional -->Point of reference.</Name>
 								</StopPlaceEntrance>
 							</entrances>
@@ -136,14 +141,30 @@
 								<!-- ch-note:  Used in exports for all TSI PRM relevant equipments. Especially in the data transmissions for rail to ERA. We only have Equipments and no EquipmentPlaces. -->
 								<TicketingEquipment id="ch:1:sloid:162:ticketing" version="2">
 									<!-- ch-usage: optional -->
-									<!-- ch-note: Ticketing equipment-->
-									<TicketMachines><!-- ch-usage: mandatory -->true</TicketMachines>
+									<!-- ch-note: Ticketing equipment. -->
+									<TicketMachines><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden"). Mirrored in SiteFacilitySet - ticketMachines. -->true</TicketMachines>
+									<TicketOffice><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Schalter present). Mirrored in SiteFacilitySet - ticketOffice. -->true</TicketOffice>
+									<TicketCounter><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Schalter present). We don't distinguish between TicketOffice and TicketCounter. -->true</TicketCounter>
+									<LowCounterAccess><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Schalter - "Rollstuhlzugänglichkeit" or Billettautomat - "Barrierefrei"). Applicable for TicketMachine, TicketOffice, TicketCounter. -->true</LowCounterAccess>
+									<InductionLoops><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Schalter - "Induktionsverstärker"). Only applicable for TicketOffice, TicketCounter. -->true</InductionLoops>
+									<TactileInterfaceAvailable><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). Only applicable for TicketMachine. -->false</TactileInterfaceAvailable>
+									<AudioInterfaceAvailable><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). Only applicable for TicketMachine. -->false</AudioInterfaceAvailable>
+									<WheelchairSuitable><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Schalter - "Rollstuhlzugänglichkeit" or Billettautomat - "Barrierefrei"). Applicable for TicketMachine, TicketOffice, TicketCounter. -->true</WheelchairSuitable>
+								</TicketingEquipment>
+								<TicketingEquipment id="ch:1:sloid:162:ticketmachines" version="2">
+									<!-- ch-usage: optional -->
+									<!-- ch-note: Example ticket machine(s). -->
+									<TicketMachines><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden"). Mirrored in SiteFacilitySet - ticketMachines. -->true</TicketMachines>
+									<LowCounterAccess><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Barrierefrei"). -->true</LowCounterAccess>
+									<TactileInterfaceAvailable><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). -->false</TactileInterfaceAvailable>
+									<AudioInterfaceAvailable><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). -->false</AudioInterfaceAvailable>
+									<WheelchairSuitable><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Barrierefrei"). -->true</WheelchairSuitable>
 								</TicketingEquipment>
 								<AccessVehicleEquipment id="ch:1:sloid:162:0:1:access" version="1">
 									<!-- ch-usage: optional -->
 									<!-- ch-note: Method to get on the vehicle -->
-									<Hoist><!-- ch-usage: expected -->false</Hoist>
-									<Ramp><!-- ch-usage: expected -->false</Ramp>
+									<Hoist><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Haltekante - "Hilfsmittel für Rollstuhl"). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair. -->false</Hoist>
+									<Ramp><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Haltekante - "Hilfsmittel für Rollstuhl"). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair. -->false</Ramp>
 								</AccessVehicleEquipment>
 								<SanitaryEquipment id="ch:1:sloid:171:51406" version="1">
 									<!-- ch-usage: optional -->
@@ -158,7 +179,7 @@
 											</AccessibilityLimitation>
 										</limitations>
 									</AccessibilityAssessment>
-									<SanitaryFacilityList><!-- ch-usage: mandatory --><!-- ch-note: Presence or absence of the following facilities should be signalled: `wheelchairAccessToilet toilet`. Optional: `wheelchairBabyChange babyChange shower`. -->toilet</SanitaryFacilityList>
+									<SanitaryFacilityList><!-- ch-usage: mandatory --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Toiletten - "Rollstuhlgängige Toilette). Presence or absence of `wheelchairAccessToilet toilet`. Mirrored in SiteFacilitySet - SanitaryFacilityList. -->toilet</SanitaryFacilityList>
 									<ToiletsType><!-- ch-usage: optional --><!-- ch-note: Allowed values: `seated urinal seatedAndUrinal squat`. -->seated</ToiletsType>
 								</SanitaryEquipment>
 							</placeEquipments>
@@ -230,7 +251,7 @@
 								</Quay>
 							</quays>
 							<navigationPaths>
-								<!-- ch-usage: optional -->
+								<!-- ch-usage: ignored -->
 								<!-- ch-note: Will be provided at least for rail in a first export for ERA TSI PRM -->
 								<NavigationPath id="generated" version="1">
 									<!-- ch-usage: expected -->

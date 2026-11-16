@@ -14,6 +14,7 @@ In this chapter:
 - [StopPlaceEntrance](#stopplaceentrance)
 - [AssistanceService](#assistanceservice)
 - [AssistanceBookingService](#assistancebookingservice)
+- [SiteFacilitySet](#sitefacilityset)
 
 ## SiteFrame
 *→ [Glossary definition](A4_annex_glossary.md#siteframe)*
@@ -60,7 +61,7 @@ classDiagram
 - `StopPlace`s – stations and stops 
   - `Quay`s - platforms where passengers can board or alight from a vehicle
 - `TopographicPlace`s - geographical and administrative area context for stops
-- Not currently modelled: entrances, levels, equipments, paths, accessibility properties, points of interest
+- Parkings, entrances, levels, selected equipments, accessibility properties, facilities
 
 ### Table
 - [Swiss profile NeTEx definition](../site/tables/SiteFrame.md)
@@ -286,7 +287,7 @@ Such information can be encoded using `SitePathLink`s and `PathJunction`s that d
 
 
 ## StopPlaceEntrance
-*→ [Glossary definition](A4_annex_glossary.md#StopPlaceEntrance)* **TODO**
+*→ [Glossary definition](A4_annex_glossary.md#StopPlaceEntrance)* 
 
 ### Purpose
 `StopPlaceEntrance`s, in particular if `DroppedKerbOutside` and `DropOffPointClose` are true, are the reference points from which the accessibility of `Quay`s and other place elements is assessed. 
@@ -306,7 +307,7 @@ Such information can be encoded using `SitePathLink`s and `PathJunction`s that d
 
 
 ## AssistanceService
-*→ [Glossary definition](A4_annex_glossary.md#AssistanceService)* **TODO**
+*→ [Glossary definition](A4_annex_glossary.md#AssistanceService)* 
 
 ### Purpose
 Used to inform about assistance services and their availability.
@@ -326,7 +327,7 @@ The booking / contact information can be found in the accompanying `AssistanceBo
 
 
 ## AssistanceBookingService
-*→ [Glossary definition](A4_annex_glossary.md#AssistanceBookingService)* **TODO**
+*→ [Glossary definition](A4_annex_glossary.md#AssistanceBookingService)* 
 
 ### Purpose
 Booking / contact information for `AssistanceService`.
@@ -341,4 +342,30 @@ Booking / contact information for `AssistanceService`.
 - [Example snippet](../site/xml-snippets/AssistanceBookingService.xml)
 
 *→ [Template](./templates/AssistanceBookingService.xml)*
+
+
+
+
+## SiteFacilitySet
+*→ [Glossary definition](A4_annex_glossary.md#SiteFacilitySet)* 
+
+### Purpose
+Accessiblity information attached to a `StopPlace` and `Quay` in particular.
+
+### Table
+- [Swiss profile NeTEx definition](../site/tables/SiteFacilitySet.md)
+
+### Usage Notes
+
+* General presence or absence of facilities is indicated at the level of the `StopPlace`.
+* In case of `MobilityFacilityList` it may be necessary to have the facilities at the level of `Quay` (e.g., if only some quays allow for step free acces).
+
+
+
+### Example
+- [Example snippet](../site/xml-snippets/SiteFacilitySet.xml)
+
+*→ [Template](./templates/SiteFacilitySet.xml)*
+
+
 
