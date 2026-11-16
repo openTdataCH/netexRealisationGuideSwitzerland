@@ -103,8 +103,23 @@
 										true
 									</WheelchairBookingRequired>
 									<BookingContact>
-										<!-- ch-usage: expected -->
+										<!-- ch-usage: forbidden -->
 									</BookingContact>
+									<BookingArrangements>
+										<!-- ch-usage: expected -->
+										<BookingContact>
+											<!-- ch-usage: expected -->
+											<Email><!-- ch-usage: optional --></Email>
+											<Phone><!-- ch-usage: expected -->0800 007 102</Phone>
+											<Url><!-- ch-usage: optional -->https://www.sbb.ch/service</Url>
+										</BookingContact>
+										<LatestBookingTime><!-- ch-usage: expected -->24:00:00</LatestBookingTime>
+										<MinimumBookingPeriod><!-- ch-usage: expected -->PT1H</MinimumBookingPeriod>
+										<BookingUrl><!-- ch-usage: optional -->https://www.sbb.ch/service</BookingUrl>
+										<BookingNote lang="de"><!-- ch-usage: expected -->Personen, die Unterstützung benötigen, können sich mindestens eine Stunde vor dem Ein- oder Ausstieg beim CC Handicap melden und erhalten somit eine Hilfestellung vor Ort. Das Contact Center Handicap ist per Telefon unter 0800 007 102 täglich von 5 bis 24 Uhr erreichbar.
+											<Text lang="en"><!-- ch-usage: expected --><!-- ch-note: Translations -->Latest booking 1 hour before. Please call 0800 007 102 daily between 5:00 and 24:00.</Text>
+										</BookingNote>
+									</BookingArrangements>
 									<VehicleMode>
 										<!-- ch-usage: optional -->
 										rail
@@ -112,7 +127,8 @@
 									<noticeAssignments>
 										<!-- ch-usage: optional -->
 										<NoticeAssignment id="generated" version="1">
-											<!-- ch-usage: expected -->
+											<!-- ch-usage: optional -->
+											<!-- ch-note: May be used to inform about exceptions. -->
 											<!-- ch-see -->
 											<validityConditions>
 												<!-- ch-usage: optional -->

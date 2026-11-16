@@ -2,10 +2,25 @@
 <AssistanceBookingService id="ch:1:assistancebooking:7000:1" version="1">
   <!-- Accessibility. Contact and booking information regarding assistance services. -->
   <WheelchairBookingRequired>true</WheelchairBookingRequired>
-  <BookingContact/>
+  <BookingArrangements>
+    <BookingContact>
+      <Email/>
+      <Phone>0800 007 102</Phone>
+      <Url>https://www.sbb.ch/service</Url>
+    </BookingContact>
+    <LatestBookingTime>24:00:00</LatestBookingTime>
+    <MinimumBookingPeriod>PT1H</MinimumBookingPeriod>
+    <BookingUrl>https://www.sbb.ch/service</BookingUrl>
+    <BookingNote lang="de">Personen, die Unterstützung benötigen, können sich mindestens eine Stunde vor dem Ein- oder Ausstieg beim CC Handicap melden und erhalten somit eine Hilfestellung vor Ort. Das Contact Center Handicap ist per Telefon unter 0800 007 102 täglich von 5 bis 24 Uhr erreichbar.
+      <Text lang="en">Latest booking 1 hour before. Please call 0800 007 102 daily between 5:00 and 24:00.
+        <!-- Translations -->
+      </Text>
+    </BookingNote>
+  </BookingArrangements>
   <VehicleMode>rail</VehicleMode>
   <noticeAssignments>
     <NoticeAssignment id="generated" version="1">
+      <!-- May be used to inform about exceptions. -->
       <validityConditions>
         <AvailabilityCondition id="generated" version="1">
           <timebands>

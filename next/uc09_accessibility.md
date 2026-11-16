@@ -676,10 +676,20 @@ Accessibility. Contact and booking information regarding assistance services.
 | Sub | Element | Usage | Card | Type | Description | Note |
 |-----|---------|-------|------|------|-------------|------|
 |  | WheelchairBookingRequired | optional | 0..1 | boolean | Whether a booking is needed to use a wheelchair. |  |
-|  | BookingContact | expected | 0..1 | ContactStructure | Contact details for ASSISTANCE BOOKING SERVICE. |  |
+|  | BookingArrangements | expected | 0..1 | BookingArrangementsStructure | Booking conditions for ASSISTANCE BOOKING SERVICE. DEPRECATED: use bookingArrangements |  |
+| + | BookingContact | expected | 0..1 | ContactStructure | Contact for Booking. +v1.1 |  |
+| ++ | Email | optional | 0..1 | EmailAddressType | The email address of the contact. |  |
+| ++ | Phone | expected | 0..1 | PhoneType | Contact telephone number. |  |
+| ++ | Url | optional | 0..1 | anyURI | The web site address of the contact. |  |
+| + | LatestBookingTime | expected | 0..1 | time | Latest time in day that booking can be made. |  |
+| + | MinimumBookingPeriod | expected | 0..1 | duration | Minimum interval in advance of departure day or time that Service may be ordered. |  |
+| + | BookingUrl | optional | 0..1 | InfoLinkStructure | URL for booking. +V1.1 |  |
+| + | BookingNote | expected | 0..1 | MultilingualString | Note about booking the FLEXIBLE LINE. |  |
+| ++ | Text | expected | 0..1 | MultilingualString |  | Translations |
+| +++ | @lang | mandatory | 1..1 | xsd:string | Attribute lang | |
 |  | VehicleMode | optional | 0..1 | AllPublicTransportModesEnumeration |  |  |
 |  | noticeAssignments | optional | 0..1 | noticeAssignments_RelStructure | NOTICEs for ASSISTANCE BOOKING SERVICE. |  |
-| + | [NoticeAssignment](./tables/NoticeAssignment.md) | expected | 0..* | NoticeAssignment_VersionStructure | The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively. |  |
+| + | [NoticeAssignment](./tables/NoticeAssignment.md) | optional | 0..* | NoticeAssignment_VersionStructure | The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively. | May be used to inform about exceptions. |
 
 
 
@@ -694,10 +704,25 @@ Accessibility. Contact and booking information regarding assistance services.
 <AssistanceBookingService id="ch:1:assistancebooking:7000:1" version="1">
   <!-- Accessibility. Contact and booking information regarding assistance services. -->
   <WheelchairBookingRequired>true</WheelchairBookingRequired>
-  <BookingContact/>
+  <BookingArrangements>
+    <BookingContact>
+      <Email/>
+      <Phone>0800 007 102</Phone>
+      <Url>https://www.sbb.ch/service</Url>
+    </BookingContact>
+    <LatestBookingTime>24:00:00</LatestBookingTime>
+    <MinimumBookingPeriod>PT1H</MinimumBookingPeriod>
+    <BookingUrl>https://www.sbb.ch/service</BookingUrl>
+    <BookingNote lang="de">Personen, die Unterstützung benötigen, können sich mindestens eine Stunde vor dem Ein- oder Ausstieg beim CC Handicap melden und erhalten somit eine Hilfestellung vor Ort. Das Contact Center Handicap ist per Telefon unter 0800 007 102 täglich von 5 bis 24 Uhr erreichbar.
+      <Text lang="en">Latest booking 1 hour before. Please call 0800 007 102 daily between 5:00 and 24:00.
+        <!-- Translations -->
+      </Text>
+    </BookingNote>
+  </BookingArrangements>
   <VehicleMode>rail</VehicleMode>
   <noticeAssignments>
     <NoticeAssignment id="generated" version="1">
+      <!-- May be used to inform about exceptions. -->
       <validityConditions>
         <AvailabilityCondition id="generated" version="1">
           <timebands>

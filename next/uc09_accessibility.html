@@ -1441,11 +1441,101 @@ The booking / contact information can be found in the accompanying <code class="
     </tr>
     <tr>
       <td> </td>
+      <td>BookingArrangements</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>BookingArrangementsStructure</td>
+      <td>Booking conditions for ASSISTANCE BOOKING SERVICE. DEPRECATED: use bookingArrangements</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
       <td>BookingContact</td>
       <td>expected</td>
       <td>0..1</td>
       <td>ContactStructure</td>
-      <td>Contact details for ASSISTANCE BOOKING SERVICE.</td>
+      <td>Contact for Booking. +v1.1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Email</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>EmailAddressType</td>
+      <td>The email address of the contact.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Phone</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>PhoneType</td>
+      <td>Contact telephone number.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Url</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>anyURI</td>
+      <td>The web site address of the contact.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>LatestBookingTime</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>time</td>
+      <td>Latest time in day that booking can be made.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>MinimumBookingPeriod</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>duration</td>
+      <td>Minimum interval in advance of departure day or time that Service may be ordered.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>BookingUrl</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>InfoLinkStructure</td>
+      <td>URL for booking. +V1.1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>BookingNote</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Note about booking the FLEXIBLE LINE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Text</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td>Translations</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
       <td> </td>
     </tr>
     <tr>
@@ -1469,11 +1559,11 @@ The booking / contact information can be found in the accompanying <code class="
     <tr>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/NoticeAssignment.html">NoticeAssignment</a></td>
-      <td>expected</td>
+      <td>optional</td>
       <td>0..*</td>
       <td>NoticeAssignment_VersionStructure</td>
       <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
-      <td> </td>
+      <td>May be used to inform about exceptions.</td>
     </tr>
   </tbody>
 </table>
@@ -1486,10 +1576,25 @@ The booking / contact information can be found in the accompanying <code class="
 <span class="nt">&lt;AssistanceBookingService</span> <span class="na">id=</span><span class="s">"ch:1:assistancebooking:7000:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
   <span class="c">&lt;!-- Accessibility. Contact and booking information regarding assistance services. --&gt;</span>
   <span class="nt">&lt;WheelchairBookingRequired&gt;</span>true<span class="nt">&lt;/WheelchairBookingRequired&gt;</span>
-  <span class="nt">&lt;BookingContact/&gt;</span>
+  <span class="nt">&lt;BookingArrangements&gt;</span>
+    <span class="nt">&lt;BookingContact&gt;</span>
+      <span class="nt">&lt;Email/&gt;</span>
+      <span class="nt">&lt;Phone&gt;</span>0800 007 102<span class="nt">&lt;/Phone&gt;</span>
+      <span class="nt">&lt;Url&gt;</span>https://www.sbb.ch/service<span class="nt">&lt;/Url&gt;</span>
+    <span class="nt">&lt;/BookingContact&gt;</span>
+    <span class="nt">&lt;LatestBookingTime&gt;</span>24:00:00<span class="nt">&lt;/LatestBookingTime&gt;</span>
+    <span class="nt">&lt;MinimumBookingPeriod&gt;</span>PT1H<span class="nt">&lt;/MinimumBookingPeriod&gt;</span>
+    <span class="nt">&lt;BookingUrl&gt;</span>https://www.sbb.ch/service<span class="nt">&lt;/BookingUrl&gt;</span>
+    <span class="nt">&lt;BookingNote</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Personen, die Unterstützung benötigen, können sich mindestens eine Stunde vor dem Ein- oder Ausstieg beim CC Handicap melden und erhalten somit eine Hilfestellung vor Ort. Das Contact Center Handicap ist per Telefon unter 0800 007 102 täglich von 5 bis 24 Uhr erreichbar.
+      <span class="nt">&lt;Text</span> <span class="na">lang=</span><span class="s">"en"</span><span class="nt">&gt;</span>Latest booking 1 hour before. Please call 0800 007 102 daily between 5:00 and 24:00.
+        <span class="c">&lt;!-- Translations --&gt;</span>
+      <span class="nt">&lt;/Text&gt;</span>
+    <span class="nt">&lt;/BookingNote&gt;</span>
+  <span class="nt">&lt;/BookingArrangements&gt;</span>
   <span class="nt">&lt;VehicleMode&gt;</span>rail<span class="nt">&lt;/VehicleMode&gt;</span>
   <span class="nt">&lt;noticeAssignments&gt;</span>
     <span class="nt">&lt;NoticeAssignment</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- May be used to inform about exceptions. --&gt;</span>
       <span class="nt">&lt;validityConditions&gt;</span>
         <span class="nt">&lt;AvailabilityCondition</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
           <span class="nt">&lt;timebands&gt;</span>

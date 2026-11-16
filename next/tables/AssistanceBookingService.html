@@ -243,11 +243,101 @@
     </tr>
     <tr>
       <td> </td>
+      <td>BookingArrangements</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>BookingArrangementsStructure</td>
+      <td>Booking conditions for ASSISTANCE BOOKING SERVICE. DEPRECATED: use bookingArrangements</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
       <td>BookingContact</td>
       <td>expected</td>
       <td>0..1</td>
       <td>ContactStructure</td>
-      <td>Contact details for ASSISTANCE BOOKING SERVICE.</td>
+      <td>Contact for Booking. +v1.1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Email</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>EmailAddressType</td>
+      <td>The email address of the contact.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Phone</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>PhoneType</td>
+      <td>Contact telephone number.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Url</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>anyURI</td>
+      <td>The web site address of the contact.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>LatestBookingTime</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>time</td>
+      <td>Latest time in day that booking can be made.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>MinimumBookingPeriod</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>duration</td>
+      <td>Minimum interval in advance of departure day or time that Service may be ordered.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>BookingUrl</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>InfoLinkStructure</td>
+      <td>URL for booking. +V1.1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>BookingNote</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Note about booking the FLEXIBLE LINE.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Text</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td>Translations</td>
+    </tr>
+    <tr>
+      <td>+++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
       <td> </td>
     </tr>
     <tr>
@@ -271,11 +361,11 @@
     <tr>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/next/tables/NoticeAssignment.html">NoticeAssignment</a></td>
-      <td>expected</td>
+      <td>optional</td>
       <td>0..*</td>
       <td>NoticeAssignment_VersionStructure</td>
       <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
-      <td> </td>
+      <td>May be used to inform about exceptions.</td>
     </tr>
   </tbody>
 </table>
