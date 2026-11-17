@@ -126,7 +126,7 @@ class TrainInCompoundTrain {
 ```
 
 ## Example
-Check the example we did https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/src/examples/20_NeTEx_Interlaken_Spiez_Formation.xml
+See [example 20](./examples/20_NeTEx_Interlaken_Spiez_Formation.xml).
 
 We have two important parts. Firstly, the formation itself as part of `vehicleTypes` in the `TimetableFrame`: 
 
@@ -135,7 +135,7 @@ We have two important parts. Firstly, the formation itself as part of `vehicleTy
 <CompoundTrain version="1" id="compoundtrain">
 	<Name>4231</Name>
 	<Description>2212 - 2122</Description>
-	<SelfPropelled> true</SelfPropelled>
+	<SelfPropelled>true</SelfPropelled>
 	<components>
 		<TrainInCompoundTrain version="1" id="TICT1">
 			<TrainRef version="1" ref="Train1"/>
@@ -148,11 +148,10 @@ We have two important parts. Firstly, the formation itself as part of `vehicleTy
 	</components>
 </CompoundTrain>
 <Train version="1" id="Train1">
-	<Name>blabla</Name>
 	<Description>2212</Description>
-	<SelfPropelled> true</SelfPropelled>
+	<SelfPropelled>true</SelfPropelled>
 	<components>
-		<TrainComponent version="1" id="bbd:trncmp_447_01" order="1">
+		<TrainComponent version="1" id="bbd:trncmp_447_01">
 			<Label>1</Label>
 			<TrainElement version="1" id="bbd:trne_447_01">
 				<Name/>
@@ -166,7 +165,7 @@ We have two important parts. Firstly, the formation itself as part of `vehicleTy
 				</facilities>
 			</TrainElement>
 		</TrainComponent>
-		<TrainComponent version="1" id="bbd:trncmp_447_02" order="2">
+		<TrainComponent version="1" id="bbd:trncmp_447_02">
 			<Label>2</Label>
 			<TrainElement version="1" id="bbd:trne_447_02">
 				<Name/>
@@ -184,7 +183,7 @@ We have two important parts. Firstly, the formation itself as part of `vehicleTy
 				<ThroughAccess>openEntrance</ThroughAccess>
 			</ForwardCoupling>
 		</TrainComponent>
-		<TrainComponent version="1" id="bbd:trncmp_447_03" order="3">
+		<TrainComponent version="1" id="bbd:trncmp_447_03">
 			<Label>3</Label>
 			<TrainElement version="1" id="bbd:trne_447_03">
 				<Name/>
@@ -200,7 +199,7 @@ We have two important parts. Firstly, the formation itself as part of `vehicleTy
 				<ThroughAccess>openEntrance</ThroughAccess>
 			</ForwardCoupling>
 		</TrainComponent>
-		<TrainComponent version="1" id="bbd:trncmp_447_04" order="4">
+		<TrainComponent version="1" id="bbd:trncmp_447_04">
 			<Label>4</Label>
 			<TrainElement version="1" id="bbd:trne_447_04">
 				<Name/>
@@ -221,11 +220,10 @@ We have two important parts. Firstly, the formation itself as part of `vehicleTy
 	</components>
 </Train>
 <Train version="1" id="Train2">
-	<Name>blabla </Name>
-	<Description>blabla</Description>
-	<SelfPropelled> true</SelfPropelled>
+	<Description>2122</Description>
+	<SelfPropelled>true</SelfPropelled>
 	<components>
-		<TrainComponent version="1" id="bbd:trncmp_448_01" order="1">
+		<TrainComponent version="1" id="bbd:trncmp_448_01">
 			<Label>5</Label>
 			<TrainElement version="1" id="bbd:trne_448_01">
 				<Name/>
@@ -243,7 +241,7 @@ We have two important parts. Firstly, the formation itself as part of `vehicleTy
 				<ThroughAccess>noThroughAccess</ThroughAccess>
 			</ForwardCoupling>
 		</TrainComponent>
-		<TrainComponent version="1" id="bbd:trncmp_448_02" order="2">
+		<TrainComponent version="1" id="bbd:trncmp_448_02">
 			<Label>6</Label>
 			<TrainElement version="1" id="bbd:trne_448_02">
 				<Name/>
@@ -259,7 +257,7 @@ We have two important parts. Firstly, the formation itself as part of `vehicleTy
 				<ThroughAccess>openEntrance</ThroughAccess>
 			</ForwardCoupling>
 		</TrainComponent>
-		<TrainComponent version="1" id="bbd:trncmp_448_03" order="3">
+		<TrainComponent version="1" id="bbd:trncmp_448_03">
 			<Label>7</Label>
 			<TrainElement version="1" id="bbd:trne_448_03">
 				<Name/>
@@ -277,7 +275,7 @@ We have two important parts. Firstly, the formation itself as part of `vehicleTy
 				<ThroughAccess>openEntrance</ThroughAccess>
 			</ForwardCoupling>
 		</TrainComponent>
-		<TrainComponent version="1" id="bbd:trncmp_448_04" order="4">
+		<TrainComponent version="1" id="bbd:trncmp_448_04">
 			<Label>8</Label>
 			<TrainElement version="1" id="bbd:trne_448_04">
 				<Name/>
@@ -334,6 +332,29 @@ Secondly, the PassengerStopAssignment that shows how the train is structured int
 </PassengerStopAssignment>		
 ```
 ## Usage Notes
-- We intend to use a version without `Block` and `CompoundTrain`.
-- We don't invent additional `ScheduledStopPoint`s for the sectors.
-- We have a special example for when the platform is too short on a given stop: **LATER**
+- Formations are modelled with `CompoundTrain` (referenced from the `ServiceJourney` with `CompoundTrainRef`) and `Train`. `Block` is not used.
+- We don't invent additional `ScheduledStopPoint`s for the sectors. The `ScheduledStopPointRef` of a `PassengerBoardingPositionAssignment` references the `ScheduledStopPoint` of the platform; the sector is given by the `QuayRef` of the `PassengerStopAssignment`.
+- If the quay is too short for the full train, the train components whose doors stay closed get a `PassengerBoardingPositionAssignment` with `IsAllowed` `false` (see [Quay too short for the full train](#quay-too-short-for-the-full-train)).
+
+## Quay too short for the full train
+In Furna (RhB), the quay (track 1) is too short for the RE 1014 (Klosters Platz – Landquart, line RE13), which runs with two train parts. Only the doors of the front train part open. HRDF only delivers this as info text 000089875: "Bitte benützen Sie für den Ausstieg in Furna den vordersten Zugteil."
+
+In NeTEx, the `PassengerStopAssignment` of the formation in Furna contains one `PassengerBoardingPositionAssignment` per train component of the rear train part, with `IsAllowed` `false`. The `ScheduledStopPointRef` references the `ScheduledStopPoint` of track 1 in Furna. The info text is additionally delivered as `Notice`.
+
+```xml
+<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8509061:formation" version="1">
+  <StopPlaceRef ref="ch:1:sloid:9061" version="1"/>
+  <QuayRef ref="ch:1:sloid:9061:0:487660" version="1"/>
+  <passengerBoardingPositionAssignments>
+    <PassengerBoardingPositionAssignment id="ch:1:PassengerBoardingPositionAssignment:8509061:4" version="1">
+      <Description>Coach 4: doors stay closed in Furna</Description>
+      <ScheduledStopPointRef ref="ch:1:sloid:9061:0:487660" version="1"/>
+      <TrainComponentRef ref="ch:1:TrainComponent:RE1014-2-1" version="1"/>
+      <IsAllowed>false</IsAllowed>
+    </PassengerBoardingPositionAssignment>
+    <!-- ... coaches 5 and 6 -->
+  </passengerBoardingPositionAssignments>
+</PassengerStopAssignment>
+```
+
+See [example 24](./examples/24_NeTEx_CH_RhB_RE1014_Furna_Quay_Too_Short.xml). The formation itself (number of coaches, classes) is illustrative, as HRDF contains no formation data.

@@ -116,6 +116,8 @@ Direct carriage 37 Zürich HB – Bremen Hbf, based on the direct-carriage examp
 We are working on an example for the formation. This is only a DRAFT.
 [Link to example](20_NeTEx_Interlaken_Spiez_Formation.xml)
 
+Quay too short for the full train: in Furna only the doors of the front train part of the RhB RE 1014 open. [Link to example](24_NeTEx_CH_RhB_RE1014_Furna_Quay_Too_Short.xml)
+
 >**LATER**
 
 ## carTransportRail
