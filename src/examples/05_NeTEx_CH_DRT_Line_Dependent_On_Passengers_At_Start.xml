@@ -376,6 +376,9 @@
 							<trainNumbers>
 								<TrainNumberRef ref="ch:1:TrainNumber:11957" version="1"/>
 							</trainNumbers>
+							<facilities>
+								<ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:A__GR" version="1"/>
+							</facilities>
 						</ServiceJourney>
 					</vehicleJourneys>
 					<trainNumbers>
@@ -383,6 +386,13 @@
 							<ForAdvertisement>11957</ForAdvertisement>
 						</TrainNumber>
 					</trainNumbers>
+					<!-- Group reservation (HRDF offer GR, sheet Angebote of the mapping table) as facility; the contact details remain in the Notice -->
+					<serviceFacilitySets>
+						<ServiceFacilitySet id="ch:1:ServiceFacilitySet:A__GR" version="1">
+							<Description lang="de">GRUPPEN: Reservierung obligatorisch</Description>
+							<ServiceReservationFacilityList>reservationsCompulsoryForGroups</ServiceReservationFacilityList>
+						</ServiceFacilitySet>
+					</serviceFacilitySets>
 					<typesOfService>
 						<TypeOfService id="ch:1:TypeOfService:1" version="1">
 							<Name lang="en">PublicJourney</Name>
