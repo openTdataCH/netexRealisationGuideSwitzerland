@@ -334,4 +334,27 @@ Secondly, the PassengerStopAssignment that shows how the train is structured int
 ## Usage Notes
 - Formations are modelled with `CompoundTrain` (referenced from the `ServiceJourney` with `CompoundTrainRef`) and `Train`. `Block` is not used.
 - We don't invent additional `ScheduledStopPoint`s for the sectors. The `ScheduledStopPointRef` of a `PassengerBoardingPositionAssignment` references the `ScheduledStopPoint` of the platform; the sector is given by the `QuayRef` of the `PassengerStopAssignment`.
-- We have a special example for when the platform is too short on a given stop: **LATER**
+- If the quay is too short for the full train, the train components whose doors stay closed get a `PassengerBoardingPositionAssignment` with `IsAllowed` `false` (see [Quay too short for the full train](#quay-too-short-for-the-full-train)).
+
+## Quay too short for the full train
+In Furna (RhB), the quay (track 1) is too short for the RE 1014 (Klosters Platz – Landquart, line RE13), which runs with two train parts. Only the doors of the front train part open. HRDF only delivers this as info text 000089875: "Bitte benützen Sie für den Ausstieg in Furna den vordersten Zugteil."
+
+In NeTEx, the `PassengerStopAssignment` of the formation in Furna contains one `PassengerBoardingPositionAssignment` per train component of the rear train part, with `IsAllowed` `false`. The `ScheduledStopPointRef` references the `ScheduledStopPoint` of track 1 in Furna. The info text is additionally delivered as `Notice`.
+
+```xml
+<PassengerStopAssignment id="ch:1:PassengerStopAssignment:8509061:formation" version="1">
+  <StopPlaceRef ref="ch:1:sloid:9061" version="1"/>
+  <QuayRef ref="ch:1:sloid:9061:0:487660" version="1"/>
+  <passengerBoardingPositionAssignments>
+    <PassengerBoardingPositionAssignment id="ch:1:PassengerBoardingPositionAssignment:8509061:4" version="1">
+      <Description>Coach 4: doors stay closed in Furna</Description>
+      <ScheduledStopPointRef ref="ch:1:sloid:9061:0:487660" version="1"/>
+      <TrainComponentRef ref="ch:1:TrainComponent:RE1014-2-1" version="1"/>
+      <IsAllowed>false</IsAllowed>
+    </PassengerBoardingPositionAssignment>
+    <!-- ... coaches 5 and 6 -->
+  </passengerBoardingPositionAssignments>
+</PassengerStopAssignment>
+```
+
+See [example 24](./examples/24_NeTEx_CH_RhB_RE1014_Furna_Quay_Too_Short.xml). The formation itself (number of coaches, classes) is illustrative, as HRDF contains no formation data.
