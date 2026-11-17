@@ -61,7 +61,19 @@
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: Always aligned with BS KI oev-info.ch  -->
 							</TypeOfProductCategoryRef>
-							
+							<bookingArrangements>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Booking conditions of a demand responsive (DRT) line. Valid for the whole Line; a lower level (FlexibleServiceProperties, StopPointInJourneyPattern) supersedes it. See uc16_drt. -->
+								<BookingArrangement id="generated" version="1">
+									<!-- ch-usage: optional -->
+									<!-- ch-attrs: id version -->
+									<!-- ch-note: Referenced from ServiceJourney/FlexibleServiceProperties and StopPointInJourneyPattern with BookingArrangementRef. -->
+									<BookingMethods><!-- ch-usage: optional -->mobileApp</BookingMethods>
+									<BookWhen><!-- ch-usage: optional -->advanceOnly</BookWhen>
+									<BookingNote><!-- ch-usage: optional -->Einstieg nur auf Voranmeldung mind. 30 Min. vor der Fahrt.</BookingNote>
+								</BookingArrangement>
+							</bookingArrangements>
+
 						</Line>
 					</lines>
 
