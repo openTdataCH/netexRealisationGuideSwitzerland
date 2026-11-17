@@ -374,20 +374,23 @@
 							<Name>29013 Ruemlingen – Haefelfingen Dorf – Bad Ramsach - Laeufelfingen</Name>
 							<TransportMode>bus</TransportMode>
 							<TransportSubmode>
-								<BusSubmode>localBus</BusSubmode>
+								<BusSubmode>demandAndResponseBus</BusSubmode>
 							</TransportSubmode>
 							<PublicCode>50.110</PublicCode>
 							<OperatorRef ref="ch:1:sboid:100019" version="1"/>
-							<LineType>fixed</LineType>
+							<!-- Swiss DRT type 1 (Bedarfslinie): fixed stops, operated on request. See uc16_drt. -->
+							<LineType>flexible</LineType>
 							<TypeOfProductCategoryRef ref="ch:1:TypeOfProductCategory:B" version="1"/>
 							<TypeOfServiceRef ref="ch:1:TypeOfService:1" version="1"/>
 							<bookingArrangements>
 								<BookingArrangement id="ch:blt:generated:BOOK:29013" version="1">
-									<BookingMethods>mobileApp</BookingMethods>
+									<BookingMethods>mobileApp online callOffice</BookingMethods>
 									<BookWhen>advanceOnly</BookWhen>
+									<MinimumBookingPeriod>PT30M</MinimumBookingPeriod>
+									<BookingUrl>https://www.pickride.ch</BookingUrl>
 									<BookingNote>Verkehrt bei Bedarf ab Rümlingen Dorf, und so weit, bis der letzte Fahrgast ausgestiegen ist. Einstieg nur Bad Ramsach
-									und Laufelfingen Dorf und nur auf voranmeldung mid. 30 Min. vor der Fahrt unter www.pickride.ch / Tel: +41 848 02 03 0. Ohne 
-									Laeufelfingen Bahnhof dafür Buckten Bahnhof</BookingNote>
+									und Läufelfingen Dorf und nur auf Voranmeldung mind. 30 Min. vor der Fahrt unter www.pickride.ch / Tel: +41 848 02 03 0. Ohne
+									Läufelfingen Bahnhof, dafür Buckten Bahnhof.</BookingNote>
 								</BookingArrangement>
 							</bookingArrangements>
 						</Line>
