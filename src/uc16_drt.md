@@ -524,8 +524,8 @@ classDiagram
 
 | Example | Content |
 |---------|---------|
-| [04_NeTEx_CH_DRT_Line_50.110](./examples/04_NeTEx_CH_DRT_Line_50.110.xml) | `BookingArrangement` on the `Line`, one on-demand journey with `FlexibleServiceProperties`. |
-| [05_NeTEx_CH_DRT_Line_Dependent_On_Passengers_At_Start](./examples/05_NeTEx_CH_DRT_Line_Dependent_On_Passengers_At_Start.xml) | No reservation; passengers can only alight after the first stop (`ForBoarding` `false`), `Notice`. |
+| [04_NeTEx_CH_DRT_Line_50.110](./examples/04_NeTEx_CH_DRT_Line_50.110.xml) | Swiss DRT type 1 (`LineType` `flexible`, `BusSubmode` `demandAndResponseBus`), `BookingArrangement` on the `Line`, one on-demand journey with `FlexibleServiceProperties`. |
+| [05_NeTEx_CH_DRT_Line_Dependent_On_Passengers_At_Start](./examples/05_NeTEx_CH_DRT_Line_Dependent_On_Passengers_At_Start.xml) | No reservation; passengers can only alight after the first stop (`ForBoarding` `false`), `Notice`. Group reservation as `ServiceFacilitySet` (`reservationsCompulsoryForGroups`) and `Notice`. |
 
 Further Swiss DRT examples are in the NeTEx repository under
 [`examples/functions/drt/`](https://github.com/NeTEx-CEN/NeTEx/tree/v2.1-wip/examples/functions/drt).
