@@ -10,13 +10,37 @@ The following table shows how we will map HRDF tables into NeTEX.
 
 | HRDF     | NeTEx RG1           | NeTEx RG2                                                                                                      | Use Case                                   |
 |----------|---------------------|----------------------------------------------------------------------------------------------------------------|--------------------------------------------|
+| DURCHBI  | `JourneyMeeting`    | `ServiceJourneyInterchange`                                                                                    | Durchbindung, Flügelzug, Vereinigung       |
 | UMSTEIGZ | `InterchangeRule`   | `ServiceJourneyInterchange`                                                                                    | Fahrtbezogene Umsteigezeit                 |
 | UMSTEIGL | `InterchangeRule`   | `ServiceJourneyInterchange`                                                                                    | Linien- und Richtungsbezogene Umsteigezeit |
+| UMSTEIGV | `DefaultConnection` | `DefaultConnection`                                                                                            | Verwaltungsbezogene Umsteigezeit           |
 | UMSTEIGB | `DefaultConnection` | `DefaultConnection`                                                                                            | Standardumsteigezeit pro Haltestelle       |
 | METABHF  | `SiteConnection`    | `SiteConnection`                                                                                               | Umsteigezeit zwischen Haltestellen         |
-| UMSTEIGV | `DefaultConnection` | `DefaultConnection`                                                                                            | Verwaltungsbezogene Umsteigezeit           |
-| DURCHBI  | `JourneyMeeting`    | `ServiceJourneyInterchange`                                                                                    | Durchbindung, Flügelzug, Vereinigung       |
 
+### Priority of transfer times
+
+If several transfer times apply to the same transfer, the first matching rule in the following order applies. The order is the one in which HAFAS applies the HRDF transfer times (HAFAS raw data format 5.40.72, chapter 8).
+
+| Priority | HRDF                                | NeTEx RG2.0                                                                  |
+|----------|-------------------------------------|----------------------------------------------------------------------------|
+| 1        | UMSTEIGZ (journey pair)             | `ServiceJourneyInterchange`                                                |
+| 2        | UMSTEIGL at a stop                  | `ServiceJourneyInterchange` (resolved per journey pair)                    |
+| 3        | UMSTEIGV at a stop                  | `DefaultConnection` with `StopPlaceRef` and `OperatorRef`                  |
+| 4        | UMSTEIGB at a stop                  | `DefaultConnection` with `StopPlaceRef`, without `OperatorRef`             |
+| 5        | UMSTEIGL global                     | `ServiceJourneyInterchange` (resolved per journey pair)                    |
+| 6        | UMSTEIGV global                     | `DefaultConnection` with `OperatorRef`, without `StopPlaceRef`             |
+| 7        | Standard transfer time (UMSTEIGB `9999999`) | `DefaultConnection` per mode pair, without `StopPlaceRef` and `OperatorRef` |
+
+A `DefaultConnection` that references operators therefore only takes precedence over the transfer time of a stop if it is defined for that stop. A global operator rule ranks below the transfer time of the stop.
+
+DURCHBI and METABHF are not part of this order: DURCHBI is a through-service (`StaySeated`), not a transfer time, and METABHF is a `SiteConnection` between two different stops.
+
+### Export guarantees
+
+The export guarantees that:
+- for two service journeys and `FromPointRef` / `ToPointRef`, maximum one `ServiceJourneyInterchange` will be produced
+- for a stop, maximum one `DefaultConnection` without `OperatorRef` will provide the transfer time at that stop
+- for a combination of stop (or whole network), operator pair and product category pair, maximum one `DefaultConnection` will provide the transfer time
 
 ## Transfer times at a given StopPlace (UMSTEIGB)
 Defines the default transfer time at a specific stop place, regardless of operator or line.
