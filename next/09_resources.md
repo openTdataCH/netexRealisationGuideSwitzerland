@@ -496,6 +496,7 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
 |  | SanitaryFacilityList | optional | 0..1 | SanitaryFacilityListOfEnumerations | List of SANITARY FACILITies. |  |
 |  | CouchetteFacilityList | optional | 0..1 | CouchetteFacilityListOfEnumerations | List of COUCHETTE FACILITies. |  |
 |  | GroupBookingFacility | optional | 0..1 | GroupBookingEnumeration | Classification of GROUP FACILITY type - TPEG pti23. |  |
+|  | ServiceReservationFacilityList | optional | 0..1 | ServiceReservationFacilityListOfEnumerations | List of RESERVATION FACILITies UIC 7037 Code list. | Reservation offers. Values in sheet Angebote of the mapping excel. |
 
 
 
@@ -528,6 +529,9 @@ List of ServiceFacility. Be careful: not all are supported. Consult profile. Mak
   <SanitaryFacilityList>toilet</SanitaryFacilityList>
   <CouchetteFacilityList>wheelchair</CouchetteFacilityList>
   <GroupBookingFacility>groupsAllowed</GroupBookingFacility>
+  <ServiceReservationFacilityList>reservationsCompulsory
+    <!-- Reservation offers. Values in sheet Angebote of the mapping excel. -->
+  </ServiceReservationFacilityList>
 </ServiceFacilitySet>
 ```
 

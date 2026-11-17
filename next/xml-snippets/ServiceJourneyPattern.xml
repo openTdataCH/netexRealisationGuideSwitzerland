@@ -14,6 +14,12 @@
         <!-- Indicates that the destination has changed. Superseeds Line or ServiceJourney. Also, there is propagation. E.g if the DestinationDisplay changes on the 4. th stop it is propagated through all stops until a different DestinationDisplay is encountered. -->
       </DestinationDisplayRef>
       <RequestStop>false</RequestStop>
+      <BoardingRequestMethod>stopButton
+        <!-- For request stops (RequestStop true) with boarding. See sheet Haltecode of the mapping excel and uc16_drt. -->
+      </BoardingRequestMethod>
+      <AlightingRequestMethod>stopButton
+        <!-- For request stops (RequestStop true) with alighting. See sheet Haltecode of the mapping excel and uc16_drt. -->
+      </AlightingRequestMethod>
       <StopUse>access
         <!-- All values possible. passthrough is used for Durchfahrt, if such data is delivered. See mapping excel. -->
       </StopUse>

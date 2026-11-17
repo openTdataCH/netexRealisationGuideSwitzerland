@@ -30,3 +30,10 @@ For referencing the `Operator`s we redundantly use `ResponsibilitySet` and `Oper
 | + | OperatorRef | optional | 0..* | OperatorRefStructure |  |  |
 |  | LineType | expected | 0..1 | LineTypeEnumeration | Classification of LINE, including flexible options. +v2.0. | Will be used especially, when not "fixed". Details in mapping excel. |
 |  | TypeOfProductCategoryRef | mandatory | 0..1 | TypeOfProductCategoryRefStructure |  | Always aligned with BS KI oev-info.ch |
+|  | bookingArrangements | optional | 0..1 | bookingArrangements_RelStructure | Set of possible Booking Arrangements for this LINE. +v2.0 | Booking conditions of a demand responsive (DRT) line. Valid for the whole Line; a lower level (FlexibleServiceProperties, StopPointInJourneyPattern) supersedes it. See uc16_drt. |
+| + | BookingArrangement | optional | 0..* | BookingArrangement_VersionStructure | Details of the booking arrangements for a given LINE, STOP, SERVICE etc. | Referenced from ServiceJourney/FlexibleServiceProperties and StopPointInJourneyPattern with BookingArrangementRef. |
+| ++ | @id | mandatory | 1..1 | xsd:string | Attribute id | |
+| ++ | @version | mandatory | 1..1 | xsd:string | Attribute version | |
+| ++ | BookingMethods | optional | 0..1 | BookingMethodListOfEnumerations | Allowed Ways of Making a BOOKING. |  |
+| ++ | BookWhen | optional | 0..1 | PurchaseWhenEnumeration | When Booking can be made. +V1.1 |  |
+| ++ | BookingNote | optional | 0..1 | MultilingualString | Note about booking the FLEXIBLE LINE. |  |

@@ -39,3 +39,8 @@
 | + | [JourneyPart](JourneyPart.md) | expected | 0..* | JourneyPart_VersionStructure | A part of a VEHICLE JOURNEY created according to a specific functional purpose, for instance in situations when vehicle coupling or separating occurs. |  |
 |  | checkConstraints | optional | 0..1 | checkConstraints_RelStructure | CHECK CONSTRAINTs which apply to SERVICE JOURNEY, e.g. check in time, security time. These are advisory only and not for use in journey planning. |  |
 | + | [CheckConstraint](CheckConstraint.md) | optional | 0..* | CheckConstraint_VersionStructure | Process associated with a Place, typically giving rise to a delay to the traveller. | CheckConstraints are used to encode foreseeable delays by check-in or other processes. |
+|  | FlexibleServiceProperties | optional | 1..1 | unknown |  | For a single on-demand journey of a demand responsive (DRT) line. See uc16_drt. |
+| + | @id | mandatory | 1..1 | xsd:string | Attribute id | |
+| + | @version | mandatory | 1..1 | xsd:string | Attribute version | |
+| + | bookingArrangements | optional | 0..1 | bookingArrangements_RelStructure | Set of possible Booking Arrangements for stop if different from those for SERVICE JOURNEY. +v2.0 |  |
+| ++ | BookingArrangementRef | optional | 0..* | BookingArrangementRefStructure |  | References the BookingArrangement of the Line. |

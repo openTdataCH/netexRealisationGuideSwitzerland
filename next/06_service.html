@@ -891,6 +891,69 @@ class ServiceJourney {
       <td> </td>
       <td>Always aligned with BS KI oev-info.ch</td>
     </tr>
+    <tr>
+      <td> </td>
+      <td>bookingArrangements</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>bookingArrangements_RelStructure</td>
+      <td>Set of possible Booking Arrangements for this LINE. +v2.0</td>
+      <td>Booking conditions of a demand responsive (DRT) line. Valid for the whole Line; a lower level (FlexibleServiceProperties, StopPointInJourneyPattern) supersedes it. See uc16_drt.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>BookingArrangement</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>BookingArrangement_VersionStructure</td>
+      <td>Details of the booking arrangements for a given LINE, STOP, SERVICE etc.</td>
+      <td>Referenced from ServiceJourney/FlexibleServiceProperties and StopPointInJourneyPattern with BookingArrangementRef.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>BookingMethods</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>BookingMethodListOfEnumerations</td>
+      <td>Allowed Ways of Making a BOOKING.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>BookWhen</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>PurchaseWhenEnumeration</td>
+      <td>When Booking can be made. +V1.1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>BookingNote</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Note about booking the FLEXIBLE LINE.</td>
+      <td> </td>
+    </tr>
   </tbody>
 </table>
 
@@ -948,6 +1011,15 @@ class ServiceJourney {
   <span class="nt">&lt;TypeOfProductCategoryRef</span> <span class="na">ref=</span><span class="s">"ch:1:TypeOfProductCategory:TER"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
     <span class="c">&lt;!-- Always aligned with BS KI oev-info.ch --&gt;</span>
   <span class="nt">&lt;/TypeOfProductCategoryRef&gt;</span>
+  <span class="nt">&lt;bookingArrangements&gt;</span>
+    <span class="c">&lt;!-- Booking conditions of a demand responsive (DRT) line. Valid for the whole Line; a lower level (FlexibleServiceProperties, StopPointInJourneyPattern) supersedes it. See uc16_drt. --&gt;</span>
+    <span class="nt">&lt;BookingArrangement</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Referenced from ServiceJourney/FlexibleServiceProperties and StopPointInJourneyPattern with BookingArrangementRef. --&gt;</span>
+      <span class="nt">&lt;BookingMethods&gt;</span>mobileApp<span class="nt">&lt;/BookingMethods&gt;</span>
+      <span class="nt">&lt;BookWhen&gt;</span>advanceOnly<span class="nt">&lt;/BookWhen&gt;</span>
+      <span class="nt">&lt;BookingNote&gt;</span>Einstieg nur auf Voranmeldung mind. 30 Min. vor der Fahrt.<span class="nt">&lt;/BookingNote&gt;</span>
+    <span class="nt">&lt;/BookingArrangement&gt;</span>
+  <span class="nt">&lt;/bookingArrangements&gt;</span>
 <span class="nt">&lt;/Line&gt;</span>
 </code></pre></div></div>
 
@@ -2149,6 +2221,24 @@ needs to be added for that too.</li>
     </tr>
     <tr>
       <td>++</td>
+      <td>BoardingRequestMethod</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>RequestMethodTypeListOfEnumerations</td>
+      <td>Methods to Request Stop for boarding in this particular service pattern; Default is noneRequired. +v2.0</td>
+      <td>For request stops (RequestStop true) with boarding. See sheet Haltecode of the mapping excel and uc16_drt.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AlightingRequestMethod</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>RequestMethodTypeListOfEnumerations</td>
+      <td>Methods to Request Stop for alighting in this particular service pattern; Default is noneRequired. +v2.0</td>
+      <td>For request stops (RequestStop true) with alighting. See sheet Haltecode of the mapping excel and uc16_drt.</td>
+    </tr>
+    <tr>
+      <td>++</td>
       <td>StopUse</td>
       <td>optional</td>
       <td>0..1</td>
@@ -2242,6 +2332,12 @@ needs to be added for that too.</li>
         <span class="c">&lt;!-- Indicates that the destination has changed. Superseeds Line or ServiceJourney. Also, there is propagation. E.g if the DestinationDisplay changes on the 4. th stop it is propagated through all stops until a different DestinationDisplay is encountered. --&gt;</span>
       <span class="nt">&lt;/DestinationDisplayRef&gt;</span>
       <span class="nt">&lt;RequestStop&gt;</span>false<span class="nt">&lt;/RequestStop&gt;</span>
+      <span class="nt">&lt;BoardingRequestMethod&gt;</span>stopButton
+        <span class="c">&lt;!-- For request stops (RequestStop true) with boarding. See sheet Haltecode of the mapping excel and uc16_drt. --&gt;</span>
+      <span class="nt">&lt;/BoardingRequestMethod&gt;</span>
+      <span class="nt">&lt;AlightingRequestMethod&gt;</span>stopButton
+        <span class="c">&lt;!-- For request stops (RequestStop true) with alighting. See sheet Haltecode of the mapping excel and uc16_drt. --&gt;</span>
+      <span class="nt">&lt;/AlightingRequestMethod&gt;</span>
       <span class="nt">&lt;StopUse&gt;</span>access
         <span class="c">&lt;!-- All values possible. passthrough is used for Durchfahrt, if such data is delivered. See mapping excel. --&gt;</span>
       <span class="nt">&lt;/StopUse&gt;</span>

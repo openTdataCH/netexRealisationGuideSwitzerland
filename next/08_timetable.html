@@ -860,6 +860,51 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <td>Process associated with a Place, typically giving rise to a delay to the traveller.</td>
       <td>CheckConstraints are used to encode foreseeable delays by check-in or other processes.</td>
     </tr>
+    <tr>
+      <td> </td>
+      <td>FlexibleServiceProperties</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>For a single on-demand journey of a demand responsive (DRT) line. See uc16_drt.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>bookingArrangements</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>bookingArrangements_RelStructure</td>
+      <td>Set of possible Booking Arrangements for stop if different from those for SERVICE JOURNEY. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>BookingArrangementRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>BookingArrangementRefStructure</td>
+      <td> </td>
+      <td>References the BookingArrangement of the Line.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -953,6 +998,14 @@ It holds the <code class="language-plaintext highlighter-rouge">RunTime</code>s 
       <span class="c">&lt;!-- CheckConstraints are used to encode foreseeable delays by check-in or other processes. --&gt;</span>
     <span class="nt">&lt;/CheckConstraint&gt;</span>
   <span class="nt">&lt;/checkConstraints&gt;</span>
+  <span class="nt">&lt;FlexibleServiceProperties</span> <span class="na">id=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- For a single on-demand journey of a demand responsive (DRT) line. See uc16_drt. --&gt;</span>
+    <span class="nt">&lt;bookingArrangements&gt;</span>
+      <span class="nt">&lt;BookingArrangementRef</span> <span class="na">ref=</span><span class="s">"generated"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- References the BookingArrangement of the Line. --&gt;</span>
+      <span class="nt">&lt;/BookingArrangementRef&gt;</span>
+    <span class="nt">&lt;/bookingArrangements&gt;</span>
+  <span class="nt">&lt;/FlexibleServiceProperties&gt;</span>
 <span class="nt">&lt;/ServiceJourney&gt;</span>
 </code></pre></div></div>
 

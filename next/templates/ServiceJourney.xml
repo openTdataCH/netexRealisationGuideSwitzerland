@@ -159,6 +159,18 @@
 									<!-- ch-see -->
 								</CheckConstraint>
 							</checkConstraints>
+							<FlexibleServiceProperties id="generated" version="1">
+								<!-- ch-usage: optional -->
+								<!-- ch-attrs: id version -->
+								<!-- ch-note: For a single on-demand journey of a demand responsive (DRT) line. See uc16_drt. -->
+								<bookingArrangements>
+									<!-- ch-usage: optional -->
+									<BookingArrangementRef ref="generated" versionRef="1">
+										<!-- ch-usage: optional -->
+										<!-- ch-note: References the BookingArrangement of the Line. -->
+									</BookingArrangementRef>
+								</bookingArrangements>
+							</FlexibleServiceProperties>
 						</ServiceJourney>
 					</vehicleJourneys>
 				</TimetableFrame>

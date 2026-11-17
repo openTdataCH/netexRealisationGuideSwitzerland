@@ -1912,6 +1912,69 @@ same document.</li>
       <td> </td>
       <td>Always aligned with BS KI oev-info.ch</td>
     </tr>
+    <tr>
+      <td> </td>
+      <td>bookingArrangements</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>bookingArrangements_RelStructure</td>
+      <td>Set of possible Booking Arrangements for this LINE. +v2.0</td>
+      <td>Booking conditions of a demand responsive (DRT) line. Valid for the whole Line; a lower level (FlexibleServiceProperties, StopPointInJourneyPattern) supersedes it. See uc16_drt.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>BookingArrangement</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>BookingArrangement_VersionStructure</td>
+      <td>Details of the booking arrangements for a given LINE, STOP, SERVICE etc.</td>
+      <td>Referenced from ServiceJourney/FlexibleServiceProperties and StopPointInJourneyPattern with BookingArrangementRef.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>BookingMethods</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>BookingMethodListOfEnumerations</td>
+      <td>Allowed Ways of Making a BOOKING.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>BookWhen</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>PurchaseWhenEnumeration</td>
+      <td>When Booking can be made. +V1.1</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>BookingNote</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Note about booking the FLEXIBLE LINE.</td>
+      <td> </td>
+    </tr>
   </tbody>
 </table>
 
@@ -1919,7 +1982,398 @@ same document.</li>
   <tbody>
     <tr>
       <td><a href="/netexRealisationGuideSwitzerland/next/templates/Line.xml">Line</a></td>
-      <td><code class="language-plaintext highlighter-rouge">LineType</code>, <code class="language-plaintext highlighter-rouge">TransportSubmode</code></td>
+      <td><code class="language-plaintext highlighter-rouge">LineType</code>, <code class="language-plaintext highlighter-rouge">TransportSubmode</code>, <code class="language-plaintext highlighter-rouge">bookingArrangements</code></td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><em>Table: ServiceJourney</em></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sub</th>
+      <th>Element</th>
+      <th>Usage</th>
+      <th>Card</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> </td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>@responsibilitySetRef</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute responsibilitySetRef</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>validityConditions</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>validityConditions_RelStructure</td>
+      <td> </td>
+      <td>Used to specify the temporal conditions for the ServiceJourney, for example that the corresponding journey only applies on particular days of a period (indicated by ValidDayBits, “Verkehrstagebitfeld”).</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AvailabilityConditionRef</td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>AvailabilityConditionRefStructure</td>
+      <td> </td>
+      <td>Only a single AvailabilityConditionRef is allowed.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>keyList</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>KeyListStructure</td>
+      <td> </td>
+      <td>KEY LIST with the KEY VALUEs belonging to the SERVICE JOURNEY. We don’t use it for sjyid!</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>KeyValue</td>
+      <td>optional</td>
+      <td>1..*</td>
+      <td>KeyValueStructure</td>
+      <td>Key value pair for Entity.</td>
+      <td>We use it for tariff codes and region codes PAG mostly.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Key</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Value</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>normalizedString</td>
+      <td>Value for alternative key.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>privateCodes</td>
+      <td>expected</td>
+      <td>1..1</td>
+      <td>PrivateCodesStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>PrivateCode</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>PrivateCodeStructure</td>
+      <td> </td>
+      <td>Mandatory if available for the following types: sjyid and rn. rn is the type used for the Postauto region.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@type</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute type</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TransportMode</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AllPublicTransportModesEnumeration</td>
+      <td>PT MODE of JOURNEY.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TypeOfProductCategoryRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>TypeOfProductCategoryRefStructure</td>
+      <td> </td>
+      <td>Relevant elements are defined in the mapping excel.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TypeOfServiceRef</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>TypeOfServiceRefStructure</td>
+      <td> </td>
+      <td>Should always be ch:1:TypeOfService:1</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>noticeAssignments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>noticeAssignments_RelStructure</td>
+      <td>NOTICEs relevant for the whole GROUP OF SERVICEs.</td>
+      <td>The complete set of all applicable Notices. Attention: Notices may be restricted to a a part of the journey (by defining the first and last stop).</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/NoticeAssignment.html">NoticeAssignment</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>NoticeAssignment_VersionStructure</td>
+      <td>The assignment of a NOTICE showing an exception in a JOURNEY PATTERN, a COMMON SECTION, or a VEHICLE JOURNEY, possibly specifying at which POINT IN JOURNEY PATTERN the validity of the NOTICE starts and ends respectively.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>occupancies</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>OccupancyView_RelStructure</td>
+      <td>OCCUPANCYs associated with this JOURNEY. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/OccupancyView.html">OccupancyView</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>OccupancyView_VersionStructure</td>
+      <td>Type for an Occupancy. Details for OCCUPANCY.</td>
+      <td>Currently not available.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ServiceAlteration</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ServiceAlterationEnumeration</td>
+      <td>Whether journey is as planned, a cancellation or an extra journey. Default is as Planned.</td>
+      <td>Only the value planned is allowed. We might add the others, like cancelled, later.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DepartureTime</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>time</td>
+      <td>Time of Departure.</td>
+      <td>Usually local time. Otherwise we have problems with summer time. See Usage Notes.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>DepartureDayOffset</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>DayOffsetType</td>
+      <td>Day offset if day of departure time of VEHICLE JOURNEY differs from the current OPERATING DAY.</td>
+      <td>0 for current operating day. Could also be negative.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>ServiceJourneyPatternRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>ServiceJourneyPatternRefStructure</td>
+      <td> </td>
+      <td>The reference to the ServiceJourneyPattern.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>TimeDemandTypeRef</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>TimeDemandTypeRefStructure</td>
+      <td> </td>
+      <td>The timing behaviour is defined here. We allow only one TimeDemandType per ServiceJourney.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>VehicleTypeRef</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>VehicleTypeRefStructure</td>
+      <td> </td>
+      <td>Simple VehicleType is used for general type like NF. Otherwise a CompoundTrainRef or TrainRef is expected for formations.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@ref</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute ref</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@nameOfRefClass</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute nameOfRefClass</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>trainNumbers</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>trainNumberRefs_RelStructure</td>
+      <td>TRAIN NUMBERs -= derived through JOURNEY PARTs of a journey - for a multi-part journey only.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TrainNumberRef</td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>TrainNumberRefStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/Destination.html">Destination</a></td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>JourneyEndpointStructure</td>
+      <td>Destination for JOURNEY.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>parts</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>journeyParts_RelStructure</td>
+      <td>JOURNEY PARTs of a journey - for a multi-part journey only.</td>
+      <td>For some use cases e.g. change of Facilities during ServiceJourney</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/JourneyPart.html">JourneyPart</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>JourneyPart_VersionStructure</td>
+      <td>A part of a VEHICLE JOURNEY created according to a specific functional purpose, for instance in situations when vehicle coupling or separating occurs.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>checkConstraints</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>checkConstraints_RelStructure</td>
+      <td>CHECK CONSTRAINTs which apply to SERVICE JOURNEY, e.g. check in time, security time. These are advisory only and not for use in journey planning.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/next/tables/CheckConstraint.html">CheckConstraint</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>CheckConstraint_VersionStructure</td>
+      <td>Process associated with a Place, typically giving rise to a delay to the traveller.</td>
+      <td>CheckConstraints are used to encode foreseeable delays by check-in or other processes.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>FlexibleServiceProperties</td>
+      <td>optional</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>For a single on-demand journey of a demand responsive (DRT) line. See uc16_drt.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@id</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute id</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>@version</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute version</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>bookingArrangements</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>bookingArrangements_RelStructure</td>
+      <td>Set of possible Booking Arrangements for stop if different from those for SERVICE JOURNEY. +v2.0</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>BookingArrangementRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>BookingArrangementRefStructure</td>
+      <td> </td>
+      <td>References the BookingArrangement of the Line.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="/netexRealisationGuideSwitzerland/next/templates/ServiceJourney.xml">ServiceJourney</a></td>
+      <td><code class="language-plaintext highlighter-rouge">FlexibleServiceProperties</code></td>
     </tr>
     <tr>
       <td> </td>
@@ -2062,6 +2516,24 @@ same document.</li>
     </tr>
     <tr>
       <td>++</td>
+      <td>BoardingRequestMethod</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>RequestMethodTypeListOfEnumerations</td>
+      <td>Methods to Request Stop for boarding in this particular service pattern; Default is noneRequired. +v2.0</td>
+      <td>For request stops (RequestStop true) with boarding. See sheet Haltecode of the mapping excel and uc16_drt.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AlightingRequestMethod</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>RequestMethodTypeListOfEnumerations</td>
+      <td>Methods to Request Stop for alighting in this particular service pattern; Default is noneRequired. +v2.0</td>
+      <td>For request stops (RequestStop true) with alighting. See sheet Haltecode of the mapping excel and uc16_drt.</td>
+    </tr>
+    <tr>
+      <td>++</td>
       <td>StopUse</td>
       <td>optional</td>
       <td>0..1</td>
@@ -2139,7 +2611,7 @@ same document.</li>
   <tbody>
     <tr>
       <td><a href="/netexRealisationGuideSwitzerland/next/templates/ServiceJourneyPattern.xml">ServiceJourneyPattern</a></td>
-      <td><code class="language-plaintext highlighter-rouge">ForBoarding</code>, <code class="language-plaintext highlighter-rouge">ForAlighting</code>, <code class="language-plaintext highlighter-rouge">RequestStop</code>, <code class="language-plaintext highlighter-rouge">StopUse</code>, <code class="language-plaintext highlighter-rouge">BookingArrangementRef</code></td>
+      <td><code class="language-plaintext highlighter-rouge">ForBoarding</code>, <code class="language-plaintext highlighter-rouge">ForAlighting</code>, <code class="language-plaintext highlighter-rouge">RequestStop</code>, <code class="language-plaintext highlighter-rouge">BoardingRequestMethod</code>, <code class="language-plaintext highlighter-rouge">AlightingRequestMethod</code>, <code class="language-plaintext highlighter-rouge">StopUse</code>, <code class="language-plaintext highlighter-rouge">BookingArrangementRef</code></td>
     </tr>
     <tr>
       <td> </td>
@@ -2300,6 +2772,15 @@ same document.</li>
       <td>Classification of GROUP FACILITY type - TPEG pti23.</td>
       <td> </td>
     </tr>
+    <tr>
+      <td> </td>
+      <td>ServiceReservationFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>ServiceReservationFacilityListOfEnumerations</td>
+      <td>List of RESERVATION FACILITies UIC 7037 Code list.</td>
+      <td>Reservation offers. Values in sheet Angebote of the mapping excel.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -2307,7 +2788,7 @@ same document.</li>
   <tbody>
     <tr>
       <td><a href="/netexRealisationGuideSwitzerland/next/templates/ServiceFacilitySet.xml">ServiceFacilitySet</a></td>
-      <td>Facilities, <code class="language-plaintext highlighter-rouge">GroupBookingFacility</code></td>
+      <td>Facilities, <code class="language-plaintext highlighter-rouge">GroupBookingFacility</code>, <code class="language-plaintext highlighter-rouge">ServiceReservationFacilityList</code></td>
     </tr>
     <tr>
       <td> </td>
@@ -3800,11 +4281,11 @@ same document.</li>
   <tbody>
     <tr>
       <td><a href="./examples/04_NeTEx_CH_DRT_Line_50.110.xml">04_NeTEx_CH_DRT_Line_50.110</a></td>
-      <td><code class="language-plaintext highlighter-rouge">BookingArrangement</code> on the <code class="language-plaintext highlighter-rouge">Line</code>, one on-demand journey with <code class="language-plaintext highlighter-rouge">FlexibleServiceProperties</code>.</td>
+      <td>Swiss DRT type 1 (<code class="language-plaintext highlighter-rouge">LineType</code> <code class="language-plaintext highlighter-rouge">flexible</code>, <code class="language-plaintext highlighter-rouge">BusSubmode</code> <code class="language-plaintext highlighter-rouge">demandAndResponseBus</code>), <code class="language-plaintext highlighter-rouge">BookingArrangement</code> on the <code class="language-plaintext highlighter-rouge">Line</code>, one on-demand journey with <code class="language-plaintext highlighter-rouge">FlexibleServiceProperties</code>.</td>
     </tr>
     <tr>
       <td><a href="./examples/05_NeTEx_CH_DRT_Line_Dependent_On_Passengers_At_Start.xml">05_NeTEx_CH_DRT_Line_Dependent_On_Passengers_At_Start</a></td>
-      <td>No reservation; passengers can only alight after the first stop (<code class="language-plaintext highlighter-rouge">ForBoarding</code> <code class="language-plaintext highlighter-rouge">false</code>), <code class="language-plaintext highlighter-rouge">Notice</code>.</td>
+      <td>No reservation; passengers can only alight after the first stop (<code class="language-plaintext highlighter-rouge">ForBoarding</code> <code class="language-plaintext highlighter-rouge">false</code>), <code class="language-plaintext highlighter-rouge">Notice</code>. Group reservation as <code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code> (<code class="language-plaintext highlighter-rouge">reservationsCompulsoryForGroups</code>) and <code class="language-plaintext highlighter-rouge">Notice</code>.</td>
     </tr>
   </tbody>
 </table>
