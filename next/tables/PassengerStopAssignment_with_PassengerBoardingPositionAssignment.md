@@ -13,5 +13,5 @@ Stop assignments if formation is known.
 |  | passengerBoardingPositionAssignments | optional | 0..* | passengerBoardingPositionAssignments_RelStructure | Train stop assignments elements to use for which SCHEDULED STOP POINT is to be assigned. +v2.0 | Relevant for formations assigned to positions at quays. |
 | + | PassengerBoardingPositionAssignment | optional | 1..1 | PassengerBoardingPositionAssignment_VersionStructure | The default allocation of a SCHEDULED STOP POINT to a specific STOP PLACE, and also possibly a QUAY and BOARDING POSITION. NB Rebmed from TRAIN STOP ASSIGNMENT in v2. |  |
 | ++ | Description | optional | 0..1 | MultilingualString |  |  |
-| ++ | ScheduledStopPointRef | mandatory | 0..1 | ScheduledStopPointRefStructure |  | This one needs to be on the sector level. |
+| ++ | ScheduledStopPointRef | mandatory | 0..1 | ScheduledStopPointRefStructure |  | References the ScheduledStopPoint of the platform (Gleis). No ScheduledStopPoints are created for sectors; the sector is given by the QuayRef of the PassengerStopAssignment. |
 | ++ | TrainComponentRef | expected | 0..1 | TrainComponentRefStructure |  | Map to the relevant TrainComponent |

@@ -1407,7 +1407,7 @@ class ServiceJourney {
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
       <td> </td>
-      <td>This one needs to be on the sector level.</td>
+      <td>References the ScheduledStopPoint of the platform (Gleis). No ScheduledStopPoints are created for sectors; the sector is given by the QuayRef of the PassengerStopAssignment.</td>
     </tr>
     <tr>
       <td>++</td>
@@ -1439,7 +1439,7 @@ class ServiceJourney {
     <span class="nt">&lt;PassengerBoardingPositionAssignment</span> <span class="na">id=</span><span class="s">"pbpa20"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
       <span class="nt">&lt;Description&gt;</span>Assign coach 5 to sector B<span class="nt">&lt;/Description&gt;</span>
       <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7492:0:460848"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-        <span class="c">&lt;!-- This one needs to be on the sector level. --&gt;</span>
+        <span class="c">&lt;!-- References the ScheduledStopPoint of the platform (Gleis). No ScheduledStopPoints are created for sectors; the sector is given by the QuayRef of the PassengerStopAssignment. --&gt;</span>
       <span class="nt">&lt;/ScheduledStopPointRef&gt;</span>
       <span class="nt">&lt;TrainComponentRef</span> <span class="na">ref=</span><span class="s">"bbd:trncmp_448_01"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
         <span class="c">&lt;!-- Map to the relevant TrainComponent --&gt;</span>

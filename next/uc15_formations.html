@@ -339,7 +339,7 @@ class TrainInCompoundTrain {
 </code></pre>
 
 <h2 id="example">Example</h2>
-<p>Check the example we did https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/src/examples/20_NeTEx_Interlaken_Spiez_Formation.xml</p>
+<p>See <a href="./examples/20_NeTEx_Interlaken_Spiez_Formation.xml">example 20</a>.</p>
 
 <p>We have two important parts. Firstly, the formation itself as part of <code class="language-plaintext highlighter-rouge">vehicleTypes</code> in the <code class="language-plaintext highlighter-rouge">TimetableFrame</code>:</p>
 
@@ -347,7 +347,7 @@ class TrainInCompoundTrain {
 &lt;CompoundTrain version="1" id="compoundtrain"&gt;
 	&lt;Name&gt;4231&lt;/Name&gt;
 	&lt;Description&gt;2212 - 2122&lt;/Description&gt;
-	&lt;SelfPropelled&gt; true&lt;/SelfPropelled&gt;
+	&lt;SelfPropelled&gt;true&lt;/SelfPropelled&gt;
 	&lt;components&gt;
 		&lt;TrainInCompoundTrain version="1" id="TICT1"&gt;
 			&lt;TrainRef version="1" ref="Train1"/&gt;
@@ -360,11 +360,10 @@ class TrainInCompoundTrain {
 	&lt;/components&gt;
 &lt;/CompoundTrain&gt;
 &lt;Train version="1" id="Train1"&gt;
-	&lt;Name&gt;blabla&lt;/Name&gt;
 	&lt;Description&gt;2212&lt;/Description&gt;
-	&lt;SelfPropelled&gt; true&lt;/SelfPropelled&gt;
+	&lt;SelfPropelled&gt;true&lt;/SelfPropelled&gt;
 	&lt;components&gt;
-		&lt;TrainComponent version="1" id="bbd:trncmp_447_01" order="1"&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_447_01"&gt;
 			&lt;Label&gt;1&lt;/Label&gt;
 			&lt;TrainElement version="1" id="bbd:trne_447_01"&gt;
 				&lt;Name/&gt;
@@ -378,7 +377,7 @@ class TrainInCompoundTrain {
 				&lt;/facilities&gt;
 			&lt;/TrainElement&gt;
 		&lt;/TrainComponent&gt;
-		&lt;TrainComponent version="1" id="bbd:trncmp_447_02" order="2"&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_447_02"&gt;
 			&lt;Label&gt;2&lt;/Label&gt;
 			&lt;TrainElement version="1" id="bbd:trne_447_02"&gt;
 				&lt;Name/&gt;
@@ -396,7 +395,7 @@ class TrainInCompoundTrain {
 				&lt;ThroughAccess&gt;openEntrance&lt;/ThroughAccess&gt;
 			&lt;/ForwardCoupling&gt;
 		&lt;/TrainComponent&gt;
-		&lt;TrainComponent version="1" id="bbd:trncmp_447_03" order="3"&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_447_03"&gt;
 			&lt;Label&gt;3&lt;/Label&gt;
 			&lt;TrainElement version="1" id="bbd:trne_447_03"&gt;
 				&lt;Name/&gt;
@@ -412,7 +411,7 @@ class TrainInCompoundTrain {
 				&lt;ThroughAccess&gt;openEntrance&lt;/ThroughAccess&gt;
 			&lt;/ForwardCoupling&gt;
 		&lt;/TrainComponent&gt;
-		&lt;TrainComponent version="1" id="bbd:trncmp_447_04" order="4"&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_447_04"&gt;
 			&lt;Label&gt;4&lt;/Label&gt;
 			&lt;TrainElement version="1" id="bbd:trne_447_04"&gt;
 				&lt;Name/&gt;
@@ -433,11 +432,10 @@ class TrainInCompoundTrain {
 	&lt;/components&gt;
 &lt;/Train&gt;
 &lt;Train version="1" id="Train2"&gt;
-	&lt;Name&gt;blabla &lt;/Name&gt;
-	&lt;Description&gt;blabla&lt;/Description&gt;
-	&lt;SelfPropelled&gt; true&lt;/SelfPropelled&gt;
+	&lt;Description&gt;2122&lt;/Description&gt;
+	&lt;SelfPropelled&gt;true&lt;/SelfPropelled&gt;
 	&lt;components&gt;
-		&lt;TrainComponent version="1" id="bbd:trncmp_448_01" order="1"&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_448_01"&gt;
 			&lt;Label&gt;5&lt;/Label&gt;
 			&lt;TrainElement version="1" id="bbd:trne_448_01"&gt;
 				&lt;Name/&gt;
@@ -455,7 +453,7 @@ class TrainInCompoundTrain {
 				&lt;ThroughAccess&gt;noThroughAccess&lt;/ThroughAccess&gt;
 			&lt;/ForwardCoupling&gt;
 		&lt;/TrainComponent&gt;
-		&lt;TrainComponent version="1" id="bbd:trncmp_448_02" order="2"&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_448_02"&gt;
 			&lt;Label&gt;6&lt;/Label&gt;
 			&lt;TrainElement version="1" id="bbd:trne_448_02"&gt;
 				&lt;Name/&gt;
@@ -471,7 +469,7 @@ class TrainInCompoundTrain {
 				&lt;ThroughAccess&gt;openEntrance&lt;/ThroughAccess&gt;
 			&lt;/ForwardCoupling&gt;
 		&lt;/TrainComponent&gt;
-		&lt;TrainComponent version="1" id="bbd:trncmp_448_03" order="3"&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_448_03"&gt;
 			&lt;Label&gt;7&lt;/Label&gt;
 			&lt;TrainElement version="1" id="bbd:trne_448_03"&gt;
 				&lt;Name/&gt;
@@ -489,7 +487,7 @@ class TrainInCompoundTrain {
 				&lt;ThroughAccess&gt;openEntrance&lt;/ThroughAccess&gt;
 			&lt;/ForwardCoupling&gt;
 		&lt;/TrainComponent&gt;
-		&lt;TrainComponent version="1" id="bbd:trncmp_448_04" order="4"&gt;
+		&lt;TrainComponent version="1" id="bbd:trncmp_448_04"&gt;
 			&lt;Label&gt;8&lt;/Label&gt;
 			&lt;TrainElement version="1" id="bbd:trne_448_04"&gt;
 				&lt;Name/&gt;
@@ -546,10 +544,32 @@ class TrainInCompoundTrain {
 </code></pre></div></div>
 <h2 id="usage-notes">Usage Notes</h2>
 <ul>
-  <li>We intend to use a version without <code class="language-plaintext highlighter-rouge">Block</code> and <code class="language-plaintext highlighter-rouge">CompoundTrain</code>.</li>
-  <li>We don’t invent additional <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s for the sectors.</li>
-  <li>We have a special example for when the platform is too short on a given stop: <strong>LATER</strong></li>
+  <li>Formations are modelled with <code class="language-plaintext highlighter-rouge">CompoundTrain</code> (referenced from the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> with <code class="language-plaintext highlighter-rouge">CompoundTrainRef</code>) and <code class="language-plaintext highlighter-rouge">Train</code>. <code class="language-plaintext highlighter-rouge">Block</code> is not used.</li>
+  <li>We don’t invent additional <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s for the sectors. The <code class="language-plaintext highlighter-rouge">ScheduledStopPointRef</code> of a <code class="language-plaintext highlighter-rouge">PassengerBoardingPositionAssignment</code> references the <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> of the platform; the sector is given by the <code class="language-plaintext highlighter-rouge">QuayRef</code> of the <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code>.</li>
+  <li>If the quay is too short for the full train, the train components whose doors stay closed get a <code class="language-plaintext highlighter-rouge">PassengerBoardingPositionAssignment</code> with <code class="language-plaintext highlighter-rouge">IsAllowed</code> <code class="language-plaintext highlighter-rouge">false</code> (see <a href="#quay-too-short-for-the-full-train">Quay too short for the full train</a>).</li>
 </ul>
+
+<h2 id="quay-too-short-for-the-full-train">Quay too short for the full train</h2>
+<p>In Furna (RhB), the quay (track 1) is too short for the RE 1014 (Klosters Platz – Landquart, line RE13), which runs with two train parts. Only the doors of the front train part open. HRDF only delivers this as info text 000089875: “Bitte benützen Sie für den Ausstieg in Furna den vordersten Zugteil.”</p>
+
+<p>In NeTEx, the <code class="language-plaintext highlighter-rouge">PassengerStopAssignment</code> of the formation in Furna contains one <code class="language-plaintext highlighter-rouge">PassengerBoardingPositionAssignment</code> per train component of the rear train part, with <code class="language-plaintext highlighter-rouge">IsAllowed</code> <code class="language-plaintext highlighter-rouge">false</code>. The <code class="language-plaintext highlighter-rouge">ScheduledStopPointRef</code> references the <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> of track 1 in Furna. The info text is additionally delivered as <code class="language-plaintext highlighter-rouge">Notice</code>.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;PassengerStopAssignment</span> <span class="na">id=</span><span class="s">"ch:1:PassengerStopAssignment:8509061:formation"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;StopPlaceRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:9061"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;QuayRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:9061:0:487660"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;passengerBoardingPositionAssignments&gt;</span>
+    <span class="nt">&lt;PassengerBoardingPositionAssignment</span> <span class="na">id=</span><span class="s">"ch:1:PassengerBoardingPositionAssignment:8509061:4"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Description&gt;</span>Coach 4: doors stay closed in Furna<span class="nt">&lt;/Description&gt;</span>
+      <span class="nt">&lt;ScheduledStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:9061:0:487660"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;TrainComponentRef</span> <span class="na">ref=</span><span class="s">"ch:1:TrainComponent:RE1014-2-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;IsAllowed&gt;</span>false<span class="nt">&lt;/IsAllowed&gt;</span>
+    <span class="nt">&lt;/PassengerBoardingPositionAssignment&gt;</span>
+    <span class="c">&lt;!-- ... coaches 5 and 6 --&gt;</span>
+  <span class="nt">&lt;/passengerBoardingPositionAssignments&gt;</span>
+<span class="nt">&lt;/PassengerStopAssignment&gt;</span>
+</code></pre></div></div>
+
+<p>See <a href="./examples/24_NeTEx_CH_RhB_RE1014_Furna_Quay_Too_Short.xml">example 24</a>. The formation itself (number of coaches, classes) is illustrative, as HRDF contains no formation data.</p>
 
     </main>
   </div>
