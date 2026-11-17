@@ -509,9 +509,10 @@ classDiagram
 | Swiss profile definition | Template | Relevant content |
 |--------------------------|----------|------------------|
 | [ServiceFrame](../site/tables/ServiceFrame.md), [ServiceFrame_NETWORK_OFFER](../site/tables/ServiceFrame_NETWORK_OFFER.md) | [ServiceFrame](./templates/ServiceFrame.xml), [ServiceFrame_NETWORK_OFFER](./templates/ServiceFrame_NETWORK_OFFER.xml) | `Line` |
-| [Line](../site/tables/Line.md) | [Line](./templates/Line.xml) | `LineType`, `TransportSubmode` |
-| [ServiceJourneyPattern](../site/tables/ServiceJourneyPattern.md) | [ServiceJourneyPattern](./templates/ServiceJourneyPattern.xml) | `ForBoarding`, `ForAlighting`, `RequestStop`, `StopUse`, `BookingArrangementRef` |
-| [ServiceFacilitySet](../site/tables/ServiceFacilitySet.md) | [ServiceFacilitySet](./templates/ServiceFacilitySet.xml) | Facilities, `GroupBookingFacility` |
+| [Line](../site/tables/Line.md) | [Line](./templates/Line.xml) | `LineType`, `TransportSubmode`, `bookingArrangements` |
+| [ServiceJourney](../site/tables/ServiceJourney.md) | [ServiceJourney](./templates/ServiceJourney.xml) | `FlexibleServiceProperties` |
+| [ServiceJourneyPattern](../site/tables/ServiceJourneyPattern.md) | [ServiceJourneyPattern](./templates/ServiceJourneyPattern.xml) | `ForBoarding`, `ForAlighting`, `RequestStop`, `BoardingRequestMethod`, `AlightingRequestMethod`, `StopUse`, `BookingArrangementRef` |
+| [ServiceFacilitySet](../site/tables/ServiceFacilitySet.md) | [ServiceFacilitySet](./templates/ServiceFacilitySet.xml) | Facilities, `GroupBookingFacility`, `ServiceReservationFacilityList` |
 | [Notice](../site/tables/Notice.md) | [Notice](./templates/Notice.xml) | Passenger information |
 | [StopPlace](../site/tables/StopPlace.md) | [StopPlace](./templates/StopPlace.xml) | `StopPlaceType` |
 | [FlexibleStopPlace](../site/tables/FlexibleStopPlace.md), [SiteFrame](../site/tables/SiteFrame.md) | [FlexibleStopPlace](./templates/FlexibleStopPlace.xml), [SiteFrame](./templates/SiteFrame.xml) | Service area (`FlexibleArea`) |
