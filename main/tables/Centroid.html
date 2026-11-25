@@ -238,7 +238,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td> </td>
       <td>Global or national location</td>
     </tr>
     <tr>
@@ -247,7 +247,7 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>LocationStructure</td>
-      <td>The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates).</td>
+      <td> </td>
       <td>The main coordinates are given as <strong>WGS84</strong>.</td>
     </tr>
     <tr>
@@ -256,7 +256,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>LongitudeType</td>
-      <td>Longitude from Greenwich Meridian. -180 (East) to +180 (West).</td>
+      <td>Longitude from Greenwich Meridian. -180 (West) to +180 (East). Decimal degrees. eg 2.356</td>
       <td> </td>
     </tr>
     <tr>
@@ -265,7 +265,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>LatitudeType</td>
-      <td>Latitude from equator. -90 (South) to +90 (North).</td>
+      <td>Latitude from equator. -90 (South) to +90 (North). Decimal degrees. eg 56.356</td>
       <td> </td>
     </tr>
     <tr>
@@ -274,16 +274,16 @@
       <td>optional</td>
       <td>0..1</td>
       <td>AltitudeType</td>
-      <td>Altitude.</td>
+      <td>Altitude (metres) Above sea level.</td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>pos</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>gml:DirectPositionType</td>
-      <td>Direct position instances hold the coordinates for a position within some coordinate reference system (CRS). Since direct positions, as data types, will often be included in larger objects (such as geometry elements) that have references to CRS, the srsName attribute will in general be missing, if this particular direct position is included in a larger element with such a reference to a CRS. In this case, the CRS is implicitly assumed to take on the value of the containing object’s CRS. if no srsName attribute is given, the CRS shall be specified as part of the larger context this geometry element is part of, typically a geometric object like a point, curve, etc.</td>
+      <td> </td>
       <td>EPSG:2056 is LV95. We use it in the INFO+ export.</td>
     </tr>
     <tr>

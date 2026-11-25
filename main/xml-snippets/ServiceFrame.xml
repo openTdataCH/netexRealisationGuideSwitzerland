@@ -43,6 +43,11 @@
     <PassengerStopAssignment id="generated" version="1">
       <!-- Make the link between timetables and site model. -->
     </PassengerStopAssignment>
+    <FlexibleStopAssignment id="generated" version="1">
+      <!-- For service areas (Bediengebiete) of demand responsive services. -->
+      <ScheduledStopPointRef ref="generated" version="1"/>
+      <FlexibleStopPlaceRef ref="generated" version="1"/>
+    </FlexibleStopAssignment>
   </stopAssignments>
   <timingLinks>
     <!-- We use TimingLink as the time behaviour between two ScheduledStopPoints -->

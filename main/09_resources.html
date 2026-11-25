@@ -426,7 +426,7 @@
       <td>vehicleTypes</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>transportTypeRefs_RelStructure</td>
+      <td>vehicleTypesInFrame_RelStructure</td>
       <td>VEHICLE TYPEs in frame.</td>
       <td>The VehicleType here are used for generic information like lowfloor and not for formation information</td>
     </tr>
@@ -596,7 +596,7 @@ We use this element to  describe the different roles of the participating compan
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Explanation of RESPONSIBILITY SET.</td>
       <td> </td>
     </tr>
     <tr>
@@ -612,9 +612,9 @@ We use this element to  describe the different roles of the participating compan
       <td> </td>
       <td>PrivateCode</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>DEPRECATED - use privateCodes. -v2.0</td>
       <td> </td>
     </tr>
     <tr>
@@ -630,7 +630,7 @@ We use this element to  describe the different roles of the participating compan
       <td>+</td>
       <td>ResponsibilityRoleAssignment</td>
       <td>mandatory</td>
-      <td>0..*</td>
+      <td>1..*</td>
       <td>ResponsibilityRoleAssignment_VersionedChildStructure</td>
       <td>Assignment of a specific RESPONSIBILITY ROLE to a specific organisation and/or subdivision.</td>
       <td> </td>
@@ -650,7 +650,7 @@ We use this element to  describe the different roles of the participating compan
       <td>mandatory</td>
       <td>0..1</td>
       <td>OrganisationRefStructure</td>
-      <td>Responsible ORGANISATION.</td>
+      <td> </td>
       <td> </td>
     </tr>
   </tbody>
@@ -819,7 +819,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of TYPE OF VALUE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -933,9 +933,9 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td> </td>
       <td>privateCodes</td>
       <td>mandatory</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodesStructure</td>
-      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -944,7 +944,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
       <td>SBOID and GO (busines organisation) mandatory if they exist.</td>
     </tr>
     <tr>
@@ -953,7 +953,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -962,7 +962,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Short Name for TYPE OF VALUE.</td>
+      <td> </td>
       <td>there may be cases, when it can’t be set. However, when no sboid is there, then ShortName must be filled (especially for foreign operators.</td>
     </tr>
     <tr>
@@ -971,7 +971,7 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>optional</td>
       <td>0..1</td>
       <td>blockParts_RelStructure</td>
-      <td>Parts of the ORGANISATION.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -996,9 +996,9 @@ For ServiceJourneys provided in other countries or partially in Switzerland, the
       <td>++++</td>
       <td>PrivateCode</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td>DEPRECATED - use privateCodes. -v2.0</td>
       <td> </td>
     </tr>
   </tbody>
@@ -1101,7 +1101,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>expected</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of TYPE OF VALUE.</td>
       <td> </td>
     </tr>
     <tr>
@@ -1134,7 +1134,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
   </tbody>
 </table>
 
-<p><em>→ <a href="../xcore/netex/elements/TypesOfPlace.html">General NeTEx definition</a></em></p>
+<p><em>→ <a href="../xcore/netex/elements/TypeOfPlace.html">General NeTEx definition</a></em></p>
 
 <h3 id="example-4">Example</h3>
 
@@ -1205,9 +1205,9 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td> </td>
       <td>Extensions</td>
       <td>expected</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>ExtensionsStructure</td>
-      <td>Extensions to schema. (Wrapper tag used to avoid problems with handling of optional ‘any’ by some validators).</td>
+      <td> </td>
       <td>Two elements used in HRDF for ordering facilities</td>
     </tr>
     <tr>
@@ -1216,7 +1216,7 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>expected</td>
       <td>0..1</td>
       <td>InterchangePriorityType</td>
-      <td>Priority to assign to this INTERCHANGE.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -1318,6 +1318,15 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
       <td>Classification of GROUP FACILITY type - TPEG pti23.</td>
       <td> </td>
     </tr>
+    <tr>
+      <td> </td>
+      <td>ServiceReservationFacilityList</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>ServiceReservationFacilityListOfEnumerations</td>
+      <td>List of RESERVATION FACILITies UIC 7037 Code list.</td>
+      <td>Reservation offers. Values in sheet Angebote of the mapping excel.</td>
+    </tr>
   </tbody>
 </table>
 
@@ -1347,6 +1356,9 @@ a different <code class="language-plaintext highlighter-rouge">OperatorRef</code
   <span class="nt">&lt;SanitaryFacilityList&gt;</span>toilet<span class="nt">&lt;/SanitaryFacilityList&gt;</span>
   <span class="nt">&lt;CouchetteFacilityList&gt;</span>wheelchair<span class="nt">&lt;/CouchetteFacilityList&gt;</span>
   <span class="nt">&lt;GroupBookingFacility&gt;</span>groupsAllowed<span class="nt">&lt;/GroupBookingFacility&gt;</span>
+  <span class="nt">&lt;ServiceReservationFacilityList&gt;</span>reservationsCompulsory
+    <span class="c">&lt;!-- Reservation offers. Values in sheet Angebote of the mapping excel. --&gt;</span>
+  <span class="nt">&lt;/ServiceReservationFacilityList&gt;</span>
 <span class="nt">&lt;/ServiceFacilitySet&gt;</span>
 </code></pre></div></div>
 
@@ -1432,7 +1444,7 @@ referenced to define facilities of a site.</p>
       <td>optional</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -1482,66 +1494,57 @@ referenced to define facilities of a site.</p>
     </tr>
     <tr>
       <td> </td>
-      <td>AssistanceFacilityList</td>
-      <td>optional</td>
+      <td>AccessibilityInfoFacilityList</td>
+      <td>expected</td>
       <td>0..1</td>
-      <td>AssistanceFacilityListOfEnumerations</td>
-      <td>List of ASSISTANCE FACILITies.</td>
-      <td> </td>
+      <td>AccessibilityInfoFacilityListOfEnumerations</td>
+      <td>List of ACCESSIBILITY INFORMATION FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (<code class="language-plaintext highlighter-rouge">visualDisplays</code>: Kundeninformation Haltestelle - “Statisch/optisch; <code class="language-plaintext highlighter-rouge">audioInformation</code>: Kundeninformation - “Akustisch”). Note that AccessibilityAssessment features <code class="language-plaintext highlighter-rouge">AudibleSignalsAvailable</code> and <code class="language-plaintext highlighter-rouge">VisualSignsAvailable</code>, the latter implying dynamic visual information (Kundeninformation Haltestelle - “Dynamisch/optisch”).</td>
     </tr>
     <tr>
       <td> </td>
-      <td>AccessibilityToolList</td>
-      <td>optional</td>
+      <td>AssistanceFacilityList</td>
+      <td>expected</td>
       <td>0..1</td>
-      <td>AccessibilityToolListOfEnumerations</td>
-      <td>List of TYPEs of ACCESSIBILITY TOOLs.</td>
+      <td>AssistanceFacilityListOfEnumerations</td>
+      <td>List of ASSISTANCE FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Autonome Benutzbarkeit - “Hilfestellung durch Personal” sets <code class="language-plaintext highlighter-rouge">boardingAssistance personalAssistance wheelchairAssistance</code>).</td>
+    </tr>
+    <tr>
       <td> </td>
+      <td>MobilityFacilityList</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>MobilityFacilityListOfEnumerations</td>
+      <td>List of MOBILITY FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (<code class="language-plaintext highlighter-rouge">suitableForWheelchair</code>: Autonome Benutzbarkeit - “Voraussetzungen erfüllt”; <code class="language-plaintext highlighter-rouge">boardingAssistance</code>: AutonomeBenutzbarkeit - “Hilfestellung durch Personal”; <code class="language-plaintext highlighter-rouge">stepFreeAccess</code>: Haltekante - “Niveaugleicher Einstieg”;<code class="language-plaintext highlighter-rouge">tactilePlatformEdges</code>: Haltekante - “Taktil-visuelle Markierung Perronfläche”). Additional allowed value if no data in ATLAS: <code class="language-plaintext highlighter-rouge">unknown</code>.</td>
     </tr>
     <tr>
       <td> </td>
       <td>SanitaryFacilityList</td>
-      <td>optional</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>SanitaryFacilityListOfEnumerations</td>
       <td>List of SANITARY FACILITies.</td>
-      <td> </td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Toiletten - “Rollstuhlgängige Toilette). Presence or absence of <code class="language-plaintext highlighter-rouge">wheelchairAccessToilet toilet</code>.</td>
     </tr>
     <tr>
       <td> </td>
-      <td>TicketingServiceFacilityList</td>
-      <td>optional</td>
+      <td>TicketingFacilityList</td>
+      <td>expected</td>
       <td>0..1</td>
-      <td>TicketingServiceFacilityListOfEnumerations</td>
-      <td>List of TICKETING SERVICE FACILITies, e.g. purchase, collection. top up.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>EmergencyServiceList</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>EmergencyServiceListOfEnumerations</td>
-      <td>List of EMERGENCY SERVICE FACILITies.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>LuggageLockerFacilityList</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>LuggageLockerFacilityListOfEnumerations</td>
-      <td>List of LUGGAGE LOCKER FACILITies.</td>
-      <td> </td>
+      <td>TicketingFacilityListOfEnumerations</td>
+      <td>List of TICKETING FACILITies.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Billettautomat - “Billettautomat vorhanden”, and Schalter present, respectively). Presence or absence of the following facilities should be signalled: <code class="language-plaintext highlighter-rouge">unknown ticketMachines ticketOffice</code>.</td>
     </tr>
     <tr>
       <td> </td>
       <td>ParkingFacilityList</td>
-      <td>optional</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>ParkingFacilityListOfEnumerations</td>
       <td>List of PARKING FACILITies.</td>
-      <td> </td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Parkplatz - Parkplätze). The following should be signalled: <code class="language-plaintext highlighter-rouge">carPark unknown</code>.</td>
     </tr>
   </tbody>
 </table>
@@ -1566,13 +1569,24 @@ referenced to define facilities of a site.</p>
       <span class="c">&lt;!-- All necessary languages are modeled as a Text element --&gt;</span>
     <span class="nt">&lt;/Text&gt;</span>
   <span class="nt">&lt;/Description&gt;</span>
-  <span class="nt">&lt;AssistanceFacilityList&gt;</span>personalAssistance information boardingAssistance<span class="nt">&lt;/AssistanceFacilityList&gt;</span>
-  <span class="nt">&lt;AccessibilityToolList&gt;</span>audioNavigator<span class="nt">&lt;/AccessibilityToolList&gt;</span>
-  <span class="nt">&lt;SanitaryFacilityList&gt;</span>toilet babyChange<span class="nt">&lt;/SanitaryFacilityList&gt;</span>
-  <span class="nt">&lt;TicketingServiceFacilityList&gt;</span>all reservations<span class="nt">&lt;/TicketingServiceFacilityList&gt;</span>
-  <span class="nt">&lt;EmergencyServiceList&gt;</span>police firstAid<span class="nt">&lt;/EmergencyServiceList&gt;</span>
-  <span class="nt">&lt;LuggageLockerFacilityList&gt;</span>lockers<span class="nt">&lt;/LuggageLockerFacilityList&gt;</span>
-  <span class="nt">&lt;ParkingFacilityList&gt;</span>parkAndRidePark<span class="nt">&lt;/ParkingFacilityList&gt;</span>
+  <span class="nt">&lt;AccessibilityInfoFacilityList&gt;</span>audioInformation visualDisplays
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (`visualDisplays`: Kundeninformation Haltestelle - "Statisch/optisch; `audioInformation`: Kundeninformation - "Akustisch"). Note that AccessibilityAssessment features `AudibleSignalsAvailable` and `VisualSignsAvailable`, the latter implying dynamic visual information (Kundeninformation Haltestelle - "Dynamisch/optisch"). --&gt;</span>
+  <span class="nt">&lt;/AccessibilityInfoFacilityList&gt;</span>
+  <span class="nt">&lt;AssistanceFacilityList&gt;</span>personalAssistance boardingAssistance wheelchairAssistance
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Autonome Benutzbarkeit - "Hilfestellung durch Personal" sets `boardingAssistance personalAssistance wheelchairAssistance`). --&gt;</span>
+  <span class="nt">&lt;/AssistanceFacilityList&gt;</span>
+  <span class="nt">&lt;MobilityFacilityList&gt;</span>
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (`suitableForWheelchair`: Autonome Benutzbarkeit - "Voraussetzungen erfüllt"; `boardingAssistance`: AutonomeBenutzbarkeit - "Hilfestellung durch Personal"; `stepFreeAccess`: Haltekante - "Niveaugleicher Einstieg";`tactilePlatformEdges`: Haltekante - "Taktil-visuelle Markierung Perronfläche"). Additional allowed value if no data in ATLAS: `unknown`. --&gt;</span>
+  <span class="nt">&lt;/MobilityFacilityList&gt;</span>
+  <span class="nt">&lt;SanitaryFacilityList&gt;</span>toilet wheelchairAccessToilet
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Toiletten - "Rollstuhlgängige Toilette). Presence or absence of `wheelchairAccessToilet toilet`. --&gt;</span>
+  <span class="nt">&lt;/SanitaryFacilityList&gt;</span>
+  <span class="nt">&lt;TicketingFacilityList&gt;</span>ticketMachines ticketOffice
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden", and Schalter present, respectively). Presence or absence of the following facilities should be signalled: `unknown ticketMachines ticketOffice`. --&gt;</span>
+  <span class="nt">&lt;/TicketingFacilityList&gt;</span>
+  <span class="nt">&lt;ParkingFacilityList&gt;</span>carPark
+    <span class="c">&lt;!-- Will be exported from ATLAS for ERA TSI PRM (Parkplatz - Parkplätze). The following should be signalled: `carPark unknown`. --&gt;</span>
+  <span class="nt">&lt;/ParkingFacilityList&gt;</span>
 <span class="nt">&lt;/SiteFacilitySet&gt;</span>
 </code></pre></div></div>
 
@@ -1646,7 +1660,7 @@ referenced to define facilities of a site.</p>
       <td>LowFloor</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Low floor VEHICLES can use stop and be accessible.</td>
       <td> </td>
     </tr>
@@ -1655,7 +1669,7 @@ referenced to define facilities of a site.</p>
       <td>HasLiftOrRamp</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether vehicle has lift or ramp to facilitate wheelchair access.</td>
       <td> </td>
     </tr>
@@ -1664,7 +1678,7 @@ referenced to define facilities of a site.</p>
       <td>HasHoist</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether vehicle has hoist for wheelchair access.</td>
       <td> </td>
     </tr>

@@ -1,59 +1,58 @@
 # Annex: Relevant differences between EPIP, EPIAP and the Swiss realisation guide 2.0
 
-Note: The following list is not necessarily comprehensive.
->**LATER** https://github.com/openTdataCH/netexRealisationGuideSwitzerland/blob/main/docs/A2_annex_comparison_EPIP_EPIAP.md
+> **NOTE**: The following list is not necessarily comprehensive. 
+
 
 ## Main differences
 
-The following lists aim to give an overviiew of all elements related to accessibility information. Most of them are described in EPIAP, while a few are documented in greater detail in Part 1 of NeTEx (in particular, various Services and enumerations). 
+The following lists aim to give an overview of all elements related to accessibility information as they were defined by EPIP/EPIAP. Most of them are described in the EPIAP document, while a few are documented in greater detail in Part 1 of NeTEx (in particular, various Services and enumerations). 
 
-The elements in ***italics*** are the ones that are (tentatively) elected for being included in the Swiss profile. Note that, in contrast, the French profile includes practically the totality of EPIAP. The extension of the Swiss profile to cover accessibility is documented [here](uc09_accessibility.md).
+The elements in ***italics*** are the ones that are part of the Swiss profile. How the Swiss profile covers accessibility is more precisely and extensively documented [here](uc09_accessibility.md).
 
 
 ### AccessibilityAssessment
 
 ***AccessibilityAssessment*** for:
 - ***StopPlace***
-- ***Quay.***
-- ***Entrance***
-- Line - ?
-- NavigationPath
-- ***PathLink***
+- ***Quay***
+- ***StopPlaceEntrance***
+- SitePathLink
 - ***SanitaryEquipment***
 - any SiteElement
 
 ### Basic Orientation
 
-***Level*** (NO, not FR, but EPIAP says mandatory if > 1)
+***Level*** 
 - AccessibilityAssessment
 - ***Description***
 - ***Name***
-- PublicUse
 
-***Entrance*** 
-- **EntranceType**
--  Height 
-- ***IsEntry*** 
-- ***IsExit*** 
+
+Entrance
+- EntranceType
+- Height 
+- IsEntry
+- IsExit
 - IsExternal 
--  ***Width*** 
-- ***checkConstraints*** 
-- ***placeEquipments***
+- Width
+- checkConstraints
+- placeEquipments
 
-***AccessSpace***
+AccessSpace
 
 
 ### Private Mobility
 
 ***Parking***
 - ***ParkingType***
-- ***ParkingVehicleType***
+- ***ParkingUserType***
+- ParkingVehicleType
 - RechargingAvailable
-- Principal***Capacity***
+- PrincipalCapacity
 - TotalCapacity
 - etc.
 
-***VehicleMeetingPoint***
+VehicleMeetingPoint
 
 Crossing 
 - AcousticCrossingAids 
@@ -69,25 +68,22 @@ Crossing
 -  ZebraCrossing 
 
 
-**Path Navigation**
+### Path Navigation
 
-***SitePathLink***
-- ***AccessFeatureType*** 
-- ***AccessibilityAssessment*** 
-- ***AllAreasWheelchair*** 
-- ***AllowedUse*** 
-- Back 
-- ***Covered*** 
-- ***Description*** 
-- ***Distance*** 
+SitePathLink
+- AccessFeatureType
+- AccessibilityAssessment
+- AllAreasWheelchairPassable
+- AllowedUse 
+- Covered 
+- Distance 
 - FlooringType 
-- ***From*** 
-- ***Gated*** 
+- Gated 
 - Gradient
 - LeftSideBorder
 - Lighting 
-- ***MinimumWidth*** 
-- ***NumberOfSteps*** 
+- MinimumWidth 
+- NumberOfSteps 
 - PassageType 
 - PublicUse 
 - RightSideBorder
@@ -96,15 +92,15 @@ Crossing
 - TiltAngle 
 - TiltType 
 - Towards 
-- ***TransferDuration***
-- ***Transition***
+- TransferDuration
+- Transition
 - checks
 - placeEquipments
 
-***PathLinkEnd***
-- ***EntranceRef***
-- ***LevelRef***
-- ***PlaceRef***
+PathLinkEnd
+- EntranceRef
+- LevelRef
+- PlaceRef
 
 PathLinkSequence
 - Instruction
@@ -112,14 +108,14 @@ PathLinkSequence
 - PathLinkRef
 - Reverse
 
-***PathJunction***
+PathJunction
 - AllAreasWheelchair
 - Covered
 - Gated
 - Label
 - Lighting
 - PublicUse
-- ***SiteComponentRef***
+- SiteComponentRef
 
 ConnectionEnd
 - MobilityRestrictedTravellerDuration
@@ -128,16 +124,14 @@ ConnectionEnd
 NavigationPath
 - AccessibilityAssessment
 - Covered
-- From
-- To
 - Gated
 - Lighting
 - NavigationType
 - TransferDuration
-- pathLinksInSequence
 
-***WalkTransferduration*** (in SiteConnection, DefaultConnection)
-- ***MobilityRestrictedTravellerDuration***
+
+WalkTransferduration (in SiteConnection, DefaultConnection)
+- MobilityRestrictedTravellerDuration
 
 
 
@@ -145,12 +139,12 @@ NavigationPath
 ### Facilities & Equipments
 
 
-***EquipmentPlace*** (in Quay, Entrance, StopPlace (indirecty via `AccessSpace`))
+EquipmentPlace (in Quay, Entrance, StopPlace (indirecty via AccessSpace)
 
 
 any Site
 - ***entrances***
-- ***equipmentPlaces***
+- equipmentPlaces
 - ***levels***
 - ***localServices***
 - ***placeEquipments***
@@ -161,17 +155,17 @@ any SiteElement
 - Covered
 - Gated
 - Lighting
-- facilities
+- ***facilities***
 - etc.
 
 
 any Equipment
 - ***Description***
-- ***Image***
-- ***Name***
+- Image
+- Name
 - ***Note***
-- ***OutOfService***
-- ***TypeOfEquipmentRef***
+- OutOfService
+- TypeOfEquipmentRef
 
 
 EquipmentPosition
@@ -182,50 +176,50 @@ EquipmentPosition
 - YOffset
 
 
-***EntranceEquipment***
+EntranceEquipment
 - AcousticSensor 
 - AudioOrVideolntercom 
 - AudioPassthroughindicator 
-- ***AutomaticDoor***
-- ***Barrier***
-- ***GlassDoor***
-- ***Door*** 
+- AutomaticDoor
+- Barrier
+- GlassDoor
+- Door 
 - DoorstepMark 
-* ***DropKerbOutside*** 
+* DropKerbOutside 
 - EntranceAttention 
 - EntranceRequiresStaffing 
--  ***EntranceRequiresTicket***
-- ***KeptOpen*** 
+- EntranceRequiresTicket
+- KeptOpen 
 - NecessaryForceToOpen 
-- ***NumberOfGates*** 
-- RampDoorbell optional 0:1
-- ***RevolvingDoor*** 
+- NumberOfGates 
+- RampDoorbell
+- RevolvingDoor 
 - TurningSpacePosition 
-- ***WheelchairPassable*** 
+- WheelchairPassable 
 - WheelchairTurningCircle
 - etc.
 
 
 
-***EscalatorEquipment***
-- ***DogsMustBeCarried***
+EscalatorEquipment
+- DogsMustBeCarried
 - TactileActuators
 - etc.
 
 
-***LiftEquipment***
-- ***AudioAnnouncements*** 
-- ***Automatic***
-- ***BrailleButtons***
+LiftEquipment
+- AudioAnnouncements 
+- Automatic
+- BrailleButtons
 - ButtonsHeight 
 - CallButtonHeight
-- ***Depth*** 
+- Depth 
 - DirectionButtonHeight 
 - ExternalFloorSelection 
 - GroundMarkalignedWithButton 
 - HandrailHeight 
 - HandrailType 
-- ***InternalWidth*** 
+- InternalWidth 
 - LowerHandrailHeight 
 - MagneticinductionLoop 
 - MaximumLoad 
@@ -233,16 +227,16 @@ EquipmentPosition
 - RaisedButtons 
 - ReachedFloorAnnouncement 
 - SignageToLift 
-- ***TactileActuators*** 
-- ***TactileGroundFloorButton*** 
+- TactileActuators 
+- TactileGroundFloorButton 
 - WheelchairTurningCircle 
 - etc.
 
 
 
-***RampEquipment***
-- ***Gradient***
-- ***GradientType***
+RampEquipment
+- Gradient
+- GradientType
 - HandrailHeight
 - HandrailType
 - Length
@@ -252,10 +246,10 @@ EquipmentPosition
 
 
 
-***TravelatorEquipment***
+TravelatorEquipment
 - Gradient
 - TactileActuators
-- ***SafeForGuideDog***
+- SafeForGuideDog
 - etc.
 
 Staircase
@@ -275,40 +269,39 @@ Staircase
 
 
 
-***LuggageLockerEquipment***
-- ***BlindAccessible***
-- ***WheelchairAccepted***
-- ***NumberOfLockers***
+LuggageLockerEquipment
+- BlindAccessible
+- WheelchairAccepted
+- NumberOfLockers
 - etc.
 
 
-***TrolleyStandEquipment***
-- ***FreeToUse***
+TrolleyStandEquipment
+- FreeToUse
 
 
 PassengerEquipment
 - Fixed
 
-***PassengerSafetyEquipment***
-- ***AcousticAnnouncements***
-- ***AcousticAnnouncementsTrigger***
-- ***AnnouncementTriggeringMethod***
-- ***HeightOfSosPanel***
-- ***Lighting***
-- ***PanicButton***
-- ***SosPanel***
+PassengerSafetyEquipment
+- AcousticAnnouncements
+- AcousticAnnouncementsTrigger
+- AnnouncementTriggeringMethod
+- HeightOfSosPanel
+- Lighting
+- PanicButton
+- SosPanel
 
 
 
 ***SanitaryEquipment***
 - ***AccessibilityAssessment***
-- ***CallButtonAvailable***
+- CallButtonAvailable
 - DrinkingWater 
-- ***Gender*** 
+- Gender 
 - HandWashing
-- KeyScheme - ?
-- LockedAccess - ?
-- SharpsDisposal 
+- KeyScheme
+- LockedAccess
 - Staffing 
 - SupportBarHeigth 
 - ***ToiletsType*** 
@@ -319,15 +312,15 @@ PassengerEquipment
 - HeightOfLowCounter 
 - HeightOfMachinelnterface 
 - ***InductionLoops*** 
-- LowCounterAccess 
-- ***NumberOfMachines*** 
+- ***LowCounterAccess*** 
+- NumberOfMachines
 - ***TactilelnterfaceAvailable*** 
 - ***TicketCounter*** 
 - ***TicketMachines*** 
 - ***WheelchairSuitable*** 
 
 
-QueingEquipment - ?
+QueingEquipment
 - DisabledPriority
 - QueingSeatedPossible
 - RailedQueue
@@ -337,39 +330,39 @@ QueingEquipment - ?
 RubbishDisposalEquipment
 
 
-***TicketValidatorEquipment***
+TicketValidatorEquipment
 - AudioValidationFeedback
 - TactileValidationFeedback
 - ValidationGuidance
 - VisualValidationFeedback
 
 
-ShelterEquipment - ?
+ShelterEquipment
 - DistanceFromNearestKerb
 - Enclosed
 
 
-***WaitingEquipment***
+WaitingEquipment
 - AirConditioned
-- ***Heated***
-- ***Seats***
-- ***SmokingAllowed***
-- ***StepFree***
-- ***WheelchairAreaLength***
-- ***WheelchairAreaWidth***
+- Heated
+- Seats
+- SmokingAllowed
+- StepFree
+- WheelchairAreaLength
+- WheelchairAreaWidth
 - etc.
 
 
-***WaitingRoomEquipment***
-- ***Facilities***
-- ***TypeOfFareClass***
+WaitingRoomEquipment
+- Facilities
+- TypeOfFareClass
 
 
-***SignEquipment*** - ?
-- ***AsBraille***
-- ***AudioTriggerMethod***
+SignEquipment
+- AsBraille
+- AudioTriggerMethod
 - Contrast
-- ***FontSize***
+- FontSize
 - etc.
 
 
@@ -379,37 +372,37 @@ Accommodation
 - ToiletFacility
 
 
-localServices in StopPlace
+***localServices*** in StopPlace
 
 ***AssistanceService***
-- ***AccessibilityTrainedStaff***
+- AccessibilityTrainedStaff
 - ***AssistanceAvailability***
-- ***SafetyFacilityList***
+- SafetyFacilityList
 - ***etc.***
 
 ***AssistanceBookingService***
 
-***LostPropertyService***
+LostPropertyService
 
-***LuggageService***
+LuggageService
 - LuggageMaximalWeigth
-- ***LuggageTrolleys***
+- LuggageTrolleys
 - WheelchairLuggageTrolleys
 - etc.
 
-***MeetingPointService***
-- ***Label***
-- ***MeetingPointType***
+MeetingPointService
+- Label
+- MeetingPointType
 
-***TicketingService***
-- ***MobileDeviceTickets***
-- ***OnboardPurchase***
-- ***TicketCounterService***
+TicketingService
+- MobileDeviceTickets
+- OnboardPurchase
+- TicketCounterService
 
 
 
 ***SiteFrame***
-- ***siteFacilitySets***
+- siteFacilitySets
 
 ***SiteFacilitySet for***
 - ***StopPlace***
@@ -419,24 +412,22 @@ localServices in StopPlace
 ***SiteFacilitySet***
 - ***AccessFacilityList***
 - ***AccessibilityInfoFacilityList***
-- ***AccessibilityToolList*** 
+- AccessibilityToolList
 - ***AssistanceFacilityList***
-- ***Description*** 
-- ***LuggageLockerFacilityList*** 
-- ***LuggageServiceFacilityList*** 
+- LuggageLockerFacilityList 
+- LuggageServiceFacilityList 
 - ***MobilityFacilityList***
-- ***SafeteyFacilityList***
+- SafeteyFacilityList
 - ***ParkingFacilityList*** 
-- ***Staffing***
 - ***SanitaryFacilityList***
-- ***TicketingServiceFacilityList*** 
+- TicketingServiceFacilityList 
 - etc.
 
 
-***ServiceFacilitySet***
-- ***VehicleAccessFacilityList***
-- ***AccommodationFacilityLis***t - pushchair, wheelchair
-- ***LuggageCarriageFacilityList*** - pushchairsAllowed, cyclesAllowed, etc.
+ServiceFacilitySet
+- VehicleAccessFacilityList
+- AccommodationFacilityList - pushchair, wheelchair
+- LuggageCarriageFacilityList - pushchairsAllowed, cyclesAllowed, etc.
 - accommodations
 - onboardStays
 
@@ -463,29 +454,29 @@ RoughSurface
 
 ### Vehicles & Vehicle Stop Interaction
 
-***VehicleType (later)***
-- ***Description*** 
-- ***HasHoist*** 
-- ***HasLiftOrRamp*** 
+VehicleType
+- Description
+- HasHoist
+- HasLiftOrRamp
 - Height 
 - Length
-- ***LowFloor*** 
-- ***equipments***
-- ***facilities***
-- ***equipmentProfiles - VehicleEquipmentProfile - WheelchairVehicleEquipment***
-- ***PassengerCapacity***
-	- ***WheelchairPlaceCapacity***
+- LowFloor
+- equipments
+- facilities
+- equipmentProfiles - VehicleEquipmentProfile - WheelchairVehicleEquipment
+- PassengerCapacity
+	- WheelchairPlaceCapacity
 - etc.
 
 PlatformHeight, GapToPlatform
 
-***BoardingPosition*** (NO, not FR)
-- ***BoardingPositionType***
-- ***Label***
+BoardingPosition
+- BoardingPositionType
+- Label
 
-***TrainStopAssignment***
-- ***BoardingPositionRef***
-- ***EntranceToVehicle***
+TrainStopAssignment
+- BoardingPositionRef
+- EntranceToVehicle
 - PassengerStopAssignmentRef
 - TrainRef
 - TrainComponentRef
@@ -494,14 +485,7 @@ PlatformHeight, GapToPlatform
 
 
 ## Other noteworthy differences
-* DELFI, PRM TSI ...
-* Accessibility in the French profile ...
 * EPIAP requires AlternativeText, Swiss profile excludes it
-* bla
 
-## Things that should be included/changed for the new European profile for 2028
-* bla
-* bla
-* bla
 
 

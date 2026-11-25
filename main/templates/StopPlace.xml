@@ -63,44 +63,51 @@
 							<Centroid>
 								<!-- ch-usage: mandatory -->
 								<!-- ch-note: Global or national location -->
-								<Name>
-									<!-- ch-usage: optional -->
-								</Name>
+								<!-- ch-see -->
 								<Location>
-									<!-- ch-usage: mandatory -->
-									<!-- ch-note: Note concerning coordinates - The main coordinates are given as **WGS84**. -->
-									<Longitude><!-- ch-usage: mandatory -->7.43913088992</Longitude>
-									<Latitude><!-- ch-usage: mandatory -->46.94883228914</Latitude>
-									<Altitude><!-- ch-usage: optional -->540.2</Altitude>
+									<Longitude>7.43913088992</Longitude>
+									<Latitude>46.94883228914</Latitude>
+									<Altitude>540.2</Altitude>
 								</Location>
 							</Centroid>
 							<gml:Polygon gml:id="a1231">
 								<!-- ch-usage: forbidden -->
 								<!-- ch-note: We might in future model StopPlace as polygons -->
 							</gml:Polygon>
-							<Url>
-								<!-- ch-usage: forbidden -->
-							</Url>
-							<AccessibilityAssessment id="generated" version="1">
+							<Url><!-- ch-usage: ignored --><!-- ch-note: We only expect the URL in the export from ATLAS and not in the delivery. -->www.les-cj.ch</Url>
+							<PostalAddress id="ch:1:sloid:162:address" version="1">
 								<!-- ch-usage: ignored -->
-								<!-- ch-note: In the future the assessments might be used -->
-								<MobilityImpairedAccess>true</MobilityImpairedAccess>
+								<!-- ch-note: The address may be available in the export of ATLAS. -->
+								<AddressLine1>Chemin de la Halte 2a</AddressLine1>
+								<Town>Tramelan</Town>
+								<PostCode>2720</PostCode>
+							</PostalAddress>
+							<AccessibilityAssessment id="generated" version="1">
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments. -->
+								<!-- ch-see -->
+								<MobilityImpairedAccess><!-- ch-note: Basic information about accessibility. --><!-- ch-usage: mandatory -->true</MobilityImpairedAccess>
 							</AccessibilityAssessment>
 							<alternativeNames>
 								<!-- ch-usage: optional -->
 								<!-- ch-note: Alternative names for the StopPlace. We will only use these for synonyms. -->
 								<AlternativeName id="ch:1:sloid:7000:it" version="1">
+									<!-- ch-usage: expected -->
 									<!-- ch-see -->
-                                    <NameType>alias</NameType>
+									<NameType>alias</NameType>
 									<Name lang="it">Berna</Name>
 								</AlternativeName>
 							</alternativeNames>
 							<PublicUse><!-- ch-usage: ignored --><!-- Might be added at some point -->all</PublicUse>
 							<Covered><!-- ch-usage: ignored --><!-- Might be added at some point -->covered</Covered>
 							<facilities>
-								<!-- ch-usage: ignored -->
-								<!-- ch-note: might be added in the future. Especially for accessibility.-->
-								<SiteFacilitySetRef ref="generated" versionRef="1"/>
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Facilities available at the stop. -->
+								<SiteFacilitySet id="generated" version="1">
+									<!-- ch-usage: expected -->
+									<!-- ch-note: In particular for accessibility information. -->
+									<!-- ch-see -->
+								</SiteFacilitySet>
 							</facilities>
 							<TopographicPlaceRef ref="BE-bern" versionRef="1">
 								<!-- ch-note: Id to the county, community, canton or country. -->
@@ -110,12 +117,121 @@
 								<!-- ch-usage: optional -->
 								<TimeZone><!-- ch-usage: optional --><!-- ch-note: Must be present, when not in DefaultTimeZone. -->Europe/Zurich</TimeZone>
 							</Locale>
+							<levels>
+								<!-- ch-usage: expected -->
+								<!-- ch-note: Mandatory if the StopPlace has more than one level. -->
+								<Level id="ch:1:level:162:164789:0" version="1"><!-- ch-usage: expected --><!-- ch-note: Mandatory if the StopPlace has more than one level. --></Level>
+								<Level id="ch:1:level:162:164789:-1" version="1"/>
+							 </levels>
+							<entrances>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: We currently use this for the reference point that each Swiss stop uses. Unfortunately it currently has no Centroid and coordinates -->
+								<StopPlaceEntrance id="ch:1:sloid:162:164789" version="1">
+									<!-- ch-usage: mandatory -->
+									<!-- ch-note:  Currently only the sloid is known. From this point all references to accessibility are made in Switzerland -->
+									<!-- ch-see -->
+									<Name><!-- ch-usage: optional -->Point of reference.</Name>
+								</StopPlaceEntrance>
+							</entrances>
+							<placeEquipments>
+								<!-- ch-usage: optional -->
+								<!-- ch-note:  Used in exports for all TSI PRM relevant equipments. Especially in the data transmissions for rail to ERA. We only have Equipments and no EquipmentPlaces. -->
+								<TicketingEquipment id="ch:1:sloid:162:ticketing" version="2">
+									<!-- ch-usage: optional -->
+									<!-- ch-note: Ticketing equipment. -->
+									<TicketMachines><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden"). Mirrored in SiteFacilitySet - ticketMachines. -->true</TicketMachines>
+									<TicketOffice><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Schalter present). Mirrored in SiteFacilitySet - ticketOffice. -->true</TicketOffice>
+									<TicketCounter><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Schalter present). We don't distinguish between TicketOffice and TicketCounter. -->true</TicketCounter>
+									<LowCounterAccess><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Schalter - "Rollstuhlzugänglichkeit" or Billettautomat - "Barrierefrei"). Applicable for TicketMachine, TicketOffice, TicketCounter. -->true</LowCounterAccess>
+									<InductionLoops><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Schalter - "Induktionsverstärker"). Only applicable for TicketOffice, TicketCounter. -->true</InductionLoops>
+									<TactileInterfaceAvailable><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). Only applicable for TicketMachine. -->false</TactileInterfaceAvailable>
+									<AudioInterfaceAvailable><!-- ch-usage: optional --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). Only applicable for TicketMachine. -->false</AudioInterfaceAvailable>
+									<WheelchairSuitable><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Schalter - "Rollstuhlzugänglichkeit" or Billettautomat - "Barrierefrei"). Applicable for TicketMachine, TicketOffice, TicketCounter. -->true</WheelchairSuitable>
+								</TicketingEquipment>
+								<TicketingEquipment id="ch:1:sloid:162:ticketmachines" version="2">
+									<!-- ch-note: Example ticket machine(s). -->
+									<TicketMachines><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Billettautomat vorhanden"). Mirrored in SiteFacilitySet - ticketMachines. -->true</TicketMachines>
+									<LowCounterAccess><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Barrierefrei"). -->true</LowCounterAccess>
+									<TactileInterfaceAvailable><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). -->false</TactileInterfaceAvailable>
+									<AudioInterfaceAvailable><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Akustische und taktile Ausrüstung"). -->false</AudioInterfaceAvailable>
+									<WheelchairSuitable><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Billettautomat - "Barrierefrei"). -->true</WheelchairSuitable>
+								</TicketingEquipment>
+								<AccessVehicleEquipment id="ch:1:sloid:162:0:1:access" version="1">
+									<!-- ch-usage: optional -->
+									<!-- ch-note: Method to get on the vehicle -->
+									<Hoist><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Haltekante - "Hilfsmittel für Rollstuhl"). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair. -->false</Hoist>
+									<Ramp><!-- ch-usage: expected --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Haltekante - "Hilfsmittel für Rollstuhl"). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair. -->false</Ramp>
+								</AccessVehicleEquipment>
+								<SanitaryEquipment id="ch:1:sloid:171:51406" version="1">
+									<!-- ch-usage: optional -->
+									<Name><!-- ch-usage: optional -->Toilette</Name>
+									<AccessibilityAssessment id="ch:1:sloid:171:51406:aa" version="1">
+										<!-- ch-usage: optional -->
+										<!-- ch-see -->
+										<MobilityImpairedAccess>false</MobilityImpairedAccess>
+										<limitations>
+											<AccessibilityLimitation>
+												<WheelchairAccess>false</WheelchairAccess>
+											</AccessibilityLimitation>
+										</limitations>
+									</AccessibilityAssessment>
+									<SanitaryFacilityList><!-- ch-usage: mandatory --><!-- ch-note: Will be exported from ATLAS for ERA TSI PRM (Toiletten - "Rollstuhlgängige Toilette). Presence or absence of `wheelchairAccessToilet toilet`. Mirrored in SiteFacilitySet - SanitaryFacilityList. -->toilet</SanitaryFacilityList>
+									<ToiletsType><!-- ch-usage: optional --><!-- ch-note: Allowed values: `seated urinal seatedAndUrinal squat`. -->seated</ToiletsType>
+								</SanitaryEquipment>
+							</placeEquipments>
 							<localServices>
-								<!-- ch-usage: ignored -->
-								<!-- ch-note: might be added in the future. Especially for accessibility. -->
-								<AssistanceServiceRef ref="generated" versionRef="1"/>
+								<!-- ch-usage: optional -->
+								<!-- ch-note: Will be exported from ATLAS for ERA TSI PRM. -->
+								<AssistanceService id="ch:1:sloid:4402:assistance" version="1">
+									<!-- ch-usage: mandatory -->
+									<!-- ch-note: Presence of`AssistanceFacility`s and their availability , e.g., if they need to be booked. -->
+									<!-- ch-see -->
+									<Note><!-- ch-usage: expected -->Bei diesem Bahnhof benötigen Sie Ein- und Ausstiegshilfen. Bitte melden Sie sich bis spätestens 1 Stunde vor Zugabfahrt unter swisspass.ch/handicap oder beim Contact Center Handicap täglich 5.00–24.00 Uhr, Telefon 0800 007 102 (kostenlos in der Schweiz), aus dem Ausland +41 800 007 102.
+									</Note>
+									<AssistanceFacilityList>
+										<!-- ch-usage: expected -->
+										<!-- ch-note: Facilities for which the availability is described below. Allowed values: `boardingAssistance personalAssistance wheelchairAssistance unaccompaniedMinorAssistance conductor information`. -->
+										boardingAssistance
+									</AssistanceFacilityList>
+									<AssistanceAvailability><!-- ch-usage: optional --><!-- ch-note: Allowed values: `available availableIfBooked availableAtCertainTimes availableDependentOnJourney unknown`. -->availableIfBooked</AssistanceAvailability>
+								</AssistanceService>
+								<AssistanceService id="ch:1:sloid:4414:assistance" version="1">
+									<Note>Der Lift erfüllt nur die gesetzlichen Mindestanforderungen.</Note>
+								</AssistanceService>
+								<AssistanceBookingService id="ch:1:sloid:4402:assistancebooking" version="1">
+									<!-- ch-usage: optional -->
+									<!-- ch-note: Accessibility. Contact and booking information regarding assistance services. -->
+									<!-- ch-see -->
+									<WheelchairBookingRequired>
+										true
+									</WheelchairBookingRequired>
+									<BookingContact>
+									</BookingContact>
+									<VehicleMode>
+										rail
+									</VehicleMode>
+									<noticeAssignments>
+										<NoticeAssignment id="generated" version="1">
+											<validityConditions>
+    											<AvailabilityCondition id="generated" version="1">
+													<timebands>
+														<Timeband id="generated" version="1">
+															<StartTime>07:00:00</StartTime>
+															<EndTime>18:00:00</EndTime>
+														</Timeband>
+													</timebands>
+												</AvailabilityCondition>
+  											</validityConditions>
+											<Notice id="generated" version="1">
+												<Text lang="de">Nur auf Voranmeldung bis eine Stunde vorher.
+													<Text lang="en">Latest booking 1 hour before.</Text>
+												</Text>
+											</Notice>
+										</NoticeAssignment>
+									</noticeAssignments>
+								</AssistanceBookingService>
 							</localServices>
-							<StopPlaceType><!-- ch-usage: optional --><!-- Relevant values defined in mapping excel. -->railStation</StopPlaceType>
+							<StopPlaceType><!-- ch-usage: expected --><!-- Relevant values defined in mapping excel. Only value may be used, so use the most fitting one-->railStation</StopPlaceType>
 							<LimitedUse><!-- ch-usage: optional --><!-- ch-note: For stops like Sagliains. We currently use only interchangeOnly. --><!-- ch-allowed-enums: interchangeOnly -->interchangeOnly</LimitedUse>
 							<Weighting><!-- ch-usage: optional --><!-- ch-note: Default relative weighting to be used for stop place. See also mapping excel. Cf. HafasPriority in Extensions. --><!-- ch-allowed-enums: noInterchange interchangeAllowed recommendedInterchange preferredInterchange -->preferredInterchange</Weighting>
 							<quays>
@@ -125,7 +241,7 @@
 									<!-- ch-usage: expected -->
 									<!-- ch-see -->
 								</Quay>
-							</quays>
+							</quays>			
 						</StopPlace>
 					</stopPlaces>
 				</SiteFrame>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PublicationDelivery xmlns="http://www.netex.org.uk/netex" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1" xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/xsd/NeTEx_publication.xsd">
+	<PublicationTimestamp>2026-11-03T12:00:00</PublicationTimestamp>
+	<ParticipantRef>SKI-Templates</ParticipantRef>
+	<dataObjects>
+		<CompositeFrame id="ch:1:CompositeFrame" version="1">
+			<frames>
+				<ServiceFrame id="ch:1:ServiceFrame" version="1">
+					<stopAssignments>
+						<FlexibleStopAssignment id="ch:1:FlexibleStopAssignment:myBuxi_Gotthardregion" version="1">
+							<!-- ch-root -->
+							<!-- ch-attrs: id version -->
+							<!-- ch-note: Links the ScheduledStopPoint of a service area to its FlexibleStopPlace and FlexibleArea in SITE_OFFER. Same role as PassengerStopAssignment for regular stops. See uc16_drt. -->
+							<ScheduledStopPointRef ref="ch:1:DrtArea:myBuxi_Gotthardregion" versionRef="1">
+								<!-- ch-usage: mandatory -->
+								<!-- ch-note: ScheduledStopPoint that stands for the whole area in the ServiceJourneyPattern. -->
+							</ScheduledStopPointRef>
+							<FlexibleStopPlaceRef ref="ch:1:FlexibleStopPlace:myBuxi_Gotthardregion" versionRef="1">
+								<!-- ch-usage: mandatory -->
+							</FlexibleStopPlaceRef>
+							<FlexibleAreaRef ref="ch:1:FlexibleArea:myBuxi_Gotthardregion" versionRef="1">
+								<!-- ch-usage: expected -->
+								<!-- ch-note: FlexibleArea of the FlexibleStopPlace. -->
+							</FlexibleAreaRef>
+						</FlexibleStopAssignment>
+					</stopAssignments>
+				</ServiceFrame>
+			</frames>
+		</CompositeFrame>
+	</dataObjects>
+</PublicationDelivery>

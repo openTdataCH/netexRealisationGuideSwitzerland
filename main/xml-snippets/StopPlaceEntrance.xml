@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StopPlaceEntrance id="ch:1:entrance:7000:1" version="1">
+  <Name>Haupteingang West
+    <!-- Will be exported from ATLAS for ERA TSI PRM (Referenzpunkt - "Bezeichnung"). -->
+  </Name>
+  <AccessibilityAssessment id="generated-2" version="1">
+    <!-- Accessibility. See the element's table for all details. -->
+    <MobilityImpairedAccess>true</MobilityImpairedAccess>
+    <limitations>
+      <AccessibilityLimitation>
+        <WheelchairAccess>true</WheelchairAccess>
+        <StepFreeAccess>true</StepFreeAccess>
+        <StairFreeAccess>true</StairFreeAccess>
+        <RampFreeAccess>true</RampFreeAccess>
+        <VisualSignsAvailable>true</VisualSignsAvailable>
+        <TactileGuidanceAvailable>true</TactileGuidanceAvailable>
+        <GuideDogAccess>true</GuideDogAccess>
+      </AccessibilityLimitation>
+    </limitations>
+  </AccessibilityAssessment>
+  <LevelRef ref="ch:1:level:7000:0">
+    <!-- Required if more than 1 level present. -->
+  </LevelRef>
+  <DroppedKerbOutside>true
+    <!-- Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. -->
+  </DroppedKerbOutside>
+  <DropOffPointClose>true
+    <!-- Will be exported from ATLAS for ERA TSI PRM (only set to `true` if Verbindung from Parkplatz with "Stufenfreier Zugang" = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc. -->
+  </DropOffPointClose>
+</StopPlaceEntrance>

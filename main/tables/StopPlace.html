@@ -254,7 +254,7 @@
       <td> </td>
       <td>ValidBetween</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>1..1</td>
       <td>unknown</td>
       <td> </td>
       <td>This can be used to show when the StopPlace can be used. Note that the usage (optional) overrides the cardinality.</td>
@@ -264,7 +264,7 @@
       <td>FromDate</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:dateTime</td>
+      <td>dateTime</td>
       <td>Start date of AVAILABILITY CONDITION.</td>
       <td> </td>
     </tr>
@@ -273,7 +273,7 @@
       <td>ToDate</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:dateTime</td>
+      <td>dateTime</td>
       <td>End of AVAILABILITY CONDITION. Date is INCLUSIVE.</td>
       <td> </td>
     </tr>
@@ -281,9 +281,9 @@
       <td> </td>
       <td>keyList</td>
       <td>optional</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>KeyListStructure</td>
-      <td>A list of alternative Key values for an element.</td>
+      <td> </td>
       <td>Key value pairs.</td>
     </tr>
     <tr>
@@ -299,9 +299,9 @@
       <td>++</td>
       <td>Key</td>
       <td>mandatory</td>
-      <td>0..1</td>
-      <td>xsd:normalizedString</td>
-      <td>User key.</td>
+      <td>1..1</td>
+      <td>normalizedString</td>
+      <td>Identifier of value e.g. System.</td>
       <td> </td>
     </tr>
     <tr>
@@ -309,7 +309,7 @@
       <td>Value</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:anyType</td>
+      <td>normalizedString</td>
       <td>Value for alternative key.</td>
       <td> </td>
     </tr>
@@ -317,9 +317,9 @@
       <td> </td>
       <td>privateCodes</td>
       <td>expected</td>
-      <td>0..1</td>
+      <td>1..1</td>
       <td>PrivateCodesStructure</td>
-      <td>A list of private codes that uniquely identifiy the element. May be used for inter-operating with other (legacy) systems. +v2.0</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -328,7 +328,7 @@
       <td>expected</td>
       <td>0..*</td>
       <td>PrivateCodeStructure</td>
-      <td>A private code that uniquely identifies the element. May be used for inter-operating with other (legacy) systems.</td>
+      <td> </td>
       <td>Mandatory for DIDOK and SLOID if they exist.</td>
     </tr>
     <tr>
@@ -346,62 +346,26 @@
       <td>mandatory</td>
       <td>0..1</td>
       <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
+      <td>Name of STOP PLACE.</td>
       <td>The official stop name. If you have different versions one needs to use AlternativeName</td>
     </tr>
     <tr>
       <td> </td>
-      <td>Centroid</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/Centroid.html">Centroid</a></td>
       <td>mandatory</td>
       <td>0..1</td>
       <td>SimplePoint_VersionStructure</td>
-      <td>Centre Coordinates of ZONE.</td>
+      <td>Centre Coordinates of GROUP of STOP PLACEs.</td>
       <td>Global or national location</td>
     </tr>
     <tr>
-      <td>+</td>
-      <td>Name</td>
-      <td>optional</td>
+      <td> </td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>expected</td>
       <td>0..1</td>
-      <td>MultilingualString</td>
-      <td>Name of VALIDITY CONDITION.</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>Location</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>LocationStructure</td>
-      <td>The position of a POINT with a reference to a given LOCATING SYSTEM (e. g. coordinates).</td>
-      <td>Note concerning coordinates - The main coordinates are given as <strong>WGS84</strong>.</td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Longitude</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>LongitudeType</td>
-      <td>Longitude from Greenwich Meridian. -180 (East) to +180 (West).</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Latitude</td>
-      <td>mandatory</td>
-      <td>1..1</td>
-      <td>LatitudeType</td>
-      <td>Latitude from equator. -90 (South) to +90 (North).</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>++</td>
-      <td>Altitude</td>
-      <td>optional</td>
-      <td>0..1</td>
-      <td>AltitudeType</td>
-      <td>Altitude.</td>
-      <td> </td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td>Accessibility values associated with LEVEL.</td>
+      <td>Accessibility. Whether the StopPlace and the Quays are accessible for passengers with different mobility or sensory impairments.</td>
     </tr>
     <tr>
       <td> </td>
@@ -409,13 +373,13 @@
       <td>optional</td>
       <td>0..1</td>
       <td>alternativeNames_RelStructure</td>
-      <td>Alternativie names for ORGANISATION.</td>
+      <td>Alternative names for the GROUP of STOP PLACEs.</td>
       <td>Alternative names for the StopPlace. We will only use these for synonyms.</td>
     </tr>
     <tr>
       <td>+</td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/AlternativeName.html">AlternativeName</a></td>
-      <td>optional</td>
+      <td>expected</td>
       <td>1..*</td>
       <td>AlternativeName_VersionedChildStructure</td>
       <td>ALTERNATIVE NAME for Element.</td>
@@ -423,20 +387,38 @@
     </tr>
     <tr>
       <td> </td>
+      <td>facilities</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>siteFacilitySets_RelStructure</td>
+      <td>Facilities available at SITe.</td>
+      <td>Facilities available at the stop.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/SiteFacilitySet.html">SiteFacilitySet</a></td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>SiteFacilitySetStructure</td>
+      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
+      <td>In particular for accessibility information.</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td>TopographicPlaceRef</td>
       <td>optional</td>
       <td>1..*</td>
       <td>TopographicPlaceRefStructure</td>
-      <td>Reference to a TOPOGRAPHIC PLACE.</td>
+      <td> </td>
       <td>Id to the county, community, canton or country.</td>
     </tr>
     <tr>
       <td> </td>
       <td>Locale</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>LocaleStructure</td>
-      <td>Common LOCALE dependent properties.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -444,14 +426,239 @@
       <td>TimeZone</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:normalizedString</td>
+      <td>normalizedString</td>
       <td>Timezone name at LOCALE.</td>
       <td>Must be present, when not in DefaultTimeZone.</td>
     </tr>
     <tr>
       <td> </td>
-      <td>StopPlaceType</td>
+      <td>levels</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>levels_RelStructure</td>
+      <td>LEVELs found within SITe.</td>
+      <td>Mandatory if the StopPlace has more than one level.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Level</td>
+      <td>expected</td>
+      <td>0..*</td>
+      <td>Level_VersionStructure</td>
+      <td>Level of a Building or SITE.</td>
+      <td>Mandatory if the StopPlace has more than one level.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>entrances</td>
       <td>optional</td>
+      <td>0..1</td>
+      <td>siteEntrances_RelStructure</td>
+      <td>ENTRANCEs to SPACE.</td>
+      <td>We currently use this for the reference point that each Swiss stop uses. Unfortunately it currently has no Centroid and coordinates</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/StopPlaceEntrance.html">StopPlaceEntrance</a></td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>StopPlaceEntrance_VersionStructure</td>
+      <td>Passenger Entrance to a STOP PLACE.</td>
+      <td>Currently only the sloid is known. From this point all references to accessibility are made in Switzerland</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>placeEquipments</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>equipments_RelStructure</td>
+      <td>Items of EQUIPMENT that may be located in an EQUIPMENT PLACE.</td>
+      <td>Used in exports for all TSI PRM relevant equipments. Especially in the data transmissions for rail to ERA. We only have Equipments and no EquipmentPlaces.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>TicketingEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td>Ticketing equipment.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TicketMachines</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there are ticket machines.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Billettautomat - “Billettautomat vorhanden”). Mirrored in SiteFacilitySet - ticketMachines.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TicketOffice</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there is a distinct ticket office.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter present). Mirrored in SiteFacilitySet - ticketOffice.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TicketCounter</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there is a ticket counter.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter present). We don’t distinguish between TicketOffice and TicketCounter.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>LowCounterAccess</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there is a low counter for accessibility.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter - “Rollstuhlzugänglichkeit” or Billettautomat - “Barrierefrei”). Applicable for TicketMachine, TicketOffice, TicketCounter.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>InductionLoops</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether there are induction loops.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter - “Induktionsverstärker”). Only applicable for TicketOffice, TicketCounter.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>TactileInterfaceAvailable</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Indicates whether there is a tactile interface +v1.1.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Billettautomat - “Akustische und taktile Ausrüstung”). Only applicable for TicketMachine.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>AudioInterfaceAvailable</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Indicates whether there is an accessible audio interface (allowing a use closed eyes). +v1.1</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Billettautomat - “Akustische und taktile Ausrüstung”). Only applicable for TicketMachine.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>WheelchairSuitable</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Indicates whether equipment may be used while seated in a wheelchair. +v1.1</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Schalter - “Rollstuhlzugänglichkeit” or Billettautomat - “Barrierefrei”). Applicable for TicketMachine, TicketOffice, TicketCounter.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>AccessVehicleEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AccessVehicleEquipment_VersionStructure</td>
+      <td>Specialisation of VEHICLE EQUIPMENT for ACCESS providing information such as low floor, ramp, access area dimensions, etc.</td>
+      <td>Method to get on the vehicle</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Hoist</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>VEHICLE has a hoist or lift for wheelchairs.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Haltekante - “Hilfsmittel für Rollstuhl”). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Ramp</td>
+      <td>expected</td>
+      <td>0..1</td>
+      <td>boolean</td>
+      <td>Whether a ramp may be used to access VEHICLE.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Haltekante - “Hilfsmittel für Rollstuhl”). May not be set to true for the StopPlace if there is a Quay unaccessible by wheelchair.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>SanitaryEquipment</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>unknown</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>Name</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of EQUIPMENT.</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>AccessibilityAssessment_VersionedChildStructure</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>SanitaryFacilityList</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>SanitaryFacilityListOfEnumerations</td>
+      <td> </td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Toiletten - “Rollstuhlgängige Toilette). Presence or absence of <code class="language-plaintext highlighter-rouge">wheelchairAccessToilet toilet</code>. Mirrored in SiteFacilitySet - SanitaryFacilityList.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>ToiletsType</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>ToiletsTypeEnumeration</td>
+      <td>Indicates the position of using the toilet.</td>
+      <td>Allowed values: <code class="language-plaintext highlighter-rouge">seated urinal seatedAndUrinal squat</code>.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>localServices</td>
+      <td>optional</td>
+      <td>0..1</td>
+      <td>localServices_RelStructure</td>
+      <td> </td>
+      <td>Will be exported from ATLAS for ERA TSI PRM.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/AssistanceService.html">AssistanceService</a></td>
+      <td>mandatory</td>
+      <td>0..*</td>
+      <td>AssistanceService_VersionStructure</td>
+      <td>Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</td>
+      <td>Presence of<code class="language-plaintext highlighter-rouge">AssistanceFacility</code>s and their availability , e.g., if they need to be booked.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td><a href="/netexRealisationGuideSwitzerland/main/tables/AssistanceBookingService.html">AssistanceBookingService</a></td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>AssistanceBookingService_VersionStructure</td>
+      <td>Information about how to book assistance for wheelchair and disabled users.</td>
+      <td>Accessibility. Contact and booking information regarding assistance services.</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td>StopPlaceType</td>
+      <td>expected</td>
       <td>0..1</td>
       <td>StopTypeEnumeration</td>
       <td>Type of STOP PLACE.</td>

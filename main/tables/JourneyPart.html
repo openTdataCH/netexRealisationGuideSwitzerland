@@ -215,7 +215,7 @@
       
         <h1 class="page-title">JourneyPart</h1>
       
-      <p>For some use cases e.g. change of Facilities during ServiceJourney</p>
+      <p>Used for a change of facilities and for direct carriages (see uc05_journey_parts). The first JourneyPart shows a change of facilities, the second one a direct carriage.</p>
 
 <p><em>Table: parts</em></p>
 
@@ -236,7 +236,7 @@
       <td> </td>
       <td>JourneyPart</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>JourneyPart_VersionStructure</td>
       <td>A part of a VEHICLE JOURNEY created according to a specific functional purpose, for instance in situations when vehicle coupling or separating occurs.</td>
       <td> </td>
@@ -247,7 +247,7 @@
       <td>optional</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td>We prefer to not use those</td>
     </tr>
     <tr>
@@ -256,7 +256,7 @@
       <td>optional</td>
       <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -272,19 +272,19 @@
       <td>+</td>
       <td>TrainNumberRef</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TrainNumberRefStructure</td>
-      <td>Reference to a TRAIN NUMBER.</td>
-      <td>TrainNumber used for this part</td>
+      <td> </td>
+      <td>TrainNumber used for this part. For a direct carriage the TrainNumber of the pulling train.</td>
     </tr>
     <tr>
       <td>+</td>
       <td>FromStopPointRef</td>
-      <td>mandatory</td>
-      <td>0..1</td>
+      <td>optional</td>
+      <td>1..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>SCHEDULED STOP POINT feeding INTERCHANGE. If absent apply to all STOP POINTs.</td>
-      <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part begins. On the level of Quay.</td>
+      <td>Point at which this JOURNEY PART starts.</td>
+      <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part begins. On the level of Quay. Used for a change of facilities. The XSD only allows either <code class="language-plaintext highlighter-rouge">FromStopPointRef</code>/<code class="language-plaintext highlighter-rouge">ToStopPointRef</code> or <code class="language-plaintext highlighter-rouge">FromPointInPatternRef</code>/<code class="language-plaintext highlighter-rouge">ToPointInPatternRef</code> (choice), so one of the two pairs must be present.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -292,16 +292,16 @@
       <td>expected</td>
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>SCHEDULED STOP POINT distributing from INTERCHANGE. If absent apply to all STOP POINTs.</td>
-      <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part ends . If not present, it is to the end of the ServiceJourney. But we prefer to have it explicitly</td>
+      <td>Point at which this JOURNEY PART ends. If not set it is until the end of the JOURNEY. We will make this element mandatory in the future.</td>
+      <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part ends. If not present, it is to the end of the ServiceJourney. But we prefer to have it explicitly. Not used together with <code class="language-plaintext highlighter-rouge">FromPointInPatternRef</code>/<code class="language-plaintext highlighter-rouge">ToPointInPatternRef</code>.</td>
     </tr>
     <tr>
       <td>+</td>
       <td>StartTime</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:time</td>
-      <td>The (inclusive) start date and time.</td>
+      <td>time</td>
+      <td>Start time of JOURNEY PART.</td>
       <td>Time bounds of the part</td>
     </tr>
     <tr>
@@ -318,8 +318,8 @@
       <td>EndTime</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:time</td>
-      <td>The (inclusive) end date and time.</td>
+      <td>time</td>
+      <td>End time of JOURNEY PART.</td>
       <td>Time bounds of the part.</td>
     </tr>
     <tr>
@@ -335,10 +335,10 @@
       <td>+</td>
       <td>PurposeOfJourneyPartitionRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>PurposeOfJourneyPartitionRefStructure</td>
-      <td>Reference to a PURPOSE OF JOURNEY PARTITION.</td>
-      <td>Reason for the partition (e.g. <code class="language-plaintext highlighter-rouge">FacilityChange</code>, <code class="language-plaintext highlighter-rouge">TrainNumberChange</code>, ‘TypeOfProductCategorychage`). Only two values are allowed (see uc0_journey_parts). Other things are implemented with different elements. Especially Notices are done with NoticeAssignment and not ServiceJourneyPart.</td>
+      <td> </td>
+      <td>Reason for the partition. Allowed values: <code class="language-plaintext highlighter-rouge">ch:1:PurposeOfJourneyPartition:FacilityChange</code>, <code class="language-plaintext highlighter-rouge">ch:1:PurposeOfJourneyPartition:DirectCarriage</code>, <code class="language-plaintext highlighter-rouge">ch:1:PurposeOfJourneyPartition:TypeOfProductCategoryChange</code> (see uc05_journey_parts). A change of train number is not modelled with JourneyPart. Other things are implemented with different elements. Especially Notices are done with NoticeAssignment and not JourneyPart.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -346,7 +346,7 @@
       <td>expected</td>
       <td>0..1</td>
       <td>serviceFacilitySets_RelStructure</td>
-      <td>FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed.</td>
+      <td>Facilities available during JOURNEY PART.</td>
       <td><code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code> valid for this part only. Used when there is a change in facilities.</td>
     </tr>
     <tr>
@@ -355,17 +355,62 @@
       <td>expected</td>
       <td>0..*</td>
       <td>ServiceFacilitySetRefStructure</td>
-      <td>Reference to a SERVICE FACILITY SET.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>TypeOfProductCategoryRef</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TypeOfProductCategoryRefStructure</td>
-      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
+      <td> </td>
       <td>Used when the product category changes</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Description</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td>Free text. In the example for direct carriages it names the direct carriage, the pulling train and the section.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ParentJourneyRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>VehicleJourneyRefStructure</td>
+      <td>Reference to parent of which this is part. If given by context does not need to be stated.</td>
+      <td>Used for a direct carriage: the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> of the pulling train. One <code class="language-plaintext highlighter-rouge">JourneyPart</code> per HRDF <code class="language-plaintext highlighter-rouge">*KWZ</code>.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>FromPointInPatternRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>PointInSequenceRefStructure</td>
+      <td>POINT at which applicability of JOURNEY PART starts. When using PASSING TIME this element is to be used. +v2.1</td>
+      <td>Used for a direct carriage: point in the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> of the pulling train (<code class="language-plaintext highlighter-rouge">ParentJourneyRef</code>) where the part begins. Alternative to <code class="language-plaintext highlighter-rouge">FromStopPointRef</code> (choice in the XSD).</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ToPointInPatternRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>PointInSequenceRefStructure</td>
+      <td>POINT at which applicability of JOURNEY PART ends. +v2.1</td>
+      <td>Used for a direct carriage: point in the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> of the pulling train where the part ends. Can be before the end of the pulling train. Mandatory in the XSD if <code class="language-plaintext highlighter-rouge">FromPointInPatternRef</code> is used.</td>
     </tr>
   </tbody>
 </table>

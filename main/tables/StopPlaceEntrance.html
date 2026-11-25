@@ -3,20 +3,20 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>StopPlace_withAccessibility | DRAFT Swiss profile 2.0 for NeTEx 2.1</title>
+<title>StopPlaceEntrance | DRAFT Swiss profile 2.0 for NeTEx 2.1</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="StopPlace_withAccessibility" />
+<meta property="og:title" content="StopPlaceEntrance" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
 <meta property="og:description" content="This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard." />
-<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/StopPlace_withAccessibility.html" />
-<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/StopPlace_withAccessibility.html" />
+<link rel="canonical" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/StopPlaceEntrance.html" />
+<meta property="og:url" content="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/StopPlaceEntrance.html" />
 <meta property="og:site_name" content="DRAFT Swiss profile 2.0 for NeTEx 2.1" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="StopPlace_withAccessibility" />
+<meta property="twitter:title" content="StopPlaceEntrance" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"StopPlace_withAccessibility","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/StopPlace_withAccessibility.html"}</script>
+{"@context":"https://schema.org","@type":"WebPage","description":"This document describes the realisation specifications for the data transfer between SKI and the public transport in Switzerland, based on the official NeTEx standard.","headline":"StopPlaceEntrance","url":"https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/tables/StopPlaceEntrance.html"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/netexRealisationGuideSwitzerland/main/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://opentdatach.github.io/netexRealisationGuideSwitzerland/main/feed.xml" title="DRAFT Swiss profile 2.0 for NeTEx 2.1" /></head>
 <body><header class="site-header" role="banner">
@@ -213,9 +213,9 @@
 </nav>
     <main class="content" aria-label="Content">
       
-        <h1 class="page-title">StopPlace_withAccessibility</h1>
+        <h1 class="page-title">StopPlaceEntrance</h1>
       
-      <p><em>Table: StopPlace</em></p>
+      <p><em>Table: StopPlaceEntrance</em></p>
 
 <table>
   <thead>
@@ -232,174 +232,48 @@
   <tbody>
     <tr>
       <td> </td>
+      <td>Name</td>
+      <td>mandatory</td>
+      <td>0..1</td>
+      <td>MultilingualString</td>
+      <td>Name of STOP PLACE.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (Referenzpunkt - “Bezeichnung”).</td>
+    </tr>
+    <tr>
+      <td> </td>
       <td><a href="/netexRealisationGuideSwitzerland/main/tables/AccessibilityAssessment.html">AccessibilityAssessment</a></td>
       <td>mandatory</td>
       <td>0..1</td>
       <td>AccessibilityAssessment_VersionedChildStructure</td>
-      <td>Assessment of the accessibility of a SITE.</td>
-      <td>Accessibility.</td>
+      <td>Accessibility values associated with LEVEL.</td>
+      <td>Accessibility. See the element’s table for all details.</td>
     </tr>
     <tr>
       <td> </td>
-      <td>Covered</td>
+      <td>LevelRef</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>CoveredEnumeration</td>
-      <td>Whether the component is Indoors or outdoors. Default is Indoors.</td>
-      <td>Accessibility.</td>
+      <td>LevelRefStructure</td>
+      <td> </td>
+      <td>Required if more than 1 level present.</td>
     </tr>
     <tr>
       <td> </td>
-      <td>AllAreasWheelchairAccessible</td>
-      <td>mandatory</td>
-      <td>0..1</td>
-      <td>xsd:boolean</td>
-      <td>Whether all areas of the component are wheelchair accessible.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>facilities</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>serviceFacilitySets_RelStructure</td>
-      <td>FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>SiteFacilitySet</td>
-      <td>optional</td>
-      <td>1..*</td>
-      <td>SiteFacilitySetStructure</td>
-      <td>Set of enumerated FACILITY values that are relevant to a SITE (names based on TPEG classifications, augmented with UIC etc.).</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>SiteFacilitySetRef</td>
-      <td>optional</td>
-      <td>0..*</td>
-      <td>SiteFacilitySetRefStructure</td>
-      <td>Reference to a SITE FACILITY SET.</td>
-      <td>Accessibility. TODO: EPIAP wants the SiteFacilitySets being defined here, referernces may be wrong.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>levels</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>levels_RelStructure</td>
-      <td>LEVELs found within SITe.</td>
-      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td><a href="Level.md">Level</a></td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>Level_VersionStructure</td>
-      <td>Level of a Building or SITE.</td>
-      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td><a href="Level.md">Level</a></td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>Level_VersionStructure</td>
-      <td>Level of a Building or SITE.</td>
-      <td>Accessibility. Mandatory if the StopPlace has more than one level.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>entrances</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>pointOfInterestEntrances_RelStructure</td>
-      <td>ENTRANCEs to and within SITE.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td><a href="Entrance.md">Entrance</a></td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>SiteEntrance_VersionStructure</td>
-      <td>Entrance to a SITE.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>equipmentPlaces</td>
+      <td>DroppedKerbOutside</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>equipmentPlaces_RelStructure</td>
-      <td>EQUIPMENT PLACEs within SITE COMPONENT.</td>
-      <td>Accessibility. TODO</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>EquipmentPlaceRef</td>
-      <td>optional</td>
-      <td>0..*</td>
-      <td>EquipmentPlaceRefStructure</td>
-      <td>Reference to an EQUIPMENT PLACE.</td>
-      <td> </td>
+      <td>boolean</td>
+      <td>Whether nearest crossing to ENTRANCE has dropped kerb.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (only set to <code class="language-plaintext highlighter-rouge">true</code> if Verbindung from Parkplatz with “Stufenfreier Zugang” = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc.</td>
     </tr>
     <tr>
       <td> </td>
-      <td>placeEquipments</td>
+      <td>DropOffPointClose</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>placeEquipments_RelStructure</td>
-      <td>Items of fixed EQUIPMENT that may be located in places within the SITE ELEMENT.</td>
-      <td>Accessibility. TODO</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>EntranceSensor</td>
-      <td>optional</td>
-      <td>0..*</td>
-      <td>EntranceSensor_VersionStructure</td>
-      <td>AN EQUIPMENT used to monitor or count passengers using a PASSENGER ENTRANCE. +v2.0</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>localServices</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>localServices_RelStructure</td>
-      <td>LOCAL SERVICEs that may be located in PLACEs within the SITE ELEMENT.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td>AssistanceServiceRef</td>
-      <td>optional</td>
-      <td>0..*</td>
-      <td>AssistanceServiceRefStructure</td>
-      <td>Identifier of an ASSISTANCE SERVICE.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td> </td>
-      <td>accessSpaces</td>
-      <td>expected</td>
-      <td>0..1</td>
-      <td>accessSpaces_RelStructure</td>
-      <td>ACCESS SPACEs within the STOP PLACE.</td>
-      <td>Accessibility.</td>
-    </tr>
-    <tr>
-      <td>+</td>
-      <td><a href="AccessSpace.md">AccessSpace</a></td>
-      <td>expected</td>
-      <td>0..*</td>
-      <td>AccessSpace_VersionStructure</td>
-      <td>An area within a STOP PLACE that does not give direct access to transport vehicles. May be connected to QUAYS by PATH LINKs.</td>
-      <td>Accessibility.</td>
+      <td>boolean</td>
+      <td>Whether there is a drop off point close by to ENTRANCE.</td>
+      <td>Will be exported from ATLAS for ERA TSI PRM (only set to <code class="language-plaintext highlighter-rouge">true</code> if Verbindung from Parkplatz with “Stufenfreier Zugang” = Ja). To indicate starting point relevant for AccessibilityAssessments of Quays etc.</td>
     </tr>
   </tbody>
 </table>

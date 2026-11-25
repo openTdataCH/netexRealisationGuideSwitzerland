@@ -219,7 +219,7 @@
 
 <p>A <code class="language-plaintext highlighter-rouge">JourneyPart</code> is a subsection of a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> that differs from the rest of the journey in at least one relevant characteristic — such as a different train number, operator, or on-board facilities. The <code class="language-plaintext highlighter-rouge">ServiceJourney</code> as a whole still runs from start to finish; <code class="language-plaintext highlighter-rouge">JourneyPart</code>s subdivide it into meaningful segments for passenger information or operational purposes.</p>
 
-<p><strong>When to use:</strong> When a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> changes its train number, operator, or on-board service (e.g. bistro available only on part of the route).</p>
+<p><strong>When to use:</strong> When the on-board service changes along a <code class="language-plaintext highlighter-rouge">ServiceJourney</code> (e.g. bistro available only on part of the route), or for a direct carriage (Kurswagen) that is pulled by different trains on different sections.</p>
 
 <pre><code class="language-mermaid">graph LR
   Bern --&gt;|"IC 703 — bistro open"| Zürich
@@ -243,7 +243,13 @@
       <td><code class="language-plaintext highlighter-rouge">[attribut]</code> per Teilstrecke</td>
       <td><code class="language-plaintext highlighter-rouge">JourneyPart</code></td>
       <td><code class="language-plaintext highlighter-rouge">JourneyPart</code></td>
-      <td>Change of train number, operator, or on-board facilities</td>
+      <td>Change of on-board facilities</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">*KW</code> / <code class="language-plaintext highlighter-rouge">*KWZ</code></td>
+      <td>–</td>
+      <td><code class="language-plaintext highlighter-rouge">JourneyPart</code> with <code class="language-plaintext highlighter-rouge">PurposeOfJourneyPartition:DirectCarriage</code>, one per <code class="language-plaintext highlighter-rouge">*KWZ</code></td>
+      <td>Direct carriage (Kurswagen)</td>
     </tr>
   </tbody>
 </table>
@@ -292,37 +298,87 @@
   <li><a href="./examples/08_NeTEX_CH_Bern_Olten_ZuerichHB_Winterthur_StGallen_with_Facilities.xml">Example</a></li>
 </ul>
 
-<h3 id="2-change-of-productcategoryref">2. Change of ProductCategoryRef</h3>
+<h3 id="2-direct-carriage-purposeofjourneypartitiondirectcarriage">2. Direct carriage (<code class="language-plaintext highlighter-rouge">PurposeOfJourneyPartition:DirectCarriage</code>)</h3>
+
+<p><strong>When to use:</strong> For a direct carriage (Kurswagen): a coach group that is pulled by different trains on different sections. See <a href="/netexRealisationGuideSwitzerland/main/uc08_kurswagen.html">uc08 Direct carriages</a>.</p>
+
+<p>The coach group is one complete <code class="language-plaintext highlighter-rouge">ServiceJourney</code> from its first to its last stop. It contains one <code class="language-plaintext highlighter-rouge">JourneyPart</code> per pulling train, i.e. one per HRDF <code class="language-plaintext highlighter-rouge">*KWZ</code> line:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">ParentJourneyRef</code> references the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> of the pulling train.</li>
+  <li><code class="language-plaintext highlighter-rouge">FromPointInPatternRef</code> / <code class="language-plaintext highlighter-rouge">ToPointInPatternRef</code> delimit the section within the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> of the pulling train. This can be a sub-range, e.g. if the pulling train continues after the coach group has been detached.</li>
+  <li><code class="language-plaintext highlighter-rouge">TrainNumberRef</code> is the train number of the pulling train.</li>
+  <li><code class="language-plaintext highlighter-rouge">StartTime</code> / <code class="language-plaintext highlighter-rouge">EndTime</code> with the day offsets give the time bounds of the section.</li>
+  <li><code class="language-plaintext highlighter-rouge">JourneyPartCoupleRef</code> is not used.</li>
+</ul>
+
+<p>The <code class="language-plaintext highlighter-rouge">ServiceJourney</code> of the coach group lists the train numbers of all pulling trains in <code class="language-plaintext highlighter-rouge">trainNumbers</code>, in the order of the sections.</p>
+
+<blockquote>
+  <p>In the example <strong>direct carriage 37 Zürich HB – Bremen Hbf</strong>, the coach group is pulled by train 472 (Zürich HB – Basel Bad Bf), train 470 (Basel Bad Bf – Hannover Hbf; 470 continues to Hamburg-Altona) and train 2746 (Hannover Hbf – Bremen Hbf).</p>
+</blockquote>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;ServiceJourney</span> <span class="na">id=</span><span class="s">"ch:1:ServiceJourney:KW37"</span> <span class="na">version=</span><span class="s">"1"</span> <span class="na">responsibilitySetRef=</span><span class="s">"ch:1:ResponsibilitySet:DB"</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- ... --&gt;</span>
+  <span class="nt">&lt;trainNumbers&gt;</span>
+    <span class="nt">&lt;TrainNumberRef</span> <span class="na">ref=</span><span class="s">"ch:1:TrainNumber:472"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;TrainNumberRef</span> <span class="na">ref=</span><span class="s">"ch:1:TrainNumber:470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;TrainNumberRef</span> <span class="na">ref=</span><span class="s">"ch:1:TrainNumber:2746"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/trainNumbers&gt;</span>
+  <span class="nt">&lt;parts&gt;</span>
+    <span class="c">&lt;!-- ... part 1: train 472 ... --&gt;</span>
+    <span class="nt">&lt;JourneyPart</span> <span class="na">id=</span><span class="s">"ch:1:JourneyPart:KW37:2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Kurswagen 37 am Zug 470, Basel Bad Bf - Hannover Hbf<span class="nt">&lt;/Description&gt;</span>
+      <span class="nt">&lt;ParentJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;TrainNumberRef</span> <span class="na">ref=</span><span class="s">"ch:1:TrainNumber:470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;FromPointInPatternRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourneyPattern:470:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;ToPointInPatternRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourneyPattern:470:2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;StartTime&gt;</span>23:40:00<span class="nt">&lt;/StartTime&gt;</span>
+      <span class="nt">&lt;StartTimeDayOffset&gt;</span>0<span class="nt">&lt;/StartTimeDayOffset&gt;</span>
+      <span class="nt">&lt;EndTime&gt;</span>06:12:00<span class="nt">&lt;/EndTime&gt;</span>
+      <span class="nt">&lt;EndTimeDayOffset&gt;</span>1<span class="nt">&lt;/EndTimeDayOffset&gt;</span>
+      <span class="nt">&lt;PurposeOfJourneyPartitionRef</span> <span class="na">ref=</span><span class="s">"ch:1:PurposeOfJourneyPartition:DirectCarriage"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/JourneyPart&gt;</span>
+    <span class="c">&lt;!-- ... part 3: train 2746 ... --&gt;</span>
+  <span class="nt">&lt;/parts&gt;</span>
+<span class="nt">&lt;/ServiceJourney&gt;</span>
+</code></pre></div></div>
+<ul>
+  <li><a href="./examples/21_NeTEx_CH_Kurswagen_Zuerich_Bremen.xml">Example</a></li>
+</ul>
+
+<h3 id="3-change-of-productcategoryref">3. Change of ProductCategoryRef</h3>
 <p>We will do this with <code class="language-plaintext highlighter-rouge">"ch:1:PurposeOfJouryneyPartition:TypeOfProductCategoryChange"</code></p>
 
 <blockquote>
   <p><em>LATER</em> Example</p>
 </blockquote>
 
-<h3 id="3-change-of-train-number--not-used-in-the-swiss-profile">3. Change of train number — NOT USED in the Swiss profile</h3>
+<h3 id="4-change-of-train-number--not-used-in-the-swiss-profile">4. Change of train number — NOT USED in the Swiss profile</h3>
 
 <p><strong>Status:</strong> This use case is intentionally <strong>not implemented</strong> via <code class="language-plaintext highlighter-rouge">JourneyPart</code> in the Swiss profile.</p>
 
 <p>Although passenger displays may show a train number change as if it were a single continuous journey, 
 in the underlying data this is always modeled as <strong>two separate <code class="language-plaintext highlighter-rouge">ServiceJourney</code>s linked via a 
 <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code></strong> (suppressed in passenger-facing presentation). See 
-<a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">uc02 Joining and splitting</a>.
-<strong>When to use:</strong> When a train operates under different train numbers on different sections of the same <code class="language-plaintext highlighter-rouge">ServiceJourney</code>.</p>
+<a href="/netexRealisationGuideSwitzerland/main/uc01_durchbindung.html">uc01 Durchbindung</a>.</p>
 
-<h3 id="4-splitting-and-joining">4. Splitting and Joining</h3>
-<p><code class="language-plaintext highlighter-rouge">JourneyPart</code> together with <code class="language-plaintext highlighter-rouge">CoupledJourney</code>could be used for a different modeling of joining and splitting (see <a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">relevant use case</a>.
+<p>This concerns a train that operates under different train numbers on different sections of the same <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. It does not concern direct carriages, where <code class="language-plaintext highlighter-rouge">TrainNumberRef</code> in the <code class="language-plaintext highlighter-rouge">JourneyPart</code> names the pulling train (see above).</p>
+
+<h3 id="5-splitting-and-joining">5. Splitting and Joining</h3>
+<p><code class="language-plaintext highlighter-rouge">JourneyPart</code> together with <code class="language-plaintext highlighter-rouge">CoupledJourney</code>could be used for a different modeling of joining and splitting (see <a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">relevant use case</a>).
 However, we currently won’t do that.</p>
 
-<h3 id="5-integrating-data-from-different-sources-to-have-something-to-load-into-a-trip-planner-in-international-travel">5. Integrating data from different sources to have something to load into a trip planner in international travel</h3>
+<h3 id="6-integrating-data-from-different-sources-to-have-something-to-load-into-a-trip-planner-in-international-travel">6. Integrating data from different sources to have something to load into a trip planner in international travel</h3>
 
 <p>A <code class="language-plaintext highlighter-rouge">ServiceJourney</code> may exist in the Swiss system only up to the first commercial stop abroad and completely but with less information in the Austrian system. To make sure that real-time data is easily applied the aggregated NeTEx timetable may still wish to keep the original delivered <code class="language-plaintext highlighter-rouge">ServiceJourney</code>. The relevant parts are then also modeled with <code class="language-plaintext highlighter-rouge">JourneyPart</code> and <code class="language-plaintext highlighter-rouge">CoupledJourney</code>. We won’t do this either. But we study this for some international projects we have on aggregation of timetables.</p>
 
-<h3 id="6-notice-only-for-a-part-of-the-servicejourney">6. Notice only for a part of the ServiceJourney</h3>
+<h3 id="7-notice-only-for-a-part-of-the-servicejourney">7. Notice only for a part of the ServiceJourney</h3>
 <p>We don’t use <code class="language-plaintext highlighter-rouge">JourneyPart</code> for this. <code class="language-plaintext highlighter-rouge">NoticeAssignment</code> can be valid only for a part of the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> (<code class="language-plaintext highlighter-rouge">StartPointInPatternRef</code> and <code class="language-plaintext highlighter-rouge">EndPointInPatternRef</code>).</p>
 
 <h3 id="table">Table</h3>
 
-<p>For some use cases e.g. change of Facilities during ServiceJourney</p>
+<p>Used for a change of facilities and for direct carriages (see uc05_journey_parts). The first JourneyPart shows a change of facilities, the second one a direct carriage.</p>
 
 <p><em>Table: parts</em></p>
 
@@ -343,7 +399,7 @@ However, we currently won’t do that.</p>
       <td> </td>
       <td>JourneyPart</td>
       <td>optional</td>
-      <td>1..*</td>
+      <td>0..*</td>
       <td>JourneyPart_VersionStructure</td>
       <td>A part of a VEHICLE JOURNEY created according to a specific functional purpose, for instance in situations when vehicle coupling or separating occurs.</td>
       <td> </td>
@@ -354,7 +410,7 @@ However, we currently won’t do that.</p>
       <td>optional</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td>We prefer to not use those</td>
     </tr>
     <tr>
@@ -363,7 +419,7 @@ However, we currently won’t do that.</p>
       <td>optional</td>
       <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -379,19 +435,19 @@ However, we currently won’t do that.</p>
       <td>+</td>
       <td>TrainNumberRef</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TrainNumberRefStructure</td>
-      <td>Reference to a TRAIN NUMBER.</td>
-      <td>TrainNumber used for this part</td>
+      <td> </td>
+      <td>TrainNumber used for this part. For a direct carriage the TrainNumber of the pulling train.</td>
     </tr>
     <tr>
       <td>+</td>
       <td>FromStopPointRef</td>
-      <td>mandatory</td>
-      <td>0..1</td>
+      <td>optional</td>
+      <td>1..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>SCHEDULED STOP POINT feeding INTERCHANGE. If absent apply to all STOP POINTs.</td>
-      <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part begins. On the level of Quay.</td>
+      <td>Point at which this JOURNEY PART starts.</td>
+      <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part begins. On the level of Quay. Used for a change of facilities. The XSD only allows either <code class="language-plaintext highlighter-rouge">FromStopPointRef</code>/<code class="language-plaintext highlighter-rouge">ToStopPointRef</code> or <code class="language-plaintext highlighter-rouge">FromPointInPatternRef</code>/<code class="language-plaintext highlighter-rouge">ToPointInPatternRef</code> (choice), so one of the two pairs must be present.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -399,16 +455,16 @@ However, we currently won’t do that.</p>
       <td>expected</td>
       <td>0..1</td>
       <td>ScheduledStopPointRefStructure</td>
-      <td>SCHEDULED STOP POINT distributing from INTERCHANGE. If absent apply to all STOP POINTs.</td>
-      <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part ends . If not present, it is to the end of the ServiceJourney. But we prefer to have it explicitly</td>
+      <td>Point at which this JOURNEY PART ends. If not set it is until the end of the JOURNEY. We will make this element mandatory in the future.</td>
+      <td><code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code> where the part ends. If not present, it is to the end of the ServiceJourney. But we prefer to have it explicitly. Not used together with <code class="language-plaintext highlighter-rouge">FromPointInPatternRef</code>/<code class="language-plaintext highlighter-rouge">ToPointInPatternRef</code>.</td>
     </tr>
     <tr>
       <td>+</td>
       <td>StartTime</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:time</td>
-      <td>The (inclusive) start date and time.</td>
+      <td>time</td>
+      <td>Start time of JOURNEY PART.</td>
       <td>Time bounds of the part</td>
     </tr>
     <tr>
@@ -425,8 +481,8 @@ However, we currently won’t do that.</p>
       <td>EndTime</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:time</td>
-      <td>The (inclusive) end date and time.</td>
+      <td>time</td>
+      <td>End time of JOURNEY PART.</td>
       <td>Time bounds of the part.</td>
     </tr>
     <tr>
@@ -442,10 +498,10 @@ However, we currently won’t do that.</p>
       <td>+</td>
       <td>PurposeOfJourneyPartitionRef</td>
       <td>mandatory</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>PurposeOfJourneyPartitionRefStructure</td>
-      <td>Reference to a PURPOSE OF JOURNEY PARTITION.</td>
-      <td>Reason for the partition (e.g. <code class="language-plaintext highlighter-rouge">FacilityChange</code>, <code class="language-plaintext highlighter-rouge">TrainNumberChange</code>, ‘TypeOfProductCategorychage`). Only two values are allowed (see uc0_journey_parts). Other things are implemented with different elements. Especially Notices are done with NoticeAssignment and not ServiceJourneyPart.</td>
+      <td> </td>
+      <td>Reason for the partition. Allowed values: <code class="language-plaintext highlighter-rouge">ch:1:PurposeOfJourneyPartition:FacilityChange</code>, <code class="language-plaintext highlighter-rouge">ch:1:PurposeOfJourneyPartition:DirectCarriage</code>, <code class="language-plaintext highlighter-rouge">ch:1:PurposeOfJourneyPartition:TypeOfProductCategoryChange</code> (see uc05_journey_parts). A change of train number is not modelled with JourneyPart. Other things are implemented with different elements. Especially Notices are done with NoticeAssignment and not JourneyPart.</td>
     </tr>
     <tr>
       <td>+</td>
@@ -453,7 +509,7 @@ However, we currently won’t do that.</p>
       <td>expected</td>
       <td>0..1</td>
       <td>serviceFacilitySets_RelStructure</td>
-      <td>FACILITies available associated with LINE. It is always recommended to also model accessibility relevant things as equipment on the VEHICLE and physical elements, if real-time information is needed.</td>
+      <td>Facilities available during JOURNEY PART.</td>
       <td><code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code> valid for this part only. Used when there is a change in facilities.</td>
     </tr>
     <tr>
@@ -462,17 +518,62 @@ However, we currently won’t do that.</p>
       <td>expected</td>
       <td>0..*</td>
       <td>ServiceFacilitySetRefStructure</td>
-      <td>Reference to a SERVICE FACILITY SET.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
       <td>+</td>
       <td>TypeOfProductCategoryRef</td>
       <td>optional</td>
-      <td>1..1</td>
+      <td>0..1</td>
       <td>TypeOfProductCategoryRefStructure</td>
-      <td>Reference to a TYPE OF PRODUCT CATEGORY. Product of a JOURNEY. e.g. ICS, Thales etc See ERA B.4 7037 Characteristic description code.</td>
+      <td> </td>
       <td>Used when the product category changes</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>Description</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>MultilingualString</td>
+      <td> </td>
+      <td>Free text. In the example for direct carriages it names the direct carriage, the pulling train and the section.</td>
+    </tr>
+    <tr>
+      <td>++</td>
+      <td>@lang</td>
+      <td>mandatory</td>
+      <td>1..1</td>
+      <td>xsd:string</td>
+      <td>Attribute lang</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ParentJourneyRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>VehicleJourneyRefStructure</td>
+      <td>Reference to parent of which this is part. If given by context does not need to be stated.</td>
+      <td>Used for a direct carriage: the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> of the pulling train. One <code class="language-plaintext highlighter-rouge">JourneyPart</code> per HRDF <code class="language-plaintext highlighter-rouge">*KWZ</code>.</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>FromPointInPatternRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>PointInSequenceRefStructure</td>
+      <td>POINT at which applicability of JOURNEY PART starts. When using PASSING TIME this element is to be used. +v2.1</td>
+      <td>Used for a direct carriage: point in the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> of the pulling train (<code class="language-plaintext highlighter-rouge">ParentJourneyRef</code>) where the part begins. Alternative to <code class="language-plaintext highlighter-rouge">FromStopPointRef</code> (choice in the XSD).</td>
+    </tr>
+    <tr>
+      <td>+</td>
+      <td>ToPointInPatternRef</td>
+      <td>optional</td>
+      <td>0..*</td>
+      <td>PointInSequenceRefStructure</td>
+      <td>POINT at which applicability of JOURNEY PART ends. +v2.1</td>
+      <td>Used for a direct carriage: point in the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> of the pulling train where the part ends. Can be before the end of the pulling train. Mandatory in the XSD if <code class="language-plaintext highlighter-rouge">FromPointInPatternRef</code> is used.</td>
     </tr>
   </tbody>
 </table>
@@ -483,7 +584,7 @@ However, we currently won’t do that.</p>
 
 <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span class="nt">&lt;parts&gt;</span>
-  <span class="c">&lt;!-- For some use cases e.g. change of Facilities during ServiceJourney --&gt;</span>
+  <span class="c">&lt;!-- Used for a change of facilities and for direct carriages (see uc05_journey_parts). The first JourneyPart shows a change of facilities, the second one a direct carriage. --&gt;</span>
   <span class="nt">&lt;JourneyPart</span> <span class="na">id=</span><span class="s">"ch:1:JourneyPart:703-bistro-1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
     <span class="nt">&lt;validityConditions&gt;</span>
       <span class="c">&lt;!-- We prefer to not use those --&gt;</span>
@@ -493,13 +594,13 @@ However, we currently won’t do that.</p>
       <span class="c">&lt;!-- For the use cases we support, this is not necessary --&gt;</span>
     <span class="nt">&lt;/MainPartRef&gt;</span>
     <span class="nt">&lt;TrainNumberRef</span> <span class="na">ref=</span><span class="s">"ch:1:TrainNumber:231213"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- TrainNumber used for this part --&gt;</span>
+      <span class="c">&lt;!-- TrainNumber used for this part. For a direct carriage the TrainNumber of the pulling train. --&gt;</span>
     <span class="nt">&lt;/TrainNumberRef&gt;</span>
     <span class="nt">&lt;FromStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:7000:4:7"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- `ScheduledStopPoint` where the part begins. On the level of Quay. --&gt;</span>
+      <span class="c">&lt;!-- `ScheduledStopPoint` where the part begins. On the level of Quay. Used for a change of facilities. The XSD only allows either `FromStopPointRef`/`ToStopPointRef` or `FromPointInPatternRef`/`ToPointInPatternRef` (choice), so one of the two pairs must be present. --&gt;</span>
     <span class="nt">&lt;/FromStopPointRef&gt;</span>
     <span class="nt">&lt;ToStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:218:7"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- `ScheduledStopPoint` where the part ends . If not present, it is to the end of the ServiceJourney. But we prefer to have it explicitly --&gt;</span>
+      <span class="c">&lt;!-- `ScheduledStopPoint` where the part ends. If not present, it is to the end of the ServiceJourney. But we prefer to have it explicitly. Not used together with `FromPointInPatternRef`/`ToPointInPatternRef`. --&gt;</span>
     <span class="nt">&lt;/ToStopPointRef&gt;</span>
     <span class="nt">&lt;StartTime&gt;</span>05:29:00
       <span class="c">&lt;!-- Time bounds of the part --&gt;</span>
@@ -510,7 +611,7 @@ However, we currently won’t do that.</p>
     <span class="nt">&lt;/EndTime&gt;</span>
     <span class="nt">&lt;EndTimeDayOffset&gt;</span>0<span class="nt">&lt;/EndTimeDayOffset&gt;</span>
     <span class="nt">&lt;PurposeOfJourneyPartitionRef</span> <span class="na">ref=</span><span class="s">"ch:1:PurposeOfJourneyPartition:FacilityChange"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-      <span class="c">&lt;!-- Reason for the partition (e.g. `FacilityChange`, `TrainNumberChange`, 'TypeOfProductCategorychage`). Only two values are allowed (see uc0_journey_parts). Other things are implemented with different elements. Especially Notices are done with NoticeAssignment and not ServiceJourneyPart. --&gt;</span>
+      <span class="c">&lt;!-- Reason for the partition. Allowed values: `ch:1:PurposeOfJourneyPartition:FacilityChange`, `ch:1:PurposeOfJourneyPartition:DirectCarriage`, `ch:1:PurposeOfJourneyPartition:TypeOfProductCategoryChange` (see uc05_journey_parts). A change of train number is not modelled with JourneyPart. Other things are implemented with different elements. Especially Notices are done with NoticeAssignment and not JourneyPart. --&gt;</span>
     <span class="nt">&lt;/PurposeOfJourneyPartitionRef&gt;</span>
     <span class="nt">&lt;facilities&gt;</span>
       <span class="c">&lt;!-- `ServiceFacilitySet` valid for this part only. Used when there is a change in facilities. --&gt;</span>
@@ -520,17 +621,25 @@ However, we currently won’t do that.</p>
       <span class="c">&lt;!-- Used when the product category changes --&gt;</span>
     <span class="nt">&lt;/TypeOfProductCategoryRef&gt;</span>
   <span class="nt">&lt;/JourneyPart&gt;</span>
-  <span class="nt">&lt;JourneyPart</span> <span class="na">id=</span><span class="s">"ch:1:JourneyPart:703-bistro-2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;FromStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:3000:501:33"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;ToStopPointRef</span> <span class="na">ref=</span><span class="s">"ch:1:sloid:6302:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;StartTime&gt;</span>06:57:00<span class="nt">&lt;/StartTime&gt;</span>
+  <span class="nt">&lt;JourneyPart</span> <span class="na">id=</span><span class="s">"ch:1:JourneyPart:KW37:2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Description</span> <span class="na">lang=</span><span class="s">"de"</span><span class="nt">&gt;</span>Kurswagen 37 am Zug 470, Basel Bad Bf - Hannover Hbf
+      <span class="c">&lt;!-- Free text. In the example for direct carriages it names the direct carriage, the pulling train and the section. --&gt;</span>
+    <span class="nt">&lt;/Description&gt;</span>
+    <span class="nt">&lt;ParentJourneyRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourney:470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Used for a direct carriage: the `ServiceJourney` of the pulling train. One `JourneyPart` per HRDF `*KWZ`. --&gt;</span>
+    <span class="nt">&lt;/ParentJourneyRef&gt;</span>
+    <span class="nt">&lt;TrainNumberRef</span> <span class="na">ref=</span><span class="s">"ch:1:TrainNumber:470"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;FromPointInPatternRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourneyPattern:470:1"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Used for a direct carriage: point in the `ServiceJourneyPattern` of the pulling train (`ParentJourneyRef`) where the part begins. Alternative to `FromStopPointRef` (choice in the XSD). --&gt;</span>
+    <span class="nt">&lt;/FromPointInPatternRef&gt;</span>
+    <span class="nt">&lt;ToPointInPatternRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceJourneyPattern:470:2"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">&gt;</span>
+      <span class="c">&lt;!-- Used for a direct carriage: point in the `ServiceJourneyPattern` of the pulling train where the part ends. Can be before the end of the pulling train. Mandatory in the XSD if `FromPointInPatternRef` is used. --&gt;</span>
+    <span class="nt">&lt;/ToPointInPatternRef&gt;</span>
+    <span class="nt">&lt;StartTime&gt;</span>23:40:00<span class="nt">&lt;/StartTime&gt;</span>
     <span class="nt">&lt;StartTimeDayOffset&gt;</span>0<span class="nt">&lt;/StartTimeDayOffset&gt;</span>
-    <span class="nt">&lt;EndTime&gt;</span>07:52:00<span class="nt">&lt;/EndTime&gt;</span>
-    <span class="nt">&lt;EndTimeDayOffset&gt;</span>0<span class="nt">&lt;/EndTimeDayOffset&gt;</span>
-    <span class="nt">&lt;PurposeOfJourneyPartitionRef</span> <span class="na">ref=</span><span class="s">"ch:1:PurposeOfJourneyPartition:FacilityChange"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;facilities&gt;</span>
-      <span class="nt">&lt;ServiceFacilitySetRef</span> <span class="na">ref=</span><span class="s">"ch:1:ServiceFacilitySet:bistro-open"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
-    <span class="nt">&lt;/facilities&gt;</span>
+    <span class="nt">&lt;EndTime&gt;</span>06:12:00<span class="nt">&lt;/EndTime&gt;</span>
+    <span class="nt">&lt;EndTimeDayOffset&gt;</span>1<span class="nt">&lt;/EndTimeDayOffset&gt;</span>
+    <span class="nt">&lt;PurposeOfJourneyPartitionRef</span> <span class="na">ref=</span><span class="s">"ch:1:PurposeOfJourneyPartition:DirectCarriage"</span> <span class="na">version=</span><span class="s">"1"</span><span class="nt">/&gt;</span>
   <span class="nt">&lt;/JourneyPart&gt;</span>
 <span class="nt">&lt;/parts&gt;</span>
 </code></pre></div></div>
@@ -541,9 +650,10 @@ However, we currently won’t do that.</p>
 
 <ul>
   <li><code class="language-plaintext highlighter-rouge">JourneyPart</code>s are nested directly within the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> under <code class="language-plaintext highlighter-rouge">&lt;parts&gt;</code>.</li>
-  <li>A <code class="language-plaintext highlighter-rouge">JourneyPart</code> always references the same <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s as the parent <code class="language-plaintext highlighter-rouge">ServiceJourney</code> — it cannot introduce new stops.</li>
-  <li><code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code> defined on a <code class="language-plaintext highlighter-rouge">JourneyPart</code> overrides the one on the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> for that section.</li>
-  <li><code class="language-plaintext highlighter-rouge">JourneyPartCouple</code> is <strong>not used</strong> in the Swiss profile for splitting and joining — use <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code> instead. See <a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">uc02 Joining and splitting</a>.</li>
+  <li>For a facility change, <code class="language-plaintext highlighter-rouge">FromStopPointRef</code> / <code class="language-plaintext highlighter-rouge">ToStopPointRef</code> reference <code class="language-plaintext highlighter-rouge">ScheduledStopPoint</code>s of the <code class="language-plaintext highlighter-rouge">ServiceJourney</code> itself — a <code class="language-plaintext highlighter-rouge">JourneyPart</code> cannot introduce new stops.</li>
+  <li>For a direct carriage, <code class="language-plaintext highlighter-rouge">FromPointInPatternRef</code> / <code class="language-plaintext highlighter-rouge">ToPointInPatternRef</code> reference points in the <code class="language-plaintext highlighter-rouge">ServiceJourneyPattern</code> of the pulling train given in <code class="language-plaintext highlighter-rouge">ParentJourneyRef</code>.</li>
+  <li>A <code class="language-plaintext highlighter-rouge">ServiceFacilitySet</code> on a <code class="language-plaintext highlighter-rouge">JourneyPart</code> is valid for this part only.</li>
+  <li><code class="language-plaintext highlighter-rouge">JourneyPartCouple</code> is <strong>not used</strong> in the Swiss profile, neither for splitting and joining (use <code class="language-plaintext highlighter-rouge">ServiceJourneyInterchange</code>, see <a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">uc02 Joining and splitting</a>) nor for direct carriages.</li>
   <li><code class="language-plaintext highlighter-rouge">JourneyPart</code> may become relevant for train composition (Wagenreihung) data in a future version of the profile. See <a href="/netexRealisationGuideSwitzerland/main/uc15_formations.html">uc15 Formations</a>.</li>
 </ul>
 
@@ -552,6 +662,7 @@ However, we currently won’t do that.</p>
 <ul>
   <li><a href="/netexRealisationGuideSwitzerland/main/uc02_joining_splitting.html">uc02 Joining and splitting</a></li>
   <li><a href="/netexRealisationGuideSwitzerland/main/uc03_transfers.html">uc03 Transfers</a></li>
+  <li><a href="/netexRealisationGuideSwitzerland/main/uc08_kurswagen.html">uc08 Direct carriages</a></li>
   <li><a href="/netexRealisationGuideSwitzerland/main/uc15_formations.html">uc15 Formations</a></li>
 </ul>
 
@@ -580,6 +691,11 @@ However, we currently won’t do that.</p>
       </div>
     </div>
   </div>
-</footer></body>
+</footer><script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true });
+    // Render code fences like ```mermaid (Jekyll outputs <pre><code class="language-mermaid">...</code></pre>)
+    mermaid.run({ querySelector: 'pre > code.language-mermaid' });
+</script></body>
 
 </html>

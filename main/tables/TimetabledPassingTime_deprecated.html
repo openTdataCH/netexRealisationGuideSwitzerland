@@ -254,9 +254,9 @@
       <td>+</td>
       <td>CheckConstraint</td>
       <td>optional</td>
-      <td>1..*</td>
-      <td>CheckConstraint_VersionStructure</td>
-      <td>Characteristics of a SITE COMPONENT representing a process, such as check-in, security screening, ticket control or immigration, that may potentially incur a time penalty that should be allowed for when journey planning. Used to mark PATH LINKs to determine transit routes through interchanges.</td>
+      <td>1..1</td>
+      <td>unknown</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -265,7 +265,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>xsd:boolean</td>
-      <td>Whether use of stop is flexible, i.e. requires phoning to arrange. Must be a FLEXIBLE LINE. Default is false.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -273,7 +273,7 @@
       <td>AlightAndReboard</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether can alight and reboard at stop.</td>
       <td> </td>
     </tr>
@@ -283,7 +283,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>StopPointInJourneyPatternRefStructure</td>
-      <td>Reference to a STOP POINT IN SEQUENCE. If given by context does not need to be stated.</td>
+      <td>+v2.1</td>
       <td> </td>
     </tr>
     <tr>
@@ -291,8 +291,8 @@
       <td>ArrivalTime</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>xsd:time</td>
-      <td>Time of arrival of JOURNEY at destination POINT.</td>
+      <td>time</td>
+      <td>Timetabled arrival time.</td>
       <td>Not used if departure only.</td>
     </tr>
     <tr>
@@ -301,7 +301,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>DayOffsetType</td>
-      <td>Daya offset if Time of arrival of JOURNEY at destination POINT.</td>
+      <td>Number of days after the starting time of the journey if not same calendar day. Default is 0 for same day.</td>
       <td> </td>
     </tr>
     <tr>
@@ -309,8 +309,8 @@
       <td>DepartureTime</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>xsd:time</td>
-      <td>Time of departure of JOURNEY from POINT.</td>
+      <td>time</td>
+      <td>Timetabled departure time.</td>
       <td>Not used if arrival only.</td>
     </tr>
     <tr>
@@ -319,7 +319,7 @@
       <td>optional</td>
       <td>0..1</td>
       <td>DayOffsetType</td>
-      <td>Daya offset if Time of departure of JOURNEY from origin POINT from current OPERATING DAY.</td>
+      <td>Number of days after the starting time of the journey if not same calendar day. Default is 0 for same day.</td>
       <td> </td>
     </tr>
     <tr>
@@ -327,7 +327,7 @@
       <td>WaitingTime</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:duration</td>
+      <td>duration</td>
       <td>Timetabled waiting interval.</td>
       <td> </td>
     </tr>
@@ -336,7 +336,7 @@
       <td>LatestArrivalTime</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:time</td>
+      <td>time</td>
       <td>Latest Arrival Time.</td>
       <td> </td>
     </tr>
@@ -354,7 +354,7 @@
       <td>EarliestDepartureTime</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:time</td>
+      <td>time</td>
       <td>Earliest Timetabled departure time.</td>
       <td> </td>
     </tr>

@@ -1,5 +1,7 @@
 # Comparison of the NeTEx Profiles of Switzerland, France and Norway
 
+> **NOTE**: This is still a draft. The following list is not necessarily comprehensive.
+
 This comparison is focused on the actual productive data rather than on the documentation
 
 ## Comparison of the File Structure

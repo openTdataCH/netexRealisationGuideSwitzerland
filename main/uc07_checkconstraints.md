@@ -34,8 +34,8 @@ CheckConstraints are used for different use cases
 |  | Congestion | optional | 0..1 | CongestionEnumeration | Type of crowding that may slow use of CHECK CONSTRAINT. |  |
 |  | delays | expected | 0..1 | checkConstraintDelays_RelStructure | Delays for CHECK CONSTRAINT .process. |  |
 | + | CheckConstraintDelay | expected | 1..* | CheckConstraintDelay_VersionStructure | Time penalty associated with a CHECK CONSTRAINT. | We currently only model delays |
-| ++ | AverageDelay | expected | 0..1 | xsd:duration | Average duration expected to pass through Check. |  |
-| ++ | MaximumLikelyDelay | optional | 0..1 | xsd:duration | Maximum duration expected to pass through CHECK CONSTRAINT. |  |
+| ++ | AverageDelay | expected | 0..1 | duration | Average duration expected to pass through Check. |  |
+| ++ | MaximumLikelyDelay | optional | 0..1 | duration | Maximum duration expected to pass through CHECK CONSTRAINT. |  |
 
 
 

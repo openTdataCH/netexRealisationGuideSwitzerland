@@ -34,8 +34,13 @@
   </scheduledStopPoints>
   <stopAssignments>
     <PassengerStopAssignment id="generated" version="1">
-      <!-- are only used in a special PSA file in the export. -->
+      <!-- Are needed for foreign traffic and also for formations. -->
     </PassengerStopAssignment>
+    <FlexibleStopAssignment id="generated" version="1">
+      <!-- For service areas (Bediengebiete) of demand responsive services. -->
+      <ScheduledStopPointRef ref="generated" version="1"/>
+      <FlexibleStopPlaceRef ref="generated" version="1"/>
+    </FlexibleStopAssignment>
   </stopAssignments>
   <timingLinks>
     <!-- We use TimingLink as the time behaviour between two ScheduledStopPoints -->

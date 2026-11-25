@@ -256,7 +256,7 @@
       <td>expected</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -265,7 +265,7 @@
       <td>expected</td>
       <td>0..*</td>
       <td>AvailabilityConditionRefStructure</td>
-      <td>Reference to an AVAILABILITY CONDITION. A VALIDITY CONDITION defined in terms of temporal attributes.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -282,7 +282,7 @@
       <td>StaySeated</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether the passenger can remain in vehicle (i.e. block linking). Default is false: the passenger must change vehicles for this INTERCHANGE. Default is false.</td>
       <td> </td>
     </tr>
@@ -291,7 +291,7 @@
       <td>CrossBorder</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether INTERCHANGE involves crossing an international border. Default is false.</td>
       <td> </td>
     </tr>
@@ -300,7 +300,7 @@
       <td>Planned</td>
       <td>mandatory</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether INTERCHANGE is planned in a timetable. Default is true.</td>
       <td> </td>
     </tr>
@@ -309,7 +309,7 @@
       <td>Guaranteed</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:boolean</td>
+      <td>boolean</td>
       <td>Whether INTERCHANGE is guaranteed. Default is false.</td>
       <td> </td>
     </tr>
@@ -318,7 +318,7 @@
       <td>StandardWaitTime</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>xsd:duration</td>
+      <td>duration</td>
       <td>Standard wait time for INTERCHANGE.</td>
       <td>Used for joining/splitting and waiting in vehicle</td>
     </tr>
@@ -327,7 +327,7 @@
       <td>StandardTransferTime</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>xsd:duration</td>
+      <td>duration</td>
       <td>Standard transfer duration for INTERCHANGE.</td>
       <td> </td>
     </tr>
@@ -336,8 +336,8 @@
       <td>FromPointRef</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>VehicleMeetingPointRefStructure</td>
-      <td>Start POINT of LINK.</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td>Identifier of SCHEDULED STOP POINT from which Link starts.</td>
       <td>ScheduledStopPoint at which the feeder journey arrives. Replaces StopPlaceRef+FeederFilter from InterchangeRule.</td>
     </tr>
     <tr>
@@ -354,8 +354,8 @@
       <td>ToPointRef</td>
       <td>mandatory</td>
       <td>1..1</td>
-      <td>VehicleMeetingPointRefStructure</td>
-      <td>End POINT of LINK.</td>
+      <td>ScheduledStopPointRefStructure</td>
+      <td>Identifier of SCHEDULED STOP POINT at which Link ends.</td>
       <td>ScheduledStopPoint at which the distributor journey departs. Same stop as FromPointRef for same-stop transfers.</td>
     </tr>
     <tr>
@@ -373,7 +373,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>ServiceJourneyRefStructure</td>
-      <td>SERVICE JOURNEY that feeds JOURNEY MEETING. +v2.0</td>
+      <td>SERVICE JOURNEY that feeds the INTERCHANGE. +v2.0</td>
       <td>Reference to the specific feeder ServiceJourney. Replaces FeederFilter/ServiceJourneyRef from InterchangeRule.</td>
     </tr>
     <tr>
@@ -382,7 +382,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>ServiceJourneyRefStructure</td>
-      <td>SERVICE JOURNEY that distributes from JOURNEY MEETING. +v2.0</td>
+      <td>SERVICE JOURNEY that distributes from the INTERCHANGE. +v2.0</td>
       <td>Reference to the specific distributor ServiceJourney. Replaces DistributorFilter/ServiceJourneyRef from InterchangeRule.</td>
     </tr>
   </tbody>

@@ -256,7 +256,7 @@
       <td>mandatory</td>
       <td>1..1</td>
       <td>validityConditions_RelStructure</td>
-      <td>VALIDITY CONDITIONs conditioning entity.</td>
+      <td> </td>
       <td> </td>
     </tr>
     <tr>
@@ -300,8 +300,8 @@
       <td>timebands</td>
       <td>expected</td>
       <td>0..1</td>
-      <td>timebandRefs_RelStructure</td>
-      <td>TIMEBANDs for the DAY TYPE.</td>
+      <td>timebandsInFrame_RelStructure</td>
+      <td>Reusable TIMEBANDs used in SERVICE CALENDAR FRAME.</td>
       <td> </td>
     </tr>
     <tr>
@@ -318,7 +318,7 @@
       <td>dayTypeAssignments</td>
       <td>optional</td>
       <td>0..1</td>
-      <td>dayTypeAssignments_RelStructure</td>
+      <td>dayTypeAssignmentsInFrame_RelStructure</td>
       <td>Assignments of DAY TYPEs to specific OPERATING DAYs. The same DAY TYPE may be assigned to multiple Operating dates, and vice versa.</td>
       <td> </td>
     </tr>
@@ -328,7 +328,7 @@
       <td>optional</td>
       <td>1..*</td>
       <td>DayTypeAssignment_VersionStructure</td>
-      <td>Associates a DAY TYPE with an OPERATING DAY within a specific Calendar. A specification of a particular DAY TYPE which will be valid during a TIME BAND on an OPERATING DAY.</td>
+      <td>An operating period.</td>
       <td>Used for holidays only</td>
     </tr>
   </tbody>

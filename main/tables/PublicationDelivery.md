@@ -12,8 +12,8 @@ For PublicationDelivery have a good look at how the attributes must be done in t
 |  | @xsi:schemaLocation | mandatory | 1..1 | xsd:string | Attribute xsi:schemaLocation | |
 |  | @xmlns:gml | mandatory | 1..1 | xsd:string | Attribute xmlns:gml | |
 |  | @xmlns:siri | mandatory | 1..1 | xsd:string | Attribute xmlns:siri | |
-|  | PublicationTimestamp | mandatory | 1..1 | xsd:dateTime | Time of output of data. |  |
-|  | ParticipantRef | mandatory | 1..1 | siri:ParticipantCodeType | Identifier of system requesting Data. |  |
+|  | PublicationTimestamp | mandatory | 1..1 | dateTime | Time of output of data. |  |
+|  | ParticipantRef | mandatory | 1..1 | ParticipantCodeType | Identifier of system requesting Data. |  |
 |  | Description | optional | 0..1 | MultilingualString |  |  |
 |  | dataObjects | mandatory | 0..1 | dataObjects_RelStructure | NeTEx Entities of any type. | Note that the usage (mandatory) overrides the cardinality. |
-| + | [CompositeFrame](CompositeFrame.md) | mandatory | 1..1 | Composite_VersionFrameStructure | A container VERSION FRAME that groups a set of content VERSION FRAMsE to which the same VALIDITY CONDITIONs have been assigned. |  |
+| + | [CompositeFrame](CompositeFrame.md) | mandatory | 0..* | unknown |  |  |

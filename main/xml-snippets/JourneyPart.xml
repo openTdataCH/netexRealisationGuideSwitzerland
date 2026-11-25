@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <parts>
-  <!-- For some use cases e.g. change of Facilities during ServiceJourney -->
+  <!-- Used for a change of facilities and for direct carriages (see uc05_journey_parts). The first JourneyPart shows a change of facilities, the second one a direct carriage. -->
   <JourneyPart id="ch:1:JourneyPart:703-bistro-1" version="1">
     <validityConditions>
       <!-- We prefer to not use those -->
@@ -10,13 +10,13 @@
       <!-- For the use cases we support, this is not necessary -->
     </MainPartRef>
     <TrainNumberRef ref="ch:1:TrainNumber:231213" version="1">
-      <!-- TrainNumber used for this part -->
+      <!-- TrainNumber used for this part. For a direct carriage the TrainNumber of the pulling train. -->
     </TrainNumberRef>
     <FromStopPointRef ref="ch:1:sloid:7000:4:7" version="1">
-      <!-- `ScheduledStopPoint` where the part begins. On the level of Quay. -->
+      <!-- `ScheduledStopPoint` where the part begins. On the level of Quay. Used for a change of facilities. The XSD only allows either `FromStopPointRef`/`ToStopPointRef` or `FromPointInPatternRef`/`ToPointInPatternRef` (choice), so one of the two pairs must be present. -->
     </FromStopPointRef>
     <ToStopPointRef ref="ch:1:sloid:218:7" version="1">
-      <!-- `ScheduledStopPoint` where the part ends . If not present, it is to the end of the ServiceJourney. But we prefer to have it explicitly -->
+      <!-- `ScheduledStopPoint` where the part ends. If not present, it is to the end of the ServiceJourney. But we prefer to have it explicitly. Not used together with `FromPointInPatternRef`/`ToPointInPatternRef`. -->
     </ToStopPointRef>
     <StartTime>05:29:00
       <!-- Time bounds of the part -->
@@ -27,7 +27,7 @@
     </EndTime>
     <EndTimeDayOffset>0</EndTimeDayOffset>
     <PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:FacilityChange" version="1">
-      <!-- Reason for the partition (e.g. `FacilityChange`, `TrainNumberChange`, 'TypeOfProductCategorychage`). Only two values are allowed (see uc0_journey_parts). Other things are implemented with different elements. Especially Notices are done with NoticeAssignment and not ServiceJourneyPart. -->
+      <!-- Reason for the partition. Allowed values: `ch:1:PurposeOfJourneyPartition:FacilityChange`, `ch:1:PurposeOfJourneyPartition:DirectCarriage`, `ch:1:PurposeOfJourneyPartition:TypeOfProductCategoryChange` (see uc05_journey_parts). A change of train number is not modelled with JourneyPart. Other things are implemented with different elements. Especially Notices are done with NoticeAssignment and not JourneyPart. -->
     </PurposeOfJourneyPartitionRef>
     <facilities>
       <!-- `ServiceFacilitySet` valid for this part only. Used when there is a change in facilities. -->
@@ -37,16 +37,24 @@
       <!-- Used when the product category changes -->
     </TypeOfProductCategoryRef>
   </JourneyPart>
-  <JourneyPart id="ch:1:JourneyPart:703-bistro-2" version="1">
-    <FromStopPointRef ref="ch:1:sloid:3000:501:33" version="1"/>
-    <ToStopPointRef ref="ch:1:sloid:6302:1" version="1"/>
-    <StartTime>06:57:00</StartTime>
+  <JourneyPart id="ch:1:JourneyPart:KW37:2" version="1">
+    <Description lang="de">Kurswagen 37 am Zug 470, Basel Bad Bf - Hannover Hbf
+      <!-- Free text. In the example for direct carriages it names the direct carriage, the pulling train and the section. -->
+    </Description>
+    <ParentJourneyRef ref="ch:1:ServiceJourney:470" version="1">
+      <!-- Used for a direct carriage: the `ServiceJourney` of the pulling train. One `JourneyPart` per HRDF `*KWZ`. -->
+    </ParentJourneyRef>
+    <TrainNumberRef ref="ch:1:TrainNumber:470" version="1"/>
+    <FromPointInPatternRef ref="ch:1:ServiceJourneyPattern:470:1" version="1">
+      <!-- Used for a direct carriage: point in the `ServiceJourneyPattern` of the pulling train (`ParentJourneyRef`) where the part begins. Alternative to `FromStopPointRef` (choice in the XSD). -->
+    </FromPointInPatternRef>
+    <ToPointInPatternRef ref="ch:1:ServiceJourneyPattern:470:2" version="1">
+      <!-- Used for a direct carriage: point in the `ServiceJourneyPattern` of the pulling train where the part ends. Can be before the end of the pulling train. Mandatory in the XSD if `FromPointInPatternRef` is used. -->
+    </ToPointInPatternRef>
+    <StartTime>23:40:00</StartTime>
     <StartTimeDayOffset>0</StartTimeDayOffset>
-    <EndTime>07:52:00</EndTime>
-    <EndTimeDayOffset>0</EndTimeDayOffset>
-    <PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:FacilityChange" version="1"/>
-    <facilities>
-      <ServiceFacilitySetRef ref="ch:1:ServiceFacilitySet:bistro-open" version="1"/>
-    </facilities>
+    <EndTime>06:12:00</EndTime>
+    <EndTimeDayOffset>1</EndTimeDayOffset>
+    <PurposeOfJourneyPartitionRef ref="ch:1:PurposeOfJourneyPartition:DirectCarriage" version="1"/>
   </JourneyPart>
 </parts>

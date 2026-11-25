@@ -9,6 +9,16 @@ Note that not all elements are used in the profile. Where the element exists and
 
 ---
 
+## AccessibilityAssessment
+
+An assessment of the accessibility of a StopPlace, Quay, Vehicle or other elements for  passengers with specific needs, in particular for those needing wheelchair access or step-free access and for the visually or the auditorily impaired.
+
+> **NeTEx XSD / Transmodel:** Assessment for accessibility purposes of limitations of environment and/or SUITABILITies for one or more USER NEEDs of a component.
+
+→ [Full documentation](05_stops.md#accessibilityassessment)
+
+---
+
 ## AlternativeName
 
 Additional name variant for a NeTEx object - such as an official registration, translation, or abbreviation.
@@ -29,7 +39,31 @@ Supplementary textual description attached to any NeTEx object.
 >
 > **Transmodel:** Alternative text for any textual attribute of an ENTITY.
 
-→ [Full documentation](03_xml_modelling#alternativetext)
+→ [Full documentation](03_xml_modelling.md#alternativetext)
+
+---
+
+## AssistanceService
+
+Information about assistance services and their availability. 
+
+> **NeTEx XSD:** Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.
+>
+> **Transmodel:** Specialisation of LOCAL SERVICE describing assistance services, providing information such as language, accessibility trained staff, etc. 
+
+→ [Full documentation](05_stops.html#assistanceservice)
+
+---
+
+## AssistanceBookingService
+
+Booking / contact information for AssistanceService.
+
+> **NeTEx XSD:** A specialisation of LOCAL SERVICE for ASSISTANCE BOOKING providing information like language, accessibility trained staff, etc.
+>
+> **Transmodel:** A specialisation of LOCAL SERVICE providing information about how to book assistance for wheelchair and disabled users.
+
+→ [Full documentation](05_stops.html#assistancebookingservice)
 
 ---
 
@@ -272,6 +306,16 @@ The ordered sequence of ScheduledStopPoints that a transport service follows for
 
 ---
 
+## Level
+
+Complex interchanges are often on multiple levels, each with a name, e.g., ‘Platform Level’, ‘Entrance Level’, etc. We use a minimal implementation for discerning levels in StopPlaces with multiple floors.
+
+> **NeTEx XSD / Transmodel:** An identified storey (ground, first, basement, mezzanine, etc.) within an interchange building or SITE on which SITE COMPONENTs reside.
+
+→ [Full documentation](05_stops.md#stopplace)
+
+---
+
 ## Line
 
 A public transport service line, representing a marketed route with a name, transport mode, and operator.
@@ -374,6 +418,8 @@ A parking facility associated with public transport - such as a park-and-ride lo
 > **NeTEx XSD:** A named place where Parking may be accessed. May be a building complex (e.g. a station) or an on-street location.
 >
 > **Transmodel:** Designated locations for leaving vehicles such as cars, motorcycles and bicycles.
+
+→ [Full documentation](05_stops.md#siteframe)
 
 ---
 
@@ -607,6 +653,16 @@ A named physical or virtual location where passengers can board or alight from p
 > **Transmodel:** A place comprising one or more locations where vehicles may stop and where passengers may board or leave vehicles or prepare their trip. A STOP PLACE will usually have one or more well-known names.
 
 → [Full documentation](05_stops.md#stopplace)
+
+---
+
+## StopPlaceEntrance
+
+StopPlaceEntrances are the reference points from which the accessibility of Quays and other place elements is assessed.
+
+> **NeTEx XSD / Transmodel:** A physical entrance or exit to/from a STOP PLACE for a Passenger; may be a door, barrier, gate or other recognizable point of access. 
+
+→ [Full documentation](05_stops.md#stopplaceentrance)
 
 ---
 

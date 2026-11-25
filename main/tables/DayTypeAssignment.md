@@ -8,5 +8,5 @@ We currently use DayType to store the national holidays.
 |-----|---------|-------|------|------|-------------|------|
 |  | @id | mandatory | 1..1 | xsd:string | Attribute id | |
 |  | @version | mandatory | 1..1 | xsd:string | Attribute version | |
-|  | Date | mandatory | 0..1 | xsd:date | Calendar date of assignment. |  |
-|  | DayTypeRef | mandatory | 1..* | DayTypeRefStructure | Reference to a DAY TYPE. |  |
+|  | Date | mandatory | 0..1 | date | Calendar date of assignment. |  |
+|  | DayTypeRef | mandatory | 1..* | DayTypeRefStructure |  |  |

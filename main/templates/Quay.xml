@@ -39,27 +39,23 @@
 										<!-- ch-note: We might in future model StopPlace as polygons -->
 									</gml:Polygon>
 									<AccessibilityAssessment id="generated" version="1">
-										<!-- ch-usage: optional -->
-										<!-- ch-note: Will be used at some point for the basic accessibility information. Currently not used. -->
-										<MobilityImpairedAccess><!-- ch-note: Basic information about accessibility. --><!-- ch-usage: optional -->true</MobilityImpairedAccess>
+										<!-- ch-usage: expected -->
+										<!-- ch-note: Only required if the AccessibilityAssessment of the StopPlace contains value(s) `partial`. -->
+										<!-- ch-see -->
+										<MobilityImpairedAccess><!-- ch-note: Basic information about accessibility. --><!-- ch-usage: mandatory -->true</MobilityImpairedAccess>
 									</AccessibilityAssessment>
 									<AccessModes><!-- ch-usage: optional --><!-- Currently we don't have the data. But especially for carTransportRail we will use it at some point. Use foot for the time being or omit it.-->bicycle foot</AccessModes>
 									<PublicUse><!-- ch-usage: ignored --><!-- Might be added at some point -->all</PublicUse>
 									<Covered><!-- ch-usage: ignored --><!-- Might be added at some point -->covered</Covered>
 									<facilities>
-										<!-- ch-usage: ignored -->
-										<!-- ch-note: might be added in the future. Especially for accessibility.-->
-										<SiteFacilitySetRef ref="generated" versionRef="1"/>
+										<!-- ch-usage: optional -->
+										<!-- ch-note: Only use to signal a facility not generally available for the StopPlace. Will be exported from ATLAS for ERA TSI PRM. -->
+										<SiteFacilitySet id="generated" version="1"><!-- ch-see --></SiteFacilitySet>
 									</facilities>
 									<SiteRef ref="ch:1:sloid:7000">
 										<!-- ch-usage: optional -->
 										<!-- ch-note: Can reference the parent Quay or StopPlace -->
 									</SiteRef>
-									<localServices>
-										<!-- ch-usage: ignored -->
-										<!-- ch-note: might be added in the future. Especially for accessibility. -->
-										<AssistanceServiceRef ref="generated" versionRef="1"/>
-									</localServices>
 									<PublicCode>
 										<!-- ch-usage: mandatory -->
 										<!-- ch-note: Code used to identify the Quay to the public -->

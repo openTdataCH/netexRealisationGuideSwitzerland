@@ -224,6 +224,18 @@ Each entry includes the definition (adapted to the context of the profile), the 
 
 <hr />
 
+<h2 id="accessibilityassessment">AccessibilityAssessment</h2>
+
+<p>An assessment of the accessibility of a StopPlace, Quay, Vehicle or other elements for  passengers with specific needs, in particular for those needing wheelchair access or step-free access and for the visually or the auditorily impaired.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> Assessment for accessibility purposes of limitations of environment and/or SUITABILITies for one or more USER NEEDs of a component.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/05_stops.html#accessibilityassessment">Full documentation</a></p>
+
+<hr />
+
 <h2 id="alternativename">AlternativeName</h2>
 
 <p>Additional name variant for a NeTEx object - such as an official registration, translation, or abbreviation.</p>
@@ -248,7 +260,35 @@ Each entry includes the definition (adapted to the context of the profile), the 
   <p><strong>Transmodel:</strong> Alternative text for any textual attribute of an ENTITY.</p>
 </blockquote>
 
-<p>→ <a href="03_xml_modelling#alternativetext">Full documentation</a></p>
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/03_xml_modelling.html#alternativetext">Full documentation</a></p>
+
+<hr />
+
+<h2 id="assistanceservice">AssistanceService</h2>
+
+<p>Information about assistance services and their availability.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> Specialisation of LOCAL SERVICE for ASSISTANCE providing information like language, accessibility trained staff, etc.</p>
+
+  <p><strong>Transmodel:</strong> Specialisation of LOCAL SERVICE describing assistance services, providing information such as language, accessibility trained staff, etc.</p>
+</blockquote>
+
+<p>→ <a href="05_stops.html#assistanceservice">Full documentation</a></p>
+
+<hr />
+
+<h2 id="assistancebookingservice">AssistanceBookingService</h2>
+
+<p>Booking / contact information for AssistanceService.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD:</strong> A specialisation of LOCAL SERVICE for ASSISTANCE BOOKING providing information like language, accessibility trained staff, etc.</p>
+
+  <p><strong>Transmodel:</strong> A specialisation of LOCAL SERVICE providing information about how to book assistance for wheelchair and disabled users.</p>
+</blockquote>
+
+<p>→ <a href="05_stops.html#assistancebookingservice">Full documentation</a></p>
 
 <hr />
 
@@ -536,6 +576,18 @@ DIRECTION, LINE or VEHICLE JOURNEY.</p>
 
 <hr />
 
+<h2 id="level">Level</h2>
+
+<p>Complex interchanges are often on multiple levels, each with a name, e.g., ‘Platform Level’, ‘Entrance Level’, etc. We use a minimal implementation for discerning levels in StopPlaces with multiple floors.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> An identified storey (ground, first, basement, mezzanine, etc.) within an interchange building or SITE on which SITE COMPONENTs reside.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/05_stops.html#stopplace">Full documentation</a></p>
+
+<hr />
+
 <h2 id="line">Line</h2>
 
 <p>A public transport service line, representing a marketed route with a name, transport mode, and operator.</p>
@@ -661,6 +713,8 @@ A continuous date range (FromDate-ToDate) during which a set of transport servic
 
   <p><strong>Transmodel:</strong> Designated locations for leaving vehicles such as cars, motorcycles and bicycles.</p>
 </blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/05_stops.html#siteframe">Full documentation</a></p>
 
 <hr />
 
@@ -936,6 +990,18 @@ components and/or ENTRANCEs, in particular STOP PLACEs and/or its components. NO
 </blockquote>
 
 <p>→ <a href="/netexRealisationGuideSwitzerland/main/05_stops.html#stopplace">Full documentation</a></p>
+
+<hr />
+
+<h2 id="stopplaceentrance">StopPlaceEntrance</h2>
+
+<p>StopPlaceEntrances are the reference points from which the accessibility of Quays and other place elements is assessed.</p>
+
+<blockquote>
+  <p><strong>NeTEx XSD / Transmodel:</strong> A physical entrance or exit to/from a STOP PLACE for a Passenger; may be a door, barrier, gate or other recognizable point of access.</p>
+</blockquote>
+
+<p>→ <a href="/netexRealisationGuideSwitzerland/main/05_stops.html#stopplaceentrance">Full documentation</a></p>
 
 <hr />
 

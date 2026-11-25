@@ -15,12 +15,16 @@
     </Location>
   </Centroid>
   <AccessibilityAssessment id="generated" version="1">
-    <!-- Will be used at some point for the basic accessibility information. Currently not used. -->
+    <!-- Only required if the AccessibilityAssessment of the StopPlace contains value(s) `partial`. -->
     <MobilityImpairedAccess>true
       <!-- Basic information about accessibility. -->
     </MobilityImpairedAccess>
   </AccessibilityAssessment>
   <AccessModes>bicycle foot</AccessModes>
+  <facilities>
+    <!-- Only use to signal a facility not generally available for the StopPlace. Will be exported from ATLAS for ERA TSI PRM. -->
+    <SiteFacilitySet id="generated" version="1"/>
+  </facilities>
   <SiteRef ref="ch:1:sloid:7000">
     <!-- Can reference the parent Quay or StopPlace -->
   </SiteRef>

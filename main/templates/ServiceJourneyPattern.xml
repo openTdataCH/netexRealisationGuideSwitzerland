@@ -30,9 +30,11 @@
 									<ForBoarding><!-- ch-usage: mandatory -->true</ForBoarding>
 									<DestinationDisplayRef ref="DestinationDisplay:1" versionRef="1">
 										<!-- ch-usage: optional -->
-										<!-- ch-note: Indicates that the destination has changed. Superseeds Line or ServiceJourney -->
+										<!-- ch-note: Indicates that the destination has changed. Superseeds Line or ServiceJourney. Also, there is propagation. E.g if the DestinationDisplay changes on the 4. th stop it is propagated through all stops until a different DestinationDisplay is encountered. -->
 									</DestinationDisplayRef>
 									<RequestStop><!-- ch-usage: optional -->false</RequestStop>
+									<BoardingRequestMethod><!-- ch-usage: optional --><!-- ch-note: For request stops (RequestStop true) with boarding. See sheet Haltecode of the mapping excel and uc16_drt. -->stopButton</BoardingRequestMethod>
+									<AlightingRequestMethod><!-- ch-usage: optional --><!-- ch-note: For request stops (RequestStop true) with alighting. See sheet Haltecode of the mapping excel and uc16_drt. -->stopButton</AlightingRequestMethod>
 									<StopUse><!-- ch-usage: optional --><!-- ch-note: All values possible. passthrough is used for Durchfahrt, if such data is delivered. See mapping excel. -->access</StopUse>
 									<checkConstraints>
 										<!-- ch-usage: optional -->
