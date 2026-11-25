@@ -17,7 +17,7 @@ none
 * 2026-04: repo ready, moved to MD
 * 2026-07: first draft ready (Release candidate 1)
 * 2026-10: input from review incorporated and second review(Release candidate 2)
-* 2026-11: ready for release, discussed with KI ADM and KIDS AG Solldaten (Release)
+* 2026-11: ready for release, discussed with KI ADM and KIDS AG Solldaten (Release candidate 3)
 * 2027-09: Version 2.1 ready with updates from exports.
 
 ## Folders
